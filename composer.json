@@ -18,6 +18,7 @@
         "ext-mbstring": "*",
         "ext-imagick": "*",
         "ext-json": "*",
+        "ext-curl": "*",
 
         "fabiang/sasl": "^2.0",
         "rain/raintpl": "^3.1",

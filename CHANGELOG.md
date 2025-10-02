@@ -38,6 +38,7 @@ v0.32 (master)
 * Enforce Packet parameters in all the Widgets
 * Drop php-curl dependency and replace it with reactphp/http
 * Use Github Flavored Markdown to support a more advanced Markdown format
+* Add a pusher worker that is handling all the WebPush notifications
 
 v0.31
 ---------------------------

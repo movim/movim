@@ -28,7 +28,7 @@ class CompileLanguages extends Command
         $locale->compileIni();
         $output->writeln('<info>Compiled hash file</info>');
         $locale->compilePos();
-        $output->writeln('<info>Compiled po files</info>');
+        $output->writeln('<info>po files compiled</info>');
 
         return Command::SUCCESS;
     }

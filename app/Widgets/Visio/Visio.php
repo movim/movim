@@ -498,7 +498,7 @@ class Visio extends Base
                 '📞 ' . $contact->truename,
                 $this->__('visio.calling'),
                 $contact->getPicture(),
-                5
+                time: 5
             );
         }
     }

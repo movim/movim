@@ -111,7 +111,7 @@ class Session
         // Launching the linker
         $this->process = new Process(
             'exec ' . PHP_BINARY . ' ' . $configuration . ' -d=memory_limit=512M linker.php ' . $this->sid,
-            cwd: DOCUMENT_ROOT,
+            cwd: WORKERS_PATH,
             env: [
                 'baseuri'       => $this->baseuri,
                 'DAEMON_DEBUG'  => config('daemon.debug'),

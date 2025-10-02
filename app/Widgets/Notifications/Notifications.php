@@ -67,7 +67,7 @@ class Notifications extends Base
                     $contact->truename,
                     $this->__('invitations.wants_to_talk', $contact->truename),
                     $contact->getPicture(),
-                    4
+                    time: 4
                 );
             }
         }

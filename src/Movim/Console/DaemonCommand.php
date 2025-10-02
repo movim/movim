@@ -99,7 +99,7 @@ class DaemonCommand extends Command
 
         $compileLanguages = new Process('exec ' . PHP_BINARY . ' ' . DOCUMENT_ROOT . '/daemon.php compileLanguages');
         $compileLanguages->start($loop);
-        $compileLanguages->on('exit', fn($out) => $output->writeln('<info>Compiled po files</info>'));
+        $compileLanguages->on('exit', fn($out) => $output->writeln('<info>po files compiled</info>'));
 
         $compileStickers = new Process('exec ' . PHP_BINARY . ' ' . DOCUMENT_ROOT . '/daemon.php compileStickers');
         $compileStickers->start($loop);
@@ -133,16 +133,23 @@ class DaemonCommand extends Command
 
         // Resolver
 
-        $resolverWorker = new Process('exec ' . PHP_BINARY . ' resolver.php', cwd: DOCUMENT_ROOT);
+        $resolverWorker = new Process('exec ' . PHP_BINARY . ' resolver.php', cwd: WORKERS_PATH);
         $resolverWorker->start($loop);
         $resolverWorker->on('exit', fn() => $output->writeln('<error>Resolver Worker crashed</error>'));
-        $output->writeln('<info>Resolver Worker launched</info>');
+        $output->writeln('<info>🌍 Resolver Worker launched</info>');
+
+        // Pusher
+
+        $resolverWorker = new Process('exec ' . PHP_BINARY . ' pusher.php', cwd: WORKERS_PATH);
+        $resolverWorker->start($loop);
+        $resolverWorker->on('exit', fn() => $output->writeln('<error>Pusher Worker crashed</error>'));
+        $output->writeln('<info>🔔 Pusher Worker launched</info>');
 
         // Templater
 
         $templaterWorker = new Process(
             'exec ' . PHP_BINARY . ' templater.php',
-            cwd: DOCUMENT_ROOT,
+            cwd: WORKERS_PATH,
             env: [
                 'baseuri'       => $baseuri,
                 'DAEMON_DEBUG'  => config('daemon.debug'),
@@ -159,7 +166,7 @@ class DaemonCommand extends Command
         );
         $templaterWorker->start($loop);
         $templaterWorker->on('exit', fn() => $output->writeln('<error>Templater Worker crashed</error>'));
-        $output->writeln('<info>Templater Worker launched</info>');
+        $output->writeln('<info>🎨 Templater Worker launched</info>');
 
         (new IoServer($app, $socket, $loop))->run();
 

@@ -83,14 +83,15 @@ class Bootstrap
         define('SESSION_ID', $_COOKIE['MOVIM_SESSION_ID'] ?? getenv('sid'));
 
         define('APP_PATH', DOCUMENT_ROOT . '/app/');
+        define('CONFIG_PATH', DOCUMENT_ROOT . '/config/');
         define('LOCALES_PATH', DOCUMENT_ROOT . '/locales/');
-        define('PUBLIC_PATH', DOCUMENT_ROOT . '/public/');
         define('PUBLIC_CACHE_PATH', DOCUMENT_ROOT . '/public/cache/');
         define('PUBLIC_EMOJIS_PATH', DOCUMENT_ROOT . '/public/emojis/');
+        define('PUBLIC_PATH', DOCUMENT_ROOT . '/public/');
         define('PUBLIC_STICKERS_PATH', DOCUMENT_ROOT . '/public/stickers/');
-        define('CONFIG_PATH', DOCUMENT_ROOT . '/config/');
         define('VIEWS_PATH', DOCUMENT_ROOT . '/app/Views/');
         define('WIDGETS_PATH', DOCUMENT_ROOT . '/app/Widgets/');
+        define('WORKERS_PATH', DOCUMENT_ROOT . '/workers/');
 
         define('CACHE_PATH', config('paths.cache'));
 
@@ -100,6 +101,7 @@ class Bootstrap
         define('DEFAULT_PICTURE_QUALITY', 95);
 
         define('API_SOCKET', CACHE_PATH . 'socketapi.sock');
+        define('PUSHER_SOCKET', CACHE_PATH . 'pusher.sock');
         define('RESOLVER_SOCKET', CACHE_PATH . 'resolver.sock');
         define('TEMPLATER_SOCKET', CACHE_PATH . 'templater.sock');
     }

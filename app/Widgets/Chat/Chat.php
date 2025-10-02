@@ -244,10 +244,9 @@ class Chat extends \Movim\Widget\Base
                             ? "🔒 " . substr($message->omemoheader['payload'], 0, strlen($message->omemoheader['payload']) / 2)
                             : $rawbody,
                         $contact->getPicture(),
-                        6,
-                        $this->route('chat', $contact->jid),
-                        null,
-                        'Search.chat(\'' . echapJS($contact->jid) . '\', ' . ($message->isMuc() ? 'true' : 'false') . ')'
+                        time: 6,
+                        action: $this->route('chat', $contact->jid),
+                        execute: 'Search.chat(\'' . echapJS($contact->jid) . '\', ' . ($message->isMuc() ? 'true' : 'false') . ')'
                     );
                 }
             }
@@ -268,8 +267,8 @@ class Chat extends \Movim\Widget\Base
                         : $from,
                     $message->resource . ': ' . $rawbody,
                     $conference->getPicture(),
-                    4,
-                    $this->route('chat', [$contact->jid, 'room'])
+                    time: 4,
+                    action: $this->route('chat', [$contact->jid, 'room'])
                 );
             } elseif ($message->isMuc()) {
                 if ($conference && $conference->notify == 0) {

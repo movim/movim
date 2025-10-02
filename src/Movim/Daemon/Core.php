@@ -60,6 +60,10 @@ class Core implements MessageComponentInterface
             unlink(TEMPLATER_SOCKET);
         }
 
+        if (file_exists(PUSHER_SOCKET)) {
+            unlink(PUSHER_SOCKET);
+        }
+
         array_map('unlink', array_merge(
             glob(PUBLIC_CACHE_PATH . '*.css'),
             glob(PUBLIC_CACHE_PATH . '*.js')

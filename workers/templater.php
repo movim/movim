@@ -1,11 +1,11 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 $bootstrap = new Movim\Bootstrap;
 $bootstrap->boot(true);
 
-use App\Workers\Resolver\Templater;
+use App\Workers\Templater\Templater;
 use Psr\Http\Message\ServerRequestInterface;
 use React\EventLoop\Loop;
 use React\Http\HttpServer;

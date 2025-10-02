@@ -90,7 +90,7 @@ class Menu extends Base
                     ($post->isLike()) ? '❤️ ' . $contact->truename : $post->title,
                     '📝 ' . $parent->title,
                     $contact->getPicture(),
-                    4
+                    time: 4
                 );
             }
         } elseif (
@@ -107,9 +107,9 @@ class Menu extends Base
                         '📝 ' . ($post->isStory() ? __('stories.new_story', $contact->truename) : $contact->truename),
                         $post->title,
                         $contact->getPicture(),
-                        4,
-                        $post->isStory() ? $this->route('chat') : $this->route('post', [$post->server, $post->node, $post->nodeid]),
-                        $post->isStory() ? null : $this->route('contact', $post->server)
+                        time: 4,
+                        action: $post->isStory() ? $this->route('chat') : $this->route('post', [$post->server, $post->node, $post->nodeid]),
+                        group: $post->isStory() ? null : $this->route('contact', $post->server)
                     );
                 }
             } else {
@@ -131,9 +131,9 @@ class Menu extends Base
                     $title,
                     $post->title,
                     $logo,
-                    4,
-                    $this->route('post', [$post->server, $post->node, $post->nodeid]),
-                    $this->route('community', [$post->server, $post->node])
+                    time: 4,
+                    action: $this->route('post', [$post->server, $post->node, $post->nodeid]),
+                    group: $this->route('community', [$post->server, $post->node])
                 );
             }
 

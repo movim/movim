@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Workers\Resolver;
+namespace App\Workers\Templater;
 
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;

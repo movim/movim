@@ -92,10 +92,9 @@ class Rooms extends Base
                     ? "📹 " . __('muji.call_video_invite')
                     : "📞 " . __('muji.call_audio_invite'),
                 $muji->conference->getPicture(),
-                5,
-                $this->route('chat', [$muji->jidfrom, 'room']),
-                null,
-                'Search.chat(\'' . echapJS($muji->jidfrom) . '\', true)'
+                time: 5,
+                action: $this->route('chat', [$muji->jidfrom, 'room']),
+                execute: 'Search.chat(\'' . echapJS($muji->jidfrom) . '\', true)'
             );
 
             $this->onCallInvite($packet);

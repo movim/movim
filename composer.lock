@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "682142e59af45053576467f71f62636f",
+    "content-hash": "a2662ddef969ab6d735f6cde1774f077",
     "packages": [
         {
             "name": "awobaz/compoships",
@@ -1900,7 +1900,7 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v11.46.0",
+            "version": "v11.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -1953,7 +1953,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v11.46.0",
+            "version": "v11.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -2009,7 +2009,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v11.46.0",
+            "version": "v11.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -2055,7 +2055,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v11.46.0",
+            "version": "v11.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -2106,7 +2106,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v11.46.0",
+            "version": "v11.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -2154,16 +2154,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v11.46.0",
+            "version": "v11.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "6ba0589ddfd61a05989d00d138bd6c625f75dc33"
+                "reference": "96abcce13f405701363d916dd312835e04848d04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/6ba0589ddfd61a05989d00d138bd6c625f75dc33",
-                "reference": "6ba0589ddfd61a05989d00d138bd6c625f75dc33",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/96abcce13f405701363d916dd312835e04848d04",
+                "reference": "96abcce13f405701363d916dd312835e04848d04",
                 "shasum": ""
             },
             "require": {
@@ -2219,11 +2219,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-09-02T23:55:36+00:00"
+            "time": "2025-09-29T09:23:31+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v11.46.0",
+            "version": "v11.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -2278,7 +2278,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v11.46.0",
+            "version": "v11.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2324,7 +2324,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v11.46.0",
+            "version": "v11.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -2372,7 +2372,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v11.46.0",
+            "version": "v11.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
@@ -7484,7 +7484,8 @@
         "ext-dom": "*",
         "ext-mbstring": "*",
         "ext-imagick": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-curl": "*"
     },
     "platform-dev": {},
     "platform-overrides": {

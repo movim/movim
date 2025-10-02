@@ -5,9 +5,6 @@ namespace App\Widgets\Notif;
 use Movim\Widget\Base;
 use Movim\RPC;
 use Movim\Session;
-
-use Minishlink\WebPush\WebPush;
-use Minishlink\WebPush\Subscription;
 use Carbon\Carbon;
 
 use App\PushSubscription;
@@ -66,13 +63,13 @@ class Notif extends Base
      */
     public static function append(
         string $key,
-        $title = null,
-        $body = null,
-        $picture = null,
-        $time = 2,
-        $action = null,
-        $group = null,
-        $execute = null
+        string $title,
+        string $body,
+        ?string $picture = null,
+        ?int $time = 2,
+        ?string $action = null,
+        ?string $group = null,
+        ?string $execute = null
     ) {
         if ($picture == null) {
             $picture = BASE_URI . '/theme/img/app/128.png';
@@ -81,51 +78,18 @@ class Notif extends Base
         $session = Session::instance();
         $notifs = $session->get('notifs');
 
-        if ($title != null) {
-            $webPush = null;
-
-            if (Session::instance()->get('session_down')) {
-                $keys = json_decode(file_get_contents(CACHE_PATH . 'vapid_keys.json'));
-
-                $webPush = new WebPush([
-                    'VAPID' => [
-                        'subject' => 'https://movim.eu',
-                        'publicKey' => $keys->publicKey,
-                        'privateKey' => $keys->privateKey
-                    ]
-                ]);
-            }
-
-            // Push notification
-            if ($webPush) {
-                foreach (me()->pushSubscriptions()->where('enabled', true)->whereNotNull('activity_at')->get() as $pushSubscription) {
-                    $subscription = Subscription::create([
-                        'endpoint' => $pushSubscription->endpoint,
-                        'contentEncoding' => 'aesgcm',
-                        'keys' => [
-                            'auth' => $pushSubscription->auth,
-                            'p256dh' => $pushSubscription->p256dh
-                        ]
-                    ]);
-
-                    $webPush->sendOneNotification(
-                        $subscription,
-                        json_encode([
-                            'title' => $title,
-                            'body' => $body,
-                            'picture' => $picture,
-                            'action' => $action,
-                            'group' => $group,
-                            'execute' => $execute,
-                            'button' => __('button.open')
-                        ])
-                    );
-                }
-
-                // Normal notification
-            } else {
-                RPC::call('Notif.desktop', $title, $body, $picture, $action, $execute);
-            }
+        if (Session::instance()->get('session_down')) {
+            requestPusher(
+                me()->id,
+                $title,
+                $body,
+                $picture,
+                $action,
+                $group,
+                $execute
+            );
+        } else {
+            RPC::call('Notif.desktop', $title, $body, $picture, $action, $execute);
         }
 
         $notifsKey = $session->get('notifs_key');
@@ -326,8 +290,13 @@ class Notif extends Base
         Toast::send($this->__('notification.request_denied'));
     }
 
-    private function prepareSnackbar($title, $body = null, $picture = null, $action = null, $execute = null)
-    {
+    private function prepareSnackbar(
+        string $title,
+        string $body,
+        ?string $picture = null,
+        ?string $action = null,
+        ?string $execute = null
+    ) {
         $view = $this->tpl();
 
         $view->assign('title', $title);

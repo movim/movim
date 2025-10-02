@@ -729,6 +729,37 @@ function requestResolverWorker(string $url, int $timeout = 30): PromiseInterface
 }
 
 /**
+ * @desc Send a Push through the Pusher worker
+ */
+function requestPusher(
+    string $userId,
+    string $title,
+    ?string $body = null,
+    ?string $picture = null,
+    ?string $action = null,
+    ?string $group = null,
+    ?string $execute = null
+): PromiseInterface {
+    $connector = new React\Socket\FixedUriConnector(
+        'unix://' . PUSHER_SOCKET,
+        new React\Socket\UnixConnector()
+    );
+
+    $browser = new React\Http\Browser($connector);
+    $data = [
+        'user_id' => $userId,
+        'title' => $title,
+        'body' => $body,
+        'picture' => $picture,
+        'action' => $action,
+        'group' => $group,
+        'execute' => $execute
+    ];
+
+    return $browser->post('http://pusher', [], json_encode($data));
+}
+
+/**
  * @desc Request the Templater Worker
  */
 function requestTemplaterWorker(string $widget, string $method, ?Packet $data = null): PromiseInterface
