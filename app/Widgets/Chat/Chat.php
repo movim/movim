@@ -9,7 +9,6 @@ use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
 
 use App\Contact;
-use App\MAMEarliest;
 use App\Message;
 use App\MessageFile;
 use App\MessageOmemoHeader;
@@ -1283,7 +1282,7 @@ class Chat extends \Movim\Widget\Base
 
         // Do we need to query MAM?
         if ($messages->isEmpty()) {
-            $earliest = MAMEarliest::query();
+            $earliest = $this->me->MAMEarliests();
             $earliest = $muc ? $earliest->where('to', $jid)
                 : $earliest->where('jid', $jid);
 
@@ -1291,7 +1290,7 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('Chat.getHistory', true);
             }
         } elseif ($messages->count() < $this->_pagination) {
-            $earliest = MAMEarliest::query();
+            $earliest = $this->me->MAMEarliests();
             $earliest = $muc ? $earliest->where('to', $jid)
                 : $earliest->where('jid', $jid);
             $me = $earliest->first();
