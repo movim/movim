@@ -1,0 +1,50 @@
+#. extracted from ../app/Widgets/CommunitiesServer/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [communitiesserver]created
+msgid "Community created successfully"
+msgstr ""
+
+#: [communitiesserver]empty_server
+msgid "\"There is no Communities yet on this server.\""
+msgstr ""
+
+#: [communitiesserver]add
+msgid "Create a new community on %s"
+msgstr ""
+
+#: [communitiesserver]name
+msgid "Community name"
+msgstr ""
+
+#: [communitiesserver]name_example
+msgid "My Little Pony - Fan Club"
+msgstr ""
+
+#: [communitiesserver]name_error
+msgid "Please provide a valid community name (4 characters minimum)"
+msgstr ""
+
+#: [communitiesserver]no_creation
+msgid "You cannot create a new community on this server"
+msgstr ""
+
+#: [communitiesserver]disco_error
+msgid "Issue when trying to discover the items"
+msgstr ""
+
+#: [communitiesserver]remoteservernotfound
+msgid "\"The server %s cannot be reached\""
+msgstr ""

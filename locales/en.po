@@ -118,7 +118,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-14 21:08+0200\n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://app.transifex.com/movim/movim/language/en/)\n"
@@ -272,6 +272,27 @@ msgstr "Actions"
 #: [adhoc]completed
 msgid "Action completed"
 msgstr "Action completed"
+
+#: [tools]title
+#, fuzzy
+msgid "Developer Tools"
+msgstr "Developers"
+
+#: [tools]sdp_to_jingle
+msgid "Convert SDP to Jingle"
+msgstr ""
+
+#: [tools]sdp_title
+msgid "SDP"
+msgstr ""
+
+#: [tools]jingle_to_sdp
+msgid "Convert Jingle to SDP"
+msgstr ""
+
+#: [tools]jingle_title
+msgid "Jingle stanza"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -620,7 +641,7 @@ msgid "See the profile"
 msgstr "See the profile"
 
 #: [chat]clear
-msgctxt "[chat]clear"
+#, fuzzy
 msgid "Clear the history"
 msgstr "Clear the history"
 
@@ -693,12 +714,13 @@ msgid "An error occurred when sending the message"
 msgstr "An error occurred when sending the message"
 
 #: [chat]clear_history
-msgctxt "[chat]clear_history"
-msgid "Clear the history"
+#, fuzzy
+msgid "Clear the local history"
 msgstr "Clear the history"
 
 #: [chat]clear_history_text
-msgid "You are going to delete %s messages, are you sure?"
+#, fuzzy
+msgid "You are going to delete %s local messages, are you sure?"
 msgstr "You are going to delete %s messages, are you sure?"
 
 #: [chat]action_impossible_encrypted
@@ -761,6 +783,14 @@ msgstr "Copy the text"
 msgid "Text copied"
 msgstr "Text copied"
 
+#: [chatactions]search_messages
+msgid "Search messages by content"
+msgstr ""
+
+#: [chatactions]search_messages_empty
+msgid "No messages found"
+msgstr ""
+
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
 msgstr "Fingerprints"
@@ -793,16 +823,22 @@ msgstr "Building own encryption sessions"
 msgid "Encryption disabled"
 msgstr "Encryption disabled"
 
-#: [omemo]encrypted_loading
-msgid "Send a message to build the encrypted session"
-msgstr "Send a message to build the encrypted session"
-
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr "Enabling encryption for the contact"
 
+#: [omemo]enable_room
+#, fuzzy
+msgid "Enabling encryption for the chatroom"
+msgstr "Enabling encryption for the contact"
+
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
+msgstr "Disabling encryption for the contact"
+
+#: [omemo]disable_room
+#, fuzzy
+msgid "Disabling encryption for the chatroom"
 msgstr "Disabling encryption for the contact"
 
 #: [omemo]last_activity
@@ -2095,14 +2131,26 @@ msgstr "Add #hashtags in your title or content to allow your post to be discover
 msgid "You are not authorized to publish there"
 msgstr "You are not authorized to publish there"
 
+#: [publish]publish_error_payload_to_big
+#, fuzzy
+msgid "Your post is too big to be published"
+msgstr "You are not authorized to publish there"
+
+#: [publish]too_long
+msgid "Your text is too long, %s characters max"
+msgstr ""
+
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 
+#: [publish]embedded_link
+msgid "The media will be embedded"
+msgstr ""
+
 #: [publish]web_title
-#, fuzzy
-msgid "Publish this post on your public blog"
-msgstr "Publish this post publicly"
+msgid "Create a public HTTP URL from this publication"
+msgstr ""
 
 #: [publish]web_text
 msgid "This will allow anyone outside Movim to have access to your publication"
@@ -2405,9 +2453,10 @@ msgstr "Ban someone"
 msgid "Unban"
 msgstr "Unban"
 
-#: [room]change_affiliation
-msgid "Change the user affiliation"
-msgstr "Change the user affiliation"
+#: [room]configure_user
+#, fuzzy
+msgid "Configure the user"
+msgstr "Configuration saved"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2416,6 +2465,11 @@ msgstr "You are not authorized to change this affiliation"
 #: [room]affiliation
 msgid "Affiliation"
 msgstr "Affiliation"
+
+#: [room]role
+#, fuzzy
+msgid "Role"
+msgstr "Roles"
 
 #: [room]reason
 msgid "Reason"
@@ -2468,6 +2522,16 @@ msgstr "Member"
 msgid "No affiliation"
 msgstr "No affiliation"
 
+#: [room]allowed_send_messages
+#, fuzzy
+msgid "Is the user allowed to send messages?"
+msgstr "You are not allowed to send messages in this chatroom"
+
+#: [room]role_changed
+#, fuzzy
+msgid "Role changed"
+msgstr "Subject changed"
+
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
 msgstr "User granted as owner"
@@ -2511,10 +2575,6 @@ msgstr "%s in total"
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "What are you looking for?"
-
-#: [search]subtitle
-msgid "Open me using Ctrl + M"
-msgstr "Open me using Ctrl + M"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
@@ -3170,6 +3230,11 @@ msgstr "Optional"
 msgid "Associated Community"
 msgstr "Associated Community"
 
+#: [input]open_me_using
+#, fuzzy
+msgid "Open me using"
+msgstr "Open me using Ctrl + M"
+
 #: [day]title
 msgid "Day"
 msgstr "Day"
@@ -3785,3 +3850,17 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
+
+#~ msgctxt "[chat]clear_history"
+#~ msgid "Clear the history"
+#~ msgstr "Clear the history"
+
+#~ msgid "Send a message to build the encrypted session"
+#~ msgstr "Send a message to build the encrypted session"
+
+#, fuzzy
+#~ msgid "Publish this post on your public blog"
+#~ msgstr "Publish this post publicly"
+
+#~ msgid "Change the user affiliation"
+#~ msgstr "Change the user affiliation"

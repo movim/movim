@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-14 21:08+0200\n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Krunoslav Tomorad <krunoslav.tomorad@gmail.com>, 2019\n"
 "Language-Team: Croatian (http://app.transifex.com/movim/movim/language/hr/)\n"
@@ -274,6 +274,27 @@ msgstr "Radnje"
 #: [adhoc]completed
 msgid "Action completed"
 msgstr "Radnja je dovršena"
+
+#: [tools]title
+#, fuzzy
+msgid "Developer Tools"
+msgstr "Razvijatelji"
+
+#: [tools]sdp_to_jingle
+msgid "Convert SDP to Jingle"
+msgstr ""
+
+#: [tools]sdp_title
+msgid "SDP"
+msgstr ""
+
+#: [tools]jingle_to_sdp
+msgid "Convert Jingle to SDP"
+msgstr ""
+
+#: [tools]jingle_title
+msgid "Jingle stanza"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -622,7 +643,6 @@ msgid "See the profile"
 msgstr "Pogledajte profil"
 
 #: [chat]clear
-msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr ""
 
@@ -695,12 +715,11 @@ msgid "An error occurred when sending the message"
 msgstr ""
 
 #: [chat]clear_history
-msgctxt "[chat]clear_history"
-msgid "Clear the history"
+msgid "Clear the local history"
 msgstr ""
 
 #: [chat]clear_history_text
-msgid "You are going to delete %s messages, are you sure?"
+msgid "You are going to delete %s local messages, are you sure?"
 msgstr ""
 
 #: [chat]action_impossible_encrypted
@@ -763,6 +782,14 @@ msgstr ""
 msgid "Text copied"
 msgstr ""
 
+#: [chatactions]search_messages
+msgid "Search messages by content"
+msgstr ""
+
+#: [chatactions]search_messages_empty
+msgid "No messages found"
+msgstr ""
+
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
 msgstr ""
@@ -795,17 +822,23 @@ msgstr ""
 msgid "Encryption disabled"
 msgstr ""
 
-#: [omemo]encrypted_loading
-msgid "Send a message to build the encrypted session"
-msgstr ""
-
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr ""
 
+#: [omemo]enable_room
+#, fuzzy
+msgid "Enabling encryption for the chatroom"
+msgstr "Povezani ste u sobu za razgovor"
+
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
 msgstr ""
+
+#: [omemo]disable_room
+#, fuzzy
+msgid "Disabling encryption for the chatroom"
+msgstr "Odspojili ste se od sobe za razgovor"
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -2097,12 +2130,24 @@ msgstr ""
 msgid "You are not authorized to publish there"
 msgstr ""
 
+#: [publish]publish_error_payload_to_big
+msgid "Your post is too big to be published"
+msgstr ""
+
+#: [publish]too_long
+msgid "Your text is too long, %s characters max"
+msgstr ""
+
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]embedded_link
+msgid "The media will be embedded"
+msgstr ""
+
 #: [publish]web_title
-msgid "Publish this post on your public blog"
+msgid "Create a public HTTP URL from this publication"
 msgstr ""
 
 #: [publish]web_text
@@ -2406,9 +2451,10 @@ msgstr ""
 msgid "Unban"
 msgstr ""
 
-#: [room]change_affiliation
-msgid "Change the user affiliation"
-msgstr ""
+#: [room]configure_user
+#, fuzzy
+msgid "Configure the user"
+msgstr "Postavke su spremljene"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2417,6 +2463,11 @@ msgstr ""
 #: [room]affiliation
 msgid "Affiliation"
 msgstr ""
+
+#: [room]role
+#, fuzzy
+msgid "Role"
+msgstr "Uloge"
 
 #: [room]reason
 msgid "Reason"
@@ -2469,6 +2520,15 @@ msgstr ""
 msgid "No affiliation"
 msgstr ""
 
+#: [room]allowed_send_messages
+msgid "Is the user allowed to send messages?"
+msgstr ""
+
+#: [room]role_changed
+#, fuzzy
+msgid "Role changed"
+msgstr "Naslov je spremljen"
+
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
 msgstr ""
@@ -2511,10 +2571,6 @@ msgstr ""
 
 #: [search]keyword
 msgid "What are you looking for?"
-msgstr ""
-
-#: [search]subtitle
-msgid "Open me using Ctrl + M"
 msgstr ""
 
 #: [search]placeholder
@@ -3169,6 +3225,10 @@ msgstr ""
 
 #: [input]muc_pubsub_node
 msgid "Associated Community"
+msgstr ""
+
+#: [input]open_me_using
+msgid "Open me using"
 msgstr ""
 
 #: [day]title

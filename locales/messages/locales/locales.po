@@ -1,0 +1,1002 @@
+#. extracted from ../locales/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [global]no_js
+msgid "Movim requires Javascript to be enabled to work properly."
+msgstr ""
+
+#: [global]description
+msgid ""
+"Movim is a kickass distributed social networking platform that protects your "
+"privacy and comes with a set of awesome features."
+msgstr ""
+
+#: [global]loading
+msgid "Loading…"
+msgstr ""
+
+#: [global]or
+msgid "Or"
+msgstr ""
+
+#: [global]change_pod
+msgid "Switch to another pod"
+msgstr ""
+
+#: [page]account
+msgid "Account"
+msgstr ""
+
+#: [page]administration
+msgid "Administration"
+msgstr ""
+
+#: [page]communities
+msgid "Communities"
+msgstr ""
+
+#: [page]home
+msgid "Home"
+msgstr ""
+
+#: [page]explore
+msgid "Explore"
+msgstr ""
+
+#: [page]account_creation
+msgid "Account Creation"
+msgstr ""
+
+#: [page]news
+msgid "News"
+msgstr ""
+
+#: [page]avatar
+msgid "Profile Picture"
+msgstr ""
+
+#: [page]contacts
+msgid "Contacts"
+msgstr ""
+
+#: [page]chats
+msgid "Messages"
+msgstr ""
+
+#: [page]configuration
+msgid "Configuration"
+msgstr ""
+
+#: [page]profile
+msgid "Profile"
+msgstr ""
+
+#: [page]publish
+msgid "Publish"
+msgstr ""
+
+#: [page]post
+msgid "Post"
+msgstr ""
+
+#: [page]blog
+msgid "Blog"
+msgstr ""
+
+#: [page]about
+msgid "About"
+msgstr ""
+
+#: [page]login
+msgid "Login"
+msgstr ""
+
+#: [page]not_found
+msgid "Not Found"
+msgstr ""
+
+#: [page]help
+msgid "Help"
+msgstr ""
+
+#: [page]feed
+msgid "Feed"
+msgstr ""
+
+#: [page]posts
+msgid "Posts"
+msgstr ""
+
+#: [page]gallery
+msgid "Gallery"
+msgstr ""
+
+#: [page]visio
+msgid "Visio-conference"
+msgstr ""
+
+#: [page]share
+msgctxt "[page]share"
+msgid "Share"
+msgstr ""
+
+#: [page]room
+msgid "Group Chat"
+msgstr ""
+
+#: [page]tag
+msgid "Tag"
+msgstr ""
+
+#: [error]error
+msgid "Error: %s"
+msgstr ""
+
+#: [error]cannot_load_file
+msgid "\"Cannot load file '%s'\""
+msgstr ""
+
+#: [error]widget_load_error
+msgid "\"Requested widget '%s' doesn’t exist.\""
+msgstr ""
+
+#: [error]widget_call_error
+msgid "\"Requested event '%s' not registered.\""
+msgstr ""
+
+#: [error]whoops
+msgid "\"Whoops!\""
+msgstr ""
+
+#: [error]websocket
+msgid "Movim cannot talk with the server, please try again later"
+msgstr ""
+
+#: [error]websocket_connect
+msgid "Reconnection to the server…"
+msgstr ""
+
+#: [error]oops
+msgid "Oops!"
+msgstr ""
+
+#: [button]call
+msgid "Call"
+msgstr ""
+
+#: [button]audio_call
+msgid "Audio Call"
+msgstr ""
+
+#: [button]video_call
+msgid "Video Call"
+msgstr ""
+
+#: [button]validate
+msgid "Validate"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr ""
+
+#: [button]add
+msgid "Add"
+msgstr ""
+
+#: [button]delete
+msgid "Delete"
+msgstr ""
+
+#: [button]destroy
+msgid "Destroy"
+msgstr ""
+
+#: [button]remove
+msgid "Leave"
+msgstr ""
+
+#: [button]cancel
+msgid "Cancel"
+msgstr ""
+
+#: [button]close
+msgid "Close"
+msgstr ""
+
+#: [button]create
+msgid "Create"
+msgstr ""
+
+#: [button]update
+msgid "Update"
+msgstr ""
+
+#: [button]updating
+msgid "Updating"
+msgstr ""
+
+#: [button]submit
+msgid "Submit"
+msgstr ""
+
+#: [button]submitting
+msgid "Submitting"
+msgstr ""
+
+#: [button]reset
+msgid "Reset"
+msgstr ""
+
+#: [button]register
+msgid "Register"
+msgstr ""
+
+#: [button]reply
+msgid "Reply"
+msgstr ""
+
+#: [button]unregister
+msgid "Unregister"
+msgstr ""
+
+#: [button]save
+msgid "Save"
+msgstr ""
+
+#: [button]join
+msgid "Join"
+msgstr ""
+
+#: [button]clear
+msgid "Clear"
+msgstr ""
+
+#: [button]upload
+msgid "Upload"
+msgstr ""
+
+#: [button]connecting
+msgid "Connecting"
+msgstr ""
+
+#: [button]bool_yes
+msgid "Yes"
+msgstr ""
+
+#: [button]bool_no
+msgid "No"
+msgstr ""
+
+#: [button]edit
+msgid "Edit"
+msgstr ""
+
+#: [button]return
+msgid "Return"
+msgstr ""
+
+#: [button]accept
+msgid "Accept"
+msgstr ""
+
+#: [button]refuse
+msgid "Refuse"
+msgstr ""
+
+#: [button]next
+msgid "Next"
+msgstr ""
+
+#: [button]previous
+msgid "Previous"
+msgstr ""
+
+#: [button]search
+msgid "Search"
+msgstr ""
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr ""
+
+#: [button]discover
+msgid "Discover"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr ""
+
+#: [button]not_now
+msgid "Not Now"
+msgstr ""
+
+#: [button]enable
+msgid "Enable"
+msgstr ""
+
+#: [button]invite
+msgid "Invite"
+msgstr ""
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
+#: [button]send_to
+msgid "Send to"
+msgstr ""
+
+#: [button]more
+msgid "More"
+msgstr ""
+
+#: [button]copy_link
+msgid "Copy Link"
+msgstr ""
+
+#: [button]open
+msgid "Open"
+msgstr ""
+
+#: [input]username
+msgid "Username"
+msgstr ""
+
+#: [input]password
+msgid "Password"
+msgstr ""
+
+#: [input]optional
+msgid "Optional"
+msgstr ""
+
+#: [input]muc_pubsub_node
+msgid "Associated Community"
+msgstr ""
+
+#: [input]open_me_using
+msgid "\"Open me using\""
+msgstr ""
+
+#: [day]title
+msgid "Day"
+msgstr ""
+
+#: [day]monday
+msgid "Monday"
+msgstr ""
+
+#: [day]tuesday
+msgid "Tuesday"
+msgstr ""
+
+#: [day]wednesday
+msgid "Wednesday"
+msgstr ""
+
+#: [day]thursday
+msgid "Thursday"
+msgstr ""
+
+#: [day]friday
+msgid "Friday"
+msgstr ""
+
+#: [day]saturday
+msgid "Saturday"
+msgstr ""
+
+#: [day]sunday
+msgid "Sunday"
+msgstr ""
+
+#: [client]bot
+msgid "Bot"
+msgstr ""
+
+#: [client]console
+msgid "Console"
+msgstr ""
+
+#: [client]desktop
+msgid "Desktop"
+msgstr ""
+
+#: [client]phone
+msgid "Phone"
+msgstr ""
+
+#: [client]web
+msgid "Web"
+msgstr ""
+
+#: [client]registered
+msgid "Registered"
+msgstr ""
+
+#: [client]gateway
+msgid "Gateway"
+msgstr ""
+
+#: [presence]online
+msgid "Online"
+msgstr ""
+
+#: [presence]away
+msgid "Away"
+msgstr ""
+
+#: [presence]dnd
+msgid "Do Not Disturb"
+msgstr ""
+
+#: [presence]xa
+msgid "Extended Away"
+msgstr ""
+
+#: [presence]offline
+msgid "Offline"
+msgstr ""
+
+#: [presence]error
+msgid "Error"
+msgstr ""
+
+#: [mood]afraid
+msgid "afraid"
+msgstr ""
+
+#: [mood]amazed
+msgid "amazed"
+msgstr ""
+
+#: [mood]amorous
+msgid "amorous"
+msgstr ""
+
+#: [mood]angry
+msgid "angry"
+msgstr ""
+
+#: [mood]annoyed
+msgid "annoyed"
+msgstr ""
+
+#: [mood]anxious
+msgid "anxious"
+msgstr ""
+
+#: [mood]aroused
+msgid "aroused"
+msgstr ""
+
+#: [mood]ashamed
+msgid "ashamed"
+msgstr ""
+
+#: [mood]bored
+msgid "bored"
+msgstr ""
+
+#: [mood]brave
+msgid "brave"
+msgstr ""
+
+#: [mood]calm
+msgid "calm"
+msgstr ""
+
+#: [mood]cautious
+msgid "cautious"
+msgstr ""
+
+#: [mood]cold
+msgid "cold"
+msgstr ""
+
+#: [mood]confident
+msgid "confident"
+msgstr ""
+
+#: [mood]confused
+msgid "confused"
+msgstr ""
+
+#: [mood]contemplative
+msgid "contemplative"
+msgstr ""
+
+#: [mood]contented
+msgid "contented"
+msgstr ""
+
+#: [mood]cranky
+msgid "cranky"
+msgstr ""
+
+#: [mood]crazy
+msgid "crazy"
+msgstr ""
+
+#: [mood]creative
+msgid "creative"
+msgstr ""
+
+#: [mood]curious
+msgid "curious"
+msgstr ""
+
+#: [mood]dejected
+msgid "dejected"
+msgstr ""
+
+#: [mood]depressed
+msgid "depressed"
+msgstr ""
+
+#: [mood]disappointed
+msgid "disappointed"
+msgstr ""
+
+#: [mood]disgusted
+msgid "disgusted"
+msgstr ""
+
+#: [mood]dismayed
+msgid "dismayed"
+msgstr ""
+
+#: [mood]distracted
+msgid "distracted"
+msgstr ""
+
+#: [mood]embarrassed
+msgid "embarrassed"
+msgstr ""
+
+#: [mood]envious
+msgid "envious"
+msgstr ""
+
+#: [mood]excited
+msgid "excited"
+msgstr ""
+
+#: [mood]flirtatious
+msgid "flirtatious"
+msgstr ""
+
+#: [mood]frustrated
+msgid "frustrated"
+msgstr ""
+
+#: [mood]grateful
+msgid "grateful"
+msgstr ""
+
+#: [mood]grieving
+msgid "grieving"
+msgstr ""
+
+#: [mood]grumpy
+msgid "grumpy"
+msgstr ""
+
+#: [mood]guilty
+msgid "guilty"
+msgstr ""
+
+#: [mood]happy
+msgid "happy"
+msgstr ""
+
+#: [mood]hopeful
+msgid "hopeful"
+msgstr ""
+
+#: [mood]hot
+msgid "hot"
+msgstr ""
+
+#: [mood]humbled
+msgid "humbled"
+msgstr ""
+
+#: [mood]humiliated
+msgid "humiliated"
+msgstr ""
+
+#: [mood]hungry
+msgid "hungry"
+msgstr ""
+
+#: [mood]hurt
+msgid "hurt"
+msgstr ""
+
+#: [mood]impressed
+msgid "impressed"
+msgstr ""
+
+#: [mood]in_awe
+msgid "in awe"
+msgstr ""
+
+#: [mood]in_love
+msgid "in love"
+msgstr ""
+
+#: [mood]indignant
+msgid "indignant"
+msgstr ""
+
+#: [mood]interested
+msgid "interested"
+msgstr ""
+
+#: [mood]intoxicated
+msgid "intoxicated"
+msgstr ""
+
+#: [mood]invincible
+msgid "invincible"
+msgstr ""
+
+#: [mood]jealous
+msgid "jealous"
+msgstr ""
+
+#: [mood]lonely
+msgid "lonely"
+msgstr ""
+
+#: [mood]lost
+msgid "lost"
+msgstr ""
+
+#: [mood]lucky
+msgid "lucky"
+msgstr ""
+
+#: [mood]mean
+msgid "mean"
+msgstr ""
+
+#: [mood]moody
+msgid "moody"
+msgstr ""
+
+#: [mood]nervous
+msgid "nervous"
+msgstr ""
+
+#: [mood]neutral
+msgid "neutral"
+msgstr ""
+
+#: [mood]offended
+msgid "offended"
+msgstr ""
+
+#: [mood]outraged
+msgid "outraged"
+msgstr ""
+
+#: [mood]playful
+msgid "playful"
+msgstr ""
+
+#: [mood]proud
+msgid "proud"
+msgstr ""
+
+#: [mood]relaxed
+msgid "relaxed"
+msgstr ""
+
+#: [mood]relieved
+msgid "relieved"
+msgstr ""
+
+#: [mood]remorseful
+msgid "remorseful"
+msgstr ""
+
+#: [mood]restless
+msgid "restless"
+msgstr ""
+
+#: [mood]sad
+msgid "sad"
+msgstr ""
+
+#: [mood]sarcastic
+msgid "sarcastic"
+msgstr ""
+
+#: [mood]satisfied
+msgid "satisfied"
+msgstr ""
+
+#: [mood]serious
+msgid "serious"
+msgstr ""
+
+#: [mood]shocked
+msgid "shocked"
+msgstr ""
+
+#: [mood]shy
+msgid "shy"
+msgstr ""
+
+#: [mood]sick
+msgid "sick"
+msgstr ""
+
+#: [mood]sleepy
+msgid "sleepy"
+msgstr ""
+
+#: [mood]spontaneous
+msgid "spontaneous"
+msgstr ""
+
+#: [mood]stressed
+msgid "stressed"
+msgstr ""
+
+#: [mood]strong
+msgid "strong"
+msgstr ""
+
+#: [mood]surprised
+msgid "surprised"
+msgstr ""
+
+#: [mood]thankful
+msgid "thankful"
+msgstr ""
+
+#: [mood]thirsty
+msgid "thirsty"
+msgstr ""
+
+#: [mood]tired
+msgid "tired"
+msgstr ""
+
+#: [mood]undefined
+msgid "undefined"
+msgstr ""
+
+#: [mood]weak
+msgid "weak"
+msgstr ""
+
+#: [mood]worried
+msgid "worried"
+msgstr ""
+
+#: [month]title
+msgid "Month"
+msgstr ""
+
+#: [month]january
+msgid "January"
+msgstr ""
+
+#: [month]february
+msgid "February"
+msgstr ""
+
+#: [month]march
+msgid "March"
+msgstr ""
+
+#: [month]april
+msgid "April"
+msgstr ""
+
+#: [month]may
+msgid "May"
+msgstr ""
+
+#: [month]june
+msgid "June"
+msgstr ""
+
+#: [month]july
+msgid "July"
+msgstr ""
+
+#: [month]august
+msgid "August"
+msgstr ""
+
+#: [month]september
+msgid "September"
+msgstr ""
+
+#: [month]october
+msgid "October"
+msgstr ""
+
+#: [month]november
+msgid "November"
+msgstr ""
+
+#: [month]december
+msgid "December"
+msgstr ""
+
+#: [year]title
+msgid "Year"
+msgstr ""
+
+#: [date]today
+msgid "Today"
+msgstr ""
+
+#: [date]tomorrow
+msgid "Tomorrow"
+msgstr ""
+
+#: [date]yesterday
+msgid "Yesterday"
+msgstr ""
+
+#: [date]ago
+msgid "%d days ago"
+msgstr ""
+
+#: [date]day
+msgid "day"
+msgstr ""
+
+#: [post]title
+msgid "Title"
+msgstr ""
+
+#: [post]place
+msgid "Place"
+msgstr ""
+
+#: [post]by
+msgid "by"
+msgstr ""
+
+#: [post]geolocalisation
+msgid "Geolocalisation"
+msgstr ""
+
+#: [post]email
+msgid "email"
+msgstr ""
+
+#: [post]empty
+msgid "No content"
+msgstr ""
+
+#: [post]no_comments
+msgid "No comments yet"
+msgstr ""
+
+#: [post]older
+msgid "Get older posts"
+msgstr ""
+
+#: [post]new_items
+msgid "%s new items"
+msgstr ""
+
+#: [post]comment_error
+msgid "Comment publication error"
+msgstr ""
+
+#: [post]comments_get
+msgid "Get the comments"
+msgstr ""
+
+#: [post]comment_add
+msgid "Add a comment"
+msgstr ""
+
+#: [post]share
+msgid "Share with"
+msgstr ""
+
+#: [post]share_everyone
+msgid "Everyone"
+msgstr ""
+
+#: [post]delete
+msgid "Delete this post"
+msgstr ""
+
+#: [post]updated
+msgid "Updated"
+msgstr ""
+
+#: [post]content_not_found
+msgid "Content not found"
+msgstr ""
+
+#: [post]default_title
+msgid "Contact publication"
+msgstr ""
+
+#: [post]comments
+msgid "Comments"
+msgstr ""
+
+#: [post]original_deleted
+msgid "Original post deleted"
+msgstr ""
+
+#: [filesize]byte
+msgid "B"
+msgstr ""
+
+#: [filesize]kilobyte
+msgid "KB"
+msgstr ""
+
+#: [filesize]megabyte
+msgid "MB"
+msgstr ""
+
+#: [filesize]gigabyte
+msgid "GB"
+msgstr ""
+
+#: [filesize]terabyte
+msgid "TB"
+msgstr ""
+
+#: [affiliation]owner
+msgid "Owner"
+msgstr ""
+
+#: [affiliation]publisher
+msgid "Publisher"
+msgstr ""
+
+#: [affiliation]publish-only
+msgid "Publish only"
+msgstr ""
+
+#: [affiliation]member
+msgid "Member"
+msgstr ""
+
+#: [affiliation]no-aff
+msgid "No affiliation"
+msgstr ""
+
+#: [affiliation]outcast
+msgid "Outcast"
+msgstr ""
+
+#: [api]error
+msgid "The API is not reachable, try again later"
+msgstr ""
+
+#: [field]type_here
+msgid "Type here"
+msgstr ""

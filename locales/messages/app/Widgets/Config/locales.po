@@ -1,0 +1,155 @@
+#. extracted from ../app/Widgets/Config/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [config]general
+msgid "General"
+msgstr ""
+
+#: [config]language
+msgid "Language"
+msgstr ""
+
+#: [config]roster
+msgid "Roster display"
+msgstr ""
+
+#: [config]roster_show
+msgid "Show the offline contacts"
+msgstr ""
+
+#: [config]roster_hide
+msgid "Hide the offline contacts"
+msgstr ""
+
+#: [config]appearence
+msgid "Appearance"
+msgstr ""
+
+#: [config]updated
+msgid "Configuration updated"
+msgstr ""
+
+#: [config]not_valid
+msgid "Configuration invalid"
+msgstr ""
+
+#: [config]advanced
+msgid "Advanced Configuration"
+msgstr ""
+
+#: [config]nsfw
+msgid "Display adult content"
+msgstr ""
+
+#: [config]nsfw_text
+msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
+#: [config]omemoenabled
+msgid "Use OMEMO"
+msgstr ""
+
+#: [config]omemoenabled_text
+msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
+msgstr ""
+
+#: [config]night_mode_detected
+msgid "Your browser is already telling Movim to use the Night Mode by default"
+msgstr ""
+
+#: [config]chatmain
+msgid "Main chat page"
+msgstr ""
+
+#: [config]chatmain_text
+msgid "Set the chat page to the default when opening Movim"
+msgstr ""
+
+#: [config]mam_text
+msgid "Server-side chat messages archiving preferences"
+msgstr ""
+
+#: [config]mam_always
+msgid "Always"
+msgstr ""
+
+#: [config]mam_never
+msgid "Never"
+msgstr ""
+
+#: [config]mam_saved
+msgid "Archiving preferences saved"
+msgstr ""
+
+#: [config]blog_text
+msgid "Personal blog confidentiality"
+msgstr ""
+
+#: [config]blog_open_title
+msgid "Public blog"
+msgstr ""
+
+#: [config]blog_open_text
+msgid "Accessible to everyone on the network"
+msgstr ""
+
+#: [config]blog_presence_title
+msgid "Private blog"
+msgstr ""
+
+#: [config]blog_presence_text
+msgid "Restricted to your subscribers only"
+msgstr ""
+
+#: [config]blog_saved
+msgid "Personal blog confidentiality saved"
+msgstr ""
+
+#: [config]confidentiality
+msgid "Confidentiality"
+msgstr ""
+
+#: [config]audio_title
+msgid "Audio notifications"
+msgstr ""
+
+#: [config]audio_call
+msgid "Incoming call"
+msgstr ""
+
+#: [config]audio_chat
+msgid "Incoming message"
+msgstr ""
+
+#: [config]accent_color
+msgid "Accent color"
+msgstr ""
+
+#: [config]change_nickname_title
+msgid "Be careful"
+msgstr ""
+
+#: [config]change_nickname_text
+msgid ""
+"Changing your nickname will change your public blog, feed, and articles URLs"
+msgstr ""

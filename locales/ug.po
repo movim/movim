@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-14 21:08+0200\n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Keram, 2023\n"
 "Language-Team: Uyghur (http://app.transifex.com/movim/movim/language/ug/)\n"
@@ -274,6 +274,27 @@ msgstr "ھەركەتلەر"
 #: [adhoc]completed
 msgid "Action completed"
 msgstr "ھەركەت تاماملاندى"
+
+#: [tools]title
+#, fuzzy
+msgid "Developer Tools"
+msgstr "لايىھەلىگۈچىلەر"
+
+#: [tools]sdp_to_jingle
+msgid "Convert SDP to Jingle"
+msgstr ""
+
+#: [tools]sdp_title
+msgid "SDP"
+msgstr ""
+
+#: [tools]jingle_to_sdp
+msgid "Convert Jingle to SDP"
+msgstr ""
+
+#: [tools]jingle_title
+msgid "Jingle stanza"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -622,7 +643,7 @@ msgid "See the profile"
 msgstr "تەرجىمالىنى كۆرۈش"
 
 #: [chat]clear
-msgctxt "[chat]clear"
+#, fuzzy
 msgid "Clear the history"
 msgstr "تارىخنى ئۆچۈرۈش"
 
@@ -695,12 +716,13 @@ msgid "An error occurred when sending the message"
 msgstr "بۇ ئۇچۇرنى ئەۋەتىۋاتقاندا بىر خاتالىق كۆرۈلدى"
 
 #: [chat]clear_history
-msgctxt "[chat]clear_history"
-msgid "Clear the history"
-msgstr "تارىخنى تازىلاش"
+#, fuzzy
+msgid "Clear the local history"
+msgstr "تارىخنى ئۆچۈرۈش"
 
 #: [chat]clear_history_text
-msgid "You are going to delete %s messages, are you sure?"
+#, fuzzy
+msgid "You are going to delete %s local messages, are you sure?"
 msgstr "سىز %sئۇچۇرنى ئۆچۈرمەكچى، جەزىملەشتۈرەمسىز؟"
 
 #: [chat]action_impossible_encrypted
@@ -763,6 +785,14 @@ msgstr "بۇ تېكىستنى كۆچۈرۈش"
 msgid "Text copied"
 msgstr "تېكىست كۆچۈرۈلدى"
 
+#: [chatactions]search_messages
+msgid "Search messages by content"
+msgstr ""
+
+#: [chatactions]search_messages_empty
+msgid "No messages found"
+msgstr ""
+
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
 msgstr "بارماق ئىزلىرى"
@@ -795,16 +825,22 @@ msgstr "ئۆزىنىڭ شىفىرلاش باسقۇچلىرىنى قۇرۇۋات�
 msgid "Encryption disabled"
 msgstr "شىفىرلاش ئېتىۋېتىلدى"
 
-#: [omemo]encrypted_loading
-msgid "Send a message to build the encrypted session"
-msgstr "شىفىرلانغان باسقۇچنى قۇرۇش ئۈچۈن بىر ئۇچۇر يوللاڭ"
-
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr "بۇ تۇنۇش ئۈچۈن شىفىرلاشنى ئېچىۋاتىدۇ"
 
+#: [omemo]enable_room
+#, fuzzy
+msgid "Enabling encryption for the chatroom"
+msgstr "بۇ تۇنۇش ئۈچۈن شىفىرلاشنى ئېچىۋاتىدۇ"
+
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
+msgstr "بۇ تۇنۇش ئۈچۈن شىفىرلاشنى ئېتىۋاتىدۇ"
+
+#: [omemo]disable_room
+#, fuzzy
+msgid "Disabling encryption for the chatroom"
 msgstr "بۇ تۇنۇش ئۈچۈن شىفىرلاشنى ئېتىۋاتىدۇ"
 
 #: [omemo]last_activity
@@ -2097,12 +2133,25 @@ msgstr ""
 msgid "You are not authorized to publish there"
 msgstr "سىز ئۇيەردە ئېلان قىلىشقا ئىجازەت بېرىلمىدىڭىز"
 
+#: [publish]publish_error_payload_to_big
+#, fuzzy
+msgid "Your post is too big to be published"
+msgstr "سىز ئۇيەردە ئېلان قىلىشقا ئىجازەت بېرىلمىدىڭىز"
+
+#: [publish]too_long
+msgid "Your text is too long, %s characters max"
+msgstr ""
+
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]embedded_link
+msgid "The media will be embedded"
+msgstr ""
+
 #: [publish]web_title
-msgid "Publish this post on your public blog"
+msgid "Create a public HTTP URL from this publication"
 msgstr ""
 
 #: [publish]web_text
@@ -2406,9 +2455,10 @@ msgstr "بىرەيلەننى چەكلەش"
 msgid "Unban"
 msgstr "چەكلەشنى بىكار قىلىش"
 
-#: [room]change_affiliation
-msgid "Change the user affiliation"
-msgstr "خاسلىقنى ئۆزگەرتىش"
+#: [room]configure_user
+#, fuzzy
+msgid "Configure the user"
+msgstr "تەڭشەك ساقلاندى"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2417,6 +2467,11 @@ msgstr "سىز بۇ خاسلىقنى ئۆزگەرتىشكە يول قۇيۇلم�
 #: [room]affiliation
 msgid "Affiliation"
 msgstr "خاسلىق"
+
+#: [room]role
+#, fuzzy
+msgid "Role"
+msgstr "روللار"
 
 #: [room]reason
 msgid "Reason"
@@ -2469,6 +2524,15 @@ msgstr "ئەزا"
 msgid "No affiliation"
 msgstr "خاسلىق يوق"
 
+#: [room]allowed_send_messages
+msgid "Is the user allowed to send messages?"
+msgstr ""
+
+#: [room]role_changed
+#, fuzzy
+msgid "Role changed"
+msgstr "تېما ئۆزگەردى"
+
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
 msgstr "ئىشلەتكۈچى ئىگىلىك بېرىلدى"
@@ -2512,10 +2576,6 @@ msgstr ""
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "سىز نېمىنى ئىزدەيسىز؟"
-
-#: [search]subtitle
-msgid "Open me using Ctrl + M"
-msgstr "مېنى Ctrl + M نى بېسىپ ئېچىڭ"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
@@ -3171,6 +3231,11 @@ msgstr "ئىختىيارى"
 msgid "Associated Community"
 msgstr "مۇناسىۋەتلىك جامائەت"
 
+#: [input]open_me_using
+#, fuzzy
+msgid "Open me using"
+msgstr "مېنى Ctrl + M نى بېسىپ ئېچىڭ"
+
 #: [day]title
 msgid "Day"
 msgstr "كۈن"
@@ -3786,3 +3851,13 @@ msgstr "بۇ API غا ئېرىشكىلى بولمىدى، كىيىن قايتا 
 #: [field]type_here
 msgid "Type here"
 msgstr "بۇ يەرگە يېزىڭ"
+
+#~ msgctxt "[chat]clear_history"
+#~ msgid "Clear the history"
+#~ msgstr "تارىخنى تازىلاش"
+
+#~ msgid "Send a message to build the encrypted session"
+#~ msgstr "شىفىرلانغان باسقۇچنى قۇرۇش ئۈچۈن بىر ئۇچۇر يوللاڭ"
+
+#~ msgid "Change the user affiliation"
+#~ msgstr "خاسلىقنى ئۆزگەرتىش"

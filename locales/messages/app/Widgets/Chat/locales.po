@@ -1,0 +1,250 @@
+#. extracted from ../app/Widgets/Chat/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [message]published
+msgid "Message Published"
+msgstr ""
+
+#: [message]react
+msgid "Add a reaction"
+msgstr ""
+
+#: [message]retract
+msgid "Retract"
+msgstr ""
+
+#: [message]retract_body
+msgid ""
+"\"Your contact attempted to retract a previous message, but it's unsupported "
+"by your client\""
+msgstr ""
+
+#: [message]moderate_body
+msgid "This message was moderated"
+msgstr ""
+
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
+
+#: [message]encrypted
+msgid "Encrypted message"
+msgstr ""
+
+#: [message]retracted
+msgid "Retracted message"
+msgstr ""
+
+#: [message]composing
+msgid "Composing…"
+msgstr ""
+
+#: [message]invitation
+msgid "Invitation"
+msgstr ""
+
+#: [message]paused
+msgid "Paused…"
+msgstr ""
+
+#: [message]gone
+msgid "Contact gone"
+msgstr ""
+
+#: [message]edit_help
+msgid "↑ to edit your previous message"
+msgstr ""
+
+#: [message]emoji_help
+msgid ":shortcut: to insert an emoji"
+msgstr ""
+
+#: [message]visitor_help
+msgid "You are not allowed to send messages in this chatroom"
+msgstr ""
+
+#: [chat]attention
+msgid "%s needs your attention"
+msgstr ""
+
+#: [chat]placeholder
+msgid "Your message here…"
+msgstr ""
+
+#: [chat]smileys
+msgid "Smileys"
+msgstr ""
+
+#: [chat]frequent
+msgid "Frequent contacts"
+msgstr ""
+
+#: [chat]new_title
+msgid "Nothing here yet…"
+msgstr ""
+
+#: [chat]new_text
+msgid "\"Don’t be shy, send a first message to start the discussion\""
+msgstr ""
+
+#: [chat]invitation
+msgid "You received an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_self
+msgid "You sent an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_join
+msgid "Join %s"
+msgstr ""
+
+#: [chat]profile
+msgid "See the profile"
+msgstr ""
+
+#: [chat]clear
+msgid "Clear the history"
+msgstr ""
+
+#: [chat]edit_previous
+msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
+msgstr ""
+
+#: [chat]jingle_incoming
+msgid "Incoming call"
+msgstr ""
+
+#: [chat]jingle_outgoing
+msgid "Outgoing call"
+msgstr ""
+
+#: [chat]jingle_retract
+msgid "Missed call"
+msgstr ""
+
+#: [chat]jingle_reject
+msgid "Refused call"
+msgstr ""
+
+#: [chat]jingle_end
+msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
+msgstr ""
+
+#: [chat]muji_propose
+msgid "A conference call has started"
+msgstr ""
+
+#: [chat]muji_retract
+msgid "The conference call has ended"
+msgstr ""
+
+#: [chat]muc_admin
+msgid "%s is now admin"
+msgstr ""
+
+#: [chat]muc_owner
+msgid "%s is now owner"
+msgstr ""
+
+#: [chat]muc_outcast
+msgid "%s is now banned"
+msgstr ""
+
+#: [chat]muc_member
+msgid "%s is now member"
+msgstr ""
+
+#: [chat]publish_error
+msgid "An error occurred when sending the message"
+msgstr ""
+
+#: [chat]clear_history
+msgid "Clear the local history"
+msgstr ""
+
+#: [chat]clear_history_text
+msgid "\"You are going to delete %s local messages, are you sure?\""
+msgstr ""
+
+#: [chat]action_impossible_encrypted
+msgid "Action impossible in encrypted chats"
+msgstr ""
+
+#: [chat]first_messages_title
+msgid "This is the beginning of this conversation"
+msgstr ""
+
+#: [chat]first_messages_text
+msgid ""
+"You can choose to add it as a new contact or block it to prevent some other "
+"unsolicited messages"
+msgstr ""
+
+#: [chat]first_messages_add
+msgid "Add to my contacts"
+msgstr ""
+
+#: [chat]first_messages_block
+msgid "Block"
+msgstr ""
+
+#: [chatroom]members
+msgid "Members"
+msgstr ""
+
+#: [chatroom]connected
+msgid "Connected to the chatroom"
+msgstr ""
+
+#: [chatroom]disconnected
+msgid "Disconnected from the chatroom"
+msgstr ""
+
+#: [chatroom]config
+msgid "Configuration"
+msgstr ""
+
+#: [chatroom]config_saved
+msgid "Configuration saved"
+msgstr ""
+
+#: [chatroom]subject
+msgid "Subject"
+msgstr ""
+
+#: [chatroom]subject_changed
+msgid "Subject changed"
+msgstr ""
+
+#: [chatroom]administration
+msgid "Administration"
+msgstr ""

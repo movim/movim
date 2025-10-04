@@ -1,0 +1,130 @@
+#. extracted from ../app/Widgets/Login/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [error]username
+msgid "Wrong username"
+msgstr ""
+
+#: [error]jid
+msgid "Invalid XMPP Address"
+msgstr ""
+
+#: [error]empty_challenge
+msgid "Empty Challenge from the server"
+msgstr ""
+
+#: [error]dns
+msgid "XMPP Domain error, your account is not a valid XMPP Address"
+msgstr ""
+
+#: [error]data_missings
+msgid "Some data are missing!"
+msgstr ""
+
+#: [error]internal
+msgid "Internal server error"
+msgstr ""
+
+#: [error]session
+msgid "Session error"
+msgstr ""
+
+#: [error]account_created
+msgid "Account successfully created"
+msgstr ""
+
+#: [error]timeout
+msgid "The server takes too much time to respond"
+msgstr ""
+
+#: [error]impossible
+msgid "Impossible login"
+msgstr ""
+
+#: [error]default
+msgid "Unknown error"
+msgstr ""
+
+#: [error]login_format
+msgid "Invalid username format"
+msgstr ""
+
+#: [error]password_format
+msgid "Invalid password format"
+msgstr ""
+
+#: [error]unauthorized
+msgid "Your XMPP server is unauthorized"
+msgstr ""
+
+#: [error]wrong_account
+msgid "Movim failed to authenticate. You entered wrong data"
+msgstr ""
+
+#: [error]mechanism
+msgid "Authentication mechanism not supported by Movim"
+msgstr ""
+
+#: [error]fail_auth
+msgid "The XMPP authentification failed"
+msgstr ""
+
+#: [connection]socket_connected
+msgid "Connected to the server"
+msgstr ""
+
+#: [connection]authenticated
+msgid "Authenticated to the server"
+msgstr ""
+
+#: [form]username
+msgid "My address"
+msgstr ""
+
+#: [form]password
+msgid "Password"
+msgstr ""
+
+#: [form]whitelist_info
+msgid "Login with accounts from these servers"
+msgstr ""
+
+#: [form]connect_info
+msgid "Login using any XMPP account or create a new one"
+msgstr ""
+
+#: [form]connected
+msgid "Connected"
+msgstr ""
+
+#: [form]population
+msgid "Population"
+msgstr ""
+
+#: [form]invite_chatroom
+msgid "%s invited you to join a chatroom"
+msgstr ""
+
+#: [form]pod_admins
+msgid "Administrated by"
+msgstr ""
+
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""

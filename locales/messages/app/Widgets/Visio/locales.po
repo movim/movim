@@ -1,0 +1,122 @@
+#. extracted from ../app/Widgets/Visio/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [visio]calling
+msgid "…is calling you"
+msgstr ""
+
+#: [visio]video_call
+msgid "Incoming video call"
+msgstr ""
+
+#: [visio]audio_call
+msgid "Incoming audio call"
+msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]declined
+msgid "Declined"
+msgstr ""
+
+#: [visio]in_call
+msgid "Ongoing call"
+msgstr ""
+
+#: [visio]joined_call
+msgid "Joined call"
+msgstr ""
+
+#: [visio]failed
+msgid "Failed"
+msgstr ""
+
+#: [visio]connecting
+msgid "…connecting"
+msgstr ""
+
+#: [visio]ended
+msgid "End of call"
+msgstr ""
+
+#: [visio]no_participants_left
+msgid "All participants have left the call"
+msgstr ""
+
+#: [visio]by
+msgid "by %s"
+msgstr ""
+
+#: [visiolobby]called
+msgid "\"%s is calling you\""
+msgstr ""
+
+#: [visiolobby]calling
+msgid "\"Calling %s\""
+msgstr ""
+
+#: [visiolobby]muji_create
+msgid "\"Creating a conference call in %s\""
+msgstr ""
+
+#: [visiolobby]muji_join
+msgid "\"Joining the conference call\""
+msgstr ""
+
+#: [visiolobby]setup
+msgid "\"Setting up your camera and microphone\""
+msgstr ""
+
+#: [visiolobby]devices_disco
+msgid "\"Please allow your browser to share your devices to configure them\""
+msgstr ""
+
+#: [visiolobby]microphone_label
+msgid "Default microphone"
+msgstr ""
+
+#: [visiolobby]camera_label
+msgid "Default camera"
+msgstr ""
+
+#: [visiolobby]default_microphone_changed
+msgid "Default microphone changed"
+msgstr ""
+
+#: [visiolobby]default_camera_changed
+msgid "Default camera changed"
+msgstr ""
+
+#: [visiolobby]no_mic_sound
+msgid "\"No sound detected from your microphone\""
+msgstr ""
+
+#: [visiolobby]no_mic_sound2
+msgid "\"Try to select another source or check your system settings\""
+msgstr ""
+
+#: [muji]call_audio_invite
+msgid "You are invited in an audio conference call"
+msgstr ""
+
+#: [muji]call_video_invite
+msgid "You are invited in a video conference call"
+msgstr ""
+
+#: [muji]cannot_create
+msgid "Cannot create a conference call on your server"
+msgstr ""

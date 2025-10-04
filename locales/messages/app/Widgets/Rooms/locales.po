@@ -1,0 +1,403 @@
+#. extracted from ../app/Widgets/Rooms/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [rooms]create
+msgid "Create a chatroom"
+msgstr ""
+
+#: [rooms]edit
+msgid "Edit a chatroom"
+msgstr ""
+
+#: [rooms]join
+msgid "Join a chatroom"
+msgstr ""
+
+#: [rooms]join_custom
+msgid "Join a custom chatroom"
+msgstr ""
+
+#: [rooms]empty_text1
+msgid "You don’t have any chatroom yet."
+msgstr ""
+
+#: [rooms]empty_text2
+msgid "Add one by clicking on the add button."
+msgstr ""
+
+#: [rooms]type_room
+msgid "Type of chatroom"
+msgstr ""
+
+#: [rooms]default_room
+msgid "Standard chatroom"
+msgstr ""
+
+#: [rooms]gateway_room
+msgid "Gateway chatroom"
+msgstr ""
+
+#: [rooms]show_all
+msgid "Show all chatrooms"
+msgstr ""
+
+#: [rooms]hide_disconnected
+msgid "Hide disconnected chatrooms"
+msgstr ""
+
+#: [rooms]destroy_title
+msgid "Destroy the chatroom"
+msgstr ""
+
+#: [rooms]destroy_text
+msgid "Are you sure you want to permanently destroy the following chatroom?"
+msgstr ""
+
+#: [rooms]owner
+msgctxt "[rooms]owner"
+msgid "Owner"
+msgstr ""
+
+#: [rooms]admin
+msgctxt "[rooms]admin"
+msgid "Admin"
+msgstr ""
+
+#: [rooms]visitor
+msgid "Visitor"
+msgstr ""
+
+#: [rooms]explore_placeholder
+msgid "Name or description"
+msgstr ""
+
+#: [rooms]disco_registration_required
+msgid "A registration is required before using the service"
+msgstr ""
+
+#: [chatrooms]title
+msgid "Chatrooms"
+msgstr ""
+
+#: [chatrooms]id
+msgid "Chatroom Address"
+msgstr ""
+
+#: [chatrooms]name
+msgid "Name"
+msgstr ""
+
+#: [chatrooms]name_placeholder
+msgid "My Favorite Room"
+msgstr ""
+
+#: [chatrooms]nickname
+msgid "Nickname"
+msgstr ""
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom Address"
+msgstr ""
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr ""
+
+#: [chatrooms]remove_title
+msgid "Permanently leave a chatroom"
+msgstr ""
+
+#: [chatrooms]remove_text
+msgid ""
+"You are going to permanently leave the following chatroom. Please confirm "
+"your action."
+msgstr ""
+
+#: [chatrooms]connected
+msgid "Joined the chatroom"
+msgstr ""
+
+#: [chatrooms]disconnected
+msgid "Left the chatroom"
+msgstr ""
+
+#: [chatrooms]users
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr ""
+
+#: [chatrooms]members
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr ""
+
+#: [chatrooms]banned
+msgid "Banned"
+msgstr ""
+
+#: [chatrooms]bad_nickname
+msgid "Please enter a valid nickname (2 to 40 characters)"
+msgstr ""
+
+#: [chatrooms]conflict
+msgid "Nickname already taken"
+msgstr ""
+
+#: [chatrooms]autojoin
+msgid "Join this chatroom on login"
+msgstr ""
+
+#: [chatrooms]pinned
+msgid "Pin this chatroom"
+msgstr ""
+
+#: [chatrooms]destroyed
+msgid "Chatroom destroyed"
+msgstr ""
+
+#: [chatrooms]registrationrequired
+msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
+#: [chatrooms]remoteservernotfound
+msgid "The remote server for this chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]remoteservertimeout
+msgid "Connection to remote server timed out"
+msgstr ""
+
+#: [chatrooms]itemnotfound
+msgid "The chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]notauthorized
+msgid "A password is required"
+msgstr ""
+
+#: [chatrooms]forbidden
+msgid "You are not allowed to join this chatroom"
+msgstr ""
+
+#: [chatrooms]jidmalformed
+msgid "Your nickname is not valid"
+msgstr ""
+
+#: [chatrooms]notacceptable
+msgid "Not acceptable"
+msgstr ""
+
+#: [chatrooms]serviceunavailable
+msgid "The chatroom participant limit has been reached"
+msgstr ""
+
+#: [chatrooms]notallowed
+msgid "You are not allowed to create a chatroom there"
+msgstr ""
+
+#: [chatrooms]created
+msgid "Chatroom created"
+msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr ""
+
+#: [room]anonymous_title
+msgid "Public Channel"
+msgstr ""
+
+#: [room]anonymous_text1
+msgid "You are currently logged as an anonymous user."
+msgstr ""
+
+#: [room]anonymous_text2
+msgid ""
+"You can join using your own account or create one on the login page by "
+"logging out using the cross in the top-right corner."
+msgstr ""
+
+#: [room]anonymous_login
+msgid "Login on %s"
+msgstr ""
+
+#: [room]invite
+msgid "Invite a contact"
+msgstr ""
+
+#: [room]invited
+msgid "Invitation sent"
+msgstr ""
+
+#: [room]invite_code
+msgid "Send this link to your contacts"
+msgstr ""
+
+#: [room]public_muc
+msgid "Public"
+msgstr ""
+
+#: [room]public_muc_text
+msgid "This chatroom is publicly discoverable"
+msgstr ""
+
+#: [room]nonanonymous_muc
+msgid "Public profiles"
+msgstr ""
+
+#: [room]nonanonymous_muc_text
+msgid ""
+"\"The participants of this chatroom can see each other's XMPP Addresses\""
+msgstr ""
+
+#: [room]archived
+msgid "Archived"
+msgstr ""
+
+#: [room]archived_text
+msgid "The chatroom messages are archived"
+msgstr ""
+
+#: [room]group_chat
+msgid "Group Chat"
+msgstr ""
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+msgid "Add a new member"
+msgstr ""
+
+#: [room]group_chat_members
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr ""
+
+#: [room]banned_add
+msgid "Ban someone"
+msgstr ""
+
+#: [room]banned_remove
+msgid "Unban"
+msgstr ""
+
+#: [room]configure_user
+msgid "Configure the user"
+msgstr ""
+
+#: [room]change_affiliation_unauthorized
+msgid "You are not authorized to change this affiliation"
+msgstr ""
+
+#: [room]affiliation
+msgid "Affiliation"
+msgstr ""
+
+#: [room]role
+msgid "Role"
+msgstr ""
+
+#: [room]reason
+msgid "Reason"
+msgstr ""
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr ""
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joinable"
+msgstr ""
+
+#: [room]notify_title
+msgid "Notifications"
+msgstr ""
+
+#: [room]notify_never
+msgid "Never notify"
+msgstr ""
+
+#: [room]notify_quoted
+msgid "Notify when quoted"
+msgstr ""
+
+#: [room]notify_always
+msgid "Always notify"
+msgstr ""
+
+#: [room]pinned
+msgid "Pinned"
+msgstr ""
+
+#: [room]affiliation_owner
+msgctxt "[room]affiliation_owner"
+msgid "Owner"
+msgstr ""
+
+#: [room]affiliation_admin
+msgctxt "[room]affiliation_admin"
+msgid "Admin"
+msgstr ""
+
+#: [room]affiliation_member
+msgid "Member"
+msgstr ""
+
+#: [room]affiliation_none
+msgid "No affiliation"
+msgstr ""
+
+#: [room]allowed_send_messages
+msgid "Is the user allowed to send messages?"
+msgstr ""
+
+#: [room]role_changed
+msgid "Role changed"
+msgstr ""
+
+#: [room]affiliation_owner_changed
+msgid "User granted as owner"
+msgstr ""
+
+#: [room]affiliation_admin_changed
+msgid "User granted as admin"
+msgstr ""
+
+#: [room]affiliation_member_changed
+msgid "User granted as member"
+msgstr ""
+
+#: [room]affiliation_outcast_changed
+msgid "User banned"
+msgstr ""
+
+#: [room]affiliation_none_changed
+msgid "Affiliation removed for the user"
+msgstr ""
+
+#: [rooms_filter]all
+msgid "All"
+msgstr ""
+
+#: [rooms_filter]connected
+msgid "Connected"
+msgstr ""

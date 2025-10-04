@@ -1,0 +1,30 @@
+#. extracted from ../app/Widgets/CommunitySubscriptions/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [communitysubscriptions]subscriptions
+msgid "Subscribed Communities"
+msgstr ""
+
+#: [communitysubscriptions]empty_title
+msgid "Hello"
+msgstr ""
+
+#: [communitysubscriptions]empty_text1
+msgid "Here you will be able to manage all your subscriptions."
+msgstr ""
+
+#: [communitysubscriptions]empty_text2
+msgid "You don’t have any community subscriptions yet."
+msgstr ""

@@ -1,0 +1,190 @@
+#. extracted from ../app/Widgets/ContactData/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [general]legend
+msgid "General Information"
+msgstr ""
+
+#: [general]name
+msgid "Name"
+msgstr ""
+
+#: [general]pronouns
+msgid "Pronouns"
+msgstr ""
+
+#: [general]pronouns_example
+msgid "\"he/she/they/…\""
+msgstr ""
+
+#: [general]nickname
+msgid "Nickname"
+msgstr ""
+
+#: [general]date_of_birth
+msgid "Date of Birth"
+msgstr ""
+
+#: [general]gender
+msgid "Gender"
+msgstr ""
+
+#: [general]marital
+msgid "Marital Status"
+msgstr ""
+
+#: [general]email
+msgid "Email"
+msgstr ""
+
+#: [general]website
+msgid "Website"
+msgstr ""
+
+#: [general]about
+msgid "About Me"
+msgstr ""
+
+#: [general]accounts
+msgid "Other Accounts"
+msgstr ""
+
+#: [general]tune
+msgid "Is Listening"
+msgstr ""
+
+#: [general]pictures
+msgid "Pictures"
+msgstr ""
+
+#: [general]links
+msgid "Links"
+msgstr ""
+
+#: [general]private_account_title
+msgid "Your account is private"
+msgstr ""
+
+#: [general]private_account_text
+msgid ""
+"Go to the Settings page to create a public blog and allow the other users to "
+"find you"
+msgstr ""
+
+#: [position]legend
+msgid "Geographic Position"
+msgstr ""
+
+#: [position]locality
+msgid "Locality"
+msgstr ""
+
+#: [position]country
+msgid "Country"
+msgstr ""
+
+#: [listen]title
+msgid "Listening"
+msgstr ""
+
+#: [last]title
+msgid "Last seen"
+msgstr ""
+
+#: [clients]title
+msgid "Clients"
+msgstr ""
+
+#: [clients]title_full
+msgid "Clients information"
+msgstr ""
+
+#: [explore]last_registered
+msgid "Last registered"
+msgstr ""
+
+#: [explore]explore
+msgid "Find some new contacts"
+msgstr ""
+
+#: [edit]title
+msgid "Edit"
+msgstr ""
+
+#: [edit]alias
+msgid "Alias"
+msgstr ""
+
+#: [edit]group
+msgid "Group"
+msgstr ""
+
+#: [delete]title
+msgid "Are you sure?"
+msgstr ""
+
+#: [delete]text
+msgid ""
+"You are going to remove one of your contacts, please confirm your action"
+msgstr ""
+
+#: [age]years
+msgid "%s years"
+msgstr ""
+
+#: [blog]last
+msgid "Last public post"
+msgstr ""
+
+#: [blog]visit
+msgid "Visit the public blog"
+msgstr ""
+
+#: [subscription]to
+msgid "You can see this contact status"
+msgstr ""
+
+#: [subscription]to_button
+msgid "Share my status"
+msgstr ""
+
+#: [subscription]to_text
+msgid "But this contact cannot see yours"
+msgstr ""
+
+#: [subscription]from
+msgid "You are not subscribed to this contact"
+msgstr ""
+
+#: [subscription]from_button
+msgid "Ask to subscribe"
+msgstr ""
+
+#: [subscription]from_text
+msgid "But this contact can still see if you are online"
+msgstr ""
+
+#: [subscription]nil
+msgid "You are not subscribed to anyone"
+msgstr ""
+
+#: [subscription]nil_button
+msgid "Invite"
+msgstr ""
+
+#: [subscription]nil_text
+msgid ""
+"This contact is in your contact list but you are not subscribed to each other"
+msgstr ""

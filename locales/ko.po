@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-14 21:08+0200\n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://app.transifex.com/movim/movim/language/ko/)\n"
@@ -274,6 +274,27 @@ msgstr "작업"
 #: [adhoc]completed
 msgid "Action completed"
 msgstr "작업 완료"
+
+#: [tools]title
+#, fuzzy
+msgid "Developer Tools"
+msgstr "개발자"
+
+#: [tools]sdp_to_jingle
+msgid "Convert SDP to Jingle"
+msgstr ""
+
+#: [tools]sdp_title
+msgid "SDP"
+msgstr ""
+
+#: [tools]jingle_to_sdp
+msgid "Convert Jingle to SDP"
+msgstr ""
+
+#: [tools]jingle_title
+msgid "Jingle stanza"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -622,7 +643,7 @@ msgid "See the profile"
 msgstr "프로필 보기"
 
 #: [chat]clear
-msgctxt "[chat]clear"
+#, fuzzy
 msgid "Clear the history"
 msgstr "기록 지우기"
 
@@ -695,12 +716,13 @@ msgid "An error occurred when sending the message"
 msgstr ""
 
 #: [chat]clear_history
-msgctxt "[chat]clear_history"
-msgid "Clear the history"
+#, fuzzy
+msgid "Clear the local history"
 msgstr "기록 지우기"
 
 #: [chat]clear_history_text
-msgid "You are going to delete %s messages, are you sure?"
+#, fuzzy
+msgid "You are going to delete %s local messages, are you sure?"
 msgstr "%s개의 메시지를 삭제하시겠습니까?"
 
 #: [chat]action_impossible_encrypted
@@ -763,6 +785,14 @@ msgstr ""
 msgid "Text copied"
 msgstr ""
 
+#: [chatactions]search_messages
+msgid "Search messages by content"
+msgstr ""
+
+#: [chatactions]search_messages_empty
+msgid "No messages found"
+msgstr ""
+
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
 msgstr "지문"
@@ -795,16 +825,22 @@ msgstr "자체 암호화 세션 구축"
 msgid "Encryption disabled"
 msgstr "암호화 비활성화됨"
 
-#: [omemo]encrypted_loading
-msgid "Send a message to build the encrypted session"
-msgstr "암호화된 세션을 구축하기 위해 메시지 보내기"
-
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr "연락처에 대한 암호화 활성화"
 
+#: [omemo]enable_room
+#, fuzzy
+msgid "Enabling encryption for the chatroom"
+msgstr "연락처에 대한 암호화 활성화"
+
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
+msgstr "연락처에 대한 암호화 비활성화"
+
+#: [omemo]disable_room
+#, fuzzy
+msgid "Disabling encryption for the chatroom"
 msgstr "연락처에 대한 암호화 비활성화"
 
 #: [omemo]last_activity
@@ -2097,12 +2133,24 @@ msgstr ""
 msgid "You are not authorized to publish there"
 msgstr ""
 
+#: [publish]publish_error_payload_to_big
+msgid "Your post is too big to be published"
+msgstr ""
+
+#: [publish]too_long
+msgid "Your text is too long, %s characters max"
+msgstr ""
+
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]embedded_link
+msgid "The media will be embedded"
+msgstr ""
+
 #: [publish]web_title
-msgid "Publish this post on your public blog"
+msgid "Create a public HTTP URL from this publication"
 msgstr ""
 
 #: [publish]web_text
@@ -2406,9 +2454,10 @@ msgstr "누군가를 차단하기"
 msgid "Unban"
 msgstr "차단 해제"
 
-#: [room]change_affiliation
-msgid "Change the user affiliation"
-msgstr "사용자 소속 변경"
+#: [room]configure_user
+#, fuzzy
+msgid "Configure the user"
+msgstr "설정이 저장됨"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2417,6 +2466,11 @@ msgstr "이 소속을 변경할 권한이 없습니다."
 #: [room]affiliation
 msgid "Affiliation"
 msgstr "소속"
+
+#: [room]role
+#, fuzzy
+msgid "Role"
+msgstr "역할"
 
 #: [room]reason
 msgid "Reason"
@@ -2469,6 +2523,15 @@ msgstr "멤버"
 msgid "No affiliation"
 msgstr "권한 없음"
 
+#: [room]allowed_send_messages
+msgid "Is the user allowed to send messages?"
+msgstr ""
+
+#: [room]role_changed
+#, fuzzy
+msgid "Role changed"
+msgstr "제목이 변경됨"
+
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
 msgstr "소유자 권한의 사용자"
@@ -2512,10 +2575,6 @@ msgstr ""
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "무엇을 찾고 있나요?"
-
-#: [search]subtitle
-msgid "Open me using Ctrl + M"
-msgstr "Ctrl + M을 사용하여 열기"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
@@ -3171,6 +3230,11 @@ msgstr "선택 사항"
 msgid "Associated Community"
 msgstr "관련 커뮤니티"
 
+#: [input]open_me_using
+#, fuzzy
+msgid "Open me using"
+msgstr "Ctrl + M을 사용하여 열기"
+
 #: [day]title
 msgid "Day"
 msgstr "요일"
@@ -3786,3 +3850,13 @@ msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 #: [field]type_here
 msgid "Type here"
 msgstr "여기에 입력하세요"
+
+#~ msgctxt "[chat]clear_history"
+#~ msgid "Clear the history"
+#~ msgstr "기록 지우기"
+
+#~ msgid "Send a message to build the encrypted session"
+#~ msgstr "암호화된 세션을 구축하기 위해 메시지 보내기"
+
+#~ msgid "Change the user affiliation"
+#~ msgstr "사용자 소속 변경"

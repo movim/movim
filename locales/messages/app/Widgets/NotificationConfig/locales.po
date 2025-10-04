@@ -1,0 +1,42 @@
+#. extracted from ../app/Widgets/NotificationConfig/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [notificationconfig]title
+msgid "Notifications"
+msgstr ""
+
+#: [notificationconfig]push_subscriptions
+msgid "Push notifications"
+msgstr ""
+
+#: [notificationconfig]push_subscriptions_text
+msgid "Movim will send push notifications to the following registered devices"
+msgstr ""
+
+#: [notificationconfig]push_enabled
+msgid "Push notifications enabled for this device"
+msgstr ""
+
+#: [notificationconfig]push_disabled
+msgid "Push notifications disabled for this device"
+msgstr ""
+
+#: [notificationconfig]unknown_browser
+msgid "Unknown browser"
+msgstr ""
+
+#: [notificationconfig]unknown_platform
+msgid "Unknown platform"
+msgstr ""

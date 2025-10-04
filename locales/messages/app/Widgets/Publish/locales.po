@@ -1,0 +1,122 @@
+#. extracted from ../app/Widgets/Publish/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [publish]placeholder
+msgid "\"What’s new?\""
+msgstr ""
+
+#: [publish]brief_title
+msgid "Brief"
+msgstr ""
+
+#: [publish]post_title
+msgid "Post"
+msgstr ""
+
+#: [publish]post
+msgid "Write a post"
+msgstr ""
+
+#: [publish]add_link
+msgid "Add a link"
+msgstr ""
+
+#: [publish]add_snap
+msgid "Take a picture"
+msgstr ""
+
+#: [publish]no_title
+msgid "Please provide a title"
+msgstr ""
+
+#: [publish]no_picture
+msgid "At least one picture is required"
+msgstr ""
+
+#: [publish]preview
+msgid "Preview"
+msgstr ""
+
+#: [publish]attach
+msgid "Add a file or a picture"
+msgstr ""
+
+#: [publish]no_publication
+msgid "You cannot publish a post here"
+msgstr ""
+
+#: [publish]new
+msgid "New post"
+msgstr ""
+
+#: [publish]title
+msgid "Post title"
+msgstr ""
+
+#: [publish]content
+msgid "Markdown content"
+msgstr ""
+
+#: [publish]valid_url
+msgid "Please enter a valid URL"
+msgstr ""
+
+#: [publish]content_text
+msgid "You can format your content using Markdown"
+msgstr ""
+
+#: [publish]draft_saved
+msgid "Draft saved"
+msgstr ""
+
+#: [publish]rich_editor
+msgid "Rich text editor"
+msgstr ""
+
+#: [publish]help_hashtag
+msgid ""
+"\"Add #hashtags in your title or content to allow your post to be "
+"discovered\""
+msgstr ""
+
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
+#: [publish]publish_error_payload_to_big
+msgid "Your post is too big to be published"
+msgstr ""
+
+#: [publish]too_long
+msgid "Your text is too long, %s characters max"
+msgstr ""
+
+#: [publish]blog_presence
+msgid ""
+"\"Your blog is only accessible to your subscribers. You can make it "
+"accessible to anyone in the settings page.\""
+msgstr ""
+
+#: [publish]embedded_link
+msgid "The media will be embedded"
+msgstr ""
+
+#: [publish]web_title
+msgid "Create a public HTTP URL from this publication"
+msgstr ""
+
+#: [publish]web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""

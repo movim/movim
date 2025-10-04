@@ -1,0 +1,38 @@
+#. extracted from ../app/Widgets/Location/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-14 21:08+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
+
+#: [location]title
+msgid "My location"
+msgstr ""
+
+#: [location]enabled_title
+msgid "Currently shared with my contacts"
+msgstr ""
+
+#: [location]disabled_title
+msgid "Currently disabled"
+msgstr ""
+
+#: [location]last_published
+msgid "My last published location"
+msgstr ""
+
+#: [location]less_than_one_km
+msgid "Less than a km away"
+msgstr ""
+
+#: [location]n_km_away
+msgid "\"%s km away\""
+msgstr ""

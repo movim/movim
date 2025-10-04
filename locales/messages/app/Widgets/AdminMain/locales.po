@@ -1,0 +1,188 @@
+#. extracted from ../app/Widgets/AdminMain/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [admin]general
+msgid "General Settings"
+msgstr ""
+
+#: [general]theme
+msgid "Theme"
+msgstr ""
+
+#: [general]language
+msgid "Default language"
+msgstr ""
+
+#: [general]log_verbosity
+msgid "Log verbosity"
+msgstr ""
+
+#: [general]join_title
+msgid "Your instance is public?"
+msgstr ""
+
+#: [general]join_text
+msgid "Register your instance on join.movim.eu and join the Movim federation!"
+msgstr ""
+
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr ""
+
+#: [restrictsuggestions]text
+msgid ""
+"\"Only suggest chatrooms, Communities, and other contents that are available "
+"on the user's XMPP server and related services\""
+msgstr ""
+
+#: [chatonly]title
+msgid "Chat only"
+msgstr ""
+
+#: [chatonly]text
+msgid ""
+"Disable all the social feature (Communities, Blog…) and keep only the chat "
+"ones"
+msgstr ""
+
+#: [credentials]title
+msgid "Administration Credential"
+msgstr ""
+
+#: [credentials]username
+msgid "Username"
+msgstr ""
+
+#: [credentials]password
+msgid "Password"
+msgstr ""
+
+#: [credentials]re_password
+msgid "Retype password"
+msgstr ""
+
+#: [disableregistration]title
+msgid "Disable the XMPP registration feature"
+msgstr ""
+
+#: [disableregistration]text
+msgid "Remove the XMPP registration flow and buttons from the interface"
+msgstr ""
+
+#: [whitelist]title
+msgid "Allowed XMPP Servers"
+msgstr ""
+
+#: [whitelist]info1
+msgid ""
+"If you want to specify a list of authorized XMPP servers on your Movim pod "
+"and forbid the connection on all the others please put their domain name(s) "
+"here, with comma (ex: movim.eu,jabber.fr)"
+msgstr ""
+
+#: [whitelist]info2
+msgid ""
+"Leave this field blank if you allow the access to all the XMPP accounts."
+msgstr ""
+
+#: [whitelist]label
+msgid "List of allowed XMPP servers"
+msgstr ""
+
+#: [information]title
+msgctxt "[information]title"
+msgid "Information Message"
+msgstr ""
+
+#: [information]description
+msgid "Description"
+msgstr ""
+
+#: [information]description_placeholder
+msgid "General description of the instance"
+msgstr ""
+
+#: [information]banner
+msgid "Main banner"
+msgstr ""
+
+#: [information]banner_info
+msgid ""
+"Ensure that the picture is not too large and can be reached from any webpages"
+msgstr ""
+
+#: [information]info1
+msgid ""
+"This message will be displayed on the login page. It can be used to link the "
+"Terms and Conditions of your Movim instance for example."
+msgstr ""
+
+#: [information]info2
+msgid "Leave this field blank if you don’t want to show any message."
+msgstr ""
+
+#: [information]label
+msgctxt "[information]label"
+msgid "Information Message"
+msgstr ""
+
+#: [xmpp]title
+msgid "Default XMPP server"
+msgstr ""
+
+#: [xmpp]domain
+msgid "Main XMPP server domain"
+msgstr ""
+
+#: [xmpp]description
+msgid "Main XMPP server description"
+msgstr ""
+
+#: [xmpp]country
+msgid "Main XMPP server country"
+msgstr ""
+
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
+
+#: [tenor]title
+msgid "Tenor integration"
+msgstr ""
+
+#: [tenor]label
+msgid "Your Tenor API Key"
+msgstr ""
+
+#: [tenor]info1
+msgid ""
+"Movim integrates the Tenor API to allow GIF search and publication in Chat"
+msgstr ""
+
+#: [tenor]info2
+msgid "Access Tenor and get your API key"
+msgstr ""
+
+#: [log]empty
+msgid "Empty"
+msgstr ""
+
+#: [log]syslog
+msgid "Syslog"
+msgstr ""
+
+#: [log]syslog_files
+msgid "Syslog and files"
+msgstr ""

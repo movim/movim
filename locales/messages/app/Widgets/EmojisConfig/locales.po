@@ -1,0 +1,47 @@
+#. extracted from ../app/Widgets/EmojisConfig/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [emojisconfig]title
+msgid "Emojis"
+msgstr ""
+
+#: [emojisconfig]favorites_title
+msgid "My favorite emojis"
+msgstr ""
+
+#: [emojisconfig]favorites_text
+msgid ""
+"Pick emojis from the packs bellow that you want to add to your favorites ones"
+msgstr ""
+
+#: [emojisconfig]dialog_title
+msgid "Manage a favorite emoji"
+msgstr ""
+
+#: [emojisconfig]alias_error
+msgid "The shortcut should only contains lowercase letters, numbers and dashes"
+msgstr ""
+
+#: [emojisconfig]new_added
+msgid "New favorite emoji added"
+msgstr ""
+
+#: [emojisconfig]alias_conflict
+msgid "The shortcut is already used on another emoji"
+msgstr ""
+
+#: [emojisconfig]no_emojis_yet
+msgid "No favorites yet, check the settings page to add some"
+msgstr ""

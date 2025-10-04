@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-14 21:08+0200\n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2025\n"
 "Language-Team: Albanian (http://app.transifex.com/movim/movim/language/sq/)\n"
@@ -275,6 +275,27 @@ msgstr "Veprime"
 #: [adhoc]completed
 msgid "Action completed"
 msgstr "Veprim i plotësuar"
+
+#: [tools]title
+#, fuzzy
+msgid "Developer Tools"
+msgstr "Zhvillues"
+
+#: [tools]sdp_to_jingle
+msgid "Convert SDP to Jingle"
+msgstr ""
+
+#: [tools]sdp_title
+msgid "SDP"
+msgstr ""
+
+#: [tools]jingle_to_sdp
+msgid "Convert Jingle to SDP"
+msgstr ""
+
+#: [tools]jingle_title
+msgid "Jingle stanza"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -623,7 +644,7 @@ msgid "See the profile"
 msgstr "Shihni profilin"
 
 #: [chat]clear
-msgctxt "[chat]clear"
+#, fuzzy
 msgid "Clear the history"
 msgstr "Spastroje historikun"
 
@@ -696,12 +717,13 @@ msgid "An error occurred when sending the message"
 msgstr "Ndodhi një gabim teksa dërgohej mesazhi"
 
 #: [chat]clear_history
-msgctxt "[chat]clear_history"
-msgid "Clear the history"
+#, fuzzy
+msgid "Clear the local history"
 msgstr "Spastroje historikun"
 
 #: [chat]clear_history_text
-msgid "You are going to delete %s messages, are you sure?"
+#, fuzzy
+msgid "You are going to delete %s local messages, are you sure?"
 msgstr "Do të fshini %s mesazhe, jeni i sigurt?"
 
 #: [chat]action_impossible_encrypted
@@ -764,6 +786,14 @@ msgstr "Kopjo tekstin"
 msgid "Text copied"
 msgstr "Teksti u kopjua"
 
+#: [chatactions]search_messages
+msgid "Search messages by content"
+msgstr ""
+
+#: [chatactions]search_messages_empty
+msgid "No messages found"
+msgstr ""
+
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
 msgstr "Shenja gishtash"
@@ -796,16 +826,22 @@ msgstr "Po krijohen sesione të vetët fshehtëzimi"
 msgid "Encryption disabled"
 msgstr "Fshehtëzimi u çaktivizua"
 
-#: [omemo]encrypted_loading
-msgid "Send a message to build the encrypted session"
-msgstr "Që të krijohet sesioni i fshehtëzuar, dërgoni një mesazh"
-
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr "Po aktivizohet fshehtëzimi për kontaktin"
 
+#: [omemo]enable_room
+#, fuzzy
+msgid "Enabling encryption for the chatroom"
+msgstr "Po aktivizohet fshehtëzimi për kontaktin"
+
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
+msgstr "Po çaktivizohet fshehtëzimi për kontaktin"
+
+#: [omemo]disable_room
+#, fuzzy
+msgid "Disabling encryption for the chatroom"
 msgstr "Po çaktivizohet fshehtëzimi për kontaktin"
 
 #: [omemo]last_activity
@@ -2098,14 +2134,26 @@ msgstr "Shtoni #hashtagë te titulli ose lënda juaj, që ta bëni postimin tuaj
 msgid "You are not authorized to publish there"
 msgstr "S’jeni i autorizuar të publikoni atje"
 
+#: [publish]publish_error_payload_to_big
+#, fuzzy
+msgid "Your post is too big to be published"
+msgstr "S’jeni i autorizuar të publikoni atje"
+
+#: [publish]too_long
+msgid "Your text is too long, %s characters max"
+msgstr ""
+
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]embedded_link
+msgid "The media will be embedded"
+msgstr ""
+
 #: [publish]web_title
-#, fuzzy
-msgid "Publish this post on your public blog"
-msgstr "Botoje këtë postim publikisht"
+msgid "Create a public HTTP URL from this publication"
+msgstr ""
 
 #: [publish]web_text
 msgid "This will allow anyone outside Movim to have access to your publication"
@@ -2408,9 +2456,10 @@ msgstr "Dëboni dikë"
 msgid "Unban"
 msgstr "Hiqini dëbimin"
 
-#: [room]change_affiliation
-msgid "Change the user affiliation"
-msgstr "Ndryshoni përshoqërimin e përdoruesit"
+#: [room]configure_user
+#, fuzzy
+msgid "Configure the user"
+msgstr "Formësim u ruajt"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2419,6 +2468,11 @@ msgstr "S’jeni i autorizuar të ndryshoni këtë përshoqërim"
 #: [room]affiliation
 msgid "Affiliation"
 msgstr "Përshoqërim"
+
+#: [room]role
+#, fuzzy
+msgid "Role"
+msgstr "Role"
 
 #: [room]reason
 msgid "Reason"
@@ -2471,6 +2525,16 @@ msgstr "Anëtar"
 msgid "No affiliation"
 msgstr "Pa përshoqërim"
 
+#: [room]allowed_send_messages
+#, fuzzy
+msgid "Is the user allowed to send messages?"
+msgstr "S’keni leje të dërgoni mesazhe në këtë dhomë fjalosjesh"
+
+#: [room]role_changed
+#, fuzzy
+msgid "Role changed"
+msgstr "Subjekti u ndryshua"
+
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
 msgstr "Përdoruesi u lejua si pronar."
@@ -2514,10 +2578,6 @@ msgstr ""
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "Ç’po kërkoni?"
-
-#: [search]subtitle
-msgid "Open me using Ctrl + M"
-msgstr "Hapmë duke përdorur Ctrl + M"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
@@ -3173,6 +3233,11 @@ msgstr "Opsional"
 msgid "Associated Community"
 msgstr "Bashkësi e Përshoqëruar"
 
+#: [input]open_me_using
+#, fuzzy
+msgid "Open me using"
+msgstr "Hapmë duke përdorur Ctrl + M"
+
 #: [day]title
 msgid "Day"
 msgstr "Ditë"
@@ -3788,3 +3853,17 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
+
+#~ msgctxt "[chat]clear_history"
+#~ msgid "Clear the history"
+#~ msgstr "Spastroje historikun"
+
+#~ msgid "Send a message to build the encrypted session"
+#~ msgstr "Që të krijohet sesioni i fshehtëzuar, dërgoni një mesazh"
+
+#, fuzzy
+#~ msgid "Publish this post on your public blog"
+#~ msgstr "Botoje këtë postim publikisht"
+
+#~ msgid "Change the user affiliation"
+#~ msgstr "Ndryshoni përshoqërimin e përdoruesit"

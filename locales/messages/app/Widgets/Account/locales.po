@@ -1,0 +1,90 @@
+#. extracted from ../app/Widgets/Account/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [account]title
+msgid "Account"
+msgstr ""
+
+#: [account]account_management
+msgid "Account management"
+msgstr ""
+
+#: [account]password_change_title
+msgid "Change my password"
+msgstr ""
+
+#: [account]password
+msgid "Password"
+msgstr ""
+
+#: [account]password_confirmation
+msgid "Password confirmation"
+msgstr ""
+
+#: [account]password_changed
+msgid "The password has been updated"
+msgstr ""
+
+#: [account]password_not_same
+msgid "The provided passwords are not the same"
+msgstr ""
+
+#: [account]delete
+msgid "Delete your account"
+msgstr ""
+
+#: [account]delete_text
+msgid ""
+"You will delete your XMPP account and all the relative information linked to "
+"it (profile, contacts, and publications)."
+msgstr ""
+
+#: [account]delete_text_confirm
+msgid "Type your full username"
+msgstr ""
+
+#: [account]delete_text_error
+msgid "Please provide a valid username."
+msgstr ""
+
+#: [account]gateway_title
+msgid "Gateways"
+msgstr ""
+
+#: [account]clear
+msgid "Leave this instance"
+msgstr ""
+
+#: [account]clear_text
+msgid ""
+"You will delete all the relative information linked to your account on this "
+"Movim instance (profile, contacts, and publications)."
+msgstr ""
+
+#: [account]clear_text_confirm
+msgid ""
+"This action will not delete your account but will disconnect you from Movim."
+msgstr ""
+
+#: [account]delete_bundle_title
+msgid "OMEMO Key deletion"
+msgstr ""
+
+#: [account]delete_bundle_text
+msgid ""
+"You are going to destroy the following OMEMO key. Your contacts will not be "
+"able to encrypt messages using that key anymore. This action cannot be "
+"reverted. Are you sure?"
+msgstr ""

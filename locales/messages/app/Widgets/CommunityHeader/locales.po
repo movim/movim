@@ -1,0 +1,58 @@
+#. extracted from ../app/Widgets/CommunityHeader/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [communityheader]subscribe
+msgid "Subscribe"
+msgstr ""
+
+#: [communityheader]unsubscribe
+msgid "Unsubscribe"
+msgstr ""
+
+#: [communityheader]subscribed
+msgid "Subscribed"
+msgstr ""
+
+#: [communityheader]unsubscribed
+msgid "Unsubscribed"
+msgstr ""
+
+#: [communityheader]subscription_unsupported
+msgid "The subscriptions are disabled for this community"
+msgstr ""
+
+#: [communityheader]label_label
+msgid "Give a label for this community"
+msgstr ""
+
+#: [communityheader]label_placeholder
+msgid "My Community Name"
+msgstr ""
+
+#: [communityheader]share_subscription
+msgid "Share this subscription publicly"
+msgstr ""
+
+#: [communityheader]share_subscription_text
+msgid "It will appear on your profile"
+msgstr ""
+
+#: [communityheader]unsubscribe_text
+msgid "You are going to unsubscribe from this community"
+msgstr ""
+
+#: [communityheader]sure
+msgid "Are you sure?"
+msgstr ""

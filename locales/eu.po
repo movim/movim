@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-14 21:08+0200\n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023-2024\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
@@ -275,6 +275,27 @@ msgstr "Eragiketak"
 #: [adhoc]completed
 msgid "Action completed"
 msgstr "Eragiketak amaitu du"
+
+#: [tools]title
+#, fuzzy
+msgid "Developer Tools"
+msgstr "Garatzaileak"
+
+#: [tools]sdp_to_jingle
+msgid "Convert SDP to Jingle"
+msgstr ""
+
+#: [tools]sdp_title
+msgid "SDP"
+msgstr ""
+
+#: [tools]jingle_to_sdp
+msgid "Convert Jingle to SDP"
+msgstr ""
+
+#: [tools]jingle_title
+msgid "Jingle stanza"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -623,7 +644,7 @@ msgid "See the profile"
 msgstr "Ikusi profila"
 
 #: [chat]clear
-msgctxt "[chat]clear"
+#, fuzzy
 msgid "Clear the history"
 msgstr "Garbitu historia"
 
@@ -696,12 +717,13 @@ msgid "An error occurred when sending the message"
 msgstr "Errorea mezua bidaltzerakoan"
 
 #: [chat]clear_history
-msgctxt "[chat]clear_history"
-msgid "Clear the history"
+#, fuzzy
+msgid "Clear the local history"
 msgstr "Garbitu historia"
 
 #: [chat]clear_history_text
-msgid "You are going to delete %s messages, are you sure?"
+#, fuzzy
+msgid "You are going to delete %s local messages, are you sure?"
 msgstr "Ziur %s mezu ezabatu nahi dituzula?"
 
 #: [chat]action_impossible_encrypted
@@ -764,6 +786,14 @@ msgstr "Kopiatu testua"
 msgid "Text copied"
 msgstr "Testua kopiatu da"
 
+#: [chatactions]search_messages
+msgid "Search messages by content"
+msgstr ""
+
+#: [chatactions]search_messages_empty
+msgid "No messages found"
+msgstr ""
+
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
 msgstr "Hatz-markak"
@@ -796,16 +826,22 @@ msgstr "Enkriptazio saio propioa sortzen"
 msgid "Encryption disabled"
 msgstr "Enkriptazioa ezgaituta"
 
-#: [omemo]encrypted_loading
-msgid "Send a message to build the encrypted session"
-msgstr "Bidali mezu bat enkriptatutako saioa sortzeko"
-
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr "Enkriptazioa gaitzen kontaktu honentzat"
 
+#: [omemo]enable_room
+#, fuzzy
+msgid "Enabling encryption for the chatroom"
+msgstr "Enkriptazioa gaitzen kontaktu honentzat"
+
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
+msgstr "Enkriptazioa ezgaitzen kontaktu honentzat"
+
+#: [omemo]disable_room
+#, fuzzy
+msgid "Disabling encryption for the chatroom"
 msgstr "Enkriptazioa ezgaitzen kontaktu honentzat"
 
 #: [omemo]last_activity
@@ -2098,12 +2134,25 @@ msgstr ""
 msgid "You are not authorized to publish there"
 msgstr "Ez duzu hor argitaratzeko baimenik"
 
+#: [publish]publish_error_payload_to_big
+#, fuzzy
+msgid "Your post is too big to be published"
+msgstr "Ez duzu hor argitaratzeko baimenik"
+
+#: [publish]too_long
+msgid "Your text is too long, %s characters max"
+msgstr ""
+
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]embedded_link
+msgid "The media will be embedded"
+msgstr ""
+
 #: [publish]web_title
-msgid "Publish this post on your public blog"
+msgid "Create a public HTTP URL from this publication"
 msgstr ""
 
 #: [publish]web_text
@@ -2407,9 +2456,10 @@ msgstr "Ezarri debekua norbaiti"
 msgid "Unban"
 msgstr "Kendu debekua"
 
-#: [room]change_affiliation
-msgid "Change the user affiliation"
-msgstr "Aldatu erabiltzailearen afiliazioa"
+#: [room]configure_user
+#, fuzzy
+msgid "Configure the user"
+msgstr "Ezarpenak gorde dira"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2418,6 +2468,11 @@ msgstr "Ez duzu afiliazio hau aldatzeko baimenik"
 #: [room]affiliation
 msgid "Affiliation"
 msgstr "Afiliazioa"
+
+#: [room]role
+#, fuzzy
+msgid "Role"
+msgstr "Rolak"
 
 #: [room]reason
 msgid "Reason"
@@ -2470,6 +2525,15 @@ msgstr "Kidea"
 msgid "No affiliation"
 msgstr "Ez dago afiliaziorik"
 
+#: [room]allowed_send_messages
+msgid "Is the user allowed to send messages?"
+msgstr ""
+
+#: [room]role_changed
+#, fuzzy
+msgid "Role changed"
+msgstr "Gaia aldatu da"
+
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
 msgstr "Erabiltzailea jabe bezala onartu da"
@@ -2513,10 +2577,6 @@ msgstr ""
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "Zeren bila ari zara?"
-
-#: [search]subtitle
-msgid "Open me using Ctrl + M"
-msgstr "Ireki nazazu Ctrl + M erabiliz"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
@@ -3172,6 +3232,11 @@ msgstr "Hautazkoa"
 msgid "Associated Community"
 msgstr "Erlazionatutako komunitatea"
 
+#: [input]open_me_using
+#, fuzzy
+msgid "Open me using"
+msgstr "Ireki nazazu Ctrl + M erabiliz"
+
 #: [day]title
 msgid "Day"
 msgstr "Eguna"
@@ -3787,3 +3852,13 @@ msgstr "Ezin da APIa eskuratu, saiatu berriro beranduago"
 #: [field]type_here
 msgid "Type here"
 msgstr "Idatzi hemen"
+
+#~ msgctxt "[chat]clear_history"
+#~ msgid "Clear the history"
+#~ msgstr "Garbitu historia"
+
+#~ msgid "Send a message to build the encrypted session"
+#~ msgstr "Bidali mezu bat enkriptatutako saioa sortzeko"
+
+#~ msgid "Change the user affiliation"
+#~ msgstr "Aldatu erabiltzailearen afiliazioa"

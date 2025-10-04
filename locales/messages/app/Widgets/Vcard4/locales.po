@@ -1,0 +1,102 @@
+#. extracted from ../app/Widgets/Vcard4/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.16.1\n"
+
+#: [vcard]title
+msgid "Profile"
+msgstr ""
+
+#: [vcard]updated
+msgid "Profile Updated"
+msgstr ""
+
+#: [vcard]not_updated
+msgid "Profile Not Updated"
+msgstr ""
+
+#: [vcard]nickname_info
+msgid "This will also be used as your default nickname when joining a chatroom"
+msgstr ""
+
+#: [profile]public
+msgid "Your profile is now public"
+msgstr ""
+
+#: [profile]restricted
+msgid "Your profile is now restricted"
+msgstr ""
+
+#: [profile]info
+msgid "Configure your instance nickname"
+msgstr ""
+
+#: [profile]privacy_question
+msgid "Is this account public on this Movim instance?"
+msgstr ""
+
+#: [profile]privacy_info
+msgid ""
+"Movim will create a public page to host your blog and your account will be "
+"searchable by the other Movim users."
+msgstr ""
+
+#: [profile]nickname_info
+msgid ""
+"Set a local nickname to allow the other users of the instance to find you "
+"easily."
+msgstr ""
+
+#: [profile]nickname_set
+msgid "Your nickname is %s."
+msgstr ""
+
+#: [profile]nickname_placeholder
+msgid "John_Bob96"
+msgstr ""
+
+#: [profile]nickname_error
+msgid "Your nickname should only contain letters, numbers, - and _"
+msgstr ""
+
+#: [profile]nickname_conflict
+msgid "The nickname is already registered"
+msgstr ""
+
+#: [profile]nickname_saved
+msgid "Nickname saved"
+msgstr ""
+
+#: [save]submit
+msgid "Submit"
+msgstr ""
+
+#: [save]reset
+msgid "Reset"
+msgstr ""
+
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid ""
+"Your server doesn’t support XMPP Pubsub persistence or the social features ("
+"communities, news feed, and profile) are disabled by the administrator."
+msgstr ""
+
+#: [degraded]text_2
+msgid ""
+"Please contact your server administrator to see if this feature can be "
+"enabled."
+msgstr ""

@@ -135,7 +135,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-14 21:08+0200\n"
+"POT-Creation-Date: 2025-10-04 12:34+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2025\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -289,6 +289,27 @@ msgstr "操作"
 #: [adhoc]completed
 msgid "Action completed"
 msgstr "操作已完成"
+
+#: [tools]title
+#, fuzzy
+msgid "Developer Tools"
+msgstr "开发者"
+
+#: [tools]sdp_to_jingle
+msgid "Convert SDP to Jingle"
+msgstr ""
+
+#: [tools]sdp_title
+msgid "SDP"
+msgstr ""
+
+#: [tools]jingle_to_sdp
+msgid "Convert Jingle to SDP"
+msgstr ""
+
+#: [tools]jingle_title
+msgid "Jingle stanza"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -637,7 +658,7 @@ msgid "See the profile"
 msgstr "查看个人资料"
 
 #: [chat]clear
-msgctxt "[chat]clear"
+#, fuzzy
 msgid "Clear the history"
 msgstr "清除历史记录"
 
@@ -710,12 +731,13 @@ msgid "An error occurred when sending the message"
 msgstr "发送消息时出错"
 
 #: [chat]clear_history
-msgctxt "[chat]clear_history"
-msgid "Clear the history"
+#, fuzzy
+msgid "Clear the local history"
 msgstr "清除历史记录"
 
 #: [chat]clear_history_text
-msgid "You are going to delete %s messages, are you sure?"
+#, fuzzy
+msgid "You are going to delete %s local messages, are you sure?"
 msgstr "是否确定要删除 %s 条消息？"
 
 #: [chat]action_impossible_encrypted
@@ -778,6 +800,14 @@ msgstr "复制文本"
 msgid "Text copied"
 msgstr "文本已复制"
 
+#: [chatactions]search_messages
+msgid "Search messages by content"
+msgstr ""
+
+#: [chatactions]search_messages_empty
+msgid "No messages found"
+msgstr ""
+
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
 msgstr "指纹"
@@ -810,16 +840,22 @@ msgstr "正在建立自己的加密会话"
 msgid "Encryption disabled"
 msgstr "加密已禁用"
 
-#: [omemo]encrypted_loading
-msgid "Send a message to build the encrypted session"
-msgstr "发送消息以建立加密会话"
-
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr "正在为联系人启用加密"
 
+#: [omemo]enable_room
+#, fuzzy
+msgid "Enabling encryption for the chatroom"
+msgstr "正在为联系人启用加密"
+
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
+msgstr "正在为联系人禁用加密"
+
+#: [omemo]disable_room
+#, fuzzy
+msgid "Disabling encryption for the chatroom"
 msgstr "正在为联系人禁用加密"
 
 #: [omemo]last_activity
@@ -2112,14 +2148,26 @@ msgstr "在您的标题或内容中添加#话题标签，以便他人发现您�
 msgid "You are not authorized to publish there"
 msgstr "您无权在此处发布"
 
+#: [publish]publish_error_payload_to_big
+#, fuzzy
+msgid "Your post is too big to be published"
+msgstr "您无权在此处发布"
+
+#: [publish]too_long
+msgid "Your text is too long, %s characters max"
+msgstr ""
+
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr "您的博客仅供您的订阅者访问。您可以在设置页面将其设置为任何人都可以访问。"
 
+#: [publish]embedded_link
+msgid "The media will be embedded"
+msgstr ""
+
 #: [publish]web_title
-#, fuzzy
-msgid "Publish this post on your public blog"
-msgstr "公开发布此帖子"
+msgid "Create a public HTTP URL from this publication"
+msgstr ""
 
 #: [publish]web_text
 msgid "This will allow anyone outside Movim to have access to your publication"
@@ -2422,9 +2470,10 @@ msgstr "封禁某人"
 msgid "Unban"
 msgstr "取消封禁"
 
-#: [room]change_affiliation
-msgid "Change the user affiliation"
-msgstr "更改用户从属关系"
+#: [room]configure_user
+#, fuzzy
+msgid "Configure the user"
+msgstr "配置已保存"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2433,6 +2482,11 @@ msgstr "您无权更改此从属关系"
 #: [room]affiliation
 msgid "Affiliation"
 msgstr "从属关系"
+
+#: [room]role
+#, fuzzy
+msgid "Role"
+msgstr "角色"
 
 #: [room]reason
 msgid "Reason"
@@ -2485,6 +2539,16 @@ msgstr "成员"
 msgid "No affiliation"
 msgstr "访客"
 
+#: [room]allowed_send_messages
+#, fuzzy
+msgid "Is the user allowed to send messages?"
+msgstr "不允许您在此群聊中发送消息"
+
+#: [room]role_changed
+#, fuzzy
+msgid "Role changed"
+msgstr "主题已更改"
+
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
 msgstr "用户已设为所有者"
@@ -2528,10 +2592,6 @@ msgstr "总计 %s"
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "您想找什么？"
-
-#: [search]subtitle
-msgid "Open me using Ctrl + M"
-msgstr "使用 Ctrl + M 打开"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
@@ -3187,6 +3247,11 @@ msgstr "选填"
 msgid "Associated Community"
 msgstr "关联的社区"
 
+#: [input]open_me_using
+#, fuzzy
+msgid "Open me using"
+msgstr "使用 Ctrl + M 打开"
+
 #: [day]title
 msgid "Day"
 msgstr "天"
@@ -3802,3 +3867,17 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgctxt "[chat]clear_history"
+#~ msgid "Clear the history"
+#~ msgstr "清除历史记录"
+
+#~ msgid "Send a message to build the encrypted session"
+#~ msgstr "发送消息以建立加密会话"
+
+#, fuzzy
+#~ msgid "Publish this post on your public blog"
+#~ msgstr "公开发布此帖子"
+
+#~ msgid "Change the user affiliation"
+#~ msgstr "更改用户从属关系"
