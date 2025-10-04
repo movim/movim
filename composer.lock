@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "awobaz/compoships",
-            "version": "2.4.1",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/topclaudy/compoships.git",
-                "reference": "49ef79d912201c8649651d63b5682afae092502e"
+                "reference": "251a0e07ee7bf3cfc9d0201f3e51a5c782891ca1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/topclaudy/compoships/zipball/49ef79d912201c8649651d63b5682afae092502e",
-                "reference": "49ef79d912201c8649651d63b5682afae092502e",
+                "url": "https://api.github.com/repos/topclaudy/compoships/zipball/251a0e07ee7bf3cfc9d0201f3e51a5c782891ca1",
+                "reference": "251a0e07ee7bf3cfc9d0201f3e51a5c782891ca1",
                 "shasum": ""
             },
             "require": {
@@ -26,7 +26,7 @@
             "require-dev": {
                 "ext-sqlite3": "*",
                 "fakerphp/faker": "^1.18",
-                "phpunit/phpunit": "^6.0|^8.0|^9.0|^10.0|^11.0"
+                "phpunit/phpunit": "^6.0|^8.0|^9.0|^10.0|^11.0|^12.0"
             },
             "suggest": {
                 "awobaz/blade-active": "Blade directives for the Laravel 'Active' package",
@@ -58,7 +58,7 @@
             ],
             "support": {
                 "issues": "https://github.com/topclaudy/compoships/issues",
-                "source": "https://github.com/topclaudy/compoships/tree/2.4.1"
+                "source": "https://github.com/topclaudy/compoships/tree/2.5.0"
             },
             "funding": [
                 {
@@ -66,7 +66,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2025-02-24T15:12:08+00:00"
+            "time": "2025-10-03T17:30:21+00:00"
         },
         {
             "name": "brick/math",
