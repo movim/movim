@@ -359,7 +359,7 @@
                 <i class="material-symbols">clear_all</i>
             </span>
             <div>
-                <p class="normal line">{$c->__('chat.clear')}</p>
+                <p class="normal line">{$c->__('chat.clear_history')}</p>
             </div>
         </li>
         {if="!empty($info->abuseaddresses)"}

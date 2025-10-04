@@ -203,7 +203,7 @@
     <div id="adhoc_widget"
         class="tabelem"
         title="{$c->__('adhoc.title')}">
-        <ul class="list middle active divided">
+        <ul class="list middle active">
             {if="$contact->isBlocked()"}
                 <li onclick="ContactActions_ajaxUnblock('{$contact->id|echapJS}'); Drawer.clear();">
                     <span class="primary icon green">
@@ -229,6 +229,17 @@
                     </div>
                 </li>
             {/if}
+            <li onclick="Chat_ajaxClearHistory('{$contact->jid|echapJS}')">
+                <span class="primary icon gray">
+                    <i class="material-symbols">clear_all</i>
+                </span>
+                <span class="control icon gray">
+                    <i class="material-symbols">chevron_right</i>
+                </span>
+                <div>
+                    <p class="normal line">{$c->__('chat.clear_history')}</p>
+                </div>
+            </li>
         </ul>
         <div class="adhoc_widget" id="adhoc_widget_{$jid|cleanupId}">
             <div class="placeholder">
