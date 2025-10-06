@@ -22,6 +22,7 @@ use Moxl\Xec\Action\Jingle\MessageProceed;
 use Moxl\Xec\Action\Jingle\MessagePropose;
 use Moxl\Xec\Action\Jingle\MessageReject;
 use Moxl\Xec\Action\Jingle\MessageRetract;
+use Moxl\Xec\Action\Jingle\MessageRinging;
 use Moxl\Xec\Action\Jingle\SessionInitiate;
 use Moxl\Xec\Action\Jingle\SessionMute;
 use Moxl\Xec\Action\Jingle\SessionTerminate;
@@ -181,6 +182,11 @@ class Visio extends Base
         $message->save();
 
         Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message));
+
+        $ringing = new MessageRinging;
+        $ringing->setTo($packet->from)
+                ->setId($packet->content['id'])
+                ->request();
 
         $this->ajaxGetLobby($packet->from, false, $packet->content['withVideo'], $packet->content['id']);
     }

@@ -9,9 +9,6 @@ class JingleReject extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        // We can only reject the current session
-        if (!CurrentCall::getInstance()->hasId((string)$stanza->attributes()->id)) return;
-
         $from = (string)$parent->attributes()->from;
 
         if (!$stanza->muji) {

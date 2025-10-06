@@ -46,6 +46,20 @@ class Jingle
         \Moxl\API::sendDom($dom);
     }
 
+    public static function messageRinging(string $to, string $id)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $message = $dom->createElementNS('jabber:client', 'message');
+        $message->setAttribute('to', $to);
+        $dom->appendChild($message);
+
+        $ringing = $dom->createElementNS('urn:xmpp:jingle-message:0', 'ringing');
+        $ringing->setAttribute('id', $id);
+        $message->appendChild($ringing);
+
+        \Moxl\API::sendDom($dom);
+    }
+
     public static function messageProceed(string $to, string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');

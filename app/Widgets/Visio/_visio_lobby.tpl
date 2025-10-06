@@ -111,7 +111,7 @@
                 {$c->__('button.call')}
             </button>
         {else}
-            <button onclick="Visio_ajaxReject('{$contact->id|echapJS}', '{$id}'); MovimVisio.clear(); Dialog_ajaxClear()" class="button color red">
+            <button onclick="Visio_ajaxReject('{$fullJid|echapJS}', '{$id}'); MovimVisio.clear(); Dialog_ajaxClear()" class="button color red">
                 <i class="material-symbols">call_end</i>
                 {$c->__('button.refuse')}
             </button>
