@@ -568,6 +568,52 @@ div.bubble .audio_player p {
     }
 }
 
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    10% {
+        transform: rotate(-5deg);
+    }
+
+    20% {
+        transform: rotate(5deg);
+    }
+
+    30% {
+        transform: rotate(-10deg);
+    }
+
+    40% {
+        transform: rotate(10deg);
+    }
+
+    50% {
+        transform: rotate(-15deg);
+    }
+
+    60% {
+        transform: rotate(15deg);
+    }
+
+    70% {
+        transform: rotate(-20deg);
+    }
+
+    80% {
+        transform: rotate(20deg);
+    }
+
+    90% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
 @keyframes zoom {
     from {
         transform: scale(0.9);

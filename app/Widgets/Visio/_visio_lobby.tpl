@@ -117,9 +117,9 @@
             </button>
             <button id="lobby_start" onclick="MovimVisio.init('{$fullJid|echapJS}', '{$contact->id}', '{$id}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear();" class="button color green disabled">
                 {if="$withvideo"}
-                    <i class="material-symbols">videocam</i>
+                    <i class="material-symbols shake">videocam</i>
                 {else}
-                    <i class="material-symbols">call</i>
+                    <i class="material-symbols shake">call</i>
                 {/if}
                 {$c->__('button.reply')}
             </button>
@@ -143,9 +143,9 @@
             </button>
             <button id="lobby_start" onclick="Visio_ajaxMujiAccept('{$id|echapJS}'); Dialog_ajaxClear()" class="button color green disabled">
                 {if="$withvideo"}
-                    <i class="material-symbols">videocam</i>
+                    <i class="material-symbols shake">videocam</i>
                 {else}
-                    <i class="material-symbols">call</i>
+                    <i class="material-symbols shake">call</i>
                 {/if}
                 {$c->__('button.join')}
             </button>

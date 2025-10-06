@@ -22,8 +22,8 @@ var Notif = {
     },
     incomingCall: function () {
         if (NOTIFICATION_CALL) {
-            // From https://www.zedge.net/ringtone/466d15be-8fa0-32a1-b3dc-62c12a86b6da
-            Notif.audioCall = new Audio(BASE_URI + 'theme/audio/call.ogg');
+            // From https://pixabay.com/sound-effects/ringtone-020-365650/
+            Notif.audioCall = new Audio(BASE_URI + 'theme/audio/call.opus');
             Notif.audioCall.addEventListener('ended', function () {
                 this.currentTime = 0;
                 this.play();

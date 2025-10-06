@@ -237,6 +237,7 @@ class Visio extends Base
 
         Toast::send($this->__('visio.ended'));
 
+        $this->rpc('MovimVisio.clear');
         $this->rpc('MovimJingles.onTerminate', \baseJid($packet->from));
     }
 

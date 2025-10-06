@@ -318,7 +318,7 @@ MovimJingleSession.prototype.enableScreenSharing = function () {
 }
 
 MovimJingleSession.prototype.disableScreenSharing = function () {
-    if (this.pc) {
+    if (this.pc && MovimVisio.screenSharing.srcObject) {
         this.mute(MovimVisio.screenSharing.srcObject.getTracks()[0]);
     }
 }

@@ -1,7 +1,7 @@
 self.addEventListener('message', (e) => {
     caches.open('movim').then((cache) => cache.addAll([
         // Audio
-        e.data.base_uri + '/theme/audio/call.ogg',
+        e.data.base_uri + '/theme/audio/call.opus',
         e.data.base_uri + '/theme/audio/message.ogg',
 
         // Fonts
