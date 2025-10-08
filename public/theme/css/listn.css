@@ -83,9 +83,9 @@ ul.list>li>div.bubble:not(.file):hover {
 
 /* Clicked list items */
 
-ul.list.active>li:active:not(.subheader),
-ul.list.active.all>li:active,
-ul.tabs>li:active {
+ul.list.active>li:active:not(.subheader):not(.color),
+ul.list.active.all>li:active:not(.color),
+ul.tabs>li:active:not(.color) {
     background-color: rgba(var(--movim-element-action), 0.2);
 }
 
