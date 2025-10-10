@@ -64,7 +64,7 @@
     <button onclick="Dialog_ajaxClear(); Upload.abort();" class="button flat">
         {$c->__('button.close')}
     </button>
-    <button id="upload_button" onclick="Upload.init();" class="button flat disabled">
+    <button id="upload_button" onclick="Upload.init();" class="button color disabled">
         {$c->__('button.upload')}
     </button>
 </footer>

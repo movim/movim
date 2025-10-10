@@ -52,10 +52,15 @@
     display: none;
 }
 
+#upload + footer {
+    display: flex;
+}
+
 #upload_progress {
     float: left;
     text-align: left;
-    width: calc(100% - 22rem);
+    width: 100%;
+    flex: 1;
     margin-top: 0.25rem;
 }
 
