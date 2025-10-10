@@ -825,6 +825,8 @@ function requestURL(string $url, int $timeout = 10, bool $json = false, array $h
  */
 function requestAPI(string $action, int $timeout = 2, ?array $post = null): string|false
 {
+    if (!file_exists(API_SOCKET)) return false;
+
     $browser = (new React\Http\Browser(
         new React\Socket\FixedUriConnector(
             API_SOCKET,
@@ -847,6 +849,16 @@ function requestAPI(string $action, int $timeout = 2, ?array $post = null): stri
     } catch (Exception $e) {
         return false;
     }
+}
+
+/**
+ * Get the motification time of the API socket file
+ */
+function socketAPITime(): int
+{
+    if (!file_exists(API_SOCKET)) return 0;
+
+    return filemtime(API_SOCKET);
 }
 
 /**

@@ -15,12 +15,12 @@
         <link rel="stylesheet" href="<?php echo
             \Movim\Route::urlize('colors') .
             '?t=' .
-            filemtime(CACHE_PATH . 'socketapi.sock');
+            socketAPITime();
             ?>" type="text/css" />
         <script src="<?php echo
             \Movim\Route::urlize('system') .
             '?t=' .
-            filemtime(CACHE_PATH . 'socketapi.sock');
+            socketAPITime();
             ?>" defer></script>
         <meta name="viewport" content="width=device-width, user-scalable=no">
         <%scripts%>
