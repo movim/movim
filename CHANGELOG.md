@@ -39,6 +39,7 @@ v0.32 (master)
 * Drop php-curl dependency and replace it with reactphp/http
 * Use Github Flavored Markdown to support a more advanced Markdown format
 * Add a pusher worker that is handling all the WebPush notifications
+* Improve the upload progress status, detect when the file is handled by the PHP and return the XMPP progress status
 
 v0.31
 ---------------------------

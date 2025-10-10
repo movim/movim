@@ -70,11 +70,25 @@ class Upload extends Base
         $this->rpc('Upload.attachEvents');
     }
 
+    /**
+     * Internal functions called by UploadFile announce the XMPP file upload
+     */
+
+    public function ajaxHttpUploadXMPP(string $file)
+    {
+        $this->rpc('Upload.setProgress', 'cloud_upload', $this->__('upload.upload_xmpp'));
+    }
+
+    public function ajaxHttpProgressXMPP(int $percentage)
+    {
+        $this->rpc('Upload.setProgress', 'cloud_upload', $percentage . '% - ' . $this->__('upload.upload_xmpp'));
+    }
+
     public function ajaxPrepare($file)
     {
         $uploadService = $this->me->session->getUploadService();
 
-        if($uploadService) {
+        if ($uploadService) {
             $upload = \App\Upload::firstOrCreate([
                 'id' => generateUUID(),
                 'user_id' => $this->me->id,
@@ -86,11 +100,11 @@ class Upload extends Base
 
             $r = new Request;
             $r->setTo($uploadService->server)
-              ->setName($file->name)
-              ->setSize($file->size)
-              ->setType($file->type)
-              ->setId($upload->id)
-              ->request();
+                ->setName($file->name)
+                ->setSize($file->size)
+                ->setType($file->type)
+                ->setId($upload->id)
+                ->request();
         }
     }
 
@@ -101,10 +115,10 @@ class Upload extends Base
         if ($upload) {
             $r = new Request;
             $r->setTo($upload->server)
-              ->setName($file->name)
-              ->setSize($file->size)
-              ->setType($file->type)
-              ->request();
+                ->setName($file->name)
+                ->setSize($file->size)
+                ->setType($file->type)
+                ->request();
         }
     }
 

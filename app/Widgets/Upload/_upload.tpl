@@ -50,7 +50,10 @@
 <footer>
     <ul id="upload_progress" class="list">
         <li>
-            <span class="primary icon">
+            <span class="primary icon compress">
+                <i class="material-symbols"></i>
+            </span>
+            <span class="primary icon upload">
                 <i class="material-symbols"></i>
             </span>
             <div>

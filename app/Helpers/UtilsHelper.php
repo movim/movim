@@ -823,7 +823,7 @@ function requestURL(string $url, int $timeout = 10, bool $json = false, array $h
 /**
  * Request the internal API
  */
-function requestAPI(string $action, int $timeout = 2, ?array $post = null): string|false
+function requestAPI(string $action, int $timeout = 2, ?array $post = null, ?bool $await = true): string|false
 {
     if (!file_exists(API_SOCKET)) return false;
 
@@ -839,13 +839,16 @@ function requestAPI(string $action, int $timeout = 2, ?array $post = null): stri
     $url = 'http:/' . $action;
 
     try {
-        $response = await(
-            $post
+        $query = $post
                 ? $browser->post($url, body: http_build_query($post))
-                : $browser->get($url)
-        );
+                : $browser->get($url);
 
-        return (string)$response->getBody();
+        if ($await) {
+            $response = await($query);
+            return (string)$response->getBody();
+        };
+
+        return false;
     } catch (Exception $e) {
         return false;
     }

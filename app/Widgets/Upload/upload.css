@@ -55,8 +55,12 @@
 #upload_progress {
     float: left;
     text-align: left;
-    width: 18rem;
+    width: calc(100% - 22rem);
     margin-top: 0.25rem;
+}
+
+#upload_progress li span:has(i:empty) {
+    display: none;
 }
 
 #upload_progress li {

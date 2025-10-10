@@ -137,6 +137,8 @@ var Upload = {
     },
 
     compress: function (src, file, orientation) {
+        Upload.setCompress(null);
+
         var image = new Image();
         image.addEventListener('load', function () {
             if (file.size > SMALL_PICTURE_LIMIT) {
@@ -171,6 +173,8 @@ var Upload = {
                     if (file.type != 'image/jpeg') {
                         Upload.name += '.jpg';
                     }
+
+                    Upload.setCompress('photo_size_select_small');
 
                     Upload.canvas.toBlob(
                         function (blob) {
@@ -262,7 +266,7 @@ var Upload = {
             var percent = Math.floor(evt.loaded / evt.total * 100);
 
             Upload.launchProgressed(percent);
-            Upload.setProgress('cloud_upload', percent == 100 ? '' : percent + '%');
+            Upload.setProgress('arrow_upload_progress', percent == 100 ? '' : percent + '%');
         }, false);
 
         Upload.xhr.onreadystatechange = function () {
@@ -296,14 +300,20 @@ var Upload = {
             formData.append('file', Upload.file, Upload.name);
             Upload.xhr.send(formData);
 
-            Upload.setProgress('upload', '');
+            Upload.setProgress('arrow_upload_ready', '');
+        }
+    },
+
+    setCompress: function (icon) {
+        if (document.querySelector('#upload_progress')) {
+            document.querySelector('#upload_progress span.primary.compress i').innerText = icon;
         }
     },
 
     setProgress: function (icon, text) {
         if (document.querySelector('#upload_progress')) {
-            document.querySelector('#upload_progress span.primary i').innerHTML = icon;
-            document.querySelector('#upload_progress li p').innerHTML = text;
+            document.querySelector('#upload_progress span.primary.upload i').innerText = icon;
+            document.querySelector('#upload_progress li p').innerText = text;
         }
     },
 
