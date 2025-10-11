@@ -3,7 +3,6 @@
 namespace App\Widgets\Avatar;
 
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Toast\Toast;
 use Movim\Image;
 use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Action\Avatar\Set;
@@ -43,13 +42,13 @@ class Avatar extends \Movim\Widget\Base
     {
         $this->rpc('MovimTpl.fill', '#avatar', $this->prepareForm());
         $this->rpc('Dialog_ajaxClear');
-        Toast::send($this->__('avatar.updated'));
+        $this->toast($this->__('avatar.updated'));
     }
 
     public function onMyAvatarError()
     {
         $this->rpc('MovimTpl.fill', '#avatar', $this->prepareForm());
-        Toast::send($this->__('avatar.not_updated'));
+        $this->toast($this->__('avatar.not_updated'));
     }
 
     public function prepareForm()

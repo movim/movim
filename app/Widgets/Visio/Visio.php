@@ -6,7 +6,6 @@ use App\Message;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Notif\Notif;
 use App\Widgets\Rooms\Rooms;
-use App\Widgets\Toast\Toast;
 
 use Movim\CurrentCall;
 use Movim\ImageSize;
@@ -235,7 +234,7 @@ class Visio extends Base
         $this->rpc('Notif.incomingCallAnswer');
         (new Dialog)->ajaxClear();
 
-        Toast::send($this->__('visio.ended'));
+        $this->toast($this->__('visio.ended'));
 
         $this->rpc('MovimVisio.clear');
         $this->rpc('MovimJingles.onTerminate', \baseJid($packet->from));
@@ -573,7 +572,7 @@ class Visio extends Base
         $mujiService = $this->me->session->getMujiService();
 
         if (!$mujiService) {
-            Toast::send($this->__('muji.cannot_create'));
+            $this->toast($this->__('muji.cannot_create'));
             return;
         }
 
@@ -753,7 +752,7 @@ class Visio extends Base
             Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message));
         }
 
-        Toast::send($this->__('visio.ended'));
+        $this->toast($this->__('visio.ended'));
         $this->rpc('MovimJingles.terminateAll', $reason);
     }
 

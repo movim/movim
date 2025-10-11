@@ -6,7 +6,6 @@ use App\MessageFile;
 use App\Post;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Pubsub\Delete;
 use Moxl\Xec\Action\Pubsub\PostDelete;
@@ -92,6 +91,6 @@ class StoriesViewer extends Base
 
         (new Chat)->sendMessage($post->server, $comment, file: $file);
 
-        Toast::send($this->__('post.comment_published'));
+        $this->toast($this->__('post.comment_published'));
     }
 }

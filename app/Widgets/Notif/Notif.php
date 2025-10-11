@@ -10,7 +10,6 @@ use Carbon\Carbon;
 use App\PushSubscription;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Toast\Toast;
 use Moxl\Xec\Payload\Packet;
 
 class Notif extends Base
@@ -287,7 +286,7 @@ class Notif extends Base
 
     public function ajaxRequestDenied()
     {
-        Toast::send($this->__('notification.request_denied'));
+        $this->toast($this->__('notification.request_denied'));
     }
 
     private function prepareSnackbar(

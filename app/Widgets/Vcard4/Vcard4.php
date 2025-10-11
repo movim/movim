@@ -2,7 +2,6 @@
 
 namespace App\Widgets\Vcard4;
 
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Vcard4\Get;
@@ -39,7 +38,7 @@ class Vcard4 extends Base
     {
         $html = $this->prepareForm($packet->content);
 
-        Toast::send($this->__('vcard.updated'));
+        $this->toast($this->__('vcard.updated'));
 
         $this->rpc('MovimTpl.fill', '#vcard_form', $html);
         $this->rpc('MovimUtils.applyAutoheight');
@@ -47,12 +46,12 @@ class Vcard4 extends Base
 
     public function onMyVcard4Received()
     {
-        Toast::send($this->__('vcard.updated'));
+        $this->toast($this->__('vcard.updated'));
     }
 
     public function onMyVcard4NotReceived()
     {
-        Toast::send($this->__('vcard.not_updated'));
+        $this->toast($this->__('vcard.not_updated'));
     }
 
     public function ajaxGetVcard()

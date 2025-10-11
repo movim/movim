@@ -6,7 +6,6 @@ use App\Affiliation;
 use App\Post;
 use App\Widgets\CommunityHeader\CommunityHeader;
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\Delete;
@@ -89,7 +88,7 @@ class CommunityAffiliations extends Base
 
     public function onAffiliationsSet(Packet $packet)
     {
-        Toast::send($this->__('communityaffiliation.role_set'));
+        $this->toast($this->__('communityaffiliation.role_set'));
     }
 
     public function onSubscriptions(Packet $packet)
@@ -125,14 +124,14 @@ class CommunityAffiliations extends Base
 
     public function onDelete(Packet $packet)
     {
-        Toast::send($this->__('communityaffiliation.deleted'));
+        $this->toast($this->__('communityaffiliation.deleted'));
 
         $this->deleted($packet);
     }
 
     public function onDeleteError(Packet $packet)
     {
-        Toast::send($this->__('communityaffiliation.delete_error'));
+        $this->toast($this->__('communityaffiliation.delete_error'));
 
         $c = new CommunityHeader;
         $c->ajaxUnsubscribe($packet->content['server'], $packet->content['node']);

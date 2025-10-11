@@ -6,7 +6,6 @@ use App\Post;
 use App\User;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Presence\Presence;
-use App\Widgets\Toast\Toast;
 use Movim\i18n\Locale;
 use Movim\Widget\Base;
 
@@ -52,7 +51,7 @@ class Config extends Base
 
         $this->refreshConfig();
 
-        Toast::send($this->__('config.updated'));
+        $this->toast($this->__('config.updated'));
     }
 
     public function onMAMConfig(Packet $packet)
@@ -64,12 +63,12 @@ class Config extends Base
 
     public function onMAMConfigSaved()
     {
-        Toast::send($this->__('config.mam_saved'));
+        $this->toast($this->__('config.mam_saved'));
     }
 
     public function onBlogConfigSaved()
     {
-        Toast::send($this->__('config.blog_saved'));
+        $this->toast($this->__('config.blog_saved'));
     }
 
     public function onBlogConfig(Packet $packet)
@@ -119,7 +118,7 @@ class Config extends Base
     {
         if (!validateForm($data)) {
             $this->refreshConfig();
-            Toast::send($this->__('config.not_valid'));
+            $this->toast($this->__('config.not_valid'));
             return;
         }
 
@@ -148,7 +147,7 @@ class Config extends Base
     {
         if (Validator::regex('/^[a-z_\-\d]{3,64}$/i')->isValid($nickname)) {
             if (\App\User::where('nickname', $nickname)->where('id', '!=', $this->me->id)->first()) {
-                Toast::send($this->__('profile.nickname_conflict'));
+                $this->toast($this->__('profile.nickname_conflict'));
                 return;
             }
 
@@ -157,9 +156,9 @@ class Config extends Base
             $this->refreshConfig();
 
             (new Dialog)->ajaxClear();
-            Toast::send($this->__('profile.nickname_saved'));
+            $this->toast($this->__('profile.nickname_saved'));
         } else {
-            Toast::send($this->__('profile.nickname_error'));
+            $this->toast($this->__('profile.nickname_error'));
         }
     }
 
@@ -167,10 +166,10 @@ class Config extends Base
     {
         if ($value == true) {
             $this->me->setPublic();
-            Toast::send($this->__('profile.public'));
+            $this->toast($this->__('profile.public'));
         } else {
             $this->me->setPrivate();
-            Toast::send($this->__('profile.restricted'));
+            $this->toast($this->__('profile.restricted'));
         }
     }
 

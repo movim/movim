@@ -2,7 +2,6 @@
 
 namespace App\Widgets\ChatOmemo;
 
-use App\Widgets\Toast\Toast;
 use Moxl\Xec\Action\OMEMO\AnnounceBundle;
 use Moxl\Xec\Action\OMEMO\CleanDevicesList;
 use Moxl\Xec\Action\OMEMO\GetBundle;
@@ -91,32 +90,32 @@ class ChatOmemo extends \Movim\Widget\Base
 
     public function ajaxEnableContactState()
     {
-        Toast::send($this->__('omemo.enable_contact'));
+        $this->toast($this->__('omemo.enable_contact'));
     }
 
     public function ajaxEnableRoomState()
     {
-        Toast::send($this->__('omemo.enable_room'));
+        $this->toast($this->__('omemo.enable_room'));
     }
 
     public function ajaxDisableContactState()
     {
-        Toast::send($this->__('omemo.disable_contact'));
+        $this->toast($this->__('omemo.disable_contact'));
     }
 
     public function ajaxDisableRoomState()
     {
-        Toast::send($this->__('omemo.disable_room'));
+        $this->toast($this->__('omemo.disable_room'));
     }
 
     public function ajaxNotifyGeneratedBundle()
     {
-        Toast::send($this->__('omemo.generated_bundle'));
+        $this->toast($this->__('omemo.generated_bundle'));
     }
 
     public function ajaxGetDevicesList(string $to)
     {
-        Toast::send($this->__('omemo.resolving_devices'));
+        $this->toast($this->__('omemo.resolving_devices'));
 
         $gdl = new GetDevicesList;
         $gdl->setTo($to)

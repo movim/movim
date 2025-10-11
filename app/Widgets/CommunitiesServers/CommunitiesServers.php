@@ -3,7 +3,6 @@
 namespace App\Widgets\CommunitiesServers;
 
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Disco\Request;
@@ -23,7 +22,7 @@ class CommunitiesServers extends Base
 
     public function onDisco(Packet $packet)
     {
-        Toast::send($this->__('communities.disco'));
+        $this->toast($this->__('communities.disco'));
         $this->ajaxHttpGet();
         $this->rpc('Dialog_ajaxClear');
     }
@@ -37,12 +36,12 @@ class CommunitiesServers extends Base
 
     public function onDiscoError(Packet $packet)
     {
-        Toast::send($this->__('communities.disco_error'));
+        $this->toast($this->__('communities.disco_error'));
     }
 
     public function onDiscoNotFound(Packet $packet)
     {
-        Toast::send($this->__('page.not_found'));
+        $this->toast($this->__('page.not_found'));
     }
 
     public function ajaxDiscoverServer()
@@ -56,7 +55,7 @@ class CommunitiesServers extends Base
         $origin = $form->server->value;
 
         if (!validateServer($origin)) {
-            Toast::send($this->__('communities.disco_error'));
+            $this->toast($this->__('communities.disco_error'));
             return;
         }
 

@@ -25,7 +25,7 @@ class RPC
         if (php_sapi_name() != 'cli') {
             array_push(self::$json, $payload);
         } else {
-            writeOut($payload);
+            \writeOut($payload);
         }
     }
 

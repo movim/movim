@@ -2,7 +2,6 @@
 
 namespace App\Widgets\Preview;
 
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 use Respect\Validation\Validator;
@@ -59,6 +58,6 @@ class Preview extends Base
 
     public function ajaxCopyNotify()
     {
-        Toast::send($this->__('preview.link_copied'));
+        $this->toast($this->__('preview.link_copied'));
     }
 }

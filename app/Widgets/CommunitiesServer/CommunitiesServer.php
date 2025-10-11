@@ -3,7 +3,6 @@
 namespace App\Widgets\CommunitiesServer;
 
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Toast\Toast;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Action\Pubsub\Create;
@@ -29,7 +28,7 @@ class CommunitiesServer extends \Movim\Widget\Base
 
     public function onCreate(Packet $packet)
     {
-        Toast::send($this->__('communitiesserver.created'));
+        $this->toast($this->__('communitiesserver.created'));
 
         list($origin, $node) = array_values($packet->content);
         $this->ajaxDisco($origin);
@@ -68,7 +67,7 @@ class CommunitiesServer extends \Movim\Widget\Base
 
         $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($origin));
 
-        Toast::send($this->__('communitiesserver.disco_error'));
+        $this->toast($this->__('communitiesserver.disco_error'));
     }
 
     public function onTestCreate(Packet $packet)
@@ -83,13 +82,13 @@ class CommunitiesServer extends \Movim\Widget\Base
 
     public function onTestCreateError(Packet $packet)
     {
-        Toast::send($this->__('communitiesserver.no_creation'));
+        $this->toast($this->__('communitiesserver.no_creation'));
     }
 
     public function ajaxDisco($origin)
     {
         if (!validateServer($origin)) {
-            Toast::send($this->__('communitiesserver.disco_error'));
+            $this->toast($this->__('communitiesserver.disco_error'));
             return;
         }
 
@@ -122,14 +121,14 @@ class CommunitiesServer extends \Movim\Widget\Base
 
         $validate_name = Validator::stringType()->length(4, 80);
         if (!$validate_name->isValid($form->name->value)) {
-            Toast::send($this->__('communitiesserver.name_error'));
+            $this->toast($this->__('communitiesserver.name_error'));
             return;
         }
 
         $uri = slugify($form->name->value);
 
         if ($uri == '') {
-            Toast::send($this->__('communitiesserver.name_error'));
+            $this->toast($this->__('communitiesserver.name_error'));
             return;
         }
 

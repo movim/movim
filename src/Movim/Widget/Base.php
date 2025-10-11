@@ -116,6 +116,11 @@ class Base
         return \Movim\Route::urlize(...$args);
     }
 
+    public function toast($title, int $timeout = 3000)
+    {
+        $this->rpc('Toast.send', $title, $timeout);
+    }
+
     public function database(string $driver): bool
     {
         return DB::getDriverName() == $driver;

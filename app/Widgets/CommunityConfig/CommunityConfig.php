@@ -4,7 +4,6 @@ namespace App\Widgets\CommunityConfig;
 
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
-use App\Widgets\Toast\Toast;
 use Movim\Image;
 use Movim\Librairies\XMPPtoForm;
 use Movim\Widget\Base;
@@ -46,17 +45,17 @@ class CommunityConfig extends Base
     public function onAvatarSet(Packet $packet)
     {
         $this->rpc('Dialog_ajaxClear');
-        Toast::send($this->__('avatar.updated'));
+        $this->toast($this->__('avatar.updated'));
     }
 
     public function onConfigSaved()
     {
-        Toast::send($this->__('communityaffiliation.config_saved'));
+        $this->toast($this->__('communityaffiliation.config_saved'));
     }
 
     public function onConfigError(Packet $packet)
     {
-        Toast::send(
+        $this->toast(
             $packet->content ??
             $this->__('communityaffiliation.config_error')
         );

@@ -8,7 +8,6 @@ use App\Widgets\Chat\Chat;
 use App\Widgets\ContactActions\ContactActions;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
-use App\Widgets\Toast\Toast;
 use Moxl\Xec\Action\Blocking\Block;
 use Moxl\Xec\Action\Blocking\Unblock;
 use Moxl\Xec\Action\Message\Moderate;
@@ -30,13 +29,13 @@ class ChatActions extends \Movim\Widget\Base
 
     public function onBlock(Packet $packet)
     {
-        Toast::send($this->__('blocked.account_blocked'));
+        $this->toast($this->__('blocked.account_blocked'));
         $this->rpc('Chat_ajaxGet', $packet->content);
     }
 
     public function onUnblock(Packet $packet)
     {
-        Toast::send($this->__('blocked.account_unblocked'));
+        $this->toast($this->__('blocked.account_unblocked'));
         $this->rpc('Chat_ajaxGet', $packet->content);
     }
 
@@ -162,7 +161,7 @@ class ChatActions extends \Movim\Widget\Base
 
     public function ajaxCopiedMessageText()
     {
-        Toast::send($this->__('chatactions.copied_text'));
+        $this->toast($this->__('chatactions.copied_text'));
     }
 
     /**

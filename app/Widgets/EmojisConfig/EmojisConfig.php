@@ -5,7 +5,6 @@ namespace App\Widgets\EmojisConfig;
 use App\Emoji;
 use App\EmojisPack;
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 use Respect\Validation\Validator;
 
@@ -47,7 +46,7 @@ class EmojisConfig extends Base
                 ->where('id', '!=', $emoji->id)
                 ->exists()
             ) {
-                Toast::send($this->__('emojisconfig.alias_conflict'));
+                $this->toast($this->__('emojisconfig.alias_conflict'));
                 return;
             }
 
@@ -56,10 +55,10 @@ class EmojisConfig extends Base
             $this->me->emojis()->attach($emoji->id, ['alias' => $form->alias->value]);
             $this->rpc('Dialog_ajaxClear');
 
-            Toast::send($this->__('emojisconfig.new_added'));
+            $this->toast($this->__('emojisconfig.new_added'));
             $this->rpc('EmojisConfig_ajaxHttpGet');
         } else {
-            Toast::send($this->__('emojisconfig.alias_error'));
+            $this->toast($this->__('emojisconfig.alias_error'));
         }
     }
 

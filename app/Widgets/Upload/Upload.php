@@ -3,7 +3,6 @@
 namespace App\Widgets\Upload;
 
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Upload\Request;
@@ -44,22 +43,22 @@ class Upload extends Base
 
     public function onError()
     {
-        Toast::send($this->__('upload.error_failed'));
+        $this->toast($this->__('upload.error_failed'));
     }
 
     public function onErrorFileTooLarge()
     {
-        Toast::send($this->__('upload.error_filesize'));
+        $this->toast($this->__('upload.error_filesize'));
     }
 
     public function onErrorResourceConstraint()
     {
-        Toast::send($this->__('upload.error_resource_constraint'));
+        $this->toast($this->__('upload.error_resource_constraint'));
     }
 
     public function onErrorNotAllowed()
     {
-        Toast::send($this->__('upload.error_not_allowed'));
+        $this->toast($this->__('upload.error_not_allowed'));
     }
 
     public function ajaxGetPanel()
@@ -124,6 +123,6 @@ class Upload extends Base
 
     public function ajaxFailed()
     {
-        Toast::send($this->__('upload.error_failed'));
+        $this->toast($this->__('upload.error_failed'));
     }
 }

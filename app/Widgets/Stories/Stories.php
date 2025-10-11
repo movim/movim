@@ -4,7 +4,6 @@ namespace App\Widgets\Stories;
 
 use App\Post;
 use App\Widgets\Chats\Chats;
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 use Moxl\Xec\Payload\Packet;
 
@@ -33,7 +32,7 @@ class Stories extends Base
     {
         if ($packet->content['server'] == $this->me->id
          && $packet->content['node'] == Post::STORIES_NODE) {
-            Toast::send($this->__('stories.deleted'));
+            $this->toast($this->__('stories.deleted'));
             $this->ajaxHttpGet();
         }
     }

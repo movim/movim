@@ -2,7 +2,6 @@
 
 namespace App\Widgets\NotificationConfig;
 
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 class NotificationConfig extends Base
@@ -36,7 +35,7 @@ class NotificationConfig extends Base
         $pushSubscription->enabled = $enabled;
         $pushSubscription->save();
 
-        Toast::send($this->__($enabled ? 'notificationconfig.push_enabled' : 'notificationconfig.push_disabled'));
+        $this->toast($this->__($enabled ? 'notificationconfig.push_enabled' : 'notificationconfig.push_disabled'));
     }
 
     public function ajaxHttpRequest()

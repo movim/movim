@@ -20,7 +20,6 @@ use App\Upload;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post;
-use App\Widgets\Toast\Toast;
 use Moxl\Xec\Payload\Packet;
 
 class Publish extends Base
@@ -39,7 +38,7 @@ class Publish extends Base
 
     public function onPublish(Packet $packet)
     {
-        Toast::send($this->__('post.published'));
+        $this->toast($this->__('post.published'));
 
         list($to, $node, $id, $repost, $comments) = array_values($packet->content);
 
@@ -64,13 +63,13 @@ class Publish extends Base
 
     public function onPublishErrorForbidden(Packet $packet)
     {
-        Toast::send($this->__('publish.publish_error_forbidden'));
+        $this->toast($this->__('publish.publish_error_forbidden'));
         $this->rpc('Publish.enableSend');
     }
 
     public function onPayloadTooBig(Packet $packet)
     {
-        Toast::send($this->__('publish.publish_error_payload_to_big'));
+        $this->toast($this->__('publish.publish_error_payload_to_big'));
         $this->rpc('Publish.enableSend');
     }
 
@@ -137,7 +136,7 @@ class Publish extends Base
 
             Drawer::fill('publish_preview', $view->draw('_publish_preview'), true);
         } else {
-            Toast::send($this->__('publish.no_title'));
+            $this->toast($this->__('publish.no_title'));
         }
     }
 
@@ -150,7 +149,7 @@ class Publish extends Base
         if ($draft && $draft->isNotEmpty()) {
             if (!$draft->isSmallEnough()) {
                 $this->rpc('Publish.enableSend');
-                Toast::send($this->__('publish.too_long', Draft::LENGTH_LIMIT));
+                $this->toast($this->__('publish.too_long', Draft::LENGTH_LIMIT));
                 return;
             }
 
@@ -287,7 +286,7 @@ class Publish extends Base
 
             if ($info && $info->isGallery() && !$hasImage) {
                 $this->rpc('Publish.enableSend');
-                Toast::send($this->__('publish.no_picture'));
+                $this->toast($this->__('publish.no_picture'));
                 return;
             }
 
@@ -295,7 +294,7 @@ class Publish extends Base
             $draft->delete();
         } else {
             $this->rpc('Publish.enableSend');
-            Toast::send($this->__('publish.no_title'));
+            $this->toast($this->__('publish.no_title'));
         }
     }
 
@@ -338,7 +337,7 @@ class Publish extends Base
             $this->rpc('MovimTpl.append', '#publishembeds', $this->prepareEmbed($embed));
             $this->rpc('Dialog_ajaxClear');
         } else {
-            Toast::send($this->__('publish.valid_url'));
+            $this->toast($this->__('publish.valid_url'));
         }
     }
 
@@ -400,7 +399,7 @@ class Publish extends Base
                 $this->rpc('MovimTpl.fill', '#publish_preview_url', '');
             }
 
-            Toast::send(($open)
+            $this->toast(($open)
                 ? $this->__('post.public_yes')
                 : $this->__('post.public_no'));
         }
@@ -425,7 +424,7 @@ class Publish extends Base
             $draft->comments_disabled = $commentsDisabled;
             $draft->save();
 
-            Toast::send(($commentsDisabled)
+            $this->toast(($commentsDisabled)
                 ? $this->__('post.comments_disabled_yes')
                 : $this->__('post.comments_disabled_no'));
         }

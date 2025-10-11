@@ -6,7 +6,6 @@ use App\MessageFile;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post;
-use App\Widgets\Toast\Toast;
 use Movim\Template\Partial;
 use Movim\Widget\Base;
 use Movim\XMPPUri;
@@ -84,7 +83,7 @@ class SendTo extends Base
 
     public function ajaxSend(string $to, bool $muc, string $uri)
     {
-        Toast::send($muc
+        $this->toast($muc
             ? $this->__('sendto.shared_chatroom')
             : $this->__('sendto.shared_contact')
         );

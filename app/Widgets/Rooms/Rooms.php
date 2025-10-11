@@ -13,7 +13,6 @@ use Movim\Widget\Base;
 
 use App\Conference;
 use App\Widgets\Notif\Notif;
-use App\Widgets\Toast\Toast;
 use Movim\ChatroomPings;
 use Moxl\Xec\Payload\Packet;
 
@@ -137,7 +136,7 @@ class Rooms extends Base
         $this->ajaxHttpGet();
         $this->rpc('Chat_ajaxGet');
 
-        Toast::send($this->__('chatrooms.destroyed'));
+        $this->toast($this->__('chatrooms.destroyed'));
     }
 
     public function onConnected(Packet $packet)
@@ -150,7 +149,7 @@ class Rooms extends Base
     {
         if ($packet->content) {
             $this->onPresence($packet->content);
-            Toast::send($this->__('chatrooms.disconnected'));
+            $this->toast($this->__('chatrooms.disconnected'));
         }
     }
 
@@ -192,7 +191,7 @@ class Rooms extends Base
             $this->ajaxJoin($conference->conference, $conference->nick);
         }
 
-        Toast::send($this->__('bookmarks.updated'));
+        $this->toast($this->__('bookmarks.updated'));
 
         if ($conference) {
             $this->onPresence($conference->conference);
@@ -384,60 +383,60 @@ class Rooms extends Base
 
     public function onConflict()
     {
-        Toast::send($this->__('chatrooms.conflict'));
+        $this->toast($this->__('chatrooms.conflict'));
     }
 
     public function onRegistrationRequired(Packet $packet)
     {
-        Toast::send($this->__('chatrooms.registrationrequired'));
+        $this->toast($this->__('chatrooms.registrationrequired'));
         $this->ajaxExit($packet->content);
     }
 
     public function onRemoteServerNotFound(Packet $packet)
     {
-        Toast::send($this->__('chatrooms.remoteservernotfound'));
+        $this->toast($this->__('chatrooms.remoteservernotfound'));
         $this->ajaxExit($packet->content);
     }
 
     public function onRemoteServerTimeout(Packet $packet)
     {
-        Toast::send($this->__('chatrooms.remoteservertimeout'));
+        $this->toast($this->__('chatrooms.remoteservertimeout'));
         $this->ajaxExit($packet->content);
     }
 
     public function onItemNotFound(Packet $packet)
     {
-        Toast::send($this->__('chatrooms.itemnotfound'));
+        $this->toast($this->__('chatrooms.itemnotfound'));
         $this->ajaxExit($packet->content);
     }
 
     public function onNotAuthorized(Packet $packet)
     {
-        Toast::send($this->__('chatrooms.notauthorized'));
+        $this->toast($this->__('chatrooms.notauthorized'));
         $this->ajaxExit($packet->content);
     }
 
     public function onForbidden(Packet $packet)
     {
-        Toast::send($this->__('chatrooms.forbidden'));
+        $this->toast($this->__('chatrooms.forbidden'));
         $this->ajaxExit($packet->content);
     }
 
     public function onJidMalformed(Packet $packet)
     {
-        Toast::send($this->__('chatrooms.jidmalformed'));
+        $this->toast($this->__('chatrooms.jidmalformed'));
         $this->ajaxExit($packet->content);
     }
 
     public function onNotAcceptable(Packet $packet)
     {
-        Toast::send($this->__('chatrooms.notacceptable'));
+        $this->toast($this->__('chatrooms.notacceptable'));
         $this->ajaxExit($packet->content);
     }
 
     public function onServiceUnavailable(Packet $packet)
     {
-        Toast::send($this->__('chatrooms.serviceunavailable'));
+        $this->toast($this->__('chatrooms.serviceunavailable'));
         $this->ajaxExit($packet->content);
     }
 }

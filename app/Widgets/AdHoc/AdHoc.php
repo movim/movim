@@ -3,7 +3,6 @@
 namespace App\Widgets\AdHoc;
 
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Toast\Toast;
 use Movim\Librairies\JingletoSDP;
 use Movim\Librairies\SDPtoJingle;
 use Moxl\Xec\Action\AdHoc\Get;
@@ -72,7 +71,7 @@ class AdHoc extends \Movim\Widget\Base
             $this->rpc('AdHoc.initForm');
         } elseif ((string)$command->attributes()->status === 'completed') {
             $this->rpc('Dialog.clear');
-            Toast::send($this->__('adhoc.completed'));
+            $this->toast($this->__('adhoc.completed'));
             return;
         }
     }
@@ -103,7 +102,7 @@ class AdHoc extends \Movim\Widget\Base
         $xml = simplexml_load_string($data->jingle->value);
 
         if ($xml == false) {
-            Toast::send($this->__('error.oops'));
+            $this->toast($this->__('error.oops'));
             return;
         }
 

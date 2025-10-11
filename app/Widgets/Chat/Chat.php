@@ -21,7 +21,6 @@ use App\Widgets\Dictaphone\Dictaphone;
 use App\Widgets\Notif\Notif;
 use App\Widgets\Post\Post;
 use App\Widgets\Rooms\Rooms;
-use App\Widgets\Toast\Toast;
 use Carbon\Carbon;
 use Moxl\Xec\Action\BOB\Request;
 use Moxl\Xec\Action\Disco\Request as DiscoRequest;
@@ -164,7 +163,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onPublishError(Packet $packet)
     {
-        Toast::send(
+        $this->toast(
             $packet->content ??
                 $this->__('chat.publish_error')
         );
@@ -339,7 +338,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onRoomConfigError(Packet $packet)
     {
-        Toast::send($packet->content);
+        $this->toast($packet->content);
     }
 
     public function onRoomConfig(Packet $packet)
@@ -363,7 +362,7 @@ class Chat extends \Movim\Widget\Base
         $r->setTo($packet->content)
             ->request();
 
-        Toast::send($this->__('chatroom.config_saved'));
+        $this->toast($this->__('chatroom.config_saved'));
     }
 
     public function ajaxInit()

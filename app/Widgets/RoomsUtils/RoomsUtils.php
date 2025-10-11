@@ -25,7 +25,6 @@ use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
-use App\Widgets\Toast\Toast;
 use Respect\Validation\Validator;
 use Movim\Session;
 use Moxl\Xec\Action\Muc\ChangeAffiliation;
@@ -241,7 +240,7 @@ class RoomsUtils extends Base
     public function onAvatarSet(Packet $packet)
     {
         $this->rpc('Dialog_ajaxClear');
-        Toast::send($this->__('avatar.updated'));
+        $this->toast($this->__('avatar.updated'));
     }
 
     public function onMucCreated(Packet $packet)
@@ -251,17 +250,17 @@ class RoomsUtils extends Base
 
     public function onPresenceMucNotAllowed(Packet $packet)
     {
-        Toast::send($this->__('chatrooms.notallowed'));
+        $this->toast($this->__('chatrooms.notallowed'));
     }
 
     public function onDiscoRegistrationRequired(Packet $packet)
     {
-        Toast::send($this->__('rooms.disco_registration_required'));
+        $this->toast($this->__('rooms.disco_registration_required'));
     }
 
     public function onSetRole(Packet $packet)
     {
-        Toast::send($this->__('room.role_changed'));
+        $this->toast($this->__('room.role_changed'));
     }
 
     /**
@@ -273,23 +272,23 @@ class RoomsUtils extends Base
 
         switch ($affiliation) {
             case 'owner':
-                Toast::send($this->__('room.affiliation_owner_changed'));
+                $this->toast($this->__('room.affiliation_owner_changed'));
                 break;
 
             case 'admin':
-                Toast::send($this->__('room.affiliation_admin_changed'));
+                $this->toast($this->__('room.affiliation_admin_changed'));
                 break;
 
             case 'member':
-                Toast::send($this->__('room.affiliation_member_changed'));
+                $this->toast($this->__('room.affiliation_member_changed'));
                 break;
 
             case 'outcast':
-                Toast::send($this->__('room.affiliation_outcast_changed'));
+                $this->toast($this->__('room.affiliation_outcast_changed'));
                 break;
 
             case 'none':
-                Toast::send($this->__('room.affiliation_none_changed'));
+                $this->toast($this->__('room.affiliation_none_changed'));
                 break;
         }
     }
@@ -299,7 +298,7 @@ class RoomsUtils extends Base
      */
     public function onAffiliationChangeUnauthorized(Packet $packet)
     {
-        Toast::send($this->__('room.change_affiliation_unauthorized'));
+        $this->toast($this->__('room.change_affiliation_unauthorized'));
     }
 
     /**
@@ -307,7 +306,7 @@ class RoomsUtils extends Base
      */
     public function onChatroomCreated(Packet $packet)
     {
-        Toast::send($this->__('chatrooms.created'));
+        $this->toast($this->__('chatrooms.created'));
 
         $values = $packet->content;
 
@@ -347,7 +346,7 @@ class RoomsUtils extends Base
      */
     public function onChatroomCreatedError(Packet $packet)
     {
-        Toast::send($packet->content);
+        $this->toast($packet->content);
     }
 
     /**
@@ -469,9 +468,9 @@ class RoomsUtils extends Base
     public function ajaxAddCreate($form)
     {
         if (!validateRoom($form->jid->value)) {
-            Toast::send($this->__('chatrooms.bad_id'));
+            $this->toast($this->__('chatrooms.bad_id'));
         } elseif (trim($form->name->value) == '') {
-            Toast::send($this->__('chatrooms.empty_name'));
+            $this->toast($this->__('chatrooms.empty_name'));
         } else {
             $m = new Muc;
             $m->enableCreate()
@@ -485,7 +484,7 @@ class RoomsUtils extends Base
     public function ajaxConfigureCreated($form)
     {
         if (!validateRoom($form->jid->value)) {
-            Toast::send($this->__('chatrooms.bad_id'));
+            $this->toast($this->__('chatrooms.bad_id'));
         } else {
             if ($form->type->value == 'groupchat') {
                 $cgc = new CreateGroupChat;
@@ -515,9 +514,9 @@ class RoomsUtils extends Base
     public function ajaxAddConfirm($form)
     {
         if (!validateRoom($form->jid->value)) {
-            Toast::send($this->__('chatrooms.bad_id'));
+            $this->toast($this->__('chatrooms.bad_id'));
         } elseif (trim($form->name->value) == '') {
-            Toast::send($this->__('chatrooms.empty_name'));
+            $this->toast($this->__('chatrooms.empty_name'));
         } else {
             $this->rpc('Rooms_ajaxExit', $form->jid->value);
 
@@ -615,14 +614,14 @@ class RoomsUtils extends Base
             (new Chat())->onMessage($packet);
 
             // Notify
-            Toast::send($this->__('room.invited'));
+            $this->toast($this->__('room.invited'));
             $this->rpc('Dialog_ajaxClear');
         }
     }
 
     public function onInviteError(Packet $packet)
     {
-        Toast::send($packet->content);
+        $this->toast($packet->content);
     }
 
     /**

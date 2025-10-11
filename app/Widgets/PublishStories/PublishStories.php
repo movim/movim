@@ -4,7 +4,6 @@ namespace App\Widgets\PublishStories;
 
 use App\Post;
 use App\Upload;
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Pubsub\PostPublish;
@@ -22,7 +21,7 @@ class PublishStories extends Base
 
     public function onPublish(Packet $packet)
     {
-        Toast::send($this->__('story.published'));
+        $this->toast($this->__('story.published'));
 
         list($to, $node, $id, $repost, $comments) = array_values($packet->content);
 
@@ -49,7 +48,7 @@ class PublishStories extends Base
 
     public function ajaxNoTitle()
     {
-        Toast::send($this->__('publish.no_title'));
+        $this->toast($this->__('publish.no_title'));
     }
 
     public function ajaxPublish($form, string $uploadId)

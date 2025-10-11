@@ -2,7 +2,6 @@
 
 namespace App\Widgets\AccountNext;
 
-use App\Widgets\Toast\Toast;
 use Movim\Librairies\XMPPtoForm;
 use Moxl\Xec\Action\Register\Set;
 
@@ -58,28 +57,28 @@ class AccountNext extends \Movim\Widget\Base
 
     public function onError()
     {
-        Toast::send($this->__('error.service_unavailable'));
+        $this->toast($this->__('error.service_unavailable'));
     }
 
     public function onRegisterError(Packet $packet)
     {
         $error = $packet->content;
-        Toast::send($error);
+        $this->toast($error);
     }
 
     public function onForbidden()
     {
-        Toast::send($this->__('error.forbidden'));
+        $this->toast($this->__('error.forbidden'));
     }
 
     public function onRegisterNotAcceptable()
     {
-        Toast::send($this->__('error.not_acceptable'));
+        $this->toast($this->__('error.not_acceptable'));
     }
 
     public function onServiceUnavailable()
     {
-        Toast::send($this->__('error.service_unavailable'));
+        $this->toast($this->__('error.service_unavailable'));
 
         requestAPI('disconnect', post: ['sid' => SESSION_ID]);
 
@@ -108,7 +107,7 @@ class AccountNext extends \Movim\Widget\Base
     {
         if (isset($form->re_password)
         && $form->re_password->value != $form->password->value) {
-            Toast::send($this->__('account.password_not_same'));
+            $this->toast($this->__('account.password_not_same'));
             return;
         }
 

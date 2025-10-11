@@ -2,7 +2,6 @@
 
 namespace App\Widgets\Blocked;
 
-use App\Widgets\Toast\Toast;
 use Moxl\Xec\Action\Blocking\Unblock;
 use Moxl\Xec\Payload\Packet;
 
@@ -27,7 +26,7 @@ class Blocked extends \Movim\Widget\Base
 
     public function onUnblock(Packet $packet)
     {
-        Toast::send($this->__('blocked.account_unblocked'));
+        $this->toast($this->__('blocked.account_unblocked'));
         $this->rpc('MovimTpl.remove', '#blocked-' . cleanupId($packet->content));
     }
 

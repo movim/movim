@@ -5,7 +5,6 @@ namespace App\Widgets\PostActions;
 use App\Post as AppPost;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Post\Post;
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\PostDelete;
@@ -26,9 +25,9 @@ class PostActions extends Base
         list($server, $node, $id) = array_values($packet->content);
 
         if (str_starts_with($node, AppPost::COMMENTS_NODE)) {
-            Toast::send($this->__('post.comment_deleted'));
+            $this->toast($this->__('post.comment_deleted'));
         } else {
-            Toast::send($this->__('post.deleted'));
+            $this->toast($this->__('post.deleted'));
 
             $this->rpc(
                 'PostActions.handleDelete',

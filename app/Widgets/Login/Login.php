@@ -13,7 +13,6 @@ use App\Configuration;
 use App\Session;
 use App\User;
 use App\Widgets\Presence\Presence;
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 use Movim\Cookie;
@@ -52,12 +51,12 @@ class Login extends Base
 
     public function onConnected()
     {
-        Toast::send($this->__('connection.socket_connected'));
+        $this->toast($this->__('connection.socket_connected'));
     }
 
     public function onSASLSuccess(Packet $packet)
     {
-        Toast::send($this->__('connection.authenticated'));
+        $this->toast($this->__('connection.authenticated'));
     }
 
     public function onConfig(Packet $packet)

@@ -8,7 +8,6 @@ use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post;
-use App\Widgets\Toast\Toast;
 use Movim\CurrentCall;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Blocking\Block;
@@ -30,17 +29,17 @@ class ContactActions extends Base
 
     public function onDelete(Packet $packet)
     {
-        Toast::send($this->__('roster.deleted'));
+        $this->toast($this->__('roster.deleted'));
     }
 
     public function onAdd(Packet $packet)
     {
-        Toast::send($this->__('roster.added'));
+        $this->toast($this->__('roster.added'));
     }
 
     public function onUpdate(Packet $packet)
     {
-        Toast::send($this->__('roster.updated'));
+        $this->toast($this->__('roster.updated'));
     }
 
     public function ajaxGetDrawer($jid)

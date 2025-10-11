@@ -4,7 +4,6 @@ namespace App\Widgets\Post;
 
 use App\Post as AppPost;
 use App\Widgets\ContactActions\ContactActions;
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\GetItem;
@@ -55,14 +54,14 @@ class Post extends Base
 
     public function onCommentPublished(Packet $packet)
     {
-        Toast::send($packet->content
+        $this->toast($packet->content
             ? $this->__('post.comment_like_published')
             : $this->__('post.comment_published'));
     }
 
     public function onCommentPublishError()
     {
-        Toast::send($this->__('post.comment_publish_error'));
+        $this->toast($this->__('post.comment_publish_error'));
     }
 
     public function onComments(Packet $packet)

@@ -3,7 +3,6 @@
 namespace App\Widgets\AdminReported;
 
 use App\Reported;
-use App\Widgets\Toast\Toast;
 
 class AdminReported extends \Movim\Widget\Base
 {
@@ -23,9 +22,9 @@ class AdminReported extends \Movim\Widget\Base
         $reported->save();
 
         if ($checked) {
-            Toast::send($this->__('blocked.account_blocked'));
+            $this->toast($this->__('blocked.account_blocked'));
         } else {
-            Toast::send($this->__('blocked.account_unblocked'));
+            $this->toast($this->__('blocked.account_unblocked'));
         }
 
         $this->me->refreshBlocked();

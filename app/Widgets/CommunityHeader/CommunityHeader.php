@@ -3,7 +3,6 @@
 namespace App\Widgets\CommunityHeader;
 
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Disco\Request;
@@ -52,7 +51,7 @@ class CommunityHeader extends Base
 
     public function tonTestPublishError(Packet $packet)
     {
-        Toast::send($this->__('publish.no_publication'));
+        $this->toast($this->__('publish.no_publication'));
     }
 
     public function onSubscribed(Packet $packet)
@@ -61,12 +60,12 @@ class CommunityHeader extends Base
 
         $this->ajaxGetMetadata($origin, $node);
 
-        Toast::send($this->__('communityheader.subscribed'));
+        $this->toast($this->__('communityheader.subscribed'));
     }
 
     public function onSubscriptionUnsupported(Packet $packet)
     {
-        Toast::send($this->__('communityheader.subscription_unsupported'));
+        $this->toast($this->__('communityheader.subscription_unsupported'));
     }
 
     public function onUnsubscribed(Packet $packet)
@@ -75,7 +74,7 @@ class CommunityHeader extends Base
 
         $this->ajaxGetMetadata($origin, $node);
 
-        Toast::send($this->__('communityheader.unsubscribed'));
+        $this->toast($this->__('communityheader.unsubscribed'));
     }
 
     public function ajaxGetMetadata($origin, $node)

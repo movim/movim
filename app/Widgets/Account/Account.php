@@ -3,7 +3,6 @@
 namespace App\Widgets\Account;
 
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Toast\Toast;
 use Movim\Librairies\XMPPtoForm;
 use Moxl\Xec\Action\OMEMO\DeleteBundle;
 use Moxl\Xec\Action\Register\ChangePassword;
@@ -52,7 +51,7 @@ class Account extends \Movim\Widget\Base
     public function onPasswordChanged()
     {
         $this->rpc('Account.resetPassword');
-        Toast::send($this->__('account.password_changed'));
+        $this->toast($this->__('account.password_changed'));
 
         $this->rpc('Presence_ajaxLogout');
     }
@@ -67,7 +66,7 @@ class Account extends \Movim\Widget\Base
     public function onRegistered()
     {
         $this->rpc('MovimTpl.fill', '#account_gateways', $this->prepareGateways());
-        Toast::send($this->__('client.registered'));
+        $this->toast($this->__('client.registered'));
     }
 
     public function onRegister(Packet $packet)
@@ -94,7 +93,7 @@ class Account extends \Movim\Widget\Base
 
     public function onRegisterError(Packet $packet)
     {
-        Toast::send(
+        $this->toast(
             $packet->content ??
                 $this->__('error.oops')
         );
@@ -123,7 +122,7 @@ class Account extends \Movim\Widget\Base
                 ->setPassword($p1)
                 ->request();
         } else {
-            Toast::send($this->__('account.password_not_same'));
+            $this->toast($this->__('account.password_not_same'));
             $this->rpc('Account.resetPassword');
         }
     }
@@ -226,7 +225,7 @@ class Account extends \Movim\Widget\Base
             $da = new Remove;
             $da->request();
         } else {
-            Toast::send($this->__('account.delete_text_error'));
+            $this->toast($this->__('account.delete_text_error'));
         }
     }
 
