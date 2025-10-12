@@ -15,7 +15,7 @@ class CommunityData extends Base
         $this->addcss('communitydata.css');
         $this->addjs('communitydata.js');
         $this->registerEvent('disco_request_handle', 'onDiscoRequest', 'community');
-        $this->registerEvent('pubsub_getitem_avatar', 'tonAvatar', 'community');
+        $this->registerEvent('pubsub_getitem_avatar', 'onAvatar', 'community');
     }
 
     public function onDiscoRequest(Packet $packet)
