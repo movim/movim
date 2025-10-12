@@ -9,16 +9,15 @@ class AvatarMetadata extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $jid = baseJid((string)$parent->attributes()->from);
+        $infos = $stanza->xpath('//info[not(@url)]/@id');
 
-        $c = \App\Contact::firstOrNew(['id' => $jid]);
+        if (is_array($infos) && !empty($infos)) {
+            $c = \App\Contact::firstOrNew(['id' => $jid]);
 
-        if (isset($stanza->items->item->metadata->info)) {
-            $hash = $stanza->items->item->metadata->info->attributes()->id;
-
-            if ($hash != $c->avatarhash) {
+            if ((string)$infos[0] != $c->avatarhash) {
                 $g = new Get;
                 $g->setTo($jid)
-                  ->request();
+                    ->request();
             }
         }
     }
