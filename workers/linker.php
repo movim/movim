@@ -11,6 +11,7 @@ use React\Promise\Timer;
 
 use App\PresenceBuffer;
 use Movim\Widget\Wrapper;
+use Movim\Scheduler;
 
 $loop = React\EventLoop\Loop::get();
 
@@ -23,6 +24,9 @@ $server = $config->nameservers ? reset($config->nameservers) : '8.8.8.8';
 
 $factory = new React\Dns\Resolver\Factory();
 $dns = $factory->create($server);
+
+// Scheduler
+Scheduler::getInstance()->start();
 
 // TCP Connector
 $connector = null;

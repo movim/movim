@@ -44,6 +44,12 @@ class SetMetadata extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
+        // And we re-request the server to refresh things just in case...
+        $get = new Get;
+        $get->setTo($this->_to)
+            ->setNode($this->_node)
+            ->request();
+
         $this->pack(['to' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }

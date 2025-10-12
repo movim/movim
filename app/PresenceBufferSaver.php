@@ -9,6 +9,7 @@ use Moxl\Xec\Action\Vcard\Get;
 use App\Presence;
 use App\Info;
 use App\Contact;
+use Movim\Scheduler;
 
 class PresenceBufferSaver
 {
@@ -111,10 +112,12 @@ class PresenceBufferSaver
 
                     $avatarHashes->each(function ($jid, $avatarhash) {
                         if ($jid != me()->id) {
-                            $r = new Get;
-                            $r->setAvatarhash($avatarhash)
-                                ->setTo($jid)
-                                ->request();
+                            Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
+                                $r = new Get;
+                                $r->setAvatarhash($avatarhash)
+                                    ->setTo($jid)
+                                    ->request();
+                            });
                         }
                     });
                 }
