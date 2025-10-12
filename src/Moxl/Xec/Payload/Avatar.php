@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Payload;
 
+use Moxl\Stanza\Avatar as StanzaAvatar;
 use Moxl\Xec\Action\Avatar\Get;
 
 class Avatar extends Payload
@@ -17,7 +18,7 @@ class Avatar extends Payload
 
             if ($info->id != $c->avatarhash) {
                 $c->avatarhash = $info->id;
-                $c->avatartype = 'urn:xmpp:avatar:metadata';
+                $c->avatartype = StanzaAvatar::$nodeMetadata;
                 $c->save();
 
                 $g = new Get;

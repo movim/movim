@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\Disco;
 
+use Moxl\Stanza\Avatar;
 use Moxl\Xec\Action;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Stanza\Disco;
@@ -72,7 +73,7 @@ class Items extends Action
                                     $g = new GetItem;
                                     $g->setTo($info->server)
                                         ->setNode($info->node)
-                                        ->setId('urn:xmpp:avatar:metadata')
+                                        ->setId(Avatar::$nodeMetadata)
                                         ->request();
                                 }
 

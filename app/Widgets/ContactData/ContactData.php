@@ -83,9 +83,6 @@ class ContactData extends Base
             $a = new \Moxl\Xec\Action\Banner\Get;
             $a->setTo($jid)->request();
 
-            $v = new \Moxl\Xec\Action\Vcard\Get;
-            $v->setTo($jid)->request();
-
             $r = new \Moxl\Xec\Action\Vcard4\Get;
             $r->setTo($jid)->request();
         } else if ($contact) {

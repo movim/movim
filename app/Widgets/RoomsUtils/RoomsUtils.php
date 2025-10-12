@@ -220,7 +220,7 @@ class RoomsUtils extends Base
         $tempKey = \generateKey(6);
 
         $p = new Image;
-        $p->fromBase($form->photobin->value);
+        $p->fromBase64($form->photobin->value);
         $p->setKey($tempKey);
         $p->save(false, false, 'jpeg', 60);
 

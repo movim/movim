@@ -4,6 +4,7 @@ namespace Moxl\Xec\Action\Avatar;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Avatar;
+use React\Http\Message\Response;
 
 class Get extends Action
 {
@@ -18,12 +19,12 @@ class Get extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
-        $contact->photobin  = (string)$stanza->pubsub->items->item->data;
-        $contact->saveBinAvatar();
-        $contact->save();
-
-        $this->pack($contact);
-        $this->deliver();
+        requestAvatarBase64(jid: $this->_to, base64: (string)$stanza->pubsub->items->item->data)->then(
+            function (Response $response) {
+                $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
+                $this->pack($contact);
+                $this->deliver();
+            }
+        );
     }
 }

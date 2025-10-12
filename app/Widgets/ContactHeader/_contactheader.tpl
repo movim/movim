@@ -1,4 +1,4 @@
-{if="$contact->isMe()"}
+{if="$contact->isContact($c->me->id)"}
     <a href="{$c->route('publish')}" class="button action color" title="{$c->__('menu.add_post')}">
         <i class="material-symbols">post_add</i>
     </a>
@@ -15,7 +15,7 @@
         <span class="primary icon bubble active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
             <img src="{if="$roster"}{$roster->getPicture(\Movim\ImageSize::M)}{else}{$contact->getPicture(\Movim\ImageSize::M)}{/if}">
         </span>
-        {if="!$contact->isMe()"}
+        {if="!$contact->isContact($c->me->id)"}
             <span class="control icon active white" onclick="ContactActions_ajaxChat('{$contact->id|echapJS}')"
                 title="{$c->__('button.chat')}">
                 <i class="material-symbols">comment</i>
@@ -31,7 +31,7 @@
                 <i class="material-symbols">delete</i>
             </span>
         {else}
-            {if="$contact->isMe()"}
+            {if="$contact->isContact($c->me->id)"}
                 <span class="control icon active white divided" onclick="MovimUtils.reload('{$c->route('configuration')}')"
                     title="{$c->__('button.edit')}">
                     <i class="material-symbols">tune</i>

@@ -17,7 +17,7 @@
                         <i class="material-symbols">person</i>
                     </span>
                 {/if}
-                {if="!$contact->isMe()"}
+                {if="!$contact->isContact($c->me->id)"}
                     <span class="control icon active divided" onclick="Search.chat('{$contact->id|echapJS}', false); Drawer.clear();">
                         <i class="material-symbols">comment</i>
                     </span>

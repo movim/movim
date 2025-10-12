@@ -39,7 +39,7 @@ class Request extends Action
 
         if (hash($this->_phpalgorythm, base64_decode($data)) == $this->_hash) {
             $p = new Image;
-            $p->fromBase($data);
+            $p->fromBase64($data);
             $p->setKey($this->_hash);
             $p->save();
         } else {

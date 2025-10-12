@@ -18,24 +18,25 @@ class Get extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
-        $contact->set($stanza, $this->_to);
-        $contact->saveBinAvatar();
-
         $notify = true;
+
+        $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
+        $contact->set($stanza);
+        $contact->setAvatar($stanza);
 
         /**
          * Specific case if the returned stanza didn't contained a hash received trough a
          * presence or is different, we save it then we don't request it each time
          */
-        if  ($this->_avatarhash
-        && (
-            empty($contact->avatarhash)
-            || $contact->avatarhash != $this->_avatarhash)
+        /*if (
+            $this->_avatarhash
+            && (
+                empty($contact->avatarhash)
+                || $contact->avatarhash != $this->_avatarhash)
         ) {
             $contact->avatarhash = $this->_avatarhash;
             $notify = false;
-        }
+        }*/
 
         $contact->save();
 

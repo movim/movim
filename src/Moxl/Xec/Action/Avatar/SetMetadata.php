@@ -6,7 +6,7 @@ use Moxl\Xec\Action;
 use Moxl\Stanza\Avatar;
 use Moxl\Xec\Action\Pubsub\SetConfig;
 
-class Set extends Action
+class SetMetadata extends Action
 {
     protected $_data;
     protected $_to = false;
@@ -19,20 +19,15 @@ class Set extends Action
     public function request()
     {
         $this->store();
-
-        if ($this->_url === false) {
-            Avatar::set($this->_data, $this->_to, $this->_node, $this->_withPublishOption);
-        } else {
-            // For an URL we simply set the Metadata
-            $setMetadata = new SetMetadata;
-            $setMetadata->setTo($this->_to)
-                ->setNode($this->_node)
-                ->setUrl($this->_url)
-                ->setData($this->_data)
-                ->setWidthMetadata($this->_widthMetadata)
-                ->setHeightMetadata($this->_heightMetadata)
-                ->request();
-        }
+        Avatar::setMetadata(
+            $this->_data,
+            $this->_url,
+            $this->_to,
+            $this->_node,
+            $this->_widthMetadata,
+            $this->_heightMetadata,
+            $this->_withPublishOption
+        );
     }
 
     public function setWidthMetadata($width)
@@ -49,30 +44,7 @@ class Set extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $setMetadata = new SetMetadata;
-        $setMetadata->setTo($this->_to)
-            ->setNode($this->_node)
-            ->setUrl($this->_url)
-            ->setData($this->_data)
-            ->setWidthMetadata($this->_widthMetadata)
-            ->setHeightMetadata($this->_heightMetadata)
-            ->request();
-
-        if ($this->_to == false && $this->_node == false) {
-            $me = me()->contact;
-            $me->avatartype = Avatar::$nodeMetadata;
-            $me->save();
-
-            $this->deliver();
-        } else {
-            $this->method('pubsub');
-            $this->pack(['to' => $this->_to, 'node' => $this->_node]);
-            $this->deliver();
-        }
-    }
-
-    public function errorPayloadTooBig(string $errorId, ?string $message = null)
-    {
+        $this->pack(['to' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }
 
@@ -104,7 +76,7 @@ class Set extends Action
     public function errorConflict(string $errorId, ?string $message = null)
     {
         $config = new SetConfig;
-        $config->setNode(Avatar::$nodeData)
+        $config->setNode(Avatar::$nodeMetadata)
             ->setData(Avatar::$nodeConfig)
             ->request();
 

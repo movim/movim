@@ -7,6 +7,8 @@ use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 
 use Movim\Image;
+use Moxl\Stanza\Avatar;
+use Psr\Http\Message\ResponseInterface;
 
 class GetItems extends Action
 {
@@ -81,24 +83,14 @@ class GetItems extends Action
                 }
             } elseif (
                 isset($item->metadata)
-                && (string)$item->metadata->attributes()->xmlns == 'urn:xmpp:avatar:metadata'
+                && (string)$item->metadata->attributes()->xmlns == Avatar::$nodeMetadata
                 && isset($item->metadata->info->attributes()->url)
             ) {
-                $i = \App\Info::where('server', $this->_to)
-                    ->where('node', $this->_node)
-                    ->first();
-
-                if ($i && $i->avatarhash !== (string)$item->metadata->info->attributes()->id) {
-                    $p = new Image;
-
-                    if ($p->fromURL((string)$item->metadata->info->attributes()->url)) {
-                        $p->setKey((string)$item->metadata->info->attributes()->id);
-                        $p->save();
-
-                        $i->avatarhash = (string)$item->metadata->info->attributes()->id;
-                        $i->save();
-                    }
-                }
+                requestAvatarUrl(
+                    jid: $this->_to,
+                    node: $this->_node,
+                    url: (string)$item->metadata->info->attributes()->url
+                );
             }
         }
 

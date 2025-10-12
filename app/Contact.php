@@ -8,6 +8,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Respect\Validation\Validator;
 use Movim\Image;
 use Movim\ImageSize;
+use React\Promise\Promise;
+use React\Promise\PromiseInterface;
 
 class Contact extends Model
 {
@@ -55,22 +57,8 @@ class Contact extends Model
             ->orderBy('presences.value', 'asc');
     }
 
-    public function save(array $options = [])
+    public function set(\SimpleXMLElement $vcard)
     {
-        try {
-            unset($this->photobin);
-            parent::save($options);
-        } catch (\Exception $e) {
-            /*
-            * Multi processes simultanous save
-            */
-        }
-    }
-
-    public function set($vcard, $jid)
-    {
-        $this->id = $jid;
-
         $this->date = isset($vcard->vCard->BDAY)
             && Validator::date('Y-m-d')->isValid($vcard->vCard->BDAY)
             ? (string)$vcard->vCard->BDAY
@@ -104,42 +92,26 @@ class Contact extends Model
             ? (string)$vcard->vCard->ADR->CTRY
             : null;
 
-        if (
-            filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)
-            && in_array($this->avatartype, ['vcard-temp', null])
-        ) {
-            $data = requestURL((string)$vcard->vCard->PHOTO, timeout: 1);
-
-            if ($data) {
-                $this->photobin = base64_encode($data);
-                $this->avatartype = 'vcard-temp';
-            }
-        } elseif (
-            $vcard->vCard->PHOTO
-            && in_array($this->avatartype, ['vcard-temp', null])
-        ) {
-            $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
-            $this->avatarhash = sha1(base64_decode($this->photobin));
-            $this->avatartype = 'vcard-temp';
-        }
-
         $this->description = !empty($vcard->vCard->DESC)
             ? (string)$vcard->vCard->DESC
             : null;
     }
 
-    public function saveBinAvatar()
+    public function setAvatar(\SimpleXMLElement $vcard): ?PromiseInterface
     {
-        if (!$this->photobin) {
-            return;
+        if (
+            filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)
+            && in_array($this->avatartype, ['vcard-temp', null])
+        ) {
+            return requestAvatarUrl(jid: $this->id, url: (string)$vcard->vCard->PHOTO);
+        } elseif (
+            $vcard->vCard->PHOTO
+            && in_array($this->avatartype, ['vcard-temp', null])
+        ) {
+            return requestAvatarBase64(jid: $this->id, base64: (string)$vcard->vCard->PHOTO->BINVAL);
         }
 
-        $p = new Image;
-        $p->setKey($this->id);
-        $p->fromBase($this->photobin);
-        $p->save();
-
-        unset($this->photobin);
+        return null;
     }
 
     public function getPicture(ImageSize $size = ImageSize::M): string
@@ -434,9 +406,9 @@ class Contact extends Model
             && $this->updated_at->addDay()->isBefore(\Carbon\Carbon::now());
     }
 
-    public function isMe(): bool
+    public function isContact(string $id): bool
     {
-        return ($this->id == me()->id);
+        return ($this->id == $id);
     }
 
     public function isPublic(): bool

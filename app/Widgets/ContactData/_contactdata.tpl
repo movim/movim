@@ -5,7 +5,7 @@
 {/autoescape}
 
 <ul class="block list middle active divided spaced">
-    {if="!$contact->isMe()"}
+    {if="!$contact->isContact($c->me->id)"}
         {if="$roster && $roster->presences->count() > 0 && !$incall"}
             {loop="$roster->presences"}
                 {if="$value->capability && $value->capability->isJingleAudio()"}
@@ -151,7 +151,7 @@
     {/if}
 </ul>
 
-{if="$contact->isMe() && !$contact->isPublic()"}
+{if="$contact->isContact($c->me->id) && !$contact->isPublic()"}
     <ul class="list thick card">
         <li class="block color dpurple">
             <i class="main material-symbols">public</i>

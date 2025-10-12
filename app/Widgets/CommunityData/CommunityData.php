@@ -5,6 +5,7 @@ namespace App\Widgets\CommunityData;
 use Moxl\Xec\Action\Pubsub\GetItem;
 
 use Movim\Widget\Base;
+use Moxl\Stanza\Avatar;
 use Moxl\Xec\Payload\Packet;
 
 class CommunityData extends Base
@@ -38,7 +39,7 @@ class CommunityData extends Base
         $g = new GetItem;
         $g->setTo($origin)
             ->setNode($node)
-            ->setId('urn:xmpp:avatar:metadata')
+            ->setId(Avatar::$nodeMetadata)
             ->request();
     }
 

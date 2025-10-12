@@ -729,6 +729,53 @@ function requestResolverWorker(string $url, int $timeout = 30): PromiseInterface
 }
 
 /**
+ * @desc Handle an Avatar to the AvatarHandler
+ */
+function requestAvatarUrl(
+    string $jid,
+    string $url,
+    ?string $node = null,
+    ?bool $banner = false
+): PromiseInterface {
+    $connector = new React\Socket\FixedUriConnector(
+        'unix://' . AVATAR_HANDLER_SOCKET,
+        new React\Socket\UnixConnector()
+    );
+
+    $browser = new React\Http\Browser($connector);
+    $data = [
+        'url' => $url,
+        'jid' => $jid,
+        'node' => $node,
+        'banner' => $banner
+    ];
+
+    return $browser
+        ->withTimeout(10)
+        ->post('http://avatarhandler/url', [], json_encode($data));
+}
+
+function requestAvatarBase64(
+    string $jid,
+    string $base64
+): PromiseInterface {
+    $connector = new React\Socket\FixedUriConnector(
+        'unix://' . AVATAR_HANDLER_SOCKET,
+        new React\Socket\UnixConnector()
+    );
+
+    $browser = new React\Http\Browser($connector);
+    $data = [
+        'base64' => $base64,
+        'jid' => $jid
+    ];
+
+    return $browser
+        ->withTimeout(10)
+        ->post('http://avatarhandler/base64', [], json_encode($data));
+}
+
+/**
  * @desc Send a Push through the Pusher worker
  */
 function requestPusher(
@@ -788,12 +835,8 @@ function requestTemplaterWorker(string $widget, string $method, ?Packet $data = 
 /*
  * @desc Request a simple url
  */
-function requestURL(string $url, int $timeout = 10, bool $json = false, array $headers = []): ?string
+function requestURL(string $url, int $timeout = 10, array $headers = []): PromiseInterface
 {
-    if ($json) {
-        array_push($headers, 'Accept: application/json');
-    }
-
     $connector = null;
 
     // Disable SSL if the host requested is the local one
@@ -811,13 +854,7 @@ function requestURL(string $url, int $timeout = 10, bool $json = false, array $h
         ->withHeader('User-Agent', DEFAULT_HTTP_USER_AGENT)
         ->withFollowRedirects(true);
 
-    try {
-        $response = await($browser->get($url, $headers));
-        // response successfully received
-        return (string)$response->getBody();
-    } catch (Exception $e) {
-        return null;
-    }
+    return $browser->get($url, $headers);
 }
 
 /**
@@ -840,8 +877,8 @@ function requestAPI(string $action, int $timeout = 2, ?array $post = null, ?bool
 
     try {
         $query = $post
-                ? $browser->post($url, body: http_build_query($post))
-                : $browser->get($url);
+            ? $browser->post($url, body: http_build_query($post))
+            : $browser->get($url);
 
         if ($await) {
             $response = await($query);

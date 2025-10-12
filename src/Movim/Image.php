@@ -77,13 +77,21 @@ class Image
     }
 
     /**
-     * @desc Load a bin picture from an URL
+     * @desc Load a bin picture from a path
      */
-    public function fromURL(string $url): bool
+    public function fromPath(string $path): bool
     {
-        $bin = requestURL($url);
-        if ($bin) {
-            return $this->fromBin($bin);
+        if (file_exists($path)) {
+            $size = filesize($path);
+            if ($size > 0) {
+                $handle = fopen($path, "r");
+                $bin = fread($handle, $size);
+                fclose($handle);
+
+                if ($bin) {
+                    return $this->fromBin($bin);
+                }
+            }
         }
 
         return false;
@@ -92,7 +100,7 @@ class Image
     /**
      * @desc Load a bin picture from a base64
      */
-    public function fromBase(?string $base = null): bool
+    public function fromBase64(?string $base = null): bool
     {
         if ($base) {
             return $this->fromBin((string)base64_decode((string)$base));
@@ -292,7 +300,7 @@ class Image
                 $this->_im->clear();
             }
         } catch (\ImagickException $e) {
-            logError($e);
+            logError($this->_key . ' '. $e->getMessage());
         }
     }
 
@@ -314,26 +322,5 @@ class Image
         if (file_exists($path)) {
             @unlink($path);
         }
-    }
-
-    /**
-     * @desc Load a bin picture from a path
-     */
-    public function fromPath(string $path): bool
-    {
-        if (file_exists($path)) {
-            $size = filesize($path);
-            if ($size > 0) {
-                $handle = fopen($path, "r");
-                $bin = fread($handle, $size);
-                fclose($handle);
-
-                if ($bin) {
-                    return $this->fromBin($bin);
-                }
-            }
-        }
-
-        return false;
     }
 }

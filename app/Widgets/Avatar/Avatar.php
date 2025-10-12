@@ -16,26 +16,24 @@ class Avatar extends \Movim\Widget\Base
         $this->addjs('avatar.js');
 
         $this->registerEvent('avatar_get_handle', 'onGetAvatar');
-        $this->registerEvent('avatar_set_handle', 'onSetAvatar');
-        $this->registerEvent('avatar_set_pubsub', 'onSetBanner');
+        $this->registerEvent('banner', 'onSetBanner');
         $this->registerEvent('avatar_set_errorfeaturenotimplemented', 'onMyAvatarError');
         $this->registerEvent('avatar_set_errorbadrequest', 'onMyAvatarError');
         $this->registerEvent('avatar_set_errornotallowed', 'onMyAvatarError');
+        $this->registerEvent('avatar_set_errorpayloadtoobig', 'onPayloadTooBig');
     }
 
-    public function onSetAvatar(Packet $packet)
+    public function onPayloadTooBig(Packet $packet)
     {
-        $this->ajaxGetAvatar();
-        $this->rpc('MovimTpl.fill', '#avatar', $this->prepareForm());
+        $this->toast($this->__('avatar.too_big'));
     }
 
     public function onSetBanner(Packet $packet)
     {
-        global $loop;
-
-        $loop->addTimer(2, function () {
+        if ($packet->from == $this->me->id) {
+            $this->rpc('Dialog_ajaxClear');
             $this->rpc('MovimTpl.fill', '#avatar', $this->prepareForm());
-        });
+        }
     }
 
     public function onGetAvatar(Packet $packet)
@@ -76,7 +74,7 @@ class Avatar extends \Movim\Widget\Base
     {
         $r = new Get;
         $r->setTo($this->me->id)
-          ->request();
+            ->request();
     }
 
     public function ajaxHttpGetCurrent()
@@ -88,29 +86,18 @@ class Avatar extends \Movim\Widget\Base
     {
         if (empty($avatar->photobin->value)) return;
 
-        $p = new Image;
-        $p->fromBase($avatar->photobin->value);
-        $p->setKey($this->me->id.'avatar');
-        $p->save(false, false, 'jpeg', 90);
-
-        // Reload
-        $p->load('jpeg');
-
         $r = new Set;
-        $r->setData($p->toBase())->request();
-        $p->remove();
-
-        $p->remove('jpeg');
+        $r->setData($avatar->photobin->value)->request();
     }
 
     public function ajaxBannerSubmit($banner)
     {
         if (empty($banner->photobin->value)) return;
 
-        $key = $this->me->id.'banner';
+        $key = $this->me->id . 'banner';
 
         $p = new Image;
-        $p->fromBase($banner->photobin->value);
+        $p->fromBase64($banner->photobin->value);
         $p->setKey($key);
         $p->save(false, false, 'jpeg', 60);
 
@@ -119,10 +106,10 @@ class Avatar extends \Movim\Widget\Base
 
         $r = new Set;
         $r->setNode('urn:xmpp:movim-banner:0')
-          ->setUrl(Image::getOrCreate($key, false, false, 'jpeg', true))
-          ->setWidthMetadata(1280)
-          ->setHeightMetadata(320)
-          ->setData($p->toBase())
-          ->request();
+            ->setUrl(Image::getOrCreate($key, false, false, 'jpeg', true))
+            ->setWidthMetadata(1280)
+            ->setHeightMetadata(320)
+            ->setData($p->toBase())
+            ->request();
     }
 }

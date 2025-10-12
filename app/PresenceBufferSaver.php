@@ -9,7 +9,6 @@ use Moxl\Xec\Action\Vcard\Get;
 use App\Presence;
 use App\Info;
 use App\Contact;
-use Movim\Scheduler;
 
 class PresenceBufferSaver
 {
@@ -33,17 +32,17 @@ class PresenceBufferSaver
                 $first = $this->_models->first();
                 $table = $table->where(function ($query) use ($first) {
                     $query->where('session_id', $first['session_id'])
-                          ->where('jid', $first['jid'])
-                          ->where('resource', $first['resource'])
-                          ->where('mucjid', $first['mucjid']);
+                        ->where('jid', $first['jid'])
+                        ->where('resource', $first['resource'])
+                        ->where('mucjid', $first['mucjid']);
                 });
 
                 $this->_models->skip(1)->each(function ($presence) use ($table) {
                     $table->orWhere(function ($query) use ($presence) {
                         $query->where('session_id', $presence['session_id'])
-                              ->where('jid', $presence['jid'])
-                              ->where('resource', $presence['resource'])
-                              ->where('mucjid', $presence['mucjid']);
+                            ->where('jid', $presence['jid'])
+                            ->where('resource', $presence['resource'])
+                            ->where('mucjid', $presence['mucjid']);
                     });
                 });
                 $table->delete();
@@ -106,22 +105,17 @@ class PresenceBufferSaver
 
                     // Remove the existing Contacts
                     $avatarHashes = $avatarHashes->reject(
-                        fn ($jid, $avatarhash) =>
+                        fn($jid, $avatarhash) =>
                         $contactsHashes->has($jid) && $contactsHashes->get($jid) == $avatarhash
                     );
 
                     $avatarHashes->each(function ($jid, $avatarhash) {
-                        Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
-                            // Last check before firing the request, the avatar might have been received in the meantime
-                            $contact = Contact::where('avatarhash', $avatarhash)->where('id', $jid)->first();
-
-                            if (!$contact || $contact->avatartype == null) {
-                                $r = new Get;
-                                $r->setAvatarhash($avatarhash)
-                                    ->setTo($jid)
-                                    ->request();
-                            }
-                        });
+                        if ($jid != me()->id) {
+                            $r = new Get;
+                            $r->setAvatarhash($avatarhash)
+                                ->setTo($jid)
+                                ->request();
+                        }
                     });
                 }
             } catch (\Exception $e) {
@@ -132,7 +126,7 @@ class PresenceBufferSaver
         }
 
         if ($this->_calls->isNotEmpty()) {
-            $this->_calls->each(fn ($call) => $call());
+            $this->_calls->each(fn($call) => $call());
             $this->_calls = collect();
         }
     }

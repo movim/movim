@@ -101,6 +101,7 @@ class Bootstrap
         define('DEFAULT_PICTURE_QUALITY', 95);
 
         define('API_SOCKET', CACHE_PATH . 'socketapi.sock');
+        define('AVATAR_HANDLER_SOCKET', CACHE_PATH . 'avatarhandler.sock');
         define('PUSHER_SOCKET', CACHE_PATH . 'pusher.sock');
         define('RESOLVER_SOCKET', CACHE_PATH . 'resolver.sock');
         define('TEMPLATER_SOCKET', CACHE_PATH . 'templater.sock');

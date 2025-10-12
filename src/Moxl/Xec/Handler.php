@@ -160,7 +160,7 @@ class Handler
 
             '54c22c37d17c78ee657ea3d40547a970' => 'Version',
 
-            '1cb493832467273efa384bbffa6dc35a' => 'AvatarData',
+            //'1cb493832467273efa384bbffa6dc35a' => 'AvatarData',
             '0f59aa7fb0492a008df1b807e91dda3b' => 'Avatar',
 
             '64d80ef76ceb442578e658fa39cde8c9' => 'Banner', // Movim specific for now

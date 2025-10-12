@@ -5,6 +5,7 @@ namespace Moxl\Stanza;
 class Avatar
 {
     public static $nodeData = 'urn:xmpp:avatar:data';
+    public static $nodeMetadata = 'urn:xmpp:avatar:metadata';
     public static $nodeConfig = [
         'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
         'pubsub#persist_items' => 'true',
@@ -68,15 +69,15 @@ class Avatar
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', $node ? $node : 'urn:xmpp:avatar:metadata');
+        $publish->setAttribute('node', $node ? $node : self::$nodeMetadata);
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
-        $item->setAttribute('id', $node ? 'urn:xmpp:avatar:metadata' : sha1($decoded));
+        $item->setAttribute('id', $node ? self::$nodeMetadata : sha1($decoded));
         $publish->appendChild($item);
 
         $metadata = $dom->createElement('metadata');
-        $metadata->setAttribute('xmlns', 'urn:xmpp:avatar:metadata');
+        $metadata->setAttribute('xmlns', self::$nodeMetadata);
         $item->appendChild($metadata);
 
         $info = $dom->createElement('info');

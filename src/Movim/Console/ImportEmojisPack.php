@@ -18,6 +18,8 @@ use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use ZipArchive;
 
+use function React\Async\await;
+
 class ImportEmojisPack extends Command
 {
     protected function configure()
@@ -50,14 +52,14 @@ class ImportEmojisPack extends Command
 
         $output->writeln('<info>Downloading the manifest</info>');
 
-        $content = requestURL($input->getArgument('manifest-url'), timeout: 5, json: true);
+        $response = await(requestURL($input->getArgument('manifest-url'), timeout: 5, headers: ['Accept: application/json']));
 
-        if (!$content) {
+        if (!$response) {
             $output->writeln('<error>The manifest cannot be downloaded</error>');
             return Command::FAILURE;
         }
 
-        $json = json_decode($content);
+        $json = json_decode((string)$response->getBody());
 
         if ($json == null) {
             $output->writeln('<error>The manifest is not valid</error>');
@@ -85,15 +87,15 @@ class ImportEmojisPack extends Command
 
         $output->writeln('<info>Downloading ' . $pack . ' - ' . $json->{$pack}->description . '</info>');
 
-        $content = requestURL($json->{$pack}->src, timeout: 5);
+        $response = await(requestURL($json->{$pack}->src, timeout: 5));
 
-        if (!$content) {
+        if (!$response) {
             $output->writeln('<error>The archive cannot be downloaded</error>');
             return Command::FAILURE;
         }
 
         $tempZip = tempnam(sys_get_temp_dir(), $pack);
-        file_put_contents($tempZip, $content);
+        file_put_contents($tempZip, (string)$response->getBody());
 
         $output->writeln('<info>Archive downloaded, extracting...</info>');
 

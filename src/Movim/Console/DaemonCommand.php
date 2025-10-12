@@ -131,6 +131,13 @@ class DaemonCommand extends Command
         $socketApi = new SocketServer('unix://' . API_SOCKET);
         new Api($socketApi, $core);
 
+        // Avatar Handler
+
+        $avatarHandler = new Process('exec ' . PHP_BINARY . ' avatarhandler.php', cwd: WORKERS_PATH);
+        $avatarHandler->start($loop);
+        $avatarHandler->on('exit', fn() => $output->writeln('<error>Avatar Handler Worker crashed</error>'));
+        $output->writeln('<info>😋 Avatar Handler Worker launched</info>');
+
         // Resolver
 
         $resolverWorker = new Process('exec ' . PHP_BINARY . ' resolver.php', cwd: WORKERS_PATH);

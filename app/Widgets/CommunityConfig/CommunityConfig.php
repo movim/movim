@@ -84,7 +84,7 @@ class CommunityConfig extends Base
         $key = $origin.$node.'avatar';
 
         $p = new Image;
-        $p->fromBase($form->photobin->value);
+        $p->fromBase64($form->photobin->value);
         $p->setKey($key);
         $p->save(false, false, 'jpeg', 60);
 

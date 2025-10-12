@@ -2,9 +2,9 @@
 
 namespace Moxl\Xec\Action\Banner;
 
-use Movim\Image;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Avatar;
+use React\Http\Message\Response;
 
 class Get extends Action
 {
@@ -19,25 +19,20 @@ class Get extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        if (isset($stanza->pubsub->items->item->metadata->info)
-         && isset($stanza->pubsub->items->item->metadata->info->attributes()->url)) {
+        if (
+            isset($stanza->pubsub->items->item->metadata->info)
+            && isset($stanza->pubsub->items->item->metadata->info->attributes()->url)
+        ) {
             $info = $stanza->pubsub->items->item->metadata->info->attributes();
-
             $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
 
             if ($info->id != $contact->bannerhash) {
-                $contact->bannerhash = $info->id;
-                $contact->save();
-
-                $p = new Image;
-
-                if ($p->fromURL((string)$info->url)) {
-                    $p->setKey($this->_to . '_banner');
-                    $p->save();
-
-                    $this->pack($contact);
-                    $this->deliver();
-                }
+                requestAvatarUrl(jid: $contact->id, url: (string)$info->url, banner: true)->then(
+                    function (Response $response) use ($contact) {
+                        $this->pack($contact);
+                        $this->deliver();
+                    }
+                );
             }
         }
     }

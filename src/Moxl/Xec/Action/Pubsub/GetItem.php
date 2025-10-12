@@ -6,6 +6,8 @@ use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 
 use Movim\Image;
+use Moxl\Stanza\Avatar;
+use Psr\Http\Message\ResponseInterface;
 
 class GetItem extends Action
 {
@@ -35,8 +37,10 @@ class GetItem extends Action
     {
         if ($stanza->pubsub->items->item) {
             foreach ($stanza->pubsub->items->item as $item) {
-                if (isset($item->entry)
-                && (string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
+                if (
+                    isset($item->entry)
+                    && (string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom'
+                ) {
                     $p = \App\Post::firstOrNew([
                         'server' => $this->_to,
                         'node' => $this->_node,
@@ -79,40 +83,32 @@ class GetItem extends Action
                             $this->deliver();
                         }
                     }
-                } elseif (isset($item->metadata)
-                && (string)$item->metadata->attributes()->xmlns == 'urn:xmpp:avatar:metadata'
-                && isset($item->metadata->info)
-                && isset($item->metadata->info->attributes()->url)) {
-                    $i = \App\Info::where('server', $this->_to)
-                                  ->where('node', $this->_node)
-                                  ->first();
-
-                    if ($i && $i->avatarhash !== (string)$item->metadata->info->attributes()->id) {
-                        $p = new Image;
-
-                        if ($p->fromURL((string)$item->metadata->info->attributes()->url)) {
-                            $p->setKey((string)$item->metadata->info->attributes()->id);
-                            $p->save();
-
-                            $i->avatarhash = (string)$item->metadata->info->attributes()->id;
-                            $i->save();
-
-                            $this->method('avatar');
-                            $this->pack([
-                                'server' => $this->_to,
-                                'node' => $this->_node
-                            ]);
-                            $this->deliver();
-                        }
-                    }
+                } elseif (
+                    isset($item->metadata)
+                    && (string)$item->metadata->attributes()->xmlns == Avatar::$nodeMetadata
+                    && isset($item->metadata->info)
+                    && isset($item->metadata->info->attributes()->url)
+                ) {
+                    requestAvatarUrl(
+                        jid: $this->_to,
+                        node: $this->_node,
+                        url: (string)$item->metadata->info->attributes()->url
+                    )->then(function (ResponseInterface $response) {
+                        $this->method('avatar');
+                        $this->pack([
+                            'server' => $this->_to,
+                            'node' => $this->_node
+                        ]);
+                        $this->deliver();
+                    });
                 }
             }
-        // Don't handle the case if we try to retrieve the avatar
-        } elseif ($this->_id != 'urn:xmpp:avatar:metadata') {
+            // Don't handle the case if we try to retrieve the avatar
+        } elseif ($this->_id != Avatar::$nodeMetadata) {
             $pd = new PostDelete;
             $pd->setTo($this->_to)
-               ->setNode($this->_node)
-               ->setId($this->_id);
+                ->setNode($this->_node)
+                ->setId($this->_id);
 
             $pd->handle();
         }
@@ -138,8 +134,8 @@ class GetItem extends Action
     {
         $pd = new PostDelete;
         $pd->setTo($this->_to)
-           ->setNode($this->_node)
-           ->setId($this->_id);
+            ->setNode($this->_node)
+            ->setId($this->_id);
 
         $pd->handle();
     }

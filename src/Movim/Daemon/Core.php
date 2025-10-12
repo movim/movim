@@ -48,21 +48,11 @@ class Core implements MessageComponentInterface
 
         DBSession::whereNotNull('id')->delete();
 
-        if (file_exists(API_SOCKET)) {
-            unlink(API_SOCKET);
-        }
-
-        if (file_exists(RESOLVER_SOCKET)) {
-            unlink(RESOLVER_SOCKET);
-        }
-
-        if (file_exists(TEMPLATER_SOCKET)) {
-            unlink(TEMPLATER_SOCKET);
-        }
-
-        if (file_exists(PUSHER_SOCKET)) {
-            unlink(PUSHER_SOCKET);
-        }
+        if (file_exists(API_SOCKET)) unlink(API_SOCKET);
+        if (file_exists(AVATAR_HANDLER_SOCKET)) unlink(AVATAR_HANDLER_SOCKET);
+        if (file_exists(PUSHER_SOCKET)) unlink(PUSHER_SOCKET);
+        if (file_exists(RESOLVER_SOCKET)) unlink(RESOLVER_SOCKET);
+        if (file_exists(TEMPLATER_SOCKET)) unlink(TEMPLATER_SOCKET);
 
         array_map('unlink', array_merge(
             glob(PUBLIC_CACHE_PATH . '*.css'),
