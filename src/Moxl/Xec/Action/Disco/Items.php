@@ -73,7 +73,7 @@ class Items extends Action
                                     $g = new GetItem;
                                     $g->setTo($info->server)
                                         ->setNode($info->node)
-                                        ->setId(Avatar::$nodeMetadata)
+                                        ->setId(Avatar::NODE_METADATA)
                                         ->request();
                                 }
 

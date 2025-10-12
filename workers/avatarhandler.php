@@ -38,7 +38,7 @@ $handler = function (ServerRequestInterface $request) use ($resolver) {
             case '/base64':
                 $query = $resolver->base64(
                     jid: $data->jid,
-                    base64: $data->base64
+                    type: $data->type
                 );
                 break;
         }

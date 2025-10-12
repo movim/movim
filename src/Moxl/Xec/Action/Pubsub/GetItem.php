@@ -85,7 +85,7 @@ class GetItem extends Action
                     }
                 } elseif (
                     isset($item->metadata)
-                    && (string)$item->metadata->attributes()->xmlns == Avatar::$nodeMetadata
+                    && (string)$item->metadata->attributes()->xmlns == Avatar::NODE_METADATA
                     && isset($item->metadata->info)
                     && isset($item->metadata->info->attributes()->url)
                 ) {
@@ -104,7 +104,7 @@ class GetItem extends Action
                 }
             }
             // Don't handle the case if we try to retrieve the avatar
-        } elseif ($this->_id != Avatar::$nodeMetadata) {
+        } elseif ($this->_id != Avatar::NODE_METADATA) {
             $pd = new PostDelete;
             $pd->setTo($this->_to)
                 ->setNode($this->_node)

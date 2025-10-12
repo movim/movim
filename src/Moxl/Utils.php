@@ -83,27 +83,21 @@ class Utils
     public static function getSupportedServices()
     {
         $features = [
-            'urn:xmpp:microblog:0',
             Post::MICROBLOG_NODE . '+notify',
             Post::STORIES_NODE . '+notify',
             'urn:xmpp:bookmarks:0+notify',
             'urn:xmpp:bookmarks:1+notify',
-            'urn:xmpp:pubsub:subscription',
             'urn:xmpp:pubsub:subscription+notify',
 
-            'eu.siacs.conversations.axolotl.devicelist',
             'eu.siacs.conversations.axolotl.devicelist+notify',
 
             'urn:xmpp:sid:0',
 
             'urn:xmpp:attention:0',
-            'urn:xmpp:vcard4',
             'urn:xmpp:vcard4+notify',
             'urn:xmpp:avatar:data',
-            'urn:xmpp:avatar:metadata',
             'urn:xmpp:avatar:metadata+notify',
 
-            'urn:xmpp:movim-banner:0',
             'urn:xmpp:movim-banner:0+notify',
 
             'urn:xmpp:receipts',
@@ -141,19 +135,14 @@ class Utils
             'urn:xmpp:call-invites:0',
 
             'http://jabber.org/protocol/muc',
-            'http://jabber.org/protocol/nick',
             'http://jabber.org/protocol/nick+notify',
             'http://jabber.org/protocol/xhtml-im',
             'http://jabber.org/protocol/chatstates',
             'http://jabber.org/protocol/caps',
             'http://jabber.org/protocol/disco#info',
             'http://jabber.org/protocol/disco#items',
-            //'http://jabber.org/protocol/activity',
-            'http://jabber.org/protocol/geoloc',
             'http://jabber.org/protocol/geoloc+notify',
             'http://jabber.org/protocol/pubsub',
-            //'http://jabber.org/protocol/tune',
-            //'http://jabber.org/protocol/tune+notify';
         ];
 
         asort($features);

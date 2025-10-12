@@ -1,5 +1,6 @@
 <?php
 
+use App\Workers\AvatarHandler\AvatarHandler;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
@@ -8,6 +9,7 @@ use Movim\Image;
 use Movim\ImageSize;
 use Moxl\Xec\Payload\Packet;
 use React\Http\Message\Response;
+use React\Http\Message\Uri;
 use React\Promise\Promise;
 use React\Promise\PromiseInterface;
 
@@ -757,7 +759,8 @@ function requestAvatarUrl(
 
 function requestAvatarBase64(
     string $jid,
-    string $base64
+    string $base64,
+    string $type
 ): PromiseInterface {
     $connector = new React\Socket\FixedUriConnector(
         'unix://' . AVATAR_HANDLER_SOCKET,
@@ -766,9 +769,11 @@ function requestAvatarBase64(
 
     $browser = new React\Http\Browser($connector);
     $data = [
-        'base64' => $base64,
-        'jid' => $jid
+        'jid' => $jid,
+        'type' => $type
     ];
+
+    file_put_contents(AvatarHandler::getAvatarCachePath($jid, $type), base64_decode($base64));
 
     return $browser
         ->withTimeout(10)

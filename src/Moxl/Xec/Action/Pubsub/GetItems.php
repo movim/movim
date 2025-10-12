@@ -83,7 +83,7 @@ class GetItems extends Action
                 }
             } elseif (
                 isset($item->metadata)
-                && (string)$item->metadata->attributes()->xmlns == Avatar::$nodeMetadata
+                && (string)$item->metadata->attributes()->xmlns == Avatar::NODE_METADATA
                 && isset($item->metadata->info->attributes()->url)
             ) {
                 requestAvatarUrl(

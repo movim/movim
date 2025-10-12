@@ -4,7 +4,7 @@ namespace Moxl\Xec\Payload;
 
 use Psr\Http\Message\ResponseInterface;
 
-class Banner extends Payload
+class BannerMetadata extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {

@@ -2,10 +2,9 @@
 
 namespace Moxl\Xec\Payload;
 
-use Moxl\Stanza\Avatar as StanzaAvatar;
 use Moxl\Xec\Action\Avatar\Get;
 
-class Avatar extends Payload
+class AvatarMetadata extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
@@ -14,13 +13,9 @@ class Avatar extends Payload
         $c = \App\Contact::firstOrNew(['id' => $jid]);
 
         if (isset($stanza->items->item->metadata->info)) {
-            $info = $stanza->items->item->metadata->info->attributes();
+            $hash = $stanza->items->item->metadata->info->attributes()->id;
 
-            if ($info->id != $c->avatarhash) {
-                $c->avatarhash = $info->id;
-                $c->avatartype = StanzaAvatar::$nodeMetadata;
-                $c->save();
-
+            if ($hash != $c->avatarhash) {
                 $g = new Get;
                 $g->setTo($jid)
                   ->request();

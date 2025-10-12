@@ -39,7 +39,7 @@ class CommunityData extends Base
         $g = new GetItem;
         $g->setTo($origin)
             ->setNode($node)
-            ->setId(Avatar::$nodeMetadata)
+            ->setId(Avatar::NODE_METADATA)
             ->request();
     }
 

@@ -8,8 +8,13 @@ use React\Http\Message\Response;
 use React\Promise\Promise;
 use React\Socket\Connector;
 
-class Avatarhandler
+class AvatarHandler
 {
+    public static function getAvatarCachePath(string $jid, string $type)
+    {
+        return CACHE_PATH . hash('sha256', $jid.$type);
+    }
+
     public function url(
         string $jid,
         string $url,
@@ -101,17 +106,21 @@ class Avatarhandler
         });
     }
 
-    public function base64(string $jid, string $base64): Promise
+    public function base64(string $jid, string $type): Promise
     {
-        return new Promise(function ($resolve) use ($jid, $base64) {
+        return new Promise(function ($resolve) use ($jid, $type) {
+            $key = self::getAvatarCachePath($jid, $type);
+            $bin = file_get_contents($key);
+            unlink($key);
+
             $p = new Image;
             $p->setKey($jid);
-            $p->fromBase64($base64);
+            $p->fromBin($bin);
             $p->save();
 
             $contact = \App\Contact::firstOrNew(['id' => $jid]);
-            $contact->avatarhash = sha1(base64_decode($base64));
-            $contact->avatartype = 'vcard-temp';
+            $contact->avatarhash = sha1($bin);
+            $contact->avatartype = $type;
             $contact->save();
 
             $resolve(['jid' => $jid]);

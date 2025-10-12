@@ -60,7 +60,7 @@ class Set extends Action
 
         if ($this->_to == false && $this->_node == false) {
             $me = me()->contact;
-            $me->avatartype = Avatar::$nodeMetadata;
+            $me->avatartype = Avatar::NODE_METADATA;
             $me->save();
 
             $this->deliver();
@@ -104,7 +104,7 @@ class Set extends Action
     public function errorConflict(string $errorId, ?string $message = null)
     {
         $config = new SetConfig;
-        $config->setNode(Avatar::$nodeData)
+        $config->setNode(Avatar::NODE_DATA)
             ->setData(Avatar::$nodeConfig)
             ->request();
 

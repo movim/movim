@@ -4,8 +4,8 @@ namespace Moxl\Stanza;
 
 class Avatar
 {
-    public static $nodeData = 'urn:xmpp:avatar:data';
-    public static $nodeMetadata = 'urn:xmpp:avatar:metadata';
+    public const NODE_DATA = 'urn:xmpp:avatar:data';
+    public const NODE_METADATA = 'urn:xmpp:avatar:metadata';
     public static $nodeConfig = [
         'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
         'pubsub#persist_items' => 'true',
@@ -21,7 +21,7 @@ class Avatar
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
         $items = $dom->createElement('items');
-        $items->setAttribute('node', $node ? $node : self::$nodeData);
+        $items->setAttribute('node', $node ? $node : self::NODE_DATA);
         $pubsub->appendChild($items);
 
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
@@ -34,15 +34,15 @@ class Avatar
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', $node ? $node : self::$nodeData);
+        $publish->setAttribute('node', $node ? $node : self::NODE_DATA);
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
-        $item->setAttribute('id', $node ? self::$nodeData : sha1(base64_decode($data)));
+        $item->setAttribute('id', $node ? self::NODE_DATA : sha1(base64_decode($data)));
         $publish->appendChild($item);
 
         $data = $dom->createElement('data', $data);
-        $data->setAttribute('xmlns', self::$nodeData);
+        $data->setAttribute('xmlns', self::NODE_DATA);
         $item->appendChild($data);
 
         if ($withPublishOption) {
@@ -69,15 +69,15 @@ class Avatar
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', $node ? $node : self::$nodeMetadata);
+        $publish->setAttribute('node', $node ? $node : self::NODE_METADATA);
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
-        $item->setAttribute('id', $node ? self::$nodeMetadata : sha1($decoded));
+        $item->setAttribute('id', $node ? self::NODE_METADATA : sha1($decoded));
         $publish->appendChild($item);
 
         $metadata = $dom->createElement('metadata');
-        $metadata->setAttribute('xmlns', self::$nodeMetadata);
+        $metadata->setAttribute('xmlns', self::NODE_METADATA);
         $item->appendChild($metadata);
 
         $info = $dom->createElement('info');

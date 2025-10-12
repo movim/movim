@@ -19,7 +19,11 @@ class Get extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        requestAvatarBase64(jid: $this->_to, base64: (string)$stanza->pubsub->items->item->data)->then(
+        requestAvatarBase64(
+            jid: $this->_to,
+            base64: (string)$stanza->pubsub->items->item->data,
+            type: Avatar::NODE_DATA
+        )->then(
             function (Response $response) {
                 $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
                 $this->pack($contact);

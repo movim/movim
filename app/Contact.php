@@ -106,9 +106,14 @@ class Contact extends Model
             return requestAvatarUrl(jid: $this->id, url: (string)$vcard->vCard->PHOTO);
         } elseif (
             $vcard->vCard->PHOTO
+            && (string)$vcard->vCard->PHOTO->BINVAL
             && in_array($this->avatartype, ['vcard-temp', null])
         ) {
-            return requestAvatarBase64(jid: $this->id, base64: (string)$vcard->vCard->PHOTO->BINVAL);
+            return requestAvatarBase64(
+                jid: $this->id,
+                base64: (string)$vcard->vCard->PHOTO->BINVAL,
+                type: 'vcard-temp'
+            );
         }
 
         return null;

@@ -82,7 +82,7 @@ class SetMetadata extends Action
     public function errorConflict(string $errorId, ?string $message = null)
     {
         $config = new SetConfig;
-        $config->setNode(Avatar::$nodeMetadata)
+        $config->setNode(Avatar::NODE_METADATA)
             ->setData(Avatar::$nodeConfig)
             ->request();
 
