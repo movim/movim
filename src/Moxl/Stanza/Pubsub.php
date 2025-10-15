@@ -276,11 +276,6 @@ class Pubsub
             //'pubsub#notify_retract' => 'true',
         ]);
 
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#persist_items');
-        $field->appendChild($dom->createElement('value', 'true'));
-        $x->appendChild($field);
-
         $pubsub->appendChild($publishOption);
 
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));

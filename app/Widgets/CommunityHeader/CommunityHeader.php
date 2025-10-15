@@ -45,8 +45,10 @@ class CommunityHeader extends Base
 
     public function tonTestPublish(Packet $packet)
     {
-        list($origin, $node) = array_values($packet->content);
-        $this->rpc('MovimUtils.redirect', $this->route('publish', [$origin, $node]));
+        $this->rpc('MovimUtils.redirect', $this->route(
+            'publish',
+            [$packet->content->to, $packet->content->node]
+        ));
     }
 
     public function tonTestPublishError(Packet $packet)
