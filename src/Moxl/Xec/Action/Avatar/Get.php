@@ -25,8 +25,7 @@ class Get extends Action
             type: Avatar::NODE_DATA
         )->then(
             function (Response $response) {
-                $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
-                $this->pack($contact);
+                $this->pack(\App\Contact::firstOrNew(['id' => $this->_to]));
                 $this->deliver();
             }
         );

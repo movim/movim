@@ -111,7 +111,6 @@ class AvatarHandler
         return new Promise(function ($resolve) use ($jid, $type) {
             $key = self::getAvatarCachePath($jid, $type);
             $bin = file_get_contents($key);
-            unlink($key);
 
             $p = new Image;
             $p->setKey($jid);

@@ -773,11 +773,13 @@ function requestAvatarBase64(
         'type' => $type
     ];
 
-    file_put_contents(AvatarHandler::getAvatarCachePath($jid, $type), base64_decode($base64));
+    $path = AvatarHandler::getAvatarCachePath($jid, $type);
+    file_put_contents($path, base64_decode($base64));
 
     return $browser
         ->withTimeout(10)
-        ->post('http://avatarhandler/base64', [], json_encode($data));
+        ->post('http://avatarhandler/base64', [], json_encode($data))
+        ->always(fn() => unlink($path));
 }
 
 /**
