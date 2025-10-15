@@ -23,9 +23,11 @@
     </div>
 </main>
 
-<?php $this->widget('Snap');?>
-<?php $this->widget('Draw');?>
+<?php if (me()->hasUpload()) { ?>
+    <?php $this->widget('Snap');?>
+    <?php $this->widget('Draw');?>
 
-<?php if (me()->hasPubsub()) { ?>
-    <?php $this->widget('PublishStories');?>
+    <?php if (me()->hasPubsub()) { ?>
+        <?php $this->widget('PublishStories');?>
+    <?php } ?>
 <?php } ?>

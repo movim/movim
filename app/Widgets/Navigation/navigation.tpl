@@ -51,16 +51,18 @@
             </div>
         </li>
 
-        <li onclick="PublishStories_ajaxOpen()"
-            title="{$c->__('page.publish')}"
-        >
-            <span class="primary icon">
-                <i class="material-symbols">web_stories</i>
-            </span>
-            <div>
-                <p class="normal">{$c->__('stories.publish')}</p>
-            </div>
-        </li>
+        {if="$c->me->hasUpload()"}
+            <li onclick="PublishStories_ajaxOpen()"
+                title="{$c->__('page.publish')}"
+            >
+                <span class="primary icon">
+                    <i class="material-symbols">web_stories</i>
+                </span>
+                <div>
+                    <p class="normal">{$c->__('stories.publish')}</p>
+                </div>
+            </li>
+        {/if}
     {/if}
 </ul>
 

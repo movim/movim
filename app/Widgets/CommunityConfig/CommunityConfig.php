@@ -57,7 +57,7 @@ class CommunityConfig extends Base
     {
         $this->toast(
             $packet->content ??
-            $this->__('communityaffiliation.config_error')
+                $this->__('communityaffiliation.config_error')
         );
     }
 
@@ -69,8 +69,8 @@ class CommunityConfig extends Base
 
         $view = $this->tpl();
         $view->assign('info', \App\Info::where('server', $origin)
-                                       ->where('node', $node)
-                                       ->first());
+            ->where('node', $node)
+            ->first());
 
         Dialog::fill($view->draw('_communityconfig_avatar'));
     }
@@ -81,7 +81,7 @@ class CommunityConfig extends Base
             return;
         }
 
-        $key = $origin.$node.'avatar';
+        $key = $origin . $node . 'avatar';
 
         $p = new Image;
         $p->fromBase64($form->photobin->value);
@@ -93,10 +93,10 @@ class CommunityConfig extends Base
 
         $r = new AvatarSet;
         $r->setTo($origin)
-          ->setNode($node)
-          ->setUrl(Image::getOrCreate($key, false, false, 'jpeg', true))
-          ->setData($p->toBase())
-          ->request();
+            ->setNode($node)
+            ->setUrl(Image::getOrCreate($key, false, false, 'jpeg', true))
+            ->setData($p->toBase())
+            ->request();
     }
 
     public function ajaxGetConfig($origin, $node, $advanced = false)
@@ -107,7 +107,7 @@ class CommunityConfig extends Base
 
         $r = new GetConfig;
         $r->setTo($origin)
-          ->setNode($node);
+            ->setNode($node);
 
         if ($advanced) {
             $r->enableAdvanced();
@@ -124,8 +124,8 @@ class CommunityConfig extends Base
 
         $r = new SetConfig;
         $r->setTo($origin)
-          ->setNode($node)
-          ->setData(formToArray($data))
-          ->request();
+            ->setNode($node)
+            ->setData(formToArray($data))
+            ->request();
     }
 }

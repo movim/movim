@@ -104,15 +104,17 @@ MovimWebsocket.attach(() => {
 });
 
 MovimEvents.registerWindow('loaded', 'publish', () => {
-    Upload.attach((file) => {
-        if (MovimUtils.urlParts().page == 'publish') {
-            Publish_ajaxAddUpload(document.querySelector('#publish input[name=id]').value, file.id);
-        }
-    });
+    if (typeof Upload != 'undefined') {
+        Upload.attach((file) => {
+            if (MovimUtils.urlParts().page == 'publish') {
+                Publish_ajaxAddUpload(document.querySelector('#publish input[name=id]').value, file.id);
+            }
+        });
 
-    Upload.initiate((file) => {
-        if (MovimUtils.urlParts().page == 'publish') {
-            Upload.prependName = 'post';
-        }
-    });
+        Upload.initiate((file) => {
+            if (MovimUtils.urlParts().page == 'publish') {
+                Upload.prependName = 'post';
+            }
+        });
+    }
 });

@@ -20,4 +20,6 @@
     <?php $this->widget('Post');?>
 </main>
 
-<?php $this->widget('PublishStories');?>
+<?php if (me()->hasPubsub() && me()->hasUpload()) { ?>
+    <?php $this->widget('PublishStories');?>
+<?php } ?>

@@ -15,8 +15,10 @@ class PublishStories extends Base
     {
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
 
-        $this->addjs('publishstories.js');
-        $this->addcss('publishstories.css');
+        if ($this->me->hasUpload()) {
+            $this->addjs('publishstories.js');
+            $this->addcss('publishstories.css');
+        }
     }
 
     public function onPublish(Packet $packet)
@@ -30,9 +32,9 @@ class PublishStories extends Base
             if (!Post::where('server', $to)->where('node', $node)->where('nodeid', $id)->exists()) {
                 $gi = new GetItem;
                 $gi->setTo($to)
-                   ->setNode($node)
-                   ->setId($id)
-                   ->request();
+                    ->setNode($node)
+                    ->setId($id)
+                    ->request();
             }
 
             $this->rpc('MovimUtils.reload', $this->route('chat'));
@@ -63,13 +65,13 @@ class PublishStories extends Base
 
         $publish = new PostPublish;
         $publish->setTo($this->me->id)
-                ->setNode(Post::STORIES_NODE)
-                ->setId(generateUUID())
-                ->setFrom($this->me->id)
-                ->setTitle($form->title->value)
-                ->addImage($upload->geturl, 'story', 'image/jpeg')
-                ->setTags(getHashtags(htmlspecialchars($form->title->value)))
-                ->request();
+            ->setNode(Post::STORIES_NODE)
+            ->setId(generateUUID())
+            ->setFrom($this->me->id)
+            ->setTitle($form->title->value)
+            ->addImage($upload->geturl, 'story', 'image/jpeg')
+            ->setTags(getHashtags(htmlspecialchars($form->title->value)))
+            ->request();
     }
 
     public function display()

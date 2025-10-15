@@ -1710,24 +1710,27 @@ MovimEvents.registerWindow('resize', 'chat', () => Chat.scrollRestore());
 MovimEvents.registerWindow('loaded', 'chat', () => {
     if (MovimUtils.isMobile()) Chat.touchEvents();
 
-    Upload.initiate((file) => {
-        if (MovimUtils.urlParts().page == 'chat'
-            && (typeof (PublishStories) == 'undefined' || PublishStories.main == undefined)) {
-            Upload.prependName = 'chat';
-        }
-    });
+    if (typeof Upload != 'undefined') {
+        Upload.initiate((file) => {
+            if (MovimUtils.urlParts().page == 'chat'
+                && (typeof (PublishStories) == 'undefined' || PublishStories.main == undefined)) {
+                Upload.prependName = 'chat';
+            }
+        });
 
-    Upload.attach((file) => {
-        if (MovimUtils.urlParts().page == 'chat'
-            && (typeof (PublishStories) == 'undefined' || PublishStories.main == undefined)) {
-            Chat_ajaxHttpDaemonSendMessage(
-                Chat.getTextarea().dataset.jid,
-                false,
-                Boolean(Chat.getTextarea().dataset.muc),
-                file
-            );
-        }
-    });
+        Upload.attach((file) => {
+            if (MovimUtils.urlParts().page == 'chat'
+                && (typeof (PublishStories) == 'undefined' || PublishStories.main == undefined)) {
+                Chat_ajaxHttpDaemonSendMessage(
+                    Chat.getTextarea().dataset.jid,
+                    false,
+                    Boolean(Chat.getTextarea().dataset.muc),
+                    file
+                );
+            }
+        });
+    }
+
 
     // Really early panel showing in case we have a JID
     var parts = MovimUtils.urlParts();

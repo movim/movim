@@ -1,4 +1,5 @@
 <?php $this->widget('Search');?>
+<?php $this->widget('Upload');?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
 
@@ -27,7 +28,6 @@
     </div>
 </main>
 
-<?php if (me()->hasPubsub()) { ?>
-    <?php $this->widget('Upload');?>
+<?php if (me()->hasPubsub() && me()->hasUpload()) { ?>
     <?php $this->widget('PublishStories');?>
 <?php } ?>

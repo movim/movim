@@ -27,7 +27,7 @@
     </div>
 </main>
 
-<?php if (me()->hasPubsub()) { ?>
+<?php if (me()->hasPubsub() && me()->hasUpload()) { ?>
     <?php $this->widget('PublishStories');?>
     <?php $this->widget('StoriesViewer');?>
 <?php } ?>

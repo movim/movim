@@ -58,6 +58,6 @@
     <?php } ?>
 </main>
 
-<?php if (isLogged() && me()->hasPubsub()) { ?>
+<?php if (isLogged() && me()->hasPubsub() && me()->hasUpload()) { ?>
     <?php $this->widget('PublishStories');?>
 <?php } ?>

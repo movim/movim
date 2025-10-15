@@ -6,7 +6,7 @@
 <div class="draw-actions">
     <ul class="list middle">
         <li id="draw-clear">
-            <span class="primary active icon bubble color gray">
+            <span class="primary active icon bubble color transparent">
                 <i class="material-symbols">delete</i>
             </span>
         </li>
@@ -14,17 +14,17 @@
     <br />
     <ul class="list draw-widths">
         <li data-width="small">
-            <span class="primary active icon bubble color bgray">
+            <span class="primary active icon bubble color transparent">
                 <i class="material-symbols">brush</i>
             </span>
         </li>
         <li data-width="medium">
-            <span class="primary active icon bubble color bgray">
+            <span class="primary active icon bubble color transparent">
                 <i class="material-symbols">brush</i>
             </span>
         </li>
         <li data-width="big">
-            <span class="primary active icon bubble color bgray">
+            <span class="primary active icon bubble color transparent">
                 <i class="material-symbols">brush</i>
             </span>
         </li>
@@ -57,8 +57,8 @@
     </ul>
     <ul class="list">
         <li class="draw-eraser">
-            <span class="primary active icon bubble color bgray">
-                <i class="material-symbols">crop_landscape</i>
+            <span class="primary active icon bubble color transparent">
+                <i class="material-symbols">ink_eraser</i>
             </span>
         </li>
     </ul>

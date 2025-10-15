@@ -21,7 +21,7 @@
         <a class="button action color" onclick="Search_ajaxRequest(true)">
             <i class="material-symbols">add</i>
         </a>
-        <?php if (me()->hasPubsub()) { ?>
+        <?php if (me()->hasPubsub() && me()->hasUpload()) { ?>
             <?php $this->widget('Stories');?>
         <?php } ?>
         <?php $this->widget('Chats');?>
@@ -30,12 +30,16 @@
     </div>
 </main>
 
-<?php $this->widget('Dictaphone');?>
-<?php $this->widget('Snap');?>
-<?php if (me()->hasPubsub()) { ?>
-    <?php $this->widget('PublishStories');?>
-    <?php $this->widget('StoriesViewer');?>
+<?php if (me()->hasUpload()) { ?>
+    <?php $this->widget('Dictaphone');?>
+    <?php $this->widget('Snap');?>
+    <?php $this->widget('Draw');?>
+
+    <?php if (me()->hasPubsub()) { ?>
+        <?php $this->widget('PublishStories');?>
+        <?php $this->widget('StoriesViewer');?>
+    <?php } ?>
 <?php } ?>
+
 <?php $this->widget('Tabs');?>
-<?php $this->widget('Draw');?>
 <?php $this->widget('RoomsExplore');?>
