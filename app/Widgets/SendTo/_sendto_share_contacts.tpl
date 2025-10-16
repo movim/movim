@@ -5,7 +5,7 @@
 </li>
 {loop="$contacts"}
     <li data-jid="{$value->jid}">
-        <span class="primary icon bubble small status {$value->presence->presencekey}">
+        <span class="primary icon bubble small {if="$value->presence"}status {$value->presence->presencekey}{/if}">
             <img src="{$value->getPicture(\Movim\ImageSize::M)}">
         </span>
         <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid|echapJS}', false, '{$uri}')">
