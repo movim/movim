@@ -670,6 +670,7 @@ class Message extends Model
 
         if ($post = $xmppUri->getPost()) {
             $this->postid = $post->id;
+            $this->save();
         } elseif ($xmppUri->getServer() && $xmppUri->getNode() && $xmppUri->getNodeItemId()) {
             $getItem = new GetItem;
             $getItem->setTo($xmppUri->getServer())
