@@ -111,11 +111,12 @@
                     <i class="material-symbols">insert_drive_file</i> {$c->__('avatar.file')}
                 {/if}
             {elseif="stripTags($message->body) != ''"}
-                {if="$message->postid"}
-                    <i class="material-symbols icon">article</i>
-                {/if}
                 {if="$message->jidfrom == $message->user_id"}
                     <span class="moderator">{$c->__('chats.me')}:</span>
+                {/if}
+                {if="$message->postid"}
+                    <i class="material-symbols icon">article</i>
+                    {$message->post->title}
                 {/if}
                 {if="$message->resolvedUrl"}
                     {if="$message->resolvedUrl->provider_icon"}

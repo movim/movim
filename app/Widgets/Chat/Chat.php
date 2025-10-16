@@ -741,7 +741,7 @@ class Chat extends \Movim\Widget\Base
 
             $m = $m->fresh();
 
-            if ($file) {
+            if ($file && $file->type != 'xmpp/uri') {
                 $file->message_mid = $m->mid;
                 $file->save();
 

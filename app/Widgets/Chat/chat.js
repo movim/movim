@@ -876,7 +876,7 @@ var Chat = {
         });
 
         document.querySelectorAll('#chat_widget li div.bubble.file > div.message').forEach(message => {
-            if (card = message.querySelector('ul.list.card > li > div')) {
+            if (card = message.querySelector('ul.list.card > li:not(.ticket) > div')) {
                 card.onclick = function (e) {
                     ChatActions_ajaxShowMessageDialog(message.dataset.mid);
                 };
@@ -994,7 +994,7 @@ var Chat = {
     },
     appendMessage: function (idjidtime, data, prepend) {
         if (data.body === null) return;
-
+console.log(data);
         var bubble = null,
             mergeMsg = false,
             msgStack,
