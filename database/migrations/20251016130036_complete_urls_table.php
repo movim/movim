@@ -9,11 +9,11 @@ class CompleteUrlsTable extends Migration
 {
     public function up()
     {
-        DB::table('urls')->truncate();
+        DB::raw('delete from urls');
 
         $this->schema->table('urls', function (Blueprint $table) {
             $table->string('type', 8)->nullable();
-            $table->text('url')->change();
+            $table->text('url');
 
             $table->integer('content_length')->default(0);
             $table->text('title')->nullable();
@@ -39,7 +39,7 @@ class CompleteUrlsTable extends Migration
 
     public function down()
     {
-        DB::table('urls')->truncate();
+        DB::raw('delete from urls');
 
         $this->schema->table('urls', function (Blueprint $table) {
             $table->dropColumn('title');
