@@ -1,14 +1,21 @@
 <li class="block">
-    {if="!empty($embed->images)"}
-        <span class="primary icon thumb active color {$embed->url|stringToColor}"
-            {if="count($embed->images) > 1"}
-                onclick="Preview_ajaxHttpGallery('{$embed->url}', 0)"
-            {else}
-                onclick="Preview_ajaxHttpShow('{$embed->images[0]['url']}')"
-            {/if}
-            style="background-image: url({$embed->images[0]['url']|protectPicture})"
+    {if="$url->image"}
+        <span class="primary icon thumb active color {$url->image|stringToColor}"
+                onclick="Preview_ajaxHttpShow('{$url->image}')"
+            style="background-image: url({$url->image|protectPicture})"
             >
-            {if="count($embed->images) > 1"}
+            <i class="material-symbols">image</i>
+        </span>
+    {elseif="!empty($url->images)"}
+        <span class="primary icon thumb active color {$url->url|stringToColor}"
+            {if="count($url->images) > 1"}
+                onclick="Preview_ajaxHttpGallery('{$url->url}', 0)"
+            {else}
+                onclick="Preview_ajaxHttpShow('{$url->images[0]['url']}')"
+            {/if}
+            style="background-image: url({$url->images[0]['url']|protectPicture})"
+            >
+            {if="count($url->images) > 1"}
                 <i class="material-symbols">photo_library</i>
             {else}
                 <i class="material-symbols">image</i>
@@ -16,8 +23,8 @@
         </span>
     {else}
         <span class="primary icon bubble gray">
-            {if="$embed->providerIcon"}
-                <img src="{$embed->providerIcon|protectPicture}"/>
+            {if="$url->provider_icon"}
+                <img src="{$url->provider_icon|protectPicture}"/>
             {else}
                 <i class="material-symbols">link</i>
             {/if}
@@ -30,36 +37,59 @@
             <i class="material-symbols">chat_paste_go_2</i>
         </span>
 
-        <span class="control icon gray active divided" onclick="Preview.copyToClipboard('{$embed->url}')">
+        <span class="control icon gray active divided" onclick="Preview.copyToClipboard('{$url->url}')">
             <i class="material-symbols">content_copy</i>
         </span>
-        <span class="control icon gray active" onclick="MovimUtils.openInNew('{$embed->url}')">
+        <span class="control icon gray active" onclick="MovimUtils.openInNew('{$url->url}')">
             <i class="material-symbols">open_in_new</i>
         </span>
     {/if}
 
     <div>
-        <p class="line two" title="{$embed->title}">{$embed->title}</p>
-        <p class="line two" title="{if="!empty($embed->description)"}{$embed->description}{/if}">
-            {if="$embed->providerIcon"}
+        {if="$url->messageFile"}
+            <p class="line">
+                {if="$url->messageFile->isPicture"}
+                    <i class="material-symbols">image</i> {$c->__('chats.picture')}
+                {elseif="$url->messageFile->isAudio"}
+                    <i class="material-symbols">equalizer</i> {$c->__('chats.audio')}
+                {elseif="$url->messageFile->isVideo"}
+                    <i class="material-symbols">local_movies</i> {$c->__('chats.video')}
+                {else}
+                    <i class="material-symbols">insert_drive_file</i> {$c->__('avatar.file')}
+                {/if}
+                <span class="second">•</span>
+                <span class="second">{$url->content_length|humanSize}</span>
+            </p>
+        {else}
+            <p class="line two" title="{$url->title}">
+                {$url->title}
+            </p>
+        {/if}
+        <p class="line two" title="{if="!empty($url->description)"}{$url->description}{/if}">
+            {if="$url->provider_icon"}
                 <span class="icon bubble tiny">
-                    <img src="{$embed->providerIcon|protectPicture}"/>
+                    <img src="{$url->provider_icon|protectPicture}"/>
                 </span>
             {/if}
-            {if="$embed->providerName"}
-                {$embed->providerName}
+            {if="$url->provider_name"}
+                {$url->provider_name}
             {/if}
-            {if="!empty($embed->authorName)"}
+            {if="!empty($url->author_name)"}
                 <span class="second">•</span>
-                <span class="second">{$embed->authorName}</span>
+                <span class="second">{$url->author_name}</span>
             {/if}
-            {if="!empty($embed->description)"}
+            {if="!empty($url->description)"}
                 <span class="second">•</span>
-                <span class="second">{$embed->description}</span>
+                <span class="second">{$url->description}</span>
+            {/if}
+
+            {if="$url->messageFile"}
+                <span class="second">•</span>
+                <span class="second">{$url->url}</span>
             {/if}
         </p>
         {if="$message"}
-            <p class="line"><a href="#">{$embed->url}</a></p>
+            <p class="line"><a href="#">{$url->url}</a></p>
         {/if}
     </div>
 </li>

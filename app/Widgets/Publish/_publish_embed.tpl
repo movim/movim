@@ -1,8 +1,8 @@
-{$resolved = $embed->resolve()}
+{$url = $embed->resolve()}
 
-{if="$resolved"}
+{if="$url"}
 <li class="block" id="{$embed->HTMLId}">
-    {if="providerNameIsEmbed($resolved->providerName)"}
+    {if="providerNameIsEmbed($url->provider_name)"}
         <span class="control icon gray" title="{$c->__('publish.embedded_link')}">
             <i class="material-symbols">media_link</i>
         </span>
@@ -10,53 +10,45 @@
     <span class="control active icon gray divided" onclick="Publish_ajaxHttpRemoveEmbed({$embed->draft_id}, {$embed->id})">
         <i class="material-symbols">close</i>
     </span>
-    {if="count($resolved->images) > 1"}
-        {if="$embed->imagenumber > 0"}
-            {$imagenumber = $embed->imagenumber-1}
-        {/if}
-        <span class="primary icon thumb active {if="$embed->imagenumber > 0"}color gray{/if}"
-            onclick="Publish_ajaxEmbedChooseImage({$embed->draft_id}, {$embed->id})"
 
-            {if="$embed->imagenumber > 0"}
-                style="background-image: url({$resolved->images[$imagenumber]['url']|protectPicture})"
-                title="{$resolved->images[$imagenumber]['size']|humanSize}"
-            {/if}
+    {if="$url->image"}
+        <span class="primary icon thumb active color {$url->image|stringToColor}"
+                onclick="Preview_ajaxHttpShow('{$url->image}')"
+            style="background-image: url({$url->image|protectPicture})"
             >
-            <i class="material-symbols">collections</i>
+            <i class="material-symbols">image</i>
+        </span>
+    {elseif="!empty($url->images)"}
+        <span class="primary icon thumb active color {$url->url|stringToColor}"
+            {if="count($url->images) > 1"}
+                onclick="Preview_ajaxHttpGallery('{$url->url}', 0)"
+            {else}
+                onclick="Preview_ajaxHttpShow('{$url->images[0]['url']}')"
+            {/if}
+            style="background-image: url({$url->images[0]['url']|protectPicture})"
+            >
+            {if="count($url->images) > 1"}
+                <i class="material-symbols">photo_library</i>
+            {else}
+                <i class="material-symbols">image</i>
+            {/if}
         </span>
     {else}
-        {if="!empty($resolved->images)"}
-            <span class="primary icon thumb active color {$resolved->url|stringToColor}"
-                {if="count($resolved->images) > 1"}
-                    onclick="Preview_ajaxHttpGallery('{$resolved->url}', 0)"
-                {else}
-                    onclick="Preview_ajaxHttpShow('{$resolved->images[0]['url']}')"
-                {/if}
-                style="background-image: url({$resolved->images[0]['url']|protectPicture})"
-                >
-                {if="count($resolved->images) > 1"}
-                    <i class="material-symbols">photo_library</i>
-                {else}
-                    <i class="material-symbols">image</i>
-                {/if}
-            </span>
-        {else}
-            <span class="primary icon bubble gray">
-                {if="$resolved->providerIcon"}
-                    <img src="{$resolved->providerIcon}"/>
-                {else}
-                    <i class="material-symbols">link</i>
-                {/if}
-            </span>
-        {/if}
+        <span class="primary icon bubble gray">
+            {if="$url->provider_icon"}
+                <img src="{$url->provider_icon}"/>
+            {else}
+                <i class="material-symbols">link</i>
+            {/if}
+        </span>
     {/if}
 
     <div>
-        {if="$resolved->type == 'image'"}
+        {if="$url->type == 'image'"}
             <p class="line">
-                {if="$resolved->images[0]['url'] == $embed->url"}
+                {if="$url->images[0]['url'] == $embed->url"}
                     {$c->__('chats.picture')}
-                {elseif="!empty($resolved->images) && count($resolved->images) > 1"}
+                {elseif="!empty($url->images) && count($url->images) > 1"}
                     {$c->__('chats.picture')}
                     {if="$embed->imagenumber == 0"}
                         -
@@ -64,28 +56,28 @@
                         {$embed->imagenumber}
                     {/if}
                     /
-                    {$resolved->images|count}
+                    {$url->images|count}
                 {/if}
             </p>
-            <p class="line">{$resolved->images[$embed->imagenumber]['size']|humanSize}</p>
+            <p class="line">{$url->images[$embed->imagenumber]['size']|humanSize}</p>
         {else}
-            <p class="line">{$resolved->title}</p>
-            <p class="line two" title="{if="!empty($resolved->description)"}{$resolved->description}{/if}">
-                {if="$resolved->providerIcon"}
+            <p class="line">{$url->title}</p>
+            <p class="line two" title="{if="!empty($url->description)"}{$url->description}{/if}">
+                {if="$url->provider_icon"}
                     <span class="icon bubble tiny">
-                        <img src="{$resolved->providerIcon|protectPicture}"/>
+                        <img src="{$url->provider_icon|protectPicture}"/>
                     </span>
                 {/if}
-                {if="$resolved->providerName"}
-                    {$resolved->providerName}
+                {if="$url->provider_name"}
+                    {$url->provider_name}
                 {/if}
-                {if="!empty($resolved->authorName)"}
+                {if="!empty($url->author_name)"}
                     <span class="second">•</span>
-                    <span class="second">{$resolved->authorName}</span>
+                    <span class="second">{$url->author_name}</span>
                 {/if}
-                {if="!empty($resolved->description)"}
+                {if="!empty($url->description)"}
                     <span class="second">•</span>
-                    <span class="second">{$resolved->description}</span>
+                    <span class="second">{$url->description}</span>
                 {/if}
             </p>
         {/if}

@@ -41,6 +41,7 @@ v0.32 (master)
 * Add a pusher worker that is handling all the WebPush notifications
 * Improve the upload progress status, detect when the file is handled by the PHP and return the XMPP progress status
 * Add an AvatarHandler worker that is taking care of requesting and saving the Avatar and Banner URLs and base64 avatars
+* Refactor and cleanup the Url resolving flow and remove the EmbedLight object
 
 v0.31
 ---------------------------

@@ -4,73 +4,112 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Respect\Validation\Validator;
-use Movim\EmbedLight;
-
 use function React\Async\await;
 
 class Url extends Model
 {
-    public ?MessageFile $file = null;
-
-    public function resolve($url, bool $now = false)
+    public static function resolve(?string $url, bool $now = false): ?Url
     {
         if (Validator::url()->isValid($url)) {
             $hash = hash('sha256', $url);
-            $cached = \App\Url::where('hash', $hash)->first();
+            $dbUrl = \App\Url::where('hash', $hash)->first();
 
-            if ($cached) {
-                $this->id = $cached->id;
-                $this->maybeResolveMessageFile($cached->cache);
-
-                return $cached->cache;
-            } else {
-                $cached = new \App\Url;
-                $cached->hash = $hash;
-            }
-
-            $cached->cache = $url;
-
-            if ($now) return;
+            if ($dbUrl) return $dbUrl;
+            if ($now) return null;
 
             try {
-                $info = await(requestResolverWorker($url));
-                $embed = new EmbedLight($info);
-                $cached->cache = base64_encode(serialize($embed));
-                $cached->save();
+                $resolved = await(requestResolverWorker($url));
 
-                $this->id = $cached->id;
-                $this->maybeResolveMessageFile($embed);
+                if ($resolved) {
+                    $dbUrl = new Url;
+                    $dbUrl->author_name = $resolved->authorName;
+                    $dbUrl->author_url = $resolved->authorUrl;
+                    $dbUrl->content_type = $resolved->contentType;
+                    $dbUrl->content_length = $resolved->contentLength;
+                    $dbUrl->description = $resolved->description;
+                    $dbUrl->hash = $hash;
+                    $dbUrl->image = $resolved->image;
+                    $dbUrl->provider_icon = $resolved->icon;
+                    $dbUrl->provider_name = $resolved->providerName;
+                    $dbUrl->provider_url = $resolved->providerUrl;
+                    $dbUrl->published_at = $resolved->publishedTime;
+                    $dbUrl->title = $resolved->title;
+                    $dbUrl->type = $resolved->type;
+                    $dbUrl->url = $url;
 
-                return $embed;
-            } catch (\Exception $e) {
-                error_log($e->getMessage());
-            }
+                    $dbUrl->images = $resolved->images;
+                    $dbUrl->tags = $resolved->keywords;
+
+                    $dbUrl->save();
+
+                    return $dbUrl;
+                }
+            } catch (\Throwable $th) {}
         }
+
+        return null;
     }
 
-    public function maybeResolveMessageFile($cache)
+    public function setTagsAttribute(array $tags)
     {
-        if ($cache->title == $cache->url
-        && ($cache->type == 'image' || $cache->type == 'video')
+        $dbTags = [];
+
+        foreach ($tags as $tag) {
+            array_push($dbTags, (string)$tag);
+        }
+
+        $this->attributes['serialized_tags'] = serialize($dbTags);
+    }
+
+    public function getTagsAttribute(): array
+    {
+        return unserialize($this->attributes['serialized_tags']);
+    }
+
+    public function setImagesAttribute(array $images)
+    {
+        $dbImages = [];
+
+        foreach ($images as $image) {
+            $image = is_array($image) ? $image['url'] : $image; // hack
+            if (filter_var($image, FILTER_VALIDATE_URL)) {
+                array_push($dbImages, [
+                    'url' => (string)$image,
+                    'size' => $image == $this->attributes['url']
+                        ? $this->attributes['content_length']
+                        : 0
+                ]);
+            }
+        }
+
+        $this->attributes['serialized_images'] = serialize($dbImages);
+    }
+
+    public function getImagesAttribute(): array
+    {
+        return unserialize($this->attributes['serialized_images']);
+    }
+
+    public function getMessageFileAttribute(): ?MessageFile
+    {
+        if (
+            $this->type == 'image' || $this->type == 'video'
         ) {
             $name = '';
-            $path = parse_url($cache->url, PHP_URL_PATH);
+            $path = parse_url($this->url, PHP_URL_PATH);
             if ($path) {
                 $name = basename($path);
             }
 
-            $this->file = new MessageFile;
-            $this->file->name = !empty($name) ? $name : $cache->url;
-            $this->file->type = $cache->contentType;
-            $this->file->size = (!empty($cache->images[0]) && array_key_exists('size', $cache->images[0]))
-                ? $cache->images[0]['size']
-                : 20000;
-            $this->file->url  = $cache->url;
-        }
-    }
+            $file = new MessageFile;
+            $file->name = $this->title ?? $name;
+            $file->type = $this->content_type;
+            $file->size = count($this->images) > 0 ? $this->content_length : 0;
+            $file->url  = $this->url;
 
-    public function getCacheAttribute()
-    {
-        return unserialize(base64_decode($this->attributes['cache']));
+            return $file;
+        }
+
+        return null;
     }
 }

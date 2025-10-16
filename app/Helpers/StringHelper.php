@@ -3,12 +3,12 @@
 use Cocur\Slugify\Slugify;
 use Movim\Route;
 
-function addUrls($string, bool $preview = false)
+function addUrls($string)
 {
     // Add missing links
     return preg_replace_callback(
         "/<a[^>]*>[^<]*<\/a|\".*?\"|((?i)\b((?:https?|xmpp:(?:\/{1,3}|[a-z0-9%+#])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\([^\s()<>]+|(\([^\s()<>]+\))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’])))/",
-        function ($match) use ($preview) {
+        function ($match) {
             if (isset($match[1])) {
                 $content = $match[1];
 
@@ -16,19 +16,6 @@ function addUrls($string, bool $preview = false)
                 if (in_array(substr($content, -3, 3), ['&lt', '&gt'])) {
                     $lastTag = substr($content, -3, 3);
                     $content = substr($content, 0, -3);
-                }
-
-                if ($preview) {
-                    try {
-                        $embed = Embed\Embed::create($match[0]);
-                        if ($embed->type == 'image') {
-                            $content = '<img src="' . $match[0] . '"/>';
-                        } elseif ($embed->type == 'link') {
-                            $content .= ' - ' . $embed->title . ' - ' . $embed->providerName;
-                        }
-                    } catch (Exception $e) {
-                        error_log($e->getMessage());
-                    }
                 }
 
                 if (substr($content, 0, 5) == 'xmpp:') {

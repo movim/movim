@@ -240,12 +240,11 @@ class ChatActions extends \Movim\Widget\Base
 
         if ($message && $message->resolved == false) {
             try {
-                $url = new Url;
-                $url->resolve(htmlspecialchars_decode(trim($message->body)));
+                $url = Url::resolve(htmlspecialchars_decode(trim($message->body)));
                 $message->urlid = $url->id;
 
-                if ($url->file) {
-                    $messageFile = $url->file;
+                if ($url->messageFile) {
+                    $messageFile = $url->messageFile;
                     $messageFile->message_mid = $message->mid;
                     $messageFile->save();
                 }
@@ -266,10 +265,10 @@ class ChatActions extends \Movim\Widget\Base
     public function ajaxHttpResolveUrl(string $url)
     {
         try {
-            $embed = (new Url)->resolve(trim($url));
+            $url = Url::resolve(trim($url));
 
-            if ($embed != null) {
-                $this->rpc('MovimTpl.fill', '#embed', (new Chat)->prepareEmbed($embed));
+            if ($url != null) {
+                $this->rpc('MovimTpl.fill', '#embed', (new Chat)->prepareEmbed($url));
             }
         } catch (\Exception $e) {
         }

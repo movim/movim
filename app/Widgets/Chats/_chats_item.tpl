@@ -117,16 +117,20 @@
                 {if="$message->jidfrom == $message->user_id"}
                     <span class="moderator">{$c->__('chats.me')}:</span>
                 {/if}
-                {if="$message->resolvedUrl && $message->resolvedUrl->cache"}
-                    <i class="material-symbols">link</i>
-                    {if="$message->resolvedUrl->cache->providerName"}
-                        {$message->resolvedUrl->cache->providerName}
+                {if="$message->resolvedUrl"}
+                    {if="$message->resolvedUrl->provider_icon"}
+                        <img  class="tinythumb" src="{$message->resolvedUrl->provider_icon|protectPicture}"/>
+                    {else}
+                        <i class="material-symbols">link</i>
+                    {/if}
+                    {if="$message->resolvedUrl->provider_name"}
+                        {$message->resolvedUrl->provider_name}
                         •
                     {/if}
-                    {$message->resolvedUrl->cache->title}
-                    {if="!empty($message->resolvedUrl->cache->description)"}
+                    {$message->resolvedUrl->title}
+                    {if="!empty($message->resolvedUrl->description)"}
                         •
-                        {$message->resolvedUrl->cache->description}
+                        {$message->resolvedUrl->description}
                     {/if}
                 {else}
                 {autoescape="off"}

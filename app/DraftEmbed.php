@@ -18,12 +18,14 @@ class DraftEmbed extends Model
         return cleanupId('embed'.$this->id);
     }
 
-    public function resolve()
+    public function resolve(): ?Url
     {
         try {
-            return (new \App\Url)->resolve($this->url);
+            return Url::resolve($this->url);
         } catch (\Exception $e) {
             error_log($e->getMessage());
         }
+
+        return null;
     }
 }
