@@ -43,7 +43,7 @@ class CompleteUrlsTable extends Migration
                     $url->url = $cache->url;
                     $url->type = $cache->type;
                     $url->description = $cache->description;
-                    $url->content_type = $cache->contentType;
+                    $url->content_type = $cache->contentType ?? null;
 
                     if (is_array($cache->tags)) {
                         $url->tags = $cache->tags;
@@ -64,9 +64,14 @@ class CompleteUrlsTable extends Migration
                     $url->provider_url = filter_var($cache->providerUrl, FILTER_VALIDATE_URL)
                         ? $cache->providerUrl
                         : null;
-                    $url->published_at = $cache->publishedTime;
+                    $url->published_at = $cache->publishedTime ?? null;
 
-                    $url->save();
+                    try {
+                        $url->save();
+                    } catch (\Throwable $th) {
+                        //throw $th;
+                        $url->delete();
+                    }
                 }
             } else {
                 $url->delete();
