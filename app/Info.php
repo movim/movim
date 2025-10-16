@@ -26,8 +26,11 @@ class Info extends Model
     public function save(array $options = [])
     {
         // Empty features, we're not saving anything
-        if ($this->isEmptyFeatures() && empty($this->freshIdentities)) return;
-
+        if (
+            $this->isEmptyFeatures()
+            && empty($this->freshIdentities)
+            && !$this->isDirty('avatarhash')
+        ) return;
         try {
             unset($this->identities);
             parent::save($options);

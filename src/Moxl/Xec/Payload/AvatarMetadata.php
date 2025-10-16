@@ -20,5 +20,7 @@ class AvatarMetadata extends Payload
                     ->request();
             }
         }
+
+        // TODO handle Avatar URLs
     }
 }

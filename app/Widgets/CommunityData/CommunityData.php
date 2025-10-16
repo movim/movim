@@ -27,7 +27,7 @@ class CommunityData extends Base
         }
     }
 
-    public function tonAvatar(Packet $packet)
+    public function onAvatar(Packet $packet)
     {
         list($origin, $node) = array_values($packet->content);
 

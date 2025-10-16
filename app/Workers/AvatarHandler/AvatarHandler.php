@@ -59,16 +59,11 @@ class AvatarHandler
                     $hash = sha1($bin);
 
                     if ($node != null) {
-                        $info = \App\Info::where('server', $jid)
+                        \App\Info::where('server', $jid)
                             ->where('node', $node)
-                            ->first();
+                            ->update(['avatarhash' => $hash]);
 
-                        if ($info && $info->avatarhash != $hash) {
-                            $info->avatarhash = $hash;
-                            $info->save();
-
-                            $key = $hash;
-                        }
+                        $key = $hash;
                     } elseif ($banner == true) {
                         $contact = \App\Contact::firstOrNew(['id' => $jid]);
 
