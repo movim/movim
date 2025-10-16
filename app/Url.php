@@ -25,7 +25,7 @@ class Url extends Model
                     $dbUrl->author_name = $resolved->authorName;
                     $dbUrl->author_url = $resolved->authorUrl;
                     $dbUrl->content_type = $resolved->contentType;
-                    $dbUrl->content_length = $resolved->contentLength;
+                    $dbUrl->content_length = $resolved->contentLength ?? 0;
                     $dbUrl->description = $resolved->description;
                     $dbUrl->hash = $hash;
                     $dbUrl->image = $resolved->image;
@@ -44,7 +44,7 @@ class Url extends Model
 
                     return $dbUrl;
                 }
-            } catch (\Throwable $th) {}
+            } catch (\Exception $e) {}
         }
 
         return null;
