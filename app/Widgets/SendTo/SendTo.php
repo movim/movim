@@ -106,6 +106,7 @@ class SendTo extends Base
 
         $file = new MessageFile;
         $file->type = 'xmpp/uri';
+        $file->name = 'xmpp-uri';
         $file->url = $uri;
 
         $c = new Chat();
