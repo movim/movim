@@ -9,10 +9,11 @@ class CommunityController extends Base
 {
     public function dispatch()
     {
-        $this->page->setTitle(__('page.explore'));
         $this->jsCheck = false;
 
         if (isLogged() && $this->fetchGet('i')) {
+            $this->page->setTitle(__('page.explore'));
+
             $post = Post::where('server', $this->fetchGet('s'))
                 ->where('node', $this->fetchGet('n'))
                 ->where('nodeid', $this->fetchGet('i'))
