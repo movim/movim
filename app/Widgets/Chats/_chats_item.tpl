@@ -126,9 +126,11 @@
                     {/if}
                     {if="$message->resolvedUrl->provider_name"}
                         {$message->resolvedUrl->provider_name}
-                        •
                     {/if}
-                    {$message->resolvedUrl->title}
+                    {if="$message->resolvedUrl->title"}
+                        •
+                        {$message->resolvedUrl->title}
+                    {/if}
                     {if="!empty($message->resolvedUrl->description)"}
                         •
                         {$message->resolvedUrl->description}

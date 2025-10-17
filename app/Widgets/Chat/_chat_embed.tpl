@@ -60,12 +60,12 @@
                 <span class="second">•</span>
                 <span class="second">{$url->content_length|humanSize}</span>
             </p>
-        {else}
+        {elseif="$url->title"}
             <p class="line two" title="{$url->title}">
                 {$url->title}
             </p>
         {/if}
-        <p class="line two" title="{if="!empty($url->description)"}{$url->description}{/if}">
+        <p class="line two normal" title="{if="!empty($url->description)"}{$url->description}{/if}">
             {if="$url->provider_icon"}
                 <span class="icon bubble tiny">
                     <img src="{$url->provider_icon|protectPicture}"/>
