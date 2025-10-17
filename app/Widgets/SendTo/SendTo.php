@@ -9,6 +9,7 @@ use App\Widgets\Post\Post;
 use Movim\Template\Partial;
 use Movim\Widget\Base;
 use Movim\XMPPUri;
+use stdClass;
 
 class SendTo extends Base
 {
@@ -65,30 +66,25 @@ class SendTo extends Base
         $this->resolveUriInView($uri, $view);
 
         $conferences = $this->me->session->conferences()
-                            ->with('info', 'contact')
-                            ->has('presence')
-                            ->get();
+            ->with('info', 'contact')
+            ->has('presence')
+            ->get();
         $view->assign('conferences', $conferences);
         $view->assign('contacts', $this->me->session
-                                       ->topContacts()
-                                       ->with('presence')
-                                       ->take($conferences->count() > 0 && $conferences->count() <= 10
-                                            ? 20 - $conferences->count()
-                                            : 25 )
-                                       ->get());
+            ->topContacts()
+            ->with('presence')
+            ->take($conferences->count() > 0 && $conferences->count() <= 10
+                ? 20 - $conferences->count()
+                : 25)
+            ->get());
 
         Drawer::fill('send_to_share', $view->draw('_sendto_share'));
         $this->rpc('SendTo.init');
     }
 
-    public function ajaxSend(string $to, bool $muc, string $uri)
+    public function ajaxSend(stdClass $contacts, string $uri)
     {
-        $this->toast($muc
-            ? $this->__('sendto.shared_chatroom')
-            : $this->__('sendto.shared_contact')
-        );
-        $this->rpc('Drawer.clear');
-
+        $contacts = (array)$contacts;
         $message = '';
         $xmppUri = new XMPPUri($uri);
 
@@ -108,13 +104,18 @@ class SendTo extends Base
         $file->type = 'xmpp/uri';
         $file->url = $uri;
 
-        $c = new Chat();
-        $c->sendMessage(
-            $to,
-            $message,
-            $muc,
-            file: $file
-        );
+        foreach ($contacts as $contact => $muc) {
+            $c = new Chat();
+            $c->sendMessage(
+                $contact,
+                $message,
+                $muc,
+                file: $file
+            );
+        }
+
+        $this->toast($this->__('sendto.shared_contacts', count($contacts)));
+        $this->rpc('Drawer.clear');
     }
 
     public function ajaxGetMoreContacts(string $uri)

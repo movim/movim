@@ -42,6 +42,7 @@ v0.32 (master)
 * Improve the upload progress status, detect when the file is handled by the PHP and return the XMPP progress status
 * Add an AvatarHandler worker that is taking care of requesting and saving the Avatar and Banner URLs and base64 avatars
 * Refactor and cleanup the Url resolving flow and remove the EmbedLight object
+* Allow multi-pick when sharing a Post with contacts
 
 v0.31
 ---------------------------
