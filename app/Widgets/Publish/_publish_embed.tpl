@@ -46,7 +46,7 @@
     <div>
         {if="$url->type == 'image'"}
             <p class="line">
-                {if="$url->images[0]['url'] == $embed->url"}
+                {if="$url->image == $embed->url"}
                     {$c->__('chats.picture')}
                 {elseif="!empty($url->images) && count($url->images) > 1"}
                     {$c->__('chats.picture')}
@@ -59,7 +59,7 @@
                     {$url->images|count}
                 {/if}
             </p>
-            <p class="line">{$url->images[$embed->imagenumber]['size']|humanSize}</p>
+            <p class="line">{$url->content_length|humanSize}</p>
         {else}
             <p class="line">{$url->title}</p>
             <p class="line two" title="{if="!empty($url->description)"}{$url->description}{/if}">

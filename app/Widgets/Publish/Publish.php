@@ -237,36 +237,16 @@ class Publish extends Base
                 // The url is an image
                 if (
                     $resolved->type == 'image'
-                    && $resolved->images[0]['url'] == $embed->url
+                    && $resolved->image == $embed->url
                 ) {
                     if (!$hasImage) $hasImage = true;
 
                     $p->addImage(
-                        $resolved->images[0]['url'],
+                        $resolved->image,
                         $resolved->title,
-                        $resolved->contentType
+                        $resolved->content_type
                     );
                 }
-
-                // The url is a gallery
-                /*elseif (is_array($resolved->images) && count($resolved->images) > 1) {
-                    // If an image was picked (0 is not picked)
-                    if ($embed->imagenumber > 0 && array_key_exists($embed->imagenumber-1, $resolved->images)) {
-                        $p->addImage(
-                            $resolved->images[$embed->imagenumber-1]['url'],
-                            $resolved->title,
-                            $resolved->images[$embed->imagenumber-1]['mime']
-                        );
-                    }
-
-                    $p->addLink(
-                        $embed->url,
-                        $resolved->title,
-                        'text/html',
-                        $resolved->description,
-                        $resolved->providerIcon
-                    );
-                }*/
 
                 // The url is a link
                 else {
