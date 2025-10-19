@@ -1,6 +1,8 @@
 var SendTo = {
     contacts: {},
     init: function () {
+        SendTo.contacts = {};
+
         document.querySelectorAll('#sendto_share_contacts > li[data-jid]').forEach(li => {
             var store = new ChatOmemoStorage();
 
