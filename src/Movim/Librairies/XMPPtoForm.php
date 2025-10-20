@@ -26,7 +26,7 @@ class XMPPtoForm
         return $this->html->saveHTML();
     }
 
-    public function getArray($xmpp)
+    public function getArray($xmpp): array
     {
         $array = [];
 

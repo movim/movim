@@ -57,7 +57,7 @@ Links
 
 Translations
 ------------
-Help us translate Movim on https://www.transifex.com/projects/p/movim/
+Help us translate Movim on https://explore.transifex.com/movim/movim/
 
 License
 -------

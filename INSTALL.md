@@ -97,7 +97,7 @@ This part of the tutorial can be followed for the stable and testing installatio
 
 ## 1. Rights check
 
-Movim needs reading permissions on its root folder and recursively to be deployed properly. It will also try to create two folders:
+Movim needs reading permissions on its root folder and recursively to be deployed properly. It will also try to create those folders:
 
   * **log/** for the PHP logs
   * **cache/** for the internal cache (templates and other system files)
@@ -151,13 +151,13 @@ If everything runs as expected you should see:
     Base URL : {public url of your pod}
     …
 
-This daemon will be killed once your console is closed. Consider using `systemd` or `init` scripts to keep the daemon running in the foreground even after your disconnection. There are example startup files, like a `systemd` service file, in the [`etc/` directory](https://github.com/movim/movim/tree/master/etc).
+This daemon will be killed once your console is closed. Consider using `systemd` or `init` scripts to keep the daemon running in the foreground even after your disconnection. We providesome example startup files, like a `systemd` service file, in the [`etc/` directory](https://github.com/movim/movim/tree/master/etc).
 
 ## 5. Web Server configuration
 
 ### 5.1. Virtualhost
 
-Create a virtualhost on your preferred webserver and point the root to the `public/index.php` file. You can have a look at the [default configuration files that we provide](https://github.com/movim/movim/tree/master/etc) if you need some help about that part.
+Create a virtualhost on your preferred webserver and point the root to the `public/index.php` file. You can have a look at the [default configuration Apache/Caddy or nginx files that we provide](https://github.com/movim/movim/tree/master/etc) if you need some help about that part.
 
 Movim is developped to work at the root of a domain or subdomain. __Don't try to deploy it as a subdirectory__ or you might face some unexpected issues.
 
