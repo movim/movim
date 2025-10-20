@@ -52,7 +52,7 @@
                 <p class="normal title">{autoescape="off"}{$story->title|addHashtagsLinks}{/autoescape}</p>
             </div>
         </li>
-        {if="!$story->isMine()$c->me"}
+        {if="!$story->isMine($c->me)"}
         <li class="comment">
             <span class="control icon active" onclick="StoriesViewer.sendComment({$story->id})">
                 <i class="material-symbols">send</i>
