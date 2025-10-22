@@ -41,6 +41,7 @@ class Post extends Base
                     $this->prepareComments($parent)
                 );
                 $this->rpc('MovimUtils.applyAutoheight');
+                $this->rpc('Post.checkCommentAction');
             } else {
                 $this->rpc(
                     'MovimTpl.fill',
@@ -90,6 +91,7 @@ class Post extends Base
                 $this->prepareComments($post)
             );
             $this->rpc('MovimUtils.applyAutoheight');
+            $this->rpc('Post.checkCommentAction');
         }
     }
 

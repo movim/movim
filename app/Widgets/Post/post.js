@@ -1,6 +1,8 @@
 var Post = {
     comment: function() {
         document.querySelector('#comment_add').classList.remove('hide');
+        document.querySelector('#comment_add textarea').focus();
+        document.querySelector('#comment_add').scrollIntoView();
     },
     share : function() {
         var parts = MovimUtils.urlParts();
@@ -14,6 +16,12 @@ var Post = {
 
         if (parts.params.length) {
             Post_ajaxGetPostComments(parts.params[0], parts.params[1], parts.params[2]);
+        }
+    },
+    checkCommentAction: function() {
+        var parts = MovimUtils.urlParts();
+        if (parts.hash == 'comment') {
+            Post.comment();
         }
     }
 };

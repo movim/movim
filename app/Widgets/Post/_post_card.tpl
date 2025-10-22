@@ -185,7 +185,7 @@
                         {$liked = $post->isLiked()}
 
                         {if="$liked"}
-                            <a class="button narrow icon flat red" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
+                            <a class="button narrow icon flat red" onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')" href="#">
                                 {if="$post->likes->count() > 0"}{$post->likes->count()}{/if}
                                 <i class="material-symbols fill">favorite</i>
                             </a>
@@ -200,7 +200,7 @@
                                 {/if}
                             </a>
                         {/if}
-                        <a class="button narrow icon flat gray" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
+                        <a class="button narrow icon flat gray" onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid], [], 'comment')}')" href="#">
                             {if="$post->comments->count() > 0"}{$post->comments->count()}{/if}
                             <i class="material-symbols">chat_bubble_outline</i>
                         </a>
