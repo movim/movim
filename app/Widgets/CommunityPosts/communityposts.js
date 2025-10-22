@@ -6,7 +6,7 @@ var CommunityPosts = {
                 ? 'urn:xmpp:microblog:0'
                 : parts.params[1];
 
-            CommunityPosts_ajaxGetItems(parts.params[0], node, parts.params[2], parts.params[3]);
+            CommunityPosts_ajaxGetItems(parts.params[0], node, parts.params[2]);
         }
     }
 }

@@ -7,7 +7,6 @@ use App\Post;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Base;
-use Moxl\Xec\Action\Pubsub\Delete;
 use Moxl\Xec\Action\Pubsub\PostDelete;
 
 class StoriesViewer extends Base

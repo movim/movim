@@ -6,27 +6,29 @@ use Carbon\Carbon;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 
-use Movim\Image;
 use Moxl\Stanza\Avatar;
-use Psr\Http\Message\ResponseInterface;
 
 class GetItems extends Action
 {
     protected $_to;
     protected $_node;
     protected $_since;
-    protected $_paging;
-    protected $_after;
-    protected $_before;
-    protected $_skip;
-    protected $_query;
+    protected ?int $_paging;
+    protected ?string $_after = null;
+    protected ?string $_before = null;
 
-    protected $_paginated = false;
+    protected bool $_paginated = false;
 
     public function request()
     {
         $this->store();
-        Pubsub::getItems($this->_to, $this->_node, $this->_paging, $this->_after, $this->_before, $this->_skip, $this->_query);
+        Pubsub::getItems(
+            $this->_to,
+            $this->_node,
+            $this->_paging,
+            $this->_after,
+            $this->_before
+        );
     }
 
     public function setAfter($after)
@@ -40,19 +42,6 @@ class GetItems extends Action
     {
         $this->_before = $before;
         $this->_paginated = true;
-        return $this;
-    }
-
-    public function setSkip($skip = 0)
-    {
-        $this->_skip = $skip;
-        $this->_paginated = true;
-        return $this;
-    }
-
-    public function setQuery($query)
-    {
-        $this->_query = $query;
         return $this;
     }
 
@@ -109,7 +98,7 @@ class GetItems extends Action
         ) {
             $first = (string)$stanza->pubsub->set->first;
             $last = (string)$stanza->pubsub->set->last;
-            $count = (string)$stanza->pubsub->set->count;
+            $count = (int)$stanza->pubsub->set->count;
 
             $info = \App\Info::where('server', $this->_to)
                 ->where('node', $this->_node)
@@ -130,8 +119,7 @@ class GetItems extends Action
             'count'     => $count,
             'paginated' => $this->_paginated,
             'before'    => $this->_before,
-            'after'     => $this->_after,
-            'query'     => $this->_query
+            'after'     => $this->_after
         ]);
 
         $this->deliver();

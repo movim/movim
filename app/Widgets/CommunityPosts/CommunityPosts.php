@@ -28,10 +28,10 @@ class CommunityPosts extends Base
 
     public function onItemsId(Packet $packet)
     {
-        list($origin, $node, $ids, $first, $last, $count, $paginated, $before, $after, $query)
+        list($origin, $node, $ids, $first, $last, $count, $paginated, $before, $after)
             = array_values($packet->content);
 
-        $this->displayItems($origin, $node, $ids, $first, $last, $count, $paginated, $before, $after, $query);
+        $this->displayItems($origin, $node, $ids, $first, $last, $count, $before, $after);
     }
 
     public function tonPostResolved(Packet $packet)
@@ -86,27 +86,25 @@ class CommunityPosts extends Base
                 $this->ajaxClear();
             }
         } else {
-            $this->displayItems($origin, $node, false, true);
+            $this->displayItems($origin, $node, first: true);
         }
     }
 
     private function displayItems(
-        $origin,
-        $node,
-        $ids = false,
-        $first = false,
-        $last = false,
-        $count = false,
-        $paginated = false,
-        $before = null,
-        $after = null,
-        $query = null
+        string $origin,
+        string $node,
+        ?array $ids = [],
+        ?string $first = null,
+        ?string $last = null,
+        ?int $count = 0,
+        ?string $before = null,
+        ?string $after = null
     ) {
         if (!validateServerNode($origin, $node)) {
             return;
         }
 
-        $html = $this->prepareCommunity($origin, $node, 0, $ids, $first, $last, $count, $before, $after, $query);
+        $html = $this->prepareCommunity($origin, $node, 0, $ids, $first, $last, $count, $before, $after);
 
         $this->rpc(
             'MovimTpl.fill',
@@ -122,7 +120,7 @@ class CommunityPosts extends Base
         $c->ajaxGetDrawer($jid);
     }
 
-    public function ajaxGetItems($origin, $node, $before = 'empty', $query = null)
+    public function ajaxGetItems($origin, $node, $before = 'empty')
     {
         if (!validateServerNode($origin, $node)) {
             return;
@@ -137,10 +135,6 @@ class CommunityPosts extends Base
             $r = (strpos($before, $this->_beforeAfter) === 0)
                 ? $r->setAfter(substr($before, strlen($this->_beforeAfter)))
                 : $r->setBefore($before);
-        }
-
-        if ($query) {
-            $r->setQuery($query);
         }
 
         $r->request();
@@ -170,16 +164,15 @@ class CommunityPosts extends Base
     }
 
     private function prepareCommunity(
-        $origin,
-        $node,
-        $page = 0,
-        $ids = false,
-        $first = false,
-        $last = false,
-        $count = false,
-        $before = null,
-        $after = null,
-        $query = null
+        string $origin,
+        string $node,
+        int $page = 0,
+        ?array $ids = [],
+        ?string $first = null,
+        ?string $last = null,
+        ?int $count = 0,
+        ?string $before = null,
+        ?string $after = null
     ) {
         $ids = is_array($ids) ? $ids : [];
         foreach ($ids as $key => $id) {
@@ -241,14 +234,16 @@ class CommunityPosts extends Base
 
         if ($first) {
             $view->assign('previouspage', $this->route(
-                $node == AppPost::MICROBLOG_NODE ? 'contact' : 'community',
-                [$origin, $node, $this->_beforeAfter . $first, $query]
+                $node == AppPost::MICROBLOG_NODE
+                    ? 'contact' : 'community',
+                [$origin, $node, $this->_beforeAfter . $first]
             ));
         }
 
         $view->assign('nextpage', $this->route(
-            $node == AppPost::MICROBLOG_NODE ? 'contact' : 'community',
-            [$origin, $node, $last, $query]
+            $node == AppPost::MICROBLOG_NODE
+                ? 'contact' : 'community',
+            [$origin, $node, $last]
         ));
 
         $html = $view->draw('_communityposts');
@@ -258,7 +253,7 @@ class CommunityPosts extends Base
 
     public function display()
     {
-        $node = $this->get('n') != null ? $this->get('n') : AppPost::MICROBLOG_NODE;
+        $node = $this->get('n') ?? AppPost::MICROBLOG_NODE;
         $this->view->assign('class', slugify('c' . $this->get('s') . '_' . $node));
     }
 }
