@@ -213,7 +213,7 @@ class Post extends Base
         }
     }
 
-    public function prepareComments(\App\Post $post, $public = false)
+    public function prepareComments(\App\Post $post, ?bool $public = false)
     {
         $view = $this->tpl();
         $view->assign('post', $post);

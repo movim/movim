@@ -1,14 +1,13 @@
 {$liked = false}
 
 {if="$post->likes->count() > 0"}
-    <ul class="list divided spaced middle">
+    <ul class="list divided spaced thin">
         <li>
-            <span class="primary icon red">
+            <span class="primary icon red tiny">
                 <i class="material-symbols fill">favorite</i>
             </span>
             <div>
-                <p>{$post->likes->count()}</span> {$c->__('button.like')}</p>
-                <p class="all">
+                <p class="all normal">
                     {loop="$post->likes"}
                         {if="$public"}
                             {$value->truename}{if="$key + 1 < $post->likes->count()"},{/if}
@@ -23,6 +22,71 @@
                     {/loop}
                 </p>
             </div>
+        </li>
+    </ul>
+{/if}
+
+{if="!$public"}
+    <hr />
+    <ul class="list middle">
+        <li>
+            <div>
+                <p class="center">
+                    {if="$liked"}
+                        <button class="button red flat"
+                            id="like"
+                            onclick="this.classList.add('disabled'); PostActions_ajaxDeleteConfirm('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
+                            <i class="material-symbols fill">favorite</i> {$post->likes->count()}
+                        </button>
+                    {else}
+                        <button class="button red flat"
+                            id="like"
+                            onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
+                            <i class="material-symbols">favorite</i> {$post->likes->count()}
+                        </button>
+                    {/if}
+                    <button class="button flat gray" onclick="Post.comment()">
+                        <i class="material-symbols">add_comment</i> {$c->__('post.comment_add')}
+                    </button>
+                    <a
+                        title="{$c->__('button.share')}"
+                        class="button flat gray"
+                        onclick="SendTo.shareArticle('{$post->getRef()}')"
+                        href="#"
+                    >
+                        <i class="material-symbols">share</i> {$c->__('button.share')}
+                    </a>
+                    <a
+                        title="{$c->__('button.send_to')}"
+                        class="button flat gray"
+                        onclick="SendTo_ajaxSendContact('{$post->getRef()}')"
+                        href="#"
+                    >
+                        <i class="material-symbols">send</i> {$c->__('button.send_to')}
+                    </a>
+                </p>
+            </div>
+        </li>
+    </ul>
+    <ul class="list card shadow thick">
+        <li class="block hide" id="comment_add">
+            <span class="primary icon gray">
+                <i class="material-symbols">add_comment</i>
+            </span>
+            <span class="control icon gray active" onclick="Post_ajaxPublishComment(MovimUtils.formToJson('comment'),'{$post->server}', '{$post->node}', '{$post->nodeid}'); this.classList.add('disabled');">
+                <i class="material-symbols">send</i>
+            </span>
+            <form name="comment">
+                <div>
+                    <textarea
+                        dir="auto"
+                        data-autoheight="true"
+                        name="comment"
+                        placeholder="{$c->__('field.type_here')}"
+                    ></textarea>
+                    <label for="comment">{$c->__('post.comment_add')}</label>
+                </div>
+            </form>
         </li>
     </ul>
 {/if}
@@ -95,65 +159,4 @@
         </li>
         {/if}
     {/loop}
-
-    {if="!$public"}
-    <li class="hide" id="comment_add">
-        <span class="primary icon gray">
-            <i class="material-symbols">comment</i>
-        </span>
-        <span class="control icon gray active" onclick="Post_ajaxPublishComment(MovimUtils.formToJson('comment'),'{$post->server}', '{$post->node}', '{$post->nodeid}'); this.classList.add('disabled');">
-            <i class="material-symbols">send</i>
-        </span>
-        <form name="comment">
-            <div>
-                <textarea
-                    dir="auto"
-                    data-autoheight="true"
-                    name="comment"
-                    placeholder="{$c->__('field.type_here')}"
-                ></textarea>
-                <label for="comment">{$c->__('post.comment_add')}</label>
-            </div>
-        </form>
-    </li>
-
-    <li>
-        <div>
-            <p class="center">
-                {if="$liked"}
-                    <button class="button red flat"
-                        id="like"
-                        onclick="this.classList.add('disabled'); PostActions_ajaxDeleteConfirm('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
-                        <i class="material-symbols">favorite</i>
-                    </button>
-                {else}
-                    <button class="button red flat"
-                        id="like"
-                        onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
-                        <i class="material-symbols fill">favorite</i> {$c->__('button.like')}
-                    </button>
-                {/if}
-                <button class="button flat gray" onclick="Post.comment()">
-                    <i class="material-symbols">add_comment</i> {$c->__('post.comment_add')}
-                </button>
-                <a
-                    title="{$c->__('button.share')}"
-                    class="button flat gray"
-                    onclick="SendTo.shareArticle('{$post->getRef()}')"
-                    href="#"
-                >
-                    <i class="material-symbols">share</i> {$c->__('button.share')}
-                </a>
-                <a
-                    title="{$c->__('button.send_to')}"
-                    class="button flat gray"
-                    onclick="SendTo_ajaxSendContact('{$post->getRef()}')"
-                    href="#"
-                >
-                    <i class="material-symbols">send</i> {$c->__('button.send_to')}
-                </a>
-            </p>
-        </div>
-    </li>
-    {/if}
 </ul>
