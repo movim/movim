@@ -25,7 +25,6 @@ class Notifications extends Base
         $this->addcss('notifications.css');
 
         $this->registerEvent('post', 'onPost');
-        $this->registerEvent('pubsub_getitem_handle', 'onPost');
         $this->registerEvent('subscribe', 'onInvitations');
         $this->registerEvent('roster', 'onRoster');
         $this->registerEvent('roster_additem_handle', 'onInvitations');

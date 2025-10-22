@@ -13,7 +13,7 @@ class GetItem extends Action
     protected $_to;
     protected $_node;
     protected $_id;
-    protected $_askreply;
+    protected ?int $_replypostid = null;
 
     protected $_manual = false; // Use when we explicitely request an item
     protected $_parentid;
@@ -57,18 +57,16 @@ class GetItem extends Action
 
                     $p->save();
 
-                    if (!$this->_manual) {
-                        if (is_array($this->_askreply)) {
-                            $this->pack(\App\Post::find($this->_askreply));
-                            $this->deliver();
-                        } else {
-                            $this->pack($p->id);
-                            $this->event('post');
-                        }
+                    if ($this->_replypostid != null) {
+                        $this->pack($this->_replypostid);
+                        $this->deliver();
+                    } elseif ($p->isStory()) {
+                        $this->pack($p->id);
+                        $this->event('story');
+                    } else {
+                        $this->pack($p->id);
+                        $this->event('post');
                     }
-
-                    $this->pack($p->id);
-                    $this->deliver();
 
                     if ($this->_messagemid) {
                         $message = me()->messages()->where('mid', $this->_messagemid)->first();

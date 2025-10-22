@@ -19,33 +19,24 @@ class Menu extends Base
     {
         $this->registerEvent('post', 'onPost');
         $this->registerEvent('post_retract', 'onRetract', 'news');
-        $this->registerEvent('pubsub_postdelete', 'onRetract', 'news');
-        $this->registerEvent('pubsub_getitem_handle', 'onItem', 'news');
 
         $this->addjs('menu.js');
         $this->addcss('menu.css');
     }
 
-    public function onItem(Packet $packet)
-    {
-        $post = AppPost::find($packet->content);
-
-        if ($post) {
-            if ($post->isComment()) {
-                $post = $post->getParent();
-            }
-
-            $this->rpc('MovimTpl.fill', '#menu_widget #' . cleanupId($post->nodeid), $this->preparePost($post));
-        }
-    }
-
     public function onRetract(Packet $packet)
     {
-        $this->ajaxHttpGetAll();
+        $this->rpc('MovimTpl.remove', '#' . cleanupId($packet->content['nodeid']));
     }
 
     public function onPost(Packet $packet)
     {
+        $post = AppPost::find($packet->content);
+
+        if (!$post) {
+            return;
+        }
+
         $since = User::me(true)->posts_since; // Force refresh the user
 
         if ($since) {
@@ -65,18 +56,8 @@ class Menu extends Base
             $count = 0;
         }
 
-        $post = AppPost::find($packet->content);
-
-        if (!is_object($post)) {
-            return;
-        }
-
-        $post = \App\Post::where('server', $post->server)
-            ->where('node', $post->node)
-            ->where('nodeid', $post->nodeid)
-            ->first();
-
-        if ($post === null || $post->isEdited()) {
+        if ($post->isEdited() && !$post->isComment()) {
+            $this->rpc('MovimTpl.fill', '#menu_widget #' . cleanupId($post->nodeid), $this->preparePost($post));
             return;
         }
 
@@ -98,18 +79,18 @@ class Menu extends Base
             && $count > 0
             && (strtotime($post->published) > strtotime($since))
         ) {
-            if ($post->isMicroblog() || $post->isStory()) {
+            if ($post->isMicroblog()) {
                 $contact = \App\Contact::firstOrNew(['id' => $post->server]);
 
                 if (!$post->isMine($this->me)) {
                     Notif::append(
                         'news',
-                        '📝 ' . ($post->isStory() ? __('stories.new_story', $contact->truename) : $contact->truename),
+                        '📝 ' . $contact->truename,
                         $post->title,
                         $contact->getPicture(),
                         time: 4,
-                        action: $post->isStory() ? $this->route('chat') : $this->route('post', [$post->server, $post->node, $post->nodeid]),
-                        group: $post->isStory() ? null : $this->route('contact', $post->server)
+                        action: $this->route('post', [$post->server, $post->node, $post->nodeid]),
+                        group: $this->route('contact', $post->server)
                     );
                 }
             } else {

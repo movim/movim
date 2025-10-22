@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Payload;
 
+use App\Post as AppPost;
 use Moxl\Xec\Action\Pubsub\GetItem;
 
 class Post extends Payload
@@ -10,7 +11,8 @@ class Post extends Payload
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $from   = (string)$parent->attributes()->from;
+        $from = (string)$parent->attributes()->from;
+        $node = (string)$stanza->items->attributes()->node;
 
         if (
             $stanza->items->item
@@ -23,7 +25,7 @@ class Post extends Payload
 
             $p = \App\Post::firstOrNew([
                 'server' => $from,
-                'node' =>  (string)$stanza->items->attributes()->node,
+                'node' =>  $node,
                 'nodeid' => (string)$stanza->items->item->attributes()->id
             ]);
             $p->set($stanza->items->item, $delay);
@@ -38,27 +40,36 @@ class Post extends Payload
                 $p->save();
 
                 $this->pack($p->id);
-                $this->deliver();
+
+                if ($p->isStory()) {
+                    $this->event('story');
+                } else {
+                    $this->deliver();
+                }
             }
         } elseif ($stanza->items->retract) {
             \App\Post::where('nodeid', $stanza->items->retract->attributes()->id)
                 ->where('server', $from)
-                ->where('node', $stanza->items->attributes()->node)
+                ->where('node', $node)
                 ->delete();
 
-            $this->method('retract');
+            if ($node == AppPost::STORIES_NODE) {
+                $this->event('story_retract');
+                return;
+            }
 
             $this->pack([
                 'server' => $from,
-                'node' => $stanza->items->attributes()->node
+                'node' => $node,
+                'nodeid' => (string)$stanza->items->retract->attributes()->id
             ]);
+            $this->method('retract');
             $this->deliver();
         } elseif (
             $stanza->items->item && isset($stanza->items->item->attributes()->id)
             && !filter_var($from, FILTER_VALIDATE_EMAIL)
         ) {
             // In this case we only get the header, so we request the full content
-            $node = (string)$stanza->items->attributes()->node;
             $id = (string)$stanza->items->item->attributes()->id;
 
             if (

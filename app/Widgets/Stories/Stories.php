@@ -4,6 +4,7 @@ namespace App\Widgets\Stories;
 
 use App\Post;
 use App\Widgets\Chats\Chats;
+use App\Widgets\Notif\Notif;
 use Movim\Widget\Base;
 use Moxl\Xec\Payload\Packet;
 
@@ -11,8 +12,8 @@ class Stories extends Base
 {
     public function load()
     {
-        $this->registerEvent('post', 'onStory');
-        $this->registerEvent('pubsub_getitem_handle', 'onStory');
+        $this->registerEvent('story', 'onStory');
+        $this->registerEvent('story_retract', 'onStoryRetract');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
 
         $this->addjs('stories.js');
@@ -23,15 +24,35 @@ class Stories extends Base
     {
         $post = Post::find($packet->content);
 
-        if ($post && $post->isStory()) {
+        if ($post) {
+            if (!$post->isMine($this->me)) {
+                $contact = \App\Contact::firstOrNew(['id' => $post->server]);
+
+                Notif::append(
+                    'news',
+                    '📝 ' . __('stories.new_story', $contact->truename),
+                    $post->title,
+                    $contact->getPicture(),
+                    time: 4,
+                    action: $this->route('chat')
+                );
+            }
+
             $this->ajaxHttpGet();
         }
     }
 
+    public function onStoryRetract(Packet $packet)
+    {
+        $this->ajaxHttpGet();
+    }
+
     public function onDelete(Packet $packet)
     {
-        if ($packet->content['server'] == $this->me->id
-         && $packet->content['node'] == Post::STORIES_NODE) {
+        if (
+            $packet->content['server'] == $this->me->id
+            && $packet->content['node'] == Post::STORIES_NODE
+        ) {
             $this->toast($this->__('stories.deleted'));
             $this->ajaxHttpGet();
         }

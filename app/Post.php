@@ -793,7 +793,7 @@ class Post extends Model
         }
     }
 
-    public function getUUID()
+    public function getUUID(): string
     {
         if (substr($this->nodeid, 10) == 'urn:uuid:') {
             return $this->nodeid;

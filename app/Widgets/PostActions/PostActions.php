@@ -16,7 +16,6 @@ class PostActions extends Base
     public function load()
     {
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
-        $this->registerEvent('pubsub_postdelete', 'onDelete');
         $this->addjs('postactions.js');
     }
 
@@ -28,7 +27,6 @@ class PostActions extends Base
             $this->toast($this->__('post.comment_deleted'));
         } else {
             $this->toast($this->__('post.deleted'));
-
             $this->rpc(
                 'PostActions.handleDelete',
                 ($node == AppPost::MICROBLOG_NODE) ?

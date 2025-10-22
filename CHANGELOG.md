@@ -43,6 +43,7 @@ v0.32 (master)
 * Add an AvatarHandler worker that is taking care of requesting and saving the Avatar and Banner URLs and base64 avatars
 * Refactor and cleanup the Url resolving flow and remove the EmbedLight object
 * Allow multi-pick when sharing a Post with contacts
+* Cleanup and refactor of the Posts and Stories events handling
 
 v0.31
 ---------------------------
