@@ -22,6 +22,7 @@ class CommunityPosts extends Base
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved', 'community');
         $this->registerEvent('pubsub_getitems_errorpresencesubscriptionrequired', 'tonItemsErrorPresenceSubscriptionRequired');
         $this->registerEvent('post_resolved', 'tonPostResolved');
+        $this->registerEvent('post_comment_published', 'onCommentPublished');
 
         $this->addjs('communityposts.js');
     }
@@ -32,6 +33,32 @@ class CommunityPosts extends Base
             = array_values($packet->content);
 
         $this->displayItems($origin, $node, $ids, $first, $last, $count, $before, $after);
+    }
+
+    public function onCommentPublished(Packet $packet)
+    {
+        $comment = AppPost::find($packet->content);
+
+        if ($comment->isLike()) {
+            $this->toast($packet->content
+                ? $this->__('post.comment_like_published')
+                : $this->__('post.comment_published'));
+        }
+
+        // Full refresh for now
+        if ($parent = $comment->getParent()) {
+            $info = \App\Info::where('server', $parent->server)
+                ->where('node', $parent->node)
+                ->first();
+
+            $this->rpc(
+                'MovimTpl.replace',
+                '#' . cleanupId($parent->nodeid),
+                $info && $info->isGallery()
+                    ? $this->prepareTicket($parent)
+                    : $this->preparePost($parent)
+            );
+        }
     }
 
     public function tonPostResolved(Packet $packet)

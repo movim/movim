@@ -20,12 +20,12 @@ class Post extends Base
         $this->addcss('post.css');
         $this->registerEvent('microblog_commentsget_handle', 'onComments', 'post');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
-        $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentpublish_error', 'onCommentPublishError');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete', 'post');
         $this->registerEvent('pubsub_getitem_errorpresencesubscriptionrequired', 'onPresenceSubscriptionRequired');
         $this->registerEvent('post', 'tonHandle', 'post');
         $this->registerEvent('post_resolved', 'tonHandle', 'post');
+        $this->registerEvent('post_comment_published', 'onCommentPublished', 'post');
     }
 
     public function tonHandle(Packet $packet)
@@ -54,9 +54,24 @@ class Post extends Base
 
     public function onCommentPublished(Packet $packet)
     {
-        $this->toast($packet->content
-            ? $this->__('post.comment_like_published')
-            : $this->__('post.comment_published'));
+        $post = AppPost::find($packet->content);
+
+        if ($post->isComment()) {
+            if ($parent = $post->getParent()) {
+                $this->rpc(
+                    'MovimTpl.fill',
+                    '#post_widget.' . cleanupId($parent->nodeid) . ' #comments',
+                    $this->prepareComments($parent)
+                );
+                $this->rpc('MovimUtils.applyAutoheight');
+            }
+
+            if ($post->isLike()) {
+                $this->toast($packet->content
+                    ? $this->__('post.comment_like_published')
+                    : $this->__('post.comment_published'));
+            }
+        }
     }
 
     public function onCommentPublishError()

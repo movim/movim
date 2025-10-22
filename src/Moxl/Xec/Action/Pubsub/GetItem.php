@@ -53,7 +53,7 @@ class GetItem extends Action
 
                     if ($p->isComment() && !isset($p->parent_id)) {
                         return;
-                    }
+                    };
 
                     $p->save();
 
@@ -63,6 +63,9 @@ class GetItem extends Action
                     } elseif ($p->isStory()) {
                         $this->pack($p->id);
                         $this->event('story');
+                    } elseif ($p->isComment()) {
+                        $this->pack($p->id);
+                        $this->event('post_comment_published');
                     } else {
                         $this->pack($p->id);
                         $this->event('post');
