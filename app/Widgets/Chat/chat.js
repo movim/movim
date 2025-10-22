@@ -994,7 +994,7 @@ var Chat = {
     },
     appendMessage: function (idjidtime, data, prepend) {
         if (data.body === null) return;
-console.log(data);
+
         var bubble = null,
             mergeMsg = false,
             msgStack,

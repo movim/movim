@@ -5,7 +5,6 @@ namespace Moxl\Xec\Action\Pubsub;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 
-use Movim\Image;
 use Moxl\Stanza\Avatar;
 use Psr\Http\Message\ResponseInterface;
 

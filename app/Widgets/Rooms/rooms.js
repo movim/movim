@@ -164,24 +164,27 @@ var Rooms = {
     setRoom: function (id, html) {
         var listSelector = '#rooms ul.list.rooms ';
         var list = document.querySelector(listSelector);
-        var element = list.querySelector('#' + id);
 
-        if (element) element.remove();
+        if (list) {
+            var element = list.querySelector('#' + id);
 
-        var rooms = document.querySelectorAll(listSelector + '> li');
-        var i = 0;
+            if (element) element.remove();
 
-        while (i < rooms.length) {
-            if (rooms[i].id > id) {
-                MovimTpl.prependBefore(listSelector + '#' + rooms[i].id, html);
-                break;
+            var rooms = document.querySelectorAll(listSelector + '> li');
+            var i = 0;
+
+            while (i < rooms.length) {
+                if (rooms[i].id > id) {
+                    MovimTpl.prependBefore(listSelector + '#' + rooms[i].id, html);
+                    break;
+                }
+
+                i++;
             }
 
-            i++;
-        }
-
-        if (i == rooms.length) {
-            MovimTpl.append(listSelector, html);
+            if (i == rooms.length) {
+                MovimTpl.append(listSelector, html);
+            }
         }
     },
 

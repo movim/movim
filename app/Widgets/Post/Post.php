@@ -19,9 +19,9 @@ class Post extends Base
         $this->addjs('post.js');
         $this->addcss('post.css');
         $this->registerEvent('microblog_commentsget_handle', 'onComments', 'post');
+        $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentpublish_error', 'onCommentPublishError');
-        $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
         $this->registerEvent('pubsub_getitem_handle', 'tonHandle', 'post');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete', 'post');
         $this->registerEvent('pubsub_getitem_errorpresencesubscriptionrequired', 'onPresenceSubscriptionRequired');
