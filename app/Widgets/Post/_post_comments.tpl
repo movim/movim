@@ -28,7 +28,7 @@
 
 {if="!$public"}
     <hr />
-    <ul class="list middle">
+    <ul class="list">
         <li>
             <div>
                 <p class="center">

@@ -15,7 +15,7 @@ class CommentsGet extends Action
     public function request()
     {
         $this->store();
-        Pubsub::getItems($this->_to, $this->_node);
+        Pubsub::getItems($this->_to, $this->_node, paging: 100);
     }
 
     public function setId($id)
@@ -26,9 +26,11 @@ class CommentsGet extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
+        Post::where('parent_id', $this->_parentid)->delete();
+
         if ($stanza->pubsub->items->item) {
             foreach ($stanza->pubsub->items->item as $item) {
-                $p = \App\Post::firstOrNew([
+                $p = Post::firstOrNew([
                     'server' => $this->_to,
                     'node' => $this->_node,
                     'nodeid' => (string)$item->attributes()->id
