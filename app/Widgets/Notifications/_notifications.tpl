@@ -87,16 +87,14 @@
                 {/if}
                 <li>
                     {if="$value->contact"}
-                        <span class="primary icon bubble">
-                            <a href="{$c->route('contact', $value->contact->jid)}">
-                                <img src="{$value->contact->getPicture()}">
-                            </a>
+                        <span class="primary icon bubble active small"
+                            onclick="MovimUtils.reload('{$c->route('contact', $value->contact->jid)}')">
+                            <img src="{$value->contact->getPicture()}">
                         </span>
                     {else}
-                        <span class="primary icon bubble color {$value->aid|stringToColor}">
-                            <a href="{$c->route('contact', $value->aid)}">
-                                {$value->aid|firstLetterCapitalize}
-                            </a>
+                        <span class="primary icon bubble color {$value->aid|stringToColor} active small"
+                            onclick="MovimUtils.reload('{$c->route('contact', $value->aid)}')">
+                            {$value->aid|firstLetterCapitalize}
                         </span>
                     {/if}
                     {if="$value->isLike()"}
@@ -121,9 +119,8 @@
                         <p class="line" onclick="MovimUtils.reload('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}'); Drawer.clear();">
                             <span class="info">{$value->published|prepareDate:true,true}</span>
                             {if="!$value->isLike()"}
-                                {$c->__('post.commented')}
-                                {if="$value->content"}
-                                    <span class="second">{$value->content}</span>
+                                {if="$value->title"}
+                                    {$value->title}
                                 {/if}
                             {else}
                                 {$c->__('post.liked')}

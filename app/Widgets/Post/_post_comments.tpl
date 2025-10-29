@@ -31,7 +31,7 @@
     <ul class="list">
         <li>
             <div>
-                <p class="center">
+                <p>
                     {if="$liked"}
                         <button class="button red flat"
                             id="like"
@@ -54,7 +54,7 @@
                         onclick="SendTo.shareArticle('{$post->getRef()}')"
                         href="#"
                     >
-                        <i class="material-symbols">share</i> {$c->__('button.share')}
+                        <i class="material-symbols">share</i>
                     </a>
                     <a
                         title="{$c->__('button.send_to')}"
@@ -62,7 +62,7 @@
                         onclick="SendTo_ajaxSendContact('{$post->getRef()}')"
                         href="#"
                     >
-                        <i class="material-symbols">send</i> {$c->__('button.send_to')}
+                        <i class="material-symbols">send</i>
                     </a>
                 </p>
             </div>
