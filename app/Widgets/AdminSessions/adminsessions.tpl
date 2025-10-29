@@ -1,5 +1,5 @@
 <div id="adminsessions" class="tabelem" title="{$c->__("adminsessions.title")}" data-mobileicon="group">
-    <ul class="list middle flex active">
+    <ul class="list middle flex active card shadow">
         <li class="subheader">
             <div>
                 <p>{$c->__('adminsessions.text')} <span class="second">{$sessions|count}</span></p>
@@ -13,9 +13,6 @@
                         <i class="material-symbols fill">star</i>
                     </span>
                 {/if}
-                <span class="control gray icon">
-                    <i class="material-symbols">chevron_right</i>
-                </span>
                 <span class="primary icon bubble status {if="$value->presence"}{$value->presence->presencekey}{/if}">
                     <img src="{$user->getPicture()}">
                 </span>
@@ -23,7 +20,7 @@
                     <p class="line" title="{$user->id}">
                         {$user->truename} <span class="second">{$user->id}</span>
                     </p>
-                    <p>
+                    <p class="line">
                         {$value->created_at|prepareDate}
                     </p>
                 </div>
