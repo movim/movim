@@ -38,7 +38,7 @@
                 </div>
             </li>
         </ul>
-        <ul id="notifications_subscriptions" class="list middle spaced">{loop="$subscriptionRoster"}<li id="invitation-{$value->jid|cleanupId}" data-jid="{$value->jid}">
+        <ul id="notifications_subscriptions" class="list spaced">{loop="$subscriptionRoster"}<li id="invitation-{$value->jid|cleanupId}" data-jid="{$value->jid}">
                 <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
                     <img src="{$value->getPicture()}">
                 </span>
