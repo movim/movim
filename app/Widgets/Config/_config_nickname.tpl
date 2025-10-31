@@ -5,7 +5,7 @@
             <input name="nickname"
                 id="nickname"
                 type="text"
-                pattern="[A-Za-z0-9-_]+"
+                pattern="[A-Za-z0-9\-_]+"
                 {if="isset($me->nickname)"}
                     value="{$me->nickname}"
                 {/if}
