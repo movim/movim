@@ -10,6 +10,7 @@
 
 #stories div.lists ul.list {
     grid-template-columns: repeat(1, 1fr);
+    padding-bottom: 0.5rem;
 }
 
 #stories div.lists ul.list:first-child {
