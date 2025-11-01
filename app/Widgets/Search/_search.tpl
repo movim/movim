@@ -1,6 +1,5 @@
 <section id="search">
     {if="$chatroomactions"}
-        <br />
         <ul class="list flex active card shadow thick">
             <li class="block color" onclick="RoomsExplore_ajaxSearch();">
                 <i class="main material-symbols">chat</i>
@@ -27,7 +26,6 @@
                 </div>
             </li>
         </ul>
-        <hr />
     {/if}
     <ul id="roster" class="list spin"></ul>
     <ul class="list divided spaced middle" id="roomsexplore_global"></ul>
