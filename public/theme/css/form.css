@@ -410,7 +410,7 @@ input[type=button].flat:not(.color):focus {
     font-size: 3.5rem;
     animation: zoom 0.3s;
     padding: 0;
-    border-radius: 2rem;
+    border-radius: 2.5rem;
     margin: 0;
 }
 

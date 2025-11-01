@@ -18,7 +18,6 @@ class XMPPUri
     public function __construct(string $uri)
     {
         $this->uri = parse_url($uri);
-
         if ($this->uri && $this->uri['scheme'] == 'xmpp') {
             if (isset($this->uri['query'])) {
                 if ($this->uri['query'] == 'join') {
@@ -39,6 +38,16 @@ class XMPPUri
                         Post::MICROBLOG_NODE => 'microblog',
                         default => 'community',
                     };
+
+                    if ($this->category == 'microblog') {
+                        $this->type = 'contact';
+                        $this->params = [$this->uri['path']];
+                    }
+
+                    if ($this->category == 'community') {
+                        $this->type = 'community';
+                        $this->params = [$this->uri['path'], $queryParams['node']];
+                    }
                 }
             } elseif (isset($this->uri['host']) && isset($this->uri['user'])) {
                 $this->type = 'contact';
@@ -98,6 +107,13 @@ class XMPPUri
                     $this->params
                 );
                 break;
+
+            case 'community':
+                return Route::urlize(
+                    'community',
+                    $this->params
+                );
+                break;
         }
 
         return null;
@@ -108,8 +124,8 @@ class XMPPUri
         if ($this->type != 'post') return null;
 
         return Post::where('server', $this->params[0])
-                ->where('node',  $this->params[1])
-                ->where('nodeid',  $this->params[2])
-                ->first();
+            ->where('node',  $this->params[1])
+            ->where('nodeid',  $this->params[2])
+            ->first();
     }
 }
