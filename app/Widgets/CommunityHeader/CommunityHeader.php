@@ -26,7 +26,6 @@ class CommunityHeader extends Base
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved', 'community');
 
         $this->addjs('communityheader.js');
-        $this->addcss('communityheader.css');
     }
 
     public function onDiscoRequest(Packet $packet)

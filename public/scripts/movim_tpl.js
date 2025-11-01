@@ -160,6 +160,7 @@ MovimEvents.registerBody('touchend', 'movimtpl', (event) => {
     nav = document.querySelector('body > nav');
     nav.style.transform = '';
     nav.classList.add('moving');
+    clientWidth = Math.abs(document.body.clientWidth);
     percent = MovimTpl.translateX / clientWidth;
 
     if (MovimTpl.menuDragged) {
