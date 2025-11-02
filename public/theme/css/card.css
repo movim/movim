@@ -12,6 +12,10 @@
     opacity: 0.1;
 }
 
+.card:not(.flex) li:not(.subheader):not(:last-child) {
+    margin-bottom: 1rem;
+}
+
 .card img.main {
     filter: blur(0.4rem);
 }
