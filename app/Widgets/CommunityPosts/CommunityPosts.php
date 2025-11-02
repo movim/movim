@@ -85,7 +85,7 @@ class CommunityPosts extends Base
 
     public function tonItemsErrorPresenceSubscriptionRequired(Packet $packet)
     {
-        list($origin, $node) = array_values($packet->content);
+        list($origin, $node) = array_values((array)$packet->content);
 
         $view = $this->tpl();
 
