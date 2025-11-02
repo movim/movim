@@ -12,7 +12,7 @@
     opacity: 0.1;
 }
 
-.card:not(.flex) li:not(.subheader):not(:last-child) {
+.card:not(.flex) li:not(.subheader) {
     margin-bottom: 1rem;
 }
 
