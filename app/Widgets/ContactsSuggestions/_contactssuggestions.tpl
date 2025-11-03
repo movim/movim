@@ -15,8 +15,8 @@
                 <img src="{$value->getPicture(\Movim\ImageSize::M)}">
             </span>
             <div onclick="MovimUtils.reload('{$c->route('contact', $value->id)}')">
-                <p>{$value->truename}</p>
-                <p>{$value->id}</p>
+                <p class="line">{$value->truename}</p>
+                <p class="line">{$value->id}</p>
             </div>
         </li>
     {/loop}
