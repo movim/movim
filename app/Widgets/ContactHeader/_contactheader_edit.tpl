@@ -1,5 +1,16 @@
 <section>
-    <h3>{$c->__('edit.title')}</h3>
+    <ul class="list thick">
+        <li>
+            <span class="control icon active white" onclick="Notifications_ajaxDeleteContact('{$jid|echapJS}')"
+                title="{$c->__('button.delete')}">
+                <i class="material-symbols">delete</i>
+            </span>
+            <div>
+                <p>{$c->__('edit.title')}</p>
+                <p>{$jid}</p>
+            </div>
+        </li>
+    </ul>
     <form name="manage">
         <div>
             <input

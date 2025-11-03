@@ -83,7 +83,8 @@ class Utils
     public static function getSupportedServices()
     {
         $features = [
-            Post::MICROBLOG_NODE . '+notify',
+            Post::MICROBLOG_NODE,
+            //Post::MICROBLOG_NODE . '+notify',
             Post::STORIES_NODE . '+notify',
             'urn:xmpp:bookmarks:0+notify',
             'urn:xmpp:bookmarks:1+notify',

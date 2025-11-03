@@ -25,6 +25,7 @@ class CommunitySubscriptions extends Base
     {
         $view = $this->tpl();
         $view->assign('subscriptions', $this->me->subscriptions()
+            ->communities()
             ->notComments()
             ->orderBy('server')->orderBy('node')
             ->get());

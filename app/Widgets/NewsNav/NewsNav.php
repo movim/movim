@@ -16,23 +16,6 @@ class NewsNav extends Base
     {
         $view = $this->tpl();
 
-        $blogs = collect();
-
-        if ($page == 'news') {
-            $blogs = \App\Post::where('open', true)
-                ->orderBy('posts.published', 'desc')
-                ->restrictToMicroblog()
-                ->restrictUserHost()
-                ->restrictReported()
-                ->restrictNSFW()
-                ->recents()
-                ->take(6)
-                ->get()
-                ->shuffle();
-        }
-
-        $view->assign('blogs', $blogs);
-
         $posts = \App\Post::where('open', true)
                           ->orderBy('posts.published', 'desc')
                           ->restrictToCommunities()

@@ -26,10 +26,6 @@
                 title="{$c->__('button.edit')}">
                 <i class="material-symbols">edit</i>
             </span>
-            <span class="control icon active white" onclick="Notifications_ajaxDeleteContact('{$contact->id|echapJS}')"
-                title="{$c->__('button.delete')}">
-                <i class="material-symbols">delete</i>
-            </span>
         {else}
             {if="$contact->isContact($c->me->id)"}
                 <span class="control icon active white divided" onclick="MovimUtils.reload('{$c->route('configuration')}')"
@@ -44,6 +40,19 @@
             {/if}
         {/if}
         <div>
+            {if="$c->me->hasPubsub() && !$contact->isContact($c->me->id)"}
+                {if="$subscription == null"}
+                    <button class="button oppose color green {if="$disablefollow"}disabled{/if}" title="{$c->__('communityheader.follow')}"
+                    onclick="ContactHeader_ajaxSubscribe('{$contact->id|echapJS}'); ContactHeader.submit(this);">
+                        {$c->__('communityheader.follow')}
+                    </button>
+                {else}
+                    <button class="button oppose color gray {if="$disablefollow"}disabled{/if}" title="{$c->__('communityheader.unfollow')}"
+                    onclick="ContactHeader_ajaxUnsubscribe('{$contact->id|echapJS}'); ContactHeader.submit(this);">
+                        {$c->__('communityheader.unfollow')}
+                    </button>
+                {/if}
+            {/if}
             <p class="line active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
                 {$contact->truename}
                 {if="$contact->isBlocked()"}

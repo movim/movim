@@ -4,6 +4,7 @@ namespace App\Widgets\Menu;
 
 use App\User;
 use App\Post as AppPost;
+use App\Widgets\ContactsSuggestions\ContactsSuggestions;
 use App\Widgets\Notif\Notif;
 use App\Widgets\Post\Post;
 use Movim\Widget\Base;
@@ -19,6 +20,8 @@ class Menu extends Base
     {
         $this->registerEvent('post', 'onPost');
         $this->registerEvent('post_retract', 'onRetract', 'news');
+        $this->registerEvent('pubsubsubscription_add_handle', 'onSubscription', 'news');
+        $this->registerEvent('pubsubsubscription_remove_handle', 'onSubscription', 'news');
 
         $this->addjs('menu.js');
         $this->addcss('menu.css');
@@ -27,6 +30,11 @@ class Menu extends Base
     public function onRetract(Packet $packet)
     {
         $this->rpc('MovimTpl.remove', '#' . cleanupId($packet->content['nodeid']));
+    }
+
+    public function onSubscription(Packet $packet)
+    {
+        $this->rpc('MovimTpl.fill', '#contacts_suggestions', $this->prepareContactsSuggestions());
     }
 
     public function onPost(Packet $packet)
@@ -44,8 +52,8 @@ class Menu extends Base
                 $filters = DB::table('posts')->where('id', -1);
 
                 $filters = \App\Post::withMineScope($filters);
-                $filters = \App\Post::withContactsScope($filters);
-                $filters = \App\Post::withSubscriptionsScope($filters);
+                $filters = \App\Post::withContactsFollowScope($filters);
+                $filters = \App\Post::withCommunitiesFollowScope($filters);
 
                 $query->select('id')->from(
                     $filters,
@@ -149,6 +157,11 @@ class Menu extends Base
         $this->rpc('MovimUtils.enhanceArticlesContent');
     }
 
+    public function prepareContactsSuggestions()
+    {
+        return (new ContactsSuggestions)->prepareContactsSuggestions();
+    }
+
     public function prepareList($type = 'all', $page = 0)
     {
         $view = $this->tpl();
@@ -157,8 +170,8 @@ class Menu extends Base
             $filters = DB::table('posts')->where('id', -1);
 
             $filters = \App\Post::withMineScope($filters);
-            $filters = \App\Post::withContactsScope($filters);
-            $filters = \App\Post::withSubscriptionsScope($filters);
+            $filters = \App\Post::withContactsFollowScope($filters);
+            $filters = \App\Post::withCommunitiesFollowScope($filters);
 
             $query->select('id')->from(
                 $filters,
@@ -186,12 +199,12 @@ class Menu extends Base
             $filters = DB::table('posts')->where('id', -1);
 
             if (in_array($type, ['all', 'feed'])) {
-                $filters = \App\Post::withContactsScope($filters);
+                $filters = \App\Post::withContactsFollowScope($filters);
                 $filters = \App\Post::withMineScope($filters);
             }
 
             if (in_array($type, ['all', 'news'])) {
-                $filters = \App\Post::withSubscriptionsScope($filters);
+                $filters = \App\Post::withCommunitiesFollowScope($filters);
             }
 
             $query->select('id')->from(

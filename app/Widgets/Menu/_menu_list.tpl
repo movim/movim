@@ -22,6 +22,12 @@
     </ul>
 </header>
 
+{if="$type == 'feed'"}
+    <div id="contacts_suggestions" class="on_mobile">
+        {autoescape="off"}{$c->prepareContactsSuggestions(4)}{/autoescape}
+    </div>
+{/if}
+
 {if="$items && $items->isNotEmpty()"}
     <div id="menu_refresh"></div>
     <div class="card shadow" id="menu_wrapper">

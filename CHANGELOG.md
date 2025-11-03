@@ -44,6 +44,7 @@ v0.32 (master)
 * Refactor and cleanup the Url resolving flow and remove the EmbedLight object
 * Allow multi-pick when sharing a Post with contacts
 * Cleanup and refactor of the Posts and Stories events handling
+* Move from a Presence based to a Follow based subscription system for the Blogs
 
 v0.31
 ---------------------------

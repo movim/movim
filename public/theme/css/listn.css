@@ -15,6 +15,16 @@ ul.list.compact>li {
     padding: 1.5rem 1rem;
 }
 
+ul.list.compact>li>div {
+    width: 100%;
+}
+
+ul.list.compact>li>span.chip {
+    position: absolute;
+    right: 1rem;
+    top: 2rem;
+}
+
 nav>ul.list>li,
 ul.list.controls>li {
     padding: 0;

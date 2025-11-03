@@ -45,6 +45,7 @@ class Add extends Action
 
         $subscription->save();
 
+        $this->pack(['server' => $this->_server, 'node' => $this->_node, 'data', $this->_data]);
         $this->deliver();
     }
 

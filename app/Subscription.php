@@ -25,6 +25,11 @@ class Subscription extends Model
         return $this->hasOne('App\Contact', 'id', 'jid');
     }
 
+    public function scopeCommunities($query)
+    {
+        return $query->where('node', '!=', Post::MICROBLOG_NODE);
+    }
+
     public function scopeNotComments($query)
     {
         return $query->where('node', 'not like', Post::COMMENTS_NODE . '/%');

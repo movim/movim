@@ -262,11 +262,11 @@ class Post extends Model
         );
     }
 
-    protected function withContactsScope($query, string $node = Post::MICROBLOG_NODE)
+    protected function withStoriesScope($query)
     {
         return $query->unionAll(
             DB::table('posts')
-                ->where('node', $node)
+                ->where('node', Post::STORIES_NODE)
                 ->whereIn('posts.server', function ($query) {
                     $query->from('rosters')
                         ->select('jid')
@@ -276,9 +276,17 @@ class Post extends Model
         );
     }
 
-    public function scopeWithContacts($query)
+    protected function withContactsFollowScope($query)
     {
-        return $this->withContactsScope($query);
+        return $query->unionAll(
+            DB::table('posts')
+                ->whereIn('server', function ($query) {
+                    $query->select('server')
+                        ->from('subscriptions')
+                        ->where('jid', me()->id);
+                })
+                ->where('node', Post::MICROBLOG_NODE)
+        );
     }
 
     protected function withMineScope($query, string $node = Post::MICROBLOG_NODE)
@@ -295,26 +303,17 @@ class Post extends Model
         return $this->withMineScope($query);
     }
 
-    protected function withSubscriptionsScope($query)
+    protected function withCommunitiesFollowScope($query)
     {
         return $query->unionAll(
             DB::table('posts')
-                ->whereIn('server', function ($query) {
-                    $query->select('server')
+                ->whereIn(DB::raw('(server, node)'), function ($query) {
+                    $query->select('server', 'node')
                         ->from('subscriptions')
-                        ->where('jid', me()->id);
-                })
-                ->whereIn('node', function ($query) {
-                    $query->select('node')
-                        ->from('subscriptions')
-                        ->where('jid', me()->id);
+                        ->where('jid', me()->id)
+                        ->where('node', '!=', Post::MICROBLOG_NODE);
                 })
         );
-    }
-
-    public function scopeWithSubscriptions($query)
-    {
-        return $this->withSubscriptionsScope($query);
     }
 
     public function scopeMyStories($query, ?int $id = null)
@@ -323,7 +322,7 @@ class Post extends Model
             $filters = DB::table('posts')->where('id', -1);
 
             $filters = \App\Post::withMineScope($filters, Post::STORIES_NODE);
-            $filters = \App\Post::withContactsScope($filters, Post::STORIES_NODE);
+            $filters = \App\Post::withStoriesScope($filters, Post::STORIES_NODE);
 
             $query->select('id')->from(
                 $filters,

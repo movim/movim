@@ -176,6 +176,7 @@ class Pubsub
             'pubsub#persist_items' => 'true',
             'pubsub#max_items' => 'max',
             'pubsub#itemreply' => 'publisher',
+            'pubsub#notify_sub' => 'true',
         ];
 
         if (in_array($node, [Post::MICROBLOG_NODE, Post::STORIES_NODE])) {

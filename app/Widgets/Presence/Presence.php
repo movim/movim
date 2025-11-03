@@ -20,6 +20,7 @@ use App\Widgets\Chats\Chats;
 use App\Widgets\Dialog\Dialog;
 use Movim\CurrentCall;
 use Moxl\Xec\Action\Blocking\Request;
+use Moxl\Xec\Action\Pubsub\GetSubscriptions;
 use Moxl\Xec\Payload\Packet;
 
 class Presence extends Base
@@ -77,6 +78,7 @@ class Presence extends Base
         $this->ajaxFeedRefresh();
         $this->ajaxServerDisco();
         $this->ajaxProfileRefresh();
+        $this->ajaxGetFollowers();
         $this->onSessionUp();
     }
 
@@ -184,6 +186,16 @@ class Presence extends Base
         $r = new GetItemsId;
         $r->setTo($this->me->id)
             ->setNode(Post::MICROBLOG_NODE)
+            ->request();
+    }
+
+    // We refresh the blog followers
+    public function ajaxGetFollowers()
+    {
+        $gs = new GetSubscriptions;
+        $gs->setTo($this->me->id)
+            ->setNode(Post::MICROBLOG_NODE)
+            ->setNotify(false)
             ->request();
     }
 

@@ -1,6 +1,6 @@
 <section>
     <form name="subscribe" onsubmit="return false;">
-         <h3>{$c->__('communityheader.subscribe')}</h3>
+         <h3>{$c->__('communityheader.follow')}</h3>
         <div>
             <input
                 name="label"
@@ -24,8 +24,8 @@
                         </div>
                     </span>
                     <div>
-                        <p class="line">{$c->__('communityheader.share_subscription')}</p>
-                        <p>{$c->__('communityheader.share_subscription_text')}</p>
+                        <p class="line">{$c->__('communityheader.share_follow')}</p>
+                        <p>{$c->__('communityheader.share_follow_text')}</p>
                     </div>
                 </li>
             </ul>
@@ -39,6 +39,6 @@
     <button
         onclick="CommunityHeader_ajaxSubscribe(MovimUtils.formToJson('subscribe'), '{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()"
         class="button flat">
-        {$c->__('communityheader.subscribe')}
+        {$c->__('communityheader.follow')}
     </button>
 </footer>

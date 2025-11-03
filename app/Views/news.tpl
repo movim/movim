@@ -16,6 +16,7 @@
 
 <main>
     <aside>
+        <?php $this->widget('ContactsSuggestions');?>
         <?php $this->widget('NewsNav');?>
     </aside>
     <div>

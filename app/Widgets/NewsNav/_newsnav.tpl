@@ -1,18 +1,3 @@
-{if="$blogs && $blogs->isNotEmpty()"}
-    <ul class="list active middle card shadow">
-        <li class="subheader">
-            <div>
-                <p>{$c->__('post.blog_last')}</p>
-            </div>
-        </li>
-        {loop="$blogs"}
-            {autoescape="off"}
-                {$c->prepareTicket($value)}
-            {/autoescape}
-        {/loop}
-    </ul>
-{/if}
-
 {if="$posts && $posts->isNotEmpty()"}
 <ul class="list active middle card shadow">
     <li class="subheader active" onclick="MovimUtils.reload('{$c->route('explore')}')">

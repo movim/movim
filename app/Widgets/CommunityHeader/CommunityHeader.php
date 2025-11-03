@@ -2,6 +2,7 @@
 
 namespace App\Widgets\CommunityHeader;
 
+use App\Post;
 use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Base;
 
@@ -59,9 +60,11 @@ class CommunityHeader extends Base
     {
         list($origin, $node) = array_values($packet->content);
 
-        $this->ajaxGetMetadata($origin, $node);
+        if ($node != Post::MICROBLOG_NODE) {
+            $this->ajaxGetMetadata($origin, $node);
+        }
 
-        $this->toast($this->__('communityheader.subscribed'));
+        $this->toast($this->__('communityheader.followed'));
     }
 
     public function onSubscriptionUnsupported(Packet $packet)
@@ -73,9 +76,11 @@ class CommunityHeader extends Base
     {
         list($origin, $node) = array_values($packet->content);
 
-        $this->ajaxGetMetadata($origin, $node);
+        if ($node != Post::MICROBLOG_NODE) {
+            $this->ajaxGetMetadata($origin, $node);
+        }
 
-        $this->toast($this->__('communityheader.unsubscribed'));
+        $this->toast($this->__('communityheader.unfollowed'));
     }
 
     public function ajaxGetMetadata($origin, $node)

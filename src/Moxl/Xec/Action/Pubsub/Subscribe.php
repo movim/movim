@@ -32,6 +32,12 @@ class Subscribe extends Action
         $this->deliver();
     }
 
+    public function errorPresenceSubscriptionRequired(string $errorId, ?string $message)
+    {
+        $this->pack(['server' => $this->_to, 'node' => $this->_node]);
+        $this->deliver();
+    }
+
     public function errorUnsupported(string $errorId, ?string $message = null)
     {
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);

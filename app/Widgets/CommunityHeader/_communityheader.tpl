@@ -26,14 +26,14 @@
         <div>
             {if="$c->me->hasPubsub()"}
                 {if="$subscription == null"}
-                    <button class="button oppose color green" title="{$c->__('communityheader.subscribe')}"
+                    <button class="button oppose color green" title="{$c->__('communityheader.follow')}"
                     onclick="CommunityHeader_ajaxAskSubscribe('{$server|echapJS}', '{$node|echapJS}')">
-                    <i class="material-symbols">bookmark_add</i> <span class="on_desktop">{$c->__('communityheader.subscribe')}</span>
+                        {$c->__('communityheader.follow')}
                     </button>
                 {else}
-                    <button class="button oppose color gray" title="{$c->__('communityheader.unsubscribe')}"
+                    <button class="button oppose color gray" title="{$c->__('communityheader.unfollow')}"
                     onclick="CommunityHeader_ajaxAskUnsubscribe('{$server|echapJS}', '{$node|echapJS}')">
-                        <i class="material-symbols">bookmark_remove</i> <span class="on_desktop">{$c->__('communityheader.unsubscribe')}</span>
+                        {$c->__('communityheader.unfollow')}
                     </button>
                 {/if}
             {/if}

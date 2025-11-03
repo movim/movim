@@ -19,6 +19,7 @@ ul.flex li.subheader {
 
 ul.flex.card li.subheader {
     padding: 0;
+    margin: -1rem 0;
 }
 
 .flex .block:not(.subheader) {

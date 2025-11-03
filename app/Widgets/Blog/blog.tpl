@@ -88,9 +88,9 @@
                         </a>
                     </span>
                     <div>
-                        <a class="button oppose color gray" title="{$c->__('communityheader.subscribe')}"
+                        <a class="button oppose color gray" title="{$c->__('communityheader.follow')}"
                             href="xmpp:{$server}?pubsub;action=subscribe;node={$node}">
-                            <i class="material-symbols">add</i> <span class="on_desktop">{$c->__('communityheader.subscribe')}</span>
+                            <i class="material-symbols">add</i> <span class="on_desktop">{$c->__('communityheader.follow')}</span>
                         </a>
                         <p>
                             <a href="{$c->route('community', [$server, $node])}">

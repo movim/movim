@@ -84,8 +84,8 @@ class Search extends Base
                     $filters = DB::table('posts')->where('id', -1);
 
                     $filters = \App\Post::withMineScope($filters);
-                    $filters = \App\Post::withContactsScope($filters);
-                    $filters = \App\Post::withSubscriptionsScope($filters);
+                    $filters = \App\Post::withContactsFollowScope($filters);
+                    $filters = \App\Post::withCommunitiesFollowScope($filters);
 
                     $query->select('id')->from(
                         $filters,

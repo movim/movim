@@ -266,6 +266,7 @@ class Bootstrap
             'Confirm',
             'ContactActions',
             'ContactBlogConfig',
+            'ContactsSuggestions',
             'Chat',
             'ChatActions',
             'ChatOmemo',
