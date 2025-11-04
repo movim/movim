@@ -1,1 +1,1 @@
-<div id="contactssuggestions_widget"></div>
+<div id="contactssuggestions_widget" class="large"></div>

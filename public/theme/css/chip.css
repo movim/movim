@@ -29,7 +29,8 @@
     font-size: 2rem;
 }
 
-.chip i.spin {
+.chip i.spin,
+.chip i.on_mobile {
     margin: 0;
 }
 

@@ -9,7 +9,7 @@ ul.list>li {
     transition: background-color 0.15s ease;
 }
 
-ul.list.compact>li {
+ul.list.compact>li:not(.subheader) {
     flex-direction: column;
     align-items: flex-start;
     padding: 1.5rem 1rem;

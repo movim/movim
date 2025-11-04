@@ -8,6 +8,10 @@
     padding: 1rem;
 }
 
+.flex.card.large {
+    padding: 1rem 0;
+}
+
 ul.flex li.block {
     border-radius: 0.65rem;
     transition: background 0.3s ease;
@@ -18,7 +22,6 @@ ul.flex li.subheader {
 }
 
 ul.flex.card li.subheader {
-    padding: 0;
     margin: -1rem 0;
 }
 
