@@ -23,11 +23,12 @@ class PublishStories extends Base
 
     public function onPublish(Packet $packet)
     {
-        $this->toast($this->__('story.published'));
 
         list($to, $node, $id, $repost, $comments) = array_values($packet->content);
 
         if ($node == Post::STORIES_NODE) {
+            $this->toast($this->__('story.published'));
+
             // If the  Story was not cached we force reload
             if (!Post::where('server', $to)->where('node', $node)->where('nodeid', $id)->exists()) {
                 $gi = new GetItem;
