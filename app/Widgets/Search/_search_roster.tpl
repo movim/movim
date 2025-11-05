@@ -39,9 +39,12 @@
                     {/if}
                 {/loop}
             {/if}
-            <span class="control icon active gray divided" onclick="Search.chat('{$value->jid|echapJS}', false)">
-                <i class="material-symbols">comment</i>
-            </span>
+
+            {if="$value->jid != $c->me->id"}
+                <span class="control icon active gray divided" onclick="Search.chat('{$value->jid|echapJS}', false)">
+                    <i class="material-symbols">comment</i>
+                </span>
+            {/if}
             <div>
                 <p class="normal line">
                     {$value->truename}

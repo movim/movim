@@ -1,10 +1,12 @@
 <hr />
-<ul class="list flex fourth card shadow compact middle active large">
+<ul class="list">
     <li class="subheader">
         <div>
             <p>{$c->__('explore.explore')}</p>
         </div>
     </li>
+</ul>
+<ul class="list flex fourth card shadow compact middle active">
     {loop="$users"}
         <li class="block active" title="{$value->jid}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
             <img class="main" src="{$value->getBanner(\Movim\ImageSize::L)}">

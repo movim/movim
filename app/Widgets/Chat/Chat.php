@@ -406,7 +406,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGet(?string $jid = null, ?bool $light = false)
     {
-        if ($jid == null) {
+        if ($jid == null || $jid == $this->me->id) {
             $this->rpc('MovimTpl.hidePanel');
             $this->rpc('Notif.current', 'chat');
             $this->rpc('MovimUtils.pushSoftState', $this->route('chat'));
