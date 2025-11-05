@@ -76,7 +76,8 @@ ul.tabs>li:hover {
 ul.list.active>li:hover:not(.subheader):not(.color),
 ul.list.active.all>li:hover:not(.color),
 ul.list>li.active:hover:not(.color),
-ul.list.active>li.active:not(.subheader):not(.color) {
+ul.list.active>li.active:not(.subheader):not(.color),
+ul.tabs>li:hover {
     background-color: rgba(var(--movim-element-action), 0.1);
 }
 
