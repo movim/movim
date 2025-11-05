@@ -9,6 +9,10 @@ ul.list>li {
     transition: background-color 0.15s ease;
 }
 
+ul.list:not(.divided)>li {
+    border-radius: 1rem;
+}
+
 ul.list.compact>li:not(.subheader) {
     flex-direction: column;
     align-items: flex-start;
