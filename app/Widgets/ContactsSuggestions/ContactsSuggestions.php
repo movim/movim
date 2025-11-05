@@ -5,6 +5,7 @@ namespace App\Widgets\ContactsSuggestions;
 use App\Contact;
 use App\Post;
 use App\Widgets\ContactHeader\ContactHeader;
+use Carbon\Carbon;
 use Movim\Widget\Base;
 use Moxl\Xec\Payload\Packet;
 
@@ -53,7 +54,8 @@ class ContactsSuggestions extends Base
                         ->from('subscriptions')
                         ->where('jid', $this->me->id)
                         ->where('node', Post::MICROBLOG_NODE);
-                });
+                })
+                ->where('published', '>', Carbon::now()->subMonths(6));
         })->inRandomOrder()->take($take)->get());
 
         return $view->draw('_contactssuggestions');
