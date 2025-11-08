@@ -484,7 +484,7 @@ li.action div.action .button {
 
 @media screen and (min-width: 1680px) {
     main > div:first-child:nth-last-child(2) + div .button.action {
-        right: calc(59.5% + 2rem);
+        right: calc(63.75% + 2rem);
     }
 
     aside ~ * .button.action {
