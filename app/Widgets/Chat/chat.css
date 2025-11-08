@@ -18,7 +18,7 @@
 
 /** nav **/
 
-#chat_widget nav:not(:empty) {
+#chat_widget nav {
     background-color: rgb(var(--movim-background-main));
     grid-column: nav / end;
     grid-row: header / end;
