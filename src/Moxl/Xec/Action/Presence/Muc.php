@@ -145,9 +145,11 @@ class Muc extends Action
                 $this->deliver();
             }
 
-            $this->method('handle'); // Reset
-            $this->pack([$presence, $this->_notify]);
-            $this->deliver();
+            if ($this->_notify) {
+                $this->method('handle'); // Reset
+                $this->pack($presence);
+                $this->deliver();
+            }
         });
     }
 

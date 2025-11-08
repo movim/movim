@@ -141,8 +141,7 @@ class Rooms extends Base
 
     public function onConnected(Packet $packet)
     {
-        list($presence, $notify) = array_values($packet->content);
-        $this->onPresence($presence->jid);
+        $this->onPresence($packet->content->jid);
     }
 
     public function onDisconnected(Packet $packet)
