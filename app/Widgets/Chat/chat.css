@@ -19,6 +19,7 @@
 /** nav **/
 
 #chat_widget nav {
+    box-shadow: var(--elevation-2) inset;
     background-color: rgb(var(--movim-background-main));
     grid-column: nav / end;
     grid-row: header / end;
