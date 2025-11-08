@@ -464,7 +464,7 @@ li.action div.action .button {
 
 @media screen and (min-width: 1025px) {
     main > div:first-child:nth-last-child(2) + div .button.action {
-        right: calc(77% - 3rem);
+        right: calc(75% - 3rem);
     }
 
     *[dir="rtl"] main > div:first-child:nth-last-child(2) + div .button.action {
