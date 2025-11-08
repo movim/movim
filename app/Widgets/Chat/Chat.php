@@ -332,7 +332,9 @@ class Chat extends \Movim\Widget\Base
 
     public function onMucConnected(Packet $packet)
     {
-        $this->ajaxGetRoom($packet->content->jid, noConnect: true);
+        if ($packet->content) {
+            $this->ajaxGetRoom($packet->content->jid, noConnect: true);
+        }
     }
 
     public function onRoomConfigError(Packet $packet)
