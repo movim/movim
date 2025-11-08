@@ -87,6 +87,7 @@ class Presence extends Payload
                         }
 
                         $this->deliver();
+                        return;
                     }
                 } elseif ($presence->value == 5 && !empty($presence->resource)) {
                     $presence->delete();

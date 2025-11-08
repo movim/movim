@@ -18,8 +18,7 @@
             </div>
         </li>
     {/if}
-    <li class="{if="$value->last > 60"} inactive{/if}"
-        title="{$value->resource}">
+    <li class="{if="$value->last > 60"} inactive{/if}" title="{$value->resource}">
 
         <span class="primary icon bubble small status active {$value->presencekey}"
             {if="$value->mucjid && $compact"}
