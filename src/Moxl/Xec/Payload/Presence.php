@@ -84,8 +84,6 @@ class Presence extends Payload
                             $stanza->addAttribute('id', $session->get(Muc::$mucId . (string)$stanza->attributes()->from));
                             Handler::handle($stanza);
                         }
-
-                        $this->deliver();
                     }
                 } elseif ($presence->value == 5 && !empty($presence->resource)) {
                     $presence->delete();
