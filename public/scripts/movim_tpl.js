@@ -84,7 +84,6 @@ var MovimTpl = {
     },
     remove: function (selector) {
         target = document.querySelector(selector);
-        console.log(selector)
         if (target) {
             target.remove();
         }

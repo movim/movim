@@ -245,11 +245,11 @@
                             </span>
                         {/if}
                         {if="$value->affiliation == 'owner'"}
-                            <span class="control icon yellow" title="{$c->__('rooms.owner')}">
+                            <span class="control icon yellow" title="{$c->__('room.affiliation_owner')}">
                                 <i class="material-symbols fill">star</i>
                             </span>
                         {elseif="$value->affiliation == 'admin'"}
-                            <span class="control icon gray" title="{$c->__('rooms.admin')}">
+                            <span class="control icon gray" title="{$c->__('room.affiliation_admin')}">
                                 <i class="material-symbols fill">star</i>
                             </span>
                         {/if}

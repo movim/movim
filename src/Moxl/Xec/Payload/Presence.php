@@ -52,8 +52,6 @@ class Presence extends Payload
                 }
 
                 if ($presence->muc) {
-                    ChatroomPings::getInstance()->touch($presence->jid);
-
                     if ($presence->mucjid == me()->id) {
                         // Spectrum2 specific bug, we can receive two self-presences, one with several caps items
                         $cCount = 0;
@@ -90,15 +88,17 @@ class Presence extends Payload
 
                         $this->deliver();
                     }
-                } else {
-                    $this->pack($presence->roster);
-
-                    if ($presence->value == 5 && !empty($presence->resource)) {
-                        $presence->delete();
-                    }
+                } elseif ($presence->value == 5 && !empty($presence->resource)) {
+                    $presence->delete();
                 }
 
-                $this->deliver();
+                /**
+                 * Don't handle for MUC presences before we are fully authenticated
+                 */
+                if (!$presence->muc || ChatroomPings::getInstance()->has($presence->jid)) {
+                    $this->pack($presence);
+                    $this->deliver();
+                }
             });
         }
     }

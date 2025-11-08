@@ -191,6 +191,17 @@ class Base
         return new Partial($this);
     }
 
+    protected function view(string $template, ?array $assign = []): ?string
+    {
+        $view = $this->tpl();
+
+        foreach($assign as $key => $value) {
+            $view->assign($key, $value);
+        }
+
+        return $view->draw($template);
+    }
+
     /**
      * @brief Returns the path to the specified widget file.
      * @param file is the file's name to make up the path for.

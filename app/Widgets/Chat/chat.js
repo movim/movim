@@ -155,6 +155,11 @@ var Chat = {
 
         Chat_ajaxGet(jid, light);
     },
+    getPresences: function (room) {
+        if (!MovimUtils.isMobile()) {
+            Chat_ajaxGetPresences(room);
+        }
+    },
     getRoom: function (jid) {
         MovimTpl.showPanel();
         document.querySelector('#chat_widget').innerHTML = '';
@@ -1696,8 +1701,13 @@ MovimWebsocket.attach(function () {
 MovimEvents.registerWindow('focus', 'chat', () => {
     if (MovimWebsocket.connection) {
         var jid = MovimUtils.urlParts().params[0];
+        var room = (MovimUtils.urlParts().params[1] === 'room');
         if (jid) {
-            Chat_ajaxGetHeader(jid, (MovimUtils.urlParts().params[1] === 'room'));
+            Chat_ajaxGetHeader(jid, room);
+
+            if (room) {
+                Chat_ajaxGetPresences(jid);
+            }
         }
     }
 

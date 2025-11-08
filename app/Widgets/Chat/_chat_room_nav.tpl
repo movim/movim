@@ -1,0 +1,1 @@
+<ul class="list thin active">{autoescape="off"}{$contactsHtml}{/autoescape}</ul>

@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
     window.addEventListener('keydown', (e) => MovimEvents.triggerWindow('keydown', e), false);
     window.addEventListener('paste', (e) => MovimEvents.triggerWindow('paste', e), false);
     window.addEventListener('resize', (e) => MovimEvents.triggerWindow('resize', e), false);
-    window.addEventListener('focus', (e) => MovimEvents.triggerWindow('focus', e), false);
     window.addEventListener('online', (e) => MovimEvents.triggerWindow('online', e), false);
     window.addEventListener('offline', (e) => MovimEvents.triggerWindow('offline', e), false);
     window.addEventListener('popstate', (e) => MovimEvents.triggerWindow('popstate', e), false);
@@ -80,7 +79,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         MovimEvents.isFocused = false;
         MovimEvents.triggerWindow('blur', e);
     }, false);
-    window.addEventListener('focus', (e) => MovimEvents.focusEvent(e), false);
+    window.addEventListener('focusin', (e) => MovimEvents.focusEvent(e), false);
     window.addEventListener('mouseover', (e) => MovimEvents.focusEvent(e), false);
 
     // Body

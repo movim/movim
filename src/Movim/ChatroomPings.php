@@ -29,6 +29,11 @@ class ChatroomPings
         return self::$instance;
     }
 
+    public function has(string $from): bool
+    {
+        return array_key_exists($from, $this->_chatrooms);
+    }
+
     public function touch(string $from)
     {
         global $loop;

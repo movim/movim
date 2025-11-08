@@ -45,6 +45,7 @@ v0.32 (master)
 * Allow multi-pick when sharing a Post with contacts
 * Cleanup and refactor of the Posts and Stories events handling
 * Move from a Presence based to a Follow based subscription system for the Blogs
+* Introduce the nav bar in the Chat desktop
 
 v0.31
 ---------------------------

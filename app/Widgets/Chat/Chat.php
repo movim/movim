@@ -21,6 +21,7 @@ use App\Widgets\Dictaphone\Dictaphone;
 use App\Widgets\Notif\Notif;
 use App\Widgets\Post\Post;
 use App\Widgets\Rooms\Rooms;
+use App\Widgets\RoomsUtils\RoomsUtils;
 use Carbon\Carbon;
 use Moxl\Xec\Action\BOB\Request;
 use Moxl\Xec\Action\Disco\Request as DiscoRequest;
@@ -85,10 +86,13 @@ class Chat extends \Movim\Widget\Base
 
     public function onPresence(Packet $packet)
     {
-        if ($packet->content && $jid = $packet->content->jid) {
-            $arr = explode('|', (new Notif)->getCurrent());
+        $jid = $packet->content->jid;
+        $arr = explode('|', (new Notif)->getCurrent());
 
-            if (isset($arr[1]) && $jid == $arr[1] && !$packet->content->muc) {
+        if (isset($arr[1]) && $jid == $arr[1]) {
+            if ($packet->content->muc) {
+                $this->ajaxGetPresences($jid);
+            } else {
                 $this->ajaxGetHeader($jid);
             }
         }
@@ -463,6 +467,7 @@ class Chat extends \Movim\Widget\Base
             if ($light == false) {
                 $this->rpc('MovimUtils.pushSoftState', $this->route('chat', [$room, 'room']));
                 $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareChat($room, true));
+                $this->rpc('Chat.getPresences', $room);
 
                 $this->onChatState(ChatStates::getInstance()->getState($room), false);
 
@@ -1173,22 +1178,28 @@ class Chat extends \Movim\Widget\Base
         $this->ajaxGet($jid);
     }
 
-    public function prepareChat($jid, $muc = false)
+    public function prepareChat($jid, ?bool $muc = false)
     {
-        $view = $this->tpl();
+        return $this->view('_chat', [
+            'jid' => $jid,
+            'muc' => $muc,
+            'emoji' => prepareString('😀')
+        ]);
+    }
 
-        $view->assign('jid', $jid);
-        $view->assign('muc', $muc);
-        $view->assign('emoji', prepareString('😀'));
-
-        if ($muc) {
-            $view->assign('conference', $this->me->session->conferences()
-                ->where('conference', $jid)
-                ->with('info')
-                ->first());
-        }
-
-        return $view->draw('_chat');
+    public function ajaxGetPresences(string $room)
+    {
+        $this->rpc(
+            'MovimTpl.fill',
+            '#' . cleanupId($room) . '-nav',
+            $this->view('_chat_room_nav', [
+                'contactsHtml' => (new RoomsUtils)->preparePresences(
+                    $room,
+                    havePagination: false,
+                    compact: true
+                )
+            ])
+        );
     }
 
     public function ajaxClearAndGetMessages(string $jid, $muc = false)

@@ -230,11 +230,11 @@ body[dir="rtl"] main>aside+div {
 
 /* Two blocks */
 main>div:first-child:nth-last-child(2) {
-    width: 70%;
+    width: 77%;
 }
 
 main>div:first-child:nth-last-child(2)+div {
-    width: 30%;
+    width: 23%;
     overflow-y: auto;
     box-shadow: var(--elevation-2);
     background-color: rgb(var(--movim-background-main));

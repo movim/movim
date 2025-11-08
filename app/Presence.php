@@ -87,6 +87,15 @@ class Presence extends Model
         return Image::getOrCreate($this->mucjid, 120) ?? avatarPlaceholder($this->resource);
     }
 
+    public function getAffiliationTxtAttribute(): string
+    {
+        if (array_key_exists($this->mucaffiliation, getPresenceAffiliations())) {
+            return getPresenceAffiliations()[$this->mucaffiliation];
+        }
+
+        return __('rooms_filter.connected');
+    }
+
     public function getConferenceColorAttribute(): string
     {
         return stringToColor($this->resource);

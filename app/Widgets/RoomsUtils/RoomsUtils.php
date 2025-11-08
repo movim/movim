@@ -105,7 +105,7 @@ class RoomsUtils extends Base
         Drawer::fill('room_drawer', $view->draw('_rooms_drawer'));
         $this->rpc('Tabs.create');
 
-        $this->rpc('RoomsUtils_ajaxAppendPresences', $room, 0, !$conference->isGroupChat());
+        $this->rpc('RoomsUtils_ajaxAppendPresences', $room, !$conference->isGroupChat(), 0);
 
         if ($picturesCount > 0) {
             $this->rpc('RoomsUtils_ajaxHttpGetPictures', $room);
@@ -129,7 +129,13 @@ class RoomsUtils extends Base
         (new AdHoc)->ajaxGet($room);
     }
 
-    public function ajaxAppendPresences($room, int $page = 0, bool $havePagination = true)
+    public function ajaxAppendPresences(string $room, bool $havePagination = true, int $page = 0)
+    {
+        $this->rpc('MovimTpl.remove', '#room_presences_more');
+        $this->rpc('MovimTpl.append', '#room_presences_list', $this->preparePresences($room, $havePagination, $page));
+    }
+
+    public function preparePresences(string $room, bool $havePagination = true, int $page = 0, ?bool $compact = false)
     {
         $pagination = 20;
 
@@ -154,15 +160,13 @@ class RoomsUtils extends Base
             $presences->pop();
         }
 
-        $tpl = $this->tpl();
-        $tpl->assign('more', $havePagination);
-        $tpl->assign('conference', $conference);
-        $tpl->assign('presences', $presences);
-        $tpl->assign('page', $page + 1);
-        $tpl->assign('me', $this->me->id);
-
-        $this->rpc('MovimTpl.remove', '#room_presences_more');
-        $this->rpc('MovimTpl.append', '#room_presences_list', $tpl->draw('_rooms_presences_list'));
+        return $this->view('_rooms_presences_list', [
+            'more' => $havePagination,
+            'conference' => $conference,
+            'presences' => $presences,
+            'page' => $page + 1,
+            'compact' => $compact
+        ]);
     }
 
     public function ajaxGetDrawerFingerprints($room, $contactsFingerprints)
@@ -411,7 +415,7 @@ class RoomsUtils extends Base
             ->whereCategory('conference')
             ->first());
         $view->assign('mucservice', \App\Info::where('parent', $this->me->session->host)
-            ->whereDoesntHave('identities', function ($query)  {
+            ->whereDoesntHave('identities', function ($query) {
                 $query->where('category', 'gateway');
             })
             ->whereCategory('conference')

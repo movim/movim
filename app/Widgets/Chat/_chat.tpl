@@ -1,3 +1,8 @@
+
+{if="$muc"}
+    <nav class="spin" id="{$jid|cleanupId}-nav"></nav>
+{/if}
+
 <header id="{$jid|cleanupId}-header">
     {autoescape="off"}
         {$c->prepareHeader($jid, $muc)}

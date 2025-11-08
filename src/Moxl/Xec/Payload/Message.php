@@ -40,7 +40,7 @@ class Message extends Payload
             return;
         }
 
-        if ($message->isMuc()) {
+        if ($message->isMuc() && ChatroomPings::getInstance()->has($message->jidfrom)) {
             ChatroomPings::getInstance()->touch($message->jidfrom);
         }
 

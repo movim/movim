@@ -89,7 +89,7 @@ class Chats extends Base
 
     public function onPresence(Packet $packet)
     {
-        if ($packet->content != null) {
+        if ($packet->content->muc == false) {
             $this->replaceChat($packet->content->jid);
         }
     }

@@ -8,6 +8,7 @@ use Movim\Session;
 use App\PresenceBuffer;
 use DOMElement;
 use Illuminate\Database\Capsule\Manager as DB;
+use Movim\ChatroomPings;
 
 class Muc extends Action
 {
@@ -137,6 +138,8 @@ class Muc extends Action
         }
 
         PresenceBuffer::getInstance()->append($presence, function () use ($presence) {
+            ChatroomPings::getInstance()->touch($presence->jid);
+
             if ($this->_mujiPreparing) {
                 $this->method('muji_preparing');
                 $this->deliver();

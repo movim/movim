@@ -621,6 +621,15 @@ function getPresencesTxt()
     ];
 }
 
+function getPresenceAffiliations()
+{
+    return [
+        'owner' => __('room.affiliation_owners'),
+        'admin' => __('room.affiliation_admins'),
+        'member' => __('room.affiliation_members'),
+    ];
+}
+
 /**
  * Map the XMPP form vars to Material Symbols
  */

@@ -1,8 +1,34 @@
 #chat_widget {
     background-color: rgb(var(--movim-background));
-    display: flex;
-    flex-direction: column;
     overflow: hidden;
+}
+
+#chat_widget:has(header) {
+    display: grid;
+    flex-direction: column;
+    grid-template-columns: [start] calc(100% - 30rem) [nav] 30rem [end];
+    grid-template-rows: [start] 7rem [header] calc(100% - 14rem) [box] 7rem[end];
+}
+
+@media screen and (max-width: 1024px) {
+    #chat_widget:has(header) {
+        grid-template-columns: [start] 100% [nav] 0 [end];
+    }
+}
+
+/** nav **/
+
+#chat_widget nav:not(:empty) {
+    background-color: rgb(var(--movim-background-main));
+    grid-column: nav / end;
+    grid-row: header / end;
+    width: 100%;
+    overflow: hidden scroll;
+}
+
+#chat_widget nav>ul>li {
+    padding: 0 0.5rem;
+    margin: 0 0.5rem;
 }
 
 main:not(.enabled) #chat_widget {
@@ -23,6 +49,8 @@ main:not(.enabled) #chat_widget {
 #chat_widget>header {
     box-shadow: var(--elevation-flat);
     z-index: 1;
+    grid-column: start / end;
+    grid-row: start / header;
 }
 
 #chat_widget p.compose:not(.first):not(:empty),
@@ -34,11 +62,22 @@ main:not(.enabled) #chat_widget {
     display: none;
 }
 
+/** contained **/
+
 #chat_widget .contained {
     overflow-y: scroll;
     overflow-x: hidden;
     height: 100%;
     position: relative;
+    display: flex;
+    flex-direction: row;
+
+    grid-column: start / end;
+    grid-row: header / box;
+}
+
+#chat_widget nav~.contained {
+    grid-column: start / nav;
 }
 
 #chat_widget .contained.history {
@@ -84,6 +123,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .contained section {
     max-width: 100rem;
     margin: 0 auto;
+    width: 100%;
 }
 
 /* Chat attach list */
@@ -124,13 +164,13 @@ main:not(.enabled) #chat_widget {
     pointer-events: none;
 }
 
-#chat_widget .contained.history ~ .chat_box #scroll_now.button.action {
+#chat_widget .contained.history~.chat_box #scroll_now.button.action {
     width: 7rem;
     right: 1.5rem;
 }
 
-#chat_widget .contained.history ~ .chat_box #scroll_now.button.action,
-#chat_widget .contained:not(.history) ~ .chat_box #scroll_now.button.action + #scroll_down.button.action.show {
+#chat_widget .contained.history~.chat_box #scroll_now.button.action,
+#chat_widget .contained:not(.history)~.chat_box #scroll_now.button.action+#scroll_down.button.action.show {
     transition: transform 0.2s ease-in-out, opacity 0.2s;
     transform: scale(100%);
     opacity: 1;
@@ -141,6 +181,11 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .chat_box {
     position: relative;
+    grid-column: start / end;
+}
+
+#chat_widget nav~.chat_box {
+    grid-column: start / nav;
 }
 
 #chat_widget .chat_box ul {
@@ -207,8 +252,8 @@ main:not(.enabled) #chat_widget {
     color: rgba(var(--movim-font), 0.68);
 }
 
-#chat_widget .chat_box li.main > span.primary,
-#chat_widget .chat_box li.main > span.control:not(.button):not(.color) {
+#chat_widget .chat_box li.main>span.primary,
+#chat_widget .chat_box li.main>span.control:not(.button):not(.color) {
     font-size: 3.5rem;
     color: rgba(var(--movim-font), 0.68);
     animation: fadein 0.3s;
@@ -537,7 +582,7 @@ li div.bubble.file:not(.audio):after {
     margin-top: -2rem;
 }
 
-#chat_widget .bubble.file .card ~ .reactions {
+#chat_widget .bubble.file .card~.reactions {
     margin-top: 0;
 }
 
@@ -600,6 +645,7 @@ li div.bubble.file:not(.audio):after {
 }
 
 @media screen and (min-width: 1025px) {
+
     #chat_widget li .bubble div:not(.encrypted):hover p:not(.retracted)~ul.reactions:empty~span.reaction,
     #chat_widget li .bubble div:not(.encrypted):hover p:not(.retracted)~span.reply {
         display: inline-flex;
@@ -638,19 +684,19 @@ li div.bubble.file:not(.audio):after {
 
 /* File element */
 
-ul.list li > div.bubble.file {
+ul.list li>div.bubble.file {
     margin-bottom: 1.5rem;
 }
 
-ul.list li > div.bubble.file ul.card {
+ul.list li>div.bubble.file ul.card {
     margin-bottom: 0.5rem;
 }
 
-ul.list li > div.bubble.file ul.card + p:empty:before {
+ul.list li>div.bubble.file ul.card+p:empty:before {
     content: ' ';
 }
 
-ul.list li > div.bubble.file div.file {
+ul.list li>div.bubble.file div.file {
     margin-bottom: 3rem;
     border-radius: 0.75rem;
     position: relative;
@@ -660,8 +706,8 @@ li:not(.oppose) .bubble.file span.resource+div.file {
     margin-top: 1rem;
 }
 
-ul.list li > div.bubble.file div.file img,
-ul.list li > div.bubble.file div.file video {
+ul.list li>div.bubble.file div.file img,
+ul.list li>div.bubble.file div.file video {
     display: block;
     width: auto;
     max-height: 200px;
@@ -693,7 +739,7 @@ li.oppose .bubble.file div.file video {
     margin-left: auto;
 }
 
-ul.list li > div.bubble.file div.file[data-type="image/gif"]:after {
+ul.list li>div.bubble.file div.file[data-type="image/gif"]:after {
     color: white;
     font-family: 'Material Symbols';
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
@@ -707,8 +753,8 @@ ul.list li > div.bubble.file div.file[data-type="image/gif"]:after {
     pointer-events: none;
 }
 
-ul.list li > div.bubble.file div.file a span.host:before,
-ul.list li > div.bubble.file div.file a span.size:before {
+ul.list li>div.bubble.file div.file a span.host:before,
+ul.list li>div.bubble.file div.file a span.size:before {
     content: '-';
     margin-left: 1rem;
     margin-right: 1rem;
@@ -790,8 +836,8 @@ ul.list li > div.bubble.file div.file a span.size:before {
     margin-top: -2rem;
 }
 
-#chat_widget .bubble.file .message ul.list.card ~ span.info:after,
-#chat_widget .bubble.file .message div.file ~ span.info:after {
+#chat_widget .bubble.file .message ul.list.card~span.info:after,
+#chat_widget .bubble.file .message div.file~span.info:after {
     display: none;
 }
 
