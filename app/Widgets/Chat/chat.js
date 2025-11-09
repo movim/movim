@@ -157,7 +157,7 @@ var Chat = {
     },
     getPresences: function (room) {
         if (!MovimUtils.isMobile()) {
-            Chat_ajaxGetPresences(room);
+            Chat_ajaxHttpGetPresences(room);
         }
     },
     getRoom: function (jid) {
@@ -1706,7 +1706,7 @@ MovimEvents.registerWindow('focus', 'chat', () => {
             Chat_ajaxGetHeader(jid, room);
 
             if (room) {
-                Chat_ajaxGetPresences(jid);
+                Chat_ajaxHttpGetPresences(jid);
             }
         }
     }

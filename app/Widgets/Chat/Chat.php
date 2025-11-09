@@ -91,7 +91,7 @@ class Chat extends \Movim\Widget\Base
 
         if (isset($arr[1]) && $jid == $arr[1]) {
             if ($packet->content->muc) {
-                $this->ajaxGetPresences($jid);
+                $this->ajaxHttpGetPresences($jid);
             } else {
                 $this->ajaxGetHeader($jid);
             }
@@ -1185,7 +1185,7 @@ class Chat extends \Movim\Widget\Base
         ]);
     }
 
-    public function ajaxGetPresences(string $room)
+    public function ajaxHttpGetPresences(string $room)
     {
         $this->rpc(
             'MovimTpl.fill',
