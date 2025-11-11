@@ -150,13 +150,6 @@ class PubsubAtom
             }
         }
 
-        if ($this->content) {
-            $contentRaw = $dom->createElement('content');
-            $contentRaw->appendChild($dom->createTextNode($this->content));
-            $contentRaw->setAttribute('type', 'text');
-            $entry->appendChild($contentRaw);
-        }
-
         if ($this->contentxhtml) {
             $content = $dom->createElement('content');
             $div = $dom->createElement('div');
@@ -168,6 +161,13 @@ class PubsubAtom
             $f->appendXML($this->contentxhtml);
             $div->appendChild($f);
             $div->setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
+        }
+
+        if ($this->content) {
+            $contentRaw = $dom->createElement('content');
+            $contentRaw->appendChild($dom->createTextNode($this->content));
+            $contentRaw->setAttribute('type', 'text');
+            $entry->appendChild($contentRaw);
         }
 
         if ($this->published != false) {
