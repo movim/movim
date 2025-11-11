@@ -52,7 +52,7 @@ class CommunityPosts extends Base
                 ->first();
 
             $this->rpc(
-                'MovimTpl.replace',
+                'MovimTpl.fill',
                 '#' . cleanupId($parent->nodeid),
                 $info && $info->isGallery()
                     ? $this->prepareTicket($parent)
