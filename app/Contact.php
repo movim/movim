@@ -358,7 +358,7 @@ class Contact extends Model
     public function getSyndicationUrl()
     {
         return \Movim\Route::urlize(
-            'blog',
+            'feed',
             ($this->user && isset($this->user->nickname))
                 ? $this->user->nickname
                 : $this->id
