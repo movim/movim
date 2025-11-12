@@ -31,6 +31,7 @@ class XMPPUri
                     if (isset($queryParams['item'])) {
                         $this->type = 'post';
                         $this->params = [$this->uri['path'], $queryParams['node'], $queryParams['item']];
+                        return;
                     }
 
                     $this->category = match ($queryParams['node']) {

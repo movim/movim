@@ -127,11 +127,10 @@ class SendTo extends Base
 
     public function prepareContacts($contacts, string $uri)
     {
-        $view = $this->tpl();
-        $view->assign('uri', $uri);
-        $view->assign('contacts', $contacts);
-
-        return $view->draw('_sendto_share_contacts');
+        return $this->view('_sendto_share_contacts', [
+            'uri' => $uri,
+            'contacts' => $contacts,
+        ]);
     }
 
     private function resolveUriInView(string $uri, Partial &$view)
