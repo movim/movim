@@ -122,8 +122,7 @@ class RoomsUtils extends Base
                 $conference->members()->whereNot('jid', $this->me->id)->get()->pluck('jid')->toArray()
             );
         } else {
-            $tpl = $this->tpl();
-            $this->rpc('MovimTpl.fill', '#room_omemo_fingerprints', $tpl->draw('_rooms_drawer_fingerprints_placeholder'));
+            $this->rpc('MovimTpl.fill', '#room_omemo_fingerprints', $this->view('_rooms_drawer_fingerprints_placeholder'));
         }
 
         (new AdHoc)->ajaxGet($room);
@@ -183,12 +182,12 @@ class RoomsUtils extends Base
             }
         }
 
-        $tpl = $this->tpl();
-        $tpl->assign('fingerprints', $resolvedFingerprints);
-        $tpl->assign('clienttype', getClientTypes());
-        $tpl->assign('contacts', Contact::whereIn('id', $resolvedFingerprints->keys())->get()->keyBy('id'));
+        $this->rpc('MovimTpl.fill', '#room_omemo_fingerprints', $this->view('_rooms_drawer_fingerprints', [
+            'fingerprints' => $resolvedFingerprints,
+            'clienttype' => getClientTypes(),
+            'contacts' => Contact::whereIn('id', $resolvedFingerprints->keys())->get()->keyBy('id'),
+        ]));
 
-        $this->rpc('MovimTpl.fill', '#room_omemo_fingerprints', $tpl->draw('_rooms_drawer_fingerprints'));
         foreach ($resolvedFingerprints as $jid => $value) {
             $this->rpc('ContactActions.resolveSessionsStates', $jid, true);
         }
@@ -204,12 +203,11 @@ class RoomsUtils extends Base
             return;
         }
 
-        $view = $this->tpl();
-        $view->assign('room', $this->me->session->conferences()
-            ->where('conference', $room)
-            ->first());
-
-        Dialog::fill($view->draw('_rooms_avatar'));
+        Dialog::fill($this->view('_rooms_avatar', [
+            'room' => $this->me->session->conferences()
+                ->where('conference', $room)
+                ->first()
+        ]));
     }
 
     /**
@@ -362,12 +360,11 @@ class RoomsUtils extends Base
             return;
         }
 
-        $view = $this->tpl();
-        $view->assign('room', $this->me->session->conferences()
-            ->where('conference', $room)
-            ->first());
-
-        Dialog::fill($view->draw('_rooms_subject'));
+        Dialog::fill($this->view('_rooms_subject', [
+            'room' => $this->me->session->conferences()
+                ->where('conference', $room)
+                ->first()
+        ]));
         $this->rpc('MovimUtils.applyAutoheight');
     }
 
@@ -394,13 +391,11 @@ class RoomsUtils extends Base
      */
     public function ajaxAskInvite($room = false)
     {
-        $view = $this->tpl();
-
-        $view->assign('contacts', $this->me->session->contacts()->pluck('jid'));
-        $view->assign('room', $room);
-        $view->assign('invite', \App\Invite::set($this->me->id, $room));
-
-        Dialog::fill($view->draw('_rooms_invite'));
+        Dialog::fill($this->view('_rooms_invite', [
+            'contacts' => $this->me->session->contacts()->pluck('jid'),
+            'room' => $room,
+            'invite' => \App\Invite::set($this->me->id, $room),
+        ]));
     }
 
     /**
@@ -543,14 +538,8 @@ class RoomsUtils extends Base
      */
     public function ajaxRemove($room)
     {
-        if (!validateRoom($room)) {
-            return;
-        }
-
-        $view = $this->tpl();
-        $view->assign('room', $room);
-
-        Dialog::fill($view->draw('_rooms_remove'));
+        if (!validateRoom($room)) return;
+        Dialog::fill($this->view('_rooms_remove', ['room' => $room]));
     }
 
     /**
@@ -633,14 +622,8 @@ class RoomsUtils extends Base
      */
     public function ajaxAskDestroy($room)
     {
-        if (!validateRoom($room)) {
-            return;
-        }
-
-        $view = $this->tpl();
-        $view->assign('room', $room);
-
-        Dialog::fill($view->draw('_rooms_destroy'));
+        if (!validateRoom($room)) return;
+        Dialog::fill($this->view('_rooms_destroy', ['room' => $room]));
     }
 
     /**
@@ -673,8 +656,6 @@ class RoomsUtils extends Base
 
         if (!$conference) return;
 
-        $tpl = $this->tpl();
-
         $more = false;
         $pictures = $conference->pictures()
             ->take($this->_picturesPagination + 1)
@@ -685,12 +666,13 @@ class RoomsUtils extends Base
             $pictures->pop();
             $more = true;
         }
-        $tpl->assign('pictures', $pictures);
-        $tpl->assign('more', $more);
-        $tpl->assign('page', $page);
-        $tpl->assign('room', $room);
 
-        $this->rpc('MovimTpl.append', '#room_pictures', $tpl->draw('_rooms_drawer_pictures'));
+        $this->rpc('MovimTpl.append', '#room_pictures', $this->view('_rooms_drawer_pictures', [
+            'pictures' => $pictures,
+            'more' => $more,
+            'page' => $page,
+            'room' => $room,
+        ]));
     }
 
     /**
@@ -709,8 +691,6 @@ class RoomsUtils extends Base
 
         if (!$conference) return;
 
-        $tpl = $this->tpl();
-
         $more = false;
         $links = $conference->links()
             ->take($this->_linksPagination + 1)
@@ -721,12 +701,13 @@ class RoomsUtils extends Base
             $links->pop();
             $more = true;
         }
-        $tpl->assign('links', $links);
-        $tpl->assign('more', $more);
-        $tpl->assign('page', $page);
-        $tpl->assign('room', $room);
 
-        $this->rpc('MovimTpl.append', '#room_links', $tpl->draw('_rooms_drawer_links'));
+        $this->rpc('MovimTpl.append', '#room_links', $this->view('_rooms_drawer_links', [
+            'links' => $links,
+            'more' => $more,
+            'page' => $page,
+            'room' => $room,
+        ]));
     }
 
     /**
@@ -765,12 +746,9 @@ class RoomsUtils extends Base
             return;
         }
 
-        $view = $this->tpl();
-        $view->assign('room', $this->me->session->conferences()
+        Dialog::fill($this->view('_rooms_ban', ['room' => $this->me->session->conferences()
             ->where('conference', $room)
-            ->first());
-
-        Dialog::fill($view->draw('_rooms_ban'));
+            ->first()]));
     }
 
     /**
@@ -803,13 +781,12 @@ class RoomsUtils extends Base
             return;
         }
 
-        $view = $this->tpl();
-        $view->assign('room', $this->me->session->conferences()
-            ->where('conference', $room)
-            ->first());
-        $view->assign('jid', $jid);
-
-        Dialog::fill($view->draw('_rooms_unban'));
+        Dialog::fill($this->view('_rooms_unban', [
+            'room' => $this->me->session->conferences()
+                ->where('conference', $room)
+                ->first(),
+            'jid' => $jid,
+        ]));
     }
 
     /**
@@ -841,13 +818,12 @@ class RoomsUtils extends Base
             ->where('conference', $room)
             ->first();
 
-        $view = $this->tpl();
-        $view->assign('room', $conference);
-        $view->assign('presence', $conference->presences()->where('mucjid', $jid)->first());
-        $view->assign('member', $conference->members()->where('jid', $jid)->first());
-        $view->assign('contact', Contact::firstOrNew(['id' => $jid]));
-
-        Dialog::fill($view->draw('_rooms_configure_user'));
+        Dialog::fill($this->view('_rooms_configure_user', [
+            'room' => $conference,
+            'presence' => $conference->presences()->where('mucjid', $jid)->first(),
+            'member' => $conference->members()->where('jid', $jid)->first(),
+            'contact' => Contact::firstOrNew(['id' => $jid]),
+        ]));
     }
 
     /**
@@ -921,8 +897,6 @@ class RoomsUtils extends Base
 
     public function onDiscoGateway(Packet $packet)
     {
-        $view = $this->tpl();
-
         $groups = [];
 
         $rooms = collect($packet->content);
@@ -955,8 +929,9 @@ class RoomsUtils extends Base
             return $item;
         })->sortBy('parent');
 
-        $view->assign('rooms', $rooms);
-        $this->rpc('MovimTpl.fill', '#gateway_rooms', $view->draw('_rooms_gateway_rooms'));
+        $this->rpc('MovimTpl.fill', '#gateway_rooms', $this->view('_rooms_gateway_rooms', [
+            'rooms' => $rooms
+        ]));
     }
 
     public function onDiscoGatewayError(Packet $packet)
@@ -971,10 +946,6 @@ class RoomsUtils extends Base
 
     public function prepareEmbedUrl(Message $message)
     {
-        $resolved = $message->resolvedUrl->cache;
-
-        if ($resolved) {
-            return (new Chat())->prepareEmbed($resolved, $message);
-        }
+        return (new Chat())->prepareEmbed($message->resolvedUrl, $message);
     }
 }

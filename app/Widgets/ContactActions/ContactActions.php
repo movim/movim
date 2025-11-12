@@ -75,12 +75,14 @@ class ContactActions extends Base
         $tpl->assign('jid', $jid);
         $tpl->assign('incall', CurrentCall::getInstance()->isStarted());
         $tpl->assign('clienttype', getClientTypes());
-        $tpl->assign('posts', \App\Post::where('server', $jid)
-            ->restrictToMicroblog()
-            ->where('open', true)
-            ->orderBy('published', 'desc')
-            ->take(4)
-            ->get()
+        $tpl->assign(
+            'posts',
+            \App\Post::where('server', $jid)
+                ->restrictToMicroblog()
+                ->where('open', true)
+                ->orderBy('published', 'desc')
+                ->take(4)
+                ->get()
         );
 
         Drawer::fill('contact_drawer', $tpl->draw('_contactactions_drawer'));
@@ -110,10 +112,10 @@ class ContactActions extends Base
         }
 
         $latests = \App\Message::selectRaw('max(published) as latest, bundleid')
-                               ->where('user_id', $this->me->id)
-                               ->where('jidfrom', $jid)
-                               ->groupBy('bundleid')
-                               ->pluck('latest', 'bundleid');
+            ->where('user_id', $this->me->id)
+            ->where('jidfrom', $jid)
+            ->groupBy('bundleid')
+            ->pluck('latest', 'bundleid');
 
         foreach ($fingerprints as $fingerprint) {
             $fingerprint->latest = $latests->has($fingerprint->bundleid)
@@ -210,11 +212,7 @@ class ContactActions extends Base
 
     public function prepareEmbedUrl(Message $message)
     {
-        $resolved = $message->resolvedUrl->cache;
-
-        if ($resolved) {
-            return (new Chat())->prepareEmbed($resolved, $message);
-        }
+        return (new Chat())->prepareEmbed($message->resolvedUrl, $message);
     }
 
     public function prepareTicket(\App\Post $post)
