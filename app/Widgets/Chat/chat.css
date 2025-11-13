@@ -11,7 +11,7 @@
 }
 
 #chat_widget:has(header):has(#visio[data-jid]) {
-    grid-template-rows: [start] 7rem [header] 2fr [visio] 2fr [box] 1fr [end];
+    grid-template-rows: [start] 7rem [header] 2fr [visio] 2fr [box] 0fr [end];
 }
 
 @media screen and (max-width: 1024px) {

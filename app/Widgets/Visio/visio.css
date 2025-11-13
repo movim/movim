@@ -219,6 +219,27 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     text-shadow: 0 0 3rem #333, 0 0 0.5rem #777;
 }
 
+#visio header i#network_condition:before {
+    font-family: 'Material Symbols';
+    color: var(--movim-font);
+    vertical-align: middle;
+}
+
+#visio header i#network_condition.excellent:before {
+    content: '\e202';
+    color: var(--p-green);
+}
+
+#visio header i#network_condition.good:before {
+    content: '\ebe3';
+    color: var(--p-orange);
+}
+
+#visio header i#network_condition.bad:before {
+    content: '\ebdf';
+    color: var(--p-red);
+}
+
 #visio header #no_mic_sound.disabled {
     display: none;
 }

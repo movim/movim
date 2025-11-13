@@ -43,23 +43,13 @@ var MovimVisio = {
         if (isMuji == true) {
             let pc = new RTCPeerConnection({ 'iceServers': MovimVisio.services });
 
-            var constraints = {
-                audio: true,
-                video: false,
-            };
-
-            if (withVideo) {
-                constraints.video = true;
-            }
-
-            navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+            navigator.mediaDevices.getUserMedia(VisioUtils.getConstraints(withVideo)).then(stream => {
                 stream.getTracks().forEach(track => {
                     pc.addTrack(track, stream);
                 });
 
                 pc.createOffer().then(function (offer) {
                     Visio_ajaxMujiInit(MovimVisio.id, offer);
-
                     pc.close();
                 });
             });
@@ -91,31 +81,6 @@ var MovimVisio = {
     },
 
     getUserMedia: function (withVideo) {
-        var constraints = {
-            audio: true,
-            video: false,
-        };
-
-        if (withVideo) {
-            constraints.video = {
-                facingMode: 'user',
-                width: { ideal: 1920 },
-                height: { ideal: 1920 }
-            }
-
-            if (localStorage.defaultCamera) {
-                constraints.video = {
-                    deviceId: localStorage.defaultCamera
-                };
-            }
-        }
-
-        if (localStorage.defaultMicrophone) {
-            constraints.audio = {
-                deviceId: localStorage.defaultMicrophone
-            }
-        }
-
         MovimVisio.load();
 
         let lobby = document.querySelector('#visio_lobby');
@@ -126,7 +91,7 @@ var MovimVisio = {
 
         MovimTpl.loadingPage();
 
-        navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+        navigator.mediaDevices.getUserMedia(VisioUtils.getConstraints(withVideo)).then(stream => {
             MovimTpl.finishedPage();
 
             MovimVisio.localStream = stream;
@@ -145,7 +110,7 @@ var MovimVisio = {
 
                 if (track.kind == 'audio') {
                     MovimVisio.localAudio.srcObject = stream;
-                } else if (withVideo && track.kind == 'video') {
+                } else if (withVideo && track.kind === 'video') {
                     MovimVisio.localVideo.srcObject = stream;
 
                     if (lobby) {

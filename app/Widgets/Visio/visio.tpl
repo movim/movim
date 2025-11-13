@@ -31,9 +31,12 @@
 
                 <div>
                     <p></p>
-                    <p id="no_mic_sound" class="disabled all">
-                        <i class="material-symbols">mic_none</i>
-                        {$c->__('visiolobby.no_mic_sound')}
+                    <p>
+                        <i id="network_condition" class="material-symbols excellent"></i>
+                        <span id="no_mic_sound" class="disabled all">
+                            <i class="material-symbols">mic_none</i>
+                            {$c->__('visiolobby.no_mic_sound')}
+                        </span>
                     </p>
                 </div>
             </li>
