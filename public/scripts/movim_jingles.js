@@ -8,7 +8,11 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     this.audioLevel = 0;
     this.lastPostMessage = 0;
 
-    this.pc = new RTCPeerConnection({ 'iceServers': MovimVisio.services });
+    this.pc = new RTCPeerConnection({
+        iceServers: MovimVisio.services,
+        bundlePolicy: 'max-bundle',
+        iceCandidatePoolSize: 10
+    });
 
     this.participant = document.createElement('div');
     this.participant.dataset.jid = this.jid;

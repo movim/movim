@@ -51,7 +51,7 @@ form > div .select:not(.multi):after {
     content: "\e5c5";
     display: block;
     font-size: 4rem;
-    color: rgba(var(--movim-font), 0.5);
+    color: rgba(var(--movim-font), 0.75);
     position: absolute;
     right: 0rem;
     bottom: 0rem;
@@ -75,7 +75,7 @@ form > div .select select {
     background-color: transparent;
     background-image: none;
     padding-bottom: 1rem;
-    mask-image: linear-gradient(to right, black calc(100% - 10rem), transparent);
+    mask-image: linear-gradient(to right, black calc(100% - 15rem), transparent);
 }
 
 /* Placeholders to mimic FF */
@@ -437,7 +437,7 @@ body > div.drawer:not(:empty):not(.empty) ~ main .button.action {
 
 .button.action,
 .button.action > i {
-    transition: all 0.15s ease 0s;
+    transition: all 0.4s ease 0s;
 }
 
 .button.action.active > i {

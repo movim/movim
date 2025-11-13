@@ -34,10 +34,12 @@
     bottom: 0;
     right: 0;
     border-radius: 0;
-    max-height: 40%;
     height: 100%;
     z-index: 0;
     overflow: hidden;
+
+    grid-column: start / end;
+    grid-row: header / visio;
 }
 
 body>#visio:not(:fullscreen) #main,

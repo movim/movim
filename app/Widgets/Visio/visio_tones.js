@@ -10,7 +10,6 @@ var VisioTones = {
         this.g.connect(this.context.destination);
     },
 
-
     ringingTone: function() {
         this.o.frequency.value = 1440.0;
         this.o.start(0);

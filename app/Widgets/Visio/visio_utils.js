@@ -21,7 +21,7 @@ var VisioUtils = {
             return;
         }
 
-        var javascriptNode = VisioUtils.audioContext.createScriptProcessor(2048, 1, 1);
+        var javascriptNode = VisioUtils.audioContext.createScriptProcessor(128 * 64, 1, 1);
         var icon = document.querySelector('#toggle_audio i');
         var mainButton = document.getElementById('main');
         icon.innerText = 'mic';
@@ -58,7 +58,7 @@ var VisioUtils = {
                 isMuteStep = 0;
             }
 
-            if (isMuteStep > 250) {
+            if (isMuteStep > 32) {
                 if (noMicSound) {
                     noMicSound.classList.remove('disabled');
                 }
@@ -76,18 +76,22 @@ var VisioUtils = {
                 }
 
                 // Lobby level
-                document.querySelectorAll('.level span').forEach(span => {
-                    if (step < Math.floor(level * 10)) {
-                        span.classList.remove('disabled');
-                    } else {
-                        span.classList.add('disabled');
-                    }
+                if (isMuteStep <= 5) {
+                    document.querySelectorAll('.level span').forEach(span => {
+                        if (step < Math.floor(level * 10)) {
+                            span.classList.remove('disabled');
+                        } else {
+                            span.classList.add('disabled');
+                        }
 
-                    step++;
-                });
+                        step++;
+                    });
+                }
             }
 
-            mainButton.style.outlineColor = 'rgba(255, 255, 255, ' + level.toFixed(2) + ')';
+            if (isMuteStep <= 5) {
+                mainButton.style.outlineColor = 'rgba(255, 255, 255, ' + level.toFixed(2) + ')';
+            }
         }
     },
 
