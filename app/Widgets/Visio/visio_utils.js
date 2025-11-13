@@ -301,10 +301,6 @@ var VisioUtils = {
         }
     },
 
-    getRandomFloat: function (min, max) {
-        return Math.random() * (max - min) + min;
-    },
-
     adaptToNetworkCondition: async function (peerConnection) {
         const stats = await peerConnection.getStats();
         let packetLossRate = 0;
@@ -325,7 +321,6 @@ var VisioUtils = {
         let networkIcon = document.querySelector('#network_condition');
         networkIcon.classList.remove('excellent', 'good', 'bad');
 
-        // First video
         peerConnection.getSenders().filter(s =>
             s.track && s.track.kind === 'video'
         ).forEach(sender => {
@@ -336,26 +331,20 @@ var VisioUtils = {
                 parameters.encodings = [{}];
             }
 
-            // Severe packet loss or high latency - reduce quality
             if (packetLossRate > 0.1 || rtt > 0.6) {
                 networkIcon.classList.add('bad');
                 parameters.encodings[0].maxBitrate = 250000; // 250 kbps
                 parameters.encodings[0].scaleResolutionDownBy = 4; // 1/4 resolution
-            }
-            // Moderate issues - slightly reduce quality
-            else if (packetLossRate > 0.05 || rtt > 0.3) {
+            } else if (packetLossRate > 0.05 || rtt > 0.3) {
                 networkIcon.classList.add('good');
                 parameters.encodings[0].maxBitrate = 500000; // 500 kbps
                 parameters.encodings[0].scaleResolutionDownBy = 2; // 1/2 resolution
-            }
-            // Good conditions - use higher quality
-            else {
+            } else {
                 networkIcon.classList.add('excellent');
                 parameters.encodings[0].maxBitrate = 1500000; // 1.5 Mbps
                 parameters.encodings[0].scaleResolutionDownBy = 1; // Full resolution
             }
 
-            // Apply the changes
             sender.setParameters(parameters);
         });
     }
