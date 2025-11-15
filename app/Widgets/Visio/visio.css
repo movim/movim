@@ -360,11 +360,10 @@ body>#visio #participants:not(.active):has(.participant:nth-child(7)) .participa
 }
 
 /** Active speaker mode */
-body>#visio #participants:not(.active):has(.participant:nth-child(2)) .participant {
+body>#visio #participants.active:not(.active):has(.participant:nth-child(2)) .participant {
     flex: 1 auto;
     max-width: 100%;
 }
-
 
 #visio .participant::after,
 #visio .participant::before {
