@@ -584,6 +584,10 @@ ul.list li>div.bubble:not(.file) p {
     margin-right: 1rem;
 }
 
+ul.list li>div.bubble:not(.file) p:has(i.icon) {
+    white-space: inherit;
+}
+
 ul.list li>div.bubble p.retracted,
 ul.list li>div.bubble p.encrypted {
     opacity: 0.5;
