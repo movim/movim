@@ -46,6 +46,7 @@ v0.32 (master)
 * Cleanup and refactor of the Posts and Stories events handling
 * Move from a Presence based to a Follow based subscription system for the Blogs
 * Introduce the nav bar in the Chat desktop
+* WebRTC video-streams optimizations
 
 v0.31
 ---------------------------

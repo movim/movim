@@ -101,7 +101,7 @@
                 {$c->__('publishhelp.manual')}
             </p>
             <p class="line">
-                <a href="https://commonmark.org/help/" target="_blank">
+                <a href="https://github.github.com/gfm/" target="_blank">
                     Markdown Reference
                 </a>
             </p>
