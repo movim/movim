@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.32 (master)
+v0.33 (master)
+---------------------------
+
+v0.32
 ---------------------------
 * Add a copy external link button on the Posts
 * Improve the Communities discovery flow when visiting a server
