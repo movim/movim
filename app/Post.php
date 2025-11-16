@@ -388,7 +388,7 @@ class Post extends Model
 
     private function extractContent(SimpleXMLElement $contents): ?string
     {
-        $content = null;
+        $htmlContent = $content = null;
 
         foreach ($contents as $c) {
             switch ($c->attributes()->type) {
@@ -398,7 +398,7 @@ class Post extends Model
                     $dom = new \DOMDocument('1.0', 'utf-8');
                     $dom->loadHTML('<div>' . $d . '</div>', LIBXML_NOERROR);
 
-                    return (string)$dom->saveHTML($dom->documentElement->lastChild->lastChild);
+                    $htmlContent = (string)$dom->saveHTML($dom->documentElement->lastChild->lastChild);
                     break;
                 case 'xhtml':
                     $import = null;
@@ -415,7 +415,7 @@ class Post extends Model
                     $element = $dom->importNode($import, true);
                     $dom->appendChild($element);
 
-                    return (string)$dom->saveHTML();
+                    $htmlContent = (string)$dom->saveHTML();
                     break;
                 case 'text':
                     if (trim($c) != '') {
@@ -429,7 +429,7 @@ class Post extends Model
             }
         }
 
-        return $content;
+        return $htmlContent ?? $content;
     }
 
     private function extractTitle($titles): ?string
