@@ -4,6 +4,10 @@ Movim Changelog
 v0.33 (master)
 ---------------------------
 
+v0.32.1
+---------------------------
+* Fix a content parsing issue when handling Atom articles
+
 v0.32
 ---------------------------
 * Add a copy external link button on the Posts
