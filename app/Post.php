@@ -276,6 +276,22 @@ class Post extends Model
         );
     }
 
+    protected function withFollowScope($query, ?string $since = null)
+    {
+        $posts = DB::table('posts')
+            ->whereIn(DB::raw('(server, node)'), function ($query) {
+                $query->select('server', 'node')
+                    ->from('subscriptions')
+                    ->where('jid', me()->id);
+            });
+
+        if ($since != null) {
+            $posts = $posts->where('published', '>', $since);
+        }
+
+        return $query->unionAll($posts);
+    }
+
     protected function withContactsFollowScope($query)
     {
         return $query->unionAll(
@@ -289,18 +305,17 @@ class Post extends Model
         );
     }
 
-    protected function withMineScope($query, string $node = Post::MICROBLOG_NODE)
+    protected function withMineScope($query, string $node = Post::MICROBLOG_NODE, ?string $since = null)
     {
-        return $query->unionAll(
-            DB::table('posts')
-                ->where('node', $node)
-                ->where('server', me()->id)
-        );
-    }
+        $posts = DB::table('posts')
+            ->where('node', $node)
+            ->where('server', me()->id);
 
-    public function scopeWithMine($query)
-    {
-        return $this->withMineScope($query);
+        if ($since != null) {
+            $posts = $posts->where('published', '>', $since);
+        }
+
+        return $query->unionAll($posts);
     }
 
     protected function withCommunitiesFollowScope($query)

@@ -20,6 +20,7 @@ use App\Upload;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post;
+use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Payload\Packet;
 
 class Publish extends Base
@@ -45,6 +46,12 @@ class Publish extends Base
         if (!$repost && $comments) {
             $this->ajaxCreateComments(($comments === true) ? $to : $comments, $id);
         }
+
+        $gi = new GetItem;
+        $gi->setTo($to)
+            ->setNode($node)
+            ->setId($id)
+            ->request();
 
         if ($node == AppPost::MICROBLOG_NODE) {
             $this->rpc('MovimUtils.reload', $this->route('news'));

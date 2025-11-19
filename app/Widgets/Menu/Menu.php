@@ -48,18 +48,17 @@ class Menu extends Base
         $since = User::me(true)->posts_since; // Force refresh the user
 
         if ($since) {
-            $count = \App\Post::whereIn('id', function ($query) {
+            $count = \App\Post::whereIn('id', function ($query) use ($since) {
                 $filters = DB::table('posts')->where('id', -1);
 
-                $filters = \App\Post::withMineScope($filters);
-                $filters = \App\Post::withContactsFollowScope($filters);
-                $filters = \App\Post::withCommunitiesFollowScope($filters);
+                $filters = \App\Post::withMineScope($filters, since: $since);
+                $filters = \App\Post::withFollowScope($filters, since: $since);
 
                 $query->select('id')->from(
                     $filters,
                     'posts'
                 );
-            })->withoutComments()->where('published', '>', $since)->count();
+            })->withoutComments()->count();
         } else {
             $count = 0;
         }
@@ -166,12 +165,12 @@ class Menu extends Base
     {
         $view = $this->tpl();
 
-        $posts = \App\Post::whereIn('id', function ($query) {
+        $since = $this->me->posts_since;
+        $posts = \App\Post::whereIn('id', function ($query) use ($since) {
             $filters = DB::table('posts')->where('id', -1);
 
-            $filters = \App\Post::withMineScope($filters);
-            $filters = \App\Post::withContactsFollowScope($filters);
-            $filters = \App\Post::withCommunitiesFollowScope($filters);
+            $filters = \App\Post::withMineScope($filters, since: $since);
+            $filters = \App\Post::withFollowScope($filters, since: $since);
 
             $query->select('id')->from(
                 $filters,
@@ -179,11 +178,7 @@ class Menu extends Base
             );
         });
 
-        $since = $this->me->posts_since;
-
-        $count = ($since)
-            ? $posts->where('published', '>', $since)->count()
-            : 0;
+        $count = $since ? $posts->count() : 0;
 
         // getting newer, not older
         if ($page == 0) {
@@ -198,13 +193,20 @@ class Menu extends Base
         $items->whereIn('id', function ($query) use ($type) {
             $filters = DB::table('posts')->where('id', -1);
 
-            if (in_array($type, ['all', 'feed'])) {
-                $filters = \App\Post::withContactsFollowScope($filters);
-                $filters = \App\Post::withMineScope($filters);
-            }
+            switch ($type) {
+                case 'all':
+                    $filters = \App\Post::withFollowScope($filters);
+                    $filters = \App\Post::withMineScope($filters);
+                    break;
 
-            if (in_array($type, ['all', 'news'])) {
-                $filters = \App\Post::withCommunitiesFollowScope($filters);
+                case 'feed':
+                    $filters = \App\Post::withContactsFollowScope($filters);
+                    $filters = \App\Post::withMineScope($filters);
+                    break;
+
+                case 'news':
+                    $filters = \App\Post::withCommunitiesFollowScope($filters);
+                    break;
             }
 
             $query->select('id')->from(

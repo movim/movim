@@ -110,7 +110,7 @@ class CommunityAffiliations extends Base
     {
         if (
             $packet->content['server'] != $this->me->id
-            && str_starts_with($packet->content['node'], Post::COMMENTS_NODE)
+            && !str_starts_with($packet->content['node'], Post::COMMENTS_NODE)
         ) {
             $this->rpc(
                 'MovimUtils.redirect',
@@ -124,7 +124,9 @@ class CommunityAffiliations extends Base
 
     public function onDelete(Packet $packet)
     {
-        $this->toast($this->__('communityaffiliation.deleted'));
+        if (!str_starts_with($packet->content['node'], Post::COMMENTS_NODE)) {
+            $this->toast($this->__('communityaffiliation.deleted'));
+        }
 
         $this->deleted($packet);
     }
