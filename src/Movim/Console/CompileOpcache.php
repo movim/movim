@@ -20,7 +20,7 @@ class CompileOpcache extends Command
             ->setDescription('Compile and cache PHP files in Opcache');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         if (isOpcacheEnabled()) {
             $output->writeln('<info>Opcache is enabled compiling files...</info>');

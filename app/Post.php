@@ -483,7 +483,7 @@ class Post extends Model
 
         // Detect if things changed from the cached version
         if ($hash == $this->contenthash) {
-            return \React\Promise\resolve();
+            return \React\Promise\resolve(null);
         }
 
         $this->contenthash = $hash;

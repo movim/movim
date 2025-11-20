@@ -21,7 +21,7 @@ class EmojisToJsonCommand extends Command
             ->setDescription('Compile the supported emojis to Json');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $filtered = [];
         $emojis = (Emoji::getInstance())->getEmojis();

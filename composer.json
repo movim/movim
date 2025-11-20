@@ -31,23 +31,22 @@
         "dflydev/fig-cookies": "^3.1",
         "defuse/php-encryption": "^2.4",
 
-        "robmorgan/phinx": "^0.14",
-        "illuminate/database": "^11",
-        "illuminate/events": "^11",
-        "doctrine/dbal": "^3.9",
+        "robmorgan/phinx": "^0.16",
+        "illuminate/database": "^12",
+        "illuminate/events": "^12",
+        "doctrine/dbal": "^4",
         "monolog/monolog": "^3.7",
-
-        "plesk/ratchetphp": "^1.0",
         "react/child-process": "^0.6",
         "react/http": "^1.11",
         "react/dns": "^1.13",
         "ratchet/pawl": "^0.4.3",
         "minishlink/web-push": "^9.0",
         "vlucas/phpdotenv": "^5.6",
-        "react/promise-timer": "^1.11",
+        "react/promise-timer": "^1.x-dev",
         "awobaz/compoships": "^2.3",
-        "wyrihaximus/react-cron": "^4.0",
-        "nyholm/psr7": "^1.8"
+        "wyrihaximus/react-cron": "^5.0",
+        "nyholm/psr7": "^1.8",
+        "cboden/ratchet": "^0.4-dev"
     },
     "config": {
         "platform": {

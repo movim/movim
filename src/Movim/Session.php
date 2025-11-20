@@ -27,7 +27,7 @@ class Session implements CacheInterface
         return self::$instance;
     }
 
-    public function get($key, $default = null)
+    public function get(string $key, mixed $default = null): mixed
     {
         if (\array_key_exists($key, $this->values)) {
             return $this->values[$key]->value;
@@ -36,7 +36,7 @@ class Session implements CacheInterface
         return $default;
     }
 
-    public function getMultiple($keys, $default = null)
+    public function getMultiple(iterable $keys, mixed $default = null): iterable
     {
         $values = [];
 
@@ -47,7 +47,7 @@ class Session implements CacheInterface
         return $values;
     }
 
-    public function set($key, $value, $ttl = null): bool
+    public function set(string $key, mixed $value, null|int|\DateInterval $ttl = null): bool
     {
         $obj = new \StdClass;
         $obj->removable = $ttl != null;
@@ -59,7 +59,7 @@ class Session implements CacheInterface
         return true;
     }
 
-    public function setMultiple($values, $ttl = null): bool
+    public function setMultiple(iterable $values, null|int|\DateInterval $ttl = null): bool
     {
         foreach ($values as $key => $value) {
             $this->set($key, $value, $ttl);
@@ -68,13 +68,13 @@ class Session implements CacheInterface
         return true;
     }
 
-    public function delete($key): bool
+    public function delete(string $key): bool
     {
         unset($this->values[$key]);
         return true;
     }
 
-    public function deleteMultiple($keys): bool
+    public function deleteMultiple(iterable $keys): bool
     {
         foreach ($keys as $key) {
             $this->delete($key);
@@ -89,7 +89,7 @@ class Session implements CacheInterface
         return true;
     }
 
-    public function has($key): bool
+    public function has(string $key): bool
     {
         return array_key_exists($key, $this->values);
     }
@@ -102,8 +102,10 @@ class Session implements CacheInterface
         $t = time();
 
         foreach ($this->values as $key => $object) {
-            if ($object->removable
-            && $object->time < (int)$t - $this->seconds) {
+            if (
+                $object->removable
+                && $object->time < (int)$t - $this->seconds
+            ) {
                 unset($this->values[$key]);
             }
         }
