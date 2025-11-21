@@ -14,8 +14,12 @@ class AddPostIdIndexToPostUserViewsTable extends Migration
 
     public function down()
     {
+        $this->disableForeignKeyCheck();
+
         $this->schema->table('post_user_views', function (Blueprint $table) {
             $table->dropIndex('post_user_views_post_id_index');
         });
+
+        $this->enableForeignKeyCheck();
     }
 }
