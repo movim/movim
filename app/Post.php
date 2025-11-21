@@ -28,6 +28,12 @@ class Post extends Model
     ];
     public $withCount = ['userViews'];
 
+    protected $casts = [
+        'published' => 'datetime:Y-m-d H:i:s',
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+    ];
+
     private $titleLimit = 700;
     private $changed = false; // Detect if the set post was different from the cache
 
@@ -895,6 +901,11 @@ class Post extends Model
     public function isStory(): bool
     {
         return $this->node == Post::STORIES_NODE;
+    }
+
+    public function isRecentStory(): bool
+    {
+        return Carbon::create($this->published)->isAfter(Carbon::now()->subDay());
     }
 
     public function isComment(): bool

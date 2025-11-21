@@ -5,6 +5,7 @@ namespace App\Widgets\Stories;
 use App\Post;
 use App\Widgets\Chats\Chats;
 use App\Widgets\Notif\Notif;
+use Carbon\Carbon;
 use Movim\Widget\Base;
 use Moxl\Xec\Payload\Packet;
 
@@ -24,7 +25,7 @@ class Stories extends Base
     {
         $post = Post::find($packet->content);
 
-        if ($post) {
+        if ($post && $post->isRecentStory()) {
             if (!$post->isMine($this->me)) {
                 $contact = \App\Contact::firstOrNew(['id' => $post->server]);
 
