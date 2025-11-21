@@ -1,0 +1,18 @@
+var Shortcuts = {
+    clear: function (jid) {
+        li = document.querySelector('#shortcuts_widget li[data-jid="' + jid + '"]');
+        li.classList.add('disappear');
+
+        MovimTpl.closeMenu();
+
+        setTimeout(e => {
+            parent = li.parentNode;
+            li.remove();
+            parent.innerHTML = parent.innerHTML.trim();
+        }, 200)
+    }
+}
+
+MovimWebsocket.attach(() => {
+    Shortcuts_ajaxGet();
+});

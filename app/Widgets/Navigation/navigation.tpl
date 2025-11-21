@@ -107,7 +107,7 @@
     {/if}
 
     <a href="#" class="on_mobile">
-        <li onclick="MovimTpl.toggleMenu()">
+        <li onclick="MovimTpl.closeMenu()">
             <span class="primary icon bubble"><i class="material-symbols">arrow_back</i></span>
             <div>
                 <p class="normal">{$c->__('button.close')}</p>

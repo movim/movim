@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\PushSubscription;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Dialog\Dialog;
+use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;
 
 class Notif extends Base
@@ -101,7 +102,11 @@ class Notif extends Base
         $first = reset($explode);
 
         if (array_key_exists($first, $notifs)) {
-            $notifs[$first]++;
+            $count = $notifs[$first]++;
+
+            // We re-append it
+            unset($notifs[$first]);
+            $notifs[$first] = $count;
         } else {
             $notifs[$first] = 1;
         }
@@ -121,7 +126,11 @@ class Notif extends Base
 
         if ($first != $key) {
             if (array_key_exists($key, $notifs)) {
-                $notifs[$key]++;
+                $count = $notifs[$key]++;
+
+                // We re-append it
+                unset($notifs[$key]);
+                $notifs[$key] = $count;
             } else {
                 $notifs[$key] = 1;
             }
@@ -140,6 +149,8 @@ class Notif extends Base
         }
 
         $session->set('notifs', $notifs);
+
+        Wrapper::getInstance()->iterate('notifs', (new Packet)->pack($notifs));
     }
 
 
@@ -185,6 +196,8 @@ class Notif extends Base
         }
 
         $session->set('notifs', $notifs);
+
+        Wrapper::getInstance()->iterate('notifs_clear', (new Packet)->pack($key));
     }
 
     /**

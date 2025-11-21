@@ -225,6 +225,10 @@ span.icon[data-counter]:after {
     content: attr(data-counter);
 }
 
+span.icon[data-counter].symbol:after {
+    font-family: 'Material Symbols';
+}
+
 /* Composing */
 
 span.icon.composing:after {

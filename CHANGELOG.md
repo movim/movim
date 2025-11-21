@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.33 (master)
 ---------------------------
+* Add a Shortcuts widget to quickly access the 3 most recent notified chats and chatrooms
 
 v0.32.1
 ---------------------------

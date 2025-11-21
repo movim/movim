@@ -11,6 +11,7 @@
 
 <nav>
     <?php $this->widget('Presence');?>
+    <?php $this->widget('Shortcuts');?>
     <?php $this->widget('Navigation');?>
 </nav>
 

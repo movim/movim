@@ -1,0 +1,23 @@
+#shortcuts_widget {
+    transition: height .1s;
+}
+
+#shortcuts_widget + hr {
+    transition: opacity .2s;
+}
+
+#shortcuts_widget:empty + hr {
+    opacity: 0;
+}
+
+#shortcuts_widget li {
+    transition: transform .2s, opacity .2s, height .2s;
+    opacity: 1;
+    height: 7rem;
+}
+
+#shortcuts_widget li.disappear {
+    transform: scale(0.5);
+    opacity: 0;
+    height: 0;
+}

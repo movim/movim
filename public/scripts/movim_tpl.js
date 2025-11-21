@@ -97,7 +97,7 @@ var MovimTpl = {
             replacedNode = target.parentNode.replaceChild(element, target);
         }
     },
-    showContextMenu: function() {
+    showContextMenu: function () {
         var contextMenu = document.querySelector('ul.context_menu');
         contextMenu.classList.add('shown');
     },
@@ -108,6 +108,9 @@ var MovimTpl = {
         if (!document.querySelector('.show_context_menu').contains(e.target)) {
             contextMenu.classList.remove('shown');
         }
+    },
+    closeMenu: function () {
+        document.querySelector('body > nav').classList.remove('active');
     },
     toggleMenu: function () {
         document.querySelector('body > nav').classList.toggle('active');
