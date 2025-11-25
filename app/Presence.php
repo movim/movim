@@ -12,6 +12,7 @@ class Presence extends Model
 {
     protected $primaryKey = ['session_id', 'jid', 'mucjid', 'resource'];
     public $incrementing = false;
+    public $hatsToSave = [];
 
     protected $attributes = [
         'session_id' => SESSION_ID,
@@ -26,21 +27,28 @@ class Presence extends Model
         'mucjid'
     ];
 
+    protected $with = ['hats'];
+
     public function roster()
     {
-        return $this->hasOne('App\Roster', 'jid', 'jid')
+        return $this->hasOne(Roster::class, 'jid', 'jid')
             ->where('session_id', $this->session_id);
     }
 
     public function capability()
     {
-        return $this->hasOne('App\Info', 'node', 'node')
+        return $this->hasOne(Info::class, 'node', 'node')
             ->whereNull('server');
     }
 
     public function contact()
     {
-        return $this->hasOne('App\Contact', 'id', 'jid');
+        return $this->hasOne(Contact::class, 'id', 'jid');
+    }
+
+    public function hats()
+    {
+        return $this->hasMany(Hat::class, 'presence_id', 'id');
     }
 
     public function getSeenAttribute(): ?string
@@ -209,6 +217,16 @@ class Presence extends Model
 
         if ($stanza->query && $stanza->query->attributes()->xmlns == 'jabber:iq:last') {
             $this->last = (int)$stanza->query->attributes()->seconds;
+        }
+
+        if ($stanza->hats && $stanza->hats->attributes()->xmlns == 'urn:xmpp:hats:0') {
+            foreach ($stanza->hats->hat as $hat) {
+                array_push($this->hatsToSave, new Hat([
+                    'uri' => (string)$hat->attributes()->uri,
+                    'title' => (string)$hat->attributes()->title,
+                    'hue' => $hat->attributes()->hue ? round((float)$hat->attributes()->hue, 2) : null,
+                ]));
+            }
         }
     }
 

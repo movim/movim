@@ -274,8 +274,14 @@ function typeIsAudio(string $type): bool
     return in_array(
         $type,
         [
-            'audio/aac', 'audio/ogg', 'video/ogg', 'audio/opus',
-            'audio/vorbis', 'audio/speex', 'audio/mpeg', 'audio/webm'
+            'audio/aac',
+            'audio/ogg',
+            'video/ogg',
+            'audio/opus',
+            'audio/vorbis',
+            'audio/speex',
+            'audio/mpeg',
+            'audio/webm'
         ]
     );
 }
@@ -317,16 +323,23 @@ function isLongitude(float $longitude): bool
  */
 function stringToColor(?string $string = null): string
 {
-    $colors = array_keys(palette());
-
     if ($string == null) return 'dorange';
 
     // Get the Hue angle from the XEP definition
-    $arr = unpack('C*' ,hex2bin(hash('sha1', $string)));
+    $arr = unpack('C*', hex2bin(hash('sha1', $string)));
     $angle = (($arr[1] + $arr[2] * 256) / 65536.0) * 360;
 
+    return hueToPalette($angle);
+}
+
+/**
+ * Hue to palette
+ */
+function hueToPalette(float $hueAngle)
+{
+    $colors = array_keys(palette());
     // Pick the closest color from the palette
-    $color = round($angle / (360 / count($colors)));
+    $color = round($hueAngle / (360 / count($colors)));
 
     if ($color == 16) $color = 15;
 

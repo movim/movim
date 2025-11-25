@@ -18,13 +18,12 @@
             </div>
         </li>
     {/if}
-    <li class="{if="$value->last > 60"} inactive{/if}" title="{$value->resource}">
-
-        <span class="primary icon bubble small status active {$value->presencekey}"
-            {if="$value->mucjid && $compact"}
-                onclick="ChatActions_ajaxGetContact('{$value->mucjid}')"
-            {/if}
-            >
+    <li class="{if="$value->last > 60"} inactive{/if}" title="{$value->resource}"
+        {if="$value->mucjid && $compact"}
+            onclick="RoomsUtils_ajaxHttpGetParticipant('{$conference->conference|echapJS}', '{$value->mucjid}')"
+        {/if}
+        >
+        <span class="primary icon bubble small status active {$value->presencekey}">
             <img loading="lazy" src="{$value->conferencePicture}">
         </span>
         {if="$compact == false"}
@@ -43,7 +42,7 @@
                 </span>
             {/if}
         {/if}
-        <div {if="$compact"}onclick="Chat.quoteMUC('{$value->resource}', true);"{/if}>
+        <div>
             <p class="line normal">
                 {if="$value->mucjid && strpos($value->mucjid, '/') == false"}
                     {if="$value->mucjid == $c->me || $compact"}
@@ -65,7 +64,16 @@
                     </span>
                 {/if}
             </p>
-            {if="$value->seen"}
+            {if="$value->hats->isNotEmpty()"}
+                <p class="line">
+                    {loop="$value->hats"}
+                        <span class="chip thin" title="{$value->title}">
+                            <i class="material-symbols fill icon {$value->color}">circle</i>
+                            {$value->title}
+                        </span>
+                    {/loop}
+                </p>
+            {elseif="$value->seen"}
                 <p class="line">
                     {$c->__('last.title')} {$value->seen|prepareDate:true,true}
                 </p>

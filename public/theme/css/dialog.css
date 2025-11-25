@@ -29,7 +29,7 @@
     position: relative;
 }
 
-.dialog>section>*:first-child:not(ul) {
+.dialog>section>*:first-child:not(ul):not(header) {
     margin-top: 1rem;
 }
 

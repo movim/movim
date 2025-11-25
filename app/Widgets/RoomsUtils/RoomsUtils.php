@@ -23,6 +23,7 @@ use App\Message;
 use App\Widgets\AdHoc\AdHoc;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
+use App\Widgets\ContactActions\ContactActions;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
 use Respect\Validation\Validator;
@@ -192,6 +193,29 @@ class RoomsUtils extends Base
             $this->rpc('ContactActions.resolveSessionsStates', $jid, true);
         }
         $this->rpc('RoomsUtils.resolveRoomEncryptionState', $room);
+    }
+
+    public function ajaxHttpGetParticipant(string $room, string $mucjid)
+    {
+        $conference = $this->me->session->conferences()
+            ->where('conference', $room)
+            ->with('info')
+            ->first();
+
+        if (!$conference) return;
+
+        Dialog::fill($this->view('_rooms_participant', [
+            'contact' => \App\Contact::firstOrNew(['id' => $mucjid]),
+            'conference' => $conference,
+            'clienttype' => getClientTypes(),
+            'presence' => $conference->presences()
+                ->with('capability')->where('mucjid', $mucjid)->first()
+        ]));
+    }
+
+    public function prepareVcard(\App\Contact $contact)
+    {
+        return (new ContactActions)->prepareVcard($contact);
     }
 
     /**

@@ -15,10 +15,17 @@
     vertical-align: middle;
 }
 
+.chip.thin {
+    line-height: 3rem;
+    padding: 0 1rem;
+}
+
+p+p>.chip:first-child,
 *:not(p):not(h4)>.chip:first-child {
     margin-left: 0;
 }
 
+p+p>.chip:last-child,
 *:not(p):not(h4)>.chip:last-child {
     margin-right: 0;
 }
@@ -27,6 +34,12 @@
     margin: 0 1rem;
     margin-left: -1rem;
     font-size: 2rem;
+}
+
+.chip.thin i {
+    margin: 0 0.25rem;
+    margin-left: -0.25rem;
+    font-size: 1.25rem;
 }
 
 .chip i.spin,

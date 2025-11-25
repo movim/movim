@@ -15,10 +15,12 @@ class PresenceBufferSaver
 {
     private $_models = null;
     private $_calls = null;
+    private $_hats = null;
 
     public function __construct()
     {
         $this->_models = collect();
+        $this->_hats = collect();
         $this->_calls = collect();
     }
 
@@ -51,6 +53,49 @@ class PresenceBufferSaver
                 // And we save it
                 Presence::insert($this->_models->toArray());
                 DB::commit();
+
+                /**
+                 * Hats
+                 */
+                if ($this->_hats->isNotEmpty()) {
+                    $table = DB::table('presences');
+
+                    $firstHat = $this->_hats->keys()->first();
+
+                    $first = $this->_models[$firstHat];
+                    $table = $table->where(function ($query) use ($first) {
+                        $query->where('session_id', $first['session_id'])
+                            ->where('jid', $first['jid'])
+                            ->where('resource', $first['resource'])
+                            ->where('mucjid', $first['mucjid']);
+                    });
+
+                    $this->_hats->skip(1)->each(function ($hat, $key) use ($table) {
+                        $presence = $this->_models[$key];
+                        $table->orWhere(function ($query) use ($presence) {
+                            $query->where('session_id', $presence['session_id'])
+                                ->where('jid', $presence['jid'])
+                                ->where('resource', $presence['resource'])
+                                ->where('mucjid', $presence['mucjid']);
+                        });
+                    });
+
+                    $hats = [];
+                    $keysCheck = []; // To prevent duplicate hats
+
+                    foreach ($table->get() as $presenceHat) {
+                        foreach ($this->_hats[$this->getPresenceKey($presenceHat)] as $hat) {
+                            if (!in_array($this->getPresenceKey($presenceHat).$hat->uri, $keysCheck)) {
+                                $hat['presence_id'] = $presenceHat->id;
+                                array_push($hats, $hat->toArray());
+                                array_push($keysCheck, $this->getPresenceKey($presenceHat).$hat->uri);
+                            }
+                        }
+                    }
+
+                    Hat::insert($hats);
+                    unset($hats, $keysCheck);
+                }
 
                 /**
                  * Handle the Capabilities & Vcards
@@ -126,6 +171,7 @@ class PresenceBufferSaver
                 logError($e);
             }
             $this->_models = collect();
+            $this->_hats = collect();
         }
 
         if ($this->_calls->isNotEmpty()) {
@@ -137,10 +183,15 @@ class PresenceBufferSaver
     public function append(Presence $presence, $call)
     {
         $this->_models[$this->getPresenceKey($presence)] = $presence->toArray();
+
+        if (!empty($presence->hatsToSave)) {
+            $this->_hats[$this->getPresenceKey($presence)] = $presence->hatsToSave;
+        }
+
         $this->_calls->push($call);
     }
 
-    private function getPresenceKey(Presence $presence)
+    private function getPresenceKey(Presence|\stdClass $presence)
     {
         return $presence->jid . $presence->mucjid . $presence->resource;
     }

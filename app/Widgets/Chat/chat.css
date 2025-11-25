@@ -36,6 +36,10 @@
     margin: 0 0.5rem;
 }
 
+#chat_widget nav>ul>li span.icon.small {
+    margin-right: 0.25rem;
+}
+
 main:not(.enabled) #chat_widget {
     overflow-y: auto;
 }
