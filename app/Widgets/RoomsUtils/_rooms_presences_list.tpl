@@ -23,7 +23,11 @@
             onclick="RoomsUtils_ajaxHttpGetParticipant('{$conference->conference|echapJS}', '{$value->mucjid}')"
         {/if}
         >
-        <span class="primary icon bubble small status active {$value->presencekey}">
+        <span class="primary icon bubble small status {if="$value->mucjid"}active{/if} {$value->presencekey}"
+            {if="$value->mucjid"}
+                onclick="RoomsUtils_ajaxHttpGetParticipant('{$conference->conference|echapJS}', '{$value->mucjid}'); Drawer.clear();"
+            {/if}
+            >
             <img loading="lazy" src="{$value->conferencePicture}">
         </span>
         {if="$compact == false"}
