@@ -9,14 +9,20 @@ class CreateHatsTable extends Migration
 
     public function up()
     {
+        $this->disableForeignKeyCheck();
         $this->schema->table('presences', function (Blueprint $table) {
             if ($this->schema->getConnection()->getDriverName() == 'pgsql') {
                 $table->dropPrimary($this->columns);
                 $table->unique($this->columns);
             }
 
+            if ($this->schema->getConnection()->getDriverName() == 'mysql') {
+                $table->dropPrimary(['session_id', 'jid', 'resource']);
+            }
+
             $table->increments('id');
         });
+        $this->enableForeignKeyCheck();
 
         $this->schema->create('hats', function (Blueprint $table) {
             $table->integer('presence_id')->constrained()->onDelete('cascade');
@@ -35,6 +41,7 @@ class CreateHatsTable extends Migration
     {
         $this->schema->drop('hats');
 
+        $this->disableForeignKeyCheck();
         $this->schema->table('presences', function (Blueprint $table) {
             $table->dropColumn('id');
 
@@ -42,6 +49,12 @@ class CreateHatsTable extends Migration
                 $table->dropUnique($this->columns);
                 $table->primary($this->columns);
             }
+
+            if ($this->schema->getConnection()->getDriverName() == 'mysql') {
+                $table->primary(['session_id', 'jid', 'resource']);
+            }
         });
+        $this->enableForeignKeyCheck();
+
     }
 }
