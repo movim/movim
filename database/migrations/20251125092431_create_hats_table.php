@@ -10,14 +10,16 @@ class CreateHatsTable extends Migration
     public function up()
     {
         $this->schema->table('presences', function (Blueprint $table) {
-            $table->dropPrimary($this->columns);
-            $table->unique($this->columns);
+            if ($this->schema->getConnection()->getDriverName() == 'pgsql') {
+                $table->dropPrimary($this->columns);
+                $table->unique($this->columns);
+            }
 
             $table->increments('id');
         });
 
         $this->schema->create('hats', function (Blueprint $table) {
-            $table->foreignId('presence_id')->constrained()->onDelete('cascade');
+            $table->integer('presence_id')->constrained()->onDelete('cascade');
 
             $table->string('uri');
             $table->string('title');
@@ -36,8 +38,10 @@ class CreateHatsTable extends Migration
         $this->schema->table('presences', function (Blueprint $table) {
             $table->dropColumn('id');
 
-            $table->dropUnique($this->columns);
-            $table->primary($this->columns);
+            if ($this->schema->getConnection()->getDriverName() == 'pgsql') {
+                $table->dropUnique($this->columns);
+                $table->primary($this->columns);
+            }
         });
     }
 }
