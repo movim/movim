@@ -39,7 +39,7 @@ class XMPPtoForm
 
     public function create()
     {
-        $reported = false;
+        $reported = null;
         $items = [];
 
         foreach ($this->xmpp->children() as $element) {
@@ -52,6 +52,7 @@ class XMPPtoForm
                     break;
                 case 'reported':
                     $reported = $element;
+                    break;
                 case 'item':
                     array_push($items, $element);
                 case 'field':
@@ -158,26 +159,33 @@ class XMPPtoForm
             $table = $this->html->createElement('table');
             $table->setAttribute("class", "table");
             $header = $this->html->createElement('tr');
+
             foreach ($reported->children() as $element) {
                 if ($element->getName() != 'field') {
                     continue;
                 }
+
                 array_push($cols, (string)$element->attributes()->var);
-                $type = isset($element->attributes()->type) ? $element->attributes()->type : 'text-single';
+                $type = $element->attributes()->type ?? 'text-single';
                 array_push($colType, $type);
+
                 $header->appendChild($this->html->createElement('th', (string)$element->attributes()->label));
             }
+
             $table->appendChild($header);
 
             foreach ($items as $item) {
                 // fields in item are not required to be in the same order
                 // so order them by the order in reported
                 $cells = [];
+
                 foreach ($item->children() as $element) {
                     if ($element->getName() != 'field') {
                         continue;
                     }
+
                     $idx = array_search((string)$element->attributes()->var, $cols);
+
                     if ($colType[$idx] == 'jid-single') {
                         $link = $this->html->createElement('a', (string)$element->value);
                         $link->setAttribute('href', Route::urlize('contact', $element->value));
@@ -189,6 +197,7 @@ class XMPPtoForm
                 }
 
                 $row = $this->html->createElement('tr');
+
                 for ($i = 0; $i < count($cols); $i++) {
                     if (isset($cells[$i])) {
                         $row->appendChild($cells[$i]);
@@ -196,6 +205,7 @@ class XMPPtoForm
                         $row->appendChild($this->html->createElement('td'));
                     }
                 }
+
                 $table->appendChild($row);
             }
 

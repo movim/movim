@@ -30,8 +30,10 @@ class AdHoc
         $dom->appendChild($command);
         $command->setAttribute('sessionid', $sessionid);
         $command->setAttribute('node', $node);
+        $command->setAttribute('action', 'complete');
 
-        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');
         $command->appendChild($x);
 

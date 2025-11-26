@@ -33,9 +33,9 @@
     margin-top: 1rem;
 }
 
-.dialog>section>table {
+.dialog>section table {
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    width: calc(100% - 3rem);
 }
 
 .dialog>section>form>label,

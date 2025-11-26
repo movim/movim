@@ -3,7 +3,6 @@
 article section ul li, /* Body 1 */
 ol li,
 p,
-table tbody tr td,
 dl dt,
 dl dd {
     font-size: 2rem;

@@ -193,27 +193,28 @@ article section label.spoiler:hover {
 
 /* Table */
 
+.dialog>section table,
 article table {
     border-collapse: collapse;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
 }
 
-article table tbody tr:hover {
+.dialog>section table tbody tr:nth-child(even),
+article table tbody tr:nth-child(even) {
     background-color: rgba(var(--movim-font), 0.05);
 }
 
-article table tbody tr td {
-    font-size: 1.8rem;
-}
-
+.dialog>section table td,
 article table td {
-    padding: 0.3rem 0.5rem;
-    border: thin solid rgba(var(--movim-font), 0.20);
+    padding: 0.5rem;
+    font-size: 1.9rem;
+    line-height: 2.5rem;
 }
 
+.dialog>section table th,
 article table th {
-    padding: 0 0.5rem;
-    font-size: 1.7rem;
-    text-align: center;
+    padding: 0.5rem;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    text-align: left;
 }
