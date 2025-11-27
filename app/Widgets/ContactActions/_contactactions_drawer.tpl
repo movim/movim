@@ -64,16 +64,6 @@
         {$c->prepareVcard($contact, $roster)}
     {/autoescape}
 
-    {if="$posts->count() > 0"}
-        <ul class="list card shadow flex active middle">
-            {loop="$posts"}
-                {autoescape="off"}
-                    {$c->prepareTicket($value)}
-                {/autoescape}
-            {/loop}
-        </ul>
-    {/if}
-
     <ul class="tabs" id="navtabs"></ul>
 
     {if="isset($picturesCount) && $picturesCount > 0"}

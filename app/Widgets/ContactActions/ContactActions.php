@@ -77,15 +77,6 @@ class ContactActions extends Base
         $tpl->assign('jid', $jid);
         $tpl->assign('incall', CurrentCall::getInstance()->isStarted());
         $tpl->assign('clienttype', getClientTypes());
-        $tpl->assign(
-            'posts',
-            \App\Post::where('server', $jid)
-                ->restrictToMicroblog()
-                ->where('open', true)
-                ->orderBy('published', 'desc')
-                ->take(4)
-                ->get()
-        );
 
         Drawer::fill('contact_drawer', $tpl->draw('_contactactions_drawer'));
         $this->rpc('Tabs.create');
