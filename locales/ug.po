@@ -59,6 +59,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Draw/locales.ini
@@ -120,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Keram, 2023\n"
 "Language-Team: Uyghur (http://app.transifex.com/movim/movim/language/ug/)\n"
@@ -490,6 +492,16 @@ msgstr ""
 msgid "Change my profile picture"
 msgstr ""
 
+#: [avatar]too_big
+#, fuzzy
+msgid "Your picture is too big"
+msgstr "سىزنىڭ تەرجىمالىڭىز ھازىر ئاممىۋى"
+
+#: [avatar]missing
+#, fuzzy
+msgid "No avatar yet"
+msgstr "تېخى پاراڭ يوق"
+
 #: [banner]change
 msgid "Change my banner"
 msgstr "تام رەسىمىنى ئۆزگەرتىش"
@@ -501,6 +513,11 @@ msgstr "تام-رەسىم يېڭىلاندى"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "تام-رەسىم يېڭىلانمىدى"
+
+#: [banner]missing
+#, fuzzy
+msgid "No banner yet"
+msgstr "يېڭى خەۋەر يوق..."
 
 #: [blocked]title
 msgid "Blocked"
@@ -1007,7 +1024,7 @@ msgstr ""
 msgid "Error during the application of the node configuration"
 msgstr "بۇ نوقتا تەڭشىكىنى يۈرگۈزىۋاتقاندا خاتالىق كۆرۈلدى"
 
-#: [communityaffiliation]owners
+#: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
 msgstr "ئىگىلىرى"
 
@@ -1088,21 +1105,21 @@ msgstr "پەقەتلا ئېلان قىلغۇچىلار ئېلان قىلالاي
 msgid "Only subscribers can publish"
 msgstr "پەقەتلا مۇشتەرى بولغۇچىلار ئېلان قىلالايدۇ"
 
-#: [communityheader]subscribe
-msgid "Subscribe"
-msgstr "مۇشتەرى بۇلۇڭ"
+#: [communityheader]follow
+msgid "Follow"
+msgstr ""
 
-#: [communityheader]unsubscribe
-msgid "Unsubscribe"
-msgstr "مۇشتەرىلىكنى ئاخىرلاشتۇرۇڭ"
+#: [communityheader]unfollow
+msgid "Unfollow"
+msgstr ""
 
-#: [communityheader]subscribed
-msgid "Subscribed"
-msgstr "مۇشتەرى بۇلۇندى"
+#: [communityheader]followed
+msgid "Followed"
+msgstr ""
 
-#: [communityheader]unsubscribed
-msgid "Unsubscribed"
-msgstr "مۇشتەرىلىك ئاخىرلاشتى"
+#: [communityheader]unfollowed
+msgid "Unfollowed"
+msgstr ""
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1116,16 +1133,17 @@ msgstr "بۇ جامائەت ئۈچۈن بىر بەلگە قۇيۇڭ"
 msgid "My Community Name"
 msgstr "مېنىڭ جامائەت ئىسمىم"
 
-#: [communityheader]share_subscription
-msgid "Share this subscription publicly"
-msgstr "بۇ مەشتەرىلىكنى ئاشكارە ھەمبەھىرلەڭ"
+#: [communityheader]share_follow
+msgid "Share this follow to everyone"
+msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "ئۇ سىزنىڭ تەرجىمالىڭىزدا كۆرسىتىلىدۇ"
 
-#: [communityheader]unsubscribe_text
-msgid "You are going to unsubscribe from this community"
+#: [communityheader]unfollow_text
+#, fuzzy
+msgid "You are going to unfollow this community"
 msgstr "سىز بۇ جامائەتكە مۇشتەرى بۇلۇشنى ئاخىرلاشتۇرىۋاتىسىز"
 
 #: [communityheader]sure [delete]title
@@ -1145,8 +1163,17 @@ msgid "Private account"
 msgstr "شەخسىي ھېسابات"
 
 #: [communityposts]presencerequired_text
-msgid "Follow it to see the content"
-msgstr "مەزمۇننى كۆرۈش ئۈچۈن ئۇنىڭغا ئەگىشىڭ"
+msgid "Ask %s to be in your contacts to see the publications"
+msgstr ""
+
+#: [communityposts]subscribe_presencerequired
+msgid "Send an invitation request before following the contact"
+msgstr ""
+
+#: [communityposts]subscribe_unsupported
+#, fuzzy
+msgid "You can't follow the contact at the moment"
+msgstr "سىز بۇ تۇنۇشنىڭ ھالىتىنى كۆرەلەيسىز"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1502,6 +1529,10 @@ msgstr "تەكلىپ قىلىڭ"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
+msgstr ""
+
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
 msgstr ""
 
 #: [dictaphone]name
@@ -2242,20 +2273,6 @@ msgstr ""
 msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr ""
 
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr "ئىگىسى"
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr "باشقۇرغۇچى"
-
-#: [rooms]visitor
-msgid "Visitor"
-msgstr "زىيارەتچى"
-
 #: [rooms]explore_placeholder
 msgid "Name or description"
 msgstr "ئىسمى ياكى چۈشەندۈرۈشى"
@@ -2506,13 +2523,12 @@ msgstr "ھەردائىم ئۇقتۇرۇش"
 msgid "Pinned"
 msgstr "مىخلاندى"
 
-#: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
+#: [room]affiliation_owner [affiliation]owner
 msgid "Owner"
 msgstr "ئىگىسى"
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
+#, fuzzy
 msgid "Admin"
 msgstr "باشقۇرغۇچى"
 
@@ -2523,6 +2539,21 @@ msgstr "ئەزا"
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
 msgstr "خاسلىق يوق"
+
+#: [room]affiliation_admins
+#, fuzzy
+msgid "Admins"
+msgstr "باشقۇرغۇچى"
+
+#: [room]affiliation_members
+#, fuzzy
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr "ئەزالار"
+
+#: [room]visitor
+msgid "Visitor"
+msgstr "زىيارەتچى"
 
 #: [room]allowed_send_messages
 msgid "Is the user allowed to send messages?"
@@ -2605,25 +2636,24 @@ msgstr "بىر بىلوگ يازمىسىغا قىستۇرۇڭ"
 msgid "Share in a new publication"
 msgstr "يېڭى بىر يازمىدا ھەمبەھىرلەڭ"
 
-#: [sendto]contact
-msgid "Send it to a contact"
-msgstr "ئۇنى بىرەر ئالاقىداشقا ئەۋەتىڭ"
+#: [sendto]selected
+#, fuzzy
+msgid "contacts selected"
+msgstr "تۇنۇش ئۆچۈرۈلدى"
 
-#: [sendto]chatroom
-msgid "Share it in a chatroom"
-msgstr "ئۇنى بىرەر ئۆيدە ھەمبەھىرلەڭ"
+#: [sendto]pick
+#, fuzzy
+msgid "Pick the contacts you want to share this content with"
+msgstr "سىز بۇ باھانى ئۆچۈرۈشنى جەزىملەشتۈرەمسىز؟"
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "يازما ھەمبەھىرلەندى"
 
-#: [sendto]shared_contact
-msgid "Post shared with your contact"
+#: [sendto]shared_contacts
+#, fuzzy
+msgid "Post shared with %s contacts"
 msgstr "يازما ئالاقىدىشىڭىز بىلەن ھەمبەھىرلەندى"
-
-#: [sendto]shared_chatroom
-msgid "Post shared within the chatroom"
-msgstr "بازما پاراڭخانىدا ھەمبەھىرلەندى"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2752,6 +2782,11 @@ msgstr "ھۆججىتىڭىزنى سۆرەپ بۇ رايۇنغا تاشلاڭ"
 #: [upload]max_size
 msgid "Max file size %s"
 msgstr "ھۆججەت چىكى %s"
+
+#: [upload]upload_xmpp
+#, fuzzy
+msgid "Uploading to your account"
+msgstr "ھېساباتىڭىزنى ئۈچۈرۈڭ"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2926,7 +2961,8 @@ msgid "No sound detected from your microphone"
 msgstr "سىزنىڭ مىكروفۇنىڭىزدىن ھېچقانداق ئاۋاز بايقالمىدى"
 
 #: [visiolobby]no_mic_sound2
-msgid "Try to select another source or check your system settings"
+#, fuzzy
+msgid "Try make some noise, select another source or check your system settings"
 msgstr "باشقا مەنبە تاللاڭ ياكى سېستىما تەڭشەكلىرىنى تەكشۈرۈڭ"
 
 #: [muji]call_audio_invite
@@ -3062,29 +3098,53 @@ msgstr "مۇلازىمېتىرغا قايتا ئۇلاۋاتىدۇ..."
 msgid "Oops!"
 msgstr "ئاپلا!"
 
-#: [button]call
-msgid "Call"
-msgstr "چاقىرىق"
+#: [button]accept
+msgid "Accept"
+msgstr "قۇبۇل قىلىش"
+
+#: [button]add
+msgid "Add"
+msgstr "قۇشۇش"
 
 #: [button]audio_call
 msgid "Audio Call"
 msgstr "ئاۋازلىق چاقىرىق"
 
-#: [button]video_call
-msgid "Video Call"
-msgstr "سىنلىق چاقىرىق"
+#: [button]bool_no
+msgid "No"
+msgstr "ياق"
 
-#: [button]validate
-msgid "Validate"
-msgstr "دەلىللەش"
+#: [button]bool_yes
+msgid "Yes"
+msgstr "شۇنداق"
 
-#: [button]refresh
-msgid "Refresh"
-msgstr "يېڭىلاش"
+#: [button]call
+msgid "Call"
+msgstr "چاقىرىق"
 
-#: [button]add
-msgid "Add"
-msgstr "قۇشۇش"
+#: [button]cancel
+msgid "Cancel"
+msgstr "ئەمەلدىن قالدۇرۇش"
+
+#: [button]clear
+msgid "Clear"
+msgstr "تازلاش"
+
+#: [button]close
+msgid "Close"
+msgstr "تاقاش"
+
+#: [button]connecting
+msgid "Connecting"
+msgstr "ئۇلىنىۋاتىدۇ"
+
+#: [button]copy_link
+msgid "Copy Link"
+msgstr "ئۇلىنىشنى كۆچۈرۈش"
+
+#: [button]create
+msgid "Create"
+msgstr ""
 
 #: [button]delete
 msgid "Delete"
@@ -3094,21 +3154,98 @@ msgstr "ئۆچۈرۈش"
 msgid "Destroy"
 msgstr "يوقىتىش"
 
+#: [button]discover
+msgid "Discover"
+msgstr "بايقاش"
+
+#: [button]enable
+msgid "Enable"
+msgstr "قوزغىتىش"
+
+#: [button]join
+msgid "Join"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr "ياقتۇرۇش"
+
+#: [button]more
+msgid "More"
+msgstr "تىخىمۇ كۆپ"
+
+#: [button]next
+msgid "Next"
+msgstr "كىيىنكى"
+
+#: [button]not_now
+msgid "Not Now"
+msgstr "ھازىر ئەمەس"
+
+#: [button]open
+msgid "Open"
+msgstr "ئېچىش"
+
+#: [button]previous
+msgid "Previous"
+msgstr "ئالدىنقى"
+
+#: [button]quote
+msgid "Quote"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr "يېڭىلاش"
+
+#: [button]refuse
+msgid "Refuse"
+msgstr "رەت قىلىش"
+
+#: [button]register
+msgid "Register"
+msgstr "تىزىملىتىش"
+
 #: [button]remove
 msgid "Leave"
 msgstr ""
 
-#: [button]cancel
-msgid "Cancel"
-msgstr "ئەمەلدىن قالدۇرۇش"
+#: [button]reply
+msgid "Reply"
+msgstr "جاۋاپ يېزىش"
 
-#: [button]close
-msgid "Close"
-msgstr "تاقاش"
+#: [button]return
+msgid "Return"
+msgstr "قايتىش"
 
-#: [button]create
-msgid "Create"
-msgstr ""
+#: [button]save
+msgid "Save"
+msgstr "ساقلاش"
+
+#: [button]search
+msgid "Search"
+msgstr "ئىزدەش"
+
+#: [button]send_to
+msgid "Send to"
+msgstr "ئەۋەتىش"
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr "ھەمبەھىرلەش"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr "تىزىملىتىش"
+
+#: [button]submitting
+msgid "Submitting"
+msgstr "ئەۋەتىۋاتىدۇ"
+
+#: [button]unregister
+msgid "Unregister"
+msgstr "تىزىملىكتىن چىقىرىش"
 
 #: [button]update
 msgid "Update"
@@ -3118,110 +3255,13 @@ msgstr "يېڭىلاش"
 msgid "Updating"
 msgstr "يېڭىلاۋاتىدۇ"
 
-#: [button]submitting
-msgid "Submitting"
-msgstr "ئەۋەتىۋاتىدۇ"
+#: [button]validate
+msgid "Validate"
+msgstr "دەلىللەش"
 
-#: [button]register
-msgid "Register"
-msgstr "تىزىملىتىش"
-
-#: [button]reply
-msgid "Reply"
-msgstr "جاۋاپ يېزىش"
-
-#: [button]unregister
-msgid "Unregister"
-msgstr "تىزىملىكتىن چىقىرىش"
-
-#: [button]save
-msgid "Save"
-msgstr "ساقلاش"
-
-#: [button]join
-msgid "Join"
-msgstr ""
-
-#: [button]clear
-msgid "Clear"
-msgstr "تازلاش"
-
-#: [button]connecting
-msgid "Connecting"
-msgstr "ئۇلىنىۋاتىدۇ"
-
-#: [button]bool_yes
-msgid "Yes"
-msgstr "شۇنداق"
-
-#: [button]bool_no
-msgid "No"
-msgstr "ياق"
-
-#: [button]return
-msgid "Return"
-msgstr "قايتىش"
-
-#: [button]accept
-msgid "Accept"
-msgstr "قۇبۇل قىلىش"
-
-#: [button]refuse
-msgid "Refuse"
-msgstr "رەت قىلىش"
-
-#: [button]next
-msgid "Next"
-msgstr "كىيىنكى"
-
-#: [button]previous
-msgid "Previous"
-msgstr "ئالدىنقى"
-
-#: [button]search
-msgid "Search"
-msgstr "ئىزدەش"
-
-#: [button]share
-msgctxt "[button]share"
-msgid "Share"
-msgstr "ھەمبەھىرلەش"
-
-#: [button]discover
-msgid "Discover"
-msgstr "بايقاش"
-
-#: [button]like
-msgid "Like"
-msgstr "ياقتۇرۇش"
-
-#: [button]not_now
-msgid "Not Now"
-msgstr "ھازىر ئەمەس"
-
-#: [button]enable
-msgid "Enable"
-msgstr "قوزغىتىش"
-
-#: [button]sign_up
-msgid "Sign Up"
-msgstr "تىزىملىتىش"
-
-#: [button]send_to
-msgid "Send to"
-msgstr "ئەۋەتىش"
-
-#: [button]more
-msgid "More"
-msgstr "تىخىمۇ كۆپ"
-
-#: [button]copy_link
-msgid "Copy Link"
-msgstr "ئۇلىنىشنى كۆچۈرۈش"
-
-#: [button]open
-msgid "Open"
-msgstr "ئېچىش"
+#: [button]video_call
+msgid "Video Call"
+msgstr "سىنلىق چاقىرىق"
 
 #: [input]optional
 msgid "Optional"
@@ -3828,10 +3868,6 @@ msgstr "جىگابايت"
 msgid "TB"
 msgstr "تېرابايت"
 
-#: [affiliation]owner
-msgid "Owner"
-msgstr "ئىگىسى"
-
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "ئېلان قىلغۇچى"
@@ -3851,6 +3887,45 @@ msgstr "بۇ API غا ئېرىشكىلى بولمىدى، كىيىن قايتا 
 #: [field]type_here
 msgid "Type here"
 msgstr "بۇ يەرگە يېزىڭ"
+
+#~ msgid "Subscribe"
+#~ msgstr "مۇشتەرى بۇلۇڭ"
+
+#~ msgid "Unsubscribe"
+#~ msgstr "مۇشتەرىلىكنى ئاخىرلاشتۇرۇڭ"
+
+#~ msgid "Subscribed"
+#~ msgstr "مۇشتەرى بۇلۇندى"
+
+#~ msgid "Unsubscribed"
+#~ msgstr "مۇشتەرىلىك ئاخىرلاشتى"
+
+#~ msgid "Share this subscription publicly"
+#~ msgstr "بۇ مەشتەرىلىكنى ئاشكارە ھەمبەھىرلەڭ"
+
+#~ msgid "Follow it to see the content"
+#~ msgstr "مەزمۇننى كۆرۈش ئۈچۈن ئۇنىڭغا ئەگىشىڭ"
+
+#~ msgctxt "[rooms]owner"
+#~ msgid "Owner"
+#~ msgstr "ئىگىسى"
+
+#~ msgctxt "[room]affiliation_owner"
+#~ msgid "Owner"
+#~ msgstr "ئىگىسى"
+
+#~ msgctxt "[room]affiliation_admin"
+#~ msgid "Admin"
+#~ msgstr "باشقۇرغۇچى"
+
+#~ msgid "Send it to a contact"
+#~ msgstr "ئۇنى بىرەر ئالاقىداشقا ئەۋەتىڭ"
+
+#~ msgid "Share it in a chatroom"
+#~ msgstr "ئۇنى بىرەر ئۆيدە ھەمبەھىرلەڭ"
+
+#~ msgid "Post shared within the chatroom"
+#~ msgstr "بازما پاراڭخانىدا ھەمبەھىرلەندى"
 
 #~ msgctxt "[chat]clear_history"
 #~ msgid "Clear the history"

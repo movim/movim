@@ -58,6 +58,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Draw/locales.ini
@@ -119,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Marinus Savoritias <msavorritias@gmail.com>, 2016\n"
 "Language-Team: Greek (http://app.transifex.com/movim/movim/language/el/)\n"
@@ -488,6 +490,15 @@ msgstr ""
 msgid "Change my profile picture"
 msgstr ""
 
+#: [avatar]too_big
+#, fuzzy
+msgid "Your picture is too big"
+msgstr "Το προφίλ είναι πλέον δημόσιο"
+
+#: [avatar]missing
+msgid "No avatar yet"
+msgstr ""
+
 #: [banner]change
 msgid "Change my banner"
 msgstr ""
@@ -498,6 +509,10 @@ msgstr ""
 
 #: [banner]not_updated
 msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner yet"
 msgstr ""
 
 #: [blocked]title
@@ -1000,7 +1015,7 @@ msgstr ""
 msgid "Error during the application of the node configuration"
 msgstr ""
 
-#: [communityaffiliation]owners
+#: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
 msgstr ""
 
@@ -1081,20 +1096,20 @@ msgstr ""
 msgid "Only subscribers can publish"
 msgstr ""
 
-#: [communityheader]subscribe
-msgid "Subscribe"
+#: [communityheader]follow
+msgid "Follow"
 msgstr ""
 
-#: [communityheader]unsubscribe
-msgid "Unsubscribe"
+#: [communityheader]unfollow
+msgid "Unfollow"
 msgstr ""
 
-#: [communityheader]subscribed
-msgid "Subscribed"
+#: [communityheader]followed
+msgid "Followed"
 msgstr ""
 
-#: [communityheader]unsubscribed
-msgid "Unsubscribed"
+#: [communityheader]unfollowed
+msgid "Unfollowed"
 msgstr ""
 
 #: [communityheader]subscription_unsupported
@@ -1109,16 +1124,16 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription
-msgid "Share this subscription publicly"
+#: [communityheader]share_follow
+msgid "Share this follow to everyone"
 msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr ""
 
-#: [communityheader]unsubscribe_text
-msgid "You are going to unsubscribe from this community"
+#: [communityheader]unfollow_text
+msgid "You are going to unfollow this community"
 msgstr ""
 
 #: [communityheader]sure [delete]title
@@ -1138,7 +1153,15 @@ msgid "Private account"
 msgstr ""
 
 #: [communityposts]presencerequired_text
-msgid "Follow it to see the content"
+msgid "Ask %s to be in your contacts to see the publications"
+msgstr ""
+
+#: [communityposts]subscribe_presencerequired
+msgid "Send an invitation request before following the contact"
+msgstr ""
+
+#: [communityposts]subscribe_unsupported
+msgid "You can't follow the contact at the moment"
 msgstr ""
 
 #: [communitysubscriptions]subscriptions
@@ -1495,6 +1518,10 @@ msgstr ""
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
+msgstr ""
+
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
 msgstr ""
 
 #: [dictaphone]name
@@ -2234,20 +2261,6 @@ msgstr ""
 msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr ""
 
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr ""
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr ""
-
-#: [rooms]visitor
-msgid "Visitor"
-msgstr ""
-
 #: [rooms]explore_placeholder
 msgid "Name or description"
 msgstr ""
@@ -2496,13 +2509,11 @@ msgstr ""
 msgid "Pinned"
 msgstr ""
 
-#: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
+#: [room]affiliation_owner [affiliation]owner
 msgid "Owner"
 msgstr ""
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
 msgid "Admin"
 msgstr ""
 
@@ -2512,6 +2523,20 @@ msgstr ""
 
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
+msgstr ""
+
+#: [room]affiliation_admins
+msgid "Admins"
+msgstr ""
+
+#: [room]affiliation_members
+#, fuzzy
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr "Μέλη"
+
+#: [room]visitor
+msgid "Visitor"
 msgstr ""
 
 #: [room]allowed_send_messages
@@ -2594,24 +2619,21 @@ msgstr ""
 msgid "Share in a new publication"
 msgstr ""
 
-#: [sendto]contact
-msgid "Send it to a contact"
-msgstr ""
+#: [sendto]selected
+#, fuzzy
+msgid "contacts selected"
+msgstr "Επαφή διαγράφθηκε"
 
-#: [sendto]chatroom
-msgid "Share it in a chatroom"
+#: [sendto]pick
+msgid "Pick the contacts you want to share this content with"
 msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr ""
 
-#: [sendto]shared_contact
-msgid "Post shared with your contact"
-msgstr ""
-
-#: [sendto]shared_chatroom
-msgid "Post shared within the chatroom"
+#: [sendto]shared_contacts
+msgid "Post shared with %s contacts"
 msgstr ""
 
 #: [sendto]more_contacts
@@ -2741,6 +2763,11 @@ msgstr ""
 #: [upload]max_size
 msgid "Max file size %s"
 msgstr ""
+
+#: [upload]upload_xmpp
+#, fuzzy
+msgid "Uploading to your account"
+msgstr "Διαγραφή του λογαριασμού σου"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2915,7 +2942,7 @@ msgid "No sound detected from your microphone"
 msgstr ""
 
 #: [visiolobby]no_mic_sound2
-msgid "Try to select another source or check your system settings"
+msgid "Try make some noise, select another source or check your system settings"
 msgstr ""
 
 #: [muji]call_audio_invite
@@ -3051,29 +3078,53 @@ msgstr ""
 msgid "Oops!"
 msgstr ""
 
-#: [button]call
-msgid "Call"
-msgstr ""
+#: [button]accept
+msgid "Accept"
+msgstr "Αποδοχή"
+
+#: [button]add
+msgid "Add"
+msgstr "Προσθήκη"
 
 #: [button]audio_call
 msgid "Audio Call"
 msgstr ""
 
-#: [button]video_call
-msgid "Video Call"
+#: [button]bool_no
+msgid "No"
+msgstr "Όχι"
+
+#: [button]bool_yes
+msgid "Yes"
+msgstr "Ναί"
+
+#: [button]call
+msgid "Call"
 msgstr ""
 
-#: [button]validate
-msgid "Validate"
-msgstr "Επικύρωση"
+#: [button]cancel
+msgid "Cancel"
+msgstr "Ακύρωση"
 
-#: [button]refresh
-msgid "Refresh"
-msgstr "Ανανέωση"
+#: [button]clear
+msgid "Clear"
+msgstr "Εκκαθάριση"
 
-#: [button]add
-msgid "Add"
-msgstr "Προσθήκη"
+#: [button]close
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: [button]connecting
+msgid "Connecting"
+msgstr "Συνδέεται"
+
+#: [button]copy_link
+msgid "Copy Link"
+msgstr ""
+
+#: [button]create
+msgid "Create"
+msgstr ""
 
 #: [button]delete
 msgid "Delete"
@@ -3083,20 +3134,97 @@ msgstr "Διαγραφή"
 msgid "Destroy"
 msgstr ""
 
+#: [button]discover
+msgid "Discover"
+msgstr ""
+
+#: [button]enable
+msgid "Enable"
+msgstr ""
+
+#: [button]join
+msgid "Join"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr ""
+
+#: [button]more
+msgid "More"
+msgstr ""
+
+#: [button]next
+msgid "Next"
+msgstr "Επόμενο"
+
+#: [button]not_now
+msgid "Not Now"
+msgstr ""
+
+#: [button]open
+msgid "Open"
+msgstr ""
+
+#: [button]previous
+msgid "Previous"
+msgstr "Προηγούμενο"
+
+#: [button]quote
+msgid "Quote"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr "Ανανέωση"
+
+#: [button]refuse
+msgid "Refuse"
+msgstr "Άρνηση"
+
+#: [button]register
+msgid "Register"
+msgstr "Εγγραφή"
+
 #: [button]remove
 msgid "Leave"
 msgstr ""
 
-#: [button]cancel
-msgid "Cancel"
-msgstr "Ακύρωση"
+#: [button]reply
+msgid "Reply"
+msgstr ""
 
-#: [button]close
-msgid "Close"
-msgstr "Κλείσιμο"
+#: [button]return
+msgid "Return"
+msgstr "Επιστροφή"
 
-#: [button]create
-msgid "Create"
+#: [button]save
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: [button]search
+msgid "Search"
+msgstr ""
+
+#: [button]send_to
+msgid "Send to"
+msgstr ""
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr ""
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
+#: [button]submitting
+msgid "Submitting"
+msgstr "Υποβάλεται"
+
+#: [button]unregister
+msgid "Unregister"
 msgstr ""
 
 #: [button]update
@@ -3107,109 +3235,12 @@ msgstr "Ενημέρωση"
 msgid "Updating"
 msgstr "Ενημερώνεται"
 
-#: [button]submitting
-msgid "Submitting"
-msgstr "Υποβάλεται"
+#: [button]validate
+msgid "Validate"
+msgstr "Επικύρωση"
 
-#: [button]register
-msgid "Register"
-msgstr "Εγγραφή"
-
-#: [button]reply
-msgid "Reply"
-msgstr ""
-
-#: [button]unregister
-msgid "Unregister"
-msgstr ""
-
-#: [button]save
-msgid "Save"
-msgstr "Αποθήκευση"
-
-#: [button]join
-msgid "Join"
-msgstr ""
-
-#: [button]clear
-msgid "Clear"
-msgstr "Εκκαθάριση"
-
-#: [button]connecting
-msgid "Connecting"
-msgstr "Συνδέεται"
-
-#: [button]bool_yes
-msgid "Yes"
-msgstr "Ναί"
-
-#: [button]bool_no
-msgid "No"
-msgstr "Όχι"
-
-#: [button]return
-msgid "Return"
-msgstr "Επιστροφή"
-
-#: [button]accept
-msgid "Accept"
-msgstr "Αποδοχή"
-
-#: [button]refuse
-msgid "Refuse"
-msgstr "Άρνηση"
-
-#: [button]next
-msgid "Next"
-msgstr "Επόμενο"
-
-#: [button]previous
-msgid "Previous"
-msgstr "Προηγούμενο"
-
-#: [button]search
-msgid "Search"
-msgstr ""
-
-#: [button]share
-msgctxt "[button]share"
-msgid "Share"
-msgstr ""
-
-#: [button]discover
-msgid "Discover"
-msgstr ""
-
-#: [button]like
-msgid "Like"
-msgstr ""
-
-#: [button]not_now
-msgid "Not Now"
-msgstr ""
-
-#: [button]enable
-msgid "Enable"
-msgstr ""
-
-#: [button]sign_up
-msgid "Sign Up"
-msgstr ""
-
-#: [button]send_to
-msgid "Send to"
-msgstr ""
-
-#: [button]more
-msgid "More"
-msgstr ""
-
-#: [button]copy_link
-msgid "Copy Link"
-msgstr ""
-
-#: [button]open
-msgid "Open"
+#: [button]video_call
+msgid "Video Call"
 msgstr ""
 
 #: [input]optional
@@ -3814,10 +3845,6 @@ msgstr ""
 
 #: [filesize]terabyte
 msgid "TB"
-msgstr ""
-
-#: [affiliation]owner
-msgid "Owner"
 msgstr ""
 
 #: [affiliation]publisher

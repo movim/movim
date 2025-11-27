@@ -71,6 +71,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Draw/locales.ini
@@ -132,7 +134,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Vincenzo Tozzi, 2023\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -502,6 +504,16 @@ msgstr ""
 msgid "Change my profile picture"
 msgstr ""
 
+#: [avatar]too_big
+#, fuzzy
+msgid "Your picture is too big"
+msgstr "Seu perfil agora é público"
+
+#: [avatar]missing
+#, fuzzy
+msgid "No avatar yet"
+msgstr "Sem conversas ainda..."
+
 #: [banner]change
 msgid "Change my banner"
 msgstr "Mudar meu cabeçalho"
@@ -513,6 +525,11 @@ msgstr "Cabeçalho atualizado"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "Cabeçalho não atualizado"
+
+#: [banner]missing
+#, fuzzy
+msgid "No banner yet"
+msgstr "Sem notícias ainda..."
 
 #: [blocked]title
 msgid "Blocked"
@@ -1019,7 +1036,7 @@ msgstr ""
 msgid "Error during the application of the node configuration"
 msgstr "Erro durante a aplicação da configuração do nó"
 
-#: [communityaffiliation]owners
+#: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
 msgstr "Dono"
 
@@ -1100,21 +1117,21 @@ msgstr "Somente editores podem publicar"
 msgid "Only subscribers can publish"
 msgstr "Somente inscritos podem publicar"
 
-#: [communityheader]subscribe
-msgid "Subscribe"
-msgstr "Inscrever"
+#: [communityheader]follow
+msgid "Follow"
+msgstr ""
 
-#: [communityheader]unsubscribe
-msgid "Unsubscribe"
-msgstr "Cancelar inscrição"
+#: [communityheader]unfollow
+msgid "Unfollow"
+msgstr ""
 
-#: [communityheader]subscribed
-msgid "Subscribed"
-msgstr "Inscrito"
+#: [communityheader]followed
+msgid "Followed"
+msgstr ""
 
-#: [communityheader]unsubscribed
-msgid "Unsubscribed"
-msgstr "Inscrição cancelada"
+#: [communityheader]unfollowed
+msgid "Unfollowed"
+msgstr ""
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1128,16 +1145,17 @@ msgstr "Atribuir uma etiqueta para este grupo"
 msgid "My Community Name"
 msgstr "Nome da minha comunidade"
 
-#: [communityheader]share_subscription
-msgid "Share this subscription publicly"
-msgstr "Compartilhar esta inscrição publicamente"
+#: [communityheader]share_follow
+msgid "Share this follow to everyone"
+msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "Irá aparecer em seu perfil"
 
-#: [communityheader]unsubscribe_text
-msgid "You are going to unsubscribe from this community"
+#: [communityheader]unfollow_text
+#, fuzzy
+msgid "You are going to unfollow this community"
 msgstr "Você irá cancelar sua inscrição nesta comunidade"
 
 #: [communityheader]sure [delete]title
@@ -1157,8 +1175,17 @@ msgid "Private account"
 msgstr ""
 
 #: [communityposts]presencerequired_text
-msgid "Follow it to see the content"
+msgid "Ask %s to be in your contacts to see the publications"
 msgstr ""
+
+#: [communityposts]subscribe_presencerequired
+msgid "Send an invitation request before following the contact"
+msgstr ""
+
+#: [communityposts]subscribe_unsupported
+#, fuzzy
+msgid "You can't follow the contact at the moment"
+msgstr "Você pode ver o estado do seu contato"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1514,6 +1541,10 @@ msgstr "Convidar"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
+msgstr ""
+
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
 msgstr ""
 
 #: [dictaphone]name
@@ -2253,20 +2284,6 @@ msgstr ""
 msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr ""
 
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr "Dono"
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr "Administrador"
-
-#: [rooms]visitor
-msgid "Visitor"
-msgstr "Visitante"
-
 #: [rooms]explore_placeholder
 msgid "Name or description"
 msgstr "Nome ou descrição"
@@ -2517,13 +2534,12 @@ msgstr "Notifique sempre"
 msgid "Pinned"
 msgstr "Fixado"
 
-#: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
+#: [room]affiliation_owner [affiliation]owner
 msgid "Owner"
 msgstr "Dono"
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
+#, fuzzy
 msgid "Admin"
 msgstr "Administrador"
 
@@ -2534,6 +2550,21 @@ msgstr "Membro"
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
 msgstr "Sem afiliação"
+
+#: [room]affiliation_admins
+#, fuzzy
+msgid "Admins"
+msgstr "Administrador"
+
+#: [room]affiliation_members
+#, fuzzy
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr "Membros"
+
+#: [room]visitor
+msgid "Visitor"
+msgstr "Visitante"
 
 #: [room]allowed_send_messages
 msgid "Is the user allowed to send messages?"
@@ -2616,25 +2647,24 @@ msgstr "Anexar para uma publicação de blog"
 msgid "Share in a new publication"
 msgstr ""
 
-#: [sendto]contact
-msgid "Send it to a contact"
-msgstr "Enviar a um contato"
+#: [sendto]selected
+#, fuzzy
+msgid "contacts selected"
+msgstr "Contato excluído"
 
-#: [sendto]chatroom
-msgid "Share it in a chatroom"
-msgstr "Compartilhar em uma sala de bate-papo"
+#: [sendto]pick
+#, fuzzy
+msgid "Pick the contacts you want to share this content with"
+msgstr "Tem certeza que deseja apagar este comentário?"
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Artigo compartilhado"
 
-#: [sendto]shared_contact
-msgid "Post shared with your contact"
+#: [sendto]shared_contacts
+#, fuzzy
+msgid "Post shared with %s contacts"
 msgstr "Artigo compartilhado com seu contato"
-
-#: [sendto]shared_chatroom
-msgid "Post shared within the chatroom"
-msgstr "Artigo compartilhado em uma sala de bate-papo"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2763,6 +2793,11 @@ msgstr "Arraste e solte seu arquivo nessa área"
 #: [upload]max_size
 msgid "Max file size %s"
 msgstr "Tamanho máximo do arquivo %s"
+
+#: [upload]upload_xmpp
+#, fuzzy
+msgid "Uploading to your account"
+msgstr "Apague sua conta"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2937,7 +2972,7 @@ msgid "No sound detected from your microphone"
 msgstr ""
 
 #: [visiolobby]no_mic_sound2
-msgid "Try to select another source or check your system settings"
+msgid "Try make some noise, select another source or check your system settings"
 msgstr ""
 
 #: [muji]call_audio_invite
@@ -3073,29 +3108,53 @@ msgstr "Reconexão com o servidor..."
 msgid "Oops!"
 msgstr "Oops!"
 
-#: [button]call
-msgid "Call"
-msgstr "Ligação"
+#: [button]accept
+msgid "Accept"
+msgstr "Aceitar"
+
+#: [button]add
+msgid "Add"
+msgstr "Adicionar"
 
 #: [button]audio_call
 msgid "Audio Call"
 msgstr "Chamada de voz"
 
-#: [button]video_call
-msgid "Video Call"
-msgstr "Chamada de vídeo"
+#: [button]bool_no
+msgid "No"
+msgstr "Não"
 
-#: [button]validate
-msgid "Validate"
-msgstr "Validar"
+#: [button]bool_yes
+msgid "Yes"
+msgstr "Sim"
 
-#: [button]refresh
-msgid "Refresh"
-msgstr "Recarregar"
+#: [button]call
+msgid "Call"
+msgstr "Ligação"
 
-#: [button]add
-msgid "Add"
-msgstr "Adicionar"
+#: [button]cancel
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: [button]clear
+msgid "Clear"
+msgstr "Limpar"
+
+#: [button]close
+msgid "Close"
+msgstr "Fechar"
+
+#: [button]connecting
+msgid "Connecting"
+msgstr "Conectando"
+
+#: [button]copy_link
+msgid "Copy Link"
+msgstr "Copiar Link"
+
+#: [button]create
+msgid "Create"
+msgstr ""
 
 #: [button]delete
 msgid "Delete"
@@ -3105,21 +3164,98 @@ msgstr "Excluir"
 msgid "Destroy"
 msgstr "Destruir"
 
+#: [button]discover
+msgid "Discover"
+msgstr "Descubra"
+
+#: [button]enable
+msgid "Enable"
+msgstr "Habilitar"
+
+#: [button]join
+msgid "Join"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr "Gostar"
+
+#: [button]more
+msgid "More"
+msgstr "Mais"
+
+#: [button]next
+msgid "Next"
+msgstr "Próximo"
+
+#: [button]not_now
+msgid "Not Now"
+msgstr "Não agora"
+
+#: [button]open
+msgid "Open"
+msgstr "Aberto"
+
+#: [button]previous
+msgid "Previous"
+msgstr "Anterior"
+
+#: [button]quote
+msgid "Quote"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr "Recarregar"
+
+#: [button]refuse
+msgid "Refuse"
+msgstr "Recusar"
+
+#: [button]register
+msgid "Register"
+msgstr "Registrar"
+
 #: [button]remove
 msgid "Leave"
 msgstr ""
 
-#: [button]cancel
-msgid "Cancel"
-msgstr "Cancelar"
+#: [button]reply
+msgid "Reply"
+msgstr "Responder"
 
-#: [button]close
-msgid "Close"
-msgstr "Fechar"
+#: [button]return
+msgid "Return"
+msgstr "Retornar"
 
-#: [button]create
-msgid "Create"
-msgstr ""
+#: [button]save
+msgid "Save"
+msgstr "Salvar"
+
+#: [button]search
+msgid "Search"
+msgstr "Procurar"
+
+#: [button]send_to
+msgid "Send to"
+msgstr "Enviar para"
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr "Compartilhar"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr "Inscrever"
+
+#: [button]submitting
+msgid "Submitting"
+msgstr "Enviando"
+
+#: [button]unregister
+msgid "Unregister"
+msgstr "Desfazer registro"
 
 #: [button]update
 msgid "Update"
@@ -3129,110 +3265,13 @@ msgstr "Atualizar"
 msgid "Updating"
 msgstr "Atualizando"
 
-#: [button]submitting
-msgid "Submitting"
-msgstr "Enviando"
+#: [button]validate
+msgid "Validate"
+msgstr "Validar"
 
-#: [button]register
-msgid "Register"
-msgstr "Registrar"
-
-#: [button]reply
-msgid "Reply"
-msgstr "Responder"
-
-#: [button]unregister
-msgid "Unregister"
-msgstr "Desfazer registro"
-
-#: [button]save
-msgid "Save"
-msgstr "Salvar"
-
-#: [button]join
-msgid "Join"
-msgstr ""
-
-#: [button]clear
-msgid "Clear"
-msgstr "Limpar"
-
-#: [button]connecting
-msgid "Connecting"
-msgstr "Conectando"
-
-#: [button]bool_yes
-msgid "Yes"
-msgstr "Sim"
-
-#: [button]bool_no
-msgid "No"
-msgstr "Não"
-
-#: [button]return
-msgid "Return"
-msgstr "Retornar"
-
-#: [button]accept
-msgid "Accept"
-msgstr "Aceitar"
-
-#: [button]refuse
-msgid "Refuse"
-msgstr "Recusar"
-
-#: [button]next
-msgid "Next"
-msgstr "Próximo"
-
-#: [button]previous
-msgid "Previous"
-msgstr "Anterior"
-
-#: [button]search
-msgid "Search"
-msgstr "Procurar"
-
-#: [button]share
-msgctxt "[button]share"
-msgid "Share"
-msgstr "Compartilhar"
-
-#: [button]discover
-msgid "Discover"
-msgstr "Descubra"
-
-#: [button]like
-msgid "Like"
-msgstr "Gostar"
-
-#: [button]not_now
-msgid "Not Now"
-msgstr "Não agora"
-
-#: [button]enable
-msgid "Enable"
-msgstr "Habilitar"
-
-#: [button]sign_up
-msgid "Sign Up"
-msgstr "Inscrever"
-
-#: [button]send_to
-msgid "Send to"
-msgstr "Enviar para"
-
-#: [button]more
-msgid "More"
-msgstr "Mais"
-
-#: [button]copy_link
-msgid "Copy Link"
-msgstr "Copiar Link"
-
-#: [button]open
-msgid "Open"
-msgstr "Aberto"
+#: [button]video_call
+msgid "Video Call"
+msgstr "Chamada de vídeo"
 
 #: [input]optional
 msgid "Optional"
@@ -3839,10 +3878,6 @@ msgstr "GB "
 msgid "TB"
 msgstr "TB "
 
-#: [affiliation]owner
-msgid "Owner"
-msgstr "Dono"
-
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Editor"
@@ -3862,6 +3897,42 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
+
+#~ msgid "Subscribe"
+#~ msgstr "Inscrever"
+
+#~ msgid "Unsubscribe"
+#~ msgstr "Cancelar inscrição"
+
+#~ msgid "Subscribed"
+#~ msgstr "Inscrito"
+
+#~ msgid "Unsubscribed"
+#~ msgstr "Inscrição cancelada"
+
+#~ msgid "Share this subscription publicly"
+#~ msgstr "Compartilhar esta inscrição publicamente"
+
+#~ msgctxt "[rooms]owner"
+#~ msgid "Owner"
+#~ msgstr "Dono"
+
+#~ msgctxt "[room]affiliation_owner"
+#~ msgid "Owner"
+#~ msgstr "Dono"
+
+#~ msgctxt "[room]affiliation_admin"
+#~ msgid "Admin"
+#~ msgstr "Administrador"
+
+#~ msgid "Send it to a contact"
+#~ msgstr "Enviar a um contato"
+
+#~ msgid "Share it in a chatroom"
+#~ msgstr "Compartilhar em uma sala de bate-papo"
+
+#~ msgid "Post shared within the chatroom"
+#~ msgstr "Artigo compartilhado em uma sala de bate-papo"
 
 #~ msgctxt "[chat]clear_history"
 #~ msgid "Clear the history"

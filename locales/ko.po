@@ -59,6 +59,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Draw/locales.ini
@@ -120,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://app.transifex.com/movim/movim/language/ko/)\n"
@@ -490,6 +492,16 @@ msgstr ""
 msgid "Change my profile picture"
 msgstr ""
 
+#: [avatar]too_big
+#, fuzzy
+msgid "Your picture is too big"
+msgstr "프로필이 공개되었습니다."
+
+#: [avatar]missing
+#, fuzzy
+msgid "No avatar yet"
+msgstr "아직 채팅이 없습니다"
+
 #: [banner]change
 msgid "Change my banner"
 msgstr ""
@@ -501,6 +513,11 @@ msgstr ""
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr ""
+
+#: [banner]missing
+#, fuzzy
+msgid "No banner yet"
+msgstr "아직 소식이 없습니다..."
 
 #: [blocked]title
 msgid "Blocked"
@@ -1007,7 +1024,7 @@ msgstr ""
 msgid "Error during the application of the node configuration"
 msgstr "노드 설정을 적용하는 동안 오류가 발생했습니다."
 
-#: [communityaffiliation]owners
+#: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
 msgstr "소유자"
 
@@ -1088,21 +1105,21 @@ msgstr "게시자만 게시할 수 있습니다."
 msgid "Only subscribers can publish"
 msgstr "구독자만 게시할 수 있습니다."
 
-#: [communityheader]subscribe
-msgid "Subscribe"
-msgstr "구독"
+#: [communityheader]follow
+msgid "Follow"
+msgstr ""
 
-#: [communityheader]unsubscribe
-msgid "Unsubscribe"
-msgstr "구독 취소"
+#: [communityheader]unfollow
+msgid "Unfollow"
+msgstr ""
 
-#: [communityheader]subscribed
-msgid "Subscribed"
-msgstr "구독됨"
+#: [communityheader]followed
+msgid "Followed"
+msgstr ""
 
-#: [communityheader]unsubscribed
-msgid "Unsubscribed"
-msgstr "구독 취소됨"
+#: [communityheader]unfollowed
+msgid "Unfollowed"
+msgstr ""
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1116,16 +1133,17 @@ msgstr "이 커뮤니티에 레이블 지정"
 msgid "My Community Name"
 msgstr "내 커뮤니티 이름"
 
-#: [communityheader]share_subscription
-msgid "Share this subscription publicly"
-msgstr "이 구독을 공개적으로 공유합니다."
+#: [communityheader]share_follow
+msgid "Share this follow to everyone"
+msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "프로필에 표시됩니다"
 
-#: [communityheader]unsubscribe_text
-msgid "You are going to unsubscribe from this community"
+#: [communityheader]unfollow_text
+#, fuzzy
+msgid "You are going to unfollow this community"
 msgstr "이 커뮤니티의 구독을 취소하려고 합니다."
 
 #: [communityheader]sure [delete]title
@@ -1145,8 +1163,17 @@ msgid "Private account"
 msgstr ""
 
 #: [communityposts]presencerequired_text
-msgid "Follow it to see the content"
+msgid "Ask %s to be in your contacts to see the publications"
 msgstr ""
+
+#: [communityposts]subscribe_presencerequired
+msgid "Send an invitation request before following the contact"
+msgstr ""
+
+#: [communityposts]subscribe_unsupported
+#, fuzzy
+msgid "You can't follow the contact at the moment"
+msgstr "이 연락처의 상태를 볼 수 있습니다."
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1502,6 +1529,10 @@ msgstr "초대"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
+msgstr ""
+
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
 msgstr ""
 
 #: [dictaphone]name
@@ -2241,20 +2272,6 @@ msgstr ""
 msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr ""
 
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr "소유자"
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr "관리자"
-
-#: [rooms]visitor
-msgid "Visitor"
-msgstr "방문자"
-
 #: [rooms]explore_placeholder
 msgid "Name or description"
 msgstr "이름 또는 설명"
@@ -2505,13 +2522,12 @@ msgstr "항상 알림"
 msgid "Pinned"
 msgstr "고정"
 
-#: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
+#: [room]affiliation_owner [affiliation]owner
 msgid "Owner"
 msgstr "소유자"
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
+#, fuzzy
 msgid "Admin"
 msgstr "관리자"
 
@@ -2522,6 +2538,21 @@ msgstr "멤버"
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
 msgstr "권한 없음"
+
+#: [room]affiliation_admins
+#, fuzzy
+msgid "Admins"
+msgstr "관리자"
+
+#: [room]affiliation_members
+#, fuzzy
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr "멤버"
+
+#: [room]visitor
+msgid "Visitor"
+msgstr "방문자"
 
 #: [room]allowed_send_messages
 msgid "Is the user allowed to send messages?"
@@ -2604,25 +2635,24 @@ msgstr "블로그 게시물에 첨부"
 msgid "Share in a new publication"
 msgstr ""
 
-#: [sendto]contact
-msgid "Send it to a contact"
-msgstr "연락처로 보내기"
+#: [sendto]selected
+#, fuzzy
+msgid "contacts selected"
+msgstr "연락처 삭제됨"
 
-#: [sendto]chatroom
-msgid "Share it in a chatroom"
-msgstr "채팅방에서 공유"
+#: [sendto]pick
+#, fuzzy
+msgid "Pick the contacts you want to share this content with"
+msgstr "이 댓글을 삭제하시겠습니까?"
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "게시물 공유"
 
-#: [sendto]shared_contact
-msgid "Post shared with your contact"
+#: [sendto]shared_contacts
+#, fuzzy
+msgid "Post shared with %s contacts"
 msgstr "대화 상대와 공유한 게시물"
-
-#: [sendto]shared_chatroom
-msgid "Post shared within the chatroom"
-msgstr "채팅방 내에서 공유된 게시물"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2751,6 +2781,11 @@ msgstr "이 영역에 파일을 끌어다 놓으세요."
 #: [upload]max_size
 msgid "Max file size %s"
 msgstr "최대 파일 크기 %s"
+
+#: [upload]upload_xmpp
+#, fuzzy
+msgid "Uploading to your account"
+msgstr "계정 삭제하기"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2925,7 +2960,7 @@ msgid "No sound detected from your microphone"
 msgstr ""
 
 #: [visiolobby]no_mic_sound2
-msgid "Try to select another source or check your system settings"
+msgid "Try make some noise, select another source or check your system settings"
 msgstr ""
 
 #: [muji]call_audio_invite
@@ -3061,29 +3096,53 @@ msgstr "서버에 재접속…"
 msgid "Oops!"
 msgstr "앗!"
 
-#: [button]call
-msgid "Call"
-msgstr "통화"
+#: [button]accept
+msgid "Accept"
+msgstr "수락하기"
+
+#: [button]add
+msgid "Add"
+msgstr "추가하기"
 
 #: [button]audio_call
 msgid "Audio Call"
 msgstr "음성 통화"
 
-#: [button]video_call
-msgid "Video Call"
-msgstr "영상 통화"
+#: [button]bool_no
+msgid "No"
+msgstr "아니요"
 
-#: [button]validate
-msgid "Validate"
-msgstr "확인"
+#: [button]bool_yes
+msgid "Yes"
+msgstr "네"
 
-#: [button]refresh
-msgid "Refresh"
-msgstr "새로 고침"
+#: [button]call
+msgid "Call"
+msgstr "통화"
 
-#: [button]add
-msgid "Add"
-msgstr "추가하기"
+#: [button]cancel
+msgid "Cancel"
+msgstr "취소하기"
+
+#: [button]clear
+msgid "Clear"
+msgstr "지우기"
+
+#: [button]close
+msgid "Close"
+msgstr "닫기"
+
+#: [button]connecting
+msgid "Connecting"
+msgstr "연결 중"
+
+#: [button]copy_link
+msgid "Copy Link"
+msgstr "링크 복사"
+
+#: [button]create
+msgid "Create"
+msgstr ""
 
 #: [button]delete
 msgid "Delete"
@@ -3093,21 +3152,98 @@ msgstr "삭제하기"
 msgid "Destroy"
 msgstr "닫기"
 
+#: [button]discover
+msgid "Discover"
+msgstr "탐색하기"
+
+#: [button]enable
+msgid "Enable"
+msgstr "활성화"
+
+#: [button]join
+msgid "Join"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr "좋아요"
+
+#: [button]more
+msgid "More"
+msgstr "더보기"
+
+#: [button]next
+msgid "Next"
+msgstr "다음"
+
+#: [button]not_now
+msgid "Not Now"
+msgstr "지금은 아님"
+
+#: [button]open
+msgid "Open"
+msgstr "공개"
+
+#: [button]previous
+msgid "Previous"
+msgstr "이전"
+
+#: [button]quote
+msgid "Quote"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr "새로 고침"
+
+#: [button]refuse
+msgid "Refuse"
+msgstr "거절하기"
+
+#: [button]register
+msgid "Register"
+msgstr "등록하기"
+
 #: [button]remove
 msgid "Leave"
 msgstr ""
 
-#: [button]cancel
-msgid "Cancel"
-msgstr "취소하기"
+#: [button]reply
+msgid "Reply"
+msgstr "응답"
 
-#: [button]close
-msgid "Close"
-msgstr "닫기"
+#: [button]return
+msgid "Return"
+msgstr "되돌리기"
 
-#: [button]create
-msgid "Create"
-msgstr ""
+#: [button]save
+msgid "Save"
+msgstr "저장하기"
+
+#: [button]search
+msgid "Search"
+msgstr "검색"
+
+#: [button]send_to
+msgid "Send to"
+msgstr "보내기"
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr "공유하기"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr "가입하기"
+
+#: [button]submitting
+msgid "Submitting"
+msgstr "제출 중"
+
+#: [button]unregister
+msgid "Unregister"
+msgstr "등록 취소"
 
 #: [button]update
 msgid "Update"
@@ -3117,110 +3253,13 @@ msgstr "업데이트"
 msgid "Updating"
 msgstr "업데이트 중"
 
-#: [button]submitting
-msgid "Submitting"
-msgstr "제출 중"
+#: [button]validate
+msgid "Validate"
+msgstr "확인"
 
-#: [button]register
-msgid "Register"
-msgstr "등록하기"
-
-#: [button]reply
-msgid "Reply"
-msgstr "응답"
-
-#: [button]unregister
-msgid "Unregister"
-msgstr "등록 취소"
-
-#: [button]save
-msgid "Save"
-msgstr "저장하기"
-
-#: [button]join
-msgid "Join"
-msgstr ""
-
-#: [button]clear
-msgid "Clear"
-msgstr "지우기"
-
-#: [button]connecting
-msgid "Connecting"
-msgstr "연결 중"
-
-#: [button]bool_yes
-msgid "Yes"
-msgstr "네"
-
-#: [button]bool_no
-msgid "No"
-msgstr "아니요"
-
-#: [button]return
-msgid "Return"
-msgstr "되돌리기"
-
-#: [button]accept
-msgid "Accept"
-msgstr "수락하기"
-
-#: [button]refuse
-msgid "Refuse"
-msgstr "거절하기"
-
-#: [button]next
-msgid "Next"
-msgstr "다음"
-
-#: [button]previous
-msgid "Previous"
-msgstr "이전"
-
-#: [button]search
-msgid "Search"
-msgstr "검색"
-
-#: [button]share
-msgctxt "[button]share"
-msgid "Share"
-msgstr "공유하기"
-
-#: [button]discover
-msgid "Discover"
-msgstr "탐색하기"
-
-#: [button]like
-msgid "Like"
-msgstr "좋아요"
-
-#: [button]not_now
-msgid "Not Now"
-msgstr "지금은 아님"
-
-#: [button]enable
-msgid "Enable"
-msgstr "활성화"
-
-#: [button]sign_up
-msgid "Sign Up"
-msgstr "가입하기"
-
-#: [button]send_to
-msgid "Send to"
-msgstr "보내기"
-
-#: [button]more
-msgid "More"
-msgstr "더보기"
-
-#: [button]copy_link
-msgid "Copy Link"
-msgstr "링크 복사"
-
-#: [button]open
-msgid "Open"
-msgstr "공개"
+#: [button]video_call
+msgid "Video Call"
+msgstr "영상 통화"
 
 #: [input]optional
 msgid "Optional"
@@ -3827,10 +3866,6 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
-#: [affiliation]owner
-msgid "Owner"
-msgstr "소유자"
-
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "발행자"
@@ -3850,6 +3885,42 @@ msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 #: [field]type_here
 msgid "Type here"
 msgstr "여기에 입력하세요"
+
+#~ msgid "Subscribe"
+#~ msgstr "구독"
+
+#~ msgid "Unsubscribe"
+#~ msgstr "구독 취소"
+
+#~ msgid "Subscribed"
+#~ msgstr "구독됨"
+
+#~ msgid "Unsubscribed"
+#~ msgstr "구독 취소됨"
+
+#~ msgid "Share this subscription publicly"
+#~ msgstr "이 구독을 공개적으로 공유합니다."
+
+#~ msgctxt "[rooms]owner"
+#~ msgid "Owner"
+#~ msgstr "소유자"
+
+#~ msgctxt "[room]affiliation_owner"
+#~ msgid "Owner"
+#~ msgstr "소유자"
+
+#~ msgctxt "[room]affiliation_admin"
+#~ msgid "Admin"
+#~ msgstr "관리자"
+
+#~ msgid "Send it to a contact"
+#~ msgstr "연락처로 보내기"
+
+#~ msgid "Share it in a chatroom"
+#~ msgstr "채팅방에서 공유"
+
+#~ msgid "Post shared within the chatroom"
+#~ msgstr "채팅방 내에서 공유된 게시물"
 
 #~ msgctxt "[chat]clear_history"
 #~ msgid "Clear the history"

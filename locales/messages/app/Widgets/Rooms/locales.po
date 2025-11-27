@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.16.1\n"
+"X-Generator: Translate Toolkit 3.16.3\n"
 
 #: [rooms]create
 msgid "Create a chatroom"
@@ -63,20 +63,6 @@ msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following chatroom?"
-msgstr ""
-
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr ""
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr ""
-
-#: [rooms]visitor
-msgid "Visitor"
 msgstr ""
 
 #: [rooms]explore_placeholder
@@ -349,12 +335,10 @@ msgid "Pinned"
 msgstr ""
 
 #: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
 msgid "Owner"
 msgstr ""
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
 msgid "Admin"
 msgstr ""
 
@@ -364,6 +348,23 @@ msgstr ""
 
 #: [room]affiliation_none
 msgid "No affiliation"
+msgstr ""
+
+#: [room]affiliation_owners
+msgid "Owners"
+msgstr ""
+
+#: [room]affiliation_admins
+msgid "Admins"
+msgstr ""
+
+#: [room]affiliation_members
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr ""
+
+#: [room]visitor
+msgid "Visitor"
 msgstr ""
 
 #: [room]allowed_send_messages

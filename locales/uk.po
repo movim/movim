@@ -59,6 +59,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Draw/locales.ini
@@ -120,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: sergey solovey, 2022,2024\n"
 "Language-Team: Ukrainian (http://app.transifex.com/movim/movim/language/uk/)\n"
@@ -490,6 +492,16 @@ msgstr ""
 msgid "Change my profile picture"
 msgstr ""
 
+#: [avatar]too_big
+#, fuzzy
+msgid "Your picture is too big"
+msgstr "Ваш профіль тепер публічний"
+
+#: [avatar]missing
+#, fuzzy
+msgid "No avatar yet"
+msgstr "Ще немає чатів..."
+
 #: [banner]change
 msgid "Change my banner"
 msgstr "Змінити мій банер"
@@ -501,6 +513,11 @@ msgstr "Банер оновлено"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "Банер не оновлено"
+
+#: [banner]missing
+#, fuzzy
+msgid "No banner yet"
+msgstr "Новин поки що немає..."
 
 #: [blocked]title
 msgid "Blocked"
@@ -1007,7 +1024,7 @@ msgstr ""
 msgid "Error during the application of the node configuration"
 msgstr "Помилка при застосуванні конфігурації вузла"
 
-#: [communityaffiliation]owners
+#: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
 msgstr "Власники"
 
@@ -1088,21 +1105,21 @@ msgstr "Публікувати можуть лише видавці"
 msgid "Only subscribers can publish"
 msgstr "Публікувати можуть лише підписники"
 
-#: [communityheader]subscribe
-msgid "Subscribe"
-msgstr "Підписатися"
+#: [communityheader]follow
+msgid "Follow"
+msgstr ""
 
-#: [communityheader]unsubscribe
-msgid "Unsubscribe"
-msgstr "Відписатися"
+#: [communityheader]unfollow
+msgid "Unfollow"
+msgstr ""
 
-#: [communityheader]subscribed
-msgid "Subscribed"
-msgstr "Підписано"
+#: [communityheader]followed
+msgid "Followed"
+msgstr ""
 
-#: [communityheader]unsubscribed
-msgid "Unsubscribed"
-msgstr "Скасовано підписку"
+#: [communityheader]unfollowed
+msgid "Unfollowed"
+msgstr ""
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1116,16 +1133,17 @@ msgstr "Дайте назву цій спільноті"
 msgid "My Community Name"
 msgstr "Назва моєї спільноти"
 
-#: [communityheader]share_subscription
-msgid "Share this subscription publicly"
-msgstr "Поділіться цією підпискою з усіма бажаючими"
+#: [communityheader]share_follow
+msgid "Share this follow to everyone"
+msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "Це відобразиться у вашому профілі"
 
-#: [communityheader]unsubscribe_text
-msgid "You are going to unsubscribe from this community"
+#: [communityheader]unfollow_text
+#, fuzzy
+msgid "You are going to unfollow this community"
 msgstr "Ви збираєтеся відписатися від цієї спільноти"
 
 #: [communityheader]sure [delete]title
@@ -1145,8 +1163,17 @@ msgid "Private account"
 msgstr "Особистий обліковий запис"
 
 #: [communityposts]presencerequired_text
-msgid "Follow it to see the content"
-msgstr "Перейдіть за посиланням, щоб переглянути вміст"
+msgid "Ask %s to be in your contacts to see the publications"
+msgstr ""
+
+#: [communityposts]subscribe_presencerequired
+msgid "Send an invitation request before following the contact"
+msgstr ""
+
+#: [communityposts]subscribe_unsupported
+#, fuzzy
+msgid "You can't follow the contact at the moment"
+msgstr "Ви можете бачити статус цього контакту"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1502,6 +1529,10 @@ msgstr "Запросити"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
+msgstr ""
+
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
 msgstr ""
 
 #: [dictaphone]name
@@ -2242,20 +2273,6 @@ msgstr ""
 msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr ""
 
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr "Власник"
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr "Адміністратор"
-
-#: [rooms]visitor
-msgid "Visitor"
-msgstr "Гість"
-
 #: [rooms]explore_placeholder
 msgid "Name or description"
 msgstr "Назва або опис"
@@ -2506,13 +2523,12 @@ msgstr "Завжди повідомляти"
 msgid "Pinned"
 msgstr ""
 
-#: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
+#: [room]affiliation_owner [affiliation]owner
 msgid "Owner"
 msgstr "Власник"
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
+#, fuzzy
 msgid "Admin"
 msgstr "Адміністратор"
 
@@ -2523,6 +2539,21 @@ msgstr "Учасник"
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
 msgstr "Без приналежності"
+
+#: [room]affiliation_admins
+#, fuzzy
+msgid "Admins"
+msgstr "Адміністратор"
+
+#: [room]affiliation_members
+#, fuzzy
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr "Учасники"
+
+#: [room]visitor
+msgid "Visitor"
+msgstr "Гість"
 
 #: [room]allowed_send_messages
 msgid "Is the user allowed to send messages?"
@@ -2605,25 +2636,24 @@ msgstr "Прикріпити до публікації блогу"
 msgid "Share in a new publication"
 msgstr "Поділіться в новій публікації"
 
-#: [sendto]contact
-msgid "Send it to a contact"
-msgstr "Надіслати контакту"
+#: [sendto]selected
+#, fuzzy
+msgid "contacts selected"
+msgstr "Контакт видалено"
 
-#: [sendto]chatroom
-msgid "Share it in a chatroom"
-msgstr "Поділіться в чаті"
+#: [sendto]pick
+#, fuzzy
+msgid "Pick the contacts you want to share this content with"
+msgstr "Ви впевнені, що хочете видалити цей коментар?"
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Публікація опублікована"
 
-#: [sendto]shared_contact
-msgid "Post shared with your contact"
+#: [sendto]shared_contacts
+#, fuzzy
+msgid "Post shared with %s contacts"
 msgstr "Поділися публікацією з вашим контактом"
-
-#: [sendto]shared_chatroom
-msgid "Post shared within the chatroom"
-msgstr "Публікація в чаті"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2752,6 +2782,11 @@ msgstr "Перетягніть файл у цю область"
 #: [upload]max_size
 msgid "Max file size %s"
 msgstr "Максимальний розмір файлу %s"
+
+#: [upload]upload_xmpp
+#, fuzzy
+msgid "Uploading to your account"
+msgstr "Видалити вашого користувача"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2926,7 +2961,8 @@ msgid "No sound detected from your microphone"
 msgstr "Не виявлено звуку з вашого мікрофона"
 
 #: [visiolobby]no_mic_sound2
-msgid "Try to select another source or check your system settings"
+#, fuzzy
+msgid "Try make some noise, select another source or check your system settings"
 msgstr "Спробуйте вибрати інше джерело або перевірте налаштування системи"
 
 #: [muji]call_audio_invite
@@ -3062,29 +3098,53 @@ msgstr "Повторне підключення до сервера..."
 msgid "Oops!"
 msgstr "Опа!"
 
-#: [button]call
-msgid "Call"
-msgstr "Дзвінок"
+#: [button]accept
+msgid "Accept"
+msgstr "Прийняти"
+
+#: [button]add
+msgid "Add"
+msgstr "Додати"
 
 #: [button]audio_call
 msgid "Audio Call"
 msgstr "Аудіовиклик"
 
-#: [button]video_call
-msgid "Video Call"
-msgstr "Відеовиклик"
+#: [button]bool_no
+msgid "No"
+msgstr "Ні"
 
-#: [button]validate
-msgid "Validate"
-msgstr "Перевірити"
+#: [button]bool_yes
+msgid "Yes"
+msgstr "Так"
 
-#: [button]refresh
-msgid "Refresh"
-msgstr "Оновити"
+#: [button]call
+msgid "Call"
+msgstr "Дзвінок"
 
-#: [button]add
-msgid "Add"
-msgstr "Додати"
+#: [button]cancel
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: [button]clear
+msgid "Clear"
+msgstr "Очистити"
+
+#: [button]close
+msgid "Close"
+msgstr "Закрити"
+
+#: [button]connecting
+msgid "Connecting"
+msgstr "З'єднання"
+
+#: [button]copy_link
+msgid "Copy Link"
+msgstr "Копіювати посилання"
+
+#: [button]create
+msgid "Create"
+msgstr ""
 
 #: [button]delete
 msgid "Delete"
@@ -3094,21 +3154,98 @@ msgstr "Видалити"
 msgid "Destroy"
 msgstr "Знищити"
 
+#: [button]discover
+msgid "Discover"
+msgstr "Відкрийте"
+
+#: [button]enable
+msgid "Enable"
+msgstr "Увімкнути"
+
+#: [button]join
+msgid "Join"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr "Вподобати"
+
+#: [button]more
+msgid "More"
+msgstr "Більше"
+
+#: [button]next
+msgid "Next"
+msgstr "Наступний"
+
+#: [button]not_now
+msgid "Not Now"
+msgstr "Не зараз"
+
+#: [button]open
+msgid "Open"
+msgstr "Відкрити"
+
+#: [button]previous
+msgid "Previous"
+msgstr "Попередній"
+
+#: [button]quote
+msgid "Quote"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr "Оновити"
+
+#: [button]refuse
+msgid "Refuse"
+msgstr "Відмовитися"
+
+#: [button]register
+msgid "Register"
+msgstr "Реєстрація"
+
 #: [button]remove
 msgid "Leave"
 msgstr ""
 
-#: [button]cancel
-msgid "Cancel"
-msgstr "Скасувати"
+#: [button]reply
+msgid "Reply"
+msgstr "Відповісти"
 
-#: [button]close
-msgid "Close"
-msgstr "Закрити"
+#: [button]return
+msgid "Return"
+msgstr "Повернутись"
 
-#: [button]create
-msgid "Create"
-msgstr ""
+#: [button]save
+msgid "Save"
+msgstr "Зберегти"
+
+#: [button]search
+msgid "Search"
+msgstr "Пошук"
+
+#: [button]send_to
+msgid "Send to"
+msgstr "Надіслати"
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr "Поширити"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr "Реєстрація"
+
+#: [button]submitting
+msgid "Submitting"
+msgstr "Надсилаємо"
+
+#: [button]unregister
+msgid "Unregister"
+msgstr "Скасувати реєстрацію"
 
 #: [button]update
 msgid "Update"
@@ -3118,110 +3255,13 @@ msgstr "Оновити"
 msgid "Updating"
 msgstr "Оновлення"
 
-#: [button]submitting
-msgid "Submitting"
-msgstr "Надсилаємо"
+#: [button]validate
+msgid "Validate"
+msgstr "Перевірити"
 
-#: [button]register
-msgid "Register"
-msgstr "Реєстрація"
-
-#: [button]reply
-msgid "Reply"
-msgstr "Відповісти"
-
-#: [button]unregister
-msgid "Unregister"
-msgstr "Скасувати реєстрацію"
-
-#: [button]save
-msgid "Save"
-msgstr "Зберегти"
-
-#: [button]join
-msgid "Join"
-msgstr ""
-
-#: [button]clear
-msgid "Clear"
-msgstr "Очистити"
-
-#: [button]connecting
-msgid "Connecting"
-msgstr "З'єднання"
-
-#: [button]bool_yes
-msgid "Yes"
-msgstr "Так"
-
-#: [button]bool_no
-msgid "No"
-msgstr "Ні"
-
-#: [button]return
-msgid "Return"
-msgstr "Повернутись"
-
-#: [button]accept
-msgid "Accept"
-msgstr "Прийняти"
-
-#: [button]refuse
-msgid "Refuse"
-msgstr "Відмовитися"
-
-#: [button]next
-msgid "Next"
-msgstr "Наступний"
-
-#: [button]previous
-msgid "Previous"
-msgstr "Попередній"
-
-#: [button]search
-msgid "Search"
-msgstr "Пошук"
-
-#: [button]share
-msgctxt "[button]share"
-msgid "Share"
-msgstr "Поширити"
-
-#: [button]discover
-msgid "Discover"
-msgstr "Відкрийте"
-
-#: [button]like
-msgid "Like"
-msgstr "Вподобати"
-
-#: [button]not_now
-msgid "Not Now"
-msgstr "Не зараз"
-
-#: [button]enable
-msgid "Enable"
-msgstr "Увімкнути"
-
-#: [button]sign_up
-msgid "Sign Up"
-msgstr "Реєстрація"
-
-#: [button]send_to
-msgid "Send to"
-msgstr "Надіслати"
-
-#: [button]more
-msgid "More"
-msgstr "Більше"
-
-#: [button]copy_link
-msgid "Copy Link"
-msgstr "Копіювати посилання"
-
-#: [button]open
-msgid "Open"
-msgstr "Відкрити"
+#: [button]video_call
+msgid "Video Call"
+msgstr "Відеовиклик"
 
 #: [input]optional
 msgid "Optional"
@@ -3828,10 +3868,6 @@ msgstr "ГБ"
 msgid "TB"
 msgstr "ТБ"
 
-#: [affiliation]owner
-msgid "Owner"
-msgstr "Власник"
-
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Видавник"
@@ -3851,6 +3887,45 @@ msgstr "API недоступний, спробуйте пізніше"
 #: [field]type_here
 msgid "Type here"
 msgstr "Напишіть тут"
+
+#~ msgid "Subscribe"
+#~ msgstr "Підписатися"
+
+#~ msgid "Unsubscribe"
+#~ msgstr "Відписатися"
+
+#~ msgid "Subscribed"
+#~ msgstr "Підписано"
+
+#~ msgid "Unsubscribed"
+#~ msgstr "Скасовано підписку"
+
+#~ msgid "Share this subscription publicly"
+#~ msgstr "Поділіться цією підпискою з усіма бажаючими"
+
+#~ msgid "Follow it to see the content"
+#~ msgstr "Перейдіть за посиланням, щоб переглянути вміст"
+
+#~ msgctxt "[rooms]owner"
+#~ msgid "Owner"
+#~ msgstr "Власник"
+
+#~ msgctxt "[room]affiliation_owner"
+#~ msgid "Owner"
+#~ msgstr "Власник"
+
+#~ msgctxt "[room]affiliation_admin"
+#~ msgid "Admin"
+#~ msgstr "Адміністратор"
+
+#~ msgid "Send it to a contact"
+#~ msgstr "Надіслати контакту"
+
+#~ msgid "Share it in a chatroom"
+#~ msgstr "Поділіться в чаті"
+
+#~ msgid "Post shared within the chatroom"
+#~ msgstr "Публікація в чаті"
 
 #~ msgctxt "[chat]clear_history"
 #~ msgid "Clear the history"

@@ -60,6 +60,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Draw/locales.ini
@@ -121,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2025\n"
 "Language-Team: Albanian (http://app.transifex.com/movim/movim/language/sq/)\n"
@@ -491,6 +493,16 @@ msgstr "S’u Përditësua Foto Profili"
 msgid "Change my profile picture"
 msgstr "Ndrysho foton time të profilit"
 
+#: [avatar]too_big
+#, fuzzy
+msgid "Your picture is too big"
+msgstr "Profili juaj tani është publik"
+
+#: [avatar]missing
+#, fuzzy
+msgid "No avatar yet"
+msgstr "Ende pa fjalosje…"
+
 #: [banner]change
 msgid "Change my banner"
 msgstr "Ndrysho banderolën time"
@@ -502,6 +514,11 @@ msgstr "Banderola u Përditësua"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "Banderola S’u Përditësua"
+
+#: [banner]missing
+#, fuzzy
+msgid "No banner yet"
+msgstr "Ende pa lajme…"
 
 #: [blocked]title
 msgid "Blocked"
@@ -1008,7 +1025,7 @@ msgstr "Gabim gjatë fshirjeje të nyjës"
 msgid "Error during the application of the node configuration"
 msgstr "Gabim gjatë zbatimit të formësimit të nyjës"
 
-#: [communityaffiliation]owners
+#: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
 msgstr "Pronarë"
 
@@ -1089,21 +1106,21 @@ msgstr "Vetëm botuesit mund të botojnë"
 msgid "Only subscribers can publish"
 msgstr "Vetëm pajtimtarët mund të botojnë"
 
-#: [communityheader]subscribe
-msgid "Subscribe"
-msgstr "Pajtomë"
+#: [communityheader]follow
+msgid "Follow"
+msgstr ""
 
-#: [communityheader]unsubscribe
-msgid "Unsubscribe"
-msgstr "Shpajtomë"
+#: [communityheader]unfollow
+msgid "Unfollow"
+msgstr ""
 
-#: [communityheader]subscribed
-msgid "Subscribed"
-msgstr "U pajtuat"
+#: [communityheader]followed
+msgid "Followed"
+msgstr ""
 
-#: [communityheader]unsubscribed
-msgid "Unsubscribed"
-msgstr "U shpajtuat"
+#: [communityheader]unfollowed
+msgid "Unfollowed"
+msgstr ""
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1117,16 +1134,17 @@ msgstr "Jepni një etiketë për këtë bashkësi"
 msgid "My Community Name"
 msgstr "Emër i Bashkësisë Time"
 
-#: [communityheader]share_subscription
-msgid "Share this subscription publicly"
-msgstr "Ndajeni këtë pajtim publikisht"
+#: [communityheader]share_follow
+msgid "Share this follow to everyone"
+msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "Do të shfaqet te profili juaj"
 
-#: [communityheader]unsubscribe_text
-msgid "You are going to unsubscribe from this community"
+#: [communityheader]unfollow_text
+#, fuzzy
+msgid "You are going to unfollow this community"
 msgstr "Ju ndan një hap nga shpajtimi prej kësaj bashkësie"
 
 #: [communityheader]sure [delete]title
@@ -1146,8 +1164,17 @@ msgid "Private account"
 msgstr "Llogari private"
 
 #: [communityposts]presencerequired_text
-msgid "Follow it to see the content"
-msgstr "Që të shihni lëndën, ndiqeni"
+msgid "Ask %s to be in your contacts to see the publications"
+msgstr ""
+
+#: [communityposts]subscribe_presencerequired
+msgid "Send an invitation request before following the contact"
+msgstr ""
+
+#: [communityposts]subscribe_unsupported
+#, fuzzy
+msgid "You can't follow the contact at the moment"
+msgstr "Mund të shihni gjendjen e këtij kontakti"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1503,6 +1530,10 @@ msgstr "Ftoje"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
+msgstr ""
+
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
 msgstr ""
 
 #: [dictaphone]name
@@ -2243,20 +2274,6 @@ msgstr ""
 msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr ""
 
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr "Pronar"
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr "Përgjegjës"
-
-#: [rooms]visitor
-msgid "Visitor"
-msgstr "Vizitor"
-
 #: [rooms]explore_placeholder
 msgid "Name or description"
 msgstr "Emër ose përshkrim"
@@ -2507,13 +2524,12 @@ msgstr "Njofto përherë"
 msgid "Pinned"
 msgstr "E fiksuar"
 
-#: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
+#: [room]affiliation_owner [affiliation]owner
 msgid "Owner"
 msgstr "Pronar"
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
+#, fuzzy
 msgid "Admin"
 msgstr "Përgjegjës"
 
@@ -2524,6 +2540,21 @@ msgstr "Anëtar"
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
 msgstr "Pa përshoqërim"
+
+#: [room]affiliation_admins
+#, fuzzy
+msgid "Admins"
+msgstr "Përgjegjës"
+
+#: [room]affiliation_members
+#, fuzzy
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr "Anëtarë"
+
+#: [room]visitor
+msgid "Visitor"
+msgstr "Vizitor"
 
 #: [room]allowed_send_messages
 #, fuzzy
@@ -2607,25 +2638,24 @@ msgstr "Bashkëngjitni te një botim blohu"
 msgid "Share in a new publication"
 msgstr "Ndajeni me të tjerë në një botim të ri"
 
-#: [sendto]contact
-msgid "Send it to a contact"
-msgstr "Dërgojani një kontakti"
+#: [sendto]selected
+#, fuzzy
+msgid "contacts selected"
+msgstr "Kontakti u fshi"
 
-#: [sendto]chatroom
-msgid "Share it in a chatroom"
-msgstr "Ndajeni me të tjerë në një dhomë bisedash"
+#: [sendto]pick
+#, fuzzy
+msgid "Pick the contacts you want to share this content with"
+msgstr "Jeni i sigurt se doni të fshihet ky koment?"
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Postimi u nda me të tjerë"
 
-#: [sendto]shared_contact
-msgid "Post shared with your contact"
+#: [sendto]shared_contacts
+#, fuzzy
+msgid "Post shared with %s contacts"
 msgstr "Postimi u nda me kontaktin tuaj"
-
-#: [sendto]shared_chatroom
-msgid "Post shared within the chatroom"
-msgstr "Postimi u nda brenda dhomës së bisedave"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2754,6 +2784,11 @@ msgstr "Tërhiqini dhe i lini kartelat te kjo zonë"
 #: [upload]max_size
 msgid "Max file size %s"
 msgstr "Madhësi maksimum kartelash %s"
+
+#: [upload]upload_xmpp
+#, fuzzy
+msgid "Uploading to your account"
+msgstr "Fshijeni llogarinë tuaj"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2928,7 +2963,8 @@ msgid "No sound detected from your microphone"
 msgstr "S’u pikas zë nga mikrofoni juaj"
 
 #: [visiolobby]no_mic_sound2
-msgid "Try to select another source or check your system settings"
+#, fuzzy
+msgid "Try make some noise, select another source or check your system settings"
 msgstr "Provoni të përzgjidhni burim tjetër, ose shihni rregullimet e sistemit tuaj"
 
 #: [muji]call_audio_invite
@@ -3064,29 +3100,53 @@ msgstr "Rilidhje me shërbyesin…"
 msgid "Oops!"
 msgstr "Oooh!"
 
-#: [button]call
-msgid "Call"
-msgstr "Thirre"
+#: [button]accept
+msgid "Accept"
+msgstr "Pranoje"
+
+#: [button]add
+msgid "Add"
+msgstr "Shtoni"
 
 #: [button]audio_call
 msgid "Audio Call"
 msgstr "Thirrje Audio"
 
-#: [button]video_call
-msgid "Video Call"
-msgstr "Thirrje Video"
+#: [button]bool_no
+msgid "No"
+msgstr "Jo"
 
-#: [button]validate
-msgid "Validate"
-msgstr "Vleftësoje"
+#: [button]bool_yes
+msgid "Yes"
+msgstr "Po"
 
-#: [button]refresh
-msgid "Refresh"
-msgstr "Rifreskoje"
+#: [button]call
+msgid "Call"
+msgstr "Thirre"
 
-#: [button]add
-msgid "Add"
-msgstr "Shtoni"
+#: [button]cancel
+msgid "Cancel"
+msgstr "Anuloje"
+
+#: [button]clear
+msgid "Clear"
+msgstr "Pastroje"
+
+#: [button]close
+msgid "Close"
+msgstr "Mbylle"
+
+#: [button]connecting
+msgid "Connecting"
+msgstr "Po lidhet"
+
+#: [button]copy_link
+msgid "Copy Link"
+msgstr "Kopjo Lidhjen"
+
+#: [button]create
+msgid "Create"
+msgstr "Krijoje"
 
 #: [button]delete
 msgid "Delete"
@@ -3096,21 +3156,98 @@ msgstr "Fshije"
 msgid "Destroy"
 msgstr "Asgjësoje"
 
+#: [button]discover
+msgid "Discover"
+msgstr "Zbuloni"
+
+#: [button]enable
+msgid "Enable"
+msgstr "Aktivizoje"
+
+#: [button]join
+msgid "Join"
+msgstr "Merrni pjesë"
+
+#: [button]like
+msgid "Like"
+msgstr "Pëlqim"
+
+#: [button]more
+msgid "More"
+msgstr "Më tepër"
+
+#: [button]next
+msgid "Next"
+msgstr "Pasuesi"
+
+#: [button]not_now
+msgid "Not Now"
+msgstr "Jo Tani"
+
+#: [button]open
+msgid "Open"
+msgstr "I hapur"
+
+#: [button]previous
+msgid "Previous"
+msgstr "I mëparshmi"
+
+#: [button]quote
+msgid "Quote"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr "Rifreskoje"
+
+#: [button]refuse
+msgid "Refuse"
+msgstr "Hidhe poshtë"
+
+#: [button]register
+msgid "Register"
+msgstr "Regjistrohuni"
+
 #: [button]remove
 msgid "Leave"
 msgstr ""
 
-#: [button]cancel
-msgid "Cancel"
-msgstr "Anuloje"
+#: [button]reply
+msgid "Reply"
+msgstr "Përgjigjuni"
 
-#: [button]close
-msgid "Close"
-msgstr "Mbylle"
+#: [button]return
+msgid "Return"
+msgstr "Kthehu"
 
-#: [button]create
-msgid "Create"
-msgstr "Krijoje"
+#: [button]save
+msgid "Save"
+msgstr "Ruaje"
+
+#: [button]search
+msgid "Search"
+msgstr "Kërkoni"
+
+#: [button]send_to
+msgid "Send to"
+msgstr "Dërgoje te"
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr "Ndajeni me të tjerët"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr "Regjistrohuni"
+
+#: [button]submitting
+msgid "Submitting"
+msgstr "Po parashtrohet"
+
+#: [button]unregister
+msgid "Unregister"
+msgstr "Çregjistrohuni"
 
 #: [button]update
 msgid "Update"
@@ -3120,110 +3257,13 @@ msgstr "Përditësoje"
 msgid "Updating"
 msgstr "Po përditësohet"
 
-#: [button]submitting
-msgid "Submitting"
-msgstr "Po parashtrohet"
+#: [button]validate
+msgid "Validate"
+msgstr "Vleftësoje"
 
-#: [button]register
-msgid "Register"
-msgstr "Regjistrohuni"
-
-#: [button]reply
-msgid "Reply"
-msgstr "Përgjigjuni"
-
-#: [button]unregister
-msgid "Unregister"
-msgstr "Çregjistrohuni"
-
-#: [button]save
-msgid "Save"
-msgstr "Ruaje"
-
-#: [button]join
-msgid "Join"
-msgstr "Merrni pjesë"
-
-#: [button]clear
-msgid "Clear"
-msgstr "Pastroje"
-
-#: [button]connecting
-msgid "Connecting"
-msgstr "Po lidhet"
-
-#: [button]bool_yes
-msgid "Yes"
-msgstr "Po"
-
-#: [button]bool_no
-msgid "No"
-msgstr "Jo"
-
-#: [button]return
-msgid "Return"
-msgstr "Kthehu"
-
-#: [button]accept
-msgid "Accept"
-msgstr "Pranoje"
-
-#: [button]refuse
-msgid "Refuse"
-msgstr "Hidhe poshtë"
-
-#: [button]next
-msgid "Next"
-msgstr "Pasuesi"
-
-#: [button]previous
-msgid "Previous"
-msgstr "I mëparshmi"
-
-#: [button]search
-msgid "Search"
-msgstr "Kërkoni"
-
-#: [button]share
-msgctxt "[button]share"
-msgid "Share"
-msgstr "Ndajeni me të tjerët"
-
-#: [button]discover
-msgid "Discover"
-msgstr "Zbuloni"
-
-#: [button]like
-msgid "Like"
-msgstr "Pëlqim"
-
-#: [button]not_now
-msgid "Not Now"
-msgstr "Jo Tani"
-
-#: [button]enable
-msgid "Enable"
-msgstr "Aktivizoje"
-
-#: [button]sign_up
-msgid "Sign Up"
-msgstr "Regjistrohuni"
-
-#: [button]send_to
-msgid "Send to"
-msgstr "Dërgoje te"
-
-#: [button]more
-msgid "More"
-msgstr "Më tepër"
-
-#: [button]copy_link
-msgid "Copy Link"
-msgstr "Kopjo Lidhjen"
-
-#: [button]open
-msgid "Open"
-msgstr "I hapur"
+#: [button]video_call
+msgid "Video Call"
+msgstr "Thirrje Video"
 
 #: [input]optional
 msgid "Optional"
@@ -3830,10 +3870,6 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
-#: [affiliation]owner
-msgid "Owner"
-msgstr "Pronar"
-
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Botues"
@@ -3853,6 +3889,45 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
+
+#~ msgid "Subscribe"
+#~ msgstr "Pajtomë"
+
+#~ msgid "Unsubscribe"
+#~ msgstr "Shpajtomë"
+
+#~ msgid "Subscribed"
+#~ msgstr "U pajtuat"
+
+#~ msgid "Unsubscribed"
+#~ msgstr "U shpajtuat"
+
+#~ msgid "Share this subscription publicly"
+#~ msgstr "Ndajeni këtë pajtim publikisht"
+
+#~ msgid "Follow it to see the content"
+#~ msgstr "Që të shihni lëndën, ndiqeni"
+
+#~ msgctxt "[rooms]owner"
+#~ msgid "Owner"
+#~ msgstr "Pronar"
+
+#~ msgctxt "[room]affiliation_owner"
+#~ msgid "Owner"
+#~ msgstr "Pronar"
+
+#~ msgctxt "[room]affiliation_admin"
+#~ msgid "Admin"
+#~ msgstr "Përgjegjës"
+
+#~ msgid "Send it to a contact"
+#~ msgstr "Dërgojani një kontakti"
+
+#~ msgid "Share it in a chatroom"
+#~ msgstr "Ndajeni me të tjerë në një dhomë bisedash"
+
+#~ msgid "Post shared within the chatroom"
+#~ msgstr "Postimi u nda brenda dhomës së bisedave"
 
 #~ msgctxt "[chat]clear_history"
 #~ msgid "Clear the history"

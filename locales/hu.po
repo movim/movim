@@ -62,6 +62,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Draw/locales.ini
@@ -123,7 +125,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 386902c248cb697d9d6d058103e08443_c36ce9b <3e1ab06cc760e2987b063fda7f345e3f_237544>, 2018\n"
 "Language-Team: Hungarian (http://app.transifex.com/movim/movim/language/hu/)\n"
@@ -493,6 +495,16 @@ msgstr ""
 msgid "Change my profile picture"
 msgstr ""
 
+#: [avatar]too_big
+#, fuzzy
+msgid "Your picture is too big"
+msgstr "A profilod mostantól nyilvános"
+
+#: [avatar]missing
+#, fuzzy
+msgid "No avatar yet"
+msgstr "Még nincsenek csevegések…"
+
 #: [banner]change
 msgid "Change my banner"
 msgstr ""
@@ -504,6 +516,11 @@ msgstr ""
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr ""
+
+#: [banner]missing
+#, fuzzy
+msgid "No banner yet"
+msgstr "Még nincsenek hírek…"
 
 #: [blocked]title
 msgid "Blocked"
@@ -1008,7 +1025,7 @@ msgstr ""
 msgid "Error during the application of the node configuration"
 msgstr ""
 
-#: [communityaffiliation]owners
+#: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
 msgstr "Tulajdonosok"
 
@@ -1089,21 +1106,21 @@ msgstr ""
 msgid "Only subscribers can publish"
 msgstr ""
 
-#: [communityheader]subscribe
-msgid "Subscribe"
-msgstr "Feliratkozás"
+#: [communityheader]follow
+msgid "Follow"
+msgstr ""
 
-#: [communityheader]unsubscribe
-msgid "Unsubscribe"
-msgstr "Leiratkozás"
+#: [communityheader]unfollow
+msgid "Unfollow"
+msgstr ""
 
-#: [communityheader]subscribed
-msgid "Subscribed"
-msgstr "Feliratkozva"
+#: [communityheader]followed
+msgid "Followed"
+msgstr ""
 
-#: [communityheader]unsubscribed
-msgid "Unsubscribed"
-msgstr "Leiratkozva"
+#: [communityheader]unfollowed
+msgid "Unfollowed"
+msgstr ""
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1117,16 +1134,17 @@ msgstr "Adj meg egy címkét ehhez a közösséghez"
 msgid "My Community Name"
 msgstr "A közösségem neve"
 
-#: [communityheader]share_subscription
-msgid "Share this subscription publicly"
-msgstr "Ennek a feliratkozásnak megosztása nyilvánosan"
+#: [communityheader]share_follow
+msgid "Share this follow to everyone"
+msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "Ez meg fog jelenni a profilodon"
 
-#: [communityheader]unsubscribe_text
-msgid "You are going to unsubscribe from this community"
+#: [communityheader]unfollow_text
+#, fuzzy
+msgid "You are going to unfollow this community"
 msgstr "Le fogsz iratkozni erről a közösségről"
 
 #: [communityheader]sure [delete]title
@@ -1146,8 +1164,17 @@ msgid "Private account"
 msgstr ""
 
 #: [communityposts]presencerequired_text
-msgid "Follow it to see the content"
+msgid "Ask %s to be in your contacts to see the publications"
 msgstr ""
+
+#: [communityposts]subscribe_presencerequired
+msgid "Send an invitation request before following the contact"
+msgstr ""
+
+#: [communityposts]subscribe_unsupported
+#, fuzzy
+msgid "You can't follow the contact at the moment"
+msgstr "Láthatod ezt a kapcsolati állapotot"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1503,6 +1530,10 @@ msgstr "Meghívás"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
+msgstr ""
+
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
 msgstr ""
 
 #: [dictaphone]name
@@ -2242,20 +2273,6 @@ msgstr ""
 msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr ""
 
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr ""
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr ""
-
-#: [rooms]visitor
-msgid "Visitor"
-msgstr ""
-
 #: [rooms]explore_placeholder
 msgid "Name or description"
 msgstr ""
@@ -2506,13 +2523,11 @@ msgstr ""
 msgid "Pinned"
 msgstr ""
 
-#: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
+#: [room]affiliation_owner [affiliation]owner
 msgid "Owner"
-msgstr ""
+msgstr "Tulajdonos"
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
 msgid "Admin"
 msgstr ""
 
@@ -2522,6 +2537,21 @@ msgstr ""
 
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
+msgstr ""
+
+#: [room]affiliation_admins
+#, fuzzy
+msgid "Admins"
+msgstr "Adminisztráció"
+
+#: [room]affiliation_members
+#, fuzzy
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr "Tagok"
+
+#: [room]visitor
+msgid "Visitor"
 msgstr ""
 
 #: [room]allowed_send_messages
@@ -2605,25 +2635,23 @@ msgstr ""
 msgid "Share in a new publication"
 msgstr ""
 
-#: [sendto]contact
-msgid "Send it to a contact"
-msgstr ""
+#: [sendto]selected
+#, fuzzy
+msgid "contacts selected"
+msgstr "Ismerős törölve"
 
-#: [sendto]chatroom
-msgid "Share it in a chatroom"
+#: [sendto]pick
+msgid "Pick the contacts you want to share this content with"
 msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr ""
 
-#: [sendto]shared_contact
-msgid "Post shared with your contact"
-msgstr ""
-
-#: [sendto]shared_chatroom
-msgid "Post shared within the chatroom"
-msgstr ""
+#: [sendto]shared_contacts
+#, fuzzy
+msgid "Post shared with %s contacts"
+msgstr "Beszélgetés egy partnerrel"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2752,6 +2780,11 @@ msgstr ""
 #: [upload]max_size
 msgid "Max file size %s"
 msgstr ""
+
+#: [upload]upload_xmpp
+#, fuzzy
+msgid "Uploading to your account"
+msgstr "Felhasználói fiókod törlése"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2926,7 +2959,7 @@ msgid "No sound detected from your microphone"
 msgstr ""
 
 #: [visiolobby]no_mic_sound2
-msgid "Try to select another source or check your system settings"
+msgid "Try make some noise, select another source or check your system settings"
 msgstr ""
 
 #: [muji]call_audio_invite
@@ -3062,29 +3095,53 @@ msgstr ""
 msgid "Oops!"
 msgstr "Hupsz!"
 
-#: [button]call
-msgid "Call"
-msgstr ""
+#: [button]accept
+msgid "Accept"
+msgstr "Elfogad"
+
+#: [button]add
+msgid "Add"
+msgstr "Hozzáad"
 
 #: [button]audio_call
 msgid "Audio Call"
 msgstr ""
 
-#: [button]video_call
-msgid "Video Call"
+#: [button]bool_no
+msgid "No"
+msgstr "Nem"
+
+#: [button]bool_yes
+msgid "Yes"
+msgstr "Igen"
+
+#: [button]call
+msgid "Call"
 msgstr ""
 
-#: [button]validate
-msgid "Validate"
-msgstr "Érvényesít"
+#: [button]cancel
+msgid "Cancel"
+msgstr "Mégse"
 
-#: [button]refresh
-msgid "Refresh"
-msgstr "Frissít"
+#: [button]clear
+msgid "Clear"
+msgstr "Törlés"
 
-#: [button]add
-msgid "Add"
-msgstr "Hozzáad"
+#: [button]close
+msgid "Close"
+msgstr "Bezárás"
+
+#: [button]connecting
+msgid "Connecting"
+msgstr "Csatlakozás"
+
+#: [button]copy_link
+msgid "Copy Link"
+msgstr ""
+
+#: [button]create
+msgid "Create"
+msgstr ""
 
 #: [button]delete
 msgid "Delete"
@@ -3094,21 +3151,98 @@ msgstr "Törlés"
 msgid "Destroy"
 msgstr ""
 
+#: [button]discover
+msgid "Discover"
+msgstr ""
+
+#: [button]enable
+msgid "Enable"
+msgstr ""
+
+#: [button]join
+msgid "Join"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr ""
+
+#: [button]more
+msgid "More"
+msgstr ""
+
+#: [button]next
+msgid "Next"
+msgstr "Következő"
+
+#: [button]not_now
+msgid "Not Now"
+msgstr ""
+
+#: [button]open
+msgid "Open"
+msgstr "Nyitott"
+
+#: [button]previous
+msgid "Previous"
+msgstr "Előző"
+
+#: [button]quote
+msgid "Quote"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr "Frissít"
+
+#: [button]refuse
+msgid "Refuse"
+msgstr "Visszautasít"
+
+#: [button]register
+msgid "Register"
+msgstr "Regisztráció"
+
 #: [button]remove
 msgid "Leave"
 msgstr ""
 
-#: [button]cancel
-msgid "Cancel"
-msgstr "Mégse"
-
-#: [button]close
-msgid "Close"
-msgstr "Bezárás"
-
-#: [button]create
-msgid "Create"
+#: [button]reply
+msgid "Reply"
 msgstr ""
+
+#: [button]return
+msgid "Return"
+msgstr "Visszatérés"
+
+#: [button]save
+msgid "Save"
+msgstr "Mentés"
+
+#: [button]search
+msgid "Search"
+msgstr "Keresés"
+
+#: [button]send_to
+msgid "Send to"
+msgstr ""
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr ""
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
+#: [button]submitting
+msgid "Submitting"
+msgstr "Közzétesz"
+
+#: [button]unregister
+msgid "Unregister"
+msgstr "Regisztráció törlése"
 
 #: [button]update
 msgid "Update"
@@ -3118,110 +3252,13 @@ msgstr "Frissít"
 msgid "Updating"
 msgstr "Frissítés"
 
-#: [button]submitting
-msgid "Submitting"
-msgstr "Közzétesz"
+#: [button]validate
+msgid "Validate"
+msgstr "Érvényesít"
 
-#: [button]register
-msgid "Register"
-msgstr "Regisztráció"
-
-#: [button]reply
-msgid "Reply"
+#: [button]video_call
+msgid "Video Call"
 msgstr ""
-
-#: [button]unregister
-msgid "Unregister"
-msgstr "Regisztráció törlése"
-
-#: [button]save
-msgid "Save"
-msgstr "Mentés"
-
-#: [button]join
-msgid "Join"
-msgstr ""
-
-#: [button]clear
-msgid "Clear"
-msgstr "Törlés"
-
-#: [button]connecting
-msgid "Connecting"
-msgstr "Csatlakozás"
-
-#: [button]bool_yes
-msgid "Yes"
-msgstr "Igen"
-
-#: [button]bool_no
-msgid "No"
-msgstr "Nem"
-
-#: [button]return
-msgid "Return"
-msgstr "Visszatérés"
-
-#: [button]accept
-msgid "Accept"
-msgstr "Elfogad"
-
-#: [button]refuse
-msgid "Refuse"
-msgstr "Visszautasít"
-
-#: [button]next
-msgid "Next"
-msgstr "Következő"
-
-#: [button]previous
-msgid "Previous"
-msgstr "Előző"
-
-#: [button]search
-msgid "Search"
-msgstr "Keresés"
-
-#: [button]share
-msgctxt "[button]share"
-msgid "Share"
-msgstr ""
-
-#: [button]discover
-msgid "Discover"
-msgstr ""
-
-#: [button]like
-msgid "Like"
-msgstr ""
-
-#: [button]not_now
-msgid "Not Now"
-msgstr ""
-
-#: [button]enable
-msgid "Enable"
-msgstr ""
-
-#: [button]sign_up
-msgid "Sign Up"
-msgstr ""
-
-#: [button]send_to
-msgid "Send to"
-msgstr ""
-
-#: [button]more
-msgid "More"
-msgstr ""
-
-#: [button]copy_link
-msgid "Copy Link"
-msgstr ""
-
-#: [button]open
-msgid "Open"
-msgstr "Nyitott"
 
 #: [input]optional
 msgid "Optional"
@@ -3828,10 +3865,6 @@ msgstr ""
 msgid "TB"
 msgstr ""
 
-#: [affiliation]owner
-msgid "Owner"
-msgstr "Tulajdonos"
-
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Kiadó"
@@ -3851,3 +3884,18 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "Subscribe"
+#~ msgstr "Feliratkozás"
+
+#~ msgid "Unsubscribe"
+#~ msgstr "Leiratkozás"
+
+#~ msgid "Subscribed"
+#~ msgstr "Feliratkozva"
+
+#~ msgid "Unsubscribed"
+#~ msgstr "Leiratkozva"
+
+#~ msgid "Share this subscription publicly"
+#~ msgstr "Ennek a feliratkozásnak megosztása nyilvánosan"

@@ -63,6 +63,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Draw/locales.ini
@@ -124,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Vitalis Vitalis, 2025\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://app.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -494,6 +496,16 @@ msgstr ""
 msgid "Change my profile picture"
 msgstr ""
 
+#: [avatar]too_big
+#, fuzzy
+msgid "Your picture is too big"
+msgstr "Profilen din er nå offentlig"
+
+#: [avatar]missing
+#, fuzzy
+msgid "No avatar yet"
+msgstr "Ingen samtaler ennå…"
+
 #: [banner]change
 msgid "Change my banner"
 msgstr ""
@@ -505,6 +517,11 @@ msgstr ""
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr ""
+
+#: [banner]missing
+#, fuzzy
+msgid "No banner yet"
+msgstr "Ingen nyheter enda…"
 
 #: [blocked]title
 msgid "Blocked"
@@ -1009,7 +1026,7 @@ msgstr ""
 msgid "Error during the application of the node configuration"
 msgstr ""
 
-#: [communityaffiliation]owners
+#: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
 msgstr "Eiere"
 
@@ -1090,21 +1107,21 @@ msgstr ""
 msgid "Only subscribers can publish"
 msgstr ""
 
-#: [communityheader]subscribe
-msgid "Subscribe"
-msgstr "Abonner"
+#: [communityheader]follow
+msgid "Follow"
+msgstr ""
 
-#: [communityheader]unsubscribe
-msgid "Unsubscribe"
-msgstr "Avmeld"
+#: [communityheader]unfollow
+msgid "Unfollow"
+msgstr ""
 
-#: [communityheader]subscribed
-msgid "Subscribed"
-msgstr "Abonnerer"
+#: [communityheader]followed
+msgid "Followed"
+msgstr ""
 
-#: [communityheader]unsubscribed
-msgid "Unsubscribed"
-msgstr "Avmeldt"
+#: [communityheader]unfollowed
+msgid "Unfollowed"
+msgstr ""
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1118,16 +1135,17 @@ msgstr "Gi et navn til dette samfunnet"
 msgid "My Community Name"
 msgstr "Mitt samfunnsnavn"
 
-#: [communityheader]share_subscription
-msgid "Share this subscription publicly"
-msgstr "Del påmeldingen offentlig"
+#: [communityheader]share_follow
+msgid "Share this follow to everyone"
+msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "Det vil vises på din profil"
 
-#: [communityheader]unsubscribe_text
-msgid "You are going to unsubscribe from this community"
+#: [communityheader]unfollow_text
+#, fuzzy
+msgid "You are going to unfollow this community"
 msgstr "Du forsøker å melde deg ut av dette samfunnet"
 
 #: [communityheader]sure [delete]title
@@ -1147,8 +1165,17 @@ msgid "Private account"
 msgstr ""
 
 #: [communityposts]presencerequired_text
-msgid "Follow it to see the content"
+msgid "Ask %s to be in your contacts to see the publications"
 msgstr ""
+
+#: [communityposts]subscribe_presencerequired
+msgid "Send an invitation request before following the contact"
+msgstr ""
+
+#: [communityposts]subscribe_unsupported
+#, fuzzy
+msgid "You can't follow the contact at the moment"
+msgstr "Du kan se denne kontaktstatusen"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1504,6 +1531,10 @@ msgstr "Inviter"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
+msgstr ""
+
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
 msgstr ""
 
 #: [dictaphone]name
@@ -2243,20 +2274,6 @@ msgstr ""
 msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr ""
 
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr ""
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr ""
-
-#: [rooms]visitor
-msgid "Visitor"
-msgstr ""
-
 #: [rooms]explore_placeholder
 msgid "Name or description"
 msgstr ""
@@ -2507,13 +2524,11 @@ msgstr ""
 msgid "Pinned"
 msgstr ""
 
-#: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
+#: [room]affiliation_owner [affiliation]owner
 msgid "Owner"
-msgstr ""
+msgstr "Eier"
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
 msgid "Admin"
 msgstr ""
 
@@ -2523,6 +2538,21 @@ msgstr ""
 
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
+msgstr ""
+
+#: [room]affiliation_admins
+#, fuzzy
+msgid "Admins"
+msgstr "Administrasjon"
+
+#: [room]affiliation_members
+#, fuzzy
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr "Medlemer"
+
+#: [room]visitor
+msgid "Visitor"
 msgstr ""
 
 #: [room]allowed_send_messages
@@ -2606,25 +2636,24 @@ msgstr ""
 msgid "Share in a new publication"
 msgstr ""
 
-#: [sendto]contact
-msgid "Send it to a contact"
-msgstr ""
+#: [sendto]selected
+#, fuzzy
+msgid "contacts selected"
+msgstr "Kontakten ble slettet"
 
-#: [sendto]chatroom
-msgid "Share it in a chatroom"
-msgstr ""
+#: [sendto]pick
+#, fuzzy
+msgid "Pick the contacts you want to share this content with"
+msgstr "Er du sikker på at du ønsker å slette denne kommentaren?"
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr ""
 
-#: [sendto]shared_contact
-msgid "Post shared with your contact"
-msgstr ""
-
-#: [sendto]shared_chatroom
-msgid "Post shared within the chatroom"
-msgstr ""
+#: [sendto]shared_contacts
+#, fuzzy
+msgid "Post shared with %s contacts"
+msgstr "Prat med en kontakt"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2753,6 +2782,11 @@ msgstr ""
 #: [upload]max_size
 msgid "Max file size %s"
 msgstr ""
+
+#: [upload]upload_xmpp
+#, fuzzy
+msgid "Uploading to your account"
+msgstr "Slett kontoen din"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2927,7 +2961,7 @@ msgid "No sound detected from your microphone"
 msgstr ""
 
 #: [visiolobby]no_mic_sound2
-msgid "Try to select another source or check your system settings"
+msgid "Try make some noise, select another source or check your system settings"
 msgstr ""
 
 #: [muji]call_audio_invite
@@ -3063,29 +3097,53 @@ msgstr ""
 msgid "Oops!"
 msgstr "Uffda!"
 
-#: [button]call
-msgid "Call"
-msgstr "Ring"
+#: [button]accept
+msgid "Accept"
+msgstr "Aksepter"
+
+#: [button]add
+msgid "Add"
+msgstr "Legg til"
 
 #: [button]audio_call
 msgid "Audio Call"
 msgstr ""
 
-#: [button]video_call
-msgid "Video Call"
+#: [button]bool_no
+msgid "No"
+msgstr "Nei"
+
+#: [button]bool_yes
+msgid "Yes"
+msgstr "Ja"
+
+#: [button]call
+msgid "Call"
+msgstr "Ring"
+
+#: [button]cancel
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: [button]clear
+msgid "Clear"
+msgstr "Tøm"
+
+#: [button]close
+msgid "Close"
+msgstr "Lukk"
+
+#: [button]connecting
+msgid "Connecting"
+msgstr "Kobler til"
+
+#: [button]copy_link
+msgid "Copy Link"
 msgstr ""
 
-#: [button]validate
-msgid "Validate"
-msgstr "Valider"
-
-#: [button]refresh
-msgid "Refresh"
-msgstr "Oppdater"
-
-#: [button]add
-msgid "Add"
-msgstr "Legg til"
+#: [button]create
+msgid "Create"
+msgstr ""
 
 #: [button]delete
 msgid "Delete"
@@ -3095,21 +3153,98 @@ msgstr "Slett"
 msgid "Destroy"
 msgstr ""
 
+#: [button]discover
+msgid "Discover"
+msgstr "Oppdag"
+
+#: [button]enable
+msgid "Enable"
+msgstr "Aktiver"
+
+#: [button]join
+msgid "Join"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr "Lik"
+
+#: [button]more
+msgid "More"
+msgstr ""
+
+#: [button]next
+msgid "Next"
+msgstr "Neste"
+
+#: [button]not_now
+msgid "Not Now"
+msgstr "Ikke nå"
+
+#: [button]open
+msgid "Open"
+msgstr "Åpne"
+
+#: [button]previous
+msgid "Previous"
+msgstr "Forrige"
+
+#: [button]quote
+msgid "Quote"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr "Oppdater"
+
+#: [button]refuse
+msgid "Refuse"
+msgstr "Avslå"
+
+#: [button]register
+msgid "Register"
+msgstr "Registrer"
+
 #: [button]remove
 msgid "Leave"
 msgstr ""
 
-#: [button]cancel
-msgid "Cancel"
-msgstr "Avbryt"
+#: [button]reply
+msgid "Reply"
+msgstr "Svar"
 
-#: [button]close
-msgid "Close"
-msgstr "Lukk"
+#: [button]return
+msgid "Return"
+msgstr "Tilbake"
 
-#: [button]create
-msgid "Create"
+#: [button]save
+msgid "Save"
+msgstr "Lagre"
+
+#: [button]search
+msgid "Search"
+msgstr "Søk"
+
+#: [button]send_to
+msgid "Send to"
 msgstr ""
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr "Del"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr "Registrere"
+
+#: [button]submitting
+msgid "Submitting"
+msgstr "Sender inn"
+
+#: [button]unregister
+msgid "Unregister"
+msgstr "Avregistrer"
 
 #: [button]update
 msgid "Update"
@@ -3119,110 +3254,13 @@ msgstr "Oppdater"
 msgid "Updating"
 msgstr "Oppdaterer"
 
-#: [button]submitting
-msgid "Submitting"
-msgstr "Sender inn"
+#: [button]validate
+msgid "Validate"
+msgstr "Valider"
 
-#: [button]register
-msgid "Register"
-msgstr "Registrer"
-
-#: [button]reply
-msgid "Reply"
-msgstr "Svar"
-
-#: [button]unregister
-msgid "Unregister"
-msgstr "Avregistrer"
-
-#: [button]save
-msgid "Save"
-msgstr "Lagre"
-
-#: [button]join
-msgid "Join"
+#: [button]video_call
+msgid "Video Call"
 msgstr ""
-
-#: [button]clear
-msgid "Clear"
-msgstr "Tøm"
-
-#: [button]connecting
-msgid "Connecting"
-msgstr "Kobler til"
-
-#: [button]bool_yes
-msgid "Yes"
-msgstr "Ja"
-
-#: [button]bool_no
-msgid "No"
-msgstr "Nei"
-
-#: [button]return
-msgid "Return"
-msgstr "Tilbake"
-
-#: [button]accept
-msgid "Accept"
-msgstr "Aksepter"
-
-#: [button]refuse
-msgid "Refuse"
-msgstr "Avslå"
-
-#: [button]next
-msgid "Next"
-msgstr "Neste"
-
-#: [button]previous
-msgid "Previous"
-msgstr "Forrige"
-
-#: [button]search
-msgid "Search"
-msgstr "Søk"
-
-#: [button]share
-msgctxt "[button]share"
-msgid "Share"
-msgstr "Del"
-
-#: [button]discover
-msgid "Discover"
-msgstr "Oppdag"
-
-#: [button]like
-msgid "Like"
-msgstr "Lik"
-
-#: [button]not_now
-msgid "Not Now"
-msgstr "Ikke nå"
-
-#: [button]enable
-msgid "Enable"
-msgstr "Aktiver"
-
-#: [button]sign_up
-msgid "Sign Up"
-msgstr "Registrere"
-
-#: [button]send_to
-msgid "Send to"
-msgstr ""
-
-#: [button]more
-msgid "More"
-msgstr ""
-
-#: [button]copy_link
-msgid "Copy Link"
-msgstr ""
-
-#: [button]open
-msgid "Open"
-msgstr "Åpne"
 
 #: [input]optional
 msgid "Optional"
@@ -3829,10 +3867,6 @@ msgstr ""
 msgid "TB"
 msgstr ""
 
-#: [affiliation]owner
-msgid "Owner"
-msgstr "Eier"
-
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Utgiver"
@@ -3852,3 +3886,18 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "Subscribe"
+#~ msgstr "Abonner"
+
+#~ msgid "Unsubscribe"
+#~ msgstr "Avmeld"
+
+#~ msgid "Subscribed"
+#~ msgstr "Abonnerer"
+
+#~ msgid "Unsubscribed"
+#~ msgstr "Avmeldt"
+
+#~ msgid "Share this subscription publicly"
+#~ msgstr "Del påmeldingen offentlig"

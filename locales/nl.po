@@ -67,6 +67,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Draw/locales.ini
@@ -128,7 +130,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Robbie Deighton <deightonrobbie@gmail.com>, 2019\n"
 "Language-Team: Dutch (http://app.transifex.com/movim/movim/language/nl/)\n"
@@ -498,6 +500,16 @@ msgstr ""
 msgid "Change my profile picture"
 msgstr ""
 
+#: [avatar]too_big
+#, fuzzy
+msgid "Your picture is too big"
+msgstr "Je profiel is nu openbaar"
+
+#: [avatar]missing
+#, fuzzy
+msgid "No avatar yet"
+msgstr "Momenteel geen gesprekken..."
+
 #: [banner]change
 msgid "Change my banner"
 msgstr ""
@@ -509,6 +521,11 @@ msgstr ""
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr ""
+
+#: [banner]missing
+#, fuzzy
+msgid "No banner yet"
+msgstr "Nog geen nieuws"
 
 #: [blocked]title
 msgid "Blocked"
@@ -1013,7 +1030,7 @@ msgstr ""
 msgid "Error during the application of the node configuration"
 msgstr ""
 
-#: [communityaffiliation]owners
+#: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
 msgstr "Beheerders"
 
@@ -1094,21 +1111,21 @@ msgstr ""
 msgid "Only subscribers can publish"
 msgstr ""
 
-#: [communityheader]subscribe
-msgid "Subscribe"
-msgstr "Abbonneer"
+#: [communityheader]follow
+msgid "Follow"
+msgstr ""
 
-#: [communityheader]unsubscribe
-msgid "Unsubscribe"
-msgstr "Uitschrijven"
+#: [communityheader]unfollow
+msgid "Unfollow"
+msgstr ""
 
-#: [communityheader]subscribed
-msgid "Subscribed"
-msgstr "Geabonneerd"
+#: [communityheader]followed
+msgid "Followed"
+msgstr ""
 
-#: [communityheader]unsubscribed
-msgid "Unsubscribed"
-msgstr "Uitgeschreven"
+#: [communityheader]unfollowed
+msgid "Unfollowed"
+msgstr ""
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1122,16 +1139,17 @@ msgstr "Geef deze groep een label"
 msgid "My Community Name"
 msgstr "Mijn groepsnaam"
 
-#: [communityheader]share_subscription
-msgid "Share this subscription publicly"
-msgstr "Maak je lidmaatschap openbaar"
+#: [communityheader]share_follow
+msgid "Share this follow to everyone"
+msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "Het verschijnt in je profiel"
 
-#: [communityheader]unsubscribe_text
-msgid "You are going to unsubscribe from this community"
+#: [communityheader]unfollow_text
+#, fuzzy
+msgid "You are going to unfollow this community"
 msgstr "Je gaat je voor deze groep uitschrijven"
 
 #: [communityheader]sure [delete]title
@@ -1151,8 +1169,17 @@ msgid "Private account"
 msgstr ""
 
 #: [communityposts]presencerequired_text
-msgid "Follow it to see the content"
+msgid "Ask %s to be in your contacts to see the publications"
 msgstr ""
+
+#: [communityposts]subscribe_presencerequired
+msgid "Send an invitation request before following the contact"
+msgstr ""
+
+#: [communityposts]subscribe_unsupported
+#, fuzzy
+msgid "You can't follow the contact at the moment"
+msgstr "Je kunt deze contactpersoon zijn status zien"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1508,6 +1535,10 @@ msgstr "Uitnodigen"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
+msgstr ""
+
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
 msgstr ""
 
 #: [dictaphone]name
@@ -2247,20 +2278,6 @@ msgstr ""
 msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr ""
 
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr ""
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr ""
-
-#: [rooms]visitor
-msgid "Visitor"
-msgstr ""
-
 #: [rooms]explore_placeholder
 msgid "Name or description"
 msgstr ""
@@ -2511,13 +2528,11 @@ msgstr ""
 msgid "Pinned"
 msgstr ""
 
-#: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
+#: [room]affiliation_owner [affiliation]owner
 msgid "Owner"
-msgstr ""
+msgstr "Beheerder"
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
 msgid "Admin"
 msgstr ""
 
@@ -2527,6 +2542,21 @@ msgstr ""
 
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
+msgstr ""
+
+#: [room]affiliation_admins
+#, fuzzy
+msgid "Admins"
+msgstr "Beheer"
+
+#: [room]affiliation_members
+#, fuzzy
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr "Leden"
+
+#: [room]visitor
+msgid "Visitor"
 msgstr ""
 
 #: [room]allowed_send_messages
@@ -2610,25 +2640,23 @@ msgstr ""
 msgid "Share in a new publication"
 msgstr ""
 
-#: [sendto]contact
-msgid "Send it to a contact"
-msgstr ""
+#: [sendto]selected
+#, fuzzy
+msgid "contacts selected"
+msgstr "Contactpersoon verwijderd"
 
-#: [sendto]chatroom
-msgid "Share it in a chatroom"
+#: [sendto]pick
+msgid "Pick the contacts you want to share this content with"
 msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr ""
 
-#: [sendto]shared_contact
-msgid "Post shared with your contact"
-msgstr ""
-
-#: [sendto]shared_chatroom
-msgid "Post shared within the chatroom"
-msgstr ""
+#: [sendto]shared_contacts
+#, fuzzy
+msgid "Post shared with %s contacts"
+msgstr "Chat met een contactpersoon"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2757,6 +2785,11 @@ msgstr ""
 #: [upload]max_size
 msgid "Max file size %s"
 msgstr ""
+
+#: [upload]upload_xmpp
+#, fuzzy
+msgid "Uploading to your account"
+msgstr "Mijn account verwijderen"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2931,7 +2964,7 @@ msgid "No sound detected from your microphone"
 msgstr ""
 
 #: [visiolobby]no_mic_sound2
-msgid "Try to select another source or check your system settings"
+msgid "Try make some noise, select another source or check your system settings"
 msgstr ""
 
 #: [muji]call_audio_invite
@@ -3067,29 +3100,53 @@ msgstr ""
 msgid "Oops!"
 msgstr "Oeps!"
 
-#: [button]call
-msgid "Call"
-msgstr "Bellen"
+#: [button]accept
+msgid "Accept"
+msgstr "Accepteer"
+
+#: [button]add
+msgid "Add"
+msgstr "Toevoegen"
 
 #: [button]audio_call
 msgid "Audio Call"
 msgstr ""
 
-#: [button]video_call
-msgid "Video Call"
+#: [button]bool_no
+msgid "No"
+msgstr "Nee"
+
+#: [button]bool_yes
+msgid "Yes"
+msgstr "Ja"
+
+#: [button]call
+msgid "Call"
+msgstr "Bellen"
+
+#: [button]cancel
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: [button]clear
+msgid "Clear"
+msgstr "Opnieuw"
+
+#: [button]close
+msgid "Close"
+msgstr "Sluit"
+
+#: [button]connecting
+msgid "Connecting"
+msgstr "Verbinden"
+
+#: [button]copy_link
+msgid "Copy Link"
 msgstr ""
 
-#: [button]validate
-msgid "Validate"
-msgstr "Bevestig"
-
-#: [button]refresh
-msgid "Refresh"
-msgstr "Vernieuwen"
-
-#: [button]add
-msgid "Add"
-msgstr "Toevoegen"
+#: [button]create
+msgid "Create"
+msgstr ""
 
 #: [button]delete
 msgid "Delete"
@@ -3099,21 +3156,98 @@ msgstr "Verwijderen"
 msgid "Destroy"
 msgstr ""
 
+#: [button]discover
+msgid "Discover"
+msgstr "Verkennen"
+
+#: [button]enable
+msgid "Enable"
+msgstr "Inschakelen"
+
+#: [button]join
+msgid "Join"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr "Vind ik leuk"
+
+#: [button]more
+msgid "More"
+msgstr ""
+
+#: [button]next
+msgid "Next"
+msgstr "Volgende"
+
+#: [button]not_now
+msgid "Not Now"
+msgstr "Niet nu"
+
+#: [button]open
+msgid "Open"
+msgstr "open"
+
+#: [button]previous
+msgid "Previous"
+msgstr "Vorige"
+
+#: [button]quote
+msgid "Quote"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr "Vernieuwen"
+
+#: [button]refuse
+msgid "Refuse"
+msgstr "Weiger"
+
+#: [button]register
+msgid "Register"
+msgstr "Registreren"
+
 #: [button]remove
 msgid "Leave"
 msgstr ""
 
-#: [button]cancel
-msgid "Cancel"
-msgstr "Annuleren"
+#: [button]reply
+msgid "Reply"
+msgstr "Antwoord"
 
-#: [button]close
-msgid "Close"
-msgstr "Sluit"
+#: [button]return
+msgid "Return"
+msgstr "Terug"
 
-#: [button]create
-msgid "Create"
+#: [button]save
+msgid "Save"
+msgstr "Opslaan"
+
+#: [button]search
+msgid "Search"
+msgstr "Zoeken"
+
+#: [button]send_to
+msgid "Send to"
 msgstr ""
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr "Delen"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
+#: [button]submitting
+msgid "Submitting"
+msgstr "Bezig met opslaan"
+
+#: [button]unregister
+msgid "Unregister"
+msgstr "Uitschrijven"
 
 #: [button]update
 msgid "Update"
@@ -3123,110 +3257,13 @@ msgstr "Bijwerken"
 msgid "Updating"
 msgstr "Aan het bijwerken"
 
-#: [button]submitting
-msgid "Submitting"
-msgstr "Bezig met opslaan"
+#: [button]validate
+msgid "Validate"
+msgstr "Bevestig"
 
-#: [button]register
-msgid "Register"
-msgstr "Registreren"
-
-#: [button]reply
-msgid "Reply"
-msgstr "Antwoord"
-
-#: [button]unregister
-msgid "Unregister"
-msgstr "Uitschrijven"
-
-#: [button]save
-msgid "Save"
-msgstr "Opslaan"
-
-#: [button]join
-msgid "Join"
+#: [button]video_call
+msgid "Video Call"
 msgstr ""
-
-#: [button]clear
-msgid "Clear"
-msgstr "Opnieuw"
-
-#: [button]connecting
-msgid "Connecting"
-msgstr "Verbinden"
-
-#: [button]bool_yes
-msgid "Yes"
-msgstr "Ja"
-
-#: [button]bool_no
-msgid "No"
-msgstr "Nee"
-
-#: [button]return
-msgid "Return"
-msgstr "Terug"
-
-#: [button]accept
-msgid "Accept"
-msgstr "Accepteer"
-
-#: [button]refuse
-msgid "Refuse"
-msgstr "Weiger"
-
-#: [button]next
-msgid "Next"
-msgstr "Volgende"
-
-#: [button]previous
-msgid "Previous"
-msgstr "Vorige"
-
-#: [button]search
-msgid "Search"
-msgstr "Zoeken"
-
-#: [button]share
-msgctxt "[button]share"
-msgid "Share"
-msgstr "Delen"
-
-#: [button]discover
-msgid "Discover"
-msgstr "Verkennen"
-
-#: [button]like
-msgid "Like"
-msgstr "Vind ik leuk"
-
-#: [button]not_now
-msgid "Not Now"
-msgstr "Niet nu"
-
-#: [button]enable
-msgid "Enable"
-msgstr "Inschakelen"
-
-#: [button]sign_up
-msgid "Sign Up"
-msgstr ""
-
-#: [button]send_to
-msgid "Send to"
-msgstr ""
-
-#: [button]more
-msgid "More"
-msgstr ""
-
-#: [button]copy_link
-msgid "Copy Link"
-msgstr ""
-
-#: [button]open
-msgid "Open"
-msgstr "open"
 
 #: [input]optional
 msgid "Optional"
@@ -3833,10 +3870,6 @@ msgstr ""
 msgid "TB"
 msgstr ""
 
-#: [affiliation]owner
-msgid "Owner"
-msgstr "Beheerder"
-
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr ""
@@ -3856,3 +3889,18 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "Subscribe"
+#~ msgstr "Abbonneer"
+
+#~ msgid "Unsubscribe"
+#~ msgstr "Uitschrijven"
+
+#~ msgid "Subscribed"
+#~ msgstr "Geabonneerd"
+
+#~ msgid "Unsubscribed"
+#~ msgstr "Uitgeschreven"
+
+#~ msgid "Share this subscription publicly"
+#~ msgstr "Maak je lidmaatschap openbaar"

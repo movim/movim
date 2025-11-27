@@ -61,6 +61,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Draw/locales.ini
@@ -122,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Slavko <linux@slavino.sk>, 2020-2021\n"
 "Language-Team: Slovak (Slovakia) (http://app.transifex.com/movim/movim/language/sk_SK/)\n"
@@ -492,6 +494,16 @@ msgstr ""
 msgid "Change my profile picture"
 msgstr ""
 
+#: [avatar]too_big
+#, fuzzy
+msgid "Your picture is too big"
+msgstr "Váš profil je teraz verejný"
+
+#: [avatar]missing
+#, fuzzy
+msgid "No avatar yet"
+msgstr "Zatiaľ žiadne chaty…"
+
 #: [banner]change
 msgid "Change my banner"
 msgstr ""
@@ -503,6 +515,11 @@ msgstr ""
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr ""
+
+#: [banner]missing
+#, fuzzy
+msgid "No banner yet"
+msgstr "Zatiaľ žiadne novinky…"
 
 #: [blocked]title
 msgid "Blocked"
@@ -1009,7 +1026,7 @@ msgstr ""
 msgid "Error during the application of the node configuration"
 msgstr "Chyba pri aplikácií nastavenia uzla"
 
-#: [communityaffiliation]owners
+#: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
 msgstr "Vlastníci"
 
@@ -1090,21 +1107,21 @@ msgstr "Len vydavatelia môžu uverejňovať"
 msgid "Only subscribers can publish"
 msgstr "Len odberatelia môžu uverejňovať"
 
-#: [communityheader]subscribe
-msgid "Subscribe"
-msgstr "Odoberať"
+#: [communityheader]follow
+msgid "Follow"
+msgstr ""
 
-#: [communityheader]unsubscribe
-msgid "Unsubscribe"
-msgstr "Neodoberať"
+#: [communityheader]unfollow
+msgid "Unfollow"
+msgstr ""
 
-#: [communityheader]subscribed
-msgid "Subscribed"
-msgstr "Odoberané"
+#: [communityheader]followed
+msgid "Followed"
+msgstr ""
 
-#: [communityheader]unsubscribed
-msgid "Unsubscribed"
-msgstr "Neodoberané"
+#: [communityheader]unfollowed
+msgid "Unfollowed"
+msgstr ""
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1118,16 +1135,17 @@ msgstr "Zadajte menovku tejto komunity"
 msgid "My Community Name"
 msgstr "Moje meno komunity"
 
-#: [communityheader]share_subscription
-msgid "Share this subscription publicly"
-msgstr "Zdieľať tento odber verejne"
+#: [communityheader]share_follow
+msgid "Share this follow to everyone"
+msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "Bude zobrazený vo Vašom profile"
 
-#: [communityheader]unsubscribe_text
-msgid "You are going to unsubscribe from this community"
+#: [communityheader]unfollow_text
+#, fuzzy
+msgid "You are going to unfollow this community"
 msgstr "Odhlasujete sa z odberu tejto komunity"
 
 #: [communityheader]sure [delete]title
@@ -1147,8 +1165,17 @@ msgid "Private account"
 msgstr ""
 
 #: [communityposts]presencerequired_text
-msgid "Follow it to see the content"
+msgid "Ask %s to be in your contacts to see the publications"
 msgstr ""
+
+#: [communityposts]subscribe_presencerequired
+msgid "Send an invitation request before following the contact"
+msgstr ""
+
+#: [communityposts]subscribe_unsupported
+#, fuzzy
+msgid "You can't follow the contact at the moment"
+msgstr "Môžete vidieť status tohoto kontaktu"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1504,6 +1531,10 @@ msgstr "Pozvať"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
+msgstr ""
+
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
 msgstr ""
 
 #: [dictaphone]name
@@ -2243,20 +2274,6 @@ msgstr ""
 msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr ""
 
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr ""
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr ""
-
-#: [rooms]visitor
-msgid "Visitor"
-msgstr "Návštevník"
-
 #: [rooms]explore_placeholder
 msgid "Name or description"
 msgstr "Názov alebo popis"
@@ -2507,13 +2524,11 @@ msgstr "Vždy upozorniť"
 msgid "Pinned"
 msgstr ""
 
-#: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
+#: [room]affiliation_owner [affiliation]owner
 msgid "Owner"
-msgstr ""
+msgstr "Vlastník"
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
 msgid "Admin"
 msgstr ""
 
@@ -2524,6 +2539,21 @@ msgstr "Člen"
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
 msgstr "Bez pričlenenia"
+
+#: [room]affiliation_admins
+#, fuzzy
+msgid "Admins"
+msgstr "Asministrácia"
+
+#: [room]affiliation_members
+#, fuzzy
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr "Členovia"
+
+#: [room]visitor
+msgid "Visitor"
+msgstr "Návštevník"
 
 #: [room]allowed_send_messages
 msgid "Is the user allowed to send messages?"
@@ -2606,25 +2636,24 @@ msgstr "Pripojiť k uverejneneniu v blogu"
 msgid "Share in a new publication"
 msgstr ""
 
-#: [sendto]contact
-msgid "Send it to a contact"
-msgstr "Poslať to kontaktu"
+#: [sendto]selected
+#, fuzzy
+msgid "contacts selected"
+msgstr "Kontakt odstránený"
 
-#: [sendto]chatroom
-msgid "Share it in a chatroom"
-msgstr "zdieľať to v miestnosti"
+#: [sendto]pick
+#, fuzzy
+msgid "Pick the contacts you want to share this content with"
+msgstr "Naozaj chcete odstrániť tento komentár?"
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Príspevok zdieľaný"
 
-#: [sendto]shared_contact
-msgid "Post shared with your contact"
+#: [sendto]shared_contacts
+#, fuzzy
+msgid "Post shared with %s contacts"
 msgstr "Príspevok zdieľaný s kontaktom"
-
-#: [sendto]shared_chatroom
-msgid "Post shared within the chatroom"
-msgstr "Príspevok zdieľaný do miestnosti"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2753,6 +2782,11 @@ msgstr "Pretiahnite svoj súbor do tejto oblasti"
 #: [upload]max_size
 msgid "Max file size %s"
 msgstr "Max veľkosť súboru %s"
+
+#: [upload]upload_xmpp
+#, fuzzy
+msgid "Uploading to your account"
+msgstr "Zmazať svoj účet"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2927,7 +2961,7 @@ msgid "No sound detected from your microphone"
 msgstr ""
 
 #: [visiolobby]no_mic_sound2
-msgid "Try to select another source or check your system settings"
+msgid "Try make some noise, select another source or check your system settings"
 msgstr ""
 
 #: [muji]call_audio_invite
@@ -3063,29 +3097,53 @@ msgstr "Opätovné pripojenie k serveru…"
 msgid "Oops!"
 msgstr "Hups!"
 
-#: [button]call
-msgid "Call"
-msgstr "Volať"
+#: [button]accept
+msgid "Accept"
+msgstr "Prijať"
+
+#: [button]add
+msgid "Add"
+msgstr "Pridať"
 
 #: [button]audio_call
 msgid "Audio Call"
 msgstr "Audio hovor"
 
-#: [button]video_call
-msgid "Video Call"
-msgstr "Video hovor"
+#: [button]bool_no
+msgid "No"
+msgstr "Nie"
 
-#: [button]validate
-msgid "Validate"
-msgstr "Overiť"
+#: [button]bool_yes
+msgid "Yes"
+msgstr "Áno"
 
-#: [button]refresh
-msgid "Refresh"
-msgstr "Obnoviť"
+#: [button]call
+msgid "Call"
+msgstr "Volať"
 
-#: [button]add
-msgid "Add"
-msgstr "Pridať"
+#: [button]cancel
+msgid "Cancel"
+msgstr "Zrušiť"
+
+#: [button]clear
+msgid "Clear"
+msgstr "Vymazať"
+
+#: [button]close
+msgid "Close"
+msgstr "Zatvoriť"
+
+#: [button]connecting
+msgid "Connecting"
+msgstr "Pripájanie"
+
+#: [button]copy_link
+msgid "Copy Link"
+msgstr "Kopírovať odkaz"
+
+#: [button]create
+msgid "Create"
+msgstr ""
 
 #: [button]delete
 msgid "Delete"
@@ -3095,21 +3153,98 @@ msgstr "Odstrániť"
 msgid "Destroy"
 msgstr "Zničiť"
 
+#: [button]discover
+msgid "Discover"
+msgstr "Objaviť"
+
+#: [button]enable
+msgid "Enable"
+msgstr "Zapnúť"
+
+#: [button]join
+msgid "Join"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr "Páči"
+
+#: [button]more
+msgid "More"
+msgstr "Viac"
+
+#: [button]next
+msgid "Next"
+msgstr "Ďalšie"
+
+#: [button]not_now
+msgid "Not Now"
+msgstr "Nie teraz"
+
+#: [button]open
+msgid "Open"
+msgstr "Otvorené"
+
+#: [button]previous
+msgid "Previous"
+msgstr "Predošlé"
+
+#: [button]quote
+msgid "Quote"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr "Obnoviť"
+
+#: [button]refuse
+msgid "Refuse"
+msgstr "Odmietnuť"
+
+#: [button]register
+msgid "Register"
+msgstr "Registrovať"
+
 #: [button]remove
 msgid "Leave"
 msgstr ""
 
-#: [button]cancel
-msgid "Cancel"
-msgstr "Zrušiť"
+#: [button]reply
+msgid "Reply"
+msgstr "Odpovedať"
 
-#: [button]close
-msgid "Close"
-msgstr "Zatvoriť"
+#: [button]return
+msgid "Return"
+msgstr "Návrat"
 
-#: [button]create
-msgid "Create"
-msgstr ""
+#: [button]save
+msgid "Save"
+msgstr "Uložiť"
+
+#: [button]search
+msgid "Search"
+msgstr "Hľadať"
+
+#: [button]send_to
+msgid "Send to"
+msgstr "Poslať"
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr "Zdieľať"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr "Registrovať"
+
+#: [button]submitting
+msgid "Submitting"
+msgstr "ODosielanie"
+
+#: [button]unregister
+msgid "Unregister"
+msgstr "Odvolať"
 
 #: [button]update
 msgid "Update"
@@ -3119,110 +3254,13 @@ msgstr "Aktualizovať"
 msgid "Updating"
 msgstr "Aktualizovanie"
 
-#: [button]submitting
-msgid "Submitting"
-msgstr "ODosielanie"
+#: [button]validate
+msgid "Validate"
+msgstr "Overiť"
 
-#: [button]register
-msgid "Register"
-msgstr "Registrovať"
-
-#: [button]reply
-msgid "Reply"
-msgstr "Odpovedať"
-
-#: [button]unregister
-msgid "Unregister"
-msgstr "Odvolať"
-
-#: [button]save
-msgid "Save"
-msgstr "Uložiť"
-
-#: [button]join
-msgid "Join"
-msgstr ""
-
-#: [button]clear
-msgid "Clear"
-msgstr "Vymazať"
-
-#: [button]connecting
-msgid "Connecting"
-msgstr "Pripájanie"
-
-#: [button]bool_yes
-msgid "Yes"
-msgstr "Áno"
-
-#: [button]bool_no
-msgid "No"
-msgstr "Nie"
-
-#: [button]return
-msgid "Return"
-msgstr "Návrat"
-
-#: [button]accept
-msgid "Accept"
-msgstr "Prijať"
-
-#: [button]refuse
-msgid "Refuse"
-msgstr "Odmietnuť"
-
-#: [button]next
-msgid "Next"
-msgstr "Ďalšie"
-
-#: [button]previous
-msgid "Previous"
-msgstr "Predošlé"
-
-#: [button]search
-msgid "Search"
-msgstr "Hľadať"
-
-#: [button]share
-msgctxt "[button]share"
-msgid "Share"
-msgstr "Zdieľať"
-
-#: [button]discover
-msgid "Discover"
-msgstr "Objaviť"
-
-#: [button]like
-msgid "Like"
-msgstr "Páči"
-
-#: [button]not_now
-msgid "Not Now"
-msgstr "Nie teraz"
-
-#: [button]enable
-msgid "Enable"
-msgstr "Zapnúť"
-
-#: [button]sign_up
-msgid "Sign Up"
-msgstr "Registrovať"
-
-#: [button]send_to
-msgid "Send to"
-msgstr "Poslať"
-
-#: [button]more
-msgid "More"
-msgstr "Viac"
-
-#: [button]copy_link
-msgid "Copy Link"
-msgstr "Kopírovať odkaz"
-
-#: [button]open
-msgid "Open"
-msgstr "Otvorené"
+#: [button]video_call
+msgid "Video Call"
+msgstr "Video hovor"
 
 #: [input]optional
 msgid "Optional"
@@ -3829,10 +3867,6 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
-#: [affiliation]owner
-msgid "Owner"
-msgstr "Vlastník"
-
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Vydavateľ"
@@ -3852,6 +3886,30 @@ msgstr "API nie je dostupné, skúste neskôr"
 #: [field]type_here
 msgid "Type here"
 msgstr "Píšte tu"
+
+#~ msgid "Subscribe"
+#~ msgstr "Odoberať"
+
+#~ msgid "Unsubscribe"
+#~ msgstr "Neodoberať"
+
+#~ msgid "Subscribed"
+#~ msgstr "Odoberané"
+
+#~ msgid "Unsubscribed"
+#~ msgstr "Neodoberané"
+
+#~ msgid "Share this subscription publicly"
+#~ msgstr "Zdieľať tento odber verejne"
+
+#~ msgid "Send it to a contact"
+#~ msgstr "Poslať to kontaktu"
+
+#~ msgid "Share it in a chatroom"
+#~ msgstr "zdieľať to v miestnosti"
+
+#~ msgid "Post shared within the chatroom"
+#~ msgstr "Príspevok zdieľaný do miestnosti"
 
 #~ msgctxt "[chat]clear_history"
 #~ msgid "Clear the history"

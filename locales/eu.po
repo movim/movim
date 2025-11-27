@@ -60,6 +60,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Draw/locales.ini
@@ -121,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023-2024\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
@@ -491,6 +493,16 @@ msgstr ""
 msgid "Change my profile picture"
 msgstr ""
 
+#: [avatar]too_big
+#, fuzzy
+msgid "Your picture is too big"
+msgstr "Zure profila publikoa da orain"
+
+#: [avatar]missing
+#, fuzzy
+msgid "No avatar yet"
+msgstr "Oraindik ez dago txatik…"
+
 #: [banner]change
 msgid "Change my banner"
 msgstr "Aldatu goiburuko irudia"
@@ -502,6 +514,11 @@ msgstr "Goiburuko irudia eguneratu da"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "Goiburuko irudia ez da eguneratu"
+
+#: [banner]missing
+#, fuzzy
+msgid "No banner yet"
+msgstr "Zaharrak berri…"
 
 #: [blocked]title
 msgid "Blocked"
@@ -1008,7 +1025,7 @@ msgstr ""
 msgid "Error during the application of the node configuration"
 msgstr "Errorea nodo konfigurazioa ezartzerakoan"
 
-#: [communityaffiliation]owners
+#: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
 msgstr "Jabeak"
 
@@ -1089,21 +1106,21 @@ msgstr "Argitaratzaileek bakarrik argitaratu dezakete"
 msgid "Only subscribers can publish"
 msgstr "Harpidedunek bakarrik argitaratu dezakete"
 
-#: [communityheader]subscribe
-msgid "Subscribe"
-msgstr "Harpidetu"
+#: [communityheader]follow
+msgid "Follow"
+msgstr ""
 
-#: [communityheader]unsubscribe
-msgid "Unsubscribe"
-msgstr "Utzi harpidedun izateari"
+#: [communityheader]unfollow
+msgid "Unfollow"
+msgstr ""
 
-#: [communityheader]subscribed
-msgid "Subscribed"
-msgstr "Harpidetza egin da"
+#: [communityheader]followed
+msgid "Followed"
+msgstr ""
 
-#: [communityheader]unsubscribed
-msgid "Unsubscribed"
-msgstr "Harpidedun izateari utzi diozu"
+#: [communityheader]unfollowed
+msgid "Unfollowed"
+msgstr ""
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1117,16 +1134,17 @@ msgstr "Eman etiketa bat komunitate honi"
 msgid "My Community Name"
 msgstr "Nire Komunitatearen Izena"
 
-#: [communityheader]share_subscription
-msgid "Share this subscription publicly"
-msgstr "Argitaratu argitalpen hau publikoki"
+#: [communityheader]share_follow
+msgid "Share this follow to everyone"
+msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "Zure profilean agertuko da"
 
-#: [communityheader]unsubscribe_text
-msgid "You are going to unsubscribe from this community"
+#: [communityheader]unfollow_text
+#, fuzzy
+msgid "You are going to unfollow this community"
 msgstr "Komunitate honetako harpidedun izateari utziko diozu"
 
 #: [communityheader]sure [delete]title
@@ -1146,8 +1164,17 @@ msgid "Private account"
 msgstr "Kontu pribatua"
 
 #: [communityposts]presencerequired_text
-msgid "Follow it to see the content"
-msgstr "Jarraitu edukia ikusi ahal izateko"
+msgid "Ask %s to be in your contacts to see the publications"
+msgstr ""
+
+#: [communityposts]subscribe_presencerequired
+msgid "Send an invitation request before following the contact"
+msgstr ""
+
+#: [communityposts]subscribe_unsupported
+#, fuzzy
+msgid "You can't follow the contact at the moment"
+msgstr "Kontaktuaren egoera ikus dezakezu"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1503,6 +1530,10 @@ msgstr "Gonbidatu"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
+msgstr ""
+
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
 msgstr ""
 
 #: [dictaphone]name
@@ -2243,20 +2274,6 @@ msgstr ""
 msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr ""
 
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr "Jabea"
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr "Administratzailea"
-
-#: [rooms]visitor
-msgid "Visitor"
-msgstr "Bisitaria"
-
 #: [rooms]explore_placeholder
 msgid "Name or description"
 msgstr "Izena edo deskribapena"
@@ -2507,13 +2524,12 @@ msgstr "Jakinarazi beti"
 msgid "Pinned"
 msgstr "Finkatuta"
 
-#: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
+#: [room]affiliation_owner [affiliation]owner
 msgid "Owner"
 msgstr "Jabea"
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
+#, fuzzy
 msgid "Admin"
 msgstr "Administratzailea"
 
@@ -2524,6 +2540,21 @@ msgstr "Kidea"
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
 msgstr "Ez dago afiliaziorik"
+
+#: [room]affiliation_admins
+#, fuzzy
+msgid "Admins"
+msgstr "Administratzailea"
+
+#: [room]affiliation_members
+#, fuzzy
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr "Kideak"
+
+#: [room]visitor
+msgid "Visitor"
+msgstr "Bisitaria"
 
 #: [room]allowed_send_messages
 msgid "Is the user allowed to send messages?"
@@ -2606,25 +2637,24 @@ msgstr "Erantsi argitalpenari"
 msgid "Share in a new publication"
 msgstr "Partekatu argitalpen berrian"
 
-#: [sendto]contact
-msgid "Send it to a contact"
-msgstr "Bidali kontaktuari"
+#: [sendto]selected
+#, fuzzy
+msgid "contacts selected"
+msgstr "Kontaktua ezabatu da"
 
-#: [sendto]chatroom
-msgid "Share it in a chatroom"
-msgstr "Partekatu txat-gelan"
+#: [sendto]pick
+#, fuzzy
+msgid "Pick the contacts you want to share this content with"
+msgstr "Ziur iruzkin hau ezabatu nahi duzula?"
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Argitalpena partekatu da"
 
-#: [sendto]shared_contact
-msgid "Post shared with your contact"
+#: [sendto]shared_contacts
+#, fuzzy
+msgid "Post shared with %s contacts"
 msgstr "Argitalpena kontaktuarekin partekatu da"
-
-#: [sendto]shared_chatroom
-msgid "Post shared within the chatroom"
-msgstr "Argitalpena txat-gelarekin partekatu da"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2753,6 +2783,11 @@ msgstr "Ekarri fitxategia eremu honetara"
 #: [upload]max_size
 msgid "Max file size %s"
 msgstr "Fitxategiaren gehienezko tamaina %s"
+
+#: [upload]upload_xmpp
+#, fuzzy
+msgid "Uploading to your account"
+msgstr "Ezabatu kontua"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2927,7 +2962,8 @@ msgid "No sound detected from your microphone"
 msgstr "Ez da mikrofonotik datorren soinurik detektatu"
 
 #: [visiolobby]no_mic_sound2
-msgid "Try to select another source or check your system settings"
+#, fuzzy
+msgid "Try make some noise, select another source or check your system settings"
 msgstr "Saiatu beste iturri bat hautatzen edo egiaztatu zure gailuaren ezarpenak"
 
 #: [muji]call_audio_invite
@@ -3063,29 +3099,53 @@ msgstr "Zerbitzarira birkonektatzen…"
 msgid "Oops!"
 msgstr "Kaka!"
 
-#: [button]call
-msgid "Call"
-msgstr "Daitu"
+#: [button]accept
+msgid "Accept"
+msgstr "Baieztatu"
+
+#: [button]add
+msgid "Add"
+msgstr "Gehitu"
 
 #: [button]audio_call
 msgid "Audio Call"
 msgstr "Audio-deia"
 
-#: [button]video_call
-msgid "Video Call"
-msgstr "Bideo-deia"
+#: [button]bool_no
+msgid "No"
+msgstr "Ez"
 
-#: [button]validate
-msgid "Validate"
-msgstr "Egiaztatu"
+#: [button]bool_yes
+msgid "Yes"
+msgstr "Bai"
 
-#: [button]refresh
-msgid "Refresh"
-msgstr "Freskatu"
+#: [button]call
+msgid "Call"
+msgstr "Daitu"
 
-#: [button]add
-msgid "Add"
-msgstr "Gehitu"
+#: [button]cancel
+msgid "Cancel"
+msgstr "Utzi"
+
+#: [button]clear
+msgid "Clear"
+msgstr "Garbitu"
+
+#: [button]close
+msgid "Close"
+msgstr "Itxi"
+
+#: [button]connecting
+msgid "Connecting"
+msgstr "Konektatzen"
+
+#: [button]copy_link
+msgid "Copy Link"
+msgstr "Kopiatu esteka"
+
+#: [button]create
+msgid "Create"
+msgstr ""
 
 #: [button]delete
 msgid "Delete"
@@ -3095,21 +3155,98 @@ msgstr "Ezabatu"
 msgid "Destroy"
 msgstr "Suntsitu"
 
+#: [button]discover
+msgid "Discover"
+msgstr "Aurkitu"
+
+#: [button]enable
+msgid "Enable"
+msgstr "Gaitu"
+
+#: [button]join
+msgid "Join"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr "Egin gogoko"
+
+#: [button]more
+msgid "More"
+msgstr "Gehiago"
+
+#: [button]next
+msgid "Next"
+msgstr "Hurrengoa"
+
+#: [button]not_now
+msgid "Not Now"
+msgstr "Orain ez"
+
+#: [button]open
+msgid "Open"
+msgstr "Ireki"
+
+#: [button]previous
+msgid "Previous"
+msgstr "Aurrekoa"
+
+#: [button]quote
+msgid "Quote"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr "Freskatu"
+
+#: [button]refuse
+msgid "Refuse"
+msgstr "Deuseztatu"
+
+#: [button]register
+msgid "Register"
+msgstr "Erregistratu"
+
 #: [button]remove
 msgid "Leave"
 msgstr ""
 
-#: [button]cancel
-msgid "Cancel"
-msgstr "Utzi"
+#: [button]reply
+msgid "Reply"
+msgstr "Erantzun"
 
-#: [button]close
-msgid "Close"
-msgstr "Itxi"
+#: [button]return
+msgid "Return"
+msgstr "Itzuli"
 
-#: [button]create
-msgid "Create"
-msgstr ""
+#: [button]save
+msgid "Save"
+msgstr "Gorde"
+
+#: [button]search
+msgid "Search"
+msgstr "Bilatu"
+
+#: [button]send_to
+msgid "Send to"
+msgstr "Bidali honi"
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr "Partekatu"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr "Eman izena"
+
+#: [button]submitting
+msgid "Submitting"
+msgstr "Bidaltzen"
+
+#: [button]unregister
+msgid "Unregister"
+msgstr "Erregistrotik ezabatu"
 
 #: [button]update
 msgid "Update"
@@ -3119,110 +3256,13 @@ msgstr "Eguneratu"
 msgid "Updating"
 msgstr "Eguneratzen"
 
-#: [button]submitting
-msgid "Submitting"
-msgstr "Bidaltzen"
+#: [button]validate
+msgid "Validate"
+msgstr "Egiaztatu"
 
-#: [button]register
-msgid "Register"
-msgstr "Erregistratu"
-
-#: [button]reply
-msgid "Reply"
-msgstr "Erantzun"
-
-#: [button]unregister
-msgid "Unregister"
-msgstr "Erregistrotik ezabatu"
-
-#: [button]save
-msgid "Save"
-msgstr "Gorde"
-
-#: [button]join
-msgid "Join"
-msgstr ""
-
-#: [button]clear
-msgid "Clear"
-msgstr "Garbitu"
-
-#: [button]connecting
-msgid "Connecting"
-msgstr "Konektatzen"
-
-#: [button]bool_yes
-msgid "Yes"
-msgstr "Bai"
-
-#: [button]bool_no
-msgid "No"
-msgstr "Ez"
-
-#: [button]return
-msgid "Return"
-msgstr "Itzuli"
-
-#: [button]accept
-msgid "Accept"
-msgstr "Baieztatu"
-
-#: [button]refuse
-msgid "Refuse"
-msgstr "Deuseztatu"
-
-#: [button]next
-msgid "Next"
-msgstr "Hurrengoa"
-
-#: [button]previous
-msgid "Previous"
-msgstr "Aurrekoa"
-
-#: [button]search
-msgid "Search"
-msgstr "Bilatu"
-
-#: [button]share
-msgctxt "[button]share"
-msgid "Share"
-msgstr "Partekatu"
-
-#: [button]discover
-msgid "Discover"
-msgstr "Aurkitu"
-
-#: [button]like
-msgid "Like"
-msgstr "Egin gogoko"
-
-#: [button]not_now
-msgid "Not Now"
-msgstr "Orain ez"
-
-#: [button]enable
-msgid "Enable"
-msgstr "Gaitu"
-
-#: [button]sign_up
-msgid "Sign Up"
-msgstr "Eman izena"
-
-#: [button]send_to
-msgid "Send to"
-msgstr "Bidali honi"
-
-#: [button]more
-msgid "More"
-msgstr "Gehiago"
-
-#: [button]copy_link
-msgid "Copy Link"
-msgstr "Kopiatu esteka"
-
-#: [button]open
-msgid "Open"
-msgstr "Ireki"
+#: [button]video_call
+msgid "Video Call"
+msgstr "Bideo-deia"
 
 #: [input]optional
 msgid "Optional"
@@ -3829,10 +3869,6 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
-#: [affiliation]owner
-msgid "Owner"
-msgstr "Jabea"
-
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Argitaratzailea"
@@ -3852,6 +3888,45 @@ msgstr "Ezin da APIa eskuratu, saiatu berriro beranduago"
 #: [field]type_here
 msgid "Type here"
 msgstr "Idatzi hemen"
+
+#~ msgid "Subscribe"
+#~ msgstr "Harpidetu"
+
+#~ msgid "Unsubscribe"
+#~ msgstr "Utzi harpidedun izateari"
+
+#~ msgid "Subscribed"
+#~ msgstr "Harpidetza egin da"
+
+#~ msgid "Unsubscribed"
+#~ msgstr "Harpidedun izateari utzi diozu"
+
+#~ msgid "Share this subscription publicly"
+#~ msgstr "Argitaratu argitalpen hau publikoki"
+
+#~ msgid "Follow it to see the content"
+#~ msgstr "Jarraitu edukia ikusi ahal izateko"
+
+#~ msgctxt "[rooms]owner"
+#~ msgid "Owner"
+#~ msgstr "Jabea"
+
+#~ msgctxt "[room]affiliation_owner"
+#~ msgid "Owner"
+#~ msgstr "Jabea"
+
+#~ msgctxt "[room]affiliation_admin"
+#~ msgid "Admin"
+#~ msgstr "Administratzailea"
+
+#~ msgid "Send it to a contact"
+#~ msgstr "Bidali kontaktuari"
+
+#~ msgid "Share it in a chatroom"
+#~ msgstr "Partekatu txat-gelan"
+
+#~ msgid "Post shared within the chatroom"
+#~ msgstr "Argitalpena txat-gelarekin partekatu da"
 
 #~ msgctxt "[chat]clear_history"
 #~ msgid "Clear the history"

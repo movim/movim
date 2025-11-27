@@ -74,6 +74,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Draw/locales.ini
@@ -135,7 +137,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 12:34+0200\n"
+"POT-Creation-Date: 2025-11-27 08:30+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2025\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -505,6 +507,16 @@ msgstr "头像未更新"
 msgid "Change my profile picture"
 msgstr "更改我的个人资料照片"
 
+#: [avatar]too_big
+#, fuzzy
+msgid "Your picture is too big"
+msgstr "您的个人资料现在是公开的"
+
+#: [avatar]missing
+#, fuzzy
+msgid "No avatar yet"
+msgstr "还没有聊天…"
+
 #: [banner]change
 msgid "Change my banner"
 msgstr "更改我的横幅"
@@ -516,6 +528,11 @@ msgstr "横幅已更新"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "横幅未更新"
+
+#: [banner]missing
+#, fuzzy
+msgid "No banner yet"
+msgstr "暂无动态…"
 
 #: [blocked]title
 msgid "Blocked"
@@ -1022,7 +1039,7 @@ msgstr "删除节点时出错"
 msgid "Error during the application of the node configuration"
 msgstr "应用节点配置时出错"
 
-#: [communityaffiliation]owners
+#: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
 msgstr "所有者"
 
@@ -1103,21 +1120,21 @@ msgstr "只有发布者可以发布"
 msgid "Only subscribers can publish"
 msgstr "只有订阅者可以发布"
 
-#: [communityheader]subscribe
-msgid "Subscribe"
-msgstr "订阅"
+#: [communityheader]follow
+msgid "Follow"
+msgstr ""
 
-#: [communityheader]unsubscribe
-msgid "Unsubscribe"
-msgstr "取消订阅"
+#: [communityheader]unfollow
+msgid "Unfollow"
+msgstr ""
 
-#: [communityheader]subscribed
-msgid "Subscribed"
-msgstr "已订阅"
+#: [communityheader]followed
+msgid "Followed"
+msgstr ""
 
-#: [communityheader]unsubscribed
-msgid "Unsubscribed"
-msgstr "未订阅"
+#: [communityheader]unfollowed
+msgid "Unfollowed"
+msgstr ""
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1131,16 +1148,17 @@ msgstr "为此社区加标签"
 msgid "My Community Name"
 msgstr "我的社区名称"
 
-#: [communityheader]share_subscription
-msgid "Share this subscription publicly"
-msgstr "公开分享此订阅"
+#: [communityheader]share_follow
+msgid "Share this follow to everyone"
+msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "它将出现在您的个人资料中"
 
-#: [communityheader]unsubscribe_text
-msgid "You are going to unsubscribe from this community"
+#: [communityheader]unfollow_text
+#, fuzzy
+msgid "You are going to unfollow this community"
 msgstr "您将取消订阅此社区"
 
 #: [communityheader]sure [delete]title
@@ -1160,8 +1178,18 @@ msgid "Private account"
 msgstr "私人账号"
 
 #: [communityposts]presencerequired_text
-msgid "Follow it to see the content"
-msgstr "关注即可查看内容"
+#, fuzzy
+msgid "Ask %s to be in your contacts to see the publications"
+msgstr "您必须订阅 %s 才能查看此发布内容"
+
+#: [communityposts]subscribe_presencerequired
+msgid "Send an invitation request before following the contact"
+msgstr ""
+
+#: [communityposts]subscribe_unsupported
+#, fuzzy
+msgid "You can't follow the contact at the moment"
+msgstr "您可以查看此联系人状态"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1518,6 +1546,10 @@ msgstr "邀请"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
 msgstr "此联系人在您的联系人列表中，但双方没有相互订阅"
+
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
+msgstr ""
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -2257,20 +2289,6 @@ msgstr "解散群聊"
 msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr "是否确定要永久解散以下群聊？"
 
-#: [rooms]owner
-msgctxt "[rooms]owner"
-msgid "Owner"
-msgstr "所有者"
-
-#: [rooms]admin
-msgctxt "[rooms]admin"
-msgid "Admin"
-msgstr "管理员"
-
-#: [rooms]visitor
-msgid "Visitor"
-msgstr "参观者"
-
 #: [rooms]explore_placeholder
 msgid "Name or description"
 msgstr "名称或描述"
@@ -2521,13 +2539,12 @@ msgstr "始终通知"
 msgid "Pinned"
 msgstr "已固定"
 
-#: [room]affiliation_owner
-msgctxt "[room]affiliation_owner"
+#: [room]affiliation_owner [affiliation]owner
 msgid "Owner"
 msgstr "所有者"
 
 #: [room]affiliation_admin
-msgctxt "[room]affiliation_admin"
+#, fuzzy
 msgid "Admin"
 msgstr "管理员"
 
@@ -2538,6 +2555,21 @@ msgstr "成员"
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
 msgstr "访客"
+
+#: [room]affiliation_admins
+#, fuzzy
+msgid "Admins"
+msgstr "管理员"
+
+#: [room]affiliation_members
+#, fuzzy
+msgctxt "[room]affiliation_members"
+msgid "Members"
+msgstr "成员"
+
+#: [room]visitor
+msgid "Visitor"
+msgstr "参观者"
 
 #: [room]allowed_send_messages
 #, fuzzy
@@ -2621,25 +2653,24 @@ msgstr "附加到博客发布"
 msgid "Share in a new publication"
 msgstr "在新发布分享"
 
-#: [sendto]contact
-msgid "Send it to a contact"
-msgstr "将其发送给联系人"
+#: [sendto]selected
+#, fuzzy
+msgid "contacts selected"
+msgstr "联系人已删除"
 
-#: [sendto]chatroom
-msgid "Share it in a chatroom"
-msgstr "在群聊中分享"
+#: [sendto]pick
+#, fuzzy
+msgid "Pick the contacts you want to share this content with"
+msgstr "是否确定要删除此评论？"
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "帖子已分享"
 
-#: [sendto]shared_contact
-msgid "Post shared with your contact"
+#: [sendto]shared_contacts
+#, fuzzy
+msgid "Post shared with %s contacts"
 msgstr "帖子已分享给您的联系人"
-
-#: [sendto]shared_chatroom
-msgid "Post shared within the chatroom"
-msgstr "帖子已分享给群聊"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2768,6 +2799,11 @@ msgstr "将文件拖放到此区域"
 #: [upload]max_size
 msgid "Max file size %s"
 msgstr "最大文件大小 %s"
+
+#: [upload]upload_xmpp
+#, fuzzy
+msgid "Uploading to your account"
+msgstr "删除账号"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2942,7 +2978,8 @@ msgid "No sound detected from your microphone"
 msgstr "麦克风未检测到声音"
 
 #: [visiolobby]no_mic_sound2
-msgid "Try to select another source or check your system settings"
+#, fuzzy
+msgid "Try make some noise, select another source or check your system settings"
 msgstr "尝试选择其他源或检查系统设置"
 
 #: [muji]call_audio_invite
@@ -3078,29 +3115,53 @@ msgstr "重新连接到服务器…"
 msgid "Oops!"
 msgstr "糟糕！"
 
-#: [button]call
-msgid "Call"
-msgstr "呼叫"
+#: [button]accept
+msgid "Accept"
+msgstr "接受"
+
+#: [button]add
+msgid "Add"
+msgstr "添加"
 
 #: [button]audio_call
 msgid "Audio Call"
 msgstr "音频通话"
 
-#: [button]video_call
-msgid "Video Call"
-msgstr "视频通话"
+#: [button]bool_no
+msgid "No"
+msgstr "否"
 
-#: [button]validate
-msgid "Validate"
-msgstr "验证"
+#: [button]bool_yes
+msgid "Yes"
+msgstr "是"
 
-#: [button]refresh
-msgid "Refresh"
-msgstr "刷新"
+#: [button]call
+msgid "Call"
+msgstr "呼叫"
 
-#: [button]add
-msgid "Add"
-msgstr "添加"
+#: [button]cancel
+msgid "Cancel"
+msgstr "取消"
+
+#: [button]clear
+msgid "Clear"
+msgstr "清除"
+
+#: [button]close
+msgid "Close"
+msgstr "关闭"
+
+#: [button]connecting
+msgid "Connecting"
+msgstr "正在连接"
+
+#: [button]copy_link
+msgid "Copy Link"
+msgstr "复制链接"
+
+#: [button]create
+msgid "Create"
+msgstr "创建"
 
 #: [button]delete
 msgid "Delete"
@@ -3110,21 +3171,98 @@ msgstr "删除"
 msgid "Destroy"
 msgstr "解散"
 
+#: [button]discover
+msgid "Discover"
+msgstr "发现"
+
+#: [button]enable
+msgid "Enable"
+msgstr "启用"
+
+#: [button]join
+msgid "Join"
+msgstr "加入"
+
+#: [button]like
+msgid "Like"
+msgstr "点赞"
+
+#: [button]more
+msgid "More"
+msgstr "更多"
+
+#: [button]next
+msgid "Next"
+msgstr "下一个"
+
+#: [button]not_now
+msgid "Not Now"
+msgstr "以后再说"
+
+#: [button]open
+msgid "Open"
+msgstr "打开"
+
+#: [button]previous
+msgid "Previous"
+msgstr "前一个"
+
+#: [button]quote
+msgid "Quote"
+msgstr ""
+
+#: [button]refresh
+msgid "Refresh"
+msgstr "刷新"
+
+#: [button]refuse
+msgid "Refuse"
+msgstr "拒绝"
+
+#: [button]register
+msgid "Register"
+msgstr "注册"
+
 #: [button]remove
 msgid "Leave"
 msgstr "离开"
 
-#: [button]cancel
-msgid "Cancel"
-msgstr "取消"
+#: [button]reply
+msgid "Reply"
+msgstr "回复"
 
-#: [button]close
-msgid "Close"
-msgstr "关闭"
+#: [button]return
+msgid "Return"
+msgstr "返回"
 
-#: [button]create
-msgid "Create"
-msgstr "创建"
+#: [button]save
+msgid "Save"
+msgstr "保存"
+
+#: [button]search
+msgid "Search"
+msgstr "搜索"
+
+#: [button]send_to
+msgid "Send to"
+msgstr "发送至"
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
+msgstr "分享"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr "注册"
+
+#: [button]submitting
+msgid "Submitting"
+msgstr "正在提交"
+
+#: [button]unregister
+msgid "Unregister"
+msgstr "注销"
 
 #: [button]update
 msgid "Update"
@@ -3134,110 +3272,13 @@ msgstr "更新"
 msgid "Updating"
 msgstr "正在更新"
 
-#: [button]submitting
-msgid "Submitting"
-msgstr "正在提交"
+#: [button]validate
+msgid "Validate"
+msgstr "验证"
 
-#: [button]register
-msgid "Register"
-msgstr "注册"
-
-#: [button]reply
-msgid "Reply"
-msgstr "回复"
-
-#: [button]unregister
-msgid "Unregister"
-msgstr "注销"
-
-#: [button]save
-msgid "Save"
-msgstr "保存"
-
-#: [button]join
-msgid "Join"
-msgstr "加入"
-
-#: [button]clear
-msgid "Clear"
-msgstr "清除"
-
-#: [button]connecting
-msgid "Connecting"
-msgstr "正在连接"
-
-#: [button]bool_yes
-msgid "Yes"
-msgstr "是"
-
-#: [button]bool_no
-msgid "No"
-msgstr "否"
-
-#: [button]return
-msgid "Return"
-msgstr "返回"
-
-#: [button]accept
-msgid "Accept"
-msgstr "接受"
-
-#: [button]refuse
-msgid "Refuse"
-msgstr "拒绝"
-
-#: [button]next
-msgid "Next"
-msgstr "下一个"
-
-#: [button]previous
-msgid "Previous"
-msgstr "前一个"
-
-#: [button]search
-msgid "Search"
-msgstr "搜索"
-
-#: [button]share
-msgctxt "[button]share"
-msgid "Share"
-msgstr "分享"
-
-#: [button]discover
-msgid "Discover"
-msgstr "发现"
-
-#: [button]like
-msgid "Like"
-msgstr "点赞"
-
-#: [button]not_now
-msgid "Not Now"
-msgstr "以后再说"
-
-#: [button]enable
-msgid "Enable"
-msgstr "启用"
-
-#: [button]sign_up
-msgid "Sign Up"
-msgstr "注册"
-
-#: [button]send_to
-msgid "Send to"
-msgstr "发送至"
-
-#: [button]more
-msgid "More"
-msgstr "更多"
-
-#: [button]copy_link
-msgid "Copy Link"
-msgstr "复制链接"
-
-#: [button]open
-msgid "Open"
-msgstr "打开"
+#: [button]video_call
+msgid "Video Call"
+msgstr "视频通话"
 
 #: [input]optional
 msgid "Optional"
@@ -3844,10 +3885,6 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
-#: [affiliation]owner
-msgid "Owner"
-msgstr "所有者"
-
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "发布者"
@@ -3867,6 +3904,45 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "Subscribe"
+#~ msgstr "订阅"
+
+#~ msgid "Unsubscribe"
+#~ msgstr "取消订阅"
+
+#~ msgid "Subscribed"
+#~ msgstr "已订阅"
+
+#~ msgid "Unsubscribed"
+#~ msgstr "未订阅"
+
+#~ msgid "Share this subscription publicly"
+#~ msgstr "公开分享此订阅"
+
+#~ msgid "Follow it to see the content"
+#~ msgstr "关注即可查看内容"
+
+#~ msgctxt "[rooms]owner"
+#~ msgid "Owner"
+#~ msgstr "所有者"
+
+#~ msgctxt "[room]affiliation_owner"
+#~ msgid "Owner"
+#~ msgstr "所有者"
+
+#~ msgctxt "[room]affiliation_admin"
+#~ msgid "Admin"
+#~ msgstr "管理员"
+
+#~ msgid "Send it to a contact"
+#~ msgstr "将其发送给联系人"
+
+#~ msgid "Share it in a chatroom"
+#~ msgstr "在群聊中分享"
+
+#~ msgid "Post shared within the chatroom"
+#~ msgstr "帖子已分享给群聊"
 
 #~ msgctxt "[chat]clear_history"
 #~ msgid "Clear the history"
