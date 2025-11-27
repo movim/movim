@@ -139,7 +139,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.15.1\n"
+"X-Generator: Translate Toolkit 3.16.3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -286,25 +286,24 @@ msgid "Action completed"
 msgstr "Action effectuée"
 
 #: [tools]title
-#, fuzzy
 msgid "Developer Tools"
-msgstr "Développeurs"
+msgstr "Outils développeurs"
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
-msgstr ""
+msgstr "Convertir un SDP en Jingle"
 
 #: [tools]sdp_title
 msgid "SDP"
-msgstr ""
+msgstr "SDP"
 
 #: [tools]jingle_to_sdp
 msgid "Convert Jingle to SDP"
-msgstr ""
+msgstr "Convertir un Jingle en SDP"
 
 #: [tools]jingle_title
 msgid "Jingle stanza"
-msgstr ""
+msgstr "Stanza Jingle"
 
 #: [admin]general
 msgid "General Settings"
@@ -501,14 +500,12 @@ msgid "Change my profile picture"
 msgstr "Changer mon avatar"
 
 #: [avatar]too_big
-#, fuzzy
 msgid "Your picture is too big"
-msgstr "Votre profil est maintenant public"
+msgstr "Votre image est trop volumineuse"
 
 #: [avatar]missing
-#, fuzzy
 msgid "No avatar yet"
-msgstr "Pas de discussions pour le moment"
+msgstr "Aucun avatar pour le moment"
 
 #: [banner]change
 msgid "Change my banner"
@@ -523,9 +520,8 @@ msgid "Banner Not Updated"
 msgstr "Bannière non mise à jour"
 
 #: [banner]missing
-#, fuzzy
 msgid "No banner yet"
-msgstr "Aucune actualité… pour le moment"
+msgstr "Pas de bannière pour le moment "
 
 #: [blocked]title
 msgid "Blocked"
@@ -668,9 +664,8 @@ msgid "See the profile"
 msgstr "Voir le profil"
 
 #: [chat]clear
-#, fuzzy
 msgid "Clear the history"
-msgstr "Supprimer l'historique"
+msgstr "Vider l'historique"
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -741,14 +736,12 @@ msgid "An error occurred when sending the message"
 msgstr "Une erreur s'est produite lors de l'envoi du message"
 
 #: [chat]clear_history
-#, fuzzy
 msgid "Clear the local history"
-msgstr "Supprimer l'historique"
+msgstr "Vider l'historique local"
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s local messages, are you sure?"
-msgstr "Vous allez supprimer ce billet, veuillez confirmer votre action."
+msgstr "Êtes-vous sûr de vouloir supprimer %s messages locaux ?"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
@@ -812,11 +805,11 @@ msgstr "Texte copié"
 
 #: [chatactions]search_messages
 msgid "Search messages by content"
-msgstr ""
+msgstr "Trouver des messages suivant leur contenu"
 
 #: [chatactions]search_messages_empty
 msgid "No messages found"
-msgstr ""
+msgstr "Aucun message trouvé"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
@@ -855,18 +848,16 @@ msgid "Enabling encryption for the contact"
 msgstr "Activer le chiffrement pour le contact"
 
 #: [omemo]enable_room
-#, fuzzy
 msgid "Enabling encryption for the chatroom"
-msgstr "Activer le chiffrement pour le contact"
+msgstr "Activation du chiffrement pour le salon"
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
 msgstr "Désactiver le chiffrement pour le contact"
 
 #: [omemo]disable_room
-#, fuzzy
 msgid "Disabling encryption for the chatroom"
-msgstr "Désactiver le chiffrement pour le contact"
+msgstr "Désactivation du chiffrement pour le salon"
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -1115,19 +1106,19 @@ msgstr "Seul les souscrits peuvent publier"
 
 #: [communityheader]follow
 msgid "Follow"
-msgstr ""
+msgstr "S'abonner"
 
 #: [communityheader]unfollow
 msgid "Unfollow"
-msgstr ""
+msgstr "Se désabonner"
 
 #: [communityheader]followed
 msgid "Followed"
-msgstr ""
+msgstr "Abonné"
 
 #: [communityheader]unfollowed
 msgid "Unfollowed"
-msgstr ""
+msgstr "Désabonné"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1143,16 +1134,15 @@ msgstr "Ma Communauté"
 
 #: [communityheader]share_follow
 msgid "Share this follow to everyone"
-msgstr ""
+msgstr "Partager cet abonnement avec tout le monde"
 
 #: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "Elle apparaîtra sur votre profil"
 
 #: [communityheader]unfollow_text
-#, fuzzy
 msgid "You are going to unfollow this community"
-msgstr "Vous allez vous désinscrire de cette communauté"
+msgstr "Vous allez vous désabonner de cette communauté"
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
@@ -1171,18 +1161,16 @@ msgid "Private account"
 msgstr "Compte privé"
 
 #: [communityposts]presencerequired_text
-#, fuzzy
 msgid "Ask %s to be in your contacts to see the publications"
-msgstr "Vous devez suivre %s pour voir cette publication"
+msgstr "Demandez à %s d'être dans vos contacts pour voir ses publications"
 
 #: [communityposts]subscribe_presencerequired
 msgid "Send an invitation request before following the contact"
-msgstr ""
+msgstr "Envoyez une demande d'invitation avant de suivre le contact"
 
 #: [communityposts]subscribe_unsupported
-#, fuzzy
 msgid "You can't follow the contact at the moment"
-msgstr "Vous pouvez voir l'état de ce contact"
+msgstr "Vous ne pouvez pas suivre le contact pour le moment"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1542,7 +1530,7 @@ msgstr "Ce contact est présent dans votre liste mais il n'y a aucune souscripti
 
 #: [contactssuggestions]for_you
 msgid "Suggestions for you"
-msgstr ""
+msgstr "Vos suggestions"
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -2174,13 +2162,12 @@ msgid "You are not authorized to publish there"
 msgstr "Vous n'êtes pas autorisé à publier ici"
 
 #: [publish]publish_error_payload_to_big
-#, fuzzy
 msgid "Your post is too big to be published"
-msgstr "Vous n'êtes pas autorisé à publier ici"
+msgstr "Votre article est trop long pour être publié"
 
 #: [publish]too_long
 msgid "Your text is too long, %s characters max"
-msgstr ""
+msgstr "Votre texte est trop long, %s caractères au maximum"
 
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
@@ -2188,11 +2175,11 @@ msgstr "Votre blog n'est accessible qu'à vos contacts. Vous pouvez le rendre ac
 
 #: [publish]embedded_link
 msgid "The media will be embedded"
-msgstr ""
+msgstr "Le média va être intégré dans la publication"
 
 #: [publish]web_title
 msgid "Create a public HTTP URL from this publication"
-msgstr ""
+msgstr "Générer une URL HTTP publique pour cette publication"
 
 #: [publish]web_text
 msgid "This will allow anyone outside Movim to have access to your publication"
@@ -2482,9 +2469,8 @@ msgid "Unban"
 msgstr "Débannir"
 
 #: [room]configure_user
-#, fuzzy
 msgid "Configure the user"
-msgstr "Configuration enregistrée"
+msgstr "Configurer l'utilisateur"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2495,9 +2481,8 @@ msgid "Affiliation"
 msgstr "Affiliation"
 
 #: [room]role
-#, fuzzy
 msgid "Role"
-msgstr "Rôles"
+msgstr "Rôle"
 
 #: [room]reason
 msgid "Reason"
@@ -2537,7 +2522,6 @@ msgid "Owner"
 msgstr "Propriétaire"
 
 #: [room]affiliation_admin
-#, fuzzy
 msgid "Admin"
 msgstr "Administrateur"
 
@@ -2550,12 +2534,10 @@ msgid "No affiliation"
 msgstr "Sans affiliation"
 
 #: [room]affiliation_admins
-#, fuzzy
 msgid "Admins"
-msgstr "Administrateur"
+msgstr "Administrateurs"
 
 #: [room]affiliation_members
-#, fuzzy
 msgctxt "[room]affiliation_members"
 msgid "Members"
 msgstr "Membres"
@@ -2565,14 +2547,12 @@ msgid "Visitor"
 msgstr "Visiteur"
 
 #: [room]allowed_send_messages
-#, fuzzy
 msgid "Is the user allowed to send messages?"
-msgstr "Vous n'êtes pas autorisé à envoyer des messages dans ce salon de discussions"
+msgstr "Est-ce que cet utilisateurs est autorisé à envoyer des messages ?"
 
 #: [room]role_changed
-#, fuzzy
 msgid "Role changed"
-msgstr "Sujet mis à jour"
+msgstr "Rôle modifié"
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
@@ -2647,23 +2627,20 @@ msgid "Share in a new publication"
 msgstr "Partager dans une nouvelle publication"
 
 #: [sendto]selected
-#, fuzzy
 msgid "contacts selected"
-msgstr "Contact supprimé"
+msgstr "contacts sélectionnés"
 
 #: [sendto]pick
-#, fuzzy
 msgid "Pick the contacts you want to share this content with"
-msgstr "Êtes-vous sûr de vouloir supprimer ce commentaire ?"
+msgstr "Choisissez les contacts avec lesquels vous souhaitez partager cette publication"
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Billet partagé"
 
 #: [sendto]shared_contacts
-#, fuzzy
 msgid "Post shared with %s contacts"
-msgstr "Billet partagé avec votre contact"
+msgstr "Article partagé avec %s contacts"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2794,9 +2771,8 @@ msgid "Max file size %s"
 msgstr "Taille maximale des fichiers %s"
 
 #: [upload]upload_xmpp
-#, fuzzy
 msgid "Uploading to your account"
-msgstr "Supprimer votre compte"
+msgstr "Téléversement sur votre compte"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2971,9 +2947,8 @@ msgid "No sound detected from your microphone"
 msgstr "Aucun son détecté venant de votre microphone"
 
 #: [visiolobby]no_mic_sound2
-#, fuzzy
 msgid "Try make some noise, select another source or check your system settings"
-msgstr "Veuillez sélectionner une autre source ou vérifiez vos paramètres système"
+msgstr "Faites un peu de bruit, sélectionnez une autre source ou vérifiez votre configuration système"
 
 #: [muji]call_audio_invite
 msgid "You are invited in an audio conference call"
@@ -3202,7 +3177,7 @@ msgstr "Précédent"
 
 #: [button]quote
 msgid "Quote"
-msgstr ""
+msgstr "Citer"
 
 #: [button]refresh
 msgid "Refresh"
@@ -3282,9 +3257,8 @@ msgid "Associated Community"
 msgstr "Communautés associés"
 
 #: [input]open_me_using
-#, fuzzy
 msgid "Open me using"
-msgstr "Ouvrez moi en faisant Ctrl + M"
+msgstr "Ouvrez moi via"
 
 #: [day]title
 msgid "Day"
@@ -3897,56 +3871,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "Subscribe"
-#~ msgstr "S’abonner"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "Se désabonner"
-
-#~ msgid "Subscribed"
-#~ msgstr "Abonné"
-
-#~ msgid "Unsubscribed"
-#~ msgstr "Désinscrit(e)"
-
-#~ msgid "Share this subscription publicly"
-#~ msgstr "Partager cette souscription publiquement"
-
-#~ msgid "Follow it to see the content"
-#~ msgstr "Suivez le compte pour découvrir le contenu"
-
-#~ msgctxt "[rooms]owner"
-#~ msgid "Owner"
-#~ msgstr "Propriétaire"
-
-#~ msgctxt "[room]affiliation_owner"
-#~ msgid "Owner"
-#~ msgstr "Propriétaire"
-
-#~ msgctxt "[room]affiliation_admin"
-#~ msgid "Admin"
-#~ msgstr "Administrateur"
-
-#~ msgid "Send it to a contact"
-#~ msgstr "Envoyer à un contact"
-
-#~ msgid "Share it in a chatroom"
-#~ msgstr "Partager dans un salon de discussion"
-
-#~ msgid "Post shared within the chatroom"
-#~ msgstr "Billet partagé dans le salon de discussion"
-
-#~ msgctxt "[chat]clear_history"
-#~ msgid "Clear the history"
-#~ msgstr "Supprimer l'historique"
-
-#~ msgid "Send a message to build the encrypted session"
-#~ msgstr "Envoyez un message pour initier la session chiffrée"
-
-#, fuzzy
-#~ msgid "Publish this post on your public blog"
-#~ msgstr "Publier cet article publiquement"
-
-#~ msgid "Change the user affiliation"
-#~ msgstr "Changer l'affiliation de l'utilisateur"
