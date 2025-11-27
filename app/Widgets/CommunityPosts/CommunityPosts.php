@@ -140,6 +140,10 @@ class CommunityPosts extends Base
             $html
         );
         $this->rpc('MovimUtils.enhanceArticlesContent');
+
+        if ($node == AppPost::MICROBLOG_NODE && !empty($ids)) {
+            $this->rpc('MovimUtils.removeClass', '#contact_follow', 'hide');
+        }
     }
 
     public function ajaxGetContact($jid)

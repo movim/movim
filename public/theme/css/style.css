@@ -480,7 +480,8 @@ div#spinner {
 }
 
 ul.list li.hide,
-.hide {
+.hide,
+.button.hide {
     display: none;
 }
 
