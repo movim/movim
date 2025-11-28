@@ -38,7 +38,7 @@ class UploadFile extends Base
                 ->withFollowRedirects(true);
 
             $filePath = $_FILES['file']['tmp_name'];
-            $fileSize = filesize($filePath);
+            /*$fileSize = filesize($filePath);
             $fileUploaded = 0;
 
             $file = new ReadableResourceStream(fopen($filePath, 'r'));
@@ -53,12 +53,12 @@ class UploadFile extends Base
                     'sid' => SESSION_ID,
                     'json' => rawurlencode(json_encode($json))
                 ], await: false);
-            });
+            });*/
 
             $browser->put(
                 $upload->puturl,
                 is_array($upload->headers) ? $upload->headers : [],
-                $file
+                body: file_get_contents($filePath)//$file
             )->then(
                 function (ResponseInterface $response) use ($upload) {
                     $upload->uploaded = true;
