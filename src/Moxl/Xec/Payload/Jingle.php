@@ -18,7 +18,7 @@ class Jingle extends Payload
 
         $message = Message::eventMessageFactory(
             'jingle',
-            baseJid((string)$from),
+            bareJid((string)$from),
             (string)$stanza->attributes()->sid
         );
 

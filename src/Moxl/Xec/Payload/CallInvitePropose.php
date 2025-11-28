@@ -14,15 +14,15 @@ class CallInvitePropose extends Payload
         // Another session is already started
         if (
             CurrentCall::getInstance()->isStarted()
-            && CurrentCall::getInstance()->isJidInCall(baseJid($parent->attributes()->from))
+            && CurrentCall::getInstance()->isJidInCall(bareJid($parent->attributes()->from))
         ) {
-            $conference = me()->session->conferences()->where('conference', \baseJid((string)$parent->attributes()->from))->first();
+            $conference = me()->session->conferences()->where('conference', \bareJid((string)$parent->attributes()->from))->first();
 
             if ($conference) {
                 // If the propose is from another person
                 if (!$conference->presence || $conference->presence->resource != \explodeJid((string)$parent->attributes()->from)['resource']) {
                     $reject = new Reject;
-                    $reject->setTo(\baseJid((string)$parent->attributes()->from))
+                    $reject->setTo(\bareJid((string)$parent->attributes()->from))
                         ->setId((string)$stanza->attributes()->id)
                         ->request();
 
@@ -57,7 +57,7 @@ class CallInvitePropose extends Payload
 
             $message = Message::eventMessageFactory(
                 'muji_propose',
-                baseJid((string)$parent->attributes()->from),
+                bareJid((string)$parent->attributes()->from),
                 (string)$stanza->attributes()->id
             );
             $message->save();

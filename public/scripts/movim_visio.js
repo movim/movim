@@ -291,6 +291,16 @@ var MovimVisio = {
 
         MovimVisio.observer = new MutationObserver(callback);
         MovimVisio.observer.observe(body, { childList: true, subtree: true });
+    },
+
+    callStart: function (id, jid) {
+        localStorage.setItem('callId', id);
+        localStorage.setItem('callJid', jid);
+    },
+
+    callStop: function (id, jid) {
+        localStorage.removeItem('callId');
+        localStorage.removeItem('callJid');
     }
 }
 
@@ -299,6 +309,9 @@ Visio_ajaxHttpGetStates();
 MovimWebsocket.attach(() => {
     if (MovimVisio.services.length == 0) {
         Visio_ajaxResolveServices();
-        Visio_ajaxTryForceStop();
+
+        if (localStorage.getItem('callId')) {
+            Visio_ajaxTryForceStop(localStorage.getItem('callId'), localStorage.getItem('callJid'));
+        }
     }
 });

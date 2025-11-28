@@ -13,11 +13,11 @@ class ReceiptRequest extends Payload
             ? (string)$parent->{'origin-id'}->attributes()->id
             : (string)$parent->attributes()->id;
 
-        \Moxl\Stanza\Message::received(baseJid($from), $id, (string)$parent->attributes()->type);
+        \Moxl\Stanza\Message::received(bareJid($from), $id, (string)$parent->attributes()->type);
 
         $message = me()->messages()
                                   ->where('originid', $id)
-                                  ->where('jidfrom', baseJid($from))
+                                  ->where('jidfrom', bareJid($from))
                                   ->first();
 
         if ($message && $message->delivered == null) {

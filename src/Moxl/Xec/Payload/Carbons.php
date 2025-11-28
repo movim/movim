@@ -6,7 +6,7 @@ class Carbons extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $parentfrom = baseJid((string)$parent->attributes()->from);
+        $parentfrom = bareJid((string)$parent->attributes()->from);
         $message = $stanza->forwarded->message;
 
         if ($parentfrom == me()->id) {
@@ -40,7 +40,7 @@ class Carbons extends Payload
                 $displayed = new Displayed;
                 $displayed->handle($message->displayed, $message);
             } elseif (count($jingleMessages = $stanza->xpath('//*[@xmlns="urn:xmpp:jingle-message:0"]')) >= 1) {
-                $callto = baseJid((string)$message->attributes()->to);
+                $callto = bareJid((string)$message->attributes()->to);
 
                 if ($callto == me()->id || $callto == "") {
                     // We get carbons for calls other clients make as well as calls other clients receive

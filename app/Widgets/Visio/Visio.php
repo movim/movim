@@ -71,6 +71,19 @@ class Visio extends Base
         $this->registerEvent('presence_muc_create_muji_handle', 'onMucMujiCreated');
 
         $this->registerEvent('callinviteretract', 'onCallInviteRetract');
+
+        $this->registerEvent('currentcall_started', 'onCallStarted');
+        $this->registerEvent('currentcall_stopped', 'onCallStopped');
+    }
+
+    public function onCallStarted(Packet $packet)
+    {
+        $this->rpc('MovimVisio.callStart', $packet->content, $packet->from);
+    }
+
+    public function onCallStopped(Packet $packet)
+    {
+        $this->rpc('MovimVisio.callStop', $packet->content, $packet->from);
     }
 
     public function onSessionDown()
@@ -146,11 +159,11 @@ class Visio extends Base
             $stanza && $stanza->muji && $stanza->muji->attributes()->xmlns == 'urn:xmpp:jingle:muji:0'
             && $stanza->muji->content && $stanza->muji->content->attributes()->xmlns == 'urn:xmpp:jingle:1'
         ) {
-            $contact = \App\Contact::firstOrNew(['id' => \baseJid($packet->from)]);
+            $contact = \App\Contact::firstOrNew(['id' => \bareJid($packet->from)]);
 
             $this->rpc(
                 'MovimJingles.initSession',
-                \baseJid($packet->from),
+                \bareJid($packet->from),
                 $packet->from,
                 null,
                 $contact->truename,
@@ -163,7 +176,7 @@ class Visio extends Base
     {
         $this->setDefaultServices();
 
-        //$this->rpc('MovimJingles.onInitiateSDP', \baseJid($packet->from), $jts->generate());
+        //$this->rpc('MovimJingles.onInitiateSDP', \bareJid($packet->from), $jts->generate());
     }
 
     /**
@@ -174,7 +187,7 @@ class Visio extends Base
     {
         $message = Message::eventMessageFactory(
             'jingle',
-            baseJid($packet->from),
+            bareJid($packet->from),
             $packet->content['id']
         );
         $message->type = 'jingle_incoming';
@@ -184,23 +197,23 @@ class Visio extends Base
 
         $ringing = new MessageRinging;
         $ringing->setTo($packet->from)
-                ->setId($packet->content['id'])
-                ->request();
+            ->setId($packet->content['id'])
+            ->request();
 
         $this->ajaxGetLobby($packet->from, false, $packet->content['withVideo'], $packet->content['id']);
     }
 
     public function onProceed(Packet $packet)
     {
-        CurrentCall::getInstance()->start(\baseJid($packet->from), $packet->content);
-        $this->rpc('MovimJingles.onProceed', \baseJid($packet->from), $packet->from, $packet->content /* id */);
+        CurrentCall::getInstance()->start($packet->from, $packet->content);
+        $this->rpc('MovimJingles.onProceed', \bareJid($packet->from), $packet->from, $packet->content /* id */);
     }
 
     // Deprecated
     public function onAccept(Packet $packet)
     {
+        CurrentCall::getInstance()->start($packet->from, $packet->content);
         $this->rpc('Notif.incomingCallAnswer');
-        CurrentCall::getInstance()->start(\baseJid($packet->from), $packet->content);
 
         (new Dialog)->ajaxClear();
     }
@@ -222,13 +235,13 @@ class Visio extends Base
 
     /*public function onNotFound(Packet $packet)
     {
-        (CurrentCall::getInstance())->stop(\baseJid($packet->from), $packet->content);
+        (CurrentCall::getInstance())->stop(\bareJid($packet->from), $packet->content);
         $this->onTerminate('notfound');
     }*/
 
     public function onTerminate(Packet $packet)
     {
-        (CurrentCall::getInstance())->stop(\baseJid($packet->from), $packet->content);
+        (CurrentCall::getInstance())->stop(\bareJid($packet->from), $packet->content);
 
         // Stop calling sound and clear the Dialog if there
         $this->rpc('Notif.incomingCallAnswer');
@@ -237,7 +250,7 @@ class Visio extends Base
         $this->toast($this->__('visio.ended'));
 
         $this->rpc('MovimVisio.clear');
-        $this->rpc('MovimJingles.onTerminate', \baseJid($packet->from));
+        $this->rpc('MovimJingles.onTerminate', \bareJid($packet->from));
     }
 
     /**
@@ -248,7 +261,7 @@ class Visio extends Base
     {
         $jts = new JingletoSDP($packet->content);
 
-        $this->rpc('MovimJingles.onInitiateSDP', \baseJid($packet->from), $jts->generate(), $jts->sid);
+        $this->rpc('MovimJingles.onInitiateSDP', \bareJid($packet->from), $jts->generate(), $jts->sid);
     }
 
     public function onContentAdd(Packet $packet)
@@ -257,7 +270,7 @@ class Visio extends Base
 
         $this->rpc(
             'MovimJingles.onContentAdd',
-            \baseJid($packet->from),
+            \bareJid($packet->from),
             $jts->generate(),
             (string)$packet->content->content->attributes()->name
         );
@@ -269,7 +282,7 @@ class Visio extends Base
 
         $this->rpc(
             'MovimJingles.onContentModify',
-            \baseJid($packet->from),
+            \bareJid($packet->from),
             $jts->generate(),
             //(string)$packet->content->attributes()->name
         );
@@ -281,7 +294,7 @@ class Visio extends Base
 
         $this->rpc(
             'MovimJingles.onContentRemove',
-            \baseJid($packet->from),
+            \bareJid($packet->from),
             $jts->generate(),
             (string)$packet->content->attributes()->name
         );
@@ -290,7 +303,7 @@ class Visio extends Base
     public function onAcceptSDP(Packet $packet)
     {
         $jts = new JingletoSDP($packet->content);
-        $this->rpc('MovimJingles.onAcceptSDP', \baseJid($packet->from), $jts->generate());
+        $this->rpc('MovimJingles.onAcceptSDP', \bareJid($packet->from), $jts->generate());
     }
 
     public function onCandidate(Packet $packet)
@@ -298,24 +311,24 @@ class Visio extends Base
         $jts = new JingletoSDP($packet->content);
         $sdp = $jts->generate();
 
-        $this->rpc('MovimJingles.onCandidate', \baseJid($packet->from), $sdp, (string)$jts->name, $jts->name);
+        $this->rpc('MovimJingles.onCandidate', \bareJid($packet->from), $sdp, (string)$jts->name, $jts->name);
     }
 
     public function onMute(Packet $packet)
     {
-        $this->rpc('MovimJingles.onMute', \baseJid($packet->from), $packet->content);
+        $this->rpc('MovimJingles.onMute', \bareJid($packet->from), $packet->content);
     }
 
     public function onUnmute(Packet $packet)
     {
-        $this->rpc('MovimJingles.onUnmute', \baseJid($packet->from), $packet->content);
+        $this->rpc('MovimJingles.onUnmute', \bareJid($packet->from), $packet->content);
     }
 
     public function ajaxPropose(string $to, string $id, ?bool $withVideo = false)
     {
         $message = Message::eventMessageFactory(
             'jingle',
-            baseJid($to),
+            bareJid($to),
             $id
         );
         $message->type = 'jingle_outgoing';
@@ -332,8 +345,7 @@ class Visio extends Base
 
     public function ajaxProceed(string $to, string $id)
     {
-        CurrentCall::getInstance()->start(\baseJid($to), $id);
-
+        CurrentCall::getInstance()->start($to, $id);
         $this->rpc('Notif.incomingCallAnswer');
 
         /*$p = new MessageAccept;
@@ -484,7 +496,7 @@ class Visio extends Base
 
     public function ajaxGetLobby(string $jid, bool $calling = false, ?bool $withVideo = false, ?string $id = null)
     {
-        $contact = \App\Contact::firstOrNew(['id' => \baseJid($jid)]);
+        $contact = \App\Contact::firstOrNew(['id' => \bareJid($jid)]);
 
         $view = $this->tpl();
         $view->assign('contact', $contact);
@@ -641,7 +653,7 @@ class Visio extends Base
 
     public function ajaxPrepare(string $jid)
     {
-        $bareJid = \baseJid($jid);
+        $bareJid = \bareJid($jid);
         $contact = \App\Contact::firstOrNew(['id' => $bareJid]);
 
         $view = $this->tpl();
@@ -743,7 +755,7 @@ class Visio extends Base
 
             $message = Message::eventMessageFactory(
                 'jingle',
-                baseJid($to),
+                bareJid($to),
                 $sid
             );
             $message->type = 'jingle_retract';
@@ -759,14 +771,18 @@ class Visio extends Base
     /**
      * @desc Force stop the current call, when a page is reloaded for example
      */
-    public function ajaxTryForceStop()
+    public function ajaxTryForceStop(string $id, string $jid)
     {
         $currentCall = CurrentCall::getInstance();
 
-        if ($currentCall->isStarted()) {
+        if (
+            $currentCall->isStarted()
+            && $currentCall->hasId($id)
+            && $currentCall->isJidInCall($jid)
+        ) {
             $message = Message::eventMessageFactory(
                 'jingle',
-                baseJid($currentCall->jid),
+                bareJid($currentCall->jid),
                 $currentCall->id
             );
             $message->type = 'jingle_finish';
@@ -774,7 +790,9 @@ class Visio extends Base
 
             Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message));
 
+            $this->ajaxTerminate($currentCall->jid, $currentCall->id, 'gone');
             $this->ajaxGoodbye($currentCall->jid, $currentCall->id, 'gone');
+
         }
     }
 

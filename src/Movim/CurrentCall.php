@@ -49,7 +49,7 @@ class CurrentCall
 
     public function stop(string $jid, string $id): bool
     {
-        if ($this->jid != $jid || $this->id != $id) return false;
+        if ($this->getBareJid() != \bareJid($jid) || $this->id != $id) return false;
 
         $jid = $this->getBareJid();
         $id = $this->id;
@@ -71,7 +71,7 @@ class CurrentCall
 
     public function isJidInCall(string $jid): bool
     {
-        return $jid == $this->getBareJid();
+        return \bareJid($jid) == $this->getBareJid();
     }
 
     public function isStarted(): bool
@@ -83,6 +83,6 @@ class CurrentCall
     {
         if (!$this->isStarted()) return null;
 
-        return \baseJid($this->jid);
+        return \bareJid($this->jid);
     }
 }

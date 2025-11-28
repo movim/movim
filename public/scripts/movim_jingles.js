@@ -274,9 +274,11 @@ MovimJingleSession.prototype.sessionInitiate = function (fullJid, id, mujiRoom) 
     this.id = id;
     this.fullJid = fullJid;
 
-    VisioUtils.setVideoCodecPreferences(
-        this.pc.getTransceivers().find(transceiver => transceiver.sender.track.kind == 'video')
-    );
+    this.pc.getTransceivers().forEach(transceiver => {
+        if (transceiver.sender.track.kind === 'video') {
+            VisioUtils.setVideoCodecPreferences(transceiver)
+        }
+    });
 
     this.pc.createOffer()
         .then(offer => this.pc.setLocalDescription(offer))

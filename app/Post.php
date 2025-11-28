@@ -498,7 +498,7 @@ class Post extends Model
         // Ensure that the author is the publisher
         if (
             $entry->entry->author && $entry->entry->author->uri
-            && 'xmpp:' . baseJid((string)$entry->attributes()->publisher) == (string)$entry->entry->author->uri
+            && 'xmpp:' . bareJid((string)$entry->attributes()->publisher) == (string)$entry->entry->author->uri
         ) {
             $this->aid = substr((string)$entry->entry->author->uri, 5);
             $this->aname = ($entry->entry->author->name)

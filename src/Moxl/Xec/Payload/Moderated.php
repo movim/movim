@@ -9,7 +9,7 @@ class Moderated extends Payload
         if ($parent->{'apply-to'} && $parent->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0') {
             $message = me()->messages()
                                       ->where('stanzaid', (string)$parent->{'apply-to'}->attributes()->id)
-                                      ->where('jidfrom', baseJid((string)$parent->attributes()->from))
+                                      ->where('jidfrom', bareJid((string)$parent->attributes()->from))
                                       ->first();
 
             if ($message && $message->isMuc()) {

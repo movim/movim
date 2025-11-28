@@ -185,7 +185,7 @@ class Message extends Model
 
     public static function findByStanza(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null): Message
     {
-        $jidfrom = baseJid((string)$stanza->attributes()->from);
+        $jidfrom = bareJid((string)$stanza->attributes()->from);
 
         if (
             $stanza->attributes()->xmlns
@@ -194,7 +194,7 @@ class Message extends Model
             return self::firstOrNew([
                 'user_id' => me()->id,
                 'stanzaid' => (string)$stanza->attributes()->id,
-                'jidfrom' => baseJid((string)$stanza->forwarded->message->attributes()->from)
+                'jidfrom' => bareJid((string)$stanza->forwarded->message->attributes()->from)
             ]);
         } elseif (
             $stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
@@ -634,7 +634,7 @@ class Message extends Model
             if (isset($stanza->x->invite)) {
                 $this->type = 'invitation';
                 $this->subject = $this->jidfrom;
-                $this->jidfrom = baseJid((string)$stanza->x->invite->attributes()->from);
+                $this->jidfrom = bareJid((string)$stanza->x->invite->attributes()->from);
             }
         } elseif (
             isset($stanza->x)

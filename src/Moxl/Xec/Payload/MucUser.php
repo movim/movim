@@ -10,8 +10,8 @@ class MucUser extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if (isset($stanza->item)) {
-            $from = baseJid((string)$parent->attributes()->from);
-            $jid = baseJid((string)$stanza->item->attributes()->jid);
+            $from = bareJid((string)$parent->attributes()->from);
+            $jid = bareJid((string)$stanza->item->attributes()->jid);
 
             if (empty($jid)) return;
 
@@ -29,7 +29,7 @@ class MucUser extends Payload
             if ($member->exists && $member->affiliation != (string)$stanza->item->attributes()->affiliation) {
                 $message = Message::eventMessageFactory(
                     '',
-                    baseJid((string)$from),
+                    bareJid((string)$from),
                     $jid
                 );
 

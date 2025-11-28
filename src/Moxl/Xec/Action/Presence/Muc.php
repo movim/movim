@@ -90,7 +90,7 @@ class Muc extends Action
         $presence->set($stanza);
 
         if ($stanza->attributes()->to) {
-            $presence->mucjid = baseJid((string)$stanza->attributes()->to);
+            $presence->mucjid = bareJid((string)$stanza->attributes()->to);
         }
 
         if ($this->_mam) {

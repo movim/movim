@@ -22,7 +22,7 @@ class Retract extends Action
     {
         $message = Message::eventMessageFactory(
             'jingle',
-            baseJid($this->_to),
+            bareJid($this->_to),
             $this->_id
         );
         $message->type = 'muji_retract';

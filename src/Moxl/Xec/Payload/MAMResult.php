@@ -9,7 +9,7 @@ class MAMResult extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $to = baseJid((string)$parent->attributes()->to);
+        $to = bareJid((string)$parent->attributes()->to);
         $session = Session::instance();
 
         $messagesCounter = $session->get('mamid' . (string)$stanza->attributes()->queryid);
@@ -75,7 +75,7 @@ class MAMResult extends Payload
             }
 
             if ($message->isMuc()) {
-                $message->jidfrom = baseJid(($message->jidfrom));
+                $message->jidfrom = bareJid(($message->jidfrom));
             }
 
             if (!empty($to) && empty($message->jidto)) {

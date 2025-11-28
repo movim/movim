@@ -31,7 +31,7 @@
 
                 <div>
                     <p></p>
-                    <p>
+                    <p class="line">
                         <i id="network_condition" class="material-symbols excellent"></i>
                         <span id="no_mic_sound" class="disabled all">
                             <i class="material-symbols">mic_none</i>

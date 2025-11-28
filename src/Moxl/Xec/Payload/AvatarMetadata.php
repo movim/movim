@@ -8,7 +8,7 @@ class AvatarMetadata extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $jid = baseJid((string)$parent->attributes()->from);
+        $jid = bareJid((string)$parent->attributes()->from);
         $infos = $stanza->xpath('//info[not(@url)]/@id');
 
         if (is_array($infos) && !empty($infos)) {

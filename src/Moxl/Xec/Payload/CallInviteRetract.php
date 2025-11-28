@@ -19,7 +19,7 @@ class CallInviteRetract extends Payload
                 if ($participant && $participant->inviter) {
                     $message = Message::eventMessageFactory(
                         'muji_retract',
-                        baseJid((string)$parent->attributes()->from),
+                        bareJid((string)$parent->attributes()->from),
                         (string)$stanza->attributes()->id
                     );
                     $message->save();
@@ -27,7 +27,7 @@ class CallInviteRetract extends Payload
                     $this->pack($message);
                     $this->event('muji_message');
 
-                    CurrentCall::getInstance()->stop(baseJid((string)$parent->attributes()->from), $muji->id);
+                    CurrentCall::getInstance()->stop((string)$parent->attributes()->from, $muji->id);
                     MujiCall::where('id', $muji->id)->where('session_id', $muji->session_id)->delete();
 
                     $this->pack($muji);

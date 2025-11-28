@@ -17,7 +17,7 @@ class JingleFinish extends Payload
         if (!$stanza->muji) {
             $message = Message::eventMessageFactory(
                 'jingle',
-                baseJid($from),
+                bareJid($from),
                 (string)$stanza->attributes()->id
             );
             $message->type = 'jingle_finish';

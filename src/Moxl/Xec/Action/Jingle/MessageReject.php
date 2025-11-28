@@ -18,7 +18,7 @@ class MessageReject extends Action
 
         $message = Message::eventMessageFactory(
             'jingle',
-            baseJid($this->_to),
+            bareJid($this->_to),
             (string)$this->_id
         );
         $message->type = 'jingle_reject';

@@ -7,7 +7,7 @@ class Subject extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $jid = explode('/', (string)$parent->attributes()->from);
-        $to = baseJid((string)$parent->attributes()->to);
+        $to = bareJid((string)$parent->attributes()->to);
 
         if ($parent->subject) {
             $message = new \App\Message;

@@ -27,7 +27,7 @@ class Publish extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $from = baseJid((string)$stanza->attributes()->from);
+        $from = bareJid((string)$stanza->attributes()->from);
 
         $contact = Contact::firstOrNew(['id' => $from]);
 

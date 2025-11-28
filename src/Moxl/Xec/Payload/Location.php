@@ -8,7 +8,7 @@ class Location extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $from = baseJid((string)$parent->attributes()->from);
+        $from = bareJid((string)$parent->attributes()->from);
 
         if (isset($stanza->items->item->geoloc)) {
             $contact = Contact::firstOrNew(['id' => $from]);

@@ -10,11 +10,11 @@ class Roster extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if (!$parent->attributes()->from
-         || (baseJid((string)$parent->attributes()->from) != me()->id)
+         || (bareJid((string)$parent->attributes()->from) != me()->id)
         ) return;
 
         if ((string)$parent->attributes()->type == 'set') {
-            $jid = baseJid((string)$stanza->item->attributes()->jid);
+            $jid = bareJid((string)$stanza->item->attributes()->jid);
 
             $contact = DBUser::me()->session->contacts()->where('jid', $jid)->first();
 

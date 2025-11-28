@@ -5,8 +5,8 @@ self.addEventListener('message', (e) => {
         e.data.base_uri + '/theme/audio/message.ogg',
 
         // Fonts
-        e.data.base_uri + '/theme/fonts/MaterialIcons/font.css',
-        e.data.base_uri + '/theme/fonts/MaterialIcons/MaterialIcons-Regular.woff2',
+        e.data.base_uri + '/theme/fonts/MaterialSymbols/font.css',
+        e.data.base_uri + '/theme/fonts/MaterialSymbols/MaterialSymbols-Outlined.woff2',
         e.data.base_uri + '/theme/fonts/Roboto/font.css',
         e.data.base_uri + '/theme/fonts/Roboto/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2',
         e.data.base_uri + '/theme/fonts/Roboto/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2',

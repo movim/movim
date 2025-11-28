@@ -28,8 +28,8 @@ abstract class Payload
     final public function prepare(\SimpleXMLElement $stanza, ?\SimpleXMLElement $parent = null)
     {
         $this->packet->from = ($parent === null)
-            ? baseJid((string)$stanza->attributes()->from)
-            : baseJid((string)$parent->attributes()->from);
+            ? bareJid((string)$stanza->attributes()->from)
+            : bareJid((string)$parent->attributes()->from);
     }
 
     /**

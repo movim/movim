@@ -195,7 +195,7 @@ function explodeJid(string $jid): array
 /**
  * @desc Get base JID, without resource
  */
-function baseJid(string $jid): string
+function bareJid(string $jid): string
 {
     return current(explode('/', $jid));
 }

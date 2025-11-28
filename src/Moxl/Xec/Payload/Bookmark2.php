@@ -9,7 +9,7 @@ class Bookmark2 extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if (
-            baseJid((string)$parent->attributes()->from) != me()->id
+            bareJid((string)$parent->attributes()->from) != me()->id
             || (string)$parent->attributes()->from == (string)$parent->attributes()->to
         ) return;
 

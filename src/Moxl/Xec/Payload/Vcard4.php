@@ -8,7 +8,7 @@ class Vcard4 extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $from = baseJid((string)$parent->attributes()->from);
+        $from = bareJid((string)$parent->attributes()->from);
 
         $contact = Contact::firstOrNew(['id' => $from]);
         $contact->setVcard4($stanza->items->item->vcard);

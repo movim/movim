@@ -19,7 +19,7 @@ class Retracted extends Payload
 
         $message = me()->messages()
             ->where($idKey, (string)$stanza->attributes()->id)
-            ->where('jidfrom', baseJid((string)$parent->attributes()->from))
+            ->where('jidfrom', bareJid((string)$parent->attributes()->from))
             ->first();
 
         if ($message) {

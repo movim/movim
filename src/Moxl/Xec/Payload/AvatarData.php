@@ -9,7 +9,7 @@ class AvatarData extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $jid = baseJid((string)$parent->attributes()->from);
+        $jid = bareJid((string)$parent->attributes()->from);
 
         requestAvatarBase64(
             jid: $jid,

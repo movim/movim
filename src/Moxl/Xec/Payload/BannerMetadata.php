@@ -8,7 +8,7 @@ class BannerMetadata extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $jid = baseJid((string)$parent->attributes()->from);
+        $jid = bareJid((string)$parent->attributes()->from);
 
         if (
             isset($stanza->items->item->metadata->info)
