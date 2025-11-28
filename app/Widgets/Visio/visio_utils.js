@@ -48,6 +48,8 @@ var VisioUtils = {
             instant = Math.sqrt(sum / inpt.length);
             VisioUtils.maxLevel = Math.max(VisioUtils.maxLevel, instant);
 
+            if (VisioUtils.maxLevel <= 0.005) VisioUtils.maxLevel = 0.005;
+
             var base = (instant / VisioUtils.maxLevel);
             var level = (base > 0.05) ? base ** .3 : 0;
             let step = 0;
