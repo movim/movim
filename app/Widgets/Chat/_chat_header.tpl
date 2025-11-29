@@ -306,6 +306,12 @@
             </span>
 
             <div>
+                {if="$contactincall"}
+                    <button class="button oppose color red"
+                            onclick="Visio_ajaxRemoteGoodbye()">
+                        <i class="material-symbols icon blink">call_end</i>
+                    </button>
+                {/if}
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
                     {if="$roster"}
                         {$roster->truename}

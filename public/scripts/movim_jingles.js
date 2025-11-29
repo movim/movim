@@ -499,7 +499,7 @@ var MovimJingles = {
 
     onCandidate: function (jid, candidate, mid, mlineindex) {
         if (MovimJingles.sessions[jid] == undefined) {
-            throw Error('Candidate from a non initiated session ' + jid);
+            console.log('Candidate from a non initiated session ' + jid); return;
         }
 
         MovimJingles.sessions[jid].onCandidate(candidate, mid, mlineindex);
@@ -507,7 +507,7 @@ var MovimJingles = {
 
     onInitiateSDP: function (jid, sdp, sid) {
         if (MovimJingles.sessions[jid] == undefined) {
-            throw Error('Initiate SDP from a non initiated session ' + jid);
+            console.log('Initiate SDP from a non initiated session ' + jid); return;
         }
 
         // Put the real sid
@@ -517,7 +517,7 @@ var MovimJingles = {
 
     onAcceptSDP: function (jid, sdp) {
         if (MovimJingles.sessions[jid] == undefined) {
-            throw Error('Accept SDP from a non initiated session ' + jid);
+            console.log('Accept SDP from a non initiated session ' + jid); return;
         }
 
         MovimJingles.sessions[jid].onAcceptSDP(sdp);
@@ -525,7 +525,7 @@ var MovimJingles = {
 
     onProceed: function (jid, fullJid, id, mujiRoom) {
         if (MovimJingles.sessions[jid] == undefined) {
-            throw Error('Proceed from a non initiated session ' + jid);
+            console.log('Proceed from a non initiated session ' + jid); return;
         }
 
         MovimJingles.sessions[jid].sessionInitiate(fullJid, id, mujiRoom);
@@ -533,7 +533,7 @@ var MovimJingles = {
 
     onMute: function (jid, name) {
         if (MovimJingles.sessions[jid] == undefined) {
-            throw Error('Mute from a non initiated session ' + jid);
+            console.log('Mute from a non initiated session ' + jid); return;
         }
 
         MovimJingles.sessions[jid].onMute(name);
@@ -541,7 +541,7 @@ var MovimJingles = {
 
     onUnmute: function (jid, name) {
         if (MovimJingles.sessions[jid] == undefined) {
-            throw Error('Unmute from a non initiated session ' + jid);
+            console.log('Unmute from a non initiated session ' + jid); return;
         }
 
         MovimJingles.sessions[jid].onUnmute(name);
@@ -549,7 +549,7 @@ var MovimJingles = {
 
     onContentAdd: function (jid, sdp, mid) {
         if (MovimJingles.sessions[jid] == undefined) {
-            throw Error('Content add from a non initiated session ' + jid);
+            console.log('Content add from a non initiated session ' + jid); return;
         }
 
         MovimJingles.sessions[jid].onContentAdd(sdp, mid);
@@ -557,7 +557,7 @@ var MovimJingles = {
 
     onContentModify: function (jid, sdp, mid) {
         if (MovimJingles.sessions[jid] == undefined) {
-            throw Error('Content modify from a non initiated session ' + jid);
+            console.log('Content modify from a non initiated session ' + jid); return;
         }
 
         MovimJingles.sessions[jid].onContentModify(sdp, mid);
@@ -565,7 +565,7 @@ var MovimJingles = {
 
     onContentRemove: function (jid, sdp, mid) {
         if (MovimJingles.sessions[jid] == undefined) {
-            throw Error('Content remove from a non initiated session ' + jid);
+            console.log('Content remove from a non initiated session ' + jid); return;
         }
 
         MovimJingles.sessions[jid].onContentRemove(sdp, mid);

@@ -72,13 +72,7 @@ class Visio extends Base
 
         $this->registerEvent('callinviteretract', 'onCallInviteRetract');
 
-        $this->registerEvent('currentcall_started', 'onCallStarted');
         $this->registerEvent('currentcall_stopped', 'onCallStopped');
-    }
-
-    public function onCallStarted(Packet $packet)
-    {
-        $this->rpc('MovimVisio.callStart', $packet->content, $packet->from);
     }
 
     public function onCallStopped(Packet $packet)
@@ -735,6 +729,19 @@ class Visio extends Base
             ->request();
     }
 
+    public function ajaxRemoteGoodbye()
+    {
+        $currentCall = CurrentCall::getInstance();
+
+        if ($currentCall->isStarted()) {
+            Dialog::fill($this->view('_visio_remote_goodbye', [
+                'contact' => \App\Contact::firstOrNew(['id' => $currentCall->getBareJid()]),
+                'jid' => $currentCall->jid,
+                'sid' => $currentCall->id
+            ]));
+        }
+    }
+
     /**
      * @desc Close a one-to-one call
      */
@@ -769,14 +776,16 @@ class Visio extends Base
     }
 
     /**
-     * @desc Force stop the current call, when a page is reloaded for example
+     * @desc Check the call status of the current browser
      */
-    public function ajaxTryForceStop(string $id, string $jid)
+    public function ajaxCheckStatus(?string $id = null, ?string $jid = null)
     {
         $currentCall = CurrentCall::getInstance();
 
         if (
             $currentCall->isStarted()
+            && $id != null
+            && $jid != null
             && $currentCall->hasId($id)
             && $currentCall->isJidInCall($jid)
         ) {
@@ -792,7 +801,6 @@ class Visio extends Base
 
             $this->ajaxTerminate($currentCall->jid, $currentCall->id, 'gone');
             $this->ajaxGoodbye($currentCall->jid, $currentCall->id, 'gone');
-
         }
     }
 
