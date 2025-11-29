@@ -66,10 +66,10 @@ class Manifest extends Base
             ]],
             'share_target' => [
                 'action' => "/share/",
-                'method' => 'GET',
+                'method' => 'POST',
                 'params' => [
                     'title' => 'title',
-                    'description' => 'description',
+                    'text' => 'description',
                     'url' => 'url'
 
                 ]
