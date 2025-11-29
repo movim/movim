@@ -45,44 +45,6 @@ class Manifest extends Base
                     'purpose' => 'any'
                 ]
             ],
-            'shortcuts'     => [
-                [
-                    'name'  => $this->__('page.chats'),
-                    'url'   => $this->route('chat'),
-                    'icons' => [
-                        [
-                            'src' => BASE_URI . 'theme/img/app/shortcuts/chat.png',
-                            'sizes' => '96x96',
-                            'type' => 'image/png',
-                            'purpose' => 'any'
-                        ]
-                    ]
-                ],
-                [
-                    'name'  => $this->__('page.publish'),
-                    'url'   => $this->route('publish'),
-                    'icons' => [
-                        [
-                            'src' => BASE_URI . 'theme/img/app/shortcuts/publish.png',
-                            'sizes' => '96x96',
-                            'type' => 'image/png',
-                            'purpose' => 'any'
-                        ]
-                    ]
-                ],
-                [
-                    'name'  => $this->__('page.news'),
-                    'url'   => $this->route('news'),
-                    'icons' => [
-                        [
-                            'src' => BASE_URI . 'theme/img/app/shortcuts/news.png',
-                            'sizes' => '96x96',
-                            'type' => 'image/png',
-                            'purpose' => 'any'
-                        ]
-                    ]
-                ]
-            ],
             'display_override' => ['window-controls-overlay'],
             'display'       => 'standalone',
             'orientation'   => 'portrait-primary',
@@ -90,7 +52,7 @@ class Manifest extends Base
             'theme_color'   => '#10151A',
             'id'            => '/login',
             'start_url'     => '/login',
-            'launch_handler'=> [
+            'launch_handler' => [
                 'client_mode' => 'navigate-new',
             ],
             'categories'    => ['news', 'photo', 'social', 'entertainment'],
@@ -102,6 +64,16 @@ class Manifest extends Base
                 'name'     => 'Movim',
                 'url' => '/share/%s'
             ]],
+            'share_target' => [
+                'action' => "/share/",
+                'method' => 'GET',
+                'params' => [
+                    'title' => 'title',
+                    'description' => 'description',
+                    'url' => 'url'
+
+                ]
+            ],
             'handle_links' => 'preferred',
             'edge_side_panel' => ['preferred_width' => 375],
         ];

@@ -5,6 +5,8 @@ v0.33 (master)
 ---------------------------
 * Add a Shortcuts widget to quickly access the 3 most recent notified chats and chatrooms
 * Implement XEP-0317: Hats and display it in the MUC navigation bar and in a new MUC participant card
+* Jingle and Video-conference fixes
+* Add share_target support in the Manifest and Share widget
 
 v0.32.1
 ---------------------------
