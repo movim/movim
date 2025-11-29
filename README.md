@@ -1,4 +1,4 @@
-<p align="center"><img src="https://movim.eu/img/128.png"/></p>
+<p align="center"><img src="https://movim.eu/img/192.png"/></p>
 <h1 align="center">Movim</h1>
 <h3 align="center">Federated blogging and chat platform</h3>
 
