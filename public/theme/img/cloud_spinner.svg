@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg width="162.79591mm" height="131.23329mm" viewBox="0 0 162.79591 131.23329" version="1.1" id="svg1" inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)" sodipodi:docname="movim_cloud_2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+   <sodipodi:namedview id="namedview1" pagecolor="#000000" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="true" inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" inkscape:zoom="0.78216891" inkscape:cx="8.9494736" inkscape:cy="141.91308" inkscape:window-width="1920" inkscape:window-height="1131" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="layer1" />
+   <defs id="defs1" />
+   <g inkscape:label="Calque 1" inkscape:groupmode="layer" id="layer1" transform="translate(-102.39377,-110.86044)">
+      <path style="fill:none;stroke:#c4c4c4;stroke-width:14;stroke-linecap:round;" d="m 153.58949,145.30182 c 0,-35.19706 67.19439,-41.59653 70.39412,12.79893 41.59653,3.19973 51.19573,73.59385 -6.39946,76.79358 h -60.79492 c -63.994662,-3.19973 -60.794926,-86.39278 -3.19974,-89.59251 28.7976,0 41.59653,22.39812 44.79626,41.59652 3.19973,19.1984 11.11613,24.88775 15.99866,28.7976" id="path3" sodipodi:nodetypes="ccccccc" class="line"/>
+   </g>
+     <style>
+        .line {
+            stroke-dasharray:600;
+            stroke-dashoffset:1200;
+            animation: line_draw 2000ms linear 0ms infinite reverse, line_fade 2000ms ease-out 0ms infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes line_draw {
+            50% {
+                stroke-dashoffset: 1200;
+            }
+
+            100% {
+                stroke-dashoffset: 600;
+            }
+        }
+
+        @keyframes line_fade {
+            60% {
+                stroke-opacity: 0.5;
+            }
+
+            100% {
+                stroke-opacity: 0;
+            }
+        }
+    </style>
+</svg>
