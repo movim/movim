@@ -45,7 +45,7 @@
 }
 
 #snap video {
-    background-image: url(../theme/img/movim_cloud.svg);
+    background-image: url(../theme/img/cloud_spinner.svg);
     background-repeat: no-repeat;
     background-position: center center;
     animation: zoom 0.3s;

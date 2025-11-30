@@ -310,7 +310,7 @@ hr.thick {
 /* Spin */
 
 .spin:empty {
-    background-image: url(../img/movim_cloud.svg);
+    background-image: url(../img/cloud_spinner.svg);
     background-repeat: no-repeat;
     background-position: center 33%;
     background-size: 9rem;

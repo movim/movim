@@ -3,7 +3,6 @@
 <h3 align="center">Federated blogging and chat platform</h3>
 
 ![build ci badge](https://github.com/movim/movim/actions/workflows/main.yml/badge.svg?event=push)
-![docker ci badge](https://github.com/movim/movim/actions/workflows/docker.yml/badge.svg?event=push)
 
 About
 -----

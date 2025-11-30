@@ -159,7 +159,7 @@ body>#visio:not(:fullscreen) #toggle_mode,
     border-radius: 0.5rem;
     box-shadow: var(--elevation-4);
 
-    background-image: url('../theme/img/movim_cloud.svg');
+    background-image: url('../theme/img/cloud_spinner.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 25%;
