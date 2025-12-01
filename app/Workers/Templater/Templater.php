@@ -20,7 +20,7 @@ class Templater
                     $data ? (new Packet)->pack($data->content, $data->from ?? null) : null
                 );
 
-                $resolve();
+                $resolve(null);
             } catch (\Throwable $th) {
                 \logError($widget . '_' . $method . ': ' . $th);
             }

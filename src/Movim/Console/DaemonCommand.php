@@ -44,7 +44,7 @@ class DaemonCommand extends Command
             );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $config = new Config(require(DOCUMENT_ROOT . '/phinx.php'));
         $manager = new Manager($config, $input, new NullOutput);

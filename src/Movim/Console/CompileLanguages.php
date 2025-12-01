@@ -21,7 +21,7 @@ class CompileLanguages extends Command
             ->setDescription('Compile and cache the languages files');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $locale = Locale::start();
 

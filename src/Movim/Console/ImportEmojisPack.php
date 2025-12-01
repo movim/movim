@@ -30,7 +30,7 @@ class ImportEmojisPack extends Command
             ->addArgument('manifest-url', InputArgument::REQUIRED, 'The pack manifest URL');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         if (!Validator::url()->isValid($input->getArgument('manifest-url'))) {
             $output->writeln('<error>The manifest-url must be a URL</error>');

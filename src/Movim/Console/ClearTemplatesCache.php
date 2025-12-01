@@ -19,7 +19,7 @@ class ClearTemplatesCache extends Command
             ->setDescription('Clear the internal templates cache');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         foreach (glob(
             CACHE_PATH .

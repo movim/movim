@@ -711,7 +711,7 @@ define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15;
 /**
  * @desc Request a url async
  */
-function requestAsyncURL(string $url, int $timeout = 10, array $headers = []): Promise
+function requestAsyncURL(string $url, int $timeout = 10, array $headers = []): PromiseInterface
 {
     $browser = new React\Http\Browser;
 
@@ -996,6 +996,8 @@ function getBrowser(string $userAgent): ?string
     elseif (strpos($t, 'chrome')) return 'Chrome';
     elseif (strpos($t, 'safari')) return 'Safari';
     elseif (strpos($t, 'firefox')) return 'Firefox';
+
+    return null;
 }
 
 /*
@@ -1026,6 +1028,8 @@ function getPlatform(string $userAgent): ?string
             return $value;
         }
     }
+
+    return null;
 }
 
 /**
