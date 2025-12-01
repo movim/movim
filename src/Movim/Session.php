@@ -48,7 +48,7 @@ class Session implements CacheInterface
         return $values;
     }
 
-    public function set(string $key, mixed $value, null|int|DateInterval $ttl = null): bool
+    public function set(string $key, mixed $value, null|int|\DateInterval $ttl = null): bool
     {
         $obj = new \StdClass;
         $obj->removable = $ttl != null;
@@ -60,7 +60,7 @@ class Session implements CacheInterface
         return true;
     }
 
-    public function setMultiple(iterable $values, null|int|DateInterval $ttl = null): bool
+    public function setMultiple(iterable $values, null|int|\DateInterval $ttl = null): bool
     {
         foreach ($values as $key => $value) {
             $this->set($key, $value, $ttl);
