@@ -160,6 +160,12 @@ class RoomsUtils extends Base
             $presences->pop();
         }
 
+        if (!$havePagination) {
+            $ownerFilter = fn ($p) => $p->mucaffiliation == 'owner';
+            $owners = $presences->reject($ownerFilter);
+            $presences = $presences->filter($ownerFilter)->union($owners);
+        }
+
         return $this->view('_rooms_presences_list', [
             'more' => $havePagination,
             'conference' => $conference,

@@ -1,6 +1,6 @@
 {$affiliation = null}
 {loop="$presences"}
-    {if="$affiliation != $value->affiliationTxt"}
+    {if="$affiliation != $value->affiliationTxt && $page == 1"}
         <li class="subheader">
             {if="$value->mucaffiliation == 'owner'"}
                 <span class="control icon tiny yellow" title="{$c->__('room.affiliation_owner')}">
