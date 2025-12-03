@@ -233,6 +233,19 @@ class User extends Model
         return \App\Configuration::get()->restrictsuggestions;
     }
 
+    public function hasRegister(): bool
+    {
+        $rootInfo = Info::where('server', explodeJid($this->attributes['id'])['server'])
+            ->where('node', '')
+            ->first();
+
+        if ($rootInfo) {
+            return $rootInfo->hasFeature('jabber:iq:register');
+        }
+
+        return false;
+    }
+
     public function hasMAM(): bool
     {
         return ($this->capability && $this->capability->hasFeature('urn:xmpp:mam:2'));

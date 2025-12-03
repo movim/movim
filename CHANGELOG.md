@@ -8,6 +8,7 @@ v0.33 (master)
 * Jingle and Video-conference fixes
 * Add share_target support in the Manifest and Share widget
 * Handle calls when having multiple browsers connected on one Movim session, allow all the browser to hang-up the current call
+* Disable password change and account deletion if the server doesn't have jabber:iq:register
 
 v0.32.1
 ---------------------------
