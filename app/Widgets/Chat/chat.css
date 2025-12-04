@@ -712,6 +712,14 @@ ul.list li>div.bubble.file ul.card+p:empty:before {
     content: ' ';
 }
 
+ul.list li>div.bubble.file a {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 35rem;
+}
+
 ul.list li>div.bubble.file div.file {
     margin-bottom: 3rem;
     border-radius: 0.75rem;
@@ -769,11 +777,10 @@ ul.list li>div.bubble.file div.file[data-type="image/gif"]:after {
     pointer-events: none;
 }
 
-ul.list li>div.bubble.file div.file a span.host:before,
-ul.list li>div.bubble.file div.file a span.size:before {
+ul.list li>div.bubble.file div.file a span.host:after,
+ul.list li>div.bubble.file div.file a span.size:after {
     content: '-';
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin: 0 0.5rem;
 }
 
 /* Message Info */

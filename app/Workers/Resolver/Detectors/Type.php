@@ -13,7 +13,12 @@ class Type extends DetectorsDetector
 
         if (typeIsPicture($contentType)) {
             return 'image';
-        } elseif (typeIsVideo($contentType)) {
+        } elseif (
+            typeIsVideo($contentType) ||
+            // Discord is having a weird .mov extension for some files, that are actually mp4
+            ($this->extractor->getUri()->getHost() == 'cdn.discordapp.com'
+                && $contentType == 'video/quicktime')
+        ) {
             return 'video';
         }
 

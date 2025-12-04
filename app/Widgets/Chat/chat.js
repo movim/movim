@@ -1423,14 +1423,14 @@ var Chat = {
                 a.href = file.url;
                 a.target = '_blank';
                 a.rel = 'noopener noreferrer';
+                a.title = file.url;
 
                 div.appendChild(a);
-
                 if (file.host) {
                     var host = document.createElement('span');
                     host.innerHTML = file.host;
                     host.className = 'host';
-                    a.appendChild(host);
+                    a.prepend(host);
                 }
 
                 if (file.size > 0) {
@@ -1438,7 +1438,7 @@ var Chat = {
                     span.innerHTML = file.cleansize;
                     span.className = 'size';
 
-                    a.appendChild(span);
+                    a.prepend(span);
                 }
             }
         }

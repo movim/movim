@@ -7,7 +7,7 @@ use Respect\Validation\Validator;
 
 class MessageFile extends Model
 {
-    protected $appends = ['preview', 'cleansize'];
+    protected $appends = ['preview', 'cleansize', 'host'];
 
     public function message()
     {
@@ -57,6 +57,11 @@ class MessageFile extends Model
         }
 
         return null;
+    }
+
+    public function getHostAttribute(): string
+    {
+        return parse_url($this->url, PHP_URL_HOST);
     }
 
     public function getIsPictureAttribute(): bool
