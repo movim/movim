@@ -24,14 +24,6 @@ class Get extends Action
 
             $this->pack($contact->id);
             $this->deliver();
-        } else {
-            $this->error(false);
         }
-    }
-
-    public function error(string $errorId, ?string $message = null)
-    {
-        $r = new \Moxl\Xec\Action\Vcard\Get;
-        $r->setTo($this->_to)->request();
     }
 }

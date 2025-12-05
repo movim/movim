@@ -1,4 +1,4 @@
-<ul class="list middle">
+<ul class="list thick">
     <li>
         <div>
             <p class="normal">
@@ -9,6 +9,8 @@
                     {/if}
                 {elseif="$contact->nickname != null"}
                     {$contact->nickname}
+                {else}
+                    {$contact->id}
                 {/if}
             </p>
             <p class="all">

@@ -19,9 +19,11 @@
         </ul>
     </header>
 
-    {autoescape="off"}
-        {$c->prepareVcard($contact)}
-    {/autoescape}
+    <div id="{$contact->id|cleanupId}-vcard">
+        {autoescape="off"}
+            {$c->prepareVcard($contact)}
+        {/autoescape}
+    </div>
 
     <ul class="list">
         {if="$presence->capability"}

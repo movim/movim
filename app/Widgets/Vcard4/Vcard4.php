@@ -14,8 +14,8 @@ class Vcard4 extends Base
 {
     public function load()
     {
-        $this->registerEvent('vcard4_get_handle', 'onMyVcard4');
-        $this->registerEvent('vcard4_set_handle', 'onMyVcard4');
+        $this->registerEvent('vcard4_get_handle', 'onMyVcard4', 'configuration');
+        $this->registerEvent('vcard4_set_handle', 'onMyVcard4', 'configuration');
     }
 
     public function prepareForm(string $jid)

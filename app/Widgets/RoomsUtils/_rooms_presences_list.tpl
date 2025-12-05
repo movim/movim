@@ -20,12 +20,12 @@
     {/if}
     <li class="{if="$value->last > 60"} inactive{/if}" title="{$value->resource}"
         {if="$value->mucjid && $compact"}
-            onclick="RoomsUtils_ajaxHttpGetParticipant('{$conference->conference|echapJS}', '{$value->mucjid}')"
+            onclick="RoomsUtils_ajaxGetParticipant('{$conference->conference|echapJS}', '{$value->mucjid}')"
         {/if}
         >
         <span class="primary icon bubble small status {if="$value->mucjid"}active{/if} {$value->presencekey}"
             {if="$value->mucjid"}
-                onclick="RoomsUtils_ajaxHttpGetParticipant('{$conference->conference|echapJS}', '{$value->mucjid}'); Drawer.clear();"
+                onclick="RoomsUtils_ajaxGetParticipant('{$conference->conference|echapJS}', '{$value->mucjid}'); Drawer.clear();"
             {/if}
             >
             <img loading="lazy" src="{$value->conferencePicture}">
