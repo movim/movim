@@ -1,0 +1,1 @@
+{$rostercount} <i class="material-symbols">group</i>
