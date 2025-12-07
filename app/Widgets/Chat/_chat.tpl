@@ -52,7 +52,7 @@
             <span class="primary icon gray active"
                   title="{$c->__('sticker.title')}"
                   onclick="Stickers_ajaxShow('{$jid}')">
-                <i class="material-symbols flip-vert">note_stack</i>
+                <i class="material-symbols">sticker</i>
             </span>
             {if="$c->me->hasUpload()"}
                 <span class="emojis control icon gray active"

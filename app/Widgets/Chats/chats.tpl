@@ -22,7 +22,7 @@
 </ul>
 
 <div class="placeholder">
-    <i class="material-symbols fill">chat</i>
+    <i class="material-symbols fill">chat_dashed</i>
     <h1>{$c->__('chats.empty_title')}</h1>
-    <h4>{$c->___('chats.empty', '<i class="material-symbols">add</i>')}</h4>
+    <h4>{$c->___('chats.empty', '<i class="material-symbols">chat_add_on</i>')}</h4>
 </div>

@@ -4,7 +4,7 @@
             <li class="block color" onclick="RoomsExplore_ajaxSearch();">
                 <i class="main material-symbols">chat</i>
                 <span class="primary icon">
-                    <i class="material-symbols">explore</i>
+                    <i class="material-symbols">groups</i>
                 </span>
                 <div>
                     <p class="line two">

@@ -20,7 +20,7 @@
     <?php $this->widget('ChatActions');?>
     <div id="scroll_block">
         <a class="button action color" onclick="Search_ajaxRequest(true)">
-            <i class="material-symbols">add</i>
+            <i class="material-symbols">chat_add_on</i>
         </a>
         <?php if (me()->hasPubsub() && me()->hasUpload()) { ?>
             <?php $this->widget('Stories');?>

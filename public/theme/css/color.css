@@ -41,6 +41,10 @@ input, textarea, select {
     color: rgba(var(--movim-font), 0.87);
 }
 
+input::placeholder, textarea::placeholder, select::placeholder {
+    color: rgba(var(--movim-font), 0.67);
+}
+
 ul.list li.divided,
 ul.list li.divided.spaced:after,
 hr:not(.clear),
