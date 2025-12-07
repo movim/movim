@@ -17,8 +17,8 @@
     </div>
     <ul class="list controls middle">
         <li>
-            <span id="publishstoriesback" class="primary icon active">
-                <i class="material-symbols">arrow_back</i>
+            <span id="publishstoriesback" class="primary icon active bubble" onclick="PublishStories.reset()">
+                <i class="material-symbols">close</i>
             </span>
             <span id="publishstoriesbackedit" class="primary icon active" onclick="PublishStories.goToEdit()">
                 <i class="material-symbols">edit</i>
@@ -26,16 +26,18 @@
             <div  id="publishstorieshead">
                 <p>{$c->__('story.new')}</p>
             </div>
+            <div id="publishstoriespreview">
+                <p>{$c->__('story.new')}</p>
+                <p>{$c->__('story.new_publish')}</p>
+            </div>
             <div  id="publishstoriesheadedit">
+                <span id="publishstoriesnext" class="button oppose color" onclick="PublishStories.goToPublish()"
+                    style="margin-right: 1rem;">
+                    {$c->__('publish.preview')} <i class="material-symbols">arrow_forward</i>
+                </span>
                 <p>{$c->__('story.new')}</p>
                 <p>{$c->__('story.new_edit')}</p>
             </div>
-            <span id="publishstoriesclose" class="primary icon active" onclick="PublishStories.reset()">
-                <i class="material-symbols">close</i>
-            </span>
-            <span id="publishstoriesnext" class="control icon active toggleable" onclick="PublishStories.goToPublish()">
-                <i class="material-symbols">arrow_forward</i>
-            </span>
         </li>
     </ul>
 
@@ -56,7 +58,7 @@
                 </span>
                 <div>
                     <p class="line">{$c->__('story.to_roster')}</p>
-                    <p>{$rostercount} <i class="material-symbols">group</i></p>
+                    <p id="publishcontactscount"></p>
                 </div>
             </li>
             <li>

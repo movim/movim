@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 08:30+0200\n"
+"POT-Creation-Date: 2025-12-07 19:00+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Mikael H <silfursun@gmail.com>, 2016\n"
 "Language-Team: Finnish (http://app.transifex.com/movim/movim/language/fi/)\n"
@@ -2113,7 +2113,7 @@ msgstr "Anna otsikko"
 msgid "At least one picture is required"
 msgstr ""
 
-#: [publish]preview
+#: [publish]preview [button]preview
 msgid "Preview"
 msgstr "Esikatsele"
 
@@ -2192,6 +2192,19 @@ msgstr "Lisää ohjeita"
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr "Markdown-ohje"
+
+#: [story]new
+#, fuzzy
+msgid "New story"
+msgstr "Uusi julkaisu"
+
+#: [story]new_edit
+msgid "Edit your story"
+msgstr ""
+
+#: [story]new_publish
+msgid "Publish your story"
+msgstr ""
 
 #: [story]to_roster
 msgid "Publish to my contacts"
@@ -2903,6 +2916,15 @@ msgstr ""
 #: [visio]by
 msgid "by %s"
 msgstr ""
+
+#: [visio]hang_up
+msgid "Hang up the call"
+msgstr ""
+
+#: [visio]hang_up_text
+#, fuzzy
+msgid "You are going to hang up the current call, are you sure?"
+msgstr "Varmista julkaisun poistaminen"
 
 #: [visiolobby]called
 msgid "%s is calling you"

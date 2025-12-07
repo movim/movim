@@ -138,7 +138,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 08:30+0200\n"
+"POT-Creation-Date: 2025-12-07 19:00+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2017,2023\n"
 "Language-Team: German (http://app.transifex.com/movim/movim/language/de/)\n"
@@ -2136,7 +2136,7 @@ msgstr "Bitte einen Titel angeben"
 msgid "At least one picture is required"
 msgstr ""
 
-#: [publish]preview
+#: [publish]preview [button]preview
 msgid "Preview"
 msgstr "Vorschau"
 
@@ -2215,6 +2215,20 @@ msgstr "Weitere Hilfe"
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr "Markdown-Anleitung"
+
+#: [story]new
+#, fuzzy
+msgid "New story"
+msgstr "Neuer Beitrag"
+
+#: [story]new_edit
+msgid "Edit your story"
+msgstr ""
+
+#: [story]new_publish
+#, fuzzy
+msgid "Publish your story"
+msgstr "Nur Veröffentlichen"
 
 #: [story]to_roster
 msgid "Publish to my contacts"
@@ -2929,6 +2943,15 @@ msgstr ""
 #: [visio]by
 msgid "by %s"
 msgstr ""
+
+#: [visio]hang_up
+msgid "Hang up the call"
+msgstr ""
+
+#: [visio]hang_up_text
+#, fuzzy
+msgid "You are going to hang up the current call, are you sure?"
+msgstr "Sie sind im Begriff %s Nachrichten zu löschen, sind Sie sicher?"
 
 #: [visiolobby]called
 msgid "%s is calling you"

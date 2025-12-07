@@ -21,6 +21,8 @@ var PublishStories = {
     lastZoom: 1,
 
     init: function () {
+        PublishStories_ajaxGetContactsCount();
+
         MovimTpl.loadingPage();
 
         MovimTpl.pushAnchorState('story', function () {

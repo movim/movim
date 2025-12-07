@@ -53,6 +53,17 @@ class PublishStories extends Base
         $this->toast($this->__('publish.no_title'));
     }
 
+    public function ajaxGetContactsCount()
+    {
+        $this->rpc(
+            'MovimTpl.fill',
+            '#publishcontactscount',
+            $this->view('_publishstories_contactscount', [
+                'rostercount' => $this->me->session->contacts()->whereIn('subscription', ['both', 'from'])->count()
+            ])
+        );
+    }
+
     public function ajaxPublish($form, string $uploadId)
     {
         if (empty($form->title->value)) {
@@ -72,13 +83,5 @@ class PublishStories extends Base
             ->addImage($upload->geturl, 'story', 'image/jpeg')
             ->setTags(getHashtags(htmlspecialchars($form->title->value)))
             ->request();
-    }
-
-    public function display()
-    {
-        $this->view->assign(
-            'rostercount',
-            $this->me->session->contacts()->whereIn('subscription', ['both', 'from'])->count()
-        );
     }
 }

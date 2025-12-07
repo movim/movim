@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 08:30+0200\n"
+"POT-Creation-Date: 2025-12-07 19:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,6 +59,14 @@ msgstr ""
 
 #: [visio]by
 msgid "by %s"
+msgstr ""
+
+#: [visio]hang_up
+msgid "Hang up the call"
+msgstr ""
+
+#: [visio]hang_up_text
+msgid "You are going to hang up the current call, are you sure?"
 msgstr ""
 
 #: [visiolobby]called

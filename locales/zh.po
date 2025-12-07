@@ -137,7 +137,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 08:30+0200\n"
+"POT-Creation-Date: 2025-12-07 19:00+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2025\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -2136,7 +2136,7 @@ msgstr "请提供标题"
 msgid "At least one picture is required"
 msgstr "至少需要一张图片"
 
-#: [publish]preview
+#: [publish]preview [button]preview
 msgid "Preview"
 msgstr "预览"
 
@@ -2216,6 +2216,20 @@ msgstr "更多帮助"
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr "Markdown 语法手册"
+
+#: [story]new
+#, fuzzy
+msgid "New story"
+msgstr "新故事"
+
+#: [story]new_edit
+msgid "Edit your story"
+msgstr ""
+
+#: [story]new_publish
+#, fuzzy
+msgid "Publish your story"
+msgstr "正在发布故事"
 
 #: [story]to_roster
 msgid "Publish to my contacts"
@@ -2932,6 +2946,15 @@ msgstr "所有参与者均已离开通话"
 #: [visio]by
 msgid "by %s"
 msgstr "由 %s"
+
+#: [visio]hang_up
+msgid "Hang up the call"
+msgstr ""
+
+#: [visio]hang_up_text
+#, fuzzy
+msgid "You are going to hang up the current call, are you sure?"
+msgstr "是否确定要删除 %s 条消息？"
 
 #: [visiolobby]called
 msgid "%s is calling you"
