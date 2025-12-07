@@ -23,7 +23,6 @@ class PublishStories extends Base
 
     public function onPublish(Packet $packet)
     {
-
         list($to, $node, $id, $repost, $comments) = array_values($packet->content);
 
         if ($node == Post::STORIES_NODE) {

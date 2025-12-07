@@ -286,7 +286,7 @@ ul.list li>div>p.active:hover {
 ul.list>*>li>div>p:first-of-type,
 ul.list>li>div>p:first-of-type {
     line-height: 5.5rem;
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 ul.list>*>li>div>p.all:first-of-type,

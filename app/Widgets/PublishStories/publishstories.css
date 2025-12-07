@@ -40,6 +40,10 @@
 #publishstories.edit.publish #publishstoriesback,
 #publishstories.edit.publish #publishstoriesnext,
 #publishstories.edit.publish #publishstoriesclose,
+#publishstories.shoot #publishstoriesheadedit,
+#publishstories.edit #publishstorieshead,
+#publishstories.edit.publish #publishstorieshead,
+#publishstories.edit.publish #publishstoriesheadedit,
 #publishstories.shoot.error video,
 #publishstories form {
     display: none;
@@ -123,6 +127,7 @@
     background-image: url(../theme/img/cloud_spinner.svg);
     background-repeat: no-repeat;
     background-position: center center;
+    background-size: 9rem;
     object-fit: cover;
 }
 

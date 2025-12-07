@@ -21,10 +21,16 @@
                 <i class="material-symbols">arrow_back</i>
             </span>
             <span id="publishstoriesbackedit" class="primary icon active" onclick="PublishStories.goToEdit()">
-                <i class="material-symbols">arrow_back</i>
+                <i class="material-symbols">edit</i>
             </span>
-            <div></div>
-            <span id="publishstoriesclose" class="control icon active" onclick="PublishStories.reset()">
+            <div  id="publishstorieshead">
+                <p>{$c->__('story.new')}</p>
+            </div>
+            <div  id="publishstoriesheadedit">
+                <p>{$c->__('story.new')}</p>
+                <p>{$c->__('story.new_edit')}</p>
+            </div>
+            <span id="publishstoriesclose" class="primary icon active" onclick="PublishStories.reset()">
                 <i class="material-symbols">close</i>
             </span>
             <span id="publishstoriesnext" class="control icon active toggleable" onclick="PublishStories.goToPublish()">

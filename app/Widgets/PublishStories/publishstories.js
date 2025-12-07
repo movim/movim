@@ -21,6 +21,8 @@ var PublishStories = {
     lastZoom: 1,
 
     init: function () {
+        MovimTpl.loadingPage();
+
         MovimTpl.pushAnchorState('story', function () {
             document.querySelector('#publishstories').classList = '';
             PublishStories.close();
@@ -45,7 +47,7 @@ var PublishStories = {
         PublishStories.main.querySelector('#publishstoriesswitch').onclick = () => {
             PublishStories.videoSelect.selectedIndex++;
             if (PublishStories.videoSelect.selectedIndex == -1) {
-                PublishStories.videoSelect.selectedIndex++;
+                PublishStories.videoSelect.selectedIndex = 0;
             }
 
             Toast.send(PublishStories.videoSelect.options[PublishStories.videoSelect.selectedIndex].label);
@@ -56,7 +58,7 @@ var PublishStories = {
         PublishStories.back.onclick = () => { history.back(); };
 
         PublishStories.close();
-        PublishStories.getStream();
+        PublishStories.getStream(true);
 
         MovimUtils.applyAutoheight();
     },
@@ -228,7 +230,7 @@ var PublishStories = {
         PublishStories.cameraZoom = PublishStories.lastZoom = 1;
     },
 
-    getStream: function () {
+    getStream: function (init) {
         PublishStories.main.classList = 'wait';
 
         if (PublishStories.video.srcObject) {
@@ -246,10 +248,15 @@ var PublishStories = {
 
         navigator.mediaDevices.getUserMedia(constraints)
             .then(stream => {
+                MovimTpl.finishedPage();
                 PublishStories.gotStream(stream);
-                PublishStories.getDevices().then(PublishStories.gotDevices);
+
+                if (init) {
+                    navigator.mediaDevices.enumerateDevices().then(PublishStories.gotDevices);
+                }
             })
             .catch(e => {
+                MovimTpl.finishedPage();
                 PublishStories.noStream()
             });
     },
@@ -278,10 +285,6 @@ var PublishStories = {
         };
     },
 
-    getDevices: function () {
-        return navigator.mediaDevices.enumerateDevices();
-    },
-
     gotDevices: function (devicesInfo) {
         PublishStories.videoSelect.innerHTML = '';
 
@@ -289,7 +292,7 @@ var PublishStories = {
             if (deviceInfo.kind === 'videoinput') {
                 const option = document.createElement('option');
                 option.value = deviceInfo.deviceId;
-                option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
+                option.text = deviceInfo.label || `Camera ${PublishStories.videoSelect.length + 1}`;
 
                 if (!PublishStories.videoSelect.querySelector('option[value="' + deviceInfo.deviceId + '"]')) {
                     PublishStories.videoSelect.appendChild(option);
