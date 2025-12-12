@@ -115,7 +115,18 @@ class Message extends Model
 
     public function scopeJid($query, string $jid)
     {
-        return $query->where('jidfrom', $jid)->orWhere('jidto', $jid);
+        $jidFromToMessages = DB::table('messages')
+            ->where('user_id', me()->id)
+            ->where('jidfrom', $jid)
+            ->unionAll(
+                DB::table('messages')
+                    ->where('user_id', me()->id)
+                    ->where('jidto', $jid)
+            );
+        return $query->select('*')->from(
+            $jidFromToMessages,
+            'messages'
+        )->where('user_id', me()->id);
     }
 
     public function reactions()
