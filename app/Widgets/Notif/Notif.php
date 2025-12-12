@@ -211,7 +211,7 @@ class Notif extends Base
 
         if ($notifs == null) $notifs = [];
 
-        $notifs['chat'] = (me())->unreads();
+        $notifs['chat'] = me()?->unreads() ?? 0;
         RPC::call('Notif.refresh', $notifs);
     }
 

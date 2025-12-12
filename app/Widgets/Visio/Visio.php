@@ -631,7 +631,7 @@ class Visio extends Base
 
     public function ajaxResolveServices()
     {
-        if (!$this->me->session) return;
+        if (!$this->me?->session) return;
 
         $info = \App\Info::where('server', $this->me->session->host)
             ->where('node', '')
