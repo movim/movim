@@ -60,13 +60,6 @@ class Base
         return false;
     }
 
-    protected function checkSession()
-    {
-        if ($this->session_only && !$this->user) {
-            $this->name = 'login';
-        }
-    }
-
     protected function redirect($page, $params = false)
     {
         $url = Route::urlize($page, $params);

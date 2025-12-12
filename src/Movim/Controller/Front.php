@@ -38,10 +38,9 @@ class Front extends Base
 
             if ($payload && $payload->b && $payload->b->c) {
                 $c = $this->loadController($payload->b->c);
-                if (is_callable([$c, 'load'])) $c->load();
+                $c->load();
 
-                $c->checkSession();
-                if ($c->name == 'login') {
+                if ($c->session_only && !$this->user) {
                     header('HTTP/1.0 403 Forbidden');
                     exit;
                 }
@@ -67,9 +66,7 @@ class Front extends Base
             Cookie::clearCookieHeader();
         }
 
-        $c->checkSession();
-
-        if ($request != $c->name) {
+        if ($c->session_only && !$this->user) {
             $this->redirect('login');
         }
 
@@ -80,6 +77,6 @@ class Front extends Base
     public function loadController(string $page)
     {
         $className = 'App\\Controllers\\' . ucfirst($page) . 'Controller';
-        return new $className();
+        return new $className($this->user);
     }
 }
