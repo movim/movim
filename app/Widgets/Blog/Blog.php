@@ -196,7 +196,7 @@ class Blog extends Base
 
     public function preparePost(Post $post)
     {
-        if ($this->_view == 'tag' && isLogged()) {
+        if ($this->_view == 'tag' && $this->me != null) {
             return (new PostWidget)->preparePost($post, false, true);
         } else {
             $post->server = $this->_nickname ?? $post->server;

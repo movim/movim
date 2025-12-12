@@ -197,10 +197,7 @@ class Bootstrap
     public function loadLanguage()
     {
         $l = \Movim\i18n\Locale::start();
-
-        if (isLogged()) {
-            $lang = DBUser::me()->language;
-        }
+        $lang = DBUser::me()?->language;
 
         if (isset($lang)) {
             $l->load($lang);

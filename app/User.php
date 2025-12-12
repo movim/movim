@@ -169,7 +169,7 @@ class User extends Model
         return $this->hasMany('App\Affiliation', 'jid', 'id');
     }
 
-    public static function me($reload = false): User
+    public static function me($reload = false): ?User
     {
         $session = Session::instance();
 
@@ -184,7 +184,7 @@ class User extends Model
         $me = self::find($session->get('jid'));
         self::$me = $me;
 
-        return ($me) ? $me : new User;
+        return ($me) ? $me : null;
     }
 
     public function init()
@@ -310,5 +310,10 @@ class User extends Model
         }
 
         return in_array($jid, $this->userBlocked) || in_array($jid, $this->globalBlocked);
+    }
+
+    public function isBlocked(Contact $contact): bool
+    {
+        return $this->hasBlocked($contact->id, true);
     }
 }

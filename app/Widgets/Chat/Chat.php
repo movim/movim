@@ -246,8 +246,8 @@ class Chat extends \Movim\Widget\Base
                             : $rawbody,
                         $contact->getPicture(),
                         time: 6,
-                        action: $this->route('chat', $contact->jid),
-                        execute: 'Search.chat(\'' . echapJS($contact->jid) . '\', ' . ($message->isMuc() ? 'true' : 'false') . ')'
+                        action: $this->route('chat', $contact->id),
+                        execute: 'Search.chat(\'' . echapJS($contact->id) . '\', ' . ($message->isMuc() ? 'true' : 'false') . ')'
                     );
                 }
             }
@@ -269,7 +269,7 @@ class Chat extends \Movim\Widget\Base
                     $message->resource . ': ' . $rawbody,
                     $conference->getPicture(),
                     time: 4,
-                    action: $this->route('chat', [$contact->jid, 'room'])
+                    action: $this->route('chat', [$contact->id, 'room'])
                 );
             } elseif ($message->isMuc()) {
                 if ($conference && $conference->notify == 0) {
@@ -1757,7 +1757,7 @@ class Chat extends \Movim\Widget\Base
 
         $pagination = 8;
 
-        $users = Contact::suggest()
+        $users = Contact::suggest($this->me)
             ->skip($page * $pagination)
             ->take($pagination + 1)
             ->get();

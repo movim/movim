@@ -1,6 +1,6 @@
 <li
-    id="{$contact->jid|slugify|cleanupId}-chat-item"
-    data-jid="{$contact->jid}"
+    id="{$contact->id|slugify|cleanupId}-chat-item"
+    data-jid="{$contact->id}"
     class="
         {if="$roster"}
             roster
@@ -13,13 +13,12 @@
             {/if}
         {/if}
         "
-    title="{$contact->jid}{if="isset($message)"} • {$message->published|prepareDate}{/if}">
+    title="{$contact->id}{if="isset($message)"} • {$message->published|prepareDate}{/if}">
     <span class="primary icon bubble
         {if="$roster"}
             {if="$roster->presence"}status {$roster->presence->presencekey}{/if}
             {if="$roster->stories->count() > 0"}stories {if="$roster->storiesSeen"}seen{/if}{/if}
         {/if}
-        {if="$contact->locationDistance"} location{/if}
     "
     {if="$roster && $roster->firstUnseenStory"}
         onclick="StoriesViewer_ajaxHttpGet({$roster->firstUnseenStory->id})"
@@ -50,8 +49,8 @@
             {/if}
             {if="$roster"}
                 {$roster->truename}
-            {elseif="strpos($contact->jid, '/') != false"}
-                {$exploded = explodeJid($contact->jid)}
+            {elseif="strpos($contact->id, '/') != false"}
+                {$exploded = explodeJid($contact->id)}
                 {$exploded.resource}
                 <span class="second" title="{$exploded.jid}">
                     {$exploded.jid}

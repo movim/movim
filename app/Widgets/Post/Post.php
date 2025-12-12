@@ -274,7 +274,7 @@ class Post extends Base
             $view->assign('reply', $post->isReply() ? $post->getReply() : false);
             $view->assign('repost', $post->isRecycled() ? \App\Contact::find($post->server) : false);
 
-            $view->assign('nsfw', $this->me->nsfw);
+            $view->assign('nsfw', $this->me ? $this->me->nsfw : false);
             $view->assign('post', $post);
 
             return ($card)

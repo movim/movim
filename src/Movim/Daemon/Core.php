@@ -34,9 +34,6 @@ class Core implements MessageComponentInterface
     public LoopInterface $loop;
     public $baseuri;
 
-    public $single = ['visio'];
-    public $singlelocks = [];
-
     public function __construct(LoopInterface $loop, $baseuri)
     {
         $this->key = \generateKey(32);
@@ -124,18 +121,6 @@ class Core implements MessageComponentInterface
         if ($sid != null) {
             $path = $this->getPath($conn);
 
-            if (in_array($path, $this->single)) {
-                if (
-                    array_key_exists($sid, $this->singlelocks)
-                    && array_key_exists($path, $this->singlelocks[$sid])
-                ) {
-                    $this->singlelocks[$sid][$path]++;
-                    $conn->close(1008);
-                } else {
-                    $this->singlelocks[$sid][$path] = 1;
-                }
-            }
-
             if (!array_key_exists($sid, $this->sessions)) {
                 $language = $this->getLanguage($conn);
 
@@ -194,18 +179,6 @@ class Core implements MessageComponentInterface
 
         if ($sid != null && isset($this->sessions[$sid])) {
             $path = $this->getPath($conn);
-
-            if (in_array($path, $this->single)) {
-                if (
-                    array_key_exists($sid, $this->singlelocks)
-                    && array_key_exists($path, $this->singlelocks[$sid])
-                ) {
-                    $this->singlelocks[$sid][$path]--;
-                    if ($this->singlelocks[$sid][$path] == 0) {
-                        unset($this->singlelocks[$sid][$path]);
-                    }
-                }
-            }
 
             $this->sessions[$sid]->detach($this->loop, $conn);
             if ($this->sessions[$sid]->process == null) {

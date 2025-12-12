@@ -18,10 +18,10 @@ class Help extends Base
     {
         $this->view->assign(
             'info',
-            (isLogged())
+            $this->me
                 ? \App\Info::where('server', $this->me->session->host)
-                         ->where('node', '')
-                         ->first()
+                ->where('node', '')
+                ->first()
                 : null
         );
     }

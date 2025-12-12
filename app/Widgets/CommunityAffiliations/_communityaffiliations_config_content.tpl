@@ -1,18 +1,18 @@
 <ul class="list thin">
     {loop="$affiliations"}
         {$contact = $c->getContact($value->jid)}
-        <li title="{$contact->jid}">
+        <li title="{$contact->id}">
             <span class="primary icon bubble">
                 <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
             </span>
-            <form name="{$contact->jid}">
-                <input type="hidden" name="jid" value="{$contact->jid}"/>
+            <form name="{$contact->id}">
+                <input type="hidden" name="jid" value="{$contact->id}"/>
                 <div>
-                    {if="$value->affiliation == 'owner' && $contact->jid == $me"}
+                    {if="$value->affiliation == 'owner' && $contact->id == $me"}
                         <input type="text" disabled value="{$c->__('affiliation.owner')}"/>
                     {else}
                     <div class="select">
-                        <select name="role" id="role" onchange="CommunityAffiliations.update('{$contact->jid}')">
+                        <select name="role" id="role" onchange="CommunityAffiliations.update('{$contact->id}')">
                             {$affiliation = $value->affiliation}
                             {loop="$roles"}
                                 <option

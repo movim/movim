@@ -9,9 +9,9 @@ class CommunityController extends Base
 {
     public function dispatch()
     {
-        $this->jsCheck = false;
+        $this->js_check = false;
 
-        if (isLogged() && $this->fetchGet('i')) {
+        if ($this->user && $this->fetchGet('i')) {
             $this->page->setTitle(__('page.explore'));
 
             $post = Post::where('server', $this->fetchGet('s'))

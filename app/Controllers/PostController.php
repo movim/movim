@@ -15,7 +15,7 @@ class PostController extends Base
     {
         $this->page->setTitle(__('page.post'));
 
-        if (!isLogged()) {
+        if (!$this->user) {
             $post = \App\Post::where([
                 'server' => $this->fetchGet('s'),
                 'node' => $this->fetchGet('n'),

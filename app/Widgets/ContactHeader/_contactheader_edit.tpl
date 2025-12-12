@@ -40,7 +40,7 @@
                 value="{$contact->group ?? ''}"/>
             <label for="group">{$c->__('edit.group')}</label>
         </div>
-        <input type="hidden" name="jid" value="{$contact->jid}"/>
+        <input type="hidden" name="jid" value="{$contact->id}"/>
     </form>
 </section>
 <footer>

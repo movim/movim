@@ -21,7 +21,7 @@
                         </a>
                     </p>
                     <p>
-                        {$contact->jid}
+                        {$contact->id}
                     </p>
                 </div>
             </li>

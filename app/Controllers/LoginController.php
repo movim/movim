@@ -11,7 +11,7 @@ class LoginController extends Base
     {
         $this->page->setTitle(__('page.login'));
 
-        if (isLogged()) {
+        if ($this->user) {
             if ($this->fetchGet('i') && Validator::length(8)->isValid($this->fetchGet('i'))) {
                 $invitation = \App\Invite::find($this->fetchGet('i'));
 

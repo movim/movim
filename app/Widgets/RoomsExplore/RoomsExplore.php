@@ -90,7 +90,7 @@ class RoomsExplore extends Base
     {
         $view = $this->tpl();
         $rooms = \App\Info::whereCategory('conference')
-            ->restrictUserHost()
+            ->restrictUserHost($this->me)
             ->restrictMucServices()
             ->whereType('text')
             ->where('mucpublic', true)

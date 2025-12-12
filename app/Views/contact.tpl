@@ -6,7 +6,7 @@
 <?php $this->widget('SendTo');?>
 <?php $this->widget('Tabs');?>
 <?php $this->widget('Upload');?>
-<?php if(me()->hasOMEMO()) $this->widget('ChatOmemo');?>
+<?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
 
 <nav>
     <?php $this->widget('Presence');?>
@@ -28,7 +28,7 @@
     </div>
 </main>
 
-<?php if (me()->hasPubsub() && me()->hasUpload()) { ?>
+<?php if ($this->user?->hasPubsub() && $this->user?->hasUpload()) { ?>
     <?php $this->widget('PublishStories');?>
     <?php $this->widget('StoriesViewer');?>
 <?php } ?>

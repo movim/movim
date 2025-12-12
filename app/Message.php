@@ -66,7 +66,7 @@ class Message extends Model
         static::saved(function (Message $message) {
             if ($message->messageFiles != null && $message->messageFiles->isNotEmpty()) {
                 $mid = Message::where('id', $message->id)
-                    ->where('user_id', me()->id)
+                    ->where('user_id', $message->user_id)
                     ->where('jidfrom', $message->jidfrom)
                     ->first()
                     ->mid;
@@ -115,19 +115,7 @@ class Message extends Model
 
     public function scopeJid($query, string $jid)
     {
-        $jidFromToMessages = DB::table('messages')
-            ->where('user_id', me()->id)
-            ->where('jidfrom', $jid)
-            ->unionAll(
-                DB::table('messages')
-                    ->where('user_id', me()->id)
-                    ->where('jidto', $jid)
-            );
-
-        return $query->select('*')->from(
-            $jidFromToMessages,
-            'messages'
-        )->where('user_id', me()->id);
+        return $query->where('jidfrom', $jid)->orWhere('jidto', $jid);
     }
 
     public function reactions()

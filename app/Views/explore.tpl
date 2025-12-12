@@ -2,7 +2,7 @@
 <?php $this->widget('Upload'); ?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
-<?php if(me()->hasOMEMO()) $this->widget('ChatOmemo');?>
+<?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
 
 <?php $this->widget('PostActions');?>
 
@@ -24,7 +24,7 @@
                             <i class="material-symbols">arrow_back</i>
                         </span>
 
-                        <?php if (!me()->isRestricted()) { ?>
+                        <?php if (!$this->user->isRestricted()) { ?>
                             <span class="control icon active divided" onclick="CommunitiesServers_ajaxDiscoverServer()">
                                 <i class="material-symbols">search</i>
                             </span>
@@ -56,6 +56,6 @@
     </div>
 </main>
 
-<?php if (me()->hasPubsub() && me()->hasUpload()) { ?>
+<?php if ($this->user?->hasPubsub() && $this->user?->hasUpload()) { ?>
     <?php $this->widget('PublishStories');?>
 <?php } ?>

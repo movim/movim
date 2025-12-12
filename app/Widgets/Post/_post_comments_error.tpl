@@ -1,4 +1,3 @@
-{if="$c->me->hasPubsub()"}
 <ul class="list middle">
     <li>
         <span class="primary icon gray">
@@ -11,6 +10,7 @@
         </div>
     </li>
 </ul>
+{if="$c->me?->hasPubsub()"}
 <hr />
 <ul class="list active middle flex">
     {if="isset($post)"}

@@ -8,7 +8,7 @@ class Snap extends Base
 {
     public function load()
     {
-        if ($this->me->hasUpload()) {
+        if ($this->me?->hasUpload()) {
             $this->addjs('snap.js');
             $this->addcss('snap.css');
         }

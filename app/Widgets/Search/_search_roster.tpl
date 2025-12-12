@@ -12,7 +12,6 @@
             class="{if="$value->presence && $value->presence->value > 4"}faded{/if}"
         >
             <span class="primary icon bubble active
-                {if="$value->locationDistance"} location{/if}
                 {if="!$value->presence || $value->presence->value > 4"}
                     faded
                 {else}

@@ -2,7 +2,7 @@
 <?php $this->widget('Upload');?>
 <?php $this->widget('Onboarding');?>
 <?php $this->widget('Notifications');?>
-<?php if(me()->hasOMEMO()) $this->widget('ChatOmemo');?>
+<?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
 
 <nav>
     <?php $this->widget('Presence');?>
@@ -30,18 +30,18 @@
         <?php $this->widget('Tabs');?>
         <ul class="tabs" id="navtabs"></ul>
         <?php $this->widget('Vcard4');?>
-        <?php if (me()->hasPubsub()) { ?>
+        <?php if ($this->user?->hasPubsub()) { ?>
             <?php $this->widget('Avatar');?>
             <?php $this->widget('Config');?>
         <?php } ?>
         <?php $this->widget('Account');?>
         <?php $this->widget('EmojisConfig');?>
         <?php $this->widget('NotificationConfig');?>
-        <?php $this->widget('AdHoc', ['to' => me()->session->host]);?>
+        <?php $this->widget('AdHoc', ['to' => $this->user->session->host]);?>
         <?php $this->widget('Blocked');?>
     </div>
 </main>
 
-<?php if (me()->hasPubsub() && me()->hasUpload()) { ?>
+<?php if ($this->user?->hasPubsub() && $this->user?->hasUpload()) { ?>
     <?php $this->widget('PublishStories');?>
 <?php } ?>

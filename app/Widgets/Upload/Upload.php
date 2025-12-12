@@ -12,7 +12,7 @@ class Upload extends Base
 {
     public function load()
     {
-        if ($this->me->hasUpload()) {
+        if ($this->me?->hasUpload()) {
             $this->addjs('upload.js');
             $this->addcss('upload.css');
         }

@@ -1,9 +1,9 @@
-<?php if (isLogged()) { ?>
+<?php if ($this->user) { ?>
     <?php $this->widget('Search');?>
     <?php $this->widget('Upload'); ?>
     <?php $this->widget('Notifications');?>
     <?php $this->widget('SendTo');?>
-    <?php if(me()->hasOMEMO()) $this->widget('ChatOmemo');?>
+    <?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
     <?php $this->widget('PostActions');?>
 
     <nav>
@@ -16,7 +16,7 @@
 <?php } ?>
 
 <main style="background-color: rgb(var(--movim-background))">
-    <?php if (!isLogged()) { ?>
+    <?php if (!$this->user) { ?>
         <aside>
             <?php $this->widget('CommunityDataPublic'); ?>
         </aside>
@@ -59,6 +59,6 @@
     <?php } ?>
 </main>
 
-<?php if (isLogged() && me()->hasPubsub() && me()->hasUpload()) { ?>
+<?php if ($this->user && $this->user?->hasPubsub() && $this->user?->hasUpload()) { ?>
     <?php $this->widget('PublishStories');?>
 <?php } ?>

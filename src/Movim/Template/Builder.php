@@ -3,6 +3,7 @@
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
+
 namespace Movim\Template;
 
 use App\Configuration;
@@ -25,18 +26,14 @@ class Builder
     private string $lang = Locale::DEFAULT_LANGUAGE;
     private Dir $dir = Locale::DEFAULT_DIRECTION;
     private bool $public;
-    private ?User $user = null;
-    private $jsCheck = true;
+    private $js_check = true;
 
     /**
      * Constructor. Determines whether to show the login page to the user or the
      * Movim interface.
      */
-    public function __construct()
+    public function __construct(private ?User $user)
     {
-        if (isLogged()) {
-            $this->user = User::me();
-        }
     }
 
     public function viewsPath(string $file)
@@ -67,7 +64,7 @@ class Builder
     {
         $this->_view = $view;
         $this->public = $public;
-        $template = $this->_view.'.tpl';
+        $template = $this->_view . '.tpl';
 
         ob_start();
 
@@ -122,7 +119,7 @@ class Builder
      */
     public function disableJavascriptCheck()
     {
-        $this->jsCheck = false;
+        $this->js_check = false;
     }
 
     /**

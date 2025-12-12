@@ -14,7 +14,7 @@ class AdminReported extends \Movim\Widget\Base
 
     public function ajaxBlock(string $jid, bool $checked)
     {
-        if (!me()->admin) return;
+        if (!$this->me->admin) return;
 
         $reported = Reported::where('id', $jid)->first();
 
@@ -32,7 +32,7 @@ class AdminReported extends \Movim\Widget\Base
 
     public function ajaxHttpGet()
     {
-        if (!me()->admin) return;
+        if (!$this->me->admin) return;
 
         $this->rpc('MovimTpl.fill', '#adminreported_widget', $this->prepareReported());
     }

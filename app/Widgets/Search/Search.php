@@ -98,7 +98,7 @@ class Search extends Base
                 $view->assign('posts', $posts);
             }
 
-            $contacts = Contact::suggest($key)->limit(10)->get();
+            $contacts = Contact::suggest($this->me)->limit(10)->get();
 
             if (validateJid($key) && $key != $this->me->id) {
                 $contact = new Contact;
@@ -136,7 +136,7 @@ class Search extends Base
     {
         $view = $this->tpl();
 
-        $users = Contact::suggest()
+        $users = Contact::suggest($this->me)
             ->limit(12)
             ->get();
 

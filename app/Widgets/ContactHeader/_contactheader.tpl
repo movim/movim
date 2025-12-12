@@ -55,7 +55,7 @@
             {/if}
             <p class="line active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
                 {$contact->truename}
-                {if="$contact->isBlocked()"}
+                {if="$c->me->isBlocked($contact)"}
                     <span class="tag color red">{$c->__('blocked.title')}</span>
                 {/if}
                 {if="$roster && $roster->group"}

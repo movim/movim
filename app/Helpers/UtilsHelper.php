@@ -1,16 +1,16 @@
 <?php
 
+use App\User;
 use App\Workers\AvatarHandler\AvatarHandler;
 use Monolog\Formatter\LineFormatter;
-use Monolog\Logger;
-use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
+use Monolog\Handler\SyslogHandler;
+use Monolog\Logger;
 use Movim\Image;
 use Movim\ImageSize;
+use Movim\Widget\Base;
 use Moxl\Xec\Payload\Packet;
 use React\Http\Message\Response;
-use React\Http\Message\Uri;
-use React\Promise\Promise;
 use React\Promise\PromiseInterface;
 
 use function React\Async\await;
@@ -18,7 +18,7 @@ use function React\Async\await;
 /**
  * Me
  */
-function me(bool $reload = false)
+function me(bool $reload = false): ?User
 {
     return \App\User::me($reload);
 }
@@ -144,14 +144,6 @@ function compileOpcache()
         }
     }
     error_reporting(1);
-}
-
-/**
- * Check if the session exists
- */
-function isLogged()
-{
-    return (bool)(\Movim\Session::instance())->get('jid');
 }
 
 /**
@@ -825,7 +817,7 @@ function requestPusher(
 /**
  * @desc Request the Templater Worker
  */
-function requestTemplaterWorker(string $widget, string $method, ?Packet $data = null): PromiseInterface
+function requestTemplaterWorker(Base $widget, string $method, ?Packet $data = null): PromiseInterface
 {
     $connector = new React\Socket\FixedUriConnector(
         'unix://' . TEMPLATER_SOCKET,
@@ -835,8 +827,8 @@ function requestTemplaterWorker(string $widget, string $method, ?Packet $data = 
     $browser = new React\Http\Browser($connector);
     $payload = [
         'sid' => SESSION_ID,
-        'jid' => me()->id,
-        'widget' => $widget,
+        'jid' => $widget->me->id,
+        'widget' => $widget->getName(),
         'method' => $method,
         'data' => $data
     ];
@@ -927,7 +919,7 @@ function socketAPITime(): int
  *
  * @return float [km]
  */
-function getDistance(float $latitudeFrom, float $longitudeFrom, float $latitudeTo, float $longitudeTo): float
+/*function getDistance(float $latitudeFrom, float $longitudeFrom, float $latitudeTo, float $longitudeTo): float
 {
     $rad = M_PI / 180;
 
@@ -937,7 +929,7 @@ function getDistance(float $latitudeFrom, float $longitudeFrom, float $latitudeT
         * cos($latitudeTo * $rad) * cos($theta * $rad);
 
     return acos($dist) / $rad * 60 *  1.853;
-}
+}*/
 
 /*
  * @desc Get the URI of a smiley

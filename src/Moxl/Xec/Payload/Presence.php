@@ -16,7 +16,7 @@ class Presence extends Payload
     {
         $jid = explodeJid($stanza->attributes()->from);
 
-        if (me()->hasBlocked($jid['jid'])) {
+        if (me()?->hasBlocked($jid['jid'])) {
             return;
         }
 

@@ -5,7 +5,7 @@
     {else}
         <span class="primary icon bubble">
             {if="$me == null"}
-                <a href="#" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
+                <a href="#" onclick="ChatActions_ajaxGetContact('{$contact->id|echapJS}')">
             {/if}
                 <img src="{$contact->getPicture()}" data-name="{$contact->truename}">
             {if="$me == null"}</a>{/if}

@@ -8,7 +8,7 @@
         <div>
             <p>
                 {$app_title}
-                {if="!$c->me->session"}
+                {if="!$c->me"}
                     <a class="button oppose color" title="{$c->__('button.register')}" href="{$c->route('account')}">
                         {$c->__('button.register')}
                     </a>

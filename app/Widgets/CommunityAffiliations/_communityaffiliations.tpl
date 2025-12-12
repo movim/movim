@@ -52,14 +52,14 @@
         </li>
         {loop="$affiliations->where('affiliation', 'owner')"}
             {$contact = $c->getContact($value->jid)}
-            <li title="{$contact->jid}"
-                onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
+            <li title="{$contact->id}"
+                onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
                 <span class="primary icon bubble">
                     <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
                 </span>
                 <div>
                     <p>{$contact->truename}</p>
-                    <p>{$contact->jid}</p>
+                    <p>{$contact->id}</p>
                 </div>
             </li>
         {/loop}
@@ -75,14 +75,14 @@
     </li>
     {loop="$affiliations->where('affiliation', 'publisher')"}
         {$contact = $c->getContact($value->jid)}
-        <li title="{$contact->jid}"
-            onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
+        <li title="{$contact->id}"
+            onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
             <span class="primary icon bubble">
                 <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
             </span>
             <div>
                 <p>{$contact->truename}</p>
-                <p>{$contact->jid}</p>
+                <p>{$contact->id}</p>
             </div>
         </li>
     {/loop}

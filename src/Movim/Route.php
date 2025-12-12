@@ -11,65 +11,60 @@ use App\User;
 
 class Route extends Base
 {
-    public $_routes;
-    private $_page;
-    private $_redirect;
+    public array $routes = [
+        'about'         => ['x'],
+        'account'       => false,
+        'accountnext'   => ['s', 'err'],
+        'ajax'          => false,
+        'ajaxd'         => false,
+        'admin'         => false,
+        'blog'          => ['f', 'i'],
+        'chat'          => ['f', 'r'],
+        'community'     => ['s', 'n', 'i'],
+        'colors'        => false,
+        'configuration' => false,
+        'contact'       => ['s'],
+        'disconnect'    => ['err'],
+        'explore'       => ['s'],
+        'feed'          => ['s', 'n'],
+        'help'          => false,
+        'infos'         => false,
+        'login'         => ['i'],
+        'main'          => false,
+        'manifest'      => false,
+        'notfound'      => false,
+        'node'          => ['s', 'n', 'i'],
+        'news'          => false,
+        'post'          => ['s', 'n', 'i'],
+        'picture'       => ['url'],
+        'publish'       => false,
+        'room'          => ['r'],
+        'share'         => ['url'],
+        'subscriptions' => false,
+        'system'        => false,
+        'tag'           => ['t', 'i'],
+        'upload'        => ['f'],
+    ];
+    private ?string $_page = null;
+    private ?string $_redirect = null;
 
-    public function __construct()
-    {
-        $this->_routes = [
-            'about'         => ['x'],
-            'account'       => false,
-            'accountnext'   => ['s', 'err'],
-            'ajax'          => false,
-            'ajaxd'         => false,
-            'admin'         => false,
-            'blog'          => ['f', 'i'],
-            'chat'          => ['f', 'r'],
-            'community'     => ['s', 'n', 'i'],
-            'colors'        => false,
-            'configuration' => false,
-            'contact'       => ['s'],
-            'disconnect'    => ['err'],
-            'explore'       => ['s'],
-            'feed'          => ['s', 'n'],
-            'help'          => false,
-            'infos'         => false,
-            'login'         => ['i'],
-            'main'          => false,
-            'manifest'      => false,
-            'notfound'      => false,
-            'node'          => ['s', 'n', 'i'],
-            'news'          => false,
-            'post'          => ['s', 'n', 'i'],
-            'picture'       => ['url'],
-            'publish'       => false,
-            'room'          => ['r'],
-            'share'         => ['url'],
-            'subscriptions' => false,
-            'system'        => false,
-            'tag'           => ['t', 'i'],
-            'upload'        => ['f'],
-            'visio'         => ['f', 's'],
-            'visioaudio'    => ['f', 's'],
-        ];
-    }
+    public function __construct(public ?User $user = null) {}
 
-    public function find($page = null)
+    public function find(?string $page = null)
     {
         $path = explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
         if ($page != null) {
             $this->_page = $page;
-        } else if (isset($path[1]) && isset($this->_routes[$path[1]])) {
+        } else if (isset($path[1]) && isset($this->routes[$path[1]])) {
             $this->_page = $path[1];
 
-            if (is_array($this->_routes[$this->_page])) {
+            if (is_array($this->routes[$this->_page])) {
                 array_shift($path);
                 array_shift($path);
 
                 $i = 0;
-                foreach ($this->_routes[$this->_page] as $key) {
+                foreach ($this->routes[$this->_page] as $key) {
                     if (isset($path[$i])) {
                         $_GET[$key] = $path[$i];
                     }
@@ -92,21 +87,18 @@ class Route extends Base
                 $request[$key] = rawurldecode($value);
             }
 
-            if ($page > 0 && isset($this->_routes[$page])) {
-                header('Location: '. Route::urlize($page, $request));
+            if ($page > 0 && isset($this->routes[$page])) {
+                header('Location: ' . Route::urlize($page, $request));
                 exit;
             }
         }
 
         if (empty($this->_page) || $this->_page == 'main') {
             $this->_page = null;
-
-            $user = User::me();
-
-            $this->_redirect = (isLogged() && $user->chatmain)
+            $this->_redirect = ($this->user?->chatmain)
                 ? 'chat'
                 : 'news';
-        } else if (!isset($this->_routes[$this->_page])) {
+        } else if (!isset($this->routes[$this->_page])) {
             $this->_page = null;
             $this->_redirect = 'notfound';
         }
@@ -121,7 +113,7 @@ class Route extends Base
 
     public static function urlize(string $page, $params = null, array $get = [], $tab = false): ?string
     {
-        $routes = (new Route)->_routes;
+        $routes = (new Route)->routes;
 
         if (isset($routes[$page])) {
             $uri = BASE_URI . $page;

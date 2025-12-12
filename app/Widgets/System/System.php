@@ -12,9 +12,9 @@ class System extends Base
 
         $keys = json_decode(file_get_contents(CACHE_PATH . 'vapid_keys.json'));
 
-        $favoriteEmojis = $this->me->emojis->keyBy('pivot.alias')->map(function ($emoji) {
-            return $emoji->url;
-        });
+        $favoriteEmojis = $this->me?->emojis->keyBy('pivot.alias')->map(function ($emoji) {
+                return $emoji->url;
+            });
 
         $this->view->assign('base_host', BASE_HOST);
         $this->view->assign('base_uri', BASE_URI);

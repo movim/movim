@@ -136,7 +136,7 @@ class Locale
      * @param $key The key to translate
      * @param $args Arguments to pass to sprintf
      */
-    public function translate(string $key, $args = false): string
+    public function translate(string $key, ?array $args = null): string
     {
         if (empty($key)) {
             return $key;
@@ -164,9 +164,6 @@ class Locale
             ) {
                 $string = $this->translations[$skey];
             } else {
-                /*if ($this->language != 'en') {
-                    logInfo('Locale: Translation not found in ['.$this->language.'] for "'.$key.'" : "'.$skey.'"');
-                }*/
                 if (is_string($skey)) {
                     $string = $skey;
                 } else {
@@ -175,7 +172,7 @@ class Locale
                 }
             }
 
-            if ($args != false) {
+            if ($args != null) {
                 array_unshift($args, $string);
                 $string = call_user_func_array("sprintf", $args);
             }

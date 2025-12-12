@@ -75,7 +75,7 @@ class Post extends Model
     public function userAffiliation()
     {
         return $this->hasOne('App\Affiliation', ['server', 'node'], ['server', 'node'])
-            ->where('jid', me()->id);
+            ->where('jid', me()?->id);
     }
 
     public function userViews()
@@ -220,13 +220,13 @@ class Post extends Model
         return $query->whereNull('posts.parent_id');
     }
 
-    public function scopeRestrictUserHost($query)
+    public function scopeRestrictUserHost($query, User $user)
     {
         $configuration = Configuration::get();
 
         if ($configuration->restrictsuggestions) {
-            $query->whereIn('id', function ($query) {
-                $host = me()->session->host;
+            $query->whereIn('id', function ($query) use ($user) {
+                $host = $user->session->host;
                 $query->select('id')
                     ->from('posts')
                     ->where('server', 'like', '%.' . $host)
@@ -848,8 +848,10 @@ class Post extends Model
         return \App\Post::find($this->parent_id);
     }
 
-    public function isMine(User $me, ?bool $force = false): bool
+    public function isMine(?User $me, ?bool $force = false): bool
     {
+        if (!$me) return false;
+
         if ($force) {
             return ($this->aid == $me->id);
         }

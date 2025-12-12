@@ -9,6 +9,6 @@ class NotfoundController extends Base
     public function dispatch()
     {
         $this->page->setTitle(__('page.not_found'));
-        $this->jsCheck = false;
+        $this->js_check = false;
     }
 }

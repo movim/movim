@@ -1,4 +1,4 @@
-<?php if ($this->jsCheck) { ?>
+<?php if ($this->js_check) { ?>
 <noscript>
     <style type="text/css">main {display: none;}</style>
     <ul class="list thick">

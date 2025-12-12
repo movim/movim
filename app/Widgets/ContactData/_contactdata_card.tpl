@@ -77,11 +77,7 @@
                     <br />
                 {/if}
 
-                {if="$contact->locationDistance != null && $contact->locationUrl != null"}
-                    <i class="material-symbols icon-text">place</i>
-                    <a href="{$contact->locationUrl}" target="_blank">{$contact->locationDistance|humanDistance}</a> - {$contact->loctimestamp|prepareDate:true,true}
-                    <br />
-                {elseif="$contact->hasLocation() && $contact->locationUrl != null"}
+                {if="$contact->hasLocation() && $contact->locationUrl != null"}
                     <i class="material-symbols icon-text">place</i>
                     <a href="{$contact->locationUrl}" target="_blank">{$c->__('location.last_published')}</a> - {$contact->loctimestamp|prepareDate:true,true}
                     <br />

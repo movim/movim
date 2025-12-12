@@ -33,7 +33,7 @@
                                 {$c->__('blog.title', $contact->truename)}
                             </p>
                             <p>
-                                <a href="{$c->route('blog', $contact->jid)}">
+                                <a href="{$c->route('blog', $contact->id)}">
                                     {$c->__('communitydata.num', $postsCount)}
                                 </a>
                             </p>
@@ -46,14 +46,14 @@
         <header>
             <ul class="list middle">
                 <li>
-                    {if="isLogged()"}
-                    <span class="primary icon active gray" onclick="history.back()">
-                        <i class="material-symbols">arrow_back</i>
-                    </span>
+                    {if="$c->me != null"}
+                        <span class="primary icon active gray" onclick="history.back()">
+                            <i class="material-symbols">arrow_back</i>
+                        </span>
                     {else}
-                    <span class="primary icon gray">
-                        <i class="material-symbols">label</i>
-                    </span>
+                        <span class="primary icon gray">
+                            <i class="material-symbols">label</i>
+                        </span>
                     {/if}
                     <div>
                         <p>

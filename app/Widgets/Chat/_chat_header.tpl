@@ -265,7 +265,7 @@
             {if="$roster && $roster->firstUnseenStory"}
                 onclick="StoriesViewer_ajaxHttpGet({$roster->firstUnseenStory->id})"
             {else}
-                onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"
+                onclick="ChatActions_ajaxGetContact('{$contact->id|echapJS}')"
             {/if}>
                 <img src="{if="$roster"}{$roster->getPicture()}{else}{$contact->getPicture()}{/if}">
             </span>
@@ -312,29 +312,25 @@
                         <i class="material-symbols icon blink">call_end</i>
                     </button>
                 {/if}
-                <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
+                <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->id|echapJS}')">
                     {if="$roster"}
                         {$roster->truename}
-                    {elseif="strpos($contact->jid, '/') != false"}
-                        {$exploded = explodeJid($contact->jid)}
+                    {elseif="strpos($contact->id, '/') != false"}
+                        {$exploded = explodeJid($contact->id)}
                         {$exploded.resource}
                     {else}
                         {$contact->truename}
                     {/if}
 
-                    {if="$contact->isBlocked()"}
+                    {if="$c->me->isBlocked($contact)"}
                         <span class="tag color red">{$c->__('blocked.title')}</span>
                     {/if}
                 </p>
-                <p class="compose first line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"></p>
-                <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
+                <p class="compose first line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->id|echapJS}')"></p>
+                <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->id|echapJS}')">
                     {if="$contactincall"}
                         <i class="material-symbols icon green blink">phone_in_talk</i>
                         {$c->__('visio.in_call')} •
-                    {/if}
-                    {if="$contact->locationDistance != null"}
-                        <i class="material-symbols">place</i>
-                        {$contact->locationDistance|humanDistance} •
                     {/if}
                     {if="$roster && $roster->presence && $roster->presence->seen"}
                         {$c->__('last.title')} {$roster->presence->seen|prepareDate:true,true}
@@ -343,7 +339,7 @@
                     {elseif="$roster && $roster->presence"}
                         {$roster->presence->presencetext}
                     {else}
-                        {$contact->jid}
+                        {$contact->id}
                     {/if}
                 </p>
             </div>
@@ -351,7 +347,7 @@
     </ul>
     <ul class="list context_menu active">
         {if="!$contact->isFromMuc()"}
-            <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
+            <li onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
                 <span class="primary icon gray">
                     <i class="material-symbols">person</i>
                 </span>
@@ -360,7 +356,7 @@
                 </div>
             </li>
         {/if}
-        <li onclick="Chat_ajaxClearHistory('{$contact->jid|echapJS}')">
+        <li onclick="Chat_ajaxClearHistory('{$contact->id|echapJS}')">
             <span class="primary icon gray">
                 <i class="material-symbols">clear_all</i>
             </span>
@@ -388,8 +384,8 @@
             </li>
         {/if}
         <hr />
-        {if="$contact->isBlocked()"}
-            <li onclick="ChatActions_ajaxUnblock('{$contact->jid|echapJS}')">
+        {if="$c->me->isBlocked($contact)"}
+            <li onclick="ChatActions_ajaxUnblock('{$contact->id|echapJS}')">
                 <span class="primary icon gray">
                     <i class="material-symbols">check_circle</i>
                 </span>
@@ -398,7 +394,7 @@
                 </div>
             </li>
         {else}
-            <li onclick="ChatActions_ajaxBlock('{$contact->jid|echapJS}'); Notifications_ajaxRefuse('{$contact->jid|echapJS}');">
+            <li onclick="ChatActions_ajaxBlock('{$contact->id|echapJS}'); Notifications_ajaxRefuse('{$contact->id|echapJS}');">
                 <span class="primary icon gray">
                     <i class="material-symbols">block</i>
                 </span>

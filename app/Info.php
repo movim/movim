@@ -63,13 +63,13 @@ class Info extends Model
         });
     }
 
-    public function scopeRestrictUserHost($query)
+    public function scopeRestrictUserHost($query, User $user)
     {
         $configuration = Configuration::get();
 
         if ($configuration->restrictsuggestions) {
-            $query->whereIn('server', function ($query) {
-                $host = me()->session->host;
+            $query->whereIn('server', function ($query) use ($user) {
+                $host = $user->session->host;
                 $query->select('server')
                     ->from('infos')
                     ->where('server', 'like', '%.' . $host);

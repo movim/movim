@@ -12,10 +12,10 @@ use Movim\RPC;
 
 class Front extends Base
 {
-    public function handle($forcePage = null)
+    public function handle()
     {
-        $r = new Route;
-        $page = $r->find($forcePage);
+        $r = new Route($this->user);
+        $page = $r->find();
 
         if ($page === null) {
             $this->redirect($r->getRedirect());
@@ -24,32 +24,17 @@ class Front extends Base
         }
     }
 
-    /**
-     * Here we load, instanciate and execute the correct controller
-     */
     public function runRequest($request)
     {
         if ($request == 'ajax' || $request == 'ajaxd') {
-            $payload = json_decode(file_get_contents('php://input'));
+            $content = file_get_contents('php://input');
 
-            if ($payload && $payload->b && $payload->b->c) {
-                $c = $this->loadController($payload->b->c);
-                if (is_callable([$c, 'load'])) $c->load();
-
-                $c->checkSession();
-                if ($c->name == 'login') {
-                    header('HTTP/1.0 403 Forbidden');
-                    exit;
-                }
-            } else {
-                header('HTTP/1.0 403 Forbidden');
-                exit;
-            }
-        }
-
-        // Simple ajax request to a Widget
-        if ($request === 'ajax') {
-            $payload = json_decode(file_get_contents('php://input'));
+            $payload = $request === 'ajax'
+                ? json_decode($content) // Simple ajax request to a Widget
+                : requestAPI('ajax', post: [ // Ajax request that is going to the daemon
+                    'sid' => SESSION_ID,
+                    'json' => rawurlencode($content)
+                ]);
 
             if ($payload) {
                 $rpc = new RPC;
@@ -59,46 +44,23 @@ class Front extends Base
             return;
         }
 
-        // Ajax request that is going to the daemon
-        if ($request === 'ajaxd') {
-            requestAPI('ajax', post: [
-                'sid' => SESSION_ID,
-                'json' => rawurlencode(file_get_contents('php://input'))
-            ]);
+        $className = 'App\\Controllers\\' . ucfirst($request) . 'Controller';
+        $c = new $className($this->user);
+        $c->load();
 
-            $rpc = new RPC;
-            $rpc->writeJSON();
-            return;
-        }
-
-        $c = $this->loadController($request);
-
-        if (is_callable([$c, 'load'])) {
-            $c->name = $request;
-            $c->load();
-
-            if ($c->set_cookie) {
-                Cookie::set();
-            } else {
-                Cookie::clearCookieHeader();
-            }
-
-            $c->checkSession();
-
-            if ($request != $c->name) {
-                $this->redirect('login');
-            }
-
-            $c->dispatch();
-            $c->display();
+        if ($c->set_cookie) {
+            Cookie::set();
         } else {
-            logInfo('Could not call the load method on the current controller');
+            Cookie::clearCookieHeader();
         }
-    }
 
-    public function loadController(string $page)
-    {
-        $className = 'App\\Controllers\\' . ucfirst($page) . 'Controller';
-        return new $className();
+        $c->checkSession();
+
+        if ($request != $c->name) {
+            $this->redirect('login');
+        }
+
+        $c->dispatch();
+        $c->display();
     }
 }

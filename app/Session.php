@@ -59,11 +59,7 @@ class Session extends Model
             and user_id = \'' . $this->user_id . '\'
             group by jidfrom) as top
             '), 'top.id', '=', 'rosters.jid', 'left outer')
-            ->orderByRaw(
-                DB::connection()->getDriverName() == 'sqlite'
-                    ? '(top.number is null), top.number desc'
-                    : '-top.number'
-            )
+            ->orderByRaw('-top.number')
             ->orderBy('jid');
     }
 
@@ -75,12 +71,12 @@ class Session extends Model
                 group by jid) as presences
             '), 'presences.pjid', '=', 'rosters.jid')
             ->where('value', '<', 5)
-            ->whereNotIn('rosters.jid', function($query){
+            ->whereNotIn('rosters.jid', function ($query) {
                 $query->select('jid')
                     ->from('open_chats')
-                    ->where('user_id', $this->user->id);
+                    ->where('user_id', $this->user_id);
             })
-            ->where('rosters.jid', '!=', $this->user->id)
+            ->where('rosters.jid', '!=', $this->user_id)
             ->with('presence.capability');
     }
 
@@ -108,7 +104,7 @@ class Session extends Model
 
         $configuration = Configuration::get();
         if ($configuration->restrictsuggestions) {
-            $host = me()->session->host;
+            $host = $this->user->session->host;
             $where .= ' where server like \'%.' . $host . '\'';
         }
 
@@ -160,7 +156,7 @@ class Session extends Model
     {
         return Info::where('parent', $this->host)
             ->whereCategory('conference')
-            ->whereDoesntHave('identities', function ($query)  {
+            ->whereDoesntHave('identities', function ($query) {
                 $query->where('category', 'gateway');
             })
             ->get();
@@ -171,7 +167,7 @@ class Session extends Model
         return Info::where('parent', $this->host)
             ->whereCategory('conference')
             ->whereType('text')
-            ->whereDoesntHave('identities', function ($query)  {
+            ->whereDoesntHave('identities', function ($query) {
                 $query->where('category', 'gateway');
             })
             ->first();

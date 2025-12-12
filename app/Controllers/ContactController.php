@@ -19,7 +19,7 @@ class ContactController extends Base
             $this->redirect('chat');
         }
 
-        if (!isLogged() && $this->fetchGet('s')) {
+        if (!$this->user && $this->fetchGet('s')) {
             $this->redirect('blog', [$this->fetchGet('s')]);
         }
     }

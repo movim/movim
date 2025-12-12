@@ -21,7 +21,7 @@ class Contact extends Model
         return $this->belongsTo('App\User', 'id');
     }
 
-    public function scopeSuggest($query, ?string $like = null)
+    public function scopeSuggest($query, User $user, ?string $like = null)
     {
         return $query
             ->whereIn('id', function ($query) use ($like) {
@@ -32,18 +32,18 @@ class Contact extends Model
                         $query->where('id', 'like', '%' . $like . '%');
                     });
             })
-            ->whereNotIn('id', function ($query) {
+            ->whereNotIn('id', function ($query) use ($user) {
                 $query->select('jid')
                     ->from('rosters')
-                    ->where('session_id', User::me()->session->id);
+                    ->where('session_id', $user->session->id);
             })
             ->orderByPresence()
-            ->where('id', '!=', User::me()->id);
+            ->where('id', '!=', $user->id);
     }
 
     public function getColorAttribute(): string
     {
-        return stringToColor($this->jid);
+        return stringToColor($this->id);
     }
 
     public function scopeOrderByPresence($query)
@@ -260,28 +260,6 @@ class Contact extends Model
             : null;
     }
 
-    public function getLocationDistanceAttribute(): ?float
-    {
-        if (
-            in_array('loctimestamp', $this->attributes) && $this->attributes['loctimestamp'] != null
-            && \Carbon\Carbon::now()->subDay()->timestamp < strtotime($this->attributes['loctimestamp'])
-            && $this->attributes['loclatitude'] != null && $this->attributes['loclongitude'] != null
-        ) {
-            $me = User::me()->contact;
-
-            if ($me->attributes['loclatitude'] != null && $me->attributes['loclongitude'] != null) {
-                return getDistance(
-                    $this->attributes['loclatitude'],
-                    $this->attributes['loclongitude'],
-                    $me->attributes['loclatitude'],
-                    $me->attributes['loclongitude'],
-                );
-            }
-        }
-
-        return null;
-    }
-
     public function getLocationUrlAttribute(): ?string
     {
         if (
@@ -311,11 +289,6 @@ class Contact extends Model
         }
 
         return explodeJid($this->id)['username'] ?? $this->id;
-    }
-
-    public function getJidAttribute(): ?string
-    {
-        return $this->id;
     }
 
     public function getAge()
@@ -365,11 +338,6 @@ class Contact extends Model
         );
     }
 
-    public function isBlocked(): bool
-    {
-        return me()->hasBlocked($this->id, true);
-    }
-
     public function isEmpty(): bool
     {
         $this->isValidDate();
@@ -401,7 +369,7 @@ class Contact extends Model
 
     public function isFromMuc(): bool
     {
-        return strpos($this->jid, '/') !== false;
+        return strpos($this->id, '/') !== false;
     }
 
     public function isOld(): bool

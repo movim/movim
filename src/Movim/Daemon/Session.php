@@ -51,7 +51,7 @@ class Session
 
     public function attach(ConnectionInterface $conn)
     {
-        $this->clients->attach($conn);
+        $this->clients->offsetSet($conn);
 
         if (config('daemon.verbose')) {
             echo colorize($this->sid, 'yellow') . " : " . colorize($conn->resourceId . " connected\n", 'green');
@@ -73,7 +73,7 @@ class Session
 
     public function detach($loop, ConnectionInterface $conn)
     {
-        $this->clients->detach($conn);
+        $this->clients->offsetUnset($conn);
 
         if (config('daemon.verbose')) {
             echo colorize($this->sid, 'yellow') . " : " . colorize($conn->resourceId . " deconnected\n", 'red');

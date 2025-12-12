@@ -1,7 +1,7 @@
 <?php $this->widget('Search');?>
 <?php $this->widget('Upload'); ?>
 <?php $this->widget('Notifications');?>
-<?php if(me()->hasOMEMO()) $this->widget('ChatOmemo');?>
+<?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
 
 <nav>
     <?php $this->widget('Presence');?>
@@ -20,10 +20,10 @@
     </div>
 </main>
 
-<?php if (me()->hasUpload()) { ?>
+<?php if ($this->user?->hasUpload()) { ?>
     <?php $this->widget('Snap');?>
     <?php $this->widget('Draw');?>
-    <?php if (me()->hasPubsub()) { ?>
+    <?php if ($this->user?->hasPubsub()) { ?>
         <?php $this->widget('PublishStories');?>
     <?php } ?>
 <?php } ?>

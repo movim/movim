@@ -6,23 +6,28 @@
 
 namespace Movim\Controller;
 
+use App\User;
 use Movim\Template\Builder;
 use Movim\Route;
 
 class Base
 {
-    public $name = 'main';          // The name of the current page
-    public $unique = false;         // Only one WS for this page
-    protected $session_only = false;// The page is protected by a session ?
-    protected $set_cookie = true;   // Set a fresh cookie
-    protected $raw = false;         // Display only the content ?
-    protected $public = false;      // It's a public page
-    protected $jsCheck = true;     // Check is Javascript is enabled
-    protected $page;
+    public string $name = 'main'; // The name of the current page
+    protected bool $session_only = false; // The page is protected by a session?
+    protected bool $set_cookie = true; // Set a fresh cookie
+    protected bool $raw = false; // Display only the content?
+    protected bool $public = false; // It's a public page
+    protected bool $js_check = true; // Browser check if Javascript is enabled
+    protected ?Builder $page;
 
-    public function __construct()
+    public function __construct(protected ?User $user = null)
     {
-        $this->page = new Builder;
+        $this->page = new Builder($this->user);
+        $this->name = str_replace(
+            'controller',
+            '',
+            strtolower((new \ReflectionClass($this))->getShortName())
+        );
     }
 
     /**
@@ -57,8 +62,7 @@ class Base
 
     protected function checkSession()
     {
-        if ($this->session_only
-        && !isLogged()) {
+        if ($this->session_only && !$this->user) {
             $this->name = 'login';
         }
     }
@@ -66,7 +70,7 @@ class Base
     protected function redirect($page, $params = false)
     {
         $url = Route::urlize($page, $params);
-        header('Location: '. $url);
+        header('Location: ' . $url);
         exit;
     }
 
@@ -111,9 +115,9 @@ class Base
 
         $this->page->addScript('movim_visio.js');
 
-        $content = new Builder;
+        $content = new Builder($this->user);
 
-        if ($this->jsCheck == false) {
+        if ($this->js_check == false) {
             $content->disableJavascriptCheck();
         }
 
@@ -122,12 +126,14 @@ class Base
         $built = $content->build('common');
         $this->page->setCommonContent($built);
 
-        if ($headers
-         && array_key_exists('Accept', $headers)
-         && array_key_exists('Content-Type', $headers)
-         && $this->fetchGet('soft')
-         && $headers['Accept'] == 'application/json'
-         && $headers['Content-Type'] == 'application/json') {
+        if (
+            $headers
+            && array_key_exists('Accept', $headers)
+            && array_key_exists('Content-Type', $headers)
+            && $this->fetchGet('soft')
+            && $headers['Accept'] == 'application/json'
+            && $headers['Content-Type'] == 'application/json'
+        ) {
             $built = $content->build($this->name);
             $this->page->setContent($built);
 
@@ -150,11 +156,7 @@ class Base
         }
     }
 
-    public function load()
-    {
-    }
+    public function load() {}
 
-    public function dispatch()
-    {
-    }
+    public function dispatch() {}
 }

@@ -10,7 +10,7 @@ class CommunitiesTags extends Base
     {
         $posts = \App\Post::withoutComments()
             ->restrictNSFW()
-            ->restrictUserHost()
+            ->restrictUserHost($this->me)
             ->recents()
             ->orderBy('posts.published', 'desc');
 

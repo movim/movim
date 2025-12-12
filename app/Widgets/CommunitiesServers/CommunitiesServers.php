@@ -77,7 +77,7 @@ class CommunitiesServers extends Base
     {
         $servers = \App\Info::whereCategory('pubsub')
             ->whereType('service')
-            ->restrictUserHost()
+            ->restrictUserHost($this->me)
             ->orderBy('occupants', 'desc')
             ->get();
 

@@ -1,6 +1,6 @@
 <li>
     <span
-        onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')"
+        onclick="MovimUtils.reload('{$c->route('contact', $me->id)}')"
         class="primary icon bubble status
         {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}
     ">
@@ -12,7 +12,7 @@
         <i class="material-symbols">exit_to_app</i>
     </span>
     <div>
-        <p class="line bold normal" onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')">
+        <p class="line bold normal" onclick="MovimUtils.reload('{$c->route('contact', $me->id)}')">
             {$me->truename}
         </p>
     </div>

@@ -97,7 +97,7 @@ class Communities extends Base
     {
         return \App\Post::withoutComments()
             ->restrictNSFW()
-            ->restrictUserHost()
+            ->restrictUserHost($this->me)
             ->recents()
             ->orderBy('posts.published', 'desc')
             ->where('open', true);

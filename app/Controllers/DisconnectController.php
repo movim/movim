@@ -6,14 +6,12 @@ use Movim\Controller\Base;
 use Movim\Cookie;
 use Movim\Session;
 
-use App\User;
-
 class DisconnectController extends Base
 {
     public function dispatch()
     {
         // Just in case
-        User::me()->encryptedPasswords()->delete();
+        me()?->encryptedPasswords()->delete();
         requestAPI('disconnect', post: ['sid' => SESSION_ID]);
         Session::dispose();
 

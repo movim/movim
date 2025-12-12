@@ -71,12 +71,6 @@
                     {/if}
                     <br />
                 {/if}
-
-                {if="$contact->locationDistance != null"}
-                    <i class="material-symbols icon-text">place</i>
-                    <a href="{$contact->locationUrl}" target="_blank">{$contact->locationDistance|humanDistance}</a> - {$contact->loctimestamp|prepareDate:true,true}
-                    <br />
-                {/if}
             </p>
         </div>
     </li>

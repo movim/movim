@@ -15,7 +15,7 @@ class PublishStories extends Base
     {
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
 
-        if ($this->me->hasUpload()) {
+        if ($this->me?->hasUpload()) {
             $this->addjs('publishstories.js');
             $this->addcss('publishstories.css');
         }

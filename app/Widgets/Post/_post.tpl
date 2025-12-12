@@ -45,7 +45,7 @@
             {if="$post->isMicroblog()"}
                 {if="$post->contact"}
                     <span class="icon primary bubble">
-                        <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
+                        <a href="#" onclick="Post_ajaxGetContact('{$contact->id}')">
                             <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
                         </a>
                     </span>
@@ -96,7 +96,7 @@
                                     <img src="{$contact->getPicture()}">
                                 </span>
                             {/if}
-                            <a href="#" onclick="if (typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
+                            <a href="#" onclick="if (typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->id}'); } else { Group_ajaxGetContact('{$contact->id}'); } ">
                         {/if}
                             {$contact->truename}
                         {if="!$public"}</a>{/if} •

@@ -46,7 +46,7 @@ use Movim\Widget\Wrapper;
 $bootstrap = new Bootstrap;
 $bootstrap->boot();
 
-$rqst = new Front;
+$rqst = new Front(me());
 $rqst->handle();
 
 Wrapper::getInstance(false);

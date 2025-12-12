@@ -31,7 +31,7 @@
                 {/if}
             {/loop}
         {/if}
-        <li onclick="ContactHeader_ajaxChat('{$contact->jid|echapJS}')">
+        <li onclick="ContactHeader_ajaxChat('{$contact->id|echapJS}')">
             <span class="primary icon gray">
                 <i class="material-symbols">comment</i>
             </span>
