@@ -36,6 +36,20 @@ class Front extends Base
                     'json' => rawurlencode($content)
                 ]);
 
+            if ($payload && $payload->b && $payload->b->c) {
+                $c = $this->loadController($payload->b->c);
+                if (is_callable([$c, 'load'])) $c->load();
+
+                $c->checkSession();
+                if ($c->name == 'login') {
+                    header('HTTP/1.0 403 Forbidden');
+                    exit;
+                }
+            } else {
+                header('HTTP/1.0 403 Forbidden');
+                exit;
+            }
+
             if ($payload) {
                 $rpc = new RPC;
                 $rpc->handleJSON($payload->b);
@@ -44,8 +58,7 @@ class Front extends Base
             return;
         }
 
-        $className = 'App\\Controllers\\' . ucfirst($request) . 'Controller';
-        $c = new $className($this->user);
+        $c = $this->loadController($request);
         $c->load();
 
         if ($c->set_cookie) {
@@ -62,5 +75,11 @@ class Front extends Base
 
         $c->dispatch();
         $c->display();
+    }
+
+    public function loadController(string $page)
+    {
+        $className = 'App\\Controllers\\' . ucfirst($page) . 'Controller';
+        return new $className();
     }
 }
