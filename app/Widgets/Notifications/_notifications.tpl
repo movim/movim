@@ -88,7 +88,7 @@
                 <li>
                     {if="$value->contact"}
                         <span class="primary icon bubble active small"
-                            onclick="MovimUtils.reload('{$c->route('contact', $value->contact->jid)}')">
+                            onclick="MovimUtils.reload('{$c->route('contact', $value->contact->id)}')">
                             <img src="{$value->contact->getPicture()}">
                         </span>
                     {else}
