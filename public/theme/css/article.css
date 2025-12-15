@@ -14,7 +14,7 @@ article footer {
 
 article>ul.list.thick:first-child>li>span {
     align-self: start;
-    padding-top: 2rem;
+    top: 2rem;
 }
 
 article header ul:not(:first-child) {
