@@ -735,6 +735,7 @@ ul.list li>div.bubble.file div.file video {
     display: block;
     width: auto;
     max-height: 200px;
+    height: 200px;
     margin-bottom: 1rem;
 }
 
