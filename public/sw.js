@@ -79,3 +79,13 @@ self.addEventListener('fetch', (e) => {
         caches.match(e.request).then((response) => response || fetch(e.request)),
     );
 });
+
+// Workaround for https://issues.chromium.org/issues/466790291
+self.addEventListener('install', e => {
+    e.addRoutes({
+        condition: {
+            urlPattern: new URLPattern({})
+        },
+        source: "fetch-event"
+    });
+});
