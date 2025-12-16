@@ -2,19 +2,28 @@
 
 namespace Moxl\Xec;
 
+use App\User;
 use Moxl\Xec\Payload\Payload;
 use Movim\Session;
+use Movim\Widget\Base;
 
 abstract class Action extends Payload
 {
     protected $stanzaId;
+    protected ?User $me;
+
+    final public function __construct(?Base $widget = null)
+    {
+        $this->me = $widget?->me;
+        return parent::__construct();
+    }
 
     final public function store(?string $customId = null)
     {
         $session = Session::instance();
 
         // Generating the iq key.
-        $this->stanzaId = $customId ?? \generateKey(6);
+        $this->stanzaId = $customId ?? \generateKey(12);
 
         $session->set('id', $this->stanzaId);
         $session->set($this->stanzaId, $this, true);

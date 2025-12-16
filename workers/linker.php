@@ -37,7 +37,7 @@ $wrapper->registerAll($bootstrap->getWidgets());
 
 $xmppSocket = null;
 
-$parser = new \Moxl\Parser(fn (\SimpleXMLElement $node) => \Moxl\Xec\Handler::handle($node));
+$parser = new \Moxl\Parser(fn (\SimpleXMLElement $node) => (new \Moxl\Xec\Handler())->handle($node));
 
 $timestampReceive = $timestampSend = $sqlQueryExecuted = time();
 

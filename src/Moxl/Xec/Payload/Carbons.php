@@ -2,6 +2,8 @@
 
 namespace Moxl\Xec\Payload;
 
+use Moxl\Xec\Handler;
+
 class Carbons extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -46,7 +48,7 @@ class Carbons extends Payload
                     // We get carbons for calls other clients make as well as calls other clients receive
                     // So make sure we only ring when we see a call _to_ us
                     // Or with no "to", which means from ourselves to ourselves, like another client's <accept>
-                    \Moxl\Xec\Handler::handleNode($jingleMessages[0], $message);
+                    (new Handler)->handleNode($jingleMessages[0], $message);
                 }
             }
         }

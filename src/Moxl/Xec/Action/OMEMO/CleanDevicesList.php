@@ -4,7 +4,6 @@ namespace Moxl\Xec\Action\OMEMO;
 
 use App\Bundle;
 use Moxl\Stanza\Disco;
-use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\Delete;
 

@@ -21,7 +21,7 @@ use App\User as DBUser;
 
 class Bootstrap
 {
-    public function boot($dbOnly = false)
+    public function boot(?bool $dbOnly = false): ?DBSession
     {
         $this->loadHelpers();
         $this->setLogs();
@@ -35,13 +35,15 @@ class Bootstrap
         $this->loadCapsule();
 
         if ($dbOnly) {
-            return;
+            return null;
         }
 
         //Check if vital system need is OK
         $this->checkSystem();
-        $this->checkSession();
+        $session = $this->checkSession();
         $this->loadLanguage();
+
+        return $session;
     }
 
     private function checkSystem()
@@ -219,7 +221,7 @@ class Bootstrap
         register_shutdown_function([$this, 'fatalErrorShutdownHandler']);
     }
 
-    private function checkSession()
+    private function checkSession(): ?DBSession
     {
         if (is_string(SESSION_ID)) {
             $process = (bool)requestAPI('exists', post: ['sid' => SESSION_ID]);
@@ -231,15 +233,19 @@ class Bootstrap
                 // There a session in the DB but no process
                 if (!$process) {
                     $session->delete();
-                    return;
+                    return null;
                 }
 
                 $session->loadMemory();
+
+                return $session;
             } elseif ($process) {
                 // A process but no session in the db
                 requestAPI('disconnect', post: ['sid' => SESSION_ID]);
             }
         }
+
+        return null;
     }
 
     public function getWidgets()

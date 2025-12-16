@@ -6,7 +6,7 @@ use Movim\Session;
 
 class Handler
 {
-    public static function handle(\SimpleXMLElement $child)
+    public function handle(\SimpleXMLElement $child)
     {
         $id = (in_array($child->getName(), ['iq', 'presence', 'message']))
             ? (string)$child->attributes()->id
@@ -35,7 +35,7 @@ class Handler
             // XMPP returned an error
             if ($error) {
                 $errors = $error->children();
-                $errorid = Handler::formatError($errors->getName());
+                $errorid = $this->formatError($errors->getName());
 
                 $message = null;
 
@@ -69,12 +69,12 @@ class Handler
 
             $handledFirst = $handledSecond = $handledThird = false;
 
-            $handledFirst = Handler::handleNode($child);
+            $handledFirst = $this->handleNode($child);
 
             foreach ($child->children() as $s1) {
-                $handledSecond = Handler::handleNode($s1, $child);
+                $handledSecond = $this->handleNode($s1, $child);
                 foreach ($s1->children() as $s2) {
-                    $handledThird = Handler::handleNode($s2, $child);
+                    $handledThird = $this->handleNode($s2, $child);
                 }
             }
 
@@ -84,7 +84,7 @@ class Handler
         }
     }
 
-    public static function handleNode($s, ?\SimpleXMLElement $sparent = null): bool
+    public function handleNode($s, ?\SimpleXMLElement $sparent = null): bool
     {
         $name = $s->getName();
         $ns = '';
@@ -103,12 +103,12 @@ class Handler
             $node = (string)$s->items->attributes()->node;
             $hash = md5($name . $ns . $node);
             logInfo('Handler : Searching a payload for "' . $name . ':' . $ns . ' [' . $node . ']", "' . $hash . '"');
-            $matchPayloadWithNode = Handler::searchPayload($hash, $s, $sparent);
+            $matchPayloadWithNode = $this->searchPayload($hash, $s, $sparent);
         }
 
         $hash = md5($name . $ns);
         logInfo('Handler : Searching a payload for "' . $name . ':' . $ns . '", "' . $hash . '"');
-        $matchPayload = Handler::searchPayload($hash, $s, $sparent);
+        $matchPayload = $this->searchPayload($hash, $s, $sparent);
 
         if (!$matchPayloadWithNode && !$matchPayload) {
             return false;
@@ -117,7 +117,7 @@ class Handler
         return true;
     }
 
-    public static function searchPayload($hash, $s, ?\SimpleXMLElement $sparent = null): bool
+    private function searchPayload($hash, $s, ?\SimpleXMLElement $sparent = null): bool
     {
         $hashToClass = [
             '9a534a8b4d6324e23f4187123e406729' => 'Message',
@@ -223,7 +223,7 @@ class Handler
      * A simple function to format a error-string-text to a
      * camelTypeText
      */
-    public static function formatError(string $string): string
+    private function formatError(string $string): string
     {
         $words = explode('-', $string);
         $f = 'error';

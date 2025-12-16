@@ -2,9 +2,11 @@
 
 namespace Moxl;
 
+use XMLParser;
+
 class Parser
 {
-    private $parser;
+    private ?XMLParser $parser = null;
     private int $depth = 0;
     private $node = null;
     private $handler = null;
@@ -20,7 +22,7 @@ class Parser
     public function reset()
     {
         if ($this->parser) {
-            xml_parser_free($this->parser);
+            unset($this->parser);
         }
 
         $this->parser = xml_parser_create();
@@ -131,6 +133,6 @@ class Parser
 
     public function __destruct()
     {
-        xml_parser_free($this->parser);
+        unset($this->parser);
     }
 }
