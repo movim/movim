@@ -12,8 +12,8 @@
             </div>
         </li>
     {elseif="get_class($value) == 'App\Contact'"}
-        <li onclick="Search.chat('{$value->jid|echapJS}', false)" data-jid="{$value->jid|echapJS}">
-            <span class="primary icon bubble" data-counter="{$c->me->unreads($value->jid)}">
+        <li onclick="Search.chat('{$value->id|echapJS}', false)" data-jid="{$value->id|echapJS}">
+            <span class="primary icon bubble" data-counter="{$c->me->unreads($value->id)}">
                 <img src="{$value->getPicture()}">
             </span>
             <span class="control icon gray">

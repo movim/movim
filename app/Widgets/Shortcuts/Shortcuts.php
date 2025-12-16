@@ -76,8 +76,10 @@ class Shortcuts extends \Movim\Widget\Base
                 $element = \App\Contact::firstOrNew(['id' => $jid]);
             }
 
-            $element->counter = $counter;
-            $shortcuts->push($element);
+            if ($counter > 0) {
+                $element->counter = $counter;
+                $shortcuts->push($element);
+            }
         }
 
         $this->rpc(
