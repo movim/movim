@@ -93,6 +93,7 @@ class Rooms extends Base
                 $muji->conference->getPicture(),
                 time: 5,
                 action: $this->route('chat', [$muji->jidfrom, 'room']),
+                actionButton: $this->__('button.reply'),
                 execute: 'Search.chat(\'' . echapJS($muji->jidfrom) . '\', true)'
             );
 

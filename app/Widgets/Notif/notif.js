@@ -149,33 +149,51 @@ var Notif = {
         target = document.getElementById('snackbar');
         target.innerHTML = '';
     },
-    desktop: function (title, body, picture, action, execute, force) {
+    desktop: function (title, body, picture, action, actionButton, group, timestamp, execute, force) {
         if (!force && (Notif.inhibed == true
             || Notif.focused
             || typeof Notification === 'undefined')) return;
 
+        if (!window.Notification || !Notification.requestPermission) {
+            return false;
+        }
+
         if (Notification.permission === 'granted') {
             Notif.checkPushSubscription();
 
-            var notification = new Notification(
-                title,
-                { icon: picture, body: body, tag: action }
-            );
+            try {
+                var notification = new Notification(
+                    title,
+                    {
+                        body: body,
+                        icon: picture,
+                        badge: '/theme/img/app/badge.png',
+                        vibrate: [100, 50, 100],
+                        data: { url: action },
+                        actions: [{ action: action, title: actionButton }],
+                        timestamp: timestamp,
+                        tag: group,
+                    }
+                );
 
-            if (action !== null) {
-                notification.onclick = function () {
-                    window.location.href = action;
-                    Notif.snackbarClear();
-                    this.close();
+                if (action !== null) {
+                    notification.onclick = function () {
+                        window.location.href = action;
+                        Notif.snackbarClear();
+                        this.close();
+                    }
                 }
-            }
 
-            if (execute !== null) {
-                notification.onclick = function () {
-                    eval(execute);
-                    Notif.snackbarClear();
-                    this.close();
+                if (execute !== null) {
+                    notification.onclick = function () {
+                        eval(execute);
+                        Notif.snackbarClear();
+                        this.close();
+                    }
                 }
+            } catch (e) {
+                if (e.name == 'TypeError')
+                    return false;
             }
         } else if (Notification.permission !== 'denied') {
             Notif_ajaxRequest();

@@ -792,6 +792,7 @@ function requestPusher(
     ?string $body = null,
     ?string $picture = null,
     ?string $action = null,
+    ?string $actionButton = null,
     ?string $group = null,
     ?string $execute = null
 ): PromiseInterface {
@@ -807,6 +808,7 @@ function requestPusher(
         'body' => $body,
         'picture' => $picture,
         'action' => $action,
+        'action_button' => $actionButton,
         'group' => $group,
         'execute' => $execute
     ];

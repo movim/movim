@@ -68,6 +68,7 @@ class Notif extends Base
         ?string $picture = null,
         ?int $time = 2,
         ?string $action = null,
+        ?string $actionButton = null,
         ?string $group = null,
         ?string $execute = null
     ) {
@@ -80,16 +81,27 @@ class Notif extends Base
 
         if (Session::instance()->get('session_down')) {
             requestPusher(
-                me()->id,
+                userId: me()->id,
+                title: $title,
+                body: $body,
+                picture: $picture,
+                action: $action,
+                actionButton: $actionButton,
+                group: $group,
+                execute: $execute
+            );
+        } else {
+            RPC::call(
+                'Notif.desktop',
                 $title,
                 $body,
                 $picture,
                 $action,
+                $actionButton ?? __('button.open'),
                 $group,
+                time(),
                 $execute
             );
-        } else {
-            RPC::call('Notif.desktop', $title, $body, $picture, $action, $execute);
         }
 
         $notifsKey = $session->get('notifs_key');
@@ -292,6 +304,8 @@ class Notif extends Base
             $this->__('notification.request_granted'),
             null,
             null,
+            null,
+            time(),
             null,
             true
         );

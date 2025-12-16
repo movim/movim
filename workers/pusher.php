@@ -20,13 +20,14 @@ $handler = function (ServerRequestInterface $request) use ($pusher) {
 
     return new Promise(function () use ($data, $pusher) {
         $pusher->send(
-            $data->user_id,
-            $data->title,
-            $data->body,
-            $data->picture,
-            $data->action,
-            $data->group,
-            $data->execute
+            userId: $data->user_id,
+            title: $data->title,
+            body: $data->body,
+            picture: $data->picture,
+            action: $data->action,
+            actionButton: $data->action_button,
+            group: $data->group,
+            execute: $data->execute
         );
     });
 };

@@ -68,7 +68,9 @@ self.addEventListener('push', function (e) {
         badge: '/theme/img/app/badge.png',
         vibrate: [100, 50, 100],
         data: { url: json.action },
-        actions: [{ action: "action", title: json.button }]
+        actions: [{ action: json.action, title: json.actionButton }],
+        timestamp: json.timestamp,
+        tag: json.group,
     };
     e.waitUntil(
         self.registration.showNotification(json.title, options)

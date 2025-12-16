@@ -77,7 +77,7 @@ class Menu extends Base
                     'comments',
                     ($post->isLike()) ? '❤️ ' . $contact->truename : $post->title,
                     '📝 ' . $parent->title,
-                    $contact->getPicture(),
+                    picture: $contact->getPicture(),
                     time: 4
                 );
             }
@@ -94,9 +94,10 @@ class Menu extends Base
                         'news',
                         '📝 ' . $contact->truename,
                         $post->title,
-                        $contact->getPicture(),
+                        picture: $contact->getPicture(),
                         time: 4,
                         action: $this->route('post', [$post->server, $post->node, $post->nodeid]),
+                        actionButton: $this->__('post.more'),
                         group: $this->route('contact', $post->server)
                     );
                 }
@@ -121,6 +122,7 @@ class Menu extends Base
                     $logo,
                     time: 4,
                     action: $this->route('post', [$post->server, $post->node, $post->nodeid]),
+                    actionButton: $this->__('post.more'),
                     group: $this->route('community', [$post->server, $post->node])
                 );
             }

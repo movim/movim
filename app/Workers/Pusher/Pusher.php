@@ -29,6 +29,7 @@ class Pusher
         ?string $body = null,
         ?string $picture = null,
         ?string $action = null,
+        ?string $actionButton = null,
         ?string $group = null,
         ?string $execute = null
     ): void {
@@ -51,9 +52,10 @@ class Pusher
                     'body' => $body,
                     'picture' => $picture,
                     'action' => $action,
+                    'actionButton' => $actionButton ?? __('button.open'),
                     'group' => $group,
                     'execute' => $execute,
-                    'button' => __('button.open')
+                    'timestamp' => time(),
                 ])
             );
         }
