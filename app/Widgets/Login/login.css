@@ -24,9 +24,9 @@ body main {
     #login_widget:before {
         content: '';
         display: block;
-        background: url(../theme/img/logo_cloud.svg);
-        background-size: auto 2.6rem, 100% 100%;
-        background-position: center 3rem, center;
+        background: url(../theme/img/app/logo.svg);
+        background-size: auto 4rem, 100% 100%;
+        background-position: center 2rem, center;
         background-repeat: no-repeat;
         height: 8rem;
     }
