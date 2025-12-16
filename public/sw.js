@@ -1,4 +1,4 @@
-var version = 3;
+var version = 4;
 var cacheKey = 'movim_' + version;
 
 self.addEventListener('install', (e) => {
@@ -65,6 +65,7 @@ self.addEventListener('push', function (e) {
     var options = {
         body: json.body,
         icon: json.picture,
+        badge: '/theme/img/app/badge.png',
         vibrate: [100, 50, 100],
         data: { url: json.action },
         actions: [{ action: "action", title: json.button }]
