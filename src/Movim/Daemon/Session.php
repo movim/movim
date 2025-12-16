@@ -14,7 +14,7 @@ use App\Session as DBSession;
 
 class Session
 {
-    const DOWN_TIMER = 20;
+    const DOWN_TIMER = 10;
     protected \SplObjectStorage $clients; // Browser Websockets
     public int $timestamp;
     protected string $sid;

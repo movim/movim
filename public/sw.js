@@ -69,7 +69,7 @@ self.addEventListener('push', function (e) {
         vibrate: [100, 50, 100],
         data: { url: json.action },
         actions: [{ action: json.action, title: json.actionButton }],
-        timestamp: json.timestamp,
+        timestamp: json.timestamp * 1000,
         tag: json.group,
     };
     e.waitUntil(

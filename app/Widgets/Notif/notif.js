@@ -171,7 +171,7 @@ var Notif = {
                         vibrate: [100, 50, 100],
                         data: { url: action },
                         actions: [{ action: action, title: actionButton }],
-                        timestamp: timestamp,
+                        timestamp: timestamp * 1000,
                         tag: group,
                     }
                 );
