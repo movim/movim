@@ -793,7 +793,7 @@ function requestPusher(
     ?string $picture = null,
     ?string $action = null,
     ?string $actionButton = null,
-    ?string $group = null,
+    ?string $tag = null,
     ?string $execute = null
 ): PromiseInterface {
     $connector = new React\Socket\FixedUriConnector(
@@ -809,7 +809,7 @@ function requestPusher(
         'picture' => $picture,
         'action' => $action,
         'action_button' => $actionButton,
-        'group' => $group,
+        'tag' => $tag,
         'execute' => $execute
     ];
 

@@ -1,4 +1,4 @@
-var version = 4;
+var version = 5;
 var cacheKey = 'movim_' + version;
 
 self.addEventListener('install', (e) => {
@@ -83,6 +83,7 @@ self.addEventListener('notificationclick', function (e) {
     e.waitUntil(clients.matchAll({
         type: 'window'
     }).then(function (clientList) {
+        console.log(clientList)
         for (var i = 0; i < clientList.length; i++) {
             var client = clientList[i];
 
@@ -91,12 +92,13 @@ self.addEventListener('notificationclick', function (e) {
             }
         }
 
-        if (clients.openWindow) {
+        if (clientList.length > 0) {
+            return clientList[0].postMessage({ type: 'navigate', url: e.notification.data.url });
+        } else if (clients.openWindow) {
             return clients.openWindow(e.notification.data.url);
         }
     }));
-}
-    , false);
+}, false);
 
 self.addEventListener('fetch', (e) => {
     e.respondWith(

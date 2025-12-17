@@ -87,7 +87,7 @@ class Notif extends Base
                 picture: $picture,
                 action: $action,
                 actionButton: $actionButton,
-                group: $group,
+                tag: $key,
                 execute: $execute
             );
         } else {
@@ -98,7 +98,7 @@ class Notif extends Base
                 $picture,
                 $action,
                 $actionButton ?? __('button.open'),
-                $group,
+                $key,
                 time(),
                 $execute
             );
@@ -191,6 +191,7 @@ class Notif extends Base
             unset($notifs[$key]);
 
             RPC::call('Notif.counter', $key, 0);
+            RPC::call('Notif.clear', $key);
 
             $explode = explode('|', $key);
             $first = reset($explode);

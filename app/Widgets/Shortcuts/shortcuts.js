@@ -10,7 +10,9 @@ var Shortcuts = {
             setTimeout(e => {
                 parent = li.parentNode;
                 li.remove();
-                parent.innerHTML = parent.innerHTML.trim();
+                if (parent) {
+                    parent.innerHTML = parent.innerHTML.trim();
+                }
             }, 200)
         }
     }

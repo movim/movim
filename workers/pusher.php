@@ -26,7 +26,7 @@ $handler = function (ServerRequestInterface $request) use ($pusher) {
             picture: $data->picture,
             action: $data->action,
             actionButton: $data->action_button,
-            group: $data->group,
+            tag: $data->tag,
             execute: $data->execute
         );
     });

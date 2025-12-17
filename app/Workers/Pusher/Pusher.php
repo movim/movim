@@ -30,7 +30,7 @@ class Pusher
         ?string $picture = null,
         ?string $action = null,
         ?string $actionButton = null,
-        ?string $group = null,
+        ?string $tag = null,
         ?string $execute = null
     ): void {
         foreach (
@@ -53,7 +53,7 @@ class Pusher
                     'picture' => $picture,
                     'action' => $action,
                     'actionButton' => $actionButton ?? __('button.open'),
-                    'group' => $group,
+                    'tag' => $tag,
                     'execute' => $execute,
                     'timestamp' => time(),
                 ])

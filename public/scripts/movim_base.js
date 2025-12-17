@@ -3,12 +3,18 @@
  */
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-        .register(BASE_URI + 'sw.js')
+        .register(SW_URI)
         .then(e => navigator.serviceWorker.ready)
         .then((r) => {
-            r.active.postMessage({ base_uri: BASE_URI });
             console.log('Service Worker Registered');
         });
+
+    navigator.serviceWorker.addEventListener("message", (event) => {
+        if (event.data.type == 'navigate') {
+            MovimUtils.reload(event.data.url);
+            window.focus();
+        }
+    });
 }
 
 MovimEvents.registerWindow('loaded', 'movimbase', () => {

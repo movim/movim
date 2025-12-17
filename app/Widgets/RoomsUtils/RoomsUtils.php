@@ -205,7 +205,6 @@ class RoomsUtils extends Base
 
     public function onVcard(Packet $packet)
     {
-        \logDebug($packet->content);
         $this->rpc(
             'MovimTpl.fill',
             '#' . cleanupId($packet->content) . '-vcard',
