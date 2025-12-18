@@ -44,12 +44,9 @@ class Front extends Base
                     header('HTTP/1.0 403 Forbidden');
                     exit;
                 }
-            } else {
-                header('HTTP/1.0 403 Forbidden');
-                exit;
             }
 
-            if ($payload) {
+            if (!empty($payload)) {
                 $rpc = new RPC;
                 $rpc->handleJSON($payload->b);
                 $rpc->writeJSON();
