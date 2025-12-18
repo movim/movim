@@ -23,7 +23,7 @@ class Jingle extends Payload
         );
 
         //if (CurrentCall::getInstance()->hasId($message->thread)) {
-            Ack::send($from, $id);
+            $this->iq(to: $from, id: $id, type: 'result');
 
             switch ($action) {
                 case 'session-initiate':

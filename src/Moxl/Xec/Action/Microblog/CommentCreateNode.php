@@ -13,7 +13,7 @@ class CommentCreateNode extends Action
     public function request()
     {
         $this->store();
-        Pubsub::createCommentNode($this->_to, $this->_parentid);
+        $this->iq(Pubsub::createCommentNode($this->_to, $this->_parentid), type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

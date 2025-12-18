@@ -14,7 +14,7 @@ class PostDelete extends Action
     public function request()
     {
         $this->store();
-        Pubsub::itemDelete($this->_to, $this->_node, $this->_id);
+        $this->iq(Pubsub::itemDelete($this->_node, $this->_id), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

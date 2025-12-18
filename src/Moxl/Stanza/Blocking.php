@@ -9,7 +9,7 @@ class Blocking
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $blocklist = $dom->createElementNS('urn:xmpp:blocking', 'blocklist');
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($blocklist, null, 'get'));
+        return $blocklist;
     }
 
     public static function block(string $jid)
@@ -21,7 +21,7 @@ class Blocking
         $item->setAttribute('jid', $jid);
         $block->appendChild($item);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($block, null, 'set'));
+        return $block;
     }
 
     public static function unblock(string $jid)
@@ -33,6 +33,6 @@ class Blocking
         $item->setAttribute('jid', $jid);
         $unblock->appendChild($item);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($unblock, null, 'set'));
+        return $unblock;
     }
 }

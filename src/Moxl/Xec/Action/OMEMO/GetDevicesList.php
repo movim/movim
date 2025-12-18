@@ -12,7 +12,7 @@ class GetDevicesList extends Action
     public function request()
     {
         $this->store();
-        OMEMO::GetDevicesList($this->_to);
+        $this->iq(OMEMO::getDevicesList(), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

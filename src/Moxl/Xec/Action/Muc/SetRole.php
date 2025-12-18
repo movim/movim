@@ -14,7 +14,7 @@ class SetRole extends Action
     public function request()
     {
         $this->store();
-        Muc::setRole($this->_to, $this->_nick, $this->_role);
+        $this->iq(Muc::setRole($this->_nick, $this->_role), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

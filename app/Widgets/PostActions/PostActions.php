@@ -49,7 +49,7 @@ class PostActions extends Base
             return;
         }
 
-        $post = new Post;
+        $post = new Post($this->me);
         $post->publishComment('♥', $p->server, $p->node, $p->nodeid);
     }
 
@@ -77,14 +77,14 @@ class PostActions extends Base
             ->first();
 
         if (isset($post)) {
-            $p = new PostDelete;
+            $p = $this->xmpp(new PostDelete);
             $p->setTo($post->server)
                 ->setNode($post->node)
                 ->setId($post->nodeid)
                 ->request();
 
             if (!$post->isComment()) {
-                $p = new Delete;
+                $p = $this->xmpp(new Delete);
                 $p->setTo($post->commentserver)
                     ->setNode(AppPost::COMMENTS_NODE . '/' . $post->commentnodeid)
                     ->request();

@@ -14,7 +14,7 @@ class Chat extends Action
     public function request()
     {
         $this->store();
-        Presence::chat($this->_status);
+        $this->send(Presence::maker($this->me, status: $this->_status, show: 'chat'));
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -22,7 +22,7 @@ class Chat extends Action
         $presence = DBPresence::findByStanza($stanza);
         $presence->set($stanza);
 
-        PresenceBuffer::getInstance()->append($presence, function () {
+        PresenceBuffer::getInstance($this->me)->append($presence, function () {
             $this->event('mypresence');
         });
     }

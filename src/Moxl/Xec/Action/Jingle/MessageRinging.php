@@ -13,6 +13,6 @@ class MessageRinging extends Action
     public function request()
     {
         $this->store();
-        Jingle::messageRinging($this->_to, $this->_id);
+        $this->send(Jingle::messageRinging($this->_to, $this->_id));
     }
 }

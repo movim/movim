@@ -18,7 +18,7 @@ class GetItemsId extends Action
     public function request()
     {
         $this->store();
-        Disco::items($this->_to, $this->_node);
+        $this->iq(Disco::items($this->_node), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -33,7 +33,7 @@ class GetItemsId extends Action
                           ->count() > 0
             && !empty($id)
             && !in_array($id, $this->_forbidenIds)) {
-                $gi = new GetItem;
+                $gi = new GetItem($this->me);
                 $gi->setTo($this->_to)
                    ->setNode($this->_node)
                    ->setId($id)

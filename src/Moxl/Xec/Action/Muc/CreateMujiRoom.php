@@ -12,7 +12,7 @@ class CreateMujiRoom extends Action
     public function request()
     {
         $this->store();
-        Muc::createMujiChat($this->_to);
+        $this->iq(Muc::createMujiChat(), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

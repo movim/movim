@@ -12,7 +12,7 @@ class SetDevicesList extends Action
     public function request()
     {
         $this->store();
-        OMEMO::SetDevicesList(array_unique($this->_list));
+        $this->iq(OMEMO::setDevicesList(array_unique($this->_list)), type: 'set');
     }
 
     public function setList(array $list)

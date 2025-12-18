@@ -14,7 +14,7 @@ class Vcard4
         'pubsub#max_items' => '1',
     ];
 
-    public static function get($to)
+    public static function get()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -22,7 +22,7 @@ class Vcard4
         $items->setAttribute('node', self::$node);
         $pubsub->appendChild($items);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
+        return $pubsub;
     }
 
     public static function set($data, bool $withPublishOption = true)
@@ -118,6 +118,6 @@ class Vcard4
             $pubsub->appendChild($publishOption);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
+        return $pubsub;
     }
 }

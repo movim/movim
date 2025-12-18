@@ -72,7 +72,7 @@ class ChatOmemo extends \Movim\Widget\Base
 
     public function ajaxGetBundle(string $jid, string $bundleId)
     {
-        $gb = new GetBundle;
+        $gb = $this->xmpp(new GetBundle);
         $gb->setTo($jid)
             ->setId($bundleId)
             ->request();
@@ -83,7 +83,7 @@ class ChatOmemo extends \Movim\Widget\Base
      */
     public function ajaxCleanDevicesList(array $devicesIds)
     {
-        $cdl = new CleanDevicesList;
+        $cdl = $this->xmpp(new CleanDevicesList);
         $cdl->setCurrentList($devicesIds)
             ->request();
     }
@@ -117,7 +117,7 @@ class ChatOmemo extends \Movim\Widget\Base
     {
         $this->toast($this->__('omemo.resolving_devices'));
 
-        $gdl = new GetDevicesList;
+        $gdl = $this->xmpp(new GetDevicesList);
         $gdl->setTo($to)
             ->request();
     }
@@ -133,7 +133,7 @@ class ChatOmemo extends \Movim\Widget\Base
             array_push($preKeys, (string)$preKey->key);
         }
 
-        $ab = new AnnounceBundle;
+        $ab = $this->xmpp(new AnnounceBundle);
         $ab->setId($bundle->deviceId)
             ->setSignedPreKeyPublic($bundle->signedPreKey->publicKey)
             ->setSignedPreKeySignature($bundle->signedPreKey->signature)
@@ -141,7 +141,7 @@ class ChatOmemo extends \Movim\Widget\Base
             ->setPreKeys($preKeys)
             ->request();
 
-        $sdl = new SetDevicesList;
+        $sdl = $this->xmpp(new SetDevicesList);
         $sdl->setList($devicesIds)
             ->request();
     }

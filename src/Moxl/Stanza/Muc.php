@@ -10,13 +10,24 @@ use App\MessageOmemoHeader;
 
 class Muc
 {
-    public static function message($to, $content = false, $html = false, $id = false,
-        $replace = false, ?MessageFile $file = null, $parentId = false, array $reactions = [],
-        $originId = false, $threadId = false, $mucReceipts = false, $replyId = false,
-        $replyTo = false, $replyQuotedBodyLength = 0,
-        ?MessageOmemoHeader $messageOMEMO = null)
-    {
-        Message::maker(
+    /*public static function message(
+        $to,
+        $content = false,
+        $html = false,
+        $id = false,
+        $replace = false,
+        ?MessageFile $file = null,
+        $parentId = false,
+        array $reactions = [],
+        $originId = false,
+        $threadId = false,
+        $mucReceipts = false,
+        $replyId = false,
+        $replyTo = false,
+        $replyQuotedBodyLength = 0,
+        ?MessageOmemoHeader $messageOMEMO = null
+    ) {
+        return Message::maker(
             $to,
             $content,
             $html,
@@ -34,30 +45,11 @@ class Muc
             $replyId,
             $replyTo,
             $replyQuotedBodyLength,
-            $messageOMEMO);
-    }
+            $messageOMEMO
+        );
+    }*/
 
-    public static function active($to)
-    {
-        Message::maker($to, type: 'groupchat', chatstates: 'active');
-    }
-
-    public static function inactive($to)
-    {
-        Message::maker($to, type: 'groupchat', chatstates: 'inactive');
-    }
-
-    public static function composing($to)
-    {
-        Message::maker($to, type: 'groupchat', chatstates: 'composing');
-    }
-
-    public static function paused($to)
-    {
-        Message::maker($to, type: 'groupchat', chatstates: 'paused');
-    }
-
-    public static function setSubject($to, $subject)
+    public static function setSubject(string $to, string $subject)
     {
         $session = Session::instance();
 
@@ -70,7 +62,7 @@ class Muc
 
         $message->appendChild($dom->createElement('subject', $subject));
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
     public static function destroy($to)
@@ -82,10 +74,10 @@ class Muc
         $destroy->setAttribute('jid', $to);
         $query->appendChild($destroy);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
+        return $query;
     }
 
-    public static function setRole($to, $nick, $role)
+    public static function setRole($nick, $role)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#admin', 'query');
@@ -95,18 +87,18 @@ class Muc
         $item->setAttribute('role', $role);
         $query->appendChild($item);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
+        return $query;
     }
 
-    public static function getConfig($to)
+    public static function getConfig()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'get'));
+        return $query;
     }
 
-    public static function setConfig($to, array $data)
+    public static function setConfig(array $data)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
@@ -118,10 +110,10 @@ class Muc
 
         \Moxl\Utils::injectConfigInX($x, $data);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
+        return $query;
     }
 
-    public static function changeAffiliation(string $to, string $jid, string $affiliation, ?string $reason)
+    public static function changeAffiliation(string $jid, string $affiliation, ?string $reason)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#admin', 'query');
@@ -137,10 +129,10 @@ class Muc
             $item->appendChild($reason);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
+        return $query;
     }
 
-    public static function createMujiChat($to)
+    public static function createMujiChat()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
@@ -157,11 +149,10 @@ class Muc
             'muc#roomconfig_whois' => 'anyone',
         ]);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
-
+        return $query;
     }
 
-    public static function createGroupChat($to, $name)
+    public static function createGroupChat($name)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
@@ -182,10 +173,10 @@ class Muc
             //'muc#roomconfig_allowpm' => 'false'
         ]);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
+        return $query;
     }
 
-    public static function createChannel($to, $name)
+    public static function createChannel($name)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
@@ -206,10 +197,10 @@ class Muc
             //'muc#roomconfig_allowpm' => 'anyone'
         ]);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
+        return $query;
     }
 
-    public static function getMembers($to, $affiliation)
+    public static function getMembers($affiliation)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#admin', 'query');
@@ -218,6 +209,6 @@ class Muc
         $item->setAttribute('affiliation', $affiliation);
         $query->appendChild($item);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'get'));
+        return $query;
     }
 }

@@ -12,6 +12,6 @@ class Moderate extends Action
 
     public function request()
     {
-        Message::moderate($this->_to, $this->_stanzaid);
+        $this->iq(Message::moderate($this->_stanzaid), to: $this->_to, type: 'set');
     }
 }

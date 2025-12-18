@@ -36,7 +36,7 @@ class CommunityData extends Base
 
     public function ajaxGetAvatar($origin, $node)
     {
-        $g = new GetItem;
+        $g = $this->xmpp(new GetItem);
         $g->setTo($origin)
             ->setNode($node)
             ->setId(Avatar::NODE_METADATA)

@@ -8,6 +8,7 @@ use Movim\Session;
 use Carbon\Carbon;
 
 use App\PushSubscription;
+use App\User;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Wrapper;
@@ -151,10 +152,9 @@ class Notif extends Base
         }
 
         if ($title != null) {
-            $n = new Notif;
             RPC::call(
                 'Notif.snackbar',
-                $n->prepareSnackbar($title, $body, $picture, $url),
+                (new Notif(new User))->prepareSnackbar($title, $body, $picture, $url),
                 $time
             );
         }
@@ -236,13 +236,13 @@ class Notif extends Base
     public function ajaxCurrent($key)
     {
         // Clear the specific keys
-        if (strpos($key, '|') !== false) (new Notif)->ajaxClear($key);
+        if (strpos($key, '|') !== false) (new Notif($this->me))->ajaxClear($key);
 
         $session = Session::instance();
 
         // If the page was blurred
         if ($session->get('notifs_key') === 'blurred') {
-            (new Chat)->onNotificationCounterClear((new Packet)->pack(explode('|', $key)));
+            (new Chat($this->me))->onNotificationCounterClear((new Packet)->pack(explode('|', $key)));
         }
 
         $session->set('notifs_key', $key);

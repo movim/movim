@@ -47,7 +47,7 @@ class Publish extends Base
             $this->ajaxCreateComments(($comments === true) ? $to : $comments, $id);
         }
 
-        $gi = new GetItem;
+        $gi = $this->xmpp(new GetItem);
         $gi->setTo($to)
             ->setNode($node)
             ->setId($id)
@@ -84,7 +84,7 @@ class Publish extends Base
     {
         list($server, $parentid) = array_values($packet->content);
 
-        $s = new Subscribe;
+        $s = $this->xmpp(new Subscribe);
         $s->setTo($server)
             ->setFrom($this->me->id)
             ->setNode(AppPost::COMMENTS_NODE . '/' . $parentid)
@@ -97,7 +97,7 @@ class Publish extends Base
             return;
         }
 
-        $cn = new CommentCreateNode;
+        $cn = $this->xmpp(new CommentCreateNode);
         $cn->setTo($server)
             ->setParentId($id)
             ->request();
@@ -160,7 +160,7 @@ class Publish extends Base
                 return;
             }
 
-            $p = new PostPublish;
+            $p = $this->xmpp(new PostPublish);
             $p->setFrom($this->me->id)
                 ->setTo($draft->server)
                 ->setNode($draft->node)
@@ -397,7 +397,7 @@ class Publish extends Base
         $draft = $this->me->drafts()->find($id);
 
         if ($draft && $draft->open) {
-            (new GetConfig)->setNode(AppPost::MICROBLOG_NODE)->request();
+            $this->xmpp(new GetConfig)->setNode(AppPost::MICROBLOG_NODE)->request();
         } else {
             $this->rpc('MovimTpl.fill', '#publish_blog_presence', '');
         }
@@ -551,7 +551,7 @@ class Publish extends Base
         $draft->refresh();
 
         if ($draft->reply) {
-            $view->assign('replyblock', (new Post)->prepareTicket($draft->reply));
+            $view->assign('replyblock', (new Post($this->me))->prepareTicket($draft->reply));
         }
 
         $view->assign('type', $type);

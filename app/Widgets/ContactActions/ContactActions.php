@@ -93,7 +93,7 @@ class ContactActions extends Base
             $this->rpc('ContactActions.getDrawerFingerprints', $jid);
         }
 
-        (new AdHoc)->ajaxGet($jid);
+        (new AdHoc($this->me))->ajaxGet($jid);
     }
 
     public function ajaxGetDrawerFingerprints(string $jid, array $fingerprints)
@@ -133,7 +133,7 @@ class ContactActions extends Base
         if ($muc) {
             $this->rpc('MovimUtils.reload', $this->route('chat', [$jid, 'room']));
         } else {
-            $c = new Chats();
+            $c = new Chats($this->me);
             $c->ajaxOpen($jid);
 
             $this->rpc('MovimUtils.reload', $this->route('chat', $jid));
@@ -142,14 +142,14 @@ class ContactActions extends Base
 
     public function ajaxBlock(string $jid)
     {
-        $block = new Block;
+        $block = $this->xmpp(new Block);
         $block->setJid($jid);
         $block->request();
     }
 
     public function ajaxUnblock(string $jid)
     {
-        $block = new Unblock;
+        $block = $this->xmpp(new Unblock);
         $block->setJid($jid);
         $block->request();
     }
@@ -213,11 +213,11 @@ class ContactActions extends Base
 
     public function prepareEmbedUrl(Message $message)
     {
-        return (new Chat())->prepareEmbed($message->resolvedUrl, $message);
+        return (new Chat($this->me))->prepareEmbed($message->resolvedUrl, $message);
     }
 
     public function prepareTicket(\App\Post $post)
     {
-        return (new Post())->prepareTicket($post);
+        return (new Post($this->me))->prepareTicket($post);
     }
 }

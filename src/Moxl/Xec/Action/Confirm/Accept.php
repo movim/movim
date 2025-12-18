@@ -15,6 +15,6 @@ class Accept extends Action
     public function request()
     {
         $this->store();
-        Confirm::answer($this->_to, $this->_id, $this->_url, $this->_method);
+        $this->send(Confirm::answer($this->_to, $this->_id, $this->_url, $this->_method));
     }
 }

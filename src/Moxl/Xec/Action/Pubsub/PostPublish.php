@@ -28,7 +28,11 @@ class PostPublish extends Action
         }
 
         $this->store();
-        Pubsub::postPublish($this->_to, $this->_node, $this->_atom, $this->_withPublishOption);
+        $this->iq(
+            Pubsub::postPublish($this->_node, $this->_atom, $this->_withPublishOption),
+            to: $this->_to,
+            type: 'set'
+        );
     }
 
     public function setTo($to)
@@ -160,7 +164,8 @@ class PostPublish extends Action
             'node'      => $this->_node,
             'id'        => $this->_atom->id,
             'repost'    => $this->_repost,
-            'comments'  => $this->_atom->comments]);
+            'comments'  => $this->_atom->comments
+        ]);
         $this->deliver();
     }
 
@@ -178,8 +183,8 @@ class PostPublish extends Action
     {
         $config = new SetConfig;
         $config->setNode($this->_node)
-               ->setData(Pubsub::generateConfig($this->_node))
-               ->request();
+            ->setData(Pubsub::generateConfig($this->_node))
+            ->request();
 
         $this->_withPublishOption = false;
         $this->request();

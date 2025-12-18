@@ -34,6 +34,6 @@ class ExtendedChannelSearch
             $x->appendChild($q);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($search, 'api@search.jabber.network', 'get'));
+        return $search;
     }
 }

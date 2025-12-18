@@ -92,10 +92,10 @@ class CommunitiesServer extends \Movim\Widget\Base
             return;
         }
 
-        $r = new Request;
+        $r = $this->xmpp(new Request);
         $r->setTo($origin)->request();
 
-        $r = new Items;
+        $r = $this->xmpp(new Items);
         $r->setTo($origin)->request();
     }
 
@@ -108,7 +108,7 @@ class CommunitiesServer extends \Movim\Widget\Base
             return;
         }
 
-        $t = new TestCreate;
+        $t = $this->xmpp(new TestCreate);
         $t->setTo($origin)
             ->request();
     }
@@ -132,7 +132,7 @@ class CommunitiesServer extends \Movim\Widget\Base
             return;
         }
 
-        $c = new Create;
+        $c = $this->xmpp(new Create);
         $c->setTo($origin)
             ->setNode($uri)
             ->setName($form->name->value)

@@ -17,7 +17,7 @@ class CreateGroupChat extends Action
     public function request()
     {
         $this->store();
-        Muc::createGroupChat($this->_to, $this->_name);
+        $this->iq(Muc::createGroupChat($this->_name), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

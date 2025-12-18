@@ -17,7 +17,7 @@ class PresenceBufferSaver
     private $_calls = null;
     private $_hats = null;
 
-    public function __construct()
+    public function __construct(private ?User $me = null)
     {
         $this->_models = collect();
         $this->_hats = collect();
@@ -137,7 +137,7 @@ class PresenceBufferSaver
 
                 // Request the others
                 $nodes->each(function ($to, $node) {
-                    $d = new Request;
+                    $d = new Request($this->me);
                     $d->setTo($to)
                         ->setNode($node)
                         ->request();
@@ -158,7 +158,7 @@ class PresenceBufferSaver
                     $avatarHashes->each(function ($jid, $avatarhash) {
                         if ($jid != me()->id) {
                             Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
-                                $r = new Get;
+                                $r = new Get($this->me);
                                 $r->setAvatarhash($avatarhash)
                                     ->setTo($jid)
                                     ->request();

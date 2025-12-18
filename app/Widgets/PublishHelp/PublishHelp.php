@@ -21,7 +21,7 @@ class PublishHelp extends Base
 
     public function prepareToggles(Draft $draft)
     {
-        return (new Publish())->prepareToggles($draft);
+        return (new Publish($this->me))->prepareToggles($draft);
     }
 
     public function prepareHelp()

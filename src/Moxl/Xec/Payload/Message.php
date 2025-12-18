@@ -36,12 +36,12 @@ class Message extends Payload
             return;
         }
 
-        if ($message->type == 'chat' && me()?->hasBlocked($message->jidfrom)) {
+        if ($message->type == 'chat' && $this->me?->hasBlocked($message->jidfrom)) {
             return;
         }
 
-        if ($message->isMuc() && ChatroomPings::getInstance()->has($message->jidfrom)) {
-            ChatroomPings::getInstance()->touch($message->jidfrom);
+        if ($message->isMuc() && ChatroomPings::getInstance($this->me)->has($message->jidfrom)) {
+            ChatroomPings::getInstance($this->me)->touch($message->jidfrom);
         }
 
         if ($stanza->composing || $stanza->paused || $stanza->active) {

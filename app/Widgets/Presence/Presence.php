@@ -37,13 +37,13 @@ class Presence extends Base
 
     public function onSessionUp()
     {
-        $p = new Chat;
+        $p = $this->xmpp(new Chat);
         $p->request();
     }
 
     public function onSessionDown()
     {
-        $p = new Away;
+        $p = $this->xmpp(new Away);
         $p->setLast(Session::DOWN_TIMER)
             ->request();
     }
@@ -59,19 +59,19 @@ class Presence extends Base
 
         if ($this->me->session->type == 'bind1') {
             // http://xmpp.org/extensions/xep-0280.html
-            \Moxl\Stanza\Carbons::enable();
+            \Moxl\Stanza\Carbons::enable(); // TODO fixme
         }
 
         // We refresh the roster
-        $r = new GetList;
+        $r = $this->xmpp(new GetList);
         $r->request();
 
         // We refresh the blocklist
-        $blocked = new Request;
+        $blocked = $this->xmpp(new Request);
         $blocked->request();
 
         // We refresh the messages
-        (new Chats)->ajaxGetMAMHistory();
+        (new Chats($this->me))->ajaxGetMAMHistory();
         $this->ajaxServerCapsGet();
         $this->ajaxBookmarksGet();
         $this->ajaxPubsubSubscriptionsGet();
@@ -98,7 +98,7 @@ class Presence extends Base
             //(new Visio)->ajaxEnd(CurrentCall::getInstance()->jid, CurrentCall::getInstance()->id);
         }
 
-        $p = new Unavailable;
+        $p = $this->xmpp(new Unavailable);
         $p->setType('terminate')
             ->setResource($this->me->session->resource)
             ->setTo($this->me->id)
@@ -117,20 +117,20 @@ class Presence extends Base
 
     public function ajaxConfigGet()
     {
-        $s = new Get;
+        $s = $this->xmpp(new Get);
         $s->request();
     }
 
     public function ajaxPubsubSubscriptionsGet()
     {
         // Private Subscritions
-        $ps = new GetPubsubSubscriptions;
+        $ps = $this->xmpp(new GetPubsubSubscriptions);
         $ps->setTo($this->me->id)
             ->setPEPNode('urn:xmpp:pubsub:movim-public-subscription')
             ->request();
 
         // Public Subscritions
-        $ps = new GetPubsubSubscriptions;
+        $ps = $this->xmpp(new GetPubsubSubscriptions);
         $ps->setTo($this->me->id)
             ->request();
     }
@@ -138,7 +138,7 @@ class Presence extends Base
     // We get the server capabilities
     public function ajaxServerCapsGet()
     {
-        $c = new \Moxl\Xec\Action\Disco\Request;
+        $c = $this->xmpp(new \Moxl\Xec\Action\Disco\Request($this->me));
         $c->setTo($this->me->session->host)
             ->request();
 
@@ -149,7 +149,7 @@ class Presence extends Base
     // We discover the server services
     public function ajaxServerDisco()
     {
-        $c = new \Moxl\Xec\Action\Disco\Items;
+        $c = $this->xmpp(new \Moxl\Xec\Action\Disco\Items($this->me));
         $c->setTo($this->me->session->host)
             ->request();
     }
@@ -157,11 +157,11 @@ class Presence extends Base
     // We refresh the profile
     public function ajaxProfileRefresh()
     {
-        $a = new \Moxl\Xec\Action\Avatar\Get;
+        $a = $this->xmpp(new \Moxl\Xec\Action\Avatar\Get($this->me));
         $a->setTo($this->me->id)
             ->request();
 
-        $v = new \Moxl\Xec\Action\Vcard4\Get;
+        $v = $this->xmpp(new \Moxl\Xec\Action\Vcard4\Get($this->me));
         $v->setTo($this->me->id)
             ->request();
     }
@@ -169,12 +169,12 @@ class Presence extends Base
     // We refresh the bookmarks
     public function ajaxBookmarksGet()
     {
-        $b = new \Moxl\Xec\Action\Bookmark2\Get;
+        $b = $this->xmpp(new \Moxl\Xec\Action\Bookmark2\Get($this->me));
         $b->setTo($this->me->id)
             ->request();
 
         // Also get the old Bookmarks
-        $b = new \Moxl\Xec\Action\Bookmark2\Get;
+        $b = $this->xmpp(new \Moxl\Xec\Action\Bookmark2\Get($this->me));
         $b->setTo($this->me->id)
             ->setVersion('0')
             ->request();
@@ -183,7 +183,7 @@ class Presence extends Base
     // We refresh our personnal feed
     public function ajaxFeedRefresh()
     {
-        $r = new GetItemsId;
+        $r = $this->xmpp(new GetItemsId);
         $r->setTo($this->me->id)
             ->setNode(Post::MICROBLOG_NODE)
             ->request();
@@ -192,7 +192,7 @@ class Presence extends Base
     // We refresh the blog followers
     public function ajaxGetFollowers()
     {
-        $gs = new GetSubscriptions;
+        $gs = $this->xmpp(new GetSubscriptions);
         $gs->setTo($this->me->id)
             ->setNode(Post::MICROBLOG_NODE)
             ->setNotify(false)
@@ -224,8 +224,6 @@ class Presence extends Base
 
     public function display()
     {
-        $contact = $this->me->contact;
         $this->view->assign('page', $this->_view);
-        $this->view->assign('me', ($contact == null) ? new \App\Contact : $contact);
     }
 }

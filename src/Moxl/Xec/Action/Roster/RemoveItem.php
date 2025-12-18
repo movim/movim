@@ -12,13 +12,12 @@ class RemoveItem extends Action
     public function request()
     {
         $this->store();
-        Roster::remove($this->_to);
+        $this->iq(Roster::remove($this->_to), type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        me()
-              ->session
+        $this->me->session
               ->contacts()
               ->where('jid', $this->_to)
               ->delete();

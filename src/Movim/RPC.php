@@ -6,11 +6,16 @@
 
 namespace Movim;
 
+use App\User;
 use Movim\Widget\Wrapper;
 
 class RPC
 {
     private static $json = [];
+
+    public function __construct(private ?User $user = null)
+    {
+    }
 
     public static function call($funcname, ...$args)
     {
@@ -44,7 +49,13 @@ class RPC
             return;
         }
 
-        (new Wrapper)->runWidget(
+        $wrapper = new Wrapper;
+
+        if ($this->user) {
+            $wrapper = $wrapper->setUser($this->user);
+        }
+
+        $wrapper->runWidget(
             (string)$request->w,
             (string)$request->f,
             isset($request->p) ? (array)$request->p : []

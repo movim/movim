@@ -31,7 +31,7 @@ class Confirm extends Base
 
     public function ajaxAccept($to, $id, $url, $method)
     {
-        $accept = new Accept;
+        $accept = $this->xmpp(new Accept);
         $accept->setTo($to)
                ->setId($id)
                ->setUrl($url)
@@ -41,7 +41,7 @@ class Confirm extends Base
 
     public function ajaxRefuse($to, $id, $url, $method)
     {
-        $refuse = new Refuse;
+        $refuse = $this->xmpp(new Refuse);
         $refuse->setTo($to)
                ->setId($id)
                ->setUrl($url)

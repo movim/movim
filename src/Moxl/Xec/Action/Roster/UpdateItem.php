@@ -15,12 +15,12 @@ class UpdateItem extends Action
     public function request()
     {
         $this->store();
-        Roster::update($this->_to, $this->_name, $this->_group);
+        $this->iq(Roster::update($this->_to, $this->_name, $this->_group), type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $roster = me()->session->contacts()->where('jid', $this->_to)->first();
+        $roster = $this->me->session->contacts()->where('jid', $this->_to)->first();
 
         if ($roster) {
             $roster->name = $this->_name;

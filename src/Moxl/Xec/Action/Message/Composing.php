@@ -9,16 +9,18 @@ use Moxl\Stanza\Muc;
 class Composing extends Action
 {
     protected $_to;
-    protected $_muc = false;
+    protected bool $_muc = false;
 
     public function request()
     {
         $this->store();
-        if ($this->_muc) {
-            Muc::composing($this->_to);
-        } else {
-            Message::composing($this->_to);
-        }
+        $this->send(
+            Message::maker(
+                $this->_to,
+                type: $this->_muc ? 'groupchat' : 'chat',
+                chatstates: 'composing'
+            )
+        );
     }
 
     public function setMuc()

@@ -12,7 +12,7 @@ class Remove extends Action
     public function request()
     {
         $this->store();
-        Register::remove($this->_to);
+        $this->iq(Register::remove(), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

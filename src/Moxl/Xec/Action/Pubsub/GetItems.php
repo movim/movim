@@ -22,13 +22,12 @@ class GetItems extends Action
     public function request()
     {
         $this->store();
-        Pubsub::getItems(
-            $this->_to,
+        $this->iq(Pubsub::getItems(
             $this->_node,
             $this->_paging,
             $this->_after,
             $this->_before
-        );
+        ), to: $this->_to, type: 'get');
     }
 
     public function setAfter($after)

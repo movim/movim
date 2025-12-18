@@ -12,12 +12,12 @@ class Bind extends Action
     public function request()
     {
         $this->store();
-        Stream::bindSet($this->_resource);
+        $this->iq(Stream::bindSet($this->_resource), type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $session = me()->session;
+        $session = $this->me->session;
 
         $jid = explodeJid((string)$stanza->bind->jid);
 

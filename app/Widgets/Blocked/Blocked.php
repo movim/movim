@@ -37,7 +37,7 @@ class Blocked extends \Movim\Widget\Base
 
     public function ajaxUnblock(string $jid)
     {
-        $unblock = new Unblock;
+        $unblock = $this->xmpp(new Unblock);
         $unblock->setJid($jid);
         $unblock->request();
     }

@@ -13,7 +13,7 @@ class Delete extends Action
     public function request()
     {
         $this->store();
-        Pubsub::delete($this->_to, $this->_node);
+        $this->iq(Pubsub::delete($this->_node), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

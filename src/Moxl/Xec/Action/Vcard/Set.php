@@ -13,7 +13,7 @@ class Set extends Action
     public function request()
     {
         $this->store();
-        Vcard::set($this->_to, $this->_data);
+        $this->iq(Vcard::set($this->_data), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

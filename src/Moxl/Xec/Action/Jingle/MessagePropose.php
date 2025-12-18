@@ -14,7 +14,7 @@ class MessagePropose extends Action
     public function request()
     {
         $this->store();
-        Jingle::messagePropose($this->_to, $this->_id, $this->_withVideo);
+        $this->send(Jingle::messagePropose($this->_to, $this->_id, $this->_withVideo));
     }
 
     public function setWithVideo(bool $withVideo)

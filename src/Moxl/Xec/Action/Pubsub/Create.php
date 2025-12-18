@@ -14,7 +14,7 @@ class Create extends Action
     public function request()
     {
         $this->store();
-        Pubsub::create($this->_to, $this->_node, $this->_name);
+        $this->iq(Pubsub::create($this->_node, $this->_name), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

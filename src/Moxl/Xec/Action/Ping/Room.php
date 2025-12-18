@@ -13,22 +13,23 @@ use SimpleXMLElement;
  */
 class Room extends Action
 {
+    protected ?string $_to = null;
     protected ?string $_room = null;
     protected ?string $_resource = null;
 
     public function request()
     {
         $this->store();
-        Ping::entity($this->_resource);
+        $this->iq(Ping::entity(), to: $this->_resource, type: 'get');
     }
 
     public function handle(?SimpleXMLElement $stanza = null, ?SimpleXMLElement $parent = null)
     {
-        ChatroomPings::getInstance()->touch($this->_room);
+        ChatroomPings::getInstance($this->me)->touch($this->_room);
     }
 
     public function error(string $errorId, ?string $message = null)
     {
-        (new WidgetRooms())->ajaxExit($this->_room);
+        (new WidgetRooms($this->me))->ajaxExit($this->_room);
     }
 }

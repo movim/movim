@@ -35,6 +35,7 @@ use Movim\Image;
 use Movim\XMPPUri;
 use Movim\Librairies\XMPPtoForm;
 use Movim\Widget\Wrapper;
+use Moxl\Xec\Action\Message\Displayed;
 use Moxl\Xec\Payload\Packet;
 
 class Chat extends \Movim\Widget\Base
@@ -87,7 +88,7 @@ class Chat extends \Movim\Widget\Base
     public function onPresence(Packet $packet)
     {
         $jid = $packet->content->jid;
-        $arr = explode('|', (new Notif)->getCurrent());
+        $arr = explode('|', (new Notif($this->me))->getCurrent());
 
         if (isset($arr[1]) && $jid == $arr[1]) {
             if ($packet->content->muc) {
@@ -374,7 +375,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onRoomConfigSaved(Packet $packet)
     {
-        $r = new DiscoRequest;
+        $r = $this->xmpp(new DiscoRequest);
         $r->setTo($packet->content)
             ->request();
 
@@ -441,7 +442,7 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('MovimTpl.showPanel');
                 $this->rpc('Chat.focus');
 
-                (new Dictaphone)->ajaxHttpGet();
+                (new Dictaphone($this->me))->ajaxHttpGet();
             }
 
             if (CurrentCall::getInstance()->isStarted()) {
@@ -487,7 +488,7 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('MovimTpl.showPanel');
                 $this->rpc('Chat.focus');
 
-                (new Dictaphone)->ajaxHttpGet();
+                (new Dictaphone($this->me))->ajaxHttpGet();
             }
 
             if (CurrentCall::getInstance()->isStarted()) {
@@ -620,7 +621,7 @@ class Chat extends \Movim\Widget\Base
             $m->jidfrom     = $to;
         }
 
-        $p = new Publish;
+        $p = $this->xmpp(new Publish);
         $p->setTo($to);
         $p->setReplace($m->replaceid);
         $p->setId($m->id);
@@ -770,7 +771,7 @@ class Chat extends \Movim\Widget\Base
             $packet->content = $m;
 
             // We refresh the Chats list
-            $c = new Chats();
+            $c = new Chats($this->me);
             $c->onMessage($packet);
 
             $this->onMessage($packet);
@@ -1086,7 +1087,7 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        $gc = new GetConfig;
+        $gc = $this->xmpp(new GetConfig);
         $gc->setTo($room)
             ->request();
     }
@@ -1102,7 +1103,7 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        $sc = new SetConfig;
+        $sc = $this->xmpp(new SetConfig);
         $sc->setTo($room)
             ->setData(formToArray($data))
             ->request();
@@ -1128,19 +1129,17 @@ class Chat extends \Movim\Widget\Base
             $message->save();
 
             if (!$message->isMuc()) {
-                \Moxl\Stanza\Message::displayed(
-                    $jid,
-                    $message->messageid,
-                    $message->type
-                );
+                (new Displayed($this->me))->setTo($jid)
+                    ->setId($message->messageid)
+                    ->setType($message->type)
+                    ->request();
             }
             // https://xmpp.org/extensions/xep-0333.html#rules-muc
             elseif ($message->stanzaid) {
-                \Moxl\Stanza\Message::displayed(
-                    $jid,
-                    $message->stanzaid,
-                    $message->type
-                );
+                (new Displayed($this->me))->setTo($jid)
+                    ->setId($message->stanzaid)
+                    ->setType($message->type)
+                    ->request();
             }
         }
     }
@@ -1206,7 +1205,7 @@ class Chat extends \Movim\Widget\Base
             'MovimTpl.fill',
             '#' . cleanupId($room) . '-nav',
             $this->view('_chat_room_nav', [
-                'contactsHtml' => (new RoomsUtils)->preparePresences(
+                'contactsHtml' => (new RoomsUtils($this->me))->preparePresences(
                     $room,
                     havePagination: false,
                     compact: true
@@ -1288,8 +1287,8 @@ class Chat extends \Movim\Widget\Base
 
         if ($event) {
             $muc
-                ? (new Rooms)->setCounter($jid)
-                : (new Chats)->chatOpen($jid);
+                ? (new Rooms($this->me))->setCounter($jid)
+                : (new Chats($this->me))->chatOpen($jid);
         }
 
         Wrapper::getInstance()->iterate('chat_counter', (new Packet)->pack($this->me->unreads()));
@@ -1381,7 +1380,7 @@ class Chat extends \Movim\Widget\Base
                 !$stickerImage
                 && $message->jidfrom != $message->session
             ) {
-                $r = new Request;
+                $r = $this->xmpp(new Request);
                 $r->setTo($message->jidfrom)
                     ->setResource($message->resource)
                     ->setHash($message->sticker_cid_hash)
@@ -1425,7 +1424,7 @@ class Chat extends \Movim\Widget\Base
                     $story = AppPost::myStories($message->postid)->first();
 
                     if ($story) {
-                        $p = new Post();
+                        $p = new Post($this->me);
                         $message->card = $p->prepareTicket($story);
                         $message->story = true;
                     } else {
@@ -1434,7 +1433,7 @@ class Chat extends \Movim\Widget\Base
                         $message->body = $view->draw('_chat_story_forbidden');
                     }
                 } else {
-                    $p = new Post();
+                    $p = new Post($this->me);
                     $message->card = $p->prepareTicket($post);
 
                     if ($message->body == null) {
@@ -1548,7 +1547,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         $messageDBSeen = $message->seen;
-        $n = new Notif;
+        $n = new Notif($this->me);
 
         if ($message->isMuc()) {
             $message->resolveColor();

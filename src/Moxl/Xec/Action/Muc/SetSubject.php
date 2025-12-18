@@ -13,7 +13,7 @@ class SetSubject extends Action
     public function request()
     {
         $this->store();
-        Muc::setSubject($this->_to, $this->_subject);
+        $this->send(Muc::setSubject($this->_to, $this->_subject));
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
