@@ -29,12 +29,12 @@ class Stories extends Base
                 $contact = \App\Contact::firstOrNew(['id' => $post->server]);
 
                 Notif::append(
-                    'news',
-                    '📝 ' . __('stories.new_story', $contact->truename),
-                    $post->title,
-                    $contact->getPicture(),
+                    key: 'news',
+                    title: '📝 ' . __('stories.new_story', $contact->truename),
+                    body: $post->title,
+                    url: $this->route('chat'),
+                    picture: $contact->getPicture(),
                     time: 4,
-                    action: $this->route('chat')
                 );
             }
 

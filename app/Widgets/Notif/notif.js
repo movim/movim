@@ -149,28 +149,26 @@ var Notif = {
         target = document.getElementById('snackbar');
         target.innerHTML = '';
     },
-    desktop: function (title, body, picture, action, actionButton, tag, timestamp, execute, force) {
+    desktop: function (tag, timestamp, title, body, picture, actions, data, force) {
         if (!force && (Notif.inhibed == true
             || Notif.focused
-            || typeof Notification === 'undefined')) return;
-
-        if (!window.Notification || !Notification.requestPermission) {
-            return false;
-        }
+            || typeof Notification === 'undefined')
+            || !window.Notification
+            || !Notification.requestPermission) return;
 
         if (Notification.permission === 'granted') {
             Notif.checkPushSubscription();
 
             try {
                 options = {
+                    badge: '/theme/img/app/badge.png',
+                    tag: tag,
+                    timestamp: timestamp * 1000,
                     body: body,
                     icon: picture,
-                    badge: '/theme/img/app/badge.png',
+                    actions: actions,
+                    data: data,
                     vibrate: [100, 50, 100],
-                    data: { url: action },
-                    actions: [{ action: action, title: actionButton }],
-                    timestamp: timestamp * 1000,
-                    tag: tag,
                 };
 
                 if ('serviceWorker' in navigator) {
@@ -183,20 +181,10 @@ var Notif = {
                         options
                     );
 
-                    if (action !== null) {
-                        notification.onclick = function () {
-                            window.location.href = action;
-                            Notif.snackbarClear();
-                            this.close();
-                        }
-                    }
-
-                    if (execute !== null) {
-                        notification.onclick = function () {
-                            eval(execute);
-                            Notif.snackbarClear();
-                            this.close();
-                        }
+                    notification.onclick = function () {
+                        window.location.href = data.url;
+                        Notif.snackbarClear();
+                        this.close();
                     }
                 }
             } catch (e) {

@@ -9,6 +9,7 @@ v0.33 (master)
 * Add share_target support in the Manifest and Share widget
 * Handle calls when having multiple browsers connected on one Movim session, allow all the browser to hang-up the current call
 * Disable password change and account deletion if the server doesn't have jabber:iq:register
+* Improve and complete the Notification and Push Notification code (badge, tag...) and use the Service Worker as the default way to handle them
 
 v0.32.1
 ---------------------------

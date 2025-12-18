@@ -506,11 +506,24 @@ class Visio extends Base
             $this->rpc('Notif.incomingCall');
 
             Notif::append(
-                'call',
-                '📞 ' . $contact->truename,
-                $this->__('visio.calling'),
-                $contact->getPicture(),
-                time: 5
+                key: 'call',
+                title: '📞 ' . $contact->truename,
+                body: $this->__('visio.calling'),
+                url: '',
+                picture: $contact->getPicture(),
+                time: 5,
+                actions: [[
+                    'title' => $this->__('button.reply'),
+                    'action' => 'call',
+                ], [
+                    'title' => $this->__('button.refuse'),
+                    'action' => 'call_reject',
+                ]],
+                data: [
+                    'jid' => $contact->id,
+                    'fullJid' => !$calling ? $jid : null,
+                    'callId' => !$calling ? $id : null
+                ]
             );
         }
     }

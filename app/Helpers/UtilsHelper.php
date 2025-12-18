@@ -788,13 +788,12 @@ function requestAvatarBase64(
  */
 function requestPusher(
     string $userId,
+    ?string $tag = null,
     string $title,
     ?string $body = null,
     ?string $picture = null,
-    ?string $action = null,
-    ?string $actionButton = null,
-    ?string $tag = null,
-    ?string $execute = null
+    ?array $actions = [],
+    ?array $data = [],
 ): PromiseInterface {
     $connector = new React\Socket\FixedUriConnector(
         'unix://' . PUSHER_SOCKET,
@@ -802,18 +801,16 @@ function requestPusher(
     );
 
     $browser = new React\Http\Browser($connector);
-    $data = [
+
+    return $browser->post('http://pusher', [], json_encode([
         'user_id' => $userId,
+        'tag' => $tag,
         'title' => $title,
         'body' => $body,
         'picture' => $picture,
-        'action' => $action,
-        'action_button' => $actionButton,
-        'tag' => $tag,
-        'execute' => $execute
-    ];
-
-    return $browser->post('http://pusher', [], json_encode($data));
+        'actions' => $actions,
+        'data' => $data
+    ]));
 }
 
 /**

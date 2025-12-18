@@ -65,16 +65,17 @@ class Notif extends Base
         string $key,
         string $title,
         string $body,
+        string $url,
         ?string $picture = null,
         ?int $time = 2,
-        ?string $action = null,
-        ?string $actionButton = null,
-        ?string $group = null,
-        ?string $execute = null
+        ?array $actions = [],
+        ?array $data = [],
     ) {
         if ($picture == null) {
             $picture = BASE_URI . '/theme/img/app/128.png';
         }
+
+        $data['url'] = $url;
 
         $session = Session::instance();
         $notifs = $session->get('notifs');
@@ -82,25 +83,23 @@ class Notif extends Base
         if (Session::instance()->get('session_down')) {
             requestPusher(
                 userId: me()->id,
+                tag: $key,
                 title: $title,
                 body: $body,
                 picture: $picture,
-                action: $action,
-                actionButton: $actionButton,
-                tag: $key,
-                execute: $execute
+                actions: $actions,
+                data: $data,
             );
         } else {
             RPC::call(
                 'Notif.desktop',
+                $key,
+                time(),
                 $title,
                 $body,
                 $picture,
-                $action,
-                $actionButton ?? __('button.open'),
-                $key,
-                time(),
-                $execute
+                $actions,
+                $data,
             );
         }
 
@@ -155,7 +154,7 @@ class Notif extends Base
             $n = new Notif;
             RPC::call(
                 'Notif.snackbar',
-                $n->prepareSnackbar($title, $body, $picture, $action, $execute),
+                $n->prepareSnackbar($title, $body, $picture, $url),
                 $time
             );
         }
@@ -301,12 +300,13 @@ class Notif extends Base
     {
         RPC::call(
             'Notif.desktop',
+            time(),
             $this->__('notification.request_title'),
             $this->__('notification.request_granted'),
             null,
             null,
             null,
-            time(),
+            null,
             null,
             true
         );
@@ -321,16 +321,14 @@ class Notif extends Base
         string $title,
         string $body,
         ?string $picture = null,
-        ?string $action = null,
-        ?string $execute = null
+        ?string $url = null,
     ) {
         $view = $this->tpl();
 
         $view->assign('title', $title);
         $view->assign('body', $body);
         $view->assign('picture', $picture);
-        $view->assign('action', $action);
-        $view->assign('onclick', $execute);
+        $view->assign('url', $url);
 
         return $view->draw('_notif');
     }

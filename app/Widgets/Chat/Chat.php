@@ -239,16 +239,22 @@ class Chat extends \Movim\Widget\Base
                 // Prevent some spammy notifications
                 if ($roster || $contact->exists) {
                     Notif::append(
-                        'chat|' . $from,
-                        $name,
-                        $message->encrypted && is_array($message->omemoheader)
+                        key: 'chat|' . $from,
+                        title: $name,
+                        body: $message->encrypted && is_array($message->omemoheader)
                             ? "🔒 " . substr($message->omemoheader['payload'], 0, strlen($message->omemoheader['payload']) / 2)
                             : $rawbody,
-                        $contact->getPicture(),
+                        url: $this->route('chat', $contact->id),
+                        picture: $contact->getPicture(),
                         time: 6,
-                        action: $this->route('chat', $contact->id),
-                        actionButton: $this->__('button.reply'),
-                        execute: 'Search.chat(\'' . echapJS($contact->id) . '\', ' . ($message->isMuc() ? 'true' : 'false') . ')'
+                        actions: [[
+                            'title' => $this->__('button.reply'),
+                            'action' => 'chat',
+                        ]],
+                        data: [
+                            'jid' => $contact->id,
+                            'muc' => $message->isMuc()
+                        ]
                     );
                 }
             }
@@ -263,15 +269,22 @@ class Chat extends \Movim\Widget\Base
             ) {
                 Notif::rpcCall('Notif.incomingMessage');
                 Notif::append(
-                    'chat|' . $from,
-                    ($conference != null && $conference->name)
+                    key: 'chat|' . $from,
+                    title: ($conference != null && $conference->name)
                         ? $conference->name
                         : $from,
-                    $message->resource . ': ' . $rawbody,
-                    $conference->getPicture(),
+                    body: $message->resource . ': ' . $rawbody,
+                    url: $this->route('chat', [$contact->id, 'room']),
+                    picture: $conference->getPicture(),
                     time: 4,
-                    action: $this->route('chat', [$contact->id, 'room']),
-                    actionButton: $this->__('button.reply'),
+                    actions: [[
+                        'title' => $this->__('button.reply'),
+                        'action' => 'chat',
+                    ]],
+                    data: [
+                        'jid' => $contact->id,
+                        'muc' => true
+                    ]
                 );
             } elseif ($message->isMuc()) {
                 if ($conference && $conference->notify == 0) {

@@ -83,18 +83,24 @@ class Rooms extends Base
 
         if ($muji->jidfrom && $muji->conference && !$muji->inviter->me) {
             Notif::append(
-                'chat|' . $muji->jidfrom,
-                ($muji->conference != null && $muji->conference->name)
+                key: 'chat|' . $muji->jidfrom,
+                title: ($muji->conference != null && $muji->conference->name)
                     ? $muji->conference->name
                     : $muji->jidfrom,
-                ($muji->video)
+                body: ($muji->video)
                     ? "📹 " . __('muji.call_video_invite')
                     : "📞 " . __('muji.call_audio_invite'),
-                $muji->conference->getPicture(),
+                url: $this->route('chat', [$muji->jidfrom, 'room']),
+                picture: $muji->conference->getPicture(),
                 time: 5,
-                action: $this->route('chat', [$muji->jidfrom, 'room']),
-                actionButton: $this->__('button.reply'),
-                execute: 'Search.chat(\'' . echapJS($muji->jidfrom) . '\', true)'
+                actions: [[
+                    'action' => 'chat',
+                    'title' => $this->__('button.reply')
+                ]],
+                data: [
+                    'jid' => $muji->jidfrom,
+                    'muc' => true
+                ]
             );
 
             $this->onCallInvite($packet);

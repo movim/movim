@@ -99,10 +99,10 @@
 <footer>
     {if="isset($contact)"}
         {if="$calling"}
-            <button onclick="MovimVisio.clear(); Dialog_ajaxClear()" class="button flat red">
+            <button onclick="VisioUtils.cancelLobby();" class="button flat red">
                 {$c->__('button.cancel')}
             </button>
-            <button id="lobby_start" onclick="MovimVisio.init('{$fullJid|echapJS}', '{$contact->id}', null, {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear();" class="button color green disabled">
+            <button id="lobby_start" onclick="MovimVisio.init('{$fullJid|echapJS}', '{$contact->id}', null, {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear(); Notif.snackbarClear();" class="button color green disabled">
                 {if="$withvideo"}
                     <i class="material-symbols">videocam</i>
                 {else}
@@ -111,11 +111,11 @@
                 {$c->__('button.call')}
             </button>
         {else}
-            <button onclick="Visio_ajaxReject('{$fullJid|echapJS}', '{$id}'); MovimVisio.clear(); Dialog_ajaxClear()" class="button color red">
+            <button onclick="VisioUtils.cancelLobby('{$fullJid|echapJS}', '{$id}');" class="button color red">
                 <i class="material-symbols">call_end</i>
                 {$c->__('button.refuse')}
             </button>
-            <button id="lobby_start" onclick="MovimVisio.init('{$fullJid|echapJS}', '{$contact->id}', '{$id}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear();" class="button color green disabled">
+            <button id="lobby_start" onclick="MovimVisio.init('{$fullJid|echapJS}', '{$contact->id}', '{$id}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear(); Notif.snackbarClear();" class="button color green disabled">
                 {if="$withvideo"}
                     <i class="material-symbols shake">videocam</i>
                 {else}
@@ -126,10 +126,10 @@
         {/if}
     {else}
         {if="$calling"}
-            <button onclick="MovimVisio.clear(); Dialog_ajaxClear()" class="button flat red">
+            <button onclick="VisioUtils.cancelLobby();" class="button flat red">
                 {$c->__('button.cancel')}
             </button>
-            <button id="lobby_start" onclick="Visio_ajaxMujiCreate('{$conference->conference}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear()" class="button color green disabled">
+            <button id="lobby_start" onclick="Visio_ajaxMujiCreate('{$conference->conference}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear(); Notif.snackbarClear();" class="button color green disabled">
                 {if="$withvideo"}
                     <i class="material-symbols">videocam</i>
                 {else}
@@ -138,10 +138,10 @@
                 {$c->__('button.create')}
             </button>
         {else}
-            <button onclick="Dialog_ajaxClear()" class="button flat red">
+            <button onclick="VisioUtils.cancelLobby();" class="button flat red">
                 {$c->__('button.cancel')}
             </button>
-            <button id="lobby_start" onclick="Visio_ajaxMujiAccept('{$id|echapJS}'); Dialog_ajaxClear()" class="button color green disabled">
+            <button id="lobby_start" onclick="Visio_ajaxMujiAccept('{$id|echapJS}'); Dialog_ajaxClear(); Notif.snackbarClear();" class="button color green disabled">
                 {if="$withvideo"}
                     <i class="material-symbols shake">videocam</i>
                 {else}

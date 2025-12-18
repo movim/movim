@@ -74,9 +74,10 @@ class Menu extends Base
 
             if ($parent && $contact) {
                 Notif::append(
-                    'comments',
-                    ($post->isLike()) ? '❤️ ' . $contact->truename : $post->title,
-                    '📝 ' . $parent->title,
+                    key: 'comments',
+                    title: ($post->isLike()) ? '❤️ ' . $contact->truename : $post->title,
+                    body: '📝 ' . $parent->title,
+                    url: $this->route('post', [$parent->server, $parent->node, $parent->nodeid]),
                     picture: $contact->getPicture(),
                     time: 4
                 );
@@ -91,14 +92,16 @@ class Menu extends Base
 
                 if (!$post->isMine($this->me)) {
                     Notif::append(
-                        'news',
-                        '📝 ' . $contact->truename,
-                        $post->title,
+                        key: 'news',
+                        title: '📝 ' . $contact->truename,
+                        body: $post->title,
+                        url: $this->route('post', [$post->server, $post->node, $post->nodeid]),
                         picture: $contact->getPicture(),
                         time: 4,
-                        action: $this->route('post', [$post->server, $post->node, $post->nodeid]),
-                        actionButton: $this->__('post.more'),
-                        group: $this->route('contact', $post->server)
+                        actions: [[
+                            'action' => 'reload',
+                            'title' => $this->__('post.more'),
+                        ]]
                     );
                 }
             } else {
@@ -116,14 +119,16 @@ class Menu extends Base
                 }
 
                 Notif::append(
-                    'news',
-                    $title,
-                    $post->title,
-                    $logo,
+                    key: 'news',
+                    title: $title,
+                    body: $post->title,
+                    url: $this->route('post', [$post->server, $post->node, $post->nodeid]),
+                    picture: $logo,
                     time: 4,
-                    action: $this->route('post', [$post->server, $post->node, $post->nodeid]),
-                    actionButton: $this->__('post.more'),
-                    group: $this->route('community', [$post->server, $post->node])
+                    actions: [[
+                        'action' => 'reload',
+                        'title' => $this->__('post.more'),
+                    ]]
                 );
             }
 

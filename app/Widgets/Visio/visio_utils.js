@@ -349,5 +349,13 @@ var VisioUtils = {
 
             sender.setParameters(parameters);
         });
+    },
+
+    cancelLobby: function (fullJid, id) {
+        if (fullJid && id) {
+            Visio_ajaxReject(fullJid, id);
+        }
+
+        MovimVisio.clear(); Dialog_ajaxClear(); Notif.snackbarClear();
     }
 }

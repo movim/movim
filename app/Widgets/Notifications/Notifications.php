@@ -62,9 +62,10 @@ class Notifications extends Base
             // Don't notify if the contact is not in stored already, for spam reasons
             if ($contact) {
                 Notif::append(
-                    'invite|' . $from,
-                    $contact->truename,
-                    $this->__('invitations.wants_to_talk', $contact->truename),
+                    key: 'invite|' . $from,
+                    title: $contact->truename,
+                    body: $this->__('invitations.wants_to_talk', $contact->truename),
+                    url: $this->route('chat', $contact->id),
                     picture: $contact->getPicture(),
                     time: 4
                 );

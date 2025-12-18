@@ -1,8 +1,6 @@
-<ul class="list thick {if="isset($action) || isset($onclick)"}active{/if}"
-    {if="isset($onclick)"}
-        onclick="{$onclick}; Notif.snackbarClear();"
-    {elseif="isset($action)"}
-        onclick="MovimUtils.reload('{$action}')"
+<ul class="list thick {if="isset($url)"}active{/if}"
+    {if="isset($url)"}
+        onclick="MovimUtils.reload('{$url}'); Notif.snackbarClear()"
     {/if}
 >
     <li>

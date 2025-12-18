@@ -9,10 +9,27 @@ if ('serviceWorker' in navigator) {
             console.log('Service Worker Registered');
         });
 
-    navigator.serviceWorker.addEventListener("message", (event) => {
-        if (event.data.type == 'navigate') {
-            MovimUtils.reload(event.data.url);
-            window.focus();
+    const channel = new BroadcastChannel('messages');
+    channel.addEventListener('message', event => {
+        Notif.snackbarClear();
+        window.focus();
+
+        console.log(event.data);
+
+        switch (event.data.type) {
+            case 'call':
+                break;
+            case 'call_reject':
+                VisioUtils.cancelLobby(event.data.data.fullJid, event.data.data.callId);
+                break;
+            case 'chat':
+                Search.chat(event.data.data.jid, event.data.data.muc);
+                break;
+            default:
+                if (event.data.data.url) {
+                    MovimUtils.reload(event.data.data.url);
+                }
+                break;
         }
     });
 }
