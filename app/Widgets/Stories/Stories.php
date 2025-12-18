@@ -28,7 +28,7 @@ class Stories extends Base
             if (!$post->isMine($this->me)) {
                 $contact = \App\Contact::firstOrNew(['id' => $post->server]);
 
-                Notif::append(
+                $this->notif(
                     key: 'news',
                     title: '📝 ' . __('stories.new_story', $contact->truename),
                     body: $post->title,
@@ -60,14 +60,14 @@ class Stories extends Base
 
     public function ajaxOpenChat(string $jid)
     {
-        (new Chats)->ajaxOpen($jid, andShow: true);
+        (new Chats($this->me))->ajaxOpen($jid, andShow: true);
         $this->ajaxHttpGet();
     }
 
     public function ajaxHttpGet()
     {
         $blocks = 10;
-        $stories = Post::myStories()->withCount('myViews')->get();
+        $stories = Post::myStories($this->me)->get();
 
         $takeTopContacts = 0;
         if ($stories->count() < $blocks) {

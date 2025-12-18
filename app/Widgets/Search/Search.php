@@ -119,7 +119,7 @@ class Search extends Base
             $view->assign('communities', $communities);
 
             if (!\App\Configuration::get()->restrictsuggestions) {
-                $s = new RoomSearch;
+                $s = $this->xmpp(new RoomSearch);
                 $s->setKeyword($key)
                   ->setMax(5)
                   ->enableGlobalSearch()
@@ -153,13 +153,13 @@ class Search extends Base
 
     public function ajaxChat(string $jid, bool $muc = false)
     {
-        $contact = new ContactActions();
+        $contact = new ContactActions($this->me);
         $contact->ajaxChat($jid, $muc);
     }
 
     public function prepareTicket(Post $post)
     {
-        return (new WidgetPost())->prepareTicket($post);
+        return (new WidgetPost($this->me))->prepareTicket($post);
     }
 
     public function prepareUsers($users)

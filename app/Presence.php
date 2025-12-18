@@ -109,16 +109,16 @@ class Presence extends Model
         return stringToColor($this->resource);
     }
 
-    public static function findByStanza($stanza): Presence
+    public static function findByStanza(User $user, \SimpleXMLElement $stanza): Presence
     {
         $temporary = new self;
-        $temporary->set($stanza);
+        $temporary->set($user, $stanza);
         return $temporary;
     }
 
-    public function set($stanza)
+    public function set(User $user, \SimpleXMLElement $stanza)
     {
-        $this->session_id = SESSION_ID;
+        $this->session_id = $user->session->id;
         $jid = explodeJid($stanza->attributes()->from);
         $this->jid = $jid['jid'];
         $this->resource = $jid['resource'] ?? '';
@@ -164,7 +164,7 @@ class Presence extends Model
                         $session = Session::instance();
 
                         if ($session->get(Muc::$mucId . (string)$stanza->attributes()->from)) {
-                            $this->mucjid = me()->id;
+                            $this->mucjid = $user->id;
                         }
 
                         if (!isset($c->item)) {
@@ -172,7 +172,7 @@ class Presence extends Model
                         }
 
                         if (!empty($c->xpath("//status[@code='110']"))) {
-                            $this->mucjid = me()->id;
+                            $this->mucjid = $user->id;
                         } elseif ($c->item->attributes()->jid) {
                             $jid = explodeJid((string)$c->item->attributes()->jid);
                             $this->mucjid = $jid['jid'];

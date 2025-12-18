@@ -13,8 +13,7 @@ class SessionInitiate extends Action
     public function request()
     {
         $this->store();
-
-        Jingle::sessionInitiate($this->_to, $this->_jingle);
+        $this->iq($this->_jingle, to: $this->_to, type: 'set');
     }
 
     public function errorItemNotFound(string $errorId, ?string $message = null)

@@ -10,11 +10,12 @@ class GetSubscriptions extends Action
     protected $_to;
     protected $_node;
     protected $_notify = true;
+    protected $_sync;
 
     public function request()
     {
         $this->store();
-        Pubsub::getSubscriptions($this->_to, $this->_node);
+        $this->iq(Pubsub::getSubscriptions($this->_node), to: $this->_to, type: 'get');
     }
 
     public function setNotify($notify)

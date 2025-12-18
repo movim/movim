@@ -12,6 +12,6 @@ class MessageAccept extends Action
     public function request()
     {
         $this->store();
-        Jingle::messageAccept($this->_id);
+        $this->send(Jingle::messageAccept($this->_id));
     }
 }

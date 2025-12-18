@@ -12,7 +12,7 @@ class Destroy extends Action
     public function request()
     {
         $this->store();
-        Muc::destroy($this->_to);
+        $this->iq(Muc::destroy($this->_to), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

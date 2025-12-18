@@ -13,7 +13,7 @@ class Start extends Action
     public function request()
     {
         $this->store();
-        Stream::sessionStart($this->_to);
+        $this->iq(Stream::sessionStart(), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -21,7 +21,7 @@ class Start extends Action
         $session = Session::instance();
         $session->delete('password');
 
-        $session = me()->session;
+        $session = $this->me->session;
         $session->active = true;
         $session->save();
 

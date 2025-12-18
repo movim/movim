@@ -2,10 +2,15 @@
 
 namespace Moxl\Xec;
 
+use App\User;
 use Movim\Session;
 
 class Handler
 {
+    public function __construct(private ?User $user = null)
+    {
+    }
+
     public function handle(\SimpleXMLElement $child)
     {
         $id = (in_array($child->getName(), ['iq', 'presence', 'message']))
@@ -62,6 +67,7 @@ class Handler
             } elseif (method_exists($action, 'handle')) {
                 // We launch the object handle
                 $action->method('handle');
+                $action->attachUser($this->user);
                 $action->handle($child);
             }
         } else {
@@ -207,8 +213,8 @@ class Handler
 
         if (isset($hashToClass[$hash])) {
             $classname = '\\Moxl\\Xec\\Payload\\' . $hashToClass[$hash];
-
             $payloadClass = new $classname;
+            $payloadClass->attachUser($this->user);
             $payloadClass->prepare($s, $sparent);
             $payloadClass->handle($s, $sparent);
 

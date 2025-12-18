@@ -11,50 +11,35 @@ class MujiCall extends Model
 
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'id'];
-    protected $fillable = ['id', 'muc', 'jidfrom', 'video', 'isfromconference'];
+    protected $fillable = ['session_id', 'id', 'muc', 'jidfrom', 'video', 'isfromconference'];
     protected $with = ['participants', 'presences'];
-
-    protected $attributes = [
-        'session_id'    => SESSION_ID
-    ];
 
     public function session()
     {
-        return $this->hasOne('App\Session');
+        return $this->hasOne(Session::class);
     }
 
     public function conference()
     {
-        return $this->hasOne('App\Conference', 'conference', 'jidfrom')
-            ->where('session_id', $this->session_id);
+        return $this->hasOne(Conference::class, ['conference', 'session_id'], ['jidfrom', 'session_id']);
     }
 
     public function presences()
     {
-        return $this->hasMany('App\Presence', 'jid', 'muc')
-            ->where('session_id', $this->session_id)
+        return $this->hasMany(Presence::class, ['jid', 'session_id'], ['muc', 'session_id'])
             ->where('value', '<', '5')
             ->where('resource', '!=', '');
     }
 
-    public function presence()
-    {
-        return $this->hasOne('App\Presence', ['jid', 'session_id'], ['muc', 'session_id'])
-                    ->where('value', '<', 5)
-                    ->where('mucjid', me()->id);
-    }
-
     public function participants()
     {
-        return $this->hasMany('App\MujiCallParticipant', 'muji_call_id', 'id')
-            ->where('session_id', $this->session_id);
+        return $this->hasMany(MujiCallParticipant::class, ['muji_call_id', 'session_id'], ['id', 'session_id']);
     }
 
     public function inviter()
     {
-        return $this->hasOne('App\MujiCallParticipant', 'muji_call_id', 'id')
-            ->where('inviter', true)
-            ->where('session_id', $this->session_id);
+        return $this->hasOne(MujiCallParticipant::class, ['muji_call_id', 'session_id'], ['id', 'session_id'])
+            ->where('inviter', true);
     }
 
     public function getJoinedAttribute(): bool

@@ -21,8 +21,8 @@ class MAMResult extends Payload
         ) {
             $session->set('mamid' . (string)$stanza->attributes()->queryid, $messagesCounter + 1);
 
-            $message = \App\Message::findByStanza($stanza, $parent);
-            $message = $message->set($stanza->forwarded->message, $stanza->forwarded);
+            $message = \App\Message::findByStanza($this->me, $stanza, $parent);
+            $message = $message->set($this->me, $stanza->forwarded->message, $stanza->forwarded);
 
             // parent message doesn't exists
             if ($message == null) {

@@ -7,7 +7,7 @@
                     <i class="material-symbols">arrow_back</i>
                 </span>
 
-                {if="$post->isMine($c->me) || ($post->userAffiliation && $post->userAffiliation->affiliation == 'owner')"}
+                {if="$post->isMine($c->me) || $post->userOwner($c->me)"}
                     {if="$post->isEditable()"}
                         <span class="control icon active gray"
                               onclick="MovimUtils.reload('{$c->route('publish', [$post->server, $post->node, $post->nodeid])}')"

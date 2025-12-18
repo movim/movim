@@ -4,15 +4,15 @@ namespace Moxl\Stanza;
 
 class Register
 {
-    public static function get($to = false)
+    public static function get()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('jabber:iq:register', 'query');
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'get'));
+        return $query;
     }
 
-    public static function set($to = false, $data)
+    public static function set($data)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('jabber:iq:register', 'query');
@@ -31,19 +31,19 @@ class Register
             \Moxl\Utils::injectConfigInX($x, $data);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
+        return $query;
     }
 
-    public static function remove(?string $to)
+    public static function remove()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('jabber:iq:register', 'query');
         $query->appendChild($dom->createElement('remove'));
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to ?? false, 'set'));
+        return $query;
     }
 
-    public static function changePassword($to, $username, $password)
+    public static function changePassword($username, $password)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('jabber:iq:register', 'query');
@@ -56,6 +56,6 @@ class Register
         $passwordNode->appendChild($dom->createTextNode($password));
         $query->appendChild($passwordNode);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
+        return $query;
     }
 }

@@ -11,7 +11,7 @@ class Identity extends Model
 
     public function info()
     {
-        return $this->belongsTo('App\Info');
+        return $this->belongsTo(Info::class);
     }
 
     public static function saveMany($identities)

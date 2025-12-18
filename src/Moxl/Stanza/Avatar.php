@@ -15,7 +15,7 @@ class Avatar
         'pubsub#max_items' => '1',
     ];
 
-    public static function get($to, $node = false)
+    public static function get($node = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -24,7 +24,7 @@ class Avatar
         $items->setAttribute('node', $node ? $node : self::NODE_DATA);
         $pubsub->appendChild($items);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
+        return $pubsub;
     }
 
     public static function set($data, $to = false, $node = false, bool $withPublishOption = true)
@@ -57,7 +57,7 @@ class Avatar
             $pubsub->appendChild($publishOption);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
+        return $pubsub;
     }
 
     public static function setMetadata($data, $url = false, $to = false, $node = false, $width = 512, $height = 512, bool $withPublishOption = true)
@@ -105,6 +105,7 @@ class Avatar
             $pubsub->appendChild($publishOption);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
+        return $pubsub;
+
     }
 }

@@ -8,6 +8,7 @@ use Movim\Session;
 use Carbon\Carbon;
 
 use App\PushSubscription;
+use App\User;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Wrapper;
@@ -62,6 +63,7 @@ class Notif extends Base
      * @return void
      */
     public static function append(
+        User $user,
         string $key,
         string $title,
         string $body,
@@ -82,7 +84,7 @@ class Notif extends Base
 
         if (Session::instance()->get('session_down')) {
             requestPusher(
-                userId: me()->id,
+                userId: $user->id,
                 tag: $key,
                 title: $title,
                 body: $body,
@@ -128,7 +130,7 @@ class Notif extends Base
         }
 
         if ($first === 'chat') {
-            RPC::call('Notif.counter', $first, me()->unreads(null, true));
+            RPC::call('Notif.counter', $first, $user->unreads(null, true));
             self::executeRPC();
         } else {
             RPC::call('Notif.counter', $first, $notifs[$first]);
@@ -151,10 +153,9 @@ class Notif extends Base
         }
 
         if ($title != null) {
-            $n = new Notif;
             RPC::call(
                 'Notif.snackbar',
-                $n->prepareSnackbar($title, $body, $picture, $url),
+                (new Notif(new User))->prepareSnackbar($title, $body, $picture, $url),
                 $time
             );
         }
@@ -223,7 +224,7 @@ class Notif extends Base
 
         if ($notifs == null) $notifs = [];
 
-        $notifs['chat'] = me()?->unreads() ?? 0;
+        $notifs['chat'] = $this->me?->unreads() ?? 0;
         RPC::call('Notif.refresh', $notifs);
     }
 
@@ -236,13 +237,13 @@ class Notif extends Base
     public function ajaxCurrent($key)
     {
         // Clear the specific keys
-        if (strpos($key, '|') !== false) (new Notif)->ajaxClear($key);
+        if (strpos($key, '|') !== false) (new Notif($this->me))->ajaxClear($key);
 
         $session = Session::instance();
 
         // If the page was blurred
         if ($session->get('notifs_key') === 'blurred') {
-            (new Chat)->onNotificationCounterClear((new Packet)->pack(explode('|', $key)));
+            (new Chat($this->me))->onNotificationCounterClear((new Packet)->pack(explode('|', $key)));
         }
 
         $session->set('notifs_key', $key);

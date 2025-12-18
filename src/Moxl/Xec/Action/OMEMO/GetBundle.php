@@ -15,10 +15,9 @@ class GetBundle extends Action
     public function request()
     {
         $this->store();
-        OMEMO::getBundle(
-            $this->_to,
+        $this->iq(OMEMO::getBundle(
             $this->_id
-        );
+        ), to: $this->_to, type: 'get');
     }
 
     public function notifyLast()
@@ -31,7 +30,7 @@ class GetBundle extends Action
     {
         if ($stanza->pubsub->items->item->bundle) {
             $bundle = new Bundle;
-            $bundle->set($this->_to, $this->_id, $stanza->pubsub->items->item->bundle);
+            $bundle->set($this->me, $this->_to, $this->_id, $stanza->pubsub->items->item->bundle);
 
             $this->pack($bundle);
             $this->deliver();

@@ -72,7 +72,7 @@ class Avatar extends \Movim\Widget\Base
 
     public function ajaxGetAvatar()
     {
-        $r = new Get;
+        $r = $this->xmpp(new Get);
         $r->setTo($this->me->id)
             ->request();
     }
@@ -86,7 +86,7 @@ class Avatar extends \Movim\Widget\Base
     {
         if (empty($avatar->photobin->value)) return;
 
-        $r = new Set;
+        $r = $this->xmpp(new Set);
         $r->setData($avatar->photobin->value)->request();
     }
 
@@ -104,7 +104,7 @@ class Avatar extends \Movim\Widget\Base
         // Reload
         $p->load('jpeg');
 
-        $r = new Set;
+        $r = $this->xmpp(new Set);
         $r->setNode('urn:xmpp:movim-banner:0')
             ->setUrl(Image::getOrCreate($key, false, false, 'jpeg', true))
             ->setWidthMetadata(1280)

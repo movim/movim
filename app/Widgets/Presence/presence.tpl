@@ -1,7 +1,9 @@
 <ul class="list navigation thick active" id="presence_widget" dir="ltr">
     <li>
         <span class="primary icon bubble color status">
-            <img src="{$me->getPicture()}">
+            {if="$c->me->contact"}
+                <img src="{$c->me->contact->getPicture()}">
+            {/if}
         </span>
         <div>
             <p class="line bold"><br /></p>

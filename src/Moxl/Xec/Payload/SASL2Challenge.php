@@ -3,6 +3,7 @@
 namespace Moxl\Xec\Payload;
 
 use Moxl\Authentication;
+use Moxl\Stanza\Stream;
 
 class SASL2Challenge extends Payload
 {
@@ -12,10 +13,6 @@ class SASL2Challenge extends Payload
         $challenge = base64_decode((string)$stanza);
         $response = base64_encode($auth->challenge($challenge));
 
-        $dom = new \DOMDocument('1.0', 'UTF-8');
-        $auth = $dom->createElementNS('urn:xmpp:sasl:2', 'response', $response);
-        $dom->appendChild($auth);
-
-        \Moxl\API::sendDom($dom);
+        $this->send(Stream::sasl2Response($response));
     }
 }

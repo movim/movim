@@ -6,13 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 use Movim\Session;
 use App\Contact;
 use App\Configuration;
+use App\Session as AppSession;
 use Illuminate\Database\Capsule\Manager as DB;
 
 class User extends Model
 {
     protected $fillable = [
-        'id', 'language', 'nightmode', 'chatmain', 'nsfw', 'nickname',
-        'notificationchat', 'notificationcall', 'omemoenabled', 'accentcolor'
+        'id',
+        'language',
+        'nightmode',
+        'chatmain',
+        'nsfw',
+        'nickname',
+        'notificationchat',
+        'notificationcall',
+        'omemoenabled',
+        'accentcolor'
     ];
     public $with = ['session', 'capability'];
     protected $keyType = 'string';
@@ -42,47 +51,106 @@ class User extends Model
 
     public function session()
     {
-        return $this->hasOne('App\Session');
+        return $this->hasOne(AppSession::class);
     }
 
     public function contact()
     {
-        return $this->hasOne('App\Contact', 'id');
+        return $this->hasOne(Contact::class, 'id');
     }
 
     public function capability()
     {
-        return $this->hasOne('App\Info', 'server', 'id')->where('node', '');
+        return $this->hasOne(Info::class, 'server', 'id')->where('node', '');
     }
 
     public function messages()
     {
-        return $this->hasMany('App\Message');
+        return $this->hasMany(Message::class);
+    }
+
+    public function getLastMessage(string $to, bool $muc = false): ?Message
+    {
+        $m = null;
+
+        if ($muc) {
+            // Resolve the current presence
+            $presence = $this->session->presences()
+                ->where('jid', $to)
+                ->where('muc', true)
+                ->where('mucjid', $this->id)
+                ->first();
+
+            if ($presence) {
+                $m = $this->messages()
+                    ->where('type', 'groupchat')
+                    ->where('jidfrom', $to)
+                    ->where('jidto', $this->id)
+                    ->where('resource', $presence->resource)
+                    ->orderBy('published', 'desc')
+                    ->first();
+            }
+        } else {
+            $m = $this->messages()
+                ->where('jidto', $to)
+                ->orderBy('published', 'desc')
+                ->first();
+        }
+
+        return $m;
+    }
+
+    public function stories()
+    {
+        return Post::myStories($this);
+    }
+
+    public function rosterStories(Roster $roster)
+    {
+        return $this->stories()->where('server', $roster->jid);
+    }
+
+    public function rosterFirstUnseenStory(Roster $roster): ?Post
+    {
+        return $this->rosterStories($roster)->whereNotIn('id', function ($query) {
+            $query->select('post_id')
+                ->from('post_user_views')
+                ->where('user_id', $this->id);
+        })->first();
+    }
+
+    public function rosterStoriesAllSeen(Roster $roster): bool
+    {
+        return !$this->rosterStories($roster)->whereNotIn('id', function ($query) {
+            $query->select('post_id')
+                ->from('post_user_views')
+                ->where('user_id', $this->id);
+        })->exists();
     }
 
     public function MAMEarliests()
     {
-        return $this->hasMany('App\MAMEarliest');
+        return $this->hasMany(MAMEarliest::class);
     }
 
     public function openChats()
     {
-        return $this->hasMany('App\OpenChat');
+        return $this->hasMany(OpenChat::class);
     }
 
     public function drafts()
     {
-        return $this->hasMany('App\Draft');
+        return $this->hasMany(Draft::class);
     }
 
     public function pushSubscriptions()
     {
-        return $this->hasMany('App\PushSubscription');
+        return $this->hasMany(PushSubscription::class);
     }
 
     public function reported()
     {
-        return $this->belongsToMany('App\Reported')->withTimestamps();
+        return $this->belongsToMany(Reported::class)->withTimestamps();
     }
 
     public function postViews()
@@ -92,7 +160,7 @@ class User extends Model
 
     public function emojis()
     {
-        return $this->belongsToMany('App\Emoji')->withPivot('alias')->withTimestamps();
+        return $this->belongsToMany(Emoji::class)->withPivot('alias')->withTimestamps();
     }
 
     public function getUsernameAttribute()
@@ -156,17 +224,17 @@ class User extends Model
 
     public function encryptedPasswords()
     {
-        return $this->hasMany('App\EncryptedPassword');
+        return $this->hasMany(EncryptedPassword::class);
     }
 
     public function subscriptions()
     {
-        return $this->hasMany('App\Subscription', 'jid', 'id');
+        return $this->hasMany(Subscription::class, 'jid', 'id');
     }
 
     public function affiliations()
     {
-        return $this->hasMany('App\Affiliation', 'jid', 'id');
+        return $this->hasMany(Affiliation::class, 'jid', 'id');
     }
 
     public static function me($reload = false): ?User

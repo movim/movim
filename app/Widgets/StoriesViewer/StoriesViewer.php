@@ -19,7 +19,7 @@ class StoriesViewer extends Base
 
     public function ajaxHttpGet(int $id)
     {
-        $post = Post::myStories()->where('id', $id)->first();
+        $post = Post::myStories($this->me)->where('id', $id)->first();
         if (!$post) return;
 
         $view = $this->tpl();
@@ -32,7 +32,7 @@ class StoriesViewer extends Base
 
     public function ajaxHttpGetNext(string $before)
     {
-        $post = Post::myStories()->withCount('myViews')->where('published', '<', $before)->first();
+        $post = Post::myStories($this->me)->where('published', '<', $before)->first();
 
         if (!$post || $post->my_views_count > 0) {
             $this->rpc('StoriesViewer.close');
@@ -54,7 +54,7 @@ class StoriesViewer extends Base
 
     public function ajaxDelete(string $id)
     {
-        $post = Post::myStories()->where('id', $id)->first();
+        $post = Post::myStories($this->me)->where('id', $id)->first();
 
         if ($post) {
             $view = $this->tpl();
@@ -66,10 +66,10 @@ class StoriesViewer extends Base
 
     public function ajaxDeleteConfirm(string $id)
     {
-        $post = Post::myStories()->where('id', $id)->first();
+        $post = Post::myStories($this->me)->where('id', $id)->first();
 
         if ($post) {
-            $p = new PostDelete;
+            $p = $this->xmpp(new PostDelete);
             $p->setTo($post->server)
               ->setNode($post->node)
               ->setId($post->nodeid)
@@ -81,14 +81,14 @@ class StoriesViewer extends Base
 
     public function ajaxSendComment(string $id, ?string $comment = null)
     {
-        $post = Post::myStories()->where('id', $id)->first();
+        $post = Post::myStories($this->me)->where('id', $id)->first();
         if (!$post || empty($comment)) return;
 
         $file = new MessageFile();
         $file->type = 'xmpp/uri';
         $file->url = $post->getRef();
 
-        (new Chat)->sendMessage($post->server, $comment, file: $file);
+        (new Chat($this->me))->sendMessage($post->server, $comment, file: $file);
 
         $this->toast($this->__('post.comment_published'));
     }

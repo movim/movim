@@ -11,7 +11,7 @@ class MessageFile extends Model
 
     public function message()
     {
-        return $this->belongsTo('App\Message');
+        return $this->belongsTo(Message::class);
     }
 
     public function getCleansizeAttribute(): ?string

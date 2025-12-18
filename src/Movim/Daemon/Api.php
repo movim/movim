@@ -113,8 +113,9 @@ class Api
 
     public function sessionDisconnect($post)
     {
-        $sid = $post['sid'];
-
-        return $this->_core->forceClose($sid);
+        if (array_key_exists('sid', $post)) {
+            $sid = $post['sid'];
+            return $this->_core->forceClose($sid);
+        }
     }
 }

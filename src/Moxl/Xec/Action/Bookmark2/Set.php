@@ -16,7 +16,7 @@ class Set extends Action
     public function request()
     {
         $this->store();
-        Bookmark2::set($this->_conference, $this->_version, $this->_withPublishOption);
+        $this->iq(Bookmark2::set($this->_conference, $this->_version, $this->_withPublishOption), type: 'set');
     }
 
     public function setConference(Conference $conference)
@@ -27,11 +27,13 @@ class Set extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        me()->session->conferences()
+        $this->me->session->conferences()
             ->where('conference', $this->_conference->conference)
             ->delete();
 
         $conference = new Conference;
+        $conference->user_id = $this->me->id;
+        $conference->session_id = $this->me->session->id;
         $conference->conference = $this->_conference->conference;
         $conference->name = $this->_conference->name;
         $conference->autojoin = $this->_conference->autojoin;

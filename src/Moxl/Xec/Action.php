@@ -2,21 +2,12 @@
 
 namespace Moxl\Xec;
 
-use App\User;
 use Moxl\Xec\Payload\Payload;
 use Movim\Session;
-use Movim\Widget\Base;
 
 abstract class Action extends Payload
 {
     protected $stanzaId;
-    protected ?User $me;
-
-    public function __construct(?Base $widget = null)
-    {
-        $this->me = $widget?->me;
-        return parent::__construct();
-    }
 
     final public function store(?string $customId = null)
     {

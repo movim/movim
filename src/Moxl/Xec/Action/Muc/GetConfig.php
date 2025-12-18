@@ -12,7 +12,7 @@ class GetConfig extends Action
     public function request()
     {
         $this->store();
-        Muc::getConfig($this->_to);
+        $this->iq(Muc::getConfig(), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

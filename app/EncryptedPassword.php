@@ -12,6 +12,6 @@ class EncryptedPassword extends Model
 
     public function session()
     {
-        return $this->hasOne('App\Session');
+        return $this->hasOne(Session::class);
     }
 }

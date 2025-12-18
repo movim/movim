@@ -17,23 +17,26 @@ class Unavailable extends Action
     public function request()
     {
         $this->store();
-        Presence::unavailable($this->_to . '/' . $this->_resource, $this->_status, $this->_type);
+        $this->send(Presence::maker($this->me,
+            to: $this->_to . '/' . $this->_resource,
+            status: $this->_status,
+            type: $this->_type,
+            show: 'unavailable'
+        ));
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $presence = DBPresence::findByStanza($stanza);
-        $presence->set($stanza);
+        $presence = DBPresence::findByStanza($this->me, $stanza);
+        $presence->set($this->me, $stanza);
 
-        PresenceBuffer::getInstance()->append($presence, function () {
+        PresenceBuffer::getInstance($this->me)->append($presence, function () {
             $this->pack($this->_to);
             $this->deliver();
         });
-
     }
 
     public function error(string $errorId, ?string $message = null)
     {
-        $this->handle(null, null);
     }
 }

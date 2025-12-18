@@ -80,7 +80,7 @@ class ContactHeader extends Base
 
     public function ajaxEditSubmit($form)
     {
-        $rd = new UpdateItem;
+        $rd = $this->xmpp(new UpdateItem);
         $rd->setTo($form->jid->value)
             ->setName($form->alias->value)
             ->setGroup($form->group->value)
@@ -93,7 +93,7 @@ class ContactHeader extends Base
             return;
         }
 
-        $c = new Chats();
+        $c = new Chats($this->me);
         $c->ajaxOpen($jid, andShow: true);
 
         $this->rpc('MovimUtils.redirect', $this->route('chat', $jid));
@@ -103,7 +103,7 @@ class ContactHeader extends Base
     {
         if (!validateJid($jid)) return;
 
-        $g = new Subscribe;
+        $g = $this->xmpp(new Subscribe);
         $g->setTo($jid)
             ->setNode(Post::MICROBLOG_NODE)
             ->setFrom($this->me->id)
@@ -114,7 +114,7 @@ class ContactHeader extends Base
     {
         if (!validateJid($jid)) return;
 
-        $g = new Unsubscribe;
+        $g = $this->xmpp(new Unsubscribe);
         $g->setTo($jid)
             ->setNode(Post::MICROBLOG_NODE)
             ->setFrom($this->me->id)
@@ -123,7 +123,7 @@ class ContactHeader extends Base
 
     public function ajaxGetMetadata(string $jid)
     {
-        $r = new Request;
+        $r = $this->xmpp(new Request);
         $r->setTo($jid)->setNode(Post::MICROBLOG_NODE)
             ->request();
     }

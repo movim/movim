@@ -13,6 +13,6 @@ class EmojisPack extends Model
 
     public function emojis()
     {
-        return $this->hasMany('App\Emoji', 'pack', 'name');
+        return $this->hasMany(Emoji::class, 'pack', 'name');
     }
 }

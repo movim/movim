@@ -15,13 +15,6 @@ use React\Promise\PromiseInterface;
 
 use function React\Async\await;
 
-/**
- * Me
- */
-function me(bool $reload = false): ?User
-{
-    return \App\User::me($reload);
-}
 
 /**
  * Log an error
@@ -825,7 +818,7 @@ function requestTemplaterWorker(Base $widget, string $method, ?Packet $data = nu
 
     $browser = new React\Http\Browser($connector);
     $payload = [
-        'sid' => SESSION_ID,
+        'sid' => $widget->me->session->id,
         'jid' => $widget->me->id,
         'widget' => $widget->getName(),
         'method' => $method,

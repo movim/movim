@@ -3,8 +3,6 @@
 namespace Moxl\Xec\Action\Storage;
 
 use Moxl\Xec\Action;
-
-use App\User;
 use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\Storage;
 
@@ -13,7 +11,7 @@ class Get extends Action
     public function request()
     {
         $this->store();
-        Pubsub::getItem(false, Storage::$node, 'current');
+        $this->iq(Pubsub::getItem(false, Storage::$node, 'current'), type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -29,7 +27,7 @@ class Get extends Action
             }
 
             if (!empty($config)) {
-                $me = User::me();
+                $me = $this->me;
                 $me->setConfig($config);
                 $me->save();
             }

@@ -11,13 +11,14 @@ class CallInviteRetract extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($parent->{'stanza-id'} && $parent->{'stanza-id'}->attributes()->xmlns == 'urn:xmpp:sid:0') {
-            $muji = me()->session->mujiCalls()->where('id', (string)$stanza->attributes()->id)->first();
+            $muji = $this->me->session->mujiCalls()->where('id', (string)$stanza->attributes()->id)->first();
 
             if ($muji) {
                 $participant = $muji->participants->firstWhere('jid', $parent->attributes()->from);
 
                 if ($participant && $participant->inviter) {
                     $message = Message::eventMessageFactory(
+                        $this->me,
                         'muji_retract',
                         bareJid((string)$parent->attributes()->from),
                         (string)$stanza->attributes()->id

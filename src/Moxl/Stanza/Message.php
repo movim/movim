@@ -282,118 +282,7 @@ class Message
             $dom->documentElement->appendChild($messageOMEMOXML);
         }
 
-        \Moxl\API::sendDom($dom);
-    }
-
-    public static function message(
-        string $to,
-        ?string $content = null,
-        ?string $html = null,
-        ?string $id = null,
-        ?string $replace = null,
-        ?MessageFile $file = null,
-        $parentId = false,
-        array $reactions = [],
-        $originId = false,
-        $threadId = false,
-        $replyId = false,
-        $replyTo = false,
-        $replyQuotedBodyLength = 0,
-        ?MessageOmemoHeader $messageOMEMO = null
-    ) {
-        self::maker(
-            $to,
-            $content,
-            $html,
-            'chat',
-            'active',
-            'request',
-            $id,
-            $replace,
-            $file,
-            false,
-            $parentId,
-            $reactions,
-            $originId,
-            $threadId,
-            $replyId,
-            $replyTo,
-            $replyQuotedBodyLength,
-            $messageOMEMO
-        );
-    }
-
-    public static function simpleMessage(
-        string $to,
-        ?string $content = null,
-        ?string $html = null,
-        ?string $id = null,
-        ?string $replace = null,
-        ?MessageFile $file = null,
-        $parentId = false,
-        array $reactions = [],
-        $originId = false,
-        $threadId = false,
-        $replyId = false,
-        $replyTo = false,
-        $replyQuotedBodyLength = 0,
-        ?MessageOmemoHeader $messageOMEMO = null
-    ) {
-        self::maker(
-            $to,
-            $content,
-            $html,
-            'chat',
-            false,
-            false,
-            $id,
-            $replace,
-            $file,
-            false,
-            $parentId,
-            $reactions,
-            $originId,
-            $threadId,
-            $replyId,
-            $replyTo,
-            $replyQuotedBodyLength,
-            $messageOMEMO
-        );
-    }
-
-    public static function received($to, $id, $type = 'chat')
-    {
-        self::maker($to, type: $type, receipts: 'received', id: $id);
-    }
-
-    public static function displayed($to, $id, $type = 'chat')
-    {
-        self::maker($to, type: $type, receipts: 'displayed', id: $id);
-    }
-
-    public static function invite($to, $id, $invite)
-    {
-        self::maker($to, id: $id, invite: $invite);
-    }
-
-    public static function active($to)
-    {
-        self::maker($to, type: 'chat', chatstates: 'active');
-    }
-
-    public static function inactive($to)
-    {
-        self::maker($to, type: 'chat', chatstates: 'inactive');
-    }
-
-    public static function composing($to)
-    {
-        self::maker($to, type: 'chat', chatstates: 'composing');
-    }
-
-    public static function paused($to)
-    {
-        self::maker($to, type: 'chat', chatstates: 'paused');
+        return $dom;
     }
 
     public static function retract(string $to, string $id, string $type)
@@ -425,10 +314,10 @@ class Message
         $body->appendChild($bodyContent);
         $root->appendChild($body);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
-    public static function moderate(string $to, string $stanzaId)
+    public static function moderate(string $stanzaId)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
@@ -445,6 +334,6 @@ class Message
         $retract->setAttribute('xmlns', 'urn:xmpp:message-retract:1');
         $moderate->appendChild($retract);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($moderate, $to, 'set'));
+        return $moderate;
     }
 }

@@ -115,7 +115,7 @@ class Session implements CacheInterface
     /**
      * Deletes all this session container (not the session!)
      */
-    public static function dispose()
+    public static function dispose(): bool
     {
         if (isset(self::$instance)) {
             self::$instance = null;

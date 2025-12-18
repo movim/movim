@@ -12,7 +12,7 @@ class Get extends Action
     public function request()
     {
         $this->store();
-        ExternalServices::request($this->_to);
+        $this->iq(ExternalServices::request(), to: $this->_to, type: 'get');;
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

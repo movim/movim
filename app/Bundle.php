@@ -10,9 +10,9 @@ class Bundle extends Model
     public const OMEMO_BUNDLE = 'eu.siacs.conversations.axolotl.bundles:';
     protected $primaryKey = ['user_id', 'jid', 'bundleid'];
 
-    public function set(string $jid, string $bundleId, $bundle)
+    public function set(User $user, string $jid, string $bundleId, $bundle)
     {
-        $this->user_id = me()->id;
+        $this->user_id = $user->id;
         $this->jid = $jid;
         $this->bundleid = $bundleId;
 

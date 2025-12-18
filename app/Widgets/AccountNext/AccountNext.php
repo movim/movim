@@ -80,7 +80,7 @@ class AccountNext extends \Movim\Widget\Base
     {
         $this->toast($this->__('error.service_unavailable'));
 
-        requestAPI('disconnect', post: ['sid' => SESSION_ID]);
+        requestAPI('disconnect', post: ['sid' => $this->me->session->id]);
 
         $this->rpc('MovimUtils.redirect', $this->route('account'));
     }
@@ -111,7 +111,7 @@ class AccountNext extends \Movim\Widget\Base
             return;
         }
 
-        $s = new Set;
+        $s = $this->xmpp(new Set);
         $s->setData(formToArray($form))
           ->request();
     }

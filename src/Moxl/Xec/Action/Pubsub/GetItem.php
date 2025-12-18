@@ -23,7 +23,7 @@ class GetItem extends Action
     public function request()
     {
         $this->store();
-        Pubsub::getItem($this->_to, $this->_node, $this->_id);
+        $this->iq(Pubsub::getItem($this->_node, $this->_id), to: $this->_to, type: 'get');
     }
 
     public function setManual()
@@ -72,7 +72,7 @@ class GetItem extends Action
                     }
 
                     if ($this->_messagemid) {
-                        $message = me()->messages()->where('mid', $this->_messagemid)->first();
+                        $message = $this->me->messages()->where('mid', $this->_messagemid)->first();
 
                         if ($message) {
                             $message->postid = $p->id;

@@ -4,14 +4,15 @@ namespace Moxl\Stanza;
 
 class Vcard
 {
-    public static function get($to)
+    public static function get()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $vcard = $dom->createElementNS('vcard-temp', 'vCard');
-        \Moxl\API::request(\Moxl\API::iqWrapper($vcard, $to, 'get'));
+
+        return $vcard;
     }
 
-    public static function set($to, $data)
+    public static function set($data)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $vcard = $dom->createElementNS('vcard-temp', 'vCard');
@@ -64,6 +65,6 @@ class Vcard
             $vcard->appendChild($photo);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($vcard, $to, 'set'));
+        return $vcard;
     }
 }

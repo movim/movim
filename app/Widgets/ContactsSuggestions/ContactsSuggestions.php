@@ -63,6 +63,6 @@ class ContactsSuggestions extends Base
 
     public function ajaxSubscribe(string $jid)
     {
-        (new ContactHeader)->ajaxSubscribe($jid);
+        (new ContactHeader($this->me))->ajaxSubscribe($jid);
     }
 }

@@ -16,7 +16,7 @@ class Publish extends Action
     public function request()
     {
         $this->store();
-        Location::publish($this->_geo, $this->_withPublishOption);
+        $this->iq(Location::publish($this->_geo, $this->_withPublishOption), type: 'set');
     }
 
     public function setGeo(array $geo)

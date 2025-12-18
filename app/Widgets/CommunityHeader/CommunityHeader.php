@@ -89,7 +89,7 @@ class CommunityHeader extends Base
             return;
         }
 
-        $r = new Request;
+        $r = $this->xmpp(new Request);
         $r->setTo($origin)->setNode($node)
             ->request();
     }
@@ -117,7 +117,7 @@ class CommunityHeader extends Base
             return;
         }
 
-        $g = new Subscribe;
+        $g = $this->xmpp(new Subscribe);
         $g->setTo($origin)
             ->setNode($node)
             ->setFrom($this->me->id)
@@ -125,7 +125,7 @@ class CommunityHeader extends Base
             ->request();
 
         if ($form->share->value) {
-            $a = new SubscriptionAdd;
+            $a = $this->xmpp(new SubscriptionAdd);
             $a->setServer($origin)
                 ->setNode($node)
                 ->setFrom($this->me->id)
@@ -162,7 +162,7 @@ class CommunityHeader extends Base
             ->get();
 
         foreach ($subscriptions as $s) {
-            $g = new Unsubscribe;
+            $g = $this->xmpp(new Unsubscribe);
             $g->setTo($origin)
                 ->setNode($node)
                 ->setSubid($s->subid)
@@ -170,7 +170,7 @@ class CommunityHeader extends Base
                 ->request();
         }
 
-        $r = new SubscriptionRemove;
+        $r = $this->xmpp(new SubscriptionRemove);
         $r->setServer($origin)
             ->setNode($node)
             ->setFrom($this->me->id)
@@ -186,7 +186,7 @@ class CommunityHeader extends Base
             return;
         }
 
-        $t = new TestPostPublish;
+        $t = $this->xmpp(new TestPostPublish);
         $t->setTo($origin)
             ->setNode($node)
             ->request();

@@ -97,7 +97,7 @@ class Upload extends Base
                 'type' => $file->type
             ]);
 
-            $r = new Request;
+            $r = $this->xmpp(new Request);
             $r->setTo($uploadService->server)
                 ->setName($file->name)
                 ->setSize($file->size)
@@ -112,7 +112,7 @@ class Upload extends Base
         $upload = $this->me->session->getUploadService();
 
         if ($upload) {
-            $r = new Request;
+            $r = $this->xmpp(new Request);
             $r->setTo($upload->server)
                 ->setName($file->name)
                 ->setSize($file->size)

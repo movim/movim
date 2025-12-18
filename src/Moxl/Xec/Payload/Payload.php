@@ -2,6 +2,8 @@
 
 namespace Moxl\Xec\Payload;
 
+use App\User;
+use Movim\Session;
 use Moxl\Xec\Payload\Packet;
 use Movim\Widget\Wrapper;
 
@@ -15,9 +17,60 @@ abstract class Payload
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(protected ?User $me = null)
     {
         $this->packet = new Packet;
+    }
+
+    public function attachUser(?User $user = null)
+    {
+        $this->me = $user;
+    }
+
+    public function iq(?\DOMNode $xml = null, ?string $to = null, ?string $type = null, $id = false)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $iq = $dom->createElementNS('jabber:client', 'iq');
+        $dom->appendChild($iq);
+
+        if ($this->me?->session?->resource) {
+            $iq->setAttribute(
+                'from',
+                $this->me->id . '/' . $this->me->session->resource
+            );
+        }
+
+        if ($to != null) {
+            $iq->setAttribute('to', $to);
+        }
+
+        if ($type != null) {
+            $iq->setAttribute('type', $type);
+        }
+
+        global $language;
+
+        if ($id == false) {
+            $session = Session::instance();
+            $id = $session->get('id');
+        }
+        $iq->setAttribute('id', $id);
+
+        if (isset($language)) {
+            $iq->setAttribute('xml:lang', $language);
+        }
+
+        if ($xml != false) {
+            $xml = $dom->importNode($xml, true);
+            $iq->appendChild($xml);
+        }
+
+        \writeXMPP($dom->saveXML($dom->documentElement));
+    }
+
+    public function send(?\DOMDocument $dom = null)
+    {
+        \writeXMPP($dom->saveXML($dom->documentElement));
     }
 
     /**

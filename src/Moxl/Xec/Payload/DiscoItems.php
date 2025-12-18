@@ -12,6 +12,6 @@ class DiscoItems extends Payload
         $id = (string)$parent->attributes()->id;
 
         // Global handler, to be completed
-        Error::notImplemented($jid, $id);
+        $this->iq(Error::notImplemented(), to: $jid, id: $id, type: 'error');
     }
 }

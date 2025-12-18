@@ -81,8 +81,8 @@ class Rooms extends Base
     {
         $muji = $packet->content;
 
-        if ($muji->jidfrom && $muji->conference && !$muji->inviter->me) {
-            Notif::append(
+        if ($muji->jidfrom && $muji->conference && !$muji->inviter->isUser($this->me)) {
+            $this->notif(
                 key: 'chat|' . $muji->jidfrom,
                 title: ($muji->conference != null && $muji->conference->name)
                     ? $muji->conference->name
@@ -121,7 +121,7 @@ class Rooms extends Base
         $message = $packet->content;
 
         if ($message->isMuc()) {
-            $chatStates = ChatStates::getInstance();
+            $chatStates = ChatStates::getInstance($this->me);
             $chatStates->clearState($message->jidfrom, $message->resource);
 
             $this->onChatState($chatStates->getState($message->jidfrom));
@@ -170,7 +170,7 @@ class Rooms extends Base
             if (!$room->info) {
                 $jid = explodeJid($room->conference);
 
-                $request = new Request;
+                $request = $this->xmpp(new Request);
                 $request->setTo($room->conference)
                     ->setParent($jid['server'])
                     ->request();
@@ -279,12 +279,12 @@ class Rooms extends Base
 
         $jid = explodeJid($room);
 
-        $r = new Request;
+        $r = $this->xmpp(new Request);
         $r->setTo($room)
             ->setParent($jid['server'])
             ->request();
 
-        $p = new Muc;
+        $p = $this->xmpp(new Muc);
         $p->setTo($room);
 
         if ($nickname == null) {
@@ -305,7 +305,7 @@ class Rooms extends Base
             }
         }
 
-        $m = new GetMembers;
+        $m = $this->xmpp(new GetMembers);
         $m->setTo($room)
             ->request();
 
@@ -346,7 +346,7 @@ class Rooms extends Base
         }
 
         // We clear the ping timer
-        ChatroomPings::getInstance()->clear($room);
+        ChatroomPings::getInstance($this->me)->clear($room);
 
         // We clear the presences from the buffer cache and then the DB
         $this->me->session->conferences()
@@ -359,7 +359,7 @@ class Rooms extends Base
             $session = Session::instance();
             $session->delete($room . '/' . $resource);
 
-            $pu = new Unavailable;
+            $pu = $this->xmpp(new Unavailable);
             $pu->setTo($room)
                 ->setResource($resource)
                 ->request();

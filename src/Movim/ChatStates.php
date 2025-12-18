@@ -6,6 +6,7 @@
 
 namespace Movim;
 
+use App\User;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;
 use React\EventLoop\Timer\Timer;
@@ -20,10 +21,14 @@ class ChatStates
     private $_composing = [];
     private $_timeout = 30;
 
-    public static function getInstance()
+    public function __construct(private ?User $user = null)
+    {
+    }
+
+    public static function getInstance(?User $user = null)
     {
         if (!isset(self::$instance)) {
-            self::$instance = new self();
+            self::$instance = new self($user);
         }
 
         return self::$instance;
@@ -103,6 +108,6 @@ class ChatStates
 
     private function resolveJid(string $from, string $to)
     {
-        return ($from == me()->id) ? $to : $from;
+        return ($from == $this->user->id) ? $to : $from;
     }
 }

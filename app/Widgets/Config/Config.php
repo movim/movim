@@ -86,13 +86,13 @@ class Config extends Base
     public function ajaxMAMGetConfig()
     {
         if ($this->me->hasMAM()) {
-            (new GetConfig)->request();
+            $this->xmpp(new GetConfig)->request();
         }
     }
 
     public function ajaxMAMSetConfig($value)
     {
-        $s = new SetConfig;
+        $s = $this->xmpp(new SetConfig);
         $s->setDefault($value)
             ->request();
     }
@@ -100,14 +100,14 @@ class Config extends Base
     public function ajaxBlogGetConfig()
     {
         if ($this->me->hasPubsub()) {
-            (new PubsubGetConfig)->setNode(Post::MICROBLOG_NODE)->request();
+            $this->xmpp(new PubsubGetConfig)->setNode(Post::MICROBLOG_NODE)->request();
         }
     }
 
     public function ajaxBlogSetConfig(\stdClass $data)
     {
         if ($this->me->hasPubsub()) {
-            $r = new PubsubSetConfig;
+            $r = $this->xmpp(new PubsubSetConfig);
             $r->setNode(Post::MICROBLOG_NODE)
                 ->setData(formToArray($data))
                 ->request();
@@ -131,7 +131,7 @@ class Config extends Base
             }
         }
 
-        $s = new Set;
+        $s = $this->xmpp(new Set);
         $s->setData($config)
             ->request();
     }
@@ -155,7 +155,7 @@ class Config extends Base
             $this->me->save();
             $this->refreshConfig();
 
-            (new Dialog)->ajaxClear();
+            (new Dialog($this->me))->ajaxClear();
             $this->toast($this->__('profile.nickname_saved'));
         } else {
             $this->toast($this->__('profile.nickname_error'));

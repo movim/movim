@@ -17,11 +17,13 @@
     <span class="primary icon bubble
         {if="$roster"}
             {if="$roster->presence"}status {$roster->presence->presencekey}{/if}
-            {if="$roster->stories->count() > 0"}stories {if="$roster->storiesSeen"}seen{/if}{/if}
+            {if="$c->me->rosterStories($roster)->count() > 0"}stories
+                {if="$c->me->rosterStoriesAllSeen($roster)"}seen{/if}
+            {/if}
         {/if}
     "
-    {if="$roster && $roster->firstUnseenStory"}
-        onclick="StoriesViewer_ajaxHttpGet({$roster->firstUnseenStory->id})"
+    {if="$roster && $c->me->rosterFirstUnseenStory($roster)"}
+        onclick="StoriesViewer_ajaxHttpGet({$c->me->rosterFirstUnseenStory($roster)->id})"
     {/if}
     {if="$count > 0"}data-counter="{$count}"{/if}
     >

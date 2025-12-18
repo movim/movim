@@ -16,7 +16,7 @@ class Synchronize extends Action
     public function request()
     {
         $this->store();
-        Bookmark::get();
+        $this->iq(Bookmark::get(), to: $this->_to, type: 'get');
     }
 
     protected function saveItem($c)

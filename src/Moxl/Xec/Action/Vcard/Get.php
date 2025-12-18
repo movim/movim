@@ -13,7 +13,7 @@ class Get extends Action
     public function request()
     {
         $this->store();
-        Vcard::get($this->_to);
+        $this->iq(Vcard::get(), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

@@ -85,7 +85,7 @@ class Visio extends Base
         $currentCall = CurrentCall::getInstance();
 
         if ($currentCall->isStarted()) {
-            $st = new SessionTerminate;
+            $st = $this->xmpp(new SessionTerminate);
             $st->setTo($currentCall->jid)
                 ->setJingleSid($currentCall->id)
                 ->setReason('failed-application')
@@ -99,7 +99,7 @@ class Visio extends Base
     {
         $presence = $packet->content;
 
-        $createMujiRoom = new CreateMujiRoom;
+        $createMujiRoom = $this->xmpp(new CreateMujiRoom);
         $createMujiRoom->setTo($presence->jid)
             ->request();
     }
@@ -180,6 +180,7 @@ class Visio extends Base
     public function onPropose(Packet $packet)
     {
         $message = Message::eventMessageFactory(
+            $this->me,
             'jingle',
             bareJid($packet->from),
             $packet->content['id']
@@ -189,7 +190,7 @@ class Visio extends Base
 
         Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message));
 
-        $ringing = new MessageRinging;
+        $ringing = $this->xmpp(new MessageRinging);
         $ringing->setTo($packet->from)
             ->setId($packet->content['id'])
             ->request();
@@ -209,7 +210,7 @@ class Visio extends Base
         CurrentCall::getInstance()->start($packet->from, $packet->content);
         $this->rpc('Notif.incomingCallAnswer');
 
-        (new Dialog)->ajaxClear();
+        (new Dialog($this->me))->ajaxClear();
     }
 
     public function onRetract(Packet $packet)
@@ -239,7 +240,7 @@ class Visio extends Base
 
         // Stop calling sound and clear the Dialog if there
         $this->rpc('Notif.incomingCallAnswer');
-        (new Dialog)->ajaxClear();
+        (new Dialog($this->me))->ajaxClear();
 
         $this->toast($this->__('visio.ended'));
 
@@ -321,6 +322,7 @@ class Visio extends Base
     public function ajaxPropose(string $to, string $id, ?bool $withVideo = false)
     {
         $message = Message::eventMessageFactory(
+            $this->me,
             'jingle',
             bareJid($to),
             $id
@@ -330,7 +332,7 @@ class Visio extends Base
 
         Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message));
 
-        $p = new MessagePropose;
+        $p = $this->xmpp(new MessagePropose);
         $p->setTo($to)
             ->setId($id)
             ->setWithVideo($withVideo)
@@ -342,11 +344,11 @@ class Visio extends Base
         CurrentCall::getInstance()->start($to, $id);
         $this->rpc('Notif.incomingCallAnswer');
 
-        /*$p = new MessageAccept;
+        /*$p = $this->xmpp(new MessageAccept);
         $p->setId($id)
           ->request();*/
 
-        $p = new MessageProceed;
+        $p = $this->xmpp(new MessageProceed);
         $p->setTo($to)
             ->setId($id)
             ->request();
@@ -358,7 +360,7 @@ class Visio extends Base
 
         $this->rpc('Notif.incomingCallAnswer');
 
-        $reject = new MessageReject;
+        $reject = $this->xmpp(new MessageReject);
         $reject->setTo($to)
             ->setId($id)
             ->request();
@@ -366,7 +368,7 @@ class Visio extends Base
 
     public function ajaxMute(string $to, string $id, $name)
     {
-        $p = new SessionMute;
+        $p = $this->xmpp(new SessionMute);
         $p->setTo($to)
             ->setId($id)
             ->setName($name)
@@ -375,7 +377,7 @@ class Visio extends Base
 
     public function ajaxUnmute(string $to, string $id, $name)
     {
-        $p = new SessionUnmute;
+        $p = $this->xmpp(new SessionUnmute);
         $p->setTo($to)
             ->setId($id)
             ->setName($name)
@@ -386,9 +388,14 @@ class Visio extends Base
 
     public function ajaxContentAdd(string $to, string $sdp, string $id, string $mediaId)
     {
-        $stj = new SDPtoJingle($this->filterSDPMedia($sdp, $mediaId), sid: $id, action: 'content-add');
+        $stj = new SDPtoJingle(
+            user: $this->me,
+            sdp: $this->filterSDPMedia($sdp, $mediaId),
+            sid: $id,
+            action: 'content-add'
+        );
 
-        $si = new ContentAdd;
+        $si = $this->xmpp(new ContentAdd);
         $si->setTo($to)
             ->setJingle($stj->generate())
             ->request();
@@ -396,9 +403,14 @@ class Visio extends Base
 
     public function ajaxContentRemove(string $to, string $sdp, string $id, string $mediaId)
     {
-        $stj = new SDPtoJingle($this->filterSDPMedia($sdp, $mediaId), sid: $id, action: 'content-remove');
+        $stj = new SDPtoJingle(
+            user: $this->me,
+            sdp: $this->filterSDPMedia($sdp, $mediaId),
+            sid: $id,
+            action: 'content-remove'
+        );
 
-        $si = new ContentRemove;
+        $si = $this->xmpp(new ContentRemove);
         $si->setTo($to)
             ->setJingle($stj->generate())
             ->request();
@@ -406,9 +418,14 @@ class Visio extends Base
 
     public function ajaxContentModify(string $to, string $sdp, string $id)
     {
-        $stj = new SDPtoJingle($sdp, sid: $id, action: 'content-modify');
+        $stj = new SDPtoJingle(
+            user: $this->me,
+            sdp: $sdp,
+            sid: $id,
+            action: 'content-modify'
+        );
 
-        $si = new ContentModify;
+        $si = $this->xmpp(new ContentModify);
         $si->setTo($to)
             ->setJingle($stj->generate())
             ->request();
@@ -451,19 +468,19 @@ class Visio extends Base
             $resource = $muji->presence?->resource;
 
             if ($resource) {
-                $pu = new Unavailable;
+                $pu = $this->xmpp(new Unavailable);
                 $pu->setTo($muji->muc)
                     ->setResource($resource)
                     ->request();
 
                 $this->me->session->mujiCalls()->where('id', $mujiId)->delete();
 
-                (new Rooms)->onPresence($muji->jidfrom);
+                (new Rooms($this->me))->onPresence($muji->jidfrom);
 
                 // If we were the inviter, we also retract the call
                 $participant = $muji->participants->firstWhere('jid', $muji->jidfrom . '/' . $resource);
                 if ($participant && $participant->inviter) {
-                    $retract = new Retract;
+                    $retract = $this->xmpp(new Retract);
                     $retract->setTo($muji->jidfrom)
                         ->setId($muji->id)
                         ->request();
@@ -505,7 +522,7 @@ class Visio extends Base
         if ($calling == false) {
             $this->rpc('Notif.incomingCall');
 
-            Notif::append(
+            $this->notif(
                 key: 'call',
                 title: '📞 ' . $contact->truename,
                 body: $this->__('visio.calling'),
@@ -536,14 +553,14 @@ class Visio extends Base
             ->first();
 
         if ($muji) {
-            $accept = new Accept;
+            $accept = $this->xmpp(new Accept);
             $accept->setTo($muji->jidfrom)
                 ->setId($muji->id)
                 ->request();
 
             CurrentCall::getInstance()->start($muji->jidfrom, $muji->id, mujiRoom: $muji->muc);
 
-            $muc = new Muc;
+            $muc = $this->xmpp(new Muc);
             $muc->setTo($muji->muc)
                 ->setNickname($muji->conference ? $muji->conference->nickname : $this->me->nickname)
                 ->enableMujiPreparing()
@@ -569,9 +586,14 @@ class Visio extends Base
             ->first();
 
         if ($muji) {
-            $stj = new SDPtoJingle($sdp->sdp, sid: $mujiId, muji: true);
+            $stj = new SDPtoJingle(
+                user: $this->me,
+                sdp: $sdp->sdp,
+                sid: $mujiId,
+                muji: true
+            );
 
-            $muc = new Muc;
+            $muc = $this->xmpp(new Muc);
             $muc->setTo($muji->muc)
                 ->setNickname($muji->conference ? $muji->conference->nickname : $this->me->nickname)
                 ->setMuji($stj->generate())
@@ -602,7 +624,7 @@ class Visio extends Base
 
             CurrentCall::getInstance()->start($to, $mujiId, mujiRoom: $mujiConferenceJid);
 
-            $muc = new Muc;
+            $muc = $this->xmpp(new Muc);
             $muc->setTo($mujiConferenceJid)
                 ->setNickname($conference->nickname)
                 ->enableCreate()
@@ -610,7 +632,7 @@ class Visio extends Base
                 ->noNotify()
                 ->request();
 
-            $invite = new Invite;
+            $invite = $this->xmpp(new Invite);
             $invite->setTo($to)
                 ->setId($mujiId)
                 ->setRoom($mujiConferenceJid);
@@ -626,6 +648,7 @@ class Visio extends Base
     public function ajaxSessionInitiate(string $jid, $sdp, string $id, ?string $mujiRoom = null)
     {
         $stj = new SDPtoJingle(
+            user: $this->me,
             sdp: $sdp->sdp,
             sid: $id,
             responder: $jid,
@@ -650,7 +673,7 @@ class Visio extends Base
             ->where('node', '')
             ->first();
         if ($info && $info->hasExternalServices()) {
-            $c = new \Moxl\Xec\Action\ExternalServices\Get;
+            $c = $this->xmpp(new \Moxl\Xec\Action\ExternalServices\Get);
             $c->setTo($this->me->session->host)
                 ->request();
         } else {
@@ -701,13 +724,14 @@ class Visio extends Base
     public function ajaxSessionAccept(string $to, string $id, $sdp)
     {
         $stj = new SDPtoJingle(
+            user: $this->me,
             sdp: $sdp->sdp,
             sid: $id,
             responder: $to,
             action: 'session-accept'
         );
 
-        $si = new SessionInitiate;
+        $si = $this->xmpp(new SessionInitiate);
         $si->setTo($to)
             ->setJingle($stj->generate())
             ->request();
@@ -719,6 +743,7 @@ class Visio extends Base
         $ufrag = $sdp->usernameFragment ?? null;
 
         $stj = new SDPtoJingle(
+            user: $this->me,
             sdp: 'a=' . $sdp->candidate,
             sid: $id,
             responder: $to,
@@ -727,7 +752,7 @@ class Visio extends Base
             ufrag: $ufrag
         );
 
-        $si = new SessionInitiate;
+        $si = $this->xmpp(new SessionInitiate);
         $si->setTo($to)
             ->setJingle($stj->generate())
             ->request();
@@ -735,7 +760,7 @@ class Visio extends Base
 
     public function ajaxTerminate(string $to, string $sid, ?string $reason = 'success')
     {
-        $st = new SessionTerminate;
+        $st = $this->xmpp(new SessionTerminate);
         $st->setTo($to)
             ->setJingleSid($sid)
             ->setReason($reason ?? 'success')
@@ -762,18 +787,19 @@ class Visio extends Base
     {
         if (CurrentCall::getInstance()->isStarted()) {
             CurrentCall::getInstance()->stop($to, $sid);
-            $st = new MessageFinish;
+            $st = $this->xmpp(new MessageFinish);
             $st->setTo($to)
                 ->setId($sid)
                 ->setReason($reason ?? 'success')
                 ->request();
         } else {
-            $sr = new MessageRetract;
+            $sr = $this->xmpp(new MessageRetract);
             $sr->setTo($to)
                 ->setId($sid)
                 ->request();
 
             $message = Message::eventMessageFactory(
+                $this->me,
                 'jingle',
                 bareJid($to),
                 $sid
@@ -803,6 +829,7 @@ class Visio extends Base
             && $currentCall->isJidInCall($jid)
         ) {
             $message = Message::eventMessageFactory(
+                $this->me,
                 'jingle',
                 bareJid($currentCall->jid),
                 $currentCall->id

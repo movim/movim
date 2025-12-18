@@ -15,12 +15,13 @@ class Retract extends Action
     public function request()
     {
         $this->store();
-        JingleCallInvite::retract($this->_to, $this->_id);
+        $this->send(JingleCallInvite::retract($this->_to, $this->_id));
     }
 
     public function handle(?SimpleXMLElement $stanza = null, ?SimpleXMLElement $parent = null)
     {
         $message = Message::eventMessageFactory(
+            $this->me,
             'jingle',
             bareJid($this->_to),
             $this->_id

@@ -51,8 +51,8 @@ class Menu extends Base
             $count = \App\Post::whereIn('id', function ($query) use ($since) {
                 $filters = DB::table('posts')->where('id', -1);
 
-                $filters = \App\Post::withMineScope($filters, since: $since);
-                $filters = \App\Post::withFollowScope($filters, since: $since);
+                $filters = \App\Post::withMineScope($filters, $this->me, since: $since);
+                $filters = \App\Post::withFollowScope($filters, $this->me, since: $since);
 
                 $query->select('id')->from(
                     $filters,
@@ -73,7 +73,7 @@ class Menu extends Base
             $parent = $post->parent;
 
             if ($parent && $contact) {
-                Notif::append(
+                $this->notif(
                     key: 'comments',
                     title: ($post->isLike()) ? '❤️ ' . $contact->truename : $post->title,
                     body: '📝 ' . $parent->title,
@@ -91,7 +91,7 @@ class Menu extends Base
                 $contact = \App\Contact::firstOrNew(['id' => $post->server]);
 
                 if (!$post->isMine($this->me)) {
-                    Notif::append(
+                    $this->notif(
                         key: 'news',
                         title: '📝 ' . $contact->truename,
                         body: $post->title,
@@ -118,7 +118,7 @@ class Menu extends Base
                     $logo = $info->getPicture(\Movim\ImageSize::L);
                 }
 
-                Notif::append(
+                $this->notif(
                     key: 'news',
                     title: $title,
                     body: $post->title,
@@ -165,7 +165,7 @@ class Menu extends Base
 
     public function prepareContactsSuggestions()
     {
-        return (new ContactsSuggestions)->prepareContactsSuggestions();
+        return (new ContactsSuggestions($this->me))->prepareContactsSuggestions();
     }
 
     public function prepareList($type = 'all', $page = 0)
@@ -176,8 +176,8 @@ class Menu extends Base
         $posts = \App\Post::whereIn('id', function ($query) use ($since) {
             $filters = DB::table('posts')->where('id', -1);
 
-            $filters = \App\Post::withMineScope($filters, since: $since);
-            $filters = \App\Post::withFollowScope($filters, since: $since);
+            $filters = \App\Post::withMineScope($filters, $this->me, since: $since);
+            $filters = \App\Post::withFollowScope($filters, $this->me, since: $since);
 
             $query->select('id')->from(
                 $filters,
@@ -202,17 +202,17 @@ class Menu extends Base
 
             switch ($type) {
                 case 'all':
-                    $filters = \App\Post::withFollowScope($filters);
-                    $filters = \App\Post::withMineScope($filters);
+                    $filters = \App\Post::withFollowScope($filters, $this->me);
+                    $filters = \App\Post::withMineScope($filters, $this->me);
                     break;
 
                 case 'feed':
-                    $filters = \App\Post::withContactsFollowScope($filters);
-                    $filters = \App\Post::withMineScope($filters);
+                    $filters = \App\Post::withContactsFollowScope($filters, $this->me);
+                    $filters = \App\Post::withMineScope($filters, $this->me);
                     break;
 
                 case 'news':
-                    $filters = \App\Post::withCommunitiesFollowScope($filters);
+                    $filters = \App\Post::withCommunitiesFollowScope($filters, $this->me);
                     break;
             }
 
@@ -251,6 +251,6 @@ class Menu extends Base
 
     public function preparePost($post)
     {
-        return (new Post())->preparePost($post, false, true);
+        return (new Post($this->me))->preparePost($post, false, true);
     }
 }

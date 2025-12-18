@@ -3,6 +3,7 @@
 namespace Moxl\Xec\Payload;
 
 use Movim\Session;
+use Movim\Widget\Wrapper;
 
 class SASL2Success extends Payload
 {
@@ -11,8 +12,7 @@ class SASL2Success extends Payload
         $memorySession = Session::instance();
         $memorySession->delete('password');
 
-        $session = me()->session;
-
+        $session = \App\Session::where('user_id', $this->me->id)->first();
         $jid = explodeJid((string)$stanza->{'authorization-identifier'});
 
         $session->username = $jid['username'];
@@ -21,6 +21,9 @@ class SASL2Success extends Payload
         $session->active = true;
         $session->type = 'bind2';
         $session->save();
+
+        $this->me->refresh();
+        Wrapper::getInstance()->setUser($this->me);
 
         fwrite(STDERR, 'started');
 

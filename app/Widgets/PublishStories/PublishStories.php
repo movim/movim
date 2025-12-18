@@ -30,7 +30,7 @@ class PublishStories extends Base
 
             // If the  Story was not cached we force reload
             if (!Post::where('server', $to)->where('node', $node)->where('nodeid', $id)->exists()) {
-                $gi = new GetItem;
+                $gi = $this->xmpp(new GetItem);
                 $gi->setTo($to)
                     ->setNode($node)
                     ->setId($id)
@@ -74,7 +74,7 @@ class PublishStories extends Base
 
         if (!$upload) return;
 
-        $publish = new PostPublish;
+        $publish = $this->xmpp(new PostPublish);
         $publish->setTo($this->me->id)
             ->setNode(Post::STORIES_NODE)
             ->setId(generateUUID())

@@ -7,37 +7,33 @@ use Movim\Model;
 
 class MujiCallParticipant extends Model
 {
+    use \Awobaz\Compoships\Compoships;
+
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'muji_call_id', 'jid'];
     protected $fillable = ['session_id', 'muji_call_id', 'jid', 'left_at', 'inviter'];
 
-    protected $attributes = [
-        'session_id'    => SESSION_ID
-    ];
-
     public function session()
     {
-        return $this->hasOne('App\Session');
+        return $this->hasOne(Session::class);
     }
 
     public function mujiCall()
     {
-        return $this->belongsTo('App\MujiCall', 'id', 'muji_call_id')
-
-        ->where('session_id', $this->session_id);
+        return $this->belongsTo(MujiCall::class, ['id', 'session_id'], ['muji_call_id', 'session_id']);
     }
 
-    public function getMeAttribute(): bool
+    public function isUser(User $user): bool
     {
         $jid = explodeJid($this->jid);
 
         if ($jid['resource'] == null) {
-            return $this->jid == me()->id;
+            return $this->jid == $user->id;
         }
 
         $presence = Presence::where('jid', $jid['jid'])->where('resource', $jid['resource'])->first();
 
-        return $presence && $presence->mucjid == me()->id;
+        return $presence && $presence->mucjid == $user->id;
     }
 
     public function getNameAttribute()

@@ -19,13 +19,13 @@ class Stream
 
         $dom->appendChild($stream);
 
-        \Moxl\API::request(substr($dom->saveXML($dom->documentElement), 0, -17));
+        \writeXMPP(substr($dom->saveXML($dom->documentElement), 0, -17));
     }
 
     public static function end()
     {
         $xml = '</stream:stream>';
-        \Moxl\API::request($xml);
+        \writeXMPP($xml);
     }
 
     public static function startTLS()
@@ -34,7 +34,7 @@ class Stream
         $starttls = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-tls', 'starttls');
         $dom->appendChild($starttls);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
     public static function bindSet($resource)
@@ -43,7 +43,7 @@ class Stream
         $bind = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-bind', 'bind');
         $bind->appendChild($dom->createElement('resource', $resource));
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($bind, false, 'set'));
+        return $bind;
     }
 
     public static function bind2Set(string $mechanism, string $initialResponse, string $tag)
@@ -70,13 +70,32 @@ class Stream
 
         $dom->appendChild($authenticate);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
-    public static function sessionStart($to)
+    public static function saslChallenge(string $response)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $auth = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-sasl', 'response', $response);
+        $dom->appendChild($auth);
+
+        return $dom;
+    }
+
+    public static function sasl2Response(string $response)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $auth = $dom->createElementNS('urn:xmpp:sasl:2', 'response', $response);
+        $dom->appendChild($auth);
+
+        return $dom;
+    }
+
+    public static function sessionStart()
     {
         $dom = new \DOMDocument('1.0', 'utf-8');
         $session = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-session', 'session');
-        \Moxl\API::request(\Moxl\API::iqWrapper($session, $to, 'set'));
+
+        return $session;
     }
 }

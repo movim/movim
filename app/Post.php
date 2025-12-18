@@ -24,7 +24,6 @@ class Post extends Model
         'comments',
         'contact',
         'links',
-        'userAffiliation'
     ];
     public $withCount = ['userViews'];
 
@@ -47,35 +46,42 @@ class Post extends Model
 
     public function contact()
     {
-        return $this->hasOne('App\Contact', 'id', 'aid');
+        return $this->hasOne(Contact::class, 'id', 'aid');
     }
 
     public function tags()
     {
-        return $this->belongsToMany('App\Tag')->withTimestamps();
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
     public function comments()
     {
-        return $this->hasMany('App\Post', 'parent_id', 'id')
+        return $this->hasMany(Post::class, 'parent_id', 'id')
             ->orderBy('published')
             ->where('like', false);
     }
 
     public function parent()
     {
-        return $this->hasOne('App\Post', 'id', 'parent_id');
+        return $this->hasOne(Post::class, 'id', 'parent_id');
     }
 
     public function info()
     {
-        return $this->hasOne('App\Info', ['server', 'node'], ['server', 'node']);
+        return $this->hasOne(Info::class, ['server', 'node'], ['server', 'node']);
     }
 
-    public function userAffiliation()
+    public function affiliations()
     {
-        return $this->hasOne('App\Affiliation', ['server', 'node'], ['server', 'node'])
-            ->where('jid', me()?->id);
+        return $this->hasMany(Affiliation::class, ['server', 'node'], ['server', 'node']);
+    }
+
+    public function userOwner(User $user): bool
+    {
+        return $this->affiliations()
+            ->where('jid', $user->id)
+            ->where('affiliation', 'owner')
+            ->exists();
     }
 
     public function userViews()
@@ -83,14 +89,14 @@ class Post extends Model
         return $this->belongsToMany(User::class, 'post_user_views', 'post_id', 'user_id')->withTimestamps();
     }
 
-    public function myViews()
+    public function viewed(User $user): bool
     {
-        return $this->userViews()->where('user_id', me()->id);
+        return $this->userViews()->where('user_id', $user->id)->exists();
     }
 
     public function likes()
     {
-        return $this->hasMany('App\Post', 'parent_id', 'id')
+        return $this->hasMany(Post::class, 'parent_id', 'id')
             ->whereIn('id', function ($query) {
                 $query->select(DB::raw('min(id) as id'))
                     ->from('posts')
@@ -102,7 +108,7 @@ class Post extends Model
 
     public function links()
     {
-        return $this->hasMany('App\Attachment')
+        return $this->hasMany(Attachment::class)
             ->where('category', 'link')
             ->whereNotIn('href', function ($query) {
                 $query->select('href')
@@ -119,7 +125,7 @@ class Post extends Model
 
     public function attachments()
     {
-        return $this->hasMany('App\Attachment');
+        return $this->hasMany(Attachment::class);
     }
 
     public function resolveAttachments(): Collection
@@ -235,20 +241,11 @@ class Post extends Model
         }
     }
 
-    public function scopeRestrictReported($query)
-    {
-        $query->whereNotIn('aid', function ($query) {
-            $query->select('reported_id')
-                ->from('reported_user')
-                ->where('user_id', me()->id);
-        });
-    }
-
-    public function scopeRestrictNSFW($query)
+    public function scopeRestrictNSFW($query, User $user)
     {
         $query->where('nsfw', false);
 
-        if (me()->nsfw) {
+        if ($user->nsfw) {
             $query->orWhere('nsfw', true);
         }
     }
@@ -282,13 +279,13 @@ class Post extends Model
         );
     }
 
-    protected function withFollowScope($query, ?string $since = null)
+    protected function withFollowScope($query, User $user, ?string $since = null)
     {
         $posts = DB::table('posts')
-            ->whereIn(DB::raw('(server, node)'), function ($query) {
+            ->whereIn(DB::raw('(server, node)'), function ($query) use ($user) {
                 $query->select('server', 'node')
                     ->from('subscriptions')
-                    ->where('jid', me()->id);
+                    ->where('jid', $user->id);
             });
 
         if ($since != null) {
@@ -298,24 +295,24 @@ class Post extends Model
         return $query->unionAll($posts);
     }
 
-    protected function withContactsFollowScope($query)
+    protected function withContactsFollowScope($query, User $user)
     {
         return $query->unionAll(
             DB::table('posts')
-                ->whereIn('server', function ($query) {
+                ->whereIn('server', function ($query) use ($user) {
                     $query->select('server')
                         ->from('subscriptions')
-                        ->where('jid', me()->id);
+                        ->where('jid', $user->id);
                 })
                 ->where('node', Post::MICROBLOG_NODE)
         );
     }
 
-    protected function withMineScope($query, string $node = Post::MICROBLOG_NODE, ?string $since = null)
+    protected function withMineScope($query, User $user, string $node = Post::MICROBLOG_NODE, ?string $since = null)
     {
         $posts = DB::table('posts')
             ->where('node', $node)
-            ->where('server', me()->id);
+            ->where('server', $user->id);
 
         if ($since != null) {
             $posts = $posts->where('published', '>', $since);
@@ -324,26 +321,26 @@ class Post extends Model
         return $query->unionAll($posts);
     }
 
-    protected function withCommunitiesFollowScope($query)
+    protected function withCommunitiesFollowScope($query, User $user)
     {
         return $query->unionAll(
             DB::table('posts')
-                ->whereIn(DB::raw('(server, node)'), function ($query) {
+                ->whereIn(DB::raw('(server, node)'), function ($query) use ($user) {
                     $query->select('server', 'node')
                         ->from('subscriptions')
-                        ->where('jid', me()->id)
+                        ->where('jid', $user->id)
                         ->where('node', '!=', Post::MICROBLOG_NODE);
                 })
         );
     }
 
-    public function scopeMyStories($query, ?int $id = null)
+    public function scopeMyStories($query, User $user, ?int $id = null)
     {
-        $query = $query->whereIn('id', function ($query) {
+        $query = $query->whereIn('id', function ($query) use ($user) {
             $filters = DB::table('posts')->where('id', -1);
 
-            $filters = \App\Post::withMineScope($filters, Post::STORIES_NODE);
-            $filters = \App\Post::withStoriesScope($filters, Post::STORIES_NODE);
+            $filters = \App\Post::withMineScope($filters, $user, Post::STORIES_NODE);
+            $filters = \App\Post::withStoriesScope($filters, $user, Post::STORIES_NODE);
 
             $query->select('id')->from(
                 $filters,
@@ -355,7 +352,7 @@ class Post extends Model
 
         if ($id != null) $query = $query->where('id', $id);
 
-        return $query;
+        return $query->withOnly([]);
     }
 
     public function getColorAttribute(): string
@@ -951,9 +948,9 @@ class Post extends Model
             ->first();
     }
 
-    public function isLiked()
+    public function isLiked(User $user)
     {
-        return ($this->likes()->where('aid', me()->id)->count() > 0);
+        return ($this->likes()->where('aid', $user->id)->count() > 0);
     }
 
     public function isRecycled()

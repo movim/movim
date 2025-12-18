@@ -9,7 +9,7 @@ class Sticker extends Model
 {
     public function pack()
     {
-        return $this->belongsTo('App\StickersPack', 'name', 'pack');
+        return $this->belongsTo(StickersPack::class, 'name', 'pack');
     }
 
     public function getImagePathAttribute(): string

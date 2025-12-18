@@ -21,10 +21,6 @@ class Conference extends Model
         2 => 'always'
     ];
 
-    protected $attributes = [
-        'session_id'    => SESSION_ID
-    ];
-
     public static function saveMany(array $conferences)
     {
         return Conference::insert($conferences);
@@ -32,12 +28,12 @@ class Conference extends Model
 
     public function session()
     {
-        return $this->hasOne('App\Session');
+        return $this->belongsTo(Session::class);
     }
 
     public function presences()
     {
-        return $this->hasMany('App\Presence', ['jid', 'session_id'], ['conference', 'session_id'])
+        return $this->hasMany(Presence::class, ['jid', 'session_id'], ['conference', 'session_id'])
             ->where('resource', '!=', '')
             ->where('value', '<', 5)
             ->orderBy('mucrole')
@@ -48,28 +44,27 @@ class Conference extends Model
 
     public function mujiCalls()
     {
-        return $this->hasMany('App\MujiCall', ['jidfrom', 'session_id'], ['conference', 'session_id'])
+        return $this->hasMany(MujiCall::class, ['jidfrom', 'session_id'], ['conference', 'session_id'])
             ->where('isfromconference', true);
     }
 
     public function otherPresences()
     {
-        return $this->presences()->where('mucjid', '!=', me()->id);
-    }
-
-    public function unreads()
-    {
-        return $this->hasMany('App\Message', 'jidfrom', 'conference')
-            ->where('user_id', me()->id)
-            ->where('type', 'groupchat')
-            ->whereNull('subject')
-            ->where('seen', false);
+        return $this->presences()->where('mucjid', '!=', function ($query) {
+                $query->select('user_id')
+                    ->from('sessions')
+                    ->whereColumn('sessions.id', 'presences.session_id');
+            });
     }
 
     public function quoted()
     {
-        return $this->hasMany('App\Message', 'jidfrom', 'conference')
-            ->where('user_id', me()->id)
+        return $this->hasMany(Message::class, 'jidfrom', 'conference')
+            ->where('user_id', function ($query) {
+                $query->select('user_id')
+                    ->from('sessions')
+                    ->whereColumn('sessions.id', 'conferences.session_id');
+            })
             ->where('type', 'groupchat')
             ->whereNull('subject')
             ->where('quoted', true)
@@ -78,56 +73,68 @@ class Conference extends Model
 
     public function presence()
     {
-        return $this->hasOne('App\Presence', ['jid', 'session_id'], ['conference', 'session_id'])
+        return $this->hasOne(Presence::class, ['jid', 'session_id'], ['conference', 'session_id'])
             ->where('value', '<', 5)
-            ->where('mucjid', me()->id);
+            ->where('mucjid', function ($query) {
+                $query->select('user_id')
+                    ->from('sessions')
+                    ->whereColumn('sessions.id', 'presences.session_id');
+            });
     }
 
     public function members()
     {
-        return $this->hasMany('App\Member', 'conference', 'conference')
+        return $this->hasMany(Member::class, 'conference', 'conference')
             ->orderBy('role')
             ->orderBy('affiliation', 'desc');
     }
 
     public function activeMembers()
     {
-        return $this->hasMany('App\Member', 'conference', 'conference')
+        return $this->hasMany(Member::class, 'conference', 'conference')
             ->where('affiliation', '!=', 'outcast')
             ->where('affiliation', '!=', 'none')
             ->orderBy('role')
             ->orderBy('affiliation', 'desc');
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class, ['jidfrom', 'user_id'], ['conference', 'user_id'])
+            ->where('type', 'groupchat')
+            ->orderBy('published', 'desc');
+    }
+
+    public function unreads()
+    {
+        return $this->messages()
+            ->whereNull('subject')
+            ->where('seen', false);
+    }
+
     public function pictures()
     {
-        return $this->hasMany('App\Message', 'jidfrom', 'conference')
-            ->where('user_id', me()->id)
-            ->where('type', 'groupchat')
+        return $this->messages()
             ->where('picture', true)
-            ->where('retracted', false)
-            ->orderBy('published', 'desc');
+            ->where('retracted', false);
     }
 
     public function links()
     {
-        return $this->hasMany('App\Message', 'jidfrom', 'conference')
-            ->where('user_id', me()->id)
-            ->where('type', 'groupchat')
+        return $this->messages()
             ->whereNotNull('urlid')
             ->where('picture', false)
-            ->where('retracted', false)
-            ->orderBy('published', 'desc');
+            ->where('retracted', false);
     }
 
     public function info()
     {
-        return $this->hasOne('App\Info', 'server', 'conference')
+        return $this->hasOne(Info::class, 'server', 'conference')
             ->where(function ($query) {
                 $query->where('node', function ($query) {
                     $query->select('node')
                         ->from('presences')
-                        ->where('session_id', me()->session->id)
+                        //->where('session_id', me()->session->id)
                         ->whereColumn('jid', 'infos.server')
                         ->where('resource', '')
                         ->take(1);
@@ -140,11 +147,13 @@ class Conference extends Model
 
     public function contact()
     {
-        return $this->hasOne('App\Contact', 'id', 'conference');
+        return $this->hasOne(Contact::class, 'id', 'conference');
     }
 
-    public function set($item)
+    public function set(Session $session, \SimpleXMLElement $item)
     {
+        $this->user_id         = $session->user_id;
+        $this->session_id      = $session->id;
         $this->conference      = (string)$item->attributes()->id;
         $this->name            = (string)$item->conference->attributes()->name;
         $this->nick            = (string)$item->conference->nick;
@@ -244,9 +253,9 @@ class Conference extends Model
 
     public function getSubjectAttribute()
     {
-        $subject = me()
+        $subject = $this->session->user
             ->messages()
-            ->jid($this->conference)
+            ->jid($this->session->user, $this->conference)
             ->whereNotNull('subject')
             ->whereNull('body')
             ->whereNull('thread')
@@ -287,6 +296,7 @@ class Conference extends Model
     {
         $now = \Carbon\Carbon::now();
         return [
+            'user_id' => $this->attributes['user_id'] ?? null,
             'session_id' => $this->attributes['session_id'] ?? null,
             'conference' => $this->attributes['conference']  ?? null,
             'name' => $this->attributes['name'] ?? null,

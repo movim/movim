@@ -15,7 +15,7 @@ class CommentsGet extends Action
     public function request()
     {
         $this->store();
-        Pubsub::getItems($this->_to, $this->_node, paging: 100);
+        $this->iq(Pubsub::getItems($this->_node, paging: 100), to: $this->_to, type: 'get');
     }
 
     public function setId($id)

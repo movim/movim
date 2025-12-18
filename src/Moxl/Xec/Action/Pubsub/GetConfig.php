@@ -14,7 +14,7 @@ class GetConfig extends Action
     public function request()
     {
         $this->store();
-        Pubsub::getConfig($this->_to, $this->_node);
+        $this->iq(Pubsub::getConfig($this->_node), to: $this->_to, type: 'get');
     }
 
     public function enableAdvanced()

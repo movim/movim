@@ -18,17 +18,17 @@ class Draft extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     public function embeds()
     {
-        return $this->hasMany('App\DraftEmbed');
+        return $this->hasMany(DraftEmbed::class);
     }
 
     public function reply()
     {
-        return $this->hasOne('App\Post', 'id', 'reply_id');
+        return $this->hasOne(Post::class, 'id', 'reply_id');
     }
 
     public function isNotEmpty()

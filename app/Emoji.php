@@ -11,12 +11,12 @@ class Emoji extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\Users')->withTimestamps();
+        return $this->belongsToMany(Users::class)->withTimestamps();
     }
 
     public function pack()
     {
-        return $this->belongsTo('App\EmojisPack', 'name', 'pack');
+        return $this->belongsTo(EmojisPack::class, 'name', 'pack');
     }
 
     public function getImagePathAttribute(): string

@@ -14,7 +14,7 @@ class GetAffiliations extends Action
     public function request()
     {
         $this->store();
-        Pubsub::getAffiliations($this->_to, $this->_node);
+        $this->iq(Pubsub::getAffiliations($this->_node), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

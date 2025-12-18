@@ -12,7 +12,7 @@ class SetConfig extends Action
     public function request()
     {
         $this->store();
-        MAM::setConfig($this->_default);
+        $this->iq(MAM::setConfig($this->_default), type: 'set');
     }
 
     public function setDefault($default)
