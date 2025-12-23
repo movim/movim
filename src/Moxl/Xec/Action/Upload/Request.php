@@ -16,7 +16,7 @@ class Request extends Action
     public function request()
     {
         $this->store();
-        Upload::request($this->_to, $this->_name, $this->_size, $this->_type);
+        $this->iq(Upload::request($this->_name, $this->_size, $this->_type), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

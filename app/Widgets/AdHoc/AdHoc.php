@@ -132,13 +132,13 @@ class AdHoc extends \Movim\Widget\Base
             $jid = Session::instance()->get('host');
         }
 
-        $g = new Get;
+        $g = $this->xmpp(new Get);
         $g->setTo($jid)->request();
     }
 
     public function ajaxCommand(string $jid, string $node)
     {
-        $c = new Command;
+        $c = $this->xmpp(new Command);
         $c->setTo($jid)
           ->setNode($node)
           ->request();
@@ -146,7 +146,7 @@ class AdHoc extends \Movim\Widget\Base
 
     public function ajaxSubmit(string $jid, string $node, $data, $sessionid)
     {
-        $s = new Submit;
+        $s = $this->xmpp(new Submit);
         $s->setTo($jid)
           ->setNode($node)
           ->setData(formToArray($data))

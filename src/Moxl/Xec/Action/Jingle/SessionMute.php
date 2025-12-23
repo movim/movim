@@ -14,6 +14,6 @@ class SessionMute extends Action
     public function request()
     {
         $this->store();
-        Jingle::sessionMute($this->_to, $this->_id, $this->_name);
+        $this->iq(Jingle::sessionMute($this->_id, $this->_name), to: $this->_to, type: 'get');;
     }
 }

@@ -13,6 +13,6 @@ class Left extends Action
     public function request()
     {
         $this->store();
-        JingleCallInvite::left($this->_to, $this->_id);
+        $this->send(JingleCallInvite::left($this->_to, $this->_id));
     }
 }

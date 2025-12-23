@@ -14,12 +14,12 @@ class TestPostPublish extends Action
     public function request()
     {
         $this->store();
-        Pubsub::testPostPublish($this->_to, $this->_node, $this->_id);
+        $this->iq(Pubsub::testPostPublish($this->_node, $this->_id), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        Pubsub::itemDelete($this->_to, $this->_node, $this->_id);
+        $this->iq(Pubsub::itemDelete($this->_node, $this->_id), to: $this->_to, type: 'set');
 
         $this->pack(['to' => $this->_to, 'node' => $this->_node]);
         $this->deliver();

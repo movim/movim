@@ -16,13 +16,13 @@ class GetMembers extends Action
         $this->lastStanzaId = \generateKey(6);
 
         $this->store();
-        Muc::getMembers($this->_to, 'member');
+        $this->iq(Muc::getMembers('member'), to: $this->_to, type: 'get');
         $this->store();
-        Muc::getMembers($this->_to, 'outcast');
+        $this->iq(Muc::getMembers('outcast'), to: $this->_to, type: 'get');
         $this->store();
-        Muc::getMembers($this->_to, 'owner');
+        $this->iq(Muc::getMembers('owner'), to: $this->_to, type: 'get');
         $this->store($this->lastStanzaId);
-        Muc::getMembers($this->_to, 'admin');
+        $this->iq(Muc::getMembers('admin'), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

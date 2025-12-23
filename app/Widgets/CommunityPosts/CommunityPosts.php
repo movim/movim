@@ -148,7 +148,7 @@ class CommunityPosts extends Base
 
     public function ajaxGetContact($jid)
     {
-        $c = new ContactActions;
+        $c = new ContactActions($this->me);
         $c->ajaxGetDrawer($jid);
     }
 
@@ -158,7 +158,7 @@ class CommunityPosts extends Base
             return;
         }
 
-        $r = new GetItems;
+        $r = $this->xmpp(new GetItems);
         $r->setTo($origin)
             ->setNode($node)
             ->setPaging($this->_paging);
@@ -187,12 +187,12 @@ class CommunityPosts extends Base
 
     public function preparePost($p)
     {
-        return (new Post)->preparePost($p, false, true);
+        return (new Post($this->me))->preparePost($p, false, true);
     }
 
     public function prepareTicket($p)
     {
-        return (new Post)->prepareTicket($p);
+        return (new Post($this->me))->prepareTicket($p);
     }
 
     private function prepareCommunity(

@@ -30,8 +30,7 @@ class Get extends Action
         $session->set('mamid' . $this->_queryid, 0);
         $this->store();
 
-        MAM::get(
-            $this->_to,
+        $this->iq(MAM::get(
             $this->_queryid,
             $this->_jid,
             $this->_start,
@@ -40,7 +39,7 @@ class Get extends Action
             $this->_after,
             $this->_before,
             $this->_version
-        );
+        ), to: $this->_to, type: 'get');
     }
 
     public function setMessageCounter(int $messagesCounter)
@@ -73,7 +72,7 @@ class Get extends Action
             )
         ) {
             $earliest = new MAMEarliest;
-            $earliest->user_id = me()->id;
+            $earliest->user_id = $this->me->id;
             $earliest->to = $this->_to;
             $earliest->jid = $this->_jid;
             $earliest->earliest = date(MOVIM_SQL_DATE, $this->_end ?? time());
@@ -88,7 +87,7 @@ class Get extends Action
             && $this->_after != (string)$stanza->fin->set->last
             && $totalCounter < $this->_limit
         ) {
-            $g = new Get;
+            $g = new Get($this->me);
             $g->setJid($this->_jid);
             $g->setTo($this->_to);
             $g->setLimit($this->_limit);

@@ -14,7 +14,7 @@ class Get extends Action
     public function request()
     {
         $this->store();
-        Avatar::get($this->_to, $this->_node);
+        $this->iq(Avatar::get($this->_node), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

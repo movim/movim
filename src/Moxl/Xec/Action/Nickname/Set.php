@@ -12,6 +12,6 @@ class Set extends Action
     public function request()
     {
         $this->store();
-        Nickname::set($this->_nickname);
+        $this->iq(Nickname::set($this->_nickname), type: 'set');
     }
 }

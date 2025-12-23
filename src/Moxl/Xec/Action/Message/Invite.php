@@ -15,7 +15,7 @@ class Invite extends Action
     public function request()
     {
         $this->store($this->_id);
-        Message::invite($this->_to, $this->_id, $this->_invite);
+        $this->send(Message::maker(to: $this->_to, id: $this->_id, invite: $this->_invite));
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

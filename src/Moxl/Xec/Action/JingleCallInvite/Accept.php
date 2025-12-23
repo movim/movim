@@ -13,6 +13,6 @@ class Accept extends Action
     public function request()
     {
         $this->store();
-        JingleCallInvite::accept($this->_to, $this->_id);
+        $this->send(JingleCallInvite::accept($this->_to, $this->_id));
     }
 }

@@ -13,6 +13,6 @@ class Retract extends Action
 
     public function request()
     {
-        Message::retract($this->_to, $this->_id, $this->_type);
+        $this->send(Message::retract($this->_to, $this->_id, $this->_type));
     }
 }

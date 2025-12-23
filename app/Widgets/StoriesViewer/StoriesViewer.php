@@ -69,7 +69,7 @@ class StoriesViewer extends Base
         $post = Post::myStories()->where('id', $id)->first();
 
         if ($post) {
-            $p = new PostDelete;
+            $p = $this->xmpp(new PostDelete);
             $p->setTo($post->server)
               ->setNode($post->node)
               ->setId($post->nodeid)
@@ -88,7 +88,7 @@ class StoriesViewer extends Base
         $file->type = 'xmpp/uri';
         $file->url = $post->getRef();
 
-        (new Chat)->sendMessage($post->server, $comment, file: $file);
+        (new Chat($this->me))->sendMessage($post->server, $comment, file: $file);
 
         $this->toast($this->__('post.comment_published'));
     }

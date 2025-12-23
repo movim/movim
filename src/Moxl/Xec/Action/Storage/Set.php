@@ -14,7 +14,7 @@ class Set extends Action
     public function request()
     {
         $this->store();
-        Storage::publish($this->_data, $this->_withPublishOption);
+        $this->iq(Storage::publish($this->_data, $this->_withPublishOption), type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

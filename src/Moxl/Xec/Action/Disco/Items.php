@@ -17,7 +17,7 @@ class Items extends Action
     public function request()
     {
         $this->store();
-        Disco::items($this->_to);
+        $this->iq(Disco::items(), to: $this->_to, type: 'get');
     }
 
     public function enableManual()
@@ -64,13 +64,13 @@ class Items extends Action
 
                             if (!$info->isMicroblogCommentsNode()) {
                                 if (!$info->pubsubaccessmodel) {
-                                    $r = new Request;
+                                    $r = new Request($this->me);
                                     $r->setTo($info->server)
                                         ->setNode($info->node)
                                         ->setParent($this->_to)
                                         ->request();
 
-                                    $g = new GetItem;
+                                    $g = new GetItem($this->me);
                                     $g->setTo($info->server)
                                         ->setNode($info->node)
                                         ->setId(Avatar::NODE_METADATA)
@@ -82,7 +82,7 @@ class Items extends Action
                             }
                         }
                     } elseif ($parent && $parent->identities->contains('category', 'server')) {
-                        $r = new Request;
+                        $r = new Request($this->me);
                         $r->setTo((string)$item->attributes()->jid)
                             ->setParent($this->_to)
                             ->request();

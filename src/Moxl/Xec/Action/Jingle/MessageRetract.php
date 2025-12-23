@@ -13,6 +13,6 @@ class MessageRetract extends Action
     public function request()
     {
         $this->store();
-        Jingle::messageRetract($this->_to, $this->_id);
+        $this->send(Jingle::messageRetract($this->_to, $this->_id));
     }
 }

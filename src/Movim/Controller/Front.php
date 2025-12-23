@@ -32,7 +32,7 @@ class Front extends Base
             $payload = $request === 'ajax'
                 ? json_decode($content) // Simple ajax request to a Widget
                 : requestAPI('ajax', post: [ // Ajax request that is going to the daemon
-                    'sid' => SESSION_ID,
+                    'sid' => $this->user->session->id,
                     'json' => rawurlencode($content)
                 ]);
 
@@ -47,7 +47,7 @@ class Front extends Base
             }
 
             if (!empty($payload)) {
-                $rpc = new RPC;
+                $rpc = new RPC($this->user);
                 $rpc->handleJSON($payload->b);
                 $rpc->writeJSON();
             }

@@ -13,14 +13,14 @@ class TestCreate extends Action
     public function request()
     {
         $this->store();
-        Pubsub::create($this->_to, $this->_node, 'Test');
+        $this->iq(Pubsub::create($this->_node, 'Test'), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza['type'] == 'result') {
             // We delete the test node we just created
-            Pubsub::delete($this->_to, $this->_node);
+            $this->iq(Pubsub::delete($this->_node), to: $this->_to, type: 'set');
 
             // And we say that all it's ok
             $this->pack($this->_to);

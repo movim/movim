@@ -49,6 +49,6 @@ class Storage
             $pubsub->appendChild($publishOption);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
+        return $pubsub;
     }
 }

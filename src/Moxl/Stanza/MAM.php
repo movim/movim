@@ -9,7 +9,7 @@ class MAM
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $prefs = $dom->createElementNS('urn:xmpp:mam:2', 'prefs');
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($prefs, false, 'get'));
+        return $prefs;
     }
 
     public static function setConfig($default)
@@ -19,11 +19,10 @@ class MAM
         $prefs->setAttribute('default', $default);
         $dom->appendChild($prefs);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($prefs, false, 'set'));
+        return $prefs;
     }
 
     public static function get(
-        ?string $to = null,
         ?string $id = null,
         ?string $jid = null,
         ?int $start = null,
@@ -101,6 +100,6 @@ class MAM
             $query->appendChild($setLimit);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
+        return $query;
     }
 }

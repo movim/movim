@@ -15,10 +15,9 @@ class GetBundle extends Action
     public function request()
     {
         $this->store();
-        OMEMO::getBundle(
-            $this->_to,
+        $this->iq(OMEMO::getBundle(
             $this->_id
-        );
+        ), to: $this->_to, type: 'get');
     }
 
     public function notifyLast()

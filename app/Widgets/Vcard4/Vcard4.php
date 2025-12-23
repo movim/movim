@@ -56,7 +56,7 @@ class Vcard4 extends Base
 
     public function ajaxGetVcard()
     {
-        $r = new Get;
+        $r = $this->xmpp(new Get);
         $r->setTo($this->me->id)
             ->request();
     }
@@ -69,7 +69,7 @@ class Vcard4 extends Base
 
         if (Validator::stringType()->notEmpty()->isValid($vcard->name->value)) {
             $c->name = $vcard->name->value;
-            $n = new Nickname;
+            $n = $this->xmpp(new Nickname);
             $n->setNickname($c->name)
                 ->request();
         }
@@ -98,7 +98,7 @@ class Vcard4 extends Base
 
         $c->jid = $this->me->id;
 
-        $r = new Set;
+        $r = $this->xmpp(new Set);
         $r->setData($c)->request();
     }
 

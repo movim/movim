@@ -79,7 +79,7 @@ class Post extends Payload
                 ->count() == 0
                 && $id != $this->testid
             ) {
-                $d = new GetItem;
+                $d = new GetItem($this->me);
                 $d->setTo($from)
                     ->setNode($node)
                     ->setId($id)

@@ -21,7 +21,7 @@ class Set extends Action
         $this->store();
 
         if ($this->_url === false) {
-            Avatar::set($this->_data, $this->_to, $this->_node, $this->_withPublishOption);
+            $this->iq(Avatar::set($this->_data, $this->_node, $this->_withPublishOption), to: $this->_to, type: 'set');
         } else {
             // For an URL we simply set the Metadata
             $setMetadata = new SetMetadata;
@@ -59,7 +59,7 @@ class Set extends Action
             ->request();
 
         if ($this->_to == false && $this->_node == false) {
-            $me = me()->contact;
+            $me = $this->me->contact;
             $me->avatartype = Avatar::NODE_METADATA;
             $me->save();
 

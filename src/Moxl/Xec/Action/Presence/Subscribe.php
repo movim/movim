@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\Presence;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Presence;
+use Moxl\Xec\Action;
 
 class Subscribe extends Action
 {
@@ -13,7 +13,11 @@ class Subscribe extends Action
     public function request()
     {
         $this->store();
-        Presence::subscribe($this->_to, $this->_status);
+        $this->send(Presence::maker($this->me,
+            to: $this->_to,
+            status: $this->_status,
+            type: 'subscribe'
+        ));
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

@@ -14,12 +14,12 @@ class SessionTerminate extends Action
     public function request()
     {
         $this->store();
-        Jingle::sessionTerminate($this->_to, $this->_jingleSid, $this->_reason);
+        $this->iq(Jingle::sessionTerminate($this->_jingleSid, $this->_reason), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $userid = me()->id;
+        $userid = $this->me->id;
         $message = new \App\Message;
         $message->user_id = $userid;
         $message->id = 'm_' . generateUUID();

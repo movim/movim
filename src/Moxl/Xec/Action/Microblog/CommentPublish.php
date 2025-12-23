@@ -25,7 +25,7 @@ class CommentPublish extends Action
     public function request()
     {
         $this->store();
-        Pubsub::postPublish($this->_to, $this->_node, $this->_atom, false);
+        $this->iq(Pubsub::postPublish($this->_node, $this->_atom, false), to: $this->_to, type: 'set');
     }
 
     public function setTo($to)
@@ -68,7 +68,7 @@ class CommentPublish extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $g = new GetItem;
+        $g = new GetItem($this->me);
         $g->setTo($this->_to)
             ->setNode($this->_node)
             ->setId($this->_atom->id)

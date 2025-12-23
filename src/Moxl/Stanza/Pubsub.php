@@ -6,7 +6,7 @@ use App\Post;
 
 class Pubsub
 {
-    public static function create($to, string $node, string $name)
+    public static function create(string $node, string $name)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -32,10 +32,10 @@ class Pubsub
             'pubsub#title' => $name
         ]);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
+        return $pubsub;
     }
 
-    public static function delete($to, string $node)
+    public static function delete(string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -43,10 +43,10 @@ class Pubsub
         $delete->setAttribute('node', $node);
         $pubsub->appendChild($delete);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
+        return $pubsub;
     }
 
-    public static function createCommentNode($to, string $node)
+    public static function createCommentNode(string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -76,10 +76,10 @@ class Pubsub
             'pubsub#notify_retract' => 'true',
         ]);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
+        return $pubsub;
     }
 
-    public static function subscribe($to, $from, string $node)
+    public static function subscribe($from, string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -88,10 +88,10 @@ class Pubsub
         $subscribe->setAttribute('jid', $from);
         $pubsub->appendChild($subscribe);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
+        return $pubsub;
     }
 
-    public static function unsubscribe($to, $from, string $node, $subid)
+    public static function unsubscribe($from, string $node, $subid)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -105,10 +105,10 @@ class Pubsub
 
         $pubsub->appendChild($unsubscribe);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
+        return $pubsub;
     }
 
-    public static function getSubscriptions($to, string $node)
+    public static function getSubscriptions(string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -116,11 +116,10 @@ class Pubsub
         $subscriptions->setAttribute('node', $node);
         $pubsub->appendChild($subscriptions);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
+        return $pubsub;
     }
 
     public static function getItems(
-        $to,
         string $node,
         int $paging = 10,
         ?string $after = null,
@@ -151,10 +150,10 @@ class Pubsub
 
         $pubsub->appendChild($items);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
+        return $pubsub;
     }
 
-    public static function getItem($to, string $node, string $id)
+    public static function getItem(string $node, string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -166,7 +165,7 @@ class Pubsub
         $item->setAttribute('id', $id);
         $items->appendChild($item);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
+        return $pubsub;
     }
 
     public static function generateConfig(string $node): array
@@ -191,7 +190,7 @@ class Pubsub
         return $config;
     }
 
-    public static function postPublish($to, string $node, PubsubAtom $atom, bool $withPublishOption = true)
+    public static function postPublish(string $node, PubsubAtom $atom, bool $withPublishOption = true)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
@@ -219,11 +218,11 @@ class Pubsub
             $pubsub->appendChild($publishOption);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
+        return $pubsub;
     }
 
 
-    public static function testPostPublish($to, string $node, string $id)
+    public static function testPostPublish(string $node, string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -255,10 +254,10 @@ class Pubsub
 
         $pubsub->appendChild($publishOption);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
+        return $pubsub;
     }
 
-    public static function itemDelete($to, string $node, string $id)
+    public static function itemDelete(string $node, string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -271,10 +270,10 @@ class Pubsub
         $item->setAttribute('id', $id);
         $retract->appendChild($item);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
+        return $pubsub;
     }
 
-    public static function getConfig($to, string $node)
+    public static function getConfig(string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -282,10 +281,10 @@ class Pubsub
         $configure->setAttribute('node', $node);
         $pubsub->appendChild($configure);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
+        return $pubsub;
     }
 
-    public static function setConfig($to, string $node, array $data)
+    public static function setConfig(string $node, array $data)
     {
         $data['FORM_TYPE'] = 'http://jabber.org/protocol/pubsub#node_config';
 
@@ -304,10 +303,10 @@ class Pubsub
 
         \Moxl\Utils::injectConfigInX($x, $data);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
+        return $pubsub;
     }
 
-    public static function getAffiliations($to, string $node)
+    public static function getAffiliations(string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -315,10 +314,10 @@ class Pubsub
         $affiliations->setAttribute('node', $node);
         $pubsub->appendChild($affiliations);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
+        return $pubsub;
     }
 
-    public static function setAffiliations($to, string $node, array $data)
+    public static function setAffiliations(string $node, array $data)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -333,6 +332,6 @@ class Pubsub
             $affiliations->appendChild($affiliation);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
+        return $pubsub;
     }
 }

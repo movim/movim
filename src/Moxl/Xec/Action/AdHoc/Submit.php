@@ -15,7 +15,7 @@ class Submit extends Action
     public function request()
     {
         $this->store();
-        AdHoc::submit($this->_to, $this->_node, $this->_data, $this->_sessionid);
+        $this->iq(Adhoc::submit($this->_node, $this->_data, $this->_sessionid), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

@@ -13,7 +13,7 @@ class Set extends Action
     public function request()
     {
         $this->store();
-        Register::set($this->_to, $this->_data);
+        $this->iq(Register::set($this->_data), to: $this->_to, type: 'set');
     }
 
     public function setTo($to)

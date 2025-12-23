@@ -10,7 +10,7 @@ class GetConfig extends Action
     public function request()
     {
         $this->store();
-        MAM::getConfig();
+        $this->iq(MAM::getConfig(), type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

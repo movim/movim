@@ -77,13 +77,13 @@ class ContactData extends Base
         $contact = \App\Contact::find($jid);
 
         if (!$contact || $contact->isOld()) {
-            $a = new \Moxl\Xec\Action\Avatar\Get;
+            $a = $this->xmpp(new \Moxl\Xec\Action\Avatar\Get);
             $a->setTo($jid)->request();
 
-            $a = new \Moxl\Xec\Action\Banner\Get;
+            $a = $this->xmpp(new \Moxl\Xec\Action\Banner\Get);
             $a->setTo($jid)->request();
 
-            $r = new \Moxl\Xec\Action\Vcard4\Get;
+            $r = $this->xmpp(new \Moxl\Xec\Action\Vcard4\Get);
             $r->setTo($jid)->request();
         } else if ($contact) {
             $this->rpc('Notif_ajaxGet');

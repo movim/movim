@@ -28,6 +28,7 @@ class BottomNavigation extends Base
     public function display()
     {
         $this->view->assign('page', $this->_view);
-        $this->view->assign('bottomChatCounter', $this->me->unreads(null, false, true));
+        $this->view->assign('bottomChatCounter', $this->me
+            ? $this->me->unreads(cached: true) : 0);
     }
 }

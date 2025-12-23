@@ -20,9 +20,9 @@ class Request extends Action
         $this->store();
 
         // Only request if the resource is available
-        if (me()->session?->presences()->where('jid', $this->_to)->where('resource', $this->_resource)->exists()
+        if ($this->me->session?->presences()->where('jid', $this->_to)->where('resource', $this->_resource)->exists()
         && $this->_algorythm) {
-            BOB::request($this->_to . '/' . $this->_resource, $this->_hash, $this->_algorythm);
+            $this->iq(BOB::request($this->_hash, $this->_algorythm), to: $this->_to . '/' . $this->_resource, type: 'set');
         }
     }
 

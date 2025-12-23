@@ -11,7 +11,7 @@ class GetList extends Action
     public function request()
     {
         $this->store();
-        Roster::get();
+        $this->iq(Roster::get(), type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -26,7 +26,7 @@ class GetList extends Action
             }
         }
 
-        DBRoster::where('session_id', SESSION_ID)->delete();
+        DBRoster::where('session_id', $this->me->session->id)->delete();
         DBRoster::saveMany($rosters);
 
         $this->deliver();

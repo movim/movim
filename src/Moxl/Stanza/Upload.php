@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class Upload
 {
-    public static function request($to, $name, $size, $type)
+    public static function request($name, $size, $type)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $request = $dom->createElementNS('urn:xmpp:http:upload:0', 'request');
@@ -12,6 +12,6 @@ class Upload
         $request->setAttribute('size', $size);
         $request->setAttribute('content-type', $type);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($request, $to, 'get'));
+        return $request;
     }
 }

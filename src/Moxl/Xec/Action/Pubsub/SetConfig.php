@@ -14,7 +14,7 @@ class SetConfig extends Action
     public function request()
     {
         $this->store();
-        Pubsub::setConfig($this->_to, $this->_node, $this->_data);
+        $this->iq(Pubsub::setConfig($this->_node, $this->_data), to: $this->_to, type: 'set');
     }
 
     public function error(string $errorId, ?string $message = null)

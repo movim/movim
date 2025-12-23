@@ -29,7 +29,7 @@ class UploadFile extends Base
         ];
 
         requestAPI('ajax', post: [
-            'sid' => SESSION_ID,
+            'sid' => $this->me->session->id,
             'json' => rawurlencode(json_encode($json))
         ], await: false);
 
@@ -50,7 +50,7 @@ class UploadFile extends Base
                 $json['b']['p'] = [floor($fileUploaded / $fileSize * 100)];
 
                 requestAPI('ajax', post: [
-                    'sid' => SESSION_ID,
+                    'sid' => $this->me->session->id,
                     'json' => rawurlencode(json_encode($json))
                 ], await: false);
             });*/

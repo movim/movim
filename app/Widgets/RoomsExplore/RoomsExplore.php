@@ -80,7 +80,7 @@ class RoomsExplore extends Base
         if ($configuration->restrictsuggestions) {
             $this->searchLocally($keyword);
         } else {
-            $s = new Search;
+            $s = $this->xmpp(new Search);
             $s->setKeyword($keyword)
                 ->request();
         }

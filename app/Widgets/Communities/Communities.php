@@ -90,7 +90,7 @@ class Communities extends Base
 
     public function prepareTicket(\App\Post $post)
     {
-        return (new Post())->prepareTicket($post);
+        return (new Post($this->me))->prepareTicket($post);
     }
 
     private function getPosts()

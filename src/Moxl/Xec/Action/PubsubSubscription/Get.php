@@ -14,7 +14,7 @@ class Get extends Action
     public function request()
     {
         $this->store();
-        Pubsub::getItems($this->_to, $this->_pepnode, 1000);
+        $this->iq(Pubsub::getItems($this->_pepnode, 1000), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

@@ -32,7 +32,7 @@ class Builder
      * Constructor. Determines whether to show the login page to the user or the
      * Movim interface.
      */
-    public function __construct(private ?User $user)
+    public function __construct(private ?User $user = null)
     {
     }
 
@@ -359,6 +359,10 @@ class Builder
     {
         $widgets = Wrapper::getInstance();
         $widgets->setView($this->_view);
+
+        if ($this->user) {
+            $widgets->setUser($this->user);
+        }
 
         echo $widgets->runWidget($name, 'build', $params);
     }

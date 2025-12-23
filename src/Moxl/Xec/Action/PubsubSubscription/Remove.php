@@ -15,18 +15,18 @@ class Remove extends Action
     public function request()
     {
         $this->store();
-        PubsubSubscription::listRemove(
+        $this->iq(PubsubSubscription::listRemove(
             $this->_server,
             $this->_from,
             $this->_node,
             $this->_pepnode
-        );
+        ), type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($this->_pepnode == 'urn:xmpp:pubsub:movim-public-subscription') {
-            me()->subscriptions()
+            $this->me->subscriptions()
                            ->where('server', $this->_server)
                            ->where('node', $this->_node)
                            ->delete();

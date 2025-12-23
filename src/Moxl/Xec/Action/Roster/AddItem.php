@@ -15,7 +15,7 @@ class AddItem extends Action
     public function request()
     {
         $this->store();
-        Roster::add($this->_to, $this->_name, $this->_group);
+        $this->iq(Roster::add($this->_to, $this->_name, $this->_group), type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

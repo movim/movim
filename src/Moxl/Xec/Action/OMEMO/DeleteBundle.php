@@ -14,7 +14,7 @@ class DeleteBundle extends Action
     public function request()
     {
         $this->store();
-        Pubsub::delete(false, Bundle::OMEMO_BUNDLE . $this->_id);
+        $this->iq(Pubsub::delete(Bundle::OMEMO_BUNDLE . $this->_id), type: 'set');
     }
 
     public function setDevicesIds(array $devicesIds)

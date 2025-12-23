@@ -29,7 +29,7 @@ class Jingle
         $description->setAttribute('media', 'audio');
         $propose->appendChild($description);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
     // Deprecated
@@ -43,7 +43,7 @@ class Jingle
         $accept->setAttribute('id', $id);
         $message->appendChild($accept);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
     public static function messageRinging(string $to, string $id)
@@ -57,7 +57,7 @@ class Jingle
         $ringing->setAttribute('id', $id);
         $message->appendChild($ringing);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
     public static function messageProceed(string $to, string $id)
@@ -71,7 +71,7 @@ class Jingle
         $proceed->setAttribute('id', $id);
         $message->appendChild($proceed);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
     public static function messageRetract(string $to, string $id)
@@ -91,7 +91,7 @@ class Jingle
         $reason->appendChild($dom->createElement('cancel'));
         $reason->appendChild($dom->createElement('text', 'Retracted'));
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
     public static function messageFinish(string $to, string $id, string $reason)
@@ -111,7 +111,7 @@ class Jingle
         $jingleReason->appendChild($dom->createElement($reason));
         $jingleReason->appendChild($dom->createElement('text', 'Success'));
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
     public static function messageReject($id, $to = false)
@@ -127,30 +127,10 @@ class Jingle
         $proceed->setAttribute('id', $id);
         $message->appendChild($proceed);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
-    public static function sessionInitiate(string $to, $jingle)
-    {
-        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
-    }
-
-    public static function contentAdd(string $to, $jingle)
-    {
-        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
-    }
-
-    public static function contentModify(string $to, $jingle)
-    {
-        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
-    }
-
-    public static function contentRemove(string $to, $jingle)
-    {
-        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
-    }
-
-    public static function sessionTerminate($to, $sid, $value)
+    public static function sessionTerminate($sid, $value)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $jingle = $dom->createElementNS('urn:xmpp:jingle:1', 'jingle');
@@ -163,10 +143,10 @@ class Jingle
         $item = $dom->createElement($value);
         $reason->appendChild($item);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
+        return $jingle;
     }
 
-    public static function sessionMute($to, $sid, $name = false)
+    public static function sessionMute($sid, $name = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $jingle = $dom->createElementNS('urn:xmpp:jingle:1', 'jingle');
@@ -182,10 +162,10 @@ class Jingle
 
         $jingle->appendChild($mute);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
+        return $jingle;
     }
 
-    public static function sessionUnmute($to, $sid, $name = false)
+    public static function sessionUnmute($sid, $name = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $jingle = $dom->createElementNS('urn:xmpp:jingle:1', 'jingle');
@@ -201,19 +181,6 @@ class Jingle
 
         $jingle->appendChild($mute);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
-    }
-
-    public static function unknownSession($to, $id)
-    {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
-        $error = $dom->createElement('error');
-        $error->setAttribute('type', 'cancel');
-
-        $us = $dom->createElement('unknown-session');
-        $us->setAttribute('xmlns', 'urn:xmpp:jingle:errors:1');
-        $error->appendChild($us);
-
-        \Moxl\API::request(\Moxl\API::iqWrapper($error, $to, 'error', $id));
+        return $jingle;
     }
 }

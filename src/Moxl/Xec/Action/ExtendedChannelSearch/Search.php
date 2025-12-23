@@ -14,7 +14,7 @@ class Search extends Action
     public function request()
     {
         $this->store();
-        ExtendedChannelSearch::search($this->_keyword, $this->_max);
+        $this->iq(ExtendedChannelSearch::search($this->_keyword, $this->_max), to: 'api@search.jabber.network', type: 'get');
     }
 
     public function enableGlobalSearch()

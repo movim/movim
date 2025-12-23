@@ -2,6 +2,7 @@
 
 namespace Moxl\Stanza;
 
+use App\User;
 use DOMElement;
 use Movim\Session;
 
@@ -11,11 +12,12 @@ class Presence
      * The presence builder
      */
     public static function maker(
-        $to = false,
-        $status = false,
-        $show = false,
+        ?User $me = null,
+        ?string $to = null,
+        ?string $status = null,
+        ?string $show = null,
         int $priority = 0,
-        $type = false,
+        ?string $type = null,
         bool $muc = false,
         bool $mam = false,
         bool $mujiPreparing = false,
@@ -28,28 +30,26 @@ class Presence
         $root = $dom->createElementNS('jabber:client', 'presence');
         $dom->appendChild($root);
 
-        $me = me();
-
         if ($me && $me->session) {
             $root->setAttribute('from', $me->id . '/' . $me->session->resource);
         }
 
         $root->setAttribute('id', $session->get('id'));
 
-        if ($to != false) {
+        if ($to) {
             $root->setAttribute('to', $to);
         }
 
-        if ($type != false) {
+        if ($type) {
             $root->setAttribute('type', $type);
         }
 
-        if ($status != false) {
+        if ($status) {
             $status = $dom->createElement('status', $status);
             $root->appendChild($status);
         }
 
-        if ($show != false) {
+        if ($show) {
             $show = $dom->createElement('show', $show);
             $root->appendChild($show);
         }
@@ -104,94 +104,6 @@ class Presence
         $c->setAttribute('ver', \Moxl\Utils::generateCaps());
         $root->appendChild($c);
 
-        return $dom->saveXML($dom->documentElement);
-    }
-
-    /*
-     * Simple presence without parameters
-     */
-    public static function simple()
-    {
-        \Moxl\API::request(self::maker());
-    }
-
-    /*
-     * Subscribe to someone presence
-     */
-    public static function unavailable($to = false, $status = false, $type = false)
-    {
-        \Moxl\API::request(self::maker($to, $status, type: 'unavailable'));
-    }
-
-    /*
-     * Subscribe to someone presence
-     */
-    public static function subscribe($to, $status)
-    {
-        \Moxl\API::request(self::maker($to, $status, type: 'subscribe'));
-    }
-
-    /*
-     * Unsubscribe to someone presence
-     */
-    public static function unsubscribe($to, $status)
-    {
-        \Moxl\API::request(self::maker($to, $status, type: 'unsubscribe'));
-    }
-
-    /*
-     * Accept someone presence \Moxl\API::request
-     */
-    public static function subscribed($to)
-    {
-        \Moxl\API::request(self::maker($to, type: 'subscribed'));
-    }
-
-    /*
-     * Refuse someone presence \Moxl\API::request
-     */
-    public static function unsubscribed($to)
-    {
-        \Moxl\API::request(self::maker($to, type: 'unsubscribed'));
-    }
-
-    /*
-     * Enter a chat room
-     */
-    public static function muc($to, $nickname = false, $mam = false, $mujiPreparing = false, ?DOMElement $muji = null)
-    {
-        \Moxl\API::request(self::maker($to . '/' . $nickname, muc: true, mam: $mam, mujiPreparing: $mujiPreparing, muji: $muji));
-    }
-
-    /*
-     * Go away
-     */
-    public static function away($status = false, $last = 0)
-    {
-        \Moxl\API::request(self::maker(false, status: $status, show: 'away', last: $last));
-    }
-
-    /*
-     * Go chatting
-     */
-    public static function chat($status = false)
-    {
-        \Moxl\API::request(self::maker(false, status: $status, show: 'chat'));
-    }
-
-    /*
-     * Do not disturb
-     */
-    public static function DND($status = false)
-    {
-        \Moxl\API::request(self::maker(false, status: $status, show: 'dnd'));
-    }
-
-    /*
-     * eXtended Away
-     */
-    public static function XA($status = false)
-    {
-        \Moxl\API::request(self::maker(false, status: $status, show: 'xa'));
+        return $dom;
     }
 }

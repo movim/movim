@@ -8,7 +8,8 @@ class Roster
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('jabber:iq:roster', 'query');
-        \Moxl\API::request(\Moxl\API::iqWrapper($query, false, 'get'));
+
+        return $query;
     }
 
     /*
@@ -33,12 +34,12 @@ class Roster
             $item->appendChild($group);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($roster, false, 'set'));
+        return $roster;
     }
 
     public static function update($to, $name, $group)
     {
-        \Moxl\API::request(self::add($to, $name, $group));
+        return self::add($to, $name, $group);
     }
 
     /*
@@ -54,6 +55,6 @@ class Roster
         $item->setAttribute('subscription', 'remove');
         $roster->appendChild($item);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($roster, false, 'set'));
+        return $roster;
     }
 }

@@ -9,10 +9,14 @@ class PresenceBuffer
     protected static $instance;
     private $saver = null;
 
-    public static function getInstance()
+    private function __construct(private ?User $me = null)
+    {
+    }
+
+    public static function getInstance(?User $me = null)
     {
         if (!isset(self::$instance)) {
-            self::$instance = new self();
+            self::$instance = new self($me);
         }
 
         return self::$instance;
@@ -29,7 +33,7 @@ class PresenceBuffer
     public function append(Presence $presence, $call)
     {
         if ($this->saver == null) {
-            $this->saver = new PresenceBufferSaver;
+            $this->saver = new PresenceBufferSaver($this->me);
         }
 
         $this->saver->append($presence, $call);

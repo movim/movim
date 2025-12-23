@@ -13,6 +13,6 @@ class Bookmark
         $items->setAttribute('node', 'storage:bookmarks');
         $pubsub->appendChild($items);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'get'));
+        return $pubsub;
     }
 }

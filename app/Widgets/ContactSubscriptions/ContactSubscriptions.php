@@ -38,7 +38,7 @@ class ContactSubscriptions extends Base
             return;
         }
 
-        $ps = new GetPubsubSubscriptions;
+        $ps = $this->xmpp(new GetPubsubSubscriptions);
         $ps->setTo($jid)->request();
     }
 

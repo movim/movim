@@ -13,12 +13,12 @@ class Delete extends Action
     public function request()
     {
         $this->store();
-        Pubsub::itemDelete(false, 'urn:xmpp:bookmarks:'.$this->_version, $this->_id);
+        $this->iq(Pubsub::itemDelete(false, 'urn:xmpp:bookmarks:'.$this->_version, $this->_id), type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        me()->session->conferences()->where('conference', $this->_id)->delete();
+        $this->me->session->conferences()->where('conference', $this->_id)->delete();
         $this->deliver();
     }
 }

@@ -21,7 +21,7 @@ class Request extends Action
         $this->store();
 
         if (!in_array($this->_node, $this->_excluded)) {
-            Disco::request($this->_to, $this->_node);
+            $this->iq(Disco::request($this->_node), to: $this->_to, type: 'get');
         }
     }
 

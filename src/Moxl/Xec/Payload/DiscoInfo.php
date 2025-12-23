@@ -3,7 +3,6 @@
 namespace Moxl\Xec\Payload;
 
 use Moxl\Stanza\Disco;
-use Moxl\Utils;
 
 class DiscoInfo extends Payload
 {
@@ -13,7 +12,7 @@ class DiscoInfo extends Payload
             $jid = (string)$parent->attributes()->from;
             $id = (string)$parent->attributes()->id;
 
-            Disco::answer($jid, $id, (string)$stanza->attributes()->node);
+            $this->iq(Disco::answer((string)$stanza->attributes()->node), to: $jid, id: $id, type: 'result');
         }
     }
 }

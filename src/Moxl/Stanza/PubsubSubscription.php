@@ -63,7 +63,7 @@ class PubsubSubscription
             $pubsub->appendChild($publishOption);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
+        return $pubsub;
     }
 
     public static function listRemove(string $server, string $jid, string $node, $pepnode = 'urn:xmpp:pubsub:subscription')
@@ -80,6 +80,6 @@ class PubsubSubscription
         $item->setAttribute('id', self::generateId($server, $jid, $node));
         $retract->appendChild($item);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
+        return $pubsub;
     }
 }

@@ -17,7 +17,7 @@ class ChangeAffiliation extends Action
     public function request()
     {
         $this->store();
-        Muc::changeAffiliation($this->_to, $this->_jid, $this->_affiliation, $this->_reason);
+        $this->iq(Muc::changeAffiliation($this->_jid, $this->_affiliation, $this->_reason), to: $this->_to, type: 'set');
     }
 
     public function setAffiliation(string $affiliation)
