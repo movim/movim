@@ -12,7 +12,7 @@ abstract class Action extends Payload
     protected $stanzaId;
     protected ?User $me;
 
-    final public function __construct(?Base $widget = null)
+    public function __construct(?Base $widget = null)
     {
         $this->me = $widget?->me;
         return parent::__construct();
