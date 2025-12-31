@@ -21,8 +21,8 @@
             {$user = $users->pop()}
         {/if}
         {loop="$users"}
-            <li class="block" title="{$value->jid}"
-                onclick="Chats_ajaxOpen('{$value->jid|echapJS}', true);">
+            <li class="block" title="{$value->id}"
+                onclick="Chats_ajaxOpen('{$value->id|echapJS}', true);">
                 <img class="main" src="{$value->getBanner(\Movim\ImageSize::L)}">
                 <span class="primary icon bubble {if="$value->value"}status {$presencestxt[$value->value]}{/if}">
                     <img src="{$value->getPicture(\Movim\ImageSize::M)}">
