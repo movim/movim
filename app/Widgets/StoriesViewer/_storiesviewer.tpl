@@ -31,9 +31,13 @@
             </span>
             <div>
                 <p class="line normal">
-                    <a href="#" onclick="MovimUtils.reload('{$c->route('contact', $story->aid)}')">
-                        {$story->truename}
-                    </a>
+                    {if="$story->contact"}
+                        <a href="#" onclick="MovimUtils.reload('{$c->route('contact', $story->aid)}')">
+                            {$story->truename}
+                        </a>
+                    {else}
+                        {$story->server}
+                    {/if}
                 </p>
                 <p>
                     {$count = $story->user_views_count}
@@ -52,7 +56,7 @@
                 <p class="normal title">{autoescape="off"}{$story->title|addHashtagsLinks}{/autoescape}</p>
             </div>
         </li>
-        {if="!$story->isMine($c->me)"}
+        {if="!$story->isMine($c->me) && $story->contact"}
         <li class="comment">
             <span class="control icon active" onclick="StoriesViewer.sendComment({$story->id})">
                 <i class="material-symbols">send</i>

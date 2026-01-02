@@ -93,7 +93,7 @@ main:not(.enabled) #chat_widget {
     mask-image: linear-gradient(to bottom, transparent, black 25% 75%, transparent);
 }
 
-#chat_widget ul.list.flex {
+#chat_widget ul.list.flex:not(:has(.story)) {
     width: 100%;
 }
 
