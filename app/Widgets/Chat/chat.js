@@ -1539,10 +1539,11 @@ var Chat = {
                         div.classList.add('parent');
                     }
 
-                    var divP = document.createElement('p');
-                    divP.innerHTML = line == '&gt;'
+                    let divP = document.createElement('p');
+                    let trimmed = line.substring('4');
+                    divP.innerHTML = trimmed == ''
                         ? ' '
-                        : line.substring('5');
+                        : trimmed
                     div.appendChild(divP);
 
                     msg.appendChild(div);
