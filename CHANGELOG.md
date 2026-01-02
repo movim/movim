@@ -10,6 +10,7 @@ v0.33 (master)
 * Handle calls when having multiple browsers connected on one Movim session, allow all the browser to hang-up the current call
 * Disable password change and account deletion if the server doesn't have jabber:iq:register
 * Improve and complete the Notification and Push Notification code (badge, tag...) and use the Service Worker as the default way to handle them
+* Fix missing session_id index (mandatory for the MariaDB foreign key)
 
 v0.32.1
 ---------------------------

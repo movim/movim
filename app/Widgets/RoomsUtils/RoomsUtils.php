@@ -149,8 +149,11 @@ class RoomsUtils extends Base
         if (!$conference) return;
 
         $presences = $conference->presences()
-            ->with('capability')
-            ->skip($page * $pagination);
+            ->with('capability');
+
+        if ($page > 0) {
+            $presences = $presences->skip($page * $pagination);
+        }
 
         if ($havePagination) {
             $presences = $presences->take($pagination + 1);
