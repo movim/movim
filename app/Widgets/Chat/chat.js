@@ -1531,7 +1531,7 @@ var Chat = {
 
         if (body.includes('&gt; ')) {
             body.split("\n").forEach(line => {
-                if (line.startsWith('&gt; ')) {
+                if (line.startsWith('&gt; ') || line == '&gt;') {
                     p = null;
 
                     if (div == null) {
@@ -1540,7 +1540,9 @@ var Chat = {
                     }
 
                     var divP = document.createElement('p');
-                    divP.innerHTML = line.substring('5');
+                    divP.innerHTML = line == '&gt;'
+                        ? ' '
+                        : line.substring('5');
                     div.appendChild(divP);
 
                     msg.appendChild(div);
