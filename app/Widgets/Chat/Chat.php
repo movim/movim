@@ -1495,26 +1495,6 @@ class Chat extends \Movim\Widget\Base
                     ? $roster->truename
                     : $contactFromName;
             }
-        } elseif ($message->body) {
-            // Let's try to support "quoted" messages
-            $quote = '&gt; ';
-            $parent = '';
-            $remains = '';
-            $endOfQuote = false;
-
-            foreach (explode(PHP_EOL, $message->body) as $line) {
-                if (substr($line, 0, strlen($quote)) == $quote && $endOfQuote == false) {
-                    $parent .= substr($line, strlen($quote)) . "\n";
-                } else {
-                    $endOfQuote = true;
-                    $remains .= $line . "\n";
-                }
-            }
-
-            if ($parent !== '') {
-                $message->parentQuote = $parent;
-                $message->body = trim($remains);
-            }
         }
 
         // reactions_count if cached, if not, reload it from the DB

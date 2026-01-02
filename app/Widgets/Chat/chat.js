@@ -1106,6 +1106,8 @@ var Chat = {
             msg.setAttribute('dir', 'rtl');
         }
 
+        let omemo = false;
+
         // OMEMO handling
         if (data.omemoheader && data.encrypted && !data.retracted && OMEMO_ENABLED) {
             p.innerHTML = data.omemoheader.payload.substring(0, data.omemoheader.payload.length / 2);
@@ -1121,8 +1123,8 @@ var Chat = {
                     }
                 }
             });
-        } else {
-            p.innerHTML = data.body;
+
+            omemo = true;
         }
 
         if (data.replaceid) {
@@ -1166,9 +1168,9 @@ var Chat = {
         // Parent
         if (data.parent) {
             msg.appendChild(Chat.getParentHtml(data.parent));
-        } else if (data.parentQuote) {
+        } /*else if (data.parentQuote) {
             msg.appendChild(Chat.getSimpleParentHtml(data.parentQuote));
-        }
+        }*/
 
         if (data.card) {
             bubble.querySelector('div.bubble').classList.add('file');
@@ -1176,6 +1178,10 @@ var Chat = {
         }
 
         msg.dataset.published = data.published;
+
+        if (omemo == false) {
+            Chat.addQuotesHtml(msg, data.body);
+        }
 
         msg.appendChild(p);
         msg.appendChild(info);
@@ -1519,16 +1525,46 @@ var Chat = {
 
         return video;
     },
-    getSimpleParentHtml: function (parentQuote) {
-        var div = document.createElement('div');
-        div.classList.add('parent');
+    addQuotesHtml: function (msg, body) {
+        let div = null;
+        let p = null;
 
-        var p = document.createElement('p');
-        p.innerHTML = parentQuote;
-        div.appendChild(p);
+        if (body.includes('&gt; ')) {
+            body.split("\n").forEach(line => {
+                if (line.startsWith('&gt; ')) {
+                    p = null;
 
-        return div;
+                    if (div == null) {
+                        div = document.createElement('div');
+                        div.classList.add('parent');
+                    }
+
+                    var divP = document.createElement('p');
+                    divP.innerHTML = line.substring('5');
+                    div.appendChild(divP);
+
+                    msg.appendChild(div);
+                } else {
+                    div = null;
+
+                    if (p == null) {
+                        p = document.createElement('p');
+                        p.innerHTML = line;
+                    } else {
+                        p.innerHTML += "\n" + line;
+                    }
+
+                    msg.appendChild(p);
+                }
+            });
+            return;
+        }
+
+        p = document.createElement('p');
+        p.innerHTML = body;
+        msg.appendChild(p);
     },
+
     getParentHtml: function (parent) {
         var div = document.createElement('div');
         div.classList.add('parent');
