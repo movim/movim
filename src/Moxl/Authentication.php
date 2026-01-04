@@ -67,7 +67,7 @@ class Authentication
         $auth->setAttribute('mechanism', $this->_type);
         $dom->appendChild($auth);
 
-        API::request($dom->saveXML($dom->documentElement));
+        \writeXMPP($dom->saveXML($dom->documentElement));
     }
 
     public function challenge($challenge)
