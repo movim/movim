@@ -11,7 +11,7 @@ class Request extends Action
     public function request()
     {
         $this->store();
-        Blocking::request();
+        $this->iq(Blocking::request(), type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -33,13 +33,13 @@ class Request extends Action
             ];
         })->toArray());
 
-        me()->reported()->syncWithoutDetaching($jids->mapWithKeys(function ($jid) {
+        $this->me->reported()->syncWithoutDetaching($jids->mapWithKeys(function ($jid) {
             return [$jid  => ['synced' => true]];
         }));
-        me()->refreshBlocked();
+        $this->me->refreshBlocked();
 
         // Retro-compatibility support
-        foreach (me()->reported()->where('synced', false)->get() as $reported) {
+        foreach ($this->me->reported()->where('synced', false)->get() as $reported) {
             $block = new Block;
             $block->setJid($reported->id);
             $block->request();

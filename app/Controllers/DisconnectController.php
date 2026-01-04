@@ -11,8 +11,10 @@ class DisconnectController extends Base
     public function dispatch()
     {
         // Just in case
-        me()?->encryptedPasswords()->delete();
-        requestAPI('disconnect', post: ['sid' => SESSION_ID]);
+        if ($this->user) {
+            $this->user->encryptedPasswords()->delete();
+            requestAPI('disconnect', post: ['sid' => $this->user->session->id]);
+        }
         Session::dispose();
 
         // Fresh cookie

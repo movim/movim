@@ -16,8 +16,8 @@ class MucUser extends Payload
             if (empty($jid)) return;
 
             $member = Member::where('conference', $from)
-                            ->where('jid', $jid)
-                            ->first();
+                ->where('jid', $jid)
+                ->first();
 
             if (!$member) {
                 $member = new Member;
@@ -28,9 +28,10 @@ class MucUser extends Payload
             // Only track changes
             if ($member->exists && $member->affiliation != (string)$stanza->item->attributes()->affiliation) {
                 $message = Message::eventMessageFactory(
-                    '',
-                    bareJid((string)$from),
-                    $jid
+                    user: $this->me,
+                    type: '',
+                    from: bareJid((string)$from),
+                    thread: $jid
                 );
 
                 switch ((string)$stanza->item->attributes()->affiliation) {

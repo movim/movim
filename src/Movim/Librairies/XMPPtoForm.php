@@ -2,25 +2,25 @@
 
 namespace Movim\Librairies;
 
+use App\User;
 use Movim\Route;
 
 class XMPPtoForm
 {
-    private $xmpp;
-    private $formType;
+    private ?\SimpleXMLElement $xmpp = null;
+    private string $formType;
     private $stanza;
-    private $html;
+    private \DOMDocument $html;
 
-    public function __construct()
+    public function __construct(private ?User $user = null)
     {
         $this->html = new \DOMDocument('1.0', 'UTF-8');
-        $this->xmpp = '';
     }
 
     public function getHTML(\SimpleXMLElement $xmpp, $stanza = false)
     {
         $this->xmpp = $xmpp;
-        $this->formType = $xmpp->attributes()->type;
+        $this->formType = (string)$xmpp->attributes()->type;
         $this->stanza = $stanza;
         $this->create();
         return $this->html->saveHTML();
@@ -453,7 +453,7 @@ class XMPPtoForm
         $select->setAttribute('id', $s['var']);
         $select->setAttribute('name', $s['var']);
 
-        $subscriptions = me()->subscriptions()
+        $subscriptions = $this->user->subscriptions()
             ->notComments()
             ->orderBy('server')->orderBy('node')
             ->get();

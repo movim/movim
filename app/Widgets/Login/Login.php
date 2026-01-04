@@ -45,7 +45,7 @@ class Login extends Base
 
         //if ($session->get('mechanism') != 'ANONYMOUS') {
         // We get the configuration
-        (new Get)->request();
+        $this->xmpp(new Get)->request();
         //}
     }
 
@@ -61,7 +61,7 @@ class Login extends Base
 
     public function onConfig(Packet $packet)
     {
-        $p = new Presence;
+        $p = new Presence($this->me);
         $p->start();
 
         $this->rpc('MovimUtils.reloadThis');
@@ -292,6 +292,9 @@ class Login extends Base
 
         // Force reload the User to link the new session
         \App\User::me(true);
+
+        global $linker; // Todo, use a Linker Manager later
+        $linker->attachUser($user);
 
         // We launch the XMPP socket
         $this->rpc('register', $host);

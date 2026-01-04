@@ -2,36 +2,212 @@
 
 namespace App;
 
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
+
+use Moxl\Xec\Action\Disco\Request;
+use Moxl\Xec\Action\Vcard\Get;
+
 use App\Presence;
+use App\Info;
+use App\Contact;
+use Movim\Scheduler;
 
 class PresenceBuffer
 {
     protected static $instance;
-    private $saver = null;
 
-    public static function getInstance()
+    private function __construct(
+        private ?User $me = null,
+        private ?Collection $_models = null,
+        private ?Collection  $_hats = null,
+        private ?Collection  $_calls = null
+    ) {
+        $this->_models = collect();
+        $this->_hats = collect();
+        $this->_calls = collect();
+    }
+
+    public static function getInstance(?User $me = null)
     {
         if (!isset(self::$instance)) {
-            self::$instance = new self();
+            self::$instance = new self($me);
         }
+
+        self::$instance->me = $me;
 
         return self::$instance;
     }
 
     public function save()
     {
-        if ($this->saver) {
-            $this->saver->save();
-            $this->saver = null;
+        if ($this->_models->count() > 0) {
+            try {
+                DB::beginTransaction();
+
+                // We delete all the presences that might already be there
+                $table = DB::table('presences');
+                $first = $this->_models->first();
+                $table = $table->where(function ($query) use ($first) {
+                    $query->where('session_id', $first['session_id'])
+                        ->where('jid', $first['jid'])
+                        ->where('resource', $first['resource'])
+                        ->where('mucjid', $first['mucjid']);
+                });
+
+                $this->_models->skip(1)->each(function ($presence) use ($table) {
+                    $table->orWhere(function ($query) use ($presence) {
+                        $query->where('session_id', $presence['session_id'])
+                            ->where('jid', $presence['jid'])
+                            ->where('resource', $presence['resource'])
+                            ->where('mucjid', $presence['mucjid']);
+                    });
+                });
+                $table->delete();
+
+                // And we save it
+                Presence::insert($this->_models->toArray());
+                DB::commit();
+
+                /**
+                 * Hats
+                 */
+                if ($this->_hats->isNotEmpty()) {
+                    $table = DB::table('presences');
+
+                    $firstHat = $this->_hats->keys()->first();
+
+                    $first = $this->_models[$firstHat];
+                    $table = $table->where(function ($query) use ($first) {
+                        $query->where('session_id', $first['session_id'])
+                            ->where('jid', $first['jid'])
+                            ->where('resource', $first['resource'])
+                            ->where('mucjid', $first['mucjid']);
+                    });
+
+                    $this->_hats->skip(1)->each(function ($hat, $key) use ($table) {
+                        $presence = $this->_models[$key];
+                        $table->orWhere(function ($query) use ($presence) {
+                            $query->where('session_id', $presence['session_id'])
+                                ->where('jid', $presence['jid'])
+                                ->where('resource', $presence['resource'])
+                                ->where('mucjid', $presence['mucjid']);
+                        });
+                    });
+
+                    $hats = [];
+                    $keysCheck = []; // To prevent duplicate hats
+
+                    foreach ($table->get() as $presenceHat) {
+                        foreach ($this->_hats[$this->getPresenceKey($presenceHat)] as $hat) {
+                            if (!in_array($this->getPresenceKey($presenceHat) . $hat->uri, $keysCheck)) {
+                                $hat['presence_id'] = $presenceHat->id;
+                                array_push($hats, $hat->toArray());
+                                array_push($keysCheck, $this->getPresenceKey($presenceHat) . $hat->uri);
+                            }
+                        }
+                    }
+
+                    Hat::insert($hats);
+                    unset($hats, $keysCheck);
+                }
+
+                /**
+                 * Handle the Capabilities & Vcards
+                 */
+                $nodes = collect();
+                $avatarHashes = collect();
+
+                $this->_models->each(function ($presence) use (&$nodes, &$avatarHashes) {
+                    // Capabilities
+                    if ($presence['node']) {
+                        $resource = !empty($presence['resource']) ? '/' . $presence['resource'] : '';
+                        $nodes->put($presence['node'], $presence['jid'] . $resource);
+                    }
+
+                    // Vcards
+                    if (isset($presence['avatarhash'])) {
+                        $fullJid = !empty($presence['resource'])
+                            ? $presence['jid'] . '/' . $presence['resource']
+                            : $presence['jid'];
+
+                        $jid = ($presence['muc'])
+                            ? (($presence['mucjid'] != '')
+                                ? $presence['mucjid']
+                                : $fullJid)
+                            : $presence['jid'];
+
+                        $avatarHashes->put($presence['avatarhash'], $jid);
+                    }
+                });
+
+                $infos = Info::whereIn('node', $nodes->keys())->get();
+
+                // Remove the already saved capabilities
+                $infos->each(function ($info) use (&$nodes) {
+                    if ($nodes->has($info->node) && !$info->isEmptyFeatures()) {
+                        $nodes->pull($info->node);
+                    }
+                });
+
+                // Request the others
+                $nodes->each(function ($to, $node) {
+                    $d = new Request($this->me);
+                    $d->setTo($to)
+                        ->setNode($node)
+                        ->request();
+                });
+
+                // Memory leak there
+                if ($avatarHashes->count() > 0) {
+                    $contactsHashes = Contact::whereIn('avatarhash', $avatarHashes->keys())
+                        ->whereNotNull('avatartype')
+                        ->get(['id', 'avatarhash'])->pluck('avatarhash', 'id');
+
+                    // Remove the existing Contacts
+                    $avatarHashes = $avatarHashes->reject(
+                        fn($jid, $avatarhash) =>
+                        $contactsHashes->has($jid) && $contactsHashes->get($jid) == $avatarhash
+                    );
+
+                    $avatarHashes->each(function ($jid, $avatarhash) {
+                        if ($jid != $this->me->id) {
+                            Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
+                                $r = new Get($this->me);
+                                $r->setAvatarhash($avatarhash)
+                                    ->setTo($jid)
+                                    ->request();
+                            });
+                        }
+                    });
+                }
+            } catch (\Exception $e) {
+                DB::rollback();
+                logError($e);
+            }
+            $this->_models = collect();
+            $this->_hats = collect();
+        }
+
+        if ($this->_calls->isNotEmpty()) {
+            $this->_calls->each(fn($call) => $call());
+            $this->_calls = collect();
         }
     }
 
     public function append(Presence $presence, $call)
     {
-        if ($this->saver == null) {
-            $this->saver = new PresenceBufferSaver;
+        $this->_models[$this->getPresenceKey($presence)] = $presence->toArray();
+
+        if (!empty($presence->hatsToSave)) {
+            $this->_hats[$this->getPresenceKey($presence)] = $presence->hatsToSave;
         }
 
-        $this->saver->append($presence, $call);
+        $this->_calls->push($call);
+    }
+
+    private function getPresenceKey(Presence|\stdClass $presence)
+    {
+        return $presence->jid . $presence->mucjid . $presence->resource;
     }
 }

@@ -17,7 +17,7 @@ class CreateChannel extends Action
     public function request()
     {
         $this->store();
-        Muc::createChannel($this->_to, $this->_name);
+        $this->iq(Muc::createChannel($this->_name), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

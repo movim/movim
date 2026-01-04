@@ -14,7 +14,7 @@ class CleanDevicesList extends Action
     public function request()
     {
         $this->store();
-        Disco::items();
+        $this->iq(Disco::items(), type: 'get');
     }
 
     public function setCurrentList(array $currentList)

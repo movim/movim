@@ -259,11 +259,13 @@
             <span class="primary icon bubble active
                 {if="$roster"}
                     {if="$roster->presence"}status {$roster->presence->presencekey}{/if}
-                    {if="$roster->stories->count()"}stories {if="$roster->storiesSeen"}seen{/if}{/if}
+                    {if="$c->me->rosterStories($roster)->count()"}stories
+                        {if="$c->me->rosterStoriesAllSeen($roster)"}seen{/if}
+                    {/if}
                 {/if}
             "
-            {if="$roster && $roster->firstUnseenStory"}
-                onclick="StoriesViewer_ajaxHttpGet({$roster->firstUnseenStory->id})"
+            {if="$roster && $c->me->rosterFirstUnseenStory($roster)"}
+                onclick="StoriesViewer_ajaxHttpGet({$c->me->rosterFirstUnseenStory($roster)->id})"
             {else}
                 onclick="ChatActions_ajaxGetContact('{$contact->id|echapJS}')"
             {/if}>

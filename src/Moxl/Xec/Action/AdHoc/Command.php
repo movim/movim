@@ -13,7 +13,7 @@ class Command extends Action
     public function request()
     {
         $this->store();
-        AdHoc::command($this->_to, $this->_node);
+        $this->iq(Adhoc::command($this->_node), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

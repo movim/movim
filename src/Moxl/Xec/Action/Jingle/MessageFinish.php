@@ -14,6 +14,6 @@ class MessageFinish extends Action
     public function request()
     {
         $this->store();
-        Jingle::messageFinish($this->_to, $this->_id, $this->_reason);
+        $this->send(Jingle::messageFinish($this->_to, $this->_id, $this->_reason));
     }
 }

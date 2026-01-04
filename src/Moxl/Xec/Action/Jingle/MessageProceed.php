@@ -13,6 +13,6 @@ class MessageProceed extends Action
     public function request()
     {
         $this->store();
-        Jingle::messageProceed($this->_to, $this->_id);
+        $this->send(Jingle::messageProceed($this->_to, $this->_id));
     }
 }

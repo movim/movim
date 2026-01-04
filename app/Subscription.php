@@ -17,12 +17,12 @@ class Subscription extends Model
 
     public function info()
     {
-        return $this->hasOne('App\Info', ['server', 'node'], ['server', 'node']);
+        return $this->hasOne(Info::class, ['server', 'node'], ['server', 'node']);
     }
 
     public function contact()
     {
-        return $this->hasOne('App\Contact', 'id', 'jid');
+        return $this->hasOne(Contact::class, 'id', 'jid');
     }
 
     public function scopeCommunities($query)

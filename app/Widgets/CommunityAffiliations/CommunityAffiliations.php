@@ -53,7 +53,7 @@ class CommunityAffiliations extends Base
             ->whereIn('jid', function ($query) {
                 $query->from('rosters')
                     ->select('jid')
-                    ->where('session_id', SESSION_ID);
+                    ->where('session_id', $this->me->session->id);
             })
             ->get());
         $view->assign('allsubscriptionscount', \App\Subscription::where('server', $server)
@@ -135,7 +135,7 @@ class CommunityAffiliations extends Base
     {
         $this->toast($this->__('communityaffiliation.delete_error'));
 
-        $c = new CommunityHeader;
+        $c = new CommunityHeader($this->me);
         $c->ajaxUnsubscribe($packet->content['server'], $packet->content['node']);
 
         $this->deleted($packet);
@@ -163,7 +163,7 @@ class CommunityAffiliations extends Base
             return;
         }
 
-        $r = new GetAffiliations;
+        $r = $this->xmpp(new GetAffiliations);
         $r->setTo($server)->setNode($node)
             ->request();
     }
@@ -174,7 +174,7 @@ class CommunityAffiliations extends Base
             return;
         }
 
-        $r = new GetSubscriptions;
+        $r = $this->xmpp(new GetSubscriptions);
         $r->setTo($server)
             ->setNode($node)
             ->setNotify($notify)
@@ -201,9 +201,9 @@ class CommunityAffiliations extends Base
             return;
         }
 
-        (new CommunityHeader)->ajaxUnsubscribe($server, $node);
+        (new CommunityHeader($this->me))->ajaxUnsubscribe($server, $node);
 
-        $d = new Delete;
+        $d = $this->xmpp(new Delete);
         $d->setTo($server)->setNode($node)
             ->request();
     }
@@ -231,7 +231,7 @@ class CommunityAffiliations extends Base
             Validator::in($caps ? array_keys($caps->getPubsubRoles()) : [])->isValid($form->role->value)
             && Validator::stringType()->length(2, 100)->isValid($form->jid->value)
         ) {
-            $sa = new SetAffiliations;
+            $sa = $this->xmpp(new SetAffiliations);
             $sa->setTo($server)
                 ->setNode($node)
                 ->setData([$form->jid->value => $form->role->value])

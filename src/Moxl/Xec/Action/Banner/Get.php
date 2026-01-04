@@ -14,7 +14,7 @@ class Get extends Action
     public function request()
     {
         $this->store();
-        Avatar::get($this->_to, 'urn:xmpp:movim-banner:0');
+        $this->iq(Avatar::get('urn:xmpp:movim-banner:0'), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

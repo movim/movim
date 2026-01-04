@@ -9,7 +9,7 @@ class SessionBind extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $ss = new Bind;
-        $ss->setResource(me()->session->resource)
+        $ss->setResource($this->me->session->resource)
            ->request();
     }
 }

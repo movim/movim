@@ -38,7 +38,7 @@
             </div>
         </li>
 
-        {if="$message->isLast()"}
+        {if="$message->isLast($c->me)"}
             <li onclick="Chat.editPrevious(); Dialog_ajaxClear();">
                 <span class="primary icon gray">
                     <i class="material-symbols">edit</i>

@@ -13,6 +13,6 @@ class ContentRemove extends Action
     public function request()
     {
         $this->store();
-        Jingle::contentAdd($this->_to, $this->_jingle);
+        $this->iq($this->_jingle, to: $this->_to, type: 'set');
     }
 }

@@ -14,7 +14,7 @@ class ChangePassword extends Action
     public function request()
     {
         $this->store();
-        Register::changePassword($this->_to, $this->_username, $this->_password);
+        $this->iq(Register::changePassword($this->_username, $this->_password), to: $this->_to, type: 'set');
     }
 
     public function setTo($to)

@@ -141,7 +141,7 @@ class Chats extends Base
      */
     public function ajaxGetMAMHistory(?string $jid = null)
     {
-        $g = new \Moxl\Xec\Action\MAM\Get;
+        $g = $this->xmpp(new \Moxl\Xec\Action\MAM\Get);
 
         // The following requests seems to be heavy for PostgreSQL
         // see https://stackoverflow.com/questions/40365098/why-is-postgres-not-using-my-index-on-a-simple-order-by-limit-1
@@ -164,7 +164,7 @@ class Chats extends Base
 
             $g->request();
         } elseif (validateJid($jid)) {
-            $message = \App\Message::jid($jid);
+            $message = \App\Message::jid($this->me, $jid);
 
             $message = (DB::getDriverName() == 'pgsql')
                 ? $message->orderByRaw('published asc nulls last')
@@ -233,7 +233,7 @@ class Chats extends Base
         $this->rpc('Chats.refresh');
 
         // Clear the counter
-        (new Chat)->getMessages($jid, seenOnly: true, event: false);
+        (new Chat($this->me))->getMessages($jid, seenOnly: true, event: false);
 
         if ($closeDiscussion) {
             $this->rpc('Chat_ajaxGet');
@@ -245,7 +245,9 @@ class Chats extends Base
     public function prepareCalls()
     {
         $view = $this->tpl();
-        $view->assign('calls', $this->me->session->mujiCalls()->where('isfromconference', false)->get());
+        $view->assign('calls', $this->me
+            ? $this->me->session->mujiCalls()->where('isfromconference', false)->get()
+            : []);
 
         return $view->draw('_chats_calls');
     }
@@ -374,7 +376,7 @@ class Chats extends Base
 
     public function resolveMessageFromJid(string $jid): ?Message
     {
-        return \App\Message::jid($jid)
+        return \App\Message::jid($this->me, $jid)
             ->orderBy('published', 'desc')
             ->first();
     }
@@ -430,7 +432,8 @@ class Chats extends Base
     public function display()
     {
         $this->view->assign('filters', $this->_filters);
-        $this->view->assign('filter', $this->me->chats_filter);
+        $this->view->assign('filter', $this->me
+            ? $this->me->chats_filter : '');
     }
 
     private function getItemId(string $jid): string

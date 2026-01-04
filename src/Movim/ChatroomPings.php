@@ -6,6 +6,7 @@
 
 namespace Movim;
 
+use App\User;
 use Moxl\Xec\Action\Ping\Room;
 use App\Widgets\Rooms\Rooms as WidgetRooms;
 
@@ -20,10 +21,14 @@ class ChatroomPings
     private $_pingIn = 5 * 60;
     private $_pongTimeout = 5 * 60 + 120;
 
-    public static function getInstance()
+    public function __construct(private ?User $user = null)
+    {
+    }
+
+    public static function getInstance(?User $user = null)
     {
         if (!isset(self::$instance)) {
-            self::$instance = new self();
+            self::$instance = new self($user);
         }
 
         return self::$instance;
@@ -41,12 +46,12 @@ class ChatroomPings
         $this->clear($from);
 
         $this->_chatrooms[$from] = $loop->addTimer($this->_pingIn, function () use ($from) {
-            $presence = me()->session->conferences()
+            $presence = $this->user->session->conferences()
                 ->where('conference', $from)
                 ->first()?->presence;
 
             if ($presence) {
-                $pingRoom = new Room;
+                $pingRoom = new Room($this->user);
                 $pingRoom->setResource($from . '/' . $presence->resource)
                          ->setRoom($from)
                          ->request();
@@ -54,7 +59,7 @@ class ChatroomPings
         });
 
         $this->_chatroomsTimeout[$from] = $loop->addTimer($this->_pongTimeout, function () use ($from) {
-            (new WidgetRooms())->ajaxExit($from);
+            (new WidgetRooms($this->user))->ajaxExit($from);
         });
     }
 

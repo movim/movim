@@ -26,6 +26,7 @@ class Navigation extends Base
     public function display()
     {
         $this->view->assign('page', $this->_view);
-        $this->view->assign('chatCounter', $this->me->unreads(null, false, true));
+        $this->view->assign('chatCounter', $this->me
+            ? $this->me->unreads(true) : 0);
     }
 }

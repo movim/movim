@@ -2,13 +2,13 @@
 
 namespace Moxl\Xec\Action\Presence;
 
-use Moxl\Xec\Action;
-use Moxl\Stanza\Presence;
-use Movim\Session;
 use App\PresenceBuffer;
 use DOMElement;
 use Illuminate\Database\Capsule\Manager as DB;
 use Movim\ChatroomPings;
+use Movim\Session;
+use Moxl\Stanza\Presence;
+use Moxl\Xec\Action;
 
 class Muc extends Action
 {
@@ -34,7 +34,7 @@ class Muc extends Action
         }
 
         if ($this->_mam == false && $this->_mam2 == false) {
-            me()->messages()->where('jidfrom', $this->_to)->delete();
+            $this->me->messages()->where('jidfrom', $this->_to)->delete();
         }
 
         $this->store(); // Set stanzaId
@@ -45,7 +45,13 @@ class Muc extends Action
          */
         $session->set(self::$mucId . $this->_to . '/' . $this->_nickname, $this->stanzaId);
 
-        Presence::muc($this->_to, $this->_nickname, $this->_mam, $this->_mujiPreparing, $this->_muji);
+        $this->send(Presence::maker($this->me,
+            to: $this->_to . '/' . $this->_nickname,
+            muc: true,
+            mam: $this->_mam,
+            mujiPreparing: $this->_mujiPreparing,
+            muji: $this->_muji
+        ));
     }
 
     public function enableCreate()
@@ -86,15 +92,15 @@ class Muc extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $presence = \App\Presence::findByStanza($stanza);
-        $presence->set($stanza);
+        $presence = \App\Presence::findByStanza($this->me, $stanza);
+        $presence->set($this->me, $stanza);
 
         if ($stanza->attributes()->to) {
             $presence->mucjid = bareJid((string)$stanza->attributes()->to);
         }
 
         if ($this->_mam) {
-            $message = me()->messages()
+            $message = $this->me->messages()
                 ->where('jidfrom', $this->_to)
                 ->whereNull('subject');
 
@@ -103,7 +109,7 @@ class Muc extends Action
                 : $message->orderBy('published', 'desc');
             $message = $message->first();
 
-            $g = new \Moxl\Xec\Action\MAM\Get;
+            $g = new \Moxl\Xec\Action\MAM\Get($this->me);
             $g->setTo($this->_to)
                 ->setLimit(500);
 
@@ -137,8 +143,8 @@ class Muc extends Action
             $this->deliver();
         }
 
-        PresenceBuffer::getInstance()->append($presence, function () use ($presence) {
-            ChatroomPings::getInstance()->touch($presence->jid);
+        PresenceBuffer::getInstance($this->me)->append($presence, function () use ($presence) {
+            ChatroomPings::getInstance($this->me)->touch($presence->jid);
 
             if ($this->_mujiPreparing) {
                 $this->method('muji_preparing');

@@ -12,6 +12,6 @@ class StickersPack extends Model
 
     public function stickers()
     {
-        return $this->hasMany('App\Sticker', 'pack', 'name');
+        return $this->hasMany(Sticker::class, 'pack', 'name');
     }
 }

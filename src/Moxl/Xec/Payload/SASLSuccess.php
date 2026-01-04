@@ -8,6 +8,6 @@ class SASLSuccess extends Payload
     {
         $this->deliver();
 
-        \Moxl\Stanza\Stream::init(me()->session->host, me()->id);
+        \Moxl\Stanza\Stream::init($this->me->session->host, $this->me->id);
     }
 }

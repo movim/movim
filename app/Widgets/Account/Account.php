@@ -76,7 +76,7 @@ class Account extends \Movim\Widget\Base
         $view = $this->tpl();
 
         if (isset($content->x)) {
-            $xml = new XMPPtoForm;
+            $xml = new XMPPtoForm($this->me);
             $form = $xml->getHTML($content->x);
 
             $view->assign('form', $form);
@@ -116,7 +116,7 @@ class Account extends \Movim\Widget\Base
 
             $this->rpc('Dialog_ajaxClear');
 
-            $cp = new ChangePassword;
+            $cp = $this->xmpp(new ChangePassword($this->me));
             $cp->setTo($arr['server'])
                 ->setUsername($arr['username'])
                 ->setPassword($p1)
@@ -208,7 +208,7 @@ class Account extends \Movim\Widget\Base
 
     public function ajaxDeleteBundleConfirm(int $id, array $devicesIds)
     {
-        $db = new DeleteBundle;
+        $db = $this->xmpp(new DeleteBundle($this->me));
         $db->setId($id)
             ->setDevicesIds($devicesIds)
             ->request();
@@ -222,7 +222,7 @@ class Account extends \Movim\Widget\Base
     public function ajaxRemoveAccountConfirm($form)
     {
         if ($form->jid->value == $this->me->id) {
-            $da = new Remove;
+            $da = $this->xmpp(new Remove($this->me));
             $da->request();
         } else {
             $this->toast($this->__('account.delete_text_error'));
@@ -235,7 +235,7 @@ class Account extends \Movim\Widget\Base
             return;
         }
 
-        $da = new Get;
+        $da = $this->xmpp(new Get($this->me));
         $da->setTo($server)
             ->request();
     }
@@ -245,7 +245,7 @@ class Account extends \Movim\Widget\Base
         if (!validateServer($server)) {
             return;
         }
-        $s = new Set;
+        $s = $this->xmpp(new Set($this->me));
         $s->setTo($server)
             ->setData(formToArray($form))
             ->request();
@@ -259,7 +259,7 @@ class Account extends \Movim\Widget\Base
             ->get();
 
         foreach ($gateways as $gateway) {
-            $g = new AdHocGet;
+            $g = $this->xmpp(new AdHocGet($this->me));
             $g->setTo($gateway->server)->request();
         }
 

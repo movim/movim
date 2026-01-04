@@ -11,7 +11,7 @@ class Carbons
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $xml = $dom->createElementNS('urn:xmpp:carbons:2', 'enable');
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($xml, false, 'set'));
+        return $xml;
     }
 
     public static function disable()
@@ -19,6 +19,6 @@ class Carbons
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $xml = $dom->createElementNS('urn:xmpp:carbons:2', 'disable');
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($xml, false, 'set'));
+        return $xml;
     }
 }

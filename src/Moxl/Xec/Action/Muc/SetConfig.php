@@ -13,7 +13,7 @@ class SetConfig extends Action
     public function request()
     {
         $this->store();
-        Muc::setConfig($this->_to, $this->_data);
+        $this->iq(Muc::setConfig($this->_data), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

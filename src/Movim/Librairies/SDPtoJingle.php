@@ -2,6 +2,7 @@
 
 namespace Movim\Librairies;
 
+use App\User;
 use DOMElement;
 use Movim\Session;
 
@@ -62,6 +63,7 @@ class SDPtoJingle
     ];
 
     public function __construct(
+        private User $user,
         string $sdp,
         string $sid,
         bool $muji = false,
@@ -88,7 +90,7 @@ class SDPtoJingle
         } else {
             $this->jingle = new \SimpleXMLElement('<jingle></jingle>');
             $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:1');
-            $this->jingle->addAttribute('initiator', me()->id);
+            $this->jingle->addAttribute('initiator', $user->id);
         }
 
         if ($action) {

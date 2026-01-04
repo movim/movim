@@ -11,6 +11,9 @@ v0.33 (master)
 * Disable password change and account deletion if the server doesn't have jabber:iq:register
 * Improve and complete the Notification and Push Notification code (badge, tag...) and use the Service Worker as the default way to handle them
 * Fix missing session_id index (mandatory for the MariaDB foreign key)
+* Move all the XMPP related code to a Linker class
+* Inject the User context in the Widgets, Moxl Actions and Moxl Payloads
+
 
 v0.32.1
 ---------------------------

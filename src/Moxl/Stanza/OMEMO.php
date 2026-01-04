@@ -6,7 +6,7 @@ use App\Bundle;
 
 class OMEMO
 {
-    public static function GetDevicesList($to)
+    public static function getDevicesList()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -16,7 +16,7 @@ class OMEMO
         $publish->setAttribute('node', 'eu.siacs.conversations.axolotl.devicelist');
         $pubsub->appendChild($publish);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
+        return $pubsub;
     }
 
     public static function SetDevicesList(array $ids)
@@ -43,10 +43,10 @@ class OMEMO
             $list->appendChild($device);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
+        return $pubsub;
     }
 
-    public static function getBundle($to, $id)
+    public static function getBundle($id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -56,7 +56,7 @@ class OMEMO
         $items->setAttribute('node', Bundle::OMEMO_BUNDLE . $id);
         $pubsub->appendChild($items);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
+        return $pubsub;
     }
 
     public static function announceBundle(
@@ -104,6 +104,6 @@ class OMEMO
             $i++;
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
+        return $pubsub;
     }
 }

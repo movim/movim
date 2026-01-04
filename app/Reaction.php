@@ -15,12 +15,12 @@ class Reaction extends Model
 
     public function message()
     {
-        return $this->belongsTo('App\Message');
+        return $this->belongsTo(Message::class);
     }
 
     public function contact()
     {
-        return $this->hasOne('App\Contact', 'id', 'jidfrom');
+        return $this->hasOne(Contact::class, 'id', 'jidfrom');
     }
 
     public function getTruenameAttribute()

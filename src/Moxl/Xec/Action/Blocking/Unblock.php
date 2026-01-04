@@ -12,13 +12,13 @@ class Unblock extends Action
     public function request()
     {
         $this->store();
-        Blocking::unblock($this->_jid);
+        $this->iq(Blocking::unblock($this->_jid), type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        me()->reported()->detach($this->_jid);
-        me()->refreshBlocked();
+        $this->me->reported()->detach($this->_jid);
+        $this->me->refreshBlocked();
 
         $this->pack($this->_jid);
         $this->deliver();

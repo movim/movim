@@ -14,9 +14,10 @@ class MessageReject extends Action
     public function request()
     {
         $this->store();
-        Jingle::messageReject($this->_id, $this->_to);
+        $this->send(Jingle::messageReject($this->_id, $this->_to));
 
         $message = Message::eventMessageFactory(
+            $this->me,
             'jingle',
             bareJid($this->_to),
             (string)$this->_id

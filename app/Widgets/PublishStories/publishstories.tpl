@@ -17,7 +17,7 @@
     </div>
     <ul class="list controls middle">
         <li>
-            <span id="publishstoriesback" class="primary icon active bubble" onclick="PublishStories.reset()">
+            <span id="publishstoriesback" class="primary icon active" onclick="PublishStories.reset()">
                 <i class="material-symbols">close</i>
             </span>
             <span id="publishstoriesbackedit" class="primary icon active" onclick="PublishStories.goToEdit()">

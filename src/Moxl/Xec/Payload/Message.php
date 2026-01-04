@@ -28,20 +28,20 @@ class Message extends Payload
             return;
         }
 
-        $message = \App\Message::findByStanza($stanza);
-        $message = $message->set($stanza, $parent);
+        $message = \App\Message::findByStanza($this->me, $stanza);
+        $message = $message->set($this->me, $stanza, $parent);
 
         // parent message doesn't exists
         if ($message == null) {
             return;
         }
 
-        if ($message->type == 'chat' && me()?->hasBlocked($message->jidfrom)) {
+        if ($message->type == 'chat' && $this->me?->hasBlocked($message->jidfrom)) {
             return;
         }
 
-        if ($message->isMuc() && ChatroomPings::getInstance()->has($message->jidfrom)) {
-            ChatroomPings::getInstance()->touch($message->jidfrom);
+        if ($message->isMuc() && ChatroomPings::getInstance($this->me)->has($message->jidfrom)) {
+            ChatroomPings::getInstance($this->me)->touch($message->jidfrom);
         }
 
         if ($stanza->composing || $stanza->paused || $stanza->active) {
@@ -50,11 +50,11 @@ class Message extends Payload
                 : $message->jidfrom;
 
             if ($stanza->composing) {
-                (ChatStates::getInstance())->composing($from, $message->jidto, isset($message->mucpm));
+                (ChatStates::getInstance($this->me))->composing($from, $message->jidto, isset($message->mucpm));
             }
 
             if ($stanza->paused || $stanza->active) {
-                (ChatStates::getInstance())->paused($from, $message->jidto, isset($message->mucpm));
+                (ChatStates::getInstance($this->me))->paused($from, $message->jidto, isset($message->mucpm));
             }
         }
 

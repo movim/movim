@@ -13,14 +13,14 @@ class Block extends Action
     public function request()
     {
         $this->store();
-        Blocking::block($this->_jid);
+        $this->iq(Blocking::block($this->_jid), type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $r = Reported::firstOrCreate(['id' => $this->_jid]);
-        me()->reported()->syncWithoutDetaching([$r->id => ['synced' => true]]);
-        me()->refreshBlocked();
+        $this->me->reported()->syncWithoutDetaching([$r->id => ['synced' => true]]);
+        $this->me->refreshBlocked();
 
         $this->pack($this->_jid);
         $this->deliver();

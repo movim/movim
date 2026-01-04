@@ -20,7 +20,7 @@ class NewsNav extends Base
                           ->orderBy('posts.published', 'desc')
                           ->restrictToCommunities()
                           ->restrictUserHost($this->me)
-                          ->restrictNSFW()
+                          ->restrictNSFW($this->me)
                           ->recents()
                           ->take(6);
 
@@ -42,6 +42,6 @@ class NewsNav extends Base
 
     public function prepareTicket(\App\Post $post)
     {
-        return (new Post())->prepareTicket($post);
+        return (new Post($this->me))->prepareTicket($post);
     }
 }

@@ -14,7 +14,7 @@ class Set extends Action
     public function request()
     {
         $this->store();
-        IqGateway::set($this->_to, $this->_prompt);
+        $this->iq(IqGateway::set($this->_prompt), to: $this->_to, type: 'set');;
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

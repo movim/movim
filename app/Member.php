@@ -22,7 +22,7 @@ class Member extends Model
 
     public function contact()
     {
-        return $this->hasOne('App\Contact', 'id', 'jid');
+        return $this->hasOne(Contact::class, 'id', 'jid');
     }
 
     public function getTruenameAttribute(): string

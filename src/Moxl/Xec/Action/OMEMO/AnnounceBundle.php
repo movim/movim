@@ -16,13 +16,13 @@ class AnnounceBundle extends Action
     public function request()
     {
         $this->store();
-        OMEMO::announceBundle(
+        $this->iq(OMEMO::announceBundle(
             $this->_id,
             $this->_signedPreKeyPublic,
             $this->_signedPreKeySignature,
             $this->_identityKey,
             $this->_preKeys
-        );
+        ), type: 'set');
     }
 
     public function setId($id)

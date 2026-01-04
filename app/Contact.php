@@ -17,7 +17,7 @@ class Contact extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'id');
+        return $this->belongsTo(User::class, 'id');
     }
 
     public function scopeSuggest($query, User $user, ?string $like = null)

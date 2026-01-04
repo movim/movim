@@ -59,10 +59,10 @@ class CommunitiesServers extends Base
             return;
         }
 
-        $r = new Request;
+        $r = $this->xmpp(new Request);
         $r->setTo($origin)->request();
 
-        $r = new Items;
+        $r = $this->xmpp(new Items);
         $r->enableManual()
             ->setTo($origin)
             ->request();

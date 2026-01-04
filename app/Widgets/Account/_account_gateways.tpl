@@ -13,7 +13,7 @@
         <span class="primary icon bubble
             {if="!$value->contact"}color {if="$value->gatewayType"}{$value->gatewayType}{else}gray{/if}{/if}
             status
-            {if="$value->presence"} {$value->presence->presencekey} {else}offline disabled{/if}">
+            {if="$value->getPresence($this->me)"} {$value->getPresence($this->me)->presencekey} {else}offline disabled{/if}">
             {if="$value->contact"}
                 <img src="{$value->contact->getPicture(\Movim\ImageSize::M)}">
             {else}

@@ -5,6 +5,7 @@ namespace App\Widgets\AdHoc;
 use App\Widgets\Dialog\Dialog;
 use Movim\Librairies\JingletoSDP;
 use Movim\Librairies\SDPtoJingle;
+use Movim\Librairies\XMPPtoForm;
 use Moxl\Xec\Action\AdHoc\Get;
 use Moxl\Xec\Action\AdHoc\Command;
 use Moxl\Xec\Action\AdHoc\Submit;
@@ -56,7 +57,7 @@ class AdHoc extends \Movim\Widget\Base
             Dialog::fill($view->draw('_adhoc_note'));
             $this->rpc('AdHoc.initForm');
         } elseif (isset($command->x)) {
-            $xml = new \Movim\Librairies\XMPPtoForm;
+            $xml = new XMPPtoForm;
             $form = $xml->getHTML($command->x);
 
             $view->assign('form', $form);
@@ -84,7 +85,11 @@ class AdHoc extends \Movim\Widget\Base
 
     public function ajaxSDPToJingleSubmit(stdClass $data)
     {
-        $stj = new SDPtoJingle($data->sdp->value, 'SID');
+        $stj = new SDPtoJingle(
+            user: $this->me,
+            sdp: $data->sdp->value,
+            sid: 'SID'
+        );
 
         $view = $this->tpl();
         $view->assign('jingle', $stj->generate());
@@ -132,26 +137,26 @@ class AdHoc extends \Movim\Widget\Base
             $jid = Session::instance()->get('host');
         }
 
-        $g = new Get;
+        $g = $this->xmpp(new Get);
         $g->setTo($jid)->request();
     }
 
     public function ajaxCommand(string $jid, string $node)
     {
-        $c = new Command;
+        $c = $this->xmpp(new Command);
         $c->setTo($jid)
-          ->setNode($node)
-          ->request();
+            ->setNode($node)
+            ->request();
     }
 
     public function ajaxSubmit(string $jid, string $node, $data, $sessionid)
     {
-        $s = new Submit;
+        $s = $this->xmpp(new Submit);
         $s->setTo($jid)
-          ->setNode($node)
-          ->setData(formToArray($data))
-          ->setSessionid($sessionid)
-          ->request();
+            ->setNode($node)
+            ->setData(formToArray($data))
+            ->setSessionid($sessionid)
+            ->request();
     }
 
     public function getIcon($command)

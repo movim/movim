@@ -16,7 +16,7 @@ class Presence extends Payload
     {
         $jid = explodeJid($stanza->attributes()->from);
 
-        if (me()?->hasBlocked($jid['jid'])) {
+        if ($this->me?->hasBlocked($jid['jid'])) {
             return;
         }
 
@@ -26,11 +26,11 @@ class Presence extends Payload
         ) {
             // Let's drop errors with an id, useless for us
         } else {
-            $presence = DBPresence::findByStanza($stanza);
-            $presence->set($stanza);
+            $presence = DBPresence::findByStanza($this->me, $stanza);
+            $presence->set($this->me, $stanza);
 
             if (CurrentCall::getInstance()->isStarted() && CurrentCall::getInstance()->mujiRoom == $jid['jid']) {
-                $muji = me()->session->mujiCalls()
+                $muji = $this->me->session->mujiCalls()
                     ->where('muc', $jid['jid'])
                     ->first();
 
@@ -45,14 +45,14 @@ class Presence extends Payload
                 }
             }
 
-            PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza, $jid) {
+            PresenceBuffer::getInstance($this->me)->append($presence, function () use ($presence, $stanza, $jid) {
                 if ((string)$stanza->attributes()->type == 'subscribe') {
                     $this->pack((string)$stanza->attributes()->from);
                     $this->event('subscribe');
                 }
 
                 if ($presence->muc) {
-                    if ($presence->mucjid == me()->id) {
+                    if ($presence->mucjid == $this->me->id) {
                         // Spectrum2 specific bug, we can receive two self-presences, one with several caps items
                         $cCount = 0;
                         foreach ($stanza->children() as $key => $content) {
@@ -92,7 +92,7 @@ class Presence extends Payload
                 /**
                  * Don't handle for MUC presences before we are fully authenticated
                  */
-                if (!$presence->muc || ChatroomPings::getInstance()->has($presence->jid)) {
+                if (!$presence->muc || ChatroomPings::getInstance($this->me)->has($presence->jid)) {
                     $this->pack($presence);
                     $this->deliver();
                 }

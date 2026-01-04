@@ -16,7 +16,7 @@ class Subscribe extends Action
     public function request()
     {
         $this->store();
-        Pubsub::subscribe($this->_to, $this->_from, $this->_node);
+        $this->iq(Pubsub::subscribe($this->_from, $this->_node), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

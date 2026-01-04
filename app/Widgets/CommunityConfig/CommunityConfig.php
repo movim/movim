@@ -29,7 +29,7 @@ class CommunityConfig extends Base
 
         $view = $this->tpl();
 
-        $xml = new XMPPtoForm;
+        $xml = new XMPPtoForm($this->me);
         $form = $xml->getHTML($config->x);
 
         $view->assign('form', $form);
@@ -91,7 +91,7 @@ class CommunityConfig extends Base
         // Reload the freshly compressed picture
         $p->load('jpeg');
 
-        $r = new AvatarSet;
+        $r = $this->xmpp(new AvatarSet);
         $r->setTo($origin)
             ->setNode($node)
             ->setUrl(Image::getOrCreate($key, false, false, 'jpeg', true))
@@ -105,7 +105,7 @@ class CommunityConfig extends Base
             return;
         }
 
-        $r = new GetConfig;
+        $r = $this->xmpp(new GetConfig);
         $r->setTo($origin)
             ->setNode($node);
 
@@ -122,7 +122,7 @@ class CommunityConfig extends Base
             return;
         }
 
-        $r = new SetConfig;
+        $r = $this->xmpp(new SetConfig);
         $r->setTo($origin)
             ->setNode($node)
             ->setData(formToArray($data))

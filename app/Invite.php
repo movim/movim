@@ -13,12 +13,12 @@ class Invite extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     public function room()
     {
-        return $this->hasOne('App\Contact', 'id', 'resource');
+        return $this->hasOne(Contact::class, 'id', 'resource');
     }
 
     public static function set($jid, $resource)

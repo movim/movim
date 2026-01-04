@@ -10,7 +10,7 @@ class DraftEmbed extends Model
 
     public function draft()
     {
-        return $this->belongsTo('App\Draft');
+        return $this->belongsTo(Draft::class);
     }
 
     public function getHTMLIdAttribute()

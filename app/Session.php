@@ -16,37 +16,37 @@ class Session extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     public function presences()
     {
-        return $this->hasMany('App\Presence');
+        return $this->hasMany(Presence::class);
     }
 
     public function ownPresences()
     {
-        return $this->hasMany('App\Presence', ['jid', 'session_id'], ['user_id', 'id']);
+        return $this->hasMany(Presence::class, ['jid', 'session_id'], ['user_id', 'id']);
     }
 
     public function presence()
     {
-        return $this->hasOne('App\Presence', ['jid', 'resource', 'session_id'], ['user_id', 'resource', 'id']);
+        return $this->hasOne(Presence::class, ['jid', 'resource', 'session_id'], ['user_id', 'resource', 'id']);
     }
 
     public function serverCapability()
     {
-        return $this->hasOne('App\Info', 'server', 'host')->where('node', '');
+        return $this->hasOne(Info::class, 'server', 'host')->where('node', '');
     }
 
     public function contacts()
     {
-        return $this->hasMany('App\Roster');
+        return $this->hasMany(Roster::class);
     }
 
     public function mujiCalls()
     {
-        return $this->hasMany('App\MujiCall', 'session_id', 'id');
+        return $this->hasMany(MujiCall::class, 'session_id', 'id');
     }
 
     public function topContacts()
@@ -115,7 +115,7 @@ class Session extends Model
 
     public function conferences()
     {
-        return $this->hasMany('App\Conference')->orderBy('conference');
+        return $this->hasMany(Conference::class)->orderBy('conference');
     }
 
     public function init(string $username, string $password, string $host, string $timezone)

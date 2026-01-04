@@ -182,7 +182,7 @@
                         <i class="material-symbols on_desktop">add</i> {$c->__('post.more')}
                     </a>
                     {if="$post->hasCommentsNode()"}
-                        {$liked = $post->isLiked()}
+                        {$liked = $post->isLiked($c->me)}
 
                         {if="$liked"}
                             <a class="button narrow icon flat red" onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')" href="#">
@@ -235,7 +235,7 @@
                         {/if}
                     {/if}
 
-                    {if="$post->isMine($c->me) || ($post->userAffiliation && $post->userAffiliation->affiliation == 'owner')"}
+                    {if="$post->isMine($c->me) || $post->userOwner($c->me)"}
                         {if="$post->isEditable()"}
                             <a class="button narrow icon flat oppose gray on_desktop"
                             href="{$c->route('publish', [$post->server, $post->node, $post->nodeid])}"

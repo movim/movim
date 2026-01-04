@@ -25,7 +25,7 @@ class Bookmark2
         $items->setAttribute('node', self::$node . $version);
         $pubsub->appendChild($items);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'get'));
+        return $pubsub;
     }
 
     public static function set(Conference $configuration, $version = '1', bool $withPublishOption = true)
@@ -88,6 +88,6 @@ class Bookmark2
             $pubsub->appendChild($publishOption);
         }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
+        return $pubsub;
     }
 }

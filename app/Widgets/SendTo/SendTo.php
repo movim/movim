@@ -105,7 +105,7 @@ class SendTo extends Base
         $file->url = $uri;
 
         foreach ($contacts as $contact => $muc) {
-            $c = new Chat();
+            $c = new Chat($this->me);
             $c->sendMessage(
                 $contact,
                 $message,
@@ -140,7 +140,7 @@ class SendTo extends Base
         if ($post) {
             $view->assign('post', $post);
             $view->assign('openlink', $post->openlink ? $post->openlink->href : false);
-            $view->assign('card', (new Post)->prepareTicket($post));
+            $view->assign('card', (new Post($this->me))->prepareTicket($post));
         }
     }
 }

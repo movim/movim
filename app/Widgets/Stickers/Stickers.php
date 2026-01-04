@@ -53,7 +53,7 @@ class Stickers extends \Movim\Widget\Base
         }
 
         if ($imagePath && file_exists($imagePath)) {
-            $a = new Answer;
+            $a = $this->xmpp(new Answer);
             $a->setTo($to)
                 ->setId($id)
                 ->setCid($cid)
@@ -99,7 +99,7 @@ class Stickers extends \Movim\Widget\Base
         $img->setAttribute('alt', 'Sticker');
         $p->append($img);
 
-        $p = new Publish;
+        $p = $this->xmpp(new Publish);
         $p->setTo($m->jidto)
             ->setContent($m->body)
             ->setHTML($dom->saveXML($dom->documentElement))
@@ -118,10 +118,10 @@ class Stickers extends \Movim\Widget\Base
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
 
-            $c = new Chats();
+            $c = new Chats($this->me);
             $c->onMessage($packet);
 
-            $c = new Chat();
+            $c = new Chat($this->me);
             $c->onMessage($packet);
         }
     }
@@ -264,7 +264,7 @@ class Stickers extends \Movim\Widget\Base
                 $messageFile->thumbnail_width = (int)$result->media_formats->preview->dims[0];
                 $messageFile->thumbnail_height = (int)$result->media_formats->preview->dims[1];
 
-                $chat = new Chat();
+                $chat = new Chat($this->me);
                 $chat->sendMessage(
                     $to,
                     false,

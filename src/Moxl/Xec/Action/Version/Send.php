@@ -15,6 +15,11 @@ class Send extends Action
 
     public function request()
     {
-        Version::send($this->_to, $this->_id, $this->_name, $this->_version, $this->_os);
+        $this->iq(
+            Version::send($this->_name, $this->_version, $this->_os),
+            to: $this->_to,
+            id: $this->_id,
+            type: 'result'
+        );
     }
 }

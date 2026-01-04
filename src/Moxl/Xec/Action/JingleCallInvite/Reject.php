@@ -13,6 +13,6 @@ class Reject extends Action
     public function request()
     {
         $this->store();
-        JingleCallInvite::reject($this->_to, $this->_id);
+        $this->send(JingleCallInvite::reject($this->_to, $this->_id));
     }
 }

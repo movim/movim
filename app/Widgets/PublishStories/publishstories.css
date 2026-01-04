@@ -25,8 +25,10 @@
     transition: transform 0.4s;
 }
 
-#publishstories #publishstoriesbackedit {
-    margin-left: -0.5rem;
+#publishstories #publishstoriesbackedit,
+#publishstories #publishstoriesback {
+    margin-left: 0;
+    padding: 1rem 0;
 }
 
 #publishstories #publishstoriesshoot,
@@ -82,11 +84,12 @@
     bottom: 3rem;
     left: 50%;
     translate: -50%;
-    max-width: calc(56.25vh - 8.25rem); /* 16:9 */
+    max-width: calc(56.25vh - 8.25rem);
+    /* 16:9 */
 }
 
 #publishstories form {
-    background-image: linear-gradient(to bottom, transparent, rgba(var(--movim-background-main),1) 100%);
+    background-image: linear-gradient(to bottom, transparent, rgba(var(--movim-background-main), 1) 100%);
     padding: 1.5rem 2rem;
     box-sizing: border-box;
     bottom: 7.25rem;
@@ -115,7 +118,7 @@
     justify-content: center;
 }
 
-#publishstories .bottom_center > button {
+#publishstories .bottom_center>button {
     position: relative;
     margin-left: 1rem;
     margin-right: 1rem;

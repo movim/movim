@@ -19,7 +19,7 @@ class Add extends Action
     public function request()
     {
         $this->store();
-        PubsubSubscription::listAdd(
+        $this->iq(PubsubSubscription::listAdd(
             $this->_server,
             $this->_from,
             $this->_node,
@@ -28,7 +28,7 @@ class Add extends Action
                 : null,
             $this->_pepnode,
             $this->_withPublishOption
-        );
+        ), type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

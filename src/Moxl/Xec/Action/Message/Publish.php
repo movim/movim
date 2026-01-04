@@ -33,20 +33,23 @@ class Publish extends Action
     public function request()
     {
         $this->store($this->_id);
-
-        if ($this->_muc) {
-            Muc::message($this->_to, $this->_content, $this->_html, $this->_id,
-                         $this->_replace, $this->_file, $this->_attachid, [],
-                         $this->_originid, $this->_threadid, $this->_mucreceipts,
-                         $this->_replyid, $this->_replyto, $this->_replyquotedbodylength,
-                         $this->_messageOMEMO);
-        } else {
-            Message::message($this->_to, $this->_content, $this->_html, $this->_id,
-                             $this->_replace, $this->_file, $this->_attachid, [],
-                             $this->_originid, $this->_threadid, $this->_replyid,
-                             $this->_replyto, $this->_replyquotedbodylength,
-                             $this->_messageOMEMO);
-        }
+        $this->send(Message::maker(
+            to: $this->_to,
+            type: $this->_muc ? 'groupchat' : 'chat',
+            content: $this->_content,
+            html: $this->_html,
+            id: $this->_id,
+            replace: $this->_replace,
+            file: $this->_file,
+            parentId: $this->_attachid,
+            reactions: [],
+            originId: $this->_originid,
+            threadId: $this->_threadid,
+            replyId: $this->_replyid,
+            replyTo: $this->_replyto,
+            replyQuotedBodyLength: $this->_replyquotedbodylength,
+            messageOMEMO: $this->_messageOMEMO
+        ));
     }
 
     public function setMuc()
@@ -74,7 +77,7 @@ class Publish extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($this->_muc) {
-            $m = new \Moxl\Xec\Payload\Message;
+            $m = new \Moxl\Xec\Payload\Message($this->me);
             $m->handle($stanza, $parent);
         }
     }

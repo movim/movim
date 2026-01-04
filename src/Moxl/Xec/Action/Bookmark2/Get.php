@@ -14,12 +14,12 @@ class Get extends Action
     public function request()
     {
         $this->store();
-        Bookmark2::get($this->_version);
+        $this->iq(Bookmark2::get($this->_version), type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        me()->session
+        $this->me->session
             ->conferences()
             ->where('bookmarkversion', (int)$this->_version)
             ->delete();
@@ -29,13 +29,13 @@ class Get extends Action
 
         foreach ($stanza->pubsub->items->item as $c) {
             $conference = new Conference;
-            $conference->set($c);
+            $conference->set($this->me->session, $c);
             array_push($conferences, $conference->toArray());
             array_push($conferenceIds, $conference->conference);
         }
 
         // We remove the conferences that might be saved under another bookmark version
-        me()->session
+        $this->me->session
             ->conferences()
             ->whereIn('conference', $conferenceIds)
             ->delete();

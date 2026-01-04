@@ -17,13 +17,14 @@ class Jingle extends Payload
         $action = (string)$stanza->attributes()->action;
 
         $message = Message::eventMessageFactory(
+            $this->me,
             'jingle',
             bareJid((string)$from),
             (string)$stanza->attributes()->sid
         );
 
         //if (CurrentCall::getInstance()->hasId($message->thread)) {
-            Ack::send($from, $id);
+            $this->iq(to: $from, id: $id, type: 'result');
 
             switch ($action) {
                 case 'session-initiate':

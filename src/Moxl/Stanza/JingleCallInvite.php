@@ -27,7 +27,7 @@ class JingleCallInvite
         $store->setAttribute('xmlns', 'urn:xmpp:hints');
         $dom->documentElement->appendChild($store);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
     public static function retract(string $to, string $id)
@@ -43,7 +43,7 @@ class JingleCallInvite
         $store->setAttribute('xmlns', 'urn:xmpp:hints');
         $dom->documentElement->appendChild($store);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
     public static function accept(string $to, string $id)
@@ -59,7 +59,7 @@ class JingleCallInvite
         $store->setAttribute('xmlns', 'urn:xmpp:hints');
         $dom->documentElement->appendChild($store);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
     public static function reject(string $to, string $id)
@@ -75,7 +75,7 @@ class JingleCallInvite
         $store->setAttribute('xmlns', 'urn:xmpp:hints');
         $dom->documentElement->appendChild($store);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 
     public static function left(string $to, string $id)
@@ -91,6 +91,6 @@ class JingleCallInvite
         $store->setAttribute('xmlns', 'urn:xmpp:hints');
         $dom->documentElement->appendChild($store);
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 }

@@ -9,7 +9,7 @@ class CommunitiesTags extends Base
     private function getPosts()
     {
         $posts = \App\Post::withoutComments()
-            ->restrictNSFW()
+            ->restrictNSFW($this->me)
             ->restrictUserHost($this->me)
             ->recents()
             ->orderBy('posts.published', 'desc');

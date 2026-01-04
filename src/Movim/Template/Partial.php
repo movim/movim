@@ -6,7 +6,6 @@
 
 namespace Movim\Template;
 
-use App\User;
 use Rain\Tpl;
 use Movim\Widget\Base;
 
@@ -14,7 +13,7 @@ class Partial extends Tpl
 {
     public const EXTENSION = '.rtpl.cache';
 
-    public function __construct(Base $widget)
+    public function __construct(private Base $widget)
     {
         $this->objectConfigure([
             'tpl_dir'       => WIDGETS_PATH . $widget->getName() . '/',
@@ -48,16 +47,18 @@ class Partial extends Tpl
                 @unlink($path);
             }
         } else {
-            foreach (glob(
+            foreach (
+                glob(
                     CACHE_PATH .
-                        hash('sha256', User::me()->id) .
+                        hash('sha256', $this->widget->me->id) .
                         '_' .
                         $templateFilePath .
                         '_' .
                         '*' .
                         self::EXTENSION,
                     GLOB_NOSORT
-                ) as $path) {
+                ) as $path
+            ) {
                 @unlink($path);
             }
         }
@@ -75,6 +76,10 @@ class Partial extends Tpl
 
     private function resolvedCacheKey(string $templateFilePath, string $key): string
     {
-        return CACHE_PATH . hash('sha256', User::me()->id) . '_' . $templateFilePath . '_' . hash('sha256', $key) . self::EXTENSION;
+        return CACHE_PATH .
+            hash('sha256', $this->widget->me->id) .
+            '_' . $templateFilePath .
+            '_' . hash('sha256', $key) .
+            self::EXTENSION;
     }
 }

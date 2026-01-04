@@ -31,6 +31,6 @@ class Confirm
             $error->appendChild($notauth);
         }
 
-        \Moxl\API::sendDom($dom);
+        return $dom;
     }
 }

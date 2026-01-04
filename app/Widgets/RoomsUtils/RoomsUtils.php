@@ -2,20 +2,22 @@
 
 namespace App\Widgets\RoomsUtils;
 
-use Moxl\Xec\Action\Vcard\Set as VcardSet;
-use Moxl\Xec\Action\Vcard4\Get as VcardGet;
+use Moxl\Xec\Action\Bookmark2\Delete;
+use Moxl\Xec\Action\Bookmark2\Set;
+use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Action\Message\Invite;
-use Moxl\Xec\Action\Muc\SetSubject;
-use Moxl\Xec\Action\Muc\Destroy;
+use Moxl\Xec\Action\Muc\ChangeAffiliation;
 use Moxl\Xec\Action\Muc\CreateChannel;
 use Moxl\Xec\Action\Muc\CreateGroupChat;
-use Moxl\Xec\Action\Disco\Items;
-use Moxl\Xec\Action\Bookmark2\Set;
-use Moxl\Xec\Action\Bookmark2\Delete;
+use Moxl\Xec\Action\Muc\Destroy;
+use Moxl\Xec\Action\Muc\SetRole;
+use Moxl\Xec\Action\Muc\SetSubject;
+use Moxl\Xec\Action\Presence\Muc;
+use Moxl\Xec\Action\Presence\Unavailable;
+use Moxl\Xec\Action\Register\Remove;
+use Moxl\Xec\Action\Vcard\Set as VcardSet;
+use Moxl\Xec\Action\Vcard4\Get as VcardGet;
 use Moxl\Xec\Payload\Packet;
-
-use Movim\Widget\Base;
-use Movim\Image;
 
 use App\Conference;
 use App\Contact;
@@ -27,15 +29,13 @@ use App\Widgets\Chats\Chats;
 use App\Widgets\ContactActions\ContactActions;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
-use Respect\Validation\Validator;
-use Movim\Session;
-use Moxl\Xec\Action\Muc\ChangeAffiliation;
-use Moxl\Xec\Action\Presence\Muc;
-use Moxl\Xec\Action\Presence\Unavailable;
 
+use Movim\Session;
+use Movim\Widget\Base;
+use Movim\Image;
+
+use Respect\Validation\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
-use Moxl\Xec\Action\Muc\SetRole;
-use Moxl\Xec\Action\Register\Remove;
 
 class RoomsUtils extends Base
 {
@@ -128,7 +128,7 @@ class RoomsUtils extends Base
             $this->rpc('MovimTpl.fill', '#room_omemo_fingerprints', $this->view('_rooms_drawer_fingerprints_placeholder'));
         }
 
-        (new AdHoc)->ajaxGet($room);
+        (new AdHoc($this->me))->ajaxGet($room);
     }
 
     public function ajaxAppendPresences(string $room, bool $havePagination = true, int $page = 0)
@@ -224,7 +224,7 @@ class RoomsUtils extends Base
 
         if (!$conference) return;
 
-        $r = new VcardGet;
+        $r = $this->xmpp(new VcardGet);
         $r->setTo($mucjid)
             ->request();
 
@@ -239,7 +239,7 @@ class RoomsUtils extends Base
 
     public function prepareVcard(\App\Contact $contact)
     {
-        return (new ContactActions)->prepareVcard($contact);
+        return (new ContactActions($this->me))->prepareVcard($contact);
     }
 
     /**
@@ -283,7 +283,7 @@ class RoomsUtils extends Base
         $vcard->photobin->value = $p->toBase();
         $vcard->phototype->value = 'image/jpeg';
 
-        $r = new VcardSet;
+        $r = $this->xmpp(new VcardSet);
         $r->setData($vcard)->setTo($room)->request();
     }
 
@@ -371,7 +371,7 @@ class RoomsUtils extends Base
         $conference->nick = $values['nick'];
         $conference->notify = $values['notify'];
 
-        $b = new Set;
+        $b = $this->xmpp(new Set);
         $b->setConference($conference)
             ->request();
 
@@ -380,7 +380,7 @@ class RoomsUtils extends Base
         $session = Session::instance();
         $session->delete($values['jid'] . '/' . $nick);
 
-        $pu = new Unavailable;
+        $pu = $this->xmpp(new Unavailable);
         $pu->setTo($values['jid'])
             ->setResource($nick)
             ->request();
@@ -428,7 +428,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        $p = new SetSubject;
+        $p = $this->xmpp(new SetSubject);
         $p->setTo($room)
             ->setSubject($form->subject->value)
             ->request();
@@ -519,7 +519,7 @@ class RoomsUtils extends Base
         } elseif (trim($form->name->value) == '') {
             $this->toast($this->__('chatrooms.empty_name'));
         } else {
-            $m = new Muc;
+            $m = $this->xmpp(new Muc);
             $m->enableCreate()
                 ->noNotify()
                 ->setTo(strtolower($form->jid->value))
@@ -534,7 +534,7 @@ class RoomsUtils extends Base
             $this->toast($this->__('chatrooms.bad_id'));
         } else {
             if ($form->type->value == 'groupchat') {
-                $cgc = new CreateGroupChat;
+                $cgc = $this->xmpp(new CreateGroupChat);
                 $cgc->setTo(strtolower($form->jid->value))
                     ->setName($form->name->value)
                     ->setAutoJoin($form->autojoin->value)
@@ -543,7 +543,7 @@ class RoomsUtils extends Base
                     ->setNotify((int)array_flip(Conference::$notifications)[$form->notify->value])
                     ->request();
             } elseif ($form->type->value == 'channel') {
-                $cgc = new CreateChannel;
+                $cgc = $this->xmpp(new CreateChannel);
                 $cgc->setTo(strtolower($form->jid->value))
                     ->setName($form->name->value)
                     ->setAutoJoin($form->autojoin->value)
@@ -603,12 +603,12 @@ class RoomsUtils extends Base
             ->where('conference', strtolower($room))
             ->first();
 
-        $d = new Delete;
+        $d = $this->xmpp(new Delete);
         $d->setId($room)
             ->setVersion($conference->bookmarkversion)
             ->request();
 
-        $unregister = new Remove;
+        $unregister = $this->xmpp(new Remove);
         $unregister->setTo($room)
             ->request();
     }
@@ -624,7 +624,7 @@ class RoomsUtils extends Base
 
         if (!empty($form->invite->value)) {
             $id = generateUUID();
-            $i = new Invite;
+            $i = $this->xmpp(new Invite);
             $i->setTo($form->to->value)
                 ->setId($id)
                 ->setInvite($form->invite->value)
@@ -651,8 +651,8 @@ class RoomsUtils extends Base
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
 
-            (new Chats())->onMessage($packet);
-            (new Chat())->onMessage($packet);
+            (new Chats($this->me))->onMessage($packet);
+            (new Chat($this->me))->onMessage($packet);
 
             // Notify
             $this->toast($this->__('room.invited'));
@@ -683,7 +683,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        $d = new Destroy;
+        $d = $this->xmpp(new Destroy);
         $d->setTo($room)
             ->request();
     }
@@ -778,7 +778,7 @@ class RoomsUtils extends Base
         $this->rpc('Rooms.selectGatewayRoom', '', '');
 
         if (!empty($server)) {
-            $r = new Items;
+            $r = $this->xmpp(new Items);
             $r->setTo($server)
                 ->disableSave()
                 ->request();
@@ -808,7 +808,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        $p = new ChangeAffiliation;
+        $p = $this->xmpp(new ChangeAffiliation);
         $p = $p->setTo($room)
             ->setJid($form->jid->value)
             ->setAffiliation('outcast');
@@ -846,7 +846,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        $p = new ChangeAffiliation;
+        $p = $this->xmpp(new ChangeAffiliation);
         $p->setTo($room)
             ->setJid($jid)
             ->setAffiliation('none')
@@ -891,7 +891,7 @@ class RoomsUtils extends Base
             $presence = $conference->presences()->where('mucjid', $mucjid)->first();
 
             if ($presence) {
-                $p = new SetRole;
+                $p = $this->xmpp(new SetRole);
                 $p->setTo($room)
                     ->setNick($presence->resource)
                     ->setRole($form->voice->value ? 'participant' : 'visitor')
@@ -909,7 +909,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        $p = new ChangeAffiliation;
+        $p = $this->xmpp(new ChangeAffiliation);
         $p->setTo($room)
             ->setJid($form->jid->value)
             ->setAffiliation($form->affiliation->value)
@@ -921,7 +921,7 @@ class RoomsUtils extends Base
      */
     public function ajaxGetMAMHistory(string $jid)
     {
-        $g = new \Moxl\Xec\Action\MAM\Get;
+        $g = $this->xmpp(new \Moxl\Xec\Action\MAM\Get);
 
         $message = $this->me->messages()
             ->where('jidfrom', $jid)
@@ -994,6 +994,6 @@ class RoomsUtils extends Base
 
     public function prepareEmbedUrl(Message $message)
     {
-        return (new Chat())->prepareEmbed($message->resolvedUrl, $message);
+        return (new Chat($this->me))->prepareEmbed($message->resolvedUrl, $message);
     }
 }

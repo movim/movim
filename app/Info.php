@@ -15,12 +15,12 @@ class Info extends Model
 
     public function identities()
     {
-        return $this->hasMany('App\Identity');
+        return $this->hasMany(Identity::class);
     }
 
     public function contact()
     {
-        return $this->hasOne('App\Contact', 'id', 'server');
+        return $this->hasOne(Contact::class, 'id', 'server');
     }
 
     public function save(array $options = [])
@@ -226,9 +226,9 @@ class Info extends Model
     /**
      * Only for gateways
      */
-    public function getPresenceAttribute()
+    public function getPresence(User $user)
     {
-        return me()->session->presences()
+        return $user->session->presences()
             ->where('jid', $this->attributes['server'])
             ->first();
     }

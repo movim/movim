@@ -44,7 +44,7 @@ class ChatActions extends \Movim\Widget\Base
      */
     public function ajaxGetContact(string $jid)
     {
-        $c = new ContactActions();
+        $c = new ContactActions($this->me);
         $c->ajaxGetDrawer($jid);
     }
 
@@ -53,7 +53,7 @@ class ChatActions extends \Movim\Widget\Base
      */
     public function ajaxBlock(string $jid)
     {
-        $block = new Block;
+        $block = $this->xmpp(new Block);
         $block->setJid($jid);
         $block->request();
     }
@@ -63,7 +63,7 @@ class ChatActions extends \Movim\Widget\Base
      */
     public function ajaxUnblock(string $jid)
     {
-        $unblock = new Unblock;
+        $unblock = $this->xmpp(new Unblock);
         $unblock->setJid($jid);
         $unblock->request();
     }
@@ -123,7 +123,7 @@ class ChatActions extends \Movim\Widget\Base
         if (!empty($keywords)) {
             $keywords = str_replace(' ', ' & ', trim($keywords));
 
-            $messagesQuery = \App\Message::jid($jid)
+            $messagesQuery = \App\Message::jid($this->me, $jid)
                 ->selectRaw('*, ts_headline(\'simple\', body, plainto_tsquery(\'simple\', ?), \'StartSel=<mark>,StopSel=</mark>\') AS headline', [$keywords])
                 ->whereRaw('to_tsvector(\'simple\', body) @@ to_tsquery(\'simple\', ?)', [$keywords])
                 ->orderBy('published', 'desc')
@@ -188,7 +188,7 @@ class ChatActions extends \Movim\Widget\Base
         if ($retract && ($retract->stanzaid || $retract->originid)) {
             $this->rpc('Dialog.clear');
 
-            $r = new Retract;
+            $r = $this->xmpp(new Retract);
             $r->setTo($retract->isMuc() ? $retract->jidfrom : $retract->jidto)
                 ->setType($retract->type)
                 ->setId($retract->stanzaid ?? $retract->originid)
@@ -202,7 +202,7 @@ class ChatActions extends \Movim\Widget\Base
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $retract;
 
-            $c = new Chat;
+            $c = new Chat($this->me);
             $c->onMessage($packet, false, true);
         }
     }
@@ -222,7 +222,7 @@ class ChatActions extends \Movim\Widget\Base
         if ($retract && $retract->stanzaid) {
             $this->rpc('Dialog.clear');
 
-            $r = new Moderate;
+            $r = $this->xmpp(new Moderate);
             $r->setTo($retract->jidfrom)
                 ->setStanzaid($retract->stanzaid)
                 ->request();
@@ -271,7 +271,7 @@ class ChatActions extends \Movim\Widget\Base
             $url = Url::resolve(trim($url));
 
             if ($url != null) {
-                $this->rpc('MovimTpl.fill', '#embed', (new Chat)->prepareEmbed($url));
+                $this->rpc('MovimTpl.fill', '#embed', (new Chat($this->me))->prepareEmbed($url));
             }
         } catch (\Exception $e) {
         }

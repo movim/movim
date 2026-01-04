@@ -7,11 +7,13 @@
 namespace Movim\Widget;
 
 use App\User;
+use App\Widgets\Notif\Notif;
 use Rain\Tpl;
 use Movim\Controller\Ajax;
 use Movim\Template\Partial;
 
 use Illuminate\Database\Capsule\Manager as DB;
+use Moxl\Xec\Action;
 
 class Base
 {
@@ -35,13 +37,13 @@ class Base
     public $image;
     public $description;
 
-    public function __construct(bool $light = false, ?string $view = null)
+    public function __construct(?User $user, bool $light = false, ?string $view = null)
     {
         if ($view != null) {
             $this->_view = $view;
         }
 
-        $this->me = me();
+        $this->me = $user;
         $this->setName();
         $this->load();
         $this->baseUri = BASE_URI;
@@ -109,6 +111,17 @@ class Base
     public function ___(...$args)
     {
         echo call_user_func_array([&$this, '__'], $args);
+    }
+
+    public function xmpp(Action $action)
+    {
+        $action->attachUser($this->me);
+        return $action;
+    }
+
+    public function notif(...$args)
+    {
+        Notif::append($this->me, ...$args);
     }
 
     public function route(...$args): ?string

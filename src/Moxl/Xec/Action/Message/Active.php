@@ -9,16 +9,18 @@ use Moxl\Stanza\Muc;
 class Active extends Action
 {
     protected $_to;
-    protected $_muc = false;
+    protected bool $_muc = false;
 
     public function request()
     {
         $this->store();
-        if ($this->_muc) {
-            Muc::active($this->_to);
-        } else {
-            Message::active($this->_to);
-        }
+        $this->send(
+            Message::maker(
+                $this->_to,
+                type: $this->_muc ? 'groupchat' : 'chat',
+                chatstates: 'active'
+            )
+        );
     }
 
     public function setMuc()
