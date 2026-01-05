@@ -82,7 +82,7 @@ class Presence extends Payload
                              * Add back the id to the stanza and send it back to the stanza handler
                              */
                             $stanza->addAttribute('id', $session->get(Muc::$mucId . (string)$stanza->attributes()->from));
-                            (new Handler)->handle($stanza);
+                            (new Handler($this->me))->handle($stanza);
                         }
                     }
                 } elseif ($presence->value == 5 && !empty($presence->resource)) {
