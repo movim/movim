@@ -13,7 +13,7 @@ v0.33 (master)
 * Fix missing session_id index (mandatory for the MariaDB foreign key)
 * Move all the XMPP related code to a Linker class
 * Inject the User context in the Widgets, Moxl Actions and Moxl Payloads
-
+* Upgrade to Twemoji 17.0.2
 
 v0.32.1
 ---------------------------

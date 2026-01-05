@@ -35,7 +35,7 @@ foreach (glob('../../../public/theme/img/emojis/svg/*.svg') as $file) {
 $dump = '<?php ' . PHP_EOL . 'return [' . PHP_EOL;
 
 foreach ($compiled as $key => $value) {
-    $dump .= "    '" . $key . "' => '" . $value;
+    $dump .= "    '" . $key . "' => '" . $value . "',". PHP_EOL;
 }
 
 $dump .= '];' . PHP_EOL;

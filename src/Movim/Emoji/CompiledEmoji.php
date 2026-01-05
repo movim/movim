@@ -1,4 +1,4 @@
-<?php 
+<?php
 return [
     '1f004' => 'mahjong tile red dragon',
     '1f0cf' => 'playing card black joker',
