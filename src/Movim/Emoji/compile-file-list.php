@@ -1,20 +1,13 @@
 <?php
 
-$unicode = fopen('/usr/share/unicode/UnicodeData.txt', 'r');
+$emojis = file_get_contents('https://unicode.org/Public/emoji/latest/emoji-test.txt');
+
+preg_match_all('/([A-Z0-9 ]+).*E[\d\.]+\s(.*)/', $emojis, $matched);
+
 $unicodeData = [];
 
-while ($row = fgetcsv($unicode, separator: ";")) {
-    $unicodeData[strtolower($row[0])] = strtolower($row[1]);
-}
-
-$unicode = fopen('/usr/share/unicode/emoji/emoji-zwj-sequences.txt', 'r');
-$unicodeSequences = [];
-
-while ($row = fgetcsv($unicode, separator: ";")) {
-    if (count($row) > 2) {
-        preg_match('/(.*)#/', $row[2], $matched);
-        $unicodeSequences[str_replace(' ', '-', strtolower(trim($row[0])))] = trim($matched[1]);
-    }
+foreach ($matched[1] as $key => $row) {
+    $unicodeData[strtolower(str_replace(' ', '-', trim($row)))] = str_replace(':', '', strtolower($matched[2][$key]));
 }
 
 $compiled = [];
@@ -25,12 +18,7 @@ foreach (glob('../../../public/theme/img/emojis/svg/*.svg') as $file) {
     if (array_key_exists($name, $unicodeData)) {
         $compiled[(string)$name] = $unicodeData[$name];
     }
-
-    if (array_key_exists($name, $unicodeSequences)) {
-        $compiled[(string)$name] = $unicodeSequences[$name];
-    }
 }
-
 
 $dump = '<?php ' . PHP_EOL . 'return [' . PHP_EOL;
 
