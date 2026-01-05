@@ -39,7 +39,7 @@ class Get extends Action
             $this->_after,
             $this->_before,
             $this->_version
-        ), to: $this->_to, type: 'get');
+        ), to: $this->_to, type: 'set');
     }
 
     public function setMessageCounter(int $messagesCounter)
