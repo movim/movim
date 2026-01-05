@@ -83,8 +83,8 @@ class Search extends Base
                 ->whereIn('id', function ($query) {
                     $filters = DB::table('posts')->where('id', -1);
 
-                    $filters = \App\Post::withMineScope($filters);
-                    $filters = \App\Post::withFollowScope($filters);
+                    $filters = \App\Post::withMineScope($filters, $this->me);
+                    $filters = \App\Post::withFollowScope($filters, $this->me);
 
                     $query->select('id')->from(
                         $filters,

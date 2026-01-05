@@ -11,7 +11,7 @@ class Roster extends Model
 
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'jid'];
-    protected $fillable = ['jid', 'name', 'ask', 'subscription', 'group'];
+    protected $fillable = ['session_id', 'jid', 'name', 'ask', 'subscription', 'group'];
     public $with = ['contact'];
 
     public function upsert(): Roster
