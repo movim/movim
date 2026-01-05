@@ -25,6 +25,7 @@ class Notifications extends Base
         $this->addcss('notifications.css');
 
         $this->registerEvent('post', 'onPost');
+        $this->registerEvent('post_comment_published', 'onPost');
         $this->registerEvent('subscribe', 'onInvitations');
         $this->registerEvent('roster', 'onRoster');
         $this->registerEvent('roster_additem_handle', 'onInvitations');
@@ -88,7 +89,7 @@ class Notifications extends Base
 
     public function ajaxSetCounter()
     {
-        $since = User::me(true)->notifications_since ?? date(MOVIM_SQL_DATE, 0);
+        $since = $this->me->notifications_since ?? date(MOVIM_SQL_DATE, 0);
 
         $count = \App\Post::whereIn('parent_id', function ($query) {
             $query->select('id')
@@ -227,7 +228,7 @@ class Notifications extends Base
             ->with('parent')
             ->get();
 
-        $since = User::me(true)->notifications_since ?? date(MOVIM_SQL_DATE, 0);
+        $since = $this->me->notifications_since ?? date(MOVIM_SQL_DATE, 0);
 
         $view = $this->tpl();
         $view->assign('hearth', addEmojis('♥'));

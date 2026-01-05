@@ -45,7 +45,7 @@ class Menu extends Base
             return;
         }
 
-        $since = User::me(true)->posts_since; // Force refresh the user
+        $since = $this->me->posts_since;
 
         if ($since) {
             $count = \App\Post::whereIn('id', function ($query) use ($since) {
