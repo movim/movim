@@ -11,7 +11,7 @@ class Get extends Action
     public function request()
     {
         $this->store();
-        $this->iq(Pubsub::getItem(false, Storage::$node, 'current'), type: 'get');
+        $this->iq(Pubsub::getItem(Storage::$node, 'current'), type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

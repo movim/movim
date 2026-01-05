@@ -290,11 +290,8 @@ class Login extends Base
         $s->loadTimezone();
         $s->save();
 
-        // Force reload the User to link the new session
-        \App\User::me(true);
-
         global $linker; // Todo, use a Linker Manager later
-        $linker->attachUser($user);
+        $linker->attachUser(User::where('id', $login)->first());
 
         // We launch the XMPP socket
         $this->rpc('register', $host);
