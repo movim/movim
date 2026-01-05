@@ -21,7 +21,7 @@ class CallInvitePropose extends Payload
             if ($conference) {
                 // If the propose is from another person
                 if (!$conference->presence || $conference->presence->resource != \explodeJid((string)$parent->attributes()->from)['resource']) {
-                    $reject = new Reject;
+                    $reject = new Reject($this->me);
                     $reject->setTo(\bareJid((string)$parent->attributes()->from))
                         ->setId((string)$stanza->attributes()->id)
                         ->request();

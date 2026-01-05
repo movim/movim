@@ -18,9 +18,9 @@ class ReceiptRequest extends Payload
         $this->send(Message::maker(to: bareJid($from), id: $id, type: (string)$parent->attributes()->type));
 
         $message = $this->me->messages()
-                                  ->where('originid', $id)
-                                  ->where('jidfrom', bareJid($from))
-                                  ->first();
+            ->where('originid', $id)
+            ->where('jidfrom', bareJid($from))
+            ->first();
 
         if ($message && $message->delivered == null) {
             $message->delivered = gmdate('Y-m-d H:i:s');

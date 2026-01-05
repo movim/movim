@@ -1010,7 +1010,7 @@ class Chat extends \Movim\Widget\Base
     {
         if (!validateJid($jid)) return;
 
-        $contextMessage = \App\Message::jid($this->user, $jid)
+        $contextMessage = \App\Message::jid($this->me, $jid)
             ->where('published', '<=', function ($query) use ($mid) {
                 $query->select('published')
                     ->from('messages')

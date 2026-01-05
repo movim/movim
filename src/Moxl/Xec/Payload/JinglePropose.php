@@ -11,7 +11,7 @@ class JinglePropose extends Payload
     {
         // Another session is already started
         if (CurrentCall::getInstance()->isStarted()) {
-            $reject = new MessageReject;
+            $reject = new MessageReject($this->me);
             $reject->setTo((string)$parent->attributes()->from)
                    ->setId((string)$stanza->attributes()->id)
                    ->request();

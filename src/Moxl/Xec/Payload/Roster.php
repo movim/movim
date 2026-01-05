@@ -3,7 +3,6 @@
 namespace Moxl\Xec\Payload;
 
 use App\Roster as DBRoster;
-use App\User as DBUser;
 
 class Roster extends Payload
 {

@@ -60,7 +60,6 @@ class Roster extends Model
     public function set(User $user, \SimpleXMLElement $stanza): bool
     {
         $this->session_id = $user->session->id;
-
         $this->jid = (string)$stanza->attributes()->jid;
 
         $this->name = (isset($stanza->attributes()->name)

@@ -191,12 +191,12 @@ class Login extends Base
         $this->doLogin($username, $password, $timezone);
     }
 
-    public function ajaxHTTPLogin($login, $password, string $timezone)
+    public function ajaxHTTPLogin(string $login, string $password, string $timezone)
     {
         $this->doLogin($login, $password, $timezone);
     }
 
-    public function ajaxQuickLogin($deviceId, $login, $key, string $timezone, ?bool $check = false)
+    public function ajaxQuickLogin(string $deviceId, string $login, string $key, string $timezone, ?bool $check = false)
     {
         $validateLogin = Validator::stringType()->length(1, 254);
 
@@ -231,7 +231,7 @@ class Login extends Base
         }
     }
 
-    private function doLogin($login, $password, string $timezone, bool $deviceId = false)
+    private function doLogin(string $login, string $password, string $timezone, bool $deviceId = false)
     {
         $configuration = Configuration::get();
 
