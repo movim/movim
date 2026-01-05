@@ -15,7 +15,6 @@ class Presence extends Model
     public $hatsToSave = [];
 
     protected $attributes = [
-        'session_id' => SESSION_ID,
         'mucjid' => '', // Required to use it in the primary key
         'muc' => false
     ];

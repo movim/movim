@@ -7,14 +7,12 @@ use Movim\Model;
 
 class Roster extends Model
 {
+    use \Awobaz\Compoships\Compoships;
+
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'jid'];
     protected $fillable = ['jid', 'name', 'ask', 'subscription', 'group'];
     public $with = ['contact'];
-
-    protected $attributes = [
-        'session_id'    => SESSION_ID
-    ];
 
     public function upsert(): Roster
     {
@@ -49,21 +47,19 @@ class Roster extends Model
 
     public function presences()
     {
-        return $this->hasMany(Presence::class, 'jid', 'jid')
-            ->where('resource', '!=', '')
-            ->where('session_id', $this->session_id);
+        return $this->hasMany(Presence::class, ['jid', 'session_id'], ['jid', 'session_id'])
+            ->where('resource', '!=', '');
     }
 
     public function presence()
     {
-        return $this->hasOne(Presence::class, 'jid', 'jid')
-            ->where('session_id', $this->session_id)
+        return $this->hasOne(Presence::class, ['jid', 'session_id'], ['jid', 'session_id'])
             ->orderBy('value');
     }
 
-    public function set($stanza): bool
+    public function set(User $user, \SimpleXMLElement $stanza): bool
     {
-        $this->session_id = SESSION_ID;
+        $this->session_id = $user->session->id;
 
         $this->jid = (string)$stanza->attributes()->jid;
 

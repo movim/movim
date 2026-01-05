@@ -265,15 +265,15 @@ class Post extends Model
         );
     }
 
-    protected function withStoriesScope($query)
+    protected function withStoriesScope($query, User $user)
     {
         return $query->unionAll(
             DB::table('posts')
                 ->where('node', Post::STORIES_NODE)
-                ->whereIn('posts.server', function ($query) {
+                ->whereIn('posts.server', function ($query) use ($user) {
                     $query->from('rosters')
                         ->select('jid')
-                        ->where('session_id', SESSION_ID)
+                        ->where('session_id', $user->session->id)
                         ->where('subscription', 'both');
                 })
         );

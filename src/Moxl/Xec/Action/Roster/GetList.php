@@ -21,7 +21,7 @@ class GetList extends Action
         foreach ($stanza->query->item as $item) {
             $roster = new DBRoster;
 
-            if ($roster->set($item)) {
+            if ($roster->set($this->me, $item)) {
                 array_push($rosters, $roster->toArray());
             }
         }
