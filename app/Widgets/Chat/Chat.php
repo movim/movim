@@ -240,7 +240,7 @@ class Chat extends \Movim\Widget\Base
                 if ($roster || $contact->exists) {
                     $this->notif(
                         key: 'chat|' . $from,
-                        title: $name,
+                        title: $name ?? $from, // truename should be fine but its not
                         body: $message->encrypted && is_array($message->omemoheader)
                             ? "🔒 " . substr($message->omemoheader['payload'], 0, strlen($message->omemoheader['payload']) / 2)
                             : $rawbody,
