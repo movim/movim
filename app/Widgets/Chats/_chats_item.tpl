@@ -14,16 +14,22 @@
         {/if}
         "
     title="{$contact->id}{if="isset($message)"} • {$message->published|prepareDate}{/if}">
+
+    {$storiesCount = 0}
+
     <span class="primary icon bubble
         {if="$roster"}
+            {$storiesCount = $c->me->rosterStories($roster)->count()}
             {if="$roster->presence"}status {$roster->presence->presencekey}{/if}
-            {if="$c->me->rosterStories($roster)->count() > 0"}stories
-                {if="$c->me->rosterStoriesAllSeen($roster)"}seen{/if}
+            {if="$storiesCount > 0"}stories
+                {if="$roster"}seen{/if}
             {/if}
         {/if}
     "
-    {if="$roster && $c->me->rosterFirstUnseenStory($roster)"}
-        onclick="StoriesViewer_ajaxHttpGet({$c->me->rosterFirstUnseenStory($roster)->id})"
+    {if="$roster && $firstUnseenStory = $c->me->rosterFirstUnseenStory($roster)"}
+        onclick="StoriesViewer_ajaxHttpGet({$firstUnseenStory->id}); event.stopPropagation();"
+    {elseif="$storiesCount > 0"}
+        onclick="StoriesViewer_ajaxHttpGet({$c->me->rosterStories($roster)->first()->id}); event.stopPropagation(); "
     {/if}
     {if="$count > 0"}data-counter="{$count}"{/if}
     >
