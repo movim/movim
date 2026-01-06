@@ -104,7 +104,7 @@ class Menu extends Base
                         ]]
                     );
                 }
-            } else {
+            } elseif (strtotime($post->published) > strtotime($since)) {
                 $info = \App\Info::where('server', $post->server)
                     ->where('node', $post->node)
                     ->first();
