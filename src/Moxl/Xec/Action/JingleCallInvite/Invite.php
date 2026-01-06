@@ -21,7 +21,7 @@ class Invite extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $propose = new CallInvitePropose;
+        $propose = new CallInvitePropose($this->me);
         $propose->handle($stanza->invite, $stanza);
     }
 

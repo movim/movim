@@ -465,7 +465,7 @@ class Visio extends Base
         if ($muji) {
             CurrentCall::getInstance()->stop($muji->jidfrom, $muji->id);
 
-            $resource = $muji->presence?->resource;
+            $resource = $muji->presences()->where('mucjid', $this->me->id)->first()?->resource;
 
             if ($resource) {
                 $pu = $this->xmpp(new Unavailable);

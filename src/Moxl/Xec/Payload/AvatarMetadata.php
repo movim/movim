@@ -15,7 +15,7 @@ class AvatarMetadata extends Payload
             $c = \App\Contact::firstOrNew(['id' => $jid]);
 
             if ((string)$infos[0] != $c->avatarhash) {
-                $g = new Get;
+                $g = new Get($this->me);
                 $g->setTo($jid)
                     ->request();
             }

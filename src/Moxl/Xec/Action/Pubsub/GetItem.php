@@ -105,7 +105,7 @@ class GetItem extends Action
             }
             // Don't handle the case if we try to retrieve the avatar
         } elseif ($this->_id != Avatar::NODE_METADATA) {
-            $pd = new PostDelete;
+            $pd = new PostDelete($this->me);
             $pd->setTo($this->_to)
                 ->setNode($this->_node)
                 ->setId($this->_id);
@@ -132,7 +132,7 @@ class GetItem extends Action
 
     public function errorServiceUnavailable(string $errorId, ?string $message = null)
     {
-        $pd = new PostDelete;
+        $pd = new PostDelete($this->me);
         $pd->setTo($this->_to)
             ->setNode($this->_node)
             ->setId($this->_id);

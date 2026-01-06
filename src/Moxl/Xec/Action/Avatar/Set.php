@@ -24,7 +24,7 @@ class Set extends Action
             $this->iq(Avatar::set($this->_data, $this->_node, $this->_withPublishOption), to: $this->_to, type: 'set');
         } else {
             // For an URL we simply set the Metadata
-            $setMetadata = new SetMetadata;
+            $setMetadata = new SetMetadata($this->me);
             $setMetadata->setTo($this->_to)
                 ->setNode($this->_node)
                 ->setUrl($this->_url)
@@ -49,7 +49,7 @@ class Set extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $setMetadata = new SetMetadata;
+        $setMetadata = new SetMetadata($this->me);
         $setMetadata->setTo($this->_to)
             ->setNode($this->_node)
             ->setUrl($this->_url)
@@ -103,7 +103,7 @@ class Set extends Action
 
     public function errorConflict(string $errorId, ?string $message = null)
     {
-        $config = new SetConfig;
+        $config = new SetConfig($this->me);
         $config->setNode(Avatar::NODE_DATA)
             ->setData(Avatar::$nodeConfig)
             ->request();

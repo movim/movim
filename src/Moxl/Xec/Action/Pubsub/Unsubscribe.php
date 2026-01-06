@@ -21,7 +21,7 @@ class Unsubscribe extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $sa = new SubscriptionRemove;
+        $sa = new SubscriptionRemove($this->me);
         $sa->setServer($this->_to)
            ->setNode($this->_node)
            ->setFrom($this->_from)

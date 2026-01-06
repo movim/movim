@@ -10,7 +10,7 @@ class PubsubSubscription extends Payload
     {
         $from = bareJid((string)$parent->attributes()->from);
 
-        $g = new Get;
+        $g = new Get($this->me);
         $g->setTo($from)
           ->request();
     }

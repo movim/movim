@@ -34,7 +34,7 @@ class GetDevicesList extends Action
 
         foreach ($devicesIds as $deviceId) {
             $deviceCount++;
-            $gb = new GetBundle;
+            $gb = new GetBundle($this->me);
             $gb->setTo($this->_to)
                 ->setId($deviceId);
 

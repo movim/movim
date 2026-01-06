@@ -32,7 +32,7 @@ class SASL extends Payload
             $auth->choose($mechanisms);
             $auth->response();
         } else {
-            $g = new Get;
+            $g = new Get($this->me);
             $g->setTo($session->get('host'))->request();
         }
     }

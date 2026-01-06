@@ -35,7 +35,7 @@ class Set extends Action
 
     public function errorConflict(string $errorId, ?string $message = null)
     {
-        $config = new SetConfig;
+        $config = new SetConfig($this->me);
         $config->setNode(Storage::$node)
                ->setData(Storage::$nodeConfig)
                ->request();

@@ -40,7 +40,7 @@ class Request extends Action
 
         // Retro-compatibility support
         foreach ($this->me->reported()->where('synced', false)->get() as $reported) {
-            $block = new Block;
+            $block = new Block($this->me);
             $block->setJid($reported->id);
             $block->request();
         }

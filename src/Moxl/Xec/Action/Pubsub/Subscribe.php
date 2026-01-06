@@ -21,7 +21,7 @@ class Subscribe extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $sa = new SubscriptionAdd;
+        $sa = new SubscriptionAdd($this->me);
         $sa->setServer($this->_to)
            ->setNode($this->_node)
            ->setFrom($this->_from)

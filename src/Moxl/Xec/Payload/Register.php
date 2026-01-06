@@ -12,7 +12,7 @@ class Register extends Payload
         $session = DBSession::find($this->me->session->id);
 
         if ($session && isset($session->username)) {
-            $r = new Get;
+            $r = new Get($this->me);
             $r->request();
         }
     }
