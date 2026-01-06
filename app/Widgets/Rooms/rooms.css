@@ -65,7 +65,8 @@
     display: none;
 }
 
-#rooms ul.list.rooms:not(.edition) li span.control {
+#rooms ul.list.rooms li:not(.connecting) li span.control.connecting,
+#rooms ul.list.rooms:not(.edition) li span.control.edition {
     display: none;
 }
 

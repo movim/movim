@@ -136,12 +136,8 @@ span.icon.bubble.stories.status.seen {
     background-color: rgba(var(--movim-font), 0.25);
 }
 
-span.icon.bubble.stories.status:hover {
-    transform: scale(.95);
-}
-
 span.icon.bubble.stories.status:active {
-    transform: scale(.925);
+    transform: scale(.95);
 }
 
 span.icon.bubble.status:not(.composing):not([data-counter]):not(.location) {

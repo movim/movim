@@ -277,6 +277,8 @@ class Rooms extends Base
             return;
         }
 
+        $this->rpc('MovimUtils.addClass', '#' . \cleanupId($room), 'connecting');
+
         $jid = explodeJid($room);
 
         $r = $this->xmpp(new Request);
