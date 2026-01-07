@@ -1,4 +1,4 @@
-var version = 5;
+var version = 6;
 var cacheKey = 'movim_' + version;
 
 const channel = new BroadcastChannel('messages');
@@ -80,11 +80,20 @@ self.addEventListener('push', function (e) {
 });
 
 self.addEventListener('notificationclick', function (e) {
-    channel.postMessage({ type: e.action, data: e.notification.data });
+    e.waitUntil(
+        clients
+            .matchAll({
+                type: "window",
+            })
+            .then((clientList) => {
+                for (const client of clientList) {
+                    if ("focus" in client) return client.focus();
+                }
+                if (clients.openWindow) return clients.openWindow(e.notification.data.url);
+            }),
+    );
 
-    if (clients.length == 0) {
-        return clients.openWindow(e.notification.data.url);
-    }
+    channel.postMessage({ type: e.action, data: e.notification.data });
 
     e.notification.close();
 });
