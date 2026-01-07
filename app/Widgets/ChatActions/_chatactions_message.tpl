@@ -1,4 +1,4 @@
-<li {if="$message->isMine()"}class="oppose"{/if} onclick="Chat_ajaxGetMessageContext('{$message->jid}', {$message->mid}); Drawer.clear()">
+<li {if="$message->isMine()"}class="oppose"{/if}>
     <div class="bubble {if="$message->file && $message->file->isPicture"}file{/if}"
         data-publishedprepared="{if="$search"}{$message->published|prepareDate}{else}{$message->published|prepareTime}{/if}">
         <div class="message">
