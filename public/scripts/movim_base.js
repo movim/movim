@@ -14,8 +14,6 @@ if ('serviceWorker' in navigator) {
         Notif.snackbarClear();
         window.focus();
 
-        console.log(event.data);
-
         switch (event.data.type) {
             case 'call':
                 break;
