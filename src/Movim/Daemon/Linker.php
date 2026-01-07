@@ -114,7 +114,7 @@ class Linker
             logOut(" launched : " . \humanSize(memory_get_usage()));
         }
 
-        $this->connection->on('data', function ($message) use (&$timestampReceive) {
+        $this->connection->on('data', function ($message) {
             if (!empty($message)) {
 
                 if (config('daemon.debug')) {
@@ -136,6 +136,7 @@ class Linker
                     );
                 }
 
+                global $timestampReceive;
                 $timestampReceive = time();
 
                 if (!$this->parser->parse($message)) {
