@@ -46,6 +46,7 @@ class Menu extends Base
         }
 
         $since = $this->me->posts_since;
+        $count = 0;
 
         if ($since) {
             $count = \App\Post::whereIn('id', function ($query) use ($since) {
@@ -59,8 +60,6 @@ class Menu extends Base
                     'posts'
                 );
             })->withoutComments()->count();
-        } else {
-            $count = 0;
         }
 
         if ($post->isEdited() && !$post->isComment()) {
@@ -104,11 +103,11 @@ class Menu extends Base
                         ]]
                     );
                 }
-            } elseif (strtotime($post->published) > strtotime($since)) {
+            } else {
                 $info = \App\Info::where('server', $post->server)
                     ->where('node', $post->node)
                     ->first();
-                $logo = null;
+                $logo = avatarPlaceholder($post->node);
                 $title = $post->node;
 
                 if ($info) {

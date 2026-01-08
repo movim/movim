@@ -83,6 +83,7 @@ class Post extends Payload
                 $d->setTo($from)
                     ->setNode($node)
                     ->setId($id)
+                    ->setFromPayload()
                     ->request();
             }
         }

@@ -25,6 +25,7 @@ class Notifications extends Base
         $this->addcss('notifications.css');
 
         $this->registerEvent('post', 'onPost');
+        $this->registerEvent('post_resolved', 'onPost');
         $this->registerEvent('post_comment_published', 'onPost');
         $this->registerEvent('subscribe', 'onInvitations');
         $this->registerEvent('roster', 'onRoster');

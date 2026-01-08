@@ -7,8 +7,8 @@ use Moxl\Stanza\Disco;
 
 class Request extends Action
 {
-    protected $_node = false;
-    protected $_to;
+    protected ?string $_node = null;
+    protected ?string $_to = null;
     protected $_parent;
 
     // Excluded nodes

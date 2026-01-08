@@ -30,7 +30,7 @@ class Disco
         return $query;
     }
 
-    public static function request(?string $to = null, $node = false)
+    public static function request($node = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/disco#info', 'query');
@@ -42,7 +42,7 @@ class Disco
         return $query;
     }
 
-    public static function items(?string $to = null, $node = false)
+    public static function items($node = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/disco#items', 'query');

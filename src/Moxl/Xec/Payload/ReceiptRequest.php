@@ -15,7 +15,12 @@ class ReceiptRequest extends Payload
             ? (string)$parent->{'origin-id'}->attributes()->id
             : (string)$parent->attributes()->id;
 
-        $this->send(Message::maker(to: bareJid($from), id: $id, type: (string)$parent->attributes()->type));
+        $this->send(Message::maker(
+            to: bareJid($from),
+            id: $id,
+            type: (string)$parent->attributes()->type,
+            receipts: 'received'
+        ));
 
         $message = $this->me->messages()
             ->where('originid', $id)

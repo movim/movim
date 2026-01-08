@@ -5,18 +5,17 @@ namespace Moxl\Xec\Action\Message;
 use App\MessageFile;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Message;
-use Moxl\Stanza\Muc;
 use App\MessageOmemoHeader;
 
 class Publish extends Action
 {
-    protected $_to;
-    protected $_content;
-    protected $_html;
-    protected $_muc = false;
-    protected $_mucreceipts = false;
-    protected $_id = false;
-    protected $_replace = false;
+    protected string $_to;
+    protected ?string $_content = null;
+    protected ?string $_html = null;
+    protected bool $_muc = false;
+    protected bool $_mucreceipts = false;
+    protected ?string $_id = null;
+    protected ?string $_replace = null;
     protected ?MessageFile $_file = null;
     protected $_attachid = false;
     protected $_originid = false;
@@ -38,6 +37,8 @@ class Publish extends Action
             type: $this->_muc ? 'groupchat' : 'chat',
             content: $this->_content,
             html: $this->_html,
+            chatstates: 'active',
+            receipts: !$this->_muc || ($this->_muc && $this->_mucreceipts) ? 'request' : null,
             id: $this->_id,
             replace: $this->_replace,
             file: $this->_file,

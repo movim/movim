@@ -4,7 +4,6 @@ namespace Moxl\Xec\Action\Message;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Message;
-use Moxl\Stanza\Muc;
 
 class Reactions extends Action
 {

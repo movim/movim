@@ -218,6 +218,8 @@ class Handler
             $payloadClass->prepare($s, $sparent);
             $payloadClass->handle($s, $sparent);
 
+            logInfo('Handler : Firing Payload\\' . $hashToClass[$hash]);
+
             return true;
         }
 

@@ -349,7 +349,7 @@ class Chat extends \Movim\Widget\Base
     {
         $arr = explode('|', (new Notif($this->me))->getCurrent());
 
-        if ($packet->content && $arr[1] == $packet->content->jid) {
+        if ($packet->content && isset($arr[1]) && $arr[1] == $packet->content->jid) {
             $this->ajaxGetRoom($packet->content->jid, noConnect: true);
         }
     }

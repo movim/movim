@@ -23,8 +23,7 @@ class Post extends Base
         $this->registerEvent('microblog_commentpublish_error', 'onCommentPublishError');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete', 'post');
         $this->registerEvent('pubsub_getitem_errorpresencesubscriptionrequired', 'onPresenceSubscriptionRequired');
-        $this->registerEvent('post', 'tonHandle', 'post');
-        $this->registerEvent('post_resolved', 'tonHandle', 'post');
+        $this->registerEvent('post_refreshed', 'tonHandle', 'post');
         $this->registerEvent('post_comment_published', 'onCommentPublished', 'post');
     }
 

@@ -14,10 +14,9 @@ class GetItem extends Action
     protected $_node;
     protected $_id;
     protected ?int $_replypostid = null;
+    protected bool $fromPayload = false;
 
-    protected $_manual = false; // Use when we explicitely request an item
     protected $_parentid;
-
     protected $_messagemid;
 
     public function request()
@@ -26,9 +25,9 @@ class GetItem extends Action
         $this->iq(Pubsub::getItem($this->_node, $this->_id), to: $this->_to, type: 'get');
     }
 
-    public function setManual()
+    public function fromPayload()
     {
-        $this->_manual = true;
+        $this->fromPayload = true;
         return $this;
     }
 
@@ -68,7 +67,7 @@ class GetItem extends Action
                         $this->event('post_comment_published');
                     } else {
                         $this->pack($p->id);
-                        $this->event('post');
+                        $this->event($this->fromPayload ? 'post' : 'post_refreshed');
                     }
 
                     if ($this->_messagemid) {
