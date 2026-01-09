@@ -3,8 +3,6 @@
 namespace Moxl\Xec\Payload;
 
 use App\Message as Message;
-use Movim\CurrentCall;
-use Moxl\Stanza\Ack;
 use Moxl\Stanza\Jingle as JingleStanza;
 
 class Jingle extends Payload
@@ -23,7 +21,7 @@ class Jingle extends Payload
             (string)$stanza->attributes()->sid
         );
 
-        //if (CurrentCall::getInstance()->hasId($message->thread)) {
+        //if ($linkerManager->currentCall($this->me->session->id)->hasId($message->thread)) {
             $this->iq(to: $from, id: $id, type: 'result');
 
             switch ($action) {
@@ -46,7 +44,7 @@ class Jingle extends Payload
                     $this->event('jingle_transportinfo');
                     break;
                 case 'session-terminate':
-                    if (!$stanza->muji && CurrentCall::getInstance()->hasId($stanza->attributes()->sid)) {
+                    if (!$stanza->muji && linker($this->me->session->id)->currentCall->hasId($stanza->attributes()->sid)) {
                         $message->type = 'jingle_end';
                         $message->save();
 

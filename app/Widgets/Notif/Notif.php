@@ -4,19 +4,18 @@ namespace App\Widgets\Notif;
 
 use Movim\Widget\Base;
 use Movim\RPC;
-use Movim\Session;
 use Carbon\Carbon;
 
 use App\PushSubscription;
 use App\User;
 use App\Widgets\Chat\Chat;
-use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;
 
 class Notif extends Base
 {
-    public static $rpcCall = null;
+    public $rpcCall = null;
+
     public function load()
     {
         $this->addjs('notif.js');
@@ -27,28 +26,28 @@ class Notif extends Base
 
     public function onSessionUp()
     {
-        Session::instance()->delete('session_down');
+        linker($this->sessionId)->session->delete('session_down');
     }
 
     public function onSessionDown()
     {
-        Session::instance()->set('session_down', true);
+        linker($this->sessionId)->session->set('session_down', true);
     }
 
     public function onChatCounter(Packet $packet)
     {
-        RPC::call('Notif.counter', 'chat', $packet->content);
+        (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.counter', 'chat', $packet->content);
     }
 
-    public static function rpcCall($rpc)
+    public function rpcCall($rpc)
     {
-        self::$rpcCall = $rpc;
+        $this->rpcCall = $rpc;
     }
 
-    public static function executeRPC()
+    public function executeRPC()
     {
-        if (self::$rpcCall) RPC::call(self::$rpcCall);
-        self::rpcCall(null);
+        if ($this->rpcCall) (new RPC(user: $this->me, sessionId: $this->sessionId))->call($this->rpcCall);
+        $this->rpcCall = null;
     }
 
     /**
@@ -62,8 +61,7 @@ class Notif extends Base
      * @param integer $action An action
      * @return void
      */
-    public static function append(
-        User $user,
+    public function append(
         string $key,
         string $title,
         string $body,
@@ -79,12 +77,12 @@ class Notif extends Base
 
         $data['url'] = $url;
 
-        $session = Session::instance();
+        $session = linker($this->sessionId)->session;
         $notifs = $session->get('notifs');
 
-        if (Session::instance()->get('session_down')) {
+        if ($session->get('session_down')) {
             requestPusher(
-                userId: $user->id,
+                userId: $this->me->id,
                 tag: $key,
                 title: $title,
                 body: $body,
@@ -93,7 +91,7 @@ class Notif extends Base
                 data: $data,
             );
         } else {
-            RPC::call(
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call(
                 'Notif.desktop',
                 $key,
                 time(),
@@ -130,11 +128,11 @@ class Notif extends Base
         }
 
         if ($first === 'chat') {
-            RPC::call('Notif.counter', $first, $user->unreads(null, true));
-            self::executeRPC();
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.counter', $first, $this->me->unreads(null, true));
+            $this->executeRPC();
         } else {
-            RPC::call('Notif.counter', $first, $notifs[$first]);
-            self::executeRPC();
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.counter', $first, $notifs[$first]);
+            $this->executeRPC();
         }
 
         if ($first != $key) {
@@ -148,12 +146,12 @@ class Notif extends Base
                 $notifs[$key] = 1;
             }
 
-            RPC::call('Notif.counter', $key, $notifs[$key]);
-            self::executeRPC();
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.counter', $key, $notifs[$key]);
+            $this->executeRPC();
         }
 
         if ($title != null) {
-            RPC::call(
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call(
                 'Notif.snackbar',
                 (new Notif(new User))->prepareSnackbar($title, $body, $picture, $url),
                 $time
@@ -162,7 +160,7 @@ class Notif extends Base
 
         $session->set('notifs', $notifs);
 
-        Wrapper::getInstance()->iterate('notifs', (new Packet)->pack($notifs));
+        Wrapper::getInstance()->iterate('notifs', (new Packet)->pack($notifs), user: $this->me, sessionId: $this->sessionId);
     }
 
 
@@ -171,8 +169,7 @@ class Notif extends Base
      */
     public function getCurrent()
     {
-        $session = Session::instance();
-        return $session->get('notifs_key');
+        return linker($this->sessionId)->session->get('notifs_key');
     }
 
     /**
@@ -183,15 +180,15 @@ class Notif extends Base
      */
     public function ajaxClear($key)
     {
-        $session = Session::instance();
+        $session = linker($this->sessionId)->session;
         $notifs = $session->get('notifs');
 
         if ($notifs != null && array_key_exists($key, $notifs)) {
             $counter = $notifs[$key];
             unset($notifs[$key]);
 
-            RPC::call('Notif.counter', $key, 0);
-            RPC::call('Notif.clear', $key);
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.counter', $key, 0);
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.clear', $key);
 
             $explode = explode('|', $key);
             $first = reset($explode);
@@ -201,16 +198,15 @@ class Notif extends Base
 
                 if ($notifs[$first] <= 0) {
                     unset($notifs[$first]);
-                    RPC::call('Notif.counter', $first, 0);
+                    (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.counter', $first, 0);
                 } else {
-                    RPC::call('Notif.counter', $first, $notifs[$first]);
+                    (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.counter', $first, $notifs[$first]);
                 }
             }
         }
 
         $session->set('notifs', $notifs);
-
-        Wrapper::getInstance()->iterate('notifs_clear', (new Packet)->pack($key));
+        Wrapper::getInstance()->iterate('notifs_clear', (new Packet)->pack($key), sessionId: $this->sessionId);
     }
 
     /**
@@ -219,13 +215,12 @@ class Notif extends Base
      */
     public function ajaxGet()
     {
-        $session = Session::instance();
-        $notifs = $session->get('notifs');
+        $notifs = linker($this->sessionId)->session->get('notifs');
 
         if ($notifs == null) $notifs = [];
 
         $notifs['chat'] = $this->me?->unreads() ?? 0;
-        RPC::call('Notif.refresh', $notifs);
+        (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.refresh', $notifs);
     }
 
     /**
@@ -237,13 +232,13 @@ class Notif extends Base
     public function ajaxCurrent($key)
     {
         // Clear the specific keys
-        if (strpos($key, '|') !== false) (new Notif($this->me))->ajaxClear($key);
+        if (strpos($key, '|') !== false) (new Notif($this->me, sessionId: $this->sessionId))->ajaxClear($key);
 
-        $session = Session::instance();
+        $session = linker($this->sessionId)->session;
 
         // If the page was blurred
         if ($session->get('notifs_key') === 'blurred') {
-            (new Chat($this->me))->onNotificationCounterClear((new Packet)->pack(explode('|', $key)));
+            (new Chat($this->me, sessionId: $this->sessionId))->onNotificationCounterClear((new Packet)->pack(explode('|', $key)));
         }
 
         $session->set('notifs_key', $key);
@@ -294,12 +289,12 @@ class Notif extends Base
     public function ajaxRequest()
     {
         $view = $this->tpl();
-        Dialog::fill($view->draw('_notif_request'));
+        $this->dialog($view->draw('_notif_request'));
     }
 
     public function ajaxRequestGranted()
     {
-        RPC::call(
+        (new RPC(user: $this->me, sessionId: $this->sessionId))->call(
             'Notif.desktop',
             time(),
             $this->__('notification.request_title'),

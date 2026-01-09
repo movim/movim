@@ -6,7 +6,6 @@ use DOMDocument;
 use DOMXPath;
 use Movim\Model;
 use Movim\Image;
-use Movim\Session;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -319,7 +318,7 @@ class Message extends Model
             )
         ) {
             if ($this->isMuc()) {
-                $session = Session::instance();
+                $session = linker($this->user->session->id)->session;
 
                 // Cache the state in Session for performances purpose
                 $sessionKey = $this->jidfrom . '_stanza_id';

@@ -3,23 +3,14 @@
 namespace Moxl;
 
 use Fabiang\SASL\SASL;
-use Movim\Session;
 
 class Authentication
 {
+    public ?string $username = null;
+    public ?string $password = null;
+
     private $_mechanism;
     private ?string $_type;
-
-    protected static $instance;
-
-    public static function getInstance()
-    {
-        if (!self::$instance) {
-            self::$instance = new Authentication;
-        }
-
-        return self::$instance;
-    }
 
     public function choose(array $mechanisms, array $channelBindings = [])
     {
@@ -33,10 +24,9 @@ class Authentication
             if (in_array($choice, $mechanisms)) {
                 $this->_type = $choice;
 
-                $session = Session::instance();
                 $this->_mechanism = SASL::fromString($this->_type)->mechanism([
-                    'authcid'  => $session->get('username'),
-                    'secret'   => $session->get('password'),
+                    'authcid'  => $this->username,
+                    'secret'   => $this->password,
                     'downgrade_protection' => [
                         'allowed_mechanisms'       => $mechanisms,
                         'allowed_channel_bindings' => $channelBindings
@@ -58,7 +48,7 @@ class Authentication
         return $this->_mechanism->createResponse();
     }
 
-    public function response()
+    public function response(): string
     {
         $response = base64_encode($this->getResponse());
 
@@ -67,11 +57,16 @@ class Authentication
         $auth->setAttribute('mechanism', $this->_type);
         $dom->appendChild($auth);
 
-        \writeXMPP($dom->saveXML($dom->documentElement));
+        return $dom->saveXML($dom->documentElement);
     }
 
     public function challenge($challenge)
     {
         return $this->_mechanism->createResponse($challenge);
+    }
+
+    public function clear()
+    {
+        $this->username = $this->password = null;
     }
 }

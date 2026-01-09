@@ -4,7 +4,6 @@ namespace App;
 
 use Movim\Image;
 use Movim\ImageSize;
-use Movim\Session;
 use Moxl\Xec\Action\Presence\Muc;
 use Awobaz\Compoships\Database\Eloquent\Model;
 
@@ -94,7 +93,7 @@ class Presence extends Model
         return Image::getOrCreate($this->mucjid, 120) ?? avatarPlaceholder($this->resource);
     }
 
-    public function getAffiliationTxtAttribute(): string
+    public function getAffiliationTxtAttribute(): ?string
     {
         if (array_key_exists($this->mucaffiliation, getPresenceAffiliations())) {
             return getPresenceAffiliations()[$this->mucaffiliation];
@@ -160,7 +159,7 @@ class Presence extends Model
                     case 'http://jabber.org/protocol/muc#user':
                         $this->muc = true;
 
-                        $session = Session::instance();
+                        $session = linker($this->session_id)->session;
 
                         if ($session->get(Muc::$mucId . (string)$stanza->attributes()->from)) {
                             $this->mucjid = $user->id;

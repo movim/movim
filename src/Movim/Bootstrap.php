@@ -9,19 +9,20 @@ namespace Movim;
 define('DOCUMENT_ROOT', dirname(__FILE__, 3));
 
 use App\Configuration;
-use Illuminate\Database\Capsule\Manager as Capsule;
+use App\Session;
 
+use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
-
 use Dotenv\Dotenv;
+use Movim\i18n\Locale;
 
-use App\Session as DBSession;
-use App\User as DBUser;
+$language = null;
+$translations = [];
 
 class Bootstrap
 {
-    public function boot(?bool $dbOnly = false): ?DBSession
+    public function boot(?bool $dbOnly = false): ?Session
     {
         $this->loadHelpers();
         $this->setLogs();
@@ -41,7 +42,7 @@ class Bootstrap
         //Check if vital system need is OK
         $this->checkSystem();
         $session = $this->checkSession();
-        $this->loadLanguage();
+        $this->loadLanguage($session);
 
         return $session;
     }
@@ -196,22 +197,22 @@ class Bootstrap
     /**
      * Loads up the language, either from the User or default.
      */
-    public function loadLanguage()
+    public function loadLanguage(?Session $session)
     {
-        $l = \Movim\i18n\Locale::start();
-        $lang = DBUser::me()?->language;
+        $locale = Locale::start();
 
-        if (isset($lang)) {
-            $l->load($lang);
-        } elseif (getenv('language') != false) {
-            $l->detect(getenv('language'));
-            $l->loadPo();
+        global $translations;
+        global $language;
+
+        if ($session?->user->language) {
+            $language = $session->user->language;
         } elseif (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-            $l->detect();
-            $l->loadPo();
+            $language = $locale->detect($_SERVER['HTTP_ACCEPT_LANGUAGE']);
         } else {
-            $l->load(Configuration::get()->locale);
+            $language = Configuration::get()->locale;
         }
+
+        $translations = $locale->load($language);
     }
 
     private function setLogs()
@@ -221,11 +222,11 @@ class Bootstrap
         register_shutdown_function([$this, 'fatalErrorShutdownHandler']);
     }
 
-    private function checkSession(): ?DBSession
+    private function checkSession(): ?Session
     {
         if (is_string(SESSION_ID)) {
             $process = (bool)requestAPI('exists', post: ['sid' => SESSION_ID]);
-            $session = DBSession::find(SESSION_ID);
+            $session = Session::find(SESSION_ID);
 
             if ($session) {
                 $session->loadTimezone();
@@ -236,7 +237,7 @@ class Bootstrap
                     return null;
                 }
 
-                $session->loadMemory();
+                //$session->loadMemory();
 
                 return $session;
             } elseif ($process) {

@@ -4,7 +4,6 @@ namespace App\Widgets\ContactHeader;
 
 use App\Post;
 use App\Widgets\Chats\Chats;
-use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Pubsub\Subscribe;
@@ -75,7 +74,7 @@ class ContactHeader extends Base
         $view->assign('contact', $this->me->session->contacts()->where('jid', $jid)->first());
         $view->assign('groups', $this->me->session->contacts()->select('group')->groupBy('group')->pluck('group')->toArray());
 
-        Dialog::fill($view->draw('_contactheader_edit'));
+        $this->dialog($view->draw('_contactheader_edit'));
     }
 
     public function ajaxEditSubmit($form)
@@ -93,7 +92,7 @@ class ContactHeader extends Base
             return;
         }
 
-        $c = new Chats($this->me);
+        $c = new Chats($this->me, sessionId: $this->sessionId);
         $c->ajaxOpen($jid, andShow: true);
 
         $this->rpc('MovimUtils.redirect', $this->route('chat', $jid));

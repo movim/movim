@@ -2,7 +2,6 @@
 
 namespace App\Widgets\Avatar;
 
-use App\Widgets\Dialog\Dialog;
 use Movim\Image;
 use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Action\Avatar\Set;
@@ -60,14 +59,14 @@ class Avatar extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('me', \App\Contact::firstOrNew(['id' => $this->me->id]));
-        Dialog::fill($view->draw('_avatar_form'));
+        $this->dialog($view->draw('_avatar_form'));
     }
 
     public function ajaxGetBannerForm()
     {
         $view = $this->tpl();
         $view->assign('me', \App\Contact::firstOrNew(['id' => $this->me->id]));
-        Dialog::fill($view->draw('_avatar_banner_form'));
+        $this->dialog($view->draw('_avatar_banner_form'));
     }
 
     public function ajaxGetAvatar()

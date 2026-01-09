@@ -14,11 +14,11 @@ class Carbons extends Payload
         if ($parentfrom == $this->me->id) {
             if ($message->retract
              && $message->retract->attributes()->xmlns == 'urn:xmpp:message-retract:1') {
-                $retracted = new Retracted($this->me);
+                $retracted = new Retracted($this->me, sessionId: $this->sessionId);
                 $retracted->handle($message->retract, $message);
             } elseif ($message->invite
              && $message->invite->attributes()->xmlns == 'urn:xmpp:call-invites:0') {
-                $callInvite = new CallInvitePropose($this->me);
+                $callInvite = new CallInvitePropose($this->me, sessionId: $this->sessionId);
                 $callInvite->handle($message->invite, $message, carbon: true);
             } elseif ($message->body || $message->subject
             || ($message->reactions && $message->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0')) {
@@ -39,7 +39,7 @@ class Carbons extends Payload
                 $this->deliver();
             } elseif ($message->displayed) {
                 // Another client just displayed the message
-                $displayed = new Displayed($this->me);
+                $displayed = new Displayed($this->me, sessionId: $this->sessionId);
                 $displayed->handle($message->displayed, $message);
             } elseif (count($jingleMessages = $stanza->xpath('//*[@xmlns="urn:xmpp:jingle-message:0"]')) >= 1) {
                 $callto = bareJid((string)$message->attributes()->to);
@@ -48,7 +48,7 @@ class Carbons extends Payload
                     // We get carbons for calls other clients make as well as calls other clients receive
                     // So make sure we only ring when we see a call _to_ us
                     // Or with no "to", which means from ourselves to ourselves, like another client's <accept>
-                    (new Handler($this->me))->handleNode($jingleMessages[0], $message);
+                    (new Handler($this->me, sessionId: $this->sessionId))->handleNode($jingleMessages[0], $message);
                 }
             }
         }

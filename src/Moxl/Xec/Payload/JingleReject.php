@@ -3,7 +3,6 @@
 namespace Moxl\Xec\Payload;
 
 use App\Message;
-use Movim\CurrentCall;
 
 class JingleReject extends Payload
 {

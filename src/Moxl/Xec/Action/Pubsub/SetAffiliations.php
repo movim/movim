@@ -19,7 +19,7 @@ class SetAffiliations extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $ga = new GetAffiliations($this->me);
+        $ga = new GetAffiliations($this->me, sessionId: $this->sessionId);
         $ga->setTo($this->_to)
            ->setNode($this->_node)
            ->request();

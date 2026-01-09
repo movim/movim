@@ -13,26 +13,26 @@ class Drawer extends Base
         $this->addcss('drawer.css');
     }
 
-    public static function fill(string $key, $html = '', bool $actions = false, bool $tiny = false)
+    public function fill(string $key, $html = '', bool $actions = false, bool $tiny = false)
     {
-        RPC::call('MovimTpl.fill', '#drawer', $html);
-        RPC::call('MovimUtils.removeClass', 'body > nav', 'active');
+        (new RPC(user: $this->me, sessionId: $this->sessionId))->call('MovimTpl.fill', '#drawer', $html);
+        (new RPC(user: $this->me, sessionId: $this->sessionId))->call('MovimUtils.removeClass', 'body > nav', 'active');
 
         if ($actions) {
-            RPC::call('MovimUtils.addClass', '#drawer', 'actions');
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call('MovimUtils.addClass', '#drawer', 'actions');
         }
 
         if ($tiny) {
-            RPC::call('MovimUtils.addClass', '#drawer', 'tiny');
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call('MovimUtils.addClass', '#drawer', 'tiny');
         }
 
-        RPC::call('Drawer.open', $key);
+        (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Drawer.open', $key);
     }
 
     public function ajaxClear()
     {
-        RPC::call('MovimTpl.fill', '#drawer', '');
-        RPC::call('MovimUtils.removeClass', '#drawer', 'actions');
-        RPC::call('MovimUtils.removeClass', '#drawer', 'tiny');
+        (new RPC(user: $this->me, sessionId: $this->sessionId))->call('MovimTpl.fill', '#drawer', '');
+        (new RPC(user: $this->me, sessionId: $this->sessionId))->call('MovimUtils.removeClass', '#drawer', 'actions');
+        (new RPC(user: $this->me, sessionId: $this->sessionId))->call('MovimUtils.removeClass', '#drawer', 'tiny');
     }
 }

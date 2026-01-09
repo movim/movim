@@ -3,7 +3,6 @@
 namespace Moxl\Xec\Action\Ping;
 
 use App\Widgets\Rooms\Rooms as WidgetRooms;
-use Movim\ChatroomPings;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Ping;
 use SimpleXMLElement;
@@ -25,11 +24,11 @@ class Room extends Action
 
     public function handle(?SimpleXMLElement $stanza = null, ?SimpleXMLElement $parent = null)
     {
-        ChatroomPings::getInstance($this->me)->touch($this->_room);
+        linker($this->sessionId)->chatroomPings->touch($this->_room);
     }
 
     public function error(string $errorId, ?string $message = null)
     {
-        (new WidgetRooms($this->me))->ajaxExit($this->_room);
+        (new WidgetRooms($this->me, sessionId: $this->sessionId))->ajaxExit($this->_room);
     }
 }

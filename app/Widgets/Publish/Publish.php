@@ -2,25 +2,22 @@
 
 namespace App\Widgets\Publish;
 
-use Moxl\Xec\Action\Pubsub\PostPublish;
-use Moxl\Xec\Action\Microblog\CommentCreateNode;
-use Moxl\Xec\Action\Pubsub\GetConfig;
-use Moxl\Xec\Action\Pubsub\Subscribe;
-
-use Movim\Widget\Base;
-use Movim\Session;
-
-use League\CommonMark\GithubFlavoredMarkdownConverter;
-use Respect\Validation\Validator;
-
 use App\Draft;
 use App\DraftEmbed;
 use App\Post as AppPost;
 use App\Upload;
-use App\Widgets\Dialog\Dialog;
-use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post;
+
+use League\CommonMark\GithubFlavoredMarkdownConverter;
+use Respect\Validation\Validator;
+
+use Movim\Widget\Base;
+
+use Moxl\Xec\Action\Microblog\CommentCreateNode;
+use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Action\Pubsub\GetItem;
+use Moxl\Xec\Action\Pubsub\PostPublish;
+use Moxl\Xec\Action\Pubsub\Subscribe;
 use Moxl\Xec\Payload\Packet;
 
 class Publish extends Base
@@ -141,7 +138,7 @@ class Publish extends Base
             $view->assign('title', $draft->title);
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
-            Drawer::fill('publish_preview', $view->draw('_publish_preview'), true);
+            $this->drawer('publish_preview', $view->draw('_publish_preview'), true);
         } else {
             $this->toast($this->__('publish.no_title'));
         }
@@ -288,7 +285,7 @@ class Publish extends Base
     public function ajaxLink()
     {
         $view = $this->tpl();
-        Dialog::fill($view->draw('_publish_link'));
+        $this->dialog($view->draw('_publish_link'));
     }
 
     public function ajaxAddUpload(int $draftId, string $uploadId)
@@ -330,7 +327,7 @@ class Publish extends Base
 
     public function ajaxTryResolveShareUrl($id)
     {
-        $session = Session::instance();
+        $session = linker($this->sessionId)->session;
         $shareUrl = $session->get('share_url');
 
         if ($shareUrl) {
@@ -453,7 +450,7 @@ class Publish extends Base
             if ($embed) {
                 $view = $this->tpl();
                 $view->assign('embed', $embed);
-                Drawer::fill('publish_images', $view->draw('_publish_images'), true);
+                $this->drawer('publish_images', $view->draw('_publish_images'), true);
             }
         }
     }
@@ -551,7 +548,7 @@ class Publish extends Base
         $draft->refresh();
 
         if ($draft->reply) {
-            $view->assign('replyblock', (new Post($this->me))->prepareTicket($draft->reply));
+            $view->assign('replyblock', (new Post($this->me, sessionId: $this->sessionId))->prepareTicket($draft->reply));
         }
 
         $view->assign('type', $type);

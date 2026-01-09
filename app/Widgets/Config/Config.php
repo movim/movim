@@ -5,7 +5,6 @@ namespace App\Widgets\Config;
 use App\Post;
 use App\User;
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Presence\Presence;
 use Movim\i18n\Locale;
 use Movim\Widget\Base;
 
@@ -34,10 +33,7 @@ class Config extends Base
     public function prepareConfigForm()
     {
         $view = $this->tpl();
-
-        $l = Locale::start();
-
-        $view->assign('languages', $l->getList());
+        $view->assign('languages', Locale::getList());
         $view->assign('accent_colors', User::ACCENT_COLORS);
         $view->assign('configuration', $this->me);
 
@@ -50,6 +46,8 @@ class Config extends Base
         $this->me->save();
 
         $this->refreshConfig();
+
+        linker($this->sessionId)->locale->loadTranslations();
 
         $this->toast($this->__('config.updated'));
     }
@@ -140,7 +138,7 @@ class Config extends Base
     {
         $view = $this->tpl();
         $view->assign('me', $this->me);
-        Dialog::fill($view->draw('_config_nickname'));
+        $this->dialog($view->draw('_config_nickname'));
     }
 
     public function ajaxSaveNickname(string $nickname)
@@ -155,7 +153,7 @@ class Config extends Base
             $this->me->save();
             $this->refreshConfig();
 
-            (new Dialog($this->me))->ajaxClear();
+            (new Dialog($this->me, sessionId: $this->sessionId))->ajaxClear();
             $this->toast($this->__('profile.nickname_saved'));
         } else {
             $this->toast($this->__('profile.nickname_error'));

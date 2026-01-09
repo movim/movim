@@ -2,8 +2,6 @@
 
 namespace Moxl\Stanza;
 
-use Movim\Session;
-
 class Ping
 {
     public static function entity()

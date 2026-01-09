@@ -3,7 +3,6 @@
 namespace App\Widgets\Onboarding;
 
 use Movim\Widget\Base;
-use App\Widgets\Dialog\Dialog;
 
 class Onboarding extends Base
 {
@@ -19,7 +18,7 @@ class Onboarding extends Base
         $this->rpc('Onboarding.setPublic');
 
         if ($this->me->public === null) {
-            Dialog::fill($tpl->draw('_onboarding_public'));
+            $this->dialog($tpl->draw('_onboarding_public'));
         }
     }
 

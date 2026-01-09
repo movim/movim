@@ -68,7 +68,7 @@ class CommentPublish extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $g = new GetItem($this->me);
+        $g = new GetItem($this->me, sessionId: $this->sessionId);
         $g->setTo($this->_to)
             ->setNode($this->_node)
             ->setId($this->_atom->id)

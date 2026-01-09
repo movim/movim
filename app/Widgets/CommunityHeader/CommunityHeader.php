@@ -3,7 +3,6 @@
 namespace App\Widgets\CommunityHeader;
 
 use App\Post;
-use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Disco\Request;
@@ -22,8 +21,8 @@ class CommunityHeader extends Base
         $this->registerEvent('pubsub_subscribe_handle', 'onSubscribed');
         $this->registerEvent('pubsub_subscribe_errorunsupported', 'onSubscriptionUnsupported');
         $this->registerEvent('pubsubsubscription_remove_handle', 'onUnsubscribed');
-        $this->registerEvent('pubsub_testpostpublish_handle', 'tonTestPublish');
-        $this->registerEvent('pubsub_testpostpublish_error', 'tonTestPublishError');
+        $this->registerEvent('pubsub_testpostpublish_handle', 'onTestPublish');
+        $this->registerEvent('pubsub_testpostpublish_error', 'onTestPublishError');
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved', 'community');
 
         $this->addjs('communityheader.js');
@@ -43,7 +42,7 @@ class CommunityHeader extends Base
         $this->rpc('CommunityHeader.getMetadata');
     }
 
-    public function tonTestPublish(Packet $packet)
+    public function onTestPublish(Packet $packet)
     {
         $this->rpc('MovimUtils.redirect', $this->route(
             'publish',
@@ -51,7 +50,7 @@ class CommunityHeader extends Base
         ));
     }
 
-    public function tonTestPublishError(Packet $packet)
+    public function onTestPublishError(Packet $packet)
     {
         $this->toast($this->__('publish.no_publication'));
     }
@@ -108,7 +107,7 @@ class CommunityHeader extends Base
             ->where('node', $node)
             ->first());
 
-        Dialog::fill($view->draw('_communityheader_subscribe'));
+        $this->dialog($view->draw('_communityheader_subscribe'));
     }
 
     public function ajaxSubscribe($form, $origin, $node)
@@ -147,7 +146,7 @@ class CommunityHeader extends Base
             ->where('node', $node)
             ->first());
 
-        Dialog::fill($view->draw('_communityheader_unsubscribe'));
+        $this->dialog($view->draw('_communityheader_unsubscribe'));
     }
 
     public function ajaxUnsubscribe($origin, $node)

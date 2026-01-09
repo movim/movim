@@ -5,7 +5,6 @@ namespace App\Widgets\StoriesViewer;
 use App\MessageFile;
 use App\Post;
 use App\Widgets\Chat\Chat;
-use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Pubsub\PostDelete;
 
@@ -60,7 +59,7 @@ class StoriesViewer extends Base
             $view = $this->tpl();
             $view->assign('post', $post);
 
-            Dialog::fill($view->draw('_storiesviewer_delete'));
+            $this->dialog($view->draw('_storiesviewer_delete'));
         }
     }
 
@@ -88,7 +87,7 @@ class StoriesViewer extends Base
         $file->type = 'xmpp/uri';
         $file->url = $post->getRef();
 
-        (new Chat($this->me))->sendMessage($post->server, $comment, file: $file);
+        (new Chat($this->me, sessionId: $this->sessionId))->sendMessage($post->server, $comment, file: $file);
 
         $this->toast($this->__('post.comment_published'));
     }

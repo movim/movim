@@ -4,7 +4,6 @@ namespace Moxl\Stanza;
 
 use App\User;
 use DOMElement;
-use Movim\Session;
 
 class Presence
 {
@@ -24,8 +23,6 @@ class Presence
         ?DOMElement $muji = null,
         $last = 0
     ) {
-        $session = Session::instance();
-
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElementNS('jabber:client', 'presence');
         $dom->appendChild($root);
@@ -34,7 +31,7 @@ class Presence
             $root->setAttribute('from', $me->id . '/' . $me->session->resource);
         }
 
-        $root->setAttribute('id', $session->get('id'));
+        $root->setAttribute('id', linker($me->session->id)->session->get('id'));
 
         if ($to) {
             $root->setAttribute('to', $to);

@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Movim\Session as MemorySession;
-
 use Awobaz\Compoships\Database\Eloquent\Model;
 use Illuminate\Database\Capsule\Manager as DB;
 
@@ -128,10 +126,6 @@ class Session extends Model
         $this->resource    = 'movim' . \generateKey();
         $this->hash        = password_hash(Session::hashSession($this->username, $password, $this->host),  PASSWORD_DEFAULT);
         $this->active      = false;
-
-        // TODO Cleanup
-        $session = MemorySession::instance();
-        $session->set('password', $password);
     }
 
     public function loadTimezone()
@@ -184,7 +178,7 @@ class Session extends Model
 
     public function loadMemory()
     {
-        $session = MemorySession::instance();
+        $session = linker($this->id)->session;
         $session->set('jid', $this->user_id);
         $session->set('host', $this->host);
         $session->set('username', $this->username);

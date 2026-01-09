@@ -7,13 +7,18 @@
 namespace Movim\Widget;
 
 use App\User;
+use App\Widgets\Dialog\Dialog;
+use App\Widgets\Drawer\Drawer;
 use App\Widgets\Notif\Notif;
-use Rain\Tpl;
+
 use Movim\Controller\Ajax;
+use Movim\Daemon\Linker\CurrentCall;
 use Movim\Template\Partial;
 
-use Illuminate\Database\Capsule\Manager as DB;
 use Moxl\Xec\Action;
+
+use Illuminate\Database\Capsule\Manager as DB;
+use Rain\Tpl;
 
 class Base
 {
@@ -37,8 +42,12 @@ class Base
     public $image;
     public $description;
 
-    public function __construct(?User $user, bool $light = false, ?string $view = null)
-    {
+    public function __construct(
+        ?User $user,
+        bool $light = false,
+        ?string $view = null,
+        public ?string $sessionId = null
+    ) {
         if ($view != null) {
             $this->_view = $view;
         }
@@ -105,23 +114,48 @@ class Base
 
     public function __(...$args)
     {
-        return __(...$args);
-    }
+        if ($this->sessionId) {
+            $args = func_get_args();
+            $string = array_shift($args);
+            return linker($this->sessionId)->locale->translate($string, $args);
+        }
 
-    public function ___(...$args)
-    {
-        echo call_user_func_array([&$this, '__'], $args);
+        return __(...$args);
     }
 
     public function xmpp(Action $action)
     {
+        $action->attachSession($this->sessionId);
         $action->attachUser($this->me);
         return $action;
     }
 
-    public function notif(...$args)
+    public function notif(?string $rpcCall = null, ...$args)
     {
-        Notif::append($this->me, ...$args);
+        $notif = new Notif($this->me, sessionId: $this->sessionId);
+
+        if ($rpcCall) {
+            $notif->rpcCall($rpcCall);
+        }
+
+        $notif->append(...$args);
+    }
+
+    public function currentCall(): ?CurrentCall
+    {
+        return $this->sessionId
+            ? linker($this->sessionId)?->currentCall
+            : null;
+    }
+
+    public function dialog(...$args)
+    {
+        (new Dialog($this->me))->fill(...$args);
+    }
+
+    public function drawer(...$args)
+    {
+        (new Drawer($this->me))->fill(...$args);
     }
 
     public function route(...$args): ?string
@@ -153,11 +187,13 @@ class Base
             }
 
             writeTemplater($payload);
-
             return;
         }
 
-        \Movim\RPC::call($funcname, ...$args);
+        (new \Movim\RPC(
+            user: $this->me,
+            sessionId: $this->sessionId
+        ))->call($funcname, ...$args);
     }
 
     public function enableUseTemplater()
@@ -208,7 +244,7 @@ class Base
     {
         $view = $this->tpl();
 
-        foreach($assign as $key => $value) {
+        foreach ($assign as $key => $value) {
             $view->assign($key, $value);
         }
 

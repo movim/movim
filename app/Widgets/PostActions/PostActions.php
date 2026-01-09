@@ -3,7 +3,6 @@
 namespace App\Widgets\PostActions;
 
 use App\Post as AppPost;
-use App\Widgets\Dialog\Dialog;
 use App\Widgets\Post\Post;
 use Movim\Widget\Base;
 
@@ -49,7 +48,7 @@ class PostActions extends Base
             return;
         }
 
-        $post = new Post($this->me);
+        $post = new Post($this->me, sessionId: $this->sessionId);
         $post->publishComment('♥', $p->server, $p->node, $p->nodeid);
     }
 
@@ -65,7 +64,7 @@ class PostActions extends Base
 
             $view->assign('post', $post);
 
-            Dialog::fill($view->draw('_postactions_delete'));
+            $this->dialog($view->draw('_postactions_delete'));
         }
     }
 

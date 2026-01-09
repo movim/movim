@@ -4,43 +4,31 @@ namespace Moxl\Stanza;
 
 use App\MessageFile;
 use App\MessageOmemoHeader;
-use Movim\Session;
 
 class Message
 {
     public static function factory(
         string $to,
-        ?string $type = null,
-        ?string $id = null,
-        ?string $receipts = null
+        string $type,
+        string $messageId,
     ): \DOMDocument {
-        $session = Session::instance();
-
         $dom = new \DOMDocument('1.0', 'UTF-8');
+
         $root = $dom->createElementNS('jabber:client', 'message');
-        $dom->appendChild($root);
         $root->setAttribute('to', str_replace(' ', '\40', $to));
-
-        if ($type != null) {
-            $root->setAttribute('type', $type);
-        }
-
-        if ($receipts != null && in_array($receipts, ['received', 'displayed'])) {
-            $root->setAttribute('id', generateUUID());
-        } elseif ($id != null) {
-            $root->setAttribute('id', $id);
-        } else {
-            $root->setAttribute('id', $session->get('id'));
-        }
+        $root->setAttribute('type', $type);
+        $root->setAttribute('id', $messageId);
+        $dom->appendChild($root);
 
         return $dom;
     }
 
     public static function maker(
         string $to,
+        string $messageId,
         ?string $content = null,
         ?string $html = null,
-        ?string $type = null,
+        ?string $type = 'chat',
         ?string $chatstates = null,
         ?string $receipts = null,
         ?string $id = null,
@@ -56,7 +44,7 @@ class Message
         $replyQuotedBodyLength = 0,
         ?MessageOmemoHeader $messageOMEMO = null
     ) {
-        $dom = Message::factory($to, $type, $id, $receipts);
+        $dom = Message::factory($to, $type, $messageId);
 
         /**
          * https://xmpp.org/extensions/xep-0045.html#privatemessage

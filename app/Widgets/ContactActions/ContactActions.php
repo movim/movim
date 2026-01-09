@@ -8,9 +8,7 @@ use App\Roster;
 use App\Widgets\AdHoc\AdHoc;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
-use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post;
-use Movim\CurrentCall;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Blocking\Block;
 use Moxl\Xec\Action\Blocking\Unblock;
@@ -75,10 +73,10 @@ class ContactActions extends Base
         }
 
         $tpl->assign('jid', $jid);
-        $tpl->assign('incall', CurrentCall::getInstance()->isStarted());
+        $tpl->assign('incall', $this->currentCall()->isStarted());
         $tpl->assign('clienttype', getClientTypes());
 
-        Drawer::fill('contact_drawer', $tpl->draw('_contactactions_drawer'));
+        $this->drawer('contact_drawer', $tpl->draw('_contactactions_drawer'));
         $this->rpc('Tabs.create');
 
         if ($picturesCount > 0) {
@@ -93,7 +91,7 @@ class ContactActions extends Base
             $this->rpc('ContactActions.getDrawerFingerprints', $jid);
         }
 
-        (new AdHoc($this->me))->ajaxGet($jid);
+        (new AdHoc($this->me, sessionId: $this->sessionId))->ajaxGet($jid);
     }
 
     public function ajaxGetDrawerFingerprints(string $jid, array $fingerprints)
@@ -133,7 +131,7 @@ class ContactActions extends Base
         if ($muc) {
             $this->rpc('MovimUtils.reload', $this->route('chat', [$jid, 'room']));
         } else {
-            $c = new Chats($this->me);
+            $c = new Chats($this->me, sessionId: $this->sessionId);
             $c->ajaxOpen($jid);
 
             $this->rpc('MovimUtils.reload', $this->route('chat', $jid));
@@ -213,11 +211,11 @@ class ContactActions extends Base
 
     public function prepareEmbedUrl(Message $message)
     {
-        return (new Chat($this->me))->prepareEmbed($message->resolvedUrl, $message);
+        return (new Chat($this->me, sessionId: $this->sessionId))->prepareEmbed($message->resolvedUrl, $message);
     }
 
     public function prepareTicket(\App\Post $post)
     {
-        return (new Post($this->me))->prepareTicket($post);
+        return (new Post($this->me, sessionId: $this->sessionId))->prepareTicket($post);
     }
 }

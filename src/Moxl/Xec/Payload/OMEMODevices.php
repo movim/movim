@@ -26,7 +26,7 @@ class OMEMODevices extends Payload
             // Refresh our own devices
             if ($from == $this->me->id) {
                 foreach ($devicesIds as $deviceId) {
-                    $gb = new GetBundle($this->me);
+                    $gb = new GetBundle($this->me, sessionId: $this->sessionId);
                     $gb->setTo($from)
                         ->setId($deviceId)
                         ->request();

@@ -4,7 +4,6 @@ namespace App\Widgets\EmojisConfig;
 
 use App\Emoji;
 use App\EmojisPack;
-use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Base;
 use Respect\Validation\Validator;
 
@@ -32,7 +31,7 @@ class EmojisConfig extends Base
             $view = $this->tpl();
             $view->assign('favorite', $this->me->emojis()->where('id', $emojiId)->first());
             $view->assign('emoji', $emoji);
-            Dialog::fill($view->draw('_emojisconfig_add_edit'));
+            $this->dialog($view->draw('_emojisconfig_add_edit'));
         }
     }
 

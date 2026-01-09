@@ -4,29 +4,15 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-namespace Movim;
+namespace Movim\Daemon\Linker;
 
 use DateInterval;
 use Psr\SimpleCache\CacheInterface;
 
 class Session implements CacheInterface
 {
-    protected static $instance;
-    protected static $sid = null;
     protected $values = [];
     private $seconds = 60; // Amount of seconds where the removable values are kept
-
-    /**
-     * Gets a session handle.
-     */
-    public static function instance()
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
 
     public function get(string $key, mixed $default = null): mixed
     {
@@ -110,18 +96,5 @@ class Session implements CacheInterface
                 unset($this->values[$key]);
             }
         }
-    }
-
-    /**
-     * Deletes all this session container (not the session!)
-     */
-    public static function dispose(): bool
-    {
-        if (isset(self::$instance)) {
-            self::$instance = null;
-            return true;
-        }
-
-        return false;
     }
 }

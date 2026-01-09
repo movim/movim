@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Movim\Daemon\Linker;
 
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -11,14 +11,14 @@ use Moxl\Xec\Action\Vcard\Get;
 use App\Presence;
 use App\Info;
 use App\Contact;
+use App\Hat;
+use App\User;
 use Movim\Scheduler;
 
 class PresenceBuffer
 {
-    protected static $instance;
-
-    private function __construct(
-        private ?User $me = null,
+    public function __construct(
+        public User $user,
         private ?Collection $_models = null,
         private ?Collection  $_hats = null,
         private ?Collection  $_calls = null
@@ -26,17 +26,6 @@ class PresenceBuffer
         $this->_models = collect();
         $this->_hats = collect();
         $this->_calls = collect();
-    }
-
-    public static function getInstance(?User $me = null)
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new self($me);
-        }
-
-        self::$instance->me = $me;
-
-        return self::$instance;
     }
 
     public function save()
@@ -152,7 +141,7 @@ class PresenceBuffer
 
                 // Request the others
                 $nodes->each(function ($to, $node) {
-                    $d = new Request($this->me);
+                    $d = new Request($this->user, sessionId: $this->user->session->id);
                     $d->setTo($to)
                         ->setNode($node)
                         ->request();
@@ -171,9 +160,9 @@ class PresenceBuffer
                     );
 
                     $avatarHashes->each(function ($jid, $avatarhash) {
-                        if ($jid != $this->me->id) {
+                        if ($jid != $this->user->id) {
                             Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
-                                $r = new Get($this->me);
+                                $r = new Get($this->user, sessionId: $this->user->session->id);
                                 $r->setAvatarhash($avatarhash)
                                     ->setTo($jid)
                                     ->request();

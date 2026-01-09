@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-namespace Movim;
+namespace Movim\Daemon\Linker;
 
 use App\User;
 use Moxl\Xec\Action\Ping\Room;
@@ -15,7 +15,6 @@ use App\Widgets\Rooms\Rooms as WidgetRooms;
  */
 class ChatroomPings
 {
-    protected static $instance;
     private $_chatrooms = [];
     private $_chatroomsTimeout = [];
     private $_pingIn = 5 * 60;
@@ -23,15 +22,6 @@ class ChatroomPings
 
     public function __construct(private ?User $user = null)
     {
-    }
-
-    public static function getInstance(?User $user = null)
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new self($user);
-        }
-
-        return self::$instance;
     }
 
     public function has(string $from): bool
@@ -51,7 +41,7 @@ class ChatroomPings
                 ->first()?->presence;
 
             if ($presence) {
-                $pingRoom = new Room($this->user);
+                $pingRoom = new Room($this->user, sessionId: $this->user->session->id);
                 $pingRoom->setResource($from . '/' . $presence->resource)
                          ->setRoom($from)
                          ->request();
@@ -59,7 +49,7 @@ class ChatroomPings
         });
 
         $this->_chatroomsTimeout[$from] = $loop->addTimer($this->_pongTimeout, function () use ($from) {
-            (new WidgetRooms($this->user))->ajaxExit($from);
+            (new WidgetRooms($this->user, sessionId: $this->user->session->id))->ajaxExit($from);
         });
     }
 

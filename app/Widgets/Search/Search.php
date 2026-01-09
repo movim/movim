@@ -29,7 +29,7 @@ class Search extends Base
         $view = $this->tpl();
 
         $view->assign('chatroomactions', $chatroomActions);
-        Drawer::fill('search', $view->draw('_search'), true);
+        $this->drawer('search', $view->draw('_search'), true);
 
         $this->rpc('Search.init');
     }
@@ -153,13 +153,13 @@ class Search extends Base
 
     public function ajaxChat(string $jid, bool $muc = false)
     {
-        $contact = new ContactActions($this->me);
+        $contact = new ContactActions($this->me, sessionId: $this->sessionId);
         $contact->ajaxChat($jid, $muc);
     }
 
     public function prepareTicket(Post $post)
     {
-        return (new WidgetPost($this->me))->prepareTicket($post);
+        return (new WidgetPost($this->me, sessionId: $this->sessionId))->prepareTicket($post);
     }
 
     public function prepareUsers($users)

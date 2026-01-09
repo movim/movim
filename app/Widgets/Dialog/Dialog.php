@@ -12,22 +12,22 @@ class Dialog extends Base
         $this->addjs('dialog.js');
     }
 
-    public static function fill($html = '', $scroll = false, $locked = false)
+    public function fill($html = '', $scroll = false, $locked = false)
     {
-        RPC::call('MovimTpl.fill', '#dialog', $html);
+        (new RPC(user: $this->me, sessionId: $this->sessionId))->call('MovimTpl.fill', '#dialog', $html);
 
         if ($scroll) {
-            RPC::call('Dialog.addScroll');
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Dialog.addScroll');
         }
 
         if ($locked) {
-            RPC::call('Dialog.addLocked');
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Dialog.addLocked');
         }
     }
 
     public function ajaxClear()
     {
-        RPC::call('MovimUtils.removeClass', '#dialog', 'scroll');
-        RPC::call('MovimTpl.fill', '#dialog', '');
+        (new RPC(user: $this->me, sessionId: $this->sessionId))->call('MovimUtils.removeClass', '#dialog', 'scroll');
+        (new RPC(user: $this->me, sessionId: $this->sessionId))->call('MovimTpl.fill', '#dialog', '');
     }
 }

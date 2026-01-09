@@ -31,8 +31,6 @@ class AdminMain extends \Movim\Widget\Base
 
     public function display()
     {
-        $l = Locale::start();
-
         $this->view->assign('configuration', Configuration::firstOrNew());
         $this->view->assign('logs', [
             0 => $this->__('log.empty'),
@@ -40,7 +38,7 @@ class AdminMain extends \Movim\Widget\Base
             2 => $this->__('log.syslog_files')
         ]);
 
-        $this->view->assign('langs', $l->getList());
+        $this->view->assign('langs', Locale::getList());
         $this->view->assign('countries', getCountries());
     }
 }

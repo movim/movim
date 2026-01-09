@@ -2,7 +2,6 @@
 
 namespace App\Widgets\CommunitiesServers;
 
-use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Disco\Request;
@@ -47,7 +46,7 @@ class CommunitiesServers extends Base
     public function ajaxDiscoverServer()
     {
         $view = $this->tpl();
-        Dialog::fill($view->draw('_communitiesservers_discover_server'));
+        $this->dialog($view->draw('_communitiesservers_discover_server'));
     }
 
     public function ajaxDisco($form)

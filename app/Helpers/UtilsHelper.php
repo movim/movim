@@ -1,6 +1,5 @@
 <?php
 
-use App\User;
 use App\Workers\AvatarHandler\AvatarHandler;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
@@ -9,12 +8,12 @@ use Monolog\Logger;
 use Movim\Image;
 use Movim\ImageSize;
 use Movim\Widget\Base;
+use Movim\Daemon\Linker;
 use Moxl\Xec\Payload\Packet;
 use React\Http\Message\Response;
 use React\Promise\PromiseInterface;
 
 use function React\Async\await;
-
 
 /**
  * Log an error
@@ -60,6 +59,15 @@ function logDebug($logs)
     } else {
         $log->debug($logs);
     }
+}
+
+/**
+ * Resolve the linker
+ */
+function linker(string $sid): ?Linker
+{
+    global $linkerManager;
+    return $linkerManager->linker($sid);
 }
 
 /**
@@ -961,10 +969,14 @@ function protectPicture($url)
 function __()
 {
     $args = func_get_args();
-    $l = Movim\i18n\Locale::start();
+    $locale = Movim\i18n\Locale::start();
 
     $string = array_shift($args);
-    return $l->translate($string, $args);
+
+    global $translations;
+    global $language;
+
+    return $locale->translate($language, $translations, $string, $args);
 }
 
 /*

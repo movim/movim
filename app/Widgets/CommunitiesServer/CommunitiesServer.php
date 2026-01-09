@@ -2,7 +2,6 @@
 
 namespace App\Widgets\CommunitiesServer;
 
-use App\Widgets\Dialog\Dialog;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Action\Pubsub\Create;
@@ -16,8 +15,8 @@ class CommunitiesServer extends \Movim\Widget\Base
     {
         $this->registerEvent('disco_items_handle', 'onDisco');
         $this->registerEvent('disco_items_error', 'onDiscoError');
-        $this->registerEvent('disco_items_errorremoteservernotfound', 'tonRemoteServerNotFound');
-        $this->registerEvent('disco_items_errorremoteservertimeout', 'tonRemoteServerNotFound');
+        $this->registerEvent('disco_items_errorremoteservernotfound', 'onRemoteServerNotFound');
+        $this->registerEvent('disco_items_errorremoteservertimeout', 'onRemoteServerNotFound');
         $this->registerEvent('disco_request_handle', 'onDiscoRequest');
         $this->registerEvent('pubsub_create_handle', 'onCreate');
         $this->registerEvent('pubsub_testcreate_handle', 'onTestCreate');
@@ -35,7 +34,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         $this->rpc('MovimUtils.reload', $this->route('community', [$origin, $node]));
     }
 
-    public function tonRemoteServerNotFound(Packet $packet)
+    public function onRemoteServerNotFound(Packet $packet)
     {
         $view = $this->tpl();
         $view->assign('server', $packet->content);
@@ -77,7 +76,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('server', $origin);
 
-        Dialog::fill($view->draw('_communitiesserver_add'));
+        $this->dialog($view->draw('_communitiesserver_add'));
     }
 
     public function onTestCreateError(Packet $packet)

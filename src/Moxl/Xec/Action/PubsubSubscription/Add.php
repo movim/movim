@@ -61,7 +61,7 @@ class Add extends Action
 
     public function errorConflict(string $errorId, ?string $message = null)
     {
-        $config = new SetConfig($this->me);
+        $config = new SetConfig($this->me, sessionId: $this->sessionId);
         $config->setNode($this->_pepnode)
                ->setData(PubsubSubscription::generateConfig($this->_pepnode))
                ->request();

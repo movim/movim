@@ -11,7 +11,7 @@ class Version extends Payload
         $to = (string)$parent->attributes()->from;
         $id = (string)$parent->attributes()->id;
 
-        $vd = new Send($this->me);
+        $vd = new Send($this->me, sessionId: $this->sessionId);
         $vd->setTo($to)
            ->setId($id)
            ->setName(ucfirst(APP_NAME))

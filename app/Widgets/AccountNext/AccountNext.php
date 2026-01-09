@@ -4,8 +4,7 @@ namespace App\Widgets\AccountNext;
 
 use Movim\Librairies\XMPPtoForm;
 use Moxl\Xec\Action\Register\Set;
-
-use Movim\Session;
+use Moxl\Xec\Action\Register\Get;
 use Moxl\Xec\Payload\Packet;
 
 class AccountNext extends \Movim\Widget\Base
@@ -85,35 +84,29 @@ class AccountNext extends \Movim\Widget\Base
         $this->rpc('MovimUtils.redirect', $this->route('account'));
     }
 
-    public function ajaxGetForm($host)
+    public function ajaxGetForm(string $host)
     {
-        global $dns;
-        $domain = $host;
+        $this->rpc('register', $host);
 
-        $dns->resolveAll('_xmpp-client._tcp.' . $host, \React\Dns\Model\Message::TYPE_SRV)
-        ->then(function ($resolved) use ($host, &$domain) {
-            $domain = $resolved[0]['target'];
-        })->always(function () use ($host, &$domain) {
-            // We create a new session or clear the old one
-            $session = Session::instance();
-            $session->set('host', $host);
-            $session->set('domain', $domain);
+        linker($this->sessionId)->writeXMPP(\Moxl\Stanza\Stream::init($host));
 
-            \Moxl\Stanza\Stream::init($host);
-        });
+        $g = $this->xmpp(new Get);
+        $g->setTo($host)->request();
     }
 
     public function ajaxRegister($form)
     {
-        if (isset($form->re_password)
-        && $form->re_password->value != $form->password->value) {
+        if (
+            isset($form->re_password)
+            && $form->re_password->value != $form->password->value
+        ) {
             $this->toast($this->__('account.password_not_same'));
             return;
         }
 
         $s = $this->xmpp(new Set);
         $s->setData(formToArray($form))
-          ->request();
+            ->request();
     }
 
     public function display()

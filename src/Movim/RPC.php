@@ -13,24 +13,25 @@ class RPC
 {
     private static $json = [];
 
-    public function __construct(private ?User $user = null)
-    {
-    }
+    public function __construct(private ?User $user = null, private ?string $sessionId = null) {}
 
-    public static function call($funcname, ...$args)
+    public function call($funcname, ...$args)
     {
-        $payload = [
-            'func' => $funcname
-        ];
+        $payload = new \stdClass;
+        $payload->func = $funcname;
 
         if (!empty($args)) {
-            $payload['p'] = $args;
+            $payload->p = $args;
         }
 
         if (php_sapi_name() != 'cli') {
             array_push(self::$json, $payload);
-        } else {
-            \writeOut($payload);
+        } else if ($this->sessionId || $this?->user?->session) {
+            global $linkerManager;
+            $linkerManager->sendWebsocket(
+                $this->sessionId ?? $this->user->session->id,
+                $payload
+            );
         }
     }
 
@@ -43,22 +44,19 @@ class RPC
     /**
      * Handles incoming requests.
      */
-    public function handleJSON($request)
+    public function handleJSON(\stdClass $request, ?string $sid = null)
     {
         if (!isset($request->w)) {
             return;
         }
 
         $wrapper = new Wrapper;
-
-        if ($this->user) {
-            $wrapper = $wrapper->setUser($this->user);
-        }
-
         $wrapper->runWidget(
-            (string)$request->w,
-            (string)$request->f,
-            isset($request->p) ? (array)$request->p : []
+            widgetName: (string)$request->w,
+            method: (string)$request->f,
+            params: isset($request->p) ? (array)$request->p : [],
+            user: $this->user,
+            sessionId: $sid
         );
     }
 }

@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class Stream
 {
-    public static function init(string $to, ?string $from = null)
+    public static function init(string $to, ?string $from = null): string
     {
         $dom = new \DOMDocument('1.0', 'utf-8');
         $stream = $dom->createElement('stream:stream', ' ');
@@ -19,13 +19,12 @@ class Stream
 
         $dom->appendChild($stream);
 
-        \writeXMPP(substr($dom->saveXML($dom->documentElement), 0, -17));
+        return substr($dom->saveXML($dom->documentElement), 0, -17);
     }
 
-    public static function end()
+    public static function end(): string
     {
-        $xml = '</stream:stream>';
-        \writeXMPP($xml);
+        return '</stream:stream>';
     }
 
     public static function startTLS()

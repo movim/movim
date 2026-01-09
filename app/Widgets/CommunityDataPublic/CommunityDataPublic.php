@@ -10,12 +10,12 @@ class CommunityDataPublic extends Base
 {
     public function prepareCard($info)
     {
-        return (new CommunityData($this->me))->prepareCard($info);
+        return (new CommunityData($this->me, sessionId: $this->sessionId))->prepareCard($info);
     }
 
     public function preparePublicSubscriptions($subscriptions)
     {
-        return (new CommunityAffiliations($this->me))->preparePublicSubscriptionsList($subscriptions);
+        return (new CommunityAffiliations($this->me, sessionId: $this->sessionId))->preparePublicSubscriptionsList($subscriptions);
     }
 
     public function display()

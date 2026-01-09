@@ -2,11 +2,8 @@
 
 namespace Moxl\Xec\Action\Presence;
 
-use App\PresenceBuffer;
 use DOMElement;
 use Illuminate\Database\Capsule\Manager as DB;
-use Movim\ChatroomPings;
-use Movim\Session;
 use Moxl\Stanza\Presence;
 use Moxl\Xec\Action;
 
@@ -27,7 +24,7 @@ class Muc extends Action
 
     public function request()
     {
-        $session = Session::instance();
+        $session = linker($this->sessionId)->session;
 
         if (empty($this->_nickname)) {
             $this->_nickname = $session->get('username');
@@ -109,7 +106,7 @@ class Muc extends Action
                 : $message->orderBy('published', 'desc');
             $message = $message->first();
 
-            $g = new \Moxl\Xec\Action\MAM\Get($this->me);
+            $g = new \Moxl\Xec\Action\MAM\Get($this->me, sessionId: $this->sessionId);
             $g->setTo($this->_to)
                 ->setLimit(500);
 
@@ -143,8 +140,8 @@ class Muc extends Action
             $this->deliver();
         }
 
-        PresenceBuffer::getInstance($this->me)->append($presence, function () use ($presence) {
-            ChatroomPings::getInstance($this->me)->touch($presence->jid);
+        linker($this->sessionId)->presenceBuffer->append($presence, function () use ($presence) {
+            linker($this->sessionId)->chatroomPings->touch($presence->jid);
 
             if ($this->_mujiPreparing) {
                 $this->method('muji_preparing');

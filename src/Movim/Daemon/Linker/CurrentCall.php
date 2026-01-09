@@ -4,8 +4,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-namespace Movim;
+namespace Movim\Daemon\Linker;
 
+use App\User;
 use Carbon\Carbon;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;
@@ -15,19 +16,13 @@ use Moxl\Xec\Payload\Packet;
  */
 class CurrentCall
 {
-    protected static $instance;
     public ?string $jid = null;
     public ?string $id = null;
     public ?string $mujiRoom = null;
     public ?Carbon $startTime = null;
 
-    public static function getInstance()
+    public function __construct(private User $user, private string $sessionId)
     {
-        if (!isset(self::$instance)) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
     }
 
     public function start(string $jid, string $id, ?string $mujiRoom = null): bool
@@ -40,8 +35,10 @@ class CurrentCall
         $this->startTime = Carbon::now();
 
         Wrapper::getInstance()->iterate(
-            'currentcall_started',
-            (new Packet)->pack($id, $this->getBareJid())
+            key: 'currentcall_started',
+            packet: (new Packet)->pack($id, $this->getBareJid()),
+            user: $this->user,
+            sessionId: $this->sessionId
         );
 
         return true;
@@ -57,8 +54,10 @@ class CurrentCall
         $this->jid = $this->id = $this->mujiRoom = $this->startTime = null;
 
         Wrapper::getInstance()->iterate(
-            'currentcall_stopped',
-            (new Packet)->pack($id, $jid)
+            key: 'currentcall_stopped',
+            packet: (new Packet)->pack($id, $jid),
+            user: $this->user,
+            sessionId: $this->sessionId
         );
 
         return true;

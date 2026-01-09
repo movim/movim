@@ -22,7 +22,7 @@ class Roster extends Payload
             }
 
             if ((string)$stanza->item->attributes()->subscription != 'remove') {
-                $roster = DBRoster::firstOrNew(['jid' => $jid, 'session_id' => $this->me->session->id]);
+                $roster = DBRoster::firstOrNew(['jid' => $jid, 'session_id' => $this->sessionId]);
 
                 if ($roster->set($this->me, $stanza->item)) {
                     $roster->upsert();

@@ -47,7 +47,7 @@ class Front extends Base
             }
 
             if (!empty($payload)) {
-                $rpc = new RPC($this->user);
+                $rpc = new RPC(user: $this->user, sessionId: $this->user?->session?->id);
                 $rpc->handleJSON($payload->b);
                 $rpc->writeJSON();
             }

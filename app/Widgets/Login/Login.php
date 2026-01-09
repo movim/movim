@@ -3,6 +3,7 @@
 namespace App\Widgets\Login;
 
 use Moxl\Xec\Action\Storage\Get;
+use Moxl\Xec\Payload\Packet;
 
 use Respect\Validation\Validator;
 use Defuse\Crypto\Key;
@@ -13,10 +14,9 @@ use App\Configuration;
 use App\Session;
 use App\User;
 use App\Widgets\Presence\Presence;
-use Movim\Widget\Base;
 
+use Movim\Widget\Base;
 use Movim\Cookie;
-use Moxl\Xec\Payload\Packet;
 
 class Login extends Base
 {
@@ -41,12 +41,7 @@ class Login extends Base
 
     public function onStart(Packet $packet)
     {
-        //$session = Session::instance();
-
-        //if ($session->get('mechanism') != 'ANONYMOUS') {
-        // We get the configuration
         $this->xmpp(new Get)->request();
-        //}
     }
 
     public function onConnected()
@@ -61,7 +56,7 @@ class Login extends Base
 
     public function onConfig(Packet $packet)
     {
-        $p = new Presence($this->me);
+        $p = new Presence(user: $this->me, sessionId: $this->sessionId);
         $p->start();
 
         $this->rpc('MovimUtils.reloadThis');
@@ -290,12 +285,12 @@ class Login extends Base
         $s->loadTimezone();
         $s->save();
 
-        global $linker; // Todo, use a Linker Manager later
-        $linker->attachUser(User::where('id', $login)->first());
+        linker($s->id)->attachUser(User::where('id', $login)->first());
+        linker($s->id)->authentication->username = $username;
+        linker($s->id)->authentication->password = $password;
 
         // We launch the XMPP socket
         $this->rpc('register', $host);
-
-        \Moxl\Stanza\Stream::init($host, $login);
+        linker($s->id)->writeXMPP(\Moxl\Stanza\Stream::init($host, $login));
     }
 }

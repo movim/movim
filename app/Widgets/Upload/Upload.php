@@ -2,7 +2,6 @@
 
 namespace App\Widgets\Upload;
 
-use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Upload\Request;
@@ -65,7 +64,7 @@ class Upload extends Base
     {
         $view = $this->tpl();
         $view->assign('service', $this->me->session->getUploadService());
-        Dialog::fill($view->draw('_upload'));
+        $this->dialog($view->draw('_upload'));
         $this->rpc('Upload.attachEvents');
     }
 

@@ -60,7 +60,7 @@ class Stories extends Base
 
     public function ajaxOpenChat(string $jid)
     {
-        (new Chats($this->me))->ajaxOpen($jid, andShow: true);
+        (new Chats($this->me, sessionId: $this->sessionId))->ajaxOpen($jid, andShow: true);
         $this->ajaxHttpGet();
     }
 

@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-namespace Movim;
+namespace Movim\Daemon\Linker;
 
 use App\User;
 use Movim\Widget\Wrapper;
@@ -17,22 +17,10 @@ use React\EventLoop\Timer\Timer;
  */
 class ChatStates
 {
-    protected static $instance;
     private $_composing = [];
     private $_timeout = 30;
 
-    public function __construct(private ?User $user = null)
-    {
-    }
-
-    public static function getInstance(?User $user = null)
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new self($user);
-        }
-
-        return self::$instance;
-    }
+    public function __construct(private ?User $user = null) {}
 
     public function clearState(string $jid, $resource = null)
     {
@@ -93,7 +81,12 @@ class ChatStates
             $this->_composing[$jid] = $timer;
         }
 
-        Wrapper::getInstance()->iterate('chatstate', $this->getState($jid));
+        Wrapper::getInstance()->iterate(
+            'chatstate',
+            $this->getState($jid),
+            user: $this->user,
+            sessionId: $this->user->session->id
+        );
     }
 
     public function paused(string $from, string $to, bool $mucPM = false)
@@ -103,7 +96,12 @@ class ChatStates
 
         $this->clearState($jid, !$mucPM ? $explodedFrom['resource'] : null);
 
-        Wrapper::getInstance()->iterate('chatstate', $this->getState($jid));
+        Wrapper::getInstance()->iterate(
+            'chatstate',
+            $this->getState($jid),
+            user: $this->user,
+            sessionId: $this->user->session->id
+        );
     }
 
     private function resolveJid(string $from, string $to)

@@ -51,7 +51,7 @@ class Publish extends Action
 
     public function errorConflict(string $errorId, ?string $message = null)
     {
-        $config = new SetConfig($this->me);
+        $config = new SetConfig($this->me, sessionId: $this->sessionId);
         $config->setNode(Location::$node)
                ->setData(Location::$nodeConfig)
                ->request();

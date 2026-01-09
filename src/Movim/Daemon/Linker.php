@@ -3,11 +3,19 @@
 namespace Movim\Daemon;
 
 use App\User;
+
+use Movim\Daemon\Linker\ChatOwnState;
+use Movim\Daemon\Linker\ChatroomPings;
+use Movim\Daemon\Linker\ChatStates;
+use Movim\Daemon\Linker\CurrentCall;
+use Movim\Daemon\Linker\Locale;
+use Movim\Daemon\Linker\PresenceBuffer;
+use Movim\Daemon\Linker\Session;
 use Movim\RPC;
-use Movim\Session;
 use Movim\Widget\Wrapper;
+use Moxl\Authentication;
 use Moxl\Parser;
-use Ratchet\Client\WebSocket;
+
 use React\Dns\Model\Message;
 use React\Dns\Resolver\ResolverInterface;
 use React\Socket\Connection;
@@ -22,26 +30,65 @@ class Linker
     private ?HappyEyeBallsConnector $connector = null;
     private ?Connection $connection = null;
     private ?string $host = null;
-    private ?WebSocket $websocket = null;
     public ?User $user = null;
 
+    public ?PresenceBuffer $presenceBuffer = null;
+    public ?ChatOwnState $chatOwnState = null;
+    public ?CurrentCall $currentCall = null;
+    public ?ChatroomPings $chatroomPings = null;
+    public ?ChatStates $chatStates = null;
+    public ?Locale $locale = null;
+    public Authentication $authentication;
+    public Session $session;
+
+    private ?string $timestampSend = null;
+    private ?string $timestampReceive = null;
+
     public function __construct(
-        private string $sessionId,
+        private LinkerManager $linkerManager,
         private ResolverInterface $dns,
+        private string $sessionId,
+        private string $browserLocale
     ) {
         $this->parser = new Parser(
-            fn(\SimpleXMLElement $node) => (new \Moxl\Xec\Handler($this->user))->handle($node)
+            fn(\SimpleXMLElement $node) => (new \Moxl\Xec\Handler(
+                user: $this->user,
+                sessionId: $sessionId
+            ))->handle($node)
         );
-    }
 
-    public function attachWebsocket(WebSocket $websocket)
-    {
-        $this->websocket = $websocket;
+        $this->session = new Session;
+        $this->authentication = new Authentication;
+        $this->locale = new Locale($browserLocale);
+        $this->locale->loadTranslations();
+
+        // Temporary linker killer
+        global $loop;
+
+        $loop->addPeriodicTimer(5, function () {
+            if (($this->timestampSend < time() - 3600 * 24 /* 24h */ || $this->timestampReceive < time() - 60 * 30 /* 30min */)
+                && $this->connected()
+            ) {
+                $this->logout();
+            }
+        });
     }
 
     public function attachUser(User $user)
     {
         $this->user = $user;
+
+        // Presence buffer
+        $this->presenceBuffer = new PresenceBuffer($this->user);
+        global $loop;
+        $loop->addPeriodicTimer(1, fn() => $this->presenceBuffer->save());
+
+        $this->chatOwnState = new ChatOwnState($this->user);
+        $this->currentCall = new CurrentCall($this->user, $this->sessionId);
+        $this->chatroomPings = new ChatroomPings($this->user);
+        $this->chatStates = new ChatStates($this->user);
+        $this->locale->setUser($this->user);
+        $this->locale->loadTranslations();
     }
 
     public function register(string $host)
@@ -81,63 +128,66 @@ class Linker
 
     public function logout(): void
     {
-        \Moxl\Stanza\Stream::end();
+        $this->writeXMPP(\Moxl\Stanza\Stream::end());
 
         if ($this->connected()) {
             $this->connection->close();
         }
     }
 
-    public function handleJSON($request)
+    public function handleJSON(\stdClass $request, ?string $sessionId = null)
     {
-        (new RPC($this->user))->handleJSON($request);
+        (new RPC($this->user))->handleJSON($request, $sessionId);
     }
 
     public function writeXMPP($xml)
     {
-        if ($this->connection) {
+        if ($this->connection && !empty($xml)) {
+            $this->timestampSend = time();
             $this->connection->write(trim($xml));
-        }
 
-        if (config('daemon.debug')) {
-            logOut(colorize(trim($xml) . ' ', 'yellow'), '>>> XMPP sent');
+            if (config('daemon.debug')) {
+                logOut(colorize(trim($xml) . ' ', 'yellow'), type: '>>> XMPP sent', sid: $this->sessionId);
+            }
         }
+    }
+
+    function writeOut($message = null)
+    {
+        $this->linkerManager->sendWebsocket($this->sessionId, $message);
     }
 
     private function xmppBehaviour(Connection $connection)
     {
         $this->connection = $connection;
-        Wrapper::getInstance()->iterate('socket_connected');
+        Wrapper::getInstance()->iterate('socket_connected', user: $this->user, sessionId: $this->sessionId);
 
         if (config('daemon.verbose')) {
-            logOut(colorize('XMPP socket launched', 'blue'));
-            logOut(" launched : " . \humanSize(memory_get_usage()));
+            logOut(colorize('XMPP socket launched', 'yellow'), type: 'blue', sid: $this->sessionId);
         }
 
         $this->connection->on('data', function ($message) {
             if (!empty($message)) {
 
                 if (config('daemon.debug')) {
-                    logOut(colorize($message . ' ', 'yellow'), '<<< XMPP received');
+                    logOut(colorize($message . ' ', 'yellow'), type: '<<< XMPP received', sid: $this->sessionId);
                 }
 
                 if ($message == '</stream:stream>') {
                     $this->connection->close();
-                    shutdown();
+                    $this->linkerManager->closeLinker($this->sessionId);
                 } elseif (
                     $message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
                     || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>'
                 ) {
                     $this->enableEncryption($this->connection)->then(
                         function () {
-                            $session = Session::instance();
-                            \Moxl\Stanza\Stream::init($this->host, $session->get('jid'));
+                            $this->writeXMPP(\Moxl\Stanza\Stream::init($this->host, $this->user->id));
                         }
                     );
                 }
 
-                global $timestampReceive;
-                $timestampReceive = time();
+                $this->timestampReceive = time();
 
                 if (!$this->parser->parse($message)) {
                     logOut($this->parser->getError());
@@ -145,15 +195,15 @@ class Linker
             }
         });
 
-        $this->connection->on('error', fn() => shutdown());
-        $this->connection->on('close', fn() => shutdown());
+        $this->connection->on('error', fn() => $this->linkerManager->closeLinker($this->sessionId));
+        $this->connection->on('close', fn() => $this->linkerManager->closeLinker($this->sessionId));
 
-        // And we say that we are ready !
+        // And we say that we are ready!
         $obj = new \StdClass;
         $obj->func = 'registered';
 
         fwrite(STDERR, 'registered');
-        $this->websocket->send(json_encode($obj));
+        $this->linkerManager->sendWebsocket($this->sessionId, $obj);
     }
 
     private function handleClientDNS(array $results)
@@ -170,22 +220,22 @@ class Linker
                 if ($results['starttls'][0]['priority'] < $results['directtls'][0]['priority']) {
                     $host = $results['starttls'][0]['target'];
                     $port = $results['starttls'][0]['port'];
-                    logOut(colorize('Picked STARTTLS', 'blue'));
+                    logOut(colorize('Picked STARTTLS', 'blue'), sid: $this->sessionId);
                 } else {
                     $host = $results['directtls'][0]['target'];
                     $port = $results['directtls'][0]['port'];
                     $directTLSSocket = true;
-                    logOut(colorize('Picked DirectTLS', 'blue'));
+                    logOut(colorize('Picked DirectTLS', 'blue'), sid: $this->sessionId);
                 }
             } elseif ($results['directtls'] !== false && $results['directtls'][0]['target'] !== '.') {
                 $host = $results['directtls'][0]['target'];
                 $port = $results['directtls'][0]['port'];
                 $directTLSSocket = true;
-                logOut(colorize('Picked DirectTLS', 'blue'));
+                logOut(colorize('Picked DirectTLS', 'blue'), sid: $this->sessionId);
             } elseif ($results['starttls'] !== false && $results['starttls'][0]['target'] !== '.') {
                 $host = $results['starttls'][0]['target'];
                 $port = $results['starttls'][0]['port'];
-                logOut(colorize('Picked STARTTLS', 'blue'));
+                logOut(colorize('Picked STARTTLS', 'blue'), sid: $this->sessionId);
             } else {
                 // No SRV, we fallback to the default host
                 $host = $this->host;
@@ -194,7 +244,7 @@ class Linker
             $socket = $directTLSSocket ? 'tls://' : 'tcp://';
             $socket .= $host . ':' . $port;
 
-            logOut(colorize('Connect to ' . $socket . ', peer_name: ' . $host, 'blue'));
+            logOut(colorize('Connect to ' . $socket . ', peer_name: ' . $host, 'blue'), sid: $this->sessionId);
 
             $this->connector = new HappyEyeBallsConnector(
                 null,
@@ -212,8 +262,8 @@ class Linker
             $this->connector->connect($socket)->then(
                 fn($connection) => $this->xmppBehaviour($connection),
                 function (\Exception $error) {
-                    logOut(colorize($error->getMessage(), 'red'));
-                    Wrapper::getInstance()->iterate('timeout_error');
+                    logOut(colorize($error->getMessage(), 'red'), sid: $this->sessionId);
+                    Wrapper::getInstance()->iterate('timeout_error'); // TODO give context
                 }
             );
         }
@@ -224,18 +274,18 @@ class Linker
         global $loop;
 
         $encryption = new \React\Socket\StreamEncryption($loop, false);
-        logOut(colorize('Enable TLS on the socket', 'blue'));
+        logOut(colorize('Enable TLS on the socket', 'blue'), sid: $this->sessionId);
 
         stream_context_set_option($connection->stream, 'ssl', 'SNI_enabled', true);
         stream_context_set_option($connection->stream, 'ssl', 'peer_name', $this->host);
         stream_context_set_option($connection->stream, 'ssl', 'allow_self_signed', false);
 
         return $encryption->enable($connection)->then(
-            fn() => logOut(colorize('TLS enabled', 'blue')),
+            fn() => logOut(colorize('TLS enabled', 'blue'), sid: $this->sessionId),
             function ($error) {
-                logOut(colorize('TLS error ' . $error->getMessage(), 'blue'));
-                Wrapper::getInstance()->iterate('ssl_error');
-                shutdown();
+                logOut(colorize('TLS error ' . $error->getMessage(), 'blue'), sid: $this->sessionId);
+                Wrapper::getInstance()->iterate('ssl_error'); // TODO give context
+                $this->linkerManager->closeLinker($this->sessionId);
             }
         );
     }

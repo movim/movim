@@ -5,7 +5,6 @@ namespace Moxl\Xec\Action\MAM;
 use App\MAMEarliest;
 use Moxl\Xec\Action;
 use Moxl\Stanza\MAM;
-use Movim\Session;
 //use App\MessageBuffer;
 
 class Get extends Action
@@ -23,7 +22,7 @@ class Get extends Action
 
     public function request()
     {
-        $session = Session::instance();
+        $session = linker($this->sessionId)->session;
 
         // Generating the queryid key.
         $this->_queryid = \generateKey(12);
@@ -51,7 +50,7 @@ class Get extends Action
     {
         //MessageBuffer::getInstance()->save();
 
-        $session = Session::instance();
+        $session = linker($this->sessionId)->session;
 
         $messagesCounter = (int)$session->get('mamid' . $this->_queryid);
         $this->pack(['counter' => $messagesCounter, 'forward' => ($this->_start != null)]);
@@ -87,7 +86,7 @@ class Get extends Action
             && $this->_after != (string)$stanza->fin->set->last
             && $totalCounter < $this->_limit
         ) {
-            $g = new Get($this->me);
+            $g = new Get($this->me, sessionId: $this->sessionId);
             $g->setJid($this->_jid);
             $g->setTo($this->_to);
             $g->setLimit($this->_limit);

@@ -64,13 +64,13 @@ class Items extends Action
 
                             if (!$info->isMicroblogCommentsNode()) {
                                 if (!$info->pubsubaccessmodel) {
-                                    $r = new Request($this->me);
+                                    $r = new Request($this->me, sessionId: $this->sessionId);
                                     $r->setTo($info->server)
                                         ->setNode($info->node)
                                         ->setParent($this->_to)
                                         ->request();
 
-                                    $g = new GetItem($this->me);
+                                    $g = new GetItem($this->me, sessionId: $this->sessionId);
                                     $g->setTo($info->server)
                                         ->setNode($info->node)
                                         ->setId(Avatar::NODE_METADATA)
@@ -82,7 +82,7 @@ class Items extends Action
                             }
                         }
                     } elseif ($parent && $parent->identities->contains('category', 'server')) {
-                        $r = new Request($this->me);
+                        $r = new Request($this->me, sessionId: $this->sessionId);
                         $r->setTo((string)$item->attributes()->jid)
                             ->setParent($this->_to)
                             ->request();

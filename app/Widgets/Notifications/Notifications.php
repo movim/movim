@@ -3,9 +3,7 @@
 namespace App\Widgets\Notifications;
 
 use App\Post;
-use App\User;
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Drawer\Drawer;
 use App\Widgets\Notif\Notif;
 use Moxl\Xec\Action\Presence\Subscribed;
 use Moxl\Xec\Action\Presence\Unsubscribed;
@@ -79,13 +77,13 @@ class Notifications extends Base
 
     public function ajaxRequest()
     {
-        Drawer::fill('notifications', $this->prepareNotifications());
+        $this->drawer('notifications', $this->prepareNotifications());
 
         $this->me->notifications_since = date(MOVIM_SQL_DATE);
         $this->me->save();
 
         $this->ajaxSetCounter();
-        (new Notif($this->me))->ajaxClear('comments');
+        (new Notif($this->me, sessionId: $this->sessionId))->ajaxClear('comments');
     }
 
     public function ajaxSetCounter()
@@ -116,7 +114,7 @@ class Notifications extends Base
                                                     ->distinct()
                                                     ->pluck('group'));
 
-        Dialog::fill($view->draw('_notifications_add'));
+        $this->dialog($view->draw('_notifications_add'));
     }
 
     public function ajaxAdd($form)
@@ -131,7 +129,7 @@ class Notifications extends Base
         $p->setTo((string)$form->searchjid->value)
           ->request();
 
-        (new Dialog($this->me))->ajaxClear();
+        (new Dialog($this->me, sessionId: $this->sessionId))->ajaxClear();
     }
 
     public function ajaxDeleteContact($jid)
@@ -143,7 +141,7 @@ class Notifications extends Base
         $view = $this->tpl();
         $view->assign('jid', $jid);
 
-        Dialog::fill($view->draw('_notifications_delete'));
+        $this->dialog($view->draw('_notifications_delete'));
     }
 
     public function ajaxDelete(string $jid)
@@ -204,7 +202,7 @@ class Notifications extends Base
 
     private function removeInvitation(string $jid)
     {
-        $n = new Notif($this->me);
+        $n = new Notif($this->me, sessionId: $this->sessionId);
         $n->ajaxClear('invite|' . $jid);
 
         $this->rpc('MovimTpl.remove', '#invitation-' . cleanupId($jid));

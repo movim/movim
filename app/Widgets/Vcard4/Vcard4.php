@@ -92,11 +92,11 @@ class Vcard4 extends Base
             ? $vcard->email->value
             : null;
 
-        $c->description     = trim($vcard->desc->value);
+        $c->description = trim($vcard->desc->value);
 
         $c->save();
 
-        $c->jid = $this->me->id;
+        $c->id = $this->me->id;
 
         $r = $this->xmpp(new Set);
         $r->setData($c)->request();

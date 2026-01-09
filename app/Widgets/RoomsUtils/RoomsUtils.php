@@ -27,10 +27,7 @@ use App\Widgets\AdHoc\AdHoc;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
 use App\Widgets\ContactActions\ContactActions;
-use App\Widgets\Dialog\Dialog;
-use App\Widgets\Drawer\Drawer;
 
-use Movim\Session;
 use Movim\Widget\Base;
 use Movim\Image;
 
@@ -105,7 +102,7 @@ class RoomsUtils extends Base
 
         $view->assign('me', $this->me->id);
 
-        Drawer::fill('room_drawer', $view->draw('_rooms_drawer'));
+        $this->drawer('room_drawer', $view->draw('_rooms_drawer'));
         $this->rpc('Tabs.create');
 
         $this->rpc('RoomsUtils_ajaxAppendPresences', $room, !$conference->isGroupChat(), 0);
@@ -128,7 +125,7 @@ class RoomsUtils extends Base
             $this->rpc('MovimTpl.fill', '#room_omemo_fingerprints', $this->view('_rooms_drawer_fingerprints_placeholder'));
         }
 
-        (new AdHoc($this->me))->ajaxGet($room);
+        (new AdHoc($this->me, sessionId: $this->sessionId))->ajaxGet($room);
     }
 
     public function ajaxAppendPresences(string $room, bool $havePagination = true, int $page = 0)
@@ -228,7 +225,7 @@ class RoomsUtils extends Base
         $r->setTo($mucjid)
             ->request();
 
-        Dialog::fill($this->view('_rooms_participant', [
+        $this->dialog($this->view('_rooms_participant', [
             'contact' => \App\Contact::firstOrNew(['id' => $mucjid]),
             'conference' => $conference,
             'clienttype' => getClientTypes(),
@@ -239,7 +236,7 @@ class RoomsUtils extends Base
 
     public function prepareVcard(\App\Contact $contact)
     {
-        return (new ContactActions($this->me))->prepareVcard($contact);
+        return (new ContactActions($this->me, sessionId: $this->sessionId))->prepareVcard($contact);
     }
 
     /**
@@ -251,7 +248,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        Dialog::fill($this->view('_rooms_avatar', [
+        $this->dialog($this->view('_rooms_avatar', [
             'room' => $this->me->session->conferences()
                 ->where('conference', $room)
                 ->first()
@@ -377,8 +374,7 @@ class RoomsUtils extends Base
 
         // Disconnect properly
         $nick = $values['nick'] ?? $this->me->username;
-        $session = Session::instance();
-        $session->delete($values['jid'] . '/' . $nick);
+        linker($this->sessionId)->session->delete($values['jid'] . '/' . $nick);
 
         $pu = $this->xmpp(new Unavailable);
         $pu->setTo($values['jid'])
@@ -408,7 +404,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        Dialog::fill($this->view('_rooms_subject', [
+        $this->dialog($this->view('_rooms_subject', [
             'room' => $this->me->session->conferences()
                 ->where('conference', $room)
                 ->first()
@@ -439,7 +435,7 @@ class RoomsUtils extends Base
      */
     public function ajaxAskInvite($room = false)
     {
-        Dialog::fill($this->view('_rooms_invite', [
+        $this->dialog($this->view('_rooms_invite', [
             'contacts' => $this->me->session->contacts()->pluck('jid'),
             'room' => $room,
             'invite' => \App\Invite::set($this->me->id, $room),
@@ -489,7 +485,7 @@ class RoomsUtils extends Base
 
         $this->rpc('Rooms.setDefaultServices', $this->me->session->getChatroomsServices());
 
-        Dialog::fill($view->draw('_rooms_add'));
+        $this->dialog($view->draw('_rooms_add'));
     }
 
     /**
@@ -587,7 +583,7 @@ class RoomsUtils extends Base
     public function ajaxRemove($room)
     {
         if (!validateRoom($room)) return;
-        Dialog::fill($this->view('_rooms_remove', ['room' => $room]));
+        $this->dialog($this->view('_rooms_remove', ['room' => $room]));
     }
 
     /**
@@ -651,8 +647,8 @@ class RoomsUtils extends Base
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
 
-            (new Chats($this->me))->onMessage($packet);
-            (new Chat($this->me))->onMessage($packet);
+            (new Chats($this->me, sessionId: $this->sessionId))->onMessage($packet);
+            (new Chat($this->me, sessionId: $this->sessionId))->onMessage($packet);
 
             // Notify
             $this->toast($this->__('room.invited'));
@@ -671,7 +667,7 @@ class RoomsUtils extends Base
     public function ajaxAskDestroy($room)
     {
         if (!validateRoom($room)) return;
-        Dialog::fill($this->view('_rooms_destroy', ['room' => $room]));
+        $this->dialog($this->view('_rooms_destroy', ['room' => $room]));
     }
 
     /**
@@ -794,7 +790,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        Dialog::fill($this->view('_rooms_ban', ['room' => $this->me->session->conferences()
+        $this->dialog($this->view('_rooms_ban', ['room' => $this->me->session->conferences()
             ->where('conference', $room)
             ->first()]));
     }
@@ -829,7 +825,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        Dialog::fill($this->view('_rooms_unban', [
+        $this->dialog($this->view('_rooms_unban', [
             'room' => $this->me->session->conferences()
                 ->where('conference', $room)
                 ->first(),
@@ -866,7 +862,7 @@ class RoomsUtils extends Base
             ->where('conference', $room)
             ->first();
 
-        Dialog::fill($this->view('_rooms_configure_user', [
+        $this->dialog($this->view('_rooms_configure_user', [
             'room' => $conference,
             'presence' => $conference->presences()->where('mucjid', $jid)->first(),
             'member' => $conference->members()->where('jid', $jid)->first(),
@@ -994,6 +990,6 @@ class RoomsUtils extends Base
 
     public function prepareEmbedUrl(Message $message)
     {
-        return (new Chat($this->me))->prepareEmbed($message->resolvedUrl, $message);
+        return (new Chat($this->me, sessionId: $this->sessionId))->prepareEmbed($message->resolvedUrl, $message);
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\Session;
-use Moxl\Authentication;
 use Moxl\Stanza\Stream;
 
 class StreamFeatures extends Payload
@@ -21,21 +19,21 @@ class StreamFeatures extends Payload
                 }
             }
 
-            $session = Session::instance();
-
-            if ($session->get('password')) {
+            if (linker($this->sessionId)->authentication->password) {
                 if (!is_array($mechanisms)) {
                     $mechanisms = [$mechanisms];
                 }
 
-                $auth = Authentication::getInstance();
-                $auth->choose($mechanisms, $channelBindings);
+                linker($this->sessionId)->authentication->choose($mechanisms, $channelBindings);
 
-                $this->send(Stream::bind2Set($auth->getType(), $auth->getResponse(), APP_TITLE . '.' . \generateKey(6)));
+                $this->send(Stream::bind2Set(
+                    linker($this->sessionId)->authentication->getType(),
+                    linker($this->sessionId)->authentication->getResponse(),
+                    APP_TITLE . '.' . \generateKey(6)
+                ));
             }
-
         } elseif ($stanza->mechanisms && $stanza->mechanisms->attributes()->xmlns = 'urn:ietf:params:xml:ns:xmpp-sasl') {
-            (new SASL)->handle($stanza->mechanisms, $stanza);
+            (new SASL(sessionId: $this->sessionId))->handle($stanza->mechanisms, $stanza);
         }
     }
 }
