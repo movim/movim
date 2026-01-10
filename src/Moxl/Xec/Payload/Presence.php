@@ -44,7 +44,7 @@ class Presence extends Payload
                 }
             }
 
-            linker($this->me->session->id)->presenceBuffer->append(
+            linker($this->sessionId)->presenceBuffer->append(
                 $presence,
                 function () use ($presence, $stanza, $jid) {
                     if ((string)$stanza->attributes()->type == 'subscribe') {

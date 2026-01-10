@@ -29,7 +29,7 @@ class Unavailable extends Action
         $presence = DBPresence::findByStanza($this->me, $stanza);
         $presence->set($this->me, $stanza);
 
-        linker($this->me->session->id)->presenceBuffer->append($presence, function () {
+        linker($this->sessionId)->presenceBuffer->append($presence, function () {
             $this->pack($this->_to);
             $this->deliver();
         });
