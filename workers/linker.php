@@ -29,8 +29,6 @@ function handleSSLErrors($errno, $errstr)
     logOut(colorize('SSL Error ' . $errno . ': ' . $errstr, 'red'));
 }
 
-$wsSocket = null;
-
 function logOut($log, ?string $sid = null, string $type = 'system')
 {
     fwrite(STDERR, colorize($sid ?? '', 'turquoise') . ' ' . colorize($type, 'purple') . "   \n" . $log . "\n");
@@ -40,8 +38,7 @@ $wsConnector = new \Ratchet\Client\Connector($loop);
 $wsConnector('ws://127.0.0.1:' . config('daemon.port'), [], [
     'MOVIM_SESSION_ID' => getenv('sid'),
     'MOVIM_DAEMON_KEY' => getenv('key')
-])->then(function (Ratchet\Client\WebSocket $socket) use (&$wsSocket, &$linkerManager) {
-    $wsSocket = $socket;
+])->then(function (Ratchet\Client\WebSocket $socket) use (&$linkerManager) {
     $linkerManager->attachWebsocket($socket);
 
     // Temporary
@@ -52,7 +49,7 @@ $wsConnector('ws://127.0.0.1:' . config('daemon.port'), [], [
     $msg->browserLocale = getenv('language');
     $linkerManager->handleMessage($msg);
 
-    $wsSocket->on('message', function ($msg) use (&$linkerManager) {
+    $socket->on('message', function ($msg) use (&$linkerManager) {
         $msg = json_decode($msg);
         if (isset($msg)) $linkerManager->handleMessage($msg);
     });
