@@ -4,7 +4,6 @@ namespace Moxl\Xec\Action\Session;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Stream;
-use Movim\Session;
 
 class Start extends Action
 {
@@ -18,8 +17,7 @@ class Start extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $session = Session::instance();
-        $session->delete('password');
+        linker($this->sessionId)->authentication->password;
 
         $session = $this->me->session;
         $session->active = true;

@@ -4,7 +4,6 @@ namespace Moxl\Xec\Action\Message;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Message;
-use Moxl\Stanza\Muc;
 
 class Active extends Action
 {
@@ -13,10 +12,11 @@ class Active extends Action
 
     public function request()
     {
-        $this->store();
+        $messageId = $this->store();
         $this->send(
             Message::maker(
-                $this->_to,
+                to: $this->_to,
+                messageId: $messageId,
                 type: $this->_muc ? 'groupchat' : 'chat',
                 chatstates: 'active'
             )

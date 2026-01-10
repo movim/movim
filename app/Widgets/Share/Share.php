@@ -3,7 +3,6 @@
 namespace App\Widgets\Share;
 
 use Movim\Route;
-use Movim\Session;
 use Movim\Widget\Base;
 use Movim\XMPPUri;
 use Respect\Validation\Validator;
@@ -23,8 +22,7 @@ class Share extends Base
             $validateUrl->isValid($link)
             && substr($link, 0, 4) == 'http'
         ) {
-            $session = Session::instance();
-            $session->set('share_url', $link);
+            linker($this->sessionId)->session->set('share_url', $link);
 
             $this->rpc('MovimUtils.redirect', $this->route('publish'));
         } else {

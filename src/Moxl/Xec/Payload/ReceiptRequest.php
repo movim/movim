@@ -19,6 +19,7 @@ class ReceiptRequest extends Payload
             to: bareJid($from),
             id: $id,
             type: (string)$parent->attributes()->type,
+            messageId: generateUUID(),
             receipts: 'received'
         ));
 

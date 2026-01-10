@@ -44,7 +44,7 @@ class SetMetadata extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         // And we re-request the server to refresh things just in case...
-        $get = new Get($this->me);
+        $get = new Get($this->me, sessionId: $this->sessionId);
         $get->setTo($this->_to)
             ->setNode($this->_node)
             ->request();
@@ -80,7 +80,7 @@ class SetMetadata extends Action
 
     public function errorConflict(string $errorId, ?string $message = null)
     {
-        $config = new SetConfig($this->me);
+        $config = new SetConfig($this->me, sessionId: $this->sessionId);
         $config->setNode(Avatar::NODE_METADATA)
             ->setData(Avatar::$nodeConfig)
             ->request();

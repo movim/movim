@@ -60,7 +60,7 @@ class RoomsExplore extends Base
     public function ajaxSearch(?string $keyword = null)
     {
         $view = $this->tpl();
-        Drawer::fill('search', $view->draw('_roomsexplore'), true);
+        $this->drawer('search', $view->draw('_roomsexplore'), true);
         $this->rpc('RoomsExplore.init');
         $this->rpc('RoomsExplore_ajaxSearchRooms');
 

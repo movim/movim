@@ -3,13 +3,10 @@
 namespace Moxl\Xec;
 
 use App\User;
-use Movim\Session;
 
 class Handler
 {
-    public function __construct(private ?User $user = null)
-    {
-    }
+    public function __construct(private ?User $user = null, private ?string $sessionId = null) {}
 
     public function handle(\SimpleXMLElement $child)
     {
@@ -17,7 +14,7 @@ class Handler
             ? (string)$child->attributes()->id
             : '';
 
-        $session = Session::instance();
+        $session = linker($this->sessionId)->session;
 
         if (
             $id !== ''
@@ -68,6 +65,7 @@ class Handler
                 // We launch the object handle
                 $action->method('handle');
                 $action->attachUser($this->user);
+                $action->attachSession($this->sessionId);
                 $action->handle($child);
             }
         } else {
@@ -215,6 +213,7 @@ class Handler
             $classname = '\\Moxl\\Xec\\Payload\\' . $hashToClass[$hash];
             $payloadClass = new $classname;
             $payloadClass->attachUser($this->user);
+            $payloadClass->attachSession($this->sessionId);
             $payloadClass->prepare($s, $sparent);
             $payloadClass->handle($s, $sparent);
 

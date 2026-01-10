@@ -23,11 +23,11 @@ class Post extends Base
         $this->registerEvent('microblog_commentpublish_error', 'onCommentPublishError');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete', 'post');
         $this->registerEvent('pubsub_getitem_errorpresencesubscriptionrequired', 'onPresenceSubscriptionRequired');
-        $this->registerEvent('post_refreshed', 'tonHandle', 'post');
+        $this->registerEvent('post_refreshed', 'onHandle', 'post');
         $this->registerEvent('post_comment_published', 'onCommentPublished', 'post');
     }
 
-    public function tonHandle(Packet $packet)
+    public function onHandle(Packet $packet)
     {
         $post = AppPost::find($packet->content);
 
@@ -115,7 +115,7 @@ class Post extends Base
 
     public function ajaxGetContact($jid)
     {
-        $c = new ContactActions($this->me);
+        $c = new ContactActions($this->me, sessionId: $this->sessionId);
         $c->ajaxGetDrawer($jid);
     }
 

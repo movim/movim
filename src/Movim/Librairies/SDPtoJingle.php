@@ -4,7 +4,6 @@ namespace Movim\Librairies;
 
 use App\User;
 use DOMElement;
-use Movim\Session;
 
 class SDPtoJingle
 {
@@ -392,8 +391,7 @@ class SDPtoJingle
                             break;
 
                         case 'pwd':
-                            $session = Session::instance();
-                            $session->set('icePwd', $matches[1]);
+                            linker($this->user->session->id)->session->set('icePwd', $matches[1]);
                             $this->transport->addAttribute('pwd', $matches[1]);
                             break;
 
@@ -465,10 +463,9 @@ class SDPtoJingle
                             }
 
                             // ufrag to the transport
-                            $session = Session::instance();
-                            if ($this->ufrag && $session->get('icePwd')) {
+                            if ($this->ufrag && linker($this->user->session->id)->session->get('icePwd')) {
                                 $this->transport->addAttribute('ufrag', $this->ufrag);
-                                $this->transport->addAttribute('pwd', $session->get('icePwd'));
+                                $this->transport->addAttribute('pwd', linker($this->user->session->id)->session->get('icePwd'));
                             }
 
                             break;

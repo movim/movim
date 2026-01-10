@@ -197,16 +197,16 @@ class Blog extends Base
     public function preparePost(Post $post)
     {
         if ($this->_view == 'tag' && $this->me != null) {
-            return (new PostWidget($this->me))->preparePost($post, false, true);
+            return (new PostWidget($this->me, sessionId: $this->sessionId))->preparePost($post, false, true);
         } else {
             $post->server = $this->_nickname ?? $post->server;
-            return (new PostWidget($this->me))->preparePost($post, true);
+            return (new PostWidget($this->me, sessionId: $this->sessionId))->preparePost($post, true);
         }
     }
 
     public function prepareTicket(Post $post)
     {
-        return (new PostWidget($this->me))->prepareTicket($post, true);
+        return (new PostWidget($this->me, sessionId: $this->sessionId))->prepareTicket($post, true);
     }
 
     public function display()

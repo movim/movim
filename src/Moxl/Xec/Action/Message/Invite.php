@@ -14,8 +14,14 @@ class Invite extends Action
 
     public function request()
     {
-        $this->store($this->_id);
-        $this->send(Message::maker(to: $this->_to, id: $this->_id, invite: $this->_invite));
+        $messageId = $this->store($this->_id);
+
+        $this->send(Message::maker(
+            to: $this->_to,
+            messageId: $messageId,
+            id: $this->_id,
+            invite: $this->_invite
+        ));
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

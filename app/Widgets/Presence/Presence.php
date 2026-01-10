@@ -2,25 +2,21 @@
 
 namespace App\Widgets\Presence;
 
-use Movim\Widget\Base;
-
-use Moxl\Xec\Action\Presence\Chat;
-use Moxl\Xec\Action\Presence\Away;
-use Moxl\Xec\Action\Presence\Unavailable;
-use Moxl\Xec\Action\Roster\GetList;
-use Moxl\Xec\Action\Pubsub\GetItemsId;
-use Moxl\Xec\Action\Storage\Get;
-use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
-use Moxl\Stanza\Stream;
-
-use Movim\Daemon\Session;
-
 use App\Post;
 use App\Widgets\Chats\Chats;
-use App\Widgets\Dialog\Dialog;
-use Movim\CurrentCall;
+
+use Movim\Daemon\Session;
+use Movim\Widget\Base;
+
+use Moxl\Stanza\Stream;
 use Moxl\Xec\Action\Blocking\Request;
+use Moxl\Xec\Action\Presence\Away;
+use Moxl\Xec\Action\Presence\Chat;
+use Moxl\Xec\Action\Presence\Unavailable;
+use Moxl\Xec\Action\Pubsub\GetItemsId;
 use Moxl\Xec\Action\Pubsub\GetSubscriptions;
+use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
+use Moxl\Xec\Action\Roster\GetList;
 use Moxl\Xec\Payload\Packet;
 
 class Presence extends Base
@@ -29,8 +25,8 @@ class Presence extends Base
     {
         $this->addcss('presence.css');
         $this->addjs('presence.js');
-        $this->registerEvent('avatar_get_handle', 'tonMyPresence');
-        $this->registerEvent('mypresence', 'tonMyPresence');
+        $this->registerEvent('avatar_get_handle', 'onMyPresence');
+        $this->registerEvent('mypresence', 'onMyPresence');
         $this->registerEvent('session_up', 'onSessionUp');
         $this->registerEvent('session_down', 'onSessionDown');
     }
@@ -48,7 +44,7 @@ class Presence extends Base
             ->request();
     }
 
-    public function tonMyPresence(Packet $packet)
+    public function onMyPresence(Packet $packet)
     {
         $this->rpc('MovimTpl.fill', '#presence_widget', $this->preparePresence());
     }
@@ -71,7 +67,7 @@ class Presence extends Base
         $blocked->request();
 
         // We refresh the messages
-        (new Chats($this->me))->ajaxGetMAMHistory();
+        (new Chats(user: $this->me, sessionId: $this->sessionId))->ajaxGetMAMHistory();
         $this->ajaxServerCapsGet();
         $this->ajaxBookmarksGet();
         $this->ajaxPubsubSubscriptionsGet();
@@ -85,7 +81,7 @@ class Presence extends Base
     public function ajaxAskLogout()
     {
         $view = $this->tpl();
-        Dialog::fill($view->draw('_presence_logout'));
+        $this->dialog($view->draw('_presence_logout'));
     }
 
     public function ajaxLogout()
@@ -94,8 +90,8 @@ class Presence extends Base
 
         $this->me->encryptedPasswords()->delete();
 
-        if (CurrentCall::getInstance()->isStarted()) {
-            //(new Visio)->ajaxEnd(CurrentCall::getInstance()->jid, CurrentCall::getInstance()->id);
+        if ($this->currentCall()->isStarted()) {
+            //(new Visio)->ajaxEnd($this->currentCall()->jid, $this->currentCall()->id);
         }
 
         $p = $this->xmpp(new Unavailable);
@@ -104,7 +100,7 @@ class Presence extends Base
             ->setTo($this->me->id)
             ->request();
 
-        Stream::end();
+        linker($this->me->session->id)->writeXMPP(Stream::end());
     }
 
     public function ajaxHttpGetPresence()
@@ -113,12 +109,6 @@ class Presence extends Base
         if ($html) {
             $this->rpc('MovimTpl.fill', '#presence_widget', $html);
         }
-    }
-
-    public function ajaxConfigGet()
-    {
-        $s = $this->xmpp(new Get);
-        $s->request();
     }
 
     public function ajaxPubsubSubscriptionsGet()
@@ -138,7 +128,7 @@ class Presence extends Base
     // We get the server capabilities
     public function ajaxServerCapsGet()
     {
-        $c = $this->xmpp(new \Moxl\Xec\Action\Disco\Request($this->me));
+        $c = $this->xmpp(new \Moxl\Xec\Action\Disco\Request);
         $c->setTo($this->me->session->host)
             ->request();
 
@@ -149,7 +139,7 @@ class Presence extends Base
     // We discover the server services
     public function ajaxServerDisco()
     {
-        $c = $this->xmpp(new \Moxl\Xec\Action\Disco\Items($this->me));
+        $c = $this->xmpp(new \Moxl\Xec\Action\Disco\Items);
         $c->setTo($this->me->session->host)
             ->request();
     }
@@ -157,11 +147,11 @@ class Presence extends Base
     // We refresh the profile
     public function ajaxProfileRefresh()
     {
-        $a = $this->xmpp(new \Moxl\Xec\Action\Avatar\Get($this->me));
+        $a = $this->xmpp(new \Moxl\Xec\Action\Avatar\Get);
         $a->setTo($this->me->id)
             ->request();
 
-        $v = $this->xmpp(new \Moxl\Xec\Action\Vcard4\Get($this->me));
+        $v = $this->xmpp(new \Moxl\Xec\Action\Vcard4\Get);
         $v->setTo($this->me->id)
             ->request();
     }
@@ -169,12 +159,12 @@ class Presence extends Base
     // We refresh the bookmarks
     public function ajaxBookmarksGet()
     {
-        $b = $this->xmpp(new \Moxl\Xec\Action\Bookmark2\Get($this->me));
+        $b = $this->xmpp(new \Moxl\Xec\Action\Bookmark2\Get);
         $b->setTo($this->me->id)
             ->request();
 
         // Also get the old Bookmarks
-        $b = $this->xmpp(new \Moxl\Xec\Action\Bookmark2\Get($this->me));
+        $b = $this->xmpp(new \Moxl\Xec\Action\Bookmark2\Get);
         $b->setTo($this->me->id)
             ->setVersion('0')
             ->request();

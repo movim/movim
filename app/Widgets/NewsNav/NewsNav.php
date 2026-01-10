@@ -42,6 +42,6 @@ class NewsNav extends Base
 
     public function prepareTicket(\App\Post $post)
     {
-        return (new Post($this->me))->prepareTicket($post);
+        return (new Post($this->me, sessionId: $this->sessionId))->prepareTicket($post);
     }
 }

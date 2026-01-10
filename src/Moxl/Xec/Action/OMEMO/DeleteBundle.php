@@ -29,7 +29,7 @@ class DeleteBundle extends Action
             unset($this->_devicesIds[array_search($this->_id, $this->_devicesIds)]);
         }
 
-        $sdl = new SetDevicesList($this->me);
+        $sdl = new SetDevicesList($this->me, sessionId: $this->sessionId);
         $sdl->setList($this->_devicesIds)
             ->request();
     }

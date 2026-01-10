@@ -1,5 +1,6 @@
 <?php
 
+use Movim\i18n\Locale;
 use Respect\Validation\Validator;
 
 function validateServerNode($server, $node)
@@ -34,7 +35,5 @@ function validateRoom($room)
 
 function validateForm($data)
 {
-    $l = Movim\i18n\Locale::start();
-
-    return Validator::in(array_keys($l->getList()))->isValid($data->language->value);
+    return Validator::in(array_keys(Locale::getList()))->isValid($data->language->value);
 }

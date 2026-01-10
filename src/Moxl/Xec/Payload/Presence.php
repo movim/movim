@@ -3,10 +3,6 @@
 namespace Moxl\Xec\Payload;
 
 use App\Presence as DBPresence;
-use App\PresenceBuffer;
-use Movim\Session;
-use Movim\ChatroomPings;
-use Movim\CurrentCall;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Handler;
 
@@ -29,7 +25,10 @@ class Presence extends Payload
             $presence = DBPresence::findByStanza($this->me, $stanza);
             $presence->set($this->me, $stanza);
 
-            if (CurrentCall::getInstance()->isStarted() && CurrentCall::getInstance()->mujiRoom == $jid['jid']) {
+            if (
+                linker($this->me->session->id)->currentCall->isStarted()
+                && linker($this->me->session->id)->currentCall->mujiRoom == $jid['jid']
+            ) {
                 $muji = $this->me->session->mujiCalls()
                     ->where('muc', $jid['jid'])
                     ->first();
@@ -45,58 +44,61 @@ class Presence extends Payload
                 }
             }
 
-            PresenceBuffer::getInstance($this->me)->append($presence, function () use ($presence, $stanza, $jid) {
-                if ((string)$stanza->attributes()->type == 'subscribe') {
-                    $this->pack((string)$stanza->attributes()->from);
-                    $this->event('subscribe');
-                }
-
-                if ($presence->muc) {
-                    if ($presence->mucjid == $this->me->id) {
-                        // Spectrum2 specific bug, we can receive two self-presences, one with several caps items
-                        $cCount = 0;
-                        foreach ($stanza->children() as $key => $content) {
-                            if ($key == 'c') $cCount++;
-                        }
-
-                        if ($cCount > 1) {
-                            $presence->delete();
-                        }
-                        // So we drop it
-
-                        $session = Session::instance();
-
-                        if ($presence->value != 5 && $presence->value != 6) {
-                            $this->method('muc_handle');
-                        }
-
-                        /**
-                         * Server bug case where we actually got an error from our resource but it didn't provide the
-                         * id back in the stanza
-                         */
-                        elseif (
-                            $session->get(Muc::$mucId . (string)$stanza->attributes()->from)
-                            && !isset($stanza->attributes()->id)
-                        ) {
-                            /**
-                             * Add back the id to the stanza and send it back to the stanza handler
-                             */
-                            $stanza->addAttribute('id', $session->get(Muc::$mucId . (string)$stanza->attributes()->from));
-                            (new Handler($this->me))->handle($stanza);
-                        }
+            linker($this->me->session->id)->presenceBuffer->append(
+                $presence,
+                function () use ($presence, $stanza, $jid) {
+                    if ((string)$stanza->attributes()->type == 'subscribe') {
+                        $this->pack((string)$stanza->attributes()->from);
+                        $this->event('subscribe');
                     }
-                } elseif ($presence->value == 5 && !empty($presence->resource)) {
-                    $presence->delete();
-                }
 
-                /**
-                 * Don't handle for MUC presences before we are fully authenticated
-                 */
-                if (!$presence->muc || ChatroomPings::getInstance($this->me)->has($presence->jid)) {
-                    $this->pack($presence);
-                    $this->deliver();
+                    if ($presence->muc) {
+                        if ($presence->mucjid == $this->me->id) {
+                            // Spectrum2 specific bug, we can receive two self-presences, one with several caps items
+                            $cCount = 0;
+                            foreach ($stanza->children() as $key => $content) {
+                                if ($key == 'c') $cCount++;
+                            }
+
+                            if ($cCount > 1) {
+                                $presence->delete();
+                            }
+                            // So we drop it
+
+                            $session = linker($this->sessionId)->session;
+
+                            if ($presence->value != 5 && $presence->value != 6) {
+                                $this->method('muc_handle');
+                            }
+
+                            /**
+                             * Server bug case where we actually got an error from our resource but it didn't provide the
+                             * id back in the stanza
+                             */
+                            elseif (
+                                $session->get(Muc::$mucId . (string)$stanza->attributes()->from)
+                                && !isset($stanza->attributes()->id)
+                            ) {
+                                /**
+                                 * Add back the id to the stanza and send it back to the stanza handler
+                                 */
+                                $stanza->addAttribute('id', $session->get(Muc::$mucId . (string)$stanza->attributes()->from));
+                                (new Handler($this->me, sessionId: $this->sessionId))->handle($stanza);
+                            }
+                        }
+                    } elseif ($presence->value == 5 && !empty($presence->resource)) {
+                        $presence->delete();
+                    }
+
+                    /**
+                     * Don't handle for MUC presences before we are fully authenticated
+                     */
+                    if (!$presence->muc || linker($this->sessionId)->chatroomPings->has($presence->jid)) {
+                        $this->pack($presence);
+                        $this->deliver();
+                    }
                 }
-            });
+            );
         }
     }
 }

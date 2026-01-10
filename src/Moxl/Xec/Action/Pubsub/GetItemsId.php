@@ -33,7 +33,7 @@ class GetItemsId extends Action
                           ->count() > 0
             && !empty($id)
             && !in_array($id, $this->_forbidenIds)) {
-                $gi = new GetItem($this->me);
+                $gi = new GetItem($this->me, sessionId: $this->sessionId);
                 $gi->setTo($this->_to)
                    ->setNode($this->_node)
                    ->setId($id)

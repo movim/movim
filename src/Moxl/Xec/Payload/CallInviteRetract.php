@@ -4,7 +4,6 @@ namespace Moxl\Xec\Payload;
 
 use App\Message;
 use App\MujiCall;
-use Movim\CurrentCall;
 
 class CallInviteRetract extends Payload
 {
@@ -28,7 +27,8 @@ class CallInviteRetract extends Payload
                     $this->pack($message);
                     $this->event('muji_message');
 
-                    CurrentCall::getInstance()->stop((string)$parent->attributes()->from, $muji->id);
+                    linker($this->me->session->id)->currentCall
+                        ->stop((string)$parent->attributes()->from, $muji->id);
                     MujiCall::where('id', $muji->id)->where('session_id', $muji->session_id)->delete();
 
                     $this->pack($muji);

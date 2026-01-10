@@ -4,7 +4,6 @@ namespace Moxl\Xec\Payload;
 
 use App\Message;
 use App\MujiCallParticipant;
-use Movim\CurrentCall;
 use Moxl\Xec\Action\JingleCallInvite\Reject;
 
 class CallInvitePropose extends Payload
@@ -13,15 +12,15 @@ class CallInvitePropose extends Payload
     {
         // Another session is already started
         if (
-            CurrentCall::getInstance()->isStarted()
-            && CurrentCall::getInstance()->isJidInCall(bareJid($parent->attributes()->from))
+            linker($this->me->session->id)->currentCall->isStarted()
+            && linker($this->me->session->id)->currentCall->isJidInCall(bareJid($parent->attributes()->from))
         ) {
             $conference = $this->me->session->conferences()->where('conference', \bareJid((string)$parent->attributes()->from))->first();
 
             if ($conference) {
                 // If the propose is from another person
                 if (!$conference->presence || $conference->presence->resource != \explodeJid((string)$parent->attributes()->from)['resource']) {
-                    $reject = new Reject($this->me);
+                    $reject = new Reject($this->me, sessionId: $this->sessionId);
                     $reject->setTo(\bareJid((string)$parent->attributes()->from))
                         ->setId((string)$stanza->attributes()->id)
                         ->request();

@@ -2,62 +2,15 @@
 
 namespace Moxl\Stanza;
 
-use App\MessageFile;
-use Moxl\Stanza\Message;
-
-use Movim\Session;
-use App\MessageOmemoHeader;
-
 class Muc
 {
-    /*public static function message(
-        $to,
-        $content = false,
-        $html = false,
-        $id = false,
-        $replace = false,
-        ?MessageFile $file = null,
-        $parentId = false,
-        array $reactions = [],
-        $originId = false,
-        $threadId = false,
-        $mucReceipts = false,
-        $replyId = false,
-        $replyTo = false,
-        $replyQuotedBodyLength = 0,
-        ?MessageOmemoHeader $messageOMEMO = null
-    ) {
-        return Message::maker(
-            $to,
-            $content,
-            $html,
-            'groupchat',
-            $mucReceipts, // chatstates required as well
-            $mucReceipts ? 'request' : false,
-            $id,
-            $replace,
-            $file,
-            false,
-            $parentId,
-            $reactions,
-            $originId,
-            $threadId,
-            $replyId,
-            $replyTo,
-            $replyQuotedBodyLength,
-            $messageOMEMO
-        );
-    }*/
-
-    public static function setSubject(string $to, string $subject)
+    public static function setSubject(string $id, string $to, string $subject)
     {
-        $session = Session::instance();
-
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
         $dom->appendChild($message);
         $message->setAttribute('to', str_replace(' ', '\40', $to));
-        $message->setAttribute('id', $session->get('id'));
+        $message->setAttribute('id', $id);
         $message->setAttribute('type', 'groupchat');
 
         $message->appendChild($dom->createElement('subject', $subject));

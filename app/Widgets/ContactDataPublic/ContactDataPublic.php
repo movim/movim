@@ -10,12 +10,12 @@ class ContactDataPublic extends Base
 {
     public function prepareCard($contact)
     {
-        return (new ContactData($this->me))->prepareCard($contact);
+        return (new ContactData($this->me, sessionId: $this->sessionId))->prepareCard($contact);
     }
 
     public function prepareSubscriptions($jid)
     {
-        return (new ContactSubscriptions($this->me))->prepareSubscriptions($jid);
+        return (new ContactSubscriptions($this->me, sessionId: $this->sessionId))->prepareSubscriptions($jid);
     }
 
     public function display()

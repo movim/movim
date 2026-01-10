@@ -2,7 +2,6 @@
 
 namespace App\Widgets\AdHoc;
 
-use App\Widgets\Dialog\Dialog;
 use Movim\Librairies\JingletoSDP;
 use Movim\Librairies\SDPtoJingle;
 use Movim\Librairies\XMPPtoForm;
@@ -10,7 +9,6 @@ use Moxl\Xec\Action\AdHoc\Get;
 use Moxl\Xec\Action\AdHoc\Command;
 use Moxl\Xec\Action\AdHoc\Submit;
 
-use Movim\Session;
 use Moxl\Xec\Payload\Packet;
 use stdClass;
 
@@ -54,7 +52,7 @@ class AdHoc extends \Movim\Widget\Base
 
         if (isset($command->note)) {
             $view->assign('note', $command->note);
-            Dialog::fill($view->draw('_adhoc_note'));
+            $this->dialog($view->draw('_adhoc_note'));
             $this->rpc('AdHoc.initForm');
         } elseif (isset($command->x)) {
             $xml = new XMPPtoForm;
@@ -68,7 +66,7 @@ class AdHoc extends \Movim\Widget\Base
                 $view->assign('actions', $command->actions);
             }
 
-            Dialog::fill($view->draw('_adhoc_form'), true);
+            $this->dialog($view->draw('_adhoc_form'), true);
             $this->rpc('AdHoc.initForm');
         } elseif ((string)$command->attributes()->status === 'completed') {
             $this->rpc('Dialog.clear');
@@ -80,7 +78,7 @@ class AdHoc extends \Movim\Widget\Base
     public function ajaxSDPToJingle()
     {
         $view = $this->tpl();
-        Dialog::fill($view->draw('_adhoc_sdptojingle'), true);
+        $this->dialog($view->draw('_adhoc_sdptojingle'), true);
     }
 
     public function ajaxSDPToJingleSubmit(stdClass $data)
@@ -93,13 +91,13 @@ class AdHoc extends \Movim\Widget\Base
 
         $view = $this->tpl();
         $view->assign('jingle', $stj->generate());
-        Dialog::fill($view->draw('_adhoc_sdptojingle_result'), true);
+        $this->dialog($view->draw('_adhoc_sdptojingle_result'), true);
     }
 
     public function ajaxJingleToSDP()
     {
         $view = $this->tpl();
-        Dialog::fill($view->draw('_adhoc_jingletosdp'), true);
+        $this->dialog($view->draw('_adhoc_jingletosdp'), true);
     }
 
     public function ajaxJingleToSDPSubmit(stdClass $data)
@@ -115,7 +113,7 @@ class AdHoc extends \Movim\Widget\Base
 
         $view = $this->tpl();
         $view->assign('sdp', $jts->generate());
-        Dialog::fill($view->draw('_adhoc_jingletosdp_result'), true);
+        $this->dialog($view->draw('_adhoc_jingletosdp_result'), true);
     }
 
     public function onCommandError(Packet $packet)
@@ -128,13 +126,13 @@ class AdHoc extends \Movim\Widget\Base
         }
 
         $view->assign('note', $note);
-        Dialog::fill($view->draw('_adhoc_note'), true);
+        $this->dialog($view->draw('_adhoc_note'), true);
     }
 
     public function ajaxGet(?string $jid = null)
     {
         if ($jid == null) {
-            $jid = Session::instance()->get('host');
+            $jid = linker($this->me->session->id)->session->get('host');
         }
 
         $g = $this->xmpp(new Get);

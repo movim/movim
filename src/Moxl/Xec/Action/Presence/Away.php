@@ -3,7 +3,6 @@
 namespace Moxl\Xec\Action\Presence;
 
 use App\Presence as DBPresence;
-use App\PresenceBuffer;
 use Moxl\Stanza\Presence;
 use Moxl\Xec\Action;
 
@@ -23,7 +22,7 @@ class Away extends Action
         $presence = DBPresence::findByStanza($this->me, $stanza);
         $presence->set($this->me, $stanza);
 
-        PresenceBuffer::getInstance($this->me)->append($presence, function () {
+        linker($this->me->session->id)->presenceBuffer->append($presence, function () {
             $this->event('mypresence');
         });
     }

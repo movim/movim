@@ -15,9 +15,11 @@ class Reactions extends Action
 
     public function request()
     {
-        $this->store();
+        $messageId = $this->store();
+
         $this->send(Message::maker(
             to: $this->_to,
+            messageId: $messageId,
             id: $this->_id,
             type: $this->_muc ? 'groupchat' : 'chat',
             parentId: $this->_parentid,
@@ -40,7 +42,7 @@ class Reactions extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($this->_muc) {
-            $m = new \Moxl\Xec\Payload\Message($this->me);
+            $m = new \Moxl\Xec\Payload\Message($this->me, sessionId: $this->sessionId);
             $m->handle($stanza, $parent);
         }
     }

@@ -2,7 +2,6 @@
 
 namespace App\Widgets\Shortcuts;
 
-use Movim\Session;
 use Moxl\Xec\Payload\Packet;
 
 class Shortcuts extends \Movim\Widget\Base
@@ -24,15 +23,14 @@ class Shortcuts extends \Movim\Widget\Base
     {
         $exploded = explode('|', $packet->content);
 
-        if (isset($exploded[1]) && $exploded[0] == 'chat') {
+        if ($exploded[0] == 'chat' && isset($exploded[1])) {
             $this->rpc('Shortcuts.clear', $exploded[1]);
         }
     }
 
     public function ajaxGet()
     {
-        $session = Session::instance();
-        $notifs = $session->get('notifs');
+        $notifs = linker($this->sessionId)->session->get('notifs');
 
         if (!is_array($notifs)) return;
 

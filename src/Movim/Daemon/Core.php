@@ -123,7 +123,6 @@ class Core implements MessageComponentInterface
 
             if (!array_key_exists($sid, $this->sessions)) {
                 $language = $this->getLanguage($conn);
-
                 $this->sessions[$sid] = new Session(
                     $this->loop,
                     $sid,
@@ -154,7 +153,7 @@ class Core implements MessageComponentInterface
         if ($this->isTemplater($from)) {
             $json = json_decode($msg);
             $sid = $json->sid;
-            unset($json->sid);
+            //unset($json->sid);
 
             if ($sid != null && isset($this->sessions[$sid])) {
                 $this->sessions[$sid]->messageOut(json_encode($json));
@@ -164,10 +163,16 @@ class Core implements MessageComponentInterface
 
         $sid = $this->getCookieSid($from);
         if ($sid != null && isset($this->sessions[$sid])) {
+            $json = json_decode($msg);
+            $json->sid = $sid;
+            $msg = json_encode($json);
             $this->sessions[$sid]->messageIn($msg);
         } else {
             $sid = $this->getHeaderSid($from);
             if ($sid != null && isset($this->sessions[$sid])) {
+                $json = json_decode($msg);
+                $json->sid = $sid;
+                $msg = json_encode($json);
                 $this->sessions[$sid]->messageOut($msg);
             }
         }

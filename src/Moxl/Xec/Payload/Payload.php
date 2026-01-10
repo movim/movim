@@ -3,7 +3,6 @@
 namespace Moxl\Xec\Payload;
 
 use App\User;
-use Movim\Session;
 use Moxl\Xec\Payload\Packet;
 use Movim\Widget\Wrapper;
 
@@ -17,14 +16,21 @@ abstract class Payload
      *
      * @return void
      */
-    public function __construct(protected ?User $me = null)
-    {
+    public function __construct(
+        protected ?User $me = null,
+        protected ?string $sessionId = null // Fallback when the user is not set
+    ) {
         $this->packet = new Packet;
     }
 
     public function attachUser(?User $user = null)
     {
         $this->me = $user;
+    }
+
+    public function attachSession(?string $sessionId = null)
+    {
+        $this->sessionId = $sessionId;
     }
 
     public function iq(?\DOMNode $xml = null, ?string $to = null, ?string $type = null, $id = false)
@@ -51,8 +57,7 @@ abstract class Payload
         global $language;
 
         if ($id == false) {
-            $session = Session::instance();
-            $id = $session->get('id');
+            $id = linker($this->sessionId)->session->get('id');
         }
         $iq->setAttribute('id', $id);
 
@@ -65,12 +70,14 @@ abstract class Payload
             $iq->appendChild($xml);
         }
 
-        \writeXMPP($dom->saveXML($dom->documentElement));
+        $this->send($dom);
     }
 
     public function send(?\DOMDocument $dom = null)
     {
-        \writeXMPP($dom->saveXML($dom->documentElement));
+        linker($this->sessionId ?? $this->me->session->id)->writeXMPP(
+            $dom->saveXML($dom->documentElement)
+        );
     }
 
     /**
@@ -120,7 +127,12 @@ abstract class Payload
             $key = $key . '_' . $this->method;
         }
 
-        Wrapper::getInstance()->iterate($key, $this->packet);
+        Wrapper::getInstance()->iterate(
+            key: $key,
+            packet: $this->packet,
+            user: $this->me,
+            sessionId: $this->sessionId
+        );
     }
 
     /**
@@ -130,7 +142,12 @@ abstract class Payload
      */
     final public function event(string $key)
     {
-        Wrapper::getInstance()->iterate($key, $this->packet);
+        Wrapper::getInstance()->iterate(
+            key: $key,
+            packet: $this->packet,
+            user: $this->me,
+            sessionId: $this->sessionId
+        );
     }
 
     /**

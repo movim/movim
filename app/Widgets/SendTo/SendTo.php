@@ -52,7 +52,7 @@ class SendTo extends Base
         $contact = $this->me->contact;
         $view->assign('me', ($contact == null) ? new \App\Contact : $contact);
 
-        Drawer::fill('send_to_article', $view->draw('_sendto_article'));
+        $this->drawer('send_to_article', $view->draw('_sendto_article'));
     }
 
     public function ajaxSendContact(string $uri)
@@ -78,7 +78,7 @@ class SendTo extends Base
                 : 25)
             ->get());
 
-        Drawer::fill('send_to_share', $view->draw('_sendto_share'));
+        $this->drawer('send_to_share', $view->draw('_sendto_share'));
         $this->rpc('SendTo.init');
     }
 
@@ -105,7 +105,7 @@ class SendTo extends Base
         $file->url = $uri;
 
         foreach ($contacts as $contact => $muc) {
-            $c = new Chat($this->me);
+            $c = new Chat($this->me, sessionId: $this->sessionId);
             $c->sendMessage(
                 $contact,
                 $message,
@@ -140,7 +140,7 @@ class SendTo extends Base
         if ($post) {
             $view->assign('post', $post);
             $view->assign('openlink', $post->openlink ? $post->openlink->href : false);
-            $view->assign('card', (new Post($this->me))->prepareTicket($post));
+            $view->assign('card', (new Post($this->me, sessionId: $this->sessionId))->prepareTicket($post));
         }
     }
 }

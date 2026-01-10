@@ -13,7 +13,11 @@ class SetSubject extends Action
     public function request()
     {
         $this->store();
-        $this->send(Muc::setSubject($this->_to, $this->_subject));
+        $this->send(Muc::setSubject(
+            linker($this->sessionId)->session->get('id'),
+            $this->_to,
+            $this->_subject
+        ));
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -21,8 +25,10 @@ class SetSubject extends Action
         $message = \App\Message::findByStanza($this->me, $stanza);
         $message->set($this->me, $stanza, $parent);
 
-        if (!$message->encrypted
-        && (!$message->isEmpty() || $message->isSubject())) {
+        if (
+            !$message->encrypted
+            && (!$message->isEmpty() || $message->isSubject())
+        ) {
             $message->save();
             $this->pack($message);
             $this->deliver();

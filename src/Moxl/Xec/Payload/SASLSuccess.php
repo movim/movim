@@ -2,18 +2,16 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\Widget\Wrapper;
-
 class SASLSuccess extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
+        linker($this->sessionId)->authentication->clear();
+
         $this->deliver();
-
         $this->me->refresh();
-        Wrapper::getInstance()->setUser($this->me);
 
-        list($username, $host) = explode('@', $this->me->id);
-        \Moxl\Stanza\Stream::init($host, $this->me->id);
+        linker($this->sessionId)->attachUser($this->me);
+        linker($this->sessionId)->writeXMPP(\Moxl\Stanza\Stream::init($this->me->session->host));
     }
 }

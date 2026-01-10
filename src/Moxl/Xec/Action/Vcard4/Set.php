@@ -35,7 +35,7 @@ class Set extends Action
 
     public function errorConflict(string $errorId, ?string $message = null)
     {
-        $config = new SetConfig($this->me);
+        $config = new SetConfig($this->me, sessionId: $this->sessionId);
         $config->setNode(Vcard4::$node)
                ->setData(Vcard4::$nodeConfig)
                ->request();

@@ -3,15 +3,14 @@
 namespace Moxl\Xec;
 
 use Moxl\Xec\Payload\Payload;
-use Movim\Session;
 
 abstract class Action extends Payload
 {
     protected $stanzaId;
 
-    final public function store(?string $customId = null)
+    final public function store(?string $customId = null): string
     {
-        $session = Session::instance();
+        $session = linker($this->sessionId)->session;
 
         // Generating the iq key.
         $this->stanzaId = $customId ?? \generateKey(12);
@@ -19,6 +18,8 @@ abstract class Action extends Payload
         $session->set('id', $this->stanzaId);
         $session->set($this->stanzaId, $this, true);
         $session->clean();
+
+        return $this->stanzaId;
     }
 
     public function __call($name, $args)

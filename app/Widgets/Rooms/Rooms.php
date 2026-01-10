@@ -7,13 +7,9 @@ use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Action\Muc\GetMembers;
 
-use Movim\Session;
-use Movim\ChatStates;
 use Movim\Widget\Base;
 
 use App\Conference;
-use App\Widgets\Notif\Notif;
-use Movim\ChatroomPings;
 use Moxl\Xec\Payload\Packet;
 
 class Rooms extends Base
@@ -121,7 +117,7 @@ class Rooms extends Base
         $message = $packet->content;
 
         if ($message->isMuc()) {
-            $chatStates = ChatStates::getInstance($this->me);
+            $chatStates = linker($this->sessionId)->chatStates;
             $chatStates->clearState($message->jidfrom, $message->resource);
 
             $this->onChatState($chatStates->getState($message->jidfrom));
@@ -348,7 +344,7 @@ class Rooms extends Base
         }
 
         // We clear the ping timer
-        ChatroomPings::getInstance($this->me)->clear($room);
+        linker($this->sessionId)->chatroomPings->clear($room);
 
         // We clear the presences from the buffer cache and then the DB
         $this->me->session->conferences()
@@ -358,8 +354,7 @@ class Rooms extends Base
         $this->ajaxHttpGet();
 
         if ($resource) {
-            $session = Session::instance();
-            $session->delete($room . '/' . $resource);
+            linker($this->sessionId)->session->delete($room . '/' . $resource);
 
             $pu = $this->xmpp(new Unavailable);
             $pu->setTo($room)

@@ -3,7 +3,6 @@
 namespace App;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
-use Movim\CurrentCall;
 
 class MujiCall extends Model
 {
@@ -44,8 +43,8 @@ class MujiCall extends Model
 
     public function getJoinedAttribute(): bool
     {
-        return CurrentCall::getInstance()->isJidInCall($this->jidfrom)
-            && CurrentCall::getInstance()->mujiRoom == $this->muc;
+        return linker($this->session_id)->currentCall->isJidInCall($this->jidfrom)
+            && linker($this->session_id)->currentCall->mujiRoom == $this->muc;
     }
 
     public function getIconAttribute()

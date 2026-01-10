@@ -164,7 +164,7 @@ class Menu extends Base
 
     public function prepareContactsSuggestions()
     {
-        return (new ContactsSuggestions($this->me))->prepareContactsSuggestions();
+        return (new ContactsSuggestions($this->me, sessionId: $this->sessionId))->prepareContactsSuggestions();
     }
 
     public function prepareList($type = 'all', $page = 0)
@@ -250,6 +250,6 @@ class Menu extends Base
 
     public function preparePost($post)
     {
-        return (new Post($this->me))->preparePost($post, false, true);
+        return (new Post($this->me, sessionId: $this->sessionId))->preparePost($post, false, true);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Widgets\Confirm;
 
-use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Confirm\Accept;
@@ -26,7 +25,7 @@ class Confirm extends Base
         $view->assign('url', $packet->content['url']);
         $view->assign('method', $packet->content['method']);
 
-        Dialog::fill($view->draw('_confirm'));
+        $this->dialog($view->draw('_confirm'));
     }
 
     public function ajaxAccept($to, $id, $url, $method)

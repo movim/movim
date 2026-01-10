@@ -35,6 +35,6 @@ class CommunitySubscriptions extends Base
 
     public function prepareTicket(\App\Info $community)
     {
-        return (new CommunitiesServer($this->me))->prepareTicket($community);
+        return (new CommunitiesServer($this->me, sessionId: $this->sessionId))->prepareTicket($community);
     }
 }

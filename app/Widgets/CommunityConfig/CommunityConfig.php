@@ -2,8 +2,6 @@
 
 namespace App\Widgets\CommunityConfig;
 
-use App\Widgets\Dialog\Dialog;
-use App\Widgets\Drawer\Drawer;
 use Movim\Image;
 use Movim\Librairies\XMPPtoForm;
 use Movim\Widget\Base;
@@ -38,7 +36,7 @@ class CommunityConfig extends Base
         $view->assign('config', ($advanced) ? false : $xml->getArray($config->x));
         $view->assign('attributes', $config->attributes());
 
-        Drawer::fill('community_config', $view->draw('_communityconfig'), tiny: true);
+        $this->drawer('community_config', $view->draw('_communityconfig'), tiny: true);
         $this->rpc('MovimUtils.applyAutoheight');
     }
 
@@ -72,7 +70,7 @@ class CommunityConfig extends Base
             ->where('node', $node)
             ->first());
 
-        Dialog::fill($view->draw('_communityconfig_avatar'));
+        $this->dialog($view->draw('_communityconfig_avatar'));
     }
 
     public function ajaxSetAvatar($origin, $node, $form)

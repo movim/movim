@@ -2,7 +2,6 @@
 
 namespace App\Widgets\Account;
 
-use App\Widgets\Dialog\Dialog;
 use Movim\Librairies\XMPPtoForm;
 use Moxl\Xec\Action\OMEMO\DeleteBundle;
 use Moxl\Xec\Action\Register\ChangePassword;
@@ -87,7 +86,7 @@ class Account extends \Movim\Widget\Base
                 $view->assign('actions', $content->actions);
             }
 
-            Dialog::fill($view->draw('_account_form'), true);
+            $this->dialog($view->draw('_account_form'), true);
         }
     }
 
@@ -103,7 +102,7 @@ class Account extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('jid', $this->me->id);
-        Dialog::fill($view->draw('_account_password'));
+        $this->dialog($view->draw('_account_password'));
     }
 
     public function ajaxChangePasswordConfirm($form)
@@ -116,7 +115,7 @@ class Account extends \Movim\Widget\Base
 
             $this->rpc('Dialog_ajaxClear');
 
-            $cp = $this->xmpp(new ChangePassword($this->me));
+            $cp = $this->xmpp(new ChangePassword($this->me, sessionId: $this->sessionId));
             $cp->setTo($arr['server'])
                 ->setUsername($arr['username'])
                 ->setPassword($p1)
@@ -132,14 +131,14 @@ class Account extends \Movim\Widget\Base
         $this->rpc('Presence.clearQuick');
         $view = $this->tpl();
         $view->assign('jid', $this->me->id);
-        Dialog::fill($view->draw('_account_remove'));
+        $this->dialog($view->draw('_account_remove'));
     }
 
     public function ajaxClearAccount()
     {
         $view = $this->tpl();
         $view->assign('jid', $this->me->id);
-        Dialog::fill($view->draw('_account_clear'));
+        $this->dialog($view->draw('_account_clear'));
     }
 
     public function ajaxClearAccountConfirm()
@@ -203,12 +202,12 @@ class Account extends \Movim\Widget\Base
 
         $view = $this->tpl();
         $view->assign('fingerprint', $fingerprint);
-        Dialog::fill($view->draw('_account_delete_bundle'));
+        $this->dialog($view->draw('_account_delete_bundle'));
     }
 
     public function ajaxDeleteBundleConfirm(int $id, array $devicesIds)
     {
-        $db = $this->xmpp(new DeleteBundle($this->me));
+        $db = $this->xmpp(new DeleteBundle($this->me, sessionId: $this->sessionId));
         $db->setId($id)
             ->setDevicesIds($devicesIds)
             ->request();
@@ -222,7 +221,7 @@ class Account extends \Movim\Widget\Base
     public function ajaxRemoveAccountConfirm($form)
     {
         if ($form->jid->value == $this->me->id) {
-            $da = $this->xmpp(new Remove($this->me));
+            $da = $this->xmpp(new Remove($this->me, sessionId: $this->sessionId));
             $da->request();
         } else {
             $this->toast($this->__('account.delete_text_error'));
@@ -235,7 +234,7 @@ class Account extends \Movim\Widget\Base
             return;
         }
 
-        $da = $this->xmpp(new Get($this->me));
+        $da = $this->xmpp(new Get($this->me, sessionId: $this->sessionId));
         $da->setTo($server)
             ->request();
     }
@@ -245,7 +244,7 @@ class Account extends \Movim\Widget\Base
         if (!validateServer($server)) {
             return;
         }
-        $s = $this->xmpp(new Set($this->me));
+        $s = $this->xmpp(new Set($this->me, sessionId: $this->sessionId));
         $s->setTo($server)
             ->setData(formToArray($form))
             ->request();
@@ -259,7 +258,7 @@ class Account extends \Movim\Widget\Base
             ->get();
 
         foreach ($gateways as $gateway) {
-            $g = $this->xmpp(new AdHocGet($this->me));
+            $g = $this->xmpp(new AdHocGet($this->me, sessionId: $this->sessionId));
             $g->setTo($gateway->server)->request();
         }
 

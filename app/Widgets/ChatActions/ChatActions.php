@@ -6,8 +6,6 @@ use App\Message;
 use App\Url;
 use App\Widgets\Chat\Chat;
 use App\Widgets\ContactActions\ContactActions;
-use App\Widgets\Dialog\Dialog;
-use App\Widgets\Drawer\Drawer;
 use Moxl\Xec\Action\Blocking\Block;
 use Moxl\Xec\Action\Blocking\Unblock;
 use Moxl\Xec\Action\Message\Moderate;
@@ -44,7 +42,7 @@ class ChatActions extends \Movim\Widget\Base
      */
     public function ajaxGetContact(string $jid)
     {
-        $c = new ContactActions($this->me);
+        $c = new ContactActions($this->me, sessionId: $this->sessionId);
         $c->ajaxGetDrawer($jid);
     }
 
@@ -95,7 +93,7 @@ class ChatActions extends \Movim\Widget\Base
             }
 
             $this->rpc('ChatActions.setMessage', $message);
-            Dialog::fill($view->draw('_chatactions_message_dialog'));
+            $this->dialog($view->draw('_chatactions_message_dialog'));
         }
     }
 
@@ -110,7 +108,7 @@ class ChatActions extends \Movim\Widget\Base
         $view->assign('jid', $jid);
         $view->assign('muc', $muc);
 
-        Drawer::fill('chat_search', $view->draw('_chatactions_search'));
+        $this->drawer('chat_search', $view->draw('_chatactions_search'));
 
         $this->rpc('ChatActions.focusSearch');
     }
@@ -202,7 +200,7 @@ class ChatActions extends \Movim\Widget\Base
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $retract;
 
-            $c = new Chat($this->me);
+            $c = new Chat($this->me, sessionId: $this->sessionId);
             $c->onMessage($packet, false, true);
         }
     }
@@ -271,7 +269,7 @@ class ChatActions extends \Movim\Widget\Base
             $url = Url::resolve(trim($url));
 
             if ($url != null) {
-                $this->rpc('MovimTpl.fill', '#embed', (new Chat($this->me))->prepareEmbed($url));
+                $this->rpc('MovimTpl.fill', '#embed', (new Chat($this->me, sessionId: $this->sessionId))->prepareEmbed($url));
             }
         } catch (\Exception $e) {
         }

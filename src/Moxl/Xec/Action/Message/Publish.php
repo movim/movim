@@ -31,9 +31,11 @@ class Publish extends Action
 
     public function request()
     {
-        $this->store($this->_id);
+        $messageId = $this->store($this->_id);
+
         $this->send(Message::maker(
             to: $this->_to,
+            messageId: $messageId,
             type: $this->_muc ? 'groupchat' : 'chat',
             content: $this->_content,
             html: $this->_html,
@@ -78,7 +80,7 @@ class Publish extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($this->_muc) {
-            $m = new \Moxl\Xec\Payload\Message($this->me);
+            $m = new \Moxl\Xec\Payload\Message($this->me, sessionId: $this->sessionId);
             $m->handle($stanza, $parent);
         }
     }

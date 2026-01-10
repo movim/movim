@@ -38,15 +38,15 @@ class MessageBuffer
                 $first = $this->_models->first();
                 $table = $table->where(function ($query) use ($first) {
                     $query->where('user_id', $first['user_id'])
-                          ->where('jidfrom', $first['jidfrom'])
-                          ->where('id', $first['id']);
+                        ->where('jidfrom', $first['jidfrom'])
+                        ->where('id', $first['id']);
                 });
 
                 $this->_models->skip(1)->each(function ($message) use ($table) {
                     $table->orWhere(function ($query) use ($message) {
                         $query->where('user_id', $message['user_id'])
-                              ->where('jidfrom', $message['jidfrom'])
-                              ->where('id', $message['id']);
+                            ->where('jidfrom', $message['jidfrom'])
+                            ->where('id', $message['id']);
                     });
                 });
                 $table->delete();
@@ -61,7 +61,7 @@ class MessageBuffer
         }
 
         if ($this->_calls->isNotEmpty()) {
-            $this->_calls->each(fn ($call) => $call());
+            $this->_calls->each(fn($call) => $call());
             $this->_calls = collect();
         }
     }
@@ -69,8 +69,8 @@ class MessageBuffer
     public function append(Message $message, $call)
     {
         //if (empty($message->mid)) {
-            $this->_models[$message->user_id.$message->jidfrom.$message->id] = $message->toRawArray();
-            $this->_calls->push($call);
+        $this->_models[$message->user_id . $message->jidfrom . $message->id] = $message->toRawArray();
+        $this->_calls->push($call);
         /*} else {
             $message->save();
             $call();

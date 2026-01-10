@@ -2,7 +2,6 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\Session;
 //use App\MessageBuffer;
 
 class MAMResult extends Payload
@@ -10,7 +9,7 @@ class MAMResult extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $to = bareJid((string)$parent->attributes()->to);
-        $session = Session::instance();
+        $session = linker($this->sessionId)->session;
 
         $messagesCounter = $session->get('mamid' . (string)$stanza->attributes()->queryid);
 
@@ -36,7 +35,7 @@ class MAMResult extends Payload
                     $stanza->forwarded->message->retract
                     && $stanza->forwarded->message->retract->attributes()->xmlns == 'urn:xmpp:message-retract:1'
                 ) {
-                    $retracted = new Retracted($this->me);
+                    $retracted = new Retracted($this->me, sessionId: $this->sessionId);
                     $retracted->handle($stanza->forwarded->message->retract, $stanza->forwarded->message);
                     return;
                 }
@@ -45,7 +44,7 @@ class MAMResult extends Payload
                     $stanza->forwarded->message->invite
                     && $stanza->forwarded->message->invite->attributes()->xmlns == 'urn:xmpp:call-invites:0'
                 ) {
-                    $invite = new CallInvitePropose($this->me);
+                    $invite = new CallInvitePropose($this->me, sessionId: $this->sessionId);
                     $invite->handle($stanza->forwarded->message->invite, $stanza->forwarded->message);
                 }
 
@@ -53,7 +52,7 @@ class MAMResult extends Payload
                     $stanza->forwarded->message->retract
                     && $stanza->forwarded->message->retract->attributes()->xmlns == 'urn:xmpp:call-invites:0'
                 ) {
-                    $retract = new CallInviteRetract($this->me);
+                    $retract = new CallInviteRetract($this->me, sessionId: $this->sessionId);
                     $retract->handle($stanza->forwarded->message->retract, $stanza->forwarded->message);
                 }
 
@@ -61,7 +60,7 @@ class MAMResult extends Payload
                     $stanza->forwarded->message->accept
                     && $stanza->forwarded->message->accept->attributes()->xmlns == 'urn:xmpp:call-invites:0'
                 ) {
-                    $accept = new CallInviteAccept($this->me);
+                    $accept = new CallInviteAccept($this->me, sessionId: $this->sessionId);
                     $accept->handle($stanza->forwarded->message->accept, $stanza->forwarded->message);
                 }
 
@@ -69,7 +68,7 @@ class MAMResult extends Payload
                     $stanza->forwarded->message->left
                     && $stanza->forwarded->message->left->attributes()->xmlns == 'urn:xmpp:call-invites:0'
                 ) {
-                    $left = new CallInviteLeft($this->me);
+                    $left = new CallInviteLeft($this->me, sessionId: $this->sessionId);
                     $left->handle($stanza->forwarded->message->left, $stanza->forwarded->message);
                 }
             }

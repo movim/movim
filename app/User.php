@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Movim\Session;
 use App\Contact;
 use App\Configuration;
 use App\Session as AppSession;
@@ -26,7 +25,6 @@ class User extends Model
     public $with = ['session', 'capability'];
     protected $keyType = 'string';
     public $incrementing = false;
-    private static $me = null;
     private $unreads = null;
 
     private $blockListInitialized = false;
@@ -39,15 +37,6 @@ class User extends Model
     ];
 
     public const ACCENT_COLORS = ['red', 'pink', 'purple', 'dpurple', 'indigo', 'blue', 'cyan', 'teal', 'green', 'lgreen', 'orange', 'dorange'];
-
-    public function save(array $options = [])
-    {
-        parent::save($options);
-
-        // Reload the user
-        self::me(true);
-        (new \Movim\Bootstrap)->loadLanguage();
-    }
 
     public function session()
     {
@@ -235,24 +224,6 @@ class User extends Model
     public function affiliations()
     {
         return $this->hasMany(Affiliation::class, 'jid', 'id');
-    }
-
-    public static function me($reload = false): ?User
-    {
-        $session = Session::instance();
-
-        if (
-            self::$me != null
-            && self::$me->id == $session->get('jid')
-            && $reload == false
-        ) {
-            return self::$me;
-        }
-
-        $me = self::find($session->get('jid'));
-        self::$me = $me;
-
-        return ($me) ? $me : null;
     }
 
     public function init()

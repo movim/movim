@@ -92,7 +92,6 @@ class DaemonCommand extends Command
             $output->writeln('<info>php daemon.php setAdmin {jid}</info>' . "\n");
         }
 
-
         $clearTemplatesCache = new Process('exec ' . PHP_BINARY . ' ' . DOCUMENT_ROOT . '/daemon.php clearTemplatesCache');
         $clearTemplatesCache->start($loop);
         $clearTemplatesCache->on('exit', fn($out) => $output->writeln('<info>Templates cache cleared</info>'));

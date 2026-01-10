@@ -2,9 +2,6 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\ChatroomPings;
-use Movim\ChatStates;
-
 class Message extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -40,8 +37,8 @@ class Message extends Payload
             return;
         }
 
-        if ($message->isMuc() && ChatroomPings::getInstance($this->me)->has($message->jidfrom)) {
-            ChatroomPings::getInstance($this->me)->touch($message->jidfrom);
+        if ($message->isMuc() && linker($this->sessionId)->chatroomPings->has($message->jidfrom)) {
+            linker($this->sessionId)->chatroomPings->touch($message->jidfrom);
         }
 
         if ($stanza->composing || $stanza->paused || $stanza->active) {
@@ -50,11 +47,11 @@ class Message extends Payload
                 : $message->jidfrom;
 
             if ($stanza->composing) {
-                (ChatStates::getInstance($this->me))->composing($from, $message->jidto, isset($message->mucpm));
+                linker($this->sessionId)->chatStates->composing($from, $message->jidto, isset($message->mucpm));
             }
 
             if ($stanza->paused || $stanza->active) {
-                (ChatStates::getInstance($this->me))->paused($from, $message->jidto, isset($message->mucpm));
+                linker($this->sessionId)->chatStates->paused($from, $message->jidto, isset($message->mucpm));
             }
         }
 

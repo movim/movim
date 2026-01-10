@@ -20,8 +20,8 @@ class CommunityPosts extends Base
         $this->registerEvent('pubsub_getitems_error', 'onItemsError');
         $this->registerEvent('pubsub_getitemsid_error', 'onItemsError');
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved', 'community');
-        $this->registerEvent('pubsub_getitems_errorpresencesubscriptionrequired', 'tonItemsErrorPresenceSubscriptionRequired');
-        $this->registerEvent('post_resolved', 'tonPostResolved');
+        $this->registerEvent('pubsub_getitems_errorpresencesubscriptionrequired', 'onItemsErrorPresenceSubscriptionRequired');
+        $this->registerEvent('post_resolved', 'onPostResolved');
         $this->registerEvent('post_comment_published', 'onCommentPublished');
 
         $this->addjs('communityposts.js');
@@ -61,7 +61,7 @@ class CommunityPosts extends Base
         }
     }
 
-    public function tonPostResolved(Packet $packet)
+    public function onPostResolved(Packet $packet)
     {
         $post = AppPost::find($packet->content);
 
@@ -83,7 +83,7 @@ class CommunityPosts extends Base
         $this->rpc('CommunityPosts.getItems');
     }
 
-    public function tonItemsErrorPresenceSubscriptionRequired(Packet $packet)
+    public function onItemsErrorPresenceSubscriptionRequired(Packet $packet)
     {
         list($origin, $node) = array_values((array)$packet->content);
 
@@ -148,7 +148,7 @@ class CommunityPosts extends Base
 
     public function ajaxGetContact($jid)
     {
-        $c = new ContactActions($this->me);
+        $c = new ContactActions($this->me, sessionId: $this->sessionId);
         $c->ajaxGetDrawer($jid);
     }
 
@@ -187,12 +187,12 @@ class CommunityPosts extends Base
 
     public function preparePost($p)
     {
-        return (new Post($this->me))->preparePost($p, false, true);
+        return (new Post($this->me, sessionId: $this->sessionId))->preparePost($p, false, true);
     }
 
     public function prepareTicket($p)
     {
-        return (new Post($this->me))->prepareTicket($p);
+        return (new Post($this->me, sessionId: $this->sessionId))->prepareTicket($p);
     }
 
     private function prepareCommunity(

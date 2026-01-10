@@ -118,10 +118,10 @@ class Stickers extends \Movim\Widget\Base
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
 
-            $c = new Chats($this->me);
+            $c = new Chats($this->me, sessionId: $this->sessionId);
             $c->onMessage($packet);
 
-            $c = new Chat($this->me);
+            $c = new Chat($this->me, sessionId: $this->sessionId);
             $c->onMessage($packet);
         }
     }
@@ -148,14 +148,14 @@ class Stickers extends \Movim\Widget\Base
             $view->assign('pack', $pack);
             $view->assign('gifEnabled', $isGifEnabled);
 
-            Drawer::fill('stickers', $view->draw('_stickers'), actions: true, tiny: true);
+            $this->drawer('stickers', $view->draw('_stickers'), actions: true, tiny: true);
         } else {
             $view = $this->tpl();
             $view->assign('jid', $to);
             $view->assign('packs', $packs);
             $view->assign('pack', null);
 
-            Drawer::fill('stickers', $view->draw('_stickers_gifs'), actions: true, tiny: true);
+            $this->drawer('stickers', $view->draw('_stickers_gifs'), actions: true, tiny: true);
             $this->rpc('Stickers.setGifsSearchEvent', $to);
         }
     }
@@ -179,7 +179,7 @@ class Stickers extends \Movim\Widget\Base
         $emojis->assign('favorites', $this->me->emojis);
         $emojis->assign('gotemojis', $mid == null && Emoji::count() > 0);
 
-        Drawer::fill('emojis', $emojis->draw('_stickers_emojis'), actions: true, tiny: true);
+        $this->drawer('emojis', $emojis->draw('_stickers_emojis'), actions: true, tiny: true);
         $this->rpc('Stickers.setEmojisEvent', $mid);
     }
 
@@ -264,7 +264,7 @@ class Stickers extends \Movim\Widget\Base
                 $messageFile->thumbnail_width = (int)$result->media_formats->preview->dims[0];
                 $messageFile->thumbnail_height = (int)$result->media_formats->preview->dims[1];
 
-                $chat = new Chat($this->me);
+                $chat = new Chat($this->me, sessionId: $this->sessionId);
                 $chat->sendMessage(
                     $to,
                     false,

@@ -2,8 +2,6 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\CurrentCall;
-
 class JingleProceed extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

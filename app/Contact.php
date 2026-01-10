@@ -207,7 +207,7 @@ class Contact extends Model
     public function setVcard4($vcard)
     {
         $this->date = (isset($vcard->bday->date)
-            && Validator::date('Y-m-d')->isValid($vcard->bday->date))
+            && Validator::date('Y-m-d')->isValid((string)$vcard->bday->date))
             ? (string)$vcard->bday->date
             : null;
 

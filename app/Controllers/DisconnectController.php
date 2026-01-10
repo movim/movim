@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use Movim\Controller\Base;
 use Movim\Cookie;
-use Movim\Session;
 
 class DisconnectController extends Base
 {
@@ -15,7 +14,6 @@ class DisconnectController extends Base
             $this->user->encryptedPasswords()->delete();
             requestAPI('disconnect', post: ['sid' => $this->user->session->id]);
         }
-        Session::dispose();
 
         // Fresh cookie
         Cookie::renew();

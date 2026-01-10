@@ -31,7 +31,7 @@ class Bind extends Action
 
         $session->save();
 
-        $ss = new Start($this->me);
+        $ss = new Start($this->me, sessionId: $this->sessionId);
         $ss->setTo($session->host)
            ->request();
     }

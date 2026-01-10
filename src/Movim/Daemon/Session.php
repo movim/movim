@@ -17,35 +17,23 @@ class Session
     const DOWN_TIMER = 10;
     protected \SplObjectStorage $clients; // Browser Websockets
     public int $timestamp;
-    protected string $sid;
-    protected string $baseuri;
     public ?Process $process;
     public ?ConnectionInterface $internalSocket = null;
-
-    private string $key; // Daemon secure key
 
     public bool $registered = false;
     public bool $started = false;
 
     private $state;
-    private $language;
 
     public function __construct(
         LoopInterface $loop,
-        string $sid,
-        string $baseuri,
-        string $key,
-        $language = false
+        protected string $sid,
+        protected string $baseuri,
+        private string $key, // Daemon secure key
+        private ?string $language = null
     ) {
-        $this->sid = $sid;
-        $this->baseuri = $baseuri;
-        $this->language = $language;
-
-        $this->key = $key;
-
         $this->clients = new \SplObjectStorage;
         $this->register($loop);
-
         $this->timestamp = time();
     }
 
@@ -58,7 +46,7 @@ class Session
         }
 
         if ($this->countClients() > 0) {
-            $this->stateOut('up');
+            $this->stateOut(state: 'up');
         }
     }
 
@@ -82,7 +70,7 @@ class Session
         if ($this->countClients() == 0) {
             $loop->addPeriodicTimer(Session::DOWN_TIMER, function ($timer) use ($loop) {
                 if ($this->countClients() == 0) {
-                    $this->stateOut('down');
+                    $this->stateOut(state: 'down');
                 }
                 $loop->cancelTimer($timer);
             });
@@ -173,7 +161,7 @@ class Session
         }
     }
 
-    public function stateOut($state)
+    public function stateOut(string $state)
     {
         if ($this->state == $state) {
             return;
@@ -185,17 +173,21 @@ class Session
             if ($this->internalSocket) {
                 $msg = new \stdClass;
                 $msg->func = $this->state;
-                $msg = json_encode($msg);
-                $this->internalSocket->send($msg);
+                $msg->sid = $this->sid;
+                $this->internalSocket->send(json_encode($msg));
             }
         }
     }
 
-    public function messageIn($msg)
+    public function messageIn(string $msg)
     {
+        // Inject the session sid
+        $json = json_decode($msg);
+        $json->sid = $this->sid;
+
         $this->timestamp = time();
         if ($this->internalSocket) {
-            $this->internalSocket->send($msg);
+            $this->internalSocket->send(json_encode($json));
         }
         unset($msg);
     }

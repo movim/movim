@@ -28,7 +28,7 @@ class Synchronize extends Action
         $conference->nick           = (string)$c->nick;
         $conference->autojoin       = filter_var($c->attributes()->autojoin, FILTER_VALIDATE_BOOLEAN);
 
-        $s = new Set($this->me);
+        $s = new Set($this->me, sessionId: $this->sessionId);
         $s->setConference($conference)
           ->request();
     }

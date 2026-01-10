@@ -5,7 +5,6 @@ namespace App\Widgets\CommunityAffiliations;
 use App\Affiliation;
 use App\Post;
 use App\Widgets\CommunityHeader\CommunityHeader;
-use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\Delete;
@@ -103,7 +102,7 @@ class CommunityAffiliations extends Base
         $view->assign('server', $server);
         $view->assign('node', $node);
 
-        Dialog::fill($view->draw('_communityaffiliations_subscriptions'), true);
+        $this->dialog($view->draw('_communityaffiliations_subscriptions'), true);
     }
 
     private function deleted(Packet $packet)
@@ -135,7 +134,7 @@ class CommunityAffiliations extends Base
     {
         $this->toast($this->__('communityaffiliation.delete_error'));
 
-        $c = new CommunityHeader($this->me);
+        $c = new CommunityHeader($this->me, sessionId: $this->sessionId);
         $c->ajaxUnsubscribe($packet->content['server'], $packet->content['node']);
 
         $this->deleted($packet);
@@ -154,7 +153,7 @@ class CommunityAffiliations extends Base
             ->where('public', true)
             ->get());
 
-        Dialog::fill($view->draw('_communityaffiliations_public_subscriptions_dialog'), true);
+        $this->dialog($view->draw('_communityaffiliations_public_subscriptions_dialog'), true);
     }
 
     public function ajaxGetAffiliations(string $server, string $node)
@@ -192,7 +191,7 @@ class CommunityAffiliations extends Base
         $view->assign('node', $node);
         $view->assign('clean', $clean);
 
-        Dialog::fill($view->draw('_communityaffiliations_delete'));
+        $this->dialog($view->draw('_communityaffiliations_delete'));
     }
 
     public function ajaxDeleteConfirm(string $server, string $node)
@@ -201,7 +200,7 @@ class CommunityAffiliations extends Base
             return;
         }
 
-        (new CommunityHeader($this->me))->ajaxUnsubscribe($server, $node);
+        (new CommunityHeader($this->me, sessionId: $this->sessionId))->ajaxUnsubscribe($server, $node);
 
         $d = $this->xmpp(new Delete);
         $d->setTo($server)->setNode($node)
@@ -214,7 +213,7 @@ class CommunityAffiliations extends Base
         $view->assign('server', $server);
         $view->assign('node', $node);
 
-        Dialog::fill($view->draw('_communityaffiliations_config'));
+        $this->dialog($view->draw('_communityaffiliations_config'));
 
         $this->ajaxGetAffiliations($server, $node);
     }

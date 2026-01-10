@@ -15,6 +15,7 @@ class Displayed extends Action
     {
         $this->send(Message::maker(
             to: $this->_to,
+            messageId: generateUUID(),
             id: $this->_id,
             type: $this->_type,
             receipts: 'displayed'

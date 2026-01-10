@@ -11,7 +11,6 @@ use App\OpenChat;
 use App\Roster;
 use App\Widgets\Chat\Chat;
 use Carbon\Carbon;
-use Movim\CurrentCall;
 use Moxl\Xec\Payload\Packet;
 
 class Chats extends Base
@@ -233,7 +232,7 @@ class Chats extends Base
         $this->rpc('Chats.refresh');
 
         // Clear the counter
-        (new Chat($this->me))->getMessages($jid, seenOnly: true, event: false);
+        (new Chat($this->me, sessionId: $this->sessionId))->getMessages($jid, seenOnly: true, event: false);
 
         if ($closeDiscussion) {
             $this->rpc('Chat_ajaxGet');
@@ -353,7 +352,7 @@ class Chats extends Base
         $view->assign('contact', $contact);
         $view->assign('roster', $roster);
         $view->assign('count', $this->me->unreads($jid));
-        $view->assign('contactincall', CurrentCall::getInstance()->isJidInCall($jid));
+        $view->assign('contactincall', $this->currentCall()?->isJidInCall($jid));
 
         if ($status == null) {
             $view->assign('message', $message);
