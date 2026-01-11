@@ -238,7 +238,9 @@
         {/if}
 
         <li onclick="Rooms_ajaxExit('{$jid|echapJS}'); {if="$anon"}Presence_ajaxLogout(){/if}">
-            <span class="primary icon"></span>
+            <span class="primary icon gray">
+                <i class="material-symbols">logout</i>
+            </span>
             <div>
                 <p class="normal">{$c->__('status.disconnect')}</p>
             </div>
