@@ -1,6 +1,6 @@
 <li {if="$message->isMine()"}class="oppose"{/if}>
     <div class="bubble {if="$message->file && $message->file->isPicture"}file{/if}"
-        data-publishedprepared="{if="$search"}{$message->published|prepareDate}{else}{$message->published|prepareTime}{/if}">
+        data-publishedprepared="{if="$search"}{$c->prepareDate($message->published)}{else}{$c->prepareTime($message->published)}{/if}">
         <div class="message">
             {if="$message->isMuc()"}
                 <span class="resource {$message->resolveColor()}">{$message->resource}</span>

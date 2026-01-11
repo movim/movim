@@ -100,7 +100,7 @@
                         </span>
                         {if="$value->joined"}{$c->__('visio.joined_call')}{else}{$c->__('visio.in_call')}{/if}
                         <span class="second">
-                            {$value->created_at|prepareDate:true,true}
+                            {$c->prepareDate($value->created_at, true)}
                             •
                             {$c->__('visio.by', $value->inviter->name)}
                         </span>

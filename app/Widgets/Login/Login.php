@@ -178,21 +178,26 @@ class Login extends Base
         $this->showErrorBlock($error);
     }
 
-    public function ajaxLogin($form, string $timezone)
+    public function ajaxLogin($form, string $sessionId, string $timezone)
     {
         $username = strtolower($form->username->value);
         $password = $form->password->value;
-
-        $this->doLogin($username, $password, $timezone);
+        $this->doLogin($username, $password, $timezone, $sessionId);
     }
 
-    public function ajaxHTTPLogin(string $login, string $password, string $timezone)
+    public function ajaxHTTPLogin(string $login, string $password, string $sessionId, string $timezone)
     {
-        $this->doLogin($login, $password, $timezone);
+        $this->doLogin($login, $password, $timezone, $sessionId);
     }
 
-    public function ajaxQuickLogin(string $deviceId, string $login, string $key, string $timezone, ?bool $check = false)
-    {
+    public function ajaxQuickLogin(
+        string $deviceId,
+        string $login,
+        string $key,
+        string $sessionId,
+        string $timezone,
+        ?bool $check = false
+    ) {
         $validateLogin = Validator::stringType()->length(1, 254);
 
         if (!$validateLogin->isValid($login)) {
@@ -202,7 +207,6 @@ class Login extends Base
 
         try {
             $key = Key::loadFromAsciiSafeString($key);
-
             $user = \App\User::find($login);
 
             if ($user) {
@@ -216,7 +220,14 @@ class Login extends Base
 
                     $ciphertext->touch();
                     $password = Crypto::decrypt($ciphertext->data, $key);
-                    $this->doLogin($login, $password, $timezone, $deviceId);
+
+                    $this->doLogin(
+                        login: $login,
+                        password: $password,
+                        sessionId: $sessionId,
+                        timezone: $timezone,
+                        deviceId: $deviceId
+                    );
                 } else {
                     $this->rpc('Login.clearQuick');
                 }
@@ -226,10 +237,14 @@ class Login extends Base
         }
     }
 
-    private function doLogin(string $login, string $password, string $timezone, bool $deviceId = false)
-    {
+    private function doLogin(
+        string $login,
+        string $password,
+        string $timezone,
+        ?string $sessionId = null,
+        ?string $deviceId = null
+    ) {
         $configuration = Configuration::get();
-
         if (!Validator::stringType()->length(1, 254)->isValid($login)) {
             $this->showErrorBlock('login_format');
             return;
@@ -257,7 +272,7 @@ class Login extends Base
         $user->init();
         $user->save();
 
-        if (!$deviceId) {
+        if ($deviceId == null) {
             $rkey = Key::createNewRandomKey();
             $deviceId = generateKey();
 
@@ -271,7 +286,7 @@ class Login extends Base
         }
 
         if ($here && password_verify(Session::hashSession($username, $password, $host), $here->hash)) {
-            $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->id, date(DATE_COOKIE, Cookie::getTime()));
+            $this->rpc('Login.setCookie', $here->id, date(DATE_COOKIE, Cookie::getTime()));
             $this->rpc('MovimUtils.redirect', $this->route('main'));
             return;
         } elseif (\App\Session::where('username', $username)->where('host', $host)->exists()) {
@@ -280,14 +295,19 @@ class Login extends Base
         }
 
         $s = new \App\Session;
-        $s->init($username, $password, $host, $timezone);
-        $s->loadMemory();
-        $s->loadTimezone();
+        $s->init(
+            username: $username,
+            password: $password,
+            host: $host,
+            sessionId: $sessionId,
+            timezone: $timezone
+        );
         $s->save();
 
         linker($s->id)->attachUser(User::where('id', $login)->first());
         linker($s->id)->authentication->username = $username;
         linker($s->id)->authentication->password = $password;
+        linker($s->id)->timezone = $timezone;
 
         // We launch the XMPP socket
         $this->rpc('register', $host);

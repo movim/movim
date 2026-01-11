@@ -163,6 +163,88 @@ class Base
         return \Movim\Route::urlize(...$args);
     }
 
+    /**
+     * Return a human-readable date
+     *
+     * @param timestamp $string
+     * @return string
+     */
+    function prepareDate(string $datetime = '', bool $compact = false, bool $hours = true, bool $dateOnly = false): string
+    {
+        $time = strtotime($datetime);
+        $time = $time !== false ? $time : time();
+        $t = $time + getTimezoneOffset($this->resolveTimezone());
+
+        $date = '';
+
+        $reldays = - (time() - $t - (time() % 86400)) / 86400;
+
+        // if $reldays is within a week
+        if (-7 < $reldays && $reldays <= 2) {
+            if ($reldays > 1) {
+                $date = '';
+            } elseif (-1 < $reldays && $reldays <= 0) {
+                $date = $this->__('date.yesterday');
+            } elseif (0 < $reldays && $reldays <= 1) {
+                // Today
+            } else {
+                $date = $this->__('date.ago', ceil(-$reldays));
+            }
+        } else {
+            if (!$compact) {
+                $date .= $this->__('day.' . strtolower(date('l', $t))) . ', ';
+            }
+
+            $date .= date('j', $t) . ' ' . $this->__('month.' . strtolower(date('F', $t)));
+
+            // Over 6 months
+            if (abs($reldays) > 182) {
+                $date .= gmdate(', Y', $t);
+            }
+
+            if ($compact) {
+                return $date;
+            }
+        }
+
+        if ($dateOnly) {
+            return $date;
+        }
+
+        //if $hours option print the time
+        if ($hours) {
+            if ($date != '') {
+                $date .= ' - ';
+            }
+
+            $date .= gmdate('H:i', $t);
+        }
+
+        return $date;
+    }
+
+    /**
+     * Return a human-readable time
+     *
+     * @param timestamp $string
+     * @return string
+     */
+    function prepareTime(string $datetime = ''): string
+    {
+        $time = strtotime($datetime);
+        $time = $time != false ? $time : time();
+        $t = $time + getTimezoneOffset($this->resolveTimezone());
+
+        return gmdate('H:i', $t);
+    }
+
+    private function resolveTimezone(): string
+    {
+        return $this->sessionId
+            ? linker($this->sessionId)->timezone ?? date_default_timezone_get()
+            : 'UTC';
+    }
+
     public function toast($title, int $timeout = 3000)
     {
         $this->rpc('Toast.send', $title, $timeout);

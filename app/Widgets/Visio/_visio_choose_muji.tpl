@@ -22,7 +22,7 @@
                         </span>
                     </p>
                     <p>
-                        {$value->created_at|prepareDate:true,true}
+                        {$c->prepareDate($value->created_at, true)}
                         •
                         {$c->__('visio.by', $value->inviter->name)}
                     </p>

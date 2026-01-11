@@ -15,7 +15,7 @@
                             {if="$value->isMine($c->me)"}
                                 {$liked = [$value->server, $value->node, $value->nodeid]}
                             {/if}
-                            <a title="{$value->published|prepareDate:true,true}"
+                            <a title="{$c->prepareDate($value->published, true)}"
                                href="{$c->route('contact', $value->aid)}">
                                 {$value->truename}</a>{if="$key + 1 < $post->likes->count()"},{/if}
                         {/if}
@@ -135,8 +135,8 @@
             {/if}
             <div>
                 <p class="normal line">
-                    <span class="info" title="{$value->published|prepareDate}">
-                        {$value->published|prepareDate:true,true}
+                    <span class="info" title="{$c->prepareDate($value->published)}">
+                        {$c->prepareDate($value->published, true)}
                     </span>
                     {if="$value->truename"}
                         {if="$public"}

@@ -82,9 +82,6 @@ class Bootstrap
         }
 
         define('BASE_URI', $this->getBaseUri());
-
-        define('SESSION_ID', $_COOKIE['MOVIM_SESSION_ID'] ?? getenv('sid'));
-
         define('APP_PATH', DOCUMENT_ROOT . '/app/');
         define('CONFIG_PATH', DOCUMENT_ROOT . '/config/');
         define('LOCALES_PATH', DOCUMENT_ROOT . '/locales/');
@@ -224,25 +221,23 @@ class Bootstrap
 
     private function checkSession(): ?Session
     {
-        if (is_string(SESSION_ID)) {
-            $process = (bool)requestAPI('exists', post: ['sid' => SESSION_ID]);
-            $session = Session::find(SESSION_ID);
+        if (array_key_exists('MOVIM_SESSION_ID', $_COOKIE)) {
+            $sessionId = $_COOKIE['MOVIM_SESSION_ID'];
+
+            $process = (bool)requestAPI('exists', post: ['sid' => $sessionId]);
+            $session = Session::find($sessionId);
 
             if ($session) {
-                $session->loadTimezone();
-
                 // There a session in the DB but no process
                 if (!$process) {
                     $session->delete();
                     return null;
                 }
 
-                //$session->loadMemory();
-
                 return $session;
             } elseif ($process) {
                 // A process but no session in the db
-                requestAPI('disconnect', post: ['sid' => SESSION_ID]);
+                requestAPI('disconnect', post: ['sid' => $sessionId]);
             }
         }
 

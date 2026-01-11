@@ -38,8 +38,8 @@
             <div>
                 <p class="normal">
                     {if="isset($message)"}
-                        <span class="info" title="{$message->published|prepareDate}">
-                            {$message->published|prepareDate:true,true}
+                        <span class="info" title="{$c->prepareDate($message->published)}">
+                            {$c->prepareDate($message->published, true)}
                         </span>
                     {/if}
                     {$c->__('button.chat')}

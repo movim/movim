@@ -73,7 +73,7 @@
 
                 {if="$value->presence && $value->presence->seen"}
                     <p>
-                        {$c->__('last.title')} {$value->presence->seen|prepareDate:true,true}
+                        {$c->__('last.title')} {$c->prepareDate($value->presence->seen, true)}
                     </p>
                 {elseif="$value->presence"}
                     <p>{$value->presence->presencetext}</p>

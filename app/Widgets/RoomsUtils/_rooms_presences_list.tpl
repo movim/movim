@@ -79,7 +79,7 @@
                 </p>
             {elseif="$value->seen"}
                 <p class="line">
-                    {$c->__('last.title')} {$value->seen|prepareDate:true,true}
+                    {$c->__('last.title')} {$c->prepareDate($value->seen, true)}
                 </p>
             {elseif="$value->status"}
                 <p class="line" title="{$value->status}">{$value->status}</p>

@@ -28,7 +28,7 @@
                         <i class="material-symbols">group_work</i> {$reply->node}
                     {/if}
                     <span class="info">
-                        {$reply->published|prepareDate:true,true}
+                        {$c->prepareDate($reply->published, true)}
                     </span>
                 </p>
             </div>

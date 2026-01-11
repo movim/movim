@@ -266,8 +266,6 @@ class SASLFailure extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        \App\Session::where('session_id', SESSION_ID)->delete();
-
         $this->pack($stanza->children()->getName());
         $this->deliver();
     }

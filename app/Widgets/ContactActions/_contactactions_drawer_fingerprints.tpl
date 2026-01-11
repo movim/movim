@@ -30,7 +30,7 @@
                         </p>
                         <p class="line">
                             {if="isset($value->latest)"}
-                                {$c->__('omemo.last_activity')}: {$value->latest|prepareDate:true}
+                                {$c->__('omemo.last_activity')}: {$c->prepareDate($value->latest)}
                             {/if}
                         </p>
                     </div>

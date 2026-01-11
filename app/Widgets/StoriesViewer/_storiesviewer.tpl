@@ -45,7 +45,7 @@
                         {$count} <i class="material-symbols">visibility</i> •
                     {/if}
 
-                    {$story->published|prepareDate:true,true}
+                    {$c->prepareDate($story->published, true)}
                 </p>
             </div>
         </li>

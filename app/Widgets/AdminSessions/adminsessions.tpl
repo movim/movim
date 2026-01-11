@@ -21,7 +21,7 @@
                         {$user->truename} <span class="second">{$user->id}</span>
                     </p>
                     <p class="line">
-                        {$value->created_at|prepareDate}
+                        {$c->prepareDate($value->created_at)}
                     </p>
                 </div>
             </li>

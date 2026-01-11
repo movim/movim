@@ -40,6 +40,7 @@ class Linker
     public ?Locale $locale = null;
     public Authentication $authentication;
     public Session $session;
+    public ?string $timezone = 'UTC';
 
     private ?string $timestampSend = null;
     private ?string $timestampReceive = null;

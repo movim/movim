@@ -88,7 +88,7 @@
                 {else}
                     <p></p>
                 {/if}
-                <p title="{$post->published|prepareDate}">
+                <p title="{$c->prepareDate($post->published)}">
                     {if="$contact"}
                         {if="!$public"}
                             {if="!$post->isMicroblog()"}
@@ -115,9 +115,9 @@
                             {$post->node}
                         {if="!$public"}</a>{/if} •
                     {/if}
-                    {$post->published|prepareDate:true,true}
+                    {$c->prepareDate($post->published, true)}
                     {if="$post->isEdited()"}
-                        <i class="material-symbols" title="{$post->updated|prepareDate}">
+                        <i class="material-symbols" title="{$c->prepareDate($post->updated)}">
                             edit
                         </i>
                     {/if}

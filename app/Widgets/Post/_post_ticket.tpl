@@ -76,7 +76,7 @@
                 </a>
             {/if}
 
-            <span class="info" title="{$post->published|prepareDate}">
+            <span class="info" title="{$c->prepareDate($post->published)}">
                 {$count = $post->pictures->count()}
                 {if="$count > 1"}
                     {$count} <i class="material-symbols">collections</i> •
@@ -97,7 +97,7 @@
                     {$count} <i class="material-symbols">chat_bubble_outline</i> •
                 {/if}
 
-                {$post->published|prepareDate:true,true}
+                {$c->prepareDate($post->published, true)}
             </span>
         </p>
     </div>

@@ -23,7 +23,7 @@
 
                 {if="$roster && $roster->presence && $roster->presence->seen"}
                     <i class="material-symbols icon-text">schedule</i>
-                    {$c->__('last.title')} {$roster->presence->seen|prepareDate:true,true}
+                    {$c->__('last.title')} {$c->prepareDate($roster->presence->seen, true)}
                     <br />
                 {/if}
 
@@ -46,7 +46,7 @@
 
                 {if="$contact->date && strtotime($contact->date) != 0"}
                     <i class="material-symbols icon-text">cake</i>
-                    {$contact->date|prepareDate:false}
+                    {$c->prepareDate($contact->date, true,false)}
                     <br />
                 {/if}
 

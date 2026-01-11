@@ -125,7 +125,7 @@
                             <i class="material-symbols icon green blink">{$muji->icon}</i>
                             {$c->__('visio.joined_call')}
                             <span class="second">
-                                {$muji->created_at|prepareDate:true,true}
+                                {$c->prepareDate($muji->created_at, true)}
                                 •
                                 {$c->__('visio.by', $muji->inviter->name)}
                                 •
@@ -139,7 +139,7 @@
                                 <i class="material-symbols icon blue blink">{$muji->icon}</i>
                                 {$c->__('visio.in_call')}
                                 <span class="second">
-                                    {$muji->created_at|prepareDate:true,true}
+                                    {$c->prepareDate($muji->created_at, true)}
                                     •
                                     {$c->__('visio.by', $muji->inviter->name)}
                                     •
@@ -336,7 +336,7 @@
                         {$c->__('visio.in_call')} •
                     {/if}
                     {if="$roster && $roster->presence && $roster->presence->seen"}
-                        {$c->__('last.title')} {$roster->presence->seen|prepareDate:true,true}
+                        {$c->__('last.title')} {$c->prepareDate($roster->presence->seen, true)}
                     {elseif="$roster && $roster->presence && !empty($roster->presence->status)"}
                         {$roster->presence->status}
                     {elseif="$roster && $roster->presence"}

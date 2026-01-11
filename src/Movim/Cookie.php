@@ -10,10 +10,12 @@ class Cookie
 {
     public static function set()
     {
-        if (SESSION_ID == false) {
+        $sessionId = $_COOKIE['MOVIM_SESSION_ID'];
+
+        if ($sessionId == null) {
             self::renew();
         } else {
-            self::setCookie(SESSION_ID);
+            self::setCookie($sessionId);
         }
     }
 

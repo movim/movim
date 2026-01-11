@@ -31,7 +31,7 @@
 
                 {if="$roster && $roster->presence && $roster->presence->seen"}
                     <i class="material-symbols icon-text">schedule</i>
-                    {$c->__('last.title')} {$roster->presence->seen|prepareDate:true,true}
+                    {$c->__('last.title')} {$c->prepareDate($roster->presence->seen, true)}
                     <br />
                 {/if}
 
@@ -79,7 +79,7 @@
 
                 {if="$contact->hasLocation() && $contact->locationUrl != null"}
                     <i class="material-symbols icon-text">place</i>
-                    <a href="{$contact->locationUrl}" target="_blank">{$c->__('location.last_published')}</a> - {$contact->loctimestamp|prepareDate:true,true}
+                    <a href="{$contact->locationUrl}" target="_blank">{$c->__('location.last_published')}</a> - {$c->prepareDate($contact->loctimestamp, true)}
                     <br />
                 {/if}
             </p>

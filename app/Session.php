@@ -116,9 +116,9 @@ class Session extends Model
         return $this->hasMany(Conference::class)->orderBy('conference');
     }
 
-    public function init(string $username, string $password, string $host, string $timezone)
+    public function init(string $username, string $password, string $host, string $sessionId, string $timezone)
     {
-        $this->id          = SESSION_ID;
+        $this->id          = $sessionId;
         $this->timezone    = $timezone;
         $this->host        = $host;
         $this->username    = $username;
@@ -126,12 +126,6 @@ class Session extends Model
         $this->resource    = 'movim' . \generateKey();
         $this->hash        = password_hash(Session::hashSession($this->username, $password, $this->host),  PASSWORD_DEFAULT);
         $this->active      = false;
-    }
-
-    public function loadTimezone()
-    {
-        define('TIMEZONE', $this->timezone);
-        date_default_timezone_set("UTC");
     }
 
     public function getUploadService()
@@ -174,14 +168,6 @@ class Session extends Model
             ->whereCategory('pubsub')
             ->whereType('service')
             ->first();
-    }
-
-    public function loadMemory()
-    {
-        $session = linker($this->id)->session;
-        $session->set('jid', $this->user_id);
-        $session->set('host', $this->host);
-        $session->set('username', $this->username);
     }
 
     public static function hashSession(string $username, string $password, string $host): string

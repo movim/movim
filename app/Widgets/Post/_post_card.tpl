@@ -38,7 +38,7 @@
                     <p></p>
                 {/if}
 
-                <p title="{$post->published|prepareDate}">
+                <p title="{$c->prepareDate($post->published)}">
                     {if="$post->aid"}
                         {if="!$post->isMicroblog() && $post->contact"}
                             <span class="icon bubble tiny">
@@ -67,9 +67,9 @@
                             {$post->node}
                         </a> •
                     {/if}
-                    {$post->published|prepareDate:true,true}
+                    {$c->prepareDate($post->published, true)}
                     {if="$post->isEdited()"}
-                        <i class="material-symbols" title="{$post->updated|prepareDate}">
+                        <i class="material-symbols" title="{$c->prepareDate($post->updated)}">
                             edit
                         </i>
                     {/if}

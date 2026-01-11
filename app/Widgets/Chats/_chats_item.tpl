@@ -13,7 +13,7 @@
             {/if}
         {/if}
         "
-    title="{$contact->id}{if="isset($message)"} • {$message->published|prepareDate}{/if}">
+    title="{$contact->id}{if="isset($message)"} • {$c->prepareDate($message->published)}{/if}">
 
     {$storiesCount = 0}
 
@@ -40,11 +40,11 @@
         <p class="normal line">
             {if="isset($message)"}
                 <span class="info">
-                    {$message->published|prepareDate:true,true}
+                    {$c->prepareDate($message->published, true)}
                 </span>
             {/if}
             {if="isset($message)"}
-                <span class="info" title="{$message->published|prepareDate}">
+                <span class="info" title="{$c->prepareDate($message->published)}">
                     {if="$message->jidfrom == $message->user_id"}
                         {if="$message->displayed"}
                             <span class="material-symbols">done_all</span>

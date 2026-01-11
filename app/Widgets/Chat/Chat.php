@@ -1499,17 +1499,17 @@ class Chat extends \Movim\Widget\Base
             $message->rtl = isRTL($message->body);
         }
 
-        $message->publishedPrepared = prepareTime($message->published);
+        $message->publishedPrepared = $this->prepareTime($message->published);
 
         if ($message->delivered) {
-            $message->delivered = prepareDate($message->delivered, true);
+            $message->delivered = $this->prepareDate($message->delivered);
         }
 
         if ($message->displayed) {
-            $message->displayed = prepareDate($message->displayed, true);
+            $message->displayed = $this->prepareDate($message->displayed);
         }
 
-        $date = prepareDate($message->published, false, false, true);
+        $date = $this->prepareDate($message->published, dateOnly: true);
 
         if (empty($date)) {
             $date = $this->__('date.today');

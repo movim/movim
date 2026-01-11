@@ -33,11 +33,11 @@
                     <div>
                         <p class="normal">
                             {if="$value->activity_at"}
-                                <span class="info">{$c->__('omemo.last_activity')}: {$value->activity_at|prepareDate}</span>
+                                <span class="info">{$c->__('omemo.last_activity')}: {$c->prepareDate($value->activity_at)}</span>
                             {/if}
                             {$value->browser ?? $c->__('notificationconfig.unknown_browser')}
                         </p>
-                        <p>{$value->platform ?? $c->__('notificationconfig.unknown_platform')} - {$value->created_at|prepareDate}</p>
+                        <p>{$value->platform ?? $c->__('notificationconfig.unknown_platform')} - {$c->prepareDate($value->created_at)}</p>
                     </div>
                 </li>
                 {if="$value->self"}{/if}
