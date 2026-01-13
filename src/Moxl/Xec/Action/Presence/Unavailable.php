@@ -10,7 +10,6 @@ class Unavailable extends Action
 {
     protected $_status;
     protected $_to;
-    protected $_type = 'unavailable';
     protected $_resource;
 
     public function request()
@@ -19,7 +18,7 @@ class Unavailable extends Action
         $this->send(Presence::maker($this->me,
             to: $this->_to . '/' . $this->_resource,
             status: $this->_status,
-            type: $this->_type
+            type: 'unavailable'
         ));
     }
 
