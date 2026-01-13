@@ -28,7 +28,7 @@ class Locale
             $this->language = $locale->detect($this->browserLanguage);
         }
 
-        $this->translations = $locale->load($this->language);
+        $this->translations = $locale->load($this->language ?? I18nLocale::DEFAULT_LANGUAGE);
     }
 
     public function translate(string $key, ?array $args = null): string

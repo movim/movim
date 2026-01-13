@@ -29,6 +29,8 @@ class Shortcuts extends \Movim\Widget\Base
     {
         $notifs = linker($this->sessionId)->session->get('notifs') ?? [];
 
+        if (empty($notifs)) return;
+
         $jids = [];
         $notifs = array_reverse($notifs);
 
