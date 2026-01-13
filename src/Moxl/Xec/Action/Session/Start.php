@@ -23,7 +23,9 @@ class Start extends Action
         $session->active = true;
         $session->save();
 
-        fwrite(STDERR, 'started');
+        $message = new \stdClass;
+        $message->started = true;
+        linker($this->sessionId)->writeOut($message);
 
         $this->deliver();
     }

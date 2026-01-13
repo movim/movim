@@ -27,8 +27,8 @@ class RPC
         if (php_sapi_name() != 'cli') {
             array_push(self::$json, $payload);
         } else if ($this->sessionId || $this?->user?->session) {
-            global $linkerManager;
-            $linkerManager->sendWebsocket(
+            global $linkersManager;
+            $linkersManager->sendWebsocket(
                 $this->sessionId ?? $this->user->session->id,
                 $payload
             );

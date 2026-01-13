@@ -46,7 +46,7 @@ class Linker
     private ?string $timestampReceive = null;
 
     public function __construct(
-        private LinkerManager $linkerManager,
+        private LinkersManager $linkersManager,
         private ResolverInterface $dns,
         private string $sessionId,
         private string $browserLocale
@@ -153,9 +153,9 @@ class Linker
         }
     }
 
-    function writeOut($message = null)
+    function writeOut(\stdClass $message)
     {
-        $this->linkerManager->sendWebsocket($this->sessionId, $message);
+        $this->linkersManager->sendWebsocket($this->sessionId, $message);
     }
 
     private function xmppBehaviour(Connection $connection)
@@ -164,7 +164,7 @@ class Linker
         Wrapper::getInstance()->iterate('socket_connected', user: $this->user, sessionId: $this->sessionId);
 
         if (config('daemon.verbose')) {
-            logOut(colorize('XMPP socket launched', 'yellow'), type: 'blue', sid: $this->sessionId);
+            logOut(colorize('XMPP socket launched', 'green'), sid: $this->sessionId);
         }
 
         $this->connection->on('data', function ($message) {
@@ -176,7 +176,6 @@ class Linker
 
                 if ($message == '</stream:stream>') {
                     $this->connection->close();
-                    $this->linkerManager->closeLinker($this->sessionId);
                 } elseif (
                     $message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
                     || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>'
@@ -196,15 +195,17 @@ class Linker
             }
         });
 
-        $this->connection->on('error', fn() => $this->linkerManager->closeLinker($this->sessionId));
-        $this->connection->on('close', fn() => $this->linkerManager->closeLinker($this->sessionId));
+        $this->connection->on('error', fn() => $this->linkersManager->closeLinker($this->sessionId));
+        $this->connection->on('close', fn() => $this->linkersManager->closeLinker($this->sessionId));
 
         // And we say that we are ready!
-        $obj = new \StdClass;
-        $obj->func = 'registered';
+        $message = new \stdClass;
+        $message->registered = true;
+        $this->writeOut($message);
 
-        fwrite(STDERR, 'registered');
-        $this->linkerManager->sendWebsocket($this->sessionId, $obj);
+        $message = new \stdClass;
+        $message->func = 'registered';
+        $this->writeOut($message);
     }
 
     private function handleClientDNS(array $results)
