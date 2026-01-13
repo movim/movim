@@ -1563,9 +1563,8 @@ var Chat = {
             return;
         }
 
-        p = document.createElement('p');
+        p = msg.getElementsByTagName('p')[0];
         p.innerHTML = body;
-        msg.appendChild(p);
     },
 
     getParentHtml: function (parent) {
