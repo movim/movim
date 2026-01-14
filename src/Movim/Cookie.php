@@ -10,7 +10,9 @@ class Cookie
 {
     public static function set()
     {
-        $sessionId = $_COOKIE['MOVIM_SESSION_ID'];
+        $sessionId = array_key_exists('MOVIM_SESSION_ID', $_COOKIE)
+            ? $_COOKIE['MOVIM_SESSION_ID']
+            : null;
 
         if ($sessionId == null) {
             self::renew();
