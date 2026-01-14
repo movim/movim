@@ -1179,7 +1179,7 @@ var Chat = {
 
         msg.dataset.published = data.published;
 
-        if (omemo == false) {
+        if (omemo == false && data.sticker === undefined) {
             Chat.addQuotesHtml(msg, data.body);
         }
 
