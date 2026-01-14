@@ -43,6 +43,7 @@ class Bootstrap
         //Check if vital system need is OK
         $this->checkSystem();
         $session = $this->checkSession();
+        $this->loadTimezone($session);
         $this->loadLanguage($session);
 
         return $session;
@@ -139,6 +140,13 @@ class Bootstrap
         }
 
         return $uri;
+    }
+
+    private function loadTimezone(?Session $session)
+    {
+        if ($session) {
+            define('SESSION_TIMEZONE', $session->timezone);
+        }
     }
 
     private function loadCapsule()

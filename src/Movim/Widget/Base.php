@@ -240,6 +240,8 @@ class Base
 
     private function resolveTimezone(): string
     {
+        if (defined('SESSION_TIMEZONE')) return SESSION_TIMEZONE;
+
         return $this->sessionId
             ? linker($this->sessionId)->timezone ?? date_default_timezone_get()
             : 'UTC';
