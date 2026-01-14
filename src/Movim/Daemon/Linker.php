@@ -183,7 +183,7 @@ class Linker
                 ) {
                     $this->enableEncryption($this->connection)->then(
                         function () {
-                            $this->writeXMPP(\Moxl\Stanza\Stream::init($this->host, $this->user->id));
+                            $this->writeXMPP(\Moxl\Stanza\Stream::init($this->host, $this->user?->id));
                         }
                     );
                 }
