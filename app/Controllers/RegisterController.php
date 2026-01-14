@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Movim\Controller\Base;
 
-class AccountnextController extends Base
+class RegisterController extends Base
 {
     public function dispatch()
     {

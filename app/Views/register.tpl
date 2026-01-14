@@ -14,6 +14,6 @@
                 </li>
             </ul>
         </header>
-        <?php $this->widget('AccountNext');?>
+        <?php $this->widget('Register');?>
     </div>
 </main>

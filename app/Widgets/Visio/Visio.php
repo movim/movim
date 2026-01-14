@@ -83,7 +83,7 @@ class Visio extends Base
     {
         $currentCall = $this->currentCall();
 
-        if ($currentCall->isStarted()) {
+        if ($currentCall && $currentCall->isStarted()) {
             $st = $this->xmpp(new SessionTerminate);
             $st->setTo($currentCall->jid)
                 ->setJingleSid($currentCall->id)

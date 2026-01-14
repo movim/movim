@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Widgets\AccountNext;
+namespace App\Widgets\Register;
 
 use Movim\Librairies\XMPPtoForm;
 use Moxl\Xec\Action\Register\Set;
 use Moxl\Xec\Action\Register\Get;
 use Moxl\Xec\Payload\Packet;
 
-class AccountNext extends \Movim\Widget\Base
+class Register extends \Movim\Widget\Base
 {
     public function load()
     {
-        $this->addjs('accountnext.js');
-        $this->addcss('accountnext.css');
+        $this->addjs('register.js');
+        $this->addcss('register.css');
 
         $this->registerEvent('register_get_handle', 'onForm');
         $this->registerEvent('register_set_handle', 'onRegistered');
-        $this->registerEvent('register_set_errorconflict', 'onRegisterError', 'accountnext');
-        $this->registerEvent('register_set_errorforbidden', 'onForbidden', 'accountnext');
-        $this->registerEvent('register_set_errornotacceptable', 'onRegisterNotAcceptable', 'accountnext');
-        $this->registerEvent('register_get_errorserviceunavailable', 'onServiceUnavailable', 'accountnext');
+        $this->registerEvent('register_set_errorconflict', 'onRegisterError', 'register');
+        $this->registerEvent('register_set_errorforbidden', 'onForbidden', 'register');
+        $this->registerEvent('register_set_errornotacceptable', 'onRegisterNotAcceptable', 'register');
+        $this->registerEvent('register_get_errorserviceunavailable', 'onServiceUnavailable', 'register');
     }
 
     public function onForm(Packet $packet)
@@ -33,7 +33,7 @@ class AccountNext extends \Movim\Widget\Base
                 case 'jabber:x:data':
                     $formview = $this->tpl();
                     $formview->assign('formh', $xtf->getHTML($form->x, $form));
-                    $html = $formview->draw('_accountnext_form');
+                    $html = $formview->draw('_register_form');
                     break;
                 case 'jabber:x:oob':
                     $this->rpc('MovimUtils.redirect', (string)$form->x->url);
@@ -42,7 +42,7 @@ class AccountNext extends \Movim\Widget\Base
         } else {
             $formview = $this->tpl();
             $formview->assign('formh', $xtf->getHTML($form));
-            $html = $formview->draw('_accountnext_form');
+            $html = $formview->draw('_register_form');
         }
 
         $this->rpc('MovimTpl.fill', '#subscription_form', $html);
@@ -51,7 +51,7 @@ class AccountNext extends \Movim\Widget\Base
     public function onRegistered(Packet $packet)
     {
         $view = $this->tpl();
-        $this->rpc('MovimTpl.fill', '#subscribe', $view->draw('_accountnext_registered'));
+        $this->rpc('MovimTpl.fill', '#subscribe', $view->draw('_register_registered'));
     }
 
     public function onError()

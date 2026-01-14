@@ -1,12 +1,12 @@
 MovimWebsocket.register(function()
 {
-    AccountNext_ajaxGetForm(MovimUtils.urlParts().params[0]);
+    Register_ajaxGetForm(MovimUtils.urlParts().params[0]);
 });
 
 MovimWebsocket.attach(function() {
-    Notif.current('accountnext');
+    Notif.current('register');
 
     var domain = MovimUtils.urlParts().params[0];
     MovimWebsocket.connection.register(domain);
-    AccountNext.host = domain;
+    Register.host = domain;
 });

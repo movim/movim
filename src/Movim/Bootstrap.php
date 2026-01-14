@@ -258,7 +258,6 @@ class Bootstrap
         // Return a list of interesting widgets to load (to save memory)
         return [
             'Account',
-            'AccountNext',
             'AdHoc',
             'Avatar',
             'Blocked',
@@ -297,6 +296,7 @@ class Bootstrap
             'Presence',
             'Publish',
             'PublishStories',
+            'Register',
             'Rooms',
             'RoomsExplore',
             'RoomsUtils',

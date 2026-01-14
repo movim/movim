@@ -9,7 +9,7 @@
         {if="!empty($config->xmppdomain)"}
             <li
                 class="block large color {$config->xmppdomain|stringToColor}"
-                onclick="MovimUtils.redirect('{$c->route('accountnext', [$config->xmppdomain, false])}')">
+                onclick="MovimUtils.redirect('{$c->route('register', [$config->xmppdomain, false])}')">
                 <i class="material-symbols main">person</i>
                 <span class="primary icon bubble color transparent">
                     {$config->xmppdomain|firstLetterCapitalize}
@@ -32,7 +32,7 @@
         {if="empty($config->xmppwhitelist) || in_array('movim.eu', $config->xmppwhitelist)"}
             <li
                 class="block color large indigo"
-                onclick="MovimUtils.redirect('{$c->route('accountnext', ['movim.eu', false])}')">
+                onclick="MovimUtils.redirect('{$c->route('register', ['movim.eu', false])}')">
                 <i class="material-symbols main">cloud</i>
                 <span class="primary icon bubble">
                     <img src="theme/img/app/vectorial_square.svg">
