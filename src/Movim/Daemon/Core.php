@@ -161,19 +161,21 @@ class Core implements MessageComponentInterface
             return;
         }
 
-        $sid = $this->getCookieSid($from);
-        if ($sid != null && isset($this->sessions[$sid])) {
-            $json = json_decode($msg);
-            $json->sid = $sid;
-            $msg = json_encode($json);
-            $this->sessions[$sid]->messageIn($msg);
-        } else {
-            $sid = $this->getHeaderSid($from);
+        if ($json = json_decode($msg)) {
+            $sid = $this->getCookieSid($from);
             if ($sid != null && isset($this->sessions[$sid])) {
-                $json = json_decode($msg);
                 $json->sid = $sid;
                 $msg = json_encode($json);
-                $this->sessions[$sid]->messageOut($msg);
+
+                $this->sessions[$sid]->messageIn($msg);
+            } else {
+                $sid = $this->getHeaderSid($from);
+                if ($sid != null && isset($this->sessions[$sid])) {
+                    $json->sid = $sid;
+                    $msg = json_encode($json);
+
+                    $this->sessions[$sid]->messageOut($msg);
+                }
             }
         }
     }

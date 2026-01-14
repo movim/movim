@@ -78,7 +78,7 @@ class LinkerManager
                     Wrapper::getInstance()->iterate(
                         key: 'session_' . $message->func,
                         sessionId: $message->sid,
-                        user: $this->linkers[$message->sid]->user
+                        user: $linker->user
                     );
                 }
                 break;

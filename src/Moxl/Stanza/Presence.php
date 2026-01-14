@@ -29,9 +29,8 @@ class Presence
 
         if ($me && $me->session) {
             $root->setAttribute('from', $me->id . '/' . $me->session->resource);
+            $root->setAttribute('id', linker($me->session->id)->session->get('id'));
         }
-
-        $root->setAttribute('id', linker($me->session->id)->session->get('id'));
 
         if ($to) {
             $root->setAttribute('to', $to);

@@ -3,6 +3,7 @@
 namespace Moxl\Xec\Payload;
 
 use Moxl\Stanza\Stream;
+use Moxl\Xec\Action\Register\Get;
 
 class StreamFeatures extends Payload
 {
@@ -31,6 +32,12 @@ class StreamFeatures extends Payload
                     linker($this->sessionId)->authentication->getResponse(),
                     APP_TITLE . '.' . \generateKey(6)
                 ));
+            } elseif (
+                $stanza->register
+                && $stanza->register->attributes()->xmlns = 'http://jabber.org/features/iq-register'
+            ) {
+                $g = new Get(sessionId: $this->sessionId);
+                $g->setTo($stanza->attributes()->from)->request();
             }
         } elseif ($stanza->mechanisms && $stanza->mechanisms->attributes()->xmlns = 'urn:ietf:params:xml:ns:xmpp-sasl') {
             (new SASL(sessionId: $this->sessionId))->handle($stanza->mechanisms, $stanza);
