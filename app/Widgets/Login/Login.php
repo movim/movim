@@ -194,10 +194,12 @@ class Login extends Base
         string $deviceId,
         string $login,
         string $key,
-        string $sessionId,
+        ?string $sessionId = null,
         string $timezone,
         ?bool $check = false
     ) {
+        if ($sessionId == null) return;
+
         $validateLogin = Validator::stringType()->length(1, 254);
 
         if (!$validateLogin->isValid($login)) {
