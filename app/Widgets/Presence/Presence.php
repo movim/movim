@@ -4,7 +4,7 @@ namespace App\Widgets\Presence;
 
 use App\Post;
 use App\Widgets\Chats\Chats;
-
+use App\Widgets\Visio\Visio;
 use Movim\Daemon\Session;
 use Movim\Widget\Base;
 
@@ -90,8 +90,9 @@ class Presence extends Base
 
         $this->me->encryptedPasswords()->delete();
 
-        if ($this->currentCall()->isStarted()) {
-            //(new Visio)->ajaxEnd($this->currentCall()->jid, $this->currentCall()->id);
+        if ($this->currentCall()?->isStarted()) {
+            (new Visio(user: $this->me, sessionId: $this->sessionId))
+                ->ajaxTerminate($this->currentCall()->jid, $this->currentCall()->id);
         }
 
         $p = $this->xmpp(new Unavailable);

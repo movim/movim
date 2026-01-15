@@ -587,7 +587,7 @@ var MovimJingles = {
         // No sessions left
         if (Object.keys(MovimJingles.sessions).length == 0) {
             if (visio.dataset.muji == 'false') {
-                MovimVisio.clear();
+                Visio_ajaxClear();
             } else {
                 let state = document.querySelector('p.state');
                 state.innerText = MovimVisio.states.no_participants_left;
@@ -601,6 +601,6 @@ var MovimJingles = {
             MovimJingles.terminate(jid, reason);
         }
 
-        MovimVisio.clear();
+        Visio_ajaxClear();
     }
 }

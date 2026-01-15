@@ -73,7 +73,7 @@ class ContactActions extends Base
         }
 
         $tpl->assign('jid', $jid);
-        $tpl->assign('incall', $this->currentCall()->isStarted());
+        $tpl->assign('incall', $this->currentCall()?->isStarted());
         $tpl->assign('clienttype', getClientTypes());
 
         $this->drawer('contact_drawer', $tpl->draw('_contactactions_drawer'));

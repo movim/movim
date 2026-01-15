@@ -103,7 +103,7 @@ var MovimVisio = {
             if (lobby) {
                 lobby.classList.add('configure');
             } else {
-                MovimVisio.clear();
+                Visio_ajaxClear();
                 return;
             }
 

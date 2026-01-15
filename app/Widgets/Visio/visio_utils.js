@@ -356,6 +356,6 @@ var VisioUtils = {
             Visio_ajaxReject(fullJid, id);
         }
 
-        MovimVisio.clear(); Dialog_ajaxClear(); Notif.snackbarClear();
+        Visio_ajaxClear(); Dialog_ajaxClear(); Notif.snackbarClear();
     }
 }

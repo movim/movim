@@ -439,8 +439,8 @@ class Chat extends \Movim\Widget\Base
                 (new Dictaphone($this->me, sessionId: $this->sessionId))->ajaxHttpGet();
             }
 
-            if ($this->currentCall()->isStarted()) {
-                $this->rpc('MovimVisio.moveToChat', $this->currentCall()->getBareJid());
+            if ($this->currentCall()?->isStarted()) {
+                $this->rpc('MovimVisio.moveToChat', $this->currentCall()?->getBareJid());
             }
 
             $this->rpc('Chat.setObservers');
@@ -485,8 +485,8 @@ class Chat extends \Movim\Widget\Base
                 (new Dictaphone($this->me, sessionId: $this->sessionId))->ajaxHttpGet();
             }
 
-            if ($this->currentCall()->isStarted()) {
-                $this->rpc('MovimVisio.moveToChat', $this->currentCall()->getBareJid());
+            if ($this->currentCall()?->isStarted()) {
+                $this->rpc('MovimVisio.moveToChat', $this->currentCall()?->getBareJid());
             }
 
             $this->rpc('Chat.setObservers');
@@ -823,7 +823,7 @@ class Chat extends \Movim\Widget\Base
                 ->where('jidfrom', $jidfrom)
                 ->get();
 
-            $r = new Reactions;
+            $r = $this->xmpp(new Reactions);
             $newEmojis = [];
 
             // This reaction was not published yet
@@ -1695,8 +1695,8 @@ class Chat extends \Movim\Widget\Base
 
         $view->assign('jid', $jid);
         $view->assign('muc', $muc);
-        $view->assign('contactincall', $this->currentCall()->isJidInCall($jid));
-        $view->assign('incall', $this->currentCall()->isStarted());
+        $view->assign('contactincall', $this->currentCall()?->isJidInCall($jid));
+        $view->assign('incall', $this->currentCall()?->isStarted());
         $view->assign(
             'info',
             \App\Info::where('server', $this->me->session->host)
