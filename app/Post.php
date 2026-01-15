@@ -927,13 +927,27 @@ class Post extends Model
         return truncate(stripTags(html_entity_decode($this->contentcleaned ?? '')), 140);
     }
 
-    public function getContent(bool $addHashTagLinks = false): string
+    public function getContent(bool $addHashTagLinks = false, bool $public = false): string
     {
         if ($this->contentcleaned == null) return '';
 
+        $contentCleaned = $this->contentcleaned;
+
+        if ($public == false) {
+            $dom = new \DOMDocument('1.0', 'UTF-8');
+            $dom->loadHTML('<?xml encoding="UTF-8">' . $this->contentcleaned);
+            $xpath = new \DOMXPath($dom);
+
+            foreach ($xpath->query("//img/@src") as $src) {
+                $src->textContent = protectPicture($src->nodeValue);
+            }
+
+            $contentCleaned = substr($dom->saveXML($dom->documentElement), 12, -14);
+        }
+
         return ($addHashTagLinks)
-            ? addHashtagsLinks($this->contentcleaned)
-            : $this->contentcleaned;
+            ? addHashtagsLinks($contentCleaned)
+            : $contentCleaned;
     }
 
     public function getReply()
