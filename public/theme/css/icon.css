@@ -212,6 +212,10 @@ span.icon.status:after {
     box-shadow: var(--elevation-0);
 }
 
+span.icon.status.offline:after {
+    display: none;
+}
+
 span.icon span.counter,
 span.icon[data-counter]:after,
 span.icon.composing:after {
