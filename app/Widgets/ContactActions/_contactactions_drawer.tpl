@@ -77,33 +77,42 @@
     {if="$roster && $roster->presences->count() > 0"}
         <div class="tabelem" title="{$c->__('clients.title')}" id="clients">
             <ul class="list middle">
-                <li class="subheader">
-                    <div>
-                        <p>{$c->__('clients.title_full')}</p>
-                    </div>
-                </li>
-                {loop="$roster->presences"}
-                    {if="$value->capability"}
-                        <li class="block">
-                            <span class="primary icon gray status {$value->presencekey}">
-                                <i class="material-symbols">
-                                    {$value->capability->getDeviceIcon()}
-                                </i>
-                            </span>
-                            <div>
-                                <p class="normal line">
-                                    {$value->capability->name}
-                                    <span class="second">{$value->resource}</span>
-                                </p>
-                                {if="$value->capability->identities()->first() && isset($clienttype[$value->capability->identities()->first()->type])"}
-                                    <p class="line">
-                                        {$clienttype[$value->capability->identities()->first()->type]}
+                {if="$roster->presences->isNotEmpty()"}
+                    <li class="subheader">
+                        <div>
+                            <p>{$c->__('clients.title_full')}</p>
+                        </div>
+                    </li>
+                    {loop="$roster->presences"}
+                        {if="$value->capability"}
+                            <li class="block">
+                                <span class="primary icon gray status {$value->presencekey}">
+                                    <i class="material-symbols">
+                                        {$value->capability->getDeviceIcon()}
+                                    </i>
+                                </span>
+                                <div>
+                                    <p class="normal line">
+                                        {$value->capability->name}
+                                        <span class="second">{$value->resource}</span>
                                     </p>
-                                {/if}
-                            </div>
+                                    {if="$value->capability->identities()->first() && isset($clienttype[$value->capability->identities()->first()->type])"}
+                                        <p class="line">
+                                            {$clienttype[$value->capability->identities()->first()->type]}
+                                        </p>
+                                    {/if}
+                                </div>
+                            </li>
+                        {/if}
+                    {/loop}
+                {else}
+                    <ul class="thick">
+                        <div class="placeholder">
+                            <i class="material-symbols">mobile</i>
+                            <h1>{$c->__('clients.title_full')}</h1>
                         </li>
-                    {/if}
-                {/loop}
+                    </ul>
+                {/if}
             </ul>
         </div>
     {/if}
