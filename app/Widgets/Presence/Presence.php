@@ -96,8 +96,7 @@ class Presence extends Base
         }
 
         $p = $this->xmpp(new Unavailable);
-        $p->setType('terminate')
-            ->setResource($this->me->session->resource)
+        $p->setResource($this->me->session->resource)
             ->setTo($this->me->id)
             ->request();
 

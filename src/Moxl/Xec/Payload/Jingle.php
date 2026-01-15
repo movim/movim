@@ -21,7 +21,7 @@ class Jingle extends Payload
             (string)$stanza->attributes()->sid
         );
 
-        //if ($linkerManager->currentCall($this->me->session->id)->hasId($message->thread)) {
+        //if ($linkersManager->currentCall($this->me->session->id)->hasId($message->thread)) {
             $this->iq(to: $from, id: $id, type: 'result');
 
             switch ($action) {
