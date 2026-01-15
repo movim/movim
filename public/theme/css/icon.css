@@ -141,7 +141,7 @@ span.icon.bubble.stories:active {
     transform: scale(.95);
 }
 
-span.icon.bubble.status:not(.composing):not([data-counter]):not(.location) {
+span.icon.bubble.status:not(.offline):not(.composing):not([data-counter]):not(.location) {
     mask-image: url(../img/avatar_mask.svg);
     -webkit-mask-origin: unset;
     mask-origin: unset;
@@ -196,7 +196,7 @@ span.icon.bubble.status.location.stories {
 span.icon span.counter,
 span.icon[data-counter]:after,
 span.icon.composing:after,
-span.icon.status:not(.offline):after {
+span.icon.status:after {
     content: '';
     display: block;
     min-width: 2rem;
