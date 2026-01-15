@@ -118,25 +118,26 @@ span.icon.small.bubble>a>i {
     line-height: 4rem;
 }
 
-span.icon.bubble.status {
+span.icon.bubble.status,
+span.icon.bubble.stories {
     border-radius: 0;
     mask-size: 100%;
     mask-origin: content-box;
     mask-repeat: no-repeat;
 }
 
-span.icon.bubble.stories.status {
+span.icon.bubble.stories {
     mask-origin: fill-box;
     background: linear-gradient(to top right, var(--p-orange), var(--p-pink));
     transition: transform 0.2s ease-in-out;
 }
 
-span.icon.bubble.stories.status.seen {
+span.icon.bubble.stories.seen {
     background: none;
     background-color: rgba(var(--movim-font), 0.25);
 }
 
-span.icon.bubble.stories.status:active {
+span.icon.bubble.stories:active {
     transform: scale(.95);
 }
 
@@ -150,9 +151,14 @@ span.icon.bubble.stories.composing,
 span.icon.bubble.stories[data-counter]:not(.composing):not(.location) {
     mask-image: url(../img/avatar_mask_notifs_stories.svg);
 }
-
-span.icon.bubble.status.stories:not(.composing):not([data-counter]):not(.location) {
+span.icon.bubble.stories:not(.composing):not([data-counter]):not(.location) {
     mask-image: url(../img/avatar_mask_stories.svg);
+    -webkit-mask-origin: unset;
+    mask-origin: unset;
+}
+
+span.icon.bubble.status.online.stories:not(.composing):not([data-counter]):not(.location) {
+    mask-image: url(../img/avatar_mask_stories_online.svg);
 }
 
 span.icon.bubble.status.dnd:not(.composing):not([data-counter]):not(.location) {
@@ -190,7 +196,7 @@ span.icon.bubble.status.location.stories {
 span.icon span.counter,
 span.icon[data-counter]:after,
 span.icon.composing:after,
-span.icon.status:after {
+span.icon.status:not(.offline):after {
     content: '';
     display: block;
     min-width: 2rem;

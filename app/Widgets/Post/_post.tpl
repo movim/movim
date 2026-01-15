@@ -180,7 +180,7 @@
             {/loop}
         {/if}
         {autoescape="off"}
-            {$post->getContent(true)}
+            {$post->getContent(true, $public)}
         {/autoescape}
     </div>
 </section>
