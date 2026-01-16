@@ -15,6 +15,8 @@ class Picture extends Base
 
     public function display()
     {
+        set_error_handler([$this, 'error'], E_ALL);
+
         $url = str_replace(' ', '%20', html_entity_decode(urldecode($this->get('url'))));
         $parsedUrl = parse_url($url);
         if (
@@ -68,10 +70,23 @@ class Picture extends Base
                     return;
                 }
             });
-
         }, function (Exception $e) {
             header("HTTP/1.1 301 Moved Permanently");
             header('Location: /theme/img/broken_image_filled.svg');
         });
+    }
+
+    public function error($errno, string $errstr, string $errfile = '', int $errline = 0, $trace = '')
+    {
+        if (\is_array($trace)) $trace = '';
+
+        $error = $errstr . " in " . $errfile . ' (line ' . $errline . ")\n";
+        $fullError = $trace != ''
+            ? $error . 'Trace' . "\n" . $trace
+            : $error;
+
+        logError($fullError);
+
+        return false;
     }
 }
