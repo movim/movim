@@ -27,7 +27,7 @@ class Avatar
         return $pubsub;
     }
 
-    public static function set($data, $to = false, $node = false, bool $withPublishOption = true)
+    public static function set($data, $node = false, bool $withPublishOption = true)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -60,7 +60,7 @@ class Avatar
         return $pubsub;
     }
 
-    public static function setMetadata($data, $url = false, $to = false, $node = false, $width = 512, $height = 512, bool $withPublishOption = true)
+    public static function setMetadata($data, $url = false, $node = false, $width = 512, $height = 512, bool $withPublishOption = true)
     {
         $decoded = base64_decode($data);
 
