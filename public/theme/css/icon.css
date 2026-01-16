@@ -151,6 +151,7 @@ span.icon.bubble.stories.composing,
 span.icon.bubble.stories[data-counter]:not(.composing):not(.location) {
     mask-image: url(../img/avatar_mask_notifs_stories.svg);
 }
+
 span.icon.bubble.stories:not(.composing):not([data-counter]):not(.location) {
     mask-image: url(../img/avatar_mask_stories.svg);
     -webkit-mask-origin: unset;
@@ -212,7 +213,7 @@ span.icon.status:after {
     box-shadow: var(--elevation-0);
 }
 
-span.icon.status.offline:after {
+span.icon.status.offline:not([data-counter]):after {
     display: none;
 }
 
