@@ -20,6 +20,7 @@ class DND extends Action
     {
         $presence = DBPresence::findByStanza($this->me, $stanza);
         $presence->set($this->me, $stanza);
+        $presence->save();
 
         linker($this->sessionId)->presenceBuffer->append($presence, function () {
             $this->event('mypresence');
