@@ -45,4 +45,9 @@
         </ul>
     </div>
 </form>
+{else}
+<div class="placeholder">
+    <i class="material-symbols">notifications</i>
+    <h1>{$c->__('notificationconfig.push_subscriptions')}</h1>
+</div>
 {/if}
