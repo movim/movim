@@ -45,9 +45,6 @@ class Api
                 case 'disconnect':
                     $response = $api->sessionDisconnect($request->getParsedBody());
                     break;
-                case 'session':
-                    $response = $api->getSession();
-                    break;
             }
 
             return new Response(
@@ -80,17 +77,12 @@ class Api
         && $sessions[$sid] == true);
     }
 
-    public function sessionsLinked()
+    public function sessionsLinked(): int
     {
         return count($this->_core->getSessions());
     }
 
-    public function getSession()
-    {
-        return count($this->_core->getSessions());
-    }
-
-    public function sessionsStarted()
+    public function sessionsStarted(): int
     {
         $started = 0;
         foreach ($this->_core->getSessions() as $s) {

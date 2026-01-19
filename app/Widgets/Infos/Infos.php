@@ -12,8 +12,6 @@ class Infos extends Base
     public function display()
     {
         $configuration = Configuration::get();
-        $connected = (int)requestAPI('started');
-
         $gitHeadPath = DOCUMENT_ROOT . '/.git/refs/heads/master';
         $hash = file_exists($gitHeadPath) ? substr(file_get_contents($gitHeadPath), 0, 7) : 'release';
 
@@ -47,17 +45,19 @@ class Infos extends Base
         }
 
         arsort($resolvedClients);
+        $connected = (int)requestAPI('started');
 
         $infos = [
             'url'           => BASE_URI,
             'language'      => $configuration->locale,
             'whitelist'     => $configuration->xmppwhitelist,
-            'banner'        => $configuration->banner,
+            'banner'        => empty($configuration->banner) ? null : $configuration->banner,
             'admins'        => (array)User::select('id')->where('admin', true)->get()->pluck('id')->toArray(),
             'description'   => $configuration->description,
             'unregister'    => $configuration->unregister,
             'php_version'   => phpversion(),
             'version'       => APP_VERSION,
+            'database'      => config('database.driver'),
             'population'    => User::count(),
             'linked'        => (int)requestAPI('linked'),
             'started'       => $connected,
