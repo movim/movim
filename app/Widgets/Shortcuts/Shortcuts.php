@@ -12,6 +12,13 @@ class Shortcuts extends \Movim\Widget\Base
         $this->addjs('shortcuts.js');
         $this->registerEvent('notifs', 'onNotifs');
         $this->registerEvent('notifs_clear', 'onNotifsClear');
+        $this->registerEvent('displayed', 'onDisplayed');
+    }
+
+    public function onDisplayed(Packet $packet)
+    {
+        $message = $packet->content;
+        $this->rpc('Shortcuts.clear', $message->jidfrom);
     }
 
     public function onNotifs(Packet $packet)
