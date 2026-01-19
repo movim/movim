@@ -1,12 +1,13 @@
 #publishstories {
     top: 0;
     left: 0;
-    background-color: rgb(var(--movim-background));
+    background-color: rgb(var(--movim-background-main));
     width: 100%;
     height: 100%;
     z-index: 2;
     position: absolute;
     transform: translateX(-100%);
+    transition: transform 0.45s var(--accelerate-easing);
 }
 
 #publishstories #publishstoriesswitch,
@@ -22,7 +23,7 @@
 #publishstories.shoot,
 #publishstories.edit {
     transform: translateX(0);
-    transition: transform 0.4s;
+    transition: transform 0.45s var(--decelerate-easing);
 }
 
 #publishstories #publishstoriesbackedit,

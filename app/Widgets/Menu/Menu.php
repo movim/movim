@@ -5,7 +5,6 @@ namespace App\Widgets\Menu;
 use App\User;
 use App\Post as AppPost;
 use App\Widgets\ContactsSuggestions\ContactsSuggestions;
-use App\Widgets\Notif\Notif;
 use App\Widgets\Post\Post;
 use Movim\Widget\Base;
 

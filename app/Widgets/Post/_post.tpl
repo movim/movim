@@ -23,11 +23,11 @@
                 {/if}
 
                 <div>
-                    <p class="line" title="{$post->title}">
+                    <h2 class="line" title="{$post->title}">
                         {autoescape="off"}
                             {$post->title}
                         {/autoescape}
-                    </p>
+                    </h2>
                 </div>
             </li>
         </ul>
@@ -80,7 +80,7 @@
             {/if}
             <div>
                 {if="!$post->isBrief()"}
-                    <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
+                    <p class="all" {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                         {autoescape="off"}
                             {$post->title|addHashtagsLinks|addEmojis}
                         {/autoescape}

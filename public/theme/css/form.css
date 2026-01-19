@@ -234,7 +234,8 @@ form > div .checkbox > input[type="checkbox"] + label {
 form > div .checkbox > input[type="checkbox"] + label i {
     vertical-align: middle;
     color: rgba(var(--movim-font), 0.5);
-    line-height: 1.5em;
+    line-height: 1.75em;
+    font-size: 1.75rem;
 }
 
 form > div .checkbox:hover > input[type="checkbox"] + label {
@@ -438,6 +439,10 @@ body > div.drawer:not(:empty):not(.empty) ~ main .button.action {
 .button.action,
 .button.action > i {
     transition: all 0.4s ease 0s;
+}
+
+.button.action > i {
+    opacity: 0.8;
 }
 
 .button.action.active > i {

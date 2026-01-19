@@ -6,7 +6,7 @@
     width: 100%;
     max-height: calc(100% - 7rem);
     box-shadow: var(--elevation-5);
-    transition: transform .3s ease-in-out;
+    transition: transform .45s var(--decelerate-easing);
     display: flex;
     flex-direction: column;
     border-radius: 2rem 2rem 0 0;
@@ -30,6 +30,7 @@
 }
 
 .drawer:empty {
+    transition: transform 0.45s var(--accelerate-easing);
     transform: translateY(100%);
     pointer-events: none;
     height: auto;
@@ -44,11 +45,11 @@
 
 @media screen and (max-width: 570px) {
     main {
-        transition: transform .25s var(--accelerate-easing);
+        transition: transform .25s var(--decelerate-easing);
     }
 
     .drawer:not(:empty)~main {
-        transition: transform .25s var(--decelerate-easing);
+        transition: transform .25s var(--accelerate-easing);
         transform: translateY(-2rem);
     }
 }

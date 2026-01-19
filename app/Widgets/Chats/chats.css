@@ -22,11 +22,11 @@ ul#chats li img.tinythumb {
 }
 
 ul#chats li.moving {
-    transition: transform 0.1s, max-height 0.2s ease-in-out 0.2s;
+    transition: transform 0.1s, max-height 0.2s var(--accelerate-easing) 0.2s;
 }
 
 ul#chats li.closing {
-    transition: transform 0.1s, max-height 0.2s ease-in-out 0.2s;
+    transition: transform 0.1s, max-height 0.2s var(--decelerate-easing) 0.2s;
     max-height: 0;
 }
 

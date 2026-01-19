@@ -96,7 +96,7 @@ body>nav li {
     }
 
     body>nav.active.moving {
-        transition: transform .25s var(--accelerate-easing);
+        transition: transform .45s var(--decelerate-easing);
         transform: translateX(0%);
     }
 
@@ -106,7 +106,7 @@ body>nav li {
     }
 
     body>nav.moving {
-        transition: transform .25s var(--decelerate-easing);
+        transition: transform .45s var(--accelerate-easing);
     }
 }
 
@@ -267,7 +267,7 @@ main>div:first-child:nth-last-child(2)+div {
     }
 
     main.slide>div:first-child:nth-last-child(2).moving {
-        transition: transform .25s var(--decelerate-easing);
+        transition: transform .45s var(--decelerate-easing);
     }
 
     main.slide.enabled>div:first-child:nth-last-child(2) {
@@ -280,7 +280,7 @@ main>div:first-child:nth-last-child(2)+div {
     }
 
     main.slide.enabled>div:first-child:nth-last-child(2)+div.moving {
-        transition: transform .25s var(--accelerate-easing);
+        transition: transform .45s var(--accelerate-easing);
     }
 
     main>aside+div {
@@ -693,6 +693,6 @@ div.bubble .audio_player p {
 
 body {
     --standard-easing: cubic-bezier(0.4, 0.0, 0.2, 1);
-    --accelerate-easing: cubic-bezier(0.167, 0.167, 0, 1);
-    --decelerate-easing: cubic-bezier(1, 0, 0.833, 0.833);
+    --accelerate-easing: cubic-bezier(0.3, 0.0, 0.8, 0.15);
+    --decelerate-easing: cubic-bezier(0.05, 0.7, 0.1, 1.0);
 }

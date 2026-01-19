@@ -10,7 +10,7 @@
             {/if}
             <li>
                 <div>
-                    <p class="{if="!$community"}line two center{/if} normal">
+                    <p class="{if="!$community"}line two center{/if} all">
                         {loop="$tags"}
                             <a class="chip outline active" href="#" onclick="MovimUtils.reload('{$c->route('tag', $value->name)}')">
                                 <i class="material-symbols icon gray">tag</i>{$value->name}
