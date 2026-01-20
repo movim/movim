@@ -1,7 +1,7 @@
 {$affiliation = null}
 {loop="$presences"}
     {if="$affiliation != $value->affiliationTxt && $page == 1"}
-        <li class="subheader">
+        <li class="subheader sticky">
             {if="$value->mucaffiliation == 'owner'"}
                 <span class="control icon tiny yellow" title="{$c->__('room.affiliation_owner')}">
                     <i class="material-symbols fill">star</i>
@@ -47,7 +47,7 @@
             {/if}
         {/if}
         <div>
-            <p class="line normal">
+            <p class="line">
                 {if="$value->mucjid && strpos($value->mucjid, '/') == false"}
                     {if="$value->mucjid == $c->me || $compact"}
                         {$value->resource}
@@ -95,7 +95,7 @@
             <i class="material-symbols">expand_more</i>
         </span>
         <div>
-            <p class="line normal center">
+            <p class="line center">
                 {$c->__('button.more')}
             </p>
         </div>

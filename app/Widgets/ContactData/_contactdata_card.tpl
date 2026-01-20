@@ -11,7 +11,7 @@
 <ul class="list thick">
     <li>
         <div>
-            <p class="normal center">
+            <p class="center">
                 {$contact->truename}
                 {if="$roster && $roster->name && $roster->name != $contact->truename"}
                     <span class="second">{$roster->name}</span>

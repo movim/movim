@@ -12,7 +12,7 @@
         <i class="material-symbols">exit_to_app</i>
     </span>
     <div>
-        <p class="line bold normal" onclick="MovimUtils.reload('{$c->route('contact', $me->id)}')">
+        <p class="line bold" onclick="MovimUtils.reload('{$c->route('contact', $me->id)}')">
             {$me->truename}
         </p>
     </div>

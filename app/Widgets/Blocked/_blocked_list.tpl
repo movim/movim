@@ -6,7 +6,7 @@
         <i class="material-symbols">close</i>
     </span>
     <div>
-        <p class="line normal">
+        <p class="line">
             {$value->id}
         </p>
     </div>

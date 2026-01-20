@@ -21,7 +21,7 @@
             {$info = $conference->info}
 
             <div>
-                <p class="normal line">
+                <p class="line">
                     {if="$conference->pinned"}
                         <span class="info">
                             <i class="material-symbols fill" title="{$c->__('room.pinned')}">push_pin</i>
@@ -89,7 +89,7 @@
                     </i>
                 </span>
                 <div>
-                    <p class="line normal" data-mujiid="{$value->id}">
+                    <p class="line" data-mujiid="{$value->id}">
                         <span class="info">
                             {if="$value->joined"}
                                 {$value->presences->count()}

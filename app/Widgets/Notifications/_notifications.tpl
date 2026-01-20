@@ -18,7 +18,7 @@
                     <i class="material-symbols">close</i>
                 </span>
                 <div>
-                    <p class="line normal">
+                    <p class="line">
                         {$c->__('invitations.adds_you', $value->contact != null ? $value->contact->truename : $value->jid)}
                     </p>
                     <p class="line">{$value->jid}</p>
@@ -55,7 +55,7 @@
                     <i class="material-symbols">delete</i>
                 </span>
                 <div>
-                    <p class="line normal">
+                    <p class="line">
                         {$value->truename}
                     </p>
                     <p class="line">{$value->jid}</p>

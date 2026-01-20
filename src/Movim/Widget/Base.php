@@ -169,7 +169,7 @@ class Base
      * @param timestamp $string
      * @return string
      */
-    function prepareDate(string $datetime = '', bool $compact = false, bool $hours = true, bool $dateOnly = false): string
+    function prepareDate(string $datetime = '', bool $compact = false, bool $hours = true): string
     {
         $time = strtotime($datetime);
         $time = $time !== false ? $time : time();
@@ -205,10 +205,6 @@ class Base
             if ($compact) {
                 return $date;
             }
-        }
-
-        if ($dateOnly) {
-            return $date;
         }
 
         //if $hours option print the time

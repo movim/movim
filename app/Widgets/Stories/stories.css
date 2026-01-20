@@ -38,6 +38,10 @@
     transition: transform .3s;
 }
 
+#stories ul.list.flex li.block.add i {
+    font-size: 2.5rem;
+}
+
 #stories ul.list.flex li.block.add:hover {
     background-color: rgba(var(--movim-element-action), 0.1);
     transform: scale(0.975);

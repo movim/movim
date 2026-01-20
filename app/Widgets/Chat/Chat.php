@@ -1509,7 +1509,7 @@ class Chat extends \Movim\Widget\Base
             $message->displayed = $this->prepareDate($message->displayed);
         }
 
-        $date = $this->prepareDate($message->published, dateOnly: true);
+        $date = $this->prepareDate($message->published, hours: false);
 
         if (empty($date)) {
             $date = $this->__('date.today');

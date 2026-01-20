@@ -9,7 +9,7 @@
                     <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
-                    <p class="normal line" title="{$value->attributes()->name}">
+                    <p class="line" title="{$value->attributes()->name}">
                         {$value->attributes()->name}
                     </p>
                 </div>

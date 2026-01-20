@@ -16,7 +16,7 @@
                     <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
-                    <p class="normal line" title="{$value->attributes()->name}">
+                    <p class="line" title="{$value->attributes()->name}">
                         {$value->attributes()->name}
                     </p>
                 </div>
@@ -40,7 +40,7 @@
             <i class="material-symbols">chevron_right</i>
         </span>
         <div>
-            <p class="normal line">{$c->__('tools.sdp_to_jingle')}</p>
+            <p class="line">{$c->__('tools.sdp_to_jingle')}</p>
         </div>
     </li>
     <li onclick="AdHoc_ajaxJingleToSDP()">
@@ -51,7 +51,7 @@
             <i class="material-symbols">chevron_right</i>
         </span>
         <div>
-            <p class="normal line">{$c->__('tools.jingle_to_sdp')}</p>
+            <p class="line">{$c->__('tools.jingle_to_sdp')}</p>
         </div>
     </li>
 </ul>

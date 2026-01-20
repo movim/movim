@@ -63,7 +63,7 @@
             <i class="material-symbols">functions</i>
         </span>
         <div>
-            <p class="normal">`Sourcecode`</p>
+            <p>`Sourcecode`</p>
         </div>
     </li>
     <li>
@@ -71,7 +71,7 @@
             <i class="material-symbols">link</i>
         </span>
         <div>
-            <p class="normal line">[my text](http://my_url/)</p>
+            <p class="line">[my text](http://my_url/)</p>
         </div>
     </li>
     <li>
@@ -79,7 +79,7 @@
             <i class="material-symbols">image</i>
         </span>
         <div>
-            <p class="normal line">![Alt text](http://my_image_url/)</p>
+            <p class="line">![Alt text](http://my_image_url/)</p>
         </div>
     </li>
 </ul>

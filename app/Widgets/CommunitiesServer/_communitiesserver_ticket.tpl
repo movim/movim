@@ -17,7 +17,12 @@
         <img loading="lazy" src="{$community->getPicture(\Movim\ImageSize::M)}"/>
     </span>
     <div>
-        <p class="line two normal">
+        <p class="line two">
+            {if="$community->occupants > 0"}
+                <span class="info" title="{$c->__('communitydata.sub', $community->occupants)}">
+                    {$community->occupants} <i class="material-symbols">people</i>
+                </span>
+            {/if}
             {if="$community->name"}
                 {$community->name}
             {else}
@@ -32,11 +37,6 @@
             {if="$community->isGallery()"}
                 <i class="material-symbols">grid_view</i>
                 •
-            {/if}
-            {if="$community->occupants > 0"}
-                <span title="{$c->__('communitydata.sub', $community->occupants)}">
-                    {$community->occupants} <i class="material-symbols">people</i>
-                </span>
             {/if}
             {if="$community->published"}
                 <span class="info">

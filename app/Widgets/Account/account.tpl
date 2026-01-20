@@ -17,7 +17,7 @@
                     <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
-                    <p class="normal line">{$c->__('account.password_change_title')}</p>
+                    <p class="line">{$c->__('account.password_change_title')}</p>
                 </div>
             </li>
         {/if}
@@ -29,7 +29,7 @@
                 <i class="material-symbols">chevron_right</i>
             </span>
             <div>
-                <p class="normal line">{$c->__('account.clear')}</p>
+                <p class="line">{$c->__('account.clear')}</p>
             </div>
         </li>
         {if="$c->me->hasRegister()"}
@@ -41,7 +41,7 @@
                     <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
-                    <p class="normal line">{$c->__('account.delete')}</p>
+                    <p class="line">{$c->__('account.delete')}</p>
                 </div>
             </li>
         {/if}

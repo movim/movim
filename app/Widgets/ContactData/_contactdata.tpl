@@ -14,7 +14,7 @@
                             <i class="material-symbols">phone</i>
                         </span>
                         <div>
-                            <p class="normal">{$c->__('button.audio_call')}</p>
+                            <p>{$c->__('button.audio_call')}</p>
                         </div>
                     </li>
                 {/if}
@@ -24,7 +24,7 @@
                             <i class="material-symbols">videocam</i>
                         </span>
                         <div>
-                            <p class="normal">{$c->__('button.video_call')}</p>
+                            <p>{$c->__('button.video_call')}</p>
                         </div>
                     </li>
                     {break}
@@ -36,7 +36,7 @@
                 <i class="material-symbols">comment</i>
             </span>
             <div>
-                <p class="normal">
+                <p>
                     {if="isset($message)"}
                         <span class="info" title="{$c->prepareDate($message->published)}">
                             {$c->prepareDate($message->published, true)}
@@ -133,7 +133,7 @@
                 <i class="material-symbols">chevron_right</i>
             </span>
             <div>
-                <p class="normal">{$c->__('blog.visit')}</p>
+                <p>{$c->__('blog.visit')}</p>
                 <p class="line">{$contact->getBlogUrl()}</p>
             </div>
         </li>
@@ -145,7 +145,7 @@
                 <i class="material-symbols">content_copy</i>
             </span>
             <div>
-                <p class="normal">Atom</p>
+                <p>Atom</p>
             </div>
         </li>
     {/if}

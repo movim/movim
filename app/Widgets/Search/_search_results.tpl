@@ -28,7 +28,7 @@
                 <img src="{$value->getPicture(\Movim\ImageSize::M)}"/>
             </span>
             <div>
-                <p class="line normal">
+                <p class="line">
                     {if="$value->name"}
                         {$value->name}
                     {else}
@@ -55,7 +55,7 @@
 <ul class="list flex middle">
     <li class="block large">
         <div>
-            <p class="line two normal">{loop="$tags"}<a class="chip outline active" href="#" onclick="MovimUtils.reload('{$c->route('tag', $value)}')">
+            <p class="line two">{loop="$tags"}<a class="chip outline active" href="#" onclick="MovimUtils.reload('{$c->route('tag', $value)}')">
                 <i class="material-symbols icon gray">tag</i>{$value}
             </a>{/loop}</p>
         </div>

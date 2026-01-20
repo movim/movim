@@ -441,10 +441,6 @@ body > div.drawer:not(:empty):not(.empty) ~ main .button.action {
     transition: all 0.4s ease 0s;
 }
 
-.button.action > i {
-    opacity: 0.8;
-}
-
 .button.action.active > i {
     transform: rotate(45deg);
 }

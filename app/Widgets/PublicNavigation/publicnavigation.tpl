@@ -6,16 +6,16 @@
             </a>
         </span>
         <div>
+            {if="!$c->me"}
+                <a class="button oppose color" title="{$c->__('button.register')}" href="{$c->route('account')}">
+                    {$c->__('button.register')}
+                </a>
+                <a class="button oppose flat" title="{$c->__('page.login')}" href="{$c->route('main')}">
+                    {$c->__('page.login')}
+                </a>
+            {/if}
             <p>
                 {$app_title}
-                {if="!$c->me"}
-                    <a class="button oppose color" title="{$c->__('button.register')}" href="{$c->route('account')}">
-                        {$c->__('button.register')}
-                    </a>
-                    <a class="button oppose flat" title="{$c->__('page.login')}" href="{$c->route('main')}">
-                        {$c->__('page.login')}
-                    </a>
-                {/if}
             </p>
             <p>{$base_host}</p>
         </div>

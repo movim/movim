@@ -8,7 +8,7 @@
                 <i class="material-symbols">chat_paste_go</i>
             </span>
             <div>
-                <p class="normal line">{$value->truename}</p>
+                <p class="line">{$value->truename}</p>
             </div>
         </li>
     {elseif="get_class($value) == 'App\Contact'"}
@@ -20,7 +20,7 @@
                 <i class="material-symbols">chat_paste_go</i>
             </span>
             <div>
-                <p class="normal line">{$value->truename}</p>
+                <p class="line">{$value->truename}</p>
             </div>
         </li>
     {elseif="get_class($value) == 'App\Conference'"}
@@ -32,7 +32,7 @@
                 <i class="material-symbols">chat_paste_go</i>
             </span>
             <div>
-                <p class="normal line">{$value->title}</p>
+                <p class="line">{$value->title}</p>
             </div>
         </li>
     {/if}

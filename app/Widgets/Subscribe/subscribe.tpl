@@ -18,7 +18,7 @@
                     <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
-                    <p class="normal">
+                    <p>
                         {$config->xmppdomain}
                     </p>
                     {if="!empty($config->xmppdescription)"}

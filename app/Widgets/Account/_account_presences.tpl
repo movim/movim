@@ -13,7 +13,7 @@
                     </i>
                 </span>
                 <div>
-                    <p class="normal line">
+                    <p class="line">
                         {if="$value->resource == $session->resource"}
                         <span class="info">{$c->prepareDate($session->created_at)} - {$session->timezone}</span>
                         {/if}

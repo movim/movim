@@ -34,7 +34,7 @@
                     </i>
                 </span>
                 <div>
-                    <p class="normal line">
+                    <p class="line">
                         {$presence->capability->name}
                     </p>
                     {if="$presence->capability->identities()->first() && isset($clienttype[$presence->capability->identities()->first()->type])"}
@@ -93,7 +93,7 @@
                 <i class="material-symbols">format_quote</i>
             </span>
             <div>
-                <p class="line normal">
+                <p class="line">
                     {$c->__('button.quote')}
                 </p>
             </div>

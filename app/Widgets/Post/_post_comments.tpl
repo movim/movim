@@ -7,7 +7,7 @@
                 <i class="material-symbols fill">favorite</i>
             </span>
             <div>
-                <p class="all normal">
+                <p class="all">
                     {loop="$post->likes"}
                         {if="$public"}
                             {$value->truename}{if="$key + 1 < $post->likes->count()"},{/if}
@@ -134,7 +134,7 @@
                 </span>
             {/if}
             <div>
-                <p class="normal line">
+                <p class="line">
                     <span class="info" title="{$c->prepareDate($value->published)}">
                         {$c->prepareDate($value->published, true)}
                     </span>

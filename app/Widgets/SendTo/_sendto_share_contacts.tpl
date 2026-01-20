@@ -10,7 +10,7 @@
             <i class="material-symbols">send</i>
         </span>-->
         <div>
-            <p class="normal line">
+            <p class="line">
                 {$value->truename}
                 {if="$value->group"}
                     <span class="tag color {$value->group|stringToColor}">

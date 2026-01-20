@@ -36,7 +36,7 @@
                 <i class="material-symbols">send</i>
             </span>
             <div>
-                <p class="normal">{$c->__('sendto.pick')}</p>
+                <p>{$c->__('sendto.pick')}</p>
                 <p><span id="sendto_counter">0</span> {$c->__('sendto.selected')}</p>
             </div>
         </li>
@@ -60,7 +60,7 @@
                     {$info = $value->info}
 
                     <div>
-                        <p class="normal line">
+                        <p class="line">
                             <span title="{$value->conference}">{$value->name}</span>
                             <span class="second" {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
                                 {if="isset($info) && $info->description"}
@@ -86,7 +86,7 @@
                 <i class="material-symbols">expand_more</i>
             </span>
             <div>
-                <p class="normal line center">{$c->__('sendto.more_contacts')}</p>
+                <p class="line center">{$c->__('sendto.more_contacts')}</p>
             </div>
         </li>
     </ul>

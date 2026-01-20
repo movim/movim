@@ -14,7 +14,7 @@
                 <img src="{$value->getPicture()}">
             </span>
             <div>
-                <p class="normal line">
+                <p class="line">
                     {$value->truename}
                 </p>
                 {if="!empty($value->description)"}

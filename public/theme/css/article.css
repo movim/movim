@@ -1,5 +1,12 @@
 /* Article */
 
+header:has(+ article) {
+    background-color: rgb(var(--movim-background));
+    position: sticky;
+    z-index: 1;
+    top: 0;
+}
+
 article {
     overflow: hidden;
 }

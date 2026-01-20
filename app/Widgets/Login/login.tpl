@@ -137,7 +137,7 @@
                                 </span>
                             {/if}
                             <div>
-                                <p class="line normal" title="{$value->resolvedNickname}">
+                                <p class="line" title="{$value->resolvedNickname}">
                                     {if="$contact"}
                                         {$contact->truename}<span class="second">{$value->resolvedNickname}</span>
                                     {else}

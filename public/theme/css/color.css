@@ -71,8 +71,8 @@ body,
 }
 
 .drawer,
-ul li.date > div > p.normal,
 .dialog, ul.context_menu,
+ul > li.date > div > p,
 .card > .block:not(.subheader):not(.simple):not(.color) {
     background-color: rgb(var(--movim-background-main));
 }
@@ -170,16 +170,16 @@ form textarea:focus:invalid + label {
     color: var(--p-red);
 }
 
-ul.list li > div > p:not(:first-of-type):not(.normal):not(.main) {
+ul.list li > div > p:not(:first-of-type):not(.main):not(.brief) {
     color: rgba(var(--movim-font), 0.6);
 }
 
-ul.list li.color > div > p:not(:first-of-type):not(.normal):not(.main) {
+ul.list li.color > div > p:not(:first-of-type):not(.main) {
     color: rgba(255, 255, 255, 0.8);
 }
 
-header.big ul.list li > div > p:not(:first-of-type):not(.normal):not(.main),
-div.snackbar ul.list li > div > p:not(:first-of-type):not(.normal):not(.main) {
+header.big ul.list li > div > p:not(:first-of-type):not(.main),
+div.snackbar ul.list li > div > p:not(:first-of-type):not(.main) {
     color: rgb(var(--movim-header-font));
 }
 

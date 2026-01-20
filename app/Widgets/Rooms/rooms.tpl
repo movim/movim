@@ -28,10 +28,10 @@
                 </i>
             </span>
             <div>
-                <p class="normal line center">
+                <p class="line center">
                     {$c->__('rooms.hide_disconnected')}
                 </p>
-                <p class="normal line center">
+                <p class="line center">
                     {$c->__('rooms.show_all')}
                 </p>
             </div>

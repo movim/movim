@@ -223,7 +223,7 @@
                         <i class="material-symbols">chevron_right</i>
                     </span>
                     <div>
-                        <p class="line normal">
+                        <p class="line">
                             {$c->__('room.group_chat_add')}
                         </p>
                     </div>
@@ -268,7 +268,7 @@
                             </span>
                         {/if}
                         <div>
-                            <p class="line normal">
+                            <p class="line">
                                 {if="$value->jid == $me"}
                                     {$value->truename}
                                 {else}
@@ -291,7 +291,7 @@
                         <i class="material-symbols">chevron_right</i>
                     </span>
                     <div>
-                        <p class="line normal">
+                        <p class="line">
                             {$c->__('room.invite')}
                         </p>
                     </div>
@@ -313,7 +313,7 @@
                         <i class="material-symbols">chevron_right</i>
                     </span>
                     <div>
-                        <p class="line normal">
+                        <p class="line">
                             {$c->__('room.banned_add')}
                         </p>
                     </div>
@@ -344,7 +344,7 @@
                                 <i class="material-symbols">comment</i>
                             </span>
                             <div>
-                                <p class="line normal">
+                                <p class="line">
                                     {if="$value->jid == $me"}
                                         {$value->truename}
                                     {else}

@@ -31,7 +31,7 @@
                         </div>
                     </span>
                     <div>
-                        <p class="normal">
+                        <p>
                             {if="$value->activity_at"}
                                 <span class="info">{$c->__('omemo.last_activity')}: {$c->prepareDate($value->activity_at)}</span>
                             {/if}

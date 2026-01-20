@@ -33,7 +33,7 @@
                 <i class="material-symbols">expand_more</i>
             </span>
             <div>
-                <p class="line normal center">
+                <p class="line center">
                     {$c->__('button.more')}
                 </p>
             </div>

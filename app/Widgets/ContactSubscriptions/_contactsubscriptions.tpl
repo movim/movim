@@ -23,7 +23,7 @@
                     <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
-                    <p class="line normal">
+                    <p class="line">
                         {if="$value->info && $value->info->name"}
                             {$value->info->name}
                         {elseif="$value->name"}

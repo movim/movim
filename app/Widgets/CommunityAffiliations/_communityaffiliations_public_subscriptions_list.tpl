@@ -15,14 +15,14 @@
                         <img src="{$value->contact->getPicture(\Movim\ImageSize::M)}">
                     </span>
                     <div>
-                        <p class="normal line">{$value->contact->truename}</p>
+                        <p class="line">{$value->contact->truename}</p>
                     </div>
                 {else}
                     <span class="primary icon bubble small color {$value->jid|stringToColor}">
                         {$value->jid|firstLetterCapitalize:true}
                     </span>
                     <div>
-                        <p class="normal line">{$value->jid}</p>
+                        <p class="line">{$value->jid}</p>
                     </div>
                 {/if}
             </li>

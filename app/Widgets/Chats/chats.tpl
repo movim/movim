@@ -6,7 +6,7 @@
 <ul id="chats_widget_header" class="list" data-filter="{$filter}">
     <li class="subheader">
         <div>
-            <p class="normal">
+            <p>
                 {$c->__('page.chats')}
             </p>
         </div>

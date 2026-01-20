@@ -30,7 +30,7 @@
                         <i class="material-symbols">cloud_queue</i>
                     </span>
                     <div>
-                        <p class="center normal"><a target="_blank" href="https://movim.eu">Powered by Movim</a></p>
+                        <p class="center"><a target="_blank" href="https://movim.eu">Powered by Movim</a></p>
                     </div>
                 </li>
             </ul>

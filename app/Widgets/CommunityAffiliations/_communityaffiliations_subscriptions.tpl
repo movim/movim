@@ -15,7 +15,7 @@
                     <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
                 </span>
                 <div>
-                    <p class="normal line">
+                    <p class="line">
                         <a href="{$c->route('contact', $value->jid)}">
                             {$contact->truename}
                         </a>

@@ -7,21 +7,21 @@
         </li>
     </ul>
 {else}
-    <ul class="list flex third card shadow active">
+    {$currentServer = null}
+    <div class="card shadow">
         {loop="$subscriptions"}
-            {if="$c->checkNewServer($value)"}
-                <li class="subheader active"
-                    onclick="MovimUtils.reload('{$c->route('community', $value->server)}')">
-                    <span class="primary icon">
-                        <i class="material-symbols">view_agenda</i>
-                    </span>
-                    <span class="control icon gray">
-                        <i class="material-symbols">chevron_right</i>
-                    </span>
-                    <div>
-                        <p>{$value->server}</p>
-                    </div>
-                </li>
+            {if="$value->server != $currentServer"}
+                {if="$currentServer != null"}
+                    </ul></div>
+                {/if}
+
+                <div class="block">
+                    <ul class="list flex card third active">
+                        <li class="subheader">
+                            <div>
+                                <p>{$value->server}</p>
+                            </div>
+                        </li>
             {/if}
             {if="$value->info"}
                 {autoescape="off"}
@@ -37,11 +37,14 @@
                         <img src="{$value->node|avatarPlaceholder}">
                     </span>
                     <div>
-                        <p class="line normal">{$value->node}</p>
+                        <p class="line">{$value->node}</p>
                         <p class="line">{$value->node}</p>
                     </div>
                 </li>
             {/if}
+
+            {$currentServer = $value->server}
         {/loop}
-    </ul>
+        </ul></div>
+    </div>
 {/if}

@@ -10,7 +10,7 @@
                 {/if}
             </span>
             <div>
-                <p class="normal line">
+                <p class="line">
                     <a target="_blank" href="{$value->href}" title="{$value->href}">
                         {if="!empty($value->title)"}
                             {$value->title}
@@ -35,7 +35,7 @@
             <span class="material-symbols">attach_file</span>
         </span>
         <div>
-            <p class="normal line">
+            <p class="line">
                 <a
                     href="{$value->href}"
                     class="enclosure"

@@ -7,7 +7,7 @@
                 <i class="material-symbols">info</i>
             </span>
             <div>
-                <p class="normal"><?php echo __('global.no_js'); ?></p>
+                <p><?php echo __('global.no_js'); ?></p>
             </div>
         </li>
     </ul>
@@ -25,7 +25,7 @@
                 <i class="material-symbols">cloud_sync</i>
             </span>
             <div>
-                <p class="normal line two">
+                <p class="line two">
                     <?php echo __('error.websocket_connect'); ?>
                 </p>
                 <p class="line two">

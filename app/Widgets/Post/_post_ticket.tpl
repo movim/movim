@@ -43,7 +43,7 @@
     {/if}
     <div>
         {if="$post->isBrief()"}
-            <p class="line {if="!$post->isStory()"}normal brief two{/if}" title="{$post->title}">
+            <p class="line {if="!$post->isStory()"}brief two{/if}" title="{$post->title}">
                 {autoescape="off"}
                     {$post->title}
                 {/autoescape}

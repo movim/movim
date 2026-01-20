@@ -8,7 +8,7 @@
                 <i class="material-symbols">chevron_right</i>
             </span>
             <div>
-                <p class="normal line">{$c->__('rooms.join_custom')}</p>
+                <p class="line">{$c->__('rooms.join_custom')}</p>
             </div>
         </li>
     </ul>

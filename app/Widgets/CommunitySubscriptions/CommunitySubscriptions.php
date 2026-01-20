@@ -7,18 +7,9 @@ use Movim\Widget\Base;
 
 class CommunitySubscriptions extends Base
 {
-    private $_list_server;
-
     public function load()
     {
         $this->addjs('communitysubscriptions.js');
-    }
-
-    public function checkNewServer($node)
-    {
-        $r = ($this->_list_server != $node->server);
-        $this->_list_server = $node->server;
-        return $r;
     }
 
     public function ajaxHttpGet()

@@ -22,7 +22,7 @@
                     <i class="material-symbols">ios_share</i>
                 </span>
                 <div>
-                    <p class="line normal">{$c->__('sendto.os_share')}</p>
+                    <p class="line">{$c->__('sendto.os_share')}</p>
                 </div>
             </li>
         </ul>
@@ -44,7 +44,7 @@
                     <i class="material-symbols">post_add</i>
                 </span>
                 <div>
-                    <p class="normal line">{$me->truename}</p>
+                    <p class="line">{$me->truename}</p>
                 </div>
             </li>
         {/if}
@@ -81,7 +81,7 @@
                         <i class="material-symbols">post_add</i>
                     </span>
                     <div>
-                        <p class="line normal">
+                        <p class="line">
                             {if="$value->info && $value->info->name"}
                                 {$value->info->name}
                             {else}

@@ -16,7 +16,7 @@
                     <i class="material-symbols">add_reaction</i>
                 </span>
                 <div>
-                    <p class="normal">{$c->__('message.react')}</p>
+                    <p>{$c->__('message.react')}</p>
                 </div>
             </li>
             <li
@@ -25,7 +25,7 @@
                     <i class="material-symbols">content_copy</i>
                 </span>
                 <div>
-                    <p class="normal">{$c->__('chatactions.copy_text')}</p>
+                    <p>{$c->__('chatactions.copy_text')}</p>
                 </div>
             </li>
         {/if}
@@ -34,7 +34,7 @@
                 <i class="material-symbols">reply</i>
             </span>
             <div>
-                <p class="normal">{$c->__('button.reply')}</p>
+                <p>{$c->__('button.reply')}</p>
             </div>
         </li>
 
@@ -44,7 +44,7 @@
                     <i class="material-symbols">edit</i>
                 </span>
                 <div>
-                    <p class="normal">{$c->__('button.edit')}</p>
+                    <p>{$c->__('button.edit')}</p>
                 </div>
             </li>
         {/if}
@@ -55,7 +55,7 @@
                     <i class="material-symbols">delete</i>
                 </span>
                 <div>
-                    <p class="normal">{$c->__('message.retract')}</p>
+                    <p>{$c->__('message.retract')}</p>
                 </div>
             </li>
         {/if}
@@ -71,7 +71,7 @@
                     <i class="material-symbols">delete</i>
                 </span>
                 <div>
-                    <p class="normal">{$c->__('message.retract')}</p>
+                    <p>{$c->__('message.retract')}</p>
                 </div>
             </li>
         {/if}

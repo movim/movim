@@ -11,7 +11,7 @@
                 <i class="material-symbols">fingerprint</i>
             </span>
             <div>
-                <p class="normal">
+                <p>
                     <span class="fingerprint">
                         {$fingerprint->fingerprint}
                     </span>

@@ -101,7 +101,7 @@
                 <i class="material-symbols">android</i>
             </span>
             <div>
-                <p class="normal line">
+                <p class="line">
                     Conversations
                     <a class="button flat" href="https://play.google.com/store/apps/details?id=eu.siacs.conversations" target="_blank">
                         <i class="material-symbols">android</i> Play Store
@@ -117,7 +117,7 @@
                 <i class="material-symbols">computer</i>
             </span>
             <div>
-                <p class="normal line">
+                <p class="line">
                     Dino
                     <a class="button flat" href="https://dino.im/" target="_blank">
                         <i class="material-symbols">open_in_new</i> Website
@@ -130,7 +130,7 @@
                 <i class="material-symbols">computer</i>
             </span>
             <div>
-                <p class="normal line">
+                <p class="line">
                     Gajim
                     <a class="button flat" href="https://gajim.org/" target="_blank">
                         <i class="material-symbols">open_in_new</i> Website
@@ -144,7 +144,7 @@
         <ul class="list flex">
             <li class="subheader">
                 <div>
-                    <p class="normal">{$c->__('contact.title')}</p>
+                    <p>{$c->__('contact.title')}</p>
                 </div>
             </li>
             {$addresses = array_unique(array_merge($info->adminaddresses, $info->abuseaddresses, $info->supportaddresses, $info->securityaddresses))}
@@ -157,7 +157,7 @@
                             <i class="material-symbols">mode_comment</i>
                         </span>
                         <div>
-                            <p class="normal">
+                            <p>
                                 <a href="{$c->route('chat', [$parsed['path'], 'room'])}">
                                     {$parsed['path']}
                                 </a>
@@ -168,7 +168,7 @@
                             <i class="material-symbols">comment</i>
                         </span>
                         <div>
-                            <p class="normal">
+                            <p>
                                 <a href="{$c->route('chat', $parsed['path'])}">
                                     {$parsed['path']}
                                 </a>
@@ -180,7 +180,7 @@
                             <i class="material-symbols">email</i>
                         </span>
                         <div>
-                            <p class="normal">
+                            <p>
                                 <a href="{$value}" target="_blank" rel="noopener noreferrer">
                                     {$parsed['path']}
                                 </a>

@@ -29,7 +29,7 @@
                         </span>
                     {/if}
                     <div>
-                        <p class="normal">
+                        <p>
                             <span class="fingerprint {if="$value->self"}self{/if}">
                                 {$value->fingerprint}
                             </span>

@@ -5,7 +5,7 @@
                 <img src="{$contact->getPicture(\Movim\ImageSize::O)}">
             </span>
             <div>
-                <p class="normal line">
+                <p class="line">
                     <i class="material-symbols icon blue">call</i>
                     {$c->__('visiolobby.calling', $contact->truename)}
                 </p>

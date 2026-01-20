@@ -131,21 +131,21 @@
     {/if}
 </header>
 
-<ul class="card shadow {if="$gallery"}middle flex third gallery large active{/if}">
+<ul class="list card shadow {if="$gallery"}middle flex third gallery large active{/if}">
     {if="$posts == null || $posts->isEmpty()"}
         <br />
-        <article class="block">
+        <div class="block">
             <ul class="list simple thick">
                 <li>
                     <span class="primary icon gray">
                         <i class="material-symbols">comment</i>
                     </span>
                     <div>
-                        <p class="normal">{$c->__('post.empty')}</p>
+                        <p>{$c->__('post.empty')}</p>
                     </div>
                 </li>
             </ul>
-        </article>
+        </div>
     {else}
         {loop="$posts"}
             {if="$gallery"}
@@ -169,7 +169,7 @@
             <li id="history" class="block large">
                 <span class="primary icon gray"><i class="material-symbols">history</i></span>
                 <div>
-                    <p class="normal line center">{$c->__('post.older')}</p>
+                    <p class="line center">{$c->__('post.older')}</p>
                 </div>
             </li>
         </a>

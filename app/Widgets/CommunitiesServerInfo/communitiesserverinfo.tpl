@@ -15,7 +15,7 @@
                         <i class="material-symbols">chat</i>
                     </span>
                     <div>
-                        <p class="normal">
+                        <p>
                             <a href="{$c->route('chat', [$parsed['path'], 'room'])}">
                                 {$parsed['path']}
                             </a>
@@ -24,7 +24,7 @@
                         <span class="primary icon gray">
                             <i class="material-symbols">comment</i>
                         </span>
-                        <p class="normal">
+                        <p>
                             <a href="{$c->route('chat', $parsed['path'])}">
                                 {$parsed['path']}
                             </a>
@@ -36,7 +36,7 @@
                         <i class="material-symbols">email</i>
                     </span>
                     <div>
-                        <p class="normal">
+                        <p>
                             <a href="{$value}" target="_blank" rel="noopener noreferrer">
                                 {$parsed['path']}
                             </a>

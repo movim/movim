@@ -5,7 +5,7 @@
                 <i class="material-symbols">info</i>
             </span>
             <div>
-                <p class="line normal">{$c->__('blocked.info')}</p>
+                <p class="line">{$c->__('blocked.info')}</p>
                 <p>{$c->__('blocked.info2')}</p>
             </div>
         </li>

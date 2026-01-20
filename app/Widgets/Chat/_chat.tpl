@@ -77,7 +77,7 @@
                             <i class="material-symbols">camera_alt</i>
                         </span>
                         <div>
-                            <p class="normal line">Snap</p>
+                            <p class="line">Snap</p>
                         </div>
                     </li>
                     <li onclick="Chat.toggleAttach(); Draw_ajaxHttpGet()">
@@ -85,7 +85,7 @@
                             <i class="material-symbols">gesture</i>
                         </span>
                         <div>
-                            <p class="normal line">{$c->__('draw.title')}</p>
+                            <p class="line">{$c->__('draw.title')}</p>
                         </div>
                     </li>
                     <li onclick="Chat.toggleAttach(); Upload_ajaxGetPanel()">
@@ -93,7 +93,7 @@
                             <i class="material-symbols">attach_file</i>
                         </span>
                         <div>
-                            <p class="normal line">{$c->__('upload.title')}</p>
+                            <p class="line">{$c->__('upload.title')}</p>
                         </div>
                     </li>
                 </ul>

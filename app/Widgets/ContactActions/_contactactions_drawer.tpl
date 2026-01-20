@@ -92,7 +92,7 @@
                                     </i>
                                 </span>
                                 <div>
-                                    <p class="normal line">
+                                    <p class="line">
                                         {$value->capability->name}
                                         <span class="second">{$value->resource}</span>
                                     </p>
@@ -134,7 +134,7 @@
                         <i class="material-symbols">chevron_right</i>
                     </span>
                     <div>
-                        <p class="normal">{$c->__('blocked.unblock_account')}</p>
+                        <p>{$c->__('blocked.unblock_account')}</p>
                     </div>
                 </li>
             {else}
@@ -146,7 +146,7 @@
                         <i class="material-symbols">chevron_right</i>
                     </span>
                     <div>
-                        <p class="normal">{$c->__('blocked.block_account')}</p>
+                        <p>{$c->__('blocked.block_account')}</p>
                     </div>
                 </li>
             {/if}
@@ -158,7 +158,7 @@
                     <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
-                    <p class="normal line">{$c->__('chat.clear_history')}</p>
+                    <p class="line">{$c->__('chat.clear_history')}</p>
                 </div>
             </li>
         </ul>

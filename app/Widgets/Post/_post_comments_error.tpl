@@ -4,7 +4,7 @@
             <i class="material-symbols">comments_disabled</i>
         </span>
         <div>
-            <p class="normal">
+            <p>
                 {$c->__('post.comments_disabled_yes')}
             </p>
         </div>
@@ -19,7 +19,7 @@
                 <i class="material-symbols">share</i>
             </span>
             <div>
-                <p class="normal">
+                <p>
                     {$c->__('button.share')}
                 </p>
             </div>
@@ -29,7 +29,7 @@
                 <i class="material-symbols">send</i>
             </span>
             <div>
-                <p class="normal">
+                <p>
                     {$c->__('button.send_to')}
                 </p>
             </div>
@@ -40,7 +40,7 @@
                 <i class="material-symbols">share</i>
             </span>
             <div>
-                <p class="normal">
+                <p>
                     {$c->__('button.send_to')}
                 </p>
             </div>

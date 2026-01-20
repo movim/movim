@@ -5,7 +5,7 @@
                 <i class="material-symbols">image</i>
             </span>
             <div>
-                <p class="normal">{$c->__('page.avatar')}</p>
+                <p>{$c->__('page.avatar')}</p>
             </div>
         </li>
         <li onclick="CommunityConfig_ajaxGetConfig('{$info->server|echapJS}', '{$info->node|echapJS}')">
@@ -13,7 +13,7 @@
                 <i class="material-symbols">settings</i>
             </span>
             <div>
-                <p class="normal">{$c->__('communityaffiliation.configuration')}</p>
+                <p>{$c->__('communityaffiliation.configuration')}</p>
             </div>
         </li>
         <li onclick="CommunityAffiliations_ajaxGetSubscriptions('{$info->server|echapJS}', '{$info->node|echapJS}', true)">
@@ -21,7 +21,7 @@
                 <i class="material-symbols">contacts</i>
             </span>
             <div>
-                <p class="normal">{$c->__('communityaffiliation.subscriptions')}</p>
+                <p>{$c->__('communityaffiliation.subscriptions')}</p>
             </div>
         </li>
         <li onclick="CommunityAffiliations_ajaxAffiliations('{$info->server|echapJS}', '{$info->node|echapJS}')">
@@ -29,7 +29,7 @@
                 <i class="material-symbols">supervisor_account</i>
             </span>
             <div>
-                <p class="normal">{$c->__('communityaffiliation.roles')}</p>
+                <p>{$c->__('communityaffiliation.roles')}</p>
             </div>
         </li>
         <li onclick="CommunityAffiliations_ajaxDelete('{$info->server|echapJS}', '{$info->node|echapJS}')">
@@ -37,7 +37,7 @@
                 <i class="material-symbols">delete</i>
             </span>
             <div>
-                <p class="normal">{$c->__('button.delete')}</p>
+                <p>{$c->__('button.delete')}</p>
             </div>
         </li>
     </ul>

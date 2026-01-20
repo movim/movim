@@ -1,7 +1,7 @@
 <ul class="list thick">
     <li>
         <div>
-            <p class="normal">
+            <p>
                 {if="$contact->fn != null"}
                     {$contact->fn}
                     {if="$contact->nickname != null"}

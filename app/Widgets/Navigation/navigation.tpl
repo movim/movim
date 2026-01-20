@@ -9,7 +9,7 @@
                 <span data-key="news" class="counter"></span>
             </span>
             <div>
-                <p class="normal">{$c->__('page.news')}</p>
+                <p>{$c->__('page.news')}</p>
             </div>
         </li>
 
@@ -19,7 +19,7 @@
         >
             <span class="primary icon"><i class="material-symbols">explore</i></span>
             <div>
-                <p class="normal">{$c->__('page.explore')}</p>
+                <p>{$c->__('page.explore')}</p>
             </div>
         </li>
     {/if}
@@ -32,7 +32,7 @@
             <i class="material-symbols">chat_bubble</i>
         </span>
         <div>
-            <p class="normal">{$c->__('page.chats')}</p>
+            <p>{$c->__('page.chats')}</p>
         </div>
     </li>
 
@@ -47,7 +47,7 @@
                 <i class="material-symbols">post_add</i>
             </span>
             <div>
-                <p class="normal">{$c->__('page.publish')}</p>
+                <p>{$c->__('page.publish')}</p>
             </div>
         </li>
 
@@ -59,7 +59,7 @@
                     <i class="material-symbols">web_stories</i>
                 </span>
                 <div>
-                    <p class="normal">{$c->__('stories.publish')}</p>
+                    <p>{$c->__('stories.publish')}</p>
                 </div>
             </li>
         {/if}
@@ -76,7 +76,7 @@
             <span class="counter notifications"></span>
         </span>
         <div>
-            <p class="normal">{$c->__('notifs.title')}</p>
+            <p>{$c->__('notifs.title')}</p>
         </div>
     </li>
 
@@ -90,7 +90,7 @@
             <i class="material-symbols">search</i>
         </span>
         <div>
-            <p class="normal">{$c->__('button.search')}</p>
+            <p>{$c->__('button.search')}</p>
         </div>
     </li>
 
@@ -101,7 +101,7 @@
         >
             <span class="primary icon"><i class="material-symbols">bookmarks</i></span>
             <div>
-                <p class="normal">{$c->__('communityaffiliation.subscriptions')}</p>
+                <p>{$c->__('communityaffiliation.subscriptions')}</p>
             </div>
         </li>
     {/if}
@@ -110,7 +110,7 @@
         <li onclick="MovimTpl.closeMenu()">
             <span class="primary icon bubble"><i class="material-symbols">arrow_back</i></span>
             <div>
-                <p class="normal">{$c->__('button.close')}</p>
+                <p>{$c->__('button.close')}</p>
             </div>
         </li>
     </a>

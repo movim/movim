@@ -187,7 +187,7 @@
                         <i class="material-symbols">settings</i>
                     </span>
                     <div>
-                        <p class="normal">{$c->__('chatroom.config')}</p>
+                        <p>{$c->__('chatroom.config')}</p>
                     </div>
                 </li>
             {/if}
@@ -197,13 +197,13 @@
                         <i class="material-symbols">short_text</i>
                     </span>
                     <div>
-                        <p class="normal">{$c->__('chatroom.subject')}</p>
+                        <p>{$c->__('chatroom.subject')}</p>
                     </div>
                 </li>
                 <li onclick="RoomsUtils_ajaxGetAvatar('{$jid|echapJS}')">
                     <span class="primary icon gray"></span>
                     <div>
-                        <p class="normal">{$c->__('page.avatar')}</p>
+                        <p>{$c->__('page.avatar')}</p>
                     </div>
                 </li>
             {/if}
@@ -211,7 +211,7 @@
                 <li class="divided" onclick="RoomsUtils_ajaxAskDestroy('{$jid|echapJS}')">
                     <span class="primary icon"></span>
                     <div>
-                        <p class="normal">{$c->__('button.destroy')}</p>
+                        <p>{$c->__('button.destroy')}</p>
                     </div>
                 </li>
             {/if}
@@ -232,7 +232,7 @@
                     <i class="material-symbols">report</i>
                 </span>
                 <div>
-                    <p class="normal">{$c->__('chat.report_abuse')}</p>
+                    <p>{$c->__('chat.report_abuse')}</p>
                 </div>
             </li>
         {/if}
@@ -242,7 +242,7 @@
                 <i class="material-symbols">logout</i>
             </span>
             <div>
-                <p class="normal">{$c->__('status.disconnect')}</p>
+                <p>{$c->__('status.disconnect')}</p>
             </div>
         </li>
     </ul>
@@ -357,7 +357,7 @@
                     <i class="material-symbols">person</i>
                 </span>
                 <div>
-                    <p class="normal line">{$c->__('chat.profile')}</p>
+                    <p class="line">{$c->__('chat.profile')}</p>
                 </div>
             </li>
         {/if}
@@ -376,14 +376,14 @@
                     <i class="material-symbols">report</i>
                 </span>
                 <div>
-                    <p class="normal line">{$c->__('chat.report_abuse')}</p>
+                    <p class="line">{$c->__('chat.report_abuse')}</p>
                 </div>
             </li>
         {/if}
         <li onclick="Chat_ajaxClearHistory('{$contact->id|echapJS}')">
             <span class="primary icon"></span>
             <div>
-                <p class="normal line">{$c->__('chat.clear_history')}</p>
+                <p class="line">{$c->__('chat.clear_history')}</p>
             </div>
         </li>
         <hr />
@@ -393,7 +393,7 @@
                     <i class="material-symbols">check_circle</i>
                 </span>
                 <div>
-                    <p class="normal line">{$c->__('blocked.unblock_account')}</p>
+                    <p class="line">{$c->__('blocked.unblock_account')}</p>
                 </div>
             </li>
         {else}
@@ -402,7 +402,7 @@
                     <i class="material-symbols">block</i>
                 </span>
                 <div>
-                    <p class="normal line">{$c->__('blocked.block_account')}</p>
+                    <p class="line">{$c->__('blocked.block_account')}</p>
                 </div>
             </li>
         {/if}
@@ -412,7 +412,7 @@
                 <i class="material-symbols">close</i>
             </span>
             <div>
-                <p class="normal line">{$c->__('button.close')}</p>
+                <p class="line">{$c->__('button.close')}</p>
             </div>
         </li>
     </ul>

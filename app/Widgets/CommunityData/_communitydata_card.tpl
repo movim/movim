@@ -11,7 +11,7 @@
 <ul class="list middle flex">
     <li class="block large">
         <div>
-            <p class="normal center line" title="{$info->name}">
+            <p class="center line" title="{$info->name}">
                 {if="$info->name"}
                     {$info->name}
                 {else}

@@ -45,7 +45,7 @@
                 </span>
             {/if}
             <div>
-                <p class="normal line">
+                <p class="line">
                     {$value->truename}
                     {if="$value->group"}
                         <span class="tag color {$value->group|stringToColor}">
@@ -88,7 +88,7 @@
                 <i class="material-symbols">expand_more</i>
             </span>
             <div>
-                <p class="normal line">
+                <p class="line">
                     {$c->__('search.show_complete_roster')}
                     <span class="second">{$contacts->count()} <i class="material-symbols">people</i></span>
                 </p>

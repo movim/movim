@@ -284,13 +284,14 @@ ul.list li>div>p.active:hover {
 }
 
 ul.list>*>li>div>p:first-of-type,
-ul.list>li>div>p:first-of-type {
+ul.list>li>div>p:first-of-type,
+ul.list>li>div>p.brief {
     line-height: 3rem;
     font-size: 2rem;
 }
 
-ul.list>*>li>div>p:not(:first-of-type),
-ul.list>li>div>p:not(:first-of-type) {
+ul.list>*>li>div>p:not(:first-of-type):not(.brief),
+ul.list>li>div>p:not(:first-of-type):not(.brief) {
     line-height: 2.5rem;
     font-size: 1.75rem;
 }
@@ -339,6 +340,14 @@ ul.list li.subheader>div>p {
 
 ul.list li.subheader span.chip {
     flex: 0 0 auto;
+}
+
+
+ul.list li.subheader.sticky {
+    position: sticky;
+    top: 0;
+    background-color: rgb(var(--movim-background-main));
+    z-index: 1;
 }
 
 /* Search forms */
@@ -654,12 +663,12 @@ ul li.oppose div.bubble:not(.file):before {
 
 /* Date separator */
 
-ul li.date {
+ul > li.date {
     min-height: 0;
     text-align: center;
 }
 
-ul li.date>div>p.normal {
+ul > li.date>div>p:only-child {
     line-height: 2.5rem;
     font-size: 1.5rem;
     display: inline-block;
@@ -668,7 +677,7 @@ ul li.date>div>p.normal {
     padding: 0 2rem;
 }
 
-ul li.date:first-of-type>div>p.normal {
+ul > li.date:first-of-type>div>p:only-child {
     margin-top: 1rem;
 }
 

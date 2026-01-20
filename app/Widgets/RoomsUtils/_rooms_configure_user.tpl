@@ -52,7 +52,7 @@
                                     <label for="voice"></label>
                                 </div>
                             </span>
-                            <p class="normal all">{$c->__('room.allowed_send_messages')}</p>
+                            <p class="all">{$c->__('room.allowed_send_messages')}</p>
                         </li>
                     </ul>
                 </div>

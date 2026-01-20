@@ -88,7 +88,7 @@
                     {/if}
                 </p>
                 {if="$post->isBrief()"}
-                    <p class="normal brief" title="{$post->title}">
+                    <p class="brief all" title="{$post->title}">
                         {autoescape="off"}
                             {$post->title|addUrls|addHashtagsLinks|nl2br|prepareString|addEmojis}
                         {/autoescape}
@@ -168,7 +168,7 @@
     <ul class="list">
         <li>
             <div>
-                <p class="normal">
+                <p>
                     <a class="button flat oppose"
                     {if="$public"}
                         {if="$post->isMicroblog()"}

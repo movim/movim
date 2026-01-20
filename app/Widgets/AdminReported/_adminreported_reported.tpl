@@ -6,7 +6,7 @@
                     <i class="material-symbols">info</i>
                 </span>
                 <div>
-                    <p class="line normal">{$c->__('adminreported.info')}</p>
+                    <p class="line">{$c->__('adminreported.info')}</p>
                     <p>{$c->__('adminreported.info2')}</p>
                 </div>
             </li>
@@ -29,7 +29,7 @@
                         </div>
                     </span>
                     <div>
-                        <p class="line normal">
+                        <p class="line">
                             <span class="info">{$c->prepareDate($value->created_at)}</span>
                             {$value->id}
                         </p>

@@ -30,7 +30,7 @@
                 <i class="material-symbols fill">pause</i>
             </span>
             <div>
-                <p class="line normal">
+                <p class="line">
                     {if="$story->contact"}
                         <a href="#" onclick="MovimUtils.reload('{$c->route('contact', $story->aid)}')">
                             {$story->truename}
@@ -53,7 +53,7 @@
     <ul class="list middle">
         <li>
             <div>
-                <p class="normal title">{autoescape="off"}{$story->title|addHashtagsLinks}{/autoescape}</p>
+                <p class="title">{autoescape="off"}{$story->title|addHashtagsLinks}{/autoescape}</p>
             </div>
         </li>
         {if="!$story->isMine($c->me) && $story->contact"}

@@ -19,7 +19,7 @@
                 <i class="material-symbols">chevron_right</i>
             </span>
             <div>
-                <p class="normal line">{$reply->title}</p>
+                <p class="line">{$reply->title}</p>
                 <p>{$reply->getContent()|html_entity_decode|stripTags}</p>
                 <p>
                     {if="$reply->isMicroblog() && $reply->contact"}
@@ -41,7 +41,7 @@
                 <i class="material-symbols">reply</i>
             </span>
             <div>
-                <p class="line normal">{$c->__('post.original_deleted')}</p>
+                <p class="line">{$c->__('post.original_deleted')}</p>
             </div>
         </li>
     </ul>

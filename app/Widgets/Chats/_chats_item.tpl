@@ -37,7 +37,7 @@
     </span>
 
     <div>
-        <p class="normal line">
+        <p class="line">
             {if="isset($message)"}
                 <span class="info">
                     {$c->prepareDate($message->published, true)}

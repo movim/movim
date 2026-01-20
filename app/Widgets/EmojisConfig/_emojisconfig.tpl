@@ -21,7 +21,7 @@
         <ul class="list thick">
             <li>
                 <div>
-                    <p class="normal">{$value->name}</p>
+                    <p>{$value->name}</p>
                     <p>
                         {if="$value->description"}
                             {$value->description}

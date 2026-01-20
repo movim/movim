@@ -14,7 +14,7 @@
                 <img src="{$post->contact->getPicture(\Movim\ImageSize::M)}">
             </span>
             <div>
-                <p class="normal line">
+                <p class="line">
                     {$post->contact->truename}
                 </p>
         {else}
@@ -22,7 +22,7 @@
                 <i class="material-symbols">person</i>
             </span>
             <div>
-                <p class="normal line">
+                <p class="line">
                     {$post->server}
                 </p>
         {/if}
@@ -36,7 +36,7 @@
                 <img src="{$info->getPicture(\Movim\ImageSize::M)}"/>
             </span>
             <div>
-                <p class="line two normal">
+                <p class="line two">
                     {if="$info->name"}
                         {$info->name}
                     {else}

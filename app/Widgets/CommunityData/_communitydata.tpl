@@ -19,7 +19,7 @@
                 </span>
 
                 <div>
-                    <p class="normal line">{$related->name} <span class="second">{$related->server}</span></p>
+                    <p class="line">{$related->name} <span class="second">{$related->server}</span></p>
                     <p class="line"
                         {if="$related->description"}title="{$related->description}"{/if}>
 
@@ -46,7 +46,7 @@
                 <i class="material-symbols">content_copy</i>
             </span>
             <div>
-                <p class="normal">{$c->__('communitydata.public')}</p>
+                <p>{$c->__('communitydata.public')}</p>
                 <p class="line">{$c->route('community', [$info->server, $info->node])}</p>
             </div>
         </li>
@@ -58,7 +58,7 @@
                 <i class="material-symbols">content_copy</i>
             </span>
             <div>
-                <p class="normal">Atom</p>
+                <p>Atom</p>
             </div>
         </li>
     </ul>
