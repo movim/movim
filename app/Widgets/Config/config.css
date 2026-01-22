@@ -1,10 +1,24 @@
-form div > span.supporting.night_mode_detected {
+label[for=nightmode] i,
+form ul.list li div>span.supporting.night_mode_detected {
     display: none;
 }
 
 @media (prefers-color-scheme: dark) {
-    form div > span.supporting.night_mode_detected {
+    form > div .checkbox > input[type="checkbox"] + label[for=nightmode] {
+        width: 3rem;
+        height: 3rem;
+        left: 1.25em;
+        top: 0.25em;
+    }
+
+    label[for=nightmode] i,
+    form ul.list li div>span.supporting.night_mode_detected {
         display: initial;
+    }
+
+    form div:has(> #nightmode) {
+        opacity: 0.25;
+        pointer-events: none;
     }
 }
 

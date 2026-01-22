@@ -154,7 +154,9 @@
                             id="nightmode"
                             onchange="Config.switchNightMode()"
                             name="nightmode"/>
-                        <label for="nightmode"></label>
+                        <label for="nightmode">
+                            <i class="material-symbols">night_sight_auto</i>
+                        </label>
                     </div>
                 </span>
                 <div>
