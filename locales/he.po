@@ -95,6 +95,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishStories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Register/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -122,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-07 19:00+0200\n"
+"POT-Creation-Date: 2026-01-22 08:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: gk <genghiskhan@gmx.ca>, 2016\n"
 "Language-Team: Hebrew (http://app.transifex.com/movim/movim/language/he/)\n"
@@ -131,7 +133,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;\n"
-"X-Generator: Translate Toolkit 3.15.1\n"
+"X-Generator: Translate Toolkit 3.17.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -278,9 +280,8 @@ msgid "Action completed"
 msgstr ""
 
 #: [tools]title
-#, fuzzy
 msgid "Developer Tools"
-msgstr "מפתחים"
+msgstr ""
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
@@ -493,9 +494,8 @@ msgid "Change my profile picture"
 msgstr ""
 
 #: [avatar]too_big
-#, fuzzy
 msgid "Your picture is too big"
-msgstr "הדיוקן שלך הינו פומבי כעת"
+msgstr ""
 
 #: [avatar]missing
 msgid "No avatar yet"
@@ -837,23 +837,25 @@ msgstr ""
 msgid "Encryption disabled"
 msgstr ""
 
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr ""
 
 #: [omemo]enable_room
-#, fuzzy
 msgid "Enabling encryption for the chatroom"
-msgstr "מחובר אל שיחת קבוצה"
+msgstr ""
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
 msgstr ""
 
 #: [omemo]disable_room
-#, fuzzy
 msgid "Disabling encryption for the chatroom"
-msgstr "מנותק מתוך שיחת הקבוצה"
+msgstr ""
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -1165,9 +1167,8 @@ msgid "Send an invitation request before following the contact"
 msgstr ""
 
 #: [communityposts]subscribe_unsupported
-#, fuzzy
 msgid "You can't follow the contact at the moment"
-msgstr "באפשרותך לראות את מצב איש קשר זה"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -2195,9 +2196,8 @@ msgid "Markdown syntax manual"
 msgstr ""
 
 #: [story]new
-#, fuzzy
 msgid "New story"
-msgstr "פרסום חדש"
+msgstr ""
 
 #: [story]new_edit
 msgid "Edit your story"
@@ -2479,9 +2479,8 @@ msgid "Unban"
 msgstr ""
 
 #: [room]configure_user
-#, fuzzy
 msgid "Configure the user"
-msgstr "תצורה נשמרה"
+msgstr ""
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2545,15 +2544,13 @@ msgid "No affiliation"
 msgstr ""
 
 #: [room]affiliation_admins
-#, fuzzy
 msgid "Admins"
-msgstr "ניהול"
+msgstr ""
 
 #: [room]affiliation_members
-#, fuzzy
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr "חברים"
+msgstr ""
 
 #: [room]visitor
 msgid "Visitor"
@@ -2564,9 +2561,8 @@ msgid "Is the user allowed to send messages?"
 msgstr ""
 
 #: [room]role_changed
-#, fuzzy
 msgid "Role changed"
-msgstr "נושא נשתנה"
+msgstr ""
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
@@ -2641,9 +2637,8 @@ msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]selected
-#, fuzzy
 msgid "contacts selected"
-msgstr "איש קשר נמחק"
+msgstr ""
 
 #: [sendto]pick
 msgid "Pick the contacts you want to share this content with"
@@ -2654,9 +2649,8 @@ msgid "Post shared"
 msgstr ""
 
 #: [sendto]shared_contacts
-#, fuzzy
 msgid "Post shared with %s contacts"
-msgstr "שיח עם איש קשר"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2787,9 +2781,8 @@ msgid "Max file size %s"
 msgstr ""
 
 #: [upload]upload_xmpp
-#, fuzzy
 msgid "Uploading to your account"
-msgstr "מחק את החשבון שלך"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -3896,15 +3889,3 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
-
-#~ msgid "Subscribe"
-#~ msgstr "הירשם"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "בטל הרשמה"
-
-#~ msgid "Subscribed"
-#~ msgstr "מנוי"
-
-#~ msgid "Unsubscribed"
-#~ msgstr "לא רשום"

@@ -95,6 +95,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishStories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Register/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -122,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-07 19:00+0200\n"
+"POT-Creation-Date: 2026-01-22 08:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Krunoslav Tomorad <krunoslav.tomorad@gmail.com>, 2019\n"
 "Language-Team: Croatian (http://app.transifex.com/movim/movim/language/hr/)\n"
@@ -131,7 +133,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.15.1\n"
+"X-Generator: Translate Toolkit 3.17.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -278,9 +280,8 @@ msgid "Action completed"
 msgstr "Radnja je dovršena"
 
 #: [tools]title
-#, fuzzy
 msgid "Developer Tools"
-msgstr "Razvijatelji"
+msgstr ""
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
@@ -497,9 +498,8 @@ msgid "Your picture is too big"
 msgstr ""
 
 #: [avatar]missing
-#, fuzzy
 msgid "No avatar yet"
-msgstr "Još nema poruka..."
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -837,23 +837,25 @@ msgstr ""
 msgid "Encryption disabled"
 msgstr ""
 
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr ""
 
 #: [omemo]enable_room
-#, fuzzy
 msgid "Enabling encryption for the chatroom"
-msgstr "Povezani ste u sobu za razgovor"
+msgstr ""
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
 msgstr ""
 
 #: [omemo]disable_room
-#, fuzzy
 msgid "Disabling encryption for the chatroom"
-msgstr "Odspojili ste se od sobe za razgovor"
+msgstr ""
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -1137,9 +1139,8 @@ msgid "It will appear on your profile"
 msgstr "Vidjet će se na vašem profilu"
 
 #: [communityheader]unfollow_text
-#, fuzzy
 msgid "You are going to unfollow this community"
-msgstr "Otkazat ćete pretplatu na ovu zajednicu"
+msgstr ""
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
@@ -2203,9 +2204,8 @@ msgid "Edit your story"
 msgstr ""
 
 #: [story]new_publish
-#, fuzzy
 msgid "Publish your story"
-msgstr "Izdavači"
+msgstr ""
 
 #: [story]to_roster
 msgid "Publish to my contacts"
@@ -2479,9 +2479,8 @@ msgid "Unban"
 msgstr ""
 
 #: [room]configure_user
-#, fuzzy
 msgid "Configure the user"
-msgstr "Postavke su spremljene"
+msgstr ""
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2492,9 +2491,8 @@ msgid "Affiliation"
 msgstr ""
 
 #: [room]role
-#, fuzzy
 msgid "Role"
-msgstr "Uloge"
+msgstr ""
 
 #: [room]reason
 msgid "Reason"
@@ -2546,15 +2544,13 @@ msgid "No affiliation"
 msgstr ""
 
 #: [room]affiliation_admins
-#, fuzzy
 msgid "Admins"
-msgstr "Upravljanje"
+msgstr ""
 
 #: [room]affiliation_members
-#, fuzzy
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr "Članovi"
+msgstr ""
 
 #: [room]visitor
 msgid "Visitor"
@@ -2565,9 +2561,8 @@ msgid "Is the user allowed to send messages?"
 msgstr ""
 
 #: [room]role_changed
-#, fuzzy
 msgid "Role changed"
-msgstr "Naslov je spremljen"
+msgstr ""
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
@@ -2654,9 +2649,8 @@ msgid "Post shared"
 msgstr ""
 
 #: [sendto]shared_contacts
-#, fuzzy
 msgid "Post shared with %s contacts"
-msgstr "Pišite kontaktu"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2787,9 +2781,8 @@ msgid "Max file size %s"
 msgstr ""
 
 #: [upload]upload_xmpp
-#, fuzzy
 msgid "Uploading to your account"
-msgstr "Obrišite svoj račun"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -3896,18 +3889,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Subscribe"
-#~ msgstr "Pretplati"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "Otkaži pretplatu"
-
-#~ msgid "Subscribed"
-#~ msgstr "Pretplatili ste se"
-
-#~ msgid "Unsubscribed"
-#~ msgstr "Otkazali ste pretplatu"
-
-#~ msgid "Share this subscription publicly"
-#~ msgstr "Javno podijelite ovu pretplatu"

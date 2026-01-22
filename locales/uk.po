@@ -95,6 +95,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishStories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Register/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -122,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-07 19:00+0200\n"
+"POT-Creation-Date: 2026-01-22 08:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: sergey solovey, 2022,2024\n"
 "Language-Team: Ukrainian (http://app.transifex.com/movim/movim/language/uk/)\n"
@@ -131,7 +133,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
-"X-Generator: Translate Toolkit 3.15.1\n"
+"X-Generator: Translate Toolkit 3.17.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -278,9 +280,8 @@ msgid "Action completed"
 msgstr "Зроблено"
 
 #: [tools]title
-#, fuzzy
 msgid "Developer Tools"
-msgstr "Розробники"
+msgstr ""
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
@@ -493,14 +494,12 @@ msgid "Change my profile picture"
 msgstr ""
 
 #: [avatar]too_big
-#, fuzzy
 msgid "Your picture is too big"
-msgstr "Ваш профіль тепер публічний"
+msgstr ""
 
 #: [avatar]missing
-#, fuzzy
 msgid "No avatar yet"
-msgstr "Ще немає чатів..."
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -515,9 +514,8 @@ msgid "Banner Not Updated"
 msgstr "Банер не оновлено"
 
 #: [banner]missing
-#, fuzzy
 msgid "No banner yet"
-msgstr "Новин поки що немає..."
+msgstr ""
 
 #: [blocked]title
 msgid "Blocked"
@@ -660,9 +658,8 @@ msgid "See the profile"
 msgstr "Переглянути профіль"
 
 #: [chat]clear
-#, fuzzy
 msgid "Clear the history"
-msgstr "Очистити історію"
+msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -733,14 +730,12 @@ msgid "An error occurred when sending the message"
 msgstr "Під час надсилання повідомлення сталася помилка"
 
 #: [chat]clear_history
-#, fuzzy
 msgid "Clear the local history"
-msgstr "Очистити історію"
+msgstr ""
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s local messages, are you sure?"
-msgstr "Ви дійсно бажаєте видалити %s повідомлень?"
+msgstr ""
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
@@ -842,23 +837,25 @@ msgstr "Створення власних сеансів шифрування"
 msgid "Encryption disabled"
 msgstr "Шифрування вимкнено"
 
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr "Увімкнути шифрування для контакту"
 
 #: [omemo]enable_room
-#, fuzzy
 msgid "Enabling encryption for the chatroom"
-msgstr "Увімкнути шифрування для контакту"
+msgstr ""
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
 msgstr "Вимкнути шифрування для контакту"
 
 #: [omemo]disable_room
-#, fuzzy
 msgid "Disabling encryption for the chatroom"
-msgstr "Вимкнути шифрування для контакту"
+msgstr ""
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -1142,9 +1139,8 @@ msgid "It will appear on your profile"
 msgstr "Це відобразиться у вашому профілі"
 
 #: [communityheader]unfollow_text
-#, fuzzy
 msgid "You are going to unfollow this community"
-msgstr "Ви збираєтеся відписатися від цієї спільноти"
+msgstr ""
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
@@ -1171,9 +1167,8 @@ msgid "Send an invitation request before following the contact"
 msgstr ""
 
 #: [communityposts]subscribe_unsupported
-#, fuzzy
 msgid "You can't follow the contact at the moment"
-msgstr "Ви можете бачити статус цього контакту"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -2165,9 +2160,8 @@ msgid "You are not authorized to publish there"
 msgstr "Ви не маєте права публікувати тут"
 
 #: [publish]publish_error_payload_to_big
-#, fuzzy
 msgid "Your post is too big to be published"
-msgstr "Ви не маєте права публікувати тут"
+msgstr ""
 
 #: [publish]too_long
 msgid "Your text is too long, %s characters max"
@@ -2202,18 +2196,16 @@ msgid "Markdown syntax manual"
 msgstr "Посібник з синтаксису Markdown"
 
 #: [story]new
-#, fuzzy
 msgid "New story"
-msgstr "Нова публікація"
+msgstr ""
 
 #: [story]new_edit
 msgid "Edit your story"
 msgstr ""
 
 #: [story]new_publish
-#, fuzzy
 msgid "Publish your story"
-msgstr "Опублікувати мій перший допис"
+msgstr ""
 
 #: [story]to_roster
 msgid "Publish to my contacts"
@@ -2487,9 +2479,8 @@ msgid "Unban"
 msgstr "Зняти бан"
 
 #: [room]configure_user
-#, fuzzy
 msgid "Configure the user"
-msgstr "Конфігурацію збережено"
+msgstr ""
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2500,9 +2491,8 @@ msgid "Affiliation"
 msgstr "Приналежність"
 
 #: [room]role
-#, fuzzy
 msgid "Role"
-msgstr "Ролі"
+msgstr ""
 
 #: [room]reason
 msgid "Reason"
@@ -2542,9 +2532,8 @@ msgid "Owner"
 msgstr "Власник"
 
 #: [room]affiliation_admin
-#, fuzzy
 msgid "Admin"
-msgstr "Адміністратор"
+msgstr ""
 
 #: [room]affiliation_member [affiliation]member
 msgid "Member"
@@ -2555,15 +2544,13 @@ msgid "No affiliation"
 msgstr "Без приналежності"
 
 #: [room]affiliation_admins
-#, fuzzy
 msgid "Admins"
-msgstr "Адміністратор"
+msgstr ""
 
 #: [room]affiliation_members
-#, fuzzy
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr "Учасники"
+msgstr ""
 
 #: [room]visitor
 msgid "Visitor"
@@ -2574,9 +2561,8 @@ msgid "Is the user allowed to send messages?"
 msgstr ""
 
 #: [room]role_changed
-#, fuzzy
 msgid "Role changed"
-msgstr "Тема змінена"
+msgstr ""
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
@@ -2651,23 +2637,20 @@ msgid "Share in a new publication"
 msgstr "Поділіться в новій публікації"
 
 #: [sendto]selected
-#, fuzzy
 msgid "contacts selected"
-msgstr "Контакт видалено"
+msgstr ""
 
 #: [sendto]pick
-#, fuzzy
 msgid "Pick the contacts you want to share this content with"
-msgstr "Ви впевнені, що хочете видалити цей коментар?"
+msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Публікація опублікована"
 
 #: [sendto]shared_contacts
-#, fuzzy
 msgid "Post shared with %s contacts"
-msgstr "Поділися публікацією з вашим контактом"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2798,9 +2781,8 @@ msgid "Max file size %s"
 msgstr "Максимальний розмір файлу %s"
 
 #: [upload]upload_xmpp
-#, fuzzy
 msgid "Uploading to your account"
-msgstr "Видалити вашого користувача"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2935,9 +2917,8 @@ msgid "Hang up the call"
 msgstr ""
 
 #: [visio]hang_up_text
-#, fuzzy
 msgid "You are going to hang up the current call, are you sure?"
-msgstr "Ви дійсно бажаєте видалити %s повідомлень?"
+msgstr ""
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -2984,9 +2965,8 @@ msgid "No sound detected from your microphone"
 msgstr "Не виявлено звуку з вашого мікрофона"
 
 #: [visiolobby]no_mic_sound2
-#, fuzzy
 msgid "Try make some noise, select another source or check your system settings"
-msgstr "Спробуйте вибрати інше джерело або перевірте налаштування системи"
+msgstr ""
 
 #: [muji]call_audio_invite
 msgid "You are invited in an audio conference call"
@@ -3295,9 +3275,8 @@ msgid "Associated Community"
 msgstr "Асоційована спільнота"
 
 #: [input]open_me_using
-#, fuzzy
 msgid "Open me using"
-msgstr "Відкрийте мене за допомогою Ctrl + M"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -3910,52 +3889,3 @@ msgstr "API недоступний, спробуйте пізніше"
 #: [field]type_here
 msgid "Type here"
 msgstr "Напишіть тут"
-
-#~ msgid "Subscribe"
-#~ msgstr "Підписатися"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "Відписатися"
-
-#~ msgid "Subscribed"
-#~ msgstr "Підписано"
-
-#~ msgid "Unsubscribed"
-#~ msgstr "Скасовано підписку"
-
-#~ msgid "Share this subscription publicly"
-#~ msgstr "Поділіться цією підпискою з усіма бажаючими"
-
-#~ msgid "Follow it to see the content"
-#~ msgstr "Перейдіть за посиланням, щоб переглянути вміст"
-
-#~ msgctxt "[rooms]owner"
-#~ msgid "Owner"
-#~ msgstr "Власник"
-
-#~ msgctxt "[room]affiliation_owner"
-#~ msgid "Owner"
-#~ msgstr "Власник"
-
-#~ msgctxt "[room]affiliation_admin"
-#~ msgid "Admin"
-#~ msgstr "Адміністратор"
-
-#~ msgid "Send it to a contact"
-#~ msgstr "Надіслати контакту"
-
-#~ msgid "Share it in a chatroom"
-#~ msgstr "Поділіться в чаті"
-
-#~ msgid "Post shared within the chatroom"
-#~ msgstr "Публікація в чаті"
-
-#~ msgctxt "[chat]clear_history"
-#~ msgid "Clear the history"
-#~ msgstr "Очистити історію"
-
-#~ msgid "Send a message to build the encrypted session"
-#~ msgstr "Надішліть повідомлення для створення зашифрованої сесії"
-
-#~ msgid "Change the user affiliation"
-#~ msgstr "Змінити приналежність користувача"

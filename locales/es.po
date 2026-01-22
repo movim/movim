@@ -104,6 +104,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishStories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Register/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -131,7 +133,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-07 19:00+0200\n"
+"POT-Creation-Date: 2026-01-22 08:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: cristian paraque, 2022\n"
 "Language-Team: Spanish (http://app.transifex.com/movim/movim/language/es/)\n"
@@ -140,7 +142,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.15.1\n"
+"X-Generator: Translate Toolkit 3.17.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -287,9 +289,8 @@ msgid "Action completed"
 msgstr "Acción terminada"
 
 #: [tools]title
-#, fuzzy
 msgid "Developer Tools"
-msgstr "Desarrolladores"
+msgstr ""
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
@@ -502,14 +503,12 @@ msgid "Change my profile picture"
 msgstr ""
 
 #: [avatar]too_big
-#, fuzzy
 msgid "Your picture is too big"
-msgstr "Tu perfil es ahora público"
+msgstr ""
 
 #: [avatar]missing
-#, fuzzy
 msgid "No avatar yet"
-msgstr "Todavía no hay chats..."
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -524,9 +523,8 @@ msgid "Banner Not Updated"
 msgstr ""
 
 #: [banner]missing
-#, fuzzy
 msgid "No banner yet"
-msgstr "Sin noticias aún..."
+msgstr ""
 
 #: [blocked]title
 msgid "Blocked"
@@ -669,9 +667,8 @@ msgid "See the profile"
 msgstr "Ver el perfil"
 
 #: [chat]clear
-#, fuzzy
 msgid "Clear the history"
-msgstr "Eliminar historial"
+msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -742,14 +739,12 @@ msgid "An error occurred when sending the message"
 msgstr ""
 
 #: [chat]clear_history
-#, fuzzy
 msgid "Clear the local history"
-msgstr "Eliminar historial"
+msgstr ""
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s local messages, are you sure?"
-msgstr "Vas a eliminar %s mensajes, ¿Estás seguro?"
+msgstr ""
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
@@ -851,23 +846,25 @@ msgstr ""
 msgid "Encryption disabled"
 msgstr ""
 
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr ""
 
 #: [omemo]enable_room
-#, fuzzy
 msgid "Enabling encryption for the chatroom"
-msgstr "Conectado a la Conversación en grupo"
+msgstr ""
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
 msgstr ""
 
 #: [omemo]disable_room
-#, fuzzy
 msgid "Disabling encryption for the chatroom"
-msgstr "Desconectado de la Conversación en grupo"
+msgstr ""
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -1151,9 +1148,8 @@ msgid "It will appear on your profile"
 msgstr "Aparecerá en tu perfil"
 
 #: [communityheader]unfollow_text
-#, fuzzy
 msgid "You are going to unfollow this community"
-msgstr "Va a desuscribirse de esta comunidad"
+msgstr ""
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
@@ -1180,9 +1176,8 @@ msgid "Send an invitation request before following the contact"
 msgstr ""
 
 #: [communityposts]subscribe_unsupported
-#, fuzzy
 msgid "You can't follow the contact at the moment"
-msgstr "Puedes ver el estado de este contacto"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -2210,18 +2205,16 @@ msgid "Markdown syntax manual"
 msgstr "Markdown syntax manual"
 
 #: [story]new
-#, fuzzy
 msgid "New story"
-msgstr "Publicación nueva"
+msgstr ""
 
 #: [story]new_edit
 msgid "Edit your story"
 msgstr ""
 
 #: [story]new_publish
-#, fuzzy
 msgid "Publish your story"
-msgstr "Sólo publicar"
+msgstr ""
 
 #: [story]to_roster
 msgid "Publish to my contacts"
@@ -2495,9 +2488,8 @@ msgid "Unban"
 msgstr ""
 
 #: [room]configure_user
-#, fuzzy
 msgid "Configure the user"
-msgstr "Configuración guardada"
+msgstr ""
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2508,9 +2500,8 @@ msgid "Affiliation"
 msgstr ""
 
 #: [room]role
-#, fuzzy
 msgid "Role"
-msgstr "Roles"
+msgstr ""
 
 #: [room]reason
 msgid "Reason"
@@ -2562,15 +2553,13 @@ msgid "No affiliation"
 msgstr "Sin afiliación"
 
 #: [room]affiliation_admins
-#, fuzzy
 msgid "Admins"
-msgstr "Administración"
+msgstr ""
 
 #: [room]affiliation_members
-#, fuzzy
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr "Miembros"
+msgstr ""
 
 #: [room]visitor
 msgid "Visitor"
@@ -2581,9 +2570,8 @@ msgid "Is the user allowed to send messages?"
 msgstr ""
 
 #: [room]role_changed
-#, fuzzy
 msgid "Role changed"
-msgstr "Asunto cambiado"
+msgstr ""
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
@@ -2658,23 +2646,20 @@ msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]selected
-#, fuzzy
 msgid "contacts selected"
-msgstr "Contacto eliminado"
+msgstr ""
 
 #: [sendto]pick
-#, fuzzy
 msgid "Pick the contacts you want to share this content with"
-msgstr "¿Está seguro de que quiere borrar este comentario?"
+msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Publicación compartida"
 
 #: [sendto]shared_contacts
-#, fuzzy
 msgid "Post shared with %s contacts"
-msgstr "Publicación compartida con su contacto"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2805,9 +2790,8 @@ msgid "Max file size %s"
 msgstr ""
 
 #: [upload]upload_xmpp
-#, fuzzy
 msgid "Uploading to your account"
-msgstr "Eliminar tu cuenta"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2942,9 +2926,8 @@ msgid "Hang up the call"
 msgstr ""
 
 #: [visio]hang_up_text
-#, fuzzy
 msgid "You are going to hang up the current call, are you sure?"
-msgstr "Vas a eliminar %s mensajes, ¿Estás seguro?"
+msgstr ""
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -3301,9 +3284,8 @@ msgid "Associated Community"
 msgstr ""
 
 #: [input]open_me_using
-#, fuzzy
 msgid "Open me using"
-msgstr "Abreme usando Ctrl + M"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -3916,31 +3898,3 @@ msgstr "La API no se puede alcanzar, inténtalo de nuevo más tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Escribe aquí"
-
-#~ msgid "Subscribe"
-#~ msgstr "Suscribirse"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "Desuscribirse"
-
-#~ msgid "Subscribed"
-#~ msgstr "Suscrito"
-
-#~ msgid "Unsubscribed"
-#~ msgstr "Desuscrito"
-
-#~ msgid "Share this subscription publicly"
-#~ msgstr "Comparta esta suscripción públicamente"
-
-#~ msgid "Send it to a contact"
-#~ msgstr "Enviar a un contacto"
-
-#~ msgid "Share it in a chatroom"
-#~ msgstr "Compartir en una sala de conversación"
-
-#~ msgid "Post shared within the chatroom"
-#~ msgstr "Publicación compartida con la sala de conversación"
-
-#~ msgctxt "[chat]clear_history"
-#~ msgid "Clear the history"
-#~ msgstr "Eliminar historial"

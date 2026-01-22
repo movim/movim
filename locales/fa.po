@@ -97,6 +97,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishStories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Register/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -124,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-07 19:00+0200\n"
+"POT-Creation-Date: 2026-01-22 08:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: revolt68 <ashrafnezhad@gmail.com>, 2021\n"
 "Language-Team: Persian (http://app.transifex.com/movim/movim/language/fa/)\n"
@@ -133,7 +135,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 3.15.1\n"
+"X-Generator: Translate Toolkit 3.17.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -280,9 +282,8 @@ msgid "Action completed"
 msgstr "عملیات پایان یافت"
 
 #: [tools]title
-#, fuzzy
 msgid "Developer Tools"
-msgstr "توسعه دهندگان"
+msgstr ""
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
@@ -499,9 +500,8 @@ msgid "Your picture is too big"
 msgstr ""
 
 #: [avatar]missing
-#, fuzzy
 msgid "No avatar yet"
-msgstr "هنوز هیچ رابطی برای تماس ندارید ؟"
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -736,9 +736,8 @@ msgid "Clear the local history"
 msgstr ""
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s local messages, are you sure?"
-msgstr "شما درحال حذف این نوشته هستید ،لطفا تایید کنید"
+msgstr ""
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
@@ -840,23 +839,25 @@ msgstr ""
 msgid "Encryption disabled"
 msgstr ""
 
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr ""
 
 #: [omemo]enable_room
-#, fuzzy
 msgid "Enabling encryption for the chatroom"
-msgstr "متصل به اتاق گپ"
+msgstr ""
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
 msgstr ""
 
 #: [omemo]disable_room
-#, fuzzy
 msgid "Disabling encryption for the chatroom"
-msgstr "از اتاق گپ قطع شدید"
+msgstr ""
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -2197,18 +2198,16 @@ msgid "Markdown syntax manual"
 msgstr ""
 
 #: [story]new
-#, fuzzy
 msgid "New story"
-msgstr "نوشته جدید"
+msgstr ""
 
 #: [story]new_edit
 msgid "Edit your story"
 msgstr ""
 
 #: [story]new_publish
-#, fuzzy
 msgid "Publish your story"
-msgstr "فقط انتشار"
+msgstr ""
 
 #: [story]to_roster
 msgid "Publish to my contacts"
@@ -2482,9 +2481,8 @@ msgid "Unban"
 msgstr ""
 
 #: [room]configure_user
-#, fuzzy
 msgid "Configure the user"
-msgstr "تنظیمات ذخیره شد"
+msgstr ""
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2495,9 +2493,8 @@ msgid "Affiliation"
 msgstr ""
 
 #: [room]role
-#, fuzzy
 msgid "Role"
-msgstr "نقش ها"
+msgstr ""
 
 #: [room]reason
 msgid "Reason"
@@ -2549,15 +2546,13 @@ msgid "No affiliation"
 msgstr ""
 
 #: [room]affiliation_admins
-#, fuzzy
 msgid "Admins"
-msgstr "مدیریت"
+msgstr ""
 
 #: [room]affiliation_members
-#, fuzzy
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr "اعض"
+msgstr ""
 
 #: [room]visitor
 msgid "Visitor"
@@ -2568,9 +2563,8 @@ msgid "Is the user allowed to send messages?"
 msgstr ""
 
 #: [room]role_changed
-#, fuzzy
 msgid "Role changed"
-msgstr "موضوع عوض شد"
+msgstr ""
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
@@ -2645,9 +2639,8 @@ msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]selected
-#, fuzzy
 msgid "contacts selected"
-msgstr "مخاطب حذف شد"
+msgstr ""
 
 #: [sendto]pick
 msgid "Pick the contacts you want to share this content with"
@@ -2658,9 +2651,8 @@ msgid "Post shared"
 msgstr ""
 
 #: [sendto]shared_contacts
-#, fuzzy
 msgid "Post shared with %s contacts"
-msgstr "با مخاطب گپ بزنید"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2791,9 +2783,8 @@ msgid "Max file size %s"
 msgstr ""
 
 #: [upload]upload_xmpp
-#, fuzzy
 msgid "Uploading to your account"
-msgstr "حساب کاربریتان را حذف کنید"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2928,9 +2919,8 @@ msgid "Hang up the call"
 msgstr ""
 
 #: [visio]hang_up_text
-#, fuzzy
 msgid "You are going to hang up the current call, are you sure?"
-msgstr "شما درحال حذف این نوشته هستید ،لطفا تایید کنید"
+msgstr ""
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -3901,15 +3891,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "اینجا بنویسید"
-
-#~ msgid "Subscribe"
-#~ msgstr "مشترک شدن"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "لغو اشتراک"
-
-#~ msgid "Subscribed"
-#~ msgstr "مشترک"
-
-#~ msgid "Unsubscribed"
-#~ msgstr "اشتراک را لغو کرد"

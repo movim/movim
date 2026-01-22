@@ -95,6 +95,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishStories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Register/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -122,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-07 19:00+0200\n"
+"POT-Creation-Date: 2026-01-22 08:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://app.transifex.com/movim/movim/language/ko/)\n"
@@ -131,7 +133,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.15.1\n"
+"X-Generator: Translate Toolkit 3.17.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -278,9 +280,8 @@ msgid "Action completed"
 msgstr "작업 완료"
 
 #: [tools]title
-#, fuzzy
 msgid "Developer Tools"
-msgstr "개발자"
+msgstr ""
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
@@ -493,14 +494,12 @@ msgid "Change my profile picture"
 msgstr ""
 
 #: [avatar]too_big
-#, fuzzy
 msgid "Your picture is too big"
-msgstr "프로필이 공개되었습니다."
+msgstr ""
 
 #: [avatar]missing
-#, fuzzy
 msgid "No avatar yet"
-msgstr "아직 채팅이 없습니다"
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -515,9 +514,8 @@ msgid "Banner Not Updated"
 msgstr ""
 
 #: [banner]missing
-#, fuzzy
 msgid "No banner yet"
-msgstr "아직 소식이 없습니다..."
+msgstr ""
 
 #: [blocked]title
 msgid "Blocked"
@@ -660,9 +658,8 @@ msgid "See the profile"
 msgstr "프로필 보기"
 
 #: [chat]clear
-#, fuzzy
 msgid "Clear the history"
-msgstr "기록 지우기"
+msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -733,14 +730,12 @@ msgid "An error occurred when sending the message"
 msgstr ""
 
 #: [chat]clear_history
-#, fuzzy
 msgid "Clear the local history"
-msgstr "기록 지우기"
+msgstr ""
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s local messages, are you sure?"
-msgstr "%s개의 메시지를 삭제하시겠습니까?"
+msgstr ""
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
@@ -842,23 +837,25 @@ msgstr "자체 암호화 세션 구축"
 msgid "Encryption disabled"
 msgstr "암호화 비활성화됨"
 
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr "연락처에 대한 암호화 활성화"
 
 #: [omemo]enable_room
-#, fuzzy
 msgid "Enabling encryption for the chatroom"
-msgstr "연락처에 대한 암호화 활성화"
+msgstr ""
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
 msgstr "연락처에 대한 암호화 비활성화"
 
 #: [omemo]disable_room
-#, fuzzy
 msgid "Disabling encryption for the chatroom"
-msgstr "연락처에 대한 암호화 비활성화"
+msgstr ""
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -1142,9 +1139,8 @@ msgid "It will appear on your profile"
 msgstr "프로필에 표시됩니다"
 
 #: [communityheader]unfollow_text
-#, fuzzy
 msgid "You are going to unfollow this community"
-msgstr "이 커뮤니티의 구독을 취소하려고 합니다."
+msgstr ""
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
@@ -1171,9 +1167,8 @@ msgid "Send an invitation request before following the contact"
 msgstr ""
 
 #: [communityposts]subscribe_unsupported
-#, fuzzy
 msgid "You can't follow the contact at the moment"
-msgstr "이 연락처의 상태를 볼 수 있습니다."
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -2201,18 +2196,16 @@ msgid "Markdown syntax manual"
 msgstr "마크다운 문법 매뉴얼"
 
 #: [story]new
-#, fuzzy
 msgid "New story"
-msgstr "새 게시물"
+msgstr ""
 
 #: [story]new_edit
 msgid "Edit your story"
 msgstr ""
 
 #: [story]new_publish
-#, fuzzy
 msgid "Publish your story"
-msgstr "게시 전용"
+msgstr ""
 
 #: [story]to_roster
 msgid "Publish to my contacts"
@@ -2486,9 +2479,8 @@ msgid "Unban"
 msgstr "차단 해제"
 
 #: [room]configure_user
-#, fuzzy
 msgid "Configure the user"
-msgstr "설정이 저장됨"
+msgstr ""
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2499,9 +2491,8 @@ msgid "Affiliation"
 msgstr "소속"
 
 #: [room]role
-#, fuzzy
 msgid "Role"
-msgstr "역할"
+msgstr ""
 
 #: [room]reason
 msgid "Reason"
@@ -2541,9 +2532,8 @@ msgid "Owner"
 msgstr "소유자"
 
 #: [room]affiliation_admin
-#, fuzzy
 msgid "Admin"
-msgstr "관리자"
+msgstr ""
 
 #: [room]affiliation_member [affiliation]member
 msgid "Member"
@@ -2554,15 +2544,13 @@ msgid "No affiliation"
 msgstr "권한 없음"
 
 #: [room]affiliation_admins
-#, fuzzy
 msgid "Admins"
-msgstr "관리자"
+msgstr ""
 
 #: [room]affiliation_members
-#, fuzzy
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr "멤버"
+msgstr ""
 
 #: [room]visitor
 msgid "Visitor"
@@ -2573,9 +2561,8 @@ msgid "Is the user allowed to send messages?"
 msgstr ""
 
 #: [room]role_changed
-#, fuzzy
 msgid "Role changed"
-msgstr "제목이 변경됨"
+msgstr ""
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
@@ -2650,23 +2637,20 @@ msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]selected
-#, fuzzy
 msgid "contacts selected"
-msgstr "연락처 삭제됨"
+msgstr ""
 
 #: [sendto]pick
-#, fuzzy
 msgid "Pick the contacts you want to share this content with"
-msgstr "이 댓글을 삭제하시겠습니까?"
+msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "게시물 공유"
 
 #: [sendto]shared_contacts
-#, fuzzy
 msgid "Post shared with %s contacts"
-msgstr "대화 상대와 공유한 게시물"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2797,9 +2781,8 @@ msgid "Max file size %s"
 msgstr "최대 파일 크기 %s"
 
 #: [upload]upload_xmpp
-#, fuzzy
 msgid "Uploading to your account"
-msgstr "계정 삭제하기"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2934,9 +2917,8 @@ msgid "Hang up the call"
 msgstr ""
 
 #: [visio]hang_up_text
-#, fuzzy
 msgid "You are going to hang up the current call, are you sure?"
-msgstr "%s개의 메시지를 삭제하시겠습니까?"
+msgstr ""
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -3293,9 +3275,8 @@ msgid "Associated Community"
 msgstr "관련 커뮤니티"
 
 #: [input]open_me_using
-#, fuzzy
 msgid "Open me using"
-msgstr "Ctrl + M을 사용하여 열기"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -3908,49 +3889,3 @@ msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 #: [field]type_here
 msgid "Type here"
 msgstr "여기에 입력하세요"
-
-#~ msgid "Subscribe"
-#~ msgstr "구독"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "구독 취소"
-
-#~ msgid "Subscribed"
-#~ msgstr "구독됨"
-
-#~ msgid "Unsubscribed"
-#~ msgstr "구독 취소됨"
-
-#~ msgid "Share this subscription publicly"
-#~ msgstr "이 구독을 공개적으로 공유합니다."
-
-#~ msgctxt "[rooms]owner"
-#~ msgid "Owner"
-#~ msgstr "소유자"
-
-#~ msgctxt "[room]affiliation_owner"
-#~ msgid "Owner"
-#~ msgstr "소유자"
-
-#~ msgctxt "[room]affiliation_admin"
-#~ msgid "Admin"
-#~ msgstr "관리자"
-
-#~ msgid "Send it to a contact"
-#~ msgstr "연락처로 보내기"
-
-#~ msgid "Share it in a chatroom"
-#~ msgstr "채팅방에서 공유"
-
-#~ msgid "Post shared within the chatroom"
-#~ msgstr "채팅방 내에서 공유된 게시물"
-
-#~ msgctxt "[chat]clear_history"
-#~ msgid "Clear the history"
-#~ msgstr "기록 지우기"
-
-#~ msgid "Send a message to build the encrypted session"
-#~ msgstr "암호화된 세션을 구축하기 위해 메시지 보내기"
-
-#~ msgid "Change the user affiliation"
-#~ msgstr "사용자 소속 변경"

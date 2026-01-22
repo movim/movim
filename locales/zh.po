@@ -6,7 +6,7 @@
 # Lei feng, 2015
 # Nobita Nobi <896876269@qq.com>, 2020
 # Phonebook3599, 2025
-# Phonebook3599, 2024-2025
+# Phonebook3599, 2024-2026
 # Phonebook3599, 2023
 # Poesty Li, 2025
 # Finn Dean <vicdorke@gmail.com>, 2020
@@ -110,6 +110,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishStories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Register/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -137,16 +139,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-07 19:00+0200\n"
+"POT-Creation-Date: 2026-01-22 08:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Phonebook3599, 2024-2025\n"
+"Last-Translator: Phonebook3599, 2024-2026\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.15.1\n"
+"X-Generator: Translate Toolkit 3.17.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -293,25 +295,24 @@ msgid "Action completed"
 msgstr "操作已完成"
 
 #: [tools]title
-#, fuzzy
 msgid "Developer Tools"
-msgstr "开发者"
+msgstr "开发者工具"
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
-msgstr ""
+msgstr "将 SDP 转换为 Jingle"
 
 #: [tools]sdp_title
 msgid "SDP"
-msgstr ""
+msgstr "SDP"
 
 #: [tools]jingle_to_sdp
 msgid "Convert Jingle to SDP"
-msgstr ""
+msgstr "将 Jingle 转换为 SDP"
 
 #: [tools]jingle_title
 msgid "Jingle stanza"
-msgstr ""
+msgstr "Jingle 节"
 
 #: [admin]general
 msgid "General Settings"
@@ -339,11 +340,11 @@ msgstr "在 join.movim.eu 上注册您的实例，并加入 Movim 联邦！"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr "限制建议"
+msgstr "限制推荐"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
-msgstr "只建议用户所在 XMPP 服务器和相关服务上可用的群聊、社区和其他内容"
+msgstr "仅推荐用户 XMPP 服务器及相关服务上可用的群聊、社区和其他内容"
 
 #: [chatonly]title
 msgid "Chat only"
@@ -508,14 +509,12 @@ msgid "Change my profile picture"
 msgstr "更改我的个人资料照片"
 
 #: [avatar]too_big
-#, fuzzy
 msgid "Your picture is too big"
-msgstr "您的个人资料现在是公开的"
+msgstr "您的照片太大了"
 
 #: [avatar]missing
-#, fuzzy
 msgid "No avatar yet"
-msgstr "还没有聊天…"
+msgstr "还没有头像"
 
 #: [banner]change
 msgid "Change my banner"
@@ -530,9 +529,8 @@ msgid "Banner Not Updated"
 msgstr "横幅未更新"
 
 #: [banner]missing
-#, fuzzy
 msgid "No banner yet"
-msgstr "暂无动态…"
+msgstr "还没有横幅"
 
 #: [blocked]title
 msgid "Blocked"
@@ -556,7 +554,7 @@ msgstr "账号已取消屏蔽"
 
 #: [blocked]placeholder
 msgid "You will find here the users you have blocked"
-msgstr "您会在此处找到您已屏蔽的用户"
+msgstr "您将在此处找到您已屏蔽的用户"
 
 #: [blocked]info
 msgid "The following users are blocked by Movim and cannot contact you anymore"
@@ -675,7 +673,6 @@ msgid "See the profile"
 msgstr "查看个人资料"
 
 #: [chat]clear
-#, fuzzy
 msgid "Clear the history"
 msgstr "清除历史记录"
 
@@ -748,14 +745,12 @@ msgid "An error occurred when sending the message"
 msgstr "发送消息时出错"
 
 #: [chat]clear_history
-#, fuzzy
 msgid "Clear the local history"
-msgstr "清除历史记录"
+msgstr "清除本地历史记录"
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s local messages, are you sure?"
-msgstr "是否确定要删除 %s 条消息？"
+msgstr "您将删除 %s 条本地消息，是否确定？"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
@@ -819,11 +814,11 @@ msgstr "文本已复制"
 
 #: [chatactions]search_messages
 msgid "Search messages by content"
-msgstr ""
+msgstr "按内容搜索消息"
 
 #: [chatactions]search_messages_empty
 msgid "No messages found"
-msgstr ""
+msgstr "未找到消息"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
@@ -857,23 +852,25 @@ msgstr "正在建立自己的加密会话"
 msgid "Encryption disabled"
 msgstr "加密已禁用"
 
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr "正在为联系人启用加密"
 
 #: [omemo]enable_room
-#, fuzzy
 msgid "Enabling encryption for the chatroom"
-msgstr "正在为联系人启用加密"
+msgstr "正在为群聊启用加密"
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
 msgstr "正在为联系人禁用加密"
 
 #: [omemo]disable_room
-#, fuzzy
 msgid "Disabling encryption for the chatroom"
-msgstr "正在为联系人禁用加密"
+msgstr "正在为群聊禁用加密"
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -1054,7 +1051,7 @@ msgstr "角色"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
-msgstr "角色设置正确"
+msgstr "角色已正确设置"
 
 #: [communityconfig]publication
 msgid "Publication"
@@ -1122,19 +1119,19 @@ msgstr "只有订阅者可以发布"
 
 #: [communityheader]follow
 msgid "Follow"
-msgstr ""
+msgstr "关注"
 
 #: [communityheader]unfollow
 msgid "Unfollow"
-msgstr ""
+msgstr "取消关注"
 
 #: [communityheader]followed
 msgid "Followed"
-msgstr ""
+msgstr "已关注"
 
 #: [communityheader]unfollowed
 msgid "Unfollowed"
-msgstr ""
+msgstr "已取消关注"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1150,16 +1147,15 @@ msgstr "我的社区名称"
 
 #: [communityheader]share_follow
 msgid "Share this follow to everyone"
-msgstr ""
+msgstr "将此关注分享给所有人"
 
 #: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "它将出现在您的个人资料中"
 
 #: [communityheader]unfollow_text
-#, fuzzy
 msgid "You are going to unfollow this community"
-msgstr "您将取消订阅此社区"
+msgstr "您将取消关注此社区"
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
@@ -1178,18 +1174,16 @@ msgid "Private account"
 msgstr "私人账号"
 
 #: [communityposts]presencerequired_text
-#, fuzzy
 msgid "Ask %s to be in your contacts to see the publications"
-msgstr "您必须订阅 %s 才能查看此发布内容"
+msgstr "请先将 %s 添加为您的联系人，才能查看发布内容"
 
 #: [communityposts]subscribe_presencerequired
 msgid "Send an invitation request before following the contact"
-msgstr ""
+msgstr "在关注联系人之前需先发送邀请请求"
 
 #: [communityposts]subscribe_unsupported
-#, fuzzy
 msgid "You can't follow the contact at the moment"
-msgstr "您可以查看此联系人状态"
+msgstr "您目前无法关注该联系人"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1201,7 +1195,7 @@ msgstr "您好"
 
 #: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
-msgstr "您将能够在此处管理您的所有订阅"
+msgstr "在此处，您将能够管理您的所有订阅。"
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any community subscriptions yet."
@@ -1549,7 +1543,7 @@ msgstr "此联系人在您的联系人列表中，但双方没有相互订阅"
 
 #: [contactssuggestions]for_you
 msgid "Suggestions for you"
-msgstr ""
+msgstr "为您推荐"
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -1801,7 +1795,7 @@ msgstr "暂无动态…"
 
 #: [menu]empty
 msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr "欢迎访问您的动态消息，在此处您将看到您的联系人和订阅的社区中发布的所有帖子。"
+msgstr "欢迎访问您的动态，在此处您将看到您的联系人和订阅的社区中发布的所有帖子。"
 
 #: [menu]mine
 msgid "My publications"
@@ -2181,13 +2175,12 @@ msgid "You are not authorized to publish there"
 msgstr "您无权在此处发布"
 
 #: [publish]publish_error_payload_to_big
-#, fuzzy
 msgid "Your post is too big to be published"
-msgstr "您无权在此处发布"
+msgstr "您的帖子太大，无法发布"
 
 #: [publish]too_long
 msgid "Your text is too long, %s characters max"
-msgstr ""
+msgstr "您的文本太长，最多 %s 个字符"
 
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
@@ -2195,11 +2188,11 @@ msgstr "您的博客仅供您的订阅者访问。您可以在设置页面将其
 
 #: [publish]embedded_link
 msgid "The media will be embedded"
-msgstr ""
+msgstr "媒体将被嵌入"
 
 #: [publish]web_title
 msgid "Create a public HTTP URL from this publication"
-msgstr ""
+msgstr "为此发布创建公开 HTTP URL"
 
 #: [publish]web_text
 msgid "This will allow anyone outside Movim to have access to your publication"
@@ -2218,18 +2211,16 @@ msgid "Markdown syntax manual"
 msgstr "Markdown 语法手册"
 
 #: [story]new
-#, fuzzy
 msgid "New story"
 msgstr "新故事"
 
 #: [story]new_edit
 msgid "Edit your story"
-msgstr ""
+msgstr "编辑您的故事"
 
 #: [story]new_publish
-#, fuzzy
 msgid "Publish your story"
-msgstr "正在发布故事"
+msgstr "发布您的故事"
 
 #: [story]to_roster
 msgid "Publish to my contacts"
@@ -2359,7 +2350,7 @@ msgstr "成员"
 
 #: [chatrooms]banned
 msgid "Banned"
-msgstr "被驱逐者"
+msgstr "已封禁"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a valid nickname (2 to 40 characters)"
@@ -2503,9 +2494,8 @@ msgid "Unban"
 msgstr "取消封禁"
 
 #: [room]configure_user
-#, fuzzy
 msgid "Configure the user"
-msgstr "配置已保存"
+msgstr "配置用户"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2516,7 +2506,6 @@ msgid "Affiliation"
 msgstr "从属关系"
 
 #: [room]role
-#, fuzzy
 msgid "Role"
 msgstr "角色"
 
@@ -2558,7 +2547,6 @@ msgid "Owner"
 msgstr "所有者"
 
 #: [room]affiliation_admin
-#, fuzzy
 msgid "Admin"
 msgstr "管理员"
 
@@ -2571,12 +2559,10 @@ msgid "No affiliation"
 msgstr "访客"
 
 #: [room]affiliation_admins
-#, fuzzy
 msgid "Admins"
 msgstr "管理员"
 
 #: [room]affiliation_members
-#, fuzzy
 msgctxt "[room]affiliation_members"
 msgid "Members"
 msgstr "成员"
@@ -2586,14 +2572,12 @@ msgid "Visitor"
 msgstr "参观者"
 
 #: [room]allowed_send_messages
-#, fuzzy
 msgid "Is the user allowed to send messages?"
-msgstr "不允许您在此群聊中发送消息"
+msgstr "是否允许用户发送消息？"
 
 #: [room]role_changed
-#, fuzzy
 msgid "Role changed"
-msgstr "主题已更改"
+msgstr "角色已更改"
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
@@ -2668,23 +2652,20 @@ msgid "Share in a new publication"
 msgstr "在新发布分享"
 
 #: [sendto]selected
-#, fuzzy
 msgid "contacts selected"
-msgstr "联系人已删除"
+msgstr "联系人已选择"
 
 #: [sendto]pick
-#, fuzzy
 msgid "Pick the contacts you want to share this content with"
-msgstr "是否确定要删除此评论？"
+msgstr "选择要分享此内容的联系人"
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "帖子已分享"
 
 #: [sendto]shared_contacts
-#, fuzzy
 msgid "Post shared with %s contacts"
-msgstr "帖子已分享给您的联系人"
+msgstr "帖子已分享给 %s 位联系人"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2815,9 +2796,8 @@ msgid "Max file size %s"
 msgstr "最大文件大小 %s"
 
 #: [upload]upload_xmpp
-#, fuzzy
 msgid "Uploading to your account"
-msgstr "删除账号"
+msgstr "正在上传到您的账号"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2949,12 +2929,11 @@ msgstr "由 %s"
 
 #: [visio]hang_up
 msgid "Hang up the call"
-msgstr ""
+msgstr "挂断通话"
 
 #: [visio]hang_up_text
-#, fuzzy
 msgid "You are going to hang up the current call, are you sure?"
-msgstr "是否确定要删除 %s 条消息？"
+msgstr "您将挂断当前通话，是否确定？"
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -3001,9 +2980,8 @@ msgid "No sound detected from your microphone"
 msgstr "麦克风未检测到声音"
 
 #: [visiolobby]no_mic_sound2
-#, fuzzy
 msgid "Try make some noise, select another source or check your system settings"
-msgstr "尝试选择其他源或检查系统设置"
+msgstr "请尝试发出声音测试，也可选择其他源或检查系统设置"
 
 #: [muji]call_audio_invite
 msgid "You are invited in an audio conference call"
@@ -3232,7 +3210,7 @@ msgstr "前一个"
 
 #: [button]quote
 msgid "Quote"
-msgstr ""
+msgstr "引用"
 
 #: [button]refresh
 msgid "Refresh"
@@ -3312,9 +3290,8 @@ msgid "Associated Community"
 msgstr "关联的社区"
 
 #: [input]open_me_using
-#, fuzzy
 msgid "Open me using"
-msgstr "使用 Ctrl + M 打开"
+msgstr "打开我使用"
 
 #: [day]title
 msgid "Day"
@@ -3927,56 +3904,3 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "Subscribe"
-#~ msgstr "订阅"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "取消订阅"
-
-#~ msgid "Subscribed"
-#~ msgstr "已订阅"
-
-#~ msgid "Unsubscribed"
-#~ msgstr "未订阅"
-
-#~ msgid "Share this subscription publicly"
-#~ msgstr "公开分享此订阅"
-
-#~ msgid "Follow it to see the content"
-#~ msgstr "关注即可查看内容"
-
-#~ msgctxt "[rooms]owner"
-#~ msgid "Owner"
-#~ msgstr "所有者"
-
-#~ msgctxt "[room]affiliation_owner"
-#~ msgid "Owner"
-#~ msgstr "所有者"
-
-#~ msgctxt "[room]affiliation_admin"
-#~ msgid "Admin"
-#~ msgstr "管理员"
-
-#~ msgid "Send it to a contact"
-#~ msgstr "将其发送给联系人"
-
-#~ msgid "Share it in a chatroom"
-#~ msgstr "在群聊中分享"
-
-#~ msgid "Post shared within the chatroom"
-#~ msgstr "帖子已分享给群聊"
-
-#~ msgctxt "[chat]clear_history"
-#~ msgid "Clear the history"
-#~ msgstr "清除历史记录"
-
-#~ msgid "Send a message to build the encrypted session"
-#~ msgstr "发送消息以建立加密会话"
-
-#, fuzzy
-#~ msgid "Publish this post on your public blog"
-#~ msgstr "公开发布此帖子"
-
-#~ msgid "Change the user affiliation"
-#~ msgstr "更改用户从属关系"

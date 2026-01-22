@@ -2,7 +2,7 @@
 # Translators:
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012
 # Håkan Eriksson <erikxxon@gmail.com>, 2017
-# Lyn, 2022
+# Lyn, 2022,2025
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -96,6 +96,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishStories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Register/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -123,16 +125,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-07 19:00+0200\n"
+"POT-Creation-Date: 2026-01-22 08:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Lyn, 2022\n"
+"Last-Translator: Lyn, 2022,2025\n"
 "Language-Team: Swedish (http://app.transifex.com/movim/movim/language/sv/)\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.15.1\n"
+"X-Generator: Translate Toolkit 3.17.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -279,9 +281,8 @@ msgid "Action completed"
 msgstr ""
 
 #: [tools]title
-#, fuzzy
 msgid "Developer Tools"
-msgstr "Utvecklare"
+msgstr ""
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
@@ -519,27 +520,27 @@ msgstr ""
 
 #: [blocked]title
 msgid "Blocked"
-msgstr ""
+msgstr "Blockerad"
 
 #: [blocked]block_account
 msgid "Block the account"
-msgstr ""
+msgstr "Blockera kontot"
 
 #: [blocked]unblock_account
 msgid "Unblock the account"
-msgstr ""
+msgstr "Avblockera kontot"
 
 #: [blocked]account_blocked
 msgid "Account blocked"
-msgstr ""
+msgstr "Kontot blockerad"
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
-msgstr ""
+msgstr "Kontot avblockerad"
 
 #: [blocked]placeholder
 msgid "You will find here the users you have blocked"
-msgstr ""
+msgstr "Här är personerna vilka du har blockerat"
 
 #: [blocked]info
 msgid "The following users are blocked by Movim and cannot contact you anymore"
@@ -551,7 +552,7 @@ msgstr ""
 
 #: [blog]title
 msgid "%s’s blog"
-msgstr ""
+msgstr "%s's blogg"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -837,6 +838,10 @@ msgstr ""
 msgid "Encryption disabled"
 msgstr ""
 
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr ""
@@ -899,11 +904,11 @@ msgstr ""
 
 #: [chats_filter]all [menu]all [rooms_filter]all
 msgid "All"
-msgstr ""
+msgstr "Alla"
 
 #: [chats_filter]roster [menu]contacts [page]contacts
 msgid "Contacts"
-msgstr ""
+msgstr "Kontakter"
 
 #: [communities]empty_text
 msgid "Discover, follow and share"
@@ -1748,7 +1753,7 @@ msgstr ""
 
 #: [form]connected [rooms_filter]connected
 msgid "Connected"
-msgstr ""
+msgstr "Anslutad"
 
 #: [form]population
 msgid "Population"
@@ -1997,7 +2002,7 @@ msgstr ""
 
 #: [post]comment_published
 msgid "Comment published"
-msgstr ""
+msgstr "Kommentar publicerad"
 
 #: [post]comment_like_published
 msgid "Liked"
@@ -2153,7 +2158,7 @@ msgstr ""
 
 #: [publish]publish_error_forbidden
 msgid "You are not authorized to publish there"
-msgstr ""
+msgstr "Du är inte auktoriserat att publicera här"
 
 #: [publish]publish_error_payload_to_big
 msgid "Your post is too big to be published"
@@ -2261,7 +2266,7 @@ msgstr ""
 
 #: [rooms]show_all
 msgid "Show all chatrooms"
-msgstr ""
+msgstr "Visa alla chattrum"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected chatrooms"
@@ -2285,7 +2290,7 @@ msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
-msgstr ""
+msgstr "Chattrum"
 
 #: [chatrooms]id
 msgid "Chatroom Address"
@@ -2540,9 +2545,8 @@ msgid "No affiliation"
 msgstr ""
 
 #: [room]affiliation_admins
-#, fuzzy
 msgid "Admins"
-msgstr "Administration"
+msgstr ""
 
 #: [room]affiliation_members
 msgctxt "[room]affiliation_members"
@@ -2623,7 +2627,7 @@ msgstr ""
 
 #: [search]show_complete_roster
 msgid "Show all the contacts"
-msgstr ""
+msgstr "Visa alla kontakterna"
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2778,9 +2782,8 @@ msgid "Max file size %s"
 msgstr ""
 
 #: [upload]upload_xmpp
-#, fuzzy
 msgid "Uploading to your account"
-msgstr "Ta bort ditt konto"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -3028,7 +3031,7 @@ msgstr ""
 
 #: [page]publish
 msgid "Publish"
-msgstr ""
+msgstr "Publicera"
 
 #: [page]blog
 msgid "Blog"
@@ -3762,7 +3765,7 @@ msgstr ""
 
 #: [date]yesterday
 msgid "Yesterday"
-msgstr ""
+msgstr "Igår"
 
 #: [date]ago
 msgid "%d days ago"
@@ -3870,7 +3873,7 @@ msgstr ""
 
 #: [affiliation]publisher
 msgid "Publisher"
-msgstr ""
+msgstr "Utgivare"
 
 #: [affiliation]publish-only
 msgid "Publish only"

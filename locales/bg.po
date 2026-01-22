@@ -2,7 +2,7 @@
 # Translators:
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012
 # Rossen Karpuzov <rkarpuzov@yahoo.com>, 2021
-# Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023,2025
+# Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023,2025-2026
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -96,6 +96,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishStories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Register/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -123,16 +125,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-07 19:00+0200\n"
+"POT-Creation-Date: 2026-01-22 08:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023,2025\n"
+"Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023,2025-2026\n"
 "Language-Team: Bulgarian (http://app.transifex.com/movim/movim/language/bg/)\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.15.1\n"
+"X-Generator: Translate Toolkit 3.17.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -200,7 +202,7 @@ msgstr "Изтрийте вашата сметка"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr ""
+msgstr "Вие ще изтриете вашата XMPP сметка и всяка отнасяща се информация свързана към нея (профил, контакти и публикации)."
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
@@ -220,11 +222,11 @@ msgstr "Напуснете тази инстанция"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr ""
+msgstr "Ще изтриете всяка свързана информация отнасяща се за сметката ви на тази Movim инстанция (профил, контакти и публикации)."
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from Movim."
-msgstr ""
+msgstr "Това действие няма да изтрие сметката ви, но ще ви изхвърли от тази инстанция."
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
@@ -279,21 +281,20 @@ msgid "Action completed"
 msgstr "Действието приключи"
 
 #: [tools]title
-#, fuzzy
 msgid "Developer Tools"
-msgstr "Разработчици"
+msgstr "Инструменти за разработчици"
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
-msgstr ""
+msgstr "Конвертиране на  SDP към Jingle"
 
 #: [tools]sdp_title
 msgid "SDP"
-msgstr ""
+msgstr "SDP"
 
 #: [tools]jingle_to_sdp
 msgid "Convert Jingle to SDP"
-msgstr ""
+msgstr "Конвертиране на Jingle към SDP"
 
 #: [tools]jingle_title
 msgid "Jingle stanza"
@@ -313,15 +314,15 @@ msgstr "Език по подразбиране"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr ""
+msgstr "Подробност на лога"
 
 #: [general]join_title
 msgid "Your instance is public?"
-msgstr ""
+msgstr "Вашата инстанция публична ли е?"
 
 #: [general]join_text
 msgid "Register your instance on join.movim.eu and join the Movim federation!"
-msgstr ""
+msgstr "Регистрирайте вашата инстанция на join.movim.eu и се включете в Movim федерацията!"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
@@ -329,7 +330,7 @@ msgstr "Ограничете предложенията"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
-msgstr ""
+msgstr "Предлагайте само чат стаи, общности и друго съдържание, което е достъпно на потребителския XMPP сървър и свързаните с него услуги"
 
 #: [chatonly]title
 msgid "Chat only"
@@ -361,11 +362,11 @@ msgstr "Премахнете XMPP регистрационния процес и
 
 #: [whitelist]title
 msgid "Allowed XMPP Servers"
-msgstr ""
+msgstr "Позволени XMPP сървъри"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
+msgstr "Ако искате да посочите списък с упълномощени XMPP сървъри във вашия Movim кошер и да забраните връзката на всички останали, моля, поставете името(имената) на домейна им тук, със запетая (напр. Movim.eu, jabber.fr) "
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
@@ -373,7 +374,7 @@ msgstr "Оставете това поле празно, ако позволяв
 
 #: [whitelist]label
 msgid "List of allowed XMPP servers"
-msgstr ""
+msgstr "Списък на позволените XMPP сървъри"
 
 #: [information]title
 msgctxt "[information]title"
@@ -467,7 +468,7 @@ msgstr "Тези сметки са докладвани от няколко Movi
 
 #: [adminreported]info2
 msgid "You can choose to block them for all the other users"
-msgstr ""
+msgstr "Можеш да избереш да ги блокираш за всички други потребители"
 
 #: [adminsessions]title
 msgid "Sessions"
@@ -483,25 +484,23 @@ msgstr "Файл"
 
 #: [avatar]updated
 msgid "Profile Picture Updated"
-msgstr ""
+msgstr "Профилната снимка е актуализирана"
 
 #: [avatar]not_updated
 msgid "Profile Picture Not Updated"
-msgstr ""
+msgstr "Профилната снимка не е актуализирана"
 
 #: [avatar]change
 msgid "Change my profile picture"
-msgstr ""
+msgstr "Смени моята профилна снимка"
 
 #: [avatar]too_big
-#, fuzzy
 msgid "Your picture is too big"
-msgstr "Профилът ви вече е обществен"
+msgstr "Твоята картинка е твърде голяма"
 
 #: [avatar]missing
-#, fuzzy
 msgid "No avatar yet"
-msgstr "Все още няма чатове... "
+msgstr "Няма аватар още"
 
 #: [banner]change
 msgid "Change my banner"
@@ -516,9 +515,8 @@ msgid "Banner Not Updated"
 msgstr "Банерът не е обновен"
 
 #: [banner]missing
-#, fuzzy
 msgid "No banner yet"
-msgstr "Все още няма новини ..."
+msgstr "Няма банер още"
 
 #: [blocked]title
 msgid "Blocked"
@@ -554,7 +552,7 @@ msgstr ""
 
 #: [blog]title
 msgid "%s’s blog"
-msgstr ""
+msgstr "Блогът на%s"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -618,7 +616,7 @@ msgstr ":shortcut: за да вмъкнете емоджи"
 
 #: [message]visitor_help
 msgid "You are not allowed to send messages in this chatroom"
-msgstr ""
+msgstr "Не ви е позволено да изпращате съобщения в тази чат стая"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -661,7 +659,6 @@ msgid "See the profile"
 msgstr "Виж профила"
 
 #: [chat]clear
-#, fuzzy
 msgid "Clear the history"
 msgstr "Изчисти историята"
 
@@ -707,11 +704,11 @@ msgstr "%s секунди"
 
 #: [chat]muji_propose
 msgid "A conference call has started"
-msgstr ""
+msgstr "Конферентен разговор е започнат"
 
 #: [chat]muji_retract
 msgid "The conference call has ended"
-msgstr ""
+msgstr "Кнферентният разговор приключи"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -731,15 +728,13 @@ msgstr "%s е вече член"
 
 #: [chat]publish_error
 msgid "An error occurred when sending the message"
-msgstr ""
+msgstr "Възникна грешка при изпращане на съобщението"
 
 #: [chat]clear_history
-#, fuzzy
 msgid "Clear the local history"
-msgstr "Изчисти историята"
+msgstr "Изчисти локалната история"
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s local messages, are you sure?"
 msgstr " Ще изтриете%s съобщения, сигурни ли сте?"
 
@@ -749,19 +744,19 @@ msgstr "Невъзможно действие в шифровани чатове
 
 #: [chat]first_messages_title
 msgid "This is the beginning of this conversation"
-msgstr ""
+msgstr "Това е началото на този разговор"
 
 #: [chat]first_messages_text
 msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
-msgstr ""
+msgstr "Може да избереш да го добавиш като нов контакт или го блокирай, за да предотвратиш непоискани съобщения"
 
 #: [chat]first_messages_add
 msgid "Add to my contacts"
-msgstr ""
+msgstr "Добави към моите контакти"
 
 #: [chat]first_messages_block
 msgid "Block"
-msgstr ""
+msgstr "Спри"
 
 #: [chatroom]members
 msgid "Members"
@@ -805,11 +800,11 @@ msgstr "Текста е копиран"
 
 #: [chatactions]search_messages
 msgid "Search messages by content"
-msgstr ""
+msgstr "Търси съобщения по съдържание"
 
 #: [chatactions]search_messages_empty
 msgid "No messages found"
-msgstr ""
+msgstr "Няма открити съобщения"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
@@ -843,23 +838,25 @@ msgstr "Създаване на собствена шифрована сесия
 msgid "Encryption disabled"
 msgstr "Шифроването е забранено"
 
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr "Разрешаване на шифроването за абоната"
 
 #: [omemo]enable_room
-#, fuzzy
 msgid "Enabling encryption for the chatroom"
-msgstr "Разрешаване на шифроването за абоната"
+msgstr "Разрешаване на шифроване за чат стаята"
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
 msgstr "Забраняване на шифроването за абоната"
 
 #: [omemo]disable_room
-#, fuzzy
 msgid "Disabling encryption for the chatroom"
-msgstr "Забраняване на шифроването за абоната"
+msgstr "Забраняване на шифроване за чат стаята"
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -979,7 +976,7 @@ msgstr ""
 
 #: [communitiesserver]remoteservernotfound
 msgid "The server %s cannot be reached"
-msgstr ""
+msgstr "Сървърът %s не може да бъде открит"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -1068,15 +1065,15 @@ msgstr "Абонатите могат да публикуват"
 
 #: [communityconfig]type
 msgid "Community type"
-msgstr ""
+msgstr "Тип на общността"
 
 #: [communityconfig]type_articles_title
 msgid "Articles"
-msgstr ""
+msgstr "Статии"
 
 #: [communityconfig]type_articles_text
 msgid "Publish and read articles"
-msgstr ""
+msgstr "Публикуване и четене на статии"
 
 #: [communityconfig]type_gallery_title [page]gallery
 msgid "Gallery"
@@ -1084,7 +1081,7 @@ msgstr "Галерия"
 
 #: [communityconfig]type_gallery_text
 msgid "Publish and browse pictures"
-msgstr ""
+msgstr "Публикуване и преглед на снимки"
 
 #: [communitydata]sub
 msgid "%s subscribers"
@@ -1108,19 +1105,19 @@ msgstr "Само абонатите могат да публикуват"
 
 #: [communityheader]follow
 msgid "Follow"
-msgstr ""
+msgstr "Следвай"
 
 #: [communityheader]unfollow
 msgid "Unfollow"
-msgstr ""
+msgstr "Не следвай"
 
 #: [communityheader]followed
 msgid "Followed"
-msgstr ""
+msgstr "Последван"
 
 #: [communityheader]unfollowed
 msgid "Unfollowed"
-msgstr ""
+msgstr "Непоследван"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1136,16 +1133,15 @@ msgstr "Име на моята общност"
 
 #: [communityheader]share_follow
 msgid "Share this follow to everyone"
-msgstr ""
+msgstr "Сподели това следване с всички"
 
 #: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "То ще се появи във вашия профил"
 
 #: [communityheader]unfollow_text
-#, fuzzy
 msgid "You are going to unfollow this community"
-msgstr "Ще се отпишете от тази общност"
+msgstr "Ще спрете следването на тази общност"
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
@@ -1172,13 +1168,12 @@ msgid "Send an invitation request before following the contact"
 msgstr ""
 
 #: [communityposts]subscribe_unsupported
-#, fuzzy
 msgid "You can't follow the contact at the moment"
-msgstr "Можете да видите това състояние на контакт"
+msgstr "Не можете да следвате този контакт към момента"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
-msgstr ""
+msgstr "Абонирани общности"
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1214,7 +1209,7 @@ msgstr "Скриване на контактите извън линия"
 
 #: [config]appearence
 msgid "Appearance"
-msgstr ""
+msgstr "Външен вид"
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1262,11 +1257,11 @@ msgstr "Начална чат страница"
 
 #: [config]chatmain_text
 msgid "Set the chat page to the default when opening Movim"
-msgstr ""
+msgstr "Направете страницата за чат като подразбираща се, когато отваряте Movim"
 
 #: [config]mam_text
 msgid "Server-side chat messages archiving preferences"
-msgstr ""
+msgstr "Предпочитания за архивиране на чат съобщения от страна на сървъра"
 
 #: [config]mam_always
 msgid "Always"
@@ -1282,31 +1277,31 @@ msgstr "Предпочитанията за архивиране са запаз
 
 #: [config]blog_text
 msgid "Personal blog confidentiality"
-msgstr ""
+msgstr "Поверителност на личния блог"
 
 #: [config]blog_open_title
 msgid "Public blog"
-msgstr ""
+msgstr "Публичен блог"
 
 #: [config]blog_open_text
 msgid "Accessible to everyone on the network"
-msgstr ""
+msgstr "Достъпно за всички в мрежата"
 
 #: [config]blog_presence_title
 msgid "Private blog"
-msgstr ""
+msgstr "Частен блог"
 
 #: [config]blog_presence_text
 msgid "Restricted to your subscribers only"
-msgstr ""
+msgstr "Ограничен до вашите абонати само"
 
 #: [config]blog_saved
 msgid "Personal blog confidentiality saved"
-msgstr ""
+msgstr "Поверителността на личния блог е запазена"
 
 #: [config]confidentiality
 msgid "Confidentiality"
-msgstr ""
+msgstr "Поверителност"
 
 #: [config]audio_title
 msgid "Audio notifications"
@@ -1322,7 +1317,7 @@ msgstr ""
 
 #: [config]change_nickname_title
 msgid "Be careful"
-msgstr ""
+msgstr "Бъди внимателен"
 
 #: [config]change_nickname_text
 msgid "Changing your nickname will change your public blog, feed, and articles URLs"
@@ -1374,11 +1369,11 @@ msgstr "Име"
 
 #: [general]pronouns
 msgid "Pronouns"
-msgstr ""
+msgstr "Местоимения"
 
 #: [general]pronouns_example
 msgid "he/she/they/…"
-msgstr ""
+msgstr "Той/Тя/Те"
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -1426,7 +1421,7 @@ msgstr "Връзки"
 
 #: [general]private_account_title
 msgid "Your account is private"
-msgstr ""
+msgstr "Вашата сметка е частна"
 
 #: [general]private_account_text
 msgid "Go to the Settings page to create a public blog and allow the other users to find you"
@@ -1482,7 +1477,7 @@ msgstr "Група"
 
 #: [delete]text
 msgid "You are going to remove one of your contacts, please confirm your action"
-msgstr ""
+msgstr "Ще изтриете един от контактите си, моля, потвърдете действието си"
 
 #: [age]years
 msgid "%s years"
@@ -1494,7 +1489,7 @@ msgstr "Последна публична публикация"
 
 #: [blog]visit
 msgid "Visit the public blog"
-msgstr ""
+msgstr "Посетете публичния блог"
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -1522,7 +1517,7 @@ msgstr "Но този контакт все още може да види дал
 
 #: [subscription]nil
 msgid "You are not subscribed to anyone"
-msgstr ""
+msgstr "Не сте абонирани към някой"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
@@ -1530,23 +1525,23 @@ msgstr "Поканете"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
-msgstr ""
+msgstr "Този контакт е във вашия списък с контакти, но нямате абонамент помежду си"
 
 #: [contactssuggestions]for_you
 msgid "Suggestions for you"
-msgstr ""
+msgstr "Препоръки за теб"
 
 #: [dictaphone]name
 msgid "Dictaphone"
-msgstr ""
+msgstr "Диктофон"
 
 #: [dictaphone]push_to_record
 msgid "Push to record"
-msgstr ""
+msgstr "Натисни за запис"
 
 #: [dictaphone]recording
 msgid "Recording"
-msgstr ""
+msgstr "Записване"
 
 #: [draw]title
 msgid "Draw"
@@ -1554,19 +1549,19 @@ msgstr "Рисуване"
 
 #: [emojisconfig]title
 msgid "Emojis"
-msgstr ""
+msgstr "Емоджита"
 
 #: [emojisconfig]favorites_title
 msgid "My favorite emojis"
-msgstr ""
+msgstr "Моите любими емоджита"
 
 #: [emojisconfig]favorites_text
 msgid "Pick emojis from the packs bellow that you want to add to your favorites ones"
-msgstr ""
+msgstr "Избери емоджита от пакетите по-долу, каквито искате да се добавят като любими"
 
 #: [emojisconfig]dialog_title
 msgid "Manage a favorite emoji"
-msgstr ""
+msgstr "Подреди любими емоджита"
 
 #: [emojisconfig]alias_error
 msgid "The shortcut should only contains lowercase letters, numbers and dashes"
@@ -1674,7 +1669,7 @@ msgstr "Грешно име"
 
 #: [error]jid
 msgid "Invalid XMPP Address"
-msgstr ""
+msgstr "Невалиден XMPP адрес"
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
@@ -1810,7 +1805,7 @@ msgstr ""
 
 #: [notification]request_button
 msgid "Request"
-msgstr ""
+msgstr "Заяви"
 
 #: [notification]request_granted
 msgid "Authorization granted"
@@ -1855,7 +1850,7 @@ msgstr "Получени покани"
 
 #: [invitations]adds_you
 msgid "%s wants to add you"
-msgstr ""
+msgstr "%s иска да те добави"
 
 #: [invitations]no_new
 msgid "No new invitations"
@@ -1863,11 +1858,11 @@ msgstr "Няма нови покани"
 
 #: [invitations]no_subscriptions
 msgid "No pending subscriptions"
-msgstr ""
+msgstr "Няма чакащи абонаменти"
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s иска да говори с теб"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1975,11 +1970,11 @@ msgstr "Никой не може да харесва или коментира"
 
 #: [post]comments_disabled_yes
 msgid "Comments disabled for this post"
-msgstr ""
+msgstr "Коментарите са забранени за тази статия"
 
 #: [post]comments_disabled_no
 msgid "Comments enabled for this post"
-msgstr ""
+msgstr "Коментарите са позволени за тази статия"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -2095,7 +2090,7 @@ msgstr "Какво ново?"
 
 #: [publish]brief_title
 msgid "Brief"
-msgstr ""
+msgstr "Кратко"
 
 #: [publish]post_title [page]post
 msgid "Post"
@@ -2202,18 +2197,16 @@ msgid "Markdown syntax manual"
 msgstr "Ръководство за синтаксис на Markdown"
 
 #: [story]new
-#, fuzzy
 msgid "New story"
-msgstr "Нов разказ"
+msgstr ""
 
 #: [story]new_edit
 msgid "Edit your story"
 msgstr ""
 
 #: [story]new_publish
-#, fuzzy
 msgid "Publish your story"
-msgstr "Публикуване на разказа"
+msgstr ""
 
 #: [story]to_roster
 msgid "Publish to my contacts"
@@ -2253,7 +2246,7 @@ msgstr "Присъедини се към персонализирана чат �
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
-msgstr ""
+msgstr "Все още нямате чат стая."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -2261,11 +2254,11 @@ msgstr "Добавете такъв, като кликнете върху бут
 
 #: [rooms]type_room
 msgid "Type of chatroom"
-msgstr ""
+msgstr "Тип на чат стая"
 
 #: [rooms]default_room
 msgid "Standard chatroom"
-msgstr ""
+msgstr "Стандартна чат стая"
 
 #: [rooms]gateway_room
 msgid "Gateway chatroom"
@@ -2273,19 +2266,19 @@ msgstr ""
 
 #: [rooms]show_all
 msgid "Show all chatrooms"
-msgstr ""
+msgstr "Покажи всички чат стаи"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected chatrooms"
-msgstr ""
+msgstr "Скриване на несвързаните чат стаи"
 
 #: [rooms]destroy_title
 msgid "Destroy the chatroom"
-msgstr ""
+msgstr "Унищожи чат стаята"
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following chatroom?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да унищожите за постоянно следната чат стая?"
 
 #: [rooms]explore_placeholder
 msgid "Name or description"
@@ -2293,7 +2286,7 @@ msgstr "Име или описание"
 
 #: [rooms]disco_registration_required
 msgid "A registration is required before using the service"
-msgstr ""
+msgstr "Необходима е регистрация преди използване на услугата"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -2301,7 +2294,7 @@ msgstr "Стаи за разговори"
 
 #: [chatrooms]id
 msgid "Chatroom Address"
-msgstr ""
+msgstr "Адрес на чат стая"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -2309,7 +2302,7 @@ msgstr "Мои любими стаи"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
-msgstr ""
+msgstr "Лош адрес на чат стая"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2317,7 +2310,7 @@ msgstr "Празно име"
 
 #: [chatrooms]remove_title
 msgid "Permanently leave a chatroom"
-msgstr ""
+msgstr "Напускане за постоянно на чат стая"
 
 #: [chatrooms]remove_text
 msgid "You are going to permanently leave the following chatroom. Please confirm your action."
@@ -2329,7 +2322,7 @@ msgstr ""
 
 #: [chatrooms]disconnected
 msgid "Left the chatroom"
-msgstr ""
+msgstr "Напусна чат стаята"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2347,15 +2340,15 @@ msgstr "Ограничени"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a valid nickname (2 to 40 characters)"
-msgstr ""
+msgstr "Моля, въведете правилен псевдоним (2 до 40 символа)"
 
 #: [chatrooms]conflict
 msgid "Nickname already taken"
-msgstr ""
+msgstr "Потребителското име е вече заето"
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
-msgstr ""
+msgstr "Присъединете се към тази чат стая при влизане"
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
@@ -2363,7 +2356,7 @@ msgstr "Забоди тази чат стая"
 
 #: [chatrooms]destroyed
 msgid "Chatroom destroyed"
-msgstr ""
+msgstr "Чат стаята е унищожена"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2379,7 +2372,7 @@ msgstr ""
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exist"
-msgstr ""
+msgstr "Стаята за разговори не съществува"
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
@@ -2423,7 +2416,7 @@ msgstr "В момента сте влезли като анонимен потр
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr ""
+msgstr "Можете да се присъедините, като използвате свой собствен акаунт или да създадете такъв на страницата за вход, като излезете с помощта на кръста в горния десен ъгъл."
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -2451,7 +2444,7 @@ msgstr "Публични профили"
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's XMPP Addresses"
-msgstr ""
+msgstr "Участниците в тази чат стая могат да виждат един другиму XMPP адреса"
 
 #: [room]archived
 msgid "Archived"
@@ -2459,7 +2452,7 @@ msgstr "Архивиран"
 
 #: [room]archived_text
 msgid "The chatroom messages are archived"
-msgstr ""
+msgstr "Съобщенията от чат стаята са архивирани"
 
 #: [room]group_chat [page]room
 msgid "Group Chat"
@@ -2487,9 +2480,8 @@ msgid "Unban"
 msgstr "Освободи"
 
 #: [room]configure_user
-#, fuzzy
 msgid "Configure the user"
-msgstr "Настройките са запазени"
+msgstr ""
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2500,9 +2492,8 @@ msgid "Affiliation"
 msgstr ""
 
 #: [room]role
-#, fuzzy
 msgid "Role"
-msgstr "Роли"
+msgstr ""
 
 #: [room]reason
 msgid "Reason"
@@ -2542,9 +2533,8 @@ msgid "Owner"
 msgstr "Собственик"
 
 #: [room]affiliation_admin
-#, fuzzy
 msgid "Admin"
-msgstr "Админ"
+msgstr ""
 
 #: [room]affiliation_member [affiliation]member
 msgid "Member"
@@ -2555,15 +2545,13 @@ msgid "No affiliation"
 msgstr ""
 
 #: [room]affiliation_admins
-#, fuzzy
 msgid "Admins"
-msgstr "Админ"
+msgstr ""
 
 #: [room]affiliation_members
-#, fuzzy
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr "Членове"
+msgstr ""
 
 #: [room]visitor
 msgid "Visitor"
@@ -2574,9 +2562,8 @@ msgid "Is the user allowed to send messages?"
 msgstr ""
 
 #: [room]role_changed
-#, fuzzy
 msgid "Role changed"
-msgstr "Темата е променена"
+msgstr ""
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
@@ -2636,7 +2623,7 @@ msgstr ""
 
 #: [search]tags
 msgid "Tags"
-msgstr ""
+msgstr "Тагове"
 
 #: [search]show_complete_roster
 msgid "Show all the contacts"
@@ -2651,23 +2638,20 @@ msgid "Share in a new publication"
 msgstr "Сподели в нова публикация"
 
 #: [sendto]selected
-#, fuzzy
 msgid "contacts selected"
-msgstr "Контактът е изтрит"
+msgstr ""
 
 #: [sendto]pick
-#, fuzzy
 msgid "Pick the contacts you want to share this content with"
-msgstr "Наистина ли искате да изтриете този коментар?"
+msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Публикацията е споделена"
 
 #: [sendto]shared_contacts
-#, fuzzy
 msgid "Post shared with %s contacts"
-msgstr "Споделена е статия с ваш контакт"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2675,7 +2659,7 @@ msgstr "Повече контакти"
 
 #: [sendto]os_share
 msgid "Share outside Movim"
-msgstr ""
+msgstr "Споделете извън Movim"
 
 #: [sendto]sharing_post
 msgid "Post shared using Movim"
@@ -2798,9 +2782,8 @@ msgid "Max file size %s"
 msgstr "Максимум на файл е %s"
 
 #: [upload]upload_xmpp
-#, fuzzy
 msgid "Uploading to your account"
-msgstr "Изтрийте вашата сметка"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2904,7 +2887,7 @@ msgstr "Отказан"
 
 #: [visio]in_call
 msgid "Ongoing call"
-msgstr ""
+msgstr "Текущ разговор"
 
 #: [visio]joined_call
 msgid "Joined call"
@@ -2935,13 +2918,12 @@ msgid "Hang up the call"
 msgstr ""
 
 #: [visio]hang_up_text
-#, fuzzy
 msgid "You are going to hang up the current call, are you sure?"
-msgstr " Ще изтриете%s съобщения, сигурни ли сте?"
+msgstr ""
 
 #: [visiolobby]called
 msgid "%s is calling you"
-msgstr ""
+msgstr "%s ви прозвънява"
 
 #: [visiolobby]calling
 msgid "Calling %s"
@@ -3041,11 +3023,11 @@ msgstr "Новини"
 
 #: [page]avatar
 msgid "Profile Picture"
-msgstr ""
+msgstr "Профилна снимка"
 
 #: [page]chats
 msgid "Messages"
-msgstr ""
+msgstr "Съобщения"
 
 #: [page]publish
 msgid "Publish"
@@ -3294,9 +3276,8 @@ msgid "Associated Community"
 msgstr ""
 
 #: [input]open_me_using
-#, fuzzy
 msgid "Open me using"
-msgstr "Отвори ме чрез Ctrl + M"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -3356,7 +3337,7 @@ msgstr "Регистриран"
 
 #: [client]gateway
 msgid "Gateway"
-msgstr ""
+msgstr "Шлюз"
 
 #: [presence]online
 msgid "Online"
@@ -3909,46 +3890,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Пиши тук"
-
-#~ msgid "Subscribe"
-#~ msgstr "Абонамент"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "Прекрати абонамент"
-
-#~ msgid "Subscribed"
-#~ msgstr "Абониран"
-
-#~ msgid "Unsubscribed"
-#~ msgstr "Разабониран"
-
-#~ msgid "Share this subscription publicly"
-#~ msgstr "Споделете този абонамент публично"
-
-#~ msgctxt "[rooms]owner"
-#~ msgid "Owner"
-#~ msgstr "Собственик"
-
-#~ msgctxt "[room]affiliation_owner"
-#~ msgid "Owner"
-#~ msgstr "Собственик"
-
-#~ msgctxt "[room]affiliation_admin"
-#~ msgid "Admin"
-#~ msgstr "Админ"
-
-#~ msgid "Send it to a contact"
-#~ msgstr "Изпратете го на контакт"
-
-#~ msgid "Share it in a chatroom"
-#~ msgstr "Споделете го в чат стая"
-
-#~ msgid "Post shared within the chatroom"
-#~ msgstr "Споделена е статия в чат стаята"
-
-#~ msgctxt "[chat]clear_history"
-#~ msgid "Clear the history"
-#~ msgstr "Изчисти историята"
-
-#~ msgid "Send a message to build the encrypted session"
-#~ msgstr "Изпрати съобщение, за да се създаде шифрованата сесия"

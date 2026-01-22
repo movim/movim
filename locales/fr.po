@@ -4,7 +4,7 @@
 # e1ab480322b0d2e3f0ebe6f294df65db_ecba13c, 2015
 # Éfrit, 2015
 # François D. <francois.drouhard@gmail.com>, 2019
-# Jaussoin Timothée <edhelas@movim.eu>, 2015-2025
+# Jaussoin Timothée <edhelas@movim.eu>, 2015-2026
 # Maxime Buquet <tidusx62@gmail.com>, 2015
 # Raphael J <contact@raphael-jolivet.name>, 2018
 # The Cat, 2021
@@ -103,6 +103,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishStories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Register/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -130,16 +132,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-07 19:00+0200\n"
+"POT-Creation-Date: 2026-01-22 08:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2025\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2026\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.16.3\n"
+"X-Generator: Translate Toolkit 3.17.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -239,7 +241,7 @@ msgstr "Suppression de clef OMEMO"
 
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr "Vous allez supprimer la clef OMEMO suivante. Vos contacts ne pourront plus vous envoyer de messages chiffrés en utilisant cette clef. Cette action ne peut être annulée. Êtes-vous sûr ?"
+msgstr "Vous allez supprimer la clef OMEMO suivante. Vos contacts ne pourront plus vous envoyer de messages chiffrés en utilisant cette clef. Cette action ne peut être annulée. Êtes-vous sûr ?"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -323,7 +325,7 @@ msgstr "Niveau de détails des journaux"
 
 #: [general]join_title
 msgid "Your instance is public?"
-msgstr "Votre instance est publique ?"
+msgstr "Votre instance est publique ?"
 
 #: [general]join_text
 msgid "Register your instance on join.movim.eu and join the Movim federation!"
@@ -741,7 +743,7 @@ msgstr "Vider l'historique local"
 
 #: [chat]clear_history_text
 msgid "You are going to delete %s local messages, are you sure?"
-msgstr "Êtes-vous sûr de vouloir supprimer %s messages locaux ?"
+msgstr "Êtes-vous sûr de vouloir supprimer %s messages locaux ?"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
@@ -842,6 +844,10 @@ msgstr "Création de vos propres sessions chiffrées"
 #: [omemo]encrypted_disabled
 msgid "Encryption disabled"
 msgstr "Chiffrement désactivé"
+
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
 
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
@@ -1013,7 +1019,7 @@ msgstr "Vous allez supprimer la communauté suivante. Êtes-vous sûr ?"
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Il semblerait que cette communauté n'existe plus. Souhaitez-vous la supprimer de vos souscriptions ?"
+msgstr "Il semblerait que cette communauté n'existe plus. Souhaitez-vous la supprimer de vos souscriptions ?"
 
 #: [communityaffiliation]delete_error
 msgid "Error during the node deletion"
@@ -1150,7 +1156,7 @@ msgstr "Êtes-vous sûr ?"
 
 #: [communityposts]empty_me_text
 msgid "No publication yet? Write your first post to make people discover your profile"
-msgstr "Pas encore de publications ? Écrivez votre premier article pour rendre votre profil visible"
+msgstr "Pas encore de publications ? Écrivez votre premier article pour rendre votre profil visible"
 
 #: [communityposts]empty_me_button
 msgid "Publish my first post"
@@ -1586,7 +1592,7 @@ msgstr "Foire aux questions"
 
 #: [faq]permission_title
 msgid "What does the permission setting do?"
-msgstr "Quelle est l'utilité du paramètre de permission ?"
+msgstr "Quelle est l'utilité du paramètre de permission ?"
 
 #: [faq]permission_text
 msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
@@ -1594,7 +1600,7 @@ msgstr "Le contenu que vous publiez est, par défaut, uniquement disponible pour
 
 #: [faq]permission_community_title
 msgid "How does it apply to Communities posts?"
-msgstr "Comment s'applique t'il aux publications dans les Communautés ?"
+msgstr "Comment s'applique t'il aux publications dans les Communautés ?"
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
@@ -1602,11 +1608,11 @@ msgstr "Le comportement est similaire aux articles publiés sur votre blog à l'
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of group chats?"
-msgstr "Où puis-je trouver une liste de salons de discussion ?"
+msgstr "Où puis-je trouver une liste de salons de discussion ?"
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
-msgstr "Où puis-je trouver mes contacts ?"
+msgstr "Où puis-je trouver mes contacts ?"
 
 #: [faq]find_contacts_text
 msgid "By opening the search panel."
@@ -1634,7 +1640,7 @@ msgstr "Administrateurs et Contact"
 
 #: [chatroom]question
 msgid "Chat with the Movim team?"
-msgstr "Discuter avec l’équipe de Movim ?"
+msgstr "Discuter avec l’équipe de Movim ?"
 
 #: [chatroom]button
 msgid "Add the chatroom"
@@ -1987,7 +1993,7 @@ msgstr "Vous allez supprimer ce billet, veuillez confirmer votre action."
 
 #: [post]delete_comment
 msgid "Are you sure that you want to delete this comment?"
-msgstr "Êtes-vous sûr de vouloir supprimer ce commentaire ?"
+msgstr "Êtes-vous sûr de vouloir supprimer ce commentaire ?"
 
 #: [post]discover
 msgid "Discover more posts on the communities page"
@@ -2079,7 +2085,7 @@ msgstr "Présence"
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
-msgstr "Souhaitez-vous réellement vous déconnecter ?"
+msgstr "Souhaitez-vous réellement vous déconnecter ?"
 
 #: [preview]link_copied
 msgid "Link copied to clipboard"
@@ -2087,7 +2093,7 @@ msgstr "Lien copié dans le presse-papier"
 
 #: [publish]placeholder
 msgid "What’s new?"
-msgstr "Quoi de neuf ?"
+msgstr "Quoi de neuf ?"
 
 #: [publish]brief_title
 msgid "Brief"
@@ -2198,18 +2204,16 @@ msgid "Markdown syntax manual"
 msgstr "Manuel d'utilisation de la syntaxe Markdown"
 
 #: [story]new
-#, fuzzy
 msgid "New story"
 msgstr "Nouvelle Story"
 
 #: [story]new_edit
 msgid "Edit your story"
-msgstr ""
+msgstr "Modifier votre Story"
 
 #: [story]new_publish
-#, fuzzy
 msgid "Publish your story"
-msgstr "Publier la story"
+msgstr "Publier votre Story"
 
 #: [story]to_roster
 msgid "Publish to my contacts"
@@ -2281,7 +2285,7 @@ msgstr "Détruire le salon de discussion"
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following chatroom?"
-msgstr "Êtes-vous sûr de vouloir supprimer définitivement le salon de discussion suivant ?"
+msgstr "Êtes-vous sûr de vouloir supprimer définitivement le salon de discussion suivant ?"
 
 #: [rooms]explore_placeholder
 msgid "Name or description"
@@ -2562,7 +2566,7 @@ msgstr "Visiteur"
 
 #: [room]allowed_send_messages
 msgid "Is the user allowed to send messages?"
-msgstr "Est-ce que cet utilisateurs est autorisé à envoyer des messages ?"
+msgstr "Est-ce que cet utilisateurs est autorisé à envoyer des messages ?"
 
 #: [room]role_changed
 msgid "Role changed"
@@ -2610,7 +2614,7 @@ msgstr "%s au total"
 
 #: [search]keyword
 msgid "What are you looking for?"
-msgstr "Que cherchez vous ?"
+msgstr "Que cherchez vous ?"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
@@ -2618,7 +2622,7 @@ msgstr "#chat, pseudonyme@serveur.com, Marc…"
 
 #: [search]no_contacts_title
 msgid "No contacts yet?"
-msgstr "Pas encore de contacts ?"
+msgstr "Pas encore de contacts ?"
 
 #: [search]no_contacts_text
 msgid "Find one by searching for their name or address"
@@ -2726,7 +2730,7 @@ msgstr "Suppression de la story"
 
 #: [stories]delete_text
 msgid "Are you sure that you want to delete this story?"
-msgstr "Souhaitez-vous réellement supprimer cette story ?"
+msgstr "Souhaitez-vous réellement supprimer cette story ?"
 
 #: [stories]deleted
 msgid "Story deleted"
@@ -2818,11 +2822,11 @@ msgstr "Configurer votre pseudonyme sur cette instance"
 
 #: [profile]privacy_question
 msgid "Is this account public on this Movim instance?"
-msgstr "Est-ce que ce compte est public sur cette instance ?"
+msgstr "Est-ce que ce compte est public sur cette instance ?"
 
 #: [profile]privacy_info
 msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
-msgstr "Movim va créer une page publique qui hébergera votre blog et votre compte et qui sera cherchable pas les autres utilisateurs"
+msgstr "Movim va créer une page publique qui hébergera votre blog et votre compte et qui sera cherchable par les autres utilisateurs"
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
@@ -2918,12 +2922,11 @@ msgstr "par %s"
 
 #: [visio]hang_up
 msgid "Hang up the call"
-msgstr ""
+msgstr "Raccrocher"
 
 #: [visio]hang_up_text
-#, fuzzy
 msgid "You are going to hang up the current call, are you sure?"
-msgstr "Êtes-vous sûr de vouloir supprimer %s messages locaux ?"
+msgstr "Souhaitez vous réellement raccrocher cet appel ?"
 
 #: [visiolobby]called
 msgid "%s is calling you"

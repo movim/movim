@@ -1,4 +1,4 @@
-#. extracted from ../app/Widgets/Confirm/locales.ini
+#. extracted from ../app/Widgets/ContactsSuggestions/locales.ini
 #, fuzzy
 msgid ""
 msgstr ""
@@ -13,16 +13,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 3.17.5\n"
 
-#: [confirm]title
-msgid "Confirmation of authentication"
-msgstr ""
-
-#: [confirm]description
-msgid ""
-"The following platform would like your confirmation to authentify this "
-"account"
-msgstr ""
-
-#: [confirm]code
-msgid "Authentication code"
+#: [contactssuggestions]for_you
+msgid "Suggestions for you"
 msgstr ""

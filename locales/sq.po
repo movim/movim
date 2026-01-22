@@ -96,6 +96,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishStories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Register/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -123,7 +125,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-07 19:00+0200\n"
+"POT-Creation-Date: 2026-01-22 08:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2025\n"
 "Language-Team: Albanian (http://app.transifex.com/movim/movim/language/sq/)\n"
@@ -132,7 +134,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.15.1\n"
+"X-Generator: Translate Toolkit 3.17.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -200,7 +202,7 @@ msgstr "Fshijeni llogarinë tuaj"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr ""
+msgstr "Do të fshini llogarinë tuaj XMPP dhe krejt informacionin relativ lidhur me të (profil, kontakte dhe publikime)."
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
@@ -220,11 +222,11 @@ msgstr "Braktiseni këtë instancë"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr ""
+msgstr "Do të fshini krejt informacionin relativ të lidhur me llogarinë tuaj në këtë instancë Movim (profil, kontakte dhe publikime)."
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from Movim."
-msgstr ""
+msgstr "Ky veprim s’do të fshijë llogarinë tuaj, por do t’ju shkëpusë nga Movim-i."
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
@@ -279,21 +281,20 @@ msgid "Action completed"
 msgstr "Veprim i plotësuar"
 
 #: [tools]title
-#, fuzzy
 msgid "Developer Tools"
-msgstr "Zhvillues"
+msgstr "Mjete Zhvilluesish"
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
-msgstr ""
+msgstr "Shndërroje SDP-në në Jingle"
 
 #: [tools]sdp_title
 msgid "SDP"
-msgstr ""
+msgstr "SDP"
 
 #: [tools]jingle_to_sdp
 msgid "Convert Jingle to SDP"
-msgstr ""
+msgstr "Shndërroje Jingle-in në SDP"
 
 #: [tools]jingle_title
 msgid "Jingle stanza"
@@ -329,7 +330,7 @@ msgstr "Kufizoji këshillat"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
-msgstr ""
+msgstr "Sugjero vetëm dhoma fjalosjesh, Bashkësi dhe lëndë tjetër që janë të gatshme në shërbyesin XMPP të përdoruesit dhe shërbime të lidhura"
 
 #: [chatonly]title
 msgid "Chat only"
@@ -494,14 +495,12 @@ msgid "Change my profile picture"
 msgstr "Ndrysho foton time të profilit"
 
 #: [avatar]too_big
-#, fuzzy
 msgid "Your picture is too big"
-msgstr "Profili juaj tani është publik"
+msgstr "Fotografia juaj është shumë e madhe"
 
 #: [avatar]missing
-#, fuzzy
 msgid "No avatar yet"
-msgstr "Ende pa fjalosje…"
+msgstr "Ende pa avatar"
 
 #: [banner]change
 msgid "Change my banner"
@@ -516,9 +515,8 @@ msgid "Banner Not Updated"
 msgstr "Banderola S’u Përditësua"
 
 #: [banner]missing
-#, fuzzy
 msgid "No banner yet"
-msgstr "Ende pa lajme…"
+msgstr "Ende pa banderolë"
 
 #: [blocked]title
 msgid "Blocked"
@@ -661,9 +659,8 @@ msgid "See the profile"
 msgstr "Shihni profilin"
 
 #: [chat]clear
-#, fuzzy
 msgid "Clear the history"
-msgstr "Spastroje historikun"
+msgstr "Spastro historikun"
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -734,14 +731,12 @@ msgid "An error occurred when sending the message"
 msgstr "Ndodhi një gabim teksa dërgohej mesazhi"
 
 #: [chat]clear_history
-#, fuzzy
 msgid "Clear the local history"
-msgstr "Spastroje historikun"
+msgstr "Spastro historikun vendor"
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s local messages, are you sure?"
-msgstr "Do të fshini %s mesazhe, jeni i sigurt?"
+msgstr "Do të fshini %s mesazhe vendore, jeni i sigurt?"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
@@ -805,11 +800,11 @@ msgstr "Teksti u kopjua"
 
 #: [chatactions]search_messages
 msgid "Search messages by content"
-msgstr ""
+msgstr "Kërkoni te mesazhet sipas lënde"
 
 #: [chatactions]search_messages_empty
 msgid "No messages found"
-msgstr ""
+msgstr "S’u gjetën mesazhe"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
@@ -843,23 +838,25 @@ msgstr "Po krijohen sesione të vetët fshehtëzimi"
 msgid "Encryption disabled"
 msgstr "Fshehtëzimi u çaktivizua"
 
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
 msgstr "Po aktivizohet fshehtëzimi për kontaktin"
 
 #: [omemo]enable_room
-#, fuzzy
 msgid "Enabling encryption for the chatroom"
-msgstr "Po aktivizohet fshehtëzimi për kontaktin"
+msgstr "Po aktivizohet fshehtëzim për dhomën e fjalosjeve"
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
 msgstr "Po çaktivizohet fshehtëzimi për kontaktin"
 
 #: [omemo]disable_room
-#, fuzzy
 msgid "Disabling encryption for the chatroom"
-msgstr "Po çaktivizohet fshehtëzimi për kontaktin"
+msgstr "Po çaktivizohet fshehtëzim për dhomën e fjalosjeve"
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -1108,19 +1105,19 @@ msgstr "Vetëm pajtimtarët mund të botojnë"
 
 #: [communityheader]follow
 msgid "Follow"
-msgstr ""
+msgstr "Ndiqeni"
 
 #: [communityheader]unfollow
 msgid "Unfollow"
-msgstr ""
+msgstr "Hiqi ndjekjen"
 
 #: [communityheader]followed
 msgid "Followed"
-msgstr ""
+msgstr "U ndoq"
 
 #: [communityheader]unfollowed
 msgid "Unfollowed"
-msgstr ""
+msgstr "Iu hoq ndjekja"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -1136,16 +1133,15 @@ msgstr "Emër i Bashkësisë Time"
 
 #: [communityheader]share_follow
 msgid "Share this follow to everyone"
-msgstr ""
+msgstr "Ndaje këtë ndjekje me këdo"
 
 #: [communityheader]share_follow_text
 msgid "It will appear on your profile"
 msgstr "Do të shfaqet te profili juaj"
 
 #: [communityheader]unfollow_text
-#, fuzzy
 msgid "You are going to unfollow this community"
-msgstr "Ju ndan një hap nga shpajtimi prej kësaj bashkësie"
+msgstr "Ju ndan një hap nga heqja e ndjekjes së kësaj bashkësie"
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
@@ -1165,16 +1161,15 @@ msgstr "Llogari private"
 
 #: [communityposts]presencerequired_text
 msgid "Ask %s to be in your contacts to see the publications"
-msgstr ""
+msgstr "Që të shihni publikimet, kërkojini %s të jetë në kontaktet tuaja"
 
 #: [communityposts]subscribe_presencerequired
 msgid "Send an invitation request before following the contact"
-msgstr ""
+msgstr "Dërgoni një kërkesë ftese para ndjekjes së kontaktit"
 
 #: [communityposts]subscribe_unsupported
-#, fuzzy
 msgid "You can't follow the contact at the moment"
-msgstr "Mund të shihni gjendjen e këtij kontakti"
+msgstr "S’mund ta ndiqni kontaktin hëpërhë"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1262,7 +1257,7 @@ msgstr "Faqja e fjalosjes kryesore"
 
 #: [config]chatmain_text
 msgid "Set the chat page to the default when opening Movim"
-msgstr ""
+msgstr "Vër si faqe fjalosjeje atë parazgjedhje, kur hapet Movim-i"
 
 #: [config]mam_text
 msgid "Server-side chat messages archiving preferences"
@@ -1322,11 +1317,11 @@ msgstr "Ngjyrë theksimi"
 
 #: [config]change_nickname_title
 msgid "Be careful"
-msgstr ""
+msgstr "Hapni sytë"
 
 #: [config]change_nickname_text
 msgid "Changing your nickname will change your public blog, feed, and articles URLs"
-msgstr ""
+msgstr "Ndryshimi i nofkës tuaj do të ndryshojë URL-të e blogun tuaj publik, prurjeve dhe artikujve"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1346,7 +1341,7 @@ msgstr "Shtoni një kontakt"
 
 #: [roster]add_contact_info1
 msgid "Enter the XMPP Address of your contact."
-msgstr ""
+msgstr "Jepni Adresën XMMP të kontaktit tuaj."
 
 #: [roster]add_contact_info2
 msgid "Press enter to validate."
@@ -1374,11 +1369,11 @@ msgstr "Emër"
 
 #: [general]pronouns
 msgid "Pronouns"
-msgstr ""
+msgstr "Përemra"
 
 #: [general]pronouns_example
 msgid "he/she/they/…"
-msgstr ""
+msgstr "ai/ajo/ata/ato/…"
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -1426,11 +1421,11 @@ msgstr "Lidhje"
 
 #: [general]private_account_title
 msgid "Your account is private"
-msgstr ""
+msgstr "Llogaria juaj është private"
 
 #: [general]private_account_text
 msgid "Go to the Settings page to create a public blog and allow the other users to find you"
-msgstr ""
+msgstr "Kaloni te faqja e Rregullimeve që të krijoni një blog publik dhe të lejoni përdorues të tjerë t’ju gjejnë"
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1482,7 +1477,7 @@ msgstr "Grup"
 
 #: [delete]text
 msgid "You are going to remove one of your contacts, please confirm your action"
-msgstr ""
+msgstr "Po hiqni një nga kontaktet tuaj, ju lutemi, ripohoni veprimin tuaj"
 
 #: [age]years
 msgid "%s years"
@@ -1522,7 +1517,7 @@ msgstr "Por ky kontakt mundet ende të shohë nëse jeni në linjë"
 
 #: [subscription]nil
 msgid "You are not subscribed to anyone"
-msgstr ""
+msgstr "S’jeni pajtuar te ndokush"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
@@ -1530,11 +1525,11 @@ msgstr "Ftoje"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but you are not subscribed to each other"
-msgstr ""
+msgstr "Ky kontakt gjendet në listën tuaj të kontakteve, por s’jeni pajtuar te njëri-tjetri"
 
 #: [contactssuggestions]for_you
 msgid "Suggestions for you"
-msgstr ""
+msgstr "Sugjerime për ju"
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -1598,7 +1593,7 @@ msgstr "Si parazgjedhje, te lënda mund të hyjnë vetëm kontaktet tuaja. Profi
 
 #: [faq]permission_community_title
 msgid "How does it apply to Communities posts?"
-msgstr ""
+msgstr "Si zbatohet te postime Bashkësie?"
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
@@ -1606,7 +1601,7 @@ msgstr "Në mënyrë të ngjashme me publikimet në blogun tuaj, hiq, si parazgj
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of group chats?"
-msgstr ""
+msgstr "Ku mund të gjej një listë të fjalosjeve në grup?"
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
@@ -1674,7 +1669,7 @@ msgstr "Emër përdoruesi i gabuar"
 
 #: [error]jid
 msgid "Invalid XMPP Address"
-msgstr ""
+msgstr "Adresë XMPP e pavlefshme"
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
@@ -1682,7 +1677,7 @@ msgstr "Sfidë e pavlefshme prej shërbyesit"
 
 #: [error]dns
 msgid "XMPP Domain error, your account is not a valid XMPP Address"
-msgstr ""
+msgstr "Gabim Përkatësie XMPP, llogaria juaj s’është adresë XMPP e vlefshme"
 
 #: [error]data_missings
 msgid "Some data are missing!"
@@ -1786,7 +1781,7 @@ msgstr "Ende pa lajme…"
 
 #: [menu]empty
 msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr ""
+msgstr "Mirë se vini te prurja juaj e lajmeve, këtu do të shihni krejt postimet e botuara nga kontaktet tuaj dhe në bashkësitë në të cilat jeni pajtuar."
 
 #: [menu]mine
 msgid "My publications"
@@ -2031,7 +2026,7 @@ msgstr "I komentuar"
 
 #: [post]subscription_required
 msgid "You must be subscribed to %s to see this publication"
-msgstr ""
+msgstr "Që të shihni këtë publikim, duhet të pajtoheni te %s"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2055,7 +2050,7 @@ msgstr "Oh! Tungjatjeta!"
 
 #: [hello]enter_paragraph
 msgid "It seems that you are new here! Welcome to Movim!"
-msgstr ""
+msgstr "Duket se jeni i ri këtu! Mirë se vini në "
 
 #: [hello]menu_title
 msgid "Check the Menu"
@@ -2166,25 +2161,24 @@ msgid "You are not authorized to publish there"
 msgstr "S’jeni i autorizuar të publikoni atje"
 
 #: [publish]publish_error_payload_to_big
-#, fuzzy
 msgid "Your post is too big to be published"
-msgstr "S’jeni i autorizuar të publikoni atje"
+msgstr "Postimi juaj është shumë i madh për botim"
 
 #: [publish]too_long
 msgid "Your text is too long, %s characters max"
-msgstr ""
+msgstr "Teksti juaj është shumë i gjatë, e shumta %s shenja"
 
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
-msgstr ""
+msgstr "Blogu juaj mund të shihet vetëm nga pajtimtarët tuaj. Të përdorshëm nga cilido mund ta bëni që nga faqja e rregullimeve."
 
 #: [publish]embedded_link
 msgid "The media will be embedded"
-msgstr ""
+msgstr "Media do të trupëzohet"
 
 #: [publish]web_title
 msgid "Create a public HTTP URL from this publication"
-msgstr ""
+msgstr "Krijoni një URL HTTP publike nga ky publikim"
 
 #: [publish]web_text
 msgid "This will allow anyone outside Movim to have access to your publication"
@@ -2203,18 +2197,16 @@ msgid "Markdown syntax manual"
 msgstr "Doracak sintakse Markdown"
 
 #: [story]new
-#, fuzzy
 msgid "New story"
-msgstr "Rrëfim i Ri"
+msgstr "Histori e re"
 
 #: [story]new_edit
 msgid "Edit your story"
-msgstr ""
+msgstr "Përpunoni historinë tuaj"
 
 #: [story]new_publish
-#, fuzzy
 msgid "Publish your story"
-msgstr "Po botohet rrëfimi"
+msgstr "Botoni historinë tuaj"
 
 #: [story]to_roster
 msgid "Publish to my contacts"
@@ -2254,7 +2246,7 @@ msgstr "Hyni në një dhomë vetjake fjalosjeje"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
-msgstr ""
+msgstr "S’keni ende ndonjë dhomë fjalosjeje"
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -2262,11 +2254,11 @@ msgstr "Shtoni një duke klikuar mbi butonin e shtimeve."
 
 #: [rooms]type_room
 msgid "Type of chatroom"
-msgstr ""
+msgstr "Lloj dhome fjalosjesh"
 
 #: [rooms]default_room
 msgid "Standard chatroom"
-msgstr ""
+msgstr "Dhomë standarde fjalosjesh"
 
 #: [rooms]gateway_room
 msgid "Gateway chatroom"
@@ -2274,19 +2266,19 @@ msgstr ""
 
 #: [rooms]show_all
 msgid "Show all chatrooms"
-msgstr ""
+msgstr "Shfaqi krejt dhomat e fjalosjeve"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected chatrooms"
-msgstr ""
+msgstr "Fshihi dhomat e shkëputura të fjalosjeve"
 
 #: [rooms]destroy_title
 msgid "Destroy the chatroom"
-msgstr ""
+msgstr "Asgjësoje dhomën e fjalosjeve"
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following chatroom?"
-msgstr ""
+msgstr "Jeni i sigurt se doni të asgjësoni përgjithnjë dhomën vijuese të fjalosjeve?"
 
 #: [rooms]explore_placeholder
 msgid "Name or description"
@@ -2302,7 +2294,7 @@ msgstr "Dhoma fjalosjeje"
 
 #: [chatrooms]id
 msgid "Chatroom Address"
-msgstr ""
+msgstr "Adresë Dhome Fjalosjesh"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -2310,7 +2302,7 @@ msgstr "Dhoma Ime e Parapëlqyer"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
-msgstr ""
+msgstr "Adresë e Gabuar Dhome Fjalosjesh"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2318,19 +2310,19 @@ msgstr "Emër i zbrazët"
 
 #: [chatrooms]remove_title
 msgid "Permanently leave a chatroom"
-msgstr ""
+msgstr "Braktisni përgjithnjë një dhomë fjalosjesh"
 
 #: [chatrooms]remove_text
 msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr ""
+msgstr "Do ta braktisni përgjithnjë dhomën vijuese të fjalosjeve. Ju lutemi, ripohoni veprimin tuaj."
 
 #: [chatrooms]connected
 msgid "Joined the chatroom"
-msgstr ""
+msgstr "Hyri në dhomën e fjalosjeve"
 
 #: [chatrooms]disconnected
 msgid "Left the chatroom"
-msgstr ""
+msgstr "Doli nga dhoma e fjalosjeve"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2348,15 +2340,15 @@ msgstr "I dëbuar"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a valid nickname (2 to 40 characters)"
-msgstr ""
+msgstr "Ju lutemi, jepni një nofkë të vlefshme (2 deri në 40 shenjas)"
 
 #: [chatrooms]conflict
 msgid "Nickname already taken"
-msgstr ""
+msgstr "Nofkë tashmë e zënë"
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
-msgstr ""
+msgstr "Hyr te kjo dhomë fjalosje gjatë hyrjes në llogari"
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
@@ -2364,7 +2356,7 @@ msgstr "Fiksoje këtë dhome fjalosjesh"
 
 #: [chatrooms]destroyed
 msgid "Chatroom destroyed"
-msgstr ""
+msgstr "Dhoma e fjalosjeve u asjgësua"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2400,7 +2392,7 @@ msgstr "I papranueshëm"
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
-msgstr ""
+msgstr "Është mbërritur në kufi pjesëmarrësish në dhomën e fjalosjes"
 
 #: [chatrooms]notallowed
 msgid "You are not allowed to create a chatroom there"
@@ -2416,7 +2408,7 @@ msgstr "Faqerojtësit u përditësuan"
 
 #: [room]anonymous_title
 msgid "Public Channel"
-msgstr ""
+msgstr "Kanal Publik"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2452,7 +2444,7 @@ msgstr "Profile publike"
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's XMPP Addresses"
-msgstr ""
+msgstr "Pjesëmarrësit e kësaj dhome fjalosjeje mund të shohin Adresat XMPP të njëri-tjetrit"
 
 #: [room]archived
 msgid "Archived"
@@ -2488,9 +2480,8 @@ msgid "Unban"
 msgstr "Hiqini dëbimin"
 
 #: [room]configure_user
-#, fuzzy
 msgid "Configure the user"
-msgstr "Formësim u ruajt"
+msgstr "Formësoni përdoruesin"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
@@ -2501,9 +2492,8 @@ msgid "Affiliation"
 msgstr "Përshoqërim"
 
 #: [room]role
-#, fuzzy
 msgid "Role"
-msgstr "Role"
+msgstr "Rol"
 
 #: [room]reason
 msgid "Reason"
@@ -2543,7 +2533,6 @@ msgid "Owner"
 msgstr "Pronar"
 
 #: [room]affiliation_admin
-#, fuzzy
 msgid "Admin"
 msgstr "Përgjegjës"
 
@@ -2556,12 +2545,10 @@ msgid "No affiliation"
 msgstr "Pa përshoqërim"
 
 #: [room]affiliation_admins
-#, fuzzy
 msgid "Admins"
 msgstr "Përgjegjës"
 
 #: [room]affiliation_members
-#, fuzzy
 msgctxt "[room]affiliation_members"
 msgid "Members"
 msgstr "Anëtarë"
@@ -2571,14 +2558,12 @@ msgid "Visitor"
 msgstr "Vizitor"
 
 #: [room]allowed_send_messages
-#, fuzzy
 msgid "Is the user allowed to send messages?"
-msgstr "S’keni leje të dërgoni mesazhe në këtë dhomë fjalosjesh"
+msgstr "I lejohet përdoruesit të dërgojë mesazhe?"
 
 #: [room]role_changed
-#, fuzzy
 msgid "Role changed"
-msgstr "Subjekti u ndryshua"
+msgstr "Roli ndryshoi"
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
@@ -2606,7 +2591,7 @@ msgstr "S’u gjetën dhoma vendore fjalosjesh"
 
 #: [roomsexplore]global_title
 msgid "Channels"
-msgstr ""
+msgstr "Kanale"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
@@ -2614,11 +2599,11 @@ msgstr "S’u gjetën dhoma globale fjalosjesh"
 
 #: [roomsexplore]find_more
 msgid "Find more channels"
-msgstr ""
+msgstr "Gjeni më tepër kanale"
 
 #: [roomsexplore]find_more_text
 msgid "%s in total"
-msgstr ""
+msgstr "%s gjithsej"
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -2634,7 +2619,7 @@ msgstr "Ende pa kontakte?"
 
 #: [search]no_contacts_text
 msgid "Find one by searching for their name or address"
-msgstr ""
+msgstr "Gjeni një të tillë duke kërkuar për emrin ose adresën e tyre"
 
 #: [search]tags
 msgid "Tags"
@@ -2653,23 +2638,20 @@ msgid "Share in a new publication"
 msgstr "Ndajeni me të tjerë në një botim të ri"
 
 #: [sendto]selected
-#, fuzzy
 msgid "contacts selected"
-msgstr "Kontakti u fshi"
+msgstr "kontaktet u përzgjodhën"
 
 #: [sendto]pick
-#, fuzzy
 msgid "Pick the contacts you want to share this content with"
-msgstr "Jeni i sigurt se doni të fshihet ky koment?"
+msgstr "Zgjidhni kontaktet me të cilët doni të ndani këtë lëndë"
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Postimi u nda me të tjerë"
 
 #: [sendto]shared_contacts
-#, fuzzy
 msgid "Post shared with %s contacts"
-msgstr "Postimi u nda me kontaktin tuaj"
+msgstr "Postimi u nda me %s kontakte"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2749,7 +2731,7 @@ msgstr "Rrëfimi u fshi"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
-msgstr ""
+msgstr "Movim është një rrjet shoqëror i decentralizuar, ju ftojmë të regjistroheni në shërbyesin(t) XMPP vijues"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2800,9 +2782,8 @@ msgid "Max file size %s"
 msgstr "Madhësi maksimum kartelash %s"
 
 #: [upload]upload_xmpp
-#, fuzzy
 msgid "Uploading to your account"
-msgstr "Fshijeni llogarinë tuaj"
+msgstr "Po ngarkohet te llogaria juaj"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2878,7 +2859,7 @@ msgstr "Movim-i po punon nën mundësitë e veta"
 
 #: [degraded]text_1
 msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed, and profile) are disabled by the administrator."
-msgstr ""
+msgstr "Shërbyesi juaj s’mbulon vazhdueshmëri XMPP Pubsub, ose veçoritë shoqërore (bashkësi, prurje lajmesh dhe profil) janë çaktivizuar nga përgjegjësi."
 
 #: [degraded]text_2
 msgid "Please contact your server administrator to see if this feature can be enabled."
@@ -2922,7 +2903,7 @@ msgstr "…po lidhet"
 
 #: [visio]ended
 msgid "End of call"
-msgstr ""
+msgstr "Fund i thirrjes"
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
@@ -2934,12 +2915,11 @@ msgstr "nga %s"
 
 #: [visio]hang_up
 msgid "Hang up the call"
-msgstr ""
+msgstr "Mbylleni thirrjen"
 
 #: [visio]hang_up_text
-#, fuzzy
 msgid "You are going to hang up the current call, are you sure?"
-msgstr "Do të fshini %s mesazhe, jeni i sigurt?"
+msgstr "Do të mbyllni thirrjen e tanishme, jeni i sigurt?"
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -2986,9 +2966,8 @@ msgid "No sound detected from your microphone"
 msgstr "S’u pikas zë nga mikrofoni juaj"
 
 #: [visiolobby]no_mic_sound2
-#, fuzzy
 msgid "Try make some noise, select another source or check your system settings"
-msgstr "Provoni të përzgjidhni burim tjetër, ose shihni rregullimet e sistemit tuaj"
+msgstr "Provoni të bëni ca zhurmë, përzgjidhni një tjetër burim, ose kontrolloni rregullimet e sistemit tuaj"
 
 #: [muji]call_audio_invite
 msgid "You are invited in an audio conference call"
@@ -3044,11 +3023,11 @@ msgstr "Lajme"
 
 #: [page]avatar
 msgid "Profile Picture"
-msgstr ""
+msgstr "Foto Profili"
 
 #: [page]chats
 msgid "Messages"
-msgstr ""
+msgstr "Mesazhe"
 
 #: [page]publish
 msgid "Publish"
@@ -3217,7 +3196,7 @@ msgstr "I mëparshmi"
 
 #: [button]quote
 msgid "Quote"
-msgstr ""
+msgstr "Citim"
 
 #: [button]refresh
 msgid "Refresh"
@@ -3233,7 +3212,7 @@ msgstr "Regjistrohuni"
 
 #: [button]remove
 msgid "Leave"
-msgstr ""
+msgstr "Dilni"
 
 #: [button]reply
 msgid "Reply"
@@ -3297,9 +3276,8 @@ msgid "Associated Community"
 msgstr "Bashkësi e Përshoqëruar"
 
 #: [input]open_me_using
-#, fuzzy
 msgid "Open me using"
-msgstr "Hapmë duke përdorur Ctrl + M"
+msgstr "Hapmë duke përdorur"
 
 #: [day]title
 msgid "Day"
@@ -3912,56 +3890,3 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
-
-#~ msgid "Subscribe"
-#~ msgstr "Pajtomë"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "Shpajtomë"
-
-#~ msgid "Subscribed"
-#~ msgstr "U pajtuat"
-
-#~ msgid "Unsubscribed"
-#~ msgstr "U shpajtuat"
-
-#~ msgid "Share this subscription publicly"
-#~ msgstr "Ndajeni këtë pajtim publikisht"
-
-#~ msgid "Follow it to see the content"
-#~ msgstr "Që të shihni lëndën, ndiqeni"
-
-#~ msgctxt "[rooms]owner"
-#~ msgid "Owner"
-#~ msgstr "Pronar"
-
-#~ msgctxt "[room]affiliation_owner"
-#~ msgid "Owner"
-#~ msgstr "Pronar"
-
-#~ msgctxt "[room]affiliation_admin"
-#~ msgid "Admin"
-#~ msgstr "Përgjegjës"
-
-#~ msgid "Send it to a contact"
-#~ msgstr "Dërgojani një kontakti"
-
-#~ msgid "Share it in a chatroom"
-#~ msgstr "Ndajeni me të tjerë në një dhomë bisedash"
-
-#~ msgid "Post shared within the chatroom"
-#~ msgstr "Postimi u nda brenda dhomës së bisedave"
-
-#~ msgctxt "[chat]clear_history"
-#~ msgid "Clear the history"
-#~ msgstr "Spastroje historikun"
-
-#~ msgid "Send a message to build the encrypted session"
-#~ msgstr "Që të krijohet sesioni i fshehtëzuar, dërgoni një mesazh"
-
-#, fuzzy
-#~ msgid "Publish this post on your public blog"
-#~ msgstr "Botoje këtë postim publikisht"
-
-#~ msgid "Change the user affiliation"
-#~ msgstr "Ndryshoni përshoqërimin e përdoruesit"

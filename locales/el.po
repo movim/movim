@@ -94,6 +94,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishStories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Register/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -121,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-07 19:00+0200\n"
+"POT-Creation-Date: 2026-01-22 08:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Marinus Savoritias <msavorritias@gmail.com>, 2016\n"
 "Language-Team: Greek (http://app.transifex.com/movim/movim/language/el/)\n"
@@ -130,7 +132,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.15.1\n"
+"X-Generator: Translate Toolkit 3.17.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -491,9 +493,8 @@ msgid "Change my profile picture"
 msgstr ""
 
 #: [avatar]too_big
-#, fuzzy
 msgid "Your picture is too big"
-msgstr "Το προφίλ είναι πλέον δημόσιο"
+msgstr ""
 
 #: [avatar]missing
 msgid "No avatar yet"
@@ -833,6 +834,10 @@ msgstr ""
 
 #: [omemo]encrypted_disabled
 msgid "Encryption disabled"
+msgstr ""
+
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
 msgstr ""
 
 #: [omemo]enable_contact
@@ -2542,10 +2547,9 @@ msgid "Admins"
 msgstr ""
 
 #: [room]affiliation_members
-#, fuzzy
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr "Μέλη"
+msgstr ""
 
 #: [room]visitor
 msgid "Visitor"
@@ -2632,9 +2636,8 @@ msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]selected
-#, fuzzy
 msgid "contacts selected"
-msgstr "Επαφή διαγράφθηκε"
+msgstr ""
 
 #: [sendto]pick
 msgid "Pick the contacts you want to share this content with"
@@ -2777,9 +2780,8 @@ msgid "Max file size %s"
 msgstr ""
 
 #: [upload]upload_xmpp
-#, fuzzy
 msgid "Uploading to your account"
-msgstr "Διαγραφή του λογαριασμού σου"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
