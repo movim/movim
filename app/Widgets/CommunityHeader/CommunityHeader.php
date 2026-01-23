@@ -46,7 +46,7 @@ class CommunityHeader extends Base
     {
         $this->rpc('MovimUtils.redirect', $this->route(
             'publish',
-            [$packet->content->to, $packet->content->node]
+            [$packet->content['to'], $packet->content['node']]
         ));
     }
 
