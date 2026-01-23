@@ -6,18 +6,20 @@
     </li>
 </ul>
 <img src="{$raw_url|protectPicture}" title="{$raw_url}" class="transparent"/>
-{if="$url->type == 'image'"}
-    <span class="pinfo">
-        {if="$url->content_length != 0"}
-            {$url->content_length|humanSize}
-        {/if}
-    </span>
-{elseif="!empty($url->images)"}
-    <span class="pinfo">
-        {if="$url->images[0]['size'] != 0"}
-            {$url->images[0]['size']|humanSize}
-        {/if}
-    </span>
+{if="$url"}
+    {if="$url->type == 'image'"}
+        <span class="pinfo">
+            {if="$url->content_length != 0"}
+                {$url->content_length|humanSize}
+            {/if}
+        </span>
+    {elseif="!empty($url->images)"}
+        <span class="pinfo">
+            {if="$url->images[0]['size'] != 0"}
+                {$url->images[0]['size']|humanSize}
+            {/if}
+        </span>
+    {/if}
 {/if}
 <span class="prevnext prev"></span>
 <span class="prevnext next"></span>
