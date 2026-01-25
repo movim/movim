@@ -31,6 +31,7 @@ class Info extends Model
             && empty($this->freshIdentities)
             && !$this->isDirty('avatarhash')
         ) return;
+
         try {
             unset($this->identities);
             parent::save($options);
@@ -325,7 +326,7 @@ class Info extends Model
         return $this->hasFeature('urn:xmpp:extdisco:2');
     }
 
-    public function set($query, $node = false, $parent = false)
+    public function set($query, ?string $node = null, $parent = false)
     {
         $from = (string)$query->attributes()->from;
 
@@ -341,7 +342,7 @@ class Info extends Model
              * - bitlbee
              * - jtalk
              */
-            if (empty($this->node) && $node != false) {
+            if (empty($this->node) && $node != null) {
                 $this->node = $node;
             }
 

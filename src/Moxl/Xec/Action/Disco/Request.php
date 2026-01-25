@@ -11,18 +11,10 @@ class Request extends Action
     protected ?string $_to = null;
     protected $_parent;
 
-    // Excluded nodes
-    protected $_excluded = [
-        'http://www.android.com/gtalk/client/caps#1.1'
-    ];
-
     public function request()
     {
         $this->store();
-
-        if (!in_array($this->_node, $this->_excluded)) {
-            $this->iq(Disco::request($this->_node), to: $this->_to, type: 'get');
-        }
+        $this->iq(Disco::request($this->_node), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

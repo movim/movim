@@ -132,6 +132,7 @@ class Presence extends Base
         $c->setTo($this->me->session->host)
             ->request();
 
+        $c = $this->xmpp(new \Moxl\Xec\Action\Disco\Request);
         $c->setTo($this->me->id)
             ->request();
     }
