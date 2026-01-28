@@ -265,6 +265,7 @@ class Linker
                 function (\Exception $error) {
                     logOut(colorize($error->getMessage(), 'red'), sid: $this->sessionId);
                     Wrapper::getInstance()->iterate('timeout_error'); // TODO give context
+                    $this->linkerManager->closeLinker($this->sessionId);
                 }
             );
         }
