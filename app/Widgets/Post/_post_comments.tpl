@@ -1,7 +1,7 @@
 {$liked = false}
 
 {if="$post->likes->count() > 0"}
-    <ul class="list divided spaced thin">
+    <ul class="list divided spaced thick">
         <li>
             <span class="primary icon red tiny">
                 <i class="material-symbols fill">favorite</i>

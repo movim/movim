@@ -84,6 +84,12 @@
     line-height: initial;
 }
 
+#rooms ul.toggle_show li div>p {
+    line-height: 2.5rem;
+    font-size: 1.75rem;
+    color: rgba(var(--movim-font), 0.6);
+}
+
 #rooms ul.list.rooms:empty~ul.toggle_show,
 #rooms ul.list.rooms:not(:empty):not(.all)~ul.toggle_show>li span.primary i:first-child,
 #rooms ul.list.rooms:not(:empty).all~ul.toggle_show>li span.primary i:last-child,

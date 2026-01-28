@@ -88,6 +88,18 @@
                 <p>{$c->__('adhoc.title')}</p>
             </div>
         </li>
+        {if="$presence->mucjid != $c->me->id"}
+            <li onclick="Chats_ajaxOpen('{$presence->mucjid|echapJS}', true); Dialog_ajaxClear();">
+                <span class="primary icon gray">
+                    <i class="material-symbols">comment</i>
+                </span>
+                <div>
+                    <p class="line">
+                        {$c->__('button.chat')}
+                    </p>
+                </div>
+            </li>
+        {/if}
         <li onclick="Chat.quoteMUC('{$presence->resource}', true); Dialog_ajaxClear();">
             <span class="primary icon gray">
                 <i class="material-symbols">format_quote</i>

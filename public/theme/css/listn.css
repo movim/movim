@@ -308,6 +308,11 @@ ul.list>li>div>p:only-child {
     line-height: 5.5rem;
 }
 
+ul.list>*>li>div>p.all,
+ul.list>li>div>p.all {
+    line-height: 3rem;
+}
+
 ul.list li:not(.subheader)>div:has(>p.brief:not(.line)) {
     padding-bottom: 0.5rem;
 }

@@ -31,7 +31,7 @@
             <img loading="lazy" src="{$value->conferencePicture}">
         </span>
         {if="$compact == false"}
-            {if="$value->mucjid != $c->me"}
+            {if="$value->mucjid != $c->me->id"}
                 <span class="control icon active gray divided" onclick="
                     Chats_ajaxOpen('{$value->mucjid|echapJS}', true);
                     Drawer.clear();">

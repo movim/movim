@@ -35,7 +35,7 @@ var ContactActions = {
 
         if (room == false) {
             store.getContactState(jid).then(enabled => {
-                if (!enabled) {
+                if (!enabled && document.querySelector('#omemo_fingerprints ul.list')) {
                     document.querySelector('#omemo_fingerprints ul.list').classList.add('disabled');
                 }
             });
