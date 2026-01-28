@@ -15,7 +15,7 @@ use Movim\RPC;
 use Movim\Widget\Wrapper;
 use Moxl\Authentication;
 use Moxl\Parser;
-
+use Moxl\Xec\Payload\Packet;
 use React\Dns\Model\Message;
 use React\Dns\Resolver\ResolverInterface;
 use React\Socket\Connection;
@@ -264,8 +264,7 @@ class Linker
                 fn($connection) => $this->xmppBehaviour($connection),
                 function (\Exception $error) {
                     logOut(colorize($error->getMessage(), 'red'), sid: $this->sessionId);
-                    Wrapper::getInstance()->iterate('timeout_error'); // TODO give context
-                    $this->linkerManager->closeLinker($this->sessionId);
+                    Wrapper::getInstance()->iterate('connection_error', (new Packet)->pack($error->getMessage()), sessionId: $this->sessionId);
                 }
             );
         }
@@ -286,7 +285,7 @@ class Linker
             fn() => logOut(colorize('TLS enabled', 'blue'), sid: $this->sessionId),
             function ($error) {
                 logOut(colorize('TLS error ' . $error->getMessage(), 'blue'), sid: $this->sessionId);
-                Wrapper::getInstance()->iterate('ssl_error'); // TODO give context
+                Wrapper::getInstance()->iterate('ssl_error', sessionId: $this->sessionId); // TODO give context
                 $this->linkerManager->closeLinker($this->sessionId);
             }
         );

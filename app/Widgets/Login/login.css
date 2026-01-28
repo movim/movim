@@ -76,3 +76,9 @@ body main {
     box-shadow: none;
     width: calc(100% - 3rem);
 }
+
+#login_error code {
+    display: block;
+    margin-top: 1rem;
+    max-height: 10rem;
+}

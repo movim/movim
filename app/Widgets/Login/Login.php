@@ -35,7 +35,7 @@ class Login extends Base
         $this->registerEvent('storage_get_error', 'onConfig');
         $this->registerEvent('ssl_error', 'onFailAuth');
         $this->registerEvent('dns_error', 'onDNSError');
-        $this->registerEvent('timeout_error', 'onTimeoutError');
+        $this->registerEvent('connection_error', 'onConnectionError');
         $this->registerEvent('streamerror', 'onFailAuth');
     }
 
@@ -118,16 +118,16 @@ class Login extends Base
         }
     }
 
-    public function showErrorBlock($error)
+    public function showErrorBlock($error, ?string $errorMessage = null)
     {
         $this->me?->encryptedPasswords()->delete();
 
         $this->rpc('Login.clearQuick');
-        $this->rpc('MovimTpl.fill', '#error', $this->prepareError($error));
+        $this->rpc('MovimTpl.fill', '#error', $this->prepareError($error, $errorMessage));
         $this->rpc('MovimUtils.addClass', '#login_widget', 'error');
     }
 
-    public function prepareError($error = 'default')
+    public function prepareError(string $error = 'default', ?string $errorMessage = null)
     {
         $view = $this->tpl();
 
@@ -139,6 +139,8 @@ class Login extends Base
         } else {
             $view->assign('error', $error_text);
         }
+
+        $view->assign('errormessage', $errorMessage);
 
         return $view->draw('_login_error');
     }
@@ -153,9 +155,9 @@ class Login extends Base
         $this->showErrorBlock('dns');
     }
 
-    public function onTimeoutError()
+    public function onConnectionError(Packet $packet)
     {
-        $this->showErrorBlock('timeout');
+        $this->showErrorBlock('connection', errorMessage: $packet->content);
     }
 
     public function onSASLFailure(Packet $packet)
