@@ -688,7 +688,7 @@ ul > li.date:first-of-type>div>p:only-child {
 
 ul.list li.separator:not(.subheader):not(.date) {
     display: block;
-    border-top: 0.15rem dashed #BBB;
+    border-top: 0.15rem dashed 0.15rem dashed rgba(var(--movim-font), 0.5);
     margin-bottom: 0.7rem;
     margin-top: -0.7rem;
 }
