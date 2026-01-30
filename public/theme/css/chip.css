@@ -3,7 +3,7 @@
     line-height: 4rem;
     padding: 0 2rem;
     font-size: 1.75rem;
-    margin: 0 0.5rem;
+    margin: 0.5rem;
     border-radius: 1rem;
     color: rgb(var(--movim-font));
     background-color: rgba(var(--movim-element-action), 0.05);

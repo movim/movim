@@ -189,7 +189,6 @@
                         </div>
                     </span>
                     <div>
-                        <p></p>
                         <p>{$c->__('chatrooms.autojoin')}</p>
                     </div>
                 </li>
