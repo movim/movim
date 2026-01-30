@@ -254,7 +254,7 @@ class Linker
                     'tls' => [
                         'SNI_enabled' => true,
                         'allow_self_signed' => false,
-                        'peer_name' => $host
+                        'peer_name' => $this->host
                     ]
                 ]),
                 $this->dns
