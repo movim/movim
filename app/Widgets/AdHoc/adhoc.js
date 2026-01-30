@@ -31,7 +31,8 @@ var AdHoc = {
     },
     submit: function (jid) {
         var form = document.querySelector('#dialog form[name=command]');
-        AdHoc_ajaxSubmit(jid, form.dataset.node, MovimUtils.formToJson('command'), form.dataset.sessionid);
+        console.log(MovimUtils.formToJson('command'));
+        //AdHoc_ajaxSubmit(jid, form.dataset.node, MovimUtils.formToJson('command'), form.dataset.sessionid);
     },
     checkFormValidity: function () {
         var form = document.querySelector('#dialog form[name=command]');

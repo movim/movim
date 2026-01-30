@@ -118,7 +118,7 @@ class XMPPtoForm
                                 $this->outHiddeninput($element);
                                 break;
                             case 'list-multi':
-                                //$this->outList($element, true);
+                                $this->outList($element, true);
                                 break;
                             case 'list-single':
                                 $this->outList($element);
@@ -498,7 +498,7 @@ class XMPPtoForm
         $this->html->appendChild($container);
 
         $div = $this->html->createElement('div');
-        $div->setAttribute('class', $multi ? 'select multi' : 'select');
+        $div->setAttribute('class', 'select');
 
         $container->appendChild($div);
 

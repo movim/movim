@@ -78,6 +78,10 @@ form > div .select select {
     mask-image: linear-gradient(to right, black calc(100% - 15rem), transparent);
 }
 
+form > div .select select[multiple] option {
+    padding: 0.5rem 0;
+}
+
 /* Placeholders to mimic FF */
 
 ::-webkit-input-placeholder, /* WebKit browsers */
@@ -102,8 +106,8 @@ form > div textarea {
     outline-width: 0;
 }
 
-form > div .select select option,
-form > div .select select optgroup {
+form > div .select select:not([multiple]) option,
+form > div .select select:not([multiple]) optgroup {
     background-color: rgb(var(--movim-background-main));
 }
 
