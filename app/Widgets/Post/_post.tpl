@@ -197,7 +197,7 @@
         <ul class="list">
             <li>
                 <div>
-                    <p>
+                    <p class="all">
                         {loop="$post->tags()->get()"}
                             <a class="chip outline active" href="#" onclick="MovimUtils.reload('{$c->route('tag', $value->name)}')">
                                 <i class="material-symbols icon gray">tag</i>{$value->name}
