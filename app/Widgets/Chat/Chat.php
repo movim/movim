@@ -1491,7 +1491,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         // reactions_count if cached, if not, reload it from the DB
-        if ($message->reactions_count ?? $message->reactions()->count()) {
+        if ($message->replaceid || ($message->reactions_count ?? $message->reactions()->count())) {
             $message->reactionsHtml = $this->prepareReactions($message);
         }
 
@@ -1664,14 +1664,22 @@ class Chat extends \Movim\Widget\Base
         return $tpl->draw('_chat_embed');
     }
 
-    public function prepareReactions(Message $message)
+    public function prepareReactions(Message $message): ?string
     {
         $view = $this->tpl();
         $merged = [];
 
         $reactions = $message
-            ->reactions()
-            ->orderBy('created_at')
+            ->reactions();
+
+        if ($message->replace) {
+            $reactions = $reactions->unionAll(
+                DB::table('reactions')
+                    ->where('message_mid', $message->replace->mid)
+            );
+        }
+
+        $reactions = $reactions->orderBy('created_at')
             ->get();
 
         foreach ($reactions as $reaction) {
@@ -1681,6 +1689,8 @@ class Chat extends \Movim\Widget\Base
 
             $merged[$reaction->emoji][] = $reaction->jidfrom;
         }
+
+        if (empty($merged)) return null;
 
         $view->assign('message', $message);
         $view->assign('reactions', $merged);
