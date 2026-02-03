@@ -33,7 +33,7 @@
     {/if}
     {if="$count > 0"}data-counter="{$count}"{/if}
     >
-        <img src="{if="$roster"}{$roster->getPicture(\Movim\ImageSize::O)}{else}{$contact->getPicture(\Movim\ImageSize::O)}{/if}">
+        <img src="{if="$roster"}{$roster->getPicture(\Movim\ImageSize::M)}{else}{$contact->getPicture(\Movim\ImageSize::M)}{/if}">
     </span>
 
     <div>
