@@ -1529,7 +1529,7 @@ var Chat = {
         let div = null;
         let p = null;
 
-        if (body.includes('&gt; ')) {
+        if (!body.startsWith('<code ') && body.includes('&gt; ')) {
             body.split("\n").forEach(line => {
                 if (line.startsWith('&gt; ') || line == '&gt;') {
                     p = null;
