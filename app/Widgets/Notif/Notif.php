@@ -159,7 +159,6 @@ class Notif extends Base
         }
 
         $session->set('notifs', $notifs);
-
         Wrapper::getInstance()->iterate('notifs', (new Packet)->pack($notifs), user: $this->me, sessionId: $this->sessionId);
     }
 
@@ -178,9 +177,10 @@ class Notif extends Base
      * @param string $key The key to group the notifications
      * @return void
      */
-    public function ajaxClear($key)
+    public function ajaxClear(string $key)
     {
         $session = linker($this->sessionId)->session;
+
         $notifs = $session->get('notifs');
 
         if ($notifs != null && array_key_exists($key, $notifs)) {
@@ -206,7 +206,7 @@ class Notif extends Base
         }
 
         $session->set('notifs', $notifs);
-        Wrapper::getInstance()->iterate('notifs_clear', (new Packet)->pack($key), sessionId: $this->sessionId);
+        Wrapper::getInstance()->iterate('notifs', (new Packet)->pack($notifs), user: $this->me, sessionId: $this->sessionId);
     }
 
     /**

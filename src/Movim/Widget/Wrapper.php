@@ -207,8 +207,7 @@ class Wrapper
                             is_array($widget->filters)
                             && array_key_exists($key . '_' . $method, $widget->filters)
                         ) {
-                            $session = linker($sessionId)->session;
-                            $notifsKey = $session->get('notifs_key');
+                            $notifsKey = linker($sessionId)->session->get('notifs_key');
 
                             if ($notifsKey == 'blurred') {
                                 $this->callWidget($widget, $method, $packet);

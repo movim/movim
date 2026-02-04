@@ -11,7 +11,6 @@ class Shortcuts extends \Movim\Widget\Base
         $this->addcss('shortcuts.css');
         $this->addjs('shortcuts.js');
         $this->registerEvent('notifs', 'onNotifs');
-        $this->registerEvent('notifs_clear', 'onNotifsClear');
         $this->registerEvent('displayed', 'onDisplayed');
     }
 
@@ -23,29 +22,13 @@ class Shortcuts extends \Movim\Widget\Base
 
     public function onNotifs(Packet $packet)
     {
-        $this->refreshNotifs($packet->content);
-    }
-
-    public function onNotifsClear(Packet $packet)
-    {
-        $exploded = explode('|', $packet->content);
-
-        if ($exploded[0] == 'chat' && isset($exploded[1])) {
-            $this->rpc('Shortcuts.clear', $exploded[1]);
-        }
+        $this->ajaxGet();
     }
 
     public function ajaxGet()
     {
-        $notifs = linker($this->sessionId)->session->get('notifs');
+        $notifs = linker($this->sessionId)->session->get('notifs', []);
 
-        if (!is_array($notifs)) return;
-
-        $this->refreshNotifs($notifs);
-    }
-
-    public function refreshNotifs(array $notifs)
-    {
         $jids = [];
         $notifs = array_reverse($notifs);
 
@@ -55,8 +38,6 @@ class Shortcuts extends \Movim\Widget\Base
                 $jids[$exploded[1]] = $count;
             }
         }
-
-        if (empty($jids)) return;
 
         $conferences = $this->me->session
             ->conferences()

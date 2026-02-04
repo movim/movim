@@ -10,6 +10,7 @@ use App\Message;
 use App\OpenChat;
 use App\Roster;
 use App\Widgets\Chat\Chat;
+use App\Widgets\Notif\Notif;
 use Carbon\Carbon;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;
@@ -240,11 +241,8 @@ class Chats extends Base
         }
 
         $this->rpc('Stories_ajaxHttpGet');
-        Wrapper::getInstance()->iterate(
-            'notifs_clear',
-            (new Packet)->pack('chat|' . $jid),
-            sessionId: $this->sessionId
-        );
+
+        (new Notif($this->me, sessionId: $this->sessionId))->ajaxClear('chat|' . $jid);
     }
 
     public function prepareCalls()

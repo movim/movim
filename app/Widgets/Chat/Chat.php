@@ -1285,7 +1285,12 @@ class Chat extends \Movim\Widget\Base
                 : (new Chats(user: $this->me, sessionId: $this->sessionId))->chatOpen($jid);
         }
 
-        Wrapper::getInstance()->iterate('chat_counter', (new Packet)->pack($this->me->unreads()), user: $this->me, sessionId: $this->sessionId);
+        Wrapper::getInstance()->iterate(
+            'chat_counter',
+            (new Packet)->pack($this->me->unreads()),
+            user: $this->me,
+            sessionId: $this->sessionId
+        );
 
         if ($unreadsCount > 0) {
             $this->rpc('Chat.insertSeparator', $unreadsCount);
