@@ -75,12 +75,12 @@
             <span class="info" title="{$c->prepareDate($post->published)}">
                 {$count = $post->pictures->count()}
                 {if="$count > 1"}
-                    {$count} <i class="material-symbols">collections</i> •
+                    {$count} <i class="material-symbols">collections</i>
                 {/if}
 
                 {$count = $post->user_views_count}
                 {if="$count > 2"}
-                    {$count} <i class="material-symbols">visibility</i> •
+                    {$count} <i class="material-symbols">visibility</i>
                 {/if}
 
                 {$count = $post->likes->count()}
@@ -92,6 +92,8 @@
                 {if="$count > 0"}
                     {$count} <i class="material-symbols">chat_bubble_outline</i>
                 {/if}
+
+                {$c->prepareDate($post->published, true)}
             </span>
         </p>
     </div>

@@ -7,7 +7,7 @@ use Movim\i18n\Locale as I18nLocale;
 
 class Locale
 {
-    private ?string $language = null;
+    public ?string $language = null;
     private array $translations = [];
     private ?User $user = null;
 

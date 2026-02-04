@@ -27,7 +27,7 @@ class Shortcuts extends \Movim\Widget\Base
 
     public function ajaxGet()
     {
-        $notifs = linker($this->sessionId)->session->get('notifs', []);
+        $notifs = linker($this->sessionId)->session->get('notifs') ?? [];
 
         $jids = [];
         $notifs = array_reverse($notifs);
