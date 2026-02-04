@@ -23,14 +23,18 @@ class AdHoc
         return $query;
     }
 
-    public static function submit(string $node, array $data, string $sessionid)
-    {
+    public static function submit(
+        string $node,
+        array $data,
+        string $sessionid,
+        ?string $action = 'complete'
+    ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $command = $dom->createElementNS('http://jabber.org/protocol/commands', 'command');
         $dom->appendChild($command);
         $command->setAttribute('sessionid', $sessionid);
         $command->setAttribute('node', $node);
-        $command->setAttribute('action', 'complete');
+        $command->setAttribute('action', $action);
 
         $x = $dom->createElement('x');
         $x->setAttribute('xmlns', 'jabber:x:data');

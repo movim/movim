@@ -141,7 +141,7 @@ span.icon.bubble.stories:active {
     transform: scale(.95);
 }
 
-span.icon.bubble.status:not(.offline):not(.composing):not([data-counter]):not(.location) {
+span.icon.bubble.status:not(.composing):not([data-counter]):not(.location) {
     mask-image: url(../img/avatar_mask.svg);
     -webkit-mask-origin: unset;
     mask-origin: unset;

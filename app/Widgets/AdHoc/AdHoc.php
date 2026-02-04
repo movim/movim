@@ -62,6 +62,7 @@ class AdHoc extends \Movim\Widget\Base
             $view->assign('attributes', $command->attributes());
             $view->assign('actions', null);
             $view->assign('status', (string)$command->attributes()->status);
+
             if (isset($command->actions)) {
                 $view->assign('actions', $command->actions);
             }
@@ -147,13 +148,14 @@ class AdHoc extends \Movim\Widget\Base
             ->request();
     }
 
-    public function ajaxSubmit(string $jid, string $node, $data, $sessionid)
+    public function ajaxSubmit(string $jid, string $node, $data, string $sessionid, string $action)
     {
         $s = $this->xmpp(new Submit);
         $s->setTo($jid)
             ->setNode($node)
             ->setData(formToArray($data))
             ->setSessionid($sessionid)
+            ->setAction($action)
             ->request();
     }
 

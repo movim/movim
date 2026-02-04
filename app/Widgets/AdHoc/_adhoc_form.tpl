@@ -11,20 +11,23 @@
     </button>
 
     {if="$status != 'completed'"}
-        <button id="adhoc_action" data-jid="{$jid}" onclick="AdHoc.submit(this.dataset.jid)" class="button flat">
-            {if="$actions != null"}
-                {if="isset($actions->next)"}
-                    {$c->__('button.next')}
-                {elseif="isset($actions->previous)"}
-                    {$c->__('button.previous')}
-                {elseif="isset($actions->cancel)"}
-                    {$c->__('button.cancel')}
-                {elseif="isset($actions->complete)"}
-                    {$c->__('button.submit')}
-                {/if}
-            {else}
+        {if="$actions != null"}
+            {loop="$actions"}{loop="$value"}
+                <button id="adhoc_action" data-jid="{$jid}" data-action="{$value->getName()}"
+                    onclick="AdHoc.submit(this.dataset.jid, this.dataset.action)" class="button flat">
+                    {if="$value->getName() == 'next'"}
+                        {$c->__('button.next')}
+                    {elseif="$value->getName() == 'prev'"}
+                        {$c->__('button.previous')}
+                    {elseif="$value->getName() == 'complete'"}
+                        {$c->__('button.submit')}
+                    {/if}
+                </button>
+            {/loop}{/loop}
+        {else}
+            <button id="adhoc_action" data-jid="{$jid}" onclick="AdHoc.submit(this.dataset.jid, 'complete')" class="button flat">
                 {$c->__('button.submit')}
-            {/if}
-        </button>
+            </button>
+        {/if}
     {/if}
 </footer>
