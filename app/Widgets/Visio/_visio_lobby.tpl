@@ -3,7 +3,7 @@
         <li>
             {if="isset($contact)"}
                 <span class="primary icon bubble">
-                    <img src="{$contact->getPicture(\Movim\ImageSize::O)}">
+                    <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
                 </span>
                 <div>
                     <p class="line">
@@ -19,7 +19,7 @@
                 </div>
             {else}
                 <span class="primary icon bubble">
-                    <img src="{$conference->getPicture(\Movim\ImageSize::O)}">
+                    <img src="{$conference->getPicture(\Movim\ImageSize::M)}">
                 </span>
                 <div>
                     <p class="line">
