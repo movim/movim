@@ -1,7 +1,7 @@
 {loop="$shortcuts"}
-    {if="get_class($value) == 'App\Roster'"}
+    {if="get_class($value) == 'App\Roster' && $counter = $c->me->unreads($value->jid)"}
         <li onclick="Search.chat('{$value->jid|echapJS}', false)" data-jid="{$value->jid|echapJS}">
-            <span class="primary icon bubble" data-counter="{$c->me->unreads($value->jid)}">
+            <span class="primary icon bubble" data-counter="{$counter}">
                 <img src="{$value->getPicture()}">
             </span>
             <span class="control icon gray">
@@ -11,9 +11,9 @@
                 <p class="line">{$value->truename}</p>
             </div>
         </li>
-    {elseif="get_class($value) == 'App\Contact'"}
+    {elseif="get_class($value) == 'App\Contact' && $counter = $c->me->unreads($value->id)"}
         <li onclick="Search.chat('{$value->id|echapJS}', false)" data-jid="{$value->id|echapJS}">
-            <span class="primary icon bubble" data-counter="{$c->me->unreads($value->id)}">
+            <span class="primary icon bubble" data-counter="{$counter}">
                 <img src="{$value->getPicture()}">
             </span>
             <span class="control icon gray">
