@@ -39,6 +39,8 @@ class CommunityPosts extends Base
     {
         $comment = AppPost::find($packet->content);
 
+        if (!$comment) return;
+
         if ($comment->isLike()) {
             $this->toast($packet->content
                 ? $this->__('post.comment_like_published')
