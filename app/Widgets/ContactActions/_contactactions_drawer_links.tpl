@@ -2,7 +2,7 @@
 <ul class="list thick">
     {loop="$links"}
         {autoescape="off"}
-            {$resolved = $value->resolvedUrl->cache}
+            {$resolved = $value->resolvedUrl}
             {if="$resolved"}
                 {$c->prepareEmbedUrl($value)}
                 {$resolvedLink = true}
