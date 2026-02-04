@@ -1,4 +1,4 @@
-var version = 7;
+var version = 8;
 var cacheKey = 'movim_' + version;
 
 const channel = new BroadcastChannel('messages');
@@ -14,14 +14,12 @@ self.addEventListener('install', (e) => {
 
     e.waitUntil(
         caches.open(cacheKey).then((cache) => cache.addAll([
-            '/scripts/libsignal_protocol.js',
+            '/scripts/libsignal_protocol.min.js',
             '/scripts/thumbhash.js',
             '/scripts/movim_emoji_list.js',
             '/theme/audio/call.opus',
             '/theme/audio/message.ogg',
-            '/theme/fonts/MaterialSymbols/font.css',
             '/theme/fonts/MaterialSymbols/MaterialSymbols-Outlined.woff2',
-            '/theme/fonts/Roboto/font.css',
             '/theme/fonts/Roboto/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2',
             '/theme/fonts/Roboto/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2',
             '/theme/fonts/Roboto/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2',

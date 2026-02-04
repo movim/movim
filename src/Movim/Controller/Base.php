@@ -96,11 +96,12 @@ class Base
         $this->page->addScript('movim_base.js');
         $this->page->addScript('movim_favicon.js');
         $this->page->addScript('movim_avatar.js');
-        $this->page->addScript('movim_emojis_list.js');
         $this->page->addScript('movim_rpc.js');
         $this->page->addScript('movim_tpl.js');
-        $this->page->addScript('libsignal_protocol.js');
-        $this->page->addScript('thumbhash.js');
+        $this->page->addScript('movim_emojis_list.js', noTime: true);
+        // https://github.com/conversejs/converse.js/blob/master/3rdparty/libsignal-protocol.min.js
+        $this->page->addScript('libsignal_protocol.min.js', noTime: true);
+        $this->page->addScript('thumbhash.js', noTime: true);
 
         if (!$this->public) {
             $this->page->addScript('movim_websocket.js');

@@ -259,9 +259,9 @@ class Builder
         return strip_tags($dom->saveXML($dom->documentElement), '<meta><link>');
     }
 
-    public function addScript(string $script)
+    public function addScript(string $script, ?bool $noTime = false)
     {
-        $this->scripts[] = urilize('scripts/' . $script);
+        $this->scripts[] = urilize('scripts/' . $script, $noTime);
     }
 
     public function addCSS(string $file)
