@@ -3,6 +3,7 @@
 namespace App\Widgets\Presence;
 
 use App\Post;
+use App\Presence as AppPresence;
 use App\Widgets\Chats\Chats;
 use App\Widgets\Visio\Visio;
 use Movim\Daemon\Session;
@@ -198,17 +199,14 @@ class Presence extends Base
             return false;
         }
 
-        // We reload the user instance in memory
-        $presence = $this->me->session?->presence;
-        $contact = $this->me->contact;
+        $presence = AppPresence::where('resource', $this->me->session->resource)->firstOrNew();
+        $contact = $this->me->contact ?? new \App\Contact;
 
-        $presencetpl = $this->tpl();
-
-        $presencetpl->assign('me', ($contact == null) ? new \App\Contact : $contact);
-        $presencetpl->assign('presence', ($presence == null) ? new \App\Presence : $presence);
-        $presencetpl->assign('presencetxt', getPresencesTxt());
-
-        return $presencetpl->draw('_presence', true);
+        return $this->view('_presence', [
+            'me' => $contact,
+            'presence' => $presence,
+            'presencetxt' => getPresencesTxt(),
+        ]);
     }
 
     public function display()
