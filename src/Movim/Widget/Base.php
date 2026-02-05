@@ -170,7 +170,7 @@ class Base
      * @param timestamp $string
      * @return string
      */
-    function prepareDate(string $datetime = '', bool $compact = false, bool $hours = true): string
+    function prepareDate(string $datetime = '', ?bool $compact = false, ?bool $hours = true): string
     {
         global $language;
 
@@ -182,7 +182,7 @@ class Base
             return $carbon->isoFormat('D MMMM YYYY H:mm');
         }
 
-        if ($carbon->diffInSeconds() < 3600 * 24) {
+        if ($carbon->isToday()) {
             if ($hours) {
                 return $carbon->isoFormat('H:mm');
             }
