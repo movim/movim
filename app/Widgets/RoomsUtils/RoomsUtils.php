@@ -445,14 +445,16 @@ class RoomsUtils extends Base
     /**
      * @brief Display the add room form
      */
-    public function ajaxAdd($room = false, $name = null, $create = false)
+    public function ajaxAdd(?string $room = null, ?string $name = null, ?bool $create = false)
     {
         $view = $this->tpl();
 
-        $view->assign('info', \App\Info::where('server', $room)
+        $view->assign('info', $room
+            ? \App\Info::where('server', $room)
             ->where('node', '')
             ->whereCategory('conference')
-            ->first());
+            ->first()
+            : null);
         $view->assign('mucservice', \App\Info::where('parent', $this->me->session->host)
             ->whereDoesntHave('identities', function ($query) {
                 $query->where('category', 'gateway');
@@ -464,8 +466,9 @@ class RoomsUtils extends Base
         $view->assign('create', $create);
         $view->assign(
             'conference',
-            $this->me->session->conferences()
-                ->where('conference', $room)->first()
+            $room
+                ? $this->me->session->conferences()->where('conference', $room)->first()
+                : null
         );
         $view->assign('name', $name);
         $view->assign('username', $this->me->username);
@@ -491,11 +494,14 @@ class RoomsUtils extends Base
     /**
      * Resolve the room slug from the name
      */
-    public function ajaxResolveSlug($name)
+    public function ajaxResolveSlug(string $name)
     {
         $service = Info::where('parent', $this->me->session->host)
             ->whereCategory('conference')
             ->whereType('text')
+            ->whereDoesntHave('identities', function ($query)  {
+                $query->where('category', 'gateway');
+            })
             ->first();
 
         $slugified = slugify($name);

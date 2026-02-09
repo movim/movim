@@ -12,7 +12,6 @@ use App\Post;
 use App\Contact;
 use App\Info;
 use App\Widgets\ContactActions\ContactActions;
-use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post as WidgetPost;
 use Moxl\Xec\Action\ExtendedChannelSearch\Search as RoomSearch;
 
@@ -24,12 +23,11 @@ class Search extends Base
         $this->addcss('search.css');
     }
 
-    public function ajaxRequest($chatroomActions = false)
+    public function ajaxRequest(?bool $chatroomActions = false)
     {
-        $view = $this->tpl();
-
-        $view->assign('chatroomactions', $chatroomActions);
-        $this->drawer('search', $view->draw('_search'), true);
+        $this->drawer('search', $this->view('_search', [
+            'chatroomactions' => $chatroomActions
+        ]), true);
 
         $this->rpc('Search.init');
     }
