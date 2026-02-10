@@ -15,7 +15,7 @@
     display: none;
 }
 
-#publish > div.block {
+#publish>div.block {
     padding-bottom: 1rem;
 }
 
@@ -27,32 +27,41 @@
     min-height: 25rem;
 }
 
-#publish span.privacy form > div .checkbox > input[type="checkbox"] + label,
-#publish span.comments_disabled form > div .checkbox > input[type="checkbox"] + label {
+#publish span.privacy form>div .checkbox>input[type="checkbox"]+label,
+#publish span.comments_disabled form>div .checkbox>input[type="checkbox"]+label {
     top: 0.5rem;
     left: 0.5rem;
     height: 3rem;
     width: 3rem;
 }
 
-#publish span.privacy form > div .checkbox > input[type="checkbox"]:checked + label,
-#publish span.comments_disabled form > div .checkbox > input[type="checkbox"]:checked + label {
+aside:has(+div #publish) {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+aside:has(+div #publish div[data-type="article"] textarea:focus) {
+    opacity: 1;
+}
+
+#publish span.privacy form>div .checkbox>input[type="checkbox"]:checked+label,
+#publish span.comments_disabled form>div .checkbox>input[type="checkbox"]:checked+label {
     left: 2.5rem;
 }
 
-#publish span.privacy form > div .checkbox > input[type="checkbox"] + label i:before {
+#publish span.privacy form>div .checkbox>input[type="checkbox"]+label i:before {
     content: 'lock';
 }
 
-#publish span.privacy form > div .checkbox > input[type="checkbox"]:checked + label i:before {
+#publish span.privacy form>div .checkbox>input[type="checkbox"]:checked+label i:before {
     content: 'wifi_tethering';
 }
 
-#publish span.comments_disabled form > div .checkbox > input[type="checkbox"] + label i:before {
+#publish span.comments_disabled form>div .checkbox>input[type="checkbox"]+label i:before {
     content: 'insert_comment';
 }
 
-#publish span.comments_disabled form > div .checkbox > input[type="checkbox"]:checked + label i:before {
+#publish span.comments_disabled form>div .checkbox>input[type="checkbox"]:checked+label i:before {
     content: 'comments_disabled';
 }
 

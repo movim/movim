@@ -36,7 +36,7 @@
     </ul>
 </header>
 
-<div class="block">
+<div class="block" data-type="{$type}">
     <ul class="tabs wide two">
         <li {if="$type == 'brief'"}class="active"{/if}>
             <a href="#" onclick="Publish.get('brief')" title="{$c->__('publish.brief_title')}">
