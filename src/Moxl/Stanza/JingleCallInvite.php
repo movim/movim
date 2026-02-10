@@ -6,7 +6,7 @@ class JingleCallInvite
 {
     public static function invite(string $to, string $id, string $room, bool $video = false)
     {
-        $dom = Message::factory($to, 'groupchat');
+        $dom = Message::factory($to, 'groupchat', messageId: generateUUID());
 
         $invite = $dom->createElementNS('urn:xmpp:call-invites:0', 'invite');
         $invite->setAttribute('id', $id);
@@ -32,7 +32,7 @@ class JingleCallInvite
 
     public static function retract(string $to, string $id)
     {
-        $dom = Message::factory($to, 'groupchat');
+        $dom = Message::factory($to, 'groupchat', messageId: generateUUID());
 
         $retract = $dom->createElementNS('urn:xmpp:call-invites:0', 'retract');
         $retract->setAttribute('id', $id);
@@ -48,7 +48,7 @@ class JingleCallInvite
 
     public static function accept(string $to, string $id)
     {
-        $dom = Message::factory($to, 'groupchat');
+        $dom = Message::factory($to, 'groupchat', messageId: generateUUID());
 
         $accept = $dom->createElementNS('urn:xmpp:call-invites:0', 'accept');
         $accept->setAttribute('id', $id);
@@ -64,7 +64,7 @@ class JingleCallInvite
 
     public static function reject(string $to, string $id)
     {
-        $dom = Message::factory($to, 'groupchat');
+        $dom = Message::factory($to, 'groupchat', messageId: generateUUID());
 
         $reject = $dom->createElementNS('urn:xmpp:call-invites:0', 'reject');
         $reject->setAttribute('id', $id);
@@ -80,7 +80,7 @@ class JingleCallInvite
 
     public static function left(string $to, string $id)
     {
-        $dom = Message::factory($to, 'groupchat');
+        $dom = Message::factory($to, 'groupchat', messageId: generateUUID());
 
         $left = $dom->createElementNS('urn:xmpp:call-invites:0', 'left');
         $left->setAttribute('id', $id);
