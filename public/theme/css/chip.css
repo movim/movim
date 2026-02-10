@@ -18,6 +18,7 @@
 .chip.thin {
     line-height: 3rem;
     padding: 0 1rem;
+    margin: 0;
 }
 
 p+p>.chip:first-child,
