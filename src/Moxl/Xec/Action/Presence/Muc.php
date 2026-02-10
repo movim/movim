@@ -27,7 +27,7 @@ class Muc extends Action
         $session = linker($this->sessionId)->session;
 
         if (empty($this->_nickname)) {
-            $this->_nickname = $session->get('username');
+            $this->_nickname = linker($this->sessionId)->user->session->username;
         }
 
         if ($this->_mam == false && $this->_mam2 == false) {

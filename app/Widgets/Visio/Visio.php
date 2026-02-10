@@ -630,7 +630,7 @@ class Visio extends Base
 
             $muc = $this->xmpp(new Muc);
             $muc->setTo($mujiConferenceJid)
-                ->setNickname($conference->nickname)
+                ->setNickname($conference->nick)
                 ->enableCreate()
                 ->enableMujiPreparing()
                 ->noNotify()
