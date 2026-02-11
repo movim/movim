@@ -95,7 +95,7 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
 
         } else if (event.track.kind === 'video') {
             if (this.tracksScreen[event.transceiver.mid]) {
-            //if (this.remoteVideo.srcObject && this.remoteVideo.srcObject.id != srcObject.id) {
+                //if (this.remoteVideo.srcObject && this.remoteVideo.srcObject.id != srcObject.id) {
                 this.remoteScreenVideo.srcObject = srcObject;
                 this.tracksTypes['mid' + event.transceiver.mid] = 'video_screen';
                 this.remoteScreenVideo.oncanplay = event => {
@@ -343,15 +343,15 @@ MovimJingleSession.prototype.updateContent = function () {
         localDescription = newMedias.join('m=');
     }
 
-    createdMedias.forEach(mid => {
+    if (createdMedias.length > 0) {
         changed = true;
-        Visio_ajaxContentAdd(this.fullJid, localDescription, this.id, mid);
-    });
+        Visio_ajaxContentAdd(this.fullJid, localDescription, this.id, createdMedias);
+    }
 
-    destroyedMedias.forEach(mid => {
+    if (destroyedMedias.length > 0) {
         changed = true;
-        Visio_ajaxContentRemove(this.fullJid, this.oldLocalDescription, this.id, mid);
-    });
+        Visio_ajaxContentRemove(this.fullJid, this.oldLocalDescription, this.id, destroyedMedias);
+    }
 
     // Nothing added, nothing removed, lets update everything...
     if (changed == false) {
