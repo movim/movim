@@ -18,6 +18,7 @@ var MovimVisio = {
     activeSpeakerIntervalId: null,
 
     bundleRegex: 'a=group:(\\S+) (.+)',
+    msidRegex: 'a=msid:(.+)',
 
     load: function () {
         MovimVisio.localVideo = document.getElementById('local_video');

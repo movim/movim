@@ -3,10 +3,14 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     this.jid = jid;
     this.fullJid = fullJid;
     this.tracksTypes = {};
+    this.tracksScreen = {};
     this.name = name;
     this.avatarUrl = avatarUrl;
     this.audioLevel = 0;
     this.lastPostMessage = 0;
+
+    this.audioSharingSender = null;
+    this.screenSharingSender = null;
 
     this.pc = new RTCPeerConnection({
         iceServers: MovimVisio.services,
@@ -45,6 +49,11 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     this.remoteAudio.autoplay = true;
     this.participant.appendChild(this.remoteAudio);
 
+    this.remoteScreenAudio = document.createElement('audio');
+    this.remoteScreenAudio.classList.add('screen');
+    this.remoteScreenAudio.autoplay = true;
+    this.participant.appendChild(this.remoteScreenAudio);
+
     if (this.name) {
         this.participant.dataset.name = this.name;
     }
@@ -73,16 +82,22 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
         }
 
         if (event.track.kind == 'audio') {
-            this.remoteAudio.srcObject = srcObject;
-            this.participant.classList.remove('audio_off');
+            if (this.tracksScreen[event.transceiver.mid]) {
+                this.remoteScreenAudio.srcObject = srcObject;
+                this.tracksTypes['mid' + event.transceiver.mid] = 'audio_screen';
+            } else {
+                this.remoteAudio.srcObject = srcObject;
+                this.participant.classList.remove('audio_off');
+                this.handleRemoteAudio();
+                this.tracksTypes['mid' + event.transceiver.mid] = 'audio';
+            }
 
-            this.tracksTypes['mid' + event.transceiver.mid] = 'audio';
 
-            this.handleRemoteAudio();
         } else if (event.track.kind === 'video') {
-            if (this.remoteVideo.srcObject && this.remoteVideo.srcObject.id != srcObject.id) {
+            if (this.tracksScreen[event.transceiver.mid]) {
+            //if (this.remoteVideo.srcObject && this.remoteVideo.srcObject.id != srcObject.id) {
                 this.remoteScreenVideo.srcObject = srcObject;
-                this.tracksTypes['mid' + event.transceiver.mid] = 'screen';
+                this.tracksTypes['mid' + event.transceiver.mid] = 'video_screen';
                 this.remoteScreenVideo.oncanplay = event => {
                     this.participant.classList.remove('screen_off');
                 }
@@ -230,6 +245,11 @@ MovimJingleSession.prototype.onContentAdd = function (sdp, mid) {
     remoteDescription += sdp.match('m=[^]*');
     remoteDescription = remoteDescription.replace(/^a=group.*/m, sdp.match(/a=group.*/)[0]);
 
+    let content = sdp.match('^a=content:(.*)');
+    if (content && content.includes('slides')) {
+        this.tracksScreen[mid] = true;
+    }
+
     this.pc.setRemoteDescription({ 'sdp': remoteDescription + "\n", 'type': 'offer' })
         .then(() => {
             this.pc.createAnswer()
@@ -242,6 +262,11 @@ MovimJingleSession.prototype.onContentAdd = function (sdp, mid) {
 
 MovimJingleSession.prototype.onContentModify = function (sdp, mid) {
     // TODO, implement mid
+
+    let content = sdp.match('^a=content:(.*)');
+    if (content && content.includes('slides')) {
+        this.tracksScreen[mid] = true;
+    }
 
     this.pc.setRemoteDescription({ 'sdp': sdp + "\n", 'type': 'offer' })
         .then(() => {
@@ -258,6 +283,8 @@ MovimJingleSession.prototype.onContentRemove = function (sdp, mid) {
     let parts = remoteDescription.split('m=');
 
     let filtered = parts.filter(part => !part.includes('a=mid:' + mid));
+
+    delete this.tracksScreen[mid];
 
     remoteDescription = filtered.join('m=');
     this.pc.setRemoteDescription({ 'sdp': sdp + "\n", 'type': 'offer' })
@@ -294,9 +321,31 @@ MovimJingleSession.prototype.updateContent = function () {
 
     let changed = false;
 
+    let localDescription = this.pc.localDescription.sdp;
+    let medias = this.pc.localDescription.sdp.split('m=');
+
+    // Inject RFC4796 content attribute to respect XEP-0507: Jingle Content Category
+    if (this.audioSharingSender || this.screenSharingSender) {
+        let ids = [];
+
+        if (this.audioSharingSender) ids.push(this.audioSharingSender.track.id);
+        if (this.screenSharingSender) ids.push(this.screenSharingSender.track.id);
+
+        let newMedias = medias.map(media => {
+            let msids = media.match(MovimVisio.msidRegex);
+            if (msids && msids[1].split(' ').some(id => ids.includes(id))) {
+                return media + 'a=content:slides' + "\n";
+            }
+
+            return media;
+        });
+
+        localDescription = newMedias.join('m=');
+    }
+
     createdMedias.forEach(mid => {
         changed = true;
-        Visio_ajaxContentAdd(this.fullJid, this.pc.localDescription.sdp, this.id, mid);
+        Visio_ajaxContentAdd(this.fullJid, localDescription, this.id, mid);
     });
 
     destroyedMedias.forEach(mid => {
@@ -306,7 +355,7 @@ MovimJingleSession.prototype.updateContent = function () {
 
     // Nothing added, nothing removed, lets update everything...
     if (changed == false) {
-        Visio_ajaxContentModify(this.fullJid, this.pc.localDescription.sdp, this.id);
+        Visio_ajaxContentModify(this.fullJid, localDescription, this.id);
     }
 }
 
@@ -329,15 +378,25 @@ MovimJingleSession.prototype.onInitiateSDP = function (sdp) {
 }
 
 MovimJingleSession.prototype.enableScreenSharing = function () {
-    track = MovimVisio.screenSharing.srcObject.getTracks()[0];
-
-    if (this.screenSharingSender) {
-        this.screenSharingSender.replaceTrack(track).then(() => {
-            this.unmute(track);
-        });
-    } else {
-        this.screenSharingSender = this.pc.addTrack(track);
-    }
+    MovimVisio.screenSharing.srcObject.getTracks().forEach(track => {
+        if (track.kind == 'video') {
+            if (this.screenSharingSender) {
+                this.screenSharingSender.replaceTrack(track).then(() => {
+                    this.unmute(track);
+                });
+            } else {
+                this.screenSharingSender = this.pc.addTrack(track);
+            }
+        } else {
+            if (this.audioSharingSender) {
+                this.audioSharingSender.replaceTrack(track).then(() => {
+                    this.unmute(track);
+                });
+            } else {
+                this.audioSharingSender = this.pc.addTrack(track);
+            }
+        }
+    });
 }
 
 MovimJingleSession.prototype.disableScreenSharing = function () {
@@ -373,7 +432,7 @@ MovimJingleSession.prototype.onMute = function (name) {
             this.participant.classList.add('video_off');
         }
 
-        if (this.tracksTypes[name] == 'screen') {
+        if (this.tracksTypes[name] == 'video_screen') {
             this.participant.classList.add('screen_off');
         }
     }
@@ -389,7 +448,7 @@ MovimJingleSession.prototype.onUnmute = function (name) {
             this.participant.classList.remove('video_off');
         }
 
-        if (this.tracksTypes[name] == 'screen') {
+        if (this.tracksTypes[name] == 'video_screen') {
             this.participant.classList.remove('screen_off');
         }
     }

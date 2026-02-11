@@ -37,6 +37,7 @@ class SDPtoJingle
     private $regex = [
         'bandwidth'       => "/^b=(\w+):(\d+)/i",
         'candidate'       => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay|ufrag)\s?(.+)?/i",
+        'content'         => "/^a=content:(\S+)/i",
         'crypto'          => "/^a=crypto:(\d{1,9}) (\w+) (\S+)( (\S+))?/i",
         'extmap'          => "/^a=extmap:([^\s\/]+)(\/([^\s\/]+))? (\S+)/i",
         'fingerprint'     => "/^a=fingerprint:(\S+) (\S+)/i",
@@ -344,6 +345,14 @@ class SDPtoJingle
 
                         case 'maxptime':
                             $description->addAttribute('maxptime', $matches[1]);
+                            break;
+
+                        case 'content':
+                            foreach(explode(',', $matches[1]) as $contentCategory) {
+                                $category = $description->addChild('category');
+                                $category->addAttribute('xmlns', 'urn:xmpp:jingle:apps:category:0');
+                                $category->addAttribute('name', trim($contentCategory));
+                            }
                             break;
 
                         // http://xmpp.org/extensions/xep-0338.html

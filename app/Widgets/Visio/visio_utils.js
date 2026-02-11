@@ -210,7 +210,7 @@ var VisioUtils = {
                     video: {
                         cursor: "always"
                     },
-                    audio: false
+                    audio: true
                 });
 
                 MovimVisio.screenSharing.classList.add('sharing');
