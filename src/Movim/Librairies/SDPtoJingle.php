@@ -128,7 +128,7 @@ class SDPtoJingle
         }
     }
 
-    private function addFmtpParameters($payloadtype, $params)
+    private function addFmtpParameters($payloadtype, array $params)
     {
         foreach ($params as $value) {
             $p = explode('=', trim($value));
@@ -228,6 +228,8 @@ class SDPtoJingle
                                 $payloadtype->addAttribute('channels', $matches[7]);
                             }
 
+                            // In case the a=rtpmap was declared after a=rtcp-fb and a=dmtp
+
                             if (isset($this->fmtpCache[$matches[1]])) {
                                 $this->addFmtpParameters($payloadtype, $this->fmtpCache[$matches[1]]);
                                 unset($this->fmtpCache[$matches[1]]);
@@ -244,7 +246,14 @@ class SDPtoJingle
                         // http://xmpp.org/extensions/xep-0167.html#format
                         case 'fmtp':
                             $params = explode(';', trim($matches[2]));
-                            $this->fmtpCache[$matches[1]] = $params;
+                            if (
+                                isset($payloadtype)
+                                && $matches[1] == $payloadtype->attributes()->id
+                            ) {
+                                $this->addFmtpParameters($payloadtype, $params);
+                            } else {
+                                $this->fmtpCache[$matches[1]] = $params;
+                            }
                             break;
 
                         // http://xmpp.org/extensions/xep-0293.html
@@ -348,7 +357,7 @@ class SDPtoJingle
                             break;
 
                         case 'content':
-                            foreach(explode(',', $matches[1]) as $contentCategory) {
+                            foreach (explode(',', $matches[1]) as $contentCategory) {
                                 $category = $description->addChild('category');
                                 $category->addAttribute('xmlns', 'urn:xmpp:jingle:apps:category:0');
                                 $category->addAttribute('name', trim($contentCategory));
