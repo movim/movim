@@ -172,8 +172,10 @@ var Notif = {
                 };
 
                 if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.getRegistration(SW_URI).then((registration) => {
-                        registration.showNotification(title, options);
+                    navigator.serviceWorker.getRegistration(SW_URI).then(registration => {
+                        if (registration) {
+                            registration.showNotification(title, options);
+                        }
                     });
                 } else {
                     var notification = new Notification(
