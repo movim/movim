@@ -16,6 +16,8 @@ v0.33 (master)
 * Upgrade to Twemoji 17.0.2
 * Rely on Carbon for the dates
 * Optimize page loading
+* Implement XEP-0507: Jingle Content Category
+* Enable audio sharing (when available) when doing screen sharing, refactor the jingle contents handling
 
 v0.32.1
 ---------------------------
