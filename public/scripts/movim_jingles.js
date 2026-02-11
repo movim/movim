@@ -240,15 +240,18 @@ MovimJingleSession.prototype.onCandidate = function (candidate, mid, mlineindex)
     })).catch(error => MovimUtils.logError(error));
 }
 
-MovimJingleSession.prototype.onContentAdd = function (sdp, mid) {
+MovimJingleSession.prototype.onContentAdd = function (sdp, mids) {
     remoteDescription = this.pc.remoteDescription.sdp;
     remoteDescription += sdp.match('m=[^]*');
     remoteDescription = remoteDescription.replace(/^a=group.*/m, sdp.match(/a=group.*/)[0]);
 
-    let content = sdp.match('^a=content:(.*)');
-    if (content && content.includes('slides')) {
-        this.tracksScreen[mid] = true;
-    }
+    sdp.split('m=').forEach(media => {
+        let content = media.match(/a=content:(.*)/);
+        if (content && content.includes('slides')) {
+            let mid = media.match(/a=mid:(.*)/);
+            this.tracksScreen[mid[1]] = true;
+        }
+    });
 
     this.pc.setRemoteDescription({ 'sdp': remoteDescription + "\n", 'type': 'offer' })
         .then(() => {
@@ -278,13 +281,15 @@ MovimJingleSession.prototype.onContentModify = function (sdp, mid) {
         .catch(error => MovimUtils.logError(error));
 }
 
-MovimJingleSession.prototype.onContentRemove = function (sdp, mid) {
+MovimJingleSession.prototype.onContentRemove = function (sdp, mids) {
     remoteDescription = this.pc.remoteDescription.sdp;
     let parts = remoteDescription.split('m=');
 
-    let filtered = parts.filter(part => !part.includes('a=mid:' + mid));
+    // TODO FIXME
 
-    delete this.tracksScreen[mid];
+    /*let filtered = parts.filter(part => !part.includes('a=mid:' + mid));
+
+    mids.forEach(mid => delete this.tracksScreen[mid]);
 
     remoteDescription = filtered.join('m=');
     this.pc.setRemoteDescription({ 'sdp': sdp + "\n", 'type': 'offer' })
@@ -294,7 +299,7 @@ MovimJingleSession.prototype.onContentRemove = function (sdp, mid) {
                 .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription))
                 .catch(MovimUtils.logError);
         })
-        .catch(error => MovimUtils.logError(error));
+        .catch(error => MovimUtils.logError(error));*/
 }
 
 MovimJingleSession.prototype.sessionInitiate = function (fullJid, id, mujiRoom) {

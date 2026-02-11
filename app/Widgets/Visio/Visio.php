@@ -261,12 +261,16 @@ class Visio extends Base
     public function onContentAdd(Packet $packet)
     {
         $jts = new JingletoSDP($packet->content);
+        $mids = [];
+        foreach ($packet->content->content as $content) {
+            array_push($mids, (string)$content->attributes()->name);
+        }
 
         $this->rpc(
             'MovimJingles.onContentAdd',
             \bareJid($packet->from),
             $jts->generate(),
-            (string)$packet->content->content->attributes()->name
+            $mids
         );
     }
 
@@ -285,12 +289,16 @@ class Visio extends Base
     public function onContentRemove(Packet $packet)
     {
         $jts = new JingletoSDP($packet->content);
+        $mids = [];
+        foreach ($packet->content->content as $content) {
+            array_push($mids, (string)$content->attributes()->name);
+        }
 
         $this->rpc(
             'MovimJingles.onContentRemove',
             \bareJid($packet->from),
             $jts->generate(),
-            (string)$packet->content->attributes()->name
+            $mids
         );
     }
 
