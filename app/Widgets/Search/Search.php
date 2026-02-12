@@ -99,9 +99,7 @@ class Search extends Base
             $contacts = Contact::suggest($this->me)->limit(10)->get();
 
             if (validateJid($key) && $key != $this->me->id) {
-                $contact = new Contact;
-                $contact->id = $key;
-                $contacts->push($contact);
+                $contacts->prepend(Contact::firstOrNew(['id' => $key]));
             }
 
             $view->assign('contacts', $contacts);
