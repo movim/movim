@@ -528,7 +528,7 @@ class Chat extends \Movim\Widget\Base
 
             if (!$valid) $messageFile = null;
         } else {
-            $url = Url::resolve(trim($message), now: true);
+            $url = Url::resolve(trim($message), timeout: 0);
 
             if ($url && $url->messageFile !== null) {
                 $messageFile = $url->messageFile;

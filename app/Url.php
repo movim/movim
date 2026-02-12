@@ -8,17 +8,17 @@ use function React\Async\await;
 
 class Url extends Model
 {
-    public static function resolve(?string $url, bool $now = false): ?Url
+    public static function resolve(?string $url, ?int $timeout = 30): ?Url
     {
         if (Validator::url()->isValid($url)) {
             $hash = hash('sha256', $url);
             $dbUrl = \App\Url::where('hash', $hash)->first();
 
             if ($dbUrl) return $dbUrl;
-            if ($now) return null;
+            if ($timeout == 0) return null;
 
             try {
-                $resolved = await(requestResolverWorker($url));
+                $resolved = await(requestResolverWorker($url, $timeout));
 
                 if ($resolved) {
                     $dbUrl = new Url;

@@ -1,4 +1,4 @@
-{$url = $embed->resolve()}
+{$url = $embed->resolve(5)}
 
 {if="$url"}
 <li class="block" id="{$embed->HTMLId}">
@@ -83,5 +83,17 @@
         {/if}
     </div>
 </li>
-
+{else}
+<li class="block" id="{$embed->HTMLId}">
+    <span class="control active icon gray divided" onclick="Publish_ajaxHttpRemoveEmbed({$embed->draft_id}, {$embed->id})">
+        <i class="material-symbols">close</i>
+    </span>
+    <div>
+        <p>
+            <a href="{$embed->url}" target="_blank">
+                {$embed->url}
+            </a>
+        </p>
+    </div>
+</li>
 {/if}
