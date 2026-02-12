@@ -24,10 +24,10 @@
                 <i class="material-symbols">edit</i>
             </span>
             <div  id="publishstorieshead">
-                <p>{$c->__('story.new')}</p>
+                <p>{$c->__('stories.publish')}</p>
             </div>
             <div id="publishstoriespreview">
-                <p>{$c->__('story.new')}</p>
+                <p>{$c->__('stories.publish')}</p>
                 <p>{$c->__('story.new_publish')}</p>
             </div>
             <div  id="publishstoriesheadedit">
@@ -35,7 +35,7 @@
                     style="margin-right: 1rem;">
                     {$c->__('publish.preview')} <i class="material-symbols">arrow_forward</i>
                 </span>
-                <p>{$c->__('story.new')}</p>
+                <p>{$c->__('stories.publish')}</p>
                 <p>{$c->__('story.new_edit')}</p>
             </div>
         </li>

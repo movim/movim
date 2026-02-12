@@ -40,20 +40,20 @@
 
     {if="$c->me->hasPubsub()"}
         <li onclick="MovimUtils.reload('{$c->route('publish')}')"
-            title="{$c->__('page.publish')}"
+            title="{$c->__('post.new')}"
             {if="$page == 'publish'"}class="active"{/if}
         >
             <span class="primary icon">
                 <i class="material-symbols">post_add</i>
             </span>
             <div>
-                <p>{$c->__('page.publish')}</p>
+                <p>{$c->__('post.new')}</p>
             </div>
         </li>
 
         {if="$c->me->hasUpload()"}
             <li onclick="PublishStories_ajaxOpen()"
-                title="{$c->__('page.publish')}"
+                title="{$c->__('stories.publish')}"
             >
                 <span class="primary icon">
                     <i class="material-symbols">web_stories</i>
