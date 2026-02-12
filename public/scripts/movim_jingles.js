@@ -336,14 +336,24 @@ MovimJingleSession.prototype.updateContent = function () {
 
     // Inject RFC4796 content attribute to respect XEP-0507: Jingle Content Category
     if (this.audioSharingSender || this.screenSharingSender) {
-        let ids = [];
-
+        // The following code doesn't work on Firefox
+        /*let ids = [];
         if (this.audioSharingSender) ids.push(this.audioSharingSender.track.id);
         if (this.screenSharingSender) ids.push(this.screenSharingSender.track.id);
 
         let newMedias = medias.map(media => {
             let msids = media.match(MovimVisio.msidRegex);
             if (msids && msids[1].split(' ').some(id => ids.includes(id))) {
+                return media + 'a=content:slides' + "\n";
+            }
+
+            return media;
+        });*/
+
+        // Dumb heuristic
+        let newMedias = medias.map(media => {
+            let mid = media.match(/a=mid:(.*)/);
+            if (mid && parseInt(mid[1]) > 1) {
                 return media + 'a=content:slides' + "\n";
             }
 
