@@ -110,7 +110,7 @@
                         <input
                             {if="$configuration->omemoenabled"}checked{/if}
                             type="checkbox"
-                            onchange="setTimeout(() => MovimUtils.reloadThis(), 1000)"
+                            onchange="window.history.pushState(null, null, '#' + 'config_widget'); setTimeout(() => MovimUtils.reloadThis(), 1000)"
                             id="omemoenabled"
                             name="omemoenabled"/>
                         <label for="omemoenabled"></label>

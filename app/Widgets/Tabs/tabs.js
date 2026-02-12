@@ -14,9 +14,9 @@ var Tabs = {
 
         // We create the list
         for (var i = 0; i < tabs.length; i++) {
-            /*if (window.location.hash == '#' + tabs[i].id + '_tab') {
+            if (window.location.hash == '#' + tabs[i].id) {
                 current = tabs[i].id;
-            }*/
+            }
 
             var li = document.createElement('li');
             li.setAttribute('class', tabs[i].id);
