@@ -67,7 +67,7 @@ class Linker
         global $loop;
 
         $loop->addPeriodicTimer(5, function () {
-            if (($this->timestampSend < time() - 3600 * 24 /* 24h */ || $this->timestampReceive < time() - 60 * 30 /* 30min */)
+            if (($this->timestampSend < time() - 3600 * 12 /* 24h */ || $this->timestampReceive < time() - 60 * 30 /* 30min */)
                 && $this->connected()
             ) {
                 $this->logout();
