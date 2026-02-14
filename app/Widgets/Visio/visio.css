@@ -305,11 +305,12 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 
 #visio .participant:not(.screen_off) video.screen+video {
     position: absolute;
-    bottom: 0.5rem;
-    left: 0.5rem;
+    bottom: 5.5rem;
+    left: 1rem;
     width: 20rem;
     max-width: 40%;
     height: auto;
+    box-shadow: var(--elevation-4);
 }
 
 #visio .participant:not(.screen_off).video_off video.screen+video {
@@ -365,7 +366,7 @@ body>#visio #participants.active:not(.active):has(.participant:nth-child(2)) .pa
     max-width: 100%;
 }
 
-#visio .participant::after,
+#visio .participant span.status,
 #visio .participant::before {
     position: absolute;
     bottom: 5.5rem;
@@ -375,15 +376,16 @@ body>#visio #participants.active:not(.active):has(.participant:nth-child(2)) .pa
     color: white;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.85);
     font-size: 2rem;
-    transition: opacity 0.5s ease-in-out, transform .3s cubic-bezier(.4, 0, .2, 1);
+    background-color: transparent;
+    transition: opacity 0.5s ease-in-out, background-color 0.5s ease-in-out, transform .3s cubic-bezier(.4, 0, .2, 1);
     z-index: 1;
 }
 
-#visio .participant::after {
+#visio .participant span.status::after {
     font-family: 'Material Symbols';
     font-variation-settings: 'FILL' 1;
     content: '\e029';
-    letter-spacing: 1.5rem;
+    letter-spacing: 1.25rem;
     opacity: 0.5;
 }
 
@@ -409,16 +411,60 @@ body>#visio #participants.active:not(.active):has(.participant:nth-child(2)) .pa
     content: attr(data-name);
 }
 
-#visio .participant:not([data-name])::after {
+#visio .participant:not([data-name]) span.status {
     bottom: 2rem;
 }
 
-#visio .participant.audio_off::after {
+#visio .participant span.status.screen_hd::after {
+    content: '\e061 \e052';
+}
+
+#visio .participant span.status.screen_fhd::after {
+    content: '\e061 \f58b';
+}
+
+#visio .participant.audio_off span.status::after {
     content: '\e02b';
 }
 
+#visio .participant.audio_off span.status.screen_hd::after {
+    content: '\e061 \e052 \e02b';
+}
+
+#visio .participant.audio_off span.status.screen_fhd::after {
+    content: '\e061 \f58b \e02b';
+}
+
 #visio .participant.audio_off.video_off::after {
-    content: '\e02b \f83b';
+    content: '\f83b \e02b';
+}
+
+#visio .participant.audio_off.video_off span.status.screen_hd::after {
+    content: '\e061 \e052 \e02b \f83b';
+}
+
+#visio .participant.audio_off.video_off span.status.screen_fhd::after {
+    content: '\e061 \f58b \e02b \f83b';
+}
+
+#visio .participant:not(.screen_off) span.status {
+    bottom: 1rem;
+    left: 1rem;
+    padding: 1rem;
+    padding-right: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--p-red);
+    box-shadow: var(--elevation-4);
+    text-shadow: unset;
+}
+
+#visio .participant:not(.screen_off) span.status::before {
+    content: 'LIVE';
+}
+
+#visio .participant:not(.screen_off) span.status::after {
+    opacity: 1;
+    vertical-align: bottom;
 }
 
 #visio #local_video.video_off,

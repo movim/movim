@@ -54,6 +54,21 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     this.remoteScreenAudio.autoplay = true;
     this.participant.appendChild(this.remoteScreenAudio);
 
+    this.callStatus = document.createElement('span')
+    this.callStatus.classList.add('status');
+    this.participant.appendChild(this.callStatus);
+
+    setInterval(() => {
+        this.callStatus.classList.remove('screen_hd', 'screen_fhd');
+        if (!this.participant.classList.contains('screen_off')) {
+            if (this.remoteScreenVideo.videoWidth >= 1920) {
+                this.callStatus.classList.add('screen_fhd');
+            } else if (this.remoteScreenVideo.videoWidth >= 1280) {
+                this.callStatus.classList.add('screen_hd');
+            }
+        }
+    }, 3000);
+
     if (this.name) {
         this.participant.dataset.name = this.name;
     }
