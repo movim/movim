@@ -144,16 +144,20 @@ var Chat = {
         Chat.toggleAction();
     },
     get: function (jid, light) {
-        if (jid != undefined) {
-            MovimTpl.showPanel();
-            document.querySelector('#chat_widget').innerHTML = '';
-            Chats.setActive(jid);
-        } else {
-            Chats.clearAllActives();
-            Rooms.clearAllActives();
-        }
+        if (MovimUtils.urlParts().page == 'chat') {
+            if (jid != undefined) {
+                MovimTpl.showPanel();
+                document.querySelector('#chat_widget').innerHTML = '';
+                Chats.setActive(jid);
+            } else {
+                Chats.clearAllActives();
+                Rooms.clearAllActives();
+            }
 
-        Chat_ajaxGet(jid, light);
+            Chat_ajaxGet(jid, light);
+        } else if (MovimUtils.urlParts().page == 'space' && MovimUtils.isMobile()) {
+            MovimTpl.hidePanel();
+        }
     },
     getPresences: function (room) {
         if (!MovimUtils.isMobile()) {
@@ -163,7 +167,7 @@ var Chat = {
     getRoom: function (jid) {
         MovimTpl.showPanel();
         document.querySelector('#chat_widget').innerHTML = '';
-        Rooms.setActive(jid);
+        if (typeof Rooms != 'undefined') Rooms.setActive(jid);
 
         Chat_ajaxGetRoom(jid);
     },
@@ -1732,7 +1736,9 @@ MovimWebsocket.attach(function () {
             Chat_ajaxHttpGetEmpty();
         }
 
-        Notif.current('chat');
+        if (MovimUtils.urlParts().page == 'chat') {
+            Notif.current('chat');
+        }
     }
 });
 
@@ -1778,7 +1784,6 @@ MovimEvents.registerWindow('loaded', 'chat', () => {
             }
         });
     }
-
 
     // Really early panel showing in case we have a JID
     var parts = MovimUtils.urlParts();

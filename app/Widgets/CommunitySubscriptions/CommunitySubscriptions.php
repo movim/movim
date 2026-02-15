@@ -10,12 +10,14 @@ class CommunitySubscriptions extends Base
     public function load()
     {
         $this->addjs('communitysubscriptions.js');
+        $this->addcss('communitysubscriptions.css');
     }
 
     public function ajaxHttpGet()
     {
         $view = $this->tpl();
         $view->assign('subscriptions', $this->me->subscriptions()
+            ->spaces(false)
             ->communities()
             ->notComments()
             ->orderBy('server')->orderBy('node')

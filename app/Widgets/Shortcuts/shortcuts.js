@@ -4,9 +4,6 @@ var Shortcuts = {
 
         if (li) {
             li.classList.add('disappear');
-
-            MovimTpl.closeMenu();
-
             setTimeout(e => {
                 parent = li.parentNode;
                 li.remove();

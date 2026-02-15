@@ -12,7 +12,7 @@ class CreateGroupChat extends Action
     protected string $_nick;
     protected $_autojoin;
     protected $_pinned;
-    protected $_notify;
+    protected bool $_notify = true;
 
     public function request()
     {
@@ -22,15 +22,17 @@ class CreateGroupChat extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $this->pack([
-            'jid' => $this->_to,
-            'name' => $this->_name,
-            'nick' => $this->_nick,
-            'autojoin' => $this->_autojoin,
-            'pinned' => $this->_pinned,
-            'notify' => $this->_notify,
-        ]);
-        $this->deliver();
+        if ($this->_notify) {
+            $this->pack([
+                'jid' => $this->_to,
+                'name' => $this->_name,
+                'nick' => $this->_nick,
+                'autojoin' => $this->_autojoin,
+                'pinned' => $this->_pinned,
+                'notify' => $this->_notify,
+            ]);
+            $this->deliver();
+        }
     }
 
     public function error(string $errorId, ?string $message = null)

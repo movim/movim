@@ -25,6 +25,12 @@ class Post extends Base
         $this->registerEvent('pubsub_getitem_errorpresencesubscriptionrequired', 'onPresenceSubscriptionRequired');
         $this->registerEvent('post_refreshed', 'onHandle', 'post');
         $this->registerEvent('post_comment_published', 'onCommentPublished', 'post');
+        $this->registerEvent('chat_counter', 'onCounter', 'post');
+    }
+
+    public function onCounter(Packet $packet)
+    {
+        $this->rpc('MovimUtils.setDataItem', '#postcounter', 'counter', $packet->content);
     }
 
     public function onHandle(Packet $packet)
@@ -275,6 +281,10 @@ class Post extends Base
 
             $view->assign('nsfw', $this->me ? $this->me->nsfw : false);
             $view->assign('post', $post);
+
+            if (!$card) {
+                $view->assign('counter', $this->me->unreads(null, false, true));
+            }
 
             return ($card)
                 ? $view->draw('_post_card')

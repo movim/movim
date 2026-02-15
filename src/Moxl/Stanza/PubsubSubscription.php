@@ -2,13 +2,16 @@
 
 namespace Moxl\Stanza;
 
+use App\Conference;
+use App\Subscription;
+
 class PubsubSubscription
 {
-    private static function generateId($server, $jid, $node)
+    private static function generateId(string $server, string $jid, string $node)
     {
         $id = '';
-        $id .= $server.'<';
-        $id .= $node.'<';
+        $id .= $server . '<';
+        $id .= $node . '<';
         $id .= $jid;
 
         return sha1($id);
@@ -19,15 +22,24 @@ class PubsubSubscription
         return [
             'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
             'pubsub#persist_items' => 'true',
-            'pubsub#access_model' => $pepnode == 'urn:xmpp:pubsub:subscription' ? 'presence' : 'whitelist',
+            'pubsub#access_model' => $pepnode == Subscription::PUBLIC_NODE ? 'presence' : 'whitelist',
             'pubsub#send_last_published_item' => 'never',
             'pubsub#max_items' => 'max',
             'pubsub#notify_retract' => 'true',
         ];
     }
 
-    public static function listAdd(string $server, string $jid, string $node, $title = null, $pepnode = 'urn:xmpp:pubsub:subscription', $withPublishOption = true)
-    {
+    public static function listAdd(
+        string $server,
+        string $jid,
+        string $node,
+        ?string $title = null,
+        ?string $pepnode = Subscription::PUBLIC_NODE,
+        ?bool $withPublishOption = true,
+        ?string $extensionsXML = null,
+        ?int $notifyValue = null,
+        ?bool $pinned = false
+    ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -41,7 +53,7 @@ class PubsubSubscription
         $publish->appendChild($item);
 
         $subscription = $dom->createElement('subscription');
-        $subscription->setAttribute('xmlns', 'urn:xmpp:pubsub:subscription:0');
+        $subscription->setAttribute('xmlns', Subscription::PUBLIC_NODE);
         $subscription->setAttribute('server', $server);
         $subscription->setAttribute('node', $node);
         $item->appendChild($subscription);
@@ -49,6 +61,30 @@ class PubsubSubscription
         if ($title) {
             $title = $dom->createElement('title', $title);
             $subscription->appendChild($title);
+        }
+
+        if ($extensionsXML) {
+            $domExtensions = new \DOMDocument('1.0', 'UTF-8');
+            $domExtensions->loadXML($extensionsXML);
+
+            $extensions = $dom->importNode($domExtensions->documentElement, true);
+            $subscription->appendChild($extensions);
+        } else if ($notifyValue !== null || $pinned == true) {
+            $extensions = $dom->createElement('extensions');
+            $subscription->appendChild($extensions);
+        }
+
+        if ($notifyValue !== null) {
+            $notify = $dom->createElement('notify');
+            $notify->setAttribute('xmlns', Conference::XMLNS_NOTIFICATIONS);
+            $notify->appendChild($dom->createElement(Conference::NOTIFICATIONS[$notifyValue]));
+            $extensions->appendChild($notify);
+        }
+
+        if ($pinned == true) {
+            $pinned = $dom->createElement('pinned');
+            $pinned->setAttribute('xmlns', Conference::XMLNS_PINNED);
+            $extensions->appendChild($pinned);
         }
 
         if ($withPublishOption) {
@@ -66,8 +102,12 @@ class PubsubSubscription
         return $pubsub;
     }
 
-    public static function listRemove(string $server, string $jid, string $node, $pepnode = 'urn:xmpp:pubsub:subscription')
-    {
+    public static function listRemove(
+        string $server,
+        string $jid,
+        string $node,
+        $pepnode = Subscription::PUBLIC_NODE
+    ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');

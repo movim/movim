@@ -29,7 +29,7 @@ class Shortcuts extends \Movim\Widget\Base
     {
         $notifs = linker($this->sessionId)->session->get('notifs') ?? [];
 
-        if (empty($notifs)) return;
+        //if (empty($notifs)) return;
 
         $jids = [];
         $notifs = array_reverse($notifs);
@@ -75,5 +75,12 @@ class Shortcuts extends \Movim\Widget\Base
             '#shortcuts_widget',
             $this->view('_shortcuts', ['shortcuts' => $shortcuts->slice(0, 3)])
         );
+    }
+
+    public function display()
+    {
+        $this->view->assign('page', $this->_view);
+        $this->view->assign('chatCounter', $this->me
+            ? $this->me->unreads(true) : 0);
     }
 }

@@ -2,7 +2,7 @@
     <li class="block large">
         <div>
             <p class="center all">
-                <img class="avatar" src="{$info->getPicture(\Movim\ImageSize::L)}"/>
+                <img class="avatar" src="{$info->getPicture(\Movim\ImageSize::L)}" title="{$info->avatarhash}"/>
             </p>
         </div>
     </li>

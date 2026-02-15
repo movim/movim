@@ -50,6 +50,7 @@ class Message extends Model
         'jingle_outgoing',
         'jingle_reject',
         'jingle_retract',
+        'space_pending',
     ];
     public const MESSAGE_TYPE_MUC = [
         'groupchat',
@@ -113,6 +114,18 @@ class Message extends Model
     public function post()
     {
         return $this->belongsTo(Post::class, 'postid', 'id');
+    }
+
+    public function resolveSpacePendingInvitation(): ?Info
+    {
+        if ($this->type == 'space_pending') {
+            return Info::where('server', $this->jidfrom)
+                ->where('node', $this->body)
+                ->space()
+                ->first();
+        }
+
+        return null;
     }
 
     public function scopeJid($query, User $user, string $jid)
@@ -613,6 +626,19 @@ class Message extends Model
             $this->type = 'invitation';
             $this->body = (string)$stanza->x->attributes()->reason;
             $this->subject = (string)$stanza->x->attributes()->jid;
+        } elseif (
+            isset($stanza->x)
+            && $stanza->x->attributes()->xmlns == 'jabber:x:data'
+        ) {
+            // Message dataform
+            if (
+                (string)$stanza->x->xpath("//field[@var='FORM_TYPE']/value")[0]
+                == 'http://jabber.org/protocol/pubsub#subscribe_authorization'
+            ) {
+                $this->type = 'space_pending';
+                $this->body = (string)$stanza->x->xpath("//field[@var='pubsub#node']/value")[0];
+                $this->subject = (string)$stanza->x->xpath("//field[@var='pubsub#subscriber_jid']/value")[0];
+            }
         }
 
         # XEP-0384 OMEMO Encryption

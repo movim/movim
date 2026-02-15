@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
+use App\Subscription;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 use Moxl\Xec\Action\PubsubSubscription\Remove as SubscriptionRemove;
@@ -25,7 +26,7 @@ class Unsubscribe extends Action
         $sa->setServer($this->_to)
            ->setNode($this->_node)
            ->setFrom($this->_from)
-           ->setPEPNode('urn:xmpp:pubsub:movim-public-subscription')
+           ->setPEPNode(Subscription::PRIVATE_NODE)
            ->request();
 
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);

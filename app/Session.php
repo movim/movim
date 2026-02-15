@@ -47,6 +47,11 @@ class Session extends Model
         return $this->hasMany(MujiCall::class, 'session_id', 'id');
     }
 
+    public function conferences()
+    {
+        return $this->hasMany(Conference::class)->orderBy('conference');
+    }
+
     public function topContacts()
     {
         return $this->contacts()->join(DB::raw('(
@@ -111,11 +116,6 @@ class Session extends Model
         return Info::whereRaw($where);
     }
 
-    public function conferences()
-    {
-        return $this->hasMany(Conference::class)->orderBy('conference');
-    }
-
     public function init(string $username, string $password, string $host, string $sessionId, string $timezone)
     {
         $this->id          = $sessionId;
@@ -144,6 +144,7 @@ class Session extends Model
     {
         return Info::where('parent', $this->host)
             ->whereCategory('conference')
+            ->whereType('text')
             ->whereDoesntHave('identities', function ($query) {
                 $query->where('category', 'gateway');
             })
@@ -164,6 +165,15 @@ class Session extends Model
     public function getCommentsService()
     {
         return Info::where('server', 'comments.' . $this->host)
+            ->where('parent', $this->host)
+            ->whereCategory('pubsub')
+            ->whereType('service')
+            ->first();
+    }
+
+    public function getSpacesService()
+    {
+        return Info::where('server', 'spaces.' . $this->host)
             ->where('parent', $this->host)
             ->whereCategory('pubsub')
             ->whereType('service')

@@ -57,7 +57,8 @@ class Muc
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
         $dom->appendChild($query);
 
-        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');
         $query->appendChild($x);
 
@@ -91,7 +92,8 @@ class Muc
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
         $dom->appendChild($query);
 
-        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');
         $query->appendChild($x);
 
@@ -105,13 +107,14 @@ class Muc
         return $query;
     }
 
-    public static function createGroupChat($name)
+    public static function createGroupChat(string $name)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
         $dom->appendChild($query);
 
-        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');
         $query->appendChild($x);
 
@@ -135,7 +138,8 @@ class Muc
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
         $dom->appendChild($query);
 
-        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');
         $query->appendChild($x);
 

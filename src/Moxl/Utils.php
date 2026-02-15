@@ -4,6 +4,7 @@ namespace Moxl;
 
 use App\Identity;
 use App\Post;
+use App\Subscription;
 use Illuminate\Support\Collection;
 
 class Utils
@@ -88,7 +89,7 @@ class Utils
             Post::STORIES_NODE . '+notify',
             'urn:xmpp:bookmarks:0+notify',
             'urn:xmpp:bookmarks:1+notify',
-            'urn:xmpp:pubsub:subscription+notify',
+            Subscription::PUBLIC_NODE . '+notify',
 
             'eu.siacs.conversations.axolotl.devicelist+notify',
 

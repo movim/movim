@@ -9,7 +9,7 @@ use App\Subscription;
 class Get extends Action
 {
     protected $_to;
-    protected $_pepnode = 'urn:xmpp:pubsub:subscription';
+    protected $_pepnode = Subscription::PUBLIC_NODE;
 
     public function request()
     {
@@ -20,12 +20,14 @@ class Get extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         Subscription::where('jid', $this->_to)
-                    ->where('public', ($this->_pepnode == 'urn:xmpp:pubsub:subscription'))
-                    ->delete();
+            ->where('public', ($this->_pepnode == Subscription::PUBLIC_NODE))
+            ->where('space', false)
+            ->delete();
 
         $subscriptions = [];
 
         foreach ($stanza->pubsub->items->children() as $i) {
+
             $subscription = Subscription::firstOrNew([
                 'jid' => $this->_to,
                 'server' => (string)$i->subscription->attributes()->server,
@@ -34,20 +36,26 @@ class Get extends Action
 
             $insertAsWell = false;
 
-            if ($this->_pepnode == 'urn:xmpp:pubsub:subscription') {
+            if ($this->_pepnode == Subscription::PUBLIC_NODE) {
                 // Remove the private subscriptions to insert the public ones
                 if ($subscription->exists && $subscription->public == false) {
                     Subscription::where(function ($query) use ($subscription) {
                         $query->where('jid', $subscription->jid)
-                              ->where('server', $subscription->server)
-                              ->where('node', $subscription->node);
-                    })->delete();
+                            ->where('server', $subscription->server)
+                            ->where('node', $subscription->node);
+                    })->where('space', false)->delete();
 
                     $insertAsWell = true;
                 }
 
                 $subscription->public = true;
             }
+
+            if ($this->_pepnode == Subscription::SPACE_NODE) {
+                $subscription->space = true;
+            }
+
+            $subscription->setExtensions($i->subscription->extensions);
 
             if (!$subscription->exists || $insertAsWell) {
                 array_push($subscriptions, $subscription->toArray());
@@ -56,7 +64,7 @@ class Get extends Action
 
         Subscription::saveMany($subscriptions);
 
-        $this->pack($this->_to);
+        $this->pack(['to' => $this->_to, 'node' => $this->_pepnode, 'type' => $this->_pepnode]);
         $this->deliver();
     }
 

@@ -4,6 +4,7 @@ namespace App\Widgets\Presence;
 
 use App\Post;
 use App\Presence as AppPresence;
+use App\Subscription;
 use App\Widgets\Chats\Chats;
 use App\Widgets\Visio\Visio;
 use Movim\Daemon\Session;
@@ -13,7 +14,7 @@ use Moxl\Stanza\Stream;
 use Moxl\Xec\Action\Blocking\Request;
 use Moxl\Xec\Action\Presence\Away;
 use Moxl\Xec\Action\Presence\Chat;
-use Moxl\Xec\Action\Presence\Unavailable;
+//use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Action\Pubsub\GetItemsId;
 use Moxl\Xec\Action\Pubsub\GetSubscriptions;
 use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
@@ -96,10 +97,10 @@ class Presence extends Base
                 ->ajaxTerminate($this->currentCall()->jid, $this->currentCall()->id);
         }
 
-        $p = $this->xmpp(new Unavailable);
+        /*$p = $this->xmpp(new Unavailable);
         $p->setResource($this->me->session->resource)
             ->setTo($this->me->id)
-            ->request();
+            ->request();*/
 
         linker($this->me->session->id)->writeXMPP(Stream::end());
     }
@@ -114,10 +115,16 @@ class Presence extends Base
 
     public function ajaxPubsubSubscriptionsGet()
     {
+        // Spaces Subscritions
+        $ps = $this->xmpp(new GetPubsubSubscriptions);
+        $ps->setTo($this->me->id)
+            ->setPEPNode(Subscription::SPACE_NODE)
+            ->request();
+
         // Private Subscritions
         $ps = $this->xmpp(new GetPubsubSubscriptions);
         $ps->setTo($this->me->id)
-            ->setPEPNode('urn:xmpp:pubsub:movim-public-subscription')
+            ->setPEPNode(Subscription::PRIVATE_NODE)
             ->request();
 
         // Public Subscritions
@@ -191,6 +198,15 @@ class Presence extends Base
             ->request();
     }
 
+    public function ajaxHttpMenu()
+    {
+        $this->drawer('menu', $this->view('_presence_menu', [
+            'contact' => $this->me->contact ?? new \App\Contact,
+            'presence' => AppPresence::where('resource', $this->me->session->resource)->firstOrNew(),
+            'presencetxt' => getPresencesTxt(),
+        ]), tiny: true);
+    }
+
     public function preparePresence()
     {
         // If the user is still on a logued-in page after a daemon restart
@@ -199,18 +215,22 @@ class Presence extends Base
             return false;
         }
 
-        $presence = AppPresence::where('resource', $this->me->session->resource)->firstOrNew();
-        $contact = $this->me->contact ?? new \App\Contact;
-
         return $this->view('_presence', [
-            'me' => $contact,
-            'presence' => $presence,
+            'me' => $this->me->contact ?? new \App\Contact,
+            'presence' => AppPresence::where('resource', $this->me->session->resource)->firstOrNew(),
             'presencetxt' => getPresencesTxt(),
         ]);
     }
 
     public function display()
     {
+        $subMenuPages = ['configuration', 'admin', 'help'];
+
+        if ($this->_view == 'contact' && $this->get('s') == $this->me->id) {
+            array_push($subMenuPages, 'contact');
+        }
+
         $this->view->assign('page', $this->_view);
+        //$this->view->assign('submenu', !in_array($this->_view, $subMenuPages));
     }
 }

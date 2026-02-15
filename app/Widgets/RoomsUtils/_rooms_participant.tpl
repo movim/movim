@@ -57,12 +57,12 @@
                     <p></p>
                     <p class="all">
                         {if="$presence->mucaffiliation == 'owner'"}
-                            <span class="chip thin" title="{$c->__('room.affiliation_owner')}">
+                            <span class="chip thin" title="{$c->__('affiliation.owner')}">
                                 <i class="material-symbols icon fill yellow">star</i>
                                     {$presence->affiliationTxt}
                             </span>
                         {elseif="$presence->mucaffiliation == 'admin'"}
-                            <span class="chip thin" title="{$c->__('room.affiliation_owner')}">
+                            <span class="chip thin" title="{$c->__('affiliation.owner')}">
                                 <i class="material-symbols icon fill gray">star</i>
                                 {$presence->affiliationTxt}
                             </span>

@@ -3,11 +3,11 @@
     {if="$affiliation != $value->affiliationTxt && $page == 1"}
         <li class="subheader sticky">
             {if="$value->mucaffiliation == 'owner'"}
-                <span class="control icon tiny yellow" title="{$c->__('room.affiliation_owner')}">
+                <span class="control icon tiny yellow" title="{$c->__('affiliation.owner')}">
                     <i class="material-symbols fill">star</i>
                 </span>
             {elseif="$value->mucaffiliation == 'admin'"}
-                <span class="control icon tiny gray" title="{$c->__('room.affiliation_owner')}">
+                <span class="control icon tiny gray" title="{$c->__('affiliation.owner')}">
                     <i class="material-symbols fill">star</i>
                 </span>
             {/if}

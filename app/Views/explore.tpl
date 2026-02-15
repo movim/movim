@@ -6,15 +6,19 @@
 
 <?php $this->widget('PostActions');?>
 
-<nav>
+<nav class="on_desktop">
     <?php $this->widget('Presence');?>
     <?php $this->widget('Shortcuts');?>
+    <?php $this->widget('SpacesMenu');?>
     <?php $this->widget('Navigation');?>
 </nav>
 
 <?php $this->widget('BottomNavigation');?>
 
-<main style="background-color: rgb(var(--movim-background))">
+<main style="background-color: rgb(var(--movim-background-main))">
+    <a class="button action color" onclick="Search_ajaxRequest(false, true)" title="{$c->__('button.search')}">
+        <i class="material-symbols">search</i>
+    </a>
     <div class="large">
         <?php if (!empty($_GET['s']) && $_GET['s'] == 'servers') { ?>
             <header>

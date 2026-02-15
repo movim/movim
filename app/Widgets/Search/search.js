@@ -2,14 +2,15 @@ var Search = {
     timer : null,
     rosterLimit: false,
 
-    init : function() {
+    init : function(articlesOnly) {
         if (window.matchMedia("(min-width: 1025px)").matches) {
             document.querySelector('input[name=keyword]').focus();
         }
 
-        Search.rosterLimit = 10;
-
-        Search_ajaxHttpInitRoster();
+        if (articlesOnly == false || articlesOnly == null) {
+            Search.rosterLimit = 10;
+            Search_ajaxHttpInitRoster();
+        }
     },
 
     roster : function(key) {

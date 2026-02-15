@@ -319,23 +319,23 @@ class RoomsUtils extends Base
 
         switch ($affiliation) {
             case 'owner':
-                $this->toast($this->__('room.affiliation_owner_changed'));
+                $this->toast($this->__('affiliation.owner_changed'));
                 break;
 
             case 'admin':
-                $this->toast($this->__('room.affiliation_admin_changed'));
+                $this->toast($this->__('affiliation.admin_changed'));
                 break;
 
             case 'member':
-                $this->toast($this->__('room.affiliation_member_changed'));
+                $this->toast($this->__('affiliation.member_changed'));
                 break;
 
             case 'outcast':
-                $this->toast($this->__('room.affiliation_outcast_changed'));
+                $this->toast($this->__('affiliation.outcast_changed'));
                 break;
 
             case 'none':
-                $this->toast($this->__('room.affiliation_none_changed'));
+                $this->toast($this->__('affiliation.none_changed'));
                 break;
         }
     }
@@ -542,7 +542,7 @@ class RoomsUtils extends Base
                     ->setAutoJoin($form->autojoin->value)
                     ->setPinned($form->pinned->value)
                     ->setNick($form->nick->value ?? $this->me->username)
-                    ->setNotify((int)array_flip(Conference::$notifications)[$form->notify->value])
+                    ->setNotify((int)array_flip(Conference::NOTIFICATIONS)[$form->notify->value])
                     ->request();
             } elseif ($form->type->value == 'channel') {
                 $cgc = $this->xmpp(new CreateChannel);
@@ -551,7 +551,7 @@ class RoomsUtils extends Base
                     ->setAutoJoin($form->autojoin->value)
                     ->setPinned($form->pinned->value)
                     ->setNick($form->nick->value)
-                    ->setNotify((int)array_flip(Conference::$notifications)[$form->notify->value])
+                    ->setNotify((int)array_flip(Conference::NOTIFICATIONS)[$form->notify->value])
                     ->request();
             }
         }
@@ -576,7 +576,7 @@ class RoomsUtils extends Base
                 'nick' => $form->nick->value,
                 'autojoin' => $form->autojoin->value,
                 'pinned' => $form->pinned->value,
-                'notify' => (int)array_flip(Conference::$notifications)[$form->notify->value],
+                'notify' => (int)array_flip(Conference::NOTIFICATIONS)[$form->notify->value],
             ];
 
             $this->onChatroomCreated($packet);

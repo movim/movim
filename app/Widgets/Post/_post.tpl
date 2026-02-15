@@ -2,7 +2,8 @@
     <header>
         <ul class="list middle">
             <li>
-                <span class="primary icon gray active" onclick="history.back();">
+                <span class="on_mobile primary icon gray active" onclick="history.back();"
+                    id="postcounter" {if="$counter > 0"}data-counter="{$counter}"{/if}>
                     <i class="material-symbols">arrow_back</i>
                 </span>
 

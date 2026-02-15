@@ -203,7 +203,7 @@
                 </span>
                 <div>
                     <p class="line">{$c->__('room.notify_title')}</p>
-                    <p class="line">{$c->__('room.notify_quoted')}</p>
+                    <p class="line">{$c->__('room.notify_mentioned')}</p>
                 </div>
             </li>
         {/if}
@@ -245,11 +245,11 @@
                             </span>
                         {/if}
                         {if="$value->affiliation == 'owner'"}
-                            <span class="control icon yellow" title="{$c->__('room.affiliation_owner')}">
+                            <span class="control icon yellow" title="{$c->__('affiliation.owner')}">
                                 <i class="material-symbols fill">star</i>
                             </span>
                         {elseif="$value->affiliation == 'admin'"}
-                            <span class="control icon gray" title="{$c->__('room.affiliation_admin')}">
+                            <span class="control icon gray" title="{$c->__('affiliation.admin')}">
                                 <i class="material-symbols fill">star</i>
                             </span>
                         {/if}

@@ -23,10 +23,10 @@
                         <div class="select">
                             <select type="list-single" label="Maximum Number of Occupants" id="affiliation" name="affiliation"
                                 onchange="RoomsUtils_ajaxChangeAffiliationConfirm('{$room->conference}', MovimUtils.formToJson('changeaffiliation'));">
-                                <option value="owner" {if="$member && $member->affiliation == 'owner'"}selected{/if}>{$c->__('room.affiliation_owner')}</option>
-                                <option value="admin" {if="$member && $member->affiliation == 'admin'"}selected{/if}>{$c->__('room.affiliation_admin')}</option>
-                                <option value="member" {if="$member && $member->affiliation == 'member'"}selected{/if}>{$c->__('room.affiliation_member')}</option>
-                                <option value="none" {if="$member && $member->affiliation == 'none'"}selected{/if}>{$c->__('room.affiliation_none')}</option>
+                                <option value="owner" {if="$member && $member->affiliation == 'owner'"}selected{/if}>{$c->__('affiliation.owner')}</option>
+                                <option value="admin" {if="$member && $member->affiliation == 'admin'"}selected{/if}>{$c->__('affiliation.admin')}</option>
+                                <option value="member" {if="$member && $member->affiliation == 'member'"}selected{/if}>{$c->__('affiliation.member')}</option>
+                                <option value="none" {if="$member && $member->affiliation == 'none'"}selected{/if}>{$c->__('affiliation.no-aff')}</option>
                             </select>
                         </div>
                         <label for="affiliation">{$c->__('room.role')}</label>

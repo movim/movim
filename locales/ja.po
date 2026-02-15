@@ -11,8 +11,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Account/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AccountNext/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/AdHoc/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/AdminMain/locales.ini
@@ -73,8 +71,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Location/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Menu/locales.ini
@@ -109,6 +105,10 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/SpaceInfo/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/SpacesMenu/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stickers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stories/locales.ini
@@ -128,7 +128,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-22 08:05+0200\n"
+"POT-Creation-Date: 2026-03-05 17:25+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rintan, 2020-2021\n"
 "Language-Team: Japanese (http://app.transifex.com/movim/movim/language/ja/)\n"
@@ -170,6 +170,14 @@ msgstr "API"
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr "MovimはXMPPベースのコミュニケーションプラットフォームです。これらのソフトウェアとリソースを除き、すべてのプロジェクトは"
+
+#: [about]sourcecode_title
+msgid "Sourcecode"
+msgstr ""
+
+#: [about]sourcecode_text
+msgid "Checkout the sourcecode on the Github repository"
+msgstr ""
 
 #: [account]title [page]account
 msgid "Account"
@@ -238,42 +246,6 @@ msgstr ""
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr ""
-
-#: [create]title [subscribe]title
-msgid "Create a new account"
-msgstr "新しいアカウントを作成する"
-
-#: [create]notfound
-msgid "No account creation form found on the server"
-msgstr "サーバー上にアカウント作成フォームが見つかりません"
-
-#: [create]server_on
-msgid "on"
-msgstr ""
-
-#: [create]successfull
-msgid "Your account has been successfully registered"
-msgstr ""
-
-#: [create]loading
-msgid "Loading"
-msgstr "読み込み中"
-
-#: [create]placeholder
-msgid "…and start playing"
-msgstr ""
-
-#: [error]not_acceptable
-msgid "Not Acceptable"
-msgstr "不正"
-
-#: [error]service_unavailable
-msgid "The registration system of this server is currently unavailable"
-msgstr "このサーバーの登録システムは現在利用できません"
-
-#: [error]forbidden
-msgid "Registration forbidden"
-msgstr "登録が禁止されています"
 
 #: [adhoc]title
 msgid "Actions"
@@ -460,6 +432,14 @@ msgstr "Syslog"
 #: [log]syslog_files
 msgid "Syslog and files"
 msgstr "システムログとファイル"
+
+#: [maxsessions]title
+msgid "Maximum of connected sessions"
+msgstr ""
+
+#: [maxsessions]info
+msgid "Movim will forbid new users to connect when the limit is reached, set it to 0 to disable"
+msgstr ""
 
 #: [adminreported]reported_by
 msgid "Reported by %s users"
@@ -896,14 +876,6 @@ msgstr ""
 #: [chats]audio
 msgid "Audio"
 msgstr ""
-
-#: [button]chat
-msgid "Chat"
-msgstr "チャット"
-
-#: [button]new
-msgid "New conversation"
-msgstr "新しい会話"
 
 #: [chats_filter]all [menu]all [rooms_filter]all
 msgid "All"
@@ -1642,30 +1614,6 @@ msgstr "Movimチームとチャットしますか？"
 msgid "Add the chatroom"
 msgstr "チャットルームを追加する"
 
-#: [location]title
-msgid "My location"
-msgstr ""
-
-#: [location]enabled_title
-msgid "Currently shared with my contacts"
-msgstr ""
-
-#: [location]disabled_title
-msgid "Currently disabled"
-msgstr ""
-
-#: [location]last_published
-msgid "My last published location"
-msgstr ""
-
-#: [location]less_than_one_km
-msgid "Less than a km away"
-msgstr ""
-
-#: [location]n_km_away
-msgid "%s km away"
-msgstr ""
-
 #: [error]username
 msgid "Wrong username"
 msgstr "ユーザ名が正しくありません"
@@ -1698,9 +1646,10 @@ msgstr "セッションエラー"
 msgid "Account successfully created"
 msgstr "アカウントが正常に作成されました"
 
-#: [error]timeout
-msgid "The server takes too much time to respond"
-msgstr "このサーバは重すぎます"
+#: [error]connection
+#, fuzzy
+msgid "Movim cannot connect to the server"
+msgstr "サーバーに再接続中…"
 
 #: [error]impossible
 msgid "Impossible login"
@@ -1733,6 +1682,14 @@ msgstr "認識方法が対応されていません"
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
 msgstr "XMPP認証に失敗しました"
+
+#: [error]max_sessions_reached
+msgid "This Movim instance is currently full."
+msgstr ""
+
+#: [error]max_sessions_reached_join
+msgid "Try a different one on %s"
+msgstr ""
 
 #: [connection]socket_connected
 msgid "Connected to the server"
@@ -1891,6 +1848,11 @@ msgstr "プロフィールを公開して、他のユーザーがあなたを見
 msgid "You can always disable this in the configuration afterwards"
 msgstr "後からいつでも設定で無効にできます"
 
+#: [post]publish_something
+#, fuzzy
+msgid "Publish something"
+msgstr "投稿のみ"
+
 #: [post]news_feed
 msgid "News Feed"
 msgstr "新着情報"
@@ -1911,16 +1873,13 @@ msgstr "投稿しました"
 msgid "Post deleted"
 msgstr "投稿を削除しました"
 
-#: [post]hot
-msgid "What’s Hot"
-msgstr "トレンド"
-
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "未購読のコミュニティの最近の投稿"
 
-#: [post]new [publish]new
-msgid "New post"
+#: [post]new_blog
+#, fuzzy
+msgid "New blog post"
 msgstr "新しい投稿"
 
 #: [post]repost
@@ -1930,10 +1889,6 @@ msgstr "%sからの再共有"
 #: [post]see_profile
 msgid "See %s profile"
 msgstr "%sのプロフィールを見る"
-
-#: [post]blog_last
-msgid "Public posts from users"
-msgstr "ユーザーからの公開投稿"
 
 #: [post]unknown_contact
 msgid "Unknown contact"
@@ -2071,6 +2026,11 @@ msgstr "まだプロフィールを埋めていないようです"
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
 msgstr "設定ページで自己紹介と写真を追加できます"
 
+#: [status]visit_blog
+#, fuzzy
+msgid "Visit my blog"
+msgstr "登録者"
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr "切断する"
@@ -2130,6 +2090,10 @@ msgstr "ファイルや写真を追加する"
 #: [publish]no_publication
 msgid "You cannot publish a post here"
 msgstr "ここには投稿できません"
+
+#: [publish]new
+msgid "New post"
+msgstr "新しい投稿"
 
 #: [publish]title
 msgid "Post title"
@@ -2231,6 +2195,42 @@ msgstr ""
 msgid "Story published"
 msgstr ""
 
+#: [create]title [subscribe]title
+msgid "Create a new account"
+msgstr "新しいアカウントを作成する"
+
+#: [create]notfound
+msgid "No account creation form found on the server"
+msgstr "サーバー上にアカウント作成フォームが見つかりません"
+
+#: [create]server_on
+msgid "on"
+msgstr ""
+
+#: [create]successfull
+msgid "Your account has been successfully registered"
+msgstr ""
+
+#: [create]loading
+msgid "Loading"
+msgstr "読み込み中"
+
+#: [create]placeholder
+msgid "…and start playing"
+msgstr ""
+
+#: [error]not_acceptable
+msgid "Not Acceptable"
+msgstr "不正"
+
+#: [error]service_unavailable
+msgid "The registration system of this server is currently unavailable"
+msgstr "このサーバーの登録システムは現在利用できません"
+
+#: [error]forbidden
+msgid "Registration forbidden"
+msgstr "登録が禁止されています"
+
 #: [rooms]create
 msgid "Create a chatroom"
 msgstr "チャットルームを作成"
@@ -2291,74 +2291,85 @@ msgstr "名前または説明"
 msgid "A registration is required before using the service"
 msgstr ""
 
-#: [chatrooms]title
-msgid "Chatrooms"
-msgstr "チャットルーム"
-
-#: [chatrooms]id
-msgid "Chatroom Address"
+#: [chatrooms]autojoin
+msgid "Join this chatroom on login"
 msgstr ""
-
-#: [chatrooms]name_placeholder
-msgid "My Favorite Room"
-msgstr "お気に入りのルーム"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
-msgstr ""
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "名前が空です"
-
-#: [chatrooms]remove_title
-msgid "Permanently leave a chatroom"
-msgstr ""
-
-#: [chatrooms]remove_text
-msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr ""
-
-#: [chatrooms]connected
-msgid "Joined the chatroom"
-msgstr ""
-
-#: [chatrooms]disconnected
-msgid "Left the chatroom"
-msgstr ""
-
-#: [chatrooms]users
-msgctxt "[chatrooms]users"
-msgid "Users"
-msgstr "ユーザー"
-
-#: [chatrooms]members
-msgctxt "[chatrooms]members"
-msgid "Members"
-msgstr "メンバー"
-
-#: [chatrooms]banned
-msgid "Banned"
 msgstr ""
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr ""
 
+#: [chatrooms]banned
+msgid "Banned"
+msgstr ""
+
 #: [chatrooms]conflict
 msgid "Nickname already taken"
 msgstr ""
 
-#: [chatrooms]autojoin
-msgid "Join this chatroom on login"
+#: [chatrooms]connected
+msgid "Joined the chatroom"
 msgstr ""
 
-#: [chatrooms]pinned
-msgid "Pin this chatroom"
+#: [chatrooms]created
+msgid "Chatroom created"
 msgstr ""
 
 #: [chatrooms]destroyed
 msgid "Chatroom destroyed"
+msgstr ""
+
+#: [chatrooms]disconnected
+msgid "Left the chatroom"
+msgstr ""
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "名前が空です"
+
+#: [chatrooms]forbidden
+msgid "You are not allowed to join this chatroom"
+msgstr ""
+
+#: [chatrooms]id
+msgid "Chatroom Address"
+msgstr ""
+
+#: [chatrooms]itemnotfound
+msgid "The chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]jidmalformed
+msgid "Your nickname is not valid"
+msgstr ""
+
+#: [chatrooms]members
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "メンバー"
+
+#: [chatrooms]name_placeholder
+msgid "My Favorite Room"
+msgstr "お気に入りのルーム"
+
+#: [chatrooms]notacceptable
+msgid "Not acceptable"
+msgstr ""
+
+#: [chatrooms]notallowed
+msgid "You are not allowed to create a chatroom there"
+msgstr ""
+
+#: [chatrooms]notauthorized
+msgid "A password is required"
+msgstr "パスワードが必須です"
+
+#: [chatrooms]pinned
+msgid "Pin this chatroom"
 msgstr ""
 
 #: [chatrooms]registrationrequired
@@ -2373,37 +2384,30 @@ msgstr ""
 msgid "Connection to remote server timed out"
 msgstr ""
 
-#: [chatrooms]itemnotfound
-msgid "The chatroom doesn’t exist"
+#: [chatrooms]remove_text
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
 msgstr ""
 
-#: [chatrooms]notauthorized
-msgid "A password is required"
-msgstr "パスワードが必須です"
-
-#: [chatrooms]forbidden
-msgid "You are not allowed to join this chatroom"
+#: [chatrooms]remove_title
+msgid "Permanently leave a chatroom"
 msgstr ""
 
-#: [chatrooms]jidmalformed
-msgid "Your nickname is not valid"
-msgstr ""
-
-#: [chatrooms]notacceptable
-msgid "Not acceptable"
+#: [chatrooms]rooms
+msgid "Rooms"
 msgstr ""
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
 msgstr ""
 
-#: [chatrooms]notallowed
-msgid "You are not allowed to create a chatroom there"
-msgstr ""
+#: [chatrooms]title
+msgid "Chatrooms"
+msgstr "チャットルーム"
 
-#: [chatrooms]created
-msgid "Chatroom created"
-msgstr ""
+#: [chatrooms]users
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "ユーザー"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -2519,8 +2523,9 @@ msgstr ""
 msgid "Never notify"
 msgstr "通知しない"
 
-#: [room]notify_quoted
-msgid "Notify when quoted"
+#: [room]notify_mentioned
+#, fuzzy
+msgid "Notify when mentioned"
 msgstr "引用されたときに通知する"
 
 #: [room]notify_always
@@ -2530,22 +2535,6 @@ msgstr "常に通知する"
 #: [room]pinned
 msgid "Pinned"
 msgstr ""
-
-#: [room]affiliation_owner [affiliation]owner
-msgid "Owner"
-msgstr "オーナー"
-
-#: [room]affiliation_admin
-msgid "Admin"
-msgstr ""
-
-#: [room]affiliation_member [affiliation]member
-msgid "Member"
-msgstr "メンバー"
-
-#: [room]affiliation_none [affiliation]no-aff
-msgid "No affiliation"
-msgstr "無所属"
 
 #: [room]affiliation_admins
 msgid "Admins"
@@ -2566,26 +2555,6 @@ msgstr ""
 
 #: [room]role_changed
 msgid "Role changed"
-msgstr ""
-
-#: [room]affiliation_owner_changed
-msgid "User granted as owner"
-msgstr ""
-
-#: [room]affiliation_admin_changed
-msgid "User granted as admin"
-msgstr ""
-
-#: [room]affiliation_member_changed
-msgid "User granted as member"
-msgstr ""
-
-#: [room]affiliation_outcast_changed
-msgid "User banned"
-msgstr ""
-
-#: [room]affiliation_none_changed
-msgid "Affiliation removed for the user"
 msgstr ""
 
 #: [roomsexplore]no_local
@@ -2671,6 +2640,162 @@ msgstr ""
 #: [sendto]sharing_story
 msgid "Story shared using Movim"
 msgstr ""
+
+#: [spaceinfo]config_title
+#, fuzzy
+msgid "Space configuration"
+msgstr "設定が保存されました。"
+
+#: [spaceinfo]config_saved
+#, fuzzy
+msgid "Space configuration saved"
+msgstr "設定が保存されました。"
+
+#: [spaceinfo]config_error
+#, fuzzy
+msgid "Space configuration error"
+msgstr "高度な設定"
+
+#: [spaceinfo]destroy_title
+#, fuzzy
+msgid "Destroy the space"
+msgstr "このインスタンスを離脱する"
+
+#: [spaceinfo]destroy_text
+msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
+msgstr ""
+
+#: [spaceinfo]invite_title
+#, fuzzy
+msgid "Invite new contacts"
+msgstr "誰かに招待を送る"
+
+#: [spaceinfo]invite_text
+msgid "A moderator will have to approve the join request"
+msgstr ""
+
+#: [spaceinfo]invite_uri_title
+#, fuzzy
+msgid "Send an invitation key to your contacts"
+msgstr "このリンクを連絡先に送信する"
+
+#: [spaceinfo]leave_title [spacesmenu]leave_title
+#, fuzzy
+msgid "Leave the space"
+msgstr "このインスタンスを離脱する"
+
+#: [spaceinfo]add_room_title
+#, fuzzy
+msgid "Add a room"
+msgstr "コメントを投稿する"
+
+#: [spaceinfo]pending_approvals
+msgid "%s subscriptions requests are waiting for your approval"
+msgstr ""
+
+#: [spaceinfo]pending_request
+msgid "%s is waiting for your approval to join the space"
+msgstr ""
+
+#: [spaceinfo]pending_action
+msgid "Manage the request"
+msgstr ""
+
+#: [spaceinfo]pinned
+msgid "Pin this space in the bar"
+msgstr ""
+
+#: [spaceinfo]owner_cannot_leave
+msgid "An owner cannot leave his own Space"
+msgstr ""
+
+#: [spaceinfo]affiliation_none
+#, fuzzy
+msgid "Remove from the space"
+msgstr "このインスタンスを離脱する"
+
+#: [spacesmenu]create_space_title
+#, fuzzy
+msgid "Create a Space"
+msgstr "新しいアカウントを作成する"
+
+#: [spacesmenu]invite_space_title
+msgid "You got an invite?"
+msgstr ""
+
+#: [spacesmenu]space_title
+msgid "Space title"
+msgstr ""
+
+#: [spacesmenu]space_title_empty
+msgid "Your Space title is empty"
+msgstr ""
+
+#: [spacesmenu]space_created
+msgid "Space created"
+msgstr ""
+
+#: [spacesmenu]loading_space_info
+msgid "Loading the space"
+msgstr ""
+
+#: [spacesmenu]subscribed
+msgid "Subscribed to the space"
+msgstr ""
+
+#: [spacesmenu]invitation_key
+#, fuzzy
+msgid "Use an invitation key"
+msgstr "招待を送信しました"
+
+#: [spacesmenu]key_required
+#, fuzzy
+msgid "A valid key is required"
+msgstr "パスワードが必須です"
+
+#: [spacesmenu]locked_title
+msgid "Locked space"
+msgstr ""
+
+#: [spacesmenu]locked_text
+#, fuzzy
+msgid "You are not authorized to join the space at the moment"
+msgstr "この連絡先に購読されていません"
+
+#: [spacesmenu]locked_try_again
+msgid "Try again"
+msgstr ""
+
+#: [spacesmenu]leave_text
+#, fuzzy
+msgid "Are you sure that you want to leave the space?"
+msgstr "このコメントを削除しますか？"
+
+#: [spacesmenu]pending_subscription_title
+msgid "A request has been send to a moderator."
+msgstr ""
+
+#: [spacesmenu]pending_subscription_text
+msgid "You will be able to join the space once its accepted."
+msgstr ""
+
+#: [spacesmenu]pending_subscription_add_title
+msgid "Add %s to the space"
+msgstr ""
+
+#: [spacesmenu]pending_subscription_refuse_title
+msgid "Deny the access"
+msgstr ""
+
+#: [spacesmenu]contact_added
+#, fuzzy
+msgid "Contact added in the space"
+msgstr "コンタクトが追加されました"
+
+#: [spacesmenu]contact_denied
+#, fuzzy
+msgid "Contact denied in the space"
+msgstr "コンタクトが削除されました"
 
 #: [sticker]title
 msgid "Stickers"
@@ -3004,74 +3129,78 @@ msgstr "または"
 msgid "Switch to another pod"
 msgstr "他のポッドに切り替える"
 
-#: [page]communities
-msgid "Communities"
-msgstr "コミュニティ"
-
-#: [page]home
-msgid "Home"
-msgstr "ホーム"
-
-#: [page]explore
-msgid "Explore"
-msgstr "探索"
+#: [page]about
+msgid "About"
+msgstr "Movimについて"
 
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "アカウント作成"
 
-#: [page]news
-msgid "News"
-msgstr "新着情報"
-
 #: [page]avatar
 msgid "Profile Picture"
 msgstr ""
-
-#: [page]chats
-msgid "Messages"
-msgstr ""
-
-#: [page]publish
-msgid "Publish"
-msgstr "投稿"
 
 #: [page]blog
 msgid "Blog"
 msgstr "ブログ"
 
-#: [page]about
-msgid "About"
-msgstr "Movimについて"
+#: [page]chats
+msgid "Messages"
+msgstr ""
 
-#: [page]login
-msgid "Login"
-msgstr "ログイン"
+#: [page]communities
+msgid "Communities"
+msgstr "コミュニティ"
 
-#: [page]not_found
-msgid "Not Found"
-msgstr "見つかりません"
+#: [page]explore
+msgid "Explore"
+msgstr "探索"
 
 #: [page]feed
 msgid "Feed"
 msgstr "フィード"
 
+#: [page]home
+msgid "Home"
+msgstr "ホーム"
+
+#: [page]login
+msgid "Login"
+msgstr "ログイン"
+
+#: [page]news
+msgid "News"
+msgstr "新着情報"
+
+#: [page]not_found
+msgid "Not Found"
+msgstr "見つかりません"
+
 #: [page]posts
 msgid "Posts"
 msgstr "投稿"
 
-#: [page]visio
-msgid "Visio-conference"
-msgstr "ビデオ会議"
+#: [page]publish
+msgid "Publish"
+msgstr "投稿"
 
 #: [page]share
 msgctxt "[page]share"
 msgid "Share"
 msgstr "共有"
 
+#: [page]spaces
+msgid "Spaces"
+msgstr ""
+
 #: [page]tag
 msgid "Tag"
 msgstr "タグ"
+
+#: [page]visio
+msgid "Visio-conference"
+msgstr "ビデオ会議"
 
 #: [error]error
 msgid "Error: %s"
@@ -3133,6 +3262,10 @@ msgstr "通話"
 msgid "Cancel"
 msgstr "取り消し"
 
+#: [button]chat
+msgid "Chat"
+msgstr "チャット"
+
 #: [button]clear
 msgid "Clear"
 msgstr "消去"
@@ -3173,6 +3306,10 @@ msgstr "有効"
 msgid "Join"
 msgstr ""
 
+#: [button]leave
+msgid "Leave"
+msgstr ""
+
 #: [button]like
 msgid "Like"
 msgstr "いいね"
@@ -3180,6 +3317,10 @@ msgstr "いいね"
 #: [button]more
 msgid "More"
 msgstr ""
+
+#: [button]new
+msgid "New conversation"
+msgstr "新しい会話"
 
 #: [button]next
 msgid "Next"
@@ -3214,7 +3355,7 @@ msgid "Register"
 msgstr "登録"
 
 #: [button]remove
-msgid "Leave"
+msgid "Remove"
 msgstr ""
 
 #: [button]reply
@@ -3874,6 +4015,14 @@ msgstr ""
 msgid "TB"
 msgstr ""
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "オーナー"
+
+#: [affiliation]admin
+msgid "Admin"
+msgstr ""
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "投稿者"
@@ -3882,9 +4031,37 @@ msgstr "投稿者"
 msgid "Publish only"
 msgstr "投稿のみ"
 
+#: [affiliation]member
+msgid "Member"
+msgstr "メンバー"
+
 #: [affiliation]outcast
 msgid "Outcast"
 msgstr "追放"
+
+#: [affiliation]no-aff
+msgid "No affiliation"
+msgstr "無所属"
+
+#: [affiliation]owner_changed
+msgid "User granted as owner"
+msgstr ""
+
+#: [affiliation]admin_changed
+msgid "User granted as admin"
+msgstr ""
+
+#: [affiliation]member_changed
+msgid "User granted as member"
+msgstr ""
+
+#: [affiliation]outcast_changed
+msgid "User banned"
+msgstr ""
+
+#: [affiliation]none_changed
+msgid "Affiliation removed for the user"
+msgstr ""
 
 #: [api]error
 msgid "The API is not reachable, try again later"
@@ -3893,3 +4070,16 @@ msgstr "APIにアクセスできません、後ほど再試行してください
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力してください"
+
+#, fuzzy
+#~ msgid "New Post"
+#~ msgstr "新しい投稿"
+
+#~ msgid "The server takes too much time to respond"
+#~ msgstr "このサーバは重すぎます"
+
+#~ msgid "What’s Hot"
+#~ msgstr "トレンド"
+
+#~ msgid "Public posts from users"
+#~ msgstr "ユーザーからの公開投稿"

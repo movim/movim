@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\PubsubSubscription;
 
+use App\Subscription;
 use Moxl\Xec\Action;
 use Moxl\Stanza\PubsubSubscription;
 use Moxl\Xec\Action\Pubsub\SetConfig;
@@ -12,9 +13,13 @@ class Add extends Action
     protected $_from;
     protected $_node;
     protected $_data = [];
-    protected $_pepnode = 'urn:xmpp:pubsub:subscription';
+    protected $_pepnode = Subscription::PUBLIC_NODE;
     // See https://github.com/processone/ejabberd/issues/3044#issuecomment-1605349858
     protected $_withPublishOption = true;
+
+    protected ?string $_extensionsxml = null;
+    protected ?int $_notify = null;
+    protected ?bool $_pinned = false;
 
     public function request()
     {
@@ -27,7 +32,10 @@ class Add extends Action
                 ? $this->_data['title']
                 : null,
             $this->_pepnode,
-            $this->_withPublishOption
+            $this->_withPublishOption,
+            $this->_extensionsxml,
+            $this->_notify,
+            $this->_pinned
         ), type: 'set');
     }
 
@@ -39,13 +47,23 @@ class Add extends Action
             'node' => $this->_node
         ]);
 
-        if ($this->_pepnode == 'urn:xmpp:pubsub:subscription') {
+        if ($this->_pepnode == Subscription::PUBLIC_NODE) {
             $subscription->public = true;
         }
 
+        if ($this->_pepnode == Subscription::SPACE_NODE) {
+            $subscription->space = true;
+        }
+
+        if ($this->_extensionsxml) {
+            $subscription->extensions = $this->_extensionsxml;
+        }
+
+        $subscription->notify = $this->_notify;
+        $subscription->pinned = $this->_pinned;
         $subscription->save();
 
-        $this->pack(['server' => $this->_server, 'node' => $this->_node, 'data', $this->_data]);
+        $this->pack(['server' => $this->_server, 'node' => $this->_node, 'data', $this->_data, 'type' => $this->_pepnode]);
         $this->deliver();
     }
 
