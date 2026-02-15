@@ -66,8 +66,8 @@ function logDebug($logs)
  */
 function linker(string $sid): ?Linker
 {
-    global $linkerManager;
-    return $linkerManager->linker($sid);
+    global $linkersManager;
+    return $linkersManager->linker($sid);
 }
 
 /**

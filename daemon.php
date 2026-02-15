@@ -18,5 +18,6 @@ $application->addCommand(new Movim\Console\ConfigCommand);
 $application->addCommand(new Movim\Console\DaemonCommand);
 $application->addCommand(new Movim\Console\EmojisToJsonCommand);
 $application->addCommand(new Movim\Console\ImportEmojisPack);
+$application->addCommand(new Movim\Console\SessionsTree);
 $application->addCommand(new Movim\Console\SetAdmin);
 $application->run();

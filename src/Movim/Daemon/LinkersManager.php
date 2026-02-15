@@ -6,7 +6,7 @@ use Movim\Widget\Wrapper;
 use Ratchet\Client\WebSocket;
 use React\Dns\Resolver\ResolverInterface;
 
-class LinkerManager
+class LinkersManager
 {
     private ResolverInterface $dns;
     private ?WebSocket $websocket = null;
@@ -40,19 +40,18 @@ class LinkerManager
     public function closeLinker(string $sid)
     {
         unset($this->linkers[$sid]);
-        logOut(colorize('Linker destroyed', 'green'), sid: $sid);
-        logOut(colorize('Shutdown', 'red'), sid: $sid);
+        logOut(colorize('Linker destroyed', 'red'), sid: $sid);
 
-        $this->websocket->close();
-        global $loop;
-        $loop->stop();
+        $message = new \stdClass;
+        $message->logout = true;
+        $this->sendWebsocket($sid, $message);
     }
 
     public function handleMessage(\stdClass $message)
     {
         if ($message->func == 'new' && isset($message->sid)) {
             $this->linkers[$message->sid] = new Linker(
-                linkerManager: $this,
+                linkersManager: $this,
                 dns: $this->dns,
                 sessionId: $message->sid,
                 browserLocale: $message->browserLocale
@@ -81,6 +80,10 @@ class LinkerManager
                         user: $linker->user
                     );
                 }
+                break;
+
+            case 'crash':
+                exit;
                 break;
 
             case 'unregister':

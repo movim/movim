@@ -34,7 +34,7 @@ class Api
                     $response = $api->sessionExists($request->getParsedBody());
                     break;
                 case 'linked':
-                    $response = $api->sessionsLinked();
+                    $response = count($this->_core->getStartedSessions());
                     break;
                 case 'started':
                     $response = $api->sessionsStarted();
@@ -44,6 +44,9 @@ class Api
                     break;
                 case 'disconnect':
                     $response = $api->sessionDisconnect($request->getParsedBody());
+                    break;
+                case 'sessionstree':
+                    $response = $this->_core->dumpSessionsTree();
                     break;
             }
 
@@ -55,15 +58,14 @@ class Api
         };
 
         $server = new HttpServer($handler);
-        $server->on('error', fn (\Throwable $e) => (new Bootstrap)->exceptionHandler($e));
+        $server->on('error', fn(\Throwable $e) => (new Bootstrap)->exceptionHandler($e));
         $server->listen($socket);
     }
 
     public function handleAjax($post)
     {
-        $sid = $post['sid'];
-        if (array_key_exists($sid, $this->_core->sessions)) {
-            $this->_core->sessions[$sid]->messageIn(rawurldecode($post['json']));
+        if ($session = $this->_core->findSession($post['sid'])) {
+            $session->messageIn(rawurldecode($post['json']));
         }
     }
 
@@ -71,21 +73,16 @@ class Api
     {
         $sid = $post['sid'];
 
-        $sessions = $this->_core->getSessions();
+        $sessions = $this->_core->getStartedSessions();
 
         return (array_key_exists($sid, $sessions)
-        && $sessions[$sid] == true);
+            && $sessions[$sid] == true);
     }
 
-    public function sessionsLinked(): int
-    {
-        return count($this->_core->getSessions());
-    }
-
-    public function sessionsStarted(): int
+    public function sessionsStarted()
     {
         $started = 0;
-        foreach ($this->_core->getSessions() as $s) {
+        foreach ($this->_core->getStartedSessions() as $s) {
             if ($s == true) {
                 $started++;
             }
@@ -95,10 +92,7 @@ class Api
 
     public function sessionUnregister($post)
     {
-        $sid = $post['sid'];
-
-        $session = $this->_core->getSession($sid);
-        if ($session) {
+        if ($session = $this->_core->findSession($post['sid'])) {
             $session->messageIn(json_encode(['func' => 'unregister']));
         }
     }
