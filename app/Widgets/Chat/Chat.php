@@ -360,13 +360,18 @@ class Chat extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        $xml = new XMPPtoForm($this->me);
+        $conference = $this->me->session->conferences()
+            ->where('conference', $room)
+            ->with('info')
+            ->first();
+
+        $xml = new XMPPtoForm($this->me, isGroupChat: $conference && $conference->isGroupChat());
         $form = $xml->getHTML($config->x);
 
-        $view->assign('form', $form);
-        $view->assign('room', $room);
-
-        $this->dialog($view->draw('_chat_config_room'), true);
+        $this->dialog($this->view('_chat_config_room', [
+            'form' => $form,
+            'room' => $room
+        ]), true);
     }
 
     public function onRoomConfigSaved(Packet $packet)

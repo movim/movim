@@ -12,7 +12,7 @@ class XMPPtoForm
     private $stanza;
     private \DOMDocument $html;
 
-    public function __construct(private ?User $user = null)
+    public function __construct(private ?User $user = null, private ?bool $isGroupChat = false)
     {
         $this->html = new \DOMDocument('1.0', 'UTF-8');
     }
@@ -280,8 +280,19 @@ class XMPPtoForm
 
     private function outCheckbox($s)
     {
+        $disabledCheckbox = ['muc#roomconfig_passwordprotectedroom'];
+
+        if ($this->isGroupChat) {
+            $disabledCheckbox = array_merge($disabledCheckbox, [
+                'muc#roomconfig_membersonly',
+                'muc#roomconfig_whois',
+                'muc#roomconfig_publicroom',
+                'muc#roomconfig_allowpm'
+            ]);
+        }
+
         $container = $this->html->createElement('div');
-        $container->setAttribute('class', $s['var'] == 'muc#roomconfig_passwordprotectedroom'
+        $container->setAttribute('class', in_array($s['var'], $disabledCheckbox)
             ? 'control disabled'
             : 'control');
 
