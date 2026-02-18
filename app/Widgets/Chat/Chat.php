@@ -236,7 +236,7 @@ class Chat extends \Movim\Widget\Base
                         key: 'chat|' . $from,
                         title: $name ?? $from, // truename should be fine but its not
                         body: $message->encrypted && is_array($message->omemoheader)
-                            ? "🔒 " . substr($message->omemoheader['payload'], 0, strlen($message->omemoheader['payload']) / 2)
+                            ? "🔒 " . $this->__('message.encrypted')
                             : $rawbody,
                         url: $this->route('chat', $contact->id),
                         picture: $contact->getPicture(),
