@@ -20,7 +20,8 @@ class Invite extends Action
             to: $this->_to,
             messageId: $messageId,
             id: $this->_id,
-            invite: $this->_invite
+            invite: $this->_invite,
+            type: null
         ));
     }
 

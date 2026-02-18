@@ -9,14 +9,14 @@ class Message
 {
     public static function factory(
         string $to,
-        string $type,
+        ?string $type = null,
         string $messageId,
     ): \DOMDocument {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
         $root = $dom->createElementNS('jabber:client', 'message');
         $root->setAttribute('to', str_replace(' ', '\40', $to));
-        $root->setAttribute('type', $type);
+        if ($type) $root->setAttribute('type', $type);
         $root->setAttribute('id', $messageId);
         $dom->appendChild($root);
 
