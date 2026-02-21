@@ -40,6 +40,6 @@ ul#message_preview li.reactions {
     padding-bottom: 0.75rem;
 }
 
-ul#message_preview li.reactions > p {
-    line-height: 4.75rem;
+ul#message_preview li.reactions a.chip {
+    max-width: 100%;
 }
