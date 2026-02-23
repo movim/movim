@@ -18,6 +18,7 @@ v0.33 (master)
 * Optimize page loading
 * Implement XEP-0507: Jingle Content Category
 * Enable audio sharing (when available) when doing screen sharing, refactor the jingle contents handling
+* Add a maxsessions admin setting to limit the maximum amount of connected sessions on the instance
 
 v0.32.1
 ---------------------------

@@ -87,6 +87,16 @@
             </li>
             <li>
                 <span class="primary icon gray">
+                    <i class="material-symbols">frame_person</i>
+                </span>
+                <div>
+                    <input type="number" min="0" name="maxsessions" id="maxsessions" value="{$configuration->maxsessions}" />
+                    <label for="description">{$c->__('maxsessions.title')}</label>
+                    <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('maxsessions.info')}</span>
+                </div>
+            </li>
+            <li>
+                <span class="primary icon gray">
                     <i class="material-symbols">universal_local</i>
                 </span>
                 <span class="control">

@@ -101,9 +101,12 @@ class Login extends Base
             }
         }
 
+        $started = (int)requestAPI('started');
+
         $this->view->assign('pop', User::count());
         $this->view->assign('admins', User::where('admin', true)->get());
-        $this->view->assign('connected', (int)requestAPI('started'));
+        $this->view->assign('connected', $started);
+        $this->view->assign('maxsessionsreached', ($configuration->maxsessions > 0 && $started >= $configuration->maxsessions));
         $this->view->assign('error', $this->prepareError());
 
         if (
@@ -255,6 +258,13 @@ class Login extends Base
         }
 
         if (!Validator::stringType()->length(1, 128)->isValid($password)) {
+            $this->showErrorBlock('password_format');
+            return;
+        }
+
+
+        $started = (int)requestAPI('started');
+        if ($configuration->maxsessions > 0 && $started >= $configuration->maxsessions) {
             $this->showErrorBlock('password_format');
             return;
         }

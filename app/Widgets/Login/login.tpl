@@ -54,13 +54,13 @@
             <form
                 method="post" action="login"
                 name="login">
-                <div>
+                <div {if="$maxsessionsreached"}class="disabled"{/if}>
                     <input type="text" id="complete" tabindex="-1"/>
                     <input type="text" pattern="^.+@.+\..{2,10}$" name="username" id="username" autofocus required
-                        placeholder="username@server.com"/>
+                        placeholder="username@server.com" >
                     <label for="username">{$c->__('form.username')}</label>
                 </div>
-                <div>
+                <div {if="$maxsessionsreached"}class="disabled"{/if}>
                     <input type="password" name="password" id="password" required
                         placeholder="{$c->__('form.password')}"/>
                     <label for="password">{$c->__('form.password')}</label>
@@ -71,7 +71,9 @@
                         <div>
                             <p></p>
                             <p class="center">
-                                {if="!empty($whitelist)"}
+                                {if="$maxsessionsreached"}
+                                    {$c->__('error.max_sessions_reached')}
+                                {elseif="!empty($whitelist)"}
                                     {$c->__('form.whitelist_info')} :
                                     {loop="$whitelist"}
                                         {$value}

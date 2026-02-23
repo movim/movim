@@ -55,6 +55,7 @@ class Infos extends Base
             'admins'        => (array)User::select('id')->where('admin', true)->get()->pluck('id')->toArray(),
             'description'   => $configuration->description,
             'unregister'    => $configuration->unregister,
+            'maxsessions'   => $configuration->maxsessions,
             'php_version'   => phpversion(),
             'version'       => APP_VERSION,
             'database'      => config('database.driver'),
