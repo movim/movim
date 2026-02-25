@@ -106,6 +106,7 @@ class Login extends Base
         $this->view->assign('pop', User::count());
         $this->view->assign('admins', User::where('admin', true)->get());
         $this->view->assign('connected', $started);
+        $this->view->assign('maxsessions', $configuration->maxsessions);
         $this->view->assign('maxsessionsreached', ($configuration->maxsessions > 0 && $started >= $configuration->maxsessions));
         $this->view->assign('error', $this->prepareError());
 
@@ -265,7 +266,7 @@ class Login extends Base
 
         $started = (int)requestAPI('started');
         if ($configuration->maxsessions > 0 && $started >= $configuration->maxsessions) {
-            $this->showErrorBlock('password_format');
+            $this->showErrorBlock('max_sessions_reached');
             return;
         }
 

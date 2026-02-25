@@ -71,8 +71,9 @@
                         <div>
                             <p></p>
                             <p class="center">
-                                {if="$maxsessionsreached"}
-                                    {$c->__('error.max_sessions_reached')}
+                                {if="$maxsessionsreached && empty($whitelist)"}
+                                    {$c->__('error.max_sessions_reached')}<br />
+                                    <a href="https://join.movim.eu/">{$c->__('error.max_sessions_reached_join', 'join.movim.eu')}</a>
                                 {elseif="!empty($whitelist)"}
                                     {$c->__('form.whitelist_info')} :
                                     {loop="$whitelist"}
@@ -91,12 +92,14 @@
                         <li>
                             <div>
                                 <p class="center">
-                                    <input
-                                        type="submit"
-                                        disabled
-                                        data-loading="{$c->__('button.connecting')}…"
-                                        value="{$c->__('page.login')}"
-                                        class="button color"/>
+                                    {if="!$maxsessionsreached"}
+                                        <input
+                                            type="submit"
+                                            disabled
+                                            data-loading="{$c->__('button.connecting')}…"
+                                            value="{$c->__('page.login')}"
+                                            class="button color"/>
+                                    {/if}
                                     {if="!App\Configuration::get()->disableregistration"}
                                         <a class="button flat" href="{$c->route('account')}">
                                             {$c->__('button.sign_up')}
@@ -118,7 +121,7 @@
                     <li class="subheader">
                         <div>
                             <p>
-                                <span class="info">{$c->__('form.connected')}: {$connected} - {$c->__('form.population')}: {$pop}</span>
+                                <span class="info">{$c->__('form.connected')}: {$connected}{if="$maxsessions > 0"}/{$maxsessions}{/if} - {$c->__('form.population')}: {$pop}</span>
                                 {$c->__('form.pod_admins')}
                             </p>
                         </div>
