@@ -23,7 +23,9 @@ class LinkerManager
 
     public function linker(string $sid): ?Linker
     {
-        return $this->linkers[$sid];
+        return array_key_exists($sid, $this->linkers)
+            ? $this->linkers[$sid]
+            : null;
     }
 
     public function attachWebsocket(WebSocket $websocket)

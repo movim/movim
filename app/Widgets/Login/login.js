@@ -97,7 +97,7 @@ MovimWebsocket.register(function () {
         );
     } else {
         form = document.querySelector('form[name="login"]');
-        if (Login.submitted) {
+        if (Login.submitted && Login.getCookie()) {
             Login_ajaxLogin(MovimUtils.formToJson('login'), Login.getCookie(), Intl.DateTimeFormat().resolvedOptions().timeZone);
         }
     }

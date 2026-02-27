@@ -318,14 +318,14 @@ class Message extends Model
             )
         ) {
             if ($this->isMuc()) {
-                $session = linker($this->user->session->id)->session;
+                $session = linker($user->session->id)->session;
 
                 // Cache the state in Session for performances purpose
                 $sessionKey = $this->jidfrom . '_stanza_id';
                 $conferenceStanzaIdEnabled = $session->get($sessionKey, null);
 
                 if ($conferenceStanzaIdEnabled == null) {
-                    $conference = $this->user->session->conferences()
+                    $conference = $user->session->conferences()
                         ->where('conference', $this->jidfrom)
                         ->first();
 
