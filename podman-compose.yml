@@ -1,6 +1,6 @@
 services:
   db:
-    image: 'postgres:latest'
+    image: 'docker.io/postgres:18.3-trixie'
     environment:
       POSTGRES_USER: movim
       POSTGRES_PASSWORD: movim
