@@ -587,7 +587,10 @@ class Visio extends Base
     {
         $muji = $this->me->session->mujiCalls()->first();
 
-        $this->rpc('MovimVisio.init', $muji->jidfrom, $muji->jidfrom, $muji->id, $muji->video, true);
+        if ($muji) {
+            $this->rpc('MovimVisio.init', $muji->jidfrom, $muji->jidfrom, $muji->id, $muji->video, true);
+        }
+
     }
 
     public function ajaxMujiInit(string $mujiId, $sdp)
