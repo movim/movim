@@ -58,7 +58,7 @@ class Rooms extends Base
         $info = $packet->content;
 
         if ($info->isConference()) {
-            $this->ajaxGet();
+            $this->ajaxHttpGet();
         }
     }
 
@@ -136,7 +136,7 @@ class Rooms extends Base
 
     public function onDestroyed(Packet $packet)
     {
-        $this->ajaxGet();
+        $this->ajaxHttpGet();
         $this->rpc('Chat_ajaxGet');
 
         $this->toast($this->__('chatrooms.destroyed'));
@@ -177,12 +177,12 @@ class Rooms extends Base
             }
         }
 
-        $this->ajaxGet();
+        $this->ajaxHttpGet();
     }
 
     public function onBookmarkRetract(Packet $packet)
     {
-        $this->ajaxGet();
+        $this->ajaxHttpGet();
     }
 
     public function onBookmarkSet(Packet $packet)
@@ -198,7 +198,7 @@ class Rooms extends Base
         if ($conference) {
             $this->onPresence($conference->conference);
         } else {
-            $this->rpc('Rooms_ajaxGet');
+            $this->rpc('Rooms_ajaxHttpGet');
         }
     }
 
@@ -241,7 +241,7 @@ class Rooms extends Base
         $this->onPresence($room, callSecond: false);
     }
 
-    public function ajaxGet()
+    public function ajaxHttpGet()
     {
         $conferences = $this->me->session->conferences()
             ->with('info', 'contact', 'presence')
@@ -351,7 +351,7 @@ class Rooms extends Base
             ->where('conference', $room)
             ->first()->presences()->delete();
 
-        $this->ajaxGet();
+        $this->ajaxHttpGet();
 
         if ($resource) {
             linker($this->sessionId)->session->delete($room . '/' . $resource);

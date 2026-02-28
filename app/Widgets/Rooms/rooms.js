@@ -213,6 +213,6 @@ var Rooms = {
 }
 
 MovimWebsocket.initiate(() => {
-    Rooms_ajaxGet();
+    Rooms_ajaxHttpGet();
     Rooms.checkNoConnected();
 });
