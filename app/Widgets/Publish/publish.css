@@ -40,7 +40,8 @@ aside:has(+div #publish) {
     transition: opacity 0.3s ease-in-out;
 }
 
-aside:has(+div #publish div[data-type="article"] textarea:focus) {
+aside:has(+div #publish div[data-type="article"] textarea:focus),
+aside:has(+div #publish div[data-type="article"]):hover {
     opacity: 1;
 }
 
