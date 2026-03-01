@@ -1,4 +1,4 @@
-FROM serversideup/php:8.4-fpm-nginx-alpine
+FROM docker.io/serversideup/php:8.4-fpm-nginx-alpine3.21
 
 USER root
 
