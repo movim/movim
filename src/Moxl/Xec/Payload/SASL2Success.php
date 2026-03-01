@@ -22,7 +22,9 @@ class SASL2Success extends Payload
 
         linker($this->sessionId)->attachUser($this->me);
 
-        fwrite(STDERR, 'started');
+        $message = new \stdClass;
+        $message->started = true;
+        linker($this->sessionId)->writeOut($message);
 
         $this->deliver();
     }

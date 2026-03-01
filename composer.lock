@@ -189,16 +189,16 @@
         },
         {
             "name": "cakephp/core",
-            "version": "5.3.0",
+            "version": "5.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
-                "reference": "c30bd737306167ece77430fceee837dcf055a93a"
+                "reference": "01e43eeb1c3269fa0eaae718cae71fdb9bb5e44d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/core/zipball/c30bd737306167ece77430fceee837dcf055a93a",
-                "reference": "c30bd737306167ece77430fceee837dcf055a93a",
+                "url": "https://api.github.com/repos/cakephp/core/zipball/01e43eeb1c3269fa0eaae718cae71fdb9bb5e44d",
+                "reference": "01e43eeb1c3269fa0eaae718cae71fdb9bb5e44d",
                 "shasum": ""
             },
             "require": {
@@ -252,20 +252,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/core"
             },
-            "time": "2026-01-10T04:29:00+00:00"
+            "time": "2026-02-24T07:24:26+00:00"
         },
         {
             "name": "cakephp/database",
-            "version": "5.3.0",
+            "version": "5.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "de2636cf9c00ff3a10b7226fa561550987d27463"
+                "reference": "d1f5a722fd4e6ca0f9f67f24f2d804bd45003e8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/de2636cf9c00ff3a10b7226fa561550987d27463",
-                "reference": "de2636cf9c00ff3a10b7226fa561550987d27463",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/d1f5a722fd4e6ca0f9f67f24f2d804bd45003e8e",
+                "reference": "d1f5a722fd4e6ca0f9f67f24f2d804bd45003e8e",
                 "shasum": ""
             },
             "require": {
@@ -319,20 +319,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/database"
             },
-            "time": "2026-01-10T04:29:00+00:00"
+            "time": "2026-02-24T07:24:26+00:00"
         },
         {
             "name": "cakephp/datasource",
-            "version": "5.3.0",
+            "version": "5.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
-                "reference": "a3a9cb04c144c891ff8396dc0eb757dbb65177a6"
+                "reference": "5c2d097966460d991188f4e22f40ee19b194e2a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/datasource/zipball/a3a9cb04c144c891ff8396dc0eb757dbb65177a6",
-                "reference": "a3a9cb04c144c891ff8396dc0eb757dbb65177a6",
+                "url": "https://api.github.com/repos/cakephp/datasource/zipball/5c2d097966460d991188f4e22f40ee19b194e2a3",
+                "reference": "5c2d097966460d991188f4e22f40ee19b194e2a3",
                 "shasum": ""
             },
             "require": {
@@ -386,20 +386,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/datasource"
             },
-            "time": "2026-01-10T04:29:00+00:00"
+            "time": "2026-02-24T07:24:26+00:00"
         },
         {
             "name": "cakephp/utility",
-            "version": "5.3.0",
+            "version": "5.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
-                "reference": "033499304b29b6e500c2297c8a73c4e2dec36b70"
+                "reference": "0026e773c0e015090f4a4c69e5f56f073109186b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/033499304b29b6e500c2297c8a73c4e2dec36b70",
-                "reference": "033499304b29b6e500c2297c8a73c4e2dec36b70",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/0026e773c0e015090f4a4c69e5f56f073109186b",
+                "reference": "0026e773c0e015090f4a4c69e5f56f073109186b",
                 "shasum": ""
             },
             "require": {
@@ -450,7 +450,7 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/utility"
             },
-            "time": "2026-01-10T04:29:00+00:00"
+            "time": "2026-02-24T07:24:26+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1891,16 +1891,16 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v12.52.0",
+            "version": "v12.53.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
-                "reference": "d1362729e3d37efca1f1cbc7a02f752cf24af442"
+                "reference": "c2ceb60c70961815f88da24ab0b7a7f32d47cf4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/bus/zipball/d1362729e3d37efca1f1cbc7a02f752cf24af442",
-                "reference": "d1362729e3d37efca1f1cbc7a02f752cf24af442",
+                "url": "https://api.github.com/repos/illuminate/bus/zipball/c2ceb60c70961815f88da24ab0b7a7f32d47cf4e",
+                "reference": "c2ceb60c70961815f88da24ab0b7a7f32d47cf4e",
                 "shasum": ""
             },
             "require": {
@@ -1940,11 +1940,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-02-12T15:22:19+00:00"
+            "time": "2026-02-23T15:43:34+00:00"
         },
         {
             "name": "illuminate/collections",
-            "version": "v12.52.0",
+            "version": "v12.53.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -2004,7 +2004,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v12.52.0",
+            "version": "v12.53.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -2050,7 +2050,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v12.52.0",
+            "version": "v12.53.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -2112,16 +2112,16 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v12.52.0",
+            "version": "v12.53.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "620d82bad07f55fcb7f5125f44c9d9b93335fb8c"
+                "reference": "099fd9b56ccaf776facaa27699b960a3f2451127"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/620d82bad07f55fcb7f5125f44c9d9b93335fb8c",
-                "reference": "620d82bad07f55fcb7f5125f44c9d9b93335fb8c",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/099fd9b56ccaf776facaa27699b960a3f2451127",
+                "reference": "099fd9b56ccaf776facaa27699b960a3f2451127",
                 "shasum": ""
             },
             "require": {
@@ -2156,20 +2156,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-02-10T18:16:44+00:00"
+            "time": "2026-02-20T14:37:40+00:00"
         },
         {
             "name": "illuminate/database",
-            "version": "v12.52.0",
+            "version": "v12.53.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "f6293eb7d418d3a31aee9ca46a2ef9f88a0b1fec"
+                "reference": "c685208bdd8bfec3e13c7b52f6235b6f3bde9fea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/f6293eb7d418d3a31aee9ca46a2ef9f88a0b1fec",
-                "reference": "f6293eb7d418d3a31aee9ca46a2ef9f88a0b1fec",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/c685208bdd8bfec3e13c7b52f6235b6f3bde9fea",
+                "reference": "c685208bdd8bfec3e13c7b52f6235b6f3bde9fea",
                 "shasum": ""
             },
             "require": {
@@ -2228,20 +2228,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-02-17T15:22:28+00:00"
+            "time": "2026-02-23T00:20:44+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v12.52.0",
+            "version": "v12.53.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
-                "reference": "8666a48c949109581c9deb5a1503098959c2acef"
+                "reference": "b71e42451496175f8fd898cb6a67ad7fd613d00b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/events/zipball/8666a48c949109581c9deb5a1503098959c2acef",
-                "reference": "8666a48c949109581c9deb5a1503098959c2acef",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/b71e42451496175f8fd898cb6a67ad7fd613d00b",
+                "reference": "b71e42451496175f8fd898cb6a67ad7fd613d00b",
                 "shasum": ""
             },
             "require": {
@@ -2283,11 +2283,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-01-28T15:18:32+00:00"
+            "time": "2026-02-23T15:43:34+00:00"
         },
         {
             "name": "illuminate/macroable",
-            "version": "v12.52.0",
+            "version": "v12.53.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2333,7 +2333,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v12.52.0",
+            "version": "v12.53.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -2385,7 +2385,7 @@
         },
         {
             "name": "illuminate/reflection",
-            "version": "v12.52.0",
+            "version": "v12.53.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/reflection.git",
@@ -2436,16 +2436,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v12.52.0",
+            "version": "v12.53.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "6e9de455bcb232372db11531b72a01d4eca83ef2"
+                "reference": "18d7d75366ddb9eded3b7f05173f791da47faf34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/6e9de455bcb232372db11531b72a01d4eca83ef2",
-                "reference": "6e9de455bcb232372db11531b72a01d4eca83ef2",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/18d7d75366ddb9eded3b7f05173f791da47faf34",
+                "reference": "18d7d75366ddb9eded3b7f05173f791da47faf34",
                 "shasum": ""
             },
             "require": {
@@ -2512,20 +2512,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-02-14T23:03:41+00:00"
+            "time": "2026-02-23T15:44:06+00:00"
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "v2.0.9",
+            "version": "v2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "8f631589ab07b7b52fead814965f5a800459cb3e"
+                "reference": "870fc81d2f879903dfc5b60bf8a0f94a1609e669"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/8f631589ab07b7b52fead814965f5a800459cb3e",
-                "reference": "8f631589ab07b7b52fead814965f5a800459cb3e",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/870fc81d2f879903dfc5b60bf8a0f94a1609e669",
+                "reference": "870fc81d2f879903dfc5b60bf8a0f94a1609e669",
                 "shasum": ""
             },
             "require": {
@@ -2573,7 +2573,7 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2026-02-03T06:55:34+00:00"
+            "time": "2026-02-20T19:59:49+00:00"
         },
         {
             "name": "league/commonmark",

@@ -71,7 +71,9 @@ var Login = {
     }
 }
 
-MovimWebsocket.attach(function () {
+// The session linker is launched
+MovimWebsocket.start(function () {
+    Login.quickLogin();
     Login.init();
 
     // We enable the form
@@ -79,10 +81,6 @@ MovimWebsocket.attach(function () {
     for (var i = 0; i < inputs.length; i++) {
         inputs[i].disabled = false;
     }
-});
-
-MovimWebsocket.start(function () {
-    Login.quickLogin();
 });
 
 MovimWebsocket.register(function () {

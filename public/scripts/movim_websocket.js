@@ -4,12 +4,12 @@
  * This file define the websocket behaviour and handle its connection
  */
 
-WebSocket.prototype.unregister = function () {
-    this.send(JSON.stringify({ 'func': 'unregister' }));
-};
-
 WebSocket.prototype.register = function (host) {
     this.send(JSON.stringify({ 'func': 'register', 'host': host }));
+};
+
+WebSocket.prototype.unregister = function () {
+    this.send(JSON.stringify({ 'func': 'unregister' }));
 };
 
 /**

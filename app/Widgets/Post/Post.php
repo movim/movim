@@ -56,7 +56,7 @@ class Post extends Base
     {
         $post = AppPost::find($packet->content);
 
-        if ($post->isComment()) {
+        if ($post?->isComment()) {
             if ($parent = $post->getParent()) {
                 $this->rpc(
                     'MovimTpl.fill',
