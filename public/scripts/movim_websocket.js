@@ -4,12 +4,12 @@
  * This file define the websocket behaviour and handle its connection
  */
 
-WebSocket.prototype.register = function (host) {
-    this.send(JSON.stringify({ 'func': 'register', 'host': host }));
-};
-
 WebSocket.prototype.unregister = function () {
     this.send(JSON.stringify({ 'func': 'unregister' }));
+};
+
+WebSocket.prototype.register = function (host) {
+    this.send(JSON.stringify({ 'func': 'register', 'host': host }));
 };
 
 /**
@@ -96,7 +96,7 @@ var MovimWebsocket = {
 
                 if (obj.func == 'started') {
                     // If the linker was started but we're not on the login page
-                    if (!['login', 'account', 'accountnext', 'tag', 'about', 'community'].includes(MovimUtils.urlParts().page)) {
+                    if (!['login', 'account', 'register', 'tag', 'about', 'community'].includes(MovimUtils.urlParts().page)) {
                         MovimUtils.disconnect();
                     } else {
                         MovimWebsocket.launchStarted();

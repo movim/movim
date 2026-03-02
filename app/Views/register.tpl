@@ -4,7 +4,7 @@
             <ul class="list middle">
                 <li>
                     <span class="primary active icon gray">
-                        <a href="<?php echo \Movim\Route::urlize('account'); ?>">
+                        <a href="<?php echo \Movim\Route::urlize('disconnect'); ?>">
                             <i class="material-symbols">arrow_back</i>
                         </a>
                     </span>
