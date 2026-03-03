@@ -1374,7 +1374,14 @@ class Chat extends \Movim\Widget\Base
         }
 
         // Inlines
-        $message->body = $message->getInlinedBodyAttribute(false, true) ?? $message->body;
+        $message->body = $message->getInlinedBodyAttribute(alt: false, triggerRequest: function ($message, $hash, $algorythm) {
+            $r = $this->xmpp(new Request);
+            $r->setTo($message->jidfrom)
+                ->setResource($message->resource)
+                ->setHash($hash)
+                ->setAlgorythm($algorythm)
+                ->request();
+        }) ?? $message->body;
 
         // Sticker message
         if (isset($message->sticker_cid_hash) && isset($message->sticker_cid_algorythm)) {

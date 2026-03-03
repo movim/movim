@@ -654,7 +654,7 @@ class Message extends Model
     /**
      * @desc Prepare and return the body with inline images, and request them if missing
      */
-    public function getInlinedBodyAttribute(?bool $alt = false, bool $triggerRequest = false): ?string
+    public function getInlinedBodyAttribute(?bool $alt = false, ?object $triggerRequest = null): ?string
     {
         if (!array_key_exists('body', $this->attributes)) return null;
 
@@ -696,12 +696,7 @@ class Message extends Model
                     );
 
                     if ($triggerRequest) {
-                        $r = new Request;
-                        $r->setTo($this->attributes['jidfrom'])
-                            ->setResource($this->attributes['resource'])
-                            ->setHash($inline['hash'])
-                            ->setAlgorythm($inline['algorythm'])
-                            ->request();
+                        $triggerRequest($this, $inline['hash'], $inline['algorythm']);
                     }
                 }
             }
