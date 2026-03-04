@@ -4,7 +4,14 @@
             <span class="primary icon bubble color green"><i class="material-symbols">info</i></span>
             <div>
                 <p>Movim {$version} - {$c->__('page.about')}</p>
-                <p class="all">{$c->__('about.info')} <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License v3</a>.</p>
+                <p class="all">{$c->__('about.info')} <a href="http://www.gnu.org/licenses/agpl-3.0.html" target="_blank">GNU Affero General Public License v3</a>.</p>
+            </div>
+        </li>
+        <li>
+            <span class="primary icon bubble color teal"><i class="material-symbols">code</i></span>
+            <div>
+                <p>{$c->__('about.sourcecode_title')}</p>
+                <p class="all"><a href="https://github.com/movim/movim" target="_blank">{$c->__('about.sourcecode_text')}</a></p>
             </div>
         </li>
         <li class="subheader">
@@ -13,7 +20,7 @@
             </div>
         </li>
         <li>
-            <span class="primary icon bubble color red"><i class="material-symbols">code</i></span>
+            <span class="primary icon bubble color red"><i class="material-symbols">people</i></span>
             <div>
                 <p>{$c->__('about.developers')}</p>
                 <p class="all">
