@@ -65,7 +65,7 @@ body>nav {
     padding: 1rem 0;
 }
 
-body>nav hr{
+body>nav hr {
     margin: 0.5rem 0;
 }
 
@@ -103,6 +103,7 @@ body>nav li {
 }
 
 @media screen and (min-width: 1680px) {
+
     body>nav,
     body>nav:hover {
         width: 15%;
@@ -232,6 +233,7 @@ main>div:first-child:nth-last-child(2)+div {
 }
 
 @media screen and (max-width: 1024px) {
+
     nav.on_desktop~main,
     nav~main.enabled {
         width: 100%;
@@ -244,6 +246,10 @@ main>div:first-child:nth-last-child(2)+div {
         position: absolute;
         top: 0;
         left: 0;
+    }
+
+    main.slide>div:first-child:nth-last-child(2)+div {
+        max-width: calc(100vw - 6.5rem);
     }
 
     main.slide>div:first-child:nth-last-child(2) {
