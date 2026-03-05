@@ -261,7 +261,7 @@ main>div:first-child:nth-last-child(2)+div {
     }
 
     main.slide.enabled>div:first-child:nth-last-child(2)+div {
-        margin-left: 7rem;
+        margin-left: 6.5rem;
     }
 
     main>aside+div {
