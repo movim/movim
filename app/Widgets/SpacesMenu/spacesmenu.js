@@ -10,6 +10,9 @@ var SpacesMenu = {
 
 MovimWebsocket.attach(() => {
     if (MovimUtils.urlParts().page == 'space') {
-        SpacesMenu_ajaxHttpGet(MovimUtils.urlParts().params[0], MovimUtils.urlParts().params[1]);
+        SpacesMenu_ajaxHttpGet(
+            MovimUtils.urlParts().params[0],
+            MovimUtils.urlParts().params[1],
+            MovimUtils.isMobile());
     };
 });
