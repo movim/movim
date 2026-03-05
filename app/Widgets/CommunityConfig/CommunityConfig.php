@@ -34,7 +34,6 @@ class CommunityConfig extends Base
         $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('config', ($advanced) ? false : $xml->getArray($config->x));
-        $view->assign('attributes', $config->attributes());
 
         $this->drawer('community_config', $view->draw('_communityconfig'), tiny: true);
         $this->rpc('MovimUtils.applyAutoheight');

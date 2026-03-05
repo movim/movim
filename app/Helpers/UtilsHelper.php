@@ -1,5 +1,6 @@
 <?php
 
+use App\Subscription;
 use App\Workers\AvatarHandler\AvatarHandler;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
@@ -310,7 +311,7 @@ function getXepNamespace()
         '0308' => ['name' => 'Last Message Correction', 'category' => 'chat',      'ns' => 'urn:xmpp:message-correct:0'],
         '0320' => ['name' => 'Use of DTLS-SRTP in Jingle Sessions', 'category' => 'jingle',     'ns' => 'urn:xmpp:jingle:apps:dtls:0'],
         '0327' => ['name' => 'Rayo', 'category' => 'rayo',       'ns' => 'urn:xmpp:rayo:0'],
-        '0330' => ['name' => 'Pubsub Subscription',    'category' => 'social',     'ns' => 'urn:xmpp:pubsub:subscription'],
+        '0330' => ['name' => 'Pubsub Subscription',    'category' => 'social',     'ns' => Subscription::PUBLIC_NODE],
         '0332' => ['name' => 'HTTP over XMPP transport', 'category' => 'client',   'ns' => 'urn:xmpp:http'],
         '0333' => ['name' => 'Chat Markers', 'category' => 'chat', 'ns' => 'urn:xmpp:chat-markers:0'],
         '0337' => ['name' => 'Event Logging over XMPP', 'category' => 'client',    'ns' => 'urn:xmpp:eventlog'],
@@ -622,6 +623,19 @@ function getPresenceAffiliations()
         'member' => __('room.affiliation_members'),
     ];
 }
+
+function getAffiliations()
+{
+    return [
+        'owner' => __('affiliation.owner'),
+        'admin' => __('affiliation.admin'),
+        'publisher' => __('affiliation.publisher'),
+        'publisher-only' => __('affiliation.publish-only'),
+        'member' => __('affiliation.member'),
+        'outcast' => __('affiliation.outcast'),
+    ];
+}
+
 
 /**
  * Map the XMPP form vars to Material Symbols

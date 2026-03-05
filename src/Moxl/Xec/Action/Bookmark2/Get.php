@@ -28,10 +28,12 @@ class Get extends Action
         $conferenceIds = [];
 
         foreach ($stanza->pubsub->items->item as $c) {
-            $conference = new Conference;
-            $conference->set($this->me->session, $c);
-            array_push($conferences, $conference->toArray());
-            array_push($conferenceIds, $conference->conference);
+            if ($c->conference && $c->conference->attributes()->xmlns == 'urn:xmpp:bookmarks:1') {
+                $conference = new Conference;
+                $conference->set($this->me->session, $c);
+                array_push($conferences, $conference->toArray());
+                array_push($conferenceIds, $conference->conference);
+            }
         }
 
         // We remove the conferences that might be saved under another bookmark version

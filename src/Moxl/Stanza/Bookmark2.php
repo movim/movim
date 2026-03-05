@@ -6,8 +6,9 @@ use App\Conference;
 
 class Bookmark2
 {
-    public static $node = 'urn:xmpp:bookmarks:';
-    public static $nodeConfig = [
+    public const VERSION = '1';
+    public const NODE = 'urn:xmpp:bookmarks:';
+    public const NODE_CONFIG = [
         'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
         'pubsub#persist_items' => 'true',
         'pubsub#access_model' => 'whitelist',
@@ -16,25 +17,32 @@ class Bookmark2
         'pubsub#notify_retract' => 'true',
     ];
 
-    public static function get($version = '1')
+    public static function get($version = self::VERSION)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
         $items = $dom->createElement('items');
-        $items->setAttribute('node', self::$node . $version);
+        $items->setAttribute('node', self::NODE . $version);
         $pubsub->appendChild($items);
 
         return $pubsub;
     }
 
-    public static function set(Conference $configuration, $version = '1', bool $withPublishOption = true)
-    {
+    public static function set(
+        Conference $configuration,
+        ?string $version = self::VERSION,
+        ?string $node = null,
+        ?bool $withPublishOption = true,
+        ?array $nodeConfig = self::NODE_CONFIG
+    ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', self::$node . $version);
+        $publish->setAttribute('node', $node == null
+            ? self::NODE . $version
+            : $node);
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
@@ -42,15 +50,17 @@ class Bookmark2
         $publish->appendChild($item);
 
         $conference = $dom->createElement('conference');
-        $conference->setAttribute('xmlns', self::$node . $version);
+        $conference->setAttribute('xmlns', self::NODE . $version);
         $conference->setAttribute('name', $configuration->name);
         if ($configuration->autojoin) {
             $conference->setAttribute('autojoin', 'true');
         }
         $item->appendChild($conference);
 
-        $nick = $dom->createElement('nick', $configuration->nick);
-        $conference->appendChild($nick);
+        if ($configuration->nick) {
+            $nick = $dom->createElement('nick', $configuration->nick);
+            $conference->appendChild($nick);
+        }
 
         if ($configuration->extensions) {
             $domExtensions = new \DOMDocument('1.0', 'UTF-8');
@@ -58,21 +68,21 @@ class Bookmark2
 
             $extensions = $dom->importNode($domExtensions->documentElement, true);
             $conference->appendChild($extensions);
-        } else if ($configuration->notify !== null) {
+        } else if ($configuration->notify !== null || $configuration->pinned == true) {
             $extensions = $dom->createElement('extensions');
             $conference->appendChild($extensions);
         }
 
         if ($configuration->notify !== null) {
             $notify = $dom->createElement('notify');
-            $notify->setAttribute('xmlns', Conference::$xmlnsNotifications);
+            $notify->setAttribute('xmlns', Conference::XMLNS_NOTIFICATIONS);
             $notify->appendChild($dom->createElement($configuration->notificationKey));
             $extensions->appendChild($notify);
         }
 
         if ($configuration->pinned == true) {
             $pinned = $dom->createElement('pinned');
-            $pinned->setAttribute('xmlns', Conference::$xmlnsPinned);
+            $pinned->setAttribute('xmlns', Conference::XMLNS_PINNED);
             $extensions->appendChild($pinned);
         }
 
@@ -83,7 +93,7 @@ class Bookmark2
             $x->setAttribute('type', 'submit');
             $publishOption->appendChild($x);
 
-            \Moxl\Utils::injectConfigInX($x, self::$nodeConfig);
+            \Moxl\Utils::injectConfigInX($x, $nodeConfig);
 
             $pubsub->appendChild($publishOption);
         }

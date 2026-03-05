@@ -9,8 +9,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Account/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AccountNext/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/AdHoc/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/AdminMain/locales.ini
@@ -71,8 +69,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Location/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Menu/locales.ini
@@ -107,6 +103,10 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/SpaceInfo/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/SpacesMenu/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stickers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stories/locales.ini
@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-22 08:05+0200\n"
+"POT-Creation-Date: 2026-03-05 17:25+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Slavko <linux@slavino.sk>, 2020-2021\n"
 "Language-Team: Slovak (Slovakia) (http://app.transifex.com/movim/movim/language/sk_SK/)\n"
@@ -168,6 +168,14 @@ msgstr "API"
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr "Movim je komunikačná platforma založená na protokole XMPP. Celý projekt, okrem nasledujúcich programov a zdroj je vydaný pod licenciou"
+
+#: [about]sourcecode_title
+msgid "Sourcecode"
+msgstr ""
+
+#: [about]sourcecode_text
+msgid "Checkout the sourcecode on the Github repository"
+msgstr ""
 
 #: [account]title [page]account
 msgid "Account"
@@ -236,42 +244,6 @@ msgstr ""
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr ""
-
-#: [create]title [subscribe]title
-msgid "Create a new account"
-msgstr "Vytvoriť nový účet"
-
-#: [create]notfound
-msgid "No account creation form found on the server"
-msgstr "Nebol nájdený registračný formulár servera"
-
-#: [create]server_on
-msgid "on"
-msgstr "na"
-
-#: [create]successfull
-msgid "Your account has been successfully registered"
-msgstr ""
-
-#: [create]loading
-msgid "Loading"
-msgstr "Načítanie"
-
-#: [create]placeholder
-msgid "…and start playing"
-msgstr "…a začnite sa zabávať"
-
-#: [error]not_acceptable
-msgid "Not Acceptable"
-msgstr "Neprijateľné"
-
-#: [error]service_unavailable
-msgid "The registration system of this server is currently unavailable"
-msgstr "Registračný systém tohoto servera nie je momentálne dostupný"
-
-#: [error]forbidden
-msgid "Registration forbidden"
-msgstr "Registrácia zakázaná"
 
 #: [adhoc]title
 msgid "Actions"
@@ -458,6 +430,14 @@ msgstr "Syslog"
 #: [log]syslog_files
 msgid "Syslog and files"
 msgstr "Syslog a súbory"
+
+#: [maxsessions]title
+msgid "Maximum of connected sessions"
+msgstr ""
+
+#: [maxsessions]info
+msgid "Movim will forbid new users to connect when the limit is reached, set it to 0 to disable"
+msgstr ""
 
 #: [adminreported]reported_by
 msgid "Reported by %s users"
@@ -894,14 +874,6 @@ msgstr "Video"
 #: [chats]audio
 msgid "Audio"
 msgstr ""
-
-#: [button]chat
-msgid "Chat"
-msgstr "Chat"
-
-#: [button]new
-msgid "New conversation"
-msgstr "Nové konverzácie"
 
 #: [chats_filter]all [menu]all [rooms_filter]all
 msgid "All"
@@ -1640,30 +1612,6 @@ msgstr "Chatovať s tímom Movim?"
 msgid "Add the chatroom"
 msgstr "Pridať miestnosť"
 
-#: [location]title
-msgid "My location"
-msgstr ""
-
-#: [location]enabled_title
-msgid "Currently shared with my contacts"
-msgstr ""
-
-#: [location]disabled_title
-msgid "Currently disabled"
-msgstr ""
-
-#: [location]last_published
-msgid "My last published location"
-msgstr ""
-
-#: [location]less_than_one_km
-msgid "Less than a km away"
-msgstr ""
-
-#: [location]n_km_away
-msgid "%s km away"
-msgstr ""
-
 #: [error]username
 msgid "Wrong username"
 msgstr "Zlé používateľské meno"
@@ -1696,9 +1644,10 @@ msgstr "Chyba relácie"
 msgid "Account successfully created"
 msgstr "Účet úspešne vytvorený"
 
-#: [error]timeout
-msgid "The server takes too much time to respond"
-msgstr "Serveru trvá odpoveď príliš dlho"
+#: [error]connection
+#, fuzzy
+msgid "Movim cannot connect to the server"
+msgstr "Pripojený k serveru"
 
 #: [error]impossible
 msgid "Impossible login"
@@ -1731,6 +1680,14 @@ msgstr "Autentifikačný mechanizmus nepodporovaný v Movim"
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
 msgstr "Autentifikácia XMPP zlyhala"
+
+#: [error]max_sessions_reached
+msgid "This Movim instance is currently full."
+msgstr ""
+
+#: [error]max_sessions_reached_join
+msgid "Try a different one on %s"
+msgstr ""
 
 #: [connection]socket_connected
 msgid "Connected to the server"
@@ -1889,6 +1846,11 @@ msgstr "Urobte svoj profil verejný, aby Vás mohli ostatní používatelia ľah
 msgid "You can always disable this in the configuration afterwards"
 msgstr "Kedykoľvek neskôr to môžete v konfigurácii vypnúť"
 
+#: [post]publish_something
+#, fuzzy
+msgid "Publish something"
+msgstr "Len vydavateľ"
+
 #: [post]news_feed
 msgid "News Feed"
 msgstr "Kanály noviniek"
@@ -1909,16 +1871,13 @@ msgstr "Príspevok uverejnený"
 msgid "Post deleted"
 msgstr "Príspevok odstránený"
 
-#: [post]hot
-msgid "What’s Hot"
-msgstr "Čo letí"
-
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Najnovšie príspevky v komunitách, ktoré neodoberáte (zatiaľ)"
 
-#: [post]new [publish]new
-msgid "New post"
+#: [post]new_blog
+#, fuzzy
+msgid "New blog post"
 msgstr "Nový príspevok"
 
 #: [post]repost
@@ -1928,10 +1887,6 @@ msgstr "Toto je preposlanie od %s"
 #: [post]see_profile
 msgid "See %s profile"
 msgstr "Pozrieť profil: %s"
-
-#: [post]blog_last
-msgid "Public posts from users"
-msgstr "Verejné príspevky používateľov"
 
 #: [post]unknown_contact
 msgid "Unknown contact"
@@ -2069,6 +2024,11 @@ msgstr "Zdá sa, že ste zatiaľ nedokončili svoj profil"
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
 msgstr "V stránke konfigurácie môžete popísať sám seba a pridať si zaujímavý obrázok"
 
+#: [status]visit_blog
+#, fuzzy
+msgid "Visit my blog"
+msgstr "Návštevník"
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr "Odhlásiť"
@@ -2128,6 +2088,10 @@ msgstr "Pridať súbor alebo obrázok"
 #: [publish]no_publication
 msgid "You cannot publish a post here"
 msgstr "Nemôžete tu uverejniť príspevok"
+
+#: [publish]new
+msgid "New post"
+msgstr "Nový príspevok"
 
 #: [publish]title
 msgid "Post title"
@@ -2229,6 +2193,42 @@ msgstr ""
 msgid "Story published"
 msgstr ""
 
+#: [create]title [subscribe]title
+msgid "Create a new account"
+msgstr "Vytvoriť nový účet"
+
+#: [create]notfound
+msgid "No account creation form found on the server"
+msgstr "Nebol nájdený registračný formulár servera"
+
+#: [create]server_on
+msgid "on"
+msgstr "na"
+
+#: [create]successfull
+msgid "Your account has been successfully registered"
+msgstr ""
+
+#: [create]loading
+msgid "Loading"
+msgstr "Načítanie"
+
+#: [create]placeholder
+msgid "…and start playing"
+msgstr "…a začnite sa zabávať"
+
+#: [error]not_acceptable
+msgid "Not Acceptable"
+msgstr "Neprijateľné"
+
+#: [error]service_unavailable
+msgid "The registration system of this server is currently unavailable"
+msgstr "Registračný systém tohoto servera nie je momentálne dostupný"
+
+#: [error]forbidden
+msgid "Registration forbidden"
+msgstr "Registrácia zakázaná"
+
 #: [rooms]create
 msgid "Create a chatroom"
 msgstr "Vytvoriť miestnosť"
@@ -2289,74 +2289,85 @@ msgstr "Názov alebo popis"
 msgid "A registration is required before using the service"
 msgstr ""
 
-#: [chatrooms]title
-msgid "Chatrooms"
-msgstr "Chatové miestnosti"
-
-#: [chatrooms]id
-msgid "Chatroom Address"
+#: [chatrooms]autojoin
+msgid "Join this chatroom on login"
 msgstr ""
-
-#: [chatrooms]name_placeholder
-msgid "My Favorite Room"
-msgstr "Moje obľôbené miestnosti"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
-msgstr ""
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Prázdne meno"
-
-#: [chatrooms]remove_title
-msgid "Permanently leave a chatroom"
-msgstr ""
-
-#: [chatrooms]remove_text
-msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr ""
-
-#: [chatrooms]connected
-msgid "Joined the chatroom"
-msgstr ""
-
-#: [chatrooms]disconnected
-msgid "Left the chatroom"
-msgstr ""
-
-#: [chatrooms]users
-msgctxt "[chatrooms]users"
-msgid "Users"
-msgstr "Používatelia"
-
-#: [chatrooms]members
-msgctxt "[chatrooms]members"
-msgid "Members"
-msgstr "Členovia"
-
-#: [chatrooms]banned
-msgid "Banned"
 msgstr ""
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr ""
 
+#: [chatrooms]banned
+msgid "Banned"
+msgstr ""
+
 #: [chatrooms]conflict
 msgid "Nickname already taken"
 msgstr ""
 
-#: [chatrooms]autojoin
-msgid "Join this chatroom on login"
+#: [chatrooms]connected
+msgid "Joined the chatroom"
 msgstr ""
 
-#: [chatrooms]pinned
-msgid "Pin this chatroom"
+#: [chatrooms]created
+msgid "Chatroom created"
 msgstr ""
 
 #: [chatrooms]destroyed
 msgid "Chatroom destroyed"
+msgstr ""
+
+#: [chatrooms]disconnected
+msgid "Left the chatroom"
+msgstr ""
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Prázdne meno"
+
+#: [chatrooms]forbidden
+msgid "You are not allowed to join this chatroom"
+msgstr ""
+
+#: [chatrooms]id
+msgid "Chatroom Address"
+msgstr ""
+
+#: [chatrooms]itemnotfound
+msgid "The chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]jidmalformed
+msgid "Your nickname is not valid"
+msgstr ""
+
+#: [chatrooms]members
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Členovia"
+
+#: [chatrooms]name_placeholder
+msgid "My Favorite Room"
+msgstr "Moje obľôbené miestnosti"
+
+#: [chatrooms]notacceptable
+msgid "Not acceptable"
+msgstr ""
+
+#: [chatrooms]notallowed
+msgid "You are not allowed to create a chatroom there"
+msgstr ""
+
+#: [chatrooms]notauthorized
+msgid "A password is required"
+msgstr "Je vyžadované heslo"
+
+#: [chatrooms]pinned
+msgid "Pin this chatroom"
 msgstr ""
 
 #: [chatrooms]registrationrequired
@@ -2371,37 +2382,30 @@ msgstr ""
 msgid "Connection to remote server timed out"
 msgstr ""
 
-#: [chatrooms]itemnotfound
-msgid "The chatroom doesn’t exist"
+#: [chatrooms]remove_text
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
 msgstr ""
 
-#: [chatrooms]notauthorized
-msgid "A password is required"
-msgstr "Je vyžadované heslo"
-
-#: [chatrooms]forbidden
-msgid "You are not allowed to join this chatroom"
+#: [chatrooms]remove_title
+msgid "Permanently leave a chatroom"
 msgstr ""
 
-#: [chatrooms]jidmalformed
-msgid "Your nickname is not valid"
-msgstr ""
-
-#: [chatrooms]notacceptable
-msgid "Not acceptable"
+#: [chatrooms]rooms
+msgid "Rooms"
 msgstr ""
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
 msgstr ""
 
-#: [chatrooms]notallowed
-msgid "You are not allowed to create a chatroom there"
-msgstr ""
+#: [chatrooms]title
+msgid "Chatrooms"
+msgstr "Chatové miestnosti"
 
-#: [chatrooms]created
-msgid "Chatroom created"
-msgstr ""
+#: [chatrooms]users
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Používatelia"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -2517,8 +2521,9 @@ msgstr ""
 msgid "Never notify"
 msgstr "Nikdy neupozorňovať"
 
-#: [room]notify_quoted
-msgid "Notify when quoted"
+#: [room]notify_mentioned
+#, fuzzy
+msgid "Notify when mentioned"
 msgstr "Upozorniť pri citovaní"
 
 #: [room]notify_always
@@ -2528,22 +2533,6 @@ msgstr "Vždy upozorniť"
 #: [room]pinned
 msgid "Pinned"
 msgstr ""
-
-#: [room]affiliation_owner [affiliation]owner
-msgid "Owner"
-msgstr "Vlastník"
-
-#: [room]affiliation_admin
-msgid "Admin"
-msgstr ""
-
-#: [room]affiliation_member [affiliation]member
-msgid "Member"
-msgstr "Člen"
-
-#: [room]affiliation_none [affiliation]no-aff
-msgid "No affiliation"
-msgstr "Bez pričlenenia"
 
 #: [room]affiliation_admins
 msgid "Admins"
@@ -2564,26 +2553,6 @@ msgstr ""
 
 #: [room]role_changed
 msgid "Role changed"
-msgstr ""
-
-#: [room]affiliation_owner_changed
-msgid "User granted as owner"
-msgstr ""
-
-#: [room]affiliation_admin_changed
-msgid "User granted as admin"
-msgstr ""
-
-#: [room]affiliation_member_changed
-msgid "User granted as member"
-msgstr ""
-
-#: [room]affiliation_outcast_changed
-msgid "User banned"
-msgstr ""
-
-#: [room]affiliation_none_changed
-msgid "Affiliation removed for the user"
 msgstr ""
 
 #: [roomsexplore]no_local
@@ -2669,6 +2638,162 @@ msgstr ""
 #: [sendto]sharing_story
 msgid "Story shared using Movim"
 msgstr ""
+
+#: [spaceinfo]config_title
+#, fuzzy
+msgid "Space configuration"
+msgstr "Konfigurácia uložená"
+
+#: [spaceinfo]config_saved
+#, fuzzy
+msgid "Space configuration saved"
+msgstr "Konfigurácia uložená"
+
+#: [spaceinfo]config_error
+#, fuzzy
+msgid "Space configuration error"
+msgstr "Pokročilé nastavenia"
+
+#: [spaceinfo]destroy_title
+#, fuzzy
+msgid "Destroy the space"
+msgstr "Opustiť túto inštanciu"
+
+#: [spaceinfo]destroy_text
+msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
+msgstr ""
+
+#: [spaceinfo]invite_title
+#, fuzzy
+msgid "Invite new contacts"
+msgstr "Pozvať kontakt"
+
+#: [spaceinfo]invite_text
+msgid "A moderator will have to approve the join request"
+msgstr ""
+
+#: [spaceinfo]invite_uri_title
+#, fuzzy
+msgid "Send an invitation key to your contacts"
+msgstr "Poslať tento odkaz svojim kontaktom"
+
+#: [spaceinfo]leave_title [spacesmenu]leave_title
+#, fuzzy
+msgid "Leave the space"
+msgstr "Opustiť túto inštanciu"
+
+#: [spaceinfo]add_room_title
+#, fuzzy
+msgid "Add a room"
+msgstr "Pridať komentár"
+
+#: [spaceinfo]pending_approvals
+msgid "%s subscriptions requests are waiting for your approval"
+msgstr ""
+
+#: [spaceinfo]pending_request
+msgid "%s is waiting for your approval to join the space"
+msgstr ""
+
+#: [spaceinfo]pending_action
+msgid "Manage the request"
+msgstr ""
+
+#: [spaceinfo]pinned
+msgid "Pin this space in the bar"
+msgstr ""
+
+#: [spaceinfo]owner_cannot_leave
+msgid "An owner cannot leave his own Space"
+msgstr ""
+
+#: [spaceinfo]affiliation_none
+#, fuzzy
+msgid "Remove from the space"
+msgstr "Opustiť túto inštanciu"
+
+#: [spacesmenu]create_space_title
+#, fuzzy
+msgid "Create a Space"
+msgstr "Vytvoriť nový účet"
+
+#: [spacesmenu]invite_space_title
+msgid "You got an invite?"
+msgstr ""
+
+#: [spacesmenu]space_title
+msgid "Space title"
+msgstr ""
+
+#: [spacesmenu]space_title_empty
+msgid "Your Space title is empty"
+msgstr ""
+
+#: [spacesmenu]space_created
+msgid "Space created"
+msgstr ""
+
+#: [spacesmenu]loading_space_info
+msgid "Loading the space"
+msgstr ""
+
+#: [spacesmenu]subscribed
+msgid "Subscribed to the space"
+msgstr ""
+
+#: [spacesmenu]invitation_key
+#, fuzzy
+msgid "Use an invitation key"
+msgstr "Pozvánka poslaná"
+
+#: [spacesmenu]key_required
+#, fuzzy
+msgid "A valid key is required"
+msgstr "Je vyžadované heslo"
+
+#: [spacesmenu]locked_title
+msgid "Locked space"
+msgstr ""
+
+#: [spacesmenu]locked_text
+#, fuzzy
+msgid "You are not authorized to join the space at the moment"
+msgstr "Neodoberáte tento kontakt"
+
+#: [spacesmenu]locked_try_again
+msgid "Try again"
+msgstr ""
+
+#: [spacesmenu]leave_text
+#, fuzzy
+msgid "Are you sure that you want to leave the space?"
+msgstr "Naozaj chcete odstrániť tento komentár?"
+
+#: [spacesmenu]pending_subscription_title
+msgid "A request has been send to a moderator."
+msgstr ""
+
+#: [spacesmenu]pending_subscription_text
+msgid "You will be able to join the space once its accepted."
+msgstr ""
+
+#: [spacesmenu]pending_subscription_add_title
+msgid "Add %s to the space"
+msgstr ""
+
+#: [spacesmenu]pending_subscription_refuse_title
+msgid "Deny the access"
+msgstr ""
+
+#: [spacesmenu]contact_added
+#, fuzzy
+msgid "Contact added in the space"
+msgstr "Kontakt pridaný"
+
+#: [spacesmenu]contact_denied
+#, fuzzy
+msgid "Contact denied in the space"
+msgstr "Kontakt odstránený"
 
 #: [sticker]title
 msgid "Stickers"
@@ -3002,74 +3127,78 @@ msgstr "alebo"
 msgid "Switch to another pod"
 msgstr "Prepnúť na iný POD"
 
-#: [page]communities
-msgid "Communities"
-msgstr "Komunity"
-
-#: [page]home
-msgid "Home"
-msgstr "Domov"
-
-#: [page]explore
-msgid "Explore"
-msgstr "Preskúmať"
+#: [page]about
+msgid "About"
+msgstr "O aplikácii"
 
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Vytvorenie účtu"
 
-#: [page]news
-msgid "News"
-msgstr "Novinky"
-
 #: [page]avatar
 msgid "Profile Picture"
 msgstr ""
-
-#: [page]chats
-msgid "Messages"
-msgstr ""
-
-#: [page]publish
-msgid "Publish"
-msgstr "Uverejniť"
 
 #: [page]blog
 msgid "Blog"
 msgstr "Blog"
 
-#: [page]about
-msgid "About"
-msgstr "O aplikácii"
+#: [page]chats
+msgid "Messages"
+msgstr ""
 
-#: [page]login
-msgid "Login"
-msgstr "Prihlásiť"
+#: [page]communities
+msgid "Communities"
+msgstr "Komunity"
 
-#: [page]not_found
-msgid "Not Found"
-msgstr "Nenájdené"
+#: [page]explore
+msgid "Explore"
+msgstr "Preskúmať"
 
 #: [page]feed
 msgid "Feed"
 msgstr "Kanál"
 
+#: [page]home
+msgid "Home"
+msgstr "Domov"
+
+#: [page]login
+msgid "Login"
+msgstr "Prihlásiť"
+
+#: [page]news
+msgid "News"
+msgstr "Novinky"
+
+#: [page]not_found
+msgid "Not Found"
+msgstr "Nenájdené"
+
 #: [page]posts
 msgid "Posts"
 msgstr "Príspevky"
 
-#: [page]visio
-msgid "Visio-conference"
-msgstr "Video-konferencia"
+#: [page]publish
+msgid "Publish"
+msgstr "Uverejniť"
 
 #: [page]share
 msgctxt "[page]share"
 msgid "Share"
 msgstr "Zdieľať"
 
+#: [page]spaces
+msgid "Spaces"
+msgstr ""
+
 #: [page]tag
 msgid "Tag"
 msgstr "Značka"
+
+#: [page]visio
+msgid "Visio-conference"
+msgstr "Video-konferencia"
 
 #: [error]error
 msgid "Error: %s"
@@ -3131,6 +3260,10 @@ msgstr "Volať"
 msgid "Cancel"
 msgstr "Zrušiť"
 
+#: [button]chat
+msgid "Chat"
+msgstr "Chat"
+
 #: [button]clear
 msgid "Clear"
 msgstr "Vymazať"
@@ -3171,6 +3304,10 @@ msgstr "Zapnúť"
 msgid "Join"
 msgstr ""
 
+#: [button]leave
+msgid "Leave"
+msgstr ""
+
 #: [button]like
 msgid "Like"
 msgstr "Páči"
@@ -3178,6 +3315,10 @@ msgstr "Páči"
 #: [button]more
 msgid "More"
 msgstr "Viac"
+
+#: [button]new
+msgid "New conversation"
+msgstr "Nové konverzácie"
 
 #: [button]next
 msgid "Next"
@@ -3212,7 +3353,7 @@ msgid "Register"
 msgstr "Registrovať"
 
 #: [button]remove
-msgid "Leave"
+msgid "Remove"
 msgstr ""
 
 #: [button]reply
@@ -3872,6 +4013,14 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "Vlastník"
+
+#: [affiliation]admin
+msgid "Admin"
+msgstr ""
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Vydavateľ"
@@ -3880,9 +4029,37 @@ msgstr "Vydavateľ"
 msgid "Publish only"
 msgstr "Len vydavateľ"
 
+#: [affiliation]member
+msgid "Member"
+msgstr "Člen"
+
 #: [affiliation]outcast
 msgid "Outcast"
 msgstr "Blokovaný"
+
+#: [affiliation]no-aff
+msgid "No affiliation"
+msgstr "Bez pričlenenia"
+
+#: [affiliation]owner_changed
+msgid "User granted as owner"
+msgstr ""
+
+#: [affiliation]admin_changed
+msgid "User granted as admin"
+msgstr ""
+
+#: [affiliation]member_changed
+msgid "User granted as member"
+msgstr ""
+
+#: [affiliation]outcast_changed
+msgid "User banned"
+msgstr ""
+
+#: [affiliation]none_changed
+msgid "Affiliation removed for the user"
+msgstr ""
 
 #: [api]error
 msgid "The API is not reachable, try again later"
@@ -3891,3 +4068,16 @@ msgstr "API nie je dostupné, skúste neskôr"
 #: [field]type_here
 msgid "Type here"
 msgstr "Píšte tu"
+
+#, fuzzy
+#~ msgid "New Post"
+#~ msgstr "Nový príspevok"
+
+#~ msgid "The server takes too much time to respond"
+#~ msgstr "Serveru trvá odpoveď príliš dlho"
+
+#~ msgid "What’s Hot"
+#~ msgstr "Čo letí"
+
+#~ msgid "Public posts from users"
+#~ msgstr "Verejné príspevky používateľov"

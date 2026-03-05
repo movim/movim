@@ -6,8 +6,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Account/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AccountNext/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/AdHoc/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/AdminMain/locales.ini
@@ -68,8 +66,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Location/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Menu/locales.ini
@@ -104,6 +100,10 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/SpaceInfo/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/SpacesMenu/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stickers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stories/locales.ini
@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-22 08:05+0200\n"
+"POT-Creation-Date: 2026-03-05 17:25+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Mikael H <silfursun@gmail.com>, 2016\n"
 "Language-Team: Finnish (http://app.transifex.com/movim/movim/language/fi/)\n"
@@ -165,6 +165,14 @@ msgstr "API"
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr "Movim on XMPP-pohjainen keskustelualusta. Koko projekti, lukuun ottamatta seuraavia ohjelmistoja ja resursseja, käyttää lisenssiä"
+
+#: [about]sourcecode_title
+msgid "Sourcecode"
+msgstr ""
+
+#: [about]sourcecode_text
+msgid "Checkout the sourcecode on the Github repository"
+msgstr ""
 
 #: [account]title [page]account
 msgid "Account"
@@ -232,42 +240,6 @@ msgstr ""
 
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr ""
-
-#: [create]title [subscribe]title
-msgid "Create a new account"
-msgstr "Luo uusi tili"
-
-#: [create]notfound
-msgid "No account creation form found on the server"
-msgstr "Palvelimelta ei löytynyt tilin luontikaavaketta"
-
-#: [create]server_on
-msgid "on"
-msgstr ""
-
-#: [create]successfull
-msgid "Your account has been successfully registered"
-msgstr ""
-
-#: [create]loading
-msgid "Loading"
-msgstr "Ladataan"
-
-#: [create]placeholder
-msgid "…and start playing"
-msgstr ""
-
-#: [error]not_acceptable
-msgid "Not Acceptable"
-msgstr "Ei hyväksyttävä"
-
-#: [error]service_unavailable
-msgid "The registration system of this server is currently unavailable"
-msgstr "Palvelimelle ei voi rekisteröityä juuri nyt"
-
-#: [error]forbidden
-msgid "Registration forbidden"
 msgstr ""
 
 #: [adhoc]title
@@ -454,6 +426,14 @@ msgstr ""
 
 #: [log]syslog_files
 msgid "Syslog and files"
+msgstr ""
+
+#: [maxsessions]title
+msgid "Maximum of connected sessions"
+msgstr ""
+
+#: [maxsessions]info
+msgid "Movim will forbid new users to connect when the limit is reached, set it to 0 to disable"
 msgstr ""
 
 #: [adminreported]reported_by
@@ -891,14 +871,6 @@ msgstr ""
 #: [chats]audio
 msgid "Audio"
 msgstr ""
-
-#: [button]chat
-msgid "Chat"
-msgstr "Keskustelu"
-
-#: [button]new
-msgid "New conversation"
-msgstr "Uusi keskustelu"
 
 #: [chats_filter]all [menu]all [rooms_filter]all
 msgid "All"
@@ -1637,30 +1609,6 @@ msgstr ""
 msgid "Add the chatroom"
 msgstr ""
 
-#: [location]title
-msgid "My location"
-msgstr ""
-
-#: [location]enabled_title
-msgid "Currently shared with my contacts"
-msgstr ""
-
-#: [location]disabled_title
-msgid "Currently disabled"
-msgstr ""
-
-#: [location]last_published
-msgid "My last published location"
-msgstr ""
-
-#: [location]less_than_one_km
-msgid "Less than a km away"
-msgstr ""
-
-#: [location]n_km_away
-msgid "%s km away"
-msgstr ""
-
 #: [error]username
 msgid "Wrong username"
 msgstr "Väärä käyttäjänimi"
@@ -1693,8 +1641,8 @@ msgstr "Istuntovirhe"
 msgid "Account successfully created"
 msgstr "Käyttäjätili luotiin onnistuneesti"
 
-#: [error]timeout
-msgid "The server takes too much time to respond"
+#: [error]connection
+msgid "Movim cannot connect to the server"
 msgstr ""
 
 #: [error]impossible
@@ -1728,6 +1676,14 @@ msgstr ""
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
 msgstr "XMPP autentikointi epäonnistui"
+
+#: [error]max_sessions_reached
+msgid "This Movim instance is currently full."
+msgstr ""
+
+#: [error]max_sessions_reached_join
+msgid "Try a different one on %s"
+msgstr ""
 
 #: [connection]socket_connected
 msgid "Connected to the server"
@@ -1886,6 +1842,10 @@ msgstr ""
 msgid "You can always disable this in the configuration afterwards"
 msgstr ""
 
+#: [post]publish_something
+msgid "Publish something"
+msgstr ""
+
 #: [post]news_feed
 msgid "News Feed"
 msgstr ""
@@ -1906,16 +1866,13 @@ msgstr "Julkaisu julkaistu"
 msgid "Post deleted"
 msgstr "Julkaisu poistettu"
 
-#: [post]hot
-msgid "What’s Hot"
-msgstr ""
-
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr ""
 
-#: [post]new [publish]new
-msgid "New post"
+#: [post]new_blog
+#, fuzzy
+msgid "New blog post"
 msgstr "Uusi julkaisu"
 
 #: [post]repost
@@ -1924,10 +1881,6 @@ msgstr ""
 
 #: [post]see_profile
 msgid "See %s profile"
-msgstr ""
-
-#: [post]blog_last
-msgid "Public posts from users"
 msgstr ""
 
 #: [post]unknown_contact
@@ -2066,6 +2019,10 @@ msgstr ""
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
 msgstr ""
 
+#: [status]visit_blog
+msgid "Visit my blog"
+msgstr ""
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr "Katkaise yhteys"
@@ -2125,6 +2082,10 @@ msgstr ""
 #: [publish]no_publication
 msgid "You cannot publish a post here"
 msgstr ""
+
+#: [publish]new
+msgid "New post"
+msgstr "Uusi julkaisu"
 
 #: [publish]title
 msgid "Post title"
@@ -2226,6 +2187,42 @@ msgstr ""
 msgid "Story published"
 msgstr ""
 
+#: [create]title [subscribe]title
+msgid "Create a new account"
+msgstr "Luo uusi tili"
+
+#: [create]notfound
+msgid "No account creation form found on the server"
+msgstr "Palvelimelta ei löytynyt tilin luontikaavaketta"
+
+#: [create]server_on
+msgid "on"
+msgstr ""
+
+#: [create]successfull
+msgid "Your account has been successfully registered"
+msgstr ""
+
+#: [create]loading
+msgid "Loading"
+msgstr "Ladataan"
+
+#: [create]placeholder
+msgid "…and start playing"
+msgstr ""
+
+#: [error]not_acceptable
+msgid "Not Acceptable"
+msgstr "Ei hyväksyttävä"
+
+#: [error]service_unavailable
+msgid "The registration system of this server is currently unavailable"
+msgstr "Palvelimelle ei voi rekisteröityä juuri nyt"
+
+#: [error]forbidden
+msgid "Registration forbidden"
+msgstr ""
+
 #: [rooms]create
 msgid "Create a chatroom"
 msgstr ""
@@ -2286,45 +2283,60 @@ msgstr ""
 msgid "A registration is required before using the service"
 msgstr ""
 
-#: [chatrooms]title
-msgid "Chatrooms"
-msgstr "Keskusteluhuoneet"
-
-#: [chatrooms]id
-msgid "Chatroom Address"
+#: [chatrooms]autojoin
+msgid "Join this chatroom on login"
 msgstr ""
-
-#: [chatrooms]name_placeholder
-msgid "My Favorite Room"
-msgstr "Lempihuoneeni"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
 msgstr ""
 
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Tyhä nimi"
-
-#: [chatrooms]remove_title
-msgid "Permanently leave a chatroom"
+#: [chatrooms]bad_nickname
+msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr ""
 
-#: [chatrooms]remove_text
-msgid "You are going to permanently leave the following chatroom. Please confirm your action."
+#: [chatrooms]banned
+msgid "Banned"
+msgstr ""
+
+#: [chatrooms]conflict
+msgid "Nickname already taken"
 msgstr ""
 
 #: [chatrooms]connected
 msgid "Joined the chatroom"
 msgstr ""
 
+#: [chatrooms]created
+msgid "Chatroom created"
+msgstr ""
+
+#: [chatrooms]destroyed
+msgid "Chatroom destroyed"
+msgstr ""
+
 #: [chatrooms]disconnected
 msgid "Left the chatroom"
 msgstr ""
 
-#: [chatrooms]users
-msgctxt "[chatrooms]users"
-msgid "Users"
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Tyhä nimi"
+
+#: [chatrooms]forbidden
+msgid "You are not allowed to join this chatroom"
+msgstr ""
+
+#: [chatrooms]id
+msgid "Chatroom Address"
+msgstr ""
+
+#: [chatrooms]itemnotfound
+msgid "The chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]jidmalformed
+msgid "Your nickname is not valid"
 msgstr ""
 
 #: [chatrooms]members
@@ -2332,28 +2344,24 @@ msgctxt "[chatrooms]members"
 msgid "Members"
 msgstr ""
 
-#: [chatrooms]banned
-msgid "Banned"
+#: [chatrooms]name_placeholder
+msgid "My Favorite Room"
+msgstr "Lempihuoneeni"
+
+#: [chatrooms]notacceptable
+msgid "Not acceptable"
 msgstr ""
 
-#: [chatrooms]bad_nickname
-msgid "Please enter a valid nickname (2 to 40 characters)"
+#: [chatrooms]notallowed
+msgid "You are not allowed to create a chatroom there"
 msgstr ""
 
-#: [chatrooms]conflict
-msgid "Nickname already taken"
-msgstr ""
-
-#: [chatrooms]autojoin
-msgid "Join this chatroom on login"
+#: [chatrooms]notauthorized
+msgid "A password is required"
 msgstr ""
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
-msgstr ""
-
-#: [chatrooms]destroyed
-msgid "Chatroom destroyed"
 msgstr ""
 
 #: [chatrooms]registrationrequired
@@ -2368,36 +2376,29 @@ msgstr ""
 msgid "Connection to remote server timed out"
 msgstr ""
 
-#: [chatrooms]itemnotfound
-msgid "The chatroom doesn’t exist"
+#: [chatrooms]remove_text
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
 msgstr ""
 
-#: [chatrooms]notauthorized
-msgid "A password is required"
+#: [chatrooms]remove_title
+msgid "Permanently leave a chatroom"
 msgstr ""
 
-#: [chatrooms]forbidden
-msgid "You are not allowed to join this chatroom"
-msgstr ""
-
-#: [chatrooms]jidmalformed
-msgid "Your nickname is not valid"
-msgstr ""
-
-#: [chatrooms]notacceptable
-msgid "Not acceptable"
+#: [chatrooms]rooms
+msgid "Rooms"
 msgstr ""
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
 msgstr ""
 
-#: [chatrooms]notallowed
-msgid "You are not allowed to create a chatroom there"
-msgstr ""
+#: [chatrooms]title
+msgid "Chatrooms"
+msgstr "Keskusteluhuoneet"
 
-#: [chatrooms]created
-msgid "Chatroom created"
+#: [chatrooms]users
+msgctxt "[chatrooms]users"
+msgid "Users"
 msgstr ""
 
 #: [bookmarks]updated
@@ -2514,8 +2515,8 @@ msgstr ""
 msgid "Never notify"
 msgstr ""
 
-#: [room]notify_quoted
-msgid "Notify when quoted"
+#: [room]notify_mentioned
+msgid "Notify when mentioned"
 msgstr ""
 
 #: [room]notify_always
@@ -2524,22 +2525,6 @@ msgstr ""
 
 #: [room]pinned
 msgid "Pinned"
-msgstr ""
-
-#: [room]affiliation_owner [affiliation]owner
-msgid "Owner"
-msgstr ""
-
-#: [room]affiliation_admin
-msgid "Admin"
-msgstr ""
-
-#: [room]affiliation_member [affiliation]member
-msgid "Member"
-msgstr ""
-
-#: [room]affiliation_none [affiliation]no-aff
-msgid "No affiliation"
 msgstr ""
 
 #: [room]affiliation_admins
@@ -2561,26 +2546,6 @@ msgstr ""
 
 #: [room]role_changed
 msgid "Role changed"
-msgstr ""
-
-#: [room]affiliation_owner_changed
-msgid "User granted as owner"
-msgstr ""
-
-#: [room]affiliation_admin_changed
-msgid "User granted as admin"
-msgstr ""
-
-#: [room]affiliation_member_changed
-msgid "User granted as member"
-msgstr ""
-
-#: [room]affiliation_outcast_changed
-msgid "User banned"
-msgstr ""
-
-#: [room]affiliation_none_changed
-msgid "Affiliation removed for the user"
 msgstr ""
 
 #: [roomsexplore]no_local
@@ -2666,6 +2631,155 @@ msgstr ""
 #: [sendto]sharing_story
 msgid "Story shared using Movim"
 msgstr ""
+
+#: [spaceinfo]config_title
+#, fuzzy
+msgid "Space configuration"
+msgstr "Asetukset tallennettu"
+
+#: [spaceinfo]config_saved
+#, fuzzy
+msgid "Space configuration saved"
+msgstr "Asetukset tallennettu"
+
+#: [spaceinfo]config_error
+#, fuzzy
+msgid "Space configuration error"
+msgstr "Asetukset tallennettu"
+
+#: [spaceinfo]destroy_title
+msgid "Destroy the space"
+msgstr ""
+
+#: [spaceinfo]destroy_text
+msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
+msgstr ""
+
+#: [spaceinfo]invite_title
+#, fuzzy
+msgid "Invite new contacts"
+msgstr "Piilota offline-kontaktit"
+
+#: [spaceinfo]invite_text
+msgid "A moderator will have to approve the join request"
+msgstr ""
+
+#: [spaceinfo]invite_uri_title
+msgid "Send an invitation key to your contacts"
+msgstr ""
+
+#: [spaceinfo]leave_title [spacesmenu]leave_title
+#, fuzzy
+msgid "Leave the space"
+msgstr "Luo uusi tili"
+
+#: [spaceinfo]add_room_title
+#, fuzzy
+msgid "Add a room"
+msgstr "Lisää kommentti"
+
+#: [spaceinfo]pending_approvals
+msgid "%s subscriptions requests are waiting for your approval"
+msgstr ""
+
+#: [spaceinfo]pending_request
+msgid "%s is waiting for your approval to join the space"
+msgstr ""
+
+#: [spaceinfo]pending_action
+msgid "Manage the request"
+msgstr ""
+
+#: [spaceinfo]pinned
+msgid "Pin this space in the bar"
+msgstr ""
+
+#: [spaceinfo]owner_cannot_leave
+msgid "An owner cannot leave his own Space"
+msgstr ""
+
+#: [spaceinfo]affiliation_none
+msgid "Remove from the space"
+msgstr ""
+
+#: [spacesmenu]create_space_title
+#, fuzzy
+msgid "Create a Space"
+msgstr "Luo uusi tili"
+
+#: [spacesmenu]invite_space_title
+msgid "You got an invite?"
+msgstr ""
+
+#: [spacesmenu]space_title
+msgid "Space title"
+msgstr ""
+
+#: [spacesmenu]space_title_empty
+msgid "Your Space title is empty"
+msgstr ""
+
+#: [spacesmenu]space_created
+msgid "Space created"
+msgstr ""
+
+#: [spacesmenu]loading_space_info
+msgid "Loading the space"
+msgstr ""
+
+#: [spacesmenu]subscribed
+msgid "Subscribed to the space"
+msgstr ""
+
+#: [spacesmenu]invitation_key
+msgid "Use an invitation key"
+msgstr ""
+
+#: [spacesmenu]key_required
+msgid "A valid key is required"
+msgstr ""
+
+#: [spacesmenu]locked_title
+msgid "Locked space"
+msgstr ""
+
+#: [spacesmenu]locked_text
+msgid "You are not authorized to join the space at the moment"
+msgstr ""
+
+#: [spacesmenu]locked_try_again
+msgid "Try again"
+msgstr ""
+
+#: [spacesmenu]leave_text
+msgid "Are you sure that you want to leave the space?"
+msgstr ""
+
+#: [spacesmenu]pending_subscription_title
+msgid "A request has been send to a moderator."
+msgstr ""
+
+#: [spacesmenu]pending_subscription_text
+msgid "You will be able to join the space once its accepted."
+msgstr ""
+
+#: [spacesmenu]pending_subscription_add_title
+msgid "Add %s to the space"
+msgstr ""
+
+#: [spacesmenu]pending_subscription_refuse_title
+msgid "Deny the access"
+msgstr ""
+
+#: [spacesmenu]contact_added
+#, fuzzy
+msgid "Contact added in the space"
+msgstr "Kontakti lisätty"
+
+#: [spacesmenu]contact_denied
+#, fuzzy
+msgid "Contact denied in the space"
+msgstr "Kontakti poistettu"
 
 #: [sticker]title
 msgid "Stickers"
@@ -2999,74 +3113,78 @@ msgstr ""
 msgid "Switch to another pod"
 msgstr ""
 
-#: [page]communities
-msgid "Communities"
+#: [page]about
+msgid "About"
 msgstr ""
-
-#: [page]home
-msgid "Home"
-msgstr "Etusivu"
-
-#: [page]explore
-msgid "Explore"
-msgstr "Tutki"
 
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Käyttäjätilin luominen"
 
-#: [page]news
-msgid "News"
-msgstr "Uutiset"
-
 #: [page]avatar
 msgid "Profile Picture"
 msgstr ""
-
-#: [page]chats
-msgid "Messages"
-msgstr ""
-
-#: [page]publish
-msgid "Publish"
-msgstr "Julkaise"
 
 #: [page]blog
 msgid "Blog"
 msgstr "Blogi"
 
-#: [page]about
-msgid "About"
+#: [page]chats
+msgid "Messages"
 msgstr ""
 
-#: [page]login
-msgid "Login"
-msgstr "Kirjaudu sisään"
-
-#: [page]not_found
-msgid "Not Found"
+#: [page]communities
+msgid "Communities"
 msgstr ""
+
+#: [page]explore
+msgid "Explore"
+msgstr "Tutki"
 
 #: [page]feed
 msgid "Feed"
 msgstr "Syöte"
 
+#: [page]home
+msgid "Home"
+msgstr "Etusivu"
+
+#: [page]login
+msgid "Login"
+msgstr "Kirjaudu sisään"
+
+#: [page]news
+msgid "News"
+msgstr "Uutiset"
+
+#: [page]not_found
+msgid "Not Found"
+msgstr ""
+
 #: [page]posts
 msgid "Posts"
 msgstr "Julkaisut"
 
-#: [page]visio
-msgid "Visio-conference"
-msgstr ""
+#: [page]publish
+msgid "Publish"
+msgstr "Julkaise"
 
 #: [page]share
 msgctxt "[page]share"
 msgid "Share"
 msgstr ""
 
+#: [page]spaces
+msgid "Spaces"
+msgstr ""
+
 #: [page]tag
 msgid "Tag"
 msgstr "Tagi"
+
+#: [page]visio
+msgid "Visio-conference"
+msgstr ""
 
 #: [error]error
 msgid "Error: %s"
@@ -3128,6 +3246,10 @@ msgstr ""
 msgid "Cancel"
 msgstr "Peruuta"
 
+#: [button]chat
+msgid "Chat"
+msgstr "Keskustelu"
+
 #: [button]clear
 msgid "Clear"
 msgstr "Tyhjää"
@@ -3168,6 +3290,10 @@ msgstr ""
 msgid "Join"
 msgstr ""
 
+#: [button]leave
+msgid "Leave"
+msgstr ""
+
 #: [button]like
 msgid "Like"
 msgstr ""
@@ -3175,6 +3301,10 @@ msgstr ""
 #: [button]more
 msgid "More"
 msgstr ""
+
+#: [button]new
+msgid "New conversation"
+msgstr "Uusi keskustelu"
 
 #: [button]next
 msgid "Next"
@@ -3209,7 +3339,7 @@ msgid "Register"
 msgstr "Rekisteröidy"
 
 #: [button]remove
-msgid "Leave"
+msgid "Remove"
 msgstr ""
 
 #: [button]reply
@@ -3869,6 +3999,14 @@ msgstr ""
 msgid "TB"
 msgstr ""
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr ""
+
+#: [affiliation]admin
+msgid "Admin"
+msgstr ""
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr ""
@@ -3877,8 +4015,36 @@ msgstr ""
 msgid "Publish only"
 msgstr ""
 
+#: [affiliation]member
+msgid "Member"
+msgstr ""
+
 #: [affiliation]outcast
 msgid "Outcast"
+msgstr ""
+
+#: [affiliation]no-aff
+msgid "No affiliation"
+msgstr ""
+
+#: [affiliation]owner_changed
+msgid "User granted as owner"
+msgstr ""
+
+#: [affiliation]admin_changed
+msgid "User granted as admin"
+msgstr ""
+
+#: [affiliation]member_changed
+msgid "User granted as member"
+msgstr ""
+
+#: [affiliation]outcast_changed
+msgid "User banned"
+msgstr ""
+
+#: [affiliation]none_changed
+msgid "Affiliation removed for the user"
 msgstr ""
 
 #: [api]error
@@ -3888,3 +4054,7 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Kirjoita tähän"
+
+#, fuzzy
+#~ msgid "New Post"
+#~ msgstr "Uusi julkaisu"

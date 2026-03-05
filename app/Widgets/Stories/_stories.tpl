@@ -29,7 +29,7 @@
         <ul class="list card shadow flex compact middle active" style="grid-template-columns: repeat({$topcontacts->count()}, 1fr); min-width: {$topcontacts->count() * 15}rem">
             {loop="$topcontacts"}
                 <li class="block {if="$value->last > 60"} inactive{/if}"
-                    onclick="Stories_ajaxOpenChat('{$value->jid|echapJS}');">
+                    onclick="Search.chat('{$value->jid|echapJS}', false)">
                     <img class="main" src="{$value->getBanner(\Movim\ImageSize::L)}">
                     <span class="primary icon bubble
                         {if="$value->presence"}

@@ -27,8 +27,10 @@
             </li>
         </ul>
     {/if}
-    <ul id="roster" class="list spin"></ul>
-    <ul class="list divided spaced middle" id="roomsexplore_global"></ul>
+    {if="$articlesonly == false"}
+        <ul id="roster" class="list spin"></ul>
+        <ul class="list divided spaced middle" id="roomsexplore_global"></ul>
+    {/if}
 
     <div id="results">
         <div class="placeholder">

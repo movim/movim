@@ -37,3 +37,7 @@
         </li>
     {/if}
 {/loop}
+
+{if="$shortcuts->isNotEmpty()"}
+<hr/>
+{/if}

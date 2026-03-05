@@ -9,14 +9,18 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 
 class Set extends Action
 {
-    protected $_conference;
-    protected $_version = '1';
+    protected ?Conference $_conference = null;
+    protected ?string $_version = '1';
     protected bool $_withPublishOption = true;
 
     public function request()
     {
         $this->store();
-        $this->iq(Bookmark2::set($this->_conference, $this->_version, $this->_withPublishOption), type: 'set');
+        $this->iq(Bookmark2::set(
+            $this->_conference,
+            version: $this->_version,
+            withPublishOption: $this->_withPublishOption
+        ), type: 'set');
     }
 
     public function setConference(Conference $conference)
@@ -59,9 +63,9 @@ class Set extends Action
     public function errorConflict(string $errorId, ?string $message = null)
     {
         $config = new SetConfig($this->me, sessionId: $this->sessionId);
-        $config->setNode(Bookmark2::$node.$this->_version)
-               ->setData(Bookmark2::$nodeConfig)
-               ->request();
+        $config->setNode(Bookmark2::NODE . $this->_version)
+            ->setData(Bookmark2::NODE_CONFIG)
+            ->request();
 
         $this->_withPublishOption = false;
         $this->request();

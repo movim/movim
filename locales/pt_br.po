@@ -19,8 +19,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Account/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AccountNext/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/AdHoc/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/AdminMain/locales.ini
@@ -81,8 +79,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Location/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Menu/locales.ini
@@ -117,6 +113,10 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/SpaceInfo/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/SpacesMenu/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stickers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stories/locales.ini
@@ -136,7 +136,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-22 08:05+0200\n"
+"POT-Creation-Date: 2026-03-05 17:25+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Vincenzo Tozzi, 2023\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -178,6 +178,14 @@ msgstr "API"
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr "Movim é uma plataforma de comunicação baseada em XMPP. Todo o projeto, exceto os seguintes softwares e recursos, está sob"
+
+#: [about]sourcecode_title
+msgid "Sourcecode"
+msgstr ""
+
+#: [about]sourcecode_text
+msgid "Checkout the sourcecode on the Github repository"
+msgstr ""
 
 #: [account]title [page]account
 msgid "Account"
@@ -246,42 +254,6 @@ msgstr "Deletar chave OMEMO "
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr ""
-
-#: [create]title [subscribe]title
-msgid "Create a new account"
-msgstr "Criar uma nova conta"
-
-#: [create]notfound
-msgid "No account creation form found on the server"
-msgstr "O formulário de criação de conta não foi encontrado no servidor"
-
-#: [create]server_on
-msgid "on"
-msgstr "em"
-
-#: [create]successfull
-msgid "Your account has been successfully registered"
-msgstr ""
-
-#: [create]loading
-msgid "Loading"
-msgstr "Carregando"
-
-#: [create]placeholder
-msgid "…and start playing"
-msgstr "... começando"
-
-#: [error]not_acceptable
-msgid "Not Acceptable"
-msgstr "Não permitido"
-
-#: [error]service_unavailable
-msgid "The registration system of this server is currently unavailable"
-msgstr "O sistema de registro deste servidor está momentaneamente indisponível"
-
-#: [error]forbidden
-msgid "Registration forbidden"
-msgstr "Registro proibido"
 
 #: [adhoc]title
 msgid "Actions"
@@ -468,6 +440,14 @@ msgstr "Syslog"
 #: [log]syslog_files
 msgid "Syslog and files"
 msgstr "Syslog e arquivos"
+
+#: [maxsessions]title
+msgid "Maximum of connected sessions"
+msgstr ""
+
+#: [maxsessions]info
+msgid "Movim will forbid new users to connect when the limit is reached, set it to 0 to disable"
+msgstr ""
 
 #: [adminreported]reported_by
 msgid "Reported by %s users"
@@ -904,14 +884,6 @@ msgstr "Vídeo"
 #: [chats]audio
 msgid "Audio"
 msgstr ""
-
-#: [button]chat
-msgid "Chat"
-msgstr "Bate-papo"
-
-#: [button]new
-msgid "New conversation"
-msgstr "Nova conversa"
 
 #: [chats_filter]all [menu]all [rooms_filter]all
 msgid "All"
@@ -1650,30 +1622,6 @@ msgstr "Conversar com o time Movim?"
 msgid "Add the chatroom"
 msgstr "Adicionar a sala de bate-papo"
 
-#: [location]title
-msgid "My location"
-msgstr ""
-
-#: [location]enabled_title
-msgid "Currently shared with my contacts"
-msgstr ""
-
-#: [location]disabled_title
-msgid "Currently disabled"
-msgstr ""
-
-#: [location]last_published
-msgid "My last published location"
-msgstr ""
-
-#: [location]less_than_one_km
-msgid "Less than a km away"
-msgstr ""
-
-#: [location]n_km_away
-msgid "%s km away"
-msgstr ""
-
 #: [error]username
 msgid "Wrong username"
 msgstr "Nome de usuário incorreto"
@@ -1706,9 +1654,10 @@ msgstr "Erro de sessão"
 msgid "Account successfully created"
 msgstr "Conta criada com sucesso"
 
-#: [error]timeout
-msgid "The server takes too much time to respond"
-msgstr "O servidor demorou muito tempo para responder"
+#: [error]connection
+#, fuzzy
+msgid "Movim cannot connect to the server"
+msgstr "Conectado ao servidor"
 
 #: [error]impossible
 msgid "Impossible login"
@@ -1741,6 +1690,14 @@ msgstr "O Mecanismo de autenticação não é suportado por Movim"
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
 msgstr "A autenticação XMPP falhou"
+
+#: [error]max_sessions_reached
+msgid "This Movim instance is currently full."
+msgstr ""
+
+#: [error]max_sessions_reached_join
+msgid "Try a different one on %s"
+msgstr ""
 
 #: [connection]socket_connected
 msgid "Connected to the server"
@@ -1899,6 +1856,11 @@ msgstr "Tornar seu perfil público e outros usuários irão lhe encontrar e faze
 msgid "You can always disable this in the configuration afterwards"
 msgstr "voc&e pode sempre desabilitar isso nas configurações posteriormente"
 
+#: [post]publish_something
+#, fuzzy
+msgid "Publish something"
+msgstr "Apenas publicar"
+
 #: [post]news_feed
 msgid "News Feed"
 msgstr "Fonte de Notícias"
@@ -1919,16 +1881,13 @@ msgstr "Artigo publicado"
 msgid "Post deleted"
 msgstr "Artigo excluído"
 
-#: [post]hot
-msgid "What’s Hot"
-msgstr "O que há de novo"
-
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Postagens recentemente publicadas em comunidades nas quais ainda não está inscrito"
 
-#: [post]new [publish]new
-msgid "New post"
+#: [post]new_blog
+#, fuzzy
+msgid "New blog post"
 msgstr "Novo artigo"
 
 #: [post]repost
@@ -1938,10 +1897,6 @@ msgstr "Este é um artigo republicado de %s"
 #: [post]see_profile
 msgid "See %s profile"
 msgstr "Ver o perfil de %s"
-
-#: [post]blog_last
-msgid "Public posts from users"
-msgstr "Artigos públicos de usuários "
 
 #: [post]unknown_contact
 msgid "Unknown contact"
@@ -2079,6 +2034,11 @@ msgstr "Parece que você ainda não completou seu perfil"
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
 msgstr "Você pode ir na pagina de Configurações do seu perfil para descrever-se e também carregar uma figura legal"
 
+#: [status]visit_blog
+#, fuzzy
+msgid "Visit my blog"
+msgstr "Visitante"
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr "Desconectar"
@@ -2138,6 +2098,10 @@ msgstr "Adicione um arquivo ou imagem"
 #: [publish]no_publication
 msgid "You cannot publish a post here"
 msgstr "Você não pode publicar um artigo aqui"
+
+#: [publish]new
+msgid "New post"
+msgstr "Novo artigo"
 
 #: [publish]title
 msgid "Post title"
@@ -2239,6 +2203,42 @@ msgstr ""
 msgid "Story published"
 msgstr ""
 
+#: [create]title [subscribe]title
+msgid "Create a new account"
+msgstr "Criar uma nova conta"
+
+#: [create]notfound
+msgid "No account creation form found on the server"
+msgstr "O formulário de criação de conta não foi encontrado no servidor"
+
+#: [create]server_on
+msgid "on"
+msgstr "em"
+
+#: [create]successfull
+msgid "Your account has been successfully registered"
+msgstr ""
+
+#: [create]loading
+msgid "Loading"
+msgstr "Carregando"
+
+#: [create]placeholder
+msgid "…and start playing"
+msgstr "... começando"
+
+#: [error]not_acceptable
+msgid "Not Acceptable"
+msgstr "Não permitido"
+
+#: [error]service_unavailable
+msgid "The registration system of this server is currently unavailable"
+msgstr "O sistema de registro deste servidor está momentaneamente indisponível"
+
+#: [error]forbidden
+msgid "Registration forbidden"
+msgstr "Registro proibido"
+
 #: [rooms]create
 msgid "Create a chatroom"
 msgstr "Criar uma sala de bate-papo"
@@ -2299,75 +2299,86 @@ msgstr "Nome ou descrição"
 msgid "A registration is required before using the service"
 msgstr ""
 
-#: [chatrooms]title
-msgid "Chatrooms"
-msgstr "Salas de Bate-papo"
-
-#: [chatrooms]id
-msgid "Chatroom Address"
+#: [chatrooms]autojoin
+msgid "Join this chatroom on login"
 msgstr ""
-
-#: [chatrooms]name_placeholder
-msgid "My Favorite Room"
-msgstr "Minha Sala Favorita"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
 msgstr ""
 
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Nome vazio"
-
-#: [chatrooms]remove_title
-msgid "Permanently leave a chatroom"
+#: [chatrooms]bad_nickname
+msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr ""
 
-#: [chatrooms]remove_text
-msgid "You are going to permanently leave the following chatroom. Please confirm your action."
+#: [chatrooms]banned
+msgid "Banned"
+msgstr "Banido"
+
+#: [chatrooms]conflict
+msgid "Nickname already taken"
 msgstr ""
 
 #: [chatrooms]connected
 msgid "Joined the chatroom"
 msgstr ""
 
+#: [chatrooms]created
+msgid "Chatroom created"
+msgstr "Sala de bate-papo criada"
+
+#: [chatrooms]destroyed
+msgid "Chatroom destroyed"
+msgstr ""
+
 #: [chatrooms]disconnected
 msgid "Left the chatroom"
 msgstr ""
 
-#: [chatrooms]users
-msgctxt "[chatrooms]users"
-msgid "Users"
-msgstr "Usuários"
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Nome vazio"
+
+#: [chatrooms]forbidden
+msgid "You are not allowed to join this chatroom"
+msgstr ""
+
+#: [chatrooms]id
+msgid "Chatroom Address"
+msgstr ""
+
+#: [chatrooms]itemnotfound
+msgid "The chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]jidmalformed
+msgid "Your nickname is not valid"
+msgstr "Seu apelido não é válido"
 
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
 msgstr "Membros"
 
-#: [chatrooms]banned
-msgid "Banned"
-msgstr "Banido"
+#: [chatrooms]name_placeholder
+msgid "My Favorite Room"
+msgstr "Minha Sala Favorita"
 
-#: [chatrooms]bad_nickname
-msgid "Please enter a valid nickname (2 to 40 characters)"
+#: [chatrooms]notacceptable
+msgid "Not acceptable"
 msgstr ""
 
-#: [chatrooms]conflict
-msgid "Nickname already taken"
+#: [chatrooms]notallowed
+msgid "You are not allowed to create a chatroom there"
 msgstr ""
 
-#: [chatrooms]autojoin
-msgid "Join this chatroom on login"
-msgstr ""
+#: [chatrooms]notauthorized
+msgid "A password is required"
+msgstr "Um senha é obrigatória"
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
 msgstr "Fixar esta sala de bate-papo"
-
-#: [chatrooms]destroyed
-msgid "Chatroom destroyed"
-msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2381,37 +2392,30 @@ msgstr ""
 msgid "Connection to remote server timed out"
 msgstr ""
 
-#: [chatrooms]itemnotfound
-msgid "The chatroom doesn’t exist"
+#: [chatrooms]remove_text
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
 msgstr ""
 
-#: [chatrooms]notauthorized
-msgid "A password is required"
-msgstr "Um senha é obrigatória"
-
-#: [chatrooms]forbidden
-msgid "You are not allowed to join this chatroom"
+#: [chatrooms]remove_title
+msgid "Permanently leave a chatroom"
 msgstr ""
 
-#: [chatrooms]jidmalformed
-msgid "Your nickname is not valid"
-msgstr "Seu apelido não é válido"
-
-#: [chatrooms]notacceptable
-msgid "Not acceptable"
+#: [chatrooms]rooms
+msgid "Rooms"
 msgstr ""
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
 msgstr ""
 
-#: [chatrooms]notallowed
-msgid "You are not allowed to create a chatroom there"
-msgstr ""
+#: [chatrooms]title
+msgid "Chatrooms"
+msgstr "Salas de Bate-papo"
 
-#: [chatrooms]created
-msgid "Chatroom created"
-msgstr "Sala de bate-papo criada"
+#: [chatrooms]users
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Usuários"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -2527,8 +2531,9 @@ msgstr "Canal público com livre visualização e participação"
 msgid "Never notify"
 msgstr "Nunca notifique"
 
-#: [room]notify_quoted
-msgid "Notify when quoted"
+#: [room]notify_mentioned
+#, fuzzy
+msgid "Notify when mentioned"
 msgstr "Notificar quando citado"
 
 #: [room]notify_always
@@ -2538,22 +2543,6 @@ msgstr "Notifique sempre"
 #: [room]pinned
 msgid "Pinned"
 msgstr "Fixado"
-
-#: [room]affiliation_owner [affiliation]owner
-msgid "Owner"
-msgstr "Dono"
-
-#: [room]affiliation_admin
-msgid "Admin"
-msgstr ""
-
-#: [room]affiliation_member [affiliation]member
-msgid "Member"
-msgstr "Membro"
-
-#: [room]affiliation_none [affiliation]no-aff
-msgid "No affiliation"
-msgstr "Sem afiliação"
 
 #: [room]affiliation_admins
 msgid "Admins"
@@ -2574,26 +2563,6 @@ msgstr ""
 
 #: [room]role_changed
 msgid "Role changed"
-msgstr ""
-
-#: [room]affiliation_owner_changed
-msgid "User granted as owner"
-msgstr ""
-
-#: [room]affiliation_admin_changed
-msgid "User granted as admin"
-msgstr ""
-
-#: [room]affiliation_member_changed
-msgid "User granted as member"
-msgstr ""
-
-#: [room]affiliation_outcast_changed
-msgid "User banned"
-msgstr "Usuário banido"
-
-#: [room]affiliation_none_changed
-msgid "Affiliation removed for the user"
 msgstr ""
 
 #: [roomsexplore]no_local
@@ -2679,6 +2648,164 @@ msgstr ""
 #: [sendto]sharing_story
 msgid "Story shared using Movim"
 msgstr ""
+
+#: [spaceinfo]config_title
+#, fuzzy
+msgid "Space configuration"
+msgstr "Configuração salva"
+
+#: [spaceinfo]config_saved
+#, fuzzy
+msgid "Space configuration saved"
+msgstr "Configuração salva"
+
+#: [spaceinfo]config_error
+#, fuzzy
+msgid "Space configuration error"
+msgstr "configurações avançadas"
+
+#: [spaceinfo]destroy_title
+#, fuzzy
+msgid "Destroy the space"
+msgstr "Sair desta instância"
+
+#: [spaceinfo]destroy_text
+msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
+msgstr ""
+
+#: [spaceinfo]invite_title
+#, fuzzy
+msgid "Invite new contacts"
+msgstr "Convidar um contato"
+
+#: [spaceinfo]invite_text
+msgid "A moderator will have to approve the join request"
+msgstr ""
+
+#: [spaceinfo]invite_uri_title
+#, fuzzy
+msgid "Send an invitation key to your contacts"
+msgstr "Enviar este link para seus contatos"
+
+#: [spaceinfo]leave_title [spacesmenu]leave_title
+#, fuzzy
+msgid "Leave the space"
+msgstr "Sair desta instância"
+
+#: [spaceinfo]add_room_title
+#, fuzzy
+msgid "Add a room"
+msgstr "Adicionar um comentário"
+
+#: [spaceinfo]pending_approvals
+msgid "%s subscriptions requests are waiting for your approval"
+msgstr ""
+
+#: [spaceinfo]pending_request
+msgid "%s is waiting for your approval to join the space"
+msgstr ""
+
+#: [spaceinfo]pending_action
+msgid "Manage the request"
+msgstr ""
+
+#: [spaceinfo]pinned
+#, fuzzy
+msgid "Pin this space in the bar"
+msgstr "Fixar esta sala de bate-papo"
+
+#: [spaceinfo]owner_cannot_leave
+msgid "An owner cannot leave his own Space"
+msgstr ""
+
+#: [spaceinfo]affiliation_none
+#, fuzzy
+msgid "Remove from the space"
+msgstr "Sair desta instância"
+
+#: [spacesmenu]create_space_title
+#, fuzzy
+msgid "Create a Space"
+msgstr "Criar uma nova conta"
+
+#: [spacesmenu]invite_space_title
+msgid "You got an invite?"
+msgstr ""
+
+#: [spacesmenu]space_title
+msgid "Space title"
+msgstr ""
+
+#: [spacesmenu]space_title_empty
+msgid "Your Space title is empty"
+msgstr ""
+
+#: [spacesmenu]space_created
+#, fuzzy
+msgid "Space created"
+msgstr "Sala de bate-papo criada"
+
+#: [spacesmenu]loading_space_info
+msgid "Loading the space"
+msgstr ""
+
+#: [spacesmenu]subscribed
+msgid "Subscribed to the space"
+msgstr ""
+
+#: [spacesmenu]invitation_key
+#, fuzzy
+msgid "Use an invitation key"
+msgstr "Convite enviado"
+
+#: [spacesmenu]key_required
+#, fuzzy
+msgid "A valid key is required"
+msgstr "Um senha é obrigatória"
+
+#: [spacesmenu]locked_title
+msgid "Locked space"
+msgstr ""
+
+#: [spacesmenu]locked_text
+#, fuzzy
+msgid "You are not authorized to join the space at the moment"
+msgstr "Você não está inscrito para este contato"
+
+#: [spacesmenu]locked_try_again
+msgid "Try again"
+msgstr ""
+
+#: [spacesmenu]leave_text
+#, fuzzy
+msgid "Are you sure that you want to leave the space?"
+msgstr "Tem certeza que deseja apagar este comentário?"
+
+#: [spacesmenu]pending_subscription_title
+msgid "A request has been send to a moderator."
+msgstr ""
+
+#: [spacesmenu]pending_subscription_text
+msgid "You will be able to join the space once its accepted."
+msgstr ""
+
+#: [spacesmenu]pending_subscription_add_title
+msgid "Add %s to the space"
+msgstr ""
+
+#: [spacesmenu]pending_subscription_refuse_title
+msgid "Deny the access"
+msgstr ""
+
+#: [spacesmenu]contact_added
+#, fuzzy
+msgid "Contact added in the space"
+msgstr "Contato adicionado"
+
+#: [spacesmenu]contact_denied
+#, fuzzy
+msgid "Contact denied in the space"
+msgstr "Contato excluído"
 
 #: [sticker]title
 msgid "Stickers"
@@ -3012,74 +3139,78 @@ msgstr "ou"
 msgid "Switch to another pod"
 msgstr "Mudar para outro pod"
 
-#: [page]communities
-msgid "Communities"
-msgstr "Comunidades"
-
-#: [page]home
-msgid "Home"
-msgstr "Página inicial"
-
-#: [page]explore
-msgid "Explore"
-msgstr "Explorar"
+#: [page]about
+msgid "About"
+msgstr "Sobre"
 
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Criar conta"
 
-#: [page]news
-msgid "News"
-msgstr "Notícias"
-
 #: [page]avatar
 msgid "Profile Picture"
 msgstr ""
-
-#: [page]chats
-msgid "Messages"
-msgstr ""
-
-#: [page]publish
-msgid "Publish"
-msgstr "Publicar"
 
 #: [page]blog
 msgid "Blog"
 msgstr "Blog"
 
-#: [page]about
-msgid "About"
-msgstr "Sobre"
+#: [page]chats
+msgid "Messages"
+msgstr ""
 
-#: [page]login
-msgid "Login"
-msgstr "Entrar"
+#: [page]communities
+msgid "Communities"
+msgstr "Comunidades"
 
-#: [page]not_found
-msgid "Not Found"
-msgstr "Não encontrado"
+#: [page]explore
+msgid "Explore"
+msgstr "Explorar"
 
 #: [page]feed
 msgid "Feed"
 msgstr "Fonte de notícias"
 
+#: [page]home
+msgid "Home"
+msgstr "Página inicial"
+
+#: [page]login
+msgid "Login"
+msgstr "Entrar"
+
+#: [page]news
+msgid "News"
+msgstr "Notícias"
+
+#: [page]not_found
+msgid "Not Found"
+msgstr "Não encontrado"
+
 #: [page]posts
 msgid "Posts"
 msgstr "Artigos"
 
-#: [page]visio
-msgid "Visio-conference"
-msgstr "Video conferência"
+#: [page]publish
+msgid "Publish"
+msgstr "Publicar"
 
 #: [page]share
 msgctxt "[page]share"
 msgid "Share"
 msgstr "Compartilhar"
 
+#: [page]spaces
+msgid "Spaces"
+msgstr ""
+
 #: [page]tag
 msgid "Tag"
 msgstr "Etiqueta"
+
+#: [page]visio
+msgid "Visio-conference"
+msgstr "Video conferência"
 
 #: [error]error
 msgid "Error: %s"
@@ -3141,6 +3272,10 @@ msgstr "Ligação"
 msgid "Cancel"
 msgstr "Cancelar"
 
+#: [button]chat
+msgid "Chat"
+msgstr "Bate-papo"
+
 #: [button]clear
 msgid "Clear"
 msgstr "Limpar"
@@ -3181,6 +3316,10 @@ msgstr "Habilitar"
 msgid "Join"
 msgstr ""
 
+#: [button]leave
+msgid "Leave"
+msgstr ""
+
 #: [button]like
 msgid "Like"
 msgstr "Gostar"
@@ -3188,6 +3327,10 @@ msgstr "Gostar"
 #: [button]more
 msgid "More"
 msgstr "Mais"
+
+#: [button]new
+msgid "New conversation"
+msgstr "Nova conversa"
 
 #: [button]next
 msgid "Next"
@@ -3222,7 +3365,7 @@ msgid "Register"
 msgstr "Registrar"
 
 #: [button]remove
-msgid "Leave"
+msgid "Remove"
 msgstr ""
 
 #: [button]reply
@@ -3882,6 +4025,14 @@ msgstr "GB "
 msgid "TB"
 msgstr "TB "
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "Dono"
+
+#: [affiliation]admin
+msgid "Admin"
+msgstr ""
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Editor"
@@ -3890,9 +4041,37 @@ msgstr "Editor"
 msgid "Publish only"
 msgstr "Apenas publicar"
 
+#: [affiliation]member
+msgid "Member"
+msgstr "Membro"
+
 #: [affiliation]outcast
 msgid "Outcast"
 msgstr "Exilado"
+
+#: [affiliation]no-aff
+msgid "No affiliation"
+msgstr "Sem afiliação"
+
+#: [affiliation]owner_changed
+msgid "User granted as owner"
+msgstr ""
+
+#: [affiliation]admin_changed
+msgid "User granted as admin"
+msgstr ""
+
+#: [affiliation]member_changed
+msgid "User granted as member"
+msgstr ""
+
+#: [affiliation]outcast_changed
+msgid "User banned"
+msgstr "Usuário banido"
+
+#: [affiliation]none_changed
+msgid "Affiliation removed for the user"
+msgstr ""
 
 #: [api]error
 msgid "The API is not reachable, try again later"
@@ -3901,3 +4080,16 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
+
+#, fuzzy
+#~ msgid "New Post"
+#~ msgstr "Novo artigo"
+
+#~ msgid "The server takes too much time to respond"
+#~ msgstr "O servidor demorou muito tempo para responder"
+
+#~ msgid "What’s Hot"
+#~ msgstr "O que há de novo"
+
+#~ msgid "Public posts from users"
+#~ msgstr "Artigos públicos de usuários "

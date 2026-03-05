@@ -239,7 +239,6 @@ class JingletoSDP
 
                         case 'category':
                             array_push($categories, (string)$payload->attributes()->name);
-                            //\logDebug($payload->asXML());
                             break;
                     }
                     // TODO sendrecv ?

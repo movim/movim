@@ -1,0 +1,1 @@
+<ul class="list divided thin spaced active" id="spacerooms_widget"></ul>

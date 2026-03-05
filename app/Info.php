@@ -64,6 +64,11 @@ class Info extends Model
         });
     }
 
+    public function scopeSpace($query)
+    {
+        return $query->where('type', 'urn:xmpp:spaces:0');
+    }
+
     public function scopeRestrictUserHost($query, User $user)
     {
         $configuration = Configuration::get();
@@ -244,9 +249,9 @@ class Info extends Model
         return $identityType ? $identityType->type : null;
     }
 
-    public function getPicture(\Movim\ImageSize $size = \Movim\ImageSize::M): string
+    public function getPicture(\Movim\ImageSize $size = \Movim\ImageSize::M, ?string $placeholder = null): string
     {
-        return getPicture($this->attributes['avatarhash'] ?? null, $this->node, $size);
+        return getPicture($this->attributes['avatarhash'] ?? null, $placeholder ?? $this->node, $size);
     }
 
     public function getDeviceIcon()

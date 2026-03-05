@@ -55,20 +55,24 @@ a:visited {
 body>nav {
     display: flex;
     flex-flow: column nowrap;
-    width: 7rem;
-    max-width: 95%;
-    z-index: 2;
+    width: 6.5rem;
     position: absolute;
     overflow-y: auto;
-    left: 0;
     user-select: none;
     background-color: rgb(var(--movim-background));
-    box-shadow: var(--elevation-2);
+    box-shadow: var(--elevation-3);
+
+    padding: 1rem 0;
 }
 
+body>nav hr{
+    margin: 0.5rem 0;
+}
+
+/*
 body>nav.active {
     width: 45rem;
-}
+}*/
 
 body>div.drawer:not(:empty)~main,
 body>div.drawer:not(:empty)~nav,
@@ -91,27 +95,14 @@ body>nav li {
 }
 
 @media screen and (max-width: 1024px) {
-    body>nav.active {
-        box-shadow: var(--elevation-3);
-    }
-
-    body>nav.active.moving {
-        transition: transform .45s var(--decelerate-easing);
-        transform: translateX(0%);
-    }
-
-    body>nav:not(.active) {
-        width: 45rem;
-        transform: translateX(-100%);
-    }
-
-    body>nav.moving {
-        transition: transform .45s var(--accelerate-easing);
+    body>nav {
+        padding: 0;
+        padding-bottom: 7rem;
+        background-color: rgba(var(--movim-background-main), 0.5);
     }
 }
 
 @media screen and (min-width: 1680px) {
-
     body>nav,
     body>nav:hover {
         width: 15%;
@@ -167,7 +158,6 @@ body.finished:before {
 /* Main */
 
 main {
-    width: 100%;
     position: absolute;
     right: 0;
     top: 0;
@@ -176,6 +166,7 @@ main {
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     /* Hack to have a non-blocking scrolling in iOS… */
+    width: 100%;
 
     display: flex;
     justify-content: center;
@@ -190,7 +181,7 @@ main {
 }
 
 nav~main {
-    width: calc(100% - 7rem);
+    width: calc(100% - 6.5rem);
     border-radius: 1rem 0 0 1rem;
 }
 
@@ -241,10 +232,9 @@ main>div:first-child:nth-last-child(2)+div {
 }
 
 @media screen and (max-width: 1024px) {
-    nav~main {
-        overflow-x: hidden;
+    nav.on_desktop~main,
+    nav~main.enabled {
         width: 100%;
-        border-radius: 0;
     }
 
     main.slide>div:first-child:nth-last-child(2),
@@ -254,10 +244,6 @@ main>div:first-child:nth-last-child(2)+div {
         position: absolute;
         top: 0;
         left: 0;
-    }
-
-    main.slide>div:first-child:nth-last-child(2)+div {
-        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
 
     main.slide>div:first-child:nth-last-child(2) {
@@ -275,12 +261,7 @@ main>div:first-child:nth-last-child(2)+div {
     }
 
     main.slide.enabled>div:first-child:nth-last-child(2)+div {
-        opacity: 0.3;
-        transform: translateX(-2rem);
-    }
-
-    main.slide.enabled>div:first-child:nth-last-child(2)+div.moving {
-        transition: transform .45s var(--accelerate-easing);
+        margin-left: 7rem;
     }
 
     main>aside+div {
@@ -418,7 +399,6 @@ img.avatar:not([src=""])+.placeholder {
     .on_mobile_after:after {
         display: inherit !important;
     }
-
 
     .on_mobile.material-symbols {
         display: inline !important;

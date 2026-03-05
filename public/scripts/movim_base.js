@@ -20,6 +20,8 @@ if ('serviceWorker' in navigator) {
             case 'call_reject':
                 VisioUtils.cancelLobby(event.data.data.fullJid, event.data.data.callId);
                 break;
+            case 'space_chat':
+                MovimUtils.reload(event.data.data.server, event.data.data.node, event.data.data.room);
             case 'chat':
                 Search.chat(event.data.data.jid, event.data.data.muc);
                 break;

@@ -1,0 +1,30 @@
+#spaceinfo_affiliations ul.list.flex {
+    grid-template-columns: 50% 50%;
+}
+
+#spaceinfo_affiliations ul.list.flex form > div {
+    min-height: 0;
+}
+
+#spaceinfo_affiliations ul.list.flex form > div .select,
+#spaceinfo_affiliations ul.list.flex form > div input {
+    margin-bottom: 0;
+}
+
+#spaceinfo_widget li.subheader span.second.notify {
+    font-weight: normal;
+}
+
+#spaceinfo_widget span.primary.edit_avatar::before {
+    display: inline-block;
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    font-family: 'Material Symbols';
+    color: rgb(var(--movim-font));
+    font-variation-settings: 'FILL' 1;
+    content: '\e3c9';
+    background-color: rgb(var(--movim-background-main), 0.2);
+    backdrop-filter: blur(0.2rem) brightness(80%);
+    border-radius: 2rem;
+}

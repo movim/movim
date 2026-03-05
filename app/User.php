@@ -171,7 +171,7 @@ class User extends Model
         $union = DB::table('messages')
             ->where('user_id', $this->id)
             ->where('seen', false)
-            ->whereIn('type', ['chat', 'headline', 'invitation']);
+            ->whereIn('type', ['chat', 'headline', 'invitation', 'space_pending']);
 
         $union = ($jid != null)
             ? $union->where('jidfrom', $jid)
@@ -190,7 +190,9 @@ class User extends Model
                                 $query->select('id')
                                     ->from('sessions')
                                     ->where('user_id', $this->id);
-                            });
+                            })
+                            ->where('space_server', null)
+                            ->where('space_node', null);
                     });
 
                 if ($quoted) {
@@ -317,6 +319,11 @@ class User extends Model
     public function hasUpload(): bool
     {
         return ($this->session && $this->session->getUploadService());
+    }
+
+    public function hasSpaces(): bool
+    {
+        return ($this->session && $this->session->getSpacesService());
     }
 
     public function setPublic()

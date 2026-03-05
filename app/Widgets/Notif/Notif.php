@@ -113,7 +113,7 @@ class Notif extends Base
         $first = reset($explode);
 
         if (array_key_exists($first, $notifs)) {
-            $count = $notifs[$first]++;
+            $count = $notifs[$first]+1;
 
             // We re-append it
             unset($notifs[$first]);
@@ -137,7 +137,7 @@ class Notif extends Base
 
         if ($first != $key) {
             if (array_key_exists($key, $notifs)) {
-                $count = $notifs[$key]++;
+                $count = $notifs[$key]+1;
 
                 // We re-append it
                 unset($notifs[$key]);
@@ -213,13 +213,13 @@ class Notif extends Base
      * @brief Get all the keys
      * @return void
      */
-    public function ajaxGet()
+    public function ajaxGet(?bool $chat = true)
     {
         $notifs = linker($this->sessionId)->session->get('notifs');
 
         if ($notifs == null) $notifs = [];
 
-        $notifs['chat'] = $this->me?->unreads() ?? 0;
+        if ($chat) $notifs['chat'] = $this->me?->unreads() ?? 0;
         (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.refresh', $notifs);
     }
 
@@ -229,7 +229,7 @@ class Notif extends Base
      * @param string $key
      * @return void
      */
-    public function ajaxCurrent($key)
+    public function ajaxCurrent(string $key)
     {
         // Clear the specific keys
         if (strpos($key, '|') !== false) (new Notif($this->me, sessionId: $this->sessionId))->ajaxClear($key);

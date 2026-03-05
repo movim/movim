@@ -22,8 +22,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Account/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AccountNext/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/AdHoc/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/AdminMain/locales.ini
@@ -84,8 +82,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Location/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Menu/locales.ini
@@ -120,6 +116,10 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/SpaceInfo/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/SpacesMenu/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stickers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stories/locales.ini
@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-22 08:05+0200\n"
+"POT-Creation-Date: 2026-03-05 17:25+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2026\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -181,6 +181,14 @@ msgstr "API"
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr "Movim 是基于 XMPP 的交流平台。除以下软件和资源外，所有项目均遵循"
+
+#: [about]sourcecode_title
+msgid "Sourcecode"
+msgstr ""
+
+#: [about]sourcecode_text
+msgid "Checkout the sourcecode on the Github repository"
+msgstr ""
 
 #: [account]title [page]account
 msgid "Account"
@@ -249,42 +257,6 @@ msgstr "OMEMO 密钥删除"
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr "您将销毁以下 OMEMO 密钥。您的联系人将无法再使用此密钥来加密消息。此操作无法撤销。是否确定？"
-
-#: [create]title [subscribe]title
-msgid "Create a new account"
-msgstr "创建新账号"
-
-#: [create]notfound
-msgid "No account creation form found on the server"
-msgstr "在服务器上未找到账号创建表单"
-
-#: [create]server_on
-msgid "on"
-msgstr "在"
-
-#: [create]successfull
-msgid "Your account has been successfully registered"
-msgstr "您的账号已成功注册"
-
-#: [create]loading
-msgid "Loading"
-msgstr "正在加载"
-
-#: [create]placeholder
-msgid "…and start playing"
-msgstr "…并开始访问"
-
-#: [error]not_acceptable
-msgid "Not Acceptable"
-msgstr "不接受"
-
-#: [error]service_unavailable
-msgid "The registration system of this server is currently unavailable"
-msgstr "此服务器的注册系统当前不可用"
-
-#: [error]forbidden
-msgid "Registration forbidden"
-msgstr "禁止注册"
 
 #: [adhoc]title
 msgid "Actions"
@@ -471,6 +443,14 @@ msgstr "系统日志"
 #: [log]syslog_files
 msgid "Syslog and files"
 msgstr "系统日志和文件"
+
+#: [maxsessions]title
+msgid "Maximum of connected sessions"
+msgstr ""
+
+#: [maxsessions]info
+msgid "Movim will forbid new users to connect when the limit is reached, set it to 0 to disable"
+msgstr ""
 
 #: [adminreported]reported_by
 msgid "Reported by %s users"
@@ -907,14 +887,6 @@ msgstr "视频"
 #: [chats]audio
 msgid "Audio"
 msgstr "音频"
-
-#: [button]chat
-msgid "Chat"
-msgstr "聊天"
-
-#: [button]new
-msgid "New conversation"
-msgstr "新对话"
 
 #: [chats_filter]all [menu]all [rooms_filter]all
 msgid "All"
@@ -1653,30 +1625,6 @@ msgstr "与 Movim 团队聊天？"
 msgid "Add the chatroom"
 msgstr "请添加此群聊"
 
-#: [location]title
-msgid "My location"
-msgstr "我的位置"
-
-#: [location]enabled_title
-msgid "Currently shared with my contacts"
-msgstr "当前与我的联系人共享"
-
-#: [location]disabled_title
-msgid "Currently disabled"
-msgstr "当前已禁用"
-
-#: [location]last_published
-msgid "My last published location"
-msgstr "我上次发布的位置"
-
-#: [location]less_than_one_km
-msgid "Less than a km away"
-msgstr "不到一公里远"
-
-#: [location]n_km_away
-msgid "%s km away"
-msgstr "%s 公里远"
-
 #: [error]username
 msgid "Wrong username"
 msgstr "错误的用户名"
@@ -1709,9 +1657,10 @@ msgstr "会话错误"
 msgid "Account successfully created"
 msgstr "成功创建账号"
 
-#: [error]timeout
-msgid "The server takes too much time to respond"
-msgstr "服务器响应时间过长"
+#: [error]connection
+#, fuzzy
+msgid "Movim cannot connect to the server"
+msgstr "已连接到服务器"
 
 #: [error]impossible
 msgid "Impossible login"
@@ -1744,6 +1693,14 @@ msgstr "Movim 不支持身份验证机制"
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
 msgstr "XMPP 身份验证失败"
+
+#: [error]max_sessions_reached
+msgid "This Movim instance is currently full."
+msgstr ""
+
+#: [error]max_sessions_reached_join
+msgid "Try a different one on %s"
+msgstr ""
 
 #: [connection]socket_connected
 msgid "Connected to the server"
@@ -1902,6 +1859,11 @@ msgstr "公开您的个人资料，让其他用户更容易找到您并建立新
 msgid "You can always disable this in the configuration afterwards"
 msgstr "之后您可以随时在配置中禁用此功能"
 
+#: [post]publish_something
+#, fuzzy
+msgid "Publish something"
+msgstr "仅发布"
+
 #: [post]news_feed
 msgid "News Feed"
 msgstr "动态消息"
@@ -1922,16 +1884,13 @@ msgstr "帖子已发布"
 msgid "Post deleted"
 msgstr "帖子已删除"
 
-#: [post]hot
-msgid "What’s Hot"
-msgstr "热门内容"
-
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "您尚未订阅的社区中的最新帖子"
 
-#: [post]new [publish]new
-msgid "New post"
+#: [post]new_blog
+#, fuzzy
+msgid "New blog post"
 msgstr "新帖子"
 
 #: [post]repost
@@ -1941,10 +1900,6 @@ msgstr "这是从 %s 的转帖"
 #: [post]see_profile
 msgid "See %s profile"
 msgstr "查看 %s 个人资料"
-
-#: [post]blog_last
-msgid "Public posts from users"
-msgstr "用户的公开帖子"
 
 #: [post]unknown_contact
 msgid "Unknown contact"
@@ -2082,6 +2037,11 @@ msgstr "您似乎尚未完成个人资料"
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
 msgstr "您可以进入配置页面描述自己并放一张漂亮的照片"
 
+#: [status]visit_blog
+#, fuzzy
+msgid "Visit my blog"
+msgstr "访问公开博客"
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr "断开连接"
@@ -2141,6 +2101,10 @@ msgstr "添加文件或图片"
 #: [publish]no_publication
 msgid "You cannot publish a post here"
 msgstr "您无法在此处发布帖子"
+
+#: [publish]new
+msgid "New post"
+msgstr "新帖子"
 
 #: [publish]title
 msgid "Post title"
@@ -2242,6 +2206,42 @@ msgstr "快完成了…"
 msgid "Story published"
 msgstr "故事已发布"
 
+#: [create]title [subscribe]title
+msgid "Create a new account"
+msgstr "创建新账号"
+
+#: [create]notfound
+msgid "No account creation form found on the server"
+msgstr "在服务器上未找到账号创建表单"
+
+#: [create]server_on
+msgid "on"
+msgstr "在"
+
+#: [create]successfull
+msgid "Your account has been successfully registered"
+msgstr "您的账号已成功注册"
+
+#: [create]loading
+msgid "Loading"
+msgstr "正在加载"
+
+#: [create]placeholder
+msgid "…and start playing"
+msgstr "…并开始访问"
+
+#: [error]not_acceptable
+msgid "Not Acceptable"
+msgstr "不接受"
+
+#: [error]service_unavailable
+msgid "The registration system of this server is currently unavailable"
+msgstr "此服务器的注册系统当前不可用"
+
+#: [error]forbidden
+msgid "Registration forbidden"
+msgstr "禁止注册"
+
 #: [rooms]create
 msgid "Create a chatroom"
 msgstr "创建群聊"
@@ -2302,75 +2302,86 @@ msgstr "名称或描述"
 msgid "A registration is required before using the service"
 msgstr "使用服务前需要注册"
 
-#: [chatrooms]title
-msgid "Chatrooms"
-msgstr "群聊"
-
-#: [chatrooms]id
-msgid "Chatroom Address"
-msgstr "群聊地址"
-
-#: [chatrooms]name_placeholder
-msgid "My Favorite Room"
-msgstr "收藏的群聊"
+#: [chatrooms]autojoin
+msgid "Join this chatroom on login"
+msgstr "登录后自动加入此群聊"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
 msgstr "群聊地址错误"
 
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "空名称"
+#: [chatrooms]bad_nickname
+msgid "Please enter a valid nickname (2 to 40 characters)"
+msgstr "请输入有效的昵称（2 到 40 个字符）"
 
-#: [chatrooms]remove_title
-msgid "Permanently leave a chatroom"
-msgstr "永久离开群聊"
+#: [chatrooms]banned
+msgid "Banned"
+msgstr "已封禁"
 
-#: [chatrooms]remove_text
-msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr "您将永久离开以下群聊。请确认您的操作。"
+#: [chatrooms]conflict
+msgid "Nickname already taken"
+msgstr "昵称已被占用"
 
 #: [chatrooms]connected
 msgid "Joined the chatroom"
 msgstr "已加入群聊"
 
+#: [chatrooms]created
+msgid "Chatroom created"
+msgstr "群聊已创建"
+
+#: [chatrooms]destroyed
+msgid "Chatroom destroyed"
+msgstr "群聊已解散"
+
 #: [chatrooms]disconnected
 msgid "Left the chatroom"
 msgstr "已离开群聊"
 
-#: [chatrooms]users
-msgctxt "[chatrooms]users"
-msgid "Users"
-msgstr "用户"
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "空名称"
+
+#: [chatrooms]forbidden
+msgid "You are not allowed to join this chatroom"
+msgstr "不允许您加入此群聊"
+
+#: [chatrooms]id
+msgid "Chatroom Address"
+msgstr "群聊地址"
+
+#: [chatrooms]itemnotfound
+msgid "The chatroom doesn’t exist"
+msgstr "群聊不存在"
+
+#: [chatrooms]jidmalformed
+msgid "Your nickname is not valid"
+msgstr "您的昵称无效"
 
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
 msgstr "成员"
 
-#: [chatrooms]banned
-msgid "Banned"
-msgstr "已封禁"
+#: [chatrooms]name_placeholder
+msgid "My Favorite Room"
+msgstr "收藏的群聊"
 
-#: [chatrooms]bad_nickname
-msgid "Please enter a valid nickname (2 to 40 characters)"
-msgstr "请输入有效的昵称（2 到 40 个字符）"
+#: [chatrooms]notacceptable
+msgid "Not acceptable"
+msgstr "不接受"
 
-#: [chatrooms]conflict
-msgid "Nickname already taken"
-msgstr "昵称已被占用"
+#: [chatrooms]notallowed
+msgid "You are not allowed to create a chatroom there"
+msgstr "不允许您在那里创建群聊"
 
-#: [chatrooms]autojoin
-msgid "Join this chatroom on login"
-msgstr "登录后自动加入此群聊"
+#: [chatrooms]notauthorized
+msgid "A password is required"
+msgstr "需要密码"
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
 msgstr "固定此群聊"
-
-#: [chatrooms]destroyed
-msgid "Chatroom destroyed"
-msgstr "群聊已解散"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2384,37 +2395,30 @@ msgstr "此群聊的远程服务器不存在"
 msgid "Connection to remote server timed out"
 msgstr "远程服务器连接超时"
 
-#: [chatrooms]itemnotfound
-msgid "The chatroom doesn’t exist"
-msgstr "群聊不存在"
+#: [chatrooms]remove_text
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
+msgstr "您将永久离开以下群聊。请确认您的操作。"
 
-#: [chatrooms]notauthorized
-msgid "A password is required"
-msgstr "需要密码"
+#: [chatrooms]remove_title
+msgid "Permanently leave a chatroom"
+msgstr "永久离开群聊"
 
-#: [chatrooms]forbidden
-msgid "You are not allowed to join this chatroom"
-msgstr "不允许您加入此群聊"
-
-#: [chatrooms]jidmalformed
-msgid "Your nickname is not valid"
-msgstr "您的昵称无效"
-
-#: [chatrooms]notacceptable
-msgid "Not acceptable"
-msgstr "不接受"
+#: [chatrooms]rooms
+msgid "Rooms"
+msgstr ""
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
 msgstr "群聊参与者已达上限"
 
-#: [chatrooms]notallowed
-msgid "You are not allowed to create a chatroom there"
-msgstr "不允许您在那里创建群聊"
+#: [chatrooms]title
+msgid "Chatrooms"
+msgstr "群聊"
 
-#: [chatrooms]created
-msgid "Chatroom created"
-msgstr "群聊已创建"
+#: [chatrooms]users
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "用户"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -2530,8 +2534,9 @@ msgstr "可公开发现和可加入的公开频道"
 msgid "Never notify"
 msgstr "从不通知"
 
-#: [room]notify_quoted
-msgid "Notify when quoted"
+#: [room]notify_mentioned
+#, fuzzy
+msgid "Notify when mentioned"
 msgstr "提及时通知"
 
 #: [room]notify_always
@@ -2541,22 +2546,6 @@ msgstr "始终通知"
 #: [room]pinned
 msgid "Pinned"
 msgstr "已固定"
-
-#: [room]affiliation_owner [affiliation]owner
-msgid "Owner"
-msgstr "所有者"
-
-#: [room]affiliation_admin
-msgid "Admin"
-msgstr "管理员"
-
-#: [room]affiliation_member [affiliation]member
-msgid "Member"
-msgstr "成员"
-
-#: [room]affiliation_none [affiliation]no-aff
-msgid "No affiliation"
-msgstr "访客"
 
 #: [room]affiliation_admins
 msgid "Admins"
@@ -2578,26 +2567,6 @@ msgstr "是否允许用户发送消息？"
 #: [room]role_changed
 msgid "Role changed"
 msgstr "角色已更改"
-
-#: [room]affiliation_owner_changed
-msgid "User granted as owner"
-msgstr "用户已设为所有者"
-
-#: [room]affiliation_admin_changed
-msgid "User granted as admin"
-msgstr "用户已设为管理员"
-
-#: [room]affiliation_member_changed
-msgid "User granted as member"
-msgstr "用户已设为成员"
-
-#: [room]affiliation_outcast_changed
-msgid "User banned"
-msgstr "用户已封禁"
-
-#: [room]affiliation_none_changed
-msgid "Affiliation removed for the user"
-msgstr "用户的从属关系已移除"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
@@ -2682,6 +2651,167 @@ msgstr "帖子已使用 Movim 分享"
 #: [sendto]sharing_story
 msgid "Story shared using Movim"
 msgstr "故事已使用 Movim 分享"
+
+#: [spaceinfo]config_title
+#, fuzzy
+msgid "Space configuration"
+msgstr "配置已保存"
+
+#: [spaceinfo]config_saved
+#, fuzzy
+msgid "Space configuration saved"
+msgstr "配置已保存"
+
+#: [spaceinfo]config_error
+#, fuzzy
+msgid "Space configuration error"
+msgstr "高级配置"
+
+#: [spaceinfo]destroy_title
+#, fuzzy
+msgid "Destroy the space"
+msgstr "解散群聊"
+
+#: [spaceinfo]destroy_text
+msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
+msgstr ""
+
+#: [spaceinfo]invite_title
+#, fuzzy
+msgid "Invite new contacts"
+msgstr "邀请联系人"
+
+#: [spaceinfo]invite_text
+msgid "A moderator will have to approve the join request"
+msgstr ""
+
+#: [spaceinfo]invite_uri_title
+#, fuzzy
+msgid "Send an invitation key to your contacts"
+msgstr "在关注联系人之前需先发送邀请请求"
+
+#: [spaceinfo]leave_title [spacesmenu]leave_title
+#, fuzzy
+msgid "Leave the space"
+msgstr "离开此实例"
+
+#: [spaceinfo]add_room_title
+#, fuzzy
+msgid "Add a room"
+msgstr "添加评论"
+
+#: [spaceinfo]pending_approvals
+msgid "%s subscriptions requests are waiting for your approval"
+msgstr ""
+
+#: [spaceinfo]pending_request
+msgid "%s is waiting for your approval to join the space"
+msgstr ""
+
+#: [spaceinfo]pending_action
+msgid "Manage the request"
+msgstr ""
+
+#: [spaceinfo]pinned
+#, fuzzy
+msgid "Pin this space in the bar"
+msgstr "固定此群聊"
+
+#: [spaceinfo]owner_cannot_leave
+msgid "An owner cannot leave his own Space"
+msgstr ""
+
+#: [spaceinfo]affiliation_none
+#, fuzzy
+msgid "Remove from the space"
+msgstr "离开此实例"
+
+#: [spacesmenu]create_space_title
+#, fuzzy
+msgid "Create a Space"
+msgstr "创建新账号"
+
+#: [spacesmenu]invite_space_title
+msgid "You got an invite?"
+msgstr ""
+
+#: [spacesmenu]space_title
+msgid "Space title"
+msgstr ""
+
+#: [spacesmenu]space_title_empty
+msgid "Your Space title is empty"
+msgstr ""
+
+#: [spacesmenu]space_created
+#, fuzzy
+msgid "Space created"
+msgstr "群聊已创建"
+
+#: [spacesmenu]loading_space_info
+#, fuzzy
+msgid "Loading the space"
+msgstr "正在上传故事"
+
+#: [spacesmenu]subscribed
+#, fuzzy
+msgid "Subscribed to the space"
+msgstr "已订阅的社区"
+
+#: [spacesmenu]invitation_key
+#, fuzzy
+msgid "Use an invitation key"
+msgstr "没有新邀请"
+
+#: [spacesmenu]key_required
+#, fuzzy
+msgid "A valid key is required"
+msgstr "需要密码"
+
+#: [spacesmenu]locked_title
+msgid "Locked space"
+msgstr ""
+
+#: [spacesmenu]locked_text
+#, fuzzy
+msgid "You are not authorized to join the space at the moment"
+msgstr "您无权在此处发布"
+
+#: [spacesmenu]locked_try_again
+msgid "Try again"
+msgstr ""
+
+#: [spacesmenu]leave_text
+#, fuzzy
+msgid "Are you sure that you want to leave the space?"
+msgstr "是否确定要删除此评论？"
+
+#: [spacesmenu]pending_subscription_title
+msgid "A request has been send to a moderator."
+msgstr ""
+
+#: [spacesmenu]pending_subscription_text
+msgid "You will be able to join the space once its accepted."
+msgstr ""
+
+#: [spacesmenu]pending_subscription_add_title
+#, fuzzy
+msgid "Add %s to the space"
+msgstr "解散群聊"
+
+#: [spacesmenu]pending_subscription_refuse_title
+msgid "Deny the access"
+msgstr ""
+
+#: [spacesmenu]contact_added
+#, fuzzy
+msgid "Contact added in the space"
+msgstr "联系人已添加"
+
+#: [spacesmenu]contact_denied
+#, fuzzy
+msgid "Contact denied in the space"
+msgstr "联系人已删除"
 
 #: [sticker]title
 msgid "Stickers"
@@ -3015,74 +3145,78 @@ msgstr "或者"
 msgid "Switch to another pod"
 msgstr "切换到其他实例"
 
-#: [page]communities
-msgid "Communities"
-msgstr "社区"
-
-#: [page]home
-msgid "Home"
-msgstr "主页"
-
-#: [page]explore
-msgid "Explore"
-msgstr "探索"
+#: [page]about
+msgid "About"
+msgstr "关于"
 
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "账号创建"
 
-#: [page]news
-msgid "News"
-msgstr "动态"
-
 #: [page]avatar
 msgid "Profile Picture"
 msgstr "头像"
-
-#: [page]chats
-msgid "Messages"
-msgstr "消息"
-
-#: [page]publish
-msgid "Publish"
-msgstr "发布"
 
 #: [page]blog
 msgid "Blog"
 msgstr "博客"
 
-#: [page]about
-msgid "About"
-msgstr "关于"
+#: [page]chats
+msgid "Messages"
+msgstr "消息"
 
-#: [page]login
-msgid "Login"
-msgstr "登录"
+#: [page]communities
+msgid "Communities"
+msgstr "社区"
 
-#: [page]not_found
-msgid "Not Found"
-msgstr "未找到"
+#: [page]explore
+msgid "Explore"
+msgstr "探索"
 
 #: [page]feed
 msgid "Feed"
 msgstr "动态"
 
+#: [page]home
+msgid "Home"
+msgstr "主页"
+
+#: [page]login
+msgid "Login"
+msgstr "登录"
+
+#: [page]news
+msgid "News"
+msgstr "动态"
+
+#: [page]not_found
+msgid "Not Found"
+msgstr "未找到"
+
 #: [page]posts
 msgid "Posts"
 msgstr "帖子"
 
-#: [page]visio
-msgid "Visio-conference"
-msgstr "Visio-conference"
+#: [page]publish
+msgid "Publish"
+msgstr "发布"
 
 #: [page]share
 msgctxt "[page]share"
 msgid "Share"
 msgstr "分享"
 
+#: [page]spaces
+msgid "Spaces"
+msgstr ""
+
 #: [page]tag
 msgid "Tag"
 msgstr "标签"
+
+#: [page]visio
+msgid "Visio-conference"
+msgstr "Visio-conference"
 
 #: [error]error
 msgid "Error: %s"
@@ -3144,6 +3278,10 @@ msgstr "呼叫"
 msgid "Cancel"
 msgstr "取消"
 
+#: [button]chat
+msgid "Chat"
+msgstr "聊天"
+
 #: [button]clear
 msgid "Clear"
 msgstr "清除"
@@ -3184,6 +3322,11 @@ msgstr "启用"
 msgid "Join"
 msgstr "加入"
 
+#: [button]leave
+#, fuzzy
+msgid "Leave"
+msgstr "离开"
+
 #: [button]like
 msgid "Like"
 msgstr "点赞"
@@ -3191,6 +3334,10 @@ msgstr "点赞"
 #: [button]more
 msgid "More"
 msgstr "更多"
+
+#: [button]new
+msgid "New conversation"
+msgstr "新对话"
 
 #: [button]next
 msgid "Next"
@@ -3225,8 +3372,8 @@ msgid "Register"
 msgstr "注册"
 
 #: [button]remove
-msgid "Leave"
-msgstr "离开"
+msgid "Remove"
+msgstr ""
 
 #: [button]reply
 msgid "Reply"
@@ -3885,6 +4032,14 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "所有者"
+
+#: [affiliation]admin
+msgid "Admin"
+msgstr "管理员"
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "发布者"
@@ -3893,9 +4048,37 @@ msgstr "发布者"
 msgid "Publish only"
 msgstr "仅发布"
 
+#: [affiliation]member
+msgid "Member"
+msgstr "成员"
+
 #: [affiliation]outcast
 msgid "Outcast"
 msgstr "被驱逐者"
+
+#: [affiliation]no-aff
+msgid "No affiliation"
+msgstr "访客"
+
+#: [affiliation]owner_changed
+msgid "User granted as owner"
+msgstr "用户已设为所有者"
+
+#: [affiliation]admin_changed
+msgid "User granted as admin"
+msgstr "用户已设为管理员"
+
+#: [affiliation]member_changed
+msgid "User granted as member"
+msgstr "用户已设为成员"
+
+#: [affiliation]outcast_changed
+msgid "User banned"
+msgstr "用户已封禁"
+
+#: [affiliation]none_changed
+msgid "Affiliation removed for the user"
+msgstr "用户的从属关系已移除"
 
 #: [api]error
 msgid "The API is not reachable, try again later"
@@ -3904,3 +4087,39 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#, fuzzy
+#~ msgid "New Post"
+#~ msgstr "新帖子"
+
+#, fuzzy
+#~ msgctxt "[button]remove"
+#~ msgid "Leave"
+#~ msgstr "离开"
+
+#~ msgid "My location"
+#~ msgstr "我的位置"
+
+#~ msgid "Currently shared with my contacts"
+#~ msgstr "当前与我的联系人共享"
+
+#~ msgid "Currently disabled"
+#~ msgstr "当前已禁用"
+
+#~ msgid "My last published location"
+#~ msgstr "我上次发布的位置"
+
+#~ msgid "Less than a km away"
+#~ msgstr "不到一公里远"
+
+#~ msgid "%s km away"
+#~ msgstr "%s 公里远"
+
+#~ msgid "The server takes too much time to respond"
+#~ msgstr "服务器响应时间过长"
+
+#~ msgid "What’s Hot"
+#~ msgstr "热门内容"
+
+#~ msgid "Public posts from users"
+#~ msgstr "用户的公开帖子"

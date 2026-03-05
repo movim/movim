@@ -40,6 +40,7 @@ class Route extends Base
         'register'      => ['s', 'err'],
         'room'          => ['r'],
         'share'         => ['url'],
+        'space'         => ['s', 'n', 'r'],
         'subscriptions' => false,
         'system'        => false,
         'tag'           => ['t', 'i'],

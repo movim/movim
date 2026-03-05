@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
+use App\Conference;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 
@@ -100,6 +101,30 @@ class GetItem extends Action
                         ]);
                         $this->deliver();
                     });
+                } elseif ($item->conference && $item->conference->attributes()->xmlns == 'urn:xmpp:bookmarks:1') {
+                    // Ensure that we actually have a Space subscription to the node
+                    $subscription = $this->me->subscriptions()
+                        ->spaces()
+                        ->where('server', $this->_to)
+                        ->where('node', $this->_node)
+                        ->first();
+
+                    if ($subscription) {
+                        $conference = new Conference;
+                        $conference->set($this->me->session, $item);
+                        $conference->space_server = $this->_to;
+                        $conference->space_node = $this->_node;
+
+                        $subscription->spaceRooms()->where('conference', $conference->conference)->delete();
+
+                        $conference->save();
+
+                        $this->pack([
+                            'server' => $this->_to,
+                            'node' => $this->_node
+                        ]);
+                        $this->event('space_addedroom');
+                    }
                 }
             }
             // Don't handle the case if we try to retrieve the avatar

@@ -44,11 +44,12 @@
 }
 
 @media screen and (max-width: 570px) {
-    main {
+    .drawer~main, .drawer~nav {
         transition: transform .25s var(--decelerate-easing);
     }
 
-    .drawer:not(:empty)~main {
+    .drawer:not(:empty)~main,
+    .drawer:not(:empty)~nav {
         transition: transform .25s var(--accelerate-easing);
         transform: translateY(-2rem);
     }

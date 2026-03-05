@@ -7,8 +7,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Account/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AccountNext/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/AdHoc/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/AdminMain/locales.ini
@@ -69,8 +67,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Location/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Menu/locales.ini
@@ -105,6 +101,10 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/SpaceInfo/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/SpacesMenu/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stickers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stories/locales.ini
@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-22 08:05+0200\n"
+"POT-Creation-Date: 2026-03-05 17:25+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://app.transifex.com/movim/movim/language/ko/)\n"
@@ -166,6 +166,14 @@ msgstr "API"
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr "Movim은 XMPP를 바탕으로 하는 커뮤니케이션 플랫폼입니다. 다음 소프트웨어와 리소스를 제외한 모든 프로젝트는 링크를 통해 보실 수 있어요."
+
+#: [about]sourcecode_title
+msgid "Sourcecode"
+msgstr ""
+
+#: [about]sourcecode_text
+msgid "Checkout the sourcecode on the Github repository"
+msgstr ""
 
 #: [account]title [page]account
 msgid "Account"
@@ -234,42 +242,6 @@ msgstr "OMEMO 키 삭제"
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr ""
-
-#: [create]title [subscribe]title
-msgid "Create a new account"
-msgstr "새 계정 만들기"
-
-#: [create]notfound
-msgid "No account creation form found on the server"
-msgstr "서버에서 계정 생성 양식을 찾을 수 없습니다"
-
-#: [create]server_on
-msgid "on"
-msgstr "켜기"
-
-#: [create]successfull
-msgid "Your account has been successfully registered"
-msgstr ""
-
-#: [create]loading
-msgid "Loading"
-msgstr "로딩 중"
-
-#: [create]placeholder
-msgid "…and start playing"
-msgstr "...시작합니다"
-
-#: [error]not_acceptable
-msgid "Not Acceptable"
-msgstr "허용되지 않음"
-
-#: [error]service_unavailable
-msgid "The registration system of this server is currently unavailable"
-msgstr "현재 이 서버의 등록 시스템을 사용할 수 없습니다."
-
-#: [error]forbidden
-msgid "Registration forbidden"
-msgstr "등록 금지"
 
 #: [adhoc]title
 msgid "Actions"
@@ -456,6 +428,14 @@ msgstr "Syslog"
 #: [log]syslog_files
 msgid "Syslog and files"
 msgstr "Syslog 및 파일"
+
+#: [maxsessions]title
+msgid "Maximum of connected sessions"
+msgstr ""
+
+#: [maxsessions]info
+msgid "Movim will forbid new users to connect when the limit is reached, set it to 0 to disable"
+msgstr ""
 
 #: [adminreported]reported_by
 msgid "Reported by %s users"
@@ -892,14 +872,6 @@ msgstr "영상"
 #: [chats]audio
 msgid "Audio"
 msgstr ""
-
-#: [button]chat
-msgid "Chat"
-msgstr "채팅"
-
-#: [button]new
-msgid "New conversation"
-msgstr "새 대화"
 
 #: [chats_filter]all [menu]all [rooms_filter]all
 msgid "All"
@@ -1638,30 +1610,6 @@ msgstr "Movim 팀과 채팅하시겠습니까?"
 msgid "Add the chatroom"
 msgstr "채팅방 추가"
 
-#: [location]title
-msgid "My location"
-msgstr ""
-
-#: [location]enabled_title
-msgid "Currently shared with my contacts"
-msgstr ""
-
-#: [location]disabled_title
-msgid "Currently disabled"
-msgstr ""
-
-#: [location]last_published
-msgid "My last published location"
-msgstr ""
-
-#: [location]less_than_one_km
-msgid "Less than a km away"
-msgstr ""
-
-#: [location]n_km_away
-msgid "%s km away"
-msgstr ""
-
 #: [error]username
 msgid "Wrong username"
 msgstr "잘못된 사용자 이름"
@@ -1694,9 +1642,10 @@ msgstr "세션 오류"
 msgid "Account successfully created"
 msgstr "계정이 성공적으로 생성되었습니다."
 
-#: [error]timeout
-msgid "The server takes too much time to respond"
-msgstr "서버가 응답하는 데 너무 많은 시간이 걸립니다."
+#: [error]connection
+#, fuzzy
+msgid "Movim cannot connect to the server"
+msgstr "서버에 연결됨"
 
 #: [error]impossible
 msgid "Impossible login"
@@ -1729,6 +1678,14 @@ msgstr "인증 메커니즘이 Movim에서 지원되지 않음"
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
 msgstr "XMPP 인증 실패"
+
+#: [error]max_sessions_reached
+msgid "This Movim instance is currently full."
+msgstr ""
+
+#: [error]max_sessions_reached_join
+msgid "Try a different one on %s"
+msgstr ""
 
 #: [connection]socket_connected
 msgid "Connected to the server"
@@ -1887,6 +1844,11 @@ msgstr "프로필을 공개하여 다른 사용자가 쉽게 당신을 찾고 �
 msgid "You can always disable this in the configuration afterwards"
 msgstr "나중에 설정에서 이 기능을 비활성화할 수 있습니다."
 
+#: [post]publish_something
+#, fuzzy
+msgid "Publish something"
+msgstr "게시 전용"
+
 #: [post]news_feed
 msgid "News Feed"
 msgstr "뉴스 피드"
@@ -1907,16 +1869,13 @@ msgstr "게시물 게시됨"
 msgid "Post deleted"
 msgstr "게시물 삭제됨"
 
-#: [post]hot
-msgid "What’s Hot"
-msgstr "최신 소식"
-
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "(아직) 구독하지 않은 커뮤니티에서 최근에 게시된 게시물"
 
-#: [post]new [publish]new
-msgid "New post"
+#: [post]new_blog
+#, fuzzy
+msgid "New blog post"
 msgstr "새 게시물"
 
 #: [post]repost
@@ -1926,10 +1885,6 @@ msgstr "%s님의 재포스팅입니다."
 #: [post]see_profile
 msgid "See %s profile"
 msgstr "%s님의 프로필 보기"
-
-#: [post]blog_last
-msgid "Public posts from users"
-msgstr "사용자의 공개 게시물"
 
 #: [post]unknown_contact
 msgid "Unknown contact"
@@ -2067,6 +2022,11 @@ msgstr "아직 프로필을 작성하지 않은 것 같습니다."
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
 msgstr "설정 페이지로 이동하여 스스로를 설명하고 멋진 사진을 추가할 수 있습니다."
 
+#: [status]visit_blog
+#, fuzzy
+msgid "Visit my blog"
+msgstr "방문자"
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr "연결 해제"
@@ -2126,6 +2086,10 @@ msgstr "파일 또는 사진 추가"
 #: [publish]no_publication
 msgid "You cannot publish a post here"
 msgstr "여기에 게시물을 게시할 수 없습니다."
+
+#: [publish]new
+msgid "New post"
+msgstr "새 게시물"
 
 #: [publish]title
 msgid "Post title"
@@ -2227,6 +2191,42 @@ msgstr ""
 msgid "Story published"
 msgstr ""
 
+#: [create]title [subscribe]title
+msgid "Create a new account"
+msgstr "새 계정 만들기"
+
+#: [create]notfound
+msgid "No account creation form found on the server"
+msgstr "서버에서 계정 생성 양식을 찾을 수 없습니다"
+
+#: [create]server_on
+msgid "on"
+msgstr "켜기"
+
+#: [create]successfull
+msgid "Your account has been successfully registered"
+msgstr ""
+
+#: [create]loading
+msgid "Loading"
+msgstr "로딩 중"
+
+#: [create]placeholder
+msgid "…and start playing"
+msgstr "...시작합니다"
+
+#: [error]not_acceptable
+msgid "Not Acceptable"
+msgstr "허용되지 않음"
+
+#: [error]service_unavailable
+msgid "The registration system of this server is currently unavailable"
+msgstr "현재 이 서버의 등록 시스템을 사용할 수 없습니다."
+
+#: [error]forbidden
+msgid "Registration forbidden"
+msgstr "등록 금지"
+
 #: [rooms]create
 msgid "Create a chatroom"
 msgstr "채팅방 만들기"
@@ -2287,75 +2287,86 @@ msgstr "이름 또는 설명"
 msgid "A registration is required before using the service"
 msgstr ""
 
-#: [chatrooms]title
-msgid "Chatrooms"
-msgstr "채팅방"
-
-#: [chatrooms]id
-msgid "Chatroom Address"
+#: [chatrooms]autojoin
+msgid "Join this chatroom on login"
 msgstr ""
-
-#: [chatrooms]name_placeholder
-msgid "My Favorite Room"
-msgstr "내가 좋아하는 채팅방"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
 msgstr ""
 
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "비어있는 이름"
-
-#: [chatrooms]remove_title
-msgid "Permanently leave a chatroom"
+#: [chatrooms]bad_nickname
+msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr ""
 
-#: [chatrooms]remove_text
-msgid "You are going to permanently leave the following chatroom. Please confirm your action."
+#: [chatrooms]banned
+msgid "Banned"
+msgstr "금지"
+
+#: [chatrooms]conflict
+msgid "Nickname already taken"
 msgstr ""
 
 #: [chatrooms]connected
 msgid "Joined the chatroom"
 msgstr ""
 
+#: [chatrooms]created
+msgid "Chatroom created"
+msgstr "채팅방 생성됨"
+
+#: [chatrooms]destroyed
+msgid "Chatroom destroyed"
+msgstr ""
+
 #: [chatrooms]disconnected
 msgid "Left the chatroom"
 msgstr ""
 
-#: [chatrooms]users
-msgctxt "[chatrooms]users"
-msgid "Users"
-msgstr "사용자"
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "비어있는 이름"
+
+#: [chatrooms]forbidden
+msgid "You are not allowed to join this chatroom"
+msgstr "이 채팅방에 참여할 수 없습니다."
+
+#: [chatrooms]id
+msgid "Chatroom Address"
+msgstr ""
+
+#: [chatrooms]itemnotfound
+msgid "The chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]jidmalformed
+msgid "Your nickname is not valid"
+msgstr "닉네임이 유효하지 않습니다"
 
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
 msgstr "멤버"
 
-#: [chatrooms]banned
-msgid "Banned"
-msgstr "금지"
+#: [chatrooms]name_placeholder
+msgid "My Favorite Room"
+msgstr "내가 좋아하는 채팅방"
 
-#: [chatrooms]bad_nickname
-msgid "Please enter a valid nickname (2 to 40 characters)"
-msgstr ""
+#: [chatrooms]notacceptable
+msgid "Not acceptable"
+msgstr "허용되지 않음"
 
-#: [chatrooms]conflict
-msgid "Nickname already taken"
-msgstr ""
+#: [chatrooms]notallowed
+msgid "You are not allowed to create a chatroom there"
+msgstr "채팅방을 만들 수 없습니다."
 
-#: [chatrooms]autojoin
-msgid "Join this chatroom on login"
-msgstr ""
+#: [chatrooms]notauthorized
+msgid "A password is required"
+msgstr "비밀번호가 필요합니다"
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
 msgstr "이 채팅방 고정하기"
-
-#: [chatrooms]destroyed
-msgid "Chatroom destroyed"
-msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2369,37 +2380,30 @@ msgstr ""
 msgid "Connection to remote server timed out"
 msgstr ""
 
-#: [chatrooms]itemnotfound
-msgid "The chatroom doesn’t exist"
+#: [chatrooms]remove_text
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
 msgstr ""
 
-#: [chatrooms]notauthorized
-msgid "A password is required"
-msgstr "비밀번호가 필요합니다"
+#: [chatrooms]remove_title
+msgid "Permanently leave a chatroom"
+msgstr ""
 
-#: [chatrooms]forbidden
-msgid "You are not allowed to join this chatroom"
-msgstr "이 채팅방에 참여할 수 없습니다."
-
-#: [chatrooms]jidmalformed
-msgid "Your nickname is not valid"
-msgstr "닉네임이 유효하지 않습니다"
-
-#: [chatrooms]notacceptable
-msgid "Not acceptable"
-msgstr "허용되지 않음"
+#: [chatrooms]rooms
+msgid "Rooms"
+msgstr ""
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
 msgstr ""
 
-#: [chatrooms]notallowed
-msgid "You are not allowed to create a chatroom there"
-msgstr "채팅방을 만들 수 없습니다."
+#: [chatrooms]title
+msgid "Chatrooms"
+msgstr "채팅방"
 
-#: [chatrooms]created
-msgid "Chatroom created"
-msgstr "채팅방 생성됨"
+#: [chatrooms]users
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "사용자"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -2515,8 +2519,9 @@ msgstr "공개적으로 검색 및 가입할 수 있는 공개 채널"
 msgid "Never notify"
 msgstr "알림 안 함"
 
-#: [room]notify_quoted
-msgid "Notify when quoted"
+#: [room]notify_mentioned
+#, fuzzy
+msgid "Notify when mentioned"
 msgstr "인용 시 알림"
 
 #: [room]notify_always
@@ -2526,22 +2531,6 @@ msgstr "항상 알림"
 #: [room]pinned
 msgid "Pinned"
 msgstr "고정"
-
-#: [room]affiliation_owner [affiliation]owner
-msgid "Owner"
-msgstr "소유자"
-
-#: [room]affiliation_admin
-msgid "Admin"
-msgstr ""
-
-#: [room]affiliation_member [affiliation]member
-msgid "Member"
-msgstr "멤버"
-
-#: [room]affiliation_none [affiliation]no-aff
-msgid "No affiliation"
-msgstr "권한 없음"
 
 #: [room]affiliation_admins
 msgid "Admins"
@@ -2563,26 +2552,6 @@ msgstr ""
 #: [room]role_changed
 msgid "Role changed"
 msgstr ""
-
-#: [room]affiliation_owner_changed
-msgid "User granted as owner"
-msgstr "소유자 권한의 사용자"
-
-#: [room]affiliation_admin_changed
-msgid "User granted as admin"
-msgstr "관리자 권한의 사용자"
-
-#: [room]affiliation_member_changed
-msgid "User granted as member"
-msgstr "멤버 권한의 사용자"
-
-#: [room]affiliation_outcast_changed
-msgid "User banned"
-msgstr "차단된 사용자"
-
-#: [room]affiliation_none_changed
-msgid "Affiliation removed for the user"
-msgstr "사용자의 권한이 제거됨"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
@@ -2667,6 +2636,164 @@ msgstr ""
 #: [sendto]sharing_story
 msgid "Story shared using Movim"
 msgstr ""
+
+#: [spaceinfo]config_title
+#, fuzzy
+msgid "Space configuration"
+msgstr "설정이 저장됨"
+
+#: [spaceinfo]config_saved
+#, fuzzy
+msgid "Space configuration saved"
+msgstr "설정이 저장됨"
+
+#: [spaceinfo]config_error
+#, fuzzy
+msgid "Space configuration error"
+msgstr "고급 설정"
+
+#: [spaceinfo]destroy_title
+#, fuzzy
+msgid "Destroy the space"
+msgstr "이 인스턴스에서 나가기"
+
+#: [spaceinfo]destroy_text
+msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
+msgstr ""
+
+#: [spaceinfo]invite_title
+#, fuzzy
+msgid "Invite new contacts"
+msgstr "대화 상대 초대"
+
+#: [spaceinfo]invite_text
+msgid "A moderator will have to approve the join request"
+msgstr ""
+
+#: [spaceinfo]invite_uri_title
+#, fuzzy
+msgid "Send an invitation key to your contacts"
+msgstr "대화 상대에게 이 링크 보내기"
+
+#: [spaceinfo]leave_title [spacesmenu]leave_title
+#, fuzzy
+msgid "Leave the space"
+msgstr "이 인스턴스에서 나가기"
+
+#: [spaceinfo]add_room_title
+#, fuzzy
+msgid "Add a room"
+msgstr "댓글 추가"
+
+#: [spaceinfo]pending_approvals
+msgid "%s subscriptions requests are waiting for your approval"
+msgstr ""
+
+#: [spaceinfo]pending_request
+msgid "%s is waiting for your approval to join the space"
+msgstr ""
+
+#: [spaceinfo]pending_action
+msgid "Manage the request"
+msgstr ""
+
+#: [spaceinfo]pinned
+#, fuzzy
+msgid "Pin this space in the bar"
+msgstr "이 채팅방 고정하기"
+
+#: [spaceinfo]owner_cannot_leave
+msgid "An owner cannot leave his own Space"
+msgstr ""
+
+#: [spaceinfo]affiliation_none
+#, fuzzy
+msgid "Remove from the space"
+msgstr "이 인스턴스에서 나가기"
+
+#: [spacesmenu]create_space_title
+#, fuzzy
+msgid "Create a Space"
+msgstr "새 계정 만들기"
+
+#: [spacesmenu]invite_space_title
+msgid "You got an invite?"
+msgstr ""
+
+#: [spacesmenu]space_title
+msgid "Space title"
+msgstr ""
+
+#: [spacesmenu]space_title_empty
+msgid "Your Space title is empty"
+msgstr ""
+
+#: [spacesmenu]space_created
+#, fuzzy
+msgid "Space created"
+msgstr "채팅방 생성됨"
+
+#: [spacesmenu]loading_space_info
+msgid "Loading the space"
+msgstr ""
+
+#: [spacesmenu]subscribed
+msgid "Subscribed to the space"
+msgstr ""
+
+#: [spacesmenu]invitation_key
+#, fuzzy
+msgid "Use an invitation key"
+msgstr "초대장 전송됨"
+
+#: [spacesmenu]key_required
+#, fuzzy
+msgid "A valid key is required"
+msgstr "비밀번호가 필요합니다"
+
+#: [spacesmenu]locked_title
+msgid "Locked space"
+msgstr ""
+
+#: [spacesmenu]locked_text
+#, fuzzy
+msgid "You are not authorized to join the space at the moment"
+msgstr "이 소속을 변경할 권한이 없습니다."
+
+#: [spacesmenu]locked_try_again
+msgid "Try again"
+msgstr ""
+
+#: [spacesmenu]leave_text
+#, fuzzy
+msgid "Are you sure that you want to leave the space?"
+msgstr "이 댓글을 삭제하시겠습니까?"
+
+#: [spacesmenu]pending_subscription_title
+msgid "A request has been send to a moderator."
+msgstr ""
+
+#: [spacesmenu]pending_subscription_text
+msgid "You will be able to join the space once its accepted."
+msgstr ""
+
+#: [spacesmenu]pending_subscription_add_title
+msgid "Add %s to the space"
+msgstr ""
+
+#: [spacesmenu]pending_subscription_refuse_title
+msgid "Deny the access"
+msgstr ""
+
+#: [spacesmenu]contact_added
+#, fuzzy
+msgid "Contact added in the space"
+msgstr "연락처 추가됨"
+
+#: [spacesmenu]contact_denied
+#, fuzzy
+msgid "Contact denied in the space"
+msgstr "연락처 삭제됨"
 
 #: [sticker]title
 msgid "Stickers"
@@ -3000,74 +3127,78 @@ msgstr "또는"
 msgid "Switch to another pod"
 msgstr "다른 포드로 전환"
 
-#: [page]communities
-msgid "Communities"
-msgstr "커뮤니티"
-
-#: [page]home
-msgid "Home"
-msgstr "홈"
-
-#: [page]explore
-msgid "Explore"
-msgstr "탐색"
+#: [page]about
+msgid "About"
+msgstr "에 대해"
 
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "계정 생성"
 
-#: [page]news
-msgid "News"
-msgstr "뉴스"
-
 #: [page]avatar
 msgid "Profile Picture"
 msgstr ""
-
-#: [page]chats
-msgid "Messages"
-msgstr ""
-
-#: [page]publish
-msgid "Publish"
-msgstr "게시"
 
 #: [page]blog
 msgid "Blog"
 msgstr "블로그"
 
-#: [page]about
-msgid "About"
-msgstr "에 대해"
+#: [page]chats
+msgid "Messages"
+msgstr ""
 
-#: [page]login
-msgid "Login"
-msgstr "로그인"
+#: [page]communities
+msgid "Communities"
+msgstr "커뮤니티"
 
-#: [page]not_found
-msgid "Not Found"
-msgstr "찾을 수 없음"
+#: [page]explore
+msgid "Explore"
+msgstr "탐색"
 
 #: [page]feed
 msgid "Feed"
 msgstr "피드"
 
+#: [page]home
+msgid "Home"
+msgstr "홈"
+
+#: [page]login
+msgid "Login"
+msgstr "로그인"
+
+#: [page]news
+msgid "News"
+msgstr "뉴스"
+
+#: [page]not_found
+msgid "Not Found"
+msgstr "찾을 수 없음"
+
 #: [page]posts
 msgid "Posts"
 msgstr "포스트"
 
-#: [page]visio
-msgid "Visio-conference"
-msgstr "화상 회의"
+#: [page]publish
+msgid "Publish"
+msgstr "게시"
 
 #: [page]share
 msgctxt "[page]share"
 msgid "Share"
 msgstr "공유하기"
 
+#: [page]spaces
+msgid "Spaces"
+msgstr ""
+
 #: [page]tag
 msgid "Tag"
 msgstr "태그"
+
+#: [page]visio
+msgid "Visio-conference"
+msgstr "화상 회의"
 
 #: [error]error
 msgid "Error: %s"
@@ -3129,6 +3260,10 @@ msgstr "통화"
 msgid "Cancel"
 msgstr "취소하기"
 
+#: [button]chat
+msgid "Chat"
+msgstr "채팅"
+
 #: [button]clear
 msgid "Clear"
 msgstr "지우기"
@@ -3169,6 +3304,10 @@ msgstr "활성화"
 msgid "Join"
 msgstr ""
 
+#: [button]leave
+msgid "Leave"
+msgstr ""
+
 #: [button]like
 msgid "Like"
 msgstr "좋아요"
@@ -3176,6 +3315,10 @@ msgstr "좋아요"
 #: [button]more
 msgid "More"
 msgstr "더보기"
+
+#: [button]new
+msgid "New conversation"
+msgstr "새 대화"
 
 #: [button]next
 msgid "Next"
@@ -3210,7 +3353,7 @@ msgid "Register"
 msgstr "등록하기"
 
 #: [button]remove
-msgid "Leave"
+msgid "Remove"
 msgstr ""
 
 #: [button]reply
@@ -3870,6 +4013,14 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "소유자"
+
+#: [affiliation]admin
+msgid "Admin"
+msgstr ""
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "발행자"
@@ -3878,9 +4029,37 @@ msgstr "발행자"
 msgid "Publish only"
 msgstr "게시 전용"
 
+#: [affiliation]member
+msgid "Member"
+msgstr "멤버"
+
 #: [affiliation]outcast
 msgid "Outcast"
 msgstr "차단한 사람"
+
+#: [affiliation]no-aff
+msgid "No affiliation"
+msgstr "권한 없음"
+
+#: [affiliation]owner_changed
+msgid "User granted as owner"
+msgstr "소유자 권한의 사용자"
+
+#: [affiliation]admin_changed
+msgid "User granted as admin"
+msgstr "관리자 권한의 사용자"
+
+#: [affiliation]member_changed
+msgid "User granted as member"
+msgstr "멤버 권한의 사용자"
+
+#: [affiliation]outcast_changed
+msgid "User banned"
+msgstr "차단된 사용자"
+
+#: [affiliation]none_changed
+msgid "Affiliation removed for the user"
+msgstr "사용자의 권한이 제거됨"
 
 #: [api]error
 msgid "The API is not reachable, try again later"
@@ -3889,3 +4068,16 @@ msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 #: [field]type_here
 msgid "Type here"
 msgstr "여기에 입력하세요"
+
+#, fuzzy
+#~ msgid "New Post"
+#~ msgstr "새 게시물"
+
+#~ msgid "The server takes too much time to respond"
+#~ msgstr "서버가 응답하는 데 너무 많은 시간이 걸립니다."
+
+#~ msgid "What’s Hot"
+#~ msgstr "최신 소식"
+
+#~ msgid "Public posts from users"
+#~ msgstr "사용자의 공개 게시물"

@@ -23,13 +23,14 @@ class Search extends Base
         $this->addcss('search.css');
     }
 
-    public function ajaxRequest(?bool $chatroomActions = false)
+    public function ajaxRequest(?bool $chatroomActions = false, ?bool $articlesOnly = false)
     {
         $this->drawer('search', $this->view('_search', [
-            'chatroomactions' => $chatroomActions
+            'chatroomactions' => $chatroomActions,
+            'articlesonly' => $articlesOnly
         ]), true);
 
-        $this->rpc('Search.init');
+        $this->rpc('Search.init', $articlesOnly);
     }
 
     public function ajaxHttpInitRoster()

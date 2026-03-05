@@ -1,11 +1,11 @@
-<ul class="navigation list active" dir="ltr">
+<ul class="navigation list oppose active" dir="ltr">
     {if="$c->me->hasPubsub()"}
         <li onclick="MovimUtils.reload('{$c->route('news')}')"
             class="on_desktop {if="$page == 'news' || $page == 'post'"}active{/if}"
             title="{$c->__('page.news')}"
         >
             <span class="primary icon">
-                <i class="material-symbols">home</i>
+                <i class="material-symbols">newsmode</i>
                 <span data-key="news" class="counter"></span>
             </span>
             <div>
@@ -23,68 +23,22 @@
             </div>
         </li>
     {/if}
-
-    <li onclick="{if="$page == 'chat'"}Rooms.toggleScroll(){else}MovimUtils.reload('{$c->route('chat')}'){/if}"
-        class="on_desktop {if="$page == 'chat'"}active{/if}"
-        title="{$c->__('page.chats')}"
-    >
-        <span class="primary icon" id="chatcounter" {if="$chatCounter > 0"}data-counter="{$chatCounter}"{/if}>
-            <i class="material-symbols">chat_bubble</i>
-        </span>
-        <div>
-            <p>{$c->__('page.chats')}</p>
-        </div>
-    </li>
-
-    <hr class="on_desktop"/>
-
     {if="$c->me->hasPubsub()"}
-        <li onclick="MovimUtils.reload('{$c->route('publish')}')"
-            title="{$c->__('post.new')}"
-            {if="$page == 'publish'"}class="active"{/if}
+        <li onclick="Navigation_ajaxHttpPublish()"
+            class="on_desktop publish_something"
+            title="{$c->__('post.publish_something')}"
         >
-            <span class="primary icon">
-                <i class="material-symbols">post_add</i>
-            </span>
+            <span class="primary icon"><i class="material-symbols">note_stack_add</i></span>
             <div>
-                <p>{$c->__('post.new')}</p>
+                <p>{$c->__('post.publish_something')}</p>
             </div>
         </li>
-
-        {if="$c->me->hasUpload()"}
-            <li onclick="PublishStories_ajaxOpen()"
-                title="{$c->__('stories.publish')}"
-            >
-                <span class="primary icon">
-                    <i class="material-symbols">web_stories</i>
-                </span>
-                <div>
-                    <p>{$c->__('stories.publish')}</p>
-                </div>
-            </li>
-        {/if}
     {/if}
 </ul>
-
-<ul class="navigation list oppose active" dir="ltr">
-    <li onclick="Notifications_ajaxRequest()"
-        title="{$c->__('notifs.title')}"
-        class="on_desktop"
-    >
-        <span class="primary icon">
-            <i class="material-symbols">notifications</i>
-            <span class="counter notifications"></span>
-        </span>
-        <div>
-            <p>{$c->__('notifs.title')}</p>
-        </div>
-    </li>
-
-    <hr class="on_desktop"/>
-
+<hr class="on_desktop"/>
+<ul class="navigation list active on_desktop" dir="ltr">
     <li onclick="Search_ajaxRequest()"
         title="{$c->__('button.search')}"
-        class="on_desktop"
     >
         <span class="primary icon">
             <i class="material-symbols">search</i>
@@ -94,24 +48,15 @@
         </div>
     </li>
 
-    {if="$c->me->hasPubsub()"}
-        <li onclick="MovimUtils.reload('{$c->route('subscriptions')}')"
-            title="{$c->__('communityaffiliation.subscriptions')}"
-            {if="$page == 'subscriptions'"}class="active"{/if}
-        >
-            <span class="primary icon"><i class="material-symbols">bookmarks</i></span>
-            <div>
-                <p>{$c->__('communityaffiliation.subscriptions')}</p>
-            </div>
-        </li>
-    {/if}
-
-    <a href="#" class="on_mobile">
-        <li onclick="MovimTpl.closeMenu()">
-            <span class="primary icon bubble"><i class="material-symbols">arrow_back</i></span>
-            <div>
-                <p>{$c->__('button.close')}</p>
-            </div>
-        </li>
-    </a>
+    <li onclick="Notifications_ajaxRequest()"
+        title="{$c->__('notifs.title')}"
+    >
+        <span class="primary icon">
+            <i class="material-symbols">notifications</i>
+            <span class="counter notifications"></span>
+        </span>
+        <div>
+            <p>{$c->__('notifs.title')}</p>
+        </div>
+    </li>
 </ul>

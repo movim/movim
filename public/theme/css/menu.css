@@ -43,17 +43,25 @@ ul.list.active.navigation li.active:not(.subheader) {
     background-color: transparent;
 }
 
+ul.list.navigation li {
+    padding-right: 0;
+}
+
+ul.list.navigation li .primary {
+    margin: 0 0.25rem;
+}
+
 ul.list.active.navigation li:hover:not(.subheader):before,
 ul.list.active.navigation li.active:not(.subheader):before {
     display: block;
     content: '';
-    width: calc(100% - 1rem);
+    width: 5.5rem;
     height: calc(100% - 1rem);
     background-color: rgba(var(--movim-element-action), 0.1);
     position: absolute;
     top: 0.5rem;
     left: 0.5rem;
-    border-radius: 0.75rem;
+    border-radius: 1.5rem;
     z-index: -1;
     transition: background-color 0.15s ease;
 }
@@ -74,5 +82,12 @@ ul#bottomnavigation li:active {
 @media screen and (min-width: 1025px) and (max-width: 1680px) {
     ul.navigation li:active {
         transform: translateY(1px);
+    }
+}
+
+@media screen and (min-width: 1025px) and (min-width: 1681px) {
+    ul.list.active.navigation li:hover:not(.subheader):before,
+    ul.list.active.navigation li.active:not(.subheader):before {
+        width: calc(100% - 1rem);
     }
 }

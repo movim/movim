@@ -2,11 +2,17 @@
     transition: height .1s;
 }
 
-#shortcuts_widget + hr {
+@media screen and (max-width: 1024px) {
+    #shortcuts_widget {
+        margin-top: 1rem;
+    }
+}
+
+#shortcuts_widget+hr {
     transition: opacity .2s;
 }
 
-#shortcuts_widget:empty + hr {
+#shortcuts_widget:empty+hr {
     opacity: 0;
 }
 

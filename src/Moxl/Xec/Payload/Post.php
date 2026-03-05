@@ -48,6 +48,25 @@ class Post extends Payload
                 }
             }
         } elseif ($stanza->items->retract) {
+            // Ensure that we actually have a Space subscription to the node
+            $subscription = $this->me->subscriptions()
+                ->spaces()
+                ->where('server', $from)
+                ->where('node', $node)
+                ->first();
+
+            if ($subscription) {
+                $subscription->spaceRooms()->where('conference', $stanza->items->retract->attributes()->id)->delete();
+                $this->pack([
+                    'server' => $from,
+                    'node' => $node,
+                    'nodeid' => (string)$stanza->items->retract->attributes()->id
+                ]);
+                $this->event('space_deletedroom');
+                //$this->deliver();
+                return;
+            }
+
             \App\Post::where('nodeid', $stanza->items->retract->attributes()->id)
                 ->where('server', $from)
                 ->where('node', $node)

@@ -105,83 +105,15 @@ var MovimTpl = {
         var contextMenu = document.querySelector('ul.context_menu');
         if (contextMenu == null) return;
 
-        if (!document.querySelector('.show_context_menu').contains(e.target)) {
+        if (!document.querySelector('.show_context_menu')?.contains(e.target)) {
             contextMenu.classList.remove('shown');
         }
-    },
-    closeMenu: function () {
-        document.querySelector('body > nav').classList.remove('active');
-    },
-    toggleMenu: function () {
-        document.querySelector('body > nav').classList.toggle('active');
-    },
-    touchEvents: function () {
-        nav = document.querySelector('body > nav');
-        mainDiv = document.querySelector('body > main > div:not(#chat_widget)');
-        clientWidth = Math.abs(document.body.clientWidth);
-        delay = 20;
-
-        if (nav == null) return;
-
-        mainDiv.addEventListener('touchmove', function (event) {
-            moveX = event.targetTouches[0].pageX;
-            MovimTpl.translateX = parseInt(moveX - MovimTpl.startX);
-
-            if (nav && !nav.classList.contains('active')
-                && MovimTpl.startX < clientWidth / 15
-                && MovimTpl.startY > 56
-                && MovimTpl.translateX < nav.offsetWidth + delay
-                && MovimTpl.translateX > delay) {
-                MovimTpl.menuDragged = true;
-                event.stopPropagation();
-
-                nav.style.transform = 'translateX(' + (-nav.offsetWidth + MovimTpl.translateX - delay) + 'px)';
-            }
-        }, true);
-
-        nav.addEventListener('touchmove', function (event) {
-            moveX = event.targetTouches[0].pageX;
-            MovimTpl.translateX = parseInt(moveX - MovimTpl.startX);
-
-            if (nav && nav.classList.contains('active') && MovimTpl.translateX - delay < 0) {
-                MovimTpl.menuDragged = true;
-                event.stopPropagation();
-                nav.style.transform = 'translateX(' + (MovimTpl.translateX - delay) + 'px)';
-            }
-        }, true);
     }
 };
-
-MovimEvents.registerBody('touchstart', 'movimtpl', (event) => {
-    document.querySelector('body > nav').classList.remove('moving');
-    MovimTpl.startX = event.targetTouches[0].pageX;
-    MovimTpl.startY = event.targetTouches[0].pageY;
-});
-
-MovimEvents.registerBody('touchend', 'movimtpl', (event) => {
-    nav = document.querySelector('body > nav');
-    nav.style.transform = '';
-    nav.classList.add('moving');
-    clientWidth = Math.abs(document.body.clientWidth);
-    percent = MovimTpl.translateX / clientWidth;
-
-    if (MovimTpl.menuDragged) {
-        if (nav.classList.contains('active') && percent < -0.2) {
-            nav.classList.remove('active');
-        } else if (percent > 0.1) {
-            nav.classList.add('active');
-        }
-    }
-
-    MovimTpl.startX = MovimTpl.startY = MovimTpl.translateX = 0;
-    MovimTpl.menuDragged = false;
-});
 
 MovimEvents.registerBody('click', 'movimtpl', (e) => MovimTpl.hideContextMenu(e));
 
 MovimEvents.registerWindow('loaded', 'movimtpl', () => {
-    if (MovimUtils.isMobile()) MovimTpl.touchEvents();
-
     MovimTpl.currentPage = window.location.pathname;
 });
 

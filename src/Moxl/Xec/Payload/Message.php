@@ -41,6 +41,20 @@ class Message extends Payload
             linker($this->sessionId)->chatroomPings->touch($message->jidfrom);
         }
 
+        if (
+            $stanza->event
+            && $stanza->event->attributes()->xmlns == 'http://jabber.org/protocol/pubsub#event'
+            && $stanza->event->subscription
+        ) {
+            if ($stanza->event->subscription->attributes()->subscription == 'subscribed') {
+                $this->pack([
+                    'server' => (string)$stanza->attributes()->from,
+                    'node' => (string)$stanza->event->subscription->attributes()->node
+                ]);
+                $this->event('message_pubsub_subscribed');
+            }
+        }
+
         if ($stanza->composing || $stanza->paused || $stanza->active) {
             $from = ($message->isMuc())
                 ? $message->jidfrom . '/' . $message->resource

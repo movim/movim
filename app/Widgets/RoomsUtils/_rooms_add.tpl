@@ -161,7 +161,7 @@
                     </option>
                     <option value="on-mention" {if="isset($conference) && $conference->notify == 1"}selected{/if}
                         {if="!isset($conference)"}selected{/if}>
-                        {$c->__('room.notify_quoted')}
+                        {$c->__('room.notify_mentioned')}
                     </option>
                     <option value="always" {if="isset($conference) && $conference->notify == 2"}selected{/if}>
                         {$c->__('room.notify_always')}

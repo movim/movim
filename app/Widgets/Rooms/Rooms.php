@@ -159,6 +159,7 @@ class Rooms extends Base
     {
         foreach (
             $this->me->session->conferences()
+                ->fromSpace(false)
                 ->with('info')
                 ->where('bookmarkversion', (int)$packet->content)
                 ->get() as $room
@@ -188,6 +189,8 @@ class Rooms extends Base
     public function onBookmarkSet(Packet $packet)
     {
         $conference = $packet->content;
+
+        if ($conference->isFromSpace()) return;
 
         if ($conference && $conference->autojoin) {
             $this->ajaxJoin($conference->conference, $conference->nick);
@@ -225,6 +228,7 @@ class Rooms extends Base
     public function onPresence(string $room, bool $callSecond = true)
     {
         $conference = $this->me->session->conferences()
+            ->fromSpace(false)
             ->where('conference', $room)
             ->with('info', 'contact', 'presence')
             ->withCount('unreads', 'quoted', 'presences')
@@ -244,6 +248,7 @@ class Rooms extends Base
     public function ajaxHttpGet()
     {
         $conferences = $this->me->session->conferences()
+            ->fromSpace(false)
             ->with('info', 'contact', 'presence')
             ->withCount('unreads', 'quoted', 'presences')
             ->get();

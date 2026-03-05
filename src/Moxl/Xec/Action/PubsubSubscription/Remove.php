@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\PubsubSubscription;
 
+use App\Subscription;
 use Moxl\Xec\Action;
 use Moxl\Stanza\PubsubSubscription;
 
@@ -10,7 +11,7 @@ class Remove extends Action
     protected $_server;
     protected $_from;
     protected $_node;
-    protected $_pepnode = 'urn:xmpp:pubsub:subscription';
+    protected $_pepnode = Subscription::PUBLIC_NODE;
 
     public function request()
     {
@@ -25,14 +26,17 @@ class Remove extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        if ($this->_pepnode == 'urn:xmpp:pubsub:movim-public-subscription') {
+        if (
+            $this->_pepnode == Subscription::PRIVATE_NODE
+            || $this->_pepnode == Subscription::SPACE_NODE
+        ) {
             $this->me->subscriptions()
-                           ->where('server', $this->_server)
-                           ->where('node', $this->_node)
-                           ->delete();
+                ->where('server', $this->_server)
+                ->where('node', $this->_node)
+                ->delete();
         }
 
-        $this->pack(['server' => $this->_server, 'node' => $this->_node]);
+        $this->pack(['server' => $this->_server, 'node' => $this->_node, 'type' => $this->_pepnode]);
         $this->deliver();
     }
 

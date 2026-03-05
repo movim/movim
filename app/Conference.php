@@ -2,20 +2,22 @@
 
 namespace App;
 
+use App\Widgets\Subscribe\Subscribe;
 use Movim\ImageSize;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
+use Movim\Route;
 
 class Conference extends Model
 {
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'conference'];
-    protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned'];
+    protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned', 'space_server', 'space_node'];
     protected $with = ['contact', 'mujiCalls'];
 
-    public static $xmlnsNotifications = 'urn:xmpp:notification-settings:0';
-    public static $xmlnsPinned = 'urn:xmpp:bookmarks-pinning:0';
-    public static $notifications = [
+    public const XMLNS_NOTIFICATIONS = 'urn:xmpp:notification-settings:0';
+    public const XMLNS_PINNED = 'urn:xmpp:bookmarks-pinning:0';
+    public const NOTIFICATIONS = [
         0 => 'never',
         1 => 'on-mention',
         2 => 'always'
@@ -42,6 +44,23 @@ class Conference extends Model
             ->orderBy('resource');
     }
 
+    public function scopeFromSpace($query, ?bool $from = true)
+    {
+        return $from
+            ? $query->whereNotNull('space_server')->whereNotNull('space_node')
+            : $query->whereNull('space_server')->whereNull('space_node');
+    }
+
+    public function isFromSpace(): bool
+    {
+        return $this->space_server != null && $this->space_node != null;
+    }
+
+    public function spaceInfo()
+    {
+        return $this->hasOne(Info::class, ['server', 'node'], ['space_server', 'space_node']);
+    }
+
     public function mujiCalls()
     {
         return $this->hasMany(MujiCall::class, ['jidfrom', 'session_id'], ['conference', 'session_id'])
@@ -51,10 +70,10 @@ class Conference extends Model
     public function otherPresences()
     {
         return $this->presences()->where('mucjid', '!=', function ($query) {
-                $query->select('user_id')
-                    ->from('sessions')
-                    ->whereColumn('sessions.id', 'presences.session_id');
-            });
+            $query->select('user_id')
+                ->from('sessions')
+                ->whereColumn('sessions.id', 'presences.session_id');
+        });
     }
 
     public function quoted()
@@ -163,7 +182,7 @@ class Conference extends Model
         if ($item->conference->extensions) {
             if (
                 $item->conference->extensions->notify
-                && $item->conference->extensions->notify->attributes()->xmlns == self::$xmlnsNotifications
+                && $item->conference->extensions->notify->attributes()->xmlns == self::XMLNS_NOTIFICATIONS
             ) {
                 if ($item->conference->extensions->notify->never) {
                     $this->notify = 0;
@@ -199,7 +218,7 @@ class Conference extends Model
 
             if (
                 $item->conference->extensions->pinned
-                && in_array($item->conference->extensions->pinned->attributes()->xmlns, [self::$xmlnsPinned, 'xmpp:movim.eu/pinned:0'])
+                && in_array($item->conference->extensions->pinned->attributes()->xmlns, [self::XMLNS_PINNED, 'xmpp:movim.eu/pinned:0'])
             ) {
                 $this->pinned = true;
                 unset($item->conference->extensions->pinned);
@@ -207,6 +226,20 @@ class Conference extends Model
 
             $this->extensions = $item->conference->extensions->asXML();
         }
+    }
+
+    public function getNotifKeyAttribute(): string
+    {
+        return $this->isFromSpace()
+            ? 'space' . $this->space_server . $this->space_node . '|' . $this->conference
+            : 'chat|' . $this->conference;
+    }
+
+    public function getRouteAttribute(): string
+    {
+        return $this->isFromSpace()
+            ? Route::urlize('space', [$this->space_server, $this->space_node, $this->conference])
+            : Route::urlize('chat', [$this->conference, 'room']);
     }
 
     public function getServerAttribute()
@@ -221,7 +254,7 @@ class Conference extends Model
 
     public function getNotificationKeyAttribute(): string
     {
-        return self::$notifications[$this->notify];
+        return self::NOTIFICATIONS[$this->notify];
     }
 
     public function getTitleAttribute()
@@ -299,6 +332,8 @@ class Conference extends Model
             'user_id' => $this->attributes['user_id'] ?? null,
             'session_id' => $this->attributes['session_id'] ?? null,
             'conference' => $this->attributes['conference']  ?? null,
+            'space_server' => $this->attributes['space_server'] ?? null,
+            'space_node' => $this->attributes['space_node'] ?? null,
             'name' => $this->attributes['name'] ?? null,
             'nick' => $this->attributes['nick'] ?? null,
             'autojoin' => $this->attributes['autojoin'] ?? null,

@@ -1,12 +1,20 @@
 {if="$muc"}
     <ul class="list middle">
         <li>
-            <span class="primary icon active on_mobile_after" id="chatheadercounter" onclick="Chat.get()"
+            <span class="primary icon active on_mobile_after
+                {if="$conference && $conference->isFromSpace()"}
+                    on_mobile
+                {/if}
+            "
+            id="chatheadercounter" onclick="Chat.get()"
                 {if="$counter > 0"}data-counter="{$counter}"{/if}>
                 <i class="material-symbols">arrow_back</i>
             </span>
 
-            {if="$conference"}
+            {if="$conference && $conference->isFromSpace()"}
+                <span class="primary icon gray">
+                    <i class="material-symbols">tag</i>
+            {elseif="$conference"}
                 <span class="primary icon bubble active
                     {if="!$conference->connected"}disabled{/if}"
                     onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">
@@ -16,7 +24,7 @@
                     onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">
                     <img src="{$jid|avatarPlaceholder}">
             {/if}
-            {if="$conference"}
+            {if="$conference && !$conference->isFromSpace()"}
                 {if="$conference->isGroupChat()"}
                     {$count = $conference->activeMembers()->count()}
                     <span class="counter alt" data-mucreceipts="true">
@@ -47,7 +55,7 @@
                 </span>
             {/if}
 
-            {if="$conference && $conference->mujiCalls->isEmpty() && $conference->isGroupChat()"}
+            {if="$conference && !$conference->isFromSpace() && $conference->mujiCalls->isEmpty() && $conference->isGroupChat()"}
                 <span class="control icon active {if="$c->database('pgsql')"}divided{/if} {if="$incall"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, false);">
                     <i class="material-symbols">call</i>
                 </span>
@@ -56,11 +64,13 @@
                 </span>
             {/if}
 
-            <span
-                class="control icon show_context_menu active {if="$conference && !$conference->connected"}disabled{/if}"
-                onclick="MovimTpl.showContextMenu()">
-                <i class="material-symbols">more_vert</i>
-            </span>
+            {if="!$conference || !$conference->isFromSpace()"}
+                <span
+                    class="control icon show_context_menu active {if="$conference && !$conference->connected"}disabled{/if}"
+                    onclick="MovimTpl.showContextMenu()">
+                    <i class="material-symbols">more_vert</i>
+                </span>
+            {/if}
 
             <div>
                 {if="$conference && $conference->mujiCalls->isNotEmpty()"}

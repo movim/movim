@@ -122,6 +122,7 @@ ul.list li .primary {
     height: 5rem;
     line-height: 5rem;
     flex: 0 0 5rem;
+    justify-content: center;
 }
 
 ul.list li .primary:not(.bubble)[onclick] {
@@ -141,7 +142,11 @@ ul.list li>span.control {
     order: 3;
 }
 
-ul.list li>span.control:last-of-type:not(:has(>.checkbox)):not(.toggleable) {
+ul.list li.invite:not(.subheader)>span.primary+span.primary {
+    margin-left: -2rem;
+}
+
+ul.list:not(.navigation) li>span.control:last-of-type:not(:has(>.checkbox)):not(.toggleable) {
     margin-right: -1.5rem;
 }
 
@@ -160,33 +165,33 @@ ul.list li>span.thumb {
     flex: 0 0 7rem;
 }
 
-ul.list:not(.context_menu) li:not(.subheader) .control:not(.bubble):not(.thumb),
-ul.list:not(.context_menu) li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
+ul.list:not(.context_menu):not(.navigation) li:not(.subheader) .control:not(.bubble):not(.thumb),
+ul.list:not(.context_menu):not(.navigation) li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
     padding: 0.25rem 0.5rem;
 }
 
-ul.list li:not(.subheader) .control.bubble,
-ul.list li:not(.subheader) .primary.bubble:not(.small) {
+ul.list:not(.navigation) li:not(.subheader) .control.bubble,
+ul.list:not(.navigation) li:not(.subheader) .primary.bubble:not(.small) {
     margin: 0 0.5rem;
 }
 
-ul.list li:not(.subheader) .primary.stories.bubble {
+ul.list:not(.navigation) li:not(.subheader) .primary.stories.bubble {
     margin: 0;
     padding: 0.5rem;
 }
 
-ul.list.thin li:not(.subheader) .control:not(.bubble):not(.thumb),
-ul.list.thin li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
+ul.list.thin:not(.navigation) li:not(.subheader) .control:not(.bubble):not(.thumb),
+ul.list.thin:not(.navigation) li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
     padding: 0 0.5rem;
 }
 
-ul.list.middle li:not(.subheader) .control:not(.bubble):not(.thumb),
-ul.list.middle li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
+ul.list.middle:not(.navigation) li:not(.subheader) .control:not(.bubble):not(.thumb),
+ul.list.middle:not(.navigation) li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
     padding: 1rem 0.5rem;
 }
 
-ul.list.thick li:not(.subheader) .control:not(.bubble):not(.thumb),
-ul.list.thick li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
+ul.list.thick:not(.navigation) li:not(.subheader) .control:not(.bubble):not(.thumb),
+ul.list.thick:not(.navigation) li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
     padding: 1.75rem 0.5rem;
 }
 
@@ -668,12 +673,12 @@ ul li.oppose div.bubble:not(.file):before {
 
 /* Date separator */
 
-ul > li.date {
+ul>li.date {
     min-height: 0;
     text-align: center;
 }
 
-ul > li.date>div>p:only-child {
+ul>li.date>div>p:only-child {
     line-height: 2.5rem;
     font-size: 1.5rem;
     display: inline-block;
@@ -682,7 +687,7 @@ ul > li.date>div>p:only-child {
     padding: 0 2rem;
 }
 
-ul > li.date:first-of-type>div>p:only-child {
+ul>li.date:first-of-type>div>p:only-child {
     margin-top: 1rem;
 }
 

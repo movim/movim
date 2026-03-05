@@ -55,7 +55,7 @@
             <li title="{$contact->id}"
                 onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
                 <span class="primary icon bubble">
-                    <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
+                    <img src="{$contact->getPicture()}">
                 </span>
                 <div>
                     <p>{$contact->truename}</p>
@@ -78,7 +78,7 @@
         <li title="{$contact->id}"
             onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
             <span class="primary icon bubble">
-                <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
+                <img src="{$contact->getPicture()}">
             </span>
             <div>
                 <p>{$contact->truename}</p>

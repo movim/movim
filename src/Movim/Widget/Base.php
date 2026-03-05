@@ -36,7 +36,7 @@ class Base
     public $baseUri;
     public array $events = [];
     public array $tasks = [];
-    public $filters;
+    public array $filters = [];
 
     // Meta tags
     public $title;
@@ -418,7 +418,7 @@ class Base
      * @param $method The function to call
      * @param $filter Only call this function if the session notif_key is good
      */
-    protected function registerEvent(string $key, string $method, ?string $filter = null)
+    protected function registerEvent(string $key, string $method, string|array|null $filter = null)
     {
         if (!array_key_exists($key, $this->events)) {
             $this->events[$key] = [$method];
@@ -427,11 +427,7 @@ class Base
         }
 
         if ($filter != null) {
-            if (!is_array($this->filters)) {
-                $this->filters = [];
-            }
-
-            $this->filters[$key . '_' . $method] = $filter;
+            $this->filters[$key . '_' . $method] = is_string($filter) ? [$filter] : $filter;
         }
     }
 }

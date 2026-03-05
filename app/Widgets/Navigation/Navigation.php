@@ -23,6 +23,11 @@ class Navigation extends Base
         $this->onCounter((new Packet)->pack($this->me->unreads()));
     }
 
+    public function ajaxHttpPublish()
+    {
+        $this->dialog($this->view('_navigation_publish'));
+    }
+
     public function display()
     {
         $this->view->assign('page', $this->_view);
