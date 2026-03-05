@@ -8,8 +8,9 @@
     }
 }
 
-#shortcuts_widget+hr {
+#shortcuts_widget hr {
     transition: opacity .2s;
+    margin-top: 0;
 }
 
 #shortcuts_widget:empty+hr {
