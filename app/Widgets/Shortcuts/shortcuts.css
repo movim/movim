@@ -18,13 +18,20 @@
 }
 
 #shortcuts_widget li {
-    transition: transform .2s, opacity .2s, height .2s;
+    transition: transform .2s, opacity .2s, height .2s, margin-bottom .2s;
     opacity: 1;
     height: 7rem;
+}
+
+#shortcuts_widget li:last-child {
+    border-radius: 0;
+    border-bottom: 1px solid rgba(var(--movim-font), 0.12);
+    margin-bottom: 0.5rem;
 }
 
 #shortcuts_widget li.disappear {
     transform: scale(0.5);
     opacity: 0;
     height: 0;
+    margin-bottom: 0;
 }
