@@ -282,7 +282,7 @@ class Post extends Base
             $view->assign('nsfw', $this->me ? $this->me->nsfw : false);
             $view->assign('post', $post);
 
-            if (!$card) {
+            if (!$card && $this->me) {
                 $view->assign('counter', $this->me->unreads(null, false, true));
             }
 
