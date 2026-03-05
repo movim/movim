@@ -1,5 +1,5 @@
 var SpacesMenu = {
-    get: function(server, node, route) {
+    get: function (server, node, route) {
         if (MovimUtils.urlParts().page == 'space') {
             SpacesMenu_ajaxHttpGet(server, node, MovimUtils.isMobile());
         } else {
@@ -9,5 +9,7 @@ var SpacesMenu = {
 }
 
 MovimWebsocket.attach(() => {
-    SpacesMenu_ajaxHttpGet(MovimUtils.urlParts().params[0], MovimUtils.urlParts().params[1]);
+    if (MovimUtils.urlParts().page == 'space') {
+        SpacesMenu_ajaxHttpGet(MovimUtils.urlParts().params[0], MovimUtils.urlParts().params[1]);
+    });
 });
