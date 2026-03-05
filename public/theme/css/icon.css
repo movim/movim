@@ -246,7 +246,6 @@ span.icon[data-counter].symbol:after {
 span.icon.composing:after {
     content: '…';
     line-height: 1rem;
-    z-index: 1;
     font-size: 2rem;
     font-weight: bold;
     border-radius: 0.5rem;

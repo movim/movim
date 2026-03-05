@@ -94,10 +94,10 @@ ul#bottomnavigation li:not(.active) div p {
         width: 1.5rem;
         height: 1.5rem;
         right: calc(50% - 2.5rem);
-        top: calc(50% + 0.35rem);
+        top: calc(50% + 0.50rem);
         position: absolute;
         border-radius: 1rem;
         background-color: var(--movim-accent);
-        box-shadow: var(--elevation-5);
+        box-shadow: var(--elevation-2);
     }
 }
