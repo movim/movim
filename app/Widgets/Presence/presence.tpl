@@ -2,7 +2,7 @@
     <li>
         <span class="primary icon bubble color status">
             {if="$c->me->contact"}
-                <img src="{$c->me->contact->getPicture()}">
+                <img src="{$c->me->contact->getPicture(\Movim\ImageSize::M)}">
             {/if}
         </span>
         <div>

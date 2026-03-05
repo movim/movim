@@ -1,5 +1,5 @@
 var Presence = {
-    clearQuick : function() {
+    clearQuick: function () {
         localStorage.removeItem('quickDeviceId');
         localStorage.removeItem('quickLogin');
         localStorage.removeItem('quickHost');
@@ -7,4 +7,8 @@ var Presence = {
     }
 }
 
-MovimWebsocket.initiate(() => Presence_ajaxHttpGetPresence());
+MovimWebsocket.initiate(() => {
+    if (!MovimUtils.isMobile()) {
+        Presence_ajaxHttpGetPresence();
+    }
+});
