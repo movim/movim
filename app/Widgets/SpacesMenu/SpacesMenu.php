@@ -282,7 +282,7 @@ class SpacesMenu extends Base
             ->request();
     }
 
-    public function ajaxHttpGet(?string $server = null, ?string $node = null, ?bool $isMobile = false)
+    public function ajaxHttpGet(?string $server = null, ?string $node = null, ?string $conference = null, ?bool $isMobile = false)
     {
         $this->rpc('MovimTpl.fill', '#spacesmenu_widget', $this->prepareMenu($server, $node));
         $this->rpc('Notif_ajaxGet', false);
@@ -293,7 +293,7 @@ class SpacesMenu extends Base
             $this->rpc('SpaceInfo_ajaxHttpGet', $server, $node);
 
             if (!$isMobile) {
-                $this->rpc('SpaceRooms_ajaxHttpGetChat', $server, $node);
+                $this->rpc('SpaceRooms_ajaxHttpGetChat', $server, $node, $conference);
             }
         }
 

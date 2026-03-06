@@ -29,7 +29,6 @@ class SpaceRooms extends Base
         $this->registerEvent('space_deletedroom', 'onEditedRooms');
         $this->registerEvent('presence_muc_errorregistrationrequired', 'onRoomRegistrationRequired');
 
-        $this->addjs('spacerooms.js');
         $this->addcss('spacerooms.css');
     }
 
