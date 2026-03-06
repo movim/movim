@@ -8,7 +8,7 @@
 <?php $this->widget('Upload');?>
 <?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
 
-<nav>
+<nav class="on_desktop">
     <?php $this->widget('Presence');?>
     <?php $this->widget('Shortcuts');?>
     <?php $this->widget('SpacesMenu');?>

@@ -22,11 +22,11 @@
         </ul>
     </header>
 
-    <ul class="list active middle">
+    <ul class="list active">
         <li title="{$c->__('status.visit_blog')}"
             onclick="MovimUtils.reload('{$c->route('contact', $c->me->id)}')"
         >
-            <span class="primary icon">
+            <span class="primary icon gray">
                 <i class="material-symbols">news</i>
             </span>
             <span class="control icon gray">
@@ -40,7 +40,7 @@
             <li onclick="MovimUtils.reload('{$c->route('subscriptions')}')"
                 title="{$c->__('communityaffiliation.subscriptions')}"
             >
-                <span class="primary icon">
+                <span class="primary icon gray">
                     <i class="material-symbols">bookmarks</i>
                 </span>
                 <span class="control icon gray">
@@ -51,14 +51,12 @@
                 </div>
             </li>
         {/if}
-    </ul>
 
-    <hr />
+        <hr />
 
-    <ul class="list active">
         <li onclick="MovimUtils.reload('{$c->route('configuration')}')"
             title="{$c->__('page.configuration')}">
-            <span class="primary icon">
+            <span class="primary icon gray">
                 <i class="material-symbols">tune</i>
             </span>
             <span class="control icon gray">
@@ -71,7 +69,7 @@
         {if="$c->me->admin"}
             <li onclick="MovimUtils.reload('{$c->route('admin')}')"
                 title="{$c->__('page.administration')}">
-                <span class="primary icon">
+                <span class="primary icon gray">
                     <i class="material-symbols">manage_accounts</i>
                 </span>
                 <span class="control icon gray">
@@ -86,7 +84,7 @@
         <li onclick="MovimUtils.reload('{$c->route('help')}')"
             title="{$c->__('page.help')}"
         >
-            <span class="primary icon">
+            <span class="primary icon gray">
                 <i class="material-symbols">help</i>
             </span>
             <span class="control icon gray">
@@ -98,4 +96,14 @@
         </li>
     </ul>
 
+    <ul class="list thick">
+        <li>
+            <div>
+                <p class="center">
+                    <i class="material-symbols" style="margin-right: 1rem;">cloud_queue</i>
+                    Powered by <a target="_blank" href="https://movim.eu">Movim</a></a>
+                </p>
+            </div>
+        </li>
+    </ul>
 </section>
