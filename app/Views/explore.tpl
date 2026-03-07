@@ -15,7 +15,7 @@
 
 <?php $this->widget('BottomNavigation');?>
 
-<main style="background-color: rgb(var(--movim-background-main))">
+<main>
     <a class="button action color" onclick="Search_ajaxRequest(false, true)" title="{$c->__('button.search')}">
         <i class="material-symbols">search</i>
     </a>

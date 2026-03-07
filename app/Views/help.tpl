@@ -12,7 +12,7 @@
 
 <?php $this->widget('BottomNavigation');?>
 
-<main style="background-color: rgb(var(--movim-background-main))">
+<main>
     <div>
         <header>
             <ul class="list middle">
