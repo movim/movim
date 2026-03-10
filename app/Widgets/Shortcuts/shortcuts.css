@@ -2,6 +2,20 @@
     transition: height .1s;
 }
 
+#shortcuts_widget + ul li:not(.active):first-child:before {
+    display: block;
+    content: '';
+    width: 5.5rem;
+    height: 5.5rem;
+    background-color: rgba(var(--movim-font), 0.04);
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    border-radius: 2rem;
+    z-index: -1;
+    transition: background-color 0.15s ease;
+}
+
 @media screen and (max-width: 1024px) {
     #shortcuts_widget {
         margin-top: 1rem;

@@ -12,12 +12,12 @@
                 <img src="{$subscription->info->getPicture(placeholder: $subscription->info->name)}">
             </span>
         {/if}
-        {if="$subscription->info"}
-            <span class="control icon gray active" onclick="SpaceInfo_ajaxInvite('{$subscription->server}', '{$subscription->node}')">
-                <i class="material-symbols">person_add</i>
-            </span>
-        {/if}
         <div>
+            {if="$subscription->info"}
+                <button class="button oppose color transparent" onclick="SpaceInfo_ajaxInvite('{$subscription->server}', '{$subscription->node}')">
+                    <i class="material-symbols">person_add</i>
+                </button>
+            {/if}
             <p class="line">
                 {autoescape="off"}{$subscription->info->name|addEmojis}{/autoescape}
             </p>

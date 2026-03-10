@@ -7,11 +7,12 @@ ul#spacesmenu_widget {
 ul#spacesmenu_widget li span.primary.space_add:before {
     content: '';
     display: block;
-    width: 5rem;
-    height: 5rem;
+    width: 5.5rem;
+    height: 5.5rem;
     background-color: rgba(var(--movim-font), 0.04);
     position: absolute;
-    top: 0;
+    top: -0.25rem;
+    left: -0.25rem;
     border-radius: 2rem;
 }
 

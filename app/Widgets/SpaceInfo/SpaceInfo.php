@@ -134,20 +134,18 @@ class SpaceInfo extends Base
 
     public function onConfig(Packet $packet)
     {
-        list($server, $node, $config) = array_values($packet->content);
-
         $view = $this->tpl();
 
         $xml = new XMPPtoForm($this->me);
-        $view->assign('server', $server);
-        $view->assign('node', $node);
-        $view->assign('config', $xml->getArray($config->x));
-        $view->assign('attributes', $config->attributes());
+        $view->assign('server', $packet->content['server']);
+        $view->assign('node', $packet->content['node']);
+        $view->assign('config', $xml->getArray($packet->content['config']->x));
+        $view->assign('attributes', $packet->content['config']->attributes());
 
         $this->drawer('spaceinfo_config', $view->draw('_spaceinfo_config'), tiny: true);
         $this->rpc('MovimUtils.applyAutoheight');
 
-        $this->ajaxGetAffiliations($server, $node);
+        $this->ajaxGetAffiliations($packet->content['server'], $packet->content['node']);
     }
 
     public function ajaxEditMember(string $server, string $node)

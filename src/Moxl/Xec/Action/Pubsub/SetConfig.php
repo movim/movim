@@ -25,6 +25,7 @@ class SetConfig extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
+        $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }
 }
