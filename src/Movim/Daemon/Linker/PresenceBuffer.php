@@ -162,10 +162,12 @@ class PresenceBuffer
                     $avatarHashes->each(function ($jid, $avatarhash) {
                         if ($jid != $this->user->id) {
                             Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
-                                $r = new Get($this->user, sessionId: $this->user->session->id);
-                                $r->setAvatarhash($avatarhash)
-                                    ->setTo($jid)
-                                    ->request();
+                                if ($this->user?->session) {
+                                    $r = new Get($this->user, sessionId: $this->user->session->id);
+                                    $r->setAvatarhash($avatarhash)
+                                        ->setTo($jid)
+                                        ->request();
+                                }
                             });
                         }
                     });
