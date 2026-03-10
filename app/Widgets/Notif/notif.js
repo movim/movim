@@ -65,7 +65,7 @@ var Notif = {
 
         Notif.displayTab();
 
-        BottomNavigation?.setChatNotification(keys)
+        if (typeof BottomNavigation == 'object') BottomNavigation.setChatNotification(keys)
     },
     counter: function (key, counter) {
         var counters = document.querySelectorAll('.counter');
@@ -83,7 +83,7 @@ var Notif = {
         Notif.setTab(key, counter);
         Notif.displayTab();
 
-        BottomNavigation?.setChatNotification({[key]: counter});
+        if (typeof BottomNavigation == 'object') BottomNavigation?.setChatNotification({[key]: counter});
     },
     setTab: function (key, counter) {
         if (Notif.tab_counter1_key == key) {
