@@ -205,9 +205,12 @@ class Message extends Model
             $stanza->attributes()->xmlns
             && $stanza->attributes()->xmlns == 'urn:xmpp:mam:2'
         ) {
+            // Workaround for https://github.com/processone/ejabberd/issues/4544
+            $stanzaId = $stanza->forwarded->message->{'stanza-id'}[count($stanza->forwarded->message->{'stanza-id'}) - 1];
+
             return self::firstOrNew([
                 'user_id' => $user->id,
-                'stanzaid' => (string)$stanza->attributes()->id,
+                'stanzaid' => (string)$stanzaId->attributes()->id,
                 'jidfrom' => bareJid((string)$stanza->forwarded->message->attributes()->from)
             ]);
         } elseif (
