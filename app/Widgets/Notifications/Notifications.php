@@ -98,8 +98,8 @@ class Notifications extends Base
             ->where('aid', '!=', $this->me->id)->count();
 
         $count += $this->me->session ? $this->me->session->presences()
-                        ->whereIn('type', ['subscribe', 'subscribed'])
-                        ->count() : 0;
+            ->whereIn('type', ['subscribe', 'subscribed'])
+            ->count() : 0;
 
         $this->rpc('Notifications.setCounters', ($count > 0) ? $count : '');
     }
@@ -109,10 +109,10 @@ class Notifications extends Base
         $view = $this->tpl();
         $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('groups', $this->me->session->contacts()
-                                                    ->select('group')
-                                                    ->whereNotNull('group')
-                                                    ->distinct()
-                                                    ->pluck('group'));
+            ->select('group')
+            ->whereNotNull('group')
+            ->distinct()
+            ->pluck('group'));
 
         $this->dialog($view->draw('_notifications_add'));
     }
@@ -121,13 +121,13 @@ class Notifications extends Base
     {
         $r = $this->xmpp(new AddItem);
         $r->setTo((string)$form->searchjid->value)
-          ->setName((string)$form->alias->value)
-          ->setGroup((string)$form->group->value)
-          ->request();
+            ->setName((string)$form->alias->value)
+            ->setGroup((string)$form->group->value)
+            ->request();
 
         $p = $this->xmpp(new Subscribe);
         $p->setTo((string)$form->searchjid->value)
-          ->request();
+            ->request();
 
         (new Dialog($this->me, sessionId: $this->sessionId))->ajaxClear();
     }
@@ -148,11 +148,11 @@ class Notifications extends Base
     {
         $r = $this->xmpp(new RemoveItem);
         $r->setTo($jid)
-          ->request();
+            ->request();
 
         $p = $this->xmpp(new Unsubscribe);
         $p->setTo($jid)
-          ->request();
+            ->request();
     }
 
     public function ajaxAccept(string $jid)
@@ -160,25 +160,25 @@ class Notifications extends Base
         $roster = $this->me->session->contacts()->where('jid', $jid)->first();
 
         $this->me->session->presences()
-             ->whereIn('type', ['subscribe', 'subscribed'])
-             ->where('jid', $jid)
-             ->delete();
+            ->whereIn('type', ['subscribe', 'subscribed'])
+            ->where('jid', $jid)
+            ->delete();
 
         if (!$roster) {
             $r = $this->xmpp(new AddItem);
             $r->setTo($jid)
-              ->request();
+                ->request();
         }
 
         if (!$roster || $roster->subscription == 'none' || $roster->subscription == 'from') {
             $p = $this->xmpp(new Subscribe);
             $p->setTo($jid)
-              ->request();
+                ->request();
         }
 
         $p = $this->xmpp(new Subscribed);
         $p->setTo($jid)
-          ->request();
+            ->request();
 
         $this->removeInvitation($jid);
     }
@@ -229,19 +229,18 @@ class Notifications extends Base
 
         $since = $this->me->notifications_since ?? date(MOVIM_SQL_DATE, 0);
 
-        $view = $this->tpl();
-        $view->assign('hearth', addEmojis('♥'));
-        $view->assign('notifs', $notifs);
-        $view->assign('subscriptionRoster', $this->me->session->contacts()
-                                     ->where('subscription' , 'none')
-                                     ->orderBy('ask', 'desc')
-                                     ->get());
-        $view->assign('subscribePresences', $this->me->session->presences()
-                                                 ->with('contact')
-                                                 ->whereIn('type', ['subscribe', 'subscribed'])
-                                                 ->get());
-        $view->assign('since', $since);
-
-        return $view->draw('_notifications');
+        return $this->view('_notifications', [
+            'notifs' => $notifs,
+            'subscriptionRoster' => $this->me->session->contacts()
+                ->where('subscription', 'none')
+                ->orderBy('ask', 'desc')
+                ->get(),
+            'subscribePresences' => $this->me->session->presences()
+                ->with('contact')
+                ->whereIn('type', ['subscribe', 'subscribed'])
+                ->get(),
+            'spacePendings' => $this->me->messages()->where('type', 'space_pending'),
+            'since' => $since
+        ]);
     }
 }

@@ -11,11 +11,17 @@
                 <i class="material-symbols">arrow_back</i>
             </span>
 
-            {if="$conference && !$conference->isFromSpace()"}
-                <span class="primary icon bubble active
-                    {if="!$conference->connected"}disabled{/if}"
-                    onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">
-                    <img src="{$conference->getPicture()}">
+            {if="$conference"}
+                {if="!$conference->isFromSpace()"}
+                    <span class="primary icon bubble active
+                        {if="!$conference->connected"}disabled{/if}"
+                        onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">
+                        <img src="{$conference->getPicture()}">
+                {else}
+                    <span class="primary icon gray">
+                        <i class="material-symbols">tag</i>
+                    </span>
+                {/if}
             {elseif="!$conference"}
                 <span class="primary icon bubble active"
                     onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">

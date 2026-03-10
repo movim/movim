@@ -14,6 +14,7 @@ use Moxl\Xec\Action\Muc\SetConfig;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Space\AddRoom;
 use Moxl\Xec\Action\Space\DeleteRoom;
+use Moxl\Xec\Action\Space\GetRooms;
 use Moxl\Xec\Payload\Packet;
 
 class SpaceRooms extends Base
