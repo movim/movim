@@ -71,6 +71,31 @@ main:not(.enabled) #chat_widget {
     display: none;
 }
 
+#chat_widget nav ul#room_nav_members:has(li.found) li:not(.found) {
+    display: none;
+}
+
+#chat_widget nav li.search form div:after {
+    background-color: rgb(var(--movim-background));
+}
+
+#chat_widget nav {
+    display: flex;
+    flex-direction: column;
+}
+
+#chat_widget nav ul#room_nav_members_search {
+    order: 0;
+}
+
+#chat_widget nav ul#room_nav_members {
+    order: 1;
+}
+
+#chat_widget nav ul#room_nav_members:not(:has(> li:nth-child(10))) + ul#room_nav_members_search {
+    display: none;
+}
+
 /** contained **/
 
 #chat_widget .contained {
@@ -281,7 +306,7 @@ main:not(.enabled) #chat_widget {
     display: none;
 }
 
-#chat_widget #dictaphone:has(#dictaphone_widget.show) ~ .main #dictaphone_toggle{
+#chat_widget #dictaphone:has(#dictaphone_widget.show)~.main #dictaphone_toggle {
     font-variation-settings: 'FILL' 1;
 }
 

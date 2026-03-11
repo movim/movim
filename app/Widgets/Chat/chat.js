@@ -1714,6 +1714,19 @@ var Chat = {
             );
         }
     },
+    searchMembers : function(key) {
+        var selector = '#room_nav_members > li';
+
+        document.querySelectorAll(selector)
+            .forEach(item => item.classList.remove('found'));
+
+        var founds = document.querySelectorAll(
+            selector + '[name*="' + MovimUtils.cleanupId(key).slice(3) + '"]'
+        );
+
+        console.log(founds)
+        founds.forEach(item => item.classList.add('found'));
+    }
 };
 
 MovimWebsocket.attach(function () {

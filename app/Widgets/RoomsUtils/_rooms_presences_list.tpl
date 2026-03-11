@@ -22,6 +22,7 @@
         {if="$value->mucjid && $compact"}
             onclick="RoomsUtils_ajaxGetParticipant('{$conference->conference|echapJS}', '{$value->mucjid}')"
         {/if}
+        name="{$value->mucjid|cleanupId}-{$value->mucrole|cleanupId}-{$value->resource|cleanupId}"
         >
         <span class="primary icon bubble small status {if="$value->mucjid"}active{/if} {$value->presencekey}"
             {if="$value->mucjid"}
