@@ -13,7 +13,7 @@ class BOB
         return $data;
     }
 
-    public static function answer($id, $cid, $type, $base64)
+    public static function answer($cid, $type, $base64)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $data = $dom->createElementNS('urn:xmpp:bob', 'data', $base64);

@@ -16,6 +16,6 @@ class Answer extends Action
     public function request()
     {
         $this->store();
-        $this->iq(BOB::answer($this->_id, $this->_cid, $this->_type, $this->_base64), to: $this->_to, type: 'result');
+        $this->iq(BOB::answer($this->_cid, $this->_type, $this->_base64), to: $this->_to, type: 'result', id: $this->_id);
     }
 }

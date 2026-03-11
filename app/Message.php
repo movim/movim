@@ -11,7 +11,6 @@ use Illuminate\Database\QueryException;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Movim\XMPPUri;
-use Moxl\Xec\Action\BOB\Request;
 use Moxl\Xec\Action\Pubsub\GetItem;
 
 class Message extends Model

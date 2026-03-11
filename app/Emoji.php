@@ -11,7 +11,7 @@ class Emoji extends Model
 
     public function users()
     {
-        return $this->belongsToMany(Users::class)->withTimestamps();
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
 
     public function pack()
@@ -26,7 +26,19 @@ class Emoji extends Model
 
     public function getUrlAttribute(): string
     {
-        return Image::getOrCreate($this->attributes['cache_hash']);
+        $url = Image::getOrCreate($this->attributes['cache_hash']);
+
+        // If the cache picture is not available, we recreate it
+        if ($url == null) {
+            $image = new Image;
+            $image->fromPath($this->getImagePathAttribute());
+            $image->setKey(hash(Image::$hash, file_get_contents($this->getImagePathAttribute())));
+            $image->save();
+
+            return Image::getOrCreate($this->attributes['cache_hash']);
+        }
+
+        return $url;
     }
 
     public function getAliasPlaceholderAttribute(): string
