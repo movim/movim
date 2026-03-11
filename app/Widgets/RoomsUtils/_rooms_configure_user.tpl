@@ -14,7 +14,7 @@
     <form name="changeaffiliation">
         <input type="hidden" name="jid" value="{$contact->id}"/>
         <div>
-            <ul class="list thin">
+            <ul class="list">
                 <li>
                     <span class="primary icon gray">
                         <i class="material-symbols">assignment_ind</i>
@@ -26,7 +26,7 @@
                                 <option value="owner" {if="$member && $member->affiliation == 'owner'"}selected{/if}>{$c->__('affiliation.owner')}</option>
                                 <option value="admin" {if="$member && $member->affiliation == 'admin'"}selected{/if}>{$c->__('affiliation.admin')}</option>
                                 <option value="member" {if="$member && $member->affiliation == 'member'"}selected{/if}>{$c->__('affiliation.member')}</option>
-                                <option value="none" {if="$member && $member->affiliation == 'none'"}selected{/if}>{$c->__('affiliation.no-aff')}</option>
+                                <option value="none" {if="$member && $member->affiliation == 'none'"}selected{/if}>{$c->__('affiliation.no_aff')}</option>
                             </select>
                         </div>
                         <label for="affiliation">{$c->__('room.role')}</label>
@@ -38,7 +38,7 @@
     {if="$presence"}
     <form name="changevoice">
         <div class="control">
-            <ul class="list thin">
+            <ul class="list middle">
                 <div class="control">
                     <ul class="list fill">
                         <li>

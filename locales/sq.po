@@ -4042,7 +4042,7 @@ msgstr "Anëtar"
 msgid "Outcast"
 msgstr "përshoqëro &lt;zotëru"
 
-#: [affiliation]no-aff
+#: [affiliation]no_aff
 msgid "No affiliation"
 msgstr "Pa përshoqërim"
 

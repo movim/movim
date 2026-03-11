@@ -532,7 +532,7 @@ class Info extends Model
 
     public function getPubsubRoles()
     {
-        $roles = ['owner' => __('affiliation.owner'), 'none' =>  __('affiliation.no-aff')];
+        $roles = ['owner' => __('affiliation.owner'), 'none' =>  __('affiliation.no_aff')];
 
         $features = unserialize($this->attributes['features']);
 

@@ -4049,7 +4049,7 @@ msgstr "Membro"
 msgid "Outcast"
 msgstr "Exilado"
 
-#: [affiliation]no-aff
+#: [affiliation]no_aff
 msgid "No affiliation"
 msgstr "Sem afiliação"
 

@@ -4056,7 +4056,7 @@ msgstr "成员"
 msgid "Outcast"
 msgstr "被驱逐者"
 
-#: [affiliation]no-aff
+#: [affiliation]no_aff
 msgid "No affiliation"
 msgstr "访客"
 

@@ -4039,7 +4039,7 @@ msgstr "Member"
 msgid "Outcast"
 msgstr "Outcast"
 
-#: [affiliation]no-aff
+#: [affiliation]no_aff
 msgid "No affiliation"
 msgstr "No affiliation"
 

@@ -4042,7 +4042,7 @@ msgstr "Członek"
 msgid "Outcast"
 msgstr "Wyrzutek"
 
-#: [affiliation]no-aff
+#: [affiliation]no_aff
 msgid "No affiliation"
 msgstr "Brak przynależności"
 

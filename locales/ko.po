@@ -4037,7 +4037,7 @@ msgstr "멤버"
 msgid "Outcast"
 msgstr "차단한 사람"
 
-#: [affiliation]no-aff
+#: [affiliation]no_aff
 msgid "No affiliation"
 msgstr "권한 없음"
 

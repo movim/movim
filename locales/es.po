@@ -4043,7 +4043,7 @@ msgstr "Miembro"
 msgid "Outcast"
 msgstr "Marginado"
 
-#: [affiliation]no-aff
+#: [affiliation]no_aff
 msgid "No affiliation"
 msgstr "Sin afiliación"
 
