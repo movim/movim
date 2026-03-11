@@ -204,6 +204,7 @@ class Message extends Model
         if (
             $stanza->attributes()->xmlns
             && $stanza->attributes()->xmlns == 'urn:xmpp:mam:2'
+            && $stanza->forwarded?->message?->{'stanza-id'}
         ) {
             // Workaround for https://github.com/processone/ejabberd/issues/4544
             $stanzaId = $stanza->forwarded->message->{'stanza-id'}[count($stanza->forwarded->message->{'stanza-id'}) - 1];

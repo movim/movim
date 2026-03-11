@@ -5,7 +5,6 @@ namespace App\Widgets\Rooms;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Presence\Unavailable;
-use Moxl\Xec\Action\Muc\GetMembers;
 
 use Movim\Widget\Base;
 
@@ -307,10 +306,6 @@ class Rooms extends Base
                 $p->enableMAM2();
             }
         }
-
-        $m = $this->xmpp(new GetMembers);
-        $m->setTo($room)
-            ->request();
 
         $p->setNickname($nickname);
         $p->request();
