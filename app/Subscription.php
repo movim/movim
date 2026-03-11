@@ -57,7 +57,7 @@ class Subscription extends Model
                     $this->notify = 2;
                 }
 
-                unset($item->conference->extensions->notify);
+                unset($extensions->notify);
             }
 
             if (
@@ -65,7 +65,7 @@ class Subscription extends Model
                 && $extensions->pinned->attributes()->xmlns == Conference::XMLNS_PINNED
             ) {
                 $this->pinned = true;
-                unset($item->conference->extensions->pinned);
+                unset($extensions->pinned);
             }
 
             $this->extensions = $extensions->asXML();
