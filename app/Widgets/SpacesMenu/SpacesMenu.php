@@ -80,11 +80,7 @@ class SpacesMenu extends Base
     public function onMessageSubscribed(Packet $packet)
     {
         $this->onRooms($packet);
-
-        $roomsGet = $this->xmpp(new GetRooms);
-        $roomsGet->setTo($packet->content['server'])
-            ->setNode($packet->content['node'])
-            ->request();
+        $this->ajaxGetRooms($packet->content['server'], $packet->content['node']);
     }
 
     public function onRooms(Packet $packet)
@@ -116,17 +112,14 @@ class SpacesMenu extends Base
                     $this->ajaxGetSpaceInfo($space->server, $space->node);
                 }
 
-                $roomsGet = $this->xmpp(new GetRooms);
-                $roomsGet->setTo($space->server)
-                    ->setNode($space->node)
-                    ->request();
+                $this->ajaxGetRooms($space->server, $space->node);
             }
 
             $this->ajaxHttpGet();
         }
     }
 
-    public function ajaxGetRoom(string $server, string $node)
+    public function ajaxGetRooms(string $server, string $node)
     {
         $roomsGet = $this->xmpp(new GetRooms);
         $roomsGet->setTo($server)
@@ -168,11 +161,7 @@ class SpacesMenu extends Base
             ->setSubscription('subscribed')
             ->request();
 
-        $subscription = $this->me->subscriptions()
-            ->spaces()
-            ->where('server', $server)
-            ->where('node', $node)
-            ->first();
+        $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
         if ($subscription) {
             $setNodeAffiliation = $this->xmpp(new SetAffiliations);
@@ -226,11 +215,7 @@ class SpacesMenu extends Base
 
     public function ajaxLeave(string $server, string $node)
     {
-        $subscription = $this->me->subscriptions()
-            ->spaces()
-            ->where('server', $server)
-            ->where('node', $node)
-            ->first();
+        $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
         if ($subscription) {
             $subscribe = $this->xmpp(new Unsubscribe);
@@ -264,15 +249,6 @@ class SpacesMenu extends Base
             ->setPEPNode(Subscription::SPACE_NODE)
             ->request();
     }
-
-    /*
-    public function ajaxGetSpacesSubscription()
-    {
-        $ps = $this->xmpp(new GetPubsubSubscriptions);
-        $ps->setTo($this->me->id)
-            ->setPEPNode(Subscription::SPACE_NODE)
-            ->request();
-    }*/
 
     public function ajaxGetSpaceInfo(string $server, string $node)
     {

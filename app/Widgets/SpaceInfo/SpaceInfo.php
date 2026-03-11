@@ -150,11 +150,7 @@ class SpaceInfo extends Base
 
     public function ajaxEditMember(string $server, string $node)
     {
-        $subscription = $this->me->subscriptions()
-            ->spaces()
-            ->where('server', $server)
-            ->where('node', $node)
-            ->first();
+        $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
         if ($subscription) {
             $this->dialog($this->view('_spaceinfo_member', [
@@ -169,27 +165,24 @@ class SpaceInfo extends Base
 
     public function ajaxHttpGet(string $server, string $node, ?bool $edit = false)
     {
-        $subscription = $this->me->subscriptions()
-            ->spaces()
-            ->where('server', $server)
-            ->where('node', $node)
-            ->first();
+        $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
-        if ($subscription && $subscription->info) {
-            $this->rpc('MovimTpl.fill', '#spaceinfo_widget', $this->view('_spaceinfo', [
-                'subscription' => $subscription,
-                'edit' => $edit
-            ]));
+        if ($subscription) {
+            if ($subscription->info) {
+                $this->rpc('MovimTpl.fill', '#spaceinfo_widget', $this->view('_spaceinfo', [
+                    'subscription' => $subscription,
+                    'edit' => $edit
+                ]));
+            } else {
+                $this->rpc('SpacesMenu_ajaxGetSpaceInfo', $server, $node);
+                $this->rpc('SpacesMenu_ajaxRooms', $server, $node);
+            }
         }
     }
 
     public function ajaxChangeConfiguration(string $server, string $node, \stdClass $data)
     {
-        $subscription = $this->me->subscriptions()
-            ->spaces()
-            ->where('server', $server)
-            ->where('node', $node)
-            ->first();
+        $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
         if (
             $subscription
@@ -295,11 +288,7 @@ class SpaceInfo extends Base
 
     public function ajaxAskDestroy(string $server, string $node)
     {
-        $subscription = $this->me->subscriptions()
-            ->spaces()
-            ->where('server', $server)
-            ->where('node', $node)
-            ->first();
+        $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
         if ($subscription) {
             $this->dialog($this->view('_spaceinfo_destroy', [
@@ -312,11 +301,7 @@ class SpaceInfo extends Base
 
     public function ajaxDestroy(string $server, string $node)
     {
-        $subscription = $this->me->subscriptions()
-            ->spaces()
-            ->where('server', $server)
-            ->where('node', $node)
-            ->first();
+        $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
         if ($subscription) {
             foreach ($subscription->spaceRooms as $conference) {

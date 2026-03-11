@@ -93,22 +93,13 @@ class SpaceRooms extends Base
             return;
         }
 
-        $subscription = $this->me->subscriptions()
-            ->spaces()
-            ->where('server', $server)
-            ->where('node', $node)
-            ->first();
+        $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
         if ($subscription && $firstRoom = $subscription->spaceRooms()->first()) {
             $this->rpc('Chat.getRoom', $firstRoom->conference);
             return;
         }
 
-        $subscription = $this->me->subscriptions()
-            ->spaces()
-            ->where('server', $server)
-            ->where('node', $node)
-            ->first();
         $this->rpc('MovimTpl.fill', '#chat_widget', $this->view('_spacerooms_empty', [
             'subscription' => $subscription
         ]));
@@ -116,11 +107,7 @@ class SpaceRooms extends Base
 
     public function ajaxHttpGet(string $server, string $node, ?bool $edit = false)
     {
-        $subscription = $this->me->subscriptions()
-            ->spaces()
-            ->where('server', $server)
-            ->where('node', $node)
-            ->first();
+        $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
         if (!$subscription) return;
 
@@ -248,11 +235,7 @@ class SpaceRooms extends Base
 
     public function ajaxAskDestroy(string $server, string $node, string $id)
     {
-        $subscription = $this->me->subscriptions()
-            ->spaces()
-            ->where('server', $server)
-            ->where('node', $node)
-            ->first();
+        $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
         if ($subscription && $conference = $subscription->spaceRooms()->where('conference', $id)->first()) {
             $this->dialog($this->view('_spacerooms_destroy', [

@@ -16,7 +16,7 @@ class GetRooms extends Action
     public function request()
     {
         $this->store();
-        $this->iq(Pubsub::getItems($this->_node), to: $this->_to, type: 'get');
+        $this->iq(Pubsub::getItems($this->_node, 100), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

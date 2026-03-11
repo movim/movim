@@ -94,6 +94,13 @@ class Subscription extends Model
         return $query->where('space', $yes);
     }
 
+    public function scopeSpace($query, string $server, string $node)
+    {
+        return $query->where('space', true)
+            ->where('server', $server)
+            ->where('node', $node);
+    }
+
     public function scopeCommunities($query)
     {
         return $query->where('node', '!=', Post::MICROBLOG_NODE);
