@@ -93,16 +93,18 @@ class LinkersManager
                 break;
 
             case 'register':
-                // Set the host, useful for the CN certificate check
-                $session = linker($message->sid)->session;
+                if (validateDomain($message->host)) {
+                    // Set the host, useful for the CN certificate check
+                    $session = linker($message->sid)->session;
 
-                // If the host is already set, we already launched the registration process
-                if ($session->get('host')) {
-                    return;
+                    // If the host is already set, we already launched the registration process
+                    if ($session->get('host')) {
+                        return;
+                    }
+
+                    $session->set('host', $message->host);
+                    $linker->register($message->host);
                 }
-
-                $session->set('host', $message->host);
-                $linker->register($message->host);
                 break;
         }
     }

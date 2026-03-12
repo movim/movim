@@ -65,7 +65,7 @@ class RoomsUtils extends Base
 
     public function ajaxGetDrawer($room = false)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -244,7 +244,7 @@ class RoomsUtils extends Base
      */
     public function ajaxGetAvatar($room)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -260,7 +260,7 @@ class RoomsUtils extends Base
      */
     public function ajaxSetAvatar($room, $form)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -400,7 +400,7 @@ class RoomsUtils extends Base
      */
     public function ajaxGetSubject($room)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -418,7 +418,7 @@ class RoomsUtils extends Base
     public function ajaxSetSubject($room, $form)
     {
         if (
-            !validateRoom($room)
+            !validateJid($room)
             || !Validator::stringType()->length(0, 200)->isValid($form->subject->value)
         ) {
             return;
@@ -516,7 +516,7 @@ class RoomsUtils extends Base
      */
     public function ajaxAddCreate($form)
     {
-        if (!validateRoom($form->jid->value)) {
+        if (!validateJid($form->jid->value)) {
             $this->toast($this->__('chatrooms.bad_id'));
         } elseif (trim($form->name->value) == '') {
             $this->toast($this->__('chatrooms.empty_name'));
@@ -532,7 +532,7 @@ class RoomsUtils extends Base
 
     public function ajaxConfigureCreated($form)
     {
-        if (!validateRoom($form->jid->value)) {
+        if (!validateJid($form->jid->value)) {
             $this->toast($this->__('chatrooms.bad_id'));
         } else {
             if ($form->type->value == 'groupchat') {
@@ -562,7 +562,7 @@ class RoomsUtils extends Base
      */
     public function ajaxAddConfirm($form)
     {
-        if (!validateRoom($form->jid->value)) {
+        if (!validateJid($form->jid->value)) {
             $this->toast($this->__('chatrooms.bad_id'));
         } elseif (trim($form->name->value) == '') {
             $this->toast($this->__('chatrooms.empty_name'));
@@ -588,7 +588,7 @@ class RoomsUtils extends Base
      */
     public function ajaxRemove($room)
     {
-        if (!validateRoom($room)) return;
+        if (!validateJid($room)) return;
         $this->dialog($this->view('_rooms_remove', ['room' => $room]));
     }
 
@@ -597,7 +597,7 @@ class RoomsUtils extends Base
      */
     public function ajaxRemoveConfirm($room)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -620,7 +620,7 @@ class RoomsUtils extends Base
      */
     public function ajaxInvite($form)
     {
-        if (!validateRoom($form->to->value)) {
+        if (!validateJid($form->to->value)) {
             return;
         }
 
@@ -672,7 +672,7 @@ class RoomsUtils extends Base
      */
     public function ajaxAskDestroy($room)
     {
-        if (!validateRoom($room)) return;
+        if (!validateJid($room)) return;
         $this->dialog($this->view('_rooms_destroy', ['room' => $room]));
     }
 
@@ -681,7 +681,7 @@ class RoomsUtils extends Base
      */
     public function ajaxDestroy($room)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -695,7 +695,7 @@ class RoomsUtils extends Base
      */
     public function ajaxHttpGetPictures($room, $page = 0)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -730,7 +730,7 @@ class RoomsUtils extends Base
      */
     public function ajaxHttpGetLinks($room, $page = 0)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -792,7 +792,7 @@ class RoomsUtils extends Base
      */
     public function ajaxAddBanned(string $room)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -806,7 +806,7 @@ class RoomsUtils extends Base
      */
     public function ajaxAddBannedConfirm(string $room, $form)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -827,7 +827,7 @@ class RoomsUtils extends Base
      */
     public function ajaxRemoveBanned(string $room, string $jid)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -844,7 +844,7 @@ class RoomsUtils extends Base
      */
     public function ajaxRemoveBannedConfirm(string $room, string $jid)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -860,7 +860,7 @@ class RoomsUtils extends Base
      */
     public function ajaxConfigureUser(string $room, string $jid)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -881,7 +881,7 @@ class RoomsUtils extends Base
      */
     public function ajaxChangeVoice(string $room, string $mucjid, $form)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -907,7 +907,7 @@ class RoomsUtils extends Base
      */
     public function ajaxChangeAffiliationConfirm(string $room, $form)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 

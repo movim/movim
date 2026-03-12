@@ -273,7 +273,7 @@ class Rooms extends Base
      */
     public function ajaxJoin(string $room, ?string $nickname = null)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -318,7 +318,7 @@ class Rooms extends Base
      */
     public function ajaxExit($room)
     {
-        if (!validateRoom($room)) {
+        if (!validateJid($room)) {
             return;
         }
 

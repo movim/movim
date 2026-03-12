@@ -23,7 +23,7 @@ class Presence extends Payload
             // Let's drop errors with an id, useless for us
         } else {
             $presence = DBPresence::findByStanza($this->me, $stanza);
-            $presence->set($this->me, $stanza);
+            if (!$presence->set($this->me, $stanza)) return;
 
             if (
                 linker($this->me->session->id)->currentCall->isStarted()
