@@ -1447,7 +1447,18 @@ var Chat = {
                     iconName = 'image';
                 }
 
+                var iconSpan = document.createElement('span');
+                iconSpan.className = 'primary icon gray';
+                var iconEl = document.createElement('i');
+                iconEl.className = 'material-symbols';
+                iconEl.innerText = iconName;
+                iconSpan.appendChild(iconEl);
+                div.appendChild(iconSpan);
 
+                var info = document.createElement('div');
+
+                var nameP = document.createElement('p');
+                var a = document.createElement('a');
                 a.textContent = file.name;
                 a.href = file.url;
                 a.target = '_blank';
