@@ -37,6 +37,7 @@ class Configuration extends Model
         'locale'                => 'en',
         'xmppwhitelist'         => null,
         'gifapikey'             => null,
+        'maxsessions'           => 0,
     ];
 
     public static function get()
