@@ -1463,24 +1463,22 @@ var Chat = {
                 a.href = file.url;
                 a.target = '_blank';
                 a.rel = 'noopener noreferrer';
-                a.title = file.url;
+                nameP.appendChild(a);
+                info.appendChild(nameP);
 
-                div.appendChild(a);
-                if (file.host) {
-                    var host = document.createElement('span');
-                    host.innerHTML = file.host;
-                    host.className = 'host';
-                    a.prepend(host);
+                var meta = [file.cleansize, file.host].filter(Boolean).join(' · ');
+                if (meta) {
+                    var metaP = document.createElement('p');
+                    var metaSpan = document.createElement('span');
+                    metaSpan.className = 'second';
+                    metaSpan.textContent = meta;
+                    metaP.appendChild(metaSpan);
+                    info.appendChild(metaP);
                 }
 
-                if (file.size > 0) {
-                    var span = document.createElement('span');
-                    span.innerHTML = file.cleansize;
-                    span.className = 'size';
-
-                    a.prepend(span);
-                }
+                div.appendChild(info);
             }
+
         }
 
         return div;
