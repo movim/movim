@@ -1426,8 +1426,27 @@ var Chat = {
                 return div;
             }
 
-            if (!file.preview) {
-                var a = document.createElement('a');
+	    if (!file.preview) {
+                var iconName = 'insert_drive_file';
+                var type = file.type || '';
+                if (type === 'application/pdf') {
+                    iconName = 'picture_as_pdf';
+                } else if (type.match(/^application\/(zip|x-zip|x-tar|x-rar|x-7z|gzip|x-bzip)/)) {
+                    iconName = 'folder_zip';
+                } else if (type.match(/^application\/(msword|vnd\.oasis\.opendocument\.text|vnd\.openxmlformats-officedocument\.wordprocessingml)/)) {
+                    iconName = 'description';
+                } else if (type.match(/^application\/(vnd\.ms-excel|vnd\.oasis\.opendocument\.spreadsheet|vnd\.openxmlformats-officedocument\.spreadsheetml)/)) {
+                    iconName = 'table_chart';
+                } else if (type.match(/^application\/(vnd\.ms-powerpoint|vnd\.oasis\.opendocument\.presentation|vnd\.openxmlformats-officedocument\.presentationml)/)) {
+                    iconName = 'slideshow';
+                } else if (type.match(/^audio\//)) {
+                    iconName = 'audio_file';
+                } else if (type.match(/^video\//)) {
+                    iconName = 'video_file';
+                } else if (type.match(/^image\//)) {
+                    iconName = 'image';
+                }
+
 
                 a.textContent = file.name;
                 a.href = file.url;
