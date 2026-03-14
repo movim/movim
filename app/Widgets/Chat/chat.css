@@ -811,8 +811,13 @@ ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.au
     border-radius: 0.75rem;
     padding: 0.5rem 1rem;
     width: 32rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
 }
 
+ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.audio_player)):hover {
+    background-color: rgba(var(--movim-font), 0.1);
+}
 
 ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.audio_player)) span.second {
     font-size: 1.5rem;
