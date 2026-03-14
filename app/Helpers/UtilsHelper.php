@@ -1096,27 +1096,25 @@ function base64ToFingerPrint(string $base64): string
  */
 function mimeToIcon(string $type): string
 {
-    if ($type === 'application/pdf') {
-        return 'picture_as_pdf';
-    } elseif (preg_match('/^application\/(zip|x-zip|x-tar|x-rar|x-7z|gzip|x-bzip)/', $type)) {
-        return 'folder_zip';
-    } elseif (preg_match('/^application\/(msword|vnd\.oasis\.opendocument\.text|vnd\.openxmlformats-officedocument\.wordprocessingml)/', $type)) {
-        return 'description';
-    } elseif (preg_match('/^application\/(vnd\.ms-excel|vnd\.oasis\.opendocument\.spreadsheet|vnd\.openxmlformats-officedocument\.spreadsheetml)/', $type)) {
-        return 'table_chart';
-    } elseif (preg_match('/^application\/(vnd\.ms-powerpoint|vnd\.oasis\.opendocument\.presentation|vnd\.openxmlformats-officedocument\.presentationml)/', $type)) {
-        return 'slideshow';
-    } elseif (preg_match('/^text\/(html|xml|css|javascript)/', $type) || preg_match('/^application\/(json|xml|javascript)/', $type)) {
-        return 'code';
-    } elseif (preg_match('/^text\//', $type)) {
-        return 'article';
-    } elseif (typeIsAudio($type)) {
-        return 'audio_file';
-    } elseif (typeIsVideo($type)) {
-        return 'video_file';
-    } elseif (typeIsPicture($type)) {
-        return 'image';
-    }
-
-    return 'insert_drive_file';
+    return match(true) {
+        $type === 'application/pdf'
+            => 'picture_as_pdf',
+        (bool)preg_match('/^application\/(zip|x-zip|x-tar|x-rar|x-7z|gzip|x-bzip)/', $type)
+            => 'folder_zip',
+        (bool)preg_match('/^application\/(msword|vnd\.oasis\.opendocument\.text|vnd\.openxmlformats-officedocument\.wordprocessingml)/', $type)
+            => 'description',
+        (bool)preg_match('/^application\/(vnd\.ms-excel|vnd\.oasis\.opendocument\.spreadsheet|vnd\.openxmlformats-officedocument\.spreadsheetml)/', $type)
+            => 'table_chart',
+        (bool)preg_match('/^application\/(vnd\.ms-powerpoint|vnd\.oasis\.opendocument\.presentation|vnd\.openxmlformats-officedocument\.presentationml)/', $type)
+            => 'slideshow',
+        (bool)preg_match('/^text\/(html|xml|css|javascript)/', $type),
+        (bool)preg_match('/^application\/(json|xml|javascript)/', $type)
+            => 'code',
+        (bool)preg_match('/^text\//', $type)
+            => 'article',
+        typeIsAudio($type) => 'audio_file',
+        typeIsVideo($type) => 'video_file',
+        typeIsPicture($type) => 'image',
+        default => 'insert_drive_file',
+    };
 }
