@@ -214,6 +214,13 @@ function requiredExtensions(): array
         'xml',
     ];
 
+    // These are included in PHP on most platforms,
+    // but FreeBSD provides them as extensions still
+    if (php_uname('s') == 'FreeBSD') {
+        array_push($extensions, 'filter');
+        array_push($extensions, 'zlib');
+        array_push($extensions, 'zip');
+    }
     // ext-json is included in PHP since 8.0
     if (version_compare(PHP_VERSION, '8.0.0') < 0) {
         array_push($extensions, 'json');
