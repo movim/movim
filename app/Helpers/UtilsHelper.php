@@ -1090,3 +1090,33 @@ function base64ToFingerPrint(string $base64): string
     $hex = unpack('H*', $buffer);
     return implode(' ', str_split(substr($hex[1], 2), 8));
 }
+
+/**
+ * @desc Return a Material Symbols icon name for a given mimetype
+ */
+function mimeToIcon(string $type): string
+{
+    if ($type === 'application/pdf') {
+        return 'picture_as_pdf';
+    } elseif (preg_match('/^application\/(zip|x-zip|x-tar|x-rar|x-7z|gzip|x-bzip)/', $type)) {
+        return 'folder_zip';
+    } elseif (preg_match('/^application\/(msword|vnd\.oasis\.opendocument\.text|vnd\.openxmlformats-officedocument\.wordprocessingml)/', $type)) {
+        return 'description';
+    } elseif (preg_match('/^application\/(vnd\.ms-excel|vnd\.oasis\.opendocument\.spreadsheet|vnd\.openxmlformats-officedocument\.spreadsheetml)/', $type)) {
+        return 'table_chart';
+    } elseif (preg_match('/^application\/(vnd\.ms-powerpoint|vnd\.oasis\.opendocument\.presentation|vnd\.openxmlformats-officedocument\.presentationml)/', $type)) {
+        return 'slideshow';
+    } elseif (preg_match('/^text\/(html|xml|css|javascript)/', $type) || preg_match('/^application\/(json|xml|javascript)/', $type)) {
+        return 'code';
+    } elseif (preg_match('/^text\//', $type)) {
+        return 'article';
+    } elseif (typeIsAudio($type)) {
+        return 'audio_file';
+    } elseif (typeIsVideo($type)) {
+        return 'video_file';
+    } elseif (typeIsPicture($type)) {
+        return 'image';
+    }
+
+    return 'insert_drive_file';
+}
