@@ -843,8 +843,8 @@ ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.au
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-weight: 500;
 }
-
 
 /* Message Info */
 
