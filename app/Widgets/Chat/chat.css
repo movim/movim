@@ -803,11 +803,43 @@ ul.list li>div.bubble.file div.file[data-type="image/gif"]:after {
     pointer-events: none;
 }
 
-ul.list li>div.bubble.file div.file a span.host:after,
-ul.list li>div.bubble.file div.file a span.size:after {
-    content: '-';
-    margin: 0 0.5rem;
+ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.audio_player)) {
+    display: flex;
+    align-items: center;
+    background-color: rgba(var(--movim-font), 0.05);
+    border: 1px solid rgba(var(--movim-font), 0.1);
+    border-radius: 0.75rem;
+    padding: 0.5rem 1rem;
+    width: 32rem;
 }
+
+
+ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.audio_player)) span.second {
+    font-size: 1.5rem;
+}
+
+ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.audio_player)) span.primary.icon {
+    background: none;
+    font-size: 3rem;
+    line-height: 3rem;
+    width: 2.5rem;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.5rem;
+}
+
+ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.audio_player)) div {
+    min-width: 0;
+    overflow: hidden;
+}
+
+ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.audio_player)) a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 
 /* Message Info */
 
