@@ -831,6 +831,7 @@ ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.au
     min-width: 2.5rem;
     height: 2.5rem;
     margin-right: 0.5rem;
+    font-variation-settings: 'FILL' 1;
 }
 
 ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.audio_player)) div {
