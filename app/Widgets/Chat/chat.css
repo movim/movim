@@ -825,6 +825,8 @@ ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.au
 
 ul.list li>div.bubble.file div.file:not(:has(img)):not(:has(video)):not(:has(.audio_player)) span.primary.icon {
     background: none;
+    display: flex;
+    align-items: center;
     font-size: 5.25rem;
     line-height: 3rem;
     width: 2.5rem;
