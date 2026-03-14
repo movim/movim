@@ -1523,6 +1523,7 @@ class Chat extends \Movim\Widget\Base
 		    $view->assign('icon', mimeToIcon($message->file->type ?? ''));
 		    $view->assign('name', preg_replace('/^chat_/i', '', $message->file->name ?? ''));
 		    $view->assign('size', $message->file->cleansize ?? '');
+		    $view->assign('ext', strtoupper(pathinfo($message->file->name ?? '', PATHINFO_EXTENSION)));
 		    $message->file->cardHtml = $view->draw('_chat_file');
 		}
 		$message->body = '';
