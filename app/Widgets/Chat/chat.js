@@ -1160,11 +1160,18 @@ var Chat = {
             bubble.querySelector('div.bubble').classList.add('file');
             p.appendChild(Chat.getStickerHtml(data));
 
-        } else if (data.file != null && data.card === undefined && data.file.type !== 'xmpp' && data.retracted == false) {
-            bubble.querySelector('div.bubble').classList.add('file');
-            msg.appendChild(Chat.getFileHtml(data.file, data));
-        }
-
+	} else if (data.file != null && data.card === undefined && data.file.type !== 'xmpp' && data.retracted == false) {
+	    bubble.querySelector('div.bubble').classList.add('file');
+	    if (data.file.cardHtml) {
+		var fileDiv = document.createElement('div');
+		fileDiv.classList.add('file');
+		fileDiv.dataset.type = data.file.type;
+		fileDiv.innerHTML = data.file.cardHtml;
+		msg.appendChild(fileDiv);
+	    } else {
+		msg.appendChild(Chat.getFileHtml(data.file, data));
+	    }
+	}
         if (data.published) {
             info.title = data.published;
         }
