@@ -228,7 +228,7 @@ class Presence extends Model
         }
 
         if (
-            !validateJid($this->mucjid)
+            ($this->mucjid != null && !validateJid($this->mucjid))
             || ($this->mucjidresource != null && !validateJid($this->mucjidresource))
             || !validateJid($this->jid)
             || !validateResource($this->resource)
