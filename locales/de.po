@@ -1733,7 +1733,7 @@ msgstr "Einwohner"
 
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
-msgstr "%shat Sie eingeladen, einen Chatraum zu betreten"
+msgstr "%s hat Sie eingeladen, einen Chatraum zu betreten"
 
 #: [form]pod_admins
 msgid "Administrated by"
