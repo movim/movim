@@ -1517,7 +1517,11 @@ class Chat extends \Movim\Widget\Base
                     }
                 }
             } elseif (isset($message->file) && $message->file->type != 'xmpp') {
-                if (!$message->file->preview) {
+                if (
+                    !$message->file->preview
+                    && !typeIsAudio($message->file->type)
+                    && !typeIsVideo($message->file->type)
+                ) {
                     $view = $this->tpl();
                     $view->assign('file', $message->file);
                     $message->card = $view->draw('_chat_file');
