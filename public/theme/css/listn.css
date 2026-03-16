@@ -535,6 +535,7 @@ ul.list li>div.bubble {
     max-width: calc(100% - 11.5rem);
     flex: 0 0 auto;
     margin: 0 1.5rem;
+    padding: 0;
     min-height: 5rem;
     transition: background 0.3s ease, box-shadow 0.3s ease;
 }
@@ -583,7 +584,7 @@ ul.list li>div.bubble>div>p i {
     margin-top: -0.25rem;
 }
 
-ul.list li>div.bubble>div>p:empty {
+ul.list li>div.bubble:not(.file)>div>p:empty {
     display: none;
 }
 

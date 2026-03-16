@@ -92,7 +92,7 @@ main:not(.enabled) #chat_widget {
     order: 1;
 }
 
-#chat_widget nav ul#room_nav_members:not(:has(> li:nth-child(10))) + ul#room_nav_members_search {
+#chat_widget nav ul#room_nav_members:not(:has(> li:nth-child(10)))+ul#room_nav_members_search {
     display: none;
 }
 
@@ -737,7 +737,7 @@ ul.list li>div.bubble.file ul.card+p:empty:before {
     content: ' ';
 }
 
-ul.list li>div.bubble.file a {
+ul.list li>div.bubble.file>div>p>a {
     display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -894,6 +894,7 @@ ul.list li>div.bubble.file div.file a span.size:after {
 
 #chat_widget .bubble ul.card.list {
     max-width: 45rem;
+    width: -webkit-fill-available;
     padding: 0;
 }
 
