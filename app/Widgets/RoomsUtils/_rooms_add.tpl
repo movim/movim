@@ -119,7 +119,7 @@
                     {/if}
                     type="email"
                     list="suggestions"
-                    oninput="Rooms.suggest()"
+                    oninput="Rooms.cleanId(this); Rooms.suggest()"
                     required />
                 <label>{$c->__('chatrooms.id')}</label>
             </div>

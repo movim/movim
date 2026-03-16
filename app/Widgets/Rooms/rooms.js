@@ -1,6 +1,18 @@
 var Rooms = {
     default_services: [],
 
+    cleanId: function (input) {
+        if (input.value) {
+            if (input.value.substring(0, 5) == 'xmpp:') {
+                input.value = input.value.substring(5);
+            }
+
+            if (input.value.slice(-5) == '?join') {
+                input.value = input.value.slice(0, -5);
+            }
+        }
+    },
+
     setDefaultServices: function (services) {
         Rooms.default_services = services;
     },
