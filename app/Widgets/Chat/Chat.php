@@ -1520,6 +1520,7 @@ class Chat extends \Movim\Widget\Base
                 $view = $this->tpl();
                 $view->assign('file', $message->file);
                 $message->card = $view->draw('_chat_file');
+                $message->body = '';
             }
         }
 
