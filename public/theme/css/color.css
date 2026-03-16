@@ -45,8 +45,7 @@ input::placeholder, textarea::placeholder, select::placeholder {
     color: rgba(var(--movim-font), 0.67);
 }
 
-ul.list li.divided,
-ul.list li.divided.spaced:after,
+ul.list li.divided:after,
 hr:not(.clear),
 .card > .block:not(.subheader):not(.simple),
 *.divided > *:not(:last-child),
