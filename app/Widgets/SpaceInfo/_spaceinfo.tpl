@@ -52,10 +52,12 @@
         {/if}
         <div>
             <p class="line">
-                <span class="second">
-                    {$subscription->spaceAffiliations()->count()}
-                    <i class="material-symbols">people</i>
-                </span>
+                {if="$subscription->info"}
+                    <span class="second">
+                        {$subscription->info->occupants}
+                        <i class="material-symbols">people</i>
+                    </span>
+                {/if}
                 <span class="second notify">
                     {if="$subscription->notify == 'never'"}
                         •
