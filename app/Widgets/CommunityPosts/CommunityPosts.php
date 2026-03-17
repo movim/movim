@@ -154,7 +154,7 @@ class CommunityPosts extends Base
         $c->ajaxGetDrawer($jid);
     }
 
-    public function ajaxGetItems($origin, $node, $before = 'empty')
+    public function ajaxGetItems(string $origin, string $node, $before = 'empty')
     {
         if (!validateServerNode($origin, $node)) {
             return;

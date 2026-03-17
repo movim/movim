@@ -971,4 +971,37 @@ class Post extends Model
     {
         return false;
     }
+
+    public function toArray()
+    {
+        $now = \Carbon\Carbon::now();
+
+        return [
+            'server' => $this->attributes['server'],
+            'node' => $this->attributes['node'],
+            'nodeid' => $this->attributes['nodeid'],
+            'aname' => $this->attributes['aname'] ?? null,
+            'aid' => $this->attributes['aid'] ?? null,
+            'aemail' => $this->attributes['aemail'] ?? null,
+            'title' => $this->attributes['title'],
+            'content' => $this->attributes['content'] ?? null,
+            'contentraw' => $this->attributes['contentraw'] ?? null,
+            'contentcleaned' => $this->attributes['contentcleaned'] ?? null,
+            'commentserver' => $this->attributes['commentserver'] ?? null,
+            'commentnodeid' => $this->attributes['commentnodeid'] ?? null,
+            'contenthash' => $this->attributes['contenthash'] ?? null,
+            'parent_id' => $this->attributes['parent_id'] ?? null,
+            'replyserver' => $this->attributes['replyserver'] ?? null,
+            'replynode' => $this->attributes['replynode'] ?? null,
+            'replynodeid' => $this->attributes['replynodeid'] ?? null,
+            'open' => (bool)$this->attributes['open'] ?? false,
+            'nsfw' => $this->attributes['nsfw'] ?? false,
+            'like' => $this->attributes['like'] ?? false,
+            'published' => $this->attributes['published']  ?? null,
+            'updated' => $this->attributes['updated'],
+            'delay' => $this->attributes['delay'] ?? null,
+            'created_at' => $this->attributes['created_at'] ?? $now,
+            'updated_at' => $this->attributes['updated_at'] ?? $now,
+        ];
+    }
 }

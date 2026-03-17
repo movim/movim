@@ -29,16 +29,21 @@ class CommentsGet extends Action
         Post::where('parent_id', $this->_parentid)->delete();
 
         if ($stanza->pubsub->items->item) {
+            $comments = collect();
+
             foreach ($stanza->pubsub->items->item as $item) {
-                $p = Post::firstOrNew([
+                $comment = new Post([
                     'server' => $this->_to,
                     'node' => $this->_node,
                     'nodeid' => (string)$item->attributes()->id
                 ]);
-                $p->set($item);
-                $p->parent_id = $this->_parentid;
-                $p->save();
+                $comment->set($item);
+                $comment->parent_id = $this->_parentid;
+
+                $comments[$comment->nodeid] = $comment->toArray();
             }
+
+            Post::insert($comments->toArray());
         }
 
         $this->pack($this->_parentid);
