@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
+use App\Post;
 use Carbon\Carbon;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
@@ -48,6 +49,7 @@ class GetItems extends Action
     {
         $ids = [];
         $updateds = collect();
+        $posts = collect();
 
         foreach ($stanza->pubsub->items->item as $item) {
             if (
@@ -58,13 +60,13 @@ class GetItems extends Action
                     $this->_since == null
                     || strtotime($this->_since) < strtotime($item->entry->published)
                 ) {
-                    $p = \App\Post::firstOrNew([
+                    $p = new Post([
                         'server' => $this->_to,
                         'node' => $this->_node,
                         'nodeid' => (string)$item->attributes()->id
                     ]);
                     $p->set($item);
-                    $p->save();
+                    $posts[$p->nodeid] = $p;
 
                     array_push($ids, $p->nodeid);
                     $updateds->push(new Carbon($p->updated));
@@ -79,6 +81,33 @@ class GetItems extends Action
                     node: $this->_node,
                     url: (string)$item->metadata->info->attributes()->url
                 );
+            }
+        }
+
+        /**
+         * Check if the posts have a different contenthash in the DB, filter, and update
+         * those that need to be updated
+         */
+        $postsContentHashes = Post::select('nodeid', 'contenthash')
+            ->where('server', $this->_to)
+            ->where('node', $this->_node)
+            ->whereIn('nodeid', $posts->pluck('nodeid'))
+            ->pluck('contenthash', 'nodeid');
+
+        foreach ($posts as $post) {
+            if ($post->contenthash == $postsContentHashes->get($post->nodeid)) {
+                $posts->forget($post->nodeid);
+            }
+        }
+
+        if ($posts->isNotEmpty()) {
+            Post::where('server', $this->_to)
+                ->where('node', $this->_node)
+                ->whereIn('nodeid', $posts->pluck('nodeid'))
+                ->delete();
+
+            foreach ($posts as $p) {
+                $p->save();
             }
         }
 

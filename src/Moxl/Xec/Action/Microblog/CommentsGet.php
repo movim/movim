@@ -15,7 +15,7 @@ class CommentsGet extends Action
     public function request()
     {
         $this->store();
-        $this->iq(Pubsub::getItems($this->_node, paging: 100), to: $this->_to, type: 'get');
+        $this->iq(Pubsub::getItems($this->_node, paging: 500), to: $this->_to, type: 'get');
     }
 
     public function setId($id)
@@ -43,7 +43,10 @@ class CommentsGet extends Action
                 $comments[$comment->nodeid] = $comment->toArray();
             }
 
-            Post::insert($comments->toArray());
+            if ($comments->isNotEmpty()) {
+                Post::where('server', $this->_to)->where('node', $this->_node)->delete();
+                Post::insert($comments->toArray());
+            }
         }
 
         $this->pack($this->_parentid);
