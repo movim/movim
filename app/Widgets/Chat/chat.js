@@ -151,7 +151,7 @@ var Chat = {
                 Chats.setActive(jid);
             } else {
                 Chats.clearAllActives();
-                Rooms.clearAllActives();
+                MovimUtils.clearAllActivesRooms();
             }
 
             Chat_ajaxGet(jid, light);
@@ -167,14 +167,14 @@ var Chat = {
     getRoom: function (jid) {
         MovimTpl.showPanel();
         document.querySelector('#chat_widget').innerHTML = '';
-        if (typeof Rooms != 'undefined') Rooms.setActive(jid);
+        MovimUtils.setActiveRoom(jid);
 
         Chat_ajaxGetRoom(jid);
     },
     getHistory: function (tryMam) {
         var textarea = Chat.getTextarea();
+        let firstMessage = Chat.getDiscussion()?.querySelector('.message');
 
-        let firstMessage = Chat.getDiscussion().querySelector('.message');
         if (textarea) {
             Chat_ajaxGetHistory(
                 textarea.dataset.jid,
@@ -1702,7 +1702,8 @@ var Chat = {
     },
     getNewerMessages: function () {
         var jid = MovimUtils.urlParts().params[0];
-        let lastMessage = Chat.getDiscussion().querySelector('li:last-child .bubble:last-child .message:last-child');
+
+        let lastMessage = Chat.getDiscussion()?.querySelector('li:last-child .bubble:last-child .message:last-child');
 
         if (jid) {
             Chat_ajaxGetHistory(

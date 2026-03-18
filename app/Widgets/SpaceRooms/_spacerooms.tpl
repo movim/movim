@@ -1,9 +1,13 @@
 {loop="$subscription->spaceRooms"}
-    <li onclick="Chat.getRoom('{$value->conference}')" id="space{$value->conference|cleanupId}">
-        <span class="primary icon gray">
-            <i class="material-symbols">tag</i>
-                <span data-key="{$value->notifKey}" class="counter"></span>
+    <li onclick="Chat.getRoom('{$value->conference}')" id="space{$value->conference|cleanupId}"
+        data-jid="{$value->conference}">
+        <span class="primary icon gray"
+            id="{$value->conference|cleanupId}-rooms-primary">
+            {autoescape="off"}
+                {$c->prepareRoomCounter($value)}
+            {/autoescape}
         </span>
+
         {if="$edit"}
             <span class="control icon gray active" onclick="SpaceRooms_ajaxAskEdit('{$value->space_server}', '{$value->space_node}', '{$value->conference}')">
                 <i class="material-symbols">edit</i>

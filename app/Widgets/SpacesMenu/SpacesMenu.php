@@ -36,9 +36,15 @@ class SpacesMenu extends Base
         $this->registerEvent('space_subscribe_errorpendingsubscription', 'onPendingSubscription');
         $this->registerEvent('space_setsubscription_handle', 'onSetSubscription');
         $this->registerEvent('message_pubsub_subscribed', 'onMessageSubscribed');
+        $this->registerEvent('space_counter', 'onCounter');
 
         $this->addjs('spacesmenu.js');
         $this->addcss('spacesmenu.css');
+    }
+
+    public function onCounter(Packet $packet)
+    {
+        $this->rpc('MovimUtils.setDataItem', '#' . $packet->from, 'counter', $packet->content);
     }
 
     public function onClosedNode(Packet $packet)
@@ -272,7 +278,6 @@ class SpacesMenu extends Base
                 $this->rpc('SpaceRooms_ajaxHttpGetChat', $server, $node, $conference);
             }
         }
-
     }
 
     public function ajaxAdd()

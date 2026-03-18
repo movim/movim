@@ -355,7 +355,7 @@ class Chats extends Base
         $view->assign('status', $status);
         $view->assign('contact', $contact);
         $view->assign('roster', $roster);
-        $view->assign('count', $this->me->unreads($jid));
+        $view->assign('count', $this->me->unreads(jid: $jid));
         $view->assign('contactincall', $this->currentCall()?->isJidInCall($jid));
 
         if ($status == null) {

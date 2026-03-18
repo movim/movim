@@ -164,7 +164,7 @@ class User extends Model
         return $this->nickname ?? $this->id;
     }
 
-    public function unreads(?string $jid = null, bool $quoted = false, bool $cached = false): int
+    public function unreads(?string $jid = null, bool $quoted = false, ?array $space = null, bool $cached = false): int
     {
         if ($this->unreads !== null && $cached) return $this->unreads;
 
@@ -180,10 +180,10 @@ class User extends Model
         $unreads = $this->messages()
             ->where('seen', false)
             ->where('jidfrom', '!=', $this->id)
-            ->where(function ($query) use ($quoted) {
+            ->where(function ($query) use ($quoted, $space) {
                 $query->where('type', 'groupchat')
                     ->whereNull('subject')
-                    ->whereIn('jidfrom', function ($query) {
+                    ->whereIn('jidfrom', function ($query) use ($space) {
                         $query->select('conference')
                             ->from('conferences')
                             ->where('session_id', function ($query) {
@@ -191,14 +191,16 @@ class User extends Model
                                     ->from('sessions')
                                     ->where('user_id', $this->id);
                             })
-                            ->where('space_server', null)
-                            ->where('space_node', null);
+                            ->where('space_server', $space ? $space[0] : null)
+                            ->where('space_node', $space ? $space[1] : null);
                     });
 
                 if ($quoted) {
                     $query->where('quoted', true);
                 }
-            })->unionAll($union);
+            });
+
+        if ($space == null) $unreads = $unreads->unionAll($union);
 
         $unreads = ($jid != null)
             ? $unreads->where('jidfrom', $jid)

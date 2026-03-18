@@ -13,6 +13,6 @@ class SpaceController extends Base
 
     public function dispatch()
     {
-        $this->page->setTitle(__('page.spaces'));
+        $this->page->setTitle(__('page.space'));
     }
 }

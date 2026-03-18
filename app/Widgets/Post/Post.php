@@ -283,7 +283,7 @@ class Post extends Base
             $view->assign('post', $post);
 
             if (!$card && $this->me) {
-                $view->assign('counter', $this->me->unreads(null, false, true));
+                $view->assign('counter', $this->me->unreads(cached: true));
             }
 
             return ($card)

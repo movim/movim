@@ -35,7 +35,8 @@ class Subscription extends Model
     {
         return $this->hasMany(Conference::class, ['space_server', 'space_node', 'user_id'], ['server', 'node', 'jid'])
             ->orderBy('pinned', 'desc')
-            ->orderBy('name', 'asc');
+            ->orderBy('name', 'asc')
+            ->withCount('unreads', 'quoted');
     }
 
     public function setExtensions(?\SimpleXMLElement $extensions = null)
@@ -77,16 +78,26 @@ class Subscription extends Model
         return $this->hasMany(Affiliation::class, ['server', 'node'], ['server', 'node']);
     }
 
-    public function getSpaceURIAttribute(): string
-    {
-        return 'xmpp:' . $this->server . '?;node=' . $this->node;
-    }
-
     public function getNotifyAttribute(): ?string
     {
         return is_int($this->attributes['notify'])
             ? Conference::NOTIFICATIONS[$this->attributes['notify']]
             : null;
+    }
+
+    public function getCounterIdAttribute(): string
+    {
+        return cleanupId($this->server . $this->node . '-counter');
+    }
+
+    public function getUriAttribute(): string
+    {
+        return 'xmpp:' . $this->server . '?;node=' . $this->node;
+    }
+
+    public function spaceUnreads(User $user): int
+    {
+        return $user->unreads(space: [$this->server, $this->node]);
     }
 
     public function scopeSpaces($query, ?bool $yes = true)

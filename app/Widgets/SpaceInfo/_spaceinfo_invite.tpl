@@ -7,11 +7,11 @@
         <div>
             <ul class="list">
                 <li>
-                    <span class="control icon active" onclick="MovimUtils.copyToClipboard('{$subscription->spaceURI}'); ChatActions_ajaxCopiedMessageText();">
+                    <span class="control icon active" onclick="MovimUtils.copyToClipboard('{$subscription->uri}'); ChatActions_ajaxCopiedMessageText();">
                         <i class="material-symbols">content_copy</i>
                     </span>
                     <div>
-                        <input name="title" value="{$subscription->spaceURI}" readonly/>
+                        <input name="title" value="{$subscription->uri}" readonly/>
                         <label for="title">{$c->__('spaceinfo.invite_uri_title')}</label>
                     </div>
                 </li>

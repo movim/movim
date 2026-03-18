@@ -1,1 +1,1 @@
-<ul class="list divided thin spaced active" id="spacerooms_widget"></ul>
+<ul class="list rooms divided thin spaced active" id="spacerooms_widget"></ul>

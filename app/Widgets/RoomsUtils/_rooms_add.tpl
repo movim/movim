@@ -1,56 +1,27 @@
 <section>
-    <form name="bookmarkmucadd">
-        {if="$create"}
-            <h3>{$c->__('rooms.create')}</h3>
-        {else}
-            {if="isset($conference)"}
-                <h3>{$c->__('rooms.edit')}</h3>
-            {else}
-                <h3>{$c->__('rooms.join')}</h3>
-            {/if}
-        {/if}
-
-        {if="isset($id)"}
-            <h4 class="line">{$id}</h4>
-        {/if}
-
-        {if="!$create"}
-            {if="$gateways->isNotEmpty() && !isset($conference)"}
-                {$group = null}
+    {if="isset($id)"}
+        <ul class="list thick">
+            <li>
                 <div>
-                    <div class="select">
-                        <select onchange="RoomsUtils_ajaxDiscoGateway(this.value)">
-                            <option value="">{$c->__('rooms.default_room')}</option>
-                            {loop="$gateways"}
-                                {if="$group != $value->parent"}
-                                    {if="$group != null"}
-                                        </optgroup>
-                                    {/if}
-                                    <optgroup label="{$value->parent}">
-                                {/if}
-                                <option value="{$value->server}">
-                                    {if="!empty($value->name)"}
-                                        {$value->name} -
-                                    {/if}
-                                    {$value->server}
-                                </option>
-                                {$group = $value->parent}
-                            {/loop}
-                            {if="$group != null"}
-                                </optgroup>
-                            {/if}
-                        </select>
-                    </div>
-                    <label>{$c->__('rooms.type_room')}</label>
+                    {if="$create"}
+                        <p>{$c->__('rooms.create')}</p>
+                    {else}
+                        {if="isset($conference)"}
+                            <p>{$c->__('rooms.edit')}</p>
+                        {else}
+                            <p>{$c->__('rooms.join')}</p>
+                        {/if}
+                    {/if}
+
+                    <p>{$id}</p>
                 </div>
-            {/if}
+            </li>
+        </ul>
+    {else}
+        <h3>{$c->__('rooms.create')}</h3>
+    {/if}
 
-            <div id="gateway_rooms"></div>
-
-            <datalist id="suggestions">
-            </datalist>
-        {/if}
-
+    <form name="bookmarkmucadd">
         {if="$create"}
             <div>
                 <ul class="list middle">
@@ -125,53 +96,68 @@
             </div>
         {/if}
 
-        {if="!$create"}
-            <div>
-                <input
-                    {if="isset($conference)"}
-                        value="{$conference->name}"
-                    {elseif="isset($info)"}
-                        value="{$info->name}"
-                    {elseif="isset($name)"}
-                        value="{$name}"
-                    {/if}
-                    name="name"
-                    placeholder="{$c->__('chatrooms.name_placeholder')}"
-                    required />
-                <label>{$c->__('chatrooms.name')}</label>
-            </div>
-        {/if}
-
         <div>
-            <input
-                {if="isset($conference) && !empty($conference->nick)"}
-                    value="{$conference->nick}"
-                {else}
-                    value="{$username}"
+            <ul class="list">
+                {if="!$create"}
+                    <li>
+                        <span class="primary icon gray">
+                            <i class="material-symbols">short_text</i>
+                        </span>
+                        <div>
+                            <input
+                                {if="isset($conference)"}
+                                    value="{$conference->name}"
+                                {elseif="isset($info)"}
+                                    value="{$info->name}"
+                                {elseif="isset($name)"}
+                                    value="{$name}"
+                                {/if}
+                                name="name"
+                                placeholder="{$c->__('chatrooms.name_placeholder')}"
+                                required />
+                            <label>{$c->__('chatrooms.name')}</label>
+                        </div>
+                    </li>
                 {/if}
-                name="nick"
-                placeholder="{$username}"/>
-            <label>{$c->__('chatrooms.nickname')}</label>
-        </div>
-        <div>
-            <div class="select">
-                <select name="notify">
-                    <option value="never" {if="isset($conference) && $conference->notify == 0"}selected{/if}>
-                        {$c->__('room.notify_never')}
-                    </option>
-                    <option value="on-mention" {if="isset($conference) && $conference->notify == 1"}selected{/if}
-                        {if="!isset($conference)"}selected{/if}>
-                        {$c->__('room.notify_mentioned')}
-                    </option>
-                    <option value="always" {if="isset($conference) && $conference->notify == 2"}selected{/if}>
-                        {$c->__('room.notify_always')}
-                    </option>
-                </select>
-            </div>
-            <label>{$c->__('room.notify_title')}</label>
-        </div>
-        <div class="control">
-            <ul class="list middle">
+
+                <li>
+                    <span class="primary icon gray">
+                        <i class="material-symbols">person_book</i>
+                    </span>
+                    <div>
+                        <input
+                            {if="isset($conference) && !empty($conference->nick)"}
+                                value="{$conference->nick}"
+                            {else}
+                                value="{$username}"
+                            {/if}
+                            name="nick"
+                            placeholder="{$username}"/>
+                        <label>{$c->__('chatrooms.nickname')}</label>
+                    </div>
+                </li>
+                <li>
+                    <span class="primary icon gray">
+                        <i class="material-symbols">edit_notifications</i>
+                    </span>
+                    <div>
+                        <div class="select">
+                            <select name="notify">
+                                <option value="never" {if="isset($conference) && $conference->notify == 0"}selected{/if}>
+                                    {$c->__('room.notify_never')}
+                                </option>
+                                <option value="on-mention" {if="isset($conference) && $conference->notify == 1"}selected{/if}
+                                    {if="!isset($conference)"}selected{/if}>
+                                    {$c->__('room.notify_mentioned')}
+                                </option>
+                                <option value="always" {if="isset($conference) && $conference->notify == 2"}selected{/if}>
+                                    {$c->__('room.notify_always')}
+                                </option>
+                            </select>
+                        </div>
+                        <label>{$c->__('room.notify_title')}</label>
+                    </div>
+                </li>
                 <li>
                     <span class="primary icon gray">
                         <i class="material-symbols">login</i>
@@ -192,10 +178,6 @@
                         <p class="all">{$c->__('chatrooms.autojoin')}</p>
                     </div>
                 </li>
-            </ul>
-        </div>
-        <div class="control">
-            <ul class="list middle">
                 <li>
                     <span class="primary icon gray">
                         <i class="material-symbols">push_pin</i>

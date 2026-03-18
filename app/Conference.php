@@ -257,6 +257,11 @@ class Conference extends Model
         return self::NOTIFICATIONS[$this->notify];
     }
 
+    public function getSpaceCounterIdAttribute(): string
+    {
+        return cleanupId($this->space_server . $this->space_node . '-counter');
+    }
+
     public function getTitleAttribute()
     {
         if (!empty($this->name)) {

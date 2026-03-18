@@ -128,7 +128,7 @@ class Notif extends Base
         }
 
         if ($first === 'chat') {
-            (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.counter', $first, $this->me->unreads(null, true));
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.counter', $first, $this->me->unreads(quoted: true));
             $this->executeRPC();
         } else {
             (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.counter', $first, $notifs[$first]);

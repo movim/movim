@@ -53,7 +53,7 @@ class CommunitiesServer extends \Movim\Widget\Base
     {
         $info = $packet->content;
 
-        if ($info) {
+        if ($info && !$info->isAccount()) {
             $this->rpc('MovimTpl.replace', '#' . cleanupId($info->server . $info->node), $this->prepareTicket($info));
         }
     }

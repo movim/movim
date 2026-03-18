@@ -86,9 +86,10 @@ var Rooms = {
         }
     },
 
-    selectGatewayRoom: function (room, name) {
-        document.querySelector('form[name="bookmarkmucadd"] input[name=jid]').value = room;
-        document.querySelector('form[name="bookmarkmucadd"] input[name=name]').value = name;
+    selectGatewayRoom: function (room) {
+        document.querySelector('form[name="rooms_discover"] input[name=jid]').value = room;
+        RoomsUtils_ajaxDiscoRoom(room);
+        MovimUtils.addClass('#rooms_discover_add', 'disabled');
     },
 
     setJid: function (slugifiedJid) {

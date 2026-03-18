@@ -1,6 +1,6 @@
 <section>
-    <ul class="list active">
-        <li onclick="RoomsUtils_ajaxAdd(); Drawer.clear();">
+    <ul class="list middle active">
+        <li onclick="RoomsUtils_ajaxHttpRoomDiscover(); Drawer.clear();">
             <span class="primary icon gray">
                 <i class="material-symbols">input</i>
             </span>

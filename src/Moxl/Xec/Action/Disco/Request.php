@@ -50,12 +50,7 @@ class Request extends Action
             $info->save();
         }
 
-        if (
-            !$info->identities->contains('category', 'account')
-            && !$info->identities->contains('category', 'client')
-        ) {
-            $this->pack($info);
-            $this->deliver();
-        }
+        $this->pack($info);
+        $this->deliver();
     }
 }

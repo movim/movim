@@ -10,6 +10,7 @@ class CreateGroupChat extends Action
     protected string $_to;
     protected string $_name;
     protected string $_nick;
+    protected ?string $_pubsubnode = null;
     protected $_autojoin;
     protected $_pinned;
     protected bool $_notify = true;
@@ -17,7 +18,7 @@ class CreateGroupChat extends Action
     public function request()
     {
         $this->store();
-        $this->iq(Muc::createGroupChat($this->_name), to: $this->_to, type: 'set');
+        $this->iq(Muc::createGroupChat($this->_name, $this->_pubsubnode), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

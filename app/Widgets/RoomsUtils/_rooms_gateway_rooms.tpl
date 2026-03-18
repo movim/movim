@@ -1,5 +1,5 @@
 <div class="select">
-    <select onchange="Rooms.selectGatewayRoom(this.value, this.options[this.selectedIndex].label)">
+    <select onchange="Rooms.selectGatewayRoom(this.value)">
         {$group = null}
         {loop="$rooms"}
             {if="$group != $value->parent"}

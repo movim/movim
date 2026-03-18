@@ -100,7 +100,12 @@
                         {/if}
                     {/if}
                 {/if}
-                <p class="line active" title="{$jid|echapJS}" onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">
+                <p title="{$jid|echapJS}"
+                    {if="!$conference->isFromSpace()"}
+                        class="line active" onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')"
+                    {else}
+                        class="line"
+                    {/if}>
                     {if="$conference && $conference->title"}
                         {$conference->title}
                         {if="$conference->notify == 0"}

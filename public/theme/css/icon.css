@@ -218,6 +218,15 @@ span.icon.status:after {
     box-shadow: var(--elevation-0);
 }
 
+span.counter.notifications:not(:empty):after {
+    display: inline-block;
+    font-family: 'Material Symbols';
+    content: '\e7f4';
+    font-variation-settings: 'FILL' 1;
+    vertical-align: sub;
+    padding-left: 0.1rem;
+}
+
 span.icon.status.offline:not([data-counter]):after {
     display: none;
 }

@@ -33,6 +33,7 @@ use Movim\Image;
 
 use Respect\Validation\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
+use Moxl\Xec\Action\Muc\DiscoRequest;
 
 class RoomsUtils extends Base
 {
@@ -54,6 +55,9 @@ class RoomsUtils extends Base
         $this->registerEvent('muc_changeaffiliation_errornotallowed', 'onAffiliationChangeUnauthorized');
         $this->registerEvent('muc_setrole_handle', 'onSetRole');
         $this->registerEvent('message_invite_error', 'onInviteError');
+
+        $this->registerEvent('muc_discorequest_handle', 'onMucDiscoRequest');
+        $this->registerEvent('muc_discorequest_error', 'onMucDiscoError');
 
         $this->registerEvent('presence_muc_create_handle', 'onMucCreated');
         $this->registerEvent('presence_muc_errornotallowed', 'onPresenceMucNotAllowed');
@@ -442,6 +446,67 @@ class RoomsUtils extends Base
         ]));
     }
 
+    public function ajaxHttpRoomDiscover(?string $room = null)
+    {
+        $gateways = \App\Info::select('name', 'server', 'parent')
+            ->whereCategory('gateway')
+            ->whereNotNull('parent')
+            ->groupBy('name', 'server', 'parent')
+            ->orderBy('parent')
+            ->orderBy('server')
+            ->get();
+
+        $gateways = $gateways->filter(fn($gateway) => $gateway->parent === $this->me->session->host)
+            ->concat($gateways->reject(fn($gateway) => $gateway->parent === $this->me->session->host));
+
+        $this->dialog($this->view('_rooms_room_discover', [
+            'room' => $room,
+            'gateways' => $gateways,
+            'mucservice' => \App\Info::where('parent', $this->me->session->host)
+                ->whereDoesntHave('identities', function ($query) {
+                    $query->where('category', 'gateway');
+                })
+                ->whereCategory('conference')
+                ->whereType('text')
+                ->first(),
+        ]));
+
+        if ($room) {
+            $this->rpc('RoomsUtils_ajaxDiscoRoom', $room);
+        }
+    }
+
+    public function ajaxDiscoRoom(?string $room = null)
+    {
+        $this->rpc('MovimTpl.fill', '#rooms_discover_result', '');
+
+        if ($room != null && validateJid($room)) {
+            $request = $this->xmpp(new DiscoRequest);
+            $request->setTo($room)
+                ->request();
+        } elseif (!empty($room)) {
+            $this->toast($this->__('rooms.disco_not_muc'));
+        }
+    }
+
+    public function onMucDiscoRequest(Packet $packet)
+    {
+        $packet->content->uuidMuc = Validator::uuid()->isValid(substr($packet->content->server, 0, 36));
+
+        $this->rpc('MovimTpl.fill', '#rooms_discover_result', $this->view('_rooms_room_discover_result', [
+            'info' => $packet->content
+        ]));
+
+        if ($packet->content->isMuc()) {
+            $this->rpc('MovimUtils.removeClass', '#rooms_discover_add', 'disabled');
+        }
+    }
+
+    public function onMucDiscoError(Packet $packet)
+    {
+        $this->rpc('MovimTpl.fill', '#rooms_discover_result', $this->view('_rooms_room_discover_error'));
+    }
+
     /**
      * @brief Display the add room form
      */
@@ -473,21 +538,7 @@ class RoomsUtils extends Base
         $view->assign('name', $name);
         $view->assign('username', $this->me->username);
 
-        $gateways = \App\Info::select('name', 'server', 'parent')
-            ->whereCategory('gateway')
-            ->whereNotNull('parent')
-            ->groupBy('name', 'server', 'parent')
-            ->orderBy('parent')
-            ->orderBy('server')
-            ->get();
-
-        $gateways = $gateways->filter(fn($gateway) => $gateway->parent === $this->me->session->host)
-            ->concat($gateways->reject(fn($gateway) => $gateway->parent === $this->me->session->host));
-
-        $view->assign('gateways', $gateways);
-
         $this->rpc('Rooms.setDefaultServices', $this->me->session->getChatroomsServices());
-
         $this->dialog($view->draw('_rooms_add'));
     }
 
@@ -499,7 +550,7 @@ class RoomsUtils extends Base
         $service = Info::where('parent', $this->me->session->host)
             ->whereCategory('conference')
             ->whereType('text')
-            ->whereDoesntHave('identities', function ($query)  {
+            ->whereDoesntHave('identities', function ($query) {
                 $query->where('category', 'gateway');
             })
             ->first();
@@ -777,7 +828,7 @@ class RoomsUtils extends Base
     public function ajaxDiscoGateway(string $server)
     {
         $this->ajaxResetGatewayRooms();
-        $this->rpc('Rooms.selectGatewayRoom', '', '');
+        $this->rpc('Rooms.selectGatewayRoom', '');
 
         if (!empty($server)) {
             $r = $this->xmpp(new Items);
@@ -982,6 +1033,10 @@ class RoomsUtils extends Base
         $this->rpc('MovimTpl.fill', '#gateway_rooms', $this->view('_rooms_gateway_rooms', [
             'rooms' => $rooms
         ]));
+
+        if ($rooms->count() > 0) {
+            $this->rpc('Rooms.selectGatewayRoom', $rooms->keys()->first());
+        }
     }
 
     public function onDiscoGatewayError(Packet $packet)

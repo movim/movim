@@ -14,7 +14,6 @@ use Moxl\Xec\Action\Muc\SetConfig;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Space\AddRoom;
 use Moxl\Xec\Action\Space\DeleteRoom;
-use Moxl\Xec\Action\Space\GetRooms;
 use Moxl\Xec\Payload\Packet;
 
 class SpaceRooms extends Base
@@ -115,7 +114,6 @@ class SpaceRooms extends Base
             'subscription' => $subscription,
             'edit' => $edit,
         ]));
-        $this->rpc('Notif_ajaxGet', false);
     }
 
     public function ajaxAdd(string $server, string $node)
@@ -126,8 +124,6 @@ class SpaceRooms extends Base
             ->first();
 
         if ($affiliation->affiliation == 'owner') {
-
-
             $this->dialog($this->view('_spacerooms_add', [
                 'server' => $server,
                 'node' => $node,
@@ -176,7 +172,10 @@ class SpaceRooms extends Base
 
             $sc = $this->xmpp(new SetConfig);
             $sc->setTo($form->conference->value)
-                ->setData(['muc#roomconfig_roomname' => $form->name->value])
+                ->setData([
+                    'muc#roomconfig_roomname' => $form->name->value,
+                    'muc#roominfo_pubsub' => $subscription->uri
+                ])
                 ->request();
         }
     }
@@ -204,6 +203,7 @@ class SpaceRooms extends Base
             ->setPinned($form->pinned->value)
             ->setNick($this->me->username)
             ->setNotify(false)
+            ->setPubsubnode('xmpp:' . $form->server->value . '?;node=' . $form->node->value)
             ->request();
 
         // Publish the item in the Space
@@ -257,5 +257,11 @@ class SpaceRooms extends Base
             ->setNode($node)
             ->setId($id)
             ->request();
+    }
+
+    public function prepareRoomCounter(Conference $conference)
+    {
+        return (new Rooms(user: $this->me, sessionId: $this->sessionId))
+            ->prepareRoomCounter($conference, withAvatar: true);
     }
 }

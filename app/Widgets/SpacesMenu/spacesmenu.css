@@ -22,7 +22,7 @@ ul#spacesmenu_widget li.enabled span.primary img {
     box-shadow: var(--elevation-3);
 }
 
-ul#spacesmenu_widget li.pinned span.primary:after {
+ul#spacesmenu_widget li.pinned:not(.locked) span.primary::before {
     display: inline-block;
     position: absolute;
     bottom: 0;
@@ -40,7 +40,16 @@ ul#spacesmenu_widget li.pinned span.primary:after {
     box-shadow: var(--elevation-1);
 }
 
-ul#spacesmenu_widget span.primary.locked::before {
+ul#spacesmenu_widget li span.primary[data-counter]:after {
+    font-family: 'Roboto';
+}
+
+/* If we have messages _and_ quote notifications, we prioritize the second one */
+ul#spacesmenu_widget li span.primary[data-counter]:has(span.counter:not(:empty)):after {
+    display: none;
+}
+
+ul#spacesmenu_widget li span.primary.locked::before {
     display: inline-block;
     position: absolute;
     width: 5rem;

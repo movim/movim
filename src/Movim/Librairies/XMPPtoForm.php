@@ -482,7 +482,7 @@ class XMPPtoForm
                 $select->appendChild($optgroup);
             }
 
-            $value = 'xmpp:' . $subscription->server . '?;node=' . $subscription->node;
+            $value = $subscription->uri;
             $option = $this->html->createElement('option', $subscription->node);
             $option->setAttribute('value', $value);
 

@@ -107,7 +107,7 @@ class Muc
         return $query;
     }
 
-    public static function createGroupChat(string $name)
+    public static function createGroupChat(string $name, ?string $pubsubNode = null)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
@@ -118,7 +118,7 @@ class Muc
         $x->setAttribute('type', 'submit');
         $query->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, [
+        $config = [
             'FORM_TYPE' => 'http://jabber.org/protocol/muc#roomconfig',
             'muc#roomconfig_roomname' => $name,
             'muc#roomconfig_persistentroom' => 'true',
@@ -127,8 +127,13 @@ class Muc
             'muc#roomconfig_whois' => 'anyone',
             'muc#roomconfig_publicroom' => 'false',
             //'muc#roomconfig_allowpm' => 'false'
-        ]);
+        ];
 
+        if ($pubsubNode) {
+            $config['muc#roominfo_pubsub'] = $pubsubNode;
+        }
+
+        \Moxl\Utils::injectConfigInX($x, $config);
         return $query;
     }
 

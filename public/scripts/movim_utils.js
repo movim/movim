@@ -44,6 +44,17 @@ var MovimUtils = {
     disconnect: function () {
         window.location.replace(ERROR_URI);
     },
+
+    clearAllActivesRooms: function () {
+        document.querySelectorAll('ul.list.rooms li:not(.subheader)')
+            .forEach(item => item.classList.remove('active'));
+    },
+    setActiveRoom: function (jid) {
+        if (typeof Chats != 'undefined') Chats.clearAllActives();
+        MovimUtils.clearAllActivesRooms();
+        MovimUtils.addClass('ul.list.rooms li[data-jid="' + jid + '"]', 'active');
+    },
+
     formToJson: function (formname) {
         var form = document.forms[formname];
 

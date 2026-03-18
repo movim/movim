@@ -32,7 +32,7 @@ class CommunityHeader extends Base
     {
         $info = $packet->content;
 
-        if (!$info->isMicroblogCommentsNode()) {
+        if (!$info->isMicroblogCommentsNode() && !$info->isAccount()) {
             $this->rpc('MovimTpl.fill', '#community_header', $this->prepareHeader($info->server, $info->node));
         }
     }
