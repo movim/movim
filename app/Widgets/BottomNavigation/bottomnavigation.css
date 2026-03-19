@@ -89,15 +89,19 @@ ul#bottomnavigation li:not(.active) div p {
     }
 
     ul#bottomnavigation #bottomchatcounter.notifications:after {
-        content: '';
+        content: '\e7f4';
         display: block;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 2rem;
+        height: 2rem;
         right: calc(50% - 2.5rem);
         top: calc(50% + 0.50rem);
         position: absolute;
         border-radius: 1rem;
         background-color: var(--movim-accent);
         box-shadow: var(--elevation-2);
+        font-family: 'Material Symbols';
+        font-size: 1.2rem;
+        line-height: 2rem;
+        font-variation-settings: 'FILL' 1;
     }
 }

@@ -41,7 +41,7 @@ ul#spacesmenu_widget li.pinned:not(.locked) span.primary::before {
 }
 
 ul#spacesmenu_widget li span.primary[data-counter]:after {
-    font-family: 'Roboto';
+    content: '\e0ca';
 }
 
 /* If we have messages _and_ quote notifications, we prioritize the second one */
