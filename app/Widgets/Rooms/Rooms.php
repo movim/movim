@@ -190,7 +190,7 @@ class Rooms extends Base
     {
         $conference = $packet->content;
 
-        if ($conference->isFromSpace()) return;
+        if (!$conference || $conference->isFromSpace()) return;
 
         if ($conference && $conference->autojoin) {
             $this->ajaxJoin($conference->conference, $conference->nick);
