@@ -125,7 +125,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-05 17:25+0200\n"
+"POT-Creation-Date: 2026-03-22 09:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023,2025-2026\n"
 "Language-Team: Bulgarian (http://app.transifex.com/movim/movim/language/bg/)\n"
@@ -173,7 +173,7 @@ msgid "Sourcecode"
 msgstr ""
 
 #: [about]sourcecode_text
-msgid "Checkout the sourcecode on the Github repository"
+msgid "Check out the sourcecode on the Github repository"
 msgstr ""
 
 #: [account]title [page]account
@@ -807,7 +807,8 @@ msgid "Resolving OMEMO devices"
 msgstr "Разрешаване на OMEMO устройства"
 
 #: [omemo]building_sessions
-msgid "Building encryption sessions"
+#, fuzzy
+msgid "Building encrypted sessions"
 msgstr "Създаване на шифровани сесии"
 
 #: [omemo]building_own_sessions
@@ -2288,6 +2289,24 @@ msgstr "Име или описание"
 msgid "A registration is required before using the service"
 msgstr "Необходима е регистрация преди използване на услугата"
 
+#: [rooms]discover
+#, fuzzy
+msgid "Discover a room"
+msgstr "Открий"
+
+#: [rooms]disco_error
+msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
+msgstr ""
+
+#: [rooms]disco_not_muc
+#, fuzzy
+msgid "You are trying to add something that is not a chatroom"
+msgstr "Не ви е позволено да изпращате съобщения в тази чат стая"
+
+#: [rooms]disco_maybe_space
+msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
 msgstr "Присъединете се към тази чат стая при влизане"
@@ -3192,8 +3211,8 @@ msgctxt "[page]share"
 msgid "Share"
 msgstr "Споделете"
 
-#: [page]spaces
-msgid "Spaces"
+#: [page]space
+msgid "Space"
 msgstr ""
 
 #: [page]tag

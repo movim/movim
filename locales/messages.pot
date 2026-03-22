@@ -121,14 +121,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-05 17:25+0200\n"
+"POT-Creation-Date: 2026-03-22 09:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.19.2\n"
+"X-Generator: Translate Toolkit 3.19.3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -169,7 +169,7 @@ msgid "Sourcecode"
 msgstr ""
 
 #: [about]sourcecode_text
-msgid "Checkout the sourcecode on the Github repository"
+msgid "Check out the sourcecode on the Github repository"
 msgstr ""
 
 #: [account]title [page]account
@@ -831,7 +831,7 @@ msgid "Resolving OMEMO devices"
 msgstr ""
 
 #: [omemo]building_sessions
-msgid "Building encryption sessions"
+msgid "Building encrypted sessions"
 msgstr ""
 
 #: [omemo]building_own_sessions
@@ -2342,6 +2342,26 @@ msgstr ""
 msgid "A registration is required before using the service"
 msgstr ""
 
+#: [rooms]discover
+msgid "Discover a room"
+msgstr ""
+
+#: [rooms]disco_error
+msgid ""
+"Movim was not able to find a valid chatroom. Try maybe with another "
+"identifier."
+msgstr ""
+
+#: [rooms]disco_not_muc
+msgid "You are trying to add something that is not a chatroom"
+msgstr ""
+
+#: [rooms]disco_maybe_space
+msgid ""
+"This chatroom seems to be part of a Space, we are not able to find which one "
+"but we strongly advise you to join the Space instead"
+msgstr ""
+
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
 msgstr ""
@@ -3246,8 +3266,8 @@ msgctxt "[page]share"
 msgid "Share"
 msgstr ""
 
-#: [page]spaces
-msgid "Spaces"
+#: [page]space
+msgid "Space"
 msgstr ""
 
 #: [page]tag
