@@ -33,6 +33,12 @@ var Chat = {
     translateY: 0,
     slideAuthorized: false,
 
+    messageStartX: 0,
+    messageStartY: 0,
+    messageTranslateX: 0,
+    messageTranslateY: 0,
+    messageSlideAuthorized: false,
+
     // Temporary messages, for OMEMO local messages
     tempMessages: {},
     // Local list of the room members, used to encrypt the messages
@@ -892,6 +898,49 @@ var Chat = {
             }
         });
     },
+    setMessageSwipeBehaviour: function () {
+        if (MovimUtils.isMobile()) {
+            document.querySelectorAll('#chat_widget li div.bubble:not(.file) > div.message').forEach(message => {
+                message.ontouchstart = function (event) {
+                    Chat.messageStartX = event.targetTouches[0].pageX;
+                    Chat.messageStartY = event.targetTouches[0].pageY;
+                };
+
+                message.ontouchmove = function (event) {
+                    Chat.messageTranslateX = parseInt(event.targetTouches[0].pageX - Chat.messageStartX);
+                    Chat.messageTranslateY = parseInt(event.targetTouches[0].pageY - Chat.messageStartY);
+                    if (Math.abs(Chat.messageTranslateX) > delay && Math.abs(Chat.messageTranslateX) <= clientWidth) {
+                        if (Math.abs(Chat.messageTranslateX) > 100) {
+                            message.classList.add('reply');
+                        }
+
+                        if (Math.abs(Chat.messageTranslateY) < delay) {
+                            Chat.messageSlideAuthorized = true;
+                        }
+
+                        var moveX = parseInt(event.targetTouches[0].pageX - Chat.messageStartX);
+                        if (Chat.messageSlideAuthorized && moveX < 0) {
+                            message.parentNode.style.transform = 'translateX(' + (moveX + delay) + 'px)';
+                        }
+                    } else {
+                        message.parentNode.style.transform = '';
+                        message.classList.remove('reply');
+                    }
+                };
+
+                message.ontouchend = function (event) {
+                    if (Math.abs(Chat.messageTranslateX) > 100 && Chat.messageSlideAuthorized) {
+                        Chat_ajaxHttpDaemonReply(message.dataset.mid);
+                    }
+
+                    message.classList.remove('reply');
+                    message.parentNode.style.transform = '';
+                    Chat.messageSlideAuthorized = false;
+                    Chat.messageStartX = Chat.messageStartY = Chat.messageTranslateX = Chat.messageTranslateY = 0;
+                };
+            });
+        }
+    },
     checkDiscussion: function (page) {
         for (var firstKey in page) break;
         if (page[firstKey] == null) return false;
@@ -1000,6 +1049,7 @@ var Chat = {
         Chat.setVideoObserverBehaviour();
         Chat.setAudioPlayersBehaviour();
         Chat.setMessagePressBehaviour();
+        Chat.setMessageSwipeBehaviour();
     },
     appendMessage: function (idjidtime, data, prepend) {
         if (data.body === null) return;
@@ -1715,7 +1765,7 @@ var Chat = {
             );
         }
     },
-    searchMembers : function(key) {
+    searchMembers: function (key) {
         var selector = '#room_nav_members > li';
 
         document.querySelectorAll(selector)
@@ -1725,7 +1775,6 @@ var Chat = {
             selector + '[name*="' + MovimUtils.cleanupId(key).slice(3) + '"]'
         );
 
-        console.log(founds)
         founds.forEach(item => item.classList.add('found'));
     }
 };
@@ -1782,7 +1831,6 @@ MovimEvents.registerWindow('loaded', 'chat', () => {
         Upload.initiate((file) => {
             if (['chat', 'space'].includes(MovimUtils.urlParts().page)
                 && (typeof (PublishStories) == 'undefined' || PublishStories.main == undefined)) {
-                    console.log('GNAP')
                 Upload.prependName = 'chat';
             }
         });

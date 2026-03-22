@@ -20,6 +20,8 @@ v0.33 (master)
 * Enable audio sharing (when available) when doing screen sharing, refactor the jingle contents handling
 * Add a maxsessions admin setting to limit the maximum amount of connected sessions on the instance
 * Spaces (and everything related)
+* Swipe to reply on mobile
+* Cards for attached messages in chat (divyaranjan1905)
 
 v0.32.1
 ---------------------------

@@ -675,6 +675,29 @@ li div.bubble.file:not(.audio):after {
     position: relative;
 }
 
+#chat_widget .bubble>div:after {
+    font-family: 'Material Symbols';
+    content: '\e15e';
+    position: absolute;
+    right: 0;
+    top: -0.5rem;
+    background-color: rgba(var(--movim-background-main), 0.5);
+    color: rgba(var(--movim-font), 0.8);
+    font-size: 2.5rem;
+    width: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    border-radius: 2rem;
+    transition: opacity 0.25s ease, transform .25s ease;
+    transform: translateX(-2rem);
+    opacity: 0;
+}
+
+#chat_widget .bubble>div.reply:after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 #chat_widget .bubble:not(.file)>div:last-child {
     padding-right: 12rem;
 }

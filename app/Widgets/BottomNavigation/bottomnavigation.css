@@ -81,6 +81,7 @@ ul#bottomnavigation li:not(.active) div p {
 
     ul#bottomnavigation~main.enabled .button.action {
         opacity: 0;
+        pointer-events: none;
     }
 
     ul#bottomnavigation #bottomnavigation_me {
