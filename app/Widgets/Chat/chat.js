@@ -27,6 +27,9 @@ var Chat = {
     searchAutocomplete: null,
 
     // Touch
+    delay: 20,
+    clientWidth: null,
+
     startX: 0,
     startY: 0,
     translateX: 0,
@@ -52,6 +55,8 @@ var Chat = {
 
     init: function (date, separator, config) {
         var div = document.createElement('div');
+
+        Chat.clientWidth = Math.abs(document.body.clientWidth);
 
         div.innerHTML = date;
         Chat.date = div.firstChild.cloneNode(true);
@@ -909,18 +914,19 @@ var Chat = {
                 message.ontouchmove = function (event) {
                     Chat.messageTranslateX = parseInt(event.targetTouches[0].pageX - Chat.messageStartX);
                     Chat.messageTranslateY = parseInt(event.targetTouches[0].pageY - Chat.messageStartY);
-                    if (Math.abs(Chat.messageTranslateX) > delay && Math.abs(Chat.messageTranslateX) <= clientWidth) {
-                        if (Math.abs(Chat.messageTranslateX) > 100) {
-                            message.classList.add('reply');
-                        }
-
-                        if (Math.abs(Chat.messageTranslateY) < delay) {
+                    if (Math.abs(Chat.messageTranslateX) > Chat.delay && Math.abs(Chat.messageTranslateX) <= Chat.clientWidth) {
+                        if (Math.abs(Chat.messageTranslateY) < Chat.delay) {
                             Chat.messageSlideAuthorized = true;
                         }
 
-                        var moveX = parseInt(event.targetTouches[0].pageX - Chat.messageStartX);
-                        if (Chat.messageSlideAuthorized && moveX < 0) {
-                            message.parentNode.style.transform = 'translateX(' + (moveX + delay) + 'px)';
+                        if (Chat.messageTranslateX < -100) {
+                            message.classList.add('reply');
+                        } else {
+                            message.classList.remove('reply');
+                        }
+
+                        if (Chat.messageSlideAuthorized && Chat.messageTranslateX < 0 && Chat.messageTranslateX > -110) {
+                            message.parentNode.style.transform = 'translateX(' + (Chat.messageTranslateX + Chat.delay) + 'px)';
                         }
                     } else {
                         message.parentNode.style.transform = '';
@@ -1695,33 +1701,27 @@ var Chat = {
     },
     touchEvents: function () {
         var chat = document.querySelector('#chat_widget');
-        clientWidth = Math.abs(document.body.clientWidth);
-
         if (!chat) return;
 
         chat.addEventListener('touchstart', function (event) {
             chat.classList.remove('moving');
-
             Chat.startX = event.targetTouches[0].pageX;
             Chat.startY = event.targetTouches[0].pageY;
         }, true);
 
         chat.addEventListener('touchmove', function (event) {
-            moveX = event.targetTouches[0].pageX;
-            moveY = event.targetTouches[0].pageY;
-            delay = 20;
-            Chat.translateX = parseInt(moveX - Chat.startX);
-            Chat.translateY = parseInt(moveY - Chat.startY);
+            Chat.translateX = parseInt(event.targetTouches[0].pageX - Chat.startX);
+            Chat.translateY = parseInt(event.targetTouches[0].pageY - Chat.startY);
 
-            if (Chat.translateX > delay && Chat.translateX <= clientWidth) {
+            if (Chat.translateX > Chat.delay && Chat.translateX <= Chat.clientWidth) {
                 // If the horizontal movement is allowed and the vertical one is not important
                 // we authorize the slide
-                if (Math.abs(Chat.translateY) < delay) {
+                if (Math.abs(Chat.translateY) < Chat.delay) {
                     Chat.slideAuthorized = true;
                 }
 
                 if (Chat.slideAuthorized) {
-                    chat.style.transform = 'translateX(' + (Chat.translateX - delay) + 'px)';
+                    chat.style.transform = 'translateX(' + (Chat.translateX - Chat.delay) + 'px)';
                 }
             }
         }, true);
@@ -1729,7 +1729,7 @@ var Chat = {
         chat.addEventListener('touchend', function (event) {
             chat.classList.add('moving');
 
-            if (Chat.translateX > (clientWidth / 4) && Chat.slideAuthorized) {
+            if (Chat.translateX > (Chat.clientWidth / 4) && Chat.slideAuthorized) {
                 MovimTpl.hidePanel();
                 Chat.get(null, true);
             }

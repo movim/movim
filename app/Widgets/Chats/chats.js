@@ -89,8 +89,9 @@ var Chats = {
                                 Chats.slideAuthorized = true;
                             }
 
-                            var moveX = parseInt(event.targetTouches[0].pageX - Chats.startX);
-                            moveX = moveX < 0 ? (moveX + delay) : (moveX - delay);
+                            var moveX = Chats.translateX < 0
+                                ? (Chats.translateX + delay)
+                                : (Chats.translateX - delay);
 
                             if (Chats.slideAuthorized) {
                                 this.style.transform = 'translateX(' + (moveX) + 'px)';
