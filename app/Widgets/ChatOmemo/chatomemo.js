@@ -281,6 +281,8 @@ var ChatOmemo = {
 
         let deviceId = await store.getLocalRegistrationId();
 
+        if (!deviceId) return;
+
         /**
          * Check if we need to build more sessions
          */
@@ -474,7 +476,6 @@ var ChatOmemo = {
             URL.revokeObjectURL(link.href)
         }
     },
-
     resolveContactFingerprints: function (jid) {
         let omemoStorage = new ChatOmemoStorage;
 
