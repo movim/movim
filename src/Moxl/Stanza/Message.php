@@ -149,7 +149,7 @@ class Message
         }
 
         if (
-            !in_array($receipts, ['received', 'displayed'])
+            !in_array($receipts, [null, 'received', 'displayed'])
             && $chatstates == 'active'
         ) {
             $markable = $dom->createElementNS('urn:xmpp:chat-markers:0', 'markable');

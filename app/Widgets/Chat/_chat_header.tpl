@@ -35,7 +35,7 @@
                     </span>
                 {elseif="$conference->connected"}
                     {$count = $conference->presences()->count()}
-                    <span class="counter alt" data-mucreceipts="{if="$conference->presences()->count() < 10"}true{/if}">
+                    <span class="counter alt" {if="$conference->presences()->count() < 10"}data-mucreceipts="true"{/if}>
                         {if="$count > 99"}99+{else}{$count}{/if}
                     </span>
                 {/if}

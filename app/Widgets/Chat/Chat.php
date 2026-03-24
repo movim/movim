@@ -328,11 +328,14 @@ class Chat extends \Movim\Widget\Base
                         );
                     }
 
-                    Wrapper::getInstance()->iterate('space_counter',
+                    Wrapper::getInstance()->iterate(
+                        'space_counter',
                         (new Packet)->pack(
                             $this->me->unreads(space: [$conference->space_server, $conference->space_node]),
                             $subscription->counterId
-                        ), user: $this->me, sessionId: $this->sessionId
+                        ),
+                        user: $this->me,
+                        sessionId: $this->sessionId
                     );
 
                     $spaceCounter = true;
@@ -625,7 +628,15 @@ class Chat extends \Movim\Widget\Base
             $messageOMEMOHeader->import($omemo);
         }
 
-        $this->sendMessage($to, $message, $muc, null, $messageFile, $replyToMid, $mucReceipts, $messageOMEMOHeader);
+        $this->sendMessage(
+            to: $to,
+            message: $message,
+            muc: $muc,
+            file: $messageFile,
+            replyToMid: $replyToMid,
+            mucReceipts: $mucReceipts,
+            messageOMEMOHeader: $messageOMEMOHeader
+        );
     }
 
     /**

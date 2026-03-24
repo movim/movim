@@ -205,7 +205,7 @@ var Chat = {
 
         if (isMuc) {
             var counter = document.querySelector('#chat_widget header span.counter');
-            mucReceipts = (counter && Boolean(counter.dataset.mucreceipts));
+            mucReceipts = (counter && counter.dataset.mucreceipts == 'true');
         }
 
         Chat.removeSeparator();
