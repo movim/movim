@@ -1,4 +1,4 @@
-<a href="#" onclick="listIconClick(this)" title="{$conference->name}">
+<a href="#" onclick="listIconClick(event)" title="{$conference->name}">
     {if="$conference->isFromSpace()"}
         <i class="material-symbols">tag</i>
     {elseif="$withAvatar == false"}

@@ -46,7 +46,7 @@
         <p class="post_title line {if="!$post->isStory()"}{if="$post->isBrief()"}brief{/if} two{/if}" title="{$post->title}">
             <a href="#"
                 class="normal"
-                onclick="listIconClick(this)"
+                onclick="listIconClick(event)"
             >
                 {autoescape="off"}
                     {$post->title}

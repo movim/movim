@@ -4,7 +4,7 @@
         title="{$c->__('page.chats')}"
     >
         <span class="primary icon bubble" id="bottomchatcounter">
-            <a href="#" onclick="listIconClick(this)">
+            <a href="#" onclick="listIconClick(event)">
                 <i class="material-symbols">{if="$page == 'space'"}speaker_notes{elseif="array_key_exists('rooms', $_GET)"}forum{else}chat_bubble{/if}</i>
             </a>
         </span>
@@ -15,7 +15,7 @@
             title="{$c->__('page.news')}"
         >
             <span class="primary icon">
-                <a href="#" onclick="listIconClick(this)">
+                <a href="#" onclick="listIconClick(event)">
                     <i class="material-symbols">newsmode</i>
                     <span data-key="news" class="counter"></span>
                 </a>
@@ -26,7 +26,7 @@
             title="{$c->__('page.explore')}"
         >
             <span class="primary icon">
-                <a href="#" onclick="listIconClick(this)">
+                <a href="#" onclick="listIconClick(event)">
                     <i class="material-symbols">explore</i>
                 </a>
             </span>
@@ -36,7 +36,7 @@
         title="{$c->__('notifs.title')}"
     >
         <span class="primary icon">
-            <a href="#" onclick="listIconClick(this)">
+            <a href="#" onclick="listIconClick(event)">
                 <i class="material-symbols">notifications</i>
                 <span class="counter notifications"></span>
             </a>

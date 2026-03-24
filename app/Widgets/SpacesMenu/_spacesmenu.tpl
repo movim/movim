@@ -8,7 +8,7 @@
             id="{$value->counterId}"
             {if="$unreads > 0"}data-counter="{$unreads}"{/if}
             >
-            <a href="#" onclick="listIconClick(this)">
+            <a href="#" onclick="listIconClick(event)">
                 {if="$value->info"}
                     <img src="{$value->info->getPicture(placeholder: $value->info->name)}">
                 {else}
@@ -35,7 +35,7 @@
 
 <li onclick="SpacesMenu_ajaxAdd()">
     <span class="primary icon bubble space_add">
-        <a href="#" onclick="listIconClick(this)">
+        <a href="#" onclick="listIconClick(event)">
             <i class="material-symbols">add</i>
         </a>
     </span>

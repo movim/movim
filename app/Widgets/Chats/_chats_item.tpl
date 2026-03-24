@@ -33,7 +33,7 @@
     {/if}
     {if="$count > 0"}data-counter="{$count}"{/if}
     >
-        <a href="#" onclick="listIconClick(this);" title="{if="$roster"}{$roster->truename}{else}{$contact->truename}{/if}">
+        <a href="#" onclick="listIconClick(event);" title="{if="$roster"}{$roster->truename}{else}{$contact->truename}{/if}">
             <img alt="" src="{if="$roster"}{$roster->getPicture(\Movim\ImageSize::M)}{else}{$contact->getPicture(\Movim\ImageSize::M)}{/if}">
         </a>
     </span>

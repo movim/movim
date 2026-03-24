@@ -19,7 +19,7 @@
                         {if="$value->presence"}
                             status {$value->presence->presencekey}
                         {/if}">
-                        <a href="#" onclick="listIconClick(this)">
+                        <a href="#" onclick="listIconClick(event)">
                             <img src="{$value->getPicture()}">
                         </a>
                     </span>

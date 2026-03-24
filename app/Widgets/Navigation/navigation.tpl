@@ -5,7 +5,7 @@
             title="{$c->__('page.news')}"
         >
             <span class="primary icon">
-                <a href="#" onclick="listIconClick(this)">
+                <a href="#" onclick="listIconClick(event)">
                     <i class="material-symbols">newsmode</i>
                     <span data-key="news" class="counter"></span>
                 </a>
@@ -20,7 +20,7 @@
             title="{$c->__('page.explore')}"
         >
             <span class="primary icon">
-                <a href="#" onclick="listIconClick(this)">
+                <a href="#" onclick="listIconClick(event)">
                     <i class="material-symbols">explore</i>
                 </a>
             </span>
@@ -35,7 +35,7 @@
             title="{$c->__('post.publish_something')}"
         >
             <span class="primary icon">
-                <a href="#" onclick="listIconClick(this)">
+                <a href="#" onclick="listIconClick(event)">
                     <i class="material-symbols">note_stack_add</i>
                 </a>
             </span>
@@ -51,7 +51,7 @@
         title="{$c->__('button.search')}"
     >
         <span class="primary icon">
-            <a href="#" onclick="listIconClick(this)">
+            <a href="#" onclick="listIconClick(event)">
                 <i class="material-symbols">search</i>
             </a>
         </span>

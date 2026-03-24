@@ -495,7 +495,8 @@ var MovimUtils = {
 /*
  * Set the li onclick event to the link and stop propagation, for accessinility purposes
  */
-function listIconClick(element) {
-    let li = element.closest('li');
+function listIconClick(event) {
+    event.stopPropagation();
+    let li = event.target.closest('li');
     if (li) li.click();
 }

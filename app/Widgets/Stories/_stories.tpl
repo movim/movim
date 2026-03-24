@@ -5,7 +5,7 @@
         <li class="block story add" onclick="PublishStories_ajaxOpen()">
             <div>
                 <p>
-                    <a href="#" onclick="listIconClick(this)" class="normal">
+                    <a href="#" onclick="listIconClick(event)" class="normal">
                         <i class="material-symbols">add_circle</i>
                     </a>
                 </p>
@@ -19,7 +19,7 @@
                     <p class="line">
                         {if="$value->contact"}
                             <span class="icon bubble tiny">
-                                <a href="#" onclick="listIconClick(this)">
+                                <a href="#" onclick="listIconClick(event)">
                                     <img src="{$value->contact->getPicture()}">
                                 </a>
                             </span>
@@ -42,7 +42,7 @@
                         {if="$value->presence"}
                             status {$value->presence->presencekey}
                         {/if}">
-                        <a href="#" onclick="listIconClick(this)">
+                        <a href="#" onclick="listIconClick(event)">
                             <img src="{$value->getPicture()}">
                         </a>
                     </span>
