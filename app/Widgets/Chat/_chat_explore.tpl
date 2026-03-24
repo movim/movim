@@ -22,7 +22,7 @@
         {/if}
         {loop="$users"}
             <li class="block" title="{$value->id}"
-                onclick="Search.chat('{$value->jid|echapJS}', false)">
+                onclick="Search.chat('{$value->id|echapJS}', false)">
                 <img class="main" src="{$value->getBanner(\Movim\ImageSize::L)}">
                 <span class="primary icon bubble {if="$value->value"}status {$presencestxt[$value->value]}{/if}">
                     <img src="{$value->getPicture(\Movim\ImageSize::M)}">

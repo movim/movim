@@ -127,7 +127,7 @@ function getHashtags($string): array
 /**
  * @desc Echap the anti-slashs for Javascript
  */
-function echapJS($string): string
+function echapJS(string $string): string
 {
     return str_replace(["\\", "'"], ["\\\\", "\\'"], $string);
 }
@@ -135,7 +135,7 @@ function echapJS($string): string
 /**
  * @desc Echap the anti-slashs for Javascript
  */
-function unechap($string): string
+function unechap(string $string): string
 {
     return str_replace("\\\\", "\\", $string);
 }
