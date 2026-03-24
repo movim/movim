@@ -5,7 +5,9 @@
         title="{$c->__('page.chats')}"
     >
         <span class="primary icon" id="chatcounter" {if="$chatCounter > 0"}data-counter="{$chatCounter}"{/if}>
-            <i class="material-symbols">chat_bubble</i>
+            <a href="#" onclick="listIconClick(this);">
+                <i class="material-symbols">chat_bubble</i>
+            </a>
         </span>
         <div>
             <p>{$c->__('page.chats')}</p>

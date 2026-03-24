@@ -169,7 +169,7 @@
         <li>
             <div>
                 <p>
-                    <a class="button flat oppose"
+                    <a class="button flat oppose" href="#"
                     {if="$public"}
                         {if="$post->isMicroblog()"}
                             onclick="MovimUtils.reload('{$c->route('blog', [$post->server, $post->nodeid])}')"

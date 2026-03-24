@@ -6,14 +6,14 @@
 
 {if="$info != null && $info->pubsubpublishmodel != null && $info->pubsubpublishmodel != 'publishers'"}
     {if="$info->pubsubpublishmodel == 'open' || ($info->pubsubpublishmodel == 'subscribers' && $subscription != null)"}
-        <a class="button action color" title="{$c->__('menu.add_post')}" href="{$c->route('publish', [$server, $node])}">
+        <button class="button action color" title="{$c->__('menu.add_post')}" onclick="MovimUtils.reload('{$c->route('publish', [$server, $node])}')">
             <i class="material-symbols">{if="$info->isGallery()"}add_photo_alternate{else}post_add{/if}</i>
-        </a>
+        </button>
     {/if}
 {else}
-    <a onclick="CommunityHeader_ajaxTestPublish('{$server}', '{$node}')" class="button action color" title="{$c->__('menu.add_post')}">
+    <button onclick="CommunityHeader_ajaxTestPublish('{$server}', '{$node}')" class="button action color" title="{$c->__('menu.add_post')}">
         <i class="material-symbols">{if="$info!= null && $info->isGallery()"}add_photo_alternate{else}post_add{/if}</i>
-    </a>
+    </button>
 {/if}
 <ul class="list thick">
     <li>

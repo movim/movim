@@ -6,7 +6,7 @@
 <?php $this->widget('AdHoc');?>
 <?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
 
-<nav>
+<nav aria-label="<?php echo __('global.main_menu') ?>">
     <?php $this->widget('Presence');?>
     <?php $this->widget('Shortcuts');?>
     <?php $this->widget('SpacesMenu');?>
@@ -19,10 +19,10 @@
     <?php $this->widget('Upload');?>
     <?php $this->widget('Chat');?>
     <?php $this->widget('ChatActions');?>
-    <div id="scroll_block">
-        <a class="button action color" onclick="Search_ajaxRequest(true)">
+    <div id="scroll_block" role="menu">
+        <button class="button action color" onclick="Search_ajaxRequest(true)" aria-label="<?php echo __('chats.new_title'); ?>">
             <i class="material-symbols">chat_add_on</i>
-        </a>
+        </button>
         <?php if ($this->user?->hasPubsub() && $this->user?->hasUpload()) { ?>
             <?php $this->widget('Stories');?>
         <?php } ?>

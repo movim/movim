@@ -207,6 +207,10 @@ a {
     border-color: var(--movim-accent);
 }
 
+a.normal {
+    color: inherit;
+}
+
 form > div .checkbox:before { background-color: var(--movim-accent); }
 
 form input:focus:not(:invalid) + label,

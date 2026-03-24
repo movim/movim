@@ -6,7 +6,7 @@
 <?php $this->widget('AdHoc');?>
 <?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
 
-<nav>
+<nav aria-label="<?php echo __('global.main_menu') ?>">
     <?php $this->widget('Presence');?>
     <?php $this->widget('Shortcuts');?>
     <?php $this->widget('SpacesMenu');?>
@@ -19,7 +19,7 @@
     <?php $this->widget('Upload');?>
     <?php $this->widget('Chat');?>
     <?php $this->widget('ChatActions');?>
-    <div id="scroll_block">
+    <div id="scroll_block" role="menu">
         <?php if ($this->user?->hasPubsub() && $this->user?->hasUpload()) { ?>
             <?php $this->widget('Stories');?>
         <?php } ?>

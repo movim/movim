@@ -82,8 +82,8 @@
     <video id="local_video" autoplay muted poster="{$c->baseUri}theme/img/empty.png"></video>
 
     <div class="controls">
-        <a id="main" class="button action color red" onclick="MovimVisio.goodbye()">
+        <button id="main" class="button action color red" onclick="MovimVisio.goodbye()">
             <i class="material-symbols">call_end</i>
-        </a>
+        </button>
     </div>
 </div>

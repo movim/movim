@@ -50,6 +50,12 @@ a:visited {
     text-decoration: none;
 }
 
+a:focus:not(:hover) {
+    border-radius: 2px;
+    outline: 3px solid var(--movim-accent);
+    outline-offset: -2px;
+}
+
 /* Navigation bar */
 
 body>nav {
@@ -375,14 +381,14 @@ img.avatar:not([src=""])+.placeholder {
 }
 
 .placeholder h1 {
-    color: #888;
+    opacity: 0.9;
     font-size: 2.5rem;
     line-height: 3rem;
     margin-bottom: 1rem;
 }
 
 .placeholder h4 {
-    color: #AAA;
+    opacity: 0.7;
 }
 
 .placeholder p {

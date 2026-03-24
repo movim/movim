@@ -3,7 +3,7 @@
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
 
-<nav class="on_desktop">
+<nav aria-label="<?php echo __('global.main_menu') ?>" class="on_desktop">
     <?php $this->widget('Presence');?>
     <?php $this->widget('Shortcuts');?>
     <?php $this->widget('SpacesMenu');?>

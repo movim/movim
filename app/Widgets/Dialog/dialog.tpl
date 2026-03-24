@@ -1,1 +1,1 @@
-<div id="dialog" class="dialog actions"></div>
+<div role="dialog" id="dialog" class="dialog actions"></div>

@@ -8,12 +8,14 @@
             id="{$value->counterId}"
             {if="$unreads > 0"}data-counter="{$unreads}"{/if}
             >
-            {if="$value->info"}
-                <img src="{$value->info->getPicture(placeholder: $value->info->name)}">
-            {else}
-                <i class="material-symbols spin">progress_activity</i>
-            {/if}
-            <span data-key="space{$value->server}{$value->node}" class="counter notifications"></span>
+            <a href="#" onclick="listIconClick(this)">
+                {if="$value->info"}
+                    <img src="{$value->info->getPicture(placeholder: $value->info->name)}">
+                {else}
+                    <i class="material-symbols spin">progress_activity</i>
+                {/if}
+                <span data-key="space{$value->server}{$value->node}" class="counter notifications"></span>
+            </a>
         </span>
 
         <span class="control icon gray">
@@ -33,7 +35,9 @@
 
 <li onclick="SpacesMenu_ajaxAdd()">
     <span class="primary icon bubble space_add">
-        <i class="material-symbols">add</i>
+        <a href="#" onclick="listIconClick(this)">
+            <i class="material-symbols">add</i>
+        </a>
     </span>
     <div>
         <p class="line">{$c->__('spacesmenu.create_space_title')}</p>

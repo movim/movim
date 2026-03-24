@@ -1,8 +1,14 @@
 <div class="lists">
-    <ul class="list card shadow flex gallery active" style="{if="$stories->count()"}grid-template-columns: 0.5fr repeat({$stories->count()}, 1fr);{/if}">
+    <ul class="list card shadow flex gallery active"
+        aria-label="{$c->__('stories.title')}"
+        style="{if="$stories->count()"}grid-template-columns: 0.5fr repeat({$stories->count()}, 1fr);{/if}">
         <li class="block story add" onclick="PublishStories_ajaxOpen()">
             <div>
-                <p><i class="material-symbols">add_circle</i></p>
+                <p>
+                    <a href="#" onclick="listIconClick(this)" class="normal">
+                        <i class="material-symbols">add_circle</i>
+                    </a>
+                </p>
             </div>
         </li>
         {loop="$stories"}
@@ -11,10 +17,11 @@
                 <div>
                     <p class="line">{$value->title}</p>
                     <p class="line">
-
                         {if="$value->contact"}
                             <span class="icon bubble tiny">
-                                <img src="{$value->contact->getPicture()}">
+                                <a href="#" onclick="listIconClick(this)">
+                                    <img src="{$value->contact->getPicture()}">
+                                </a>
                             </span>
                         {/if}
                         <a href="#" onclick="MovimUtils.reload('{$c->route('contact', $value->aid)}')">
@@ -30,12 +37,14 @@
             {loop="$topcontacts"}
                 <li class="block {if="$value->last > 60"} inactive{/if}"
                     onclick="Search.chat('{$value->jid|echapJS}', false)">
-                    <img class="main" src="{$value->getBanner(\Movim\ImageSize::L)}">
+                    <img aria-hidden="true" class="main" src="{$value->getBanner(\Movim\ImageSize::L)}">
                     <span class="primary icon bubble
                         {if="$value->presence"}
                             status {$value->presence->presencekey}
                         {/if}">
-                        <img src="{$value->getPicture()}">
+                        <a href="#" onclick="listIconClick(this)">
+                            <img src="{$value->getPicture()}">
+                        </a>
                     </span>
                     <div>
                         <p class="line" title="{$value->truename}">

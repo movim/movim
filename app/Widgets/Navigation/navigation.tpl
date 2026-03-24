@@ -5,8 +5,10 @@
             title="{$c->__('page.news')}"
         >
             <span class="primary icon">
-                <i class="material-symbols">newsmode</i>
-                <span data-key="news" class="counter"></span>
+                <a href="#" onclick="listIconClick(this)">
+                    <i class="material-symbols">newsmode</i>
+                    <span data-key="news" class="counter"></span>
+                </a>
             </span>
             <div>
                 <p>{$c->__('page.news')}</p>
@@ -17,7 +19,11 @@
             class="on_desktop {if="$page == 'explore' || $page == 'community'"}active{/if}"
             title="{$c->__('page.explore')}"
         >
-            <span class="primary icon"><i class="material-symbols">explore</i></span>
+            <span class="primary icon">
+                <a href="#" onclick="listIconClick(this)">
+                    <i class="material-symbols">explore</i>
+                </a>
+            </span>
             <div>
                 <p>{$c->__('page.explore')}</p>
             </div>
@@ -28,20 +34,26 @@
             class="on_desktop publish_something"
             title="{$c->__('post.publish_something')}"
         >
-            <span class="primary icon"><i class="material-symbols">note_stack_add</i></span>
+            <span class="primary icon">
+                <a href="#" onclick="listIconClick(this)">
+                    <i class="material-symbols">note_stack_add</i>
+                </a>
+            </span>
             <div>
                 <p>{$c->__('post.publish_something')}</p>
             </div>
         </li>
     {/if}
 </ul>
-<hr class="on_desktop"/>
+<hr role="none" class="on_desktop"/>
 <ul class="navigation list active on_desktop" dir="ltr">
     <li onclick="Search_ajaxRequest()"
         title="{$c->__('button.search')}"
     >
         <span class="primary icon">
-            <i class="material-symbols">search</i>
+            <a href="#" onclick="listIconClick(this)">
+                <i class="material-symbols">search</i>
+            </a>
         </span>
         <div>
             <p>{$c->__('button.search')}</p>
@@ -52,8 +64,10 @@
         title="{$c->__('notifs.title')}"
     >
         <span class="primary icon">
-            <i class="material-symbols">notifications</i>
-            <span class="counter notifications"></span>
+            <a href="#" onclick="Notifications_ajaxRequest(); event.stopPropagation();">
+                <i class="material-symbols">notifications</i>
+                <span class="counter notifications"></span>
+            </a>
         </span>
         <div>
             <p>{$c->__('notifs.title')}</p>

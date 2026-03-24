@@ -1,10 +1,11 @@
-<li>
+<li role="menuitem" onclick="Presence_ajaxHttpMenu()">
     <span
-        onclick="Presence_ajaxHttpMenu()"
         class="primary icon bubble status
         {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}
     ">
-        <img src="{$me->getPicture(\Movim\ImageSize::M)}">
+        <a href="#" onclick="listIconClick(this)">
+            <img alt="{$c->__('status.my_avatar')}" src="{$me->getPicture(\Movim\ImageSize::M)}">
+        </a>
     </span>
     <div>
         <p class="line bold">

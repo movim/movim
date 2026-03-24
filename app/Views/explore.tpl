@@ -6,7 +6,7 @@
 
 <?php $this->widget('PostActions');?>
 
-<nav class="on_desktop">
+<nav aria-label="<?php echo __('global.main_menu') ?>" class="on_desktop">
     <?php $this->widget('Presence');?>
     <?php $this->widget('Shortcuts');?>
     <?php $this->widget('SpacesMenu');?>
@@ -16,9 +16,9 @@
 <?php $this->widget('BottomNavigation');?>
 
 <main>
-    <a class="button action color" onclick="Search_ajaxRequest(false, true)" title="{$c->__('button.search')}">
+    <button class="button action color" onclick="Search_ajaxRequest(false, true)" title="{$c->__('button.search')}">
         <i class="material-symbols">search</i>
-    </a>
+    </button>
     <div class="large">
         <?php if (!empty($_GET['s']) && $_GET['s'] == 'servers') { ?>
             <header>

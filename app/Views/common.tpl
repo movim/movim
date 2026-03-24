@@ -13,9 +13,9 @@
     </ul>
 </noscript>
 <?php } ?>
-<div id="hiddendiv"></div>
-<div id="snackbar" class="snackbar"></div>
-<div id="status_websocket" class="snackbar hide">
+<div id="hiddendiv" aria-hidden="true"></div>
+<div role="status" id="snackbar" class="snackbar"></div>
+<div role="status" id="status_websocket" class="snackbar hide">
     <ul class="list thick active">
         <li onclick="MovimWebsocket.init()">
             <span class="primary icon gray spin">

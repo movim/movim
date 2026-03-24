@@ -82,7 +82,7 @@
                 {if="!$delimiter && strtotime($value->published) < strtotime($since)"}
                     {$delimiter = true}
                     {if="$key != 0"}
-                        <li><br/><hr /><br/></li>
+                        <li aria-hidden="true"><br/><hr /><br/></li>
                     {/if}
                 {/if}
                 <li>

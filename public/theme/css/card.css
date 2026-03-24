@@ -17,6 +17,10 @@
     margin-bottom: 1rem;
 }
 
+.card > .block:focus:not(:hover) {
+    outline: 2px solid var(--movim-accent);
+}
+
 .card img.main {
     filter: blur(0.4rem);
 }

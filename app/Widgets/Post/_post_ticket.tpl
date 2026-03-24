@@ -1,22 +1,23 @@
 <li id="{$post->nodeid|cleanupId}"
     class="block ticket {if="$post->embed"}embed{/if} {if="$post->isStory()"}story{/if}"
-
-    {if="$public"}
-        {if="$post->isMicroblog()"}
-            onclick="MovimUtils.reload('{$c->route('blog', [$post->server, $post->nodeid])}')"
+    onclick="
+        {if="$public"}
+            {if="$post->isMicroblog()"}
+                MovimUtils.reload('{$c->route('blog', [$post->server, $post->nodeid])}');
+            {else}
+                MovimUtils.reload('{$c->route('community', [$post->server, $post->node, $post->nodeid])}');
+            {/if}
         {else}
-            onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node, $post->nodeid])}')"
-        {/if}
-    {else}
-        {if="$post->isStory()"}
-            onclick="StoriesViewer_ajaxHttpGet({$post->id})"
-        {else}
-            onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}'); Drawer.clear()"
-        {/if}
-    {/if}
+            {if="$post->isStory()"}
+                StoriesViewer_ajaxHttpGet({$post->id});
+            {else}
+                MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}'); Drawer.clear();
+            {/if}
+        {/if}"
 >
     {if="$post->picture != null"}
         <img class="main"
+            aria-hidden="true"
             src="{$post->picture->href|protectPicture}"
             {if="!empty($post->picture->title)"}
                 alt="{$post->picture->title}"
@@ -35,25 +36,24 @@
     {elseif="!$post->contact"}
         <span class="control icon thumb">
             {if="$post->info"}
-                <img src="{$post->info->getPicture(\Movim\ImageSize::M)}">
+                <img alt="" aria-hidden="true" src="{$post->info->getPicture(\Movim\ImageSize::M)}">
             {else}
-                <img src="{$post->node|avatarPlaceholder}">
+                <img alt="" aria-hidden="true" src="{$post->node|avatarPlaceholder}">
             {/if}
         </span>
     {/if}
     <div>
-        {if="$post->isBrief()"}
-            <p class="line {if="!$post->isStory()"}brief two{/if}" title="{$post->title}">
+        <p class="post_title line {if="!$post->isStory()"}{if="$post->isBrief()"}brief{/if} two{/if}" title="{$post->title}">
+            <a href="#"
+                class="normal"
+                onclick="listIconClick(this)"
+            >
                 {autoescape="off"}
                     {$post->title}
                 {/autoescape}
-            </p>
-        {else}
-            <p class="line {if="!$post->isStory()"}two{/if}" title="{$post->title}">
-                {autoescape="off"}
-                    {$post->title}
-                {/autoescape}
-            </p>
+            </a>
+        </p>
+        {if="!$post->isBrief()"}
             <p dir="auto">{autoescape="off"}{$post->getSummary()|prepareString}{/autoescape}</p>
         {/if}
         <p class="line">

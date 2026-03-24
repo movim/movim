@@ -1,8 +1,8 @@
-<div class="placeholder">
+<div class="placeholder" aria-hidden="true">
     <i class="material-symbols fill">forum</i>
 </div>
 
-<div id="chat_frequent">
+<div id="chat_frequent" aria-label="{$c->__('chat.frequent')}">
     <ul class="list flex fifth card shadow compact middle active">
         {if="$top->isNotEmpty()"}
             <li class="subheader">
@@ -19,12 +19,13 @@
                         {if="$value->presence"}
                             status {$value->presence->presencekey}
                         {/if}">
-                        <img src="{$value->getPicture()}">
+                        <a href="#" onclick="listIconClick(this)">
+                            <img src="{$value->getPicture()}">
+                        </a>
                     </span>
                     <div>
                         <p class="line" title="{$value->truename}">
                             {$value->truename}
-
                             {if="$value->presence && $value->presence->capability"}
                                 <span class="second" title="{$value->presence->capability->name}">
                                     <i class="material-symbols">{$value->presence->capability->getDeviceIcon()}</i>
@@ -48,11 +49,11 @@
     </ul>
 </div>
 
-<div id="chat_explore">
+<div id="chat_explore" aria-label="{$c->__('explore.explore')}">
     {autoescape="off"}
         {$c->prepareExplore()}
     {/autoescape}
 </div>
 
-<br />
-<br />
+<br aria-hidden="true"/>
+<br aria-hidden="true"/>

@@ -1,1 +1,1 @@
-<div id="toast" class="toast"></div>
+<div role="status" id="toast" class="toast"></div>

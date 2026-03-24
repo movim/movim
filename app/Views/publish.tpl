@@ -3,7 +3,7 @@
 <?php $this->widget('Notifications');?>
 <?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
 
-<nav>
+<nav aria-label="<?php echo __('global.main_menu') ?>">
     <?php $this->widget('Presence');?>
     <?php $this->widget('Shortcuts');?>
     <?php $this->widget('SpacesMenu');?>

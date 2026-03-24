@@ -489,5 +489,13 @@ var MovimUtils = {
     logError: function(error) {
         console.log(error.name + ': ' + error.message);
         console.error(error);
-    }
+    },
 };
+
+/*
+ * Set the li onclick event to the link and stop propagation, for accessinility purposes
+ */
+function listIconClick(element) {
+    let li = element.closest('li');
+    if (li) li.click();
+}

@@ -1,7 +1,7 @@
 {if="$contact->isContact($c->me->id)"}
-    <a href="{$c->route('publish')}" class="button action color" title="{$c->__('menu.add_post')}">
+    <button class="button action color" title="{$c->__('menu.add_post')}" onclick="MovimUtils.reload('{$c->route('publish')}')">
         <i class="material-symbols">post_add</i>
-    </a>
+    </button>
 {/if}
 
 <header class="big top color {$contact->color}"

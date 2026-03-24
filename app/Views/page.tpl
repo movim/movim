@@ -22,10 +22,11 @@
             '?t=' .
             socketAPITime();
             ?>" defer></script>
-        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <meta name="viewport" content="width=device-width">
         <%scripts%>
     </head>
     <body dir="<%dir%>"
+          role="application"
           class="<?php if (!$this->public && $this->user && $this->user->nightmode) { ?>nightmode<?php } ?>">
         <%common%>
         <%content%>

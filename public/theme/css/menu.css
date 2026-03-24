@@ -24,17 +24,17 @@ body[dir="rtl"]>nav ul.list li .primary~*:not(.primary):not(.control):not(.bubbl
 
 /* Navigation */
 
-ul.navigation li>span.primary>i {
+ul.navigation li>span.primary i {
     transition: opacity 0.15s ease;
     opacity: 0.5;
 }
 
-ul.navigation li.active>span.primary>i,
+ul.navigation li.active>span.primary i,
 ul.navigation li:not(.active):hover>span.primary>i {
     opacity: 1;
 }
 
-ul.navigation li.active>span.primary>i {
+ul.navigation li.active>span.primary i {
     font-variation-settings: 'FILL' 1;
 }
 
