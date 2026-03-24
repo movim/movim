@@ -59,8 +59,8 @@ var Login = {
                 localStorage.getItem('quickDeviceId'),
                 localStorage.getItem('quickLogin'),
                 localStorage.getItem('quickKey'),
-                Login.getCookie(),
                 Intl.DateTimeFormat().resolvedOptions().timeZone,
+                Login.getCookie(),
                 true, // check is we can actually quick login before registering
             );
         }
@@ -90,8 +90,8 @@ MovimWebsocket.register(function () {
             localStorage.getItem('quickDeviceId'),
             localStorage.getItem('quickLogin'),
             localStorage.getItem('quickKey'),
-            Login.getCookie(),
-            Intl.DateTimeFormat().resolvedOptions().timeZone
+            Intl.DateTimeFormat().resolvedOptions().timeZone,
+            Login.getCookie()
         );
     } else {
         form = document.querySelector('form[name="login"]');

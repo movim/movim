@@ -200,8 +200,8 @@ class Login extends Base
         string $deviceId,
         string $login,
         string $key,
-        ?string $sessionId = null,
         string $timezone,
+        ?string $sessionId = null,
         ?bool $check = false
     ) {
         if ($sessionId == null) return;
