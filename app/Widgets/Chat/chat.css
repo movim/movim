@@ -673,6 +673,7 @@ li div.bubble.file:not(.audio):after {
     padding-right: 7rem;
     margin-right: -7rem;
     position: relative;
+    min-width: 3rem;
 }
 
 #chat_widget .bubble>div:after {
