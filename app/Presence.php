@@ -90,7 +90,7 @@ class Presence extends Model
 
     public function getConferencePictureAttribute(): string
     {
-        return Image::getOrCreate($this->mucjid, 120) ?? avatarPlaceholder($this->resource);
+        return Image::getOrCreate($this->mucjid, width: 120) ?? avatarPlaceholder($this->resource);
     }
 
     public function getAffiliationTxtAttribute(): ?string

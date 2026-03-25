@@ -12,7 +12,6 @@ class Image
     private $_im;
     private $_inMemory = false;
 
-    public static $folder = 'cache/';
     public static $formats = ['jpeg' => '.jpg', 'png' => '.png', 'webp' => '.webp', 'gif' => '.gif'];
     public static $hash = 'sha256'; // Cache need to be cleared in a migration if changed
     private static $originalType = '_o';
@@ -50,11 +49,11 @@ class Image
     /**
      * @desc Load a bin picture from a path
      */
-    public function load(string $format = DEFAULT_PICTURE_FORMAT): bool
+    public function load(string $format = DEFAULT_PICTURE_FORMAT, ?string $directory = CACHE_DIR): bool
     {
         if (!empty($this->_key)) {
             return $this->fromPath(
-                PUBLIC_CACHE_PATH .
+                PUBLIC_PATH . $directory .
                     hash(Image::$hash, $this->_key) .
                     self::$originalType .
                     self::$formats[$format]
@@ -129,44 +128,43 @@ class Image
     /**
      * @desc Convert to a base64
      */
-    public function toBase(): string
+    public function toBase(): ?string
     {
         if ($this->_im) {
-            return base64_encode($this->toBin());
+            return base64_encode($this->_im->getImageBlob());
         }
-    }
 
-    /**
-     * @desc Convert to a base64
-     */
-    public function toBin(): string
-    {
-        if ($this->_im) {
-            return $this->_im->getImageBlob();
-        }
+        return null;
     }
 
     /**
      * @desc Return the picture URL or create it if possible
      */
-    public static function getOrCreate(string $key, $width = false, $height = false, $format = DEFAULT_PICTURE_FORMAT, bool $noTime = false): ?string
-    {
+    public static function getOrCreate(
+        string $key,
+        ?int $width = null,
+        ?int $height = null,
+        ?string $format = DEFAULT_PICTURE_FORMAT,
+        ?bool $noTime = false,
+        ?string $directory = CACHE_DIR,
+    ): ?string {
         if (!in_array($format, array_keys(self::$formats))) {
             $format = DEFAULT_PICTURE_FORMAT;
         }
 
-        $type = $width ? '_' . $width
+        $type = $width != null
+            ? '_' . $width
             : self::$originalType;
 
         /**
          * The file is in the cache and we can directly return it
          */
         if (file_exists(
-            PUBLIC_CACHE_PATH . hash(Image::$hash, $key) .
+            PUBLIC_PATH . $directory . hash(Image::$hash, $key) .
                 $type . self::$formats[$format]
         )) {
             return urilize(
-                self::$folder . hash(Image::$hash, $key) . $type . self::$formats[$format],
+                $directory . hash(Image::$hash, $key) . $type . self::$formats[$format],
                 $noTime
             );
         }
@@ -175,9 +173,9 @@ class Image
          * The file is not in the cache but we do have the original to build the requested size
          */
         elseif (
-            $width
+            $width != null
             && file_exists(
-                PUBLIC_CACHE_PATH . hash(Image::$hash, $key) .
+                PUBLIC_PATH . $directory . hash(Image::$hash, $key) .
                     self::$originalType . self::$formats[$format]
             )
         ) {
@@ -189,7 +187,7 @@ class Image
             $im->save($width, $height, $format);
 
             return urilize(
-                self::$folder . hash(Image::$hash, $key) . $type . self::$formats[$format],
+                $directory . hash(Image::$hash, $key) . $type . self::$formats[$format],
                 $noTime
             );
         }
@@ -197,16 +195,21 @@ class Image
         return null;
     }
 
-    public function save($width = false, $height = false, $format = DEFAULT_PICTURE_FORMAT, $quality = DEFAULT_PICTURE_QUALITY)
-    {
+    public function save(
+        ?int $width = null,
+        ?int $height = null,
+        ?string $format = DEFAULT_PICTURE_FORMAT,
+        ?int $quality = DEFAULT_PICTURE_QUALITY,
+        ?string $directory = CACHE_DIR
+    ) {
         if (!$this->_key && !$this->_inMemory) return;
 
-        $type = $width ? '_' . $width
+        $type = $width != null ? '_' . $width
             : self::$originalType;
 
         if (!$this->_inMemory) {
             // Cleanup the existing files
-            $path = PUBLIC_CACHE_PATH . hash(Image::$hash, $this->_key) . $type . self::$formats[$format];
+            $path = PUBLIC_PATH . $directory . hash(Image::$hash, $this->_key) . $type . self::$formats[$format];
 
             // If the file exists we replace it
             if (file_exists($path)) {
@@ -216,7 +219,7 @@ class Image
                 if ($width == false) {
                     foreach (
                         glob(
-                            PUBLIC_CACHE_PATH .
+                            PUBLIC_PATH . $directory .
                                 hash(Image::$hash, $this->_key) .
                                 '*' . self::$formats[$format],
                             GLOB_NOSORT
@@ -279,11 +282,11 @@ class Image
             $this->_im->setImageOrientation(\Imagick::ORIENTATION_TOPLEFT);
 
             // Resize
-            if (!$height) {
+            if ($height == null) {
                 $height = $width;
             }
 
-            if ($width && $height) {
+            if ($width != null && $height != null) {
                 $geo = $this->_im->getImageGeometry();
 
                 $this->_im->cropThumbnailImage($width, $height);
@@ -300,7 +303,7 @@ class Image
                 $this->_im->clear();
             }
         } catch (\ImagickException $e) {
-            logError($this->_key . ' '. $e->getMessage());
+            logError($this->_key . ' ' . $e->getMessage());
         }
     }
 
@@ -315,12 +318,12 @@ class Image
     /**
      * Remove the original
      */
-    public function remove(string $format = DEFAULT_PICTURE_FORMAT)
+    /*public function remove(string $format = DEFAULT_PICTURE_FORMAT)
     {
         $path = PUBLIC_CACHE_PATH . hash(Image::$hash, $this->_key) . self::$originalType . self::$formats[$format];
 
         if (file_exists($path)) {
             @unlink($path);
         }
-    }
+    }*/
 }

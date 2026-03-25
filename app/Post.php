@@ -764,13 +764,13 @@ class Post extends Model
             new Promise(function () use ($url) {
                 \requestResolverWorker($url)->then(function ($extractor) {
                     try {
-                        $atte = new Attachment;
-                        $atte->rel = 'enclosure';
-                        $atte->href = $extractor->image;
-                        $atte->type = 'media/jpeg';
-                        $atte->category = 'picture';
-                        $atte->post_id = $this->id;
-                        $atte->save();
+                        $attachment = new Attachment;
+                        $attachment->rel = 'enclosure';
+                        $attachment->href = $extractor->image;
+                        $attachment->type = 'media/jpeg';
+                        $attachment->category = 'picture';
+                        $attachment->post_id = $this->id;
+                        $attachment->save();
                     } catch (\Throwable $th) {
                         //
                     }

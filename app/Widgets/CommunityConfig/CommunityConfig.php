@@ -80,19 +80,19 @@ class CommunityConfig extends Base
 
         $key = $origin . $node . 'avatar';
 
-        $p = new Image;
-        $p->fromBase64($form->photobin->value);
-        $p->setKey($key);
-        $p->save(false, false, 'jpeg', 60);
+        $image = new Image;
+        $image->fromBase64($form->photobin->value);
+        $image->setKey($key);
+        $image->save(format: 'jpeg', quality: 60);
 
         // Reload the freshly compressed picture
-        $p->load('jpeg');
+        $image->load('jpeg');
 
         $r = $this->xmpp(new AvatarSet);
         $r->setTo($origin)
             ->setNode($node)
-            ->setUrl(Image::getOrCreate($key, false, false, 'jpeg', true))
-            ->setData($p->toBase())
+            ->setUrl(Image::getOrCreate($key, format: 'jpeg', noTime: true))
+            ->setData($image->toBase())
             ->request();
     }
 

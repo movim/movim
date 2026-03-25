@@ -11,8 +11,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Respect\Validation\Validator;
-
 use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
@@ -82,6 +80,16 @@ class DaemonCommand extends Command
             }
         } else {
             $output->writeln('<comment>Please configure DAEMON_URL in .env</comment>');
+            exit;
+        }
+
+        if ($paths = $this->checkDirectories()) {
+            foreach ($paths as $path) {
+                $output->writeln('<error>Can’t create ' . $path . ' directory</error>');
+            }
+
+            $output->writeln('<info>You can create them yourself or let the daemon create them for you.</info>');
+            $output->writeln('<info>In both case they should be writable by the same system user that is running the daemon.</info>');
             exit;
         }
 
@@ -160,7 +168,7 @@ class DaemonCommand extends Command
                 'baseuri'       => $baseuri,
                 'DAEMON_DEBUG'  => config('daemon.debug'),
                 'DAEMON_PORT'   => config('daemon.port'),
-                'DAEMON_VERBOSE'=> config('daemon.verbose'),
+                'DAEMON_VERBOSE' => config('daemon.verbose'),
                 'DB_DATABASE'   => config('database.database'),
                 'DB_DRIVER'     => config('database.driver'),
                 'DB_HOST'       => config('database.host'),
@@ -177,5 +185,24 @@ class DaemonCommand extends Command
         (new IoServer($app, $socket, $loop))->run();
 
         return Command::SUCCESS;
+    }
+
+    private function checkDirectories(): ?array
+    {
+        $paths = [
+            CACHE_PATH,
+            PUBLIC_CACHE_PATH,
+            PUBLIC_IMAGES_PATH,
+            config('paths.log')
+        ];
+        $errors = [];
+
+        foreach ($paths as $path) {
+            if (!file_exists($path) && !@mkdir($path)) {
+                array_push($errors, $path);
+            }
+        }
+
+        return !empty($errors) ? $errors : null;
     }
 }

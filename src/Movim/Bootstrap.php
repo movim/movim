@@ -40,28 +40,11 @@ class Bootstrap
             return null;
         }
 
-        //Check if vital system need is OK
-        $this->checkSystem();
         $session = $this->checkSession();
         $this->loadTimezone($session);
         $this->loadLanguage($session);
 
         return $session;
-    }
-
-    private function checkSystem()
-    {
-        if (!file_exists(CACHE_PATH) && !@mkdir(CACHE_PATH)) {
-            throw new \Exception('Couldn’t create cache directory');
-        }
-
-        if (!file_exists(PUBLIC_CACHE_PATH) && !@mkdir(PUBLIC_CACHE_PATH)) {
-            throw new \Exception('Couldn’t create public cache directory');
-        }
-
-        if (!file_exists(config('paths.log')) && !@mkdir(config('paths.log'))) {
-            throw new \Exception('Couldn’t create log directory');
-        }
     }
 
     private function setConstants()
@@ -87,10 +70,13 @@ class Bootstrap
         define('APP_PATH', DOCUMENT_ROOT . '/app/');
         define('CONFIG_PATH', DOCUMENT_ROOT . '/config/');
         define('LOCALES_PATH', DOCUMENT_ROOT . '/locales/');
-        define('PUBLIC_CACHE_PATH', DOCUMENT_ROOT . '/public/cache/');
-        define('PUBLIC_EMOJIS_PATH', DOCUMENT_ROOT . '/public/emojis/');
         define('PUBLIC_PATH', DOCUMENT_ROOT . '/public/');
-        define('PUBLIC_STICKERS_PATH', DOCUMENT_ROOT . '/public/stickers/');
+        define('CACHE_DIR', 'cache/');
+        define('IMAGES_DIR', 'images/');
+        define('PUBLIC_CACHE_PATH', PUBLIC_PATH . CACHE_DIR);
+        define('PUBLIC_IMAGES_PATH', PUBLIC_PATH . IMAGES_DIR);
+        define('PUBLIC_EMOJIS_PATH', PUBLIC_PATH . 'emojis/');
+        define('PUBLIC_STICKERS_PATH', PUBLIC_PATH . 'stickers/');
         define('VIEWS_PATH', DOCUMENT_ROOT . '/app/Views/');
         define('WIDGETS_PATH', DOCUMENT_ROOT . '/app/Widgets/');
         define('WORKERS_PATH', DOCUMENT_ROOT . '/workers/');

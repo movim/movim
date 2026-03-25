@@ -273,7 +273,7 @@ class SpaceInfo extends Base
         $p = new Image;
         $p->fromBase64($form->photobin->value);
         $p->setKey($key);
-        $p->save(false, false, 'jpeg', 60);
+        $p->save(format: 'jpeg', quality: 60);
 
         // Reload the freshly compressed picture
         $p->load('jpeg');
@@ -281,7 +281,7 @@ class SpaceInfo extends Base
         $r = $this->xmpp(new AvatarSet);
         $r->setTo($server)
             ->setNode($node)
-            ->setUrl(Image::getOrCreate($key, false, false, 'jpeg', true))
+            ->setUrl(Image::getOrCreate($key, format: 'jpeg', noTime: true))
             ->setData($p->toBase())
             ->request();
     }

@@ -95,20 +95,20 @@ class Avatar extends \Movim\Widget\Base
 
         $key = $this->me->id . 'banner';
 
-        $p = new Image;
-        $p->fromBase64($banner->photobin->value);
-        $p->setKey($key);
-        $p->save(false, false, 'jpeg', 60);
+        $image = new Image;
+        $image->fromBase64($banner->photobin->value);
+        $image->setKey($key);
+        $image->save(format: 'jpeg', quality: 60);
 
         // Reload
-        $p->load('jpeg');
+        $image->load('jpeg');
 
         $r = $this->xmpp(new Set);
         $r->setNode('urn:xmpp:movim-banner:0')
-            ->setUrl(Image::getOrCreate($key, false, false, 'jpeg', true))
+            ->setUrl(Image::getOrCreate($key, format: 'jpeg', noTime: true))
             ->setWidthMetadata(1280)
             ->setHeightMetadata(320)
-            ->setData($p->toBase())
+            ->setData($image->toBase())
             ->request();
     }
 }

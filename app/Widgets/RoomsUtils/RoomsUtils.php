@@ -270,18 +270,18 @@ class RoomsUtils extends Base
 
         $tempKey = \generateKey(6);
 
-        $p = new Image;
-        $p->fromBase64($form->photobin->value);
-        $p->setKey($tempKey);
-        $p->save(false, false, 'jpeg', 60);
+        $image = new Image;
+        $image->fromBase64($form->photobin->value);
+        $image->setKey($tempKey);
+        $image->save(format: 'jpeg', quality: 60);
 
         // Reload
-        $p->load('jpeg');
+        $image->load('jpeg');
 
         $vcard = new \stdClass;
         $vcard->photobin = new \stdClass;
         $vcard->phototype = new \stdClass;
-        $vcard->photobin->value = $p->toBase();
+        $vcard->photobin->value = $image->toBase();
         $vcard->phototype->value = 'image/jpeg';
 
         $r = $this->xmpp(new VcardSet);
