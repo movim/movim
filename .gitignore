@@ -4,6 +4,7 @@
 /cache
 /public/cache
 /public/emojis
+/public/images
 *~
 /composer.phar
 .env
