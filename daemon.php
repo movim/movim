@@ -11,6 +11,7 @@ $bootstrap->boot(true);
 
 $application = new Application;
 $application->addCommand(new Movim\Console\ClearTemplatesCache);
+$application->addCommand(new Movim\Console\ClearImagesCache);
 $application->addCommand(new Movim\Console\CompileLanguages);
 $application->addCommand(new Movim\Console\CompileOpcache);
 $application->addCommand(new Movim\Console\CompileStickers);
