@@ -120,6 +120,7 @@
     height: 100%;
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), black 12rem, black calc(100% - 20rem), rgba(0, 0, 0, 0.25));
     user-select: none;
+    object-fit: cover;
 }
 
 #storiesviewer article.story ul.list {
