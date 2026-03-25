@@ -80,7 +80,7 @@ ul > li.date > div > p,
 main > header a,
 .icon:not(.placeholder):not(.active) a,
 .color input {
-    color: white;
+    color: rgb(var(--movim-font));
 }
 
 .button.color,
