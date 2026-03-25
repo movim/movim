@@ -314,16 +314,4 @@ class Image
     {
         return $this->_im;
     }
-
-    /**
-     * Remove the original
-     */
-    /*public function remove(string $format = DEFAULT_PICTURE_FORMAT)
-    {
-        $path = PUBLIC_CACHE_PATH . hash(Image::$hash, $this->_key) . self::$originalType . self::$formats[$format];
-
-        if (file_exists($path)) {
-            @unlink($path);
-        }
-    }*/
 }
