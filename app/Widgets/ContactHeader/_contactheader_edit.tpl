@@ -1,13 +1,13 @@
 <section>
     <ul class="list thick">
         <li>
-            <span class="control icon active white" onclick="Notifications_ajaxDeleteContact('{$jid|echapJS}')"
+            <span class="control icon active white" onclick="Notifications_ajaxDeleteContact('{$roster->jid|echapJS}')"
                 title="{$c->__('button.delete')}">
                 <i class="material-symbols">delete</i>
             </span>
             <div>
                 <p>{$c->__('edit.title')}</p>
-                <p>{$jid}</p>
+                <p>{$roster->jid}</p>
             </div>
         </li>
     </ul>
@@ -17,10 +17,10 @@
                 name="alias"
                 id="alias"
                 placeholder="{$c->__('edit.alias')}"
-                {if="$contact->name"}
-                    value="{$contact->name}"
+                {if="$roster->name"}
+                    value="{$roster->name}"
                 {else}
-                    value="{$contact->truename}"
+                    value="{$roster->truename}"
                 {/if}"/>
             <label for="alias">{$c->__('edit.alias')}</label>
         </div>
@@ -37,10 +37,10 @@
                 list="group_list"
                 id="group"
                 placeholder="{$c->__('edit.group')}"
-                value="{$contact->group ?? ''}"/>
+                value="{$roster->group ?? ''}"/>
             <label for="group">{$c->__('edit.group')}</label>
         </div>
-        <input type="hidden" name="jid" value="{$contact->id}"/>
+        <input type="hidden" name="jid" value="{$roster->jid}"/>
     </form>
 </section>
 <footer>

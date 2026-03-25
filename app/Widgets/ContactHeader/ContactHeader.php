@@ -68,13 +68,10 @@ class ContactHeader extends Base
             return;
         }
 
-        $view = $this->tpl();
-
-        $view->assign('jid', $jid);
-        $view->assign('contact', $this->me->session->contacts()->where('jid', $jid)->first());
-        $view->assign('groups', $this->me->session->contacts()->select('group')->groupBy('group')->pluck('group')->toArray());
-
-        $this->dialog($view->draw('_contactheader_edit'));
+        $this->dialog($this->view('_contactheader_edit', [
+            'roster'=> $this->me->session->contacts()->where('jid', $jid)->first(),
+            'groups' => $this->me->session->contacts()->select('group')->groupBy('group')->pluck('group')->toArray()
+        ]));
     }
 
     public function ajaxEditSubmit($form)
