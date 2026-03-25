@@ -25,8 +25,8 @@ class Pusher
 
     public function send(
         string $userId,
-        ?string $tag = null,
         string $title,
+        ?string $tag = null,
         ?string $body = null,
         ?string $picture = null,
         ?array $actions = [],
