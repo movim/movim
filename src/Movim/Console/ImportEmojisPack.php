@@ -11,6 +11,7 @@ use App\EmojisPack;
 use Movim\Image;
 use Respect\Validation\Validator;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -37,7 +38,7 @@ class ImportEmojisPack extends Command
             return Command::FAILURE;
         }
 
-        $helper = $this->getHelper('question');
+        $helper = new QuestionHelper;
 
         if (!in_array(get_current_user(), ['www-data', 'nginx', 'apache'])) {
             $question = new ConfirmationQuestion("The command must run under the web server user, continue anyway? [y/N] ? ", false);
