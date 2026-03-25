@@ -8,14 +8,14 @@
             id="{$value->counterId}"
             {if="$unreads > 0"}data-counter="{$unreads}"{/if}
             >
-            <a href="#" onclick="listIconClick(event)">
-                {if="$value->info"}
+            {if="$value->info"}
+                <a href="#" onclick="listIconClick(event)">
                     <img src="{$value->info->getPicture(placeholder: $value->info->name)}">
-                {else}
-                    <i class="material-symbols spin">progress_activity</i>
-                {/if}
-                <span data-key="space{$value->server}{$value->node}" class="counter notifications"></span>
-            </a>
+                    <span data-key="space{$value->server}{$value->node}" class="counter notifications"></span>
+                </a>
+            {else}
+                <i class="material-symbols spin">progress_activity</i>
+            {/if}
         </span>
 
         <span class="control icon gray">

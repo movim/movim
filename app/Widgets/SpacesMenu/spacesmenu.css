@@ -61,4 +61,5 @@ ul#spacesmenu_widget li span.primary.locked::before {
     background-color: rgb(var(--movim-background-main), 0.2);
     backdrop-filter: blur(0.2rem) brightness(80%);
     border-radius: 2rem;
+    left: 0;
 }
