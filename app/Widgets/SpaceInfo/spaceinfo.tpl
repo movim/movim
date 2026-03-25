@@ -1,1 +1,1 @@
-<ul id="spaceinfo_widget"></ul>
+<div id="spaceinfo_widget"></div>
