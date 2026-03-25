@@ -435,6 +435,7 @@ class Chats extends Base
     public function display()
     {
         $this->view->assign('filters', $this->_filters);
+        $this->view->assign('addplaceholder', __('chats.empty', '<i class="material-symbols">chat_add_on</i>'));
         $this->view->assign('filter', $this->me
             ? $this->me->chats_filter : '');
     }
