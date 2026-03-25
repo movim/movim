@@ -21,6 +21,7 @@ class AddItem extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $roster = new DBRoster;
+        $roster->session_id = $this->sessionId;
         $roster->jid = $this->_to;
         $roster->group = $this->_group;
         $roster->name = $this->_name;
