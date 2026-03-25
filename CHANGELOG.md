@@ -22,6 +22,7 @@ v0.33 (master)
 * Spaces (and everything related)
 * Swipe to reply on mobile
 * Cards for attached messages in chat (divyaranjan1905)
+* New ClearImagesCache daemon command
 
 v0.32.1
 ---------------------------
