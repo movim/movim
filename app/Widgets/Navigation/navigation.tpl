@@ -64,7 +64,7 @@
         title="{$c->__('notifs.title')}"
     >
         <span class="primary icon">
-            <a href="#" onclick="Notifications_ajaxRequest(); event.stopPropagation();">
+            <a href="#" onclick="listIconClick(event)">
                 <i class="material-symbols">notifications</i>
                 <span class="counter notifications"></span>
             </a>
