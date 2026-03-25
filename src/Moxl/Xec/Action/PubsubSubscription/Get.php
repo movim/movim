@@ -27,38 +27,39 @@ class Get extends Action
         $subscriptions = [];
 
         foreach ($stanza->pubsub->items->children() as $i) {
+            if ($i->subscription && $i->subscription->attributes()->xmlns == 'urn:xmpp:pubsub:subscription:0') {
+                $subscription = Subscription::firstOrNew([
+                    'jid' => $this->_to,
+                    'server' => (string)$i->subscription->attributes()->server,
+                    'node' => (string)$i->subscription->attributes()->node
+                ]);
 
-            $subscription = Subscription::firstOrNew([
-                'jid' => $this->_to,
-                'server' => (string)$i->subscription->attributes()->server,
-                'node' => (string)$i->subscription->attributes()->node
-            ]);
+                $insertAsWell = false;
 
-            $insertAsWell = false;
+                if ($this->_pepnode == Subscription::PUBLIC_NODE) {
+                    // Remove the private subscriptions to insert the public ones
+                    if ($subscription->exists && $subscription->public == false) {
+                        Subscription::where(function ($query) use ($subscription) {
+                            $query->where('jid', $subscription->jid)
+                                ->where('server', $subscription->server)
+                                ->where('node', $subscription->node);
+                        })->where('space', false)->delete();
 
-            if ($this->_pepnode == Subscription::PUBLIC_NODE) {
-                // Remove the private subscriptions to insert the public ones
-                if ($subscription->exists && $subscription->public == false) {
-                    Subscription::where(function ($query) use ($subscription) {
-                        $query->where('jid', $subscription->jid)
-                            ->where('server', $subscription->server)
-                            ->where('node', $subscription->node);
-                    })->where('space', false)->delete();
+                        $insertAsWell = true;
+                    }
 
-                    $insertAsWell = true;
+                    $subscription->public = true;
                 }
 
-                $subscription->public = true;
-            }
+                if ($this->_pepnode == Subscription::SPACE_NODE) {
+                    $subscription->space = true;
+                }
 
-            if ($this->_pepnode == Subscription::SPACE_NODE) {
-                $subscription->space = true;
-            }
+                $subscription->setExtensions($i->subscription->extensions);
 
-            $subscription->setExtensions($i->subscription->extensions);
-
-            if (!$subscription->exists || $insertAsWell) {
-                array_push($subscriptions, $subscription->toArray());
+                if (!$subscription->exists || $insertAsWell) {
+                    array_push($subscriptions, $subscription->toArray());
+                }
             }
         }
 

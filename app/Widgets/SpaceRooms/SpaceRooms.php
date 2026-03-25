@@ -63,13 +63,16 @@ class SpaceRooms extends Base
             ->where('node', $packet->content['node'])
             ->first();
 
-        $roomWidget = new Rooms(user: $this->me, sessionId: $this->sessionId);
+        if ($subscription) {
+            $roomWidget = new Rooms(user: $this->me, sessionId: $this->sessionId);
 
-        foreach ($subscription->spaceRooms as $room) {
-            if ($room->autojoin && !$room->connected) {
-                $roomWidget->ajaxJoin($room->conference, $room->nick);
+            foreach ($subscription->spaceRooms as $room) {
+                if ($room->autojoin && !$room->connected) {
+                    $roomWidget->ajaxJoin($room->conference, $room->nick);
+                }
             }
         }
+
     }
 
     /**
