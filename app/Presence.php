@@ -227,11 +227,13 @@ class Presence extends Model
             }
         }
 
+
+
         if (
             ($this->mucjid != null && !validateJid($this->mucjid))
             || ($this->mucjidresource != null && !validateJid($this->mucjidresource))
             || !validateJid($this->jid)
-            || !validateResource($this->resource)
+            || ($this->resource != '' && !validateResource($this->resource))
         ) {
             return false;
         }

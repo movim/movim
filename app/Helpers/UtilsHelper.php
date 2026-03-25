@@ -989,9 +989,9 @@ function protectPicture($url)
  */
 function __()
 {
-    $args = func_get_args();
     $locale = Movim\i18n\Locale::start();
 
+    $args = func_get_args();
     $string = array_shift($args);
 
     global $translations;
