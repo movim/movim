@@ -4,20 +4,22 @@
             <span class="primary icon bubble space color gray active edit_avatar" onclick="SpaceInfo_ajaxGetAvatar('{$subscription->server}', '{$subscription->node}')">
                 <img src="{$subscription->info->getPicture(placeholder: $subscription->info->name)}">
             </span>
-            <span class="control icon gray active" onclick="SpaceInfo_ajaxGetConfig('{$subscription->server}', '{$subscription->node}')">
-                <i class="material-symbols">tune</i>
-            </span>
         {else}
             <span class="primary icon bubble space">
                 <img src="{$subscription->info->getPicture(placeholder: $subscription->info->name)}">
             </span>
         {/if}
+        {if="$subscription->info"}
+            <span class="control icon gray active" onclick="SpaceInfo_ajaxInvite('{$subscription->server}', '{$subscription->node}')"
+                title="{$c->__('spaceinfo.invite_title')}">
+                <i class="material-symbols">person_add</i>
+            </span>
+        {/if}
+        <span class="control icon gray active divided" onclick="SpaceInfo_ajaxEditMember('{$subscription->server}', '{$subscription->node}')"
+            title="{$c->__('spaceinfo.config_title')}">
+            <i class="material-symbols">tune</i>
+        </span>
         <div>
-            {if="$subscription->info"}
-                <button class="button oppose color transparent" onclick="SpaceInfo_ajaxInvite('{$subscription->server}', '{$subscription->node}')">
-                    <i class="material-symbols">person_add</i>
-                </button>
-            {/if}
             <p class="line">
                 {autoescape="off"}{$subscription->info->name|addEmojis}{/autoescape}
             </p>
@@ -32,22 +34,20 @@
     </li>
 </ul>
 
-<ul class="list">
+<ul class="list divided">
     <li class="subheader">
         {if="$edit"}
-            <span class="control icon gray active" onclick="SpaceInfo_ajaxEditMember('{$subscription->server}', '{$subscription->node}')">
-                <i class="material-symbols">person_edit</i>
+            <span class="control icon gray active" onclick="SpaceInfo_ajaxGetConfig('{$subscription->server}', '{$subscription->node}')"
+                title="{$c->__('spaceinfo.admin_title')}">
+                <i class="material-symbols">settings</i>
             </span>
-            <span title="{$c->__('spaceinfo.add_room_title')}" class="control icon gray active" onclick="SpaceRooms_ajaxAdd('{$subscription->server}', '{$subscription->node}')">
-                <i class="material-symbols">add</i>
-            </span>
-            <span class="control icon gray active" onclick="MovimUtils.reloadThis()">
-                <i class="material-symbols">check</i>
+            <span class="control icon gray active" onclick="SpacesMenu.get('{$subscription->server}', '{$subscription->node}', '{$c->route('space', [$subscription->server, $subscription->node])}')">
+                <i class="material-symbols">rule</i>
             </span>
         {else}
             <span class="control icon gray active" onclick="SpaceInfo_ajaxGetAffiliations('{$subscription->server}', '{$subscription->node}')"
                 title="{$c->__('spaceinfo.config_title')}">
-                <i class="material-symbols">edit</i>
+                <i class="material-symbols">rule</i>
             </span>
         {/if}
         <div>
@@ -76,5 +76,17 @@
             </p>
         </div>
     </li>
+    {if="$edit"}
+        <li class="active" onclick="SpaceRooms_ajaxAdd('{$subscription->server}', '{$subscription->node}')">
+            <span class="primary icon">
+                <a href="#" onclick="listIconClick(event)">
+                    <i class="material-symbols icon gray">add</i>
+                </a>
+            </span>
+            <div>
+                <p>{$c->__('spaceinfo.add_room_title')}</p>
+            </div>
+        </li>
+    {/if}
     <li id="spaceinfo_pendings"></li>
 </ul>

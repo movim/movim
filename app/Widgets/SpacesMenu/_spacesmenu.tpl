@@ -40,6 +40,6 @@
         </a>
     </span>
     <div>
-        <p class="line">{$c->__('spacesmenu.create_space_title')}</p>
+        <p class="line">{$c->__('spacesmenu.add_space_title')}</p>
     </div>
 </li>

@@ -1,26 +1,7 @@
 <section>
-    <form name="spacesmenu_add">
-        <h3>{$c->__('spacesmenu.invite_space_title')}</h3>
-
-        <div>
-            <ul class="list">
-                <li>
-                    <span class="primary icon gray">
-                        <i class="material-symbols">communities</i>
-                    </span>
-                    <div>
-                        <input name="uri" placeholder="xmpp:server.com?;node=key" required/>
-                        <label for="uri">{$c->__('spacesmenu.invitation_key')}</label>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </form>
+    <h3>{$c->__('spacesmenu.add_space_title')}</h3>
 
     {if="$c->me->hasSpaces()"}
-        <br />
-        <hr />
-
         <ul class="list active">
             <li class onclick="SpacesMenu_ajaxCreate()">
                 <span class="primary icon gray">
@@ -35,6 +16,26 @@
             </li>
         </ul>
     {/if}
+
+    <hr />
+    <br />
+
+    <h4>{$c->__('spacesmenu.invite_space_title')}</h4>
+    <form name="spacesmenu_add">
+        <div>
+            <ul class="list">
+                <li>
+                    <span class="primary icon gray">
+                        <i class="material-symbols">communities</i>
+                    </span>
+                    <div>
+                        <input name="uri" placeholder="xmpp:server.com?;node=key" required/>
+                        <label for="uri">{$c->__('spacesmenu.invitation_key')}</label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </form>
 </section>
 <footer>
     <button class="button flat" onclick="Dialog_ajaxClear()">
@@ -44,6 +45,6 @@
         class="button flat"
         onclick="SpacesMenu_ajaxJoinFromUri(MovimUtils.formToJson('spacesmenu_add')); Dialog_ajaxClear();"
         >
-        {$c->__('button.add')}
+        {$c->__('button.join')}
     </button>
 </footer>

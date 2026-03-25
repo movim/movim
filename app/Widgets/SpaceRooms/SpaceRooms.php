@@ -28,8 +28,6 @@ class SpaceRooms extends Base
         $this->registerEvent('space_addedroom', 'onEditedRooms');
         $this->registerEvent('space_deletedroom', 'onEditedRooms');
         $this->registerEvent('presence_muc_errorregistrationrequired', 'onRoomRegistrationRequired');
-
-        $this->addcss('spacerooms.css');
     }
 
     public function onAffiliations(Packet $packet)
@@ -113,6 +111,7 @@ class SpaceRooms extends Base
         $this->rpc('MovimTpl.fill', '#spacerooms_widget', $this->view('_spacerooms', [
             'subscription' => $subscription,
             'edit' => $edit,
+            'addplaceholder' => __('rooms.first_room_placeholder', '<i class="material-symbols">rule</i>')
         ]));
     }
 

@@ -1,7 +1,7 @@
 <div id="rooms">
     <ul class="list rooms divided thin spaced active spin"></ul>
 
-    <ul class="list head thin">
+    <ul class="list head flex active">
         <li class="subheader" title="{$c->__('page.configuration')}">
             <div>
                 <p>
@@ -14,6 +14,26 @@
             <span class="control icon active gray" onclick="Rooms.toggleEdit()">
                 <i class="material-symbols">rule</i>
             </span>
+        </li>
+        <li class="join divided" onclick="RoomsExplore_ajaxSearch();">
+            <span class="primary icon gray">
+                <i class="material-symbols">groups</i>
+            </span>
+            <div>
+                <p class="line">
+                    {$c->__('button.join')}
+                </p>
+            </div>
+        </li>
+        <li class="add divided" onclick="RoomsUtils_ajaxAdd(false, null, true); Drawer.clear()">
+            <span class="primary icon transparent gray">
+                <i class="material-symbols">group_add</i>
+            </span>
+            <div>
+                <p class="line">
+                    {$c->__('button.create')}
+                </p>
+            </div>
         </li>
     </ul>
 

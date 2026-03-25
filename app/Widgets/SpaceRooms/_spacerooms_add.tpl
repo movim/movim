@@ -1,6 +1,6 @@
 <section>
     <form name="spacerooms_add">
-        <h3>{$c->__('rooms.create')}</h3>
+        <h3>{$c->__('spaceinfo.add_room_title')}</h3>
 
         <input type="hidden" name="server" value="{$server|echapJS}">
         <input type="hidden" name="node" value="{$node|echapJS}">
