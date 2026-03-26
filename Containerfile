@@ -12,7 +12,7 @@ RUN touch /etc/s6-overlay/s6-rc.d/user/contents.d/movim-daemon
 COPY /etc/nginx/conf.d/movim-websocket.conf /etc/nginx/server-opts.d/
 
 # PHP
-RUN install-php-extensions imagick gd
+RUN install-php-extensions imagick gd bcmath
 
 # Movim
 
