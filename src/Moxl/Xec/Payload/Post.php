@@ -11,6 +11,8 @@ class Post extends Payload
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
+        if (!$stanza->items || !$stanza->items->item) return;
+
         $from = (string)$parent->attributes()->from;
         $node = (string)$stanza->items->attributes()->node;
 
