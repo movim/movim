@@ -142,6 +142,15 @@ class Linker
 
     public function handleJSON(\stdClass $request, ?string $sessionId = null)
     {
+        // TODO fixme! Healing the missing user that seems to disapear sometimes
+        if ($this->user == null && $sessionId != null) {
+            $this->attachUser(User::where('id', function ($query) use ($sessionId) {
+                $query->select('user_id')
+                    ->from('sessions')
+                    ->where('id', $sessionId);
+            })->first());
+        }
+
         (new RPC($this->user))->handleJSON($request, $sessionId);
     }
 
