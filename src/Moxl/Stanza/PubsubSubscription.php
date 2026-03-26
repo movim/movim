@@ -53,7 +53,7 @@ class PubsubSubscription
         $publish->appendChild($item);
 
         $subscription = $dom->createElement('subscription');
-        $subscription->setAttribute('xmlns', Subscription::PUBLIC_NODE);
+        $subscription->setAttribute('xmlns', Subscription::SUBSCRIPTION_XMLNS);
         $subscription->setAttribute('server', $server);
         $subscription->setAttribute('node', $node);
         $item->appendChild($subscription);

@@ -21,13 +21,19 @@ class Get extends Action
     {
         Subscription::where('jid', $this->_to)
             ->where('public', ($this->_pepnode == Subscription::PUBLIC_NODE))
-            ->where('space', false)
+            ->where('space', ($this->_pepnode == Subscription::SPACE_NODE))
             ->delete();
 
         $subscriptions = [];
 
         foreach ($stanza->pubsub->items->children() as $i) {
-            if ($i->subscription && $i->subscription->attributes()->xmlns == 'urn:xmpp:pubsub:subscription:0') {
+            if (
+                $i->subscription &&
+                in_array($i->subscription->attributes()->xmlns, [
+                    Subscription::SUBSCRIPTION_XMLNS,
+                    'urn:xmpp:pubsub:subscription' /* should be the first one, only there for retro-compatibility */
+                ])
+            ) {
                 $subscription = Subscription::firstOrNew([
                     'jid' => $this->_to,
                     'server' => (string)$i->subscription->attributes()->server,

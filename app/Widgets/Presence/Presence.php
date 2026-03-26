@@ -130,6 +130,7 @@ class Presence extends Base
         // Public Subscritions
         $ps = $this->xmpp(new GetPubsubSubscriptions);
         $ps->setTo($this->me->id)
+            ->setPEPNode(Subscription::PUBLIC_NODE)
             ->request();
     }
 

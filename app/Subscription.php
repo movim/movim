@@ -15,6 +15,7 @@ class Subscription extends Model
     public const PUBLIC_NODE = 'urn:xmpp:pubsub:subscription';
     public const SPACE_NODE = '{https://movim.eu}spaces_subscriptions_node';
     public const PRIVATE_NODE = 'urn:xmpp:pubsub:movim-public-subscription';
+    public const SUBSCRIPTION_XMLNS = 'urn:xmpp:pubsub:subscription:0';
 
     public static function saveMany(array $subscriptions)
     {
