@@ -32,7 +32,7 @@ var Login = {
         cookie = document.cookie.split('=');
 
         if (cookie[0] == 'MOVIM_SESSION_ID') {
-            return cookie[1];
+            return cookie[1].substring(0, 32);
         }
 
         return null;

@@ -262,6 +262,10 @@ class Login extends Base
             return;
         }
 
+        if ($sessionId != null && strlen($sessionId) != 32) {
+            $this->showErrorBlock('password_format');
+            return;
+        }
 
         $started = (int)requestAPI('started');
         if ($configuration->maxsessions > 0 && $started >= $configuration->maxsessions) {
