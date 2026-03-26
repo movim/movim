@@ -16,6 +16,7 @@
     title="{$contact->id}{if="isset($message)"} • {$c->prepareDate($message->published)}{/if}">
 
     {$storiesCount = 0}
+    {$stories = false}
 
     <span class="primary icon bubble
         {if="$roster"}
@@ -28,12 +29,14 @@
     "
     {if="$roster && $firstUnseenStory = $c->me->rosterFirstUnseenStory($roster)"}
         onclick="StoriesViewer_ajaxHttpGet({$firstUnseenStory->id}); event.stopPropagation();"
+        {$stories = true}
     {elseif="$storiesCount > 0"}
-        onclick="StoriesViewer_ajaxHttpGet({$c->me->rosterStories($roster)->first()->id}); event.stopPropagation(); "
+        onclick="StoriesViewer_ajaxHttpGet({$c->me->rosterStories($roster)->first()->id}); event.stopPropagation();"
+        {$stories = true}
     {/if}
     {if="$count > 0"}data-counter="{$count}"{/if}
     >
-        <a href="#" onclick="listIconClick(event);" title="{if="$roster"}{$roster->truename}{else}{$contact->truename}{/if}">
+        <a href="#" {if="$stories == false"}onclick="listIconClick(event);"{/if} title="{if="$roster"}{$roster->truename}{else}{$contact->truename}{/if}">
             <img alt="" src="{if="$roster"}{$roster->getPicture(\Movim\ImageSize::M)}{else}{$contact->getPicture(\Movim\ImageSize::M)}{/if}">
         </a>
     </span>
