@@ -13,7 +13,7 @@ class JingleFinish extends Payload
 
         $from = (string)$parent->attributes()->from;
 
-        if (!$stanza->muji) {
+        if (!linker($this->me->session->id)->currentCall->mujiRoom) {
             $message = Message::eventMessageFactory(
                 $this->me,
                 'jingle',
