@@ -691,10 +691,15 @@ var MovimJingles = {
     },
 
     terminateAll: function (reason) {
+        let isMuji = document.querySelector('#visio').dataset.muji == 'true';
         for (jid of Object.keys(MovimJingles.sessions)) {
-            MovimJingles.terminate(jid, reason);
+            if (isMuji) {
+                MovimJingles.sessions[jid].close();
+                delete MovimJingles.sessions[jid];
+            } else {
+                MovimJingles.terminate(jid, reason);
+            }
         }
-
         Visio_ajaxClear();
     }
 }
