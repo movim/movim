@@ -110,7 +110,12 @@ class Visio extends Base
 
     public function onCallInviteRetract(Packet $packet)
     {
-        $this->ajaxClear();
+        $muji = $packet->content;
+        if ($muji && $muji->id) {
+            $this->ajaxLeaveMuji($muji->id);
+        } else {
+            $this->ajaxClear();
+        }
     }
 
     public function onExternalServices(Packet $packet)
@@ -485,8 +490,6 @@ class Visio extends Base
                     ->setResource($resource)
                     ->request();
 
-                $this->me->session->mujiCalls()->where('id', $mujiId)->delete();
-
                 (new Rooms($this->me, sessionId: $this->sessionId))->onPresence($muji->jidfrom);
 
                 // If we were the inviter, we also retract the call
@@ -496,6 +499,8 @@ class Visio extends Base
                     $retract->setTo($muji->jidfrom)
                         ->setId($muji->id)
                         ->request();
+                } else {
+                    $this->me->session->mujiCalls()->where('id', $mujiId)->delete();
                 }
             }
 
@@ -800,6 +805,12 @@ class Visio extends Base
      */
     public function ajaxGoodbye(string $to, string $sid, ?string $reason = 'success')
     {
+        // If this is a muji call, delegate to the proper leave handler
+        $currentCall = $this->currentCall();
+        if ($currentCall->isStarted() && $currentCall->mujiRoom) {
+            $this->ajaxLeaveMuji($sid);
+            return;
+        }
         if ($this->currentCall()->isStarted()) {
             $this->currentCall()->stop($to, $sid);
             $st = $this->xmpp(new MessageFinish);
@@ -843,19 +854,24 @@ class Visio extends Base
             && $currentCall->hasId($id)
             && $currentCall->isJidInCall($jid)
         ) {
-            $message = Message::eventMessageFactory(
-                $this->me,
-                'jingle',
-                bareJid($currentCall->jid),
-                $currentCall->id
-            );
-            $message->type = 'jingle_finish';
-            $message->save();
-
-            Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message), user: $this->me, sessionId: $this->sessionId);
-
-            $this->ajaxTerminate($currentCall->jid, $currentCall->id, 'gone');
-            $this->ajaxGoodbye($currentCall->jid, $currentCall->id, 'gone');
+            if (!$currentCall->mujiRoom) {
+                $message = Message::eventMessageFactory(
+                    $this->me,
+                    'jingle',
+                    bareJid($currentCall->jid),
+                    $currentCall->id
+                );
+                $message->type = 'jingle_finish';
+                $message->save();
+                Wrapper::getInstance()->iterate('jingle_message',
+                                                (new Packet)->pack($message),
+                                                user: $this->me,
+                                                sessionId: $this->sessionId);
+                $this->ajaxTerminate($currentCall->jid, $currentCall->id, 'gone');
+                $this->ajaxGoodbye($currentCall->jid, $currentCall->id, 'gone');
+            } else {
+                $this->ajaxLeaveMuji($currentCall->id);
+            }
         }
     }
 
