@@ -475,8 +475,6 @@ class Visio extends Base
             ->first();
 
         if ($muji) {
-            $this->currentCall()->stop($muji->jidfrom, $muji->id);
-
             $resource = $muji->presences()->where('mucjid', $this->me->id)->first()?->resource;
 
             if ($resource) {
@@ -499,6 +497,7 @@ class Visio extends Base
                 $this->me->session->mujiCalls()->where('id', $mujiId)->delete();
             }
 
+            $this->currentCall()->stop($muji->jidfrom, $muji->id);
             $this->rpc('MovimJingles.terminateAll');
         }
     }

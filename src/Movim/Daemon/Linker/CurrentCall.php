@@ -36,7 +36,7 @@ class CurrentCall
 
         Wrapper::getInstance()->iterate(
             key: 'currentcall_started',
-            packet: (new Packet)->pack($id, $this->getBareJid()),
+            packet: (new Packet)->pack(['id' => $id, 'mujiroom' => $mujiRoom], $this->getBareJid()),
             user: $this->user,
             sessionId: $this->sessionId
         );
@@ -50,12 +50,13 @@ class CurrentCall
 
         $jid = $this->getBareJid();
         $id = $this->id;
+        $mujiRoom = $this->mujiRoom;
 
         $this->jid = $this->id = $this->mujiRoom = $this->startTime = null;
 
         Wrapper::getInstance()->iterate(
             key: 'currentcall_stopped',
-            packet: (new Packet)->pack($id, $jid),
+            packet: (new Packet)->pack(['id' => $id, 'mujiroom' => $mujiRoom], $jid),
             user: $this->user,
             sessionId: $this->sessionId
         );

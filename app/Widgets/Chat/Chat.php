@@ -107,7 +107,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onCallEvent(Packet $packet)
     {
-        $this->ajaxGetHeader($packet->from);
+        $this->ajaxGetHeader($packet->from, $packet->content['mujiroom'] != null);
     }
 
     public function onJingleMessage(Packet $packet)
@@ -469,7 +469,7 @@ class Chat extends \Movim\Widget\Base
     /**
      * Get the header
      */
-    public function ajaxGetHeader(string $jid, bool $muc = false)
+    public function ajaxGetHeader(string $jid, ?bool $muc = false)
     {
         $this->rpc(
             'MovimTpl.fill',
@@ -1822,7 +1822,7 @@ class Chat extends \Movim\Widget\Base
         return $view->draw('_chat_reactions');
     }
 
-    public function prepareHeader($jid, $muc = false)
+    public function prepareHeader($jid, ?bool $muc = false)
     {
         $view = $this->tpl();
 
