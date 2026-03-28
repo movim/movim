@@ -836,7 +836,8 @@ class Visio extends Base
         $currentCall = $this->currentCall();
 
         if (
-            $currentCall && $currentCall->isStarted()
+            $currentCall
+            && $currentCall->isStarted()
             && $id != null
             && $jid != null
             && $currentCall->hasId($id)
