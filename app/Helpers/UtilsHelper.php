@@ -68,6 +68,8 @@ function logDebug($logs)
 function linker(string $sid): ?Linker
 {
     global $linkersManager;
+    if ($linkersManager == null) return null;
+
     return $linkersManager->linker($sid);
 }
 

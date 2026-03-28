@@ -43,8 +43,18 @@ class MujiCall extends Model
 
     public function getJoinedAttribute(): bool
     {
-        return linker($this->session_id)->currentCall->isJidInCall($this->jidfrom)
-            && linker($this->session_id)->currentCall->mujiRoom == $this->muc;
+        /**
+         * If we can resolve the linker we directly call it, we are not in a session call
+         * we request the internal API to reach it (and do the same thing)
+         */
+        return linker($this->session_id)
+            ? linker($this->session_id)->currentCall->isJidInCall($this->jidfrom)
+            && linker($this->session_id)->currentCall->mujiRoom == $this->muc
+            : (bool)requestAPI('mujiincall', post: [
+                'sessionid' => $this->session_id,
+                'jid' => $this->jidfrom,
+                'mujiroom' => $this->muc
+            ]);
     }
 
     public function getIconAttribute()

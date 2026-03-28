@@ -39,6 +39,9 @@ class Api
                 case 'started':
                     $response = $api->sessionsStarted();
                     break;
+                case 'mujiincall':
+                    $response = $api->isMujiInCall($request->getParsedBody());
+                    break;
                 case 'unregister':
                     $response = $api->sessionUnregister($request->getParsedBody());
                     break;
@@ -88,6 +91,13 @@ class Api
             }
         }
         return $started;
+    }
+
+    public function isMujiInCall(array $post): bool
+    {
+        return linker($post['sessionid'])
+            && linker($post['sessionid'])->currentCall->isJidInCall($post['jid'])
+            && linker($post['sessionid'])->currentCall->mujiRoom == $post['mujiroom'];
     }
 
     public function sessionUnregister($post)
