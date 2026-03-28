@@ -44,8 +44,8 @@ class MujiCall extends Model
     public function getJoinedAttribute(): bool
     {
         /**
-         * If we can resolve the linker we directly call it, we are not in a session call
-         * we request the internal API to reach it (and do the same thing)
+         * If we can resolve the linker we directly call it,
+         * If we are not in the session process we request the internal API to reach it (and do the same thing)
          */
         return linker($this->session_id)
             ? linker($this->session_id)->currentCall->isJidInCall($this->jidfrom)
