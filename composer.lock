@@ -130,16 +130,16 @@
         },
         {
             "name": "cakephp/chronos",
-            "version": "3.3.3",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "960e7ecd5709fc186309b0733a18beecb37fd37e"
+                "reference": "608bbc32c59f74a0ea3358c20436c8dd94536e7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/960e7ecd5709fc186309b0733a18beecb37fd37e",
-                "reference": "960e7ecd5709fc186309b0733a18beecb37fd37e",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/608bbc32c59f74a0ea3358c20436c8dd94536e7c",
+                "reference": "608bbc32c59f74a0ea3358c20436c8dd94536e7c",
                 "shasum": ""
             },
             "require": {
@@ -185,7 +185,7 @@
                 "issues": "https://github.com/cakephp/chronos/issues",
                 "source": "https://github.com/cakephp/chronos"
             },
-            "time": "2026-03-14T17:03:37+00:00"
+            "time": "2026-03-25T23:05:15+00:00"
         },
         {
             "name": "cakephp/core",
@@ -1892,7 +1892,7 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v12.55.1",
+            "version": "v12.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -1945,7 +1945,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v12.55.1",
+            "version": "v12.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -2005,7 +2005,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v12.55.1",
+            "version": "v12.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -2051,7 +2051,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v12.55.1",
+            "version": "v12.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -2113,7 +2113,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v12.55.1",
+            "version": "v12.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -2161,7 +2161,7 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v12.55.1",
+            "version": "v12.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
@@ -2233,7 +2233,7 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v12.55.1",
+            "version": "v12.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -2288,7 +2288,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v12.55.1",
+            "version": "v12.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2334,7 +2334,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v12.55.1",
+            "version": "v12.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -2386,7 +2386,7 @@
         },
         {
             "name": "illuminate/reflection",
-            "version": "v12.55.1",
+            "version": "v12.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/reflection.git",
@@ -2437,7 +2437,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v12.55.1",
+            "version": "v12.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
