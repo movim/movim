@@ -485,8 +485,6 @@ class Visio extends Base
                     ->setResource($resource)
                     ->request();
 
-                $this->me->session->mujiCalls()->where('id', $mujiId)->delete();
-
                 (new Rooms($this->me, sessionId: $this->sessionId))->onPresence($muji->jidfrom);
 
                 // If we were the inviter, we also retract the call
@@ -497,6 +495,8 @@ class Visio extends Base
                         ->setId($muji->id)
                         ->request();
                 }
+
+                $this->me->session->mujiCalls()->where('id', $mujiId)->delete();
             }
 
             $this->rpc('MovimJingles.terminateAll');
@@ -574,7 +574,7 @@ class Visio extends Base
 
             $muc = $this->xmpp(new Muc);
             $muc->setTo($muji->muc)
-                ->setNickname($muji->conference ? $muji->conference->nickname : $this->me->nickname)
+                ->setNickname($muji->conference ? $muji->conference->nick : $this->me->nickname)
                 ->enableMujiPreparing()
                 ->noNotify()
                 ->request();
@@ -610,7 +610,7 @@ class Visio extends Base
 
             $muc = $this->xmpp(new Muc);
             $muc->setTo($muji->muc)
-                ->setNickname($muji->conference ? $muji->conference->nickname : $this->me->nickname)
+                ->setNickname($muji->conference ? $muji->conference->nick : $this->me->nickname)
                 ->setMuji($stj->generate())
                 ->noNotify()
                 ->request();
