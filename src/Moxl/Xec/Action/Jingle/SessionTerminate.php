@@ -10,28 +10,36 @@ class SessionTerminate extends Action
     protected $_to;
     protected $_jingleSid;
     protected $_reason = 'success';
+    protected bool $_isMuji = false;
 
     public function request()
     {
         $this->store();
-        $this->iq(Jingle::sessionTerminate($this->_jingleSid, $this->_reason), to: $this->_to, type: 'get');
+        $this->iq(Jingle::sessionTerminate($this->_jingleSid, $this->_reason), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $userid = $this->me->id;
-        $message = new \App\Message;
-        $message->user_id = $userid;
-        $message->id = 'm_' . generateUUID();
-        $message->jidto = $userid;
-        $message->jidfrom = bareJid($this->_to);
-        $message->published = gmdate('Y-m-d H:i:s');
-        $message->thread = $this->_jingleSid;
-        $message->type = 'jingle_end';
-        $message->save();
+        if ($this->_isMuji == false) {
+            $userid = $this->me->id;
+            $message = new \App\Message;
+            $message->user_id = $userid;
+            $message->id = 'm_' . generateUUID();
+            $message->jidto = $userid;
+            $message->jidfrom = bareJid($this->_to);
+            $message->published = gmdate('Y-m-d H:i:s');
+            $message->thread = $this->_jingleSid;
+            $message->type = 'jingle_end';
+            $message->save();
 
-        $this->pack($message);
-        $this->event('jingle_message');
+            $this->pack($message);
+            $this->event('jingle_message');
+        }
+    }
+
+    public function enableMuji()
+    {
+        $this->_isMuji = true;
     }
 
     public function setJingleSid($jingleSid)

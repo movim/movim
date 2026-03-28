@@ -589,7 +589,6 @@ class Visio extends Base
         if ($muji) {
             $this->rpc('MovimVisio.init', $muji->jidfrom, $muji->jidfrom, $muji->id, $muji->video, true);
         }
-
     }
 
     public function ajaxMujiInit(string $mujiId, $sdp)
@@ -772,13 +771,16 @@ class Visio extends Base
             ->request();
     }
 
-    public function ajaxTerminate(string $to, string $sid, ?string $reason = 'success')
+    public function ajaxTerminate(string $to, string $sid, ?string $reason = 'success', ?bool $isMuji = false)
     {
         $st = $this->xmpp(new SessionTerminate);
         $st->setTo($to)
             ->setJingleSid($sid)
-            ->setReason($reason ?? 'success')
-            ->request();
+            ->setReason($reason ?? 'success');
+
+        if ($isMuji) $st = $st->enableMuji();
+
+        $st->request();
     }
 
     public function ajaxRemoteGoodbye()

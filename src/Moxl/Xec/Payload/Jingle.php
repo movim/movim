@@ -47,7 +47,6 @@ class Jingle extends Payload
                     if (!$stanza->muji && linker($this->me->session->id)->currentCall->hasId($stanza->attributes()->sid)) {
                         $message->type = 'jingle_end';
                         $message->save();
-
                         $this->pack($message);
                         $this->event('jingle_message');
                     }

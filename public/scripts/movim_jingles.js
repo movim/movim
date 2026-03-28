@@ -210,8 +210,8 @@ MovimJingleSession.prototype.processRemoteAudioMessage = function (message) {
     }
 }
 
-MovimJingleSession.prototype.terminate = function (reason) {
-    Visio_ajaxTerminate(this.fullJid, this.id, reason);
+MovimJingleSession.prototype.terminate = function (reason, muji) {
+    Visio_ajaxTerminate(this.fullJid, this.id, reason, muji);
     this.close();
 }
 
@@ -666,7 +666,8 @@ var MovimJingles = {
     },
 
     terminate: function (jid, reason) {
-        MovimJingles.sessions[jid].terminate(reason);
+        let visio = document.querySelector('#visio');
+        MovimJingles.sessions[jid].terminate(reason, (visio.dataset.muji == 'true'));
         delete MovimJingles.sessions[jid];
     },
 
