@@ -89,7 +89,7 @@
             </div>
         </li>
         {if="$presence->mucjid != $c->me->id"}
-            <li onclick="Chats_ajaxOpen('{$presence->mucjid|echapJS}', true); Dialog_ajaxClear();">
+            <li onclick="Search.chat('{$presence->mucjid|echapJS}', false); Dialog_ajaxClear();">
                 <span class="primary icon gray">
                     <i class="material-symbols">comment</i>
                 </span>
