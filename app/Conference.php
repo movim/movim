@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Widgets\Subscribe\Subscribe;
 use Movim\ImageSize;
 
 use Awobaz\Compoships\Database\Eloquent\Model;

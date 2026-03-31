@@ -437,11 +437,22 @@ class RoomsUtils extends Base
     /**
      * @brief Display the add room form
      */
-    public function ajaxAskInvite($room = false)
+    public function ajaxAskInvite(string $room)
     {
+        if (!validateJid($room)) {
+            return;
+        }
+
+        $conference = $this->me->session->conferences()
+            ->where('conference', $room)
+            ->with('info')
+            ->first();
+
+        if (!$conference) return;
+
         $this->dialog($this->view('_rooms_invite', [
             'contacts' => $this->me->session->contacts()->pluck('jid'),
-            'room' => $room,
+            'conference' => $conference,
             'invite' => \App\Invite::set($this->me->id, $room),
         ]));
     }
