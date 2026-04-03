@@ -1121,3 +1121,13 @@ function mimeToLabel(string $type): string
         default => $subtype,
     });
 }
+
+function colorToHue(string $colorName): float
+{
+    $colors = array_keys(palette());
+    $index  = array_search($colorName, $colors);
+    if ($index === false) return 0.0;
+    $band = 360.0 / count($colors);
+
+    return round($index * $band + $band / 2.0, 2);
+}
