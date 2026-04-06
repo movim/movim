@@ -26,9 +26,12 @@ class Presence extends Payload
             if (!$presence->set($this->me, $stanza)) return;
 
             if (
-                linker($this->me->session->id)->currentCall->isStarted()
-                && linker($this->me->session->id)->currentCall->mujiRoom == $jid['jid']
+                $stanza->muji?->attributes()?->xmlns == 'urn:xmpp:jingle:muji:0'
+                && $stanza->muji?->content?->attributes()?->xmlns == 'urn:xmpp:jingle:1'
             ) {
+
+                // Treat MuJi presence as room-authoritative so a fresh session
+                // can discover an ongoing call even if the browser is not already in it.
                 $muji = $this->me->session->mujiCalls()
                     ->where('muc', $jid['jid'])
                     ->first();

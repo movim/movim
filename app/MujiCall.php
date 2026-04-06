@@ -66,4 +66,14 @@ class MujiCall extends Model
     {
         return $this->video ? 'videocam_off' : 'call_end';
     }
+
+    public function getIsInitiatorAttribute(): bool
+    {
+        $linker = linker($this->session_id);
+        if (!$linker || !$linker->user) return false;
+
+        return (bool) $this->participants
+            ->where('inviter', true)
+            ->first(fn($p) => \bareJid($p->jid) === $linker->user->id);
+    }
 }

@@ -30,7 +30,7 @@ var MovimVisio = {
         MovimVisio.localAudio = document.getElementById('local_audio');
     },
 
-    init: function (fullJid, jid, id, withVideo, isMuji) {
+    init: function (fullJid, jid, id, withVideo, isMuji, isInviter) {
         Visio_ajaxPrepare(jid);
 
         MovimVisio.id = id;
@@ -44,7 +44,12 @@ var MovimVisio = {
         visio.dataset.jid = jid;
         visio.dataset.type = (withVideo) ? 'video' : 'audio';
         visio.dataset.muji = isMuji ? 'true' : 'false';
+        visio.dataset.mujiinviter = isInviter ? 'true' : 'false';
 
+        let endButton = document.getElementById('end_for_everyone');
+        if (endButton) {
+            endButton.classList.toggle('hide', !(isMuji && isInviter));
+        }
         if (isMuji == true) {
             let pc = new RTCPeerConnection({ 'iceServers': MovimVisio.services });
 
@@ -214,7 +219,16 @@ var MovimVisio = {
 
     goodbye: function (reason) {
         let visio = document.querySelector('#visio');
-        Visio_ajaxGoodbye(visio.dataset.jid, this.id, reason);
+        if (visio.dataset.muji === 'true') {
+            Visio_ajaxLeaveMuji(this.id);
+        } else {
+            Visio_ajaxGoodbye(visio.dataset.jid, this.id, reason);
+        }
+    },
+
+    confirmEndForEveryone: function () {
+        Visio_ajaxEndMujiDialog(MovimVisio.id);
+        return false;
     },
 
     clear: function () {
@@ -230,6 +244,8 @@ var MovimVisio = {
         delete visio.dataset.type;
         delete visio.dataset.jid;
         delete visio.dataset.muji;
+        delete visio.dataset.mujiinviter;
+
 
         if (document.fullscreenElement) {
             document.exitFullscreen();
