@@ -235,7 +235,17 @@ class Visio extends Base
 
     public function onTerminate(Packet $packet)
     {
-        ($this->currentCall())->stop(\bareJid($packet->from), $packet->content);
+        $currentCall = $this->currentCall();
+        $isMuji = $currentCall && $currentCall->mujiRoom !== null;
+
+        // In a Muji call a single peer's session-terminate does not end the call
+        // other sessions remain. Only remove that peer from the JS session map.
+        if ($isMuji) {
+            $this->rpc('MovimJingles.onTerminate', \bareJid($packet->from));
+            return;
+        }
+
+        $currentCall->stop(\bareJid($packet->from), $packet->content);
 
         // Stop calling sound and clear the Dialog if there
         $this->rpc('Notif.incomingCallAnswer');
@@ -474,32 +484,61 @@ class Visio extends Base
             ->with('conference')
             ->first();
 
-        if ($muji) {
-            $resource = $muji->presences()->where('mucjid', $this->me->id)->first()?->resource;
+        if (!$muji) return;
 
-            if ($resource) {
-                $pu = $this->xmpp(new Unavailable);
-                $pu->setTo($muji->muc)
-                    ->setResource($resource)
-                    ->request();
+        $resource = $muji->presences()->where('mucjid', $this->me->id)->first()?->resource;
 
-                (new Rooms($this->me, sessionId: $this->sessionId))->onPresence($muji->jidfrom);
-
-                // If we were the inviter, we also retract the call
-                $participant = $muji->participants->firstWhere('jid', $muji->jidfrom . '/' . $resource);
-                if ($participant && $participant->inviter) {
-                    $retract = $this->xmpp(new Retract);
-                    $retract->setTo($muji->jidfrom)
-                        ->setId($muji->id)
-                        ->request();
-                }
-
-                $this->me->session->mujiCalls()->where('id', $mujiId)->delete();
-            }
-
-            $this->currentCall()->stop($muji->jidfrom, $muji->id);
-            $this->rpc('MovimJingles.terminateAll');
+        if ($resource) {
+            $pu = $this->xmpp(new Unavailable);
+            $pu->setTo($muji->muc)
+                ->setResource($resource)
+                ->request();
         }
+
+        if ($this->currentCall()) {
+            $this->currentCall()->stop($muji->jidfrom, $muji->id);
+        }
+
+        $this->rpc('MovimJingles.terminateAll');
+        $this->rpc('Chat_ajaxGetHeader', $muji->jidfrom, true);
+    }
+
+    public function ajaxEndMuji(string $mujiId)
+    {
+        $muji = $this->me->session->mujiCalls()
+            ->where('id', $mujiId)
+            ->with('conference', 'inviter')
+            ->first();
+
+        if (!$muji || !$muji->inviter || !$muji->inviter->isUser($this->me)) {
+            return;
+        }
+
+        $retract = $this->xmpp(new Retract);
+        $retract->setTo($muji->jidfrom)
+            ->setId($muji->id)
+            ->request();
+
+        if ($this->currentCall()) {
+            $this->currentCall()->stop($muji->jidfrom, $muji->id);
+        }
+
+        $this->rpc('MovimJingles.terminateAll');
+    }
+
+    public function ajaxEndMujiDialog(string $mujiId)
+    {
+        $muji = $this->me->session->mujiCalls()
+            ->where('id', $mujiId)
+            ->with('conference', 'inviter')
+            ->first();
+
+        if (!$muji || !$muji->inviter || !$muji->inviter->isUser($this->me)) return;
+
+        $this->dialog($this->view('_visio_end_muji_dialog', [
+            'mujiId' => $muji->id,
+            'mujiRoom' => $muji->jidfrom
+        ]));
     }
 
     public function ajaxGetMujiLobby(string $jid, bool $calling = false, ?bool $withVideo = false, ?string $id = null)
@@ -587,7 +626,17 @@ class Visio extends Base
         $muji = $this->me->session->mujiCalls()->first();
 
         if ($muji) {
-            $this->rpc('MovimVisio.init', $muji->jidfrom, $muji->jidfrom, $muji->id, $muji->video, true);
+            $canEndForEveryone = $muji->inviter && $muji->inviter->isUser($this->me);
+
+            $this->rpc(
+                'MovimVisio.init',
+                $muji->jidfrom,
+                $muji->jidfrom,
+                $muji->id,
+                $muji->video,
+                true,
+                $canEndForEveryone
+            );
         }
     }
 

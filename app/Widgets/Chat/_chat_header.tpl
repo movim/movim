@@ -78,10 +78,20 @@
             <div>
                 {if="$conference && $conference->mujiCalls->isNotEmpty()"}
                     {if="$muji = $conference->currentMuji()"}
-                        <button class="button oppose color red"
-                                onclick="Visio_ajaxLeaveMuji('{$muji->id}')">
-                            <i class="material-symbols">{$muji->icon}</i>
-                        </button>
+                        {if="$muji->joined"}
+                            <button class="button oppose color orange"
+                                    onclick="Visio_ajaxLeaveMuji('{$muji->id}')"
+                                    title="{$c->__('visio.phone_forwarded')}">
+                                <i class="material-symbols">phone_forwarded</i>
+                            </button>
+                        {else}
+                            <button class="button oppose color blue {if="$incall"}disabled{/if}"
+                                    onclick="Visio_ajaxJoinMuji('{$muji->id}', {if="$muji->video"}true{else}false{/if})"
+                                    title="{$c->__('visio.join_call')}">
+                                <i class="material-symbols">{$muji->icon}</i>
+                            </button>
+                        {/if}
+
                     {else}
                         {if="$conference->mujiCalls->count() > 1"}
                             <button class="button oppose color blue {if="$incall"}disabled{/if}"
