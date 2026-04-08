@@ -62,8 +62,10 @@ abstract class Payload
         $iq->setAttribute('id', $id);
 
         if (isset($language)) {
-            $iq->setAttribute('xml:lang', $language);
-        }
+           // Convert php local (ex: "pt_BR") to format RFC 5646 (ex: "pt-BR")
+           $xmlLang = str_replace('_', '-', $language);
+           $iq->setAttribute('xml:lang', $xmlLang);
+	    }
 
         if ($xml != false) {
             $xml = $dom->importNode($xml, true);
