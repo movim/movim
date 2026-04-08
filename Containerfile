@@ -36,6 +36,9 @@ RUN rm -rf cache; \
     rm -rf public/cache; \
     mkdir public/cache; \
     chown -R www-data:www-data public/cache; \
+    rm -rf public/images; \
+    mkdir public/images; \
+    chown -R www-data:www-data public/images; \
     rm -rf log; \
     mkdir log; \
     chown -R www-data:www-data log/
