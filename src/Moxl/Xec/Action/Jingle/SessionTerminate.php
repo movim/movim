@@ -40,6 +40,7 @@ class SessionTerminate extends Action
     public function enableMuji()
     {
         $this->_isMuji = true;
+        return $this;
     }
 
     public function setJingleSid($jingleSid)

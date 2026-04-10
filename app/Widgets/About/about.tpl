@@ -32,6 +32,7 @@
                     <a href="https://chat.teckids.org/?blog/tglaser%40mercurius.teckids.org">mirabilos</a><br />
                     <a href="https://toast.al">toastal</a><br>
                     <a href="https://kskarthik.gitlab.io">Sai Karthik</a><br>
+                    <a href="https://www.phimulambda.org">Divya Ranjan Pattanaik</a><br>
                 </p>
             </div>
         </li>
