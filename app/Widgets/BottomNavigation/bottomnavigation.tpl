@@ -1,4 +1,4 @@
-<ul aria-label="<?php echo __('global.bottom_menu') ?>" id="bottomnavigation" class="navigation active">
+<ul aria-label="{$c->__('global.bottom_menu')}" id="bottomnavigation" class="navigation active">
     <li onclick="{if="$page == 'chat'"}Rooms.toggleScroll(){else}MovimUtils.reload('{$c->route('chat')}'){/if}"
         {if="$page == 'chat' || $page == 'space'"}class="active"{/if}
         title="{$c->__('page.chats')}"

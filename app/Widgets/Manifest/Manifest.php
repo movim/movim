@@ -18,7 +18,7 @@ class Manifest extends Base
                     'src' => BASE_URI . 'theme/img/app/1024_square.png',
                     'sizes' => '1024x1024',
                     'type' => 'image/png',
-                    'purpose' => 'maskable'
+                    'purpose' => 'maskable any'
                 ],
                 [
                     'src' => BASE_URI . 'theme/img/app/1024.png',
