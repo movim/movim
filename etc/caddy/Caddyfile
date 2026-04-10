@@ -9,7 +9,7 @@ your.domain.tld {
 
 	encode zstd gzip
 
-	@static path /stickers/* /cache/* /theme/* /scripts/*.js #No need to use a @name matcher but is a bit more organized
+	@static path /stickers/* /cache/* /images/* /theme/* /scripts/*.js #No need to use a @name matcher but is a bit more organized
 
 	handle @static {
 		root * /path-to/movim/public
