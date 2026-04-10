@@ -12,12 +12,19 @@
     <li onclick="Account_ajaxGetRegistration('{$value->server}')">
         <span class="primary icon bubble
             {if="!$value->contact"}color {if="$value->gatewayType"}{$value->gatewayType}{else}gray{/if}{/if}
-            status
-            {if="$value->getPresence($c->me)"} {$value->getPresence($c->me)->presencekey} {else}offline disabled{/if}">
+            {if="$value->getPresence($c->me)"}status {$value->getPresence($c->me)->presencekey} {else}offline disabled{/if}">
             {if="$value->contact"}
                 <img src="{$value->contact->getPicture(\Movim\ImageSize::M)}">
             {else}
-                <i class="material-symbols">swap_horiz</i>
+                {if="$value->gatewayType == 'matrix'"}
+                    <i class="material-symbols">data_array</i>
+                {elseif="$value->gatewayType == 'telegram'"}
+                    <i class="material-symbols">send</i>
+                {elseif="$value->gatewayType == 'discord'"}
+                    <i class="material-symbols">sports_esports</i>
+                {else}
+                    <i class="material-symbols">swap_horiz</i>
+                {/if}
             {/if}
         </span>
         <span class="control icon gray">
