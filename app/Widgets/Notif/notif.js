@@ -198,7 +198,7 @@ var Notif = {
                     return false;
             }
         } else if (Notification.permission !== 'denied') {
-            Notif_ajaxRequest();
+            Notif_ajaxHttpRequest();
         }
     },
     clear: function (group) {

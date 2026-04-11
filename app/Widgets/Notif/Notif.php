@@ -286,7 +286,7 @@ class Notif extends Base
     /**
      * @brief Request user permission to show notifications
      */
-    public function ajaxRequest()
+    public function ajaxHttpRequest()
     {
         $view = $this->tpl();
         $this->dialog($view->draw('_notif_request'));
