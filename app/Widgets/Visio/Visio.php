@@ -685,6 +685,7 @@ class Visio extends Base
         $info = \App\Info::where('server', $this->me->session->host)
             ->where('node', '')
             ->first();
+
         if ($info && $info->hasExternalServices()) {
             $c = $this->xmpp(new \Moxl\Xec\Action\ExternalServices\Get);
             $c->setTo($this->me->session->host)

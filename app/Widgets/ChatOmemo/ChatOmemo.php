@@ -16,8 +16,8 @@ class ChatOmemo extends \Movim\Widget\Base
         $this->registerEvent('omemo_getbundle_handle', 'onBundle');
         $this->registerEvent('omemo_getbundle_last', 'onLastBundle');
         $this->registerEvent('omemodevices', 'onDevices');
-        $this->registerEvent('omemo_GetDevicesList_handle', 'onDevicesList');
-        $this->registerEvent('omemo_GetDevicesList_error', 'onDeviceListError');
+        $this->registerEvent('omemo_getdeviceslist_handle', 'onDevicesList');
+        $this->registerEvent('omemo_getdeviceslist_error', 'onDeviceListError');
 
         $this->addjs('chatomemo.js');
         $this->addjs('chatomemo_storage.js');
