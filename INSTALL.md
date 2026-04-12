@@ -30,7 +30,7 @@ It's mandatory to understand the general architecture of the project to a certai
 
 When you use Movim, it acts as an intermediary between the user's browser and an XMPP server. All the data that is sent and received by these two parties are managed by the Movim core, some of them are also saved in a database (for cache purposes).
 
-From the browser perspective, all communication with Movim is done using WebSockets (except for the "default" page loading). These sockets are proxied through your web-server to the Movim daemon. On the XMPP side Movim connects using pure TCP connections (like any XMPP client).
+From the browser perspective, all communication with Movim is done using WebSockets and Ajax requests (except for the "default" page loading). These sockets are proxied through your web-server to the Movim daemon. On the XMPP side Movim connects using pure TCP connections (like any XMPP client).
 
 So all these streams will be managed by the Movim daemon. This daemon needs to be launched with the same user and rights as the web-server (most of the time using the ``www-data`` user).
 
