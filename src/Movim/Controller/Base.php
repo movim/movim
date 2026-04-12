@@ -120,6 +120,8 @@ class Base
         $built = $content->build('common');
         $this->page->setCommonContent($built);
 
+        header('Cache-Control: no-cache');
+
         if (
             $headers
             && array_key_exists('Accept', $headers)
