@@ -56,7 +56,7 @@
                 name="login">
                 <div {if="$maxsessionsreached"}class="disabled"{/if}>
                     <input type="text" id="complete" tabindex="-1"/>
-                    <input type="text" pattern="^.+@.+\..{2,10}$" name="username" id="username" autofocus required
+                    <input type="text" pattern="^.+@.+$" name="username" id="username" autofocus required
                         placeholder="username@server.com" >
                     <label for="username">{$c->__('form.username')}</label>
                 </div>
