@@ -498,7 +498,7 @@ var MovimUtils = {
 function listIconClick(event) {
     event.stopPropagation();
     let li = event.target.closest('li');
-    if (li) {
+    if (li && li.onclick) {
         li.click();
         return;
     }
