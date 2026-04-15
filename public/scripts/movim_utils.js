@@ -498,7 +498,10 @@ var MovimUtils = {
 function listIconClick(event) {
     event.stopPropagation();
     let li = event.target.closest('li');
-    if (li) li.click();
+    if (li) {
+        li.click();
+        return;
+    }
 
     let span = event.target.closest('span.icon');
     if (span) span.click();

@@ -14,7 +14,7 @@
 
 <main>
     <div>
-        <header id="main" class="on_desktop">
+        <header class="on_desktop">
             <ul class="list middle">
                 <li>
                     <span id="menu" class="primary icon gray" >
