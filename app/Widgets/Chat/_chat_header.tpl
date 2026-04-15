@@ -202,7 +202,9 @@
             {if="$conference->presence->mucaffiliation == 'owner'"}
                 <li onclick="Chat_ajaxGetRoomConfig('{$jid|echapJS}')">
                     <span class="primary icon gray">
-                        <i class="material-symbols">settings</i>
+                        <a href="#" onclick="listIconClick(event)">
+                            <i class="material-symbols">settings</i>
+                        </a>
                     </span>
                     <div>
                         <p>{$c->__('chatroom.config')}</p>
@@ -212,7 +214,9 @@
             {if="$conference->presence->mucrole == 'moderator'"}
                 <li onclick="RoomsUtils_ajaxGetSubject('{$jid|echapJS}')">
                     <span class="primary icon gray">
-                        <i class="material-symbols">short_text</i>
+                        <a href="#" onclick="listIconClick(event)">
+                            <i class="material-symbols">short_text</i>
+                        </a>
                     </span>
                     <div>
                         <p>{$c->__('chatroom.subject')}</p>

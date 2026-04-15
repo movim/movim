@@ -42,6 +42,17 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.5));
 }
 
+/* Accessibility */
+
+.card li[onclick]:focus-within {
+    outline: 3px solid var(--movim-accent);
+    outline-offset: 2px;
+}
+
+.card li[onclick] span.primary a:focus {
+    outline: none;
+}
+
 .card > .block:not(.subheader):not(.simple) {
     animation: fadein 0.3s;
     border-radius: 1rem;

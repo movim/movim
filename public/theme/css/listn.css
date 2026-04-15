@@ -501,6 +501,10 @@ ul.tabs>li>* {
     width: 100%;
 }
 
+ul.tabs>li>*:hover {
+    text-decoration: none;
+}
+
 ul.tabs>li>*>i {
     font-size: 2.5rem;
 }

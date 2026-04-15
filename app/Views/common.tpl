@@ -13,6 +13,9 @@
     </ul>
 </noscript>
 <?php } ?>
+<!--<a href="#main" class="button" id="skip_main" role="navigation">
+    <?php echo __('global.skip_main'); ?>
+</a>-->
 <div id="hiddendiv" aria-hidden="true"></div>
 <div role="status" id="snackbar" class="snackbar"></div>
 <div role="status" id="status_websocket" class="snackbar hide">

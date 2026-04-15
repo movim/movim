@@ -3,7 +3,7 @@
     <div>
         <ul class="list">
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">face</i>
                 </span>
                 <div>
@@ -12,7 +12,7 @@
                 </div>
             </li>
             <li>
-                <span class="primary"></span>
+                <span class="primary" aria-hidden="true"></span>
                 <div>
                     <input dir="auto" type="text" name="name" value="{$contact->name ?? ''}" placeholder="{$c->__('general.nickname')}">
                     <label for="name">{$c->__('general.nickname')}</label>
@@ -20,7 +20,7 @@
                 </div>
             </li>
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">id_card</i>
                 </span>
                 <div>
@@ -29,7 +29,7 @@
                 </div>
             </li>
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">email</i>
                 </span>
                 <div>
@@ -38,7 +38,7 @@
                 </div>
             </li>
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">cake</i>
                 </span>
                 <div>
@@ -47,7 +47,7 @@
                 </div>
             </li>
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">link</i>
                 </span>
                 <div>
@@ -56,7 +56,7 @@
                 </div>
             </li>
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">short_text</i>
                 </span>
                 <div>
@@ -65,7 +65,7 @@
                 </div>
             </li>
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">place</i>
                 </span>
                 <div>
@@ -74,7 +74,7 @@
                 </div>
             </li>
             <li>
-                <span class="primary"></span>
+                <span class="primary" aria-hidden="true"></span>
                 <div>
                     <div class="select">
                         <select name="country">

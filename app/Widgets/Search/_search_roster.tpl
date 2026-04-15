@@ -18,7 +18,9 @@
                     status {$value->presence->presencekey}
                 {/if}"
                 onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
-                <img loading="lazy" src="{$value->getPicture(\Movim\ImageSize::M)}">
+                <a href="#" onclick="listIconClick(event)">
+                    <img loading="lazy" src="{$value->getPicture(\Movim\ImageSize::M)}">
+                </a>
             </span>
 
             {if="$value->presences->count() > 0"}
@@ -26,13 +28,17 @@
                     {if="$value->capability && $value->capability->isJingleAudio()"}
                         <span title="{$c->__('button.audio_call')}" class="control icon active gray"
                             onclick="Visio_ajaxGetLobby('{$value->jid|echapJS}', true); Drawer.clear();">
-                            <i class="material-symbols">phone</i>
+                            <a href="#" onclick="listIconClick(event)">
+                                <i class="material-symbols">phone</i>
+                            </a>
                         </span>
                     {/if}
                     {if="$value->capability && $value->capability->isJingleVideo()"}
                         <span title="{$c->__('button.video_call')}" class="control icon active gray"
                             onclick="Visio_ajaxGetLobby('{$value->jid|echapJS}', true, true); Drawer.clear();">
-                            <i class="material-symbols">videocam</i>
+                            <a href="#" onclick="listIconClick(event)">
+                                <i class="material-symbols">videocam</i>
+                            </a>
                         </span>
                         {break}
                     {/if}
@@ -41,7 +47,9 @@
 
             {if="$value->jid != $c->me->id"}
                 <span class="control icon active gray divided" onclick="Search.chat('{$value->jid|echapJS}', false)">
-                    <i class="material-symbols">comment</i>
+                    <a href="#" onclick="listIconClick(event)">
+                        <i class="material-symbols">comment</i>
+                    </a>
                 </span>
             {/if}
             <div>

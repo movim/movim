@@ -212,7 +212,11 @@ form > div .checkbox > input[type="checkbox"]:before {
 
 form > div .checkbox > input[type="checkbox"]:before {
     border-radius: 4rem;
+}
 
+form > div .checkbox > input[type="checkbox"]:focus:before {
+    outline: 3px solid var(--movim-accent);
+    outline-offset: 2px;
 }
 
 form > div .checkbox > input[type="checkbox"] + label {
@@ -271,6 +275,11 @@ form > div .radio > input[type="radio"] + label {
     margin-bottom: 0;
 }
 
+form > div .radio > input[type="radio"]:focus + label {
+    outline: 3px solid var(--movim-accent);
+    outline-offset: 2px;
+}
+
 form > div .radio > input[type="radio"] + label:hover {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.1);
@@ -321,6 +330,11 @@ form > div textarea[readonly] {
 .button.inactive {
     opacity: 0.6;
     pointer-events:none;
+}
+
+.button:focus-visible {
+    outline: 3px solid var(--movim-accent);
+    outline-offset: 2px;
 }
 
 .button,
@@ -377,8 +391,11 @@ input[type=button].flat {
 }
 
 .button:hover,
+a.button:link:hover,
+a.button:visited:hover,
 input[type=button]:hover {
     cursor: pointer;
+    text-decoration: none;
 }
 
 .button.flat:not(.color):hover,
@@ -459,7 +476,7 @@ li.action div.action .button {
     margin: 0 0.25rem;
 }
 
-.snackbar#status_websocket:not(.hide) ~ main > aside ~ * .button.action {
+.snackbar#status_websocket:not(.hide) ~ main > section#sidebar ~ * .button.action {
     display: none;
 }
 
@@ -473,11 +490,11 @@ li.action div.action .button {
         left: calc(75% + 2rem);
     }
 
-    aside ~ * .button.action {
+    section#sidebar ~ * .button.action {
         right: calc(50% - 21rem);
     }
 
-    *[dir="rtl"] aside ~ * .button.action {
+    *[dir="rtl"] section#sidebar ~ * .button.action {
         right: auto;
         left: calc(50% - 14rem);
     }
@@ -488,7 +505,7 @@ li.action div.action .button {
         right: calc(63.75% + 2rem);
     }
 
-    aside ~ * .button.action {
+    section#sidebar ~ * .button.action {
         right: calc(42.5% - 17rem);
     }
 }

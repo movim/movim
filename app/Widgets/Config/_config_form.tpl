@@ -3,7 +3,7 @@
         <ul class="list">
             <li class="subheader large block"><div><p>{$c->__('config.audio_title')}</p></div></li>
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">call</i>
                 </span>
                 <span class="control">
@@ -12,6 +12,7 @@
                             {if="$configuration->notificationcall"}checked{/if}
                             type="checkbox"
                             id="notificationcall"
+                            title="{$c->__('config.audio_call')}"
                             name="notificationcall"/>
                         <label for="notificationcall"></label>
                     </div>
@@ -21,7 +22,7 @@
                 </div>
             </li>
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">forum</i>
                 </span>
                 <span class="control">
@@ -30,6 +31,7 @@
                             {if="$configuration->notificationchat"}checked{/if}
                             type="checkbox"
                             id="notificationchat"
+                            title="{$c->__('config.audio_chat')}"
                             name="notificationchat"/>
                         <label for="notificationchat"></label>
                     </div>
@@ -48,7 +50,7 @@
     <div class="block">
         <ul class="list">
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">translate</i>
                 </span>
                 <div>
@@ -82,7 +84,7 @@
     <div class="block">
         <ul class="list middle">
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">forum</i>
                 </span>
                 <span class="control">
@@ -102,7 +104,7 @@
             </li>
 
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">lock</i>
                 </span>
                 <span class="control">
@@ -123,7 +125,7 @@
             </li>
 
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">explicit</i>
                 </span>
                 <span class="control">
@@ -143,7 +145,7 @@
             </li>
 
             <li>
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">dark_mode</i>
                 </span>
                 <span class="control">
@@ -169,7 +171,7 @@
                 </div>
             </li>
             <li id="accent_color">
-                <span class="primary icon gray">
+                <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">palette</i>
                 </span>
                 <div>

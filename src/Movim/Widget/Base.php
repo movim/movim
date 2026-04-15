@@ -194,7 +194,7 @@ class Base
             return $carbon->isoFormat('D MMMM YYYY');
         }
 
-        return  $carbon->diffForHumans();
+        return $carbon->diffForHumans();
     }
 
     /**

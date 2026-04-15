@@ -427,6 +427,7 @@ var Chat = {
             }
 
             if (this.dataset.muc
+                && textarea.value.length > 0
                 && event.key == 'Tab') {
                 event.preventDefault();
                 if (Chat.autocompleteList == null) {

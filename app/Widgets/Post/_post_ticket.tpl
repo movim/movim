@@ -43,7 +43,7 @@
         </span>
     {/if}
     <div>
-        <p class="post_title line {if="!$post->isStory()"}{if="$post->isBrief()"}brief{/if} two{/if}" title="{$post->title}">
+        <p class="line {if="!$post->isStory()"}{if="$post->isBrief()"}brief{/if} two{/if}" title="{$post->title}">
             <a href="#"
                 class="normal"
                 onclick="listIconClick(event)"

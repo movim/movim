@@ -18,10 +18,10 @@
 <?php $this->widget('BottomNavigation');?>
 
 <main>
-    <aside>
+    <section id="sidebar">
         <?php $this->widget('ContactData'); ?>
         <?php $this->widget('ContactSubscriptions'); ?>
-    </aside>
+    </section>
     <div>
         <?php $this->widget('ContactHeader'); ?>
         <?php $this->widget('ContactBlogConfig'); ?>

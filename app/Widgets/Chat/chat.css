@@ -291,7 +291,6 @@ main:not(.enabled) #chat_widget {
 #chat_widget .chat_box li.main>span.primary,
 #chat_widget .chat_box li.main>span.control:not(.button):not(.color) {
     font-size: 3.5rem;
-    color: rgba(var(--movim-font), 0.68);
     animation: fadein 0.3s;
     flex: 0 0 5rem;
     margin-right: 0;

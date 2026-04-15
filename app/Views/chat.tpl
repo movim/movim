@@ -19,7 +19,7 @@
     <?php $this->widget('Upload');?>
     <?php $this->widget('Chat');?>
     <?php $this->widget('ChatActions');?>
-    <div id="scroll_block" role="menu">
+    <div role="menu">
         <button class="button action color" onclick="Search_ajaxRequest(true)" aria-label="<?php echo __('chats.new_title'); ?>">
             <i class="material-symbols">chat_add_on</i>
         </button>

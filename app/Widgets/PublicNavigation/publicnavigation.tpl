@@ -1,23 +1,25 @@
-<ul id="publicnavigation" class="list thick">
-    <li>
-        <span class="primary icon">
-            <a href="{$c->route('main')}">
-                <img src="/theme/img/app/vectorial.svg">
-            </a>
-        </span>
-        <div>
-            {if="!$c->me"}
-                <a class="button oppose color" title="{$c->__('button.register')}" href="{$c->route('account')}">
-                    {$c->__('button.register')}
+<nav id="publicnavigation">
+    <ul class="list thick">
+        <li>
+            <span class="primary icon">
+                <a href="{$c->route('main')}">
+                    <img src="/theme/img/app/vectorial.svg">
                 </a>
-                <a class="button oppose flat" title="{$c->__('page.login')}" href="{$c->route('main')}">
-                    {$c->__('page.login')}
-                </a>
-            {/if}
-            <p>
-                {$app_title}
-            </p>
-            <p>{$base_host}</p>
-        </div>
-    </li>
-</ul>
+            </span>
+            <div>
+                {if="!$c->me"}
+                    <a class="button oppose color" title="{$c->__('button.register')}" href="{$c->route('account')}">
+                        {$c->__('button.register')}
+                    </a>
+                    <a class="button oppose flat" title="{$c->__('page.login')}" href="{$c->route('main')}">
+                        {$c->__('page.login')}
+                    </a>
+                {/if}
+                <p>
+                    {$app_title}
+                </p>
+                <p>{$base_host}</p>
+            </div>
+        </li>
+    </ul>
+</nav>

@@ -18,6 +18,11 @@
     </span>
     <div>
         <p class="line two">
+            {if="$community->isGallery()"}
+                <span class="info">
+                    <i class="material-symbols">grid_view</i>
+                </span>
+            {/if}
             {if="$community->occupants > 0"}
                 <span class="info" title="{$c->__('communitydata.sub', $community->occupants)}">
                     {$community->occupants} <i class="material-symbols">people</i>
@@ -34,14 +39,10 @@
         {/if}
         <p class="line">
             <a href="#">{$community->node}</a>
-            {if="$community->isGallery()"}
-                <i class="material-symbols">grid_view</i>
-                •
-            {/if}
             {if="$community->published"}
-                <span class="info">
+                <span class="info" title="{$c->prepareDate($community->published)}">
                     <i class="material-symbols">update</i>
-                    {$c->prepareDate($community->published)}
+                    {$c->prepareDate($community->published, true)}
                 </span>
             {/if}
         </p>

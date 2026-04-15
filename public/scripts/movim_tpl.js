@@ -118,6 +118,11 @@ MovimEvents.registerWindow('loaded', 'movimtpl', () => {
 });
 
 MovimEvents.registerWindow('popstate', 'movimtpl', (e) => {
+    if (e.target.location.hash == '#main') {
+        document.querySelector('main').focus();
+        return;
+    }
+
     if (Dialog.filled()) {
         Dialog.clear();
         return;

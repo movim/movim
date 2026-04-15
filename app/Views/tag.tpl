@@ -18,9 +18,9 @@
 
 <main>
     <?php if ($this->user) { ?>
-        <aside>
+        <section id="sidebar">
             <?php $this->widget('NewsNav');?>
-        </aside>
+        </section>
     <?php } ?>
     <div>
         <?php if (!$this->user) { ?>

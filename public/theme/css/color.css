@@ -33,24 +33,28 @@ body.nightmode {
     }
 }
 
-body > *,
+body>*,
 .context_menu,
 .icon-text,
 .tabs a,
-input, textarea, select {
+input,
+textarea,
+select {
     color: rgba(var(--movim-font), 0.87);
 }
 
-input::placeholder, textarea::placeholder, select::placeholder {
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
     color: rgba(var(--movim-font), 0.67);
 }
 
 ul.list li.divided:after,
 *.divided:not(.spaced):not(li)>*:not(:last-child):not(.subheader):after,
-*.divided.spaced > *:not(:last-child):after,
+*.divided.spaced>*:not(:last-child):after,
 hr:not(.clear),
-.card > .block:not(.subheader):not(.simple),
-*.divided > *:not(:last-child) {
+.card>.block:not(.subheader):not(.simple),
+*.divided>*:not(:last-child) {
     border-color: rgba(var(--movim-font), 0.12);
 }
 
@@ -58,26 +62,32 @@ ul.list li span.control.divided:before {
     border-color: rgba(var(--movim-font), 0.128);
 }
 
-label, span.info,
+label,
+span.info,
 li div.bubble:after,
 ul.list li>div>p>span.second,
 table tr th {
     color: rgba(var(--movim-font), 0.54);
 }
 
+ul.list li.color>div>p>span.second {
+    color: rgba(255, 255, 255, 0.54);
+}
+
 body,
-#drawer .card > .block:not(.subheader):not(.simple):not(.color) {
+#drawer .card>.block:not(.subheader):not(.simple):not(.color) {
     background-color: rgb(var(--movim-background));
 }
 
 .drawer,
-.dialog, ul.context_menu,
-ul > li.date > div > p,
-.card > .block:not(.subheader):not(.simple):not(.color) {
+.dialog,
+ul.context_menu,
+ul>li.date>div>p,
+.card>.block:not(.subheader):not(.simple):not(.color) {
     background-color: rgb(var(--movim-background-main));
 }
 
-main > header a,
+main>header a,
 .icon:not(.placeholder):not(.active) a,
 .color input {
     color: rgb(var(--movim-font));
@@ -88,8 +98,8 @@ main > header a,
 span.icon span.counter,
 span.icon[data-counter]:after,
 span.icon.composing:after,
-form > div .checkbox > input[type="checkbox"]:checked:before,
-form > div .radio > input[type="radio"]:checked + label {
+form>div .checkbox>input[type="checkbox"]:checked:before,
+form>div .radio>input[type="radio"]:checked+label {
     border-color: var(--movim-accent);
     background-color: var(--movim-accent);
     color: white;
@@ -106,80 +116,276 @@ span.icon span.counter.alt {
 
 /* Elements */
 
-ul li.action > div.action,
-ul li.action > form > div.action,
-.button.dorange,.icon.dorange  , span.resource.dorange  { color: var(--p-dorange) }
-li div.bubble.moderator:after,
-ul li div > p > span.moderator,
-.button.orange, .icon.orange, span.resource.orange   { color: var(--p-orange); }
-.button.amber,  .icon.anber , span.resource.amber    { color: var(--p-amber) }
-.button.yellow, .icon.yellow, span.resource.yellow   { color: var(--p-yellow); }
-.button.lime,   .icon.lime  , span.resource.lime     { color: var(--p-lime) }
-.button.lgreen, .icon.lgreen, span.resource.lgreen   { color: var(--p-lgreen); }
-.button.green,  .icon.green , span.resource.green    { color: var(--p-green); }
-.button.teal,   .icon.teal  , span.resource.teal     { color: var(--p-teal) }
-.button.cyan,   .icon.cyan  , span.resource.cyan     { color: var(--p-cyan) }
-.button.lblue,  .icon.lblue  , span.resource.lblue   { color: var(--p-lblue) }
-.button.blue,   .icon.blue  , span.resource.blue     { color: var(--p-blue); }
-.button.red,    .icon.red   , span.resource.red, p.encrypted.error { color: var(--p-red); }
-.button.indigo, .icon.indigo, span.resource.indigo   { color: var(--p-indigo); }
-.button.dpurple,.icon.dpurple,span.resource.dpurple  { color: var(--p-dpurple); }
-.button.purple, .icon.purple, span.resource.purple   { color: var(--p-purple); }
-.button.pink,   .icon.pink  , span.resource.pink     { color: var(--p-pink) }
-.button.black,  .icon.black , span.resource.black    { color: var(--p-black); }
-.button.gray,   .icon.gray  , span.resource.gray     { color: var(--p-gray); }
-
-.color          { color: white; background-color: var(--movim-accent); border-color: var(--movim-accent) }
-.color.gray     { color: white; background-color: var(--p-gray); border-color: var(--p-gray) }
-.color.dorange  { color: white; background-color: var(--p-dorange); border-color: var(--p-dorange) }
-.color.orange   { color: white; background-color: var(--p-orange); border-color: var(--p-orange) }
-.color.amber    { color: white; background-color: var(--p-amber); border-color: var(--p-amber) }
-span.icon:not(.composing):not([data-counter]):not(.story).status.away:after,
-.color.yellow   { color: white; background-color: var(--p-yellow); border-color: var(--p-yellow) }
-.color.lime     { color: white; background-color: var(--p-lime); border-color: var(--p-lime) }
-span.icon:not(.composing):not([data-counter]):not(.story).status.chat:after,
-span.icon:not(.composing):not([data-counter]):not(.story).status.online:after,
-.color.lgreen   { color: white; background-color: var(--p-lgreen); border-color: var(--p-lgreen) }
-.color.green    { color: white; background-color: var(--p-green); border-color: var(--p-green) }
-.color.teal     { color: white; background-color: var(--p-teal); border-color: var(--p-teal) }
-.color.cyan     { color: white; background-color: var(--p-cyan); border-color: var(--p-cyan) }
-.color.lblue    { color: white; background-color: var(--p-lblue); border-color: var(--p-lblue) }
-.color.blue     { color: white; background-color: var(--p-blue); border-color: var(--p-blue) }
-span.icon:not(.composing):not([data-counter]):not(.story).status.server_error:after,
-.color.indigo   { color: white; background-color: var(--p-indigo); border-color: var(--p-indigo) }
-.color.dpurple  { color: white; background-color: var(--p-dpurple); border-color: var(--p-dpurple) }
-span.icon:not(.composing):not([data-counter]):not(.story).status.xa:after,
-.color.purple   { color: white; background-color: var(--p-purple); border-color: var(--p-purple) }
-.color.pink     { color: white; background-color: var(--p-pink); border-color: var(--p-pink) }
-span.icon:not(.composing):not([data-counter]):not(.story).status.dnd:after,
-.color.red      { color: white; background-color: var(--p-red); border-color: var(--p-red) }
-.color.black    { color: white; background-color: var(--p-black); border-color: var(--p-black) }
-
-.color.none { color: white; background-color: transparent; }
-.color.transparent { color: white; backdrop-filter: blur(1rem); background-color: rgba(0, 0, 0, 0.25); }
-.color.semi { color: rgba(var(--movim-font), 0.87); background-color: rgba(var(--movim-background-main), 0.75); }
-
-form > div > input:focus:invalid,
-form > div > input:focus:required {
-    box-shadow: 0px 2px 0px var(--p-red);
+ul li.action>div.action,
+ul li.action>form>div.action,
+.button.dorange,
+.icon.dorange,
+span.resource.dorange {
+    color: var(--p-dorange)
 }
 
-form > div > input:invalid,
-form input:focus:invalid + label,
-form textarea:focus:invalid + label {
+li div.bubble.moderator:after,
+ul li div>p>span.moderator,
+.button.orange,
+.icon.orange,
+span.resource.orange {
+    color: var(--p-orange);
+}
+
+.button.amber,
+.icon.anber,
+span.resource.amber {
+    color: var(--p-amber)
+}
+
+.button.yellow,
+.icon.yellow,
+span.resource.yellow {
+    color: var(--p-yellow);
+}
+
+.button.lime,
+.icon.lime,
+span.resource.lime {
+    color: var(--p-lime)
+}
+
+.button.lgreen,
+.icon.lgreen,
+span.resource.lgreen {
+    color: var(--p-lgreen);
+}
+
+.button.green,
+.icon.green,
+span.resource.green {
+    color: var(--p-green);
+}
+
+.button.teal,
+.icon.teal,
+span.resource.teal {
+    color: var(--p-teal)
+}
+
+.button.cyan,
+.icon.cyan,
+span.resource.cyan {
+    color: var(--p-cyan)
+}
+
+.button.lblue,
+.icon.lblue,
+span.resource.lblue {
+    color: var(--p-lblue)
+}
+
+.button.blue,
+.icon.blue,
+span.resource.blue {
+    color: var(--p-blue);
+}
+
+.button.red,
+.icon.red,
+span.resource.red,
+p.encrypted.error {
     color: var(--p-red);
 }
 
-ul.list li > div > p:not(:first-of-type):not(.main):not(.brief) {
+.button.indigo,
+.icon.indigo,
+span.resource.indigo {
+    color: var(--p-indigo);
+}
+
+.button.dpurple,
+.icon.dpurple,
+span.resource.dpurple {
+    color: var(--p-dpurple);
+}
+
+.button.purple,
+.icon.purple,
+span.resource.purple {
+    color: var(--p-purple);
+}
+
+.button.pink,
+.icon.pink,
+span.resource.pink {
+    color: var(--p-pink)
+}
+
+.button.black,
+.icon.black,
+span.resource.black {
+    color: var(--p-black);
+}
+
+.button.gray,
+.icon.gray,
+span.resource.gray {
+    color: var(--p-gray);
+}
+
+.color {
+    color: white;
+    background-color: var(--movim-accent);
+    border-color: var(--movim-accent)
+}
+
+.color.gray {
+    color: white;
+    background-color: var(--p-gray);
+    border-color: var(--p-gray)
+}
+
+.color.dorange {
+    color: white;
+    background-color: var(--p-dorange);
+    border-color: var(--p-dorange)
+}
+
+.color.orange {
+    color: white;
+    background-color: var(--p-orange);
+    border-color: var(--p-orange)
+}
+
+.color.amber {
+    color: white;
+    background-color: var(--p-amber);
+    border-color: var(--p-amber)
+}
+
+span.icon:not(.composing):not([data-counter]):not(.story).status.away:after,
+.color.yellow {
+    color: white;
+    background-color: var(--p-yellow);
+    border-color: var(--p-yellow)
+}
+
+.color.lime {
+    color: white;
+    background-color: var(--p-lime);
+    border-color: var(--p-lime)
+}
+
+span.icon:not(.composing):not([data-counter]):not(.story).status.chat:after,
+span.icon:not(.composing):not([data-counter]):not(.story).status.online:after,
+.color.lgreen {
+    color: white;
+    background-color: var(--p-lgreen);
+    border-color: var(--p-lgreen)
+}
+
+.color.green {
+    color: white;
+    background-color: var(--p-green);
+    border-color: var(--p-green)
+}
+
+.color.teal {
+    color: white;
+    background-color: var(--p-teal);
+    border-color: var(--p-teal)
+}
+
+.color.cyan {
+    color: white;
+    background-color: var(--p-cyan);
+    border-color: var(--p-cyan)
+}
+
+.color.lblue {
+    color: white;
+    background-color: var(--p-lblue);
+    border-color: var(--p-lblue)
+}
+
+.color.blue {
+    color: white;
+    background-color: var(--p-blue);
+    border-color: var(--p-blue)
+}
+
+span.icon:not(.composing):not([data-counter]):not(.story).status.server_error:after,
+.color.indigo {
+    color: white;
+    background-color: var(--p-indigo);
+    border-color: var(--p-indigo)
+}
+
+.color.dpurple {
+    color: white;
+    background-color: var(--p-dpurple);
+    border-color: var(--p-dpurple)
+}
+
+span.icon:not(.composing):not([data-counter]):not(.story).status.xa:after,
+.color.purple {
+    color: white;
+    background-color: var(--p-purple);
+    border-color: var(--p-purple)
+}
+
+.color.pink {
+    color: white;
+    background-color: var(--p-pink);
+    border-color: var(--p-pink)
+}
+
+span.icon:not(.composing):not([data-counter]):not(.story).status.dnd:after,
+.color.red {
+    color: white;
+    background-color: var(--p-red);
+    border-color: var(--p-red)
+}
+
+.color.black {
+    color: white;
+    background-color: var(--p-black);
+    border-color: var(--p-black)
+}
+
+.color.none {
+    color: white;
+    background-color: transparent;
+}
+
+.color.transparent {
+    color: white;
+    backdrop-filter: blur(1rem);
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.color.semi {
+    color: rgba(var(--movim-font), 0.87);
+    background-color: rgba(var(--movim-background-main), 0.75);
+}
+
+form>div>input:focus:invalid,
+form>div>input:focus:required {
+    box-shadow: 0px 2px 0px var(--p-red);
+}
+
+form>div>input:invalid,
+form input:focus:invalid+label,
+form textarea:focus:invalid+label {
+    color: var(--p-red);
+}
+
+ul.list li>div>p:not(:first-of-type):not(.main):not(.brief) {
     color: rgba(var(--movim-font), 0.6);
 }
 
-ul.list li.color > div > p:not(:first-of-type):not(.main) {
+ul.list li.color>div>p:not(:first-of-type):not(.main) {
     color: rgba(255, 255, 255, 0.8);
 }
 
-header.big ul.list li > div > p:not(:first-of-type):not(.main),
-div.snackbar ul.list li > div > p:not(:first-of-type):not(.main) {
+header.big ul.list li>div>p:not(:first-of-type):not(.main),
+div.snackbar ul.list li>div>p:not(:first-of-type):not(.main) {
     color: rgb(var(--movim-header-font));
 }
 
@@ -192,7 +398,7 @@ header.big ul.list li>div>p>span.second {
 input[type=button].color,
 header.big,
 mark,
-main > header {
+main>header {
     background-color: var(--movim-accent);
     border-color: var(--movim-accent);
 }
@@ -207,17 +413,25 @@ a {
     border-color: var(--movim-accent);
 }
 
+span.control.icon a i,
+span.primary.icon a i {
+    color: rgba(var(--movim-font), 0.68);
+}
+
 a.normal {
     color: inherit;
 }
 
-form > div .checkbox:before { background-color: var(--movim-accent); }
+form>div .checkbox:before {
+    background-color: var(--movim-accent);
+}
 
-form input:focus:not(:invalid) + label,
-form textarea:focus:not(:invalid) + label {
+form input:focus:not(:invalid)+label,
+form textarea:focus:not(:invalid)+label {
     color: var(--movim-accent);
 }
 
+form > div .select:has(:focus),
 form input:focus:not(:invalid):not(.button),
 form textarea:focus:not(:invalid):not(.button) {
     box-shadow: 0px 2px 0px var(--movim-accent);

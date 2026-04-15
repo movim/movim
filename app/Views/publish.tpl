@@ -13,12 +13,10 @@
 <?php $this->widget('BottomNavigation');?>
 
 <main>
-    <aside>
+    <section id="sidebar">
         <?php $this->widget('PublishHelp');?>
-    </aside>
-    <div>
-        <?php $this->widget('Publish');?>
-    </div>
+    </section>
+    <?php $this->widget('Publish');?>
 </main>
 
 <?php if ($this->user?->hasUpload()) { ?>

@@ -52,24 +52,32 @@
             <span class="primary icon gray active"
                   title="{$c->__('sticker.title')}"
                   onclick="Stickers_ajaxShow('{$jid}')">
-                <i class="material-symbols">sticker</i>
+                <a href="#" onclick="listIconClick(event);">
+                    <i class="material-symbols">sticker</i>
+                </a>
             </span>
             {if="$c->me->hasUpload()"}
                 <span class="emojis control icon gray active"
                         id="dictaphone_toggle"
                         title="{$c->__('dictaphone.name')}"
                         onclick="Dictaphone.toggle()">
-                    <i class="material-symbols">mic</i>
+                    <a href="#" onclick="listIconClick(event);">
+                        <i class="material-symbols">mic</i>
+                    </a>
                 </span>
             {/if}
             <span class="emojis control icon gray active on_desktop"
                     title="{$c->__('emojisconfig.title')}"
                     onclick="Stickers_ajaxReaction(null)">
-                <i class="material-symbols">emoji_emotions</i>
+                <a href="#" onclick="listIconClick(event);">
+                    <i class="material-symbols">emoji_emotions</i>
+                </a>
             </span>
             {if="$c->me->hasUpload()"}
                 <span class="attach control icon" onclick="Chat.toggleAttach()">
-                    <i class="material-symbols">add_circle</i>
+                    <a href="#" onclick="listIconClick(event);">
+                        <i class="material-symbols">add_circle</i>
+                    </a>
                 </span>
                 <ul class="list active actions">
                     <li onclick="Chat.toggleAttach(); Snap.init()">
@@ -101,7 +109,9 @@
             <span title="{$c->__('button.submit')}"
                 class="send control icon gray"
                   onclick="Chat.sendMessage()">
-                <i class="material-symbols">send</i>
+                <a href="#" onclick="listIconClick(event);">
+                    <i class="material-symbols">send</i>
+                </a>
             </span>
             <form>
                 <div>

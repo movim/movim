@@ -11,7 +11,9 @@
         {if="$c->me->hasRegister()"}
             <li onclick="Account_ajaxChangePassword()">
                 <span class="primary icon">
-                    <i class="material-symbols">vpn_key</i>
+                    <a href="#" onclick="listIconClick(event);">
+                        <i class="material-symbols">vpn_key</i>
+                    </a>
                 </span>
                 <span class="control icon gray">
                     <i class="material-symbols">chevron_right</i>
@@ -23,7 +25,9 @@
         {/if}
         <li onclick="Account_ajaxClearAccount()">
             <span class="primary icon orange">
-                <i class="material-symbols">eject</i>
+                <a href="#" onclick="listIconClick(event);">
+                    <i class="material-symbols">eject</i>
+                </a>
             </span>
             <span class="control icon gray">
                 <i class="material-symbols">chevron_right</i>
@@ -35,7 +39,9 @@
         {if="$c->me->hasRegister()"}
             <li onclick="Account_ajaxRemoveAccount()">
                 <span class="primary icon red">
-                    <i class="material-symbols">delete</i>
+                    <a href="#" onclick="listIconClick(event);">
+                        <i class="material-symbols">delete</i>
+                    </a>
                 </span>
                 <span class="control icon gray">
                     <i class="material-symbols">chevron_right</i>

@@ -12,13 +12,17 @@
                         <span class="control icon active gray"
                               onclick="MovimUtils.reload('{$c->route('publish', [$post->server, $post->node, $post->nodeid])}')"
                               title="{$c->__('button.edit')}">
-                            <i class="material-symbols">edit</i>
+                            <a href="#" onclick="listIconClick(event)">
+                                <i class="material-symbols">edit</i>
+                            </a>
                         </span>
                     {/if}
                     <span class="control icon active gray"
                           onclick="PostActions_ajaxDelete('{$post->server}', '{$post->node}', '{$post->nodeid}')"
                           title="{$c->__('button.delete')}">
-                        <i class="material-symbols">delete</i>
+                        <a href="#" onclick="listIconClick(event)">
+                            <i class="material-symbols">delete</i>
+                        </a>
                     </span>
                 {/if}
 
@@ -214,13 +218,19 @@
         <ul class="list middle flex">
             <li class="block large">
                 <span class="primary icon gray">
-                    <i class="material-symbols">wifi_tethering</i>
+                    <a href="#" onclick="listIconClick(event)">
+                        <i class="material-symbols">wifi_tethering</i>
+                    </a>
                 </span>
                 <span class="control icon gray active" onclick="Preview.copyToClipboard('{$post->openlink->href}')">
-                    <i class="material-symbols">content_copy</i>
+                    <a href="#" onclick="listIconClick(event)">
+                        <i class="material-symbols">content_copy</i>
+                    </a>
                 </span>
                 <span class="control icon gray active" onclick="MovimUtils.openInNew('{$post->openlink->href}')">
-                    <i class="material-symbols">open_in_new</i>
+                    <a href="#" onclick="listIconClick(event)">
+                        <i class="material-symbols">open_in_new</i>
+                    </a>
                 </span>
                 <div>
                     <p class="line">

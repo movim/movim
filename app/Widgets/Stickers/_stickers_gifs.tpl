@@ -22,7 +22,9 @@
     </ul>
     <ul class="tabs reversed narrow">
         <li onclick="Stickers_ajaxShow('{$jid}')" class="active">
-            <i class="material-symbols" style="font-size: 5rem;">gif</i>
+            <a href="#" onclick="listIconClick(event)">
+                <i class="material-symbols" style="font-size: 5rem;">gif</i>
+            </a>
         </li>
         {loop="$packs"}
             <li onclick="Stickers_ajaxShow('{$jid}', '{$value->name}')" {if="$pack != null && $value->name == $pack->name"}class="active"{/if}>

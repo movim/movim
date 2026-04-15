@@ -18,40 +18,42 @@
 
 <main style="background-color: rgb(var(--movim-background))">
     <?php if (!$this->user) { ?>
-        <aside>
+        <section id="sidebar">
             <?php $this->widget('CommunityDataPublic'); ?>
-        </aside>
+        </section>
         <div>
             <?php $this->widget('PublicNavigation');?>
             <hr />
             <?php $this->widget('Blog');?>
-            <ul class="list">
-                <li>
-                    <span class="primary icon gray">
-                        <i class="material-symbols">cloud_queue</i>
-                    </span>
-                    <div>
-                        <p class="center"><a target="_blank" href="https://movim.eu">Powered by Movim</a></p>
-                    </div>
-                </li>
-            </ul>
+            <footer>
+                <ul class="list">
+                    <li>
+                        <span class="primary icon gray">
+                            <i class="material-symbols">cloud_queue</i>
+                        </span>
+                        <div>
+                            <p class="center"><a target="_blank" href="https://movim.eu">Powered by Movim</a></p>
+                        </div>
+                    </li>
+                </ul>
+            </footer>
         </div>
     <?php } else { ?>
         <?php if (empty($_GET['n'])) { ?>
-            <aside>
+            <section id="sidebar">
                 <?php $this->widget('CommunitiesTags'); ?>
                 <?php $this->widget('NewsNav');?>
                 <?php $this->widget('CommunitiesServerInfo'); ?>
-            </aside>
+            </section>
             <div>
                 <?php $this->widget('CommunitiesServer'); ?>
             </div>
         <?php } else { ?>
-            <aside>
+            <section id="sidebar">
                 <?php $this->widget('CommunityData'); ?>
                 <?php $this->widget('CommunityConfig'); ?>
                 <?php $this->widget('CommunityAffiliations'); ?>
-            </aside>
+            </section>
             <div id="community">
             <?php $this->widget('CommunityHeader'); ?>
             <?php $this->widget('CommunityPosts'); ?>

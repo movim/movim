@@ -19,7 +19,7 @@
     <?php $this->widget('Upload');?>
     <?php $this->widget('Chat');?>
     <?php $this->widget('ChatActions');?>
-    <div id="scroll_block" role="menu">
+    <div role="menu">
         <?php if ($this->user?->hasPubsub() && $this->user?->hasUpload()) { ?>
             <?php $this->widget('Stories');?>
         <?php } ?>

@@ -1,1 +1,1 @@
-<div id="stories" class="spin" role="menu"></div>
+<div id="stories" class="spin"></div>

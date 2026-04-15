@@ -17,10 +17,10 @@
 <?php $this->widget('BottomNavigation');?>
 
 <main>
-    <aside>
+    <section id="sidebar">
         <?php $this->widget('ContactsSuggestions');?>
         <?php $this->widget('NewsNav');?>
-    </aside>
+    </section>
     <div>
         <?php $this->widget('Menu');?>
     </div>

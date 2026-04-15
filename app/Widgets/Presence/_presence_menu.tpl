@@ -4,15 +4,17 @@
         >
         <ul class="list thick">
             <li>
-                <span class="primary icon bubble active status
+                <span class="primary icon bubblestatus
                     {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}
-                ">
+                " aria-hidden="true">
                     <img src="{$contact->getPicture()}">
                 </span>
 
                 <span class="control icon active white divided" onclick="Presence_ajaxAskLogout(); Drawer.clear('menu')"
                     title="{$c->__('status.disconnect')}">
-                    <i class="material-symbols">exit_to_app</i>
+                    <a href="#" onclick="listIconClick(event);">
+                        <i class="material-symbols">exit_to_app</i>
+                    </a>
                 </span>
                 <div>
                     <p class="line">{$contact->truename}</p>
@@ -27,9 +29,11 @@
             onclick="MovimUtils.reload('{$c->route('contact', $c->me->id)}')"
         >
             <span class="primary icon gray">
-                <i class="material-symbols">news</i>
+                <a href="#" onclick="listIconClick(event);">
+                    <i class="material-symbols">news</i>
+                </a>
             </span>
-            <span class="control icon gray">
+            <span class="control icon gray" aria-hidden="true">
                 <i class="material-symbols">chevron_right</i>
             </span>
             <div>
@@ -41,9 +45,11 @@
                 title="{$c->__('communityaffiliation.subscriptions')}"
             >
                 <span class="primary icon gray">
-                    <i class="material-symbols">bookmarks</i>
+                    <a href="#" onclick="listIconClick(event);">
+                        <i class="material-symbols">bookmarks</i>
+                    </a>
                 </span>
-                <span class="control icon gray">
+                <span class="control icon gray" aria-hidden="true">
                     <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
@@ -57,9 +63,11 @@
         <li onclick="MovimUtils.reload('{$c->route('configuration')}')"
             title="{$c->__('page.configuration')}">
             <span class="primary icon gray">
-                <i class="material-symbols">tune</i>
+                <a href="#" onclick="listIconClick(event);">
+                    <i class="material-symbols">tune</i>
+                </a>
             </span>
-            <span class="control icon gray">
+            <span class="control icon gray" aria-hidden="true">
                 <i class="material-symbols">chevron_right</i>
             </span>
             <div>
@@ -70,9 +78,11 @@
             <li onclick="MovimUtils.reload('{$c->route('admin')}')"
                 title="{$c->__('page.administration')}">
                 <span class="primary icon gray">
-                    <i class="material-symbols">manage_accounts</i>
+                    <a href="#" onclick="listIconClick(event);">
+                        <i class="material-symbols">manage_accounts</i>
+                    </a>
                 </span>
-                <span class="control icon gray">
+                <span class="control icon gray" aria-hidden="true">
                     <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
@@ -85,9 +95,11 @@
             title="{$c->__('page.help')}"
         >
             <span class="primary icon gray">
-                <i class="material-symbols">help</i>
+                <a href="#" onclick="listIconClick(event);">
+                    <i class="material-symbols">help</i>
+                </a>
             </span>
-            <span class="control icon gray">
+            <span class="control icon gray" aria-hidden="true">
                 <i class="material-symbols">chevron_right</i>
             </span>
             <div>

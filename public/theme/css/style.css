@@ -56,6 +56,24 @@ a:focus:not(:hover) {
     outline-offset: -2px;
 }
 
+a:link:hover,
+a:visited:hover {
+    text-decoration: underline;
+}
+
+/* Skip Main */
+#skip_main {
+    z-index: 1;
+    display: block;
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+}
+
+#skip_main:focus {
+    transform: translateY(0);
+}
+
 /* Navigation bar */
 
 body>nav {
@@ -211,17 +229,17 @@ main>div.large>* {
     max-width: 100%;
 }
 
-main>aside {
+main>section#sidebar {
     width: 45rem;
 }
 
-main>aside+div {
+main>section#sidebar+div {
     width: 85rem;
     padding-right: 1rem;
     box-sizing: border-box;
 }
 
-body[dir="rtl"] main>aside+div {
+body[dir="rtl"] main>section#sidebar+div {
     padding-left: 1rem;
     padding-right: 0;
 }
@@ -276,15 +294,15 @@ main>div:first-child:nth-last-child(2)+div {
         margin-left: 6.5rem;
     }
 
-    main>aside+div {
+    main>section#sidebar+div {
         padding-right: 0;
     }
 
-    body[dir="rtl"] main>aside+div {
+    body[dir="rtl"] main>section#sidebar+div {
         padding-left: 0;
     }
 
-    main>aside {
+    main>section#sidebar {
         display: none;
     }
 }

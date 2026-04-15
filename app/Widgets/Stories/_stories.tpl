@@ -6,7 +6,7 @@
             <div>
                 <p>
                     <a href="#" onclick="listIconClick(event)" class="normal">
-                        <i class="material-symbols">add_circle</i>
+                        <i class="material-symbols">web_stories</i>
                     </a>
                 </p>
             </div>
