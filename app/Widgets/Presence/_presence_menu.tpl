@@ -4,7 +4,7 @@
         >
         <ul class="list thick">
             <li>
-                <span class="primary icon bubblestatus
+                <span class="primary icon bubble status
                     {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}
                 " aria-hidden="true">
                     <img src="{$contact->getPicture()}">
