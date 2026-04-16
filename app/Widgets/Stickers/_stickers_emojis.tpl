@@ -37,16 +37,14 @@
             {/if}
         {/if}
 
-        <div class="emojis_grid main">
+        <div class="emojis_grid">
             <img data-emoji="♥" alt=":hearts:" class="emoji large" src="{$c->getSmileyPath('2665')}">
             <img data-emoji="👍" class="emoji large" src="{$c->getSmileyPath('1f44d')}">
             <img data-emoji="👎" class="emoji large" src="{$c->getSmileyPath('1f44e')}">
             <img data-emoji="😂" class="emoji large" src="{$c->getSmileyPath('1f602')}">
             <img data-emoji="😊" class="emoji large" src="{$c->getSmileyPath('1f60a')}">
             <img data-emoji="😉" class="emoji large" src="{$c->getSmileyPath('1f609')}">
-        </div>
 
-        <div class="emojis_grid">
             <img data-emoji="😀" class="emoji large" src="{$c->getSmileyPath('1f600')}">
             <img data-emoji="😁" class="emoji large" src="{$c->getSmileyPath('1f601')}">
             <img data-emoji="😃" class="emoji large" src="{$c->getSmileyPath('1f603')}">

@@ -184,9 +184,9 @@ class Wrapper
     public function iterate(string $key, ?Packet $packet = null, ?User $user = null, ?string $sessionId = null)
     {
         if ($packet && !empty($packet->from)) {
-            logInfo('Package : "' . $key . '" from "' . $packet->from . '" fired');
+            logInfo('Package: "' . $key . '" from "' . $packet->from . '" fired');
         } else {
-            logInfo('Package : "' . $key . '"');
+            logInfo('Package: "' . $key . '"');
         }
 
         if (array_key_exists($key, $this->_events)) {

@@ -56,7 +56,7 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->hasMany(Post::class, 'parent_id', 'id')
+        return $this->hasMany(PostComment::class, 'parent_id', 'id')
             ->orderBy('published')
             ->where('like', false);
     }
@@ -96,7 +96,7 @@ class Post extends Model
 
     public function likes()
     {
-        return $this->hasMany(Post::class, 'parent_id', 'id')
+        return $this->hasMany(PostComment::class, 'parent_id', 'id')
             ->whereIn('id', function ($query) {
                 $query->select(DB::raw('min(id) as id'))
                     ->from('posts')
@@ -110,13 +110,14 @@ class Post extends Model
     {
         return $this->hasMany(Attachment::class)
             ->where('category', 'link')
-            ->whereNotIn('href', function ($query) {
+            /*->whereNotIn('href', function ($query) {
+                \logDebug('ID '.$this->id);
                 $query->select('href')
                     ->from('attachments')
-                    ->where('post_id', $this->id)
+                    ->whereColumn('post_id', $this->id)
                     ->where('category', 'picture')
                     ->get();
-            });
+            })*/;
     }
 
     /**

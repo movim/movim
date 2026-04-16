@@ -20,7 +20,7 @@ class Handler
             $id !== ''
             && $session->get($id) !== null
         ) {
-            logInfo("Handler : Memory instance found for {$id}");
+            logInfo("Handler: Memory instance found for {$id}");
 
             $action = $session->get($id);
             $session->delete($id);
@@ -45,7 +45,7 @@ class Handler
                     $message = (string)$error->text;
                 }
 
-                logInfo('Handler : ' . get_class($action) . ' ' . $id . ' - ' . $errorid);
+                logInfo('Handler: ' . get_class($action) . ' ' . $id . ' - ' . $errorid);
 
                 $propagate = true;
 
@@ -57,7 +57,7 @@ class Handler
 
                 // We also call a global error handler
                 if (method_exists($action, 'error') && $propagate == true) {
-                    logInfo('Handler : Global error - ' . $id . ' - ' . $errorid);
+                    logInfo('Handler: Global error - ' . $id . ' - ' . $errorid);
                     $action->method('error');
                     $action->error($errorid, $message);
                 }
@@ -69,7 +69,7 @@ class Handler
                 $action->handle($child);
             }
         } else {
-            logInfo("Handler : No memory instance found for {$id}");
+            logInfo("Handler: No memory instance found for {$id}");
 
             $handledFirst = $handledSecond = $handledThird = false;
 
@@ -106,12 +106,12 @@ class Handler
         if ($s->items && $s->items->attributes()->node) {
             $node = (string)$s->items->attributes()->node;
             $hash = md5($name . $ns . $node);
-            logInfo('Handler : Searching a payload for "' . $name . ':' . $ns . ' [' . $node . ']", "' . $hash . '"');
+            logInfo('Handler: Searching a payload for "' . $name . ':' . $ns . ' [' . $node . ']", "' . $hash . '"');
             $matchPayloadWithNode = $this->searchPayload($hash, $s, $sparent);
         }
 
         $hash = md5($name . $ns);
-        logInfo('Handler : Searching a payload for "' . $name . ':' . $ns . '", "' . $hash . '"');
+        logInfo('Handler: Searching a payload for "' . $name . ':' . $ns . '", "' . $hash . '"');
         $matchPayload = $this->searchPayload($hash, $s, $sparent);
 
         if (!$matchPayloadWithNode && !$matchPayload) {
@@ -217,12 +217,12 @@ class Handler
             $payloadClass->prepare($s, $sparent);
             $payloadClass->handle($s, $sparent);
 
-            logInfo('Handler : Firing Payload\\' . $hashToClass[$hash]);
+            logInfo('Handler: Firing Payload\\' . $hashToClass[$hash]);
 
             return true;
         }
 
-        logInfo('Handler : This event is not listed');
+        logInfo('Handler: This event is not listed');
         return false;
     }
 

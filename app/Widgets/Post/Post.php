@@ -237,18 +237,16 @@ class Post extends Base
 
     public function prepareComments(\App\Post $post, ?bool $public = false)
     {
-        $view = $this->tpl();
-        $view->assign('post', $post);
-        $view->assign('public', $public);
-        $view->assign('hearth', addEmojis('♥'));
-
-        return $view->draw('_post_comments');
+        return $this->view('_post_comments', [
+            'post' => $post,
+            'public' => $public,
+            'hearth' => addEmojis('♥')
+        ]);
     }
 
     public function prepareNotFound()
     {
-        $view = $this->tpl();
-        return $view->draw('_post_not_found');
+        return $this->view('_post_not_found');
     }
 
     public function preparePost(\App\Post $post, $public = false, $card = false, $requestComments = true)
