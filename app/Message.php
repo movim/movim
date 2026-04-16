@@ -441,7 +441,9 @@ class Message extends Model
                 $parentMessage = $this->resolveParentMessage($this->jidfrom, (string)$stanza->reply->attributes()->id);
 
                 if (
-                    $parentMessage && $parentMessage->mid != $this->mid
+                    $parentMessage
+                    && $parentMessage->parentmid != $this->mid // prevent circular references
+                    && $parentMessage->mid != $this->mid
                     && $parentMessage->originid != $this->originid
                 ) {
                     $this->parentmid = $parentMessage->mid;
