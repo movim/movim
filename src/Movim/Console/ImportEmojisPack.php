@@ -77,15 +77,6 @@ class ImportEmojisPack extends Command
         $question->setErrorMessage('Pack %s is invalid.');
         $pack = $helper->ask($input, $output, $question);
 
-        EmojisPack::where('name', $pack)->delete();
-
-        $emojisPack = new EmojisPack;
-        $emojisPack->name = $pack;
-        $emojisPack->description = $json->{$pack}->description ?? null;
-        $emojisPack->homepage = $json->{$pack}->homepage ?? null;
-        $emojisPack->license = $json->{$pack}->license ?? null;
-        $emojisPack->save();
-
         $output->writeln('<info>Downloading ' . $pack . ' - ' . $json->{$pack}->description . '</info>');
 
         $response = await(requestURL($json->{$pack}->src, timeout: 5));
@@ -94,6 +85,15 @@ class ImportEmojisPack extends Command
             $output->writeln('<error>The archive cannot be downloaded</error>');
             return Command::FAILURE;
         }
+
+        EmojisPack::where('name', $pack)->delete();
+
+        $emojisPack = new EmojisPack;
+        $emojisPack->name = $pack;
+        $emojisPack->description = $json->{$pack}->description ?? null;
+        $emojisPack->homepage = $json->{$pack}->homepage ?? null;
+        $emojisPack->license = $json->{$pack}->license ?? null;
+        $emojisPack->save();
 
         $tempZip = tempnam(sys_get_temp_dir(), $pack);
         file_put_contents($tempZip, (string)$response->getBody());
@@ -138,23 +138,27 @@ class ImportEmojisPack extends Command
         foreach ($meta->emojis as $metaEmoji) {
             $emojiPath = $packPath . '/' . $metaEmoji->fileName;
 
-            $hashed = hash(Image::$hash, file_get_contents($emojiPath));
+            if (file_exists($emojiPath)) {
+                $hashed = hash(Image::$hash, file_get_contents($emojiPath));
 
-            $image = new Image;
-            $image->fromPath($emojiPath);
-            $image->setKey($hashed);
-            $image->save();
+                $image = new Image;
+                $image->fromPath($emojiPath);
+                $image->setKey($hashed);
+                $image->save();
 
-            $emoji = new Emoji;
-            $emoji->pack = $pack;
-            $emoji->name = $metaEmoji->emoji->name;
-            $emoji->filename = $metaEmoji->fileName;
-            $emoji->alias = $metaEmoji->emoji->aliases[0] ?? null;
-            $emoji->cache_hash = $hashed;
-            $emoji->cache_hash_algorythm = Image::$hash;
-            $emoji->save();
+                $emoji = new Emoji;
+                $emoji->pack = $pack;
+                $emoji->name = $metaEmoji->emoji->name;
+                $emoji->filename = $metaEmoji->fileName;
+                $emoji->alias = $metaEmoji->emoji->aliases[0] ?? null;
+                $emoji->cache_hash = $hashed;
+                $emoji->cache_hash_algorythm = Image::$hash;
+                $emoji->save();
 
-            $count++;
+                $count++;
+            } else {
+                $output->writeln('<error>' . $emojiPath . ' not found</error>');
+            }
         }
 
         $output->writeln('<info>' . $count . ' emojis cached</info>');
@@ -164,7 +168,7 @@ class ImportEmojisPack extends Command
 
     private function rrmdir(string $directory): bool
     {
-        array_map(fn (string $file) => is_dir($file) ? $this->rrmdir($file) : unlink($file), glob($directory . '/' . '*'));
+        array_map(fn(string $file) => is_dir($file) ? $this->rrmdir($file) : unlink($file), glob($directory . '/' . '*'));
         return rmdir($directory);
     }
 }
