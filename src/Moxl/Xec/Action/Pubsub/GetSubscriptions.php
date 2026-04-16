@@ -33,38 +33,50 @@ class GetSubscriptions extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $tab = [];
+        $jids = [];
 
         foreach ($stanza->pubsub->subscriptions->children() as $s) {
-            $subscription = \App\Subscription::firstOrNew([
-                'jid' => (string)$s->attributes()->jid,
-                'server' => $this->_to,
-                'node' => $this->_node
-            ]);
-            $subscription->save();
-
             $sub = [
-                'jid' => (string)$s['jid'],
-                'subscription' => (string)$s['subscription'],
-                'subid' => (string)$s['subid']
+                'jid' => (string)$s->attributes()->jid,
+                'subscription' => (string)$s->attributes()->subscription,
+                'subid' => (string)$s->attributes()->subid
             ];
-
             array_push($tab, $sub);
+            $jids[(string)$s->attributes()->jid] = true;
         }
 
         \App\Info::where('server', $this->_to)
-                 ->where('node', $this->_node)
-                 ->update(['occupants' => count($tab)]);
+            ->where('node', $this->_node)
+            ->update(['occupants' => count($tab)]);
 
         if (empty($tab)) {
             \App\Subscription::where('server', $this->_to)
-                             ->where('node', $this->_node)
-                             ->delete();
+                ->where('node', $this->_node)
+                ->delete();
+        } else {
+            $existingJids = \App\Subscription::where('server', $this->_to)
+                ->where('node', $this->_node)
+                ->whereIn('jid', array_keys($jids))
+                ->pluck('jid')
+                ->toArray();
+
+            $jidsToSave = array_diff(array_keys($jids), $existingJids);
+
+            foreach ($jidsToSave as $jid) {
+                $subscription = new \App\Subscription([
+                    'jid' => (string)$jid,
+                    'server' => $this->_to,
+                    'node' => $this->_node
+                ]);
+                $subscription->save();
+            }
         }
 
         $this->pack([
             'subscriptions' => $tab,
             'to' => $this->_to,
-            'node' => $this->_node]);
+            'node' => $this->_node
+        ]);
 
         if ($this->_notify) {
             $this->deliver();
