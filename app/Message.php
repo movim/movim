@@ -442,7 +442,7 @@ class Message extends Model
 
                 if (
                     $parentMessage
-                    && $parentMessage->parentmid != $this->mid // prevent circular references
+                    && ($parentMessage->parentmid == null || $parentMessage->parentmid != $this->mid) // prevent circular references
                     && $parentMessage->mid != $this->mid
                     && $parentMessage->originid != $this->originid
                 ) {
