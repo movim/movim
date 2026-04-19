@@ -990,15 +990,16 @@ var Chat = {
 
             for (date in page) {
                 let messageDateTime = page[date][Object.keys(page[date])[0]].published;
+                let firstMessage = Chat.getDiscussion()?.querySelector('.message')
 
                 /**
                  * We might have old messages reacted pushed by the server
                  */
-                /*if (Chat.oldestMessageDateTime
-                    && Chat.oldestMessageDateTime > messageDateTime
+                if (firstMessage
+                    && (new Date(messageDateTime) < (new Date(firstMessage.dataset.published)))
                     && !prepend) {
                     return;
-                }*/
+                }
 
                 if (prepend === undefined || prepend === false) {
                     Chat.appendDate(date, prepend);
