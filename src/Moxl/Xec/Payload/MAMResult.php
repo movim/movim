@@ -28,6 +28,12 @@ class MAMResult extends Payload
                 return;
             }
 
+            /**
+             * Enforce the stanzaid based on the MAM result id
+             * https://xmpp.org/extensions/xep-0313.html#results
+             */
+            $message->stanzaid = (string)$stanza->attributes()->id;
+
             if (
                 $message->published && strtotime($message->published) > mktime(0, 0, 0, gmdate("m"), gmdate("d") - 3, gmdate("Y"))
             ) {
