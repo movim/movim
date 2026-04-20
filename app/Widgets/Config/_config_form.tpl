@@ -123,6 +123,15 @@
                     <p class="all">{$c->__('config.omemoenabled_text')}</p>
                 </div>
             </li>
+            <li>
+                <span class="primary icon red">
+                    <i class="material-symbols">warning</i>
+                </span>
+                <div>
+                    <p></p>
+                    <p>{$c->__('config.omemoenabled_warning', BASE_HOST)}</p>
+                </div>
+            </li>
 
             <li>
                 <span class="primary icon gray" aria-hidden="true">
