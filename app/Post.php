@@ -111,7 +111,6 @@ class Post extends Model
         return $this->hasMany(Attachment::class)
             ->where('category', 'link')
             /*->whereNotIn('href', function ($query) {
-                \logDebug('ID '.$this->id);
                 $query->select('href')
                     ->from('attachments')
                     ->whereColumn('post_id', $this->id)

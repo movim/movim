@@ -46,6 +46,17 @@
             </li>
         </div>
     </ul>
+    <ul class="list thick" id="encrypted_warning">
+        <li>
+            <span class="primary icon red">
+                <i class="material-symbols">warning</i>
+            </span>
+            <div>
+                <p></p>
+                <p class="all">{$c->__('upload.encrypted_warning')}</p>
+            </div>
+        </li>
+    </ul>
 </section>
 <footer>
     <ul id="upload_progress" class="list">

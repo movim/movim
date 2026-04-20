@@ -50,7 +50,7 @@ a:visited {
     text-decoration: none;
 }
 
-a:focus:not(:hover) {
+a:focus-visible:not(:hover) {
     border-radius: 2px;
     outline: 3px solid var(--movim-accent);
     outline-offset: -2px;

@@ -341,6 +341,10 @@ var Upload = {
             Upload.preview(Upload.file);
         }
 
+        if (Chat.isEncrypted()) {
+            document.querySelector('#upload').classList.add('encrypted');
+        }
+
         document.querySelector('#upload div.drop').addEventListener('drop', ev => {
             ev.preventDefault();
 

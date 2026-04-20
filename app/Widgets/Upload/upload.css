@@ -15,6 +15,10 @@
     display: none;
 }
 
+#upload:not(.encrypted) #encrypted_warning {
+    display: none;
+}
+
 #upload div.drop {
     width: auto;
     margin: 0.25rem 1rem;
