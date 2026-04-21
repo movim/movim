@@ -18,7 +18,7 @@
                         onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">
                         <img src="{$conference->getPicture()}">
                 {else}
-                    <span class="primary icon gray">
+                    <span class="primary icon gray on_desktop">
                         <i class="material-symbols">tag</i>
                     </span>
                 {/if}
