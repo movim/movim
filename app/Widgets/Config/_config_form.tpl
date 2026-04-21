@@ -129,7 +129,7 @@
                 </span>
                 <div>
                     <p></p>
-                    <p>{$c->__('config.omemoenabled_warning', BASE_HOST)}</p>
+                    <p class="all">{$c->__('config.omemoenabled_warning', BASE_HOST)}</p>
                 </div>
             </li>
 
