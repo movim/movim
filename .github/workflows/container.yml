@@ -1,0 +1,18 @@
+name: Build and publish a Docker image to ghcr.io
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  docker_publish:
+    runs-on: "ubuntu-24.04"
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and publish a Docker image for ${{ github.repository }}
+        uses: macbre/push-to-ghcr@master
+        with:
+          dockerfile: Containerfile
+          image_name: ${{ github.repository }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}

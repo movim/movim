@@ -35,6 +35,9 @@ You can then access in your browser at the following URL:
 
 The container is using a self-signed certificate, accept to get to the login page.
 
+The container is also available at `ghcr.io/movim/movim:latest`, but requires
+postgresql to run (cf our podman-compose script).
+
 Security report
 ---------------
 
