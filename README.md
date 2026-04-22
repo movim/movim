@@ -46,6 +46,7 @@ You can help Movim by:
 
 * Doing a one time donation using PayPal [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=8QHPJDAQXT9UC)
 * Helping us covering our monthly costs on our official Patreon page [![Donate](https://img.shields.io/badge/Patreon-Become%20a%20Patron-orange.svg)](https://www.patreon.com/movim)
+* Helping us weekly on Liberapay [![Donate](https://img.shields.io/liberapay/goal/Movim?label=Liberapay&color=f6c915)](https://liberapay.com/movim)
 
 Links
 -----
