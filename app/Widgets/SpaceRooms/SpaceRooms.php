@@ -176,7 +176,7 @@ class SpaceRooms extends Base
             $sc->setTo($form->conference->value)
                 ->setData([
                     'muc#roomconfig_roomname' => $form->name->value,
-                    'muc#roominfo_pubsub' => $subscription->uri
+                    'muc#roomconfig_pubsub' => $subscription->uri
                 ])
                 ->request();
         }

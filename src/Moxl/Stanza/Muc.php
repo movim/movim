@@ -130,7 +130,7 @@ class Muc
         ];
 
         if ($pubsubNode) {
-            $config['muc#roominfo_pubsub'] = $pubsubNode;
+            $config['muc#roomconfig_pubsub'] = $pubsubNode;
         }
 
         \Moxl\Utils::injectConfigInX($x, $config);
