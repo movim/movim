@@ -8,8 +8,10 @@ RUN install-php-extensions imagick gd bcmath
 # S6
 COPY ./etc/s6-overlay/s6-rc.d/movim-migrations/ /etc/s6-overlay/s6-rc.d/movim-migrations/
 COPY ./etc/s6-overlay/s6-rc.d/movim-daemon/ /etc/s6-overlay/s6-rc.d/movim-daemon/
+COPY ./etc/s6-overlay/s6-rc.d/tail-log/ /etc/s6-overlay/s6-rc.d/tail-log/
 RUN touch /etc/s6-overlay/s6-rc.d/user/contents.d/movim-migrations
 RUN touch /etc/s6-overlay/s6-rc.d/user/contents.d/movim-daemon
+RUN touch /etc/s6-overlay/s6-rc.d/user/contents.d/tail-log
 
 # nginx websocket
 COPY /etc/nginx/conf.d/movim-websocket.conf /etc/nginx/server-opts.d/
