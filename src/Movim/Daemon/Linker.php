@@ -133,9 +133,8 @@ class Linker
 
     public function logout(): void
     {
-        $this->writeXMPP(\Moxl\Stanza\Stream::end());
-
         if ($this->connected()) {
+            $this->writeXMPP(\Moxl\Stanza\Stream::end());
             $this->connection->close();
         }
     }
