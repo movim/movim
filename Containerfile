@@ -2,6 +2,9 @@ FROM docker.io/serversideup/php:8.4-fpm-nginx-alpine3.21
 
 USER root
 
+# PHP
+RUN install-php-extensions imagick gd bcmath
+
 # S6
 COPY ./etc/s6-overlay/s6-rc.d/movim-migrations/ /etc/s6-overlay/s6-rc.d/movim-migrations/
 COPY ./etc/s6-overlay/s6-rc.d/movim-daemon/ /etc/s6-overlay/s6-rc.d/movim-daemon/
@@ -10,9 +13,6 @@ RUN touch /etc/s6-overlay/s6-rc.d/user/contents.d/movim-daemon
 
 # nginx websocket
 COPY /etc/nginx/conf.d/movim-websocket.conf /etc/nginx/server-opts.d/
-
-# PHP
-RUN install-php-extensions imagick gd bcmath
 
 # Movim
 
