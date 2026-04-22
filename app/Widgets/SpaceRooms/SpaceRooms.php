@@ -72,7 +72,6 @@ class SpaceRooms extends Base
                 }
             }
         }
-
     }
 
     /**
@@ -176,7 +175,14 @@ class SpaceRooms extends Base
             $sc->setTo($form->conference->value)
                 ->setData([
                     'muc#roomconfig_roomname' => $form->name->value,
-                    'muc#roomconfig_pubsub' => $subscription->uri
+                    'muc#roomconfig_pubsub' => $subscription->uri,
+
+                    // Just in case, we resend Group Chat configuration
+                    'muc#roomconfig_persistentroom' => 'true',
+                    'muc#roomconfig_changesubject' => 'false',
+                    'muc#roomconfig_membersonly' => 'true',
+                    'muc#roomconfig_whois' => 'anyone',
+                    'muc#roomconfig_publicroom' => 'false',
                 ])
                 ->request();
         }
