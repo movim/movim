@@ -352,7 +352,7 @@ class Rooms extends Base
             ->where('node', '')
             ->first();
 
-        if (!$capability || !$capability->isMAM()) {
+        if (!$capability || !$capability->hasMAM()) {
             $this->me->messages()->where('jidfrom', $room)->delete();
         }
 
