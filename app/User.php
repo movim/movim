@@ -20,7 +20,8 @@ class User extends Model
         'notificationchat',
         'notificationcall',
         'omemoenabled',
-        'accentcolor'
+        'accentcolor',
+        'posts_since'
     ];
     public $with = ['session', 'capability'];
     protected $keyType = 'string';

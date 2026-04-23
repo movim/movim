@@ -44,7 +44,7 @@ class Menu extends Base
             return;
         }
 
-        $since = $this->me->posts_since;
+        $since = User::where('id', $this->me->id)->first()->posts_since;
         $count = 0;
 
         if ($since) {
@@ -188,9 +188,10 @@ class Menu extends Base
         // getting newer, not older
         if ($page == 0) {
             $count = 0;
-            $last = $posts->orderBy('published', 'desc')->first();
-            $this->me->posts_since = ($last) ? $last->published : date(MOVIM_SQL_DATE);
-            $this->me->save();
+            if ($last = $posts->orderBy('posts.published', 'desc')->first()) {
+                $this->me->posts_since = $last->published;
+                $this->me->save();
+            }
         }
 
         $items = \App\Post::skip($page * $this->_paging + $count)->withoutComments();
