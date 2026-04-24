@@ -4,6 +4,10 @@ Movim Changelog
 v0.34 (master)
 ---------------------------
 
+v0.33.1
+---------------------------
+* Fix the SpaceMenu add flow
+
 v0.33
 ---------------------------
 * Add a Shortcuts widget to quickly access the 3 most recent notified chats and chatrooms
