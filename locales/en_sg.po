@@ -1,6 +1,5 @@
 #
 # Translators:
-# Mantas Ramonas <mantas@internetz.me>, 2017
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -125,46 +124,46 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Mantas Ramonas <mantas@internetz.me>, 2017\n"
-"Language-Team: Lithuanian (http://app.transifex.com/movim/movim/language/lt/)\n"
-"Language: lt\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: English (Singapore) (http://app.transifex.com/movim/movim/language/en_SG/)\n"
+"Language: en_SG\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
-msgstr "Ačiū"
+msgstr ""
 
 #: [about]developers
 msgid "Developers"
-msgstr "Kūrėjai"
+msgstr ""
 
 #: [about]translators
 msgid "Translators"
-msgstr "Vertėjai"
+msgstr ""
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr "Ačiū visiems vertėjams"
+msgstr ""
 
 #: [about]software
 msgid "Software"
-msgstr "Programa"
+msgstr ""
 
 #: [about]resources
 msgid "Resources"
-msgstr "Resursai"
+msgstr ""
 
 #: [about]api
 msgid "API"
-msgstr "API"
+msgstr ""
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr "Movim yra XMPP pagrindu remta komunikacijos platforma. Visas projektas, išskyrus šią programinę įrangą ir išteklius, yra pagal"
+msgstr ""
 
 #: [about]sourcecode_title
 msgid "Sourcecode"
@@ -176,7 +175,7 @@ msgstr ""
 
 #: [account]title [page]account
 msgid "Account"
-msgstr "Paskyra"
+msgstr ""
 
 #: [account]account_management
 msgid "Account management"
@@ -184,27 +183,27 @@ msgstr ""
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr "Pakeisti slaptažodį"
+msgstr ""
 
 #: [account]password [credentials]password [form]password [input]password
 msgid "Password"
-msgstr "Slaptažodis"
+msgstr ""
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr "Slaptažodžio patvirtinimas"
+msgstr ""
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr "Jūsų slaptažodis yra atnaujintas"
+msgstr ""
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr "Įvesti slaptažodžiai neatitinka"
+msgstr ""
 
 #: [account]delete
 msgid "Delete your account"
-msgstr "Ištrinti jūsų paskyrą"
+msgstr ""
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
@@ -244,7 +243,7 @@ msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
-msgstr "Veiksmai"
+msgstr ""
 
 #: [adhoc]completed
 msgid "Action completed"
@@ -272,15 +271,15 @@ msgstr ""
 
 #: [admin]general
 msgid "General Settings"
-msgstr "Bendrieji parametrai"
+msgstr ""
 
 #: [general]theme
 msgid "Theme"
-msgstr "Tema"
+msgstr ""
 
 #: [general]language
 msgid "Default language"
-msgstr "Numatytoji kalba"
+msgstr ""
 
 #: [general]log_verbosity
 msgid "Log verbosity"
@@ -316,7 +315,7 @@ msgstr ""
 
 #: [credentials]username [input]username
 msgid "Username"
-msgstr "Vartotojo vardas"
+msgstr ""
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -2200,15 +2199,15 @@ msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr "Sukurti naują paskyrą"
+msgstr ""
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr "Serveryje nerasta paskyros sukūrimo formos"
+msgstr ""
 
 #: [create]server_on
 msgid "on"
-msgstr "Į"
+msgstr ""
 
 #: [create]successfull
 msgid "Your account has been successfully registered"
@@ -2216,15 +2215,15 @@ msgstr ""
 
 #: [create]loading
 msgid "Loading"
-msgstr "Kraunama"
+msgstr ""
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...ir pradėkit žaisti"
+msgstr ""
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr "Nepriimtina"
+msgstr ""
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
@@ -3515,7 +3514,7 @@ msgstr ""
 
 #: [client]gateway
 msgid "Gateway"
-msgstr "Vartai"
+msgstr ""
 
 #: [presence]online
 msgid "Online"

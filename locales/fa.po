@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: revolt68 <ashrafnezhad@gmail.com>, 2021\n"
 "Language-Team: Persian (http://app.transifex.com/movim/movim/language/fa/)\n"
@@ -135,7 +135,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -855,6 +855,10 @@ msgstr ""
 msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
+#: [chats]new_title
+msgid "Start a new conversation"
+msgstr ""
+
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "با مخاطب گپ بزنید"
@@ -1210,6 +1214,10 @@ msgstr ""
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
 msgstr ""
 
 #: [config]night_mode
@@ -1819,7 +1827,7 @@ msgstr ""
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s میخواهد با شما گفتگو کند"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1846,9 +1854,8 @@ msgid "You can always disable this in the configuration afterwards"
 msgstr ""
 
 #: [post]publish_something
-#, fuzzy
 msgid "Publish something"
-msgstr "فقط انتشار"
+msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1875,9 +1882,8 @@ msgid "Posts recently published in communities that you are not subscribed (yet)
 msgstr ""
 
 #: [post]new_blog
-#, fuzzy
 msgid "New blog post"
-msgstr "نوشته جدید"
+msgstr ""
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -2037,6 +2043,10 @@ msgstr ""
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
+msgstr ""
+
+#: [status]my_avatar
+msgid "My profile picture"
 msgstr ""
 
 #: [preview]link_copied
@@ -2288,9 +2298,8 @@ msgid "A registration is required before using the service"
 msgstr ""
 
 #: [rooms]discover
-#, fuzzy
 msgid "Discover a room"
-msgstr "کشف کردن"
+msgstr ""
 
 #: [rooms]disco_error
 msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
@@ -2302,6 +2311,10 @@ msgstr ""
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
 msgstr ""
 
 #: [chatrooms]autojoin
@@ -2363,7 +2376,7 @@ msgstr ""
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr ""
+msgstr "اعض"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -2489,7 +2502,7 @@ msgstr ""
 #: [room]group_chat_members
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr ""
+msgstr "اعض"
 
 #: [room]banned_add
 msgid "Ban someone"
@@ -2537,9 +2550,8 @@ msgid "Never notify"
 msgstr "هرگز به من اطلاع نده"
 
 #: [room]notify_mentioned
-#, fuzzy
 msgid "Notify when mentioned"
-msgstr "هنگامی که منشن شدم اطلاع بده"
+msgstr ""
 
 #: [room]notify_always
 msgid "Always notify"
@@ -2556,7 +2568,7 @@ msgstr ""
 #: [room]affiliation_members
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr ""
+msgstr "اعض"
 
 #: [room]visitor
 msgid "Visitor"
@@ -2608,7 +2620,7 @@ msgstr ""
 
 #: [search]tags
 msgid "Tags"
-msgstr ""
+msgstr "تگ ها"
 
 #: [search]show_complete_roster
 msgid "Show all the contacts"
@@ -2655,33 +2667,32 @@ msgid "Story shared using Movim"
 msgstr ""
 
 #: [spaceinfo]config_title
-#, fuzzy
 msgid "Space configuration"
-msgstr "تنظیمات ذخیره شد"
+msgstr ""
 
 #: [spaceinfo]config_saved
-#, fuzzy
 msgid "Space configuration saved"
-msgstr "تنظیمات ذخیره شد"
+msgstr ""
 
 #: [spaceinfo]config_error
-#, fuzzy
 msgid "Space configuration error"
-msgstr "تنظیمات پیشرفته"
+msgstr ""
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
 
 #: [spaceinfo]destroy_title
-#, fuzzy
 msgid "Destroy the space"
-msgstr "ترک کردن این سرور"
+msgstr ""
 
 #: [spaceinfo]destroy_text
 msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
 msgstr ""
 
 #: [spaceinfo]invite_title
-#, fuzzy
 msgid "Invite new contacts"
-msgstr "مخاطبین اخیر"
+msgstr ""
 
 #: [spaceinfo]invite_text
 msgid "A moderator will have to approve the join request"
@@ -2692,14 +2703,12 @@ msgid "Send an invitation key to your contacts"
 msgstr ""
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
-#, fuzzy
 msgid "Leave the space"
-msgstr "ترک کردن این سرور"
+msgstr ""
 
 #: [spaceinfo]add_room_title
-#, fuzzy
 msgid "Add a room"
-msgstr "نظر اضافه کنید"
+msgstr ""
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
@@ -2722,14 +2731,20 @@ msgid "An owner cannot leave his own Space"
 msgstr ""
 
 #: [spaceinfo]affiliation_none
-#, fuzzy
 msgid "Remove from the space"
-msgstr "ترک کردن این سرور"
+msgstr ""
 
 #: [spacesmenu]create_space_title
-#, fuzzy
-msgid "Create a Space"
-msgstr "ساخت حساب کاربری جدید"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
+msgstr ""
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2796,14 +2811,12 @@ msgid "Deny the access"
 msgstr ""
 
 #: [spacesmenu]contact_added
-#, fuzzy
 msgid "Contact added in the space"
-msgstr "مخاطب اضافه شد"
+msgstr ""
 
 #: [spacesmenu]contact_denied
-#, fuzzy
 msgid "Contact denied in the space"
-msgstr "مخاطب حذف شد"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -2919,6 +2932,10 @@ msgstr ""
 
 #: [upload]upload_xmpp
 msgid "Uploading to your account"
+msgstr ""
+
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
 msgstr ""
 
 #: [vcard]title [page]profile
@@ -3135,6 +3152,18 @@ msgstr ""
 
 #: [global]change_pod
 msgid "Switch to another pod"
+msgstr ""
+
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
 msgstr ""
 
 #: [page]about
@@ -3489,7 +3518,7 @@ msgstr "ثبت شده"
 
 #: [client]gateway
 msgid "Gateway"
-msgstr ""
+msgstr "دروازه"
 
 #: [presence]online
 msgid "Online"
@@ -4078,10 +4107,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "اینجا بنویسید"
-
-#, fuzzy
-#~ msgid "New Post"
-#~ msgstr "نوشته جدید"
-
-#~ msgid "Public posts from users"
-#~ msgstr "نوشته های عمومی از کاربر"

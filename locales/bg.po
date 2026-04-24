@@ -125,7 +125,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023,2025-2026\n"
 "Language-Team: Bulgarian (http://app.transifex.com/movim/movim/language/bg/)\n"
@@ -134,7 +134,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -807,9 +807,8 @@ msgid "Resolving OMEMO devices"
 msgstr "Разрешаване на OMEMO устройства"
 
 #: [omemo]building_sessions
-#, fuzzy
 msgid "Building encrypted sessions"
-msgstr "Създаване на шифровани сесии"
+msgstr ""
 
 #: [omemo]building_own_sessions
 msgid "Building own encryption sessions"
@@ -821,7 +820,7 @@ msgstr "Шифроването е забранено"
 
 #: [omemo]encrypted_loading
 msgid "Send a message to build the encrypted session"
-msgstr ""
+msgstr "Изпрати съобщение, за да се създаде шифрованата сесия"
 
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
@@ -854,6 +853,10 @@ msgstr "Все още няма чатове... "
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
 msgstr " Започнете нов разговор, като щракнете върху %s бутон."
+
+#: [chats]new_title
+msgid "Start a new conversation"
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -1211,6 +1214,10 @@ msgstr "Ползвай OMEMO"
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
 msgstr "Позволи на Movim да криптира от край до край за твоята сметка"
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
+msgstr ""
 
 #: [config]night_mode
 msgid "Night Mode"
@@ -1645,9 +1652,8 @@ msgid "Account successfully created"
 msgstr "Сметката е успешно създадена"
 
 #: [error]connection
-#, fuzzy
 msgid "Movim cannot connect to the server"
-msgstr "Свързан със сървъра"
+msgstr ""
 
 #: [error]impossible
 msgid "Impossible login"
@@ -1847,9 +1853,8 @@ msgid "You can always disable this in the configuration afterwards"
 msgstr "Винаги можете да деактивирате това в конфигурацията след това"
 
 #: [post]publish_something
-#, fuzzy
 msgid "Publish something"
-msgstr "Издател"
+msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1876,9 +1881,8 @@ msgid "Posts recently published in communities that you are not subscribed (yet)
 msgstr "Публикации, публикувани наскоро в общности, за които не сте абонирани (все още)"
 
 #: [post]new_blog
-#, fuzzy
 msgid "New blog post"
-msgstr "Нов пост"
+msgstr ""
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -2025,9 +2029,8 @@ msgid "You can go in the Configuration page to describe yourself and put a nice 
 msgstr "Можете да отидете на страницата за конфигуриране, за да се опишете и да поставите хубава снимка"
 
 #: [status]visit_blog
-#, fuzzy
 msgid "Visit my blog"
-msgstr "Посетете публичния блог"
+msgstr ""
 
 #: [status]disconnect
 msgid "Disconnect"
@@ -2040,6 +2043,10 @@ msgstr "Присъствие"
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
 msgstr "Наистина ли искате да излезете?"
+
+#: [status]my_avatar
+msgid "My profile picture"
+msgstr ""
 
 #: [preview]link_copied
 msgid "Link copied to clipboard"
@@ -2290,21 +2297,23 @@ msgid "A registration is required before using the service"
 msgstr "Необходима е регистрация преди използване на услугата"
 
 #: [rooms]discover
-#, fuzzy
 msgid "Discover a room"
-msgstr "Открий"
+msgstr ""
 
 #: [rooms]disco_error
 msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
 msgstr ""
 
 #: [rooms]disco_not_muc
-#, fuzzy
 msgid "You are trying to add something that is not a chatroom"
-msgstr "Не ви е позволено да изпращате съобщения в тази чат стая"
+msgstr ""
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
 msgstr ""
 
 #: [chatrooms]autojoin
@@ -2540,9 +2549,8 @@ msgid "Never notify"
 msgstr "Никога не уведомявайте"
 
 #: [room]notify_mentioned
-#, fuzzy
 msgid "Notify when mentioned"
-msgstr "Уведомете при цитиране"
+msgstr ""
 
 #: [room]notify_always
 msgid "Always notify"
@@ -2559,7 +2567,7 @@ msgstr ""
 #: [room]affiliation_members
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr ""
+msgstr "Членове"
 
 #: [room]visitor
 msgid "Visitor"
@@ -2658,52 +2666,48 @@ msgid "Story shared using Movim"
 msgstr ""
 
 #: [spaceinfo]config_title
-#, fuzzy
 msgid "Space configuration"
-msgstr "Настройките са запазени"
+msgstr ""
 
 #: [spaceinfo]config_saved
-#, fuzzy
 msgid "Space configuration saved"
-msgstr "Настройките са запазени"
+msgstr ""
 
 #: [spaceinfo]config_error
-#, fuzzy
 msgid "Space configuration error"
-msgstr "Разширено конфигуриране"
+msgstr ""
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
 
 #: [spaceinfo]destroy_title
-#, fuzzy
 msgid "Destroy the space"
-msgstr "Унищожи чат стаята"
+msgstr ""
 
 #: [spaceinfo]destroy_text
 msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
 msgstr ""
 
 #: [spaceinfo]invite_title
-#, fuzzy
 msgid "Invite new contacts"
-msgstr "Поканете контакт"
+msgstr ""
 
 #: [spaceinfo]invite_text
 msgid "A moderator will have to approve the join request"
 msgstr ""
 
 #: [spaceinfo]invite_uri_title
-#, fuzzy
 msgid "Send an invitation key to your contacts"
-msgstr "Изпратете тази връзка на вашите контакти"
+msgstr ""
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
-#, fuzzy
 msgid "Leave the space"
-msgstr "Напуснете тази инстанция"
+msgstr ""
 
 #: [spaceinfo]add_room_title
-#, fuzzy
 msgid "Add a room"
-msgstr "Добави коментар"
+msgstr ""
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
@@ -2718,23 +2722,28 @@ msgid "Manage the request"
 msgstr ""
 
 #: [spaceinfo]pinned
-#, fuzzy
 msgid "Pin this space in the bar"
-msgstr "Забоди тази чат стая"
+msgstr ""
 
 #: [spaceinfo]owner_cannot_leave
 msgid "An owner cannot leave his own Space"
 msgstr ""
 
 #: [spaceinfo]affiliation_none
-#, fuzzy
 msgid "Remove from the space"
-msgstr "Напуснете тази инстанция"
+msgstr ""
 
 #: [spacesmenu]create_space_title
-#, fuzzy
-msgid "Create a Space"
-msgstr "Създайте нова сметка"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
+msgstr ""
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2749,47 +2758,40 @@ msgid "Your Space title is empty"
 msgstr ""
 
 #: [spacesmenu]space_created
-#, fuzzy
 msgid "Space created"
-msgstr "Чат стаята е създадена"
+msgstr ""
 
 #: [spacesmenu]loading_space_info
-#, fuzzy
 msgid "Loading the space"
-msgstr "Качване на разказа"
+msgstr ""
 
 #: [spacesmenu]subscribed
-#, fuzzy
 msgid "Subscribed to the space"
-msgstr "Абонирани общности"
+msgstr ""
 
 #: [spacesmenu]invitation_key
-#, fuzzy
 msgid "Use an invitation key"
-msgstr "Няма нови покани"
+msgstr ""
 
 #: [spacesmenu]key_required
-#, fuzzy
 msgid "A valid key is required"
-msgstr "Нужна е парола"
+msgstr ""
 
 #: [spacesmenu]locked_title
 msgid "Locked space"
 msgstr ""
 
 #: [spacesmenu]locked_text
-#, fuzzy
 msgid "You are not authorized to join the space at the moment"
-msgstr "Не можете да следвате този контакт към момента"
+msgstr ""
 
 #: [spacesmenu]locked_try_again
 msgid "Try again"
 msgstr ""
 
 #: [spacesmenu]leave_text
-#, fuzzy
 msgid "Are you sure that you want to leave the space?"
-msgstr "Наистина ли искате да изтриете този коментар?"
+msgstr ""
 
 #: [spacesmenu]pending_subscription_title
 msgid "A request has been send to a moderator."
@@ -2800,23 +2802,20 @@ msgid "You will be able to join the space once its accepted."
 msgstr ""
 
 #: [spacesmenu]pending_subscription_add_title
-#, fuzzy
 msgid "Add %s to the space"
-msgstr "Унищожи чат стаята"
+msgstr ""
 
 #: [spacesmenu]pending_subscription_refuse_title
 msgid "Deny the access"
 msgstr ""
 
 #: [spacesmenu]contact_added
-#, fuzzy
 msgid "Contact added in the space"
-msgstr "Контактът е добавен"
+msgstr ""
 
 #: [spacesmenu]contact_denied
-#, fuzzy
 msgid "Contact denied in the space"
-msgstr "Контактът е изтрит"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -2932,6 +2931,10 @@ msgstr "Максимум на файл е %s"
 
 #: [upload]upload_xmpp
 msgid "Uploading to your account"
+msgstr ""
+
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
 msgstr ""
 
 #: [vcard]title [page]profile
@@ -3149,6 +3152,18 @@ msgstr "или"
 #: [global]change_pod
 msgid "Switch to another pod"
 msgstr "Смяна към друг кошер"
+
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
+msgstr ""
 
 #: [page]about
 msgid "About"
@@ -4042,7 +4057,7 @@ msgstr "Собственик"
 
 #: [affiliation]admin
 msgid "Admin"
-msgstr ""
+msgstr "Админ"
 
 #: [affiliation]publisher
 msgid "Publisher"
@@ -4091,34 +4106,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Пиши тук"
-
-#, fuzzy
-#~ msgid "New Post"
-#~ msgstr "Нов пост"
-
-#~ msgid "My location"
-#~ msgstr "Мое местоположение"
-
-#~ msgid "Currently shared with my contacts"
-#~ msgstr "Текущо споделяне с мои контакти"
-
-#~ msgid "Currently disabled"
-#~ msgstr "Текущо забранен"
-
-#~ msgid "My last published location"
-#~ msgstr "Последно споделено мое местоположение"
-
-#~ msgid "Less than a km away"
-#~ msgstr "На по-малко от километър"
-
-#~ msgid "%s km away"
-#~ msgstr "%s км от тук"
-
-#~ msgid "The server takes too much time to respond"
-#~ msgstr "Сървърът отнема твърде много време, за да отговори"
-
-#~ msgid "What’s Hot"
-#~ msgstr "Горещи новини"
-
-#~ msgid "Public posts from users"
-#~ msgstr "Публични постове от потребители"

@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Yurt Page, 2025\n"
 "Language-Team: Russian (http://app.transifex.com/movim/movim/language/ru/)\n"
@@ -148,7 +148,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -821,9 +821,8 @@ msgid "Resolving OMEMO devices"
 msgstr "Определение устройств OMEMO"
 
 #: [omemo]building_sessions
-#, fuzzy
 msgid "Building encrypted sessions"
-msgstr "Создание сессий шифрования"
+msgstr ""
 
 #: [omemo]building_own_sessions
 msgid "Building own encryption sessions"
@@ -868,6 +867,10 @@ msgstr "Нет чатов..."
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
 msgstr "Для начала нового разговора нажмите на кнопку %s."
+
+#: [chats]new_title
+msgid "Start a new conversation"
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -1225,6 +1228,10 @@ msgstr "Использовать OMEMO"
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
 msgstr "Включить сквозное шифрование на Movim для вашей учётной записи"
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
+msgstr ""
 
 #: [config]night_mode
 msgid "Night Mode"
@@ -1659,9 +1666,8 @@ msgid "Account successfully created"
 msgstr "Учётная запись успешно создана"
 
 #: [error]connection
-#, fuzzy
 msgid "Movim cannot connect to the server"
-msgstr "Подключено к серверу"
+msgstr ""
 
 #: [error]impossible
 msgid "Impossible login"
@@ -1861,9 +1867,8 @@ msgid "You can always disable this in the configuration afterwards"
 msgstr "Вы всегда можете выключить это в конфигурации"
 
 #: [post]publish_something
-#, fuzzy
 msgid "Publish something"
-msgstr "Только публикация"
+msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1890,9 +1895,8 @@ msgid "Posts recently published in communities that you are not subscribed (yet)
 msgstr "Посты, недавно опубликованные в сообществе, на которые Вы (пока) не подписались"
 
 #: [post]new_blog
-#, fuzzy
 msgid "New blog post"
-msgstr "Новая запись"
+msgstr ""
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -2039,9 +2043,8 @@ msgid "You can go in the Configuration page to describe yourself and put a nice 
 msgstr "Вы можете заполнить профиль на странице \"Конфигурация\""
 
 #: [status]visit_blog
-#, fuzzy
 msgid "Visit my blog"
-msgstr "Посетить публичный блог"
+msgstr ""
 
 #: [status]disconnect
 msgid "Disconnect"
@@ -2054,6 +2057,10 @@ msgstr "Присутствие"
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
 msgstr "Вы действительно хотите выйти? "
+
+#: [status]my_avatar
+msgid "My profile picture"
+msgstr ""
 
 #: [preview]link_copied
 msgid "Link copied to clipboard"
@@ -2304,21 +2311,23 @@ msgid "A registration is required before using the service"
 msgstr "Для использования сервиса необходима регистрация"
 
 #: [rooms]discover
-#, fuzzy
 msgid "Discover a room"
-msgstr "Открывай"
+msgstr ""
 
 #: [rooms]disco_error
 msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
 msgstr ""
 
 #: [rooms]disco_not_muc
-#, fuzzy
 msgid "You are trying to add something that is not a chatroom"
-msgstr "Вам не позволено присоединится в этот чат"
+msgstr ""
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
 msgstr ""
 
 #: [chatrooms]autojoin
@@ -2554,9 +2563,8 @@ msgid "Never notify"
 msgstr "Никогда не оповещать"
 
 #: [room]notify_mentioned
-#, fuzzy
 msgid "Notify when mentioned"
-msgstr "Оповещать когда упомянули"
+msgstr ""
 
 #: [room]notify_always
 msgid "Always notify"
@@ -2672,52 +2680,48 @@ msgid "Story shared using Movim"
 msgstr "Момент опубликован через Movim"
 
 #: [spaceinfo]config_title
-#, fuzzy
 msgid "Space configuration"
-msgstr "Настройки сохранены"
+msgstr ""
 
 #: [spaceinfo]config_saved
-#, fuzzy
 msgid "Space configuration saved"
-msgstr "Настройки сохранены"
+msgstr ""
 
 #: [spaceinfo]config_error
-#, fuzzy
 msgid "Space configuration error"
-msgstr "Расширенные настройки"
+msgstr ""
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
 
 #: [spaceinfo]destroy_title
-#, fuzzy
 msgid "Destroy the space"
-msgstr "Удалить эту чат-комнату"
+msgstr ""
 
 #: [spaceinfo]destroy_text
 msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
 msgstr ""
 
 #: [spaceinfo]invite_title
-#, fuzzy
 msgid "Invite new contacts"
-msgstr "Пригласить контакт"
+msgstr ""
 
 #: [spaceinfo]invite_text
 msgid "A moderator will have to approve the join request"
 msgstr ""
 
 #: [spaceinfo]invite_uri_title
-#, fuzzy
 msgid "Send an invitation key to your contacts"
-msgstr "Отправить запрос на приглашение, прежде чем подписаться на контакт."
+msgstr ""
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
-#, fuzzy
 msgid "Leave the space"
-msgstr "Покинуть этот инстанс"
+msgstr ""
 
 #: [spaceinfo]add_room_title
-#, fuzzy
 msgid "Add a room"
-msgstr "Добавить комментарий"
+msgstr ""
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
@@ -2732,23 +2736,28 @@ msgid "Manage the request"
 msgstr ""
 
 #: [spaceinfo]pinned
-#, fuzzy
 msgid "Pin this space in the bar"
-msgstr "Закрепить этот чат"
+msgstr ""
 
 #: [spaceinfo]owner_cannot_leave
 msgid "An owner cannot leave his own Space"
 msgstr ""
 
 #: [spaceinfo]affiliation_none
-#, fuzzy
 msgid "Remove from the space"
-msgstr "Покинуть этот инстанс"
+msgstr ""
 
 #: [spacesmenu]create_space_title
-#, fuzzy
-msgid "Create a Space"
-msgstr "Создайте новую учётную запись"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
+msgstr ""
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2763,47 +2772,40 @@ msgid "Your Space title is empty"
 msgstr ""
 
 #: [spacesmenu]space_created
-#, fuzzy
 msgid "Space created"
-msgstr "Чат-комната создана"
+msgstr ""
 
 #: [spacesmenu]loading_space_info
-#, fuzzy
 msgid "Loading the space"
-msgstr "Закачка момента"
+msgstr ""
 
 #: [spacesmenu]subscribed
-#, fuzzy
 msgid "Subscribed to the space"
-msgstr "Подписные сообщества"
+msgstr ""
 
 #: [spacesmenu]invitation_key
-#, fuzzy
 msgid "Use an invitation key"
-msgstr "Нет новых приглашений"
+msgstr ""
 
 #: [spacesmenu]key_required
-#, fuzzy
 msgid "A valid key is required"
-msgstr "Требуется пароль"
+msgstr ""
 
 #: [spacesmenu]locked_title
 msgid "Locked space"
 msgstr ""
 
 #: [spacesmenu]locked_text
-#, fuzzy
 msgid "You are not authorized to join the space at the moment"
-msgstr "Вам не разрешено публиковать тут"
+msgstr ""
 
 #: [spacesmenu]locked_try_again
 msgid "Try again"
 msgstr ""
 
 #: [spacesmenu]leave_text
-#, fuzzy
 msgid "Are you sure that you want to leave the space?"
-msgstr "Вы уверены что хотите удалить этот комментарий?"
+msgstr ""
 
 #: [spacesmenu]pending_subscription_title
 msgid "A request has been send to a moderator."
@@ -2814,23 +2816,20 @@ msgid "You will be able to join the space once its accepted."
 msgstr ""
 
 #: [spacesmenu]pending_subscription_add_title
-#, fuzzy
 msgid "Add %s to the space"
-msgstr "Удалить эту чат-комнату"
+msgstr ""
 
 #: [spacesmenu]pending_subscription_refuse_title
 msgid "Deny the access"
 msgstr ""
 
 #: [spacesmenu]contact_added
-#, fuzzy
 msgid "Contact added in the space"
-msgstr "Контакт добавлен"
+msgstr ""
 
 #: [spacesmenu]contact_denied
-#, fuzzy
 msgid "Contact denied in the space"
-msgstr "Контакт удалён"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -2947,6 +2946,10 @@ msgstr "Максимальный размер файла %s"
 #: [upload]upload_xmpp
 msgid "Uploading to your account"
 msgstr "Закачивается на ваш профиль"
+
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -3164,6 +3167,18 @@ msgstr "Или"
 msgid "Switch to another pod"
 msgstr "Переключится на другой сервер"
 
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
+msgstr ""
+
 #: [page]about
 msgid "About"
 msgstr "О"
@@ -3342,7 +3357,6 @@ msgid "Join"
 msgstr "Присоединится "
 
 #: [button]leave
-#, fuzzy
 msgid "Leave"
 msgstr "Покинуть"
 
@@ -3392,7 +3406,7 @@ msgstr "Зарегистрировать"
 
 #: [button]remove
 msgid "Remove"
-msgstr ""
+msgstr "Удалить"
 
 #: [button]reply
 msgid "Reply"
@@ -4106,39 +4120,3 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
-
-#, fuzzy
-#~ msgid "New Post"
-#~ msgstr "Новая запись"
-
-#, fuzzy
-#~ msgctxt "[button]remove"
-#~ msgid "Leave"
-#~ msgstr "Покинуть"
-
-#~ msgid "My location"
-#~ msgstr "Моё местоположение"
-
-#~ msgid "Currently shared with my contacts"
-#~ msgstr "Сейчас доступно моим контактам."
-
-#~ msgid "Currently disabled"
-#~ msgstr "Сейчас отключено"
-
-#~ msgid "My last published location"
-#~ msgstr "Моё последнее опубликованное местоположения"
-
-#~ msgid "Less than a km away"
-#~ msgstr "Ближе километра"
-
-#~ msgid "%s km away"
-#~ msgstr "В %sкм"
-
-#~ msgid "The server takes too much time to respond"
-#~ msgstr "Сервер потребовал слишком много времени на ответ"
-
-#~ msgid "What’s Hot"
-#~ msgstr "Обсуждаемое"
-
-#~ msgid "Public posts from users"
-#~ msgstr "Публичные записи от пользователей"

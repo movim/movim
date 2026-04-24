@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Krunoslav Tomorad <krunoslav.tomorad@gmail.com>, 2019\n"
 "Language-Team: Croatian (http://app.transifex.com/movim/movim/language/hr/)\n"
@@ -133,7 +133,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -639,7 +639,7 @@ msgstr "Pogledajte profil"
 
 #: [chat]clear
 msgid "Clear the history"
-msgstr ""
+msgstr "Obrišite povijest"
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -853,6 +853,10 @@ msgstr "Još nema poruka..."
 msgid "Start a new conversation by clicking on the %s button."
 msgstr "Započnite novi razgovor pritiskom na gumb %s."
 
+#: [chats]new_title
+msgid "Start a new conversation"
+msgstr ""
+
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Pišite kontaktu"
@@ -911,7 +915,7 @@ msgstr "Ovaj poslužitelj ne postoji"
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
-msgstr ""
+msgstr "Zajednice koje bi vam se mogle svidjeti"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -1208,6 +1212,10 @@ msgstr ""
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
 msgstr ""
 
 #: [config]night_mode
@@ -1643,9 +1651,8 @@ msgid "Account successfully created"
 msgstr ""
 
 #: [error]connection
-#, fuzzy
 msgid "Movim cannot connect to the server"
-msgstr "Ne možete pokrenuti novu zajednicu na ovom poslužitelju"
+msgstr ""
 
 #: [error]impossible
 msgid "Impossible login"
@@ -2036,6 +2043,10 @@ msgstr ""
 msgid "Do you really want to log out?"
 msgstr ""
 
+#: [status]my_avatar
+msgid "My profile picture"
+msgstr ""
+
 #: [preview]link_copied
 msgid "Link copied to clipboard"
 msgstr ""
@@ -2293,12 +2304,15 @@ msgid "Movim was not able to find a valid chatroom. Try maybe with another ident
 msgstr ""
 
 #: [rooms]disco_not_muc
-#, fuzzy
 msgid "You are trying to add something that is not a chatroom"
-msgstr "Pozvani ste u sobu za razgovor"
+msgstr ""
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
 msgstr ""
 
 #: [chatrooms]autojoin
@@ -2360,7 +2374,7 @@ msgstr ""
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr ""
+msgstr "Članovi"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -2486,7 +2500,7 @@ msgstr ""
 #: [room]group_chat_members
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr ""
+msgstr "Članovi"
 
 #: [room]banned_add
 msgid "Ban someone"
@@ -2552,7 +2566,7 @@ msgstr ""
 #: [room]affiliation_members
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr ""
+msgstr "Članovi"
 
 #: [room]visitor
 msgid "Visitor"
@@ -2651,33 +2665,32 @@ msgid "Story shared using Movim"
 msgstr ""
 
 #: [spaceinfo]config_title
-#, fuzzy
 msgid "Space configuration"
-msgstr "Postavke su spremljene"
+msgstr ""
 
 #: [spaceinfo]config_saved
-#, fuzzy
 msgid "Space configuration saved"
-msgstr "Postavke su spremljene"
+msgstr ""
 
 #: [spaceinfo]config_error
-#, fuzzy
 msgid "Space configuration error"
-msgstr "Napredne postavke"
+msgstr ""
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
 
 #: [spaceinfo]destroy_title
-#, fuzzy
 msgid "Destroy the space"
-msgstr "Napusti ovu instanciju"
+msgstr ""
 
 #: [spaceinfo]destroy_text
 msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
 msgstr ""
 
 #: [spaceinfo]invite_title
-#, fuzzy
 msgid "Invite new contacts"
-msgstr "Sakrij izvanmrežne kontakte"
+msgstr ""
 
 #: [spaceinfo]invite_text
 msgid "A moderator will have to approve the join request"
@@ -2688,9 +2701,8 @@ msgid "Send an invitation key to your contacts"
 msgstr ""
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
-#, fuzzy
 msgid "Leave the space"
-msgstr "Napusti ovu instanciju"
+msgstr ""
 
 #: [spaceinfo]add_room_title
 msgid "Add a room"
@@ -2717,14 +2729,20 @@ msgid "An owner cannot leave his own Space"
 msgstr ""
 
 #: [spaceinfo]affiliation_none
-#, fuzzy
 msgid "Remove from the space"
-msgstr "Napusti ovu instanciju"
+msgstr ""
 
 #: [spacesmenu]create_space_title
-#, fuzzy
-msgid "Create a Space"
-msgstr "Izradi novi račun"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
+msgstr ""
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2912,6 +2930,10 @@ msgstr ""
 
 #: [upload]upload_xmpp
 msgid "Uploading to your account"
+msgstr ""
+
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
 msgstr ""
 
 #: [vcard]title [page]profile
@@ -3128,6 +3150,18 @@ msgstr ""
 
 #: [global]change_pod
 msgid "Switch to another pod"
+msgstr ""
+
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
 msgstr ""
 
 #: [page]about

@@ -133,7 +133,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: cristian paraque, 2022\n"
 "Language-Team: Spanish (http://app.transifex.com/movim/movim/language/es/)\n"
@@ -142,7 +142,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -648,7 +648,7 @@ msgstr "Ver el perfil"
 
 #: [chat]clear
 msgid "Clear the history"
-msgstr ""
+msgstr "Limpiar el historial"
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -861,6 +861,10 @@ msgstr "Todavía no hay chats..."
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
 msgstr "Empiece una nueva conversación haciendo clic en el botón%s."
+
+#: [chats]new_title
+msgid "Start a new conversation"
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -1217,6 +1221,10 @@ msgstr ""
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
 msgstr ""
 
 #: [config]night_mode
@@ -1652,9 +1660,8 @@ msgid "Account successfully created"
 msgstr "La cuenta ha sido creada exitosamente"
 
 #: [error]connection
-#, fuzzy
 msgid "Movim cannot connect to the server"
-msgstr "Reconectando con el servidor..."
+msgstr ""
 
 #: [error]impossible
 msgid "Impossible login"
@@ -1827,7 +1834,7 @@ msgstr ""
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s quiere hablar contigo"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1854,9 +1861,8 @@ msgid "You can always disable this in the configuration afterwards"
 msgstr "Siempre podrá desactivarlo en la configuración después"
 
 #: [post]publish_something
-#, fuzzy
 msgid "Publish something"
-msgstr "Sólo publicar"
+msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1883,9 +1889,8 @@ msgid "Posts recently published in communities that you are not subscribed (yet)
 msgstr "Publicaciones recientes de las comunidades a las que (todavía) no está suscrrito"
 
 #: [post]new_blog
-#, fuzzy
 msgid "New blog post"
-msgstr "Publicación nueva"
+msgstr ""
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -2032,9 +2037,8 @@ msgid "You can go in the Configuration page to describe yourself and put a nice 
 msgstr "Puedes ir a la página de Configuración para describirte y poner una linda foto"
 
 #: [status]visit_blog
-#, fuzzy
 msgid "Visit my blog"
-msgstr "Visitante"
+msgstr ""
 
 #: [status]disconnect
 msgid "Disconnect"
@@ -2047,6 +2051,10 @@ msgstr "Presencia"
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
 msgstr "¿De verdad quiere cerrar la sesión?"
+
+#: [status]my_avatar
+msgid "My profile picture"
+msgstr ""
 
 #: [preview]link_copied
 msgid "Link copied to clipboard"
@@ -2254,7 +2262,7 @@ msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
-msgstr ""
+msgstr "Todavía no tiene salas de conversación"
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -2297,21 +2305,23 @@ msgid "A registration is required before using the service"
 msgstr ""
 
 #: [rooms]discover
-#, fuzzy
 msgid "Discover a room"
-msgstr "Descubrir"
+msgstr ""
 
 #: [rooms]disco_error
 msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
 msgstr ""
 
 #: [rooms]disco_not_muc
-#, fuzzy
 msgid "You are trying to add something that is not a chatroom"
-msgstr "Has recibido una invitación para unirte a una conversación en grupo"
+msgstr ""
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
 msgstr ""
 
 #: [chatrooms]autojoin
@@ -2373,7 +2383,7 @@ msgstr ""
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr ""
+msgstr "Miembros"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -2499,7 +2509,7 @@ msgstr ""
 #: [room]group_chat_members
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr ""
+msgstr "Miembros"
 
 #: [room]banned_add
 msgid "Ban someone"
@@ -2565,7 +2575,7 @@ msgstr ""
 #: [room]affiliation_members
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr ""
+msgstr "Miembros"
 
 #: [room]visitor
 msgid "Visitor"
@@ -2664,52 +2674,48 @@ msgid "Story shared using Movim"
 msgstr ""
 
 #: [spaceinfo]config_title
-#, fuzzy
 msgid "Space configuration"
-msgstr "Configuración guardada"
+msgstr ""
 
 #: [spaceinfo]config_saved
-#, fuzzy
 msgid "Space configuration saved"
-msgstr "Configuración guardada"
+msgstr ""
 
 #: [spaceinfo]config_error
-#, fuzzy
 msgid "Space configuration error"
-msgstr "Configuración avanzada"
+msgstr ""
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
 
 #: [spaceinfo]destroy_title
-#, fuzzy
 msgid "Destroy the space"
-msgstr "Salir de esta instancia"
+msgstr ""
 
 #: [spaceinfo]destroy_text
 msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
 msgstr ""
 
 #: [spaceinfo]invite_title
-#, fuzzy
 msgid "Invite new contacts"
-msgstr "Invitar a un contacto"
+msgstr ""
 
 #: [spaceinfo]invite_text
 msgid "A moderator will have to approve the join request"
 msgstr ""
 
 #: [spaceinfo]invite_uri_title
-#, fuzzy
 msgid "Send an invitation key to your contacts"
-msgstr "Envíe este enlace a sus contactos"
+msgstr ""
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
-#, fuzzy
 msgid "Leave the space"
-msgstr "Salir de esta instancia"
+msgstr ""
 
 #: [spaceinfo]add_room_title
-#, fuzzy
 msgid "Add a room"
-msgstr "Añadir un comentario"
+msgstr ""
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
@@ -2732,14 +2738,20 @@ msgid "An owner cannot leave his own Space"
 msgstr ""
 
 #: [spaceinfo]affiliation_none
-#, fuzzy
 msgid "Remove from the space"
-msgstr "Salir de esta instancia"
+msgstr ""
 
 #: [spacesmenu]create_space_title
-#, fuzzy
-msgid "Create a Space"
-msgstr "Crear una nueva cuenta"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
+msgstr ""
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2766,32 +2778,28 @@ msgid "Subscribed to the space"
 msgstr ""
 
 #: [spacesmenu]invitation_key
-#, fuzzy
 msgid "Use an invitation key"
-msgstr "Invitación enviada"
+msgstr ""
 
 #: [spacesmenu]key_required
-#, fuzzy
 msgid "A valid key is required"
-msgstr "Se requiere una contraseña"
+msgstr ""
 
 #: [spacesmenu]locked_title
 msgid "Locked space"
 msgstr ""
 
 #: [spacesmenu]locked_text
-#, fuzzy
 msgid "You are not authorized to join the space at the moment"
-msgstr "No estás suscrito a este contacto"
+msgstr ""
 
 #: [spacesmenu]locked_try_again
 msgid "Try again"
 msgstr ""
 
 #: [spacesmenu]leave_text
-#, fuzzy
 msgid "Are you sure that you want to leave the space?"
-msgstr "¿Está seguro de que quiere borrar este comentario?"
+msgstr ""
 
 #: [spacesmenu]pending_subscription_title
 msgid "A request has been send to a moderator."
@@ -2810,14 +2818,12 @@ msgid "Deny the access"
 msgstr ""
 
 #: [spacesmenu]contact_added
-#, fuzzy
 msgid "Contact added in the space"
-msgstr "Contacto añadido"
+msgstr ""
 
 #: [spacesmenu]contact_denied
-#, fuzzy
 msgid "Contact denied in the space"
-msgstr "Contacto eliminado"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -2935,6 +2941,10 @@ msgstr ""
 msgid "Uploading to your account"
 msgstr ""
 
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Perfil"
@@ -3033,7 +3043,7 @@ msgstr "...sonando"
 
 #: [visio]declined
 msgid "Declined"
-msgstr ""
+msgstr "Rechazado"
 
 #: [visio]in_call
 msgid "Ongoing call"
@@ -3151,6 +3161,18 @@ msgstr "O"
 msgid "Switch to another pod"
 msgstr "Cambiar a otro pod"
 
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
+msgstr ""
+
 #: [page]about
 msgid "About"
 msgstr "Acerca de"
@@ -3169,7 +3191,7 @@ msgstr "Blog"
 
 #: [page]chats
 msgid "Messages"
-msgstr ""
+msgstr "Mensajes"
 
 #: [page]communities
 msgid "Communities"
@@ -3503,7 +3525,7 @@ msgstr "Registrado"
 
 #: [client]gateway
 msgid "Gateway"
-msgstr ""
+msgstr "Puerta de Enlace"
 
 #: [presence]online
 msgid "Online"
@@ -3787,7 +3809,7 @@ msgstr "aliviado"
 
 #: [mood]remorseful
 msgid "remorseful"
-msgstr ""
+msgstr "arrepentido"
 
 #: [mood]restless
 msgid "restless"
@@ -4043,7 +4065,7 @@ msgstr "Propietario"
 
 #: [affiliation]admin
 msgid "Admin"
-msgstr ""
+msgstr "Administrador"
 
 #: [affiliation]publisher
 msgid "Publisher"
@@ -4092,16 +4114,3 @@ msgstr "La API no se puede alcanzar, inténtalo de nuevo más tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Escribe aquí"
-
-#, fuzzy
-#~ msgid "New Post"
-#~ msgstr "Publicación nueva"
-
-#~ msgid "The server takes too much time to respond"
-#~ msgstr "El servidor está tardando demasiado en responder"
-
-#~ msgid "What’s Hot"
-#~ msgstr "Lo más popular"
-
-#~ msgid "Public posts from users"
-#~ msgstr "Publicaciones públicas de usuarios"

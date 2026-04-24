@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jans Petersons <martinstomsons2@gmail.com>, 2017\n"
 "Language-Team: Latvian (http://app.transifex.com/movim/movim/language/lv/)\n"
@@ -133,7 +133,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -350,7 +350,7 @@ msgstr ""
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr ""
+msgstr "Informācijas paziņojums"
 
 #: [information]description [communityconfig]description
 msgid "Description"
@@ -379,7 +379,7 @@ msgstr ""
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr ""
+msgstr "Informācijas paziņojums"
 
 #: [xmpp]title
 msgid "Default XMPP server"
@@ -853,6 +853,10 @@ msgstr ""
 msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
+#: [chats]new_title
+msgid "Start a new conversation"
+msgstr ""
+
 #: [chats]add
 msgid "Chat with a contact"
 msgstr ""
@@ -1208,6 +1212,10 @@ msgstr ""
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
 msgstr ""
 
 #: [config]night_mode
@@ -1664,7 +1672,7 @@ msgstr ""
 
 #: [error]unauthorized
 msgid "Your XMPP server is unauthorized"
-msgstr ""
+msgstr "Jūsu XMPP serveris nav atļauts"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1817,7 +1825,7 @@ msgstr ""
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s grib ar jums sazināties"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1872,9 +1880,8 @@ msgid "Posts recently published in communities that you are not subscribed (yet)
 msgstr ""
 
 #: [post]new_blog
-#, fuzzy
 msgid "New blog post"
-msgstr "Ieraksti"
+msgstr ""
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -2034,6 +2041,10 @@ msgstr ""
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
+msgstr ""
+
+#: [status]my_avatar
+msgid "My profile picture"
 msgstr ""
 
 #: [preview]link_copied
@@ -2198,7 +2209,7 @@ msgstr "Konta izveides forma netika atrasta šajā serverī"
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "šajā datumā"
 
 #: [create]successfull
 msgid "Your account has been successfully registered"
@@ -2298,6 +2309,10 @@ msgstr ""
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
 msgstr ""
 
 #: [chatrooms]autojoin
@@ -2650,24 +2665,24 @@ msgid "Story shared using Movim"
 msgstr ""
 
 #: [spaceinfo]config_title
-#, fuzzy
 msgid "Space configuration"
-msgstr "Atjaunināta konfigurācija"
+msgstr ""
 
 #: [spaceinfo]config_saved
-#, fuzzy
 msgid "Space configuration saved"
-msgstr "Atjaunināta konfigurācija"
+msgstr ""
 
 #: [spaceinfo]config_error
-#, fuzzy
 msgid "Space configuration error"
-msgstr "Atjaunināta konfigurācija"
+msgstr ""
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
 
 #: [spaceinfo]destroy_title
-#, fuzzy
 msgid "Destroy the space"
-msgstr "Pamest šo instanci "
+msgstr ""
 
 #: [spaceinfo]destroy_text
 msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
@@ -2686,14 +2701,12 @@ msgid "Send an invitation key to your contacts"
 msgstr ""
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
-#, fuzzy
 msgid "Leave the space"
-msgstr "Pamest šo instanci "
+msgstr ""
 
 #: [spaceinfo]add_room_title
-#, fuzzy
 msgid "Add a room"
-msgstr "Pievienot komentāru"
+msgstr ""
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
@@ -2716,14 +2729,20 @@ msgid "An owner cannot leave his own Space"
 msgstr ""
 
 #: [spaceinfo]affiliation_none
-#, fuzzy
 msgid "Remove from the space"
-msgstr "Pamest šo instanci "
+msgstr ""
 
 #: [spacesmenu]create_space_title
-#, fuzzy
-msgid "Create a Space"
-msgstr "Izveidot jaunu kontu"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
+msgstr ""
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2911,6 +2930,10 @@ msgstr ""
 
 #: [upload]upload_xmpp
 msgid "Uploading to your account"
+msgstr ""
+
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
 msgstr ""
 
 #: [vcard]title [page]profile
@@ -3129,6 +3152,18 @@ msgstr ""
 msgid "Switch to another pod"
 msgstr ""
 
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
+msgstr ""
+
 #: [page]about
 msgid "About"
 msgstr ""
@@ -3147,7 +3182,7 @@ msgstr "Emuārs"
 
 #: [page]chats
 msgid "Messages"
-msgstr ""
+msgstr "Ziņojumi"
 
 #: [page]communities
 msgid "Communities"
@@ -3296,7 +3331,7 @@ msgstr ""
 
 #: [button]discover
 msgid "Discover"
-msgstr ""
+msgstr "Atklāt"
 
 #: [button]enable
 msgid "Enable"
@@ -3372,7 +3407,7 @@ msgstr "Saglabāt"
 
 #: [button]search
 msgid "Search"
-msgstr ""
+msgstr "Meklēt"
 
 #: [button]send_to
 msgid "Send to"
@@ -3481,7 +3516,7 @@ msgstr ""
 
 #: [client]gateway
 msgid "Gateway"
-msgstr ""
+msgstr "Vārteja "
 
 #: [presence]online
 msgid "Online"

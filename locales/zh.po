@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2026\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -148,11 +148,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
-msgstr "致谢"
+msgstr "感谢"
 
 #: [about]developers
 msgid "Developers"
@@ -184,11 +184,11 @@ msgstr "Movim 是基于 XMPP 的交流平台。除以下软件和资源外，所
 
 #: [about]sourcecode_title
 msgid "Sourcecode"
-msgstr ""
+msgstr "源代码"
 
 #: [about]sourcecode_text
 msgid "Check out the sourcecode on the Github repository"
-msgstr ""
+msgstr "查看 GitHub 仓库中的源代码"
 
 #: [account]title [page]account
 msgid "Account"
@@ -256,7 +256,7 @@ msgstr "OMEMO 密钥删除"
 
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr "您将销毁以下 OMEMO 密钥。您的联系人将无法再使用此密钥来加密消息。此操作无法撤销。是否确定？"
+msgstr "您将销毁以下 OMEMO 密钥。您的联系人将无法再使用该密钥加密消息。此操作无法撤销。您确定吗？"
 
 #: [adhoc]title
 msgid "Actions"
@@ -352,7 +352,7 @@ msgstr "允许的 XMPP 服务器"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "如果您想在 Movim 实例中指定授权的 XMPP 服务器列表，并阻止所有其他服务器的连接，请在此处输入域名，并使用英文逗号隔开（例如：movim.eu,jabber.fr）"
+msgstr "如果您想在 Movim 实例上指定授权的 XMPP 服务器列表并禁止所有其他服务器的连接，请在此处输入域名，并使用英文逗号分隔（例如：movim.eu,jabber.fr）"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
@@ -446,11 +446,11 @@ msgstr "系统日志和文件"
 
 #: [maxsessions]title
 msgid "Maximum of connected sessions"
-msgstr ""
+msgstr "最大连接会话数"
 
 #: [maxsessions]info
 msgid "Movim will forbid new users to connect when the limit is reached, set it to 0 to disable"
-msgstr ""
+msgstr "达到限制时，Movim 将禁止新用户连接，将其设置为 0 以禁用"
 
 #: [adminreported]reported_by
 msgid "Reported by %s users"
@@ -494,7 +494,7 @@ msgstr "您的照片太大了"
 
 #: [avatar]missing
 msgid "No avatar yet"
-msgstr "还没有头像"
+msgstr "暂无头像"
 
 #: [banner]change
 msgid "Change my banner"
@@ -510,7 +510,7 @@ msgstr "横幅未更新"
 
 #: [banner]missing
 msgid "No banner yet"
-msgstr "还没有横幅"
+msgstr "暂无横幅"
 
 #: [blocked]title
 msgid "Blocked"
@@ -542,7 +542,7 @@ msgstr "以下用户被 Movim 屏蔽，无法再与您联系"
 
 #: [blocked]info2
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
-msgstr "管理员也知道此列表，因此可以在系统范围内阻止这些用户"
+msgstr "管理员也知道此列表，因此可以在系统范围内屏蔽这些用户"
 
 #: [blog]title
 msgid "%s’s blog"
@@ -630,7 +630,7 @@ msgstr "常用联系人"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr "此处还没有内容…"
+msgstr "暂无内容…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
@@ -730,7 +730,7 @@ msgstr "清除本地历史记录"
 
 #: [chat]clear_history_text
 msgid "You are going to delete %s local messages, are you sure?"
-msgstr "您将删除 %s 条本地消息，是否确定？"
+msgstr "您将删除 %s 条本地消息，确定吗？"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
@@ -821,7 +821,6 @@ msgid "Resolving OMEMO devices"
 msgstr "正在解析 OMEMO 设备"
 
 #: [omemo]building_sessions
-#, fuzzy
 msgid "Building encrypted sessions"
 msgstr "正在建立加密会话"
 
@@ -835,7 +834,7 @@ msgstr "加密已禁用"
 
 #: [omemo]encrypted_loading
 msgid "Send a message to build the encrypted session"
-msgstr ""
+msgstr "发送消息以建立加密会话"
 
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
@@ -863,11 +862,15 @@ msgstr "%s 会话已建立"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr "还没有聊天…"
+msgstr "暂无聊天…"
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
 msgstr "点击 %s 按钮，开始新对话。"
+
+#: [chats]new_title
+msgid "Start a new conversation"
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -999,7 +1002,7 @@ msgstr "您将删除以下社区。请确认您的操作。"
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "此社区似乎已不存在。是否要将其从订阅中移除？"
+msgstr "此社区似乎已不存在。您要将其从您的订阅中移除吗？"
 
 #: [communityaffiliation]delete_error
 msgid "Error during the node deletion"
@@ -1132,11 +1135,11 @@ msgstr "您将取消关注此社区"
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
-msgstr "是否确定？"
+msgstr "您确定吗？"
 
 #: [communityposts]empty_me_text
 msgid "No publication yet? Write your first post to make people discover your profile"
-msgstr "还没有发布吗？快来发一篇帖子，让更多人发现您"
+msgstr "还没有发布任何内容？快来发一篇帖子，让更多人发现您"
 
 #: [communityposts]empty_me_button
 msgid "Publish my first post"
@@ -1156,7 +1159,7 @@ msgstr "在关注联系人之前需先发送邀请请求"
 
 #: [communityposts]subscribe_unsupported
 msgid "You can't follow the contact at the moment"
-msgstr "您目前无法关注该联系人"
+msgstr "您目前无法关注此联系人"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1225,6 +1228,10 @@ msgstr "使用 OMEMO"
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
 msgstr "在 Movim 上为您的账号启用端到端加密"
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
+msgstr ""
 
 #: [config]night_mode
 msgid "Night Mode"
@@ -1504,7 +1511,7 @@ msgstr "但是此联系人仍可以查看您是否在线"
 
 #: [subscription]nil
 msgid "You are not subscribed to anyone"
-msgstr "您与对方没有任何订阅"
+msgstr "您没有订阅任何人"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
@@ -1544,7 +1551,7 @@ msgstr "收藏的表情符号"
 
 #: [emojisconfig]favorites_text
 msgid "Pick emojis from the packs bellow that you want to add to your favorites ones"
-msgstr "从下面的表情包中选择要添加到收藏中的表情符号"
+msgstr "从下方表情包中选择要添加到收藏中的表情符号"
 
 #: [emojisconfig]dialog_title
 msgid "Manage a favorite emoji"
@@ -1659,9 +1666,8 @@ msgid "Account successfully created"
 msgstr "成功创建账号"
 
 #: [error]connection
-#, fuzzy
 msgid "Movim cannot connect to the server"
-msgstr "已连接到服务器"
+msgstr "Movim 无法连接到服务器"
 
 #: [error]impossible
 msgid "Impossible login"
@@ -1697,11 +1703,11 @@ msgstr "XMPP 身份验证失败"
 
 #: [error]max_sessions_reached
 msgid "This Movim instance is currently full."
-msgstr ""
+msgstr "此 Movim 实例当前已满。"
 
 #: [error]max_sessions_reached_join
 msgid "Try a different one on %s"
-msgstr ""
+msgstr "请在 %s 上尝试其他实例"
 
 #: [connection]socket_connected
 msgid "Connected to the server"
@@ -1861,9 +1867,8 @@ msgid "You can always disable this in the configuration afterwards"
 msgstr "之后您可以随时在配置中禁用此功能"
 
 #: [post]publish_something
-#, fuzzy
 msgid "Publish something"
-msgstr "仅发布"
+msgstr "发布一些内容"
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1890,9 +1895,8 @@ msgid "Posts recently published in communities that you are not subscribed (yet)
 msgstr "您尚未订阅的社区中的最新帖子"
 
 #: [post]new_blog
-#, fuzzy
 msgid "New blog post"
-msgstr "新帖子"
+msgstr "新博客帖子"
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -1956,7 +1960,7 @@ msgstr "您将删除此帖子，请确认您的操作"
 
 #: [post]delete_comment
 msgid "Are you sure that you want to delete this comment?"
-msgstr "是否确定要删除此评论？"
+msgstr "您确定要删除此评论吗？"
 
 #: [post]discover
 msgid "Discover more posts on the communities page"
@@ -2039,9 +2043,8 @@ msgid "You can go in the Configuration page to describe yourself and put a nice 
 msgstr "您可以进入配置页面描述自己并放一张漂亮的照片"
 
 #: [status]visit_blog
-#, fuzzy
 msgid "Visit my blog"
-msgstr "访问公开博客"
+msgstr "访问我的博客"
 
 #: [status]disconnect
 msgid "Disconnect"
@@ -2053,7 +2056,11 @@ msgstr "在线状态"
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
-msgstr "是否确定要登出？"
+msgstr "确定要退出登录吗？"
+
+#: [status]my_avatar
+msgid "My profile picture"
+msgstr ""
 
 #: [preview]link_copied
 msgid "Link copied to clipboard"
@@ -2293,7 +2300,7 @@ msgstr "解散群聊"
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following chatroom?"
-msgstr "是否确定要永久解散以下群聊？"
+msgstr "您确定要永久解散以下群聊吗？"
 
 #: [rooms]explore_placeholder
 msgid "Name or description"
@@ -2304,21 +2311,23 @@ msgid "A registration is required before using the service"
 msgstr "使用服务前需要注册"
 
 #: [rooms]discover
-#, fuzzy
 msgid "Discover a room"
-msgstr "发现"
+msgstr "解散群聊"
 
 #: [rooms]disco_error
 msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
-msgstr ""
+msgstr "Movim 无法找到有效的群聊。请尝试使用其他标识符。"
 
 #: [rooms]disco_not_muc
-#, fuzzy
 msgid "You are trying to add something that is not a chatroom"
-msgstr "不允许您加入此群聊"
+msgstr "您尝试添加的并非群聊"
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr "此群聊似乎属于某个空间，我们无法找到是哪个，但我们强烈建议您加入该空间"
+
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
 msgstr ""
 
 #: [chatrooms]autojoin
@@ -2424,7 +2433,7 @@ msgstr "永久离开群聊"
 
 #: [chatrooms]rooms
 msgid "Rooms"
-msgstr ""
+msgstr "群聊"
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
@@ -2453,7 +2462,7 @@ msgstr "您当前以匿名用户身份登录。"
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr "您可以使用自己的账号加入，或点击右上角的叉号登出当前账号后在登录页面上创建账号。"
+msgstr "您可以使用自己的账号加入，或点击右上角的叉号退出登录，然后在登录页面上创建账号。"
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -2554,7 +2563,6 @@ msgid "Never notify"
 msgstr "从不通知"
 
 #: [room]notify_mentioned
-#, fuzzy
 msgid "Notify when mentioned"
 msgstr "提及时通知"
 
@@ -2609,15 +2617,15 @@ msgstr "总计 %s"
 
 #: [search]keyword
 msgid "What are you looking for?"
-msgstr "您想找什么？"
+msgstr "您在找什么？"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
-msgstr "#cats，username@server.com，加入…"
+msgstr "#cats, username@server.com, John…"
 
 #: [search]no_contacts_title
 msgid "No contacts yet?"
-msgstr "还没有联系人？"
+msgstr "还没有联系人吗？"
 
 #: [search]no_contacts_text
 msgid "Find one by searching for their name or address"
@@ -2672,165 +2680,156 @@ msgid "Story shared using Movim"
 msgstr "故事已使用 Movim 分享"
 
 #: [spaceinfo]config_title
-#, fuzzy
 msgid "Space configuration"
-msgstr "配置已保存"
+msgstr "空间配置"
 
 #: [spaceinfo]config_saved
-#, fuzzy
 msgid "Space configuration saved"
-msgstr "配置已保存"
+msgstr "空间配置已保存"
 
 #: [spaceinfo]config_error
-#, fuzzy
 msgid "Space configuration error"
-msgstr "高级配置"
+msgstr "空间配置错误"
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
 
 #: [spaceinfo]destroy_title
-#, fuzzy
 msgid "Destroy the space"
-msgstr "解散群聊"
+msgstr "解散空间"
 
 #: [spaceinfo]destroy_text
 msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
-msgstr ""
+msgstr "您将解散以下空间，其中的所有群聊也会被解散"
 
 #: [spaceinfo]invite_title
-#, fuzzy
 msgid "Invite new contacts"
-msgstr "邀请联系人"
+msgstr "邀请新联系人"
 
 #: [spaceinfo]invite_text
 msgid "A moderator will have to approve the join request"
-msgstr ""
+msgstr "加入请求需要经过主持人批准"
 
 #: [spaceinfo]invite_uri_title
-#, fuzzy
 msgid "Send an invitation key to your contacts"
-msgstr "在关注联系人之前需先发送邀请请求"
+msgstr "向您的联系人发送邀请密钥"
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
-#, fuzzy
 msgid "Leave the space"
-msgstr "离开此实例"
+msgstr "离开空间"
 
 #: [spaceinfo]add_room_title
-#, fuzzy
 msgid "Add a room"
-msgstr "添加评论"
+msgstr "添加群聊"
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
-msgstr ""
+msgstr "%s 个订阅请求正在等待您的批准"
 
 #: [spaceinfo]pending_request
 msgid "%s is waiting for your approval to join the space"
-msgstr ""
+msgstr "%s 正在等待您的批准才能加入此空间"
 
 #: [spaceinfo]pending_action
 msgid "Manage the request"
-msgstr ""
+msgstr "管理请求"
 
 #: [spaceinfo]pinned
-#, fuzzy
 msgid "Pin this space in the bar"
-msgstr "固定此群聊"
+msgstr "将此空间固定在工具栏"
 
 #: [spaceinfo]owner_cannot_leave
 msgid "An owner cannot leave his own Space"
-msgstr ""
+msgstr "所有者无法离开自己的空间"
 
 #: [spaceinfo]affiliation_none
-#, fuzzy
 msgid "Remove from the space"
-msgstr "离开此实例"
+msgstr "从空间移除"
 
 #: [spacesmenu]create_space_title
-#, fuzzy
-msgid "Create a Space"
-msgstr "创建新账号"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
+msgstr ""
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
-msgstr ""
+msgstr "您收到邀请了吗？"
 
 #: [spacesmenu]space_title
 msgid "Space title"
-msgstr ""
+msgstr "空间标题"
 
 #: [spacesmenu]space_title_empty
 msgid "Your Space title is empty"
-msgstr ""
+msgstr "您的空间标题为空"
 
 #: [spacesmenu]space_created
-#, fuzzy
 msgid "Space created"
-msgstr "群聊已创建"
+msgstr "空间已创建"
 
 #: [spacesmenu]loading_space_info
-#, fuzzy
 msgid "Loading the space"
-msgstr "正在上传故事"
+msgstr "正在加载空间"
 
 #: [spacesmenu]subscribed
-#, fuzzy
 msgid "Subscribed to the space"
-msgstr "已订阅的社区"
+msgstr "已订阅此空间"
 
 #: [spacesmenu]invitation_key
-#, fuzzy
 msgid "Use an invitation key"
-msgstr "没有新邀请"
+msgstr "使用邀请密钥"
 
 #: [spacesmenu]key_required
-#, fuzzy
 msgid "A valid key is required"
-msgstr "需要密码"
+msgstr "需要有效的密钥"
 
 #: [spacesmenu]locked_title
 msgid "Locked space"
-msgstr ""
+msgstr "已锁定的空间"
 
 #: [spacesmenu]locked_text
-#, fuzzy
 msgid "You are not authorized to join the space at the moment"
-msgstr "您无权在此处发布"
+msgstr "您目前无权加入此空间"
 
 #: [spacesmenu]locked_try_again
 msgid "Try again"
-msgstr ""
+msgstr "重试"
 
 #: [spacesmenu]leave_text
-#, fuzzy
 msgid "Are you sure that you want to leave the space?"
-msgstr "是否确定要删除此评论？"
+msgstr "您确定要离开此空间吗？"
 
 #: [spacesmenu]pending_subscription_title
 msgid "A request has been send to a moderator."
-msgstr ""
+msgstr "请求已发送给主持人。"
 
 #: [spacesmenu]pending_subscription_text
 msgid "You will be able to join the space once its accepted."
-msgstr ""
+msgstr "一旦接受，您将能够加入此空间。"
 
 #: [spacesmenu]pending_subscription_add_title
-#, fuzzy
 msgid "Add %s to the space"
-msgstr "解散群聊"
+msgstr "将 %s 添加到空间"
 
 #: [spacesmenu]pending_subscription_refuse_title
 msgid "Deny the access"
-msgstr ""
+msgstr "拒绝访问"
 
 #: [spacesmenu]contact_added
-#, fuzzy
 msgid "Contact added in the space"
-msgstr "联系人已添加"
+msgstr "联系人已添加到空间中"
 
 #: [spacesmenu]contact_denied
-#, fuzzy
 msgid "Contact denied in the space"
-msgstr "联系人已删除"
+msgstr "联系人被拒绝加入空间"
 
 #: [sticker]title
 msgid "Stickers"
@@ -2886,7 +2885,7 @@ msgstr "故事删除"
 
 #: [stories]delete_text
 msgid "Are you sure that you want to delete this story?"
-msgstr "是否确定要删除此故事？"
+msgstr "您确定要删除此故事吗？"
 
 #: [stories]deleted
 msgid "Story deleted"
@@ -2948,6 +2947,10 @@ msgstr "最大文件大小 %s"
 msgid "Uploading to your account"
 msgstr "正在上传到您的账号"
 
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "个人资料"
@@ -2978,7 +2981,7 @@ msgstr "配置实例昵称"
 
 #: [profile]privacy_question
 msgid "Is this account public on this Movim instance?"
-msgstr "此账号在此 Movim 实例上是公开的吗？"
+msgstr "此账号在此 Movim 实例上是否公开？"
 
 #: [profile]privacy_info
 msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
@@ -3018,7 +3021,7 @@ msgstr "重置"
 
 #: [degraded]title
 msgid "Movim is currently working in degraded mode"
-msgstr "Movim 目前处于降级模式"
+msgstr "Movim 当前处于降级模式"
 
 #: [degraded]text_1
 msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed, and profile) are disabled by the administrator."
@@ -3082,7 +3085,7 @@ msgstr "挂断通话"
 
 #: [visio]hang_up_text
 msgid "You are going to hang up the current call, are you sure?"
-msgstr "您将挂断当前通话，是否确定？"
+msgstr "您将挂断当前通话，确定吗？"
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -3164,6 +3167,18 @@ msgstr "或者"
 msgid "Switch to another pod"
 msgstr "切换到其他实例"
 
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
+msgstr ""
+
 #: [page]about
 msgid "About"
 msgstr "关于"
@@ -3227,7 +3242,7 @@ msgstr "分享"
 
 #: [page]space
 msgid "Space"
-msgstr ""
+msgstr "空间"
 
 #: [page]tag
 msgid "Tag"
@@ -3247,7 +3262,7 @@ msgstr "无法加载文件“%s”"
 
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn’t exist."
-msgstr "请求的微件“%s”不存在。"
+msgstr "请求的组件“%s”不存在。"
 
 #: [error]widget_call_error
 msgid "Requested event '%s' not registered."
@@ -3263,7 +3278,7 @@ msgstr "Movim 无法与服务器通信，请稍后重试"
 
 #: [error]websocket_connect
 msgid "Reconnection to the server…"
-msgstr "重新连接到服务器…"
+msgstr "正在重新连接到服务器…"
 
 #: [error]oops
 msgid "Oops!"
@@ -3342,7 +3357,6 @@ msgid "Join"
 msgstr "加入"
 
 #: [button]leave
-#, fuzzy
 msgid "Leave"
 msgstr "离开"
 
@@ -3372,7 +3386,7 @@ msgstr "打开"
 
 #: [button]previous
 msgid "Previous"
-msgstr "前一个"
+msgstr "上一个"
 
 #: [button]quote
 msgid "Quote"
@@ -3392,7 +3406,7 @@ msgstr "注册"
 
 #: [button]remove
 msgid "Remove"
-msgstr ""
+msgstr "移除"
 
 #: [button]reply
 msgid "Reply"
@@ -3509,7 +3523,7 @@ msgstr "手机"
 
 #: [client]web
 msgid "Web"
-msgstr "网页"
+msgstr "网络"
 
 #: [client]registered
 msgid "Registered"
@@ -3529,11 +3543,11 @@ msgstr "离开"
 
 #: [presence]dnd
 msgid "Do Not Disturb"
-msgstr "请勿打扰"
+msgstr "忙碌"
 
 #: [presence]xa
 msgid "Extended Away"
-msgstr "延长离开"
+msgstr "不在"
 
 #: [presence]offline
 msgid "Offline"
@@ -3673,7 +3687,7 @@ msgstr "沮丧"
 
 #: [mood]grateful
 msgid "grateful"
-msgstr "感谢"
+msgstr "感激"
 
 #: [mood]grieving
 msgid "grieving"
@@ -3981,7 +3995,7 @@ msgstr "没有内容"
 
 #: [post]no_comments
 msgid "No comments yet"
-msgstr "尚无评论"
+msgstr "暂无评论"
 
 #: [post]older
 msgid "Get older posts"
@@ -4077,7 +4091,7 @@ msgstr "被驱逐者"
 
 #: [affiliation]no_aff
 msgid "No affiliation"
-msgstr "访客"
+msgstr "无从属关系"
 
 #: [affiliation]owner_changed
 msgid "User granted as owner"
@@ -4106,39 +4120,3 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#, fuzzy
-#~ msgid "New Post"
-#~ msgstr "新帖子"
-
-#, fuzzy
-#~ msgctxt "[button]remove"
-#~ msgid "Leave"
-#~ msgstr "离开"
-
-#~ msgid "My location"
-#~ msgstr "我的位置"
-
-#~ msgid "Currently shared with my contacts"
-#~ msgstr "当前与我的联系人共享"
-
-#~ msgid "Currently disabled"
-#~ msgstr "当前已禁用"
-
-#~ msgid "My last published location"
-#~ msgstr "我上次发布的位置"
-
-#~ msgid "Less than a km away"
-#~ msgstr "不到一公里远"
-
-#~ msgid "%s km away"
-#~ msgstr "%s 公里远"
-
-#~ msgid "The server takes too much time to respond"
-#~ msgstr "服务器响应时间过长"
-
-#~ msgid "What’s Hot"
-#~ msgstr "热门内容"
-
-#~ msgid "Public posts from users"
-#~ msgstr "用户的公开帖子"

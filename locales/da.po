@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Mikkel Kirkgaard Nielsen <memb_transifex@mikini.dk>, 2016\n"
 "Language-Team: Danish (http://app.transifex.com/movim/movim/language/da/)\n"
@@ -132,7 +132,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -852,6 +852,10 @@ msgstr ""
 msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
+#: [chats]new_title
+msgid "Start a new conversation"
+msgstr ""
+
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Snak med en kontakt"
@@ -1207,6 +1211,10 @@ msgstr ""
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
 msgstr ""
 
 #: [config]night_mode
@@ -1663,7 +1671,7 @@ msgstr "Ugyldigt adgangskode-format"
 
 #: [error]unauthorized
 msgid "Your XMPP server is unauthorized"
-msgstr ""
+msgstr "Din XMPP server er ikke tilladt"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1816,7 +1824,7 @@ msgstr ""
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s vil gerne snakke med dig"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1871,9 +1879,8 @@ msgid "Posts recently published in communities that you are not subscribed (yet)
 msgstr ""
 
 #: [post]new_blog
-#, fuzzy
 msgid "New blog post"
-msgstr "Nyt indlæg"
+msgstr ""
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -2033,6 +2040,10 @@ msgstr "Tilstedeværelse"
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
+msgstr ""
+
+#: [status]my_avatar
+msgid "My profile picture"
 msgstr ""
 
 #: [preview]link_copied
@@ -2299,6 +2310,10 @@ msgstr ""
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
 msgstr ""
 
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
+msgstr ""
+
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
 msgstr ""
@@ -2358,7 +2373,7 @@ msgstr ""
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr ""
+msgstr "Medlemmer"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -2484,7 +2499,7 @@ msgstr ""
 #: [room]group_chat_members
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr ""
+msgstr "Medlemmer"
 
 #: [room]banned_add
 msgid "Ban someone"
@@ -2550,7 +2565,7 @@ msgstr ""
 #: [room]affiliation_members
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr ""
+msgstr "Medlemmer"
 
 #: [room]visitor
 msgid "Visitor"
@@ -2602,7 +2617,7 @@ msgstr ""
 
 #: [search]tags
 msgid "Tags"
-msgstr ""
+msgstr "Mærkater"
 
 #: [search]show_complete_roster
 msgid "Show all the contacts"
@@ -2649,19 +2664,20 @@ msgid "Story shared using Movim"
 msgstr ""
 
 #: [spaceinfo]config_title
-#, fuzzy
 msgid "Space configuration"
-msgstr "Opsætning gemt"
+msgstr ""
 
 #: [spaceinfo]config_saved
-#, fuzzy
 msgid "Space configuration saved"
-msgstr "Opsætning gemt"
+msgstr ""
 
 #: [spaceinfo]config_error
-#, fuzzy
 msgid "Space configuration error"
-msgstr "Avanceret Opsætning"
+msgstr ""
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
 
 #: [spaceinfo]destroy_title
 msgid "Destroy the space"
@@ -2672,9 +2688,8 @@ msgid "You are going to destroy the following Space, all the chatrooms within it
 msgstr ""
 
 #: [spaceinfo]invite_title
-#, fuzzy
 msgid "Invite new contacts"
-msgstr "Skjul offline kontakter"
+msgstr ""
 
 #: [spaceinfo]invite_text
 msgid "A moderator will have to approve the join request"
@@ -2685,14 +2700,12 @@ msgid "Send an invitation key to your contacts"
 msgstr ""
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
-#, fuzzy
 msgid "Leave the space"
-msgstr "Opret en ny konto"
+msgstr ""
 
 #: [spaceinfo]add_room_title
-#, fuzzy
 msgid "Add a room"
-msgstr "Tilføj en kommentar"
+msgstr ""
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
@@ -2719,9 +2732,16 @@ msgid "Remove from the space"
 msgstr ""
 
 #: [spacesmenu]create_space_title
-#, fuzzy
-msgid "Create a Space"
-msgstr "Opret en ny konto"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
+msgstr ""
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2760,9 +2780,8 @@ msgid "Locked space"
 msgstr ""
 
 #: [spacesmenu]locked_text
-#, fuzzy
 msgid "You are not authorized to join the space at the moment"
-msgstr "Du abonnerer ikke på denne kontakt"
+msgstr ""
 
 #: [spacesmenu]locked_try_again
 msgid "Try again"
@@ -2789,14 +2808,12 @@ msgid "Deny the access"
 msgstr ""
 
 #: [spacesmenu]contact_added
-#, fuzzy
 msgid "Contact added in the space"
-msgstr "Kontakt tilføjet"
+msgstr ""
 
 #: [spacesmenu]contact_denied
-#, fuzzy
 msgid "Contact denied in the space"
-msgstr "Kontakt slettet"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -2914,6 +2931,10 @@ msgstr ""
 msgid "Uploading to your account"
 msgstr ""
 
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profil"
@@ -3012,7 +3033,7 @@ msgstr ""
 
 #: [visio]declined
 msgid "Declined"
-msgstr ""
+msgstr "Afslået"
 
 #: [visio]in_call
 msgid "Ongoing call"
@@ -3130,6 +3151,18 @@ msgstr ""
 msgid "Switch to another pod"
 msgstr ""
 
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
+msgstr ""
+
 #: [page]about
 msgid "About"
 msgstr "Om"
@@ -3148,7 +3181,7 @@ msgstr "Blog"
 
 #: [page]chats
 msgid "Messages"
-msgstr ""
+msgstr "Beskeder"
 
 #: [page]communities
 msgid "Communities"
@@ -3189,7 +3222,7 @@ msgstr "Publicer"
 #: [page]share
 msgctxt "[page]share"
 msgid "Share"
-msgstr ""
+msgstr "Del"
 
 #: [page]space
 msgid "Space"
@@ -3257,7 +3290,7 @@ msgstr "Ja"
 
 #: [button]call
 msgid "Call"
-msgstr ""
+msgstr "Ring op"
 
 #: [button]cancel
 msgid "Cancel"
@@ -3297,7 +3330,7 @@ msgstr ""
 
 #: [button]discover
 msgid "Discover"
-msgstr ""
+msgstr "Opdag"
 
 #: [button]enable
 msgid "Enable"
@@ -3357,7 +3390,7 @@ msgstr "Registrér"
 
 #: [button]remove
 msgid "Remove"
-msgstr ""
+msgstr "Fjern"
 
 #: [button]reply
 msgid "Reply"
@@ -3373,7 +3406,7 @@ msgstr "Gem"
 
 #: [button]search
 msgid "Search"
-msgstr ""
+msgstr "Søg"
 
 #: [button]send_to
 msgid "Send to"
@@ -3382,7 +3415,7 @@ msgstr ""
 #: [button]share
 msgctxt "[button]share"
 msgid "Share"
-msgstr ""
+msgstr "Del"
 
 #: [button]sign_up
 msgid "Sign Up"
@@ -3482,7 +3515,7 @@ msgstr "Registreret"
 
 #: [client]gateway
 msgid "Gateway"
-msgstr ""
+msgstr "Gateway"
 
 #: [presence]online
 msgid "Online"
@@ -3766,7 +3799,7 @@ msgstr "lettet"
 
 #: [mood]remorseful
 msgid "remorseful"
-msgstr ""
+msgstr "angrende"
 
 #: [mood]restless
 msgid "restless"
@@ -4071,10 +4104,3 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#, fuzzy
-#~ msgid "New Post"
-#~ msgstr "Nyt indlæg"
-
-#~ msgid "The server takes too much time to respond"
-#~ msgstr "Serveren er for lang tid om at svare"

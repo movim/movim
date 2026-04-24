@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Egon Borovan <egon.boro@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (http://app.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -135,7 +135,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -641,7 +641,7 @@ msgstr "Zobrazit profil"
 
 #: [chat]clear
 msgid "Clear the history"
-msgstr ""
+msgstr "Vymazat historii"
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -853,6 +853,10 @@ msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
+msgstr ""
+
+#: [chats]new_title
+msgid "Start a new conversation"
 msgstr ""
 
 #: [chats]add
@@ -1210,6 +1214,10 @@ msgstr ""
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
 msgstr ""
 
 #: [config]night_mode
@@ -1666,7 +1674,7 @@ msgstr "Nesprávný formát hesla"
 
 #: [error]unauthorized
 msgid "Your XMPP server is unauthorized"
-msgstr ""
+msgstr "Váš XMPP server není autorizován"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1819,7 +1827,7 @@ msgstr ""
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s s vámi chce mluvit"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1846,9 +1854,8 @@ msgid "You can always disable this in the configuration afterwards"
 msgstr ""
 
 #: [post]publish_something
-#, fuzzy
 msgid "Publish something"
-msgstr "Vydavatel"
+msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1875,9 +1882,8 @@ msgid "Posts recently published in communities that you are not subscribed (yet)
 msgstr ""
 
 #: [post]new_blog
-#, fuzzy
 msgid "New blog post"
-msgstr "Nové příspěvky"
+msgstr ""
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -2037,6 +2043,10 @@ msgstr "Přítomnost"
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
+msgstr ""
+
+#: [status]my_avatar
+msgid "My profile picture"
 msgstr ""
 
 #: [preview]link_copied
@@ -2288,21 +2298,23 @@ msgid "A registration is required before using the service"
 msgstr ""
 
 #: [rooms]discover
-#, fuzzy
 msgid "Discover a room"
-msgstr "Objevit"
+msgstr ""
 
 #: [rooms]disco_error
 msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
 msgstr ""
 
 #: [rooms]disco_not_muc
-#, fuzzy
 msgid "You are trying to add something that is not a chatroom"
-msgstr "Obdržel jste pozvánku k přidání do chatovací místnosti"
+msgstr ""
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
 msgstr ""
 
 #: [chatrooms]autojoin
@@ -2364,7 +2376,7 @@ msgstr ""
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr ""
+msgstr "Členi"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -2490,7 +2502,7 @@ msgstr ""
 #: [room]group_chat_members
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr ""
+msgstr "Členi"
 
 #: [room]banned_add
 msgid "Ban someone"
@@ -2556,7 +2568,7 @@ msgstr ""
 #: [room]affiliation_members
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr ""
+msgstr "Členi"
 
 #: [room]visitor
 msgid "Visitor"
@@ -2608,7 +2620,7 @@ msgstr ""
 
 #: [search]tags
 msgid "Tags"
-msgstr ""
+msgstr "Štítky"
 
 #: [search]show_complete_roster
 msgid "Show all the contacts"
@@ -2655,33 +2667,32 @@ msgid "Story shared using Movim"
 msgstr ""
 
 #: [spaceinfo]config_title
-#, fuzzy
 msgid "Space configuration"
-msgstr "Konfigurace uložena"
+msgstr ""
 
 #: [spaceinfo]config_saved
-#, fuzzy
 msgid "Space configuration saved"
-msgstr "Konfigurace uložena"
+msgstr ""
 
 #: [spaceinfo]config_error
-#, fuzzy
 msgid "Space configuration error"
-msgstr "Pokročilá konfigurace"
+msgstr ""
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
 
 #: [spaceinfo]destroy_title
-#, fuzzy
 msgid "Destroy the space"
-msgstr "Opusťte tuto instanci"
+msgstr ""
 
 #: [spaceinfo]destroy_text
 msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
 msgstr ""
 
 #: [spaceinfo]invite_title
-#, fuzzy
 msgid "Invite new contacts"
-msgstr "Skrýt offline kontakty"
+msgstr ""
 
 #: [spaceinfo]invite_text
 msgid "A moderator will have to approve the join request"
@@ -2692,14 +2703,12 @@ msgid "Send an invitation key to your contacts"
 msgstr ""
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
-#, fuzzy
 msgid "Leave the space"
-msgstr "Opusťte tuto instanci"
+msgstr ""
 
 #: [spaceinfo]add_room_title
-#, fuzzy
 msgid "Add a room"
-msgstr "Přidat komentář"
+msgstr ""
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
@@ -2722,14 +2731,20 @@ msgid "An owner cannot leave his own Space"
 msgstr ""
 
 #: [spaceinfo]affiliation_none
-#, fuzzy
 msgid "Remove from the space"
-msgstr "Opusťte tuto instanci"
+msgstr ""
 
 #: [spacesmenu]create_space_title
-#, fuzzy
-msgid "Create a Space"
-msgstr "Vytvořit nový účet"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
+msgstr ""
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2768,9 +2783,8 @@ msgid "Locked space"
 msgstr ""
 
 #: [spacesmenu]locked_text
-#, fuzzy
 msgid "You are not authorized to join the space at the moment"
-msgstr "Nejste přihlášení k odebírání tohoto kontaktu"
+msgstr ""
 
 #: [spacesmenu]locked_try_again
 msgid "Try again"
@@ -2797,14 +2811,12 @@ msgid "Deny the access"
 msgstr ""
 
 #: [spacesmenu]contact_added
-#, fuzzy
 msgid "Contact added in the space"
-msgstr "Kontakt přidán"
+msgstr ""
 
 #: [spacesmenu]contact_denied
-#, fuzzy
 msgid "Contact denied in the space"
-msgstr "Kontakt odebrán"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -2920,6 +2932,10 @@ msgstr ""
 
 #: [upload]upload_xmpp
 msgid "Uploading to your account"
+msgstr ""
+
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
 msgstr ""
 
 #: [vcard]title [page]profile
@@ -3138,6 +3154,18 @@ msgstr ""
 msgid "Switch to another pod"
 msgstr ""
 
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
+msgstr ""
+
 #: [page]about
 msgid "About"
 msgstr "O nás"
@@ -3197,7 +3225,7 @@ msgstr "Zveřejnit"
 #: [page]share
 msgctxt "[page]share"
 msgid "Share"
-msgstr ""
+msgstr "Sdílet"
 
 #: [page]space
 msgid "Space"
@@ -3390,7 +3418,7 @@ msgstr ""
 #: [button]share
 msgctxt "[button]share"
 msgid "Share"
-msgstr ""
+msgstr "Sdílet"
 
 #: [button]sign_up
 msgid "Sign Up"
@@ -3490,7 +3518,7 @@ msgstr "Registrován"
 
 #: [client]gateway
 msgid "Gateway"
-msgstr ""
+msgstr "Brána"
 
 #: [presence]online
 msgid "Online"
@@ -4079,13 +4107,3 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
-
-#, fuzzy
-#~ msgid "New Post"
-#~ msgstr "Nové příspěvky"
-
-#~ msgid "The server takes too much time to respond"
-#~ msgstr "Serveru trvá příliš dlouho odpovídat"
-
-#~ msgid "Public posts from users"
-#~ msgstr "Veřejné příspěvky od uživatelů"

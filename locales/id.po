@@ -125,7 +125,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Fahmi <itsfahmiegerton@live.co.uk>, 2017\n"
 "Language-Team: Indonesian (http://app.transifex.com/movim/movim/language/id/)\n"
@@ -134,7 +134,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -854,6 +854,10 @@ msgstr ""
 msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
+#: [chats]new_title
+msgid "Start a new conversation"
+msgstr ""
+
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Mengobrol dengan sebuah kontak"
@@ -1209,6 +1213,10 @@ msgstr ""
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
 msgstr ""
 
 #: [config]night_mode
@@ -1818,7 +1826,7 @@ msgstr ""
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s ingin ngobrol dengan anda"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1845,9 +1853,8 @@ msgid "You can always disable this in the configuration afterwards"
 msgstr "Anda dapat menonaktifkan ini di konfigurasi kapan saja"
 
 #: [post]publish_something
-#, fuzzy
 msgid "Publish something"
-msgstr "Penerbit"
+msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1874,9 +1881,8 @@ msgid "Posts recently published in communities that you are not subscribed (yet)
 msgstr "Post baru saja diterbitkan di komunitas dimana anda belum berlangganan"
 
 #: [post]new_blog
-#, fuzzy
 msgid "New blog post"
-msgstr "Post baru"
+msgstr ""
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -2036,6 +2042,10 @@ msgstr ""
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
+msgstr ""
+
+#: [status]my_avatar
+msgid "My profile picture"
 msgstr ""
 
 #: [preview]link_copied
@@ -2287,9 +2297,8 @@ msgid "A registration is required before using the service"
 msgstr ""
 
 #: [rooms]discover
-#, fuzzy
 msgid "Discover a room"
-msgstr "Jelajahi"
+msgstr ""
 
 #: [rooms]disco_error
 msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
@@ -2301,6 +2310,10 @@ msgstr ""
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
 msgstr ""
 
 #: [chatrooms]autojoin
@@ -2362,7 +2375,7 @@ msgstr ""
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr ""
+msgstr "Anggota"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -2488,7 +2501,7 @@ msgstr ""
 #: [room]group_chat_members
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr ""
+msgstr "Anggota"
 
 #: [room]banned_add
 msgid "Ban someone"
@@ -2554,7 +2567,7 @@ msgstr ""
 #: [room]affiliation_members
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr ""
+msgstr "Anggota"
 
 #: [room]visitor
 msgid "Visitor"
@@ -2653,19 +2666,20 @@ msgid "Story shared using Movim"
 msgstr ""
 
 #: [spaceinfo]config_title
-#, fuzzy
 msgid "Space configuration"
-msgstr "Pengaturan disimpan"
+msgstr ""
 
 #: [spaceinfo]config_saved
-#, fuzzy
 msgid "Space configuration saved"
-msgstr "Pengaturan disimpan"
+msgstr ""
 
 #: [spaceinfo]config_error
-#, fuzzy
 msgid "Space configuration error"
-msgstr "Konfigurasi Lanjutan"
+msgstr ""
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
 
 #: [spaceinfo]destroy_title
 msgid "Destroy the space"
@@ -2676,9 +2690,8 @@ msgid "You are going to destroy the following Space, all the chatrooms within it
 msgstr ""
 
 #: [spaceinfo]invite_title
-#, fuzzy
 msgid "Invite new contacts"
-msgstr "Sembunyikan kontak offline"
+msgstr ""
 
 #: [spaceinfo]invite_text
 msgid "A moderator will have to approve the join request"
@@ -2689,14 +2702,12 @@ msgid "Send an invitation key to your contacts"
 msgstr ""
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
-#, fuzzy
 msgid "Leave the space"
-msgstr "Buat akun baru"
+msgstr ""
 
 #: [spaceinfo]add_room_title
-#, fuzzy
 msgid "Add a room"
-msgstr "Tambahkan ke chatroom"
+msgstr ""
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
@@ -2723,9 +2734,16 @@ msgid "Remove from the space"
 msgstr ""
 
 #: [spacesmenu]create_space_title
-#, fuzzy
-msgid "Create a Space"
-msgstr "Buat akun baru"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
+msgstr ""
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2764,9 +2782,8 @@ msgid "Locked space"
 msgstr ""
 
 #: [spacesmenu]locked_text
-#, fuzzy
 msgid "You are not authorized to join the space at the moment"
-msgstr "Anda tidak berlangganan kontak ini"
+msgstr ""
 
 #: [spacesmenu]locked_try_again
 msgid "Try again"
@@ -2914,6 +2931,10 @@ msgstr ""
 
 #: [upload]upload_xmpp
 msgid "Uploading to your account"
+msgstr ""
+
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
 msgstr ""
 
 #: [vcard]title [page]profile
@@ -3132,6 +3153,18 @@ msgstr ""
 msgid "Switch to another pod"
 msgstr ""
 
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
+msgstr ""
+
 #: [page]about
 msgid "About"
 msgstr ""
@@ -3251,11 +3284,11 @@ msgstr ""
 
 #: [button]bool_no
 msgid "No"
-msgstr ""
+msgstr "Tidak"
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr ""
+msgstr "Ya"
 
 #: [button]call
 msgid "Call"
@@ -3375,7 +3408,7 @@ msgstr "Simpan"
 
 #: [button]search
 msgid "Search"
-msgstr ""
+msgstr "Cari"
 
 #: [button]send_to
 msgid "Send to"
@@ -3768,7 +3801,7 @@ msgstr "lega"
 
 #: [mood]remorseful
 msgid "remorseful"
-msgstr ""
+msgstr "menyesal"
 
 #: [mood]restless
 msgid "restless"
@@ -4073,13 +4106,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#, fuzzy
-#~ msgid "New Post"
-#~ msgstr "Post baru"
-
-#~ msgid "The server takes too much time to respond"
-#~ msgstr "Server memakan waktu terlalu lama untuk merespon"
-
-#~ msgid "Public posts from users"
-#~ msgstr "Post publik dari pengguna"

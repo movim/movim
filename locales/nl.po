@@ -132,7 +132,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Robbie Deighton <deightonrobbie@gmail.com>, 2019\n"
 "Language-Team: Dutch (http://app.transifex.com/movim/movim/language/nl/)\n"
@@ -141,7 +141,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -647,7 +647,7 @@ msgstr "Bekijk profiel"
 
 #: [chat]clear
 msgid "Clear the history"
-msgstr ""
+msgstr "Verwijder geschiedenis"
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -860,6 +860,10 @@ msgstr "Momenteel geen gesprekken..."
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
 msgstr "Start een nieuwe conversatie door op de %s knop te klikken."
+
+#: [chats]new_title
+msgid "Start a new conversation"
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -1216,6 +1220,10 @@ msgstr ""
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
 msgstr ""
 
 #: [config]night_mode
@@ -1825,7 +1833,7 @@ msgstr ""
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s wil met je praten"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1880,9 +1888,8 @@ msgid "Posts recently published in communities that you are not subscribed (yet)
 msgstr ""
 
 #: [post]new_blog
-#, fuzzy
 msgid "New blog post"
-msgstr "nieuwe berichten"
+msgstr ""
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -2042,6 +2049,10 @@ msgstr "aanwezigheid"
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
+msgstr ""
+
+#: [status]my_avatar
+msgid "My profile picture"
 msgstr ""
 
 #: [preview]link_copied
@@ -2293,21 +2304,23 @@ msgid "A registration is required before using the service"
 msgstr ""
 
 #: [rooms]discover
-#, fuzzy
 msgid "Discover a room"
-msgstr "Verkennen"
+msgstr ""
 
 #: [rooms]disco_error
 msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
 msgstr ""
 
 #: [rooms]disco_not_muc
-#, fuzzy
 msgid "You are trying to add something that is not a chatroom"
-msgstr "Je hebt een uitnodiging ontvangen om je aan te sluiten bij  een chatruimte"
+msgstr ""
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
 msgstr ""
 
 #: [chatrooms]autojoin
@@ -2369,7 +2382,7 @@ msgstr ""
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr ""
+msgstr "Leden"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -2495,7 +2508,7 @@ msgstr ""
 #: [room]group_chat_members
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr ""
+msgstr "Leden"
 
 #: [room]banned_add
 msgid "Ban someone"
@@ -2561,7 +2574,7 @@ msgstr ""
 #: [room]affiliation_members
 msgctxt "[room]affiliation_members"
 msgid "Members"
-msgstr ""
+msgstr "Leden"
 
 #: [room]visitor
 msgid "Visitor"
@@ -2613,7 +2626,7 @@ msgstr ""
 
 #: [search]tags
 msgid "Tags"
-msgstr ""
+msgstr "Tag"
 
 #: [search]show_complete_roster
 msgid "Show all the contacts"
@@ -2660,52 +2673,48 @@ msgid "Story shared using Movim"
 msgstr ""
 
 #: [spaceinfo]config_title
-#, fuzzy
 msgid "Space configuration"
-msgstr "Instellingen opgeslagen"
+msgstr ""
 
 #: [spaceinfo]config_saved
-#, fuzzy
 msgid "Space configuration saved"
-msgstr "Instellingen opgeslagen"
+msgstr ""
 
 #: [spaceinfo]config_error
-#, fuzzy
 msgid "Space configuration error"
-msgstr "Geavanceerde configuratie"
+msgstr ""
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
 
 #: [spaceinfo]destroy_title
-#, fuzzy
 msgid "Destroy the space"
-msgstr "Deze server verlaten"
+msgstr ""
 
 #: [spaceinfo]destroy_text
 msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
 msgstr ""
 
 #: [spaceinfo]invite_title
-#, fuzzy
 msgid "Invite new contacts"
-msgstr "Nodig een contactpersoon uit"
+msgstr ""
 
 #: [spaceinfo]invite_text
 msgid "A moderator will have to approve the join request"
 msgstr ""
 
 #: [spaceinfo]invite_uri_title
-#, fuzzy
 msgid "Send an invitation key to your contacts"
-msgstr "Uitnodiging verzonden"
+msgstr ""
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
-#, fuzzy
 msgid "Leave the space"
-msgstr "Deze server verlaten"
+msgstr ""
 
 #: [spaceinfo]add_room_title
-#, fuzzy
 msgid "Add a room"
-msgstr "Reactie toevoegen"
+msgstr ""
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
@@ -2728,14 +2737,20 @@ msgid "An owner cannot leave his own Space"
 msgstr ""
 
 #: [spaceinfo]affiliation_none
-#, fuzzy
 msgid "Remove from the space"
-msgstr "Deze server verlaten"
+msgstr ""
 
 #: [spacesmenu]create_space_title
-#, fuzzy
-msgid "Create a Space"
-msgstr "Nieuw account creëren"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
+msgstr ""
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2762,9 +2777,8 @@ msgid "Subscribed to the space"
 msgstr ""
 
 #: [spacesmenu]invitation_key
-#, fuzzy
 msgid "Use an invitation key"
-msgstr "Uitnodiging verzonden"
+msgstr ""
 
 #: [spacesmenu]key_required
 msgid "A valid key is required"
@@ -2775,9 +2789,8 @@ msgid "Locked space"
 msgstr ""
 
 #: [spacesmenu]locked_text
-#, fuzzy
 msgid "You are not authorized to join the space at the moment"
-msgstr "Je bent niet geabbonneerd op deze contactpersoon"
+msgstr ""
 
 #: [spacesmenu]locked_try_again
 msgid "Try again"
@@ -2804,14 +2817,12 @@ msgid "Deny the access"
 msgstr ""
 
 #: [spacesmenu]contact_added
-#, fuzzy
 msgid "Contact added in the space"
-msgstr "Contactpersoon toegevoegd"
+msgstr ""
 
 #: [spacesmenu]contact_denied
-#, fuzzy
 msgid "Contact denied in the space"
-msgstr "Contactpersoon verwijderd"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -2929,6 +2940,10 @@ msgstr ""
 msgid "Uploading to your account"
 msgstr ""
 
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profiel"
@@ -3027,7 +3042,7 @@ msgstr ""
 
 #: [visio]declined
 msgid "Declined"
-msgstr ""
+msgstr "Afgewezen"
 
 #: [visio]in_call
 msgid "Ongoing call"
@@ -3145,6 +3160,18 @@ msgstr ""
 msgid "Switch to another pod"
 msgstr ""
 
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
+msgstr ""
+
 #: [page]about
 msgid "About"
 msgstr "Over"
@@ -3163,7 +3190,7 @@ msgstr "Blog"
 
 #: [page]chats
 msgid "Messages"
-msgstr ""
+msgstr "Berichten"
 
 #: [page]communities
 msgid "Communities"
@@ -3497,7 +3524,7 @@ msgstr "Geregistreerd"
 
 #: [client]gateway
 msgid "Gateway"
-msgstr ""
+msgstr "Gateway"
 
 #: [presence]online
 msgid "Online"
@@ -3781,7 +3808,7 @@ msgstr "opgelucht"
 
 #: [mood]remorseful
 msgid "remorseful"
-msgstr ""
+msgstr "berouwvol"
 
 #: [mood]restless
 msgid "restless"
@@ -4086,13 +4113,3 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
-
-#, fuzzy
-#~ msgid "New Post"
-#~ msgstr "nieuwe berichten"
-
-#~ msgid "The server takes too much time to respond"
-#~ msgstr "De server neemt te veel tijd om te antwoorden"
-
-#~ msgid "Public posts from users"
-#~ msgstr "Openbare berichten van gebruikers"

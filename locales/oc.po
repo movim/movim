@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Occitan (post 1500) (http://app.transifex.com/movim/movim/language/oc/)\n"
@@ -131,7 +131,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -348,7 +348,7 @@ msgstr ""
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr ""
+msgstr "Messatge d'informacion"
 
 #: [information]description [communityconfig]description
 msgid "Description"
@@ -377,7 +377,7 @@ msgstr ""
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr ""
+msgstr "Messatge d'informacion"
 
 #: [xmpp]title
 msgid "Default XMPP server"
@@ -851,6 +851,10 @@ msgstr ""
 msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
+#: [chats]new_title
+msgid "Start a new conversation"
+msgstr ""
+
 #: [chats]add
 msgid "Chat with a contact"
 msgstr ""
@@ -1206,6 +1210,10 @@ msgstr ""
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
 msgstr ""
 
 #: [config]night_mode
@@ -2033,6 +2041,10 @@ msgstr ""
 msgid "Do you really want to log out?"
 msgstr ""
 
+#: [status]my_avatar
+msgid "My profile picture"
+msgstr ""
+
 #: [preview]link_copied
 msgid "Link copied to clipboard"
 msgstr ""
@@ -2195,7 +2207,7 @@ msgstr ""
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "lo"
 
 #: [create]successfull
 msgid "Your account has been successfully registered"
@@ -2295,6 +2307,10 @@ msgstr ""
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
 msgstr ""
 
 #: [chatrooms]autojoin
@@ -2647,19 +2663,20 @@ msgid "Story shared using Movim"
 msgstr ""
 
 #: [spaceinfo]config_title
-#, fuzzy
 msgid "Space configuration"
-msgstr "Configuracion"
+msgstr ""
 
 #: [spaceinfo]config_saved
-#, fuzzy
 msgid "Space configuration saved"
-msgstr "Configuracion"
+msgstr ""
 
 #: [spaceinfo]config_error
-#, fuzzy
 msgid "Space configuration error"
-msgstr "Configuracion"
+msgstr ""
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
 
 #: [spaceinfo]destroy_title
 msgid "Destroy the space"
@@ -2682,9 +2699,8 @@ msgid "Send an invitation key to your contacts"
 msgstr ""
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
-#, fuzzy
 msgid "Leave the space"
-msgstr "Crear un compte novèl"
+msgstr ""
 
 #: [spaceinfo]add_room_title
 msgid "Add a room"
@@ -2715,9 +2731,16 @@ msgid "Remove from the space"
 msgstr ""
 
 #: [spacesmenu]create_space_title
-#, fuzzy
-msgid "Create a Space"
-msgstr "Crear un compte novèl"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
+msgstr ""
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2905,6 +2928,10 @@ msgstr ""
 
 #: [upload]upload_xmpp
 msgid "Uploading to your account"
+msgstr ""
+
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
 msgstr ""
 
 #: [vcard]title [page]profile
@@ -3123,6 +3150,18 @@ msgstr ""
 msgid "Switch to another pod"
 msgstr ""
 
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
+msgstr ""
+
 #: [page]about
 msgid "About"
 msgstr "A prepaus"
@@ -3242,11 +3281,11 @@ msgstr ""
 
 #: [button]bool_no
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr ""
+msgstr "Òc"
 
 #: [button]call
 msgid "Call"
@@ -3290,7 +3329,7 @@ msgstr ""
 
 #: [button]discover
 msgid "Discover"
-msgstr ""
+msgstr "Descobrir"
 
 #: [button]enable
 msgid "Enable"
@@ -3366,7 +3405,7 @@ msgstr "Enregistrar"
 
 #: [button]search
 msgid "Search"
-msgstr ""
+msgstr "Recercar"
 
 #: [button]send_to
 msgid "Send to"

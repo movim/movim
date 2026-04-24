@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 09:21+0200\n"
+"POT-Creation-Date: 2026-04-24 16:58+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Khám Phá Phần Mềm <meshareyou@gmail.com>, 2019\n"
 "Language-Team: Vietnamese (http://app.transifex.com/movim/movim/language/vi/)\n"
@@ -132,7 +132,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -852,6 +852,10 @@ msgstr ""
 msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
+#: [chats]new_title
+msgid "Start a new conversation"
+msgstr ""
+
 #: [chats]add
 msgid "Chat with a contact"
 msgstr ""
@@ -1207,6 +1211,10 @@ msgstr ""
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
+#: [config]omemoenabled_warning
+msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
 msgstr ""
 
 #: [config]night_mode
@@ -2034,6 +2042,10 @@ msgstr ""
 msgid "Do you really want to log out?"
 msgstr ""
 
+#: [status]my_avatar
+msgid "My profile picture"
+msgstr ""
+
 #: [preview]link_copied
 msgid "Link copied to clipboard"
 msgstr ""
@@ -2296,6 +2308,10 @@ msgstr ""
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [rooms]first_room_placeholder
+msgid "Press the %s button to add a first room"
 msgstr ""
 
 #: [chatrooms]autojoin
@@ -2659,6 +2675,10 @@ msgstr ""
 msgid "Space configuration error"
 msgstr ""
 
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
+
 #: [spaceinfo]destroy_title
 msgid "Destroy the space"
 msgstr ""
@@ -2712,7 +2732,15 @@ msgid "Remove from the space"
 msgstr ""
 
 #: [spacesmenu]create_space_title
-msgid "Create a Space"
+msgid "Create a space"
+msgstr ""
+
+#: [spacesmenu]add_space_title
+msgid "Add a new space"
+msgstr ""
+
+#: [spacesmenu]join_space_title
+msgid "Join a space"
 msgstr ""
 
 #: [spacesmenu]invite_space_title
@@ -2901,6 +2929,10 @@ msgstr ""
 
 #: [upload]upload_xmpp
 msgid "Uploading to your account"
+msgstr ""
+
+#: [upload]encrypted_warning
+msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
 msgstr ""
 
 #: [vcard]title [page]profile
@@ -3117,6 +3149,18 @@ msgstr ""
 
 #: [global]change_pod
 msgid "Switch to another pod"
+msgstr ""
+
+#: [global]main_menu
+msgid "Main menu"
+msgstr ""
+
+#: [global]bottom_menu
+msgid "Bottom menu"
+msgstr ""
+
+#: [global]skip_main
+msgid "Skip to main content"
 msgstr ""
 
 #: [page]about
