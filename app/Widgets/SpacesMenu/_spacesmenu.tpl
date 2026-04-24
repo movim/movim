@@ -1,7 +1,7 @@
 {loop="$spaces"}
     <li {if="$value->space_in"}onclick="SpacesMenu.get('{$value->server}', '{$value->node}', '{$c->route('space', [$value->server, $value->node])}')"
         {else}onclick="SpacesMenu_ajaxLockedMenu('{$value->server}', '{$value->node}')"{/if}
-        class="{if="$value->pinned"}pinned{/if} {if="$node && $value->node == $node"}enabled{/if}">
+        class="{if="$value->pinned"}pinned{/if} {if="$server && $value->server == $node && $node && $value->node == $node"}enabled{/if}">
         <span class="primary icon bubble space symbol {if="!$value->space_in"}locked{/if}"
             {if="$value->info"}title="{$value->info->name}"{/if}
             {$unreads = $value->spaceUnreads($c->me)}

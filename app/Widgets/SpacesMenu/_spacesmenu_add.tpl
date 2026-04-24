@@ -20,7 +20,30 @@
         <br />
     {/if}
 
-    <h4>{$c->__('spacesmenu.invite_space_title')}</h4>
+    <h4>{if="$uri"}{$c->__('spacesmenu.join_space_title')}{else}{$c->__('spacesmenu.invite_space_title')}{/if}</h4>
+
+    {if="$info"}
+        <ul class="list middle">
+            <li>
+                <span class="primary icon bubble space">
+                    <img src="{$info->getPicture(placeholder: $info->name)}">
+                </span>
+                <div>
+                    <p class="line">
+                        {autoescape="off"}{$info->name|addEmojis}{/autoescape}
+                    </p>
+                    <p class="line two">
+                        {if="!empty($info->description)"}
+                            {autoescape="off"}{$info->description|addEmojis}{/autoescape}
+                        {else}
+                            {$info->server}
+                        {/if}
+                    </p>
+                </div>
+            </li>
+        </ul>
+    {/if}
+
     <form name="spacesmenu_add">
         <div>
             <ul class="list">
@@ -29,7 +52,7 @@
                         <i class="material-symbols">communities</i>
                     </span>
                     <div>
-                        <input name="uri" placeholder="xmpp:server.com?;node=key" required/>
+                        <input name="uri" placeholder="xmpp:server.com?;node=key" {if="$uri"}value="{$uri}"{/if} required/>
                         <label for="uri">{$c->__('spacesmenu.invitation_key')}</label>
                     </div>
                 </li>

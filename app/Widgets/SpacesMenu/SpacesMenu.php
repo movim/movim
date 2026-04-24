@@ -272,18 +272,31 @@ class SpacesMenu extends Base
 
         if ($server && $node) {
             $this->rpc('MovimUtils.pushSoftState', $this->route('space', [$server, $node]));
-            $this->rpc('SpaceRooms_ajaxHttpGet', $server, $node);
-            $this->rpc('SpaceInfo_ajaxHttpGet', $server, $node);
 
-            if (!$isMobile) {
-                $this->rpc('SpaceRooms_ajaxHttpGetChat', $server, $node, $conference);
+            $subscription = $this->me->subscriptions()->space($server, $node)->first();
+
+            if ($subscription) {
+                $this->rpc('SpaceRooms_ajaxHttpGet', $server, $node);
+                $this->rpc('SpaceInfo_ajaxHttpGet', $server, $node);
+
+                if (!$isMobile) {
+                    $this->rpc('SpaceRooms_ajaxHttpGetChat', $server, $node, $conference);
+                }
+            } else {
+                $this->ajaxAdd($server, $node);
             }
         }
     }
 
-    public function ajaxAdd()
+    public function ajaxAdd(string $server, string $node)
     {
-        $this->dialog($this->view('_spacesmenu_add'));
+        if (!validateServerNode($server, $node)) return;
+        $info = Info::space()->where('server', $server)->where('node', $node)->first();
+
+        $this->dialog($this->view('_spacesmenu_add', [
+            'uri' => 'xmpp:' . $server . '?;node=' . $node,
+            'info' => $info
+        ]));
     }
 
     public function ajaxCreate()
@@ -326,7 +339,7 @@ class SpacesMenu extends Base
     public function prepareMenu(?string $server = null, ?string $node = null): string
     {
         return $this->view('_spacesmenu', [
-            'string' => $server,
+            'server' => $server,
             'node' => $node,
             'spaces' => $this->me->subscriptions()->spaces()->orderBy('pinned', 'desc')->with('info')->get()
         ]);
