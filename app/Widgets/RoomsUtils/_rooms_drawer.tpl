@@ -377,6 +377,33 @@
         <div class="tabelem spin" title="{$c->__('omemo.fingerprints_title')}" id="room_omemo_fingerprints"></div>
     {/if}
 
+    {if="$conference->presence && in_array($conference->presence->mucaffiliation, ['owner', 'admin'])"}
+        <div class="tabelem" title="{$c->__('hats.title')}" id="room_hats_{$room|cleanupId}">
+            <ul class="list divided">
+                <li class="active" onclick="Drawer.clear(); AdHoc_ajaxCommand('{$room|echapJS}', 'urn:xmpp:hats:commands:create')">
+                    <span class="primary icon gray"><i class="material-symbols">add</i></span>
+                    <span class="control icon gray"><i class="material-symbols">chevron_right</i></span>
+                    <div><p class="line">{$c->__('hats.create')}</p></div>
+                </li>
+                <li class="active" onclick="Drawer.clear(); AdHoc_ajaxCommand('{$room|echapJS}', 'urn:xmpp:hats:commands:destroy')">
+                    <span class="primary icon gray"><i class="material-symbols">delete</i></span>
+                    <span class="control icon gray"><i class="material-symbols">chevron_right</i></span>
+                    <div><p class="line">{$c->__('hats.destroy')}</p></div>
+                </li>
+                <li class="active" onclick="Drawer.clear(); AdHoc_ajaxCommand('{$room|echapJS}', 'urn:xmpp:hats:commands:assign')">
+                    <span class="primary icon gray"><i class="material-symbols">person_add</i></span>
+                    <span class="control icon gray"><i class="material-symbols">chevron_right</i></span>
+                    <div><p class="line">{$c->__('hats.assign_to_user')}</p></div>
+                </li>
+                <li class="active" onclick="Drawer.clear(); AdHoc_ajaxCommand('{$room|echapJS}', 'urn:xmpp:hats:commands:remove')">
+                    <span class="primary icon gray"><i class="material-symbols">person_remove</i></span>
+                    <span class="control icon gray"><i class="material-symbols">chevron_right</i></span>
+                    <div><p class="line">{$c->__('hats.remove_from_user')}</p></div>
+                </li>
+            </ul>
+        </div>
+    {/if}
+
     <div id="adhoc_widget_{$room|cleanupId}"
     class="adhoc_widget tabelem"
     title="{$c->__('adhoc.title')}">
