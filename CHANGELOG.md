@@ -23,6 +23,7 @@ v0.33 (master)
 * Swipe to reply on mobile
 * Cards for attached messages in chat (divyaranjan1905)
 * New ClearImagesCache daemon command
+* Improve the general Movim accessiblity by implementing WCAG rules.
 
 v0.32.1
 ---------------------------
