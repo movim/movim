@@ -15,10 +15,10 @@
                 </div>
             </li>
         </ul>
-    {/if}
 
-    <hr />
-    <br />
+        <hr />
+        <br />
+    {/if}
 
     <h4>{$c->__('spacesmenu.invite_space_title')}</h4>
     <form name="spacesmenu_add">

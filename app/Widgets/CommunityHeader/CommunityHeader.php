@@ -4,7 +4,7 @@ namespace App\Widgets\CommunityHeader;
 
 use App\Post;
 use Movim\Widget\Base;
-
+use Moxl\Stanza\Space;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Pubsub\Subscribe;
 use Moxl\Xec\Action\Pubsub\Unsubscribe;
@@ -32,6 +32,14 @@ class CommunityHeader extends Base
     public function onDiscoRequest(Packet $packet)
     {
         $info = $packet->content;
+
+        if ($info->type == Space::NAMESPACE) {
+            $this->rpc('MovimUtils.redirect', $this->route(
+                'space',
+                [$info->server, $info->node]
+            ));
+            return;
+        }
 
         if (
             $info->identities->contains('category', 'pubsub')

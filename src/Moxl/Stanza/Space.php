@@ -4,8 +4,9 @@ namespace Moxl\Stanza;
 
 class Space
 {
+    public const NAMESPACE = 'urn:xmpp:spaces:0';
     public const NODE_CONFIG = [
-        'pubsub#type' => 'urn:xmpp:spaces:0',
+        'pubsub#type' => Space::NAMESPACE,
         'pubsub#notify_retract' => 'true',
         'pubsub#persist_items' => 'true',
         'pubsub#purge_offline' => 'false',

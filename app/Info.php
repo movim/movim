@@ -4,6 +4,7 @@ namespace App;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Moxl\Stanza\Space;
 use Moxl\Utils;
 
 class Info extends Model
@@ -66,7 +67,7 @@ class Info extends Model
 
     public function scopeSpace($query)
     {
-        return $query->where('type', 'urn:xmpp:spaces:0');
+        return $query->where('type', Space::NAMESPACE);
     }
 
     public function scopeRestrictUserHost($query, User $user)

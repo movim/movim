@@ -7,6 +7,7 @@ use App\Info;
 use App\Subscription;
 use Movim\Widget\Base;
 use Movim\XMPPUri;
+use Moxl\Stanza\Space;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Muc\ChangeAffiliation;
 use Moxl\Xec\Action\Pubsub\SetAffiliations;
@@ -77,7 +78,7 @@ class SpacesMenu extends Base
             ->where('node', $packet->content['node'])
             ->first()
         ) {
-            if ($info->type == 'urn:xmpp:spaces:0') {
+            if ($info->type == Space::NAMESPACE) {
                 $this->ajaxHttpGet();
             }
         }
