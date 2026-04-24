@@ -42,7 +42,7 @@
             {/if}
                 </span>
 
-            {if="$conference  && $conference->info && $conference->info->related"}
+            {if="$conference && !$conference->isFromSpace() && $conference->info && $conference->info->related"}
                 {$related = $conference->info->related}
                 <span
                     title="{$c->__('page.communities')} • {$related->name}"

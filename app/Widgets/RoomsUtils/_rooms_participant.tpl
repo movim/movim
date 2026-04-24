@@ -4,7 +4,7 @@
         >
         <ul class="list thick">
             <li>
-                <span class="primary icon bubble status active {$presence->presencekey}">
+                <span class="primary icon bubble status {$presence->presencekey}">
                     <img loading="lazy" src="{$presence->conferencePicture}">
                 </span>
                 <div>
