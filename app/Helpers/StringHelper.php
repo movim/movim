@@ -2,6 +2,7 @@
 
 use Cocur\Slugify\Slugify;
 use Movim\Route;
+use Movim\XMPPUri;
 
 function addUrls($string)
 {
@@ -19,26 +20,12 @@ function addUrls($string)
                 }
 
                 if (substr($content, 0, 5) == 'xmpp:') {
-                    $link = str_replace(['xmpp://', 'xmpp:'], '', $content);
+                    $uri = new XMPPUri($content);
+                    $route = $uri->getRoute();
 
-                    if (substr($link, -5, 5) == '?join') {
-                        return stripslashes(
-                            '<a href=\"' .
-                                Route::urlize('chat', [str_replace('?join', '', $link), 'room']) .
-                                '\">' .
-                                $content .
-                                '</a>'
-                        ) .
-                            ($lastTag !== false ? $lastTag : '');
-                    }
-                    return stripslashes(
-                        '<a href=\"' .
-                            Route::urlize('contact', $link) .
-                            '\">' .
-                            $content .
-                            '</a>'
-                    ) .
-                        ($lastTag !== false ? $lastTag : '');
+                    return $route
+                        ? stripslashes('<a href="#" onclick=\"MovimUtils.reload(\'' . $route . '\')\">' . $content . '</a>')
+                        : $content;
                 }
 
                 if (in_array(parse_url($content, PHP_URL_SCHEME), ['http', 'https'])) {
