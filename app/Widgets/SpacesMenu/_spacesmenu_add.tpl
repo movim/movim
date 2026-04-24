@@ -20,9 +20,9 @@
         <br />
     {/if}
 
-    <h4>{if="$uri"}{$c->__('spacesmenu.join_space_title')}{else}{$c->__('spacesmenu.invite_space_title')}{/if}</h4>
+    <h4>{if="isset($uri)"}{$c->__('spacesmenu.join_space_title')}{else}{$c->__('spacesmenu.invite_space_title')}{/if}</h4>
 
-    {if="$info"}
+    {if="isset($info)"}
         <ul class="list middle">
             <li>
                 <span class="primary icon bubble space">
@@ -52,7 +52,7 @@
                         <i class="material-symbols">communities</i>
                     </span>
                     <div>
-                        <input name="uri" placeholder="xmpp:server.com?;node=key" {if="$uri"}value="{$uri}"{/if} required/>
+                        <input name="uri" placeholder="xmpp:server.com?;node=key" {if="isset($uri)"}value="{$uri}"{/if} required/>
                         <label for="uri">{$c->__('spacesmenu.invitation_key')}</label>
                     </div>
                 </li>

@@ -288,15 +288,20 @@ class SpacesMenu extends Base
         }
     }
 
-    public function ajaxAdd(string $server, string $node)
+    public function ajaxAdd(?string $server = null, ?string $node = null)
     {
-        if (!validateServerNode($server, $node)) return;
-        $info = Info::space()->where('server', $server)->where('node', $node)->first();
+        if ($server && $node && validateServerNode($server, $node)) {
+            if (!validateServerNode($server, $node)) return;
 
-        $this->dialog($this->view('_spacesmenu_add', [
-            'uri' => 'xmpp:' . $server . '?;node=' . $node,
-            'info' => $info
-        ]));
+            $info = Info::space()->where('server', $server)->where('node', $node)->first();
+
+            $this->dialog($this->view('_spacesmenu_add', [
+                'uri' => 'xmpp:' . $server . '?;node=' . $node,
+                'info' => $info
+            ]));
+        } else {
+            $this->dialog($this->view('_spacesmenu_add'));
+        }
     }
 
     public function ajaxCreate()
