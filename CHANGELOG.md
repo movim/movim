@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.33 (master)
+v0.34 (master)
+---------------------------
+
+v0.33
 ---------------------------
 * Add a Shortcuts widget to quickly access the 3 most recent notified chats and chatrooms
 * Implement XEP-0317: Hats and display it in the MUC navigation bar and in a new MUC participant card
