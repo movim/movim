@@ -2,6 +2,7 @@ ul#spacesmenu_widget {
     overflow: auto;
     min-height: 18rem;
     flex-shrink: initial;
+    padding-bottom: 1rem;
 }
 
 ul#spacesmenu_widget li span.primary.space_add:before {
