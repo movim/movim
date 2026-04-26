@@ -921,6 +921,10 @@ ul.list li>div.bubble.file div.file a span.size:after {
     padding: 0;
 }
 
+#chat_widget .bubble ul.card.list.flex.gallery {
+    width: auto;
+}
+
 /*#chat_widget .bubble ul.card.list li p:first-child {
     margin-right: 2rem;
 }*/
