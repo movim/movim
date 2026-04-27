@@ -180,7 +180,6 @@ class Notif extends Base
     public function ajaxClear(string $key)
     {
         $session = linker($this->sessionId)->session;
-
         $notifs = $session->get('notifs');
 
         if ($notifs != null && array_key_exists($key, $notifs)) {
@@ -203,10 +202,10 @@ class Notif extends Base
                     (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.counter', $first, $notifs[$first]);
                 }
             }
-        }
 
-        $session->set('notifs', $notifs);
-        Wrapper::getInstance()->iterate('notifs', (new Packet)->pack($notifs), user: $this->me, sessionId: $this->sessionId);
+            $session->set('notifs', $notifs);
+            Wrapper::getInstance()->iterate('notifs', (new Packet)->pack($notifs), user: $this->me, sessionId: $this->sessionId);
+        }
     }
 
     /**

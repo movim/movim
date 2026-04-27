@@ -4,6 +4,8 @@ namespace App\Widgets\Shortcuts;
 
 use Moxl\Xec\Payload\Packet;
 
+use function React\Async\series;
+
 class Shortcuts extends \Movim\Widget\Base
 {
     public function load()
@@ -70,11 +72,14 @@ class Shortcuts extends \Movim\Widget\Base
             }
         }
 
-        $this->rpc(
-            'MovimTpl.fill',
-            '#shortcuts_widget',
-            $this->view('_shortcuts', ['shortcuts' => $shortcuts->slice(0, 3)])
-        );
+        if ($shortcuts->isNotEmpty()) {
+            $this->rpc(
+                'MovimTpl.fill',
+                '#shortcuts_widget',
+                $this->view('_shortcuts', ['shortcuts' => $shortcuts->slice(0, 3)])
+            );
+        }
+
     }
 
     public function display()
