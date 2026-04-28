@@ -113,7 +113,7 @@ class Notif extends Base
         $first = reset($explode);
 
         if (array_key_exists($first, $notifs)) {
-            $count = $notifs[$first]+1;
+            $count = $notifs[$first] + 1;
 
             // We re-append it
             unset($notifs[$first]);
@@ -137,7 +137,7 @@ class Notif extends Base
 
         if ($first != $key) {
             if (array_key_exists($key, $notifs)) {
-                $count = $notifs[$key]+1;
+                $count = $notifs[$key] + 1;
 
                 // We re-append it
                 unset($notifs[$key]);
@@ -204,7 +204,7 @@ class Notif extends Base
             }
 
             $session->set('notifs', $notifs);
-            Wrapper::getInstance()->iterate('notifs', (new Packet)->pack($notifs), user: $this->me, sessionId: $this->sessionId);
+            Wrapper::getInstance()->iterate('notif_clear', (new Packet)->pack($key), user: $this->me, sessionId: $this->sessionId);
         }
     }
 

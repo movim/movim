@@ -4,8 +4,6 @@ namespace App\Widgets\Shortcuts;
 
 use Moxl\Xec\Payload\Packet;
 
-use function React\Async\series;
-
 class Shortcuts extends \Movim\Widget\Base
 {
     public function load()
@@ -13,6 +11,7 @@ class Shortcuts extends \Movim\Widget\Base
         $this->addcss('shortcuts.css');
         $this->addjs('shortcuts.js');
         $this->registerEvent('notifs', 'onNotifs');
+        $this->registerEvent('notif_clear', 'onCleared');
         $this->registerEvent('displayed', 'onDisplayed');
     }
 
@@ -27,10 +26,17 @@ class Shortcuts extends \Movim\Widget\Base
         $this->ajaxGet();
     }
 
+    public function onCleared(Packet $packet)
+    {
+        $exploded = explode('|', $packet->content);
+        if (isset($exploded[1]) && $exploded[0] == 'chat') {
+            $this->rpc('Shortcuts.clear', $exploded[1]);
+        }
+    }
+
     public function ajaxGet()
     {
         $notifs = linker($this->sessionId)->session->get('notifs') ?? [];
-
         //if (empty($notifs)) return;
 
         $jids = [];
@@ -79,7 +85,6 @@ class Shortcuts extends \Movim\Widget\Base
                 $this->view('_shortcuts', ['shortcuts' => $shortcuts->slice(0, 3)])
             );
         }
-
     }
 
     public function display()
