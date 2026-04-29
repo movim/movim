@@ -13,6 +13,8 @@ class Request extends Action
     protected $_size;
     protected $_type;
 
+    private const AUTHORIZED_HEADERS = ['authorization', 'cookie', 'expires'];
+
     public function request()
     {
         $this->store();
@@ -33,7 +35,9 @@ class Request extends Action
                 $headers = [];
 
                 foreach($stanza->slot->put->header as $header) {
-                    $headers[(string)$header->attributes()->name] = (string)$header;
+                    if (in_array(strtolower((string)$header->attributes()->name), self::AUTHORIZED_HEADERS)) {
+                        $headers[(string)$header->attributes()->name] = str_replace(["\n", "\r"], '', (string)$header);
+                    }
                 }
 
                 $params['headers'] = $headers;
