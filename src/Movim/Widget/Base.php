@@ -31,7 +31,6 @@ class Base
     public ?User $me = null;
 
     protected $_view;
-    private $_useTemplater = false;
 
     public $baseUri;
     public array $events = [];
@@ -233,30 +232,10 @@ class Base
 
     public function rpc($funcname, ...$args)
     {
-        if ($this->_useTemplater) {
-            $payload = [
-                'func' => $funcname,
-                'templater' => true,
-                'sid' => $this->me->session->id,
-            ];
-
-            if (!empty($args)) {
-                $payload['p'] = $args;
-            }
-
-            writeTemplater($payload);
-            return;
-        }
-
         (new \Movim\RPC(
             user: $this->me,
             sessionId: $this->sessionId
         ))->call($funcname, ...$args);
-    }
-
-    public function enableUseTemplater()
-    {
-        $this->_useTemplater = true;
     }
 
     public function boot() {}

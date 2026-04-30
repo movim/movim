@@ -159,29 +159,6 @@ class DaemonCommand extends Command
         $resolverWorker->on('exit', fn() => $output->writeln('<error>Pusher Worker crashed</error>'));
         $output->writeln('<info>🔔 Pusher Worker launched</info>');
 
-        // Templater
-
-        $templaterWorker = new Process(
-            'exec ' . PHP_BINARY . ' templater.php',
-            cwd: WORKERS_PATH,
-            env: [
-                'baseuri'       => $baseuri,
-                'DAEMON_DEBUG'  => config('daemon.debug'),
-                'DAEMON_PORT'   => config('daemon.port'),
-                'DAEMON_VERBOSE' => config('daemon.verbose'),
-                'DB_DATABASE'   => config('database.database'),
-                'DB_DRIVER'     => config('database.driver'),
-                'DB_HOST'       => config('database.host'),
-                'DB_PASSWORD'   => config('database.password'),
-                'DB_PORT'       => config('database.port'),
-                'DB_USERNAME'   => config('database.username'),
-                'key'           => $core->getKey(),
-            ]
-        );
-        $templaterWorker->start($loop);
-        $templaterWorker->on('exit', fn() => $output->writeln('<error>Templater Worker crashed</error>'));
-        $output->writeln('<info>🎨 Templater Worker launched</info>');
-
         (new IoServer($app, $socket, $loop))->run();
 
         return Command::SUCCESS;

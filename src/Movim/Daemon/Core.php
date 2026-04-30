@@ -49,7 +49,6 @@ class Core implements MessageComponentInterface
         if (file_exists(AVATAR_HANDLER_SOCKET)) unlink(AVATAR_HANDLER_SOCKET);
         if (file_exists(PUSHER_SOCKET)) unlink(PUSHER_SOCKET);
         if (file_exists(RESOLVER_SOCKET)) unlink(RESOLVER_SOCKET);
-        if (file_exists(TEMPLATER_SOCKET)) unlink(TEMPLATER_SOCKET);
 
         array_map('unlink', array_merge(
             glob(PUBLIC_CACHE_PATH . '*.css'),

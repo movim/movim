@@ -1,8 +1,9 @@
 Movim Changelog
 ================
 
-v0.34 (master)
+v0.33.2 (master)
 ---------------------------
+* Remove the templater
 
 v0.33.1
 ---------------------------

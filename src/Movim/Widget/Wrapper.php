@@ -170,7 +170,6 @@ class Wrapper
     public function runUserWidget(string $jid, string $widgetName, string $method, ?Packet $packet = null)
     {
         $widget = $this->loadWidget($widgetName, user: User::find($jid));
-        $widget->enableUseTemplater();
         $widget->$method($packet);
     }
 

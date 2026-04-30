@@ -837,32 +837,6 @@ function requestPusher(
     ]));
 }
 
-/**
- * @desc Request the Templater Worker
- */
-function requestTemplaterWorker(Base $widget, string $method, ?Packet $data = null): PromiseInterface
-{
-    $connector = new React\Socket\FixedUriConnector(
-        'unix://' . TEMPLATER_SOCKET,
-        new React\Socket\UnixConnector()
-    );
-
-    $browser = new React\Http\Browser($connector);
-    $payload = [
-        'sid' => $widget->me->session->id,
-        'jid' => $widget->me->id,
-        'widget' => $widget->getName(),
-        'method' => $method,
-        'data' => $data
-    ];
-
-    return $browser
-        ->post('http://templater', [], json_encode($payload))
-        ->then(function (Response $response) {
-            return json_decode($response->getBody());
-        });
-}
-
 /*
  * @desc Request a simple url
  */
