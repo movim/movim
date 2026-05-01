@@ -11,7 +11,6 @@ var Login = {
 
             // We register the socket
             MovimWebsocket.connection.register(this.querySelector('input#username').value.replace(/.*@/, ''));
-
             var button = this.querySelector('input[type=submit]');
             button.value = button.dataset.loading;
 
@@ -52,9 +51,15 @@ var Login = {
         localStorage.removeItem('quickKey');
     },
 
+    isQuick: function () {
+        return localStorage.getItem('quickDeviceId') != null
+            && localStorage.getItem('quickLogin') != null
+            && localStorage.getItem('quickHost') != null
+            && localStorage.getItem('quickKey') != null;
+    },
+
     quickLogin: function () {
-        if (localStorage.getItem('quickHost') != null
-            && localStorage.getItem('quickKey') != null) {
+        if (Login.isQuick()) {
             Login_ajaxQuickLogin(
                 localStorage.getItem('quickDeviceId'),
                 localStorage.getItem('quickLogin'),
@@ -84,8 +89,7 @@ MovimWebsocket.start(function () {
 });
 
 MovimWebsocket.register(function () {
-    if (localStorage.getItem('quickHost') != null
-    && localStorage.getItem('quickKey') != null) {
+    if (Login.isQuick()) {
         Login_ajaxQuickLogin(
             localStorage.getItem('quickDeviceId'),
             localStorage.getItem('quickLogin'),

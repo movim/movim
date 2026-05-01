@@ -327,8 +327,7 @@ class Login extends Base
         linker($s->id)->authentication->password = $password;
         linker($s->id)->timezone = $timezone;
 
-        // We launch the XMPP socket
-        $this->rpc('register', $host);
-        linker($s->id)->writeXMPP(\Moxl\Stanza\Stream::init($host, $login));
+        // We start the XMPP session
+        linker($s->id)->writeXMPP(\Moxl\Stanza\Stream::init(to: $host, from: $login));
     }
 }

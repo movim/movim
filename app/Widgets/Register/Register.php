@@ -86,8 +86,6 @@ class Register extends \Movim\Widget\Base
 
     public function ajaxGetForm(string $host)
     {
-        $this->rpc('register', $host);
-
         linker($this->sessionId)->writeXMPP(\Moxl\Stanza\Stream::init($host));
 
         $g = $this->xmpp(new Get);
