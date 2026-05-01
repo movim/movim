@@ -1,0 +1,2 @@
+#!/command/with-contenv sh
+tail -F /var/www/html/log/errors.log /var/www/html/log/debug.log /var/www/html/log/info.log -q 2> /dev/null
