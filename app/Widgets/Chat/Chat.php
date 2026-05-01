@@ -425,8 +425,6 @@ class Chat extends \Movim\Widget\Base
     {
         list($config, $room) = array_values($packet->content);
 
-        $view = $this->tpl();
-
         $conference = $this->me->session->conferences()
             ->where('conference', $room)
             ->with('info')
@@ -1064,9 +1062,9 @@ class Chat extends \Movim\Widget\Base
             && (($message->isMuc() && $message->stanzaid)
                 || (!$message->isMuc() && $message->messageid))
         ) {
-            $view = $this->tpl();
-            $view->assign('message', $message);
-            $this->rpc('MovimTpl.fill', '#reply', $view->draw('_chat_reply'));
+            $this->rpc('MovimTpl.fill', '#reply', $this->view('_chat_reply', [
+                'message' => $message
+            ]));
             $this->rpc('Chat.focus');
         }
     }
@@ -1240,11 +1238,10 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxClearHistory($jid)
     {
-        $view = $this->tpl();
-        $view->assign('jid', $jid);
-        $view->assign('count', \App\Message::jid($this->me, $jid)->count());
-
-        $this->dialog($view->draw('_chat_clear'));
+        $this->dialog($this->view('_chat_clear', [
+            'jid' => $jid,
+            'count' => \App\Message::jid($this->me, $jid)->count()
+        ]));
     }
 
     /**
@@ -1781,15 +1778,14 @@ class Chat extends \Movim\Widget\Base
 
     public function prepareEmbed(Url $url, ?Message $message = null)
     {
-        $tpl = $this->tpl();
-        $tpl->assign('url', $url);
-        $tpl->assign('message', $message);
-        return $tpl->draw('_chat_embed');
+        return $this->view('_chat_embed', [
+            'url' => $url,
+            'message' => $message
+        ]);
     }
 
     public function prepareReactions(Message $message): ?string
     {
-        $view = $this->tpl();
         $merged = [];
 
         $reactions = $message
@@ -1815,11 +1811,11 @@ class Chat extends \Movim\Widget\Base
 
         if (empty($merged)) return null;
 
-        $view->assign('message', $message);
-        $view->assign('reactions', $merged);
-        $view->assign('me', $this->me->id);
-
-        return $view->draw('_chat_reactions');
+        return $this->view('_chat_reactions', [
+            'message' => $message,
+            'reactions' => $merged,
+            'me' => $this->me->id
+        ]);
     }
 
     public function prepareHeader($jid, ?bool $muc = false)
@@ -1861,10 +1857,9 @@ class Chat extends \Movim\Widget\Base
 
     public function prepareEmpty()
     {
-        $view = $this->tpl();
-        $view->assign('top', $this->me->session->topContactsToChat()->take(15)->get());
-
-        return $view->draw('_chat_empty');
+        return $this->view('_chat_empty', [
+            'top' => $this->me->session->topContactsToChat()->take(15)->get()
+        ]);
     }
 
     public function ajaxHttpGetExplore($page = 0)
@@ -1874,8 +1869,6 @@ class Chat extends \Movim\Widget\Base
 
     public function prepareExplore($page = 0)
     {
-        $view = $this->tpl();
-
         $pagination = 8;
 
         $users = Contact::suggest($this->me)
@@ -1883,19 +1876,19 @@ class Chat extends \Movim\Widget\Base
             ->take($pagination + 1)
             ->get();
 
-        $view->assign('presencestxt', getPresencesTxt());
-        $view->assign('users', $users);
-        $view->assign('pagination', $pagination);
-        $view->assign('page', $page);
-
-        return $view->draw('_chat_explore');
+        return $this->view('_chat_explore', [
+            'presencestxt' => getPresencesTxt(),
+            'users' => $users,
+            'pagination' => $pagination,
+            'page' => $page
+        ]);
     }
 
     private function prepareComposeList(array $list)
     {
-        $view = $this->tpl();
-        $view->assign('list', implode(', ', $list));
-        return $view->draw('_chat_compose_list');
+        return $this->view('_chat_compose_list', [
+            'list' => implode(', ', $list)
+        ]);
     }
 
     public function getSmileyPath($id)

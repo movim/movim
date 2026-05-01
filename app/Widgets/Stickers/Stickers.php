@@ -15,7 +15,6 @@ use App\Sticker;
 use App\StickersPack;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
-use App\Widgets\Drawer\Drawer;
 use Moxl\Xec\Payload\Packet;
 
 class Stickers extends \Movim\Widget\Base
@@ -110,7 +109,6 @@ class Stickers extends \Movim\Widget\Base
         }
 
         $p->request();
-
         $m->save();
 
         // Sending it to Chat and Chats
