@@ -36,6 +36,9 @@ class Shortcuts extends \Movim\Widget\Base
 
     public function ajaxGet()
     {
+        // Shortcuts_ajaxGet can be called from public contexts
+        if (!$this->me || !$this->sessionId) return;
+
         $notifs = linker($this->sessionId)->session->get('notifs') ?? [];
         //if (empty($notifs)) return;
 

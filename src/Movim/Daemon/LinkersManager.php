@@ -70,7 +70,7 @@ class LinkersManager
 
         switch ($message->func) {
             case 'message':
-                $linker->handleJSON($message->b, $message->sid);
+                $linker->handleJSON(request: $message->b, sessionId: $message->sid);
                 break;
 
             case 'up':
