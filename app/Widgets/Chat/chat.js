@@ -1084,7 +1084,7 @@ var Chat = {
             && msgStack.parentNode == refBubble
             && data.url === false
             && (data.file === undefined || data.file === null)
-            && (data.sticker === undefined || data.sticker === null)
+            && (data.stickerObject === undefined || data.stickerObject === null)
             && !refBubble.querySelector('div.bubble').classList.contains('sticker')
             && !refBubble.querySelector('div.bubble').classList.contains('file')
             && Chat.jingleTypes.indexOf(data.type) < 0
@@ -1214,7 +1214,7 @@ var Chat = {
             msg.appendChild(resourceSpan);
         }
 
-        if (data.sticker != null && data.retracted == false) {
+        if (data.stickerObject != null && data.retracted == false) {
             bubble.querySelector('div.bubble').classList.add('file');
             p.appendChild(Chat.getStickerHtml(data));
 
@@ -1241,7 +1241,7 @@ var Chat = {
 
         msg.dataset.published = data.published;
 
-        if (omemo == false && data.sticker === undefined) {
+        if (omemo == false && data.stickerObject === undefined) {
             Chat.addQuotesHtml(msg, data.body);
         }
 
@@ -1289,7 +1289,7 @@ var Chat = {
                 msg.parentElement.classList.remove('file');
             }
 
-            if (data.sticker != null && data.retracted == false) {
+            if (data.stickerObject != null && data.retracted == false) {
                 msg.parentElement.classList.add('sticker', 'file');
             } else {
                 msg.parentElement.classList.remove('sticker');
@@ -1387,16 +1387,16 @@ var Chat = {
         var img = document.createElement('img');
         img.classList.add('sticker');
 
-        if (data.sticker.url) {
-            if (data.sticker.thumb) {
-                img.setAttribute('src', data.sticker.thumb);
+        if (data.stickerObject.url) {
+            if (data.stickerObject.thumb) {
+                img.setAttribute('src', data.stickerObject.thumb);
             } else {
-                img.setAttribute('src', data.sticker.url);
+                img.setAttribute('src', data.stickerObject.url);
             }
 
-            if (data.sticker.width) img.setAttribute('width', data.sticker.width);
-            if (data.sticker.height) {
-                img.setAttribute('height', data.sticker.height);
+            if (data.stickerObject.width) img.setAttribute('width', data.stickerObject.width);
+            if (data.stickerObject.height) {
+                img.setAttribute('height', data.stickerObject.height);
             } else {
                 img.setAttribute('height', '170');
             }

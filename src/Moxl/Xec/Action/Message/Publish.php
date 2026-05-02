@@ -20,6 +20,7 @@ class Publish extends Action
     protected $_attachid = false;
     protected $_originid = false;
     protected $_threadid = false;
+    protected $_issticker = false;
 
     // Reply
     protected $_replyid = false;
@@ -51,7 +52,8 @@ class Publish extends Action
             replyId: $this->_replyid,
             replyTo: $this->_replyto,
             replyQuotedBodyLength: $this->_replyquotedbodylength,
-            messageOMEMO: $this->_messageOMEMO
+            messageOMEMO: $this->_messageOMEMO,
+            isSticker: $this->_issticker
         ));
     }
 
@@ -69,6 +71,12 @@ class Publish extends Action
     public function setMucReceipts()
     {
         $this->_mucreceipts = true;
+        return $this;
+    }
+
+    public function isSticker()
+    {
+        $this->_issticker = true;
         return $this;
     }
 

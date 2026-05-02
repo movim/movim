@@ -370,6 +370,14 @@ class Message extends Model
             }
         }
 
+        # XEP-0449: Stickers
+        if (
+            $stanza->sticker
+            && (string)$stanza->sticker->attributes()->xmlns = 'urn:xmpp:stickers:0'
+        ) {
+            $this->sticker = true;
+        }
+
         # XEP-0444: Message Reactions
         if (
             isset($stanza->reactions)
@@ -735,7 +743,7 @@ class Message extends Model
     public function isEmpty(): bool
     {
         return (empty($this->body)
-            && empty($this->sticker)
+            && empty($this->stickerObject)
             && !$this->file
         );
     }

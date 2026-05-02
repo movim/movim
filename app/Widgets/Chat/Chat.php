@@ -600,10 +600,10 @@ class Chat extends \Movim\Widget\Base
         string $to,
         string $message,
         bool $muc = false,
-        $file = null,
+        ?\stdClass $file = null,
         ?int $replyToMid = 0,
         ?bool $mucReceipts = false,
-        $omemo = null
+        ?\stdClass $omemo = null
     ) {
         $messageFile = null;
         $messageOMEMOHeader = null;
@@ -646,13 +646,14 @@ class Chat extends \Movim\Widget\Base
      */
     public function sendMessage(
         string $to,
-        string $message = '',
-        bool $muc = false,
+        ?string $message = '',
+        ?bool $muc = false,
         ?Message $replace = null,
         ?MessageFile $file = null,
         ?int $replyToMid = 0,
         ?bool $mucReceipts = false,
-        ?MessageOMEMOHeader $messageOMEMOHeader = null
+        ?MessageOMEMOHeader $messageOMEMOHeader = null,
+        ?bool $isSticker = false,
     ) {
         $tempId = null;
 
@@ -721,6 +722,10 @@ class Chat extends \Movim\Widget\Base
             if ($mucReceipts) {
                 $p->setMucReceipts();
             }
+        }
+
+        if ($isSticker) {
+            $p->isSticker();
         }
 
         if ($file) {
@@ -1487,8 +1492,7 @@ class Chat extends \Movim\Widget\Base
                     ->request();
             } else {
                 $stickerSize = $stickerImage->getGeometry();
-
-                $message->sticker = [
+                $message->stickerObject = [
                     'url' => Image::getOrCreate($stickerImage->getKey()), // Todo, don't reload
                     'width' => $stickerSize['width'],
                     'height' => $stickerSize['height']
@@ -1504,7 +1508,7 @@ class Chat extends \Movim\Widget\Base
             && !isset($message->html)
             && $message->isClassic()
         ) {
-            $message->sticker = [
+            $message->stickerObject = [
                 'url' => $emoji->getLastSingleEmojiURL(),
                 'title' => ':' . $emoji->getLastSingleEmojiTitle() . ':',
                 'height' => 60,
@@ -1555,7 +1559,7 @@ class Chat extends \Movim\Widget\Base
 
         if (
             $message->resolvedUrl && !$message->file
-            && !$message->card && !$message->sticker
+            && !$message->card && !$message->stickerObject
         ) {
             $resolved = $message->resolvedUrl;
             if ($resolved) {

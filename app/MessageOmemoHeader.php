@@ -9,7 +9,7 @@ class MessageOmemoHeader
     private $iv;
     private $payload;
 
-    public function import($omemo)
+    public function import(\stdClass $omemo)
     {
         $this->sid = $omemo->sid;
         $this->keys = $omemo->keys;

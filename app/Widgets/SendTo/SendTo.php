@@ -105,11 +105,10 @@ class SendTo extends Base
         $file->url = $uri;
 
         foreach ($contacts as $contact => $muc) {
-            $c = new Chat($this->me, sessionId: $this->sessionId);
-            $c->sendMessage(
-                $contact,
-                $message,
-                $muc,
+            (new Chat($this->me, sessionId: $this->sessionId))->sendMessage(
+                to: $contact,
+                message: $message,
+                muc: $muc,
                 file: $file
             );
         }

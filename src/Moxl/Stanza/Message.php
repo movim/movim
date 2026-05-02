@@ -42,7 +42,8 @@ class Message
         $replyId = false,
         $replyTo = false,
         $replyQuotedBodyLength = 0,
-        ?MessageOmemoHeader $messageOMEMO = null
+        ?MessageOmemoHeader $messageOMEMO = null,
+        ?bool $isSticker = false,
     ) {
         $dom = Message::factory($to, $type, $messageId);
 
@@ -256,6 +257,12 @@ class Message
             $origin->setAttribute('xmlns', 'urn:xmpp:sid:0');
             $origin->setAttribute('id', $originId);
             $dom->documentElement->appendChild($origin);
+        }
+
+        if ($isSticker) {
+            $sticker = $dom->createElement('sticker');
+            $sticker->setAttribute('xmlns', 'urn:xmpp:stickers:0');
+            $dom->documentElement->appendChild($sticker);
         }
 
         // OMEMO

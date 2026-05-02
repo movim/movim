@@ -70,9 +70,9 @@ class StoriesViewer extends Base
         if ($post) {
             $p = $this->xmpp(new PostDelete);
             $p->setTo($post->server)
-              ->setNode($post->node)
-              ->setId($post->nodeid)
-              ->request();
+                ->setNode($post->node)
+                ->setId($post->nodeid)
+                ->request();
         }
 
         $this->rpc('StoriesViewer.close');
@@ -87,7 +87,11 @@ class StoriesViewer extends Base
         $file->type = 'xmpp/uri';
         $file->url = $post->getRef();
 
-        (new Chat($this->me, sessionId: $this->sessionId))->sendMessage($post->server, $comment, file: $file);
+        (new Chat($this->me, sessionId: $this->sessionId))->sendMessage(
+            to: $post->server,
+            message: $comment,
+            file: $file
+        );
 
         $this->toast($this->__('post.comment_published'));
     }

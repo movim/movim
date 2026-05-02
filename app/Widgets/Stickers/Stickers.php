@@ -102,6 +102,7 @@ class Stickers extends \Movim\Widget\Base
         $p->setTo($m->jidto)
             ->setContent($m->body)
             ->setHTML($dom->saveXML($dom->documentElement))
+            ->isSticker()
             ->setId($m->id);
 
         if ($muc) {
@@ -195,7 +196,7 @@ class Stickers extends \Movim\Widget\Base
 
         requestAsyncURL(
             'https://tenor.googleapis.com/v2/search?q=' . $keyword .
-                '&media_filter=preview,tinywebm' .
+                '&media_filter=preview,tinymp4' .
                 '&key=' . $apiKey .
                 '&limit=' . $this->paginate .
                 '&pos=' . ($page * $this->paginate)
@@ -208,10 +209,10 @@ class Stickers extends \Movim\Widget\Base
                 foreach ($results->results as $result) {
                     $gif = [
                         'id' => (string)$result->id,
-                        'url' => (string)$result->media_formats->tinywebm->url,
+                        'url' => (string)$result->media_formats->tinymp4->url,
                         'preview' => (string)$result->media_formats->preview->url,
-                        'width' => (int)$result->media_formats->tinywebm->dims[0],
-                        'height' => (int)$result->media_formats->tinywebm->dims[1],
+                        'width' => (int)$result->media_formats->tinymp4->dims[0],
+                        'height' => (int)$result->media_formats->tinymp4->dims[1],
                     ];
                     $view->assign('gif', $gif);
 
@@ -242,7 +243,7 @@ class Stickers extends \Movim\Widget\Base
 
         requestAsyncURL(
             'https://tenor.googleapis.com/v2/posts?ids=' . $gifId .
-                '&media_filter=preview,tinywebm' .
+                '&media_filter=preview,tinymp4' .
                 '&key=' . $apiKey
         )->then(function (ResponseInterface $response) use ($to, $muc) {
             $results = \json_decode($response->getBody());
@@ -253,22 +254,20 @@ class Stickers extends \Movim\Widget\Base
                 $messageFile = new MessageFile;
 
                 $messageFile->name = (string)$result->url;
-                $messageFile->url = (string)$result->media_formats->tinywebm->url;
+                $messageFile->url = (string)$result->media_formats->tinymp4->url;
                 $messageFile->type = 'video/webm';
-                $messageFile->size = (int)$result->media_formats->tinywebm->size;
+                $messageFile->size = (int)$result->media_formats->tinymp4->size;
 
                 $messageFile->thumbnail_type = 'image/png';
                 $messageFile->thumbnail_url = (string)$result->media_formats->preview->url;
                 $messageFile->thumbnail_width = (int)$result->media_formats->preview->dims[0];
                 $messageFile->thumbnail_height = (int)$result->media_formats->preview->dims[1];
 
-                $chat = new Chat($this->me, sessionId: $this->sessionId);
-                $chat->sendMessage(
-                    $to,
-                    false,
-                    $muc,
-                    null,
-                    $messageFile
+                (new Chat($this->me, sessionId: $this->sessionId))->sendMessage(
+                    to: $to,
+                    muc: $muc,
+                    file: $messageFile,
+                    isSticker: true
                 );
             }
         }, function (\Exception $e) {

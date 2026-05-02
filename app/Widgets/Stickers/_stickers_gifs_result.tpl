@@ -7,5 +7,5 @@
     width="{$gif.width}"
     height="{$gif.height}"
     src="{$gif.url}"
-    type="video/webm">
+    type="video/mp4">
 </video>
