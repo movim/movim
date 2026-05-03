@@ -301,7 +301,6 @@ class Locale
         }
 
         $pofile = LOCALES_PATH . $language . '.po';
-        var_dump(LOCALES_PATH . $language . '.po');
         if (!file_exists($pofile) || !is_readable($pofile)) {
             return null;
         }
