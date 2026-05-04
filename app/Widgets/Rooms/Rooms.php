@@ -4,13 +4,15 @@ namespace App\Widgets\Rooms;
 
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Presence\Muc;
-use Moxl\Xec\Action\Presence\Unavailable;
+use Illuminate\Database\Capsule\Manager as DB;
 
 use Movim\Widget\Base;
 
 use App\Conference;
+use App\Member;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;
+use Moxl\Xec\Action\Presence\Unavailable;
 
 class Rooms extends Base
 {
@@ -25,7 +27,7 @@ class Rooms extends Base
         $this->registerEvent('bookmark2_set_handle', 'onBookmarkSet');
         $this->registerEvent('bookmark2_delete_handle', 'onBookmarkSet');
 
-        $this->registerEvent('disco_request_handle', 'onDiscoRequest', 'chat');
+        $this->registerEvent('disco_request_handle', 'onDiscoRequest');
 
         $this->registerEvent('muc_destroy_handle', 'onDestroyed', 'chat');
 
@@ -59,6 +61,34 @@ class Rooms extends Base
 
         if ($info->isConference()) {
             $this->ajaxHttpGet();
+
+            if ($info->hasMAM()) {
+                $message = $this->me->messages()
+                    ->where('jidfrom', $info->server)
+                    ->whereNull('subject');
+
+                $message = (DB::getDriverName() == 'pgsql')
+                    ? $message->orderByRaw('published desc nulls last')
+                    : $message->orderBy('published', 'desc');
+                $message = $message->first();
+
+                $g = new \Moxl\Xec\Action\MAM\Get($this->me, sessionId: $this->sessionId);
+                $g->setTo($info->server)
+                    ->setLimit(500);
+
+                if (
+                    !empty($message)
+                    && strtotime($message->published) > strtotime('-3 days')
+                ) {
+                    $g->setStart(strtotime($message->published));
+                } else {
+                    $g->setStart(strtotime('-3 days'));
+                }
+
+                $this->rpc('MovimUtils.addClass', '#chat_widget .contained', 'loading');
+
+                $g->request();
+            }
         }
     }
 
@@ -299,28 +329,17 @@ class Rooms extends Base
             ->setParent($jid['server'])
             ->request();
 
+        $lastMember = Member::where('conference', $room)->orderBy('updated_at', 'desc')->first();
+
         $p = $this->xmpp(new Muc);
         $p->setTo($room);
+        $p->setNickname($nickname ?? $this->me->username);
 
-        if ($nickname == null) {
-            $nickname = $this->me->username;
+        if ($lastMember && $lastMember->version) {
+            \logDebug('SINCE ' . $room . ' ' . $lastMember->version);
+            $p->setMavsince($lastMember->version);
         }
 
-        $capability = \App\Info::where('server', $jid['server'])
-            ->where('node', '')
-            ->first();
-
-        if ($capability && ($capability->isMAM() || $capability->isMAM2())) {
-            $this->rpc('MovimUtils.addClass', '#chat_widget .contained', 'loading');
-
-            $p->enableMAM();
-
-            if ($capability->isMAM2()) {
-                $p->enableMAM2();
-            }
-        }
-
-        $p->setNickname($nickname);
         $p->request();
     }
 

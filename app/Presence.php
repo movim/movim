@@ -185,6 +185,9 @@ class Presence extends Model
                         if ($c->item->attributes()->affiliation) {
                             $this->mucaffiliation = (string)$c->item->attributes()->affiliation;
                         }
+
+                        // XEP-0463: MUC Affiliations Versioning
+                        $this->no_mav = (!$c->mav);
                         break;
                     case 'vcard-temp:x:update':
                         if (!empty((string)$c->photo)) {

@@ -3,7 +3,6 @@
 namespace Moxl\Xec\Action\Presence;
 
 use DOMElement;
-use Illuminate\Database\Capsule\Manager as DB;
 use Moxl\Stanza\Presence;
 use Moxl\Xec\Action;
 
@@ -13,11 +12,10 @@ class Muc extends Action
 
     protected $_to;
     protected $_nickname;
-    protected $_mam = false;
-    protected $_mam2 = false;
     protected $_create = false;
     protected $_mujiPreparing = false;
     protected ?DOMElement $_muji = null;
+    protected ?string $_mavsince = null;
 
     // Disable the event
     protected $_notify = true;
@@ -30,10 +28,6 @@ class Muc extends Action
             $this->_nickname = linker($this->sessionId)->user->session->username;
         }
 
-        if ($this->_mam == false && $this->_mam2 == false) {
-            $this->me->messages()->where('jidfrom', $this->_to)->delete();
-        }
-
         $this->store(); // Set stanzaId
 
         /**
@@ -42,30 +36,19 @@ class Muc extends Action
          */
         $session->set(self::$mucId . $this->_to . '/' . $this->_nickname, $this->stanzaId);
 
-        $this->send(Presence::maker($this->me,
+        $this->send(Presence::maker(
+            $this->me,
             to: $this->_to . '/' . $this->_nickname,
             muc: true,
-            mam: $this->_mam,
             mujiPreparing: $this->_mujiPreparing,
-            muji: $this->_muji
+            muji: $this->_muji,
+            mavSince: $this->_mavsince
         ));
     }
 
     public function enableCreate()
     {
         $this->_create = true;
-        return $this;
-    }
-
-    public function enableMAM()
-    {
-        $this->_mam = true;
-        return $this;
-    }
-
-    public function enableMAM2()
-    {
-        $this->_mam2 = true;
         return $this;
     }
 
@@ -96,36 +79,6 @@ class Muc extends Action
             $presence->mucjid = bareJid((string)$stanza->attributes()->to);
         }
 
-        if ($this->_mam) {
-            $message = $this->me->messages()
-                ->where('jidfrom', $this->_to)
-                ->whereNull('subject');
-
-            $message = (DB::getDriverName() == 'pgsql')
-                ? $message->orderByRaw('published desc nulls last')
-                : $message->orderBy('published', 'desc');
-            $message = $message->first();
-
-            $g = new \Moxl\Xec\Action\MAM\Get($this->me, sessionId: $this->sessionId);
-            $g->setTo($this->_to)
-                ->setLimit(500);
-
-            if (
-                !empty($message)
-                && strtotime($message->published) > strtotime('-3 days')
-            ) {
-                $g->setStart(strtotime($message->published));
-            } else {
-                $g->setStart(strtotime('-3 days'));
-            }
-
-            if (!$this->_mam2) {
-                $g->setVersion('1');
-            }
-
-            $g->request();
-        }
-
         if ($this->_create) {
             $presence->save();
 
@@ -145,6 +98,13 @@ class Muc extends Action
 
             if ($this->_mujiPreparing) {
                 $this->method('muji_preparing');
+                $this->deliver();
+            }
+
+            // XEP-0463: MUC Affiliations Versioning
+            if ($presence->no_mav) {
+                $this->method('no_mav_handle');
+                $this->pack($presence);
                 $this->deliver();
             }
 

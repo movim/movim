@@ -7,7 +7,6 @@ class AddNotifyPinnedAndExtensionsToSubscriptionsTable extends Migration
 {
     public function up()
     {
-
         $this->schema->table('subscriptions', function (Blueprint $table) {
             $table->text('extensions')->nullable();
             $table->boolean('pinned')->default(false);

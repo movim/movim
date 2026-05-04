@@ -17,7 +17,6 @@ class Get extends Action
     protected ?int $_limit = null;
     protected ?string $_after = null;
     protected ?string $_before = null;
-    protected string $_version = '2';
     protected int $_messageCounter = 0;
 
     public function request()
@@ -36,8 +35,7 @@ class Get extends Action
             $this->_end,
             $this->_limit,
             $this->_after,
-            $this->_before,
-            $this->_version
+            $this->_before
         ), to: $this->_to, type: 'set');
     }
 

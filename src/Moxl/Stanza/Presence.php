@@ -18,10 +18,11 @@ class Presence
         int $priority = 0,
         ?string $type = null,
         bool $muc = false,
-        bool $mam = false,
+        //bool $mam = false,
         bool $mujiPreparing = false,
         ?DOMElement $muji = null,
-        $last = 0
+        ?int $last = 0,
+        ?string $mavSince = null
     ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElementNS('jabber:client', 'presence');
@@ -76,11 +77,15 @@ class Presence
         if ($muc) {
             $x = $dom->createElementNS('http://jabber.org/protocol/muc', 'x');
 
-            if ($mam) {
-                $history = $dom->createElement('history');
-                $history->setAttribute('maxchars', 0);
-                $x->appendChild($history);
-            }
+            // History is now always handled by MAM
+            $history = $dom->createElement('history');
+            $history->setAttribute('maxchars', 0);
+            $x->appendChild($history);
+
+            $mav = $dom->createElement('mav');
+            $mav->setAttribute('xmlns', 'urn:xmpp:muc:affiliations:1');
+            if ($mavSince != null) $mav->setAttribute('since', $mavSince);
+            $x->appendChild($mav);
 
             $root->appendChild($x);
         }
