@@ -7,7 +7,6 @@ use Moxl\Xec\Action\Message\Reactions;
 
 use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
-use Moxl\Xec\Action\Muc\GetMembers;
 
 use App\Contact;
 use App\Message;
@@ -403,13 +402,6 @@ class Chat extends \Movim\Widget\Base
     public function onMucConnected(Packet $packet)
     {
         $arr = explode('|', (new Notif($this->me, sessionId: $this->sessionId))->getCurrent());
-
-        if (in_array($packet->content->mucaffiliation, ['admin', 'owner'])) {
-            $m = $this->xmpp(new GetMembers);
-            $m->setTo($packet->content->jid)
-                ->request();
-        }
-
 
         if ($packet->content && isset($arr[1]) && $arr[1] == $packet->content->jid) {
             $this->ajaxGetRoom($packet->content->jid, noConnect: true);

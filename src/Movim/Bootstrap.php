@@ -170,7 +170,7 @@ class Bootstrap
             $dispatcher->listen('Illuminate\Database\Events\QueryExecuted', function ($query) use (&$sqlQueryExecuted) {
                 $sqlQueryExecuted = time();
 
-                \logInfo('SQL: ' . $query->sql . ' | values: ' . implode(', ', $query->bindings) . ' | time: ' . $query->time);
+                //\logInfo('SQL: ' . $query->sql . ' | values: ' . implode(', ', $query->bindings) . ' | time: ' . $query->time);
             });
 
             $capsule->setEventDispatcher($dispatcher);

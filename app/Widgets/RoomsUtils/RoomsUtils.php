@@ -34,6 +34,7 @@ use Movim\Image;
 use Respect\Validation\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Moxl\Xec\Action\Muc\DiscoRequest;
+use Moxl\Xec\Action\Muc\GetMembers;
 
 class RoomsUtils extends Base
 {
@@ -62,6 +63,7 @@ class RoomsUtils extends Base
         $this->registerEvent('presence_muc_create_handle', 'onMucCreated');
         $this->registerEvent('presence_muc_errornotallowed', 'onPresenceMucNotAllowed');
         $this->registerEvent('presence_muc_errorgone', 'onPresenceMucNotAllowed');
+        $this->registerEvent('presence_muc_no_mav_handle', 'onNoMavPresence');
 
         $this->addjs('roomsutils.js');
         $this->addcss('roomsutils.css');
@@ -312,6 +314,18 @@ class RoomsUtils extends Base
     public function onSetRole(Packet $packet)
     {
         $this->toast($this->__('room.role_changed'));
+    }
+
+    /**
+     * @brief When the MUC presence join doesn't contains MUC Affiliations Versioning
+     */
+    public function onNoMavPresence(Packet $packet)
+    {
+        if (in_array($packet->content->mucaffiliation, ['admin', 'owner'])) {
+            $m = $this->xmpp(new GetMembers);
+            $m->setTo($packet->content->jid)
+                ->request();
+        }
     }
 
     /**

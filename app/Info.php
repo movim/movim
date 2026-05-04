@@ -318,16 +318,6 @@ class Info extends Model
             && $this->hasFeature('urn:xmpp:jingle-message:0');
     }
 
-    public function isMAM(): bool
-    {
-        return $this->hasFeature('urn:xmpp:mam:1');
-    }
-
-    public function isMAM2(): bool
-    {
-        return $this->hasFeature('urn:xmpp:mam:2');
-    }
-
     public function hasModeration(): bool
     {
         return $this->hasFeature('urn:xmpp:message-moderate:0');
@@ -335,7 +325,7 @@ class Info extends Model
 
     public function hasMAM(): bool
     {
-        return $this->isMAM() || $this->isMAM2();
+        return $this->hasFeature('urn:xmpp:mam:2');
     }
 
     public function hasStanzaId(): bool
@@ -348,7 +338,7 @@ class Info extends Model
         return $this->hasFeature('urn:xmpp:extdisco:2');
     }
 
-    public function set($query, ?string $node = null, $parent = false)
+    public function set(\SimpleXMLElement $query, ?string $node = null, $parent = false)
     {
         $from = (string)$query->attributes()->from;
 
@@ -567,7 +557,11 @@ class Info extends Model
 
     public function isConference(): bool
     {
-        return $this->identities->contains('category', 'conference');
+        return $this->identities->contains('category', 'conference')
+            && ($this->hasFeature('muc_public')
+                || $this->hasFeature('muc_hidden')
+                || $this->hasFeature('muc_persistent')
+                || $this->hasFeature('muc_temporary'));
     }
 
     public function isPubsubService(): bool

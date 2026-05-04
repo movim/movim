@@ -30,7 +30,7 @@ class MAM
         ?int $limit = null,
         ?string $after = null,
         ?string $before = null,
-        string $version = '1'
+        ?string $version = '2'
     ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('urn:xmpp:mam:' . $version, 'query');

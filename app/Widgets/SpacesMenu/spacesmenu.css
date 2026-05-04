@@ -23,7 +23,7 @@ ul#spacesmenu_widget li.enabled span.primary img {
     box-shadow: var(--elevation-3);
 }
 
-ul#spacesmenu_widget li.pinned:not(.locked) span.primary::before {
+ul#spacesmenu_widget li.pinned span:not(.locked).primary::before {
     display: inline-block;
     position: absolute;
     bottom: 0;
@@ -36,6 +36,7 @@ ul#spacesmenu_widget li.pinned:not(.locked) span.primary::before {
     border-radius: 1rem;
     line-height: 2rem;
     width: 2rem;
+    height: auto;
     background-color: rgb(var(--movim-background-main), 0.7);
     backdrop-filter: blur(1rem);
     box-shadow: var(--elevation-1);
