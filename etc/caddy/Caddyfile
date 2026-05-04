@@ -1,35 +1,29 @@
 your.domain.tld {
 	# You need to change:
-	# Your domain/subdomain
-	# The unix php socket used to match the one of your system
-	# The port you set for movim under /ws/*
-	# The root directory where movim is installed <path-to>
-	# Remember the installation guide on the wiki, the caddy user should have read and write acces to the files under /public and must have exectue permissions for the daemon running chown -R caddy:caddy movim should fix any issue
+	# - Your domain/subdomain
+	# - The unix php socket used to match the one of your system
+	# - The port you set for movim under /ws/*
+	# - The root directory where movim is installed <path-to>
+	
+	# Remember the installation guide on the wiki. The caddy user should have read and write access to the files under /public and must have execute permissions for the daemon
+	# Running `chown -R caddy:caddy movim` should fix any issues
+	
 	# Feel free to delete all comments
 
 	encode zstd gzip
 
-	@static path /stickers/* /cache/* /images/* /theme/* /scripts/*.js #No need to use a @name matcher but is a bit more organized
-
-	handle @static {
-		root * /path-to/movim/public
-		file_server
-	}
+	root * /path-to/movim/public
 
 	handle {
-		rewrite * /index.php?{query}
-		reverse_proxy unix//run/php/php-fpm.sock {
-			transport fastcgi {
-				env SCRIPT_FILENAME /path-to/movim/public/index.php
-			}
-		}
+		php_fastcgi unix//run/php/php-fpm.sock
+		file_server
 	}
-
+	
 	handle /ws/* {
 		# This part of the configuration is generated when launching the daemon in the console output
 	}
 
-	#Security options you can ignore or delete
+	# Security options you can ignore or delete
 
 	header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 	header X-XSS-Protection "1; mode=block"
