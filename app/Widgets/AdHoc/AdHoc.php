@@ -17,6 +17,7 @@ class AdHoc extends \Movim\Widget\Base
     public function load()
     {
         $this->addjs('adhoc.js');
+        $this->addcss('adhoc.css');
         $this->registerEvent('adhoc_get_handle', 'onList');
         $this->registerEvent('adhoc_get_error', 'onListError');
         $this->registerEvent('adhoc_command_handle', 'onCommand');
@@ -55,6 +56,13 @@ class AdHoc extends \Movim\Widget\Base
             $this->dialog($view->draw('_adhoc_note'));
             $this->rpc('AdHoc.initForm');
         } elseif (isset($command->x)) {
+            $node = (string)$command->attributes()->node;
+
+            if (str_starts_with($node, 'urn:xmpp:hats:commands:')) {
+                $this->renderHatCommand($packet->from, $command);
+                return;
+            }
+
             $xml = new XMPPtoForm;
             $form = $xml->getHTML($command->x);
 
@@ -74,6 +82,88 @@ class AdHoc extends \Movim\Widget\Base
             $this->toast($this->__('adhoc.completed'));
             return;
         }
+    }
+
+    private function renderHatCommand(string $jid, \SimpleXMLElement $command): void
+    {
+        $node   = (string)$command->attributes()->node;
+        $suffix = substr($node, strlen('urn:xmpp:hats:commands:'));
+
+        $view = $this->tpl();
+        $view->assign('jid', $jid);
+        $view->assign('attributes', $command->attributes());
+
+        switch ($suffix) {
+            case 'create':
+                $view->assign('uri', 'urn:uuid:' . generateUUID());
+                $view->assign('hue', '');
+                $view->assign('hueHex', '#808080');
+                $this->dialog($view->draw('_adhoc_hat_create'), true);
+                break;
+
+            case 'destroy':
+                $view->assign('hats', $this->parseHatListOptions($command->x));
+                $this->dialog($view->draw('_adhoc_hat_destroy'), true);
+                break;
+
+            case 'assign':
+            case 'remove':
+                $view->assign('hats', $this->parseHatListOptions($command->x));
+                $view->assign('jidVar', $this->findFieldVar($command->x, 'jid-single') ?? 'hats#jid');
+                $view->assign('isRemove', $suffix === 'remove');
+                $this->dialog($view->draw('_adhoc_hat_assign'), true);
+                break;
+
+            default:
+                $xml  = new XMPPtoForm;
+                $view->assign('form', $xml->getHTML($command->x));
+                $view->assign('actions', null);
+                $view->assign('status', (string)$command->attributes()->status);
+                $this->dialog($view->draw('_adhoc_form'), true);
+        }
+
+        $this->rpc('AdHoc.initForm');
+    }
+
+    private function parseHatListOptions(\SimpleXMLElement $x): array
+    {
+        $hats = [];
+        foreach ($x->children() as $field) {
+            if ($field->getName() !== 'field') continue;
+            $type = (string)$field->attributes()->type;
+            if ($type !== 'list-single' && $type !== 'list-multi') continue;
+            $fieldVar = (string)$field->attributes()->var;
+            foreach ($field->children() as $option) {
+                if ($option->getName() !== 'option') continue;
+                $uri    = (string)$option->value;
+                $hats[] = [
+                    'label'    => (string)$option->attributes()->label,
+                    'value'    => $uri,
+                    'fieldVar' => $fieldVar,
+                    'color'    => stringToColor($uri),
+                ];
+            }
+        }
+        return $hats;
+    }
+
+    private function findFieldVar(\SimpleXMLElement $x, string $type): ?string
+    {
+        foreach ($x->children() as $field) {
+            if ($field->getName() === 'field' && (string)$field->attributes()->type === $type) {
+                return (string)$field->attributes()->var;
+            }
+        }
+        return null;
+    }
+
+    public function colorToHue(string $colorName): float
+    {
+        $colors = array_keys(palette());
+        $index  = array_search($colorName, $colors);
+        if ($index === false) return 0.0;
+        $band = 360.0 / count($colors);
+        return round($index * $band + $band / 2.0, 2);
     }
 
     public function ajaxSDPToJingle()
