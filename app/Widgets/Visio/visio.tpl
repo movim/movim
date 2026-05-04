@@ -85,5 +85,11 @@
         <button id="main" class="button action color red" onclick="MovimVisio.goodbye()">
             <i class="material-symbols">call_end</i>
         </button>
+
+        <button id="end_for_everyone"
+            class="button action color red hide"
+            onclick="return MovimVisio.confirmEndForEveryone();">
+            <i class="material-symbols">call_end</i>
+        </button>
     </div>
 </div>

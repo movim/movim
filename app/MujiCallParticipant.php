@@ -20,7 +20,7 @@ class MujiCallParticipant extends Model
 
     public function mujiCall()
     {
-        return $this->belongsTo(MujiCall::class, ['id', 'session_id'], ['muji_call_id', 'session_id']);
+        return $this->belongsTo(MujiCall::class, ['muji_call_id', 'session_id'], ['id', 'session_id']);
     }
 
     public function isUser(User $user): bool
