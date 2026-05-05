@@ -36,6 +36,7 @@ class Config extends Base
         $view->assign('languages', Locale::getList());
         $view->assign('accent_colors', User::ACCENT_COLORS);
         $view->assign('configuration', $this->me);
+        $view->assign('domain', parse_url(config('daemon.url'), PHP_URL_HOST));
 
         return $view->draw('_config_form');
     }

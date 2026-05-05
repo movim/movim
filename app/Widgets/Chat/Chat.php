@@ -1118,7 +1118,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetHistory(string $jid, ?string $date = null, bool $muc = false, bool $prepend = true, bool $tryMam = true)
     {
-        if (!validateJid($jid)) return;
+        if (!validateJid($jid) || $this->me == null) return;
 
         $messages = \App\Message::jid($this->me, $jid);
 
