@@ -18,7 +18,7 @@ class XA extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $presence = DBPresence::findByStanza($this->me, $stanza);
+        $presence = (new DBPresence);
         $presence->set($this->me, $stanza);
 
         linker($this->sessionId)->presenceBuffer->append($presence, function () {

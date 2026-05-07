@@ -687,7 +687,6 @@ var MovimJingles = {
                 let state = document.querySelector('p.state');
                 state.innerText = MovimVisio.states.no_participants_left;
             }
-
         }
     },
 

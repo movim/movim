@@ -25,10 +25,6 @@ use Moxl\Xec\Action\Jingle\SessionInitiate;
 use Moxl\Xec\Action\Jingle\SessionMute;
 use Moxl\Xec\Action\Jingle\SessionTerminate;
 use Moxl\Xec\Action\Jingle\SessionUnmute;
-use Moxl\Xec\Action\JingleCallInvite\Accept;
-use Moxl\Xec\Action\JingleCallInvite\Invite;
-use Moxl\Xec\Action\JingleCallInvite\Retract;
-use Moxl\Xec\Action\Muc\CreateMujiRoom;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Payload\Packet;
@@ -67,9 +63,6 @@ class Visio extends Base
         $this->registerEvent('session_down', 'onSessionDown');
         $this->registerEvent('presence_muji', 'onMujiPresence');
         $this->registerEvent('presence_muc_muji_preparing', 'onMucMujiPreparing');
-        $this->registerEvent('presence_muc_create_muji_handle', 'onMucMujiCreated');
-
-        $this->registerEvent('callinviteretract', 'onCallInviteRetract');
 
         $this->registerEvent('currentcall_stopped', 'onCallStopped');
     }
@@ -94,23 +87,10 @@ class Visio extends Base
         }
     }
 
-    public function onMucMujiCreated(Packet $packet)
-    {
-        $presence = $packet->content;
-
-        $createMujiRoom = $this->xmpp(new CreateMujiRoom);
-        $createMujiRoom->setTo($presence->jid)
-            ->request();
-    }
-
     public function onMucMujiPreparing(Packet $packet)
     {
-        $this->ajaxMujiTrigger();
-    }
-
-    public function onCallInviteRetract(Packet $packet)
-    {
-        $this->ajaxClear();
+        list($withVideo, $presence) = array_values($packet->content);
+        $this->rpc('MovimVisio.init', $presence->jid, $presence->jid, $presence->jid, $withVideo, true);
     }
 
     public function onExternalServices(Packet $packet)
@@ -147,13 +127,11 @@ class Visio extends Base
 
     public function onMujiPresence(Packet $packet)
     {
-        list($stanza, $presence) = $packet->content;
-        if (
-            $stanza && $stanza->muji && $stanza->muji->attributes()->xmlns == 'urn:xmpp:jingle:muji:0'
-            && $stanza->muji->content && $stanza->muji->content->attributes()->xmlns == 'urn:xmpp:jingle:1'
-        ) {
-            $contact = \App\Contact::firstOrNew(['id' => \bareJid($packet->from)]);
+        $presence = $packet->content;
+        $currentCall = $this->currentCall();
 
+        if ($currentCall->isStarted() && $currentCall->mujiRoom == $presence->jid) {
+            $contact = \App\Contact::firstOrNew(['id' => \bareJid($packet->from)]);
             $this->rpc(
                 'MovimJingles.initSession',
                 \bareJid($packet->from),
@@ -168,8 +146,6 @@ class Visio extends Base
     public function onExternalServicesError(Packet $packet)
     {
         $this->setDefaultServices();
-
-        //$this->rpc('MovimJingles.onInitiateSDP', \bareJid($packet->from), $jts->generate());
     }
 
     /**
@@ -227,23 +203,17 @@ class Visio extends Base
         $this->onTerminate($packet);
     }
 
-    /*public function onNotFound(Packet $packet)
-    {
-        ($this->currentCall())->stop(\bareJid($packet->from), $packet->content);
-        $this->onTerminate('notfound');
-    }*/
-
     public function onTerminate(Packet $packet)
     {
-        ($this->currentCall())->stop(\bareJid($packet->from), $packet->content);
+        if (($this->currentCall())->stop(\bareJid($packet->from), $packet->content)) {
+            $this->ajaxClear();
+        }
 
         // Stop calling sound and clear the Dialog if there
         $this->rpc('Notif.incomingCallAnswer');
         (new Dialog($this->me, sessionId: $this->sessionId))->ajaxClear();
 
         $this->toast($this->__('visio.ended'));
-
-        $this->ajaxClear();
         $this->rpc('MovimJingles.onTerminate', \bareJid($packet->from));
     }
 
@@ -356,10 +326,6 @@ class Visio extends Base
         $this->currentCall()->start($to, $id);
         $this->rpc('Notif.incomingCallAnswer');
 
-        /*$p = $this->xmpp(new MessageAccept);
-        $p->setId($id)
-          ->request();*/
-
         $p = $this->xmpp(new MessageProceed);
         $p->setTo($to)
             ->setId($id)
@@ -445,59 +411,36 @@ class Visio extends Base
 
     /** Muji */
 
-    public function ajaxChooseMuji(string $muc)
+    public function ajaxJoinMuji(string $to, ?bool $withVideo = false)
     {
-        $view = $this->tpl();
-        $view->assign('conference', $this->me->session->conferences()
-            ->where('conference', $muc)
-            ->first());
-
-        $this->dialog($view->draw('_visio_choose_muji'), false, true);
-    }
-
-    public function ajaxJoinMuji(string $mujiId, ?bool $withVideo = false)
-    {
-        $muji = $this->me->session->mujiCalls()
-            ->where('id', $mujiId)
-            ->with('conference')
+        $conference = $this->me->session
+            ->conferences()->where('conference', $to)
             ->first();
 
-        if ($muji) {
-            $this->ajaxGetMujiLobby($muji->jidfrom, false, $withVideo, $muji->id);
+        if ($conference) {
+            $this->ajaxGetMujiLobby(
+                jid: $to,
+                calling: false,
+                withVideo: $withVideo,
+                id: $to
+            );
         }
     }
 
-    public function ajaxLeaveMuji(string $mujiId)
+    public function ajaxLeaveMuji(string $to)
     {
-        $muji = $this->me->session->mujiCalls()
-            ->where('id', $mujiId)
-            ->with('conference')
+        $conference = $this->me->session
+            ->conferences()->where('conference', $to)
             ->first();
 
-        if ($muji) {
-            $resource = $muji->presences()->where('mucjid', $this->me->id)->first()?->resource;
+        if ($conference && $conference->presence->hasMuji()) {
+            $muc = $this->xmpp(new Muc);
+            $muc->setTo($conference->conference)
+                ->setNickname($conference->presence->resource)
+                ->enableMujiLeaving()
+                ->request();
 
-            if ($resource) {
-                $pu = $this->xmpp(new Unavailable);
-                $pu->setTo($muji->muc)
-                    ->setResource($resource)
-                    ->request();
-
-                (new Rooms($this->me, sessionId: $this->sessionId))->onPresence($muji->jidfrom);
-
-                // If we were the inviter, we also retract the call
-                $participant = $muji->participants->firstWhere('jid', $muji->jidfrom . '/' . $resource);
-                if ($participant && $participant->inviter) {
-                    $retract = $this->xmpp(new Retract);
-                    $retract->setTo($muji->jidfrom)
-                        ->setId($muji->id)
-                        ->request();
-                }
-
-                $this->me->session->mujiCalls()->where('id', $mujiId)->delete();
-            }
-
-            $this->currentCall()->stop($muji->jidfrom, $muji->id);
+            $this->currentCall()->stop($conference->conference, $conference->conference);
             $this->rpc('MovimJingles.terminateAll');
         }
     }
@@ -556,105 +499,76 @@ class Visio extends Base
         }
     }
 
-    public function ajaxMujiAccept(string $mujiId)
-    {
-        $muji = $this->me->session->mujiCalls()
-            ->where('id', $mujiId)
-            ->with('conference')
-            ->first();
-
-        if ($muji) {
-            $accept = $this->xmpp(new Accept);
-            $accept->setTo($muji->jidfrom)
-                ->setId($muji->id)
-                ->request();
-
-            $this->currentCall()->start($muji->jidfrom, $muji->id, mujiRoom: $muji->muc);
-
-            $muc = $this->xmpp(new Muc);
-            $muc->setTo($muji->muc)
-                ->setNickname($muji->conference ? $muji->conference->nick : $this->me->nickname)
-                ->enableMujiPreparing()
-                ->noNotify()
-                ->request();
-
-            $this->rpc('Chat_ajaxGetHeader', $muji->jidfrom, true);
-        }
-    }
-
-    public function ajaxMujiTrigger()
-    {
-        $muji = $this->me->session->mujiCalls()->first();
-
-        if ($muji) {
-            $this->rpc('MovimVisio.init', $muji->jidfrom, $muji->jidfrom, $muji->id, $muji->video, true);
-        }
-    }
-
-    public function ajaxMujiInit(string $mujiId, $sdp)
-    {
-        $muji = $this->me->session->mujiCalls()
-            ->where('id', $mujiId)
-            ->with('conference')
-            ->first();
-
-        if ($muji) {
-            $stj = new SDPtoJingle(
-                user: $this->me,
-                sdp: $sdp->sdp,
-                sid: $mujiId,
-                muji: true
-            );
-
-            $muc = $this->xmpp(new Muc);
-            $muc->setTo($muji->muc)
-                ->setNickname($muji->conference ? $muji->conference->nick : $this->me->nickname)
-                ->setMuji($stj->generate())
-                ->noNotify()
-                ->request();
-
-            $this->rpc('MovimJingles.startCalls', $muji->muc);
-        }
-    }
-
-    public function ajaxMujiCreate(string $to, bool $withVideo = false)
+    public function ajaxMujiAccept(string $to, bool $withVideo)
     {
         $conference = $this->me->session
             ->conferences()->where('conference', $to)
             ->first();
 
-        $mujiService = $this->me->session->getMujiService();
-
-        if (!$mujiService) {
-            $this->toast($this->__('muji.cannot_create'));
-            return;
-        }
-
         if ($conference) {
-            $mujiId = generateUUID();
-            $mujiConference = generateKey(withCapitals: false);
-            $mujiConferenceJid = $mujiConference . '@' . $mujiService->server;
-
-            $this->currentCall()->start($to, $mujiId, mujiRoom: $mujiConferenceJid);
+            $this->currentCall()->start($to, $to, mujiRoom: $to);
 
             $muc = $this->xmpp(new Muc);
-            $muc->setTo($mujiConferenceJid)
+            $muc->setTo($conference->conference)
+                ->setNickname($conference->nick ?? $this->me->nickname)
+                ->enableMujiPreparing()
+                ->withVideo($withVideo)
+                ->request();
+
+            $this->rpc('Chat_ajaxGetHeader', $conference->conference, true);
+        }
+    }
+
+    public function ajaxMujiInit(string $to, $sdp)
+    {
+        $conference = $this->me->session
+            ->conferences()->where('conference', $to)
+            ->first();
+
+        if ($conference) {
+            $stj = new SDPtoJingle(
+                user: $this->me,
+                sdp: $sdp->sdp,
+                sid: $to,
+                muji: true
+            );
+
+            $muc = $this->xmpp(new Muc);
+            $muc->setTo($conference->conference)
+                ->setNickname($conference->nick ?? $this->me->nickname)
+                ->setMuji($stj->generate())
+                ->request();
+
+            // Inject all the existing presences
+            foreach ($conference->mujiPresences as $mujiPresence) {
+                if ($mujiPresence->mucjid != $this->me->id) {
+                    $this->onMujiPresence((new Packet)->pack(
+                        $mujiPresence,
+                        $mujiPresence->mucjid . '/' . $mujiPresence->mucjidresource
+                    ));
+                }
+            }
+
+            $this->rpc('MovimJingles.startCalls', $conference->conference);
+        }
+    }
+
+    public function ajaxMujiJoin(string $to, bool $withVideo = false)
+    {
+        $conference = $this->me->session
+            ->conferences()->where('conference', $to)
+            ->first();
+
+        if ($conference) {
+            $this->currentCall()->start(jid: $to, id: $to, mujiRoom: $to);
+
+            $muc = $this->xmpp(new Muc);
+            $muc->setTo($to)
                 ->setNickname($conference->nick)
                 ->enableCreate()
                 ->enableMujiPreparing()
-                ->noNotify()
+                ->withVideo($withVideo)
                 ->request();
-
-            $invite = $this->xmpp(new Invite);
-            $invite->setTo($to)
-                ->setId($mujiId)
-                ->setRoom($mujiConferenceJid);
-
-            if ($withVideo) {
-                $invite->enableVideo();
-            }
-
-            $invite->request();
         }
     }
 

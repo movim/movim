@@ -14,7 +14,6 @@ use Moxl\Stanza\Stream;
 use Moxl\Xec\Action\Blocking\Request;
 use Moxl\Xec\Action\Presence\Away;
 use Moxl\Xec\Action\Presence\Chat;
-//use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Action\Pubsub\GetItemsId;
 use Moxl\Xec\Action\Pubsub\GetSubscriptions;
 use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
@@ -96,11 +95,6 @@ class Presence extends Base
             (new Visio(user: $this->me, sessionId: $this->sessionId))
                 ->ajaxTerminate($this->currentCall()->jid, $this->currentCall()->id);
         }
-
-        /*$p = $this->xmpp(new Unavailable);
-        $p->setResource($this->me->session->resource)
-            ->setTo($this->me->id)
-            ->request();*/
 
         linker($this->me->session->id)->writeXMPP(Stream::end());
     }

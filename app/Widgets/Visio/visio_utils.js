@@ -21,13 +21,14 @@ var VisioUtils = {
             return;
         }
 
-        var javascriptNode = VisioUtils.audioContext.createScriptProcessor(128 * 64, 1, 1);
-        var icon = document.querySelector('#toggle_audio i');
-        var mainButton = document.getElementById('main');
+        let javascriptNode = VisioUtils.audioContext.createScriptProcessor(128 * 64, 1, 1);
+        let icon = document.querySelector('#toggle_audio i');
+        let toggleAudio = document.getElementById('toggle_audio');
+        let mainButton = document.getElementById('main');
         icon.innerText = 'mic';
         let isMuteStep = 251;
-        var noMicSound = document.querySelector('#no_mic_sound');
-        var defaultMicrophone = document.querySelector('#default_microphone');
+        let noMicSound = document.querySelector('#no_mic_sound');
+        let defaultMicrophone = document.querySelector('#default_microphone');
 
         if (defaultMicrophone) {
             defaultMicrophone.classList.add('muted');
@@ -37,11 +38,11 @@ var VisioUtils = {
         javascriptNode.connect(VisioUtils.audioContext.destination);
 
         javascriptNode.onaudioprocess = function (event) {
-            var inpt = event.inputBuffer.getChannelData(0);
-            var instant = 0.0;
-            var sum = 0.0;
+            let inpt = event.inputBuffer.getChannelData(0);
+            let instant = 0.0;
+            let sum = 0.0;
 
-            for (var i = 0; i < inpt.length; ++i) {
+            for (let i = 0; i < inpt.length; ++i) {
                 sum += inpt[i] * inpt[i];
             }
 
@@ -50,8 +51,8 @@ var VisioUtils = {
 
             if (VisioUtils.maxLevel <= 0.005) VisioUtils.maxLevel = 0.005;
 
-            var base = (instant / VisioUtils.maxLevel);
-            var level = (base > 0.05) ? base ** .3 : 0;
+            let base = (instant / VisioUtils.maxLevel);
+            let level = (base > 0.05) ? base ** .3 : 0;
             let step = 0;
 
             if (level == 0) {
@@ -93,12 +94,13 @@ var VisioUtils = {
 
             if (isMuteStep <= 5) {
                 mainButton.style.outlineColor = 'rgba(255, 255, 255, ' + level.toFixed(2) + ')';
+                toggleAudio.style.setProperty('--level', level.toFixed(2));
             }
         }
     },
 
     toggleFullScreen: function () {
-        var button = document.querySelector('#toggle_fullscreen i');
+        let button = document.querySelector('#toggle_fullscreen i');
 
         if (!document.fullscreenElement) {
             if (document.querySelector('#visio').requestFullscreen) {
@@ -116,7 +118,7 @@ var VisioUtils = {
     },
 
     toggleMode: function () {
-        var button = document.querySelector('#toggle_mode i');
+        let button = document.querySelector('#toggle_mode i');
         let participants = document.querySelector('#participants');
 
         if (button.innerText == 'tile_small') {
@@ -129,7 +131,7 @@ var VisioUtils = {
     },
 
     toggleAudio: function () {
-        var button = document.querySelector('#toggle_audio i');
+        let button = document.querySelector('#toggle_audio i');
 
         if (button.innerText == 'mic_off') {
             MovimJingles.enableAudio(true);
@@ -141,7 +143,7 @@ var VisioUtils = {
     },
 
     toggleVideo: function () {
-        var button = document.querySelector('#toggle_video i');
+        let button = document.querySelector('#toggle_video i');
 
         if (button.innerText == 'videocam_off') {
             MovimJingles.enableVideo(true);
@@ -170,7 +172,7 @@ var VisioUtils = {
         VisioDTMF.pressButton(s);
         setTimeout(() => VisioDTMF.stop(), 100);
 
-        var insert = (s == '*') ? '🞳' : s;
+        let insert = (s == '*') ? '🞳' : s;
         document.querySelector('#dtmf p.dtmf span').innerText += insert;
 
         MovimJingles.insertDtmf(s);
@@ -203,7 +205,7 @@ var VisioUtils = {
     toggleScreenSharing: async function () {
         MovimVisio.switchCamera = document.querySelector("#visio #switch_camera");
 
-        var button = document.querySelector('#screen_sharing i');
+        let button = document.querySelector('#screen_sharing i');
         if (MovimVisio.screenSharing.srcObject == null) {
             try {
                 MovimVisio.screenSharing.srcObject = await navigator.mediaDevices.getDisplayMedia({
@@ -245,7 +247,7 @@ var VisioUtils = {
 
     getConstraints: function (withVideo) {
         const cpuCores = navigator.hardwareConcurrency || 2;
-        var constraints = {
+        let constraints = {
             audio: true,
             video: false,
         };

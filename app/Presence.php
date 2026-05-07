@@ -10,6 +10,7 @@ use Awobaz\Compoships\Database\Eloquent\Model;
 class Presence extends Model
 {
     protected $primaryKey = ['session_id', 'jid', 'mucjid', 'resource'];
+    public bool $noMav = false;
     public $incrementing = false;
     public $hatsToSave = [];
 
@@ -107,6 +108,17 @@ class Presence extends Model
         return stringToColor($this->resource);
     }
 
+    public function hasMuji(): bool
+    {
+        return (array_key_exists('muji_xml', $this->attributes) && $this->attributes['muji_xml'] != null)
+            || $this->muji_xml != null;
+    }
+
+    public function hasVideoMuji(): bool
+    {
+        return $this->hasMuji() && str_contains($this->attributes['muji_xml'], 'media="video"');
+    }
+
     public static function findByStanza(User $user, \SimpleXMLElement $stanza): Presence
     {
         $temporary = new self;
@@ -187,15 +199,24 @@ class Presence extends Model
                         }
 
                         // XEP-0463: MUC Affiliations Versioning
-                        $this->no_mav = (!$c->mav);
+                        $this->noMav = (!$c->mav);
                         break;
                     case 'vcard-temp:x:update':
+                        // Ugly hack to fix https://xmpp.org/extensions/xep-0486.html#presence
+                        if ($user->session?->conferences()->where('conference', $this->jid)->exists()) {
+                            $this->muc = true;
+                        }
+
                         if (!empty((string)$c->photo)) {
                             $this->avatarhash = (string)$c->photo;
                         }
                         break;
                 }
             }
+        }
+
+        if ($stanza->muji && $stanza->muji->attributes()->xmlns == 'urn:xmpp:jingle:muji:0') {
+            $this->muji_xml = $stanza->muji->asXML();
         }
 
         if ($stanza->delay && $stanza->delay->attributes()->xmlns == 'urn:xmpp:delay') {
@@ -266,6 +287,7 @@ class Presence extends Model
             'created_at' => $this->attributes['created_at'] ?? $now,
             'updated_at' => $this->attributes['updated_at'] ?? $now,
             'avatarhash' => $this->attributes['avatarhash'] ?? null,
+            'muji_xml' => $this->attributes['muji_xml'] ?? null,
         ];
     }
 }

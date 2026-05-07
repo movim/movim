@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\Presence;
 
+use App\Presence as AppPresence;
 use DOMElement;
 use Moxl\Stanza\Presence;
 use Moxl\Xec\Action;
@@ -14,8 +15,10 @@ class Muc extends Action
     protected $_nickname;
     protected $_create = false;
     protected $_mujiPreparing = false;
+    protected $_mujiLeaving = false;
     protected ?DOMElement $_muji = null;
     protected ?string $_mavsince = null;
+    protected bool $_withVideo = false;
 
     // Disable the event
     protected $_notify = true;
@@ -58,9 +61,21 @@ class Muc extends Action
         return $this;
     }
 
+    public function enableMujiLeaving()
+    {
+        $this->_mujiLeaving = true;
+        return $this;
+    }
+
     public function setMuji(DOMElement $muji)
     {
         $this->_muji = $muji;
+        return $this;
+    }
+
+    public function withVideo(bool $withVideo)
+    {
+        $this->_withVideo = $withVideo;
         return $this;
     }
 
@@ -72,7 +87,7 @@ class Muc extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $presence = \App\Presence::findByStanza($this->me, $stanza);
+        $presence = (new AppPresence);
         $presence->set($this->me, $stanza);
 
         if ($stanza->attributes()->to) {
@@ -80,13 +95,14 @@ class Muc extends Action
         }
 
         if ($this->_create) {
-            $presence->save();
+            \App\Presence::where([
+                'session_id' => $presence->session_id,
+                'jid' => $presence->jid,
+                'mucjid' => $presence->mucjid,
+                'resource' => $presence->resource
+            ])->delete();
 
-            if ($this->_mujiPreparing) {
-                $this->method('create_muji_handle');
-                $this->pack($presence);
-                $this->deliver();
-            }
+            $presence->save();
 
             $this->method('create_handle');
             $this->pack($presence);
@@ -98,11 +114,20 @@ class Muc extends Action
 
             if ($this->_mujiPreparing) {
                 $this->method('muji_preparing');
+                $this->pack(['with_video' => $this->_withVideo, 'presence' => $presence]);
                 $this->deliver();
+                return;
+            }
+
+            if ($this->_mujiLeaving) {
+                $this->method('muji_leaving');
+                $this->pack($presence);
+                $this->deliver();
+                return;
             }
 
             // XEP-0463: MUC Affiliations Versioning
-            if ($presence->no_mav) {
+            if ($presence->noMav) {
                 $this->method('no_mav_handle');
                 $this->pack($presence);
                 $this->deliver();

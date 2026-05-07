@@ -8,6 +8,10 @@
     animation: backgroundblink 1s;
 }
 
+#rooms>ul.list>li i.call {
+    margin-right: 0.75rem;
+}
+
 #rooms>ul.list>li:has(ul) {
     padding-left: 0;
     padding-right: 0;
@@ -19,30 +23,19 @@
 
 #rooms>ul.list>li>ul>li:not(:first-child)>span.icon,
 #rooms>ul.list>li>ul>li:not(:first-child)>div>p {
-    line-height: 3rem;
-    height: 3rem;
+    line-height: 4rem;
+    height: 4rem;
 }
 
-#rooms>ul.list>li>ul>li:not(:first-child)>div>p {
-    font-size: 1.9rem;
-}
-
-#rooms>ul.list>li>ul>li:not(:first-child)>span.icon>i {
-    font-size: 2.5rem;
-    line-height: 3rem;
-}
-
-#rooms>ul.list>li>ul>li:not(:first-child)>span.primary:first-child>i {
-    line-height: 2rem;
-}
-
-#rooms>ul.list>li>ul>li:not(:first-child)>span.primary:first-child {
+#rooms>ul.list>li>ul>li:not(:first-child)>span.icon:first-child {
+    line-height: 4.5rem;
     margin-right: 0;
     margin-left: 2rem;
 }
 
-#rooms>ul.list>li>ul>li:not(:first-child)>span.primary:not(:first-child) {
+#rooms>ul.list>li>ul>li:not(:first-child)>span.icon:nth-child(2) {
     margin: 0;
+    transform: scale(0.75);
 }
 
 #rooms>ul.list {

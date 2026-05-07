@@ -129,7 +129,7 @@
             <button onclick="VisioUtils.cancelLobby();" class="button flat red">
                 {$c->__('button.cancel')}
             </button>
-            <button id="lobby_start" onclick="Visio_ajaxMujiCreate('{$conference->conference}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear(); Notif.snackbarClear();" class="button color green disabled">
+            <button id="lobby_start" onclick="Visio_ajaxMujiJoin('{$conference->conference}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear(); Notif.snackbarClear();" class="button color green disabled">
                 {if="$withvideo"}
                     <i class="material-symbols">videocam</i>
                 {else}
@@ -141,7 +141,7 @@
             <button onclick="VisioUtils.cancelLobby();" class="button flat red">
                 {$c->__('button.cancel')}
             </button>
-            <button id="lobby_start" onclick="Visio_ajaxMujiAccept('{$id|echapJS}'); Dialog_ajaxClear(); Notif.snackbarClear();" class="button color green disabled">
+            <button id="lobby_start" onclick="Visio_ajaxMujiAccept('{$id|echapJS}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear(); Notif.snackbarClear();" class="button color green disabled">
                 {if="$withvideo"}
                     <i class="material-symbols shake">videocam</i>
                 {else}

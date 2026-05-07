@@ -74,39 +74,34 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('currentcall_started', 'onCallEvent', 'chat');
         $this->registerEvent('currentcall_stopped', 'onCallEvent', 'chat');
 
-        $this->registerEvent('callinvitepropose', 'onCallInvite');
-        $this->registerEvent('callinviteaccept', 'onCallInvite');
-        $this->registerEvent('callinviteleft', 'onCallInvite');
-        $this->registerEvent('callinviteretract', 'onCallInvite');
-        $this->registerEvent('presence_muji_event', 'onCallInvite');
+        $this->registerEvent('presence_muji', 'onPresence');
+        $this->registerEvent('presence_was_muji', 'onMujiPresence');
+        $this->registerEvent('presence_muc_muji_leaving', 'onMujiPresence');
+    }
+
+    public function onMujiPresence(Packet $packet)
+    {
+        $this->ajaxGetHeader($packet->content->jid, true);
     }
 
     public function onPresence(Packet $packet)
     {
         $jid = $packet->content->jid;
         $arr = explode('|', (new Notif($this->me, sessionId: $this->sessionId))->getCurrent());
-
         if (isset($arr[1]) && $jid == $arr[1]) {
-            if ($packet->content->muc) {
+            if (!$packet->content->muc || $packet->content->hasMuji()) {
+                $this->ajaxGetHeader($jid, $packet->content->muc);
+            } elseif ($packet->content->muc) {
                 $this->rpc('Chat_ajaxHttpGetPresences', $jid);
-            } else {
-                $this->ajaxGetHeader($jid);
             }
-        }
-    }
-
-    public function onCallInvite(Packet $packet)
-    {
-        $muji = $packet->content;
-
-        if ($muji->jidfrom && $muji->conference) {
-            $this->ajaxGetHeader($muji->jidfrom, $muji->isfromconference);
         }
     }
 
     public function onCallEvent(Packet $packet)
     {
-        $this->ajaxGetHeader($packet->from, $packet->content['mujiroom'] != null);
+        if ($packet->content['mujiroom'] == null) {
+            $this->ajaxGetHeader($packet->from);
+        }
     }
 
     public function onJingleMessage(Packet $packet)
@@ -403,7 +398,9 @@ class Chat extends \Movim\Widget\Base
     {
         $arr = explode('|', (new Notif($this->me, sessionId: $this->sessionId))->getCurrent());
 
-        if ($packet->content && isset($arr[1]) && $arr[1] == $packet->content->jid) {
+        if ($packet->content?->hasMuji()) {
+            $this->ajaxGetHeader($packet->content->jid, true);
+        } elseif (isset($arr[1]) && $arr[1] == $packet->content->jid) {
             $this->ajaxGetRoom($packet->content->jid, noConnect: true);
         }
     }
@@ -1714,7 +1711,6 @@ class Chat extends \Movim\Widget\Base
             'muc_member',
             'muc_outcast',
             'muc_owner',
-            'muji_propose',
             'space_pending',
         ])) {
             $view = $this->tpl();
@@ -1744,25 +1740,6 @@ class Chat extends \Movim\Widget\Base
             }
 
             $message->body = trim((string)$view->draw('_chat_jingle_end'));
-        }
-
-        if ($message->type == 'muji_retract') {
-            $view = $this->tpl();
-            $view->assign('message', $message);
-            $view->assign('diff', false);
-
-            $start = $this->me->messages()->where('thread', $message->thread)
-                ->whereIn('type', ['muji_propose'])
-                ->first();
-
-            if ($start) {
-                $diff = (new \DateTime($start->created_at))
-                    ->diff(new \DateTime($message->created_at));
-
-                $view->assign('diff', $diff);
-            }
-
-            $message->body = trim((string)$view->draw('_chat_muji_retract'));
         }
 
         return $this->_wrapper;

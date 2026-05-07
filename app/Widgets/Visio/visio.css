@@ -274,7 +274,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 
 #visio #local_video,
 #visio .participant video {
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out, outline 0.4s ease 0s;
 }
 
 #visio .participant {
@@ -326,11 +326,27 @@ body>#visio:not(:fullscreen) #participants.active .participant:not(.active) {
 
 /** Grid view **/
 
-#visio #participants:not(.active) .participant.active:not(.audio_off)::after {
-    color: var(--p-green);
-    opacity: calc(1 - var(--level));
-    transform: scale(1.5) translateX(0.25rem) translateY(-0.25rem);
-    transition: opacity 0.5s ease-in-out, transform .3s cubic-bezier(.4, 0, .2, 1);
+#visio #participants:not(.active) .participant.active:not(.audio_off) span.status::before,
+#visio span#toggle_audio::after {
+    content: '';
+    display: inline-block;
+    width: 0.5rem;
+    height: 2rem;
+    background-color: white;
+    position: relative;
+    bottom: 0;
+    border-radius: 1rem;
+    transition: height .4s;
+    height: calc(var(--level) * 2rem);
+    min-height: 0.5rem;
+    opacity: 0.75;
+    margin-right: -0.25rem;
+    box-shadow: var(--elevation-4);
+}
+
+#visio span#toggle_audio::after {
+    height: calc(var(--level) * 2.5rem);
+    margin-left: -0.4rem;
 }
 
 #visio #participants:not(.active):has(.participant:nth-child(2)) .participant {
@@ -435,7 +451,7 @@ body>#visio #participants.active:not(.active):has(.participant:nth-child(2)) .pa
     content: '\e061 \f58b \e02b';
 }
 
-#visio .participant.audio_off.video_off::after {
+#visio .participant.audio_off.video_off span.status::after {
     content: '\f83b \e02b';
 }
 

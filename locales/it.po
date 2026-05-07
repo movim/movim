@@ -131,7 +131,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 16:58+0200\n"
+"POT-Creation-Date: 2026-05-09 12:49+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: svp -, 2025\n"
 "Language-Team: Italian (http://app.transifex.com/movim/movim/language/it/)\n"
@@ -687,14 +687,6 @@ msgstr "%s minuti e %s secondi"
 #: [chat]jingle_seconds
 msgid "%s seconds"
 msgstr "%s secondi"
-
-#: [chat]muji_propose
-msgid "A conference call has started"
-msgstr "È iniziata una conferenza"
-
-#: [chat]muji_retract
-msgid "The conference call has ended"
-msgstr "Si è conclusa una conferenza"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -3127,18 +3119,6 @@ msgstr "Nessun suono individuato dal tuo microfono"
 msgid "Try make some noise, select another source or check your system settings"
 msgstr ""
 
-#: [muji]call_audio_invite
-msgid "You are invited in an audio conference call"
-msgstr "Sei invitato ad una chiamata in conferenza"
-
-#: [muji]call_video_invite
-msgid "You are invited in a video conference call"
-msgstr "Sei invitato ad una videochiamata in conferenza"
-
-#: [muji]cannot_create
-msgid "Cannot create a conference call on your server"
-msgstr "Impossibile creare la chiamata in conferenza sul tuo server"
-
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Movim richiede Javascript abilitato per funzionare"
@@ -4112,3 +4092,18 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digita qui"
+
+#~ msgid "A conference call has started"
+#~ msgstr "È iniziata una conferenza"
+
+#~ msgid "The conference call has ended"
+#~ msgstr "Si è conclusa una conferenza"
+
+#~ msgid "You are invited in an audio conference call"
+#~ msgstr "Sei invitato ad una chiamata in conferenza"
+
+#~ msgid "You are invited in a video conference call"
+#~ msgstr "Sei invitato ad una videochiamata in conferenza"
+
+#~ msgid "Cannot create a conference call on your server"
+#~ msgstr "Impossibile creare la chiamata in conferenza sul tuo server"

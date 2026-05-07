@@ -48,7 +48,7 @@ var Chat = {
     groupChatMembers: [],
 
     // Jingle types
-    jingleTypes: ['jingle_incoming', 'jingle_outgoing', 'jingle_end', 'muji_propose', 'muji_retract'],
+    jingleTypes: ['jingle_incoming', 'jingle_outgoing', 'jingle_end'],
 
     // Keep track of replaced messages hash when loading history or refreshing
     replacedHash: [],

@@ -125,7 +125,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 16:58+0200\n"
+"POT-Creation-Date: 2026-05-09 12:49+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023,2025-2026\n"
 "Language-Team: Bulgarian (http://app.transifex.com/movim/movim/language/bg/)\n"
@@ -681,14 +681,6 @@ msgstr "%s минути и %s секунди"
 #: [chat]jingle_seconds
 msgid "%s seconds"
 msgstr "%s секунди"
-
-#: [chat]muji_propose
-msgid "A conference call has started"
-msgstr "Конферентен разговор е започнат"
-
-#: [chat]muji_retract
-msgid "The conference call has ended"
-msgstr "Кнферентният разговор приключи"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -3121,18 +3113,6 @@ msgstr ""
 msgid "Try make some noise, select another source or check your system settings"
 msgstr ""
 
-#: [muji]call_audio_invite
-msgid "You are invited in an audio conference call"
-msgstr ""
-
-#: [muji]call_video_invite
-msgid "You are invited in a video conference call"
-msgstr ""
-
-#: [muji]cannot_create
-msgid "Cannot create a conference call on your server"
-msgstr ""
-
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Movim изисква Javascript да е разрешен, за да работи коректно."
@@ -4106,3 +4086,9 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Пиши тук"
+
+#~ msgid "A conference call has started"
+#~ msgstr "Конферентен разговор е започнат"
+
+#~ msgid "The conference call has ended"
+#~ msgstr "Кнферентният разговор приключи"

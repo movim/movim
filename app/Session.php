@@ -42,11 +42,6 @@ class Session extends Model
         return $this->hasMany(Roster::class);
     }
 
-    public function mujiCalls()
-    {
-        return $this->hasMany(MujiCall::class, 'session_id', 'id');
-    }
-
     public function conferences()
     {
         return $this->hasMany(Conference::class)->orderBy('conference');

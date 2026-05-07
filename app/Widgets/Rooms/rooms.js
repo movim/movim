@@ -1,5 +1,6 @@
 var Rooms = {
     default_services: [],
+    refreshMujisInterval: null,
 
     cleanId: function (input) {
         if (input.value) {
@@ -117,7 +118,7 @@ var Rooms = {
         }
     },
 
-    refresh: function (callSecond) {
+    refresh: function () {
         Rooms.displayToggleButton();
 
         var parent = document.querySelector('#rooms').parentElement;
@@ -143,11 +144,6 @@ var Rooms = {
                 items[i].onclick = function (e) {
                     Chat.getRoom(this.dataset.jid);
                 }
-            }
-
-            // If we have a room with a call we do a second daemon refresh to get the live status
-            if (items[i].classList.contains('muc_call') && callSecond == true) {
-                Rooms_ajaxSecondGet(items[i].dataset.jid);
             }
 
             if (
@@ -222,10 +218,20 @@ var Rooms = {
                 element.classList.remove('unread');
             }
         }
+    },
+
+    refreshMujis: function() {
+        // Doesn't refresh the list while we're on it
+        document.querySelectorAll('#rooms li.muji:not(.active)').forEach(room => {
+            Rooms_ajaxRefresh(room.dataset.jid);
+        });
     }
 }
 
 MovimWebsocket.initiate(() => {
+    clearInterval(Rooms.refreshMujisInterval);
+    Rooms.refreshMujisInterval = setInterval(Rooms.refreshMujis, 5 * 1000);
+
     Rooms_ajaxHttpGet();
     Rooms.checkNoConnected();
 });

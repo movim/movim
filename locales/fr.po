@@ -132,7 +132,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 16:58+0200\n"
+"POT-Creation-Date: 2026-05-09 12:49+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2026\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -688,14 +688,6 @@ msgstr "%s minutes et %s secondes"
 #: [chat]jingle_seconds
 msgid "%s seconds"
 msgstr "%s secondes"
-
-#: [chat]muji_propose
-msgid "A conference call has started"
-msgstr "Une téléconférence a démarré"
-
-#: [chat]muji_retract
-msgid "The conference call has ended"
-msgstr "La téléconférence est terminée"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -3128,18 +3120,6 @@ msgstr "Aucun son détecté venant de votre microphone"
 msgid "Try make some noise, select another source or check your system settings"
 msgstr "Faites un peu de bruit, sélectionnez une autre source ou vérifiez votre configuration système"
 
-#: [muji]call_audio_invite
-msgid "You are invited in an audio conference call"
-msgstr "Vous êtes invité à rejoindre une conférence audio"
-
-#: [muji]call_video_invite
-msgid "You are invited in a video conference call"
-msgstr "Vous êtes invité à rejoindre une conférence vidéo"
-
-#: [muji]cannot_create
-msgid "Cannot create a conference call on your server"
-msgstr "La téléconférence ne peut être créée sur votre serveur"
-
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Movim nécessite JavaScript pour fonctionner correctement."
@@ -4113,3 +4093,18 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
+
+#~ msgid "A conference call has started"
+#~ msgstr "Une téléconférence a démarré"
+
+#~ msgid "The conference call has ended"
+#~ msgstr "La téléconférence est terminée"
+
+#~ msgid "You are invited in an audio conference call"
+#~ msgstr "Vous êtes invité à rejoindre une conférence audio"
+
+#~ msgid "You are invited in a video conference call"
+#~ msgstr "Vous êtes invité à rejoindre une conférence vidéo"
+
+#~ msgid "Cannot create a conference call on your server"
+#~ msgstr "La téléconférence ne peut être créée sur votre serveur"

@@ -35,21 +35,12 @@ class Chats extends Base
 
         $this->registerEvent('currentcall_started', 'onCallEvent', 'chat');
         $this->registerEvent('currentcall_stopped', 'onCallEvent', 'chat');
-
-        $this->registerEvent('callinvitepropose', 'onCallInvite');
-        $this->registerEvent('callinviteaccept', 'onCallInvite');
-        $this->registerEvent('callinviteleft', 'onCallInvite');
     }
 
     public function onStart(Packet $packet)
     {
         $tpl = $this->tpl();
         $tpl->cacheClear('_chats_item');
-    }
-
-    public function onCallInvite(Packet $packet)
-    {
-        $this->rpc('MovimTpl.fill', '#chats_calls_list', $this->prepareCalls());
     }
 
     public function onMessage(Packet $packet)
@@ -243,16 +234,6 @@ class Chats extends Base
         $this->rpc('Stories_ajaxHttpGet');
 
         (new Notif($this->me, sessionId: $this->sessionId))->ajaxClear('chat|' . $jid);
-    }
-
-    public function prepareCalls()
-    {
-        $view = $this->tpl();
-        $view->assign('calls', $this->me
-            ? $this->me->session->mujiCalls()->where('isfromconference', false)->get()
-            : []);
-
-        return $view->draw('_chats_calls');
     }
 
     public function prepareChats()

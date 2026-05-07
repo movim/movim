@@ -6,7 +6,7 @@
         {if="$conference->pinned"}pinned{/if}
         {if="$conference->isGroupChat()"}groupchat{/if}
         {if="$conference->unreads_count > 0 || $conference->quoted_count > 0"}unread{/if}
-        {if="$conference->mujiCalls->isNotEmpty()"}muc_call{/if}
+        {if="$conference->mujiPresences->isNotEmpty()"}muji{/if}
     ">
     <ul class="list thin">
         <li>
@@ -47,8 +47,12 @@
                             {$info->occupants} <i class="material-symbols">people</i>
                         </span>
                     {/if}
-
-                    <span title="{$conference->conference}">{$conference->title}</span>
+                    <span title="{$conference->conference}">
+                        {if="$conference->mujiPresences->isNotEmpty()"}
+                            <i class="material-symbols call icon {if="$conference->presence->hasMuji()"}green blink{else}blue{/if}" title="{$c->__('visio.in_call')}">call</i>
+                        {/if}
+                        {$conference->title}
+                    </span>
                     <span class="second">
                         {if="$conference->notify == 0"}
                             <i class="material-symbols" title="{$c->__('room.notify_never')}">notifications_off</i>
@@ -76,35 +80,18 @@
             </span>
         </li>
 
-        {loop="$conference->mujiCalls"}
+        {loop="$conference->mujiPresences"}
             <li>
                 <span class="primary icon r2 small">
                     <i class="material-symbols icon gray">
                         line_curve
                     </i>
                 </span>
-                <span class="primary icon small">
-                    <i class="material-symbols icon {if="$value->joined"}green blink{else}blue{/if}">
-                        {$value->icon}
-                    </i>
+                <span class="primary icon bubble small">
+                    <img loading="lazy" src="{$value->conferencePicture}">
                 </span>
                 <div>
-                    <p class="line" data-mujiid="{$value->id}">
-                        <span class="info">
-                            {if="$value->joined"}
-                                {$value->presences->count()}
-                            {else}
-                                {$value->participants->count()}
-                            {/if}
-                            <i class="material-symbols">people</i>
-                        </span>
-                        {if="$value->joined"}{$c->__('visio.joined_call')}{else}{$c->__('visio.in_call')}{/if}
-                        <span class="second">
-                            {$c->prepareDate($value->created_at, true)}
-                            •
-                            {$c->__('visio.by', $value->inviter->name)}
-                        </span>
-                    </p>
+                    <p>{$value->resource}</p>
                 </div>
             </li>
         {/loop}

@@ -12,7 +12,7 @@ class Conference extends Model
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'conference'];
     protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned', 'space_server', 'space_node'];
-    protected $with = ['contact', 'mujiCalls'];
+    protected $with = ['contact', 'mujiPresences'];
 
     public const XMLNS_NOTIFICATIONS = 'urn:xmpp:notification-settings:0';
     public const XMLNS_PINNED = 'urn:xmpp:bookmarks-pinning:0';
@@ -43,6 +43,11 @@ class Conference extends Model
             ->orderBy('resource');
     }
 
+    public function mujiPresences()
+    {
+        return $this->presences()->whereNotNull('muji_xml')->orderBy('updated_at', 'asc');
+    }
+
     public function scopeFromSpace($query, ?bool $from = true)
     {
         return $from
@@ -58,12 +63,6 @@ class Conference extends Model
     public function spaceInfo()
     {
         return $this->hasOne(Info::class, ['server', 'node'], ['space_server', 'space_node']);
-    }
-
-    public function mujiCalls()
-    {
-        return $this->hasMany(MujiCall::class, ['jidfrom', 'session_id'], ['conference', 'session_id'])
-            ->where('isfromconference', true);
     }
 
     public function otherPresences()
@@ -318,15 +317,6 @@ class Conference extends Model
         }
 
         return false;
-    }
-
-    public function currentMuji(): ?MujiCall
-    {
-        return $this->mujiCalls->filter(
-            function ($muji) {
-                return $muji->joined;
-            }
-        )->first();
     }
 
     public function toArray()

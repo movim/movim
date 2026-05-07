@@ -48,11 +48,9 @@ class Rooms extends Base
         $this->registerEvent('presence_muc_errornotacceptable', 'onNotAcceptable');
         $this->registerEvent('presence_muc_errorserviceunavailable', 'onServiceUnavailable');
 
-        $this->registerEvent('callinvitepropose', 'onCallInvitePropose');
-        $this->registerEvent('callinviteaccept', 'onCallInvite');
-        $this->registerEvent('callinviteleft', 'onCallInvite');
-        $this->registerEvent('callinviteretract', 'onCallInvite');
-        $this->registerEvent('presence_muji_event', 'onCallInvite');
+        $this->registerEvent('presence_muji', 'onMujiPresence');
+        $this->registerEvent('presence_was_muji', 'onMujiPresence');
+        $this->registerEvent('presence_muc_muji_leaving', 'onMujiPresence');
     }
 
     public function onDiscoRequest(Packet $packet)
@@ -103,43 +101,10 @@ class Rooms extends Base
         );
     }
 
-    public function onCallInvitePropose(Packet $packet)
+    public function onMujiPresence(Packet $packet)
     {
-        $muji = $packet->content;
-
-        if ($muji->jidfrom && $muji->conference && !$muji->inviter->isUser($this->me)) {
-            $this->notif(
-                key: 'chat|' . $muji->jidfrom,
-                title: ($muji->conference != null && $muji->conference->name)
-                    ? $muji->conference->name
-                    : $muji->jidfrom,
-                body: ($muji->video)
-                    ? "📹 " . __('muji.call_video_invite')
-                    : "📞 " . __('muji.call_audio_invite'),
-                url: $this->route('chat', [$muji->jidfrom, 'room']),
-                picture: $muji->conference->getPicture(),
-                time: 5,
-                actions: [[
-                    'action' => 'chat',
-                    'title' => $this->__('button.reply')
-                ]],
-                data: [
-                    'jid' => $muji->jidfrom,
-                    'muc' => true
-                ]
-            );
-
-            $this->onCallInvite($packet);
-        }
-    }
-
-    public function onCallInvite(Packet $packet)
-    {
-        $muji = $packet->content;
-
-        if ($muji->jidfrom && $muji->conference) {
-            $this->onPresence($muji->jidfrom);
-        }
+        $presence = $packet->content;
+        $this->onPresence($presence->jid);
     }
 
     public function onMessage(Packet $packet)
@@ -267,7 +232,7 @@ class Rooms extends Base
         }
     }
 
-    public function onPresence(string $room, bool $callSecond = true)
+    public function onPresence(string $room)
     {
         $conference = $this->me->session->conferences()
             ->fromSpace(false)
@@ -277,14 +242,14 @@ class Rooms extends Base
             ->first();
 
         if ($conference) {
-            $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference), $callSecond);
-            $this->rpc('Rooms.refresh', $callSecond);
+            $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference));
+            $this->rpc('Rooms.refresh');
         }
     }
 
-    public function ajaxSecondGet(string $room)
+    public function ajaxRefresh(string $room)
     {
-        $this->onPresence($room, callSecond: false);
+        $this->onPresence($room);
     }
 
     public function ajaxHttpGet()
@@ -301,7 +266,7 @@ class Rooms extends Base
             $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference));
         }
 
-        $this->rpc('Rooms.refresh', true);
+        $this->rpc('Rooms.refresh');
         $this->rpc('Rooms.checkNoConnected');
 
         $this->rpc('MovimUtils.removeClass', '#rooms ul.list.rooms', 'spin');
@@ -336,7 +301,6 @@ class Rooms extends Base
         $p->setNickname($nickname ?? $this->me->username);
 
         if ($lastMember && $lastMember->version) {
-            \logDebug('SINCE ' . $room . ' ' . $lastMember->version);
             $p->setMavsince($lastMember->version);
         }
 

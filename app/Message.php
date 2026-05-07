@@ -57,8 +57,6 @@ class Message extends Model
         'muc_member',
         'muc_outcast',
         'muc_owner',
-        'muji_propose',
-        'muji_retract',
     ];
 
     public static function boot()

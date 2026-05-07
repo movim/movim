@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 16:58+0200\n"
+"POT-Creation-Date: 2026-05-09 12:49+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Yurt Page, 2025\n"
 "Language-Team: Russian (http://app.transifex.com/movim/movim/language/ru/)\n"
@@ -695,14 +695,6 @@ msgstr "%s минут и %s секунд"
 #: [chat]jingle_seconds
 msgid "%s seconds"
 msgstr "%s секунд"
-
-#: [chat]muji_propose
-msgid "A conference call has started"
-msgstr "Начался конференц-звонок"
-
-#: [chat]muji_retract
-msgid "The conference call has ended"
-msgstr "Конференц-звонок закончен"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -3135,18 +3127,6 @@ msgstr "Звук из вашего микрофона не обнаружен."
 msgid "Try make some noise, select another source or check your system settings"
 msgstr "Попробуйте создать какой-нибудь шум, выберите другой источник или проверьте настройки системы."
 
-#: [muji]call_audio_invite
-msgid "You are invited in an audio conference call"
-msgstr "Вы приглашены на звонок аудиоконференции."
-
-#: [muji]call_video_invite
-msgid "You are invited in a video conference call"
-msgstr "Вы приглашены на звонок видеоконференции"
-
-#: [muji]cannot_create
-msgid "Cannot create a conference call on your server"
-msgstr "Не удаётся создать конференц-звонок на вашем сервере"
-
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Для правильной работы Movim необходимо разрешить Javascript."
@@ -4120,3 +4100,18 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
+
+#~ msgid "A conference call has started"
+#~ msgstr "Начался конференц-звонок"
+
+#~ msgid "The conference call has ended"
+#~ msgstr "Конференц-звонок закончен"
+
+#~ msgid "You are invited in an audio conference call"
+#~ msgstr "Вы приглашены на звонок аудиоконференции."
+
+#~ msgid "You are invited in a video conference call"
+#~ msgstr "Вы приглашены на звонок видеоконференции"
+
+#~ msgid "Cannot create a conference call on your server"
+#~ msgstr "Не удаётся создать конференц-звонок на вашем сервере"

@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 16:58+0200\n"
+"POT-Creation-Date: 2026-05-09 12:49+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Mikkel Kirkgaard Nielsen <memb_transifex@mikini.dk>, 2016\n"
 "Language-Team: Danish (http://app.transifex.com/movim/movim/language/da/)\n"
@@ -678,14 +678,6 @@ msgstr ""
 
 #: [chat]jingle_seconds
 msgid "%s seconds"
-msgstr ""
-
-#: [chat]muji_propose
-msgid "A conference call has started"
-msgstr ""
-
-#: [chat]muji_retract
-msgid "The conference call has ended"
 msgstr ""
 
 #: [chat]muc_admin
@@ -3117,18 +3109,6 @@ msgstr ""
 
 #: [visiolobby]no_mic_sound2
 msgid "Try make some noise, select another source or check your system settings"
-msgstr ""
-
-#: [muji]call_audio_invite
-msgid "You are invited in an audio conference call"
-msgstr ""
-
-#: [muji]call_video_invite
-msgid "You are invited in a video conference call"
-msgstr ""
-
-#: [muji]cannot_create
-msgid "Cannot create a conference call on your server"
 msgstr ""
 
 #: [global]no_js

@@ -86,7 +86,6 @@ class LinkersManager
 
             case 'crash':
                 exit;
-                break;
 
             case 'unregister':
                 $linker->logout();

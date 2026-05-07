@@ -146,7 +146,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 16:58+0200\n"
+"POT-Creation-Date: 2026-05-09 12:49+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>, 2015\n"
 "Language-Team: German (http://app.transifex.com/movim/movim/language/de/)\n"
@@ -702,14 +702,6 @@ msgstr "%s Minuten und %s Sekunden"
 #: [chat]jingle_seconds
 msgid "%s seconds"
 msgstr "%s Sekunden"
-
-#: [chat]muji_propose
-msgid "A conference call has started"
-msgstr "Ein Gruppenanruf wurde gestartet"
-
-#: [chat]muji_retract
-msgid "The conference call has ended"
-msgstr "Der Gruppenanruf wurde beendet"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -3142,18 +3134,6 @@ msgstr "Kein Signal vom Mikrofon erkannt"
 msgid "Try make some noise, select another source or check your system settings"
 msgstr "Mach ein paar Geräusche, wähle eine andere Quelle oder prüfe deine Systemeinstellungen"
 
-#: [muji]call_audio_invite
-msgid "You are invited in an audio conference call"
-msgstr "Du wurdest zu einem Audio-Gruppenanruf eingeladen"
-
-#: [muji]call_video_invite
-msgid "You are invited in a video conference call"
-msgstr "Du wurdest zu einem Video-Gruppenanruf eingeladen"
-
-#: [muji]cannot_create
-msgid "Cannot create a conference call on your server"
-msgstr "Kann keinen Gruppenanruf auf deinem Server erstellen"
-
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Movim benötigt JavaScript, um richtig zu funktionieren"
@@ -4127,3 +4107,18 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgid "A conference call has started"
+#~ msgstr "Ein Gruppenanruf wurde gestartet"
+
+#~ msgid "The conference call has ended"
+#~ msgstr "Der Gruppenanruf wurde beendet"
+
+#~ msgid "You are invited in an audio conference call"
+#~ msgstr "Du wurdest zu einem Audio-Gruppenanruf eingeladen"
+
+#~ msgid "You are invited in a video conference call"
+#~ msgstr "Du wurdest zu einem Video-Gruppenanruf eingeladen"
+
+#~ msgid "Cannot create a conference call on your server"
+#~ msgstr "Kann keinen Gruppenanruf auf deinem Server erstellen"

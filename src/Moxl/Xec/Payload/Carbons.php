@@ -16,10 +16,6 @@ class Carbons extends Payload
              && $message->retract->attributes()->xmlns == 'urn:xmpp:message-retract:1') {
                 $retracted = new Retracted($this->me, sessionId: $this->sessionId);
                 $retracted->handle($message->retract, $message);
-            } elseif ($message->invite
-             && $message->invite->attributes()->xmlns == 'urn:xmpp:call-invites:0') {
-                $callInvite = new CallInvitePropose($this->me, sessionId: $this->sessionId);
-                $callInvite->handle($message->invite, $message, carbon: true);
             } elseif ($message->body || $message->subject
             || ($message->reactions && $message->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0')) {
                 $m = \App\Message::findByStanza($this->me, $message);

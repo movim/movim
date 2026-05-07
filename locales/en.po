@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 16:58+0200\n"
+"POT-Creation-Date: 2026-05-09 12:49+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://app.transifex.com/movim/movim/language/en/)\n"
@@ -678,14 +678,6 @@ msgstr "%s minutes and %s seconds"
 #: [chat]jingle_seconds
 msgid "%s seconds"
 msgstr "%s seconds"
-
-#: [chat]muji_propose
-msgid "A conference call has started"
-msgstr "A conference call has started"
-
-#: [chat]muji_retract
-msgid "The conference call has ended"
-msgstr "The conference call has ended"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -3118,18 +3110,6 @@ msgstr "No sound detected from your microphone"
 msgid "Try make some noise, select another source or check your system settings"
 msgstr "Try make some noise, select another source or check your system settings"
 
-#: [muji]call_audio_invite
-msgid "You are invited in an audio conference call"
-msgstr "You are invited in an audio conference call"
-
-#: [muji]call_video_invite
-msgid "You are invited in a video conference call"
-msgstr "You are invited in a video conference call"
-
-#: [muji]cannot_create
-msgid "Cannot create a conference call on your server"
-msgstr "Cannot create a conference call on your server"
-
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Movim requires Javascript to be enabled to work properly."
@@ -4103,3 +4083,18 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
+
+#~ msgid "A conference call has started"
+#~ msgstr "A conference call has started"
+
+#~ msgid "The conference call has ended"
+#~ msgstr "The conference call has ended"
+
+#~ msgid "You are invited in an audio conference call"
+#~ msgstr "You are invited in an audio conference call"
+
+#~ msgid "You are invited in a video conference call"
+#~ msgstr "You are invited in a video conference call"
+
+#~ msgid "Cannot create a conference call on your server"
+#~ msgstr "Cannot create a conference call on your server"

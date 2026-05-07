@@ -31,7 +31,7 @@ var MovimVisio = {
     },
 
     init: function (fullJid, jid, id, withVideo, isMuji) {
-        Visio_ajaxPrepare(jid);
+        Visio_ajaxPrepare(jid); // ?muji
 
         MovimVisio.id = id;
 
