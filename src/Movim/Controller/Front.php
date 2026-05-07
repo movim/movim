@@ -40,7 +40,9 @@ class Front extends Base
                 $c = $this->loadController($payload->b->c);
                 $c->load();
 
-                if ($c->session_only && !$this->user) {
+                if (($c->session_only && !$this->user)
+                    || (!$c->session_only && !in_array($payload->b->w, $c->listWidgets()))
+                ) {
                     header('HTTP/1.0 403 Forbidden');
                     exit;
                 }

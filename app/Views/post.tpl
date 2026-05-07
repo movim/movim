@@ -4,6 +4,7 @@
 <?php $this->widget('SendTo');?>
 <?php $this->widget('Tabs');?>
 <?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
+<?php $this->widget('Visio');?>
 
 <?php $this->widget('ContactActions');?>
 <?php $this->widget('AdHoc');?>

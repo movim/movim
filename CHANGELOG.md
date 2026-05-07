@@ -4,6 +4,9 @@ Movim Changelog
 v0.33.2 (master)
 ---------------------------
 * Remove the templater
+* Remove the invitation based Muji system and drop the XEP-0482: Call Invites
+* Conference calls UI improvements
+* Forbid the usage of non Controller Widgets via Ajax calls using a strict Controller widget list verification
 
 v0.33.1
 ---------------------------

@@ -44,5 +44,4 @@
 <?php $this->widget('Preview');?>
 <?php $this->widget('Notif');?>
 <?php $this->widget('Toast');?>
-<?php $this->widget('Visio');?>
 <div id="endcommon" class="hide"></div>

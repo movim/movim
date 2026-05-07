@@ -5,6 +5,7 @@
 <?php $this->widget('ContactActions');?>
 <?php $this->widget('AdHoc');?>
 <?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
+<?php $this->widget('Visio');?>
 
 <nav aria-label="<?php echo __('global.main_menu') ?>">
     <?php $this->widget('Presence');?>

@@ -4,6 +4,7 @@
 <?php $this->widget('SendTo');?>
 <?php $this->widget('ContactActions');?>
 <?php $this->widget('AdHoc');?>
+<?php $this->widget('Visio');?>
 <?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
 
 <nav aria-label="<?php echo __('global.main_menu') ?>">

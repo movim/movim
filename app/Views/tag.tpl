@@ -1,8 +1,9 @@
 <?php if ($this->user) { ?>
     <?php $this->widget('Search');?>
-        <?php $this->widget('Notifications');?>
+    <?php $this->widget('Notifications');?>
     <?php $this->widget('SendTo');?>
     <?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
+    <?php $this->widget('Visio');?>
 
     <?php $this->widget('PostActions');?>
 

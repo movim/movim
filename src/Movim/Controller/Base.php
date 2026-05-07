@@ -152,6 +152,16 @@ class Base
         }
     }
 
+    public function listWidgets(): array
+    {
+        preg_match_all('/widget(\(\'(\w+)\'\))/',
+            file_get_contents(VIEWS_PATH . '/' . $this->name . '.tpl'),
+            $matches
+        );
+
+        return $matches[2];
+    }
+
     public function load() {}
 
     public function dispatch() {}
