@@ -6,9 +6,11 @@ use App\Affiliation;
 use App\Conference;
 use App\Widgets\Rooms\Rooms;
 use App\Widgets\SpacesMenu\SpacesMenu;
+use App\Widgets\Visio\Visio;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Muc\ChangeAffiliation;
 use Moxl\Xec\Action\Muc\CreateGroupChat;
+use Moxl\Xec\Action\Muc\CreateMujiRoom;
 use Moxl\Xec\Action\Muc\Destroy;
 use Moxl\Xec\Action\Muc\SetConfig;
 use Moxl\Xec\Action\Presence\Muc;
@@ -28,6 +30,9 @@ class SpaceRooms extends Base
         $this->registerEvent('space_addedroom', 'onEditedRooms');
         $this->registerEvent('space_deletedroom', 'onEditedRooms');
         $this->registerEvent('presence_muc_errorregistrationrequired', 'onRoomRegistrationRequired');
+        $this->registerEvent('presence_muji', 'onMujiPresence');
+        $this->registerEvent('presence_was_muji', 'onMujiPresence');
+        $this->registerEvent('presence_muc_muji_leaving', 'onMujiPresence');
     }
 
     public function onAffiliations(Packet $packet)
@@ -47,6 +52,29 @@ class SpaceRooms extends Base
     public function onRoomRegistrationRequired(Packet $packet)
     {
         $this->rpc('MovimUtils.addClass', '#space' . cleanupId($packet->content), 'disabled');
+    }
+
+    public function onMujiPresence(Packet $packet)
+    {
+        $presence = $packet->content;
+        $mucJid = is_object($presence) ? ($presence->jid ?? null) : null;
+
+        if (!$mucJid) return;
+
+        $conference = $this->me->session->conferences()
+            ->where('conference', $mucJid)
+            ->whereNotNull('space_server')
+            ->first();
+
+        if (!$conference || !$conference->voice_room) return;
+
+        $subscription = $this->me->subscriptions()
+            ->space($conference->space_server, $conference->space_node)
+            ->first();
+
+        if (!$subscription) return;
+
+        $this->ajaxHttpGet($conference->space_server, $conference->space_node);
     }
 
     public function onEditedRooms(Packet $packet)
@@ -214,6 +242,11 @@ class SpaceRooms extends Base
             ->setPubsubnode('xmpp:' . $form->server->value . '?;node=' . $form->node->value)
             ->request();
 
+        if ((bool)$form->voice_room->value) {
+            $cmr = $this->xmpp(new CreateMujiRoom);
+            $cmr->setTo($id)->request();
+        }
+
         // Publish the item in the Space
         $conference = new Conference;
         $conference->space_server = $form->server->value;
@@ -221,7 +254,8 @@ class SpaceRooms extends Base
         $conference->conference = $id;
         $conference->name = $form->name->value;
         $conference->pinned = (bool)$form->pinned->value;
-        $conference->autojoin = true;
+        $conference->autojoin = !(bool)$form->voice_room->value;
+        $conference->voice_room = (bool)$form->voice_room->value;
 
         $b = $this->xmpp(new AddRoom);
         $b->setConference($conference)
@@ -239,6 +273,12 @@ class SpaceRooms extends Base
                 ->setAffiliation($affiliation->affiliation)
                 ->request();
         }
+    }
+
+    public function ajaxJoinVoiceRoom(string $conference)
+    {
+        (new Visio(user: $this->me, sessionId: $this->sessionId))
+            ->ajaxJoinMuji($conference, withVideo: false);
     }
 
     public function ajaxAskDestroy(string $server, string $node, string $id)

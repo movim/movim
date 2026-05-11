@@ -36,6 +36,23 @@
                         <p>{$c->__('chatrooms.pinned')}</p>
                     </div>
                 </li>
+                <li>
+                    <span class="primary icon gray">
+                        <i class="material-symbols">volume_up</i>
+                    </span>
+                    <span class="control">
+                        <div class="checkbox">
+                            <input
+                                type="checkbox"
+                                id="voice_room"
+                                name="voice_room"/>
+                            <label for="voice_room"></label>
+                        </div>
+                    </span>
+                    <div>
+                        <p>{$c->__('spacerooms.voice_room')}</p>
+                    </div>
+                </li>
             </ul>
         </div>
     </form>

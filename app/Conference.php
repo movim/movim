@@ -11,11 +11,12 @@ class Conference extends Model
 {
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'conference'];
-    protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned', 'space_server', 'space_node'];
+    protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned', 'space_server', 'space_node', 'voice_room'];
     protected $with = ['contact', 'mujiPresences'];
 
     public const XMLNS_NOTIFICATIONS = 'urn:xmpp:notification-settings:0';
     public const XMLNS_PINNED = 'urn:xmpp:bookmarks-pinning:0';
+    public const XMLNS_MUJI   = 'urn:xmpp:jingle:muji:0';
     public const NOTIFICATIONS = [
         0 => 'never',
         1 => 'on-mention',
@@ -222,6 +223,14 @@ class Conference extends Model
                 unset($item->conference->extensions->pinned);
             }
 
+            if (
+                $item->conference->extensions->muji
+                && (string)$item->conference->extensions->muji->attributes()->xmlns === self::XMLNS_MUJI
+            ) {
+                $this->voice_room = true;
+                unset($item->conference->extensions->muji);
+            }
+
             $this->extensions = $item->conference->extensions->asXML();
         }
     }
@@ -328,6 +337,7 @@ class Conference extends Model
             'conference' => $this->attributes['conference']  ?? null,
             'space_server' => $this->attributes['space_server'] ?? null,
             'space_node' => $this->attributes['space_node'] ?? null,
+            'voice_room' => $this->attributes['voice_room'] ?? false,
             'name' => $this->attributes['name'] ?? null,
             'nick' => $this->attributes['nick'] ?? null,
             'autojoin' => $this->attributes['autojoin'] ?? null,

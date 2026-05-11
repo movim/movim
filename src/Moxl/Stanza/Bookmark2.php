@@ -68,7 +68,7 @@ class Bookmark2
 
             $extensions = $dom->importNode($domExtensions->documentElement, true);
             $conference->appendChild($extensions);
-        } else if ($configuration->notify !== null || $configuration->pinned == true) {
+        } else if ($configuration->notify !== null || $configuration->pinned == true || $configuration->voice_room == true) {
             $extensions = $dom->createElement('extensions');
             $conference->appendChild($extensions);
         }
@@ -84,6 +84,12 @@ class Bookmark2
             $pinned = $dom->createElement('pinned');
             $pinned->setAttribute('xmlns', Conference::XMLNS_PINNED);
             $extensions->appendChild($pinned);
+        }
+
+        if ($configuration->voice_room == true) {
+            $muji = $dom->createElement('muji');
+            $muji->setAttribute('xmlns', Conference::XMLNS_MUJI);
+            $extensions->appendChild($muji);
         }
 
         if ($withPublishOption) {
