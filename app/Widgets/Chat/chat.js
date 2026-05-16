@@ -1177,13 +1177,10 @@ var Chat = {
                 let refreshP = document.querySelector('#id' + data.id + ' p.encrypted');
                 if (refreshP) {
                     if (plaintext) {
-                        if (typeof refreshP.setHTML == 'function') {
-                            let linkified = MovimUtils.linkify(plaintext);
-                            refreshP.setHTML(ChatOmemo.searchEncryptedFile(linkified));
-                        } else {
-                            // Safari doesn't support setHTML yet...
-                            refreshP.innerText = ChatOmemo.searchEncryptedFile(plaintext);
-                        }
+                        // Escape the message to prevent HTML injection.
+                        let escaped = new Option(plaintext).innerHTML;
+                        let linkified = MovimUtils.linkify(escaped);
+                        refreshP.innerHTML = ChatOmemo.searchEncryptedFile(linkified);
 
                         refreshP.classList.remove('encrypted');
                     } else {
