@@ -9,6 +9,7 @@ v0.33.2 (master)
 * Forbid the usage of non Controller Widgets via Ajax calls using a strict Controller widget list verification
 * Improved files enclosure support in Posts
 * Detect if an uploaded file "failed" (is empty)
+* Fix #1444 Don't overwrite unknown vCard4 elements when handling them in Movim
 
 v0.33.1
 ---------------------------
