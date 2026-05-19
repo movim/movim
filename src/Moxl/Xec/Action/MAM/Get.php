@@ -91,7 +91,6 @@ class Get extends Action
             $g->setStart($this->_start);
             $g->setEnd($this->_end);
             $g->setBefore($this->_before);
-            $g->setVersion($this->_version);
             $g->setAfter((string)$stanza->fin->set->last);
             $g->setMessageCounter($totalCounter);
             $g->request();
