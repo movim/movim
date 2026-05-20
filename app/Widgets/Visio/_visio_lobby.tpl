@@ -125,30 +125,20 @@
             </button>
         {/if}
     {else}
-        {if="$calling"}
-            <button onclick="VisioUtils.cancelLobby();" class="button flat red">
-                {$c->__('button.cancel')}
-            </button>
-            <button id="lobby_start" onclick="Visio_ajaxMujiJoin('{$conference->conference}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear(); Notif.snackbarClear();" class="button color green disabled">
-                {if="$withvideo"}
-                    <i class="material-symbols">videocam</i>
-                {else}
-                    <i class="material-symbols">call</i>
-                {/if}
+        <button onclick="VisioUtils.cancelLobby();" class="button flat red">
+            {$c->__('button.cancel')}
+        </button>
+        <button id="lobby_start" onclick="Visio_ajaxMujiPrepare('{if="$calling"}{$conference->conference}{else}{$id|echapJS}{/if}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear(); Notif.snackbarClear();" class="button color green disabled">
+            {if="$withvideo"}
+                <i class="material-symbols">videocam</i>
+            {else}
+                <i class="material-symbols">call</i>
+            {/if}
+            {if="$calling"}
                 {$c->__('button.create')}
-            </button>
-        {else}
-            <button onclick="VisioUtils.cancelLobby();" class="button flat red">
-                {$c->__('button.cancel')}
-            </button>
-            <button id="lobby_start" onclick="Visio_ajaxMujiAccept('{$id|echapJS}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear(); Notif.snackbarClear();" class="button color green disabled">
-                {if="$withvideo"}
-                    <i class="material-symbols shake">videocam</i>
-                {else}
-                    <i class="material-symbols shake">call</i>
-                {/if}
+            {else}
                 {$c->__('button.join')}
-            </button>
-        {/if}
+            {/if}
+        </button>
     {/if}
 </footer>

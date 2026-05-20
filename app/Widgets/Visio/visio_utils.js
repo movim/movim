@@ -142,70 +142,32 @@ var VisioUtils = {
         }
     },
 
-    toggleVideo: function () {
+    toggleVideo: async function () {
         let button = document.querySelector('#toggle_video i');
 
-        if (button.innerText == 'videocam_off') {
-            MovimJingles.enableVideo(true);
-            document.querySelector('#local_video').classList.remove('video_off');
-            button.innerText = 'videocam';
+        if (MovimVisio.localVideo.srcObject == null) {
+            MovimVisio.getUserMedia(true).then(e => {
+                MovimJingles.enableVideo(true);
+                MovimVisio.localVideo.classList.remove('video_off');
+                button.innerText = 'videocam';
+            });
         } else {
-            MovimJingles.enableVideo(false);
-            document.querySelector('#local_video').classList.add('video_off');
-            button.innerText = 'videocam_off';
-        }
-    },
-
-    switchChat: function () {
-        let visio = document.querySelector('#visio');
-
-        if (visio.dataset.jid) {
-            Search.chat(visio.dataset.jid, (visio.dataset.muji == 'true'));
-        }
-    },
-
-    toggleDtmf: function () {
-        document.querySelector('#visio #dtmf').classList.toggle('hide');
-    },
-
-    insertDtmf: function (s) {
-        VisioDTMF.pressButton(s);
-        setTimeout(() => VisioDTMF.stop(), 100);
-
-        let insert = (s == '*') ? '🞳' : s;
-        document.querySelector('#dtmf p.dtmf span').innerText += insert;
-
-        MovimJingles.insertDtmf(s);
-    },
-
-    clearDtMf: function () {
-        document.querySelector('#dtmf p.dtmf span').innerText = '';
-    },
-
-    enableScreenSharingButton: function () {
-        document.querySelector('#screen_sharing').classList.add('enabled');
-    },
-
-    disableSwitchCameraButton: function () {
-        MovimVisio.switchCamera.classList.add('disabled');
-    },
-
-    enableLobbyCallButton: function () {
-        if (document.querySelector('#lobby_start')) {
-            document.querySelector('#lobby_start').classList.remove('disabled');
-        }
-    },
-
-    disableLobbyCallButton: function () {
-        if (document.querySelector('#lobby_start')) {
-            document.querySelector('#lobby_start').classList.add('disabled');
+            if (button.innerText == 'videocam_off') {
+                MovimJingles.enableVideo(true);
+                MovimVisio.localVideo.classList.remove('video_off');
+                button.innerText = 'videocam';
+            } else {
+                MovimJingles.enableVideo(false);
+                MovimVisio.localVideo.classList.add('video_off');
+                button.innerText = 'videocam_off';
+            }
         }
     },
 
     toggleScreenSharing: async function () {
         MovimVisio.switchCamera = document.querySelector("#visio #switch_camera");
-
         let button = document.querySelector('#screen_sharing i');
+
         if (MovimVisio.screenSharing.srcObject == null) {
             try {
                 MovimVisio.screenSharing.srcObject = await navigator.mediaDevices.getDisplayMedia({
@@ -242,6 +204,48 @@ var VisioUtils = {
 
         if (button = document.querySelector('#screen_sharing i')) {
             button.innerText = 'screen_share';
+        }
+    },
+
+    switchChat: function () {
+        let visio = document.querySelector('#visio');
+
+        if (visio.dataset.jid) {
+            Search.chat(visio.dataset.jid, (visio.dataset.muji == 'true'));
+        }
+    },
+
+    toggleDtmf: function () {
+        document.querySelector('#visio #dtmf').classList.toggle('hide');
+    },
+
+    insertDtmf: function (s) {
+        VisioDTMF.pressButton(s);
+        setTimeout(() => VisioDTMF.stop(), 100);
+
+        let insert = (s == '*') ? '🞳' : s;
+        document.querySelector('#dtmf p.dtmf span').innerText += insert;
+
+        MovimJingles.insertDtmf(s);
+    },
+
+    clearDtMf: function () {
+        document.querySelector('#dtmf p.dtmf span').innerText = '';
+    },
+
+    disableSwitchCameraButton: function () {
+        MovimVisio.switchCamera.classList.add('disabled');
+    },
+
+    enableLobbyCallButton: function () {
+        if (document.querySelector('#lobby_start')) {
+            document.querySelector('#lobby_start').classList.remove('disabled');
+        }
+    },
+
+    disableLobbyCallButton: function () {
+        if (document.querySelector('#lobby_start')) {
+            document.querySelector('#lobby_start').classList.add('disabled');
         }
     },
 

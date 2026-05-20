@@ -86,14 +86,8 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
         if (event.streams && event.streams[0]) {
             srcObject = event.streams[0];
         } else {
-            // Fallback code
-            if (!this.inboundStream) {
-                this.inboundStream = new MediaStream();
-                this.remoteAudio.srcObject = this.inboundStream;
-            }
-
-            this.inboundStream.addTrack(event.track);
-            srcObject = this.inboundStream;
+            srcObject = new MediaStream();
+            srcObject.addTrack(event.track);
         }
 
         if (event.track.kind == 'audio') {
@@ -106,8 +100,6 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
                 this.handleRemoteAudio();
                 this.tracksTypes['mid' + event.transceiver.mid] = 'audio';
             }
-
-
         } else if (event.track.kind === 'video') {
             if (this.tracksScreen[event.transceiver.mid]) {
                 //if (this.remoteVideo.srcObject && this.remoteVideo.srcObject.id != srcObject.id) {
@@ -129,7 +121,7 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
             this.oldLocalDescription = this.pc.localDescription.sdp;
 
             this.pc.getTransceivers().forEach(transceiver => {
-                if (transceiver.sender.track.kind === 'video') {
+                if (transceiver.sender.track && transceiver.sender.track.kind === 'video') {
                     VisioUtils.setVideoCodecPreferences(transceiver);
                 }
             });
@@ -351,25 +343,18 @@ MovimJingleSession.prototype.updateContent = function () {
 
     // Inject RFC4796 content attribute to respect XEP-0507: Jingle Content Category
     if (this.audioSharingSender || this.screenSharingSender) {
-        // The following code doesn't work on Firefox
-        /*let ids = [];
+        let ids = [];
         if (this.audioSharingSender) ids.push(this.audioSharingSender.track.id);
         if (this.screenSharingSender) ids.push(this.screenSharingSender.track.id);
 
-        let newMedias = medias.map(media => {
-            let msids = media.match(MovimVisio.msidRegex);
-            if (msids && msids[1].split(' ').some(id => ids.includes(id))) {
-                return media + 'a=content:slides' + "\n";
-            }
-
-            return media;
-        });*/
-
-        // Dumb heuristic
-        let newMedias = medias.map(media => {
-            let mid = media.match(/a=mid:(.*)/);
-            if (mid && parseInt(mid[1]) > 1) {
-                return media + 'a=content:slides' + "\n";
+        newMedias = medias.map(media => {
+            let mid = media.match(MovimVisio.midRegex);
+            if (mid != null) {
+                if (transceiver = this.pc.getTransceivers().find(transceiver => transceiver.mid == mid[1])) {
+                    if (ids.includes(transceiver.sender.track.id)) {
+                        return media + 'a=content:slides' + "\n";
+                    }
+                }
             }
 
             return media;
@@ -441,7 +426,7 @@ MovimJingleSession.prototype.disableScreenSharing = function () {
 }
 
 MovimJingleSession.prototype.resolveMid = function (track) {
-    transceiver = this.pc.getTransceivers().find(transceiver => transceiver.sender.track.id == track.id);
+    transceiver = this.pc.getTransceivers().find(transceiver => transceiver.sender.track && transceiver.sender.track.id == track.id);
     return transceiver ? transceiver.mid : null;
 }
 
@@ -454,6 +439,8 @@ MovimJingleSession.prototype.mute = function (track) {
 MovimJingleSession.prototype.unmute = function (track) {
     if (mid = this.resolveMid(track)) {
         Visio_ajaxUnmute(this.fullJid, this.id, 'mid' + mid);
+    } else if (track.kind == 'video') {
+        this.pc.addTrack(track);
     }
 }
 
