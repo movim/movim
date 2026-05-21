@@ -20,7 +20,7 @@
                 </span>
 
                 <span id="toggle_video" class="control icon color none active" onclick="VisioUtils.toggleVideo()">
-                    <i class="material-symbols">videocam</i>
+                    <i class="material-symbols">videocam_off</i>
                 </span>
                 <span id="switch_camera" class="control icon color none active">
                     <i class="material-symbols">switch_camera</i>

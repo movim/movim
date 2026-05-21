@@ -26,7 +26,6 @@ use Moxl\Xec\Action\Jingle\SessionMute;
 use Moxl\Xec\Action\Jingle\SessionTerminate;
 use Moxl\Xec\Action\Jingle\SessionUnmute;
 use Moxl\Xec\Action\Presence\Muc;
-use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Payload\Packet;
 
 class Visio extends Base
@@ -499,14 +498,14 @@ class Visio extends Base
         }
     }
 
-    public function ajaxMujiAccept(string $to, bool $withVideo)
+    public function ajaxMujiPrepare(string $to, bool $withVideo)
     {
         $conference = $this->me->session
             ->conferences()->where('conference', $to)
             ->first();
 
         if ($conference) {
-            $this->currentCall()->start($to, $to, mujiRoom: $to);
+            $this->currentCall()->start(jid: $to, id: $to, mujiRoom: $to);
 
             $muc = $this->xmpp(new Muc);
             $muc->setTo($conference->conference)
@@ -519,7 +518,7 @@ class Visio extends Base
         }
     }
 
-    public function ajaxMujiInit(string $to, $sdp)
+    public function ajaxMujiInit(string $to, \stdClass $sdp)
     {
         $conference = $this->me->session
             ->conferences()->where('conference', $to)
@@ -550,25 +549,6 @@ class Visio extends Base
             }
 
             $this->rpc('MovimJingles.startCalls', $conference->conference);
-        }
-    }
-
-    public function ajaxMujiJoin(string $to, bool $withVideo = false)
-    {
-        $conference = $this->me->session
-            ->conferences()->where('conference', $to)
-            ->first();
-
-        if ($conference) {
-            $this->currentCall()->start(jid: $to, id: $to, mujiRoom: $to);
-
-            $muc = $this->xmpp(new Muc);
-            $muc->setTo($to)
-                ->setNickname($conference->nick)
-                ->enableCreate()
-                ->enableMujiPreparing()
-                ->withVideo($withVideo)
-                ->request();
         }
     }
 

@@ -49,21 +49,12 @@ body>#visio:not(:fullscreen) .participant:before,
 body>#visio:not(:fullscreen) .participant:after,
 
 #chat_widget #visio #switch_chat,
-#visio:not([data-type]),
-#visio:not([data-type]) #toggle_audio,
-#visio[data-type=video] #toggle_dtmf,
-#visio[data-type=video] #dtmf,
+#visio:not([data-jid]),
+#visio:not([data-jid]) #toggle_audio,
 #visio #dtmf:not(.hide)~#participants,
-#visio:not([data-type=video]) #toggle_video,
 
 body>#visio:not(:fullscreen) #toggle_mode,
-#visio:not([data-muji=true]) #toggle_mode,
-#visio:not([data-type=video]) #toggle_mode,
-
-#visio:not([data-type=video]) #switch_camera,
-#visio:not([data-type=video]) #screen_sharing,
-#visio:not([data-type=video]) #local_video,
-#visio:not([data-type=video]) #screen_sharing_video {
+#visio:not([data-muji=true]) #toggle_mode {
     display: none;
 }
 
@@ -71,8 +62,8 @@ body>#visio:not(:fullscreen) #toggle_mode,
     display: none;
 }
 
-#visio #switch_camera:not(.enabled),
-#visio #screen_sharing:not(.enabled) {
+#visio #switch_camera:not(.enabled)/*,
+#visio #screen_sharing:not(.enabled)*/ {
     display: none;
 }
 
@@ -192,7 +183,6 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 }
 
 @media screen and (max-width: 800px) {
-
     #visio video#local_video,
     #visio video#screen_sharing_video.sharing {
         width: 15rem;
@@ -326,27 +316,29 @@ body>#visio:not(:fullscreen) #participants.active .participant:not(.active) {
 
 /** Grid view **/
 
-#visio #participants:not(.active) .participant.active:not(.audio_off) span.status::before,
+#visio #participants .participant:not(.audio_off) span.status::before,
 #visio span#toggle_audio::after {
     content: '';
     display: inline-block;
-    width: 0.5rem;
+    width: 0.3rem;
     height: 2rem;
+    min-height: 0.3rem;
     background-color: white;
     position: relative;
     bottom: 0;
     border-radius: 1rem;
     transition: height .4s;
-    height: calc(var(--level) * 2rem);
-    min-height: 0.5rem;
+    height: calc(var(--level) * 1.5rem);
     opacity: 0.75;
-    margin-right: -0.25rem;
+    margin-top: -0.75rem;
     box-shadow: var(--elevation-4);
+    vertical-align: middle;
 }
 
 #visio span#toggle_audio::after {
     height: calc(var(--level) * 2.5rem);
     margin-left: -0.4rem;
+    margin-right: 0;
 }
 
 #visio #participants:not(.active):has(.participant:nth-child(2)) .participant {
@@ -422,45 +414,44 @@ body>#visio #participants.active:not(.active):has(.participant:nth-child(2)) .pa
     display: initial;
 }
 
-#visio .participant[data-name]::before {
-    bottom: 2rem;
-    content: attr(data-name);
-}
-
 #visio .participant:not([data-name]) span.status {
     bottom: 2rem;
 }
 
 #visio .participant span.status.screen_hd::after {
-    content: '\e061 \e052';
+    content: '\e029 \e0e2 \e052';
 }
 
 #visio .participant span.status.screen_fhd::after {
-    content: '\e061 \f58b';
+    content: '\e029 \e0e2 \f58b';
 }
 
 #visio .participant.audio_off span.status::after {
     content: '\e02b';
 }
 
+#visio .participant.video_off span.status::after {
+    content: '\e029 \f83b';
+}
+
 #visio .participant.audio_off span.status.screen_hd::after {
-    content: '\e061 \e052 \e02b';
+    content: '\e0e2 \e052 \e02b';
 }
 
 #visio .participant.audio_off span.status.screen_fhd::after {
-    content: '\e061 \f58b \e02b';
+    content: '\e0e2 \f58b \e02b';
 }
 
 #visio .participant.audio_off.video_off span.status::after {
-    content: '\f83b \e02b';
+    content: '\e02b \f83b';
 }
 
 #visio .participant.audio_off.video_off span.status.screen_hd::after {
-    content: '\e061 \e052 \e02b \f83b';
+    content: '\e0e2 \e052 \e02b \f83b';
 }
 
 #visio .participant.audio_off.video_off span.status.screen_fhd::after {
-    content: '\e061 \f58b \e02b \f83b';
+    content: '\e0e2 \f58b \e02b \f83b';
 }
 
 #visio .participant:not(.screen_off) span.status {
@@ -474,8 +465,9 @@ body>#visio #participants.active:not(.active):has(.participant:nth-child(2)) .pa
     text-shadow: unset;
 }
 
-#visio .participant:not(.screen_off) span.status::before {
-    content: 'LIVE';
+#visio .participant[data-name]::before {
+    bottom: 2rem;
+    content: attr(data-name);
 }
 
 #visio .participant:not(.screen_off) span.status::after {
@@ -488,6 +480,7 @@ body>#visio #participants.active:not(.active):has(.participant:nth-child(2)) .pa
     opacity: 0;
 }
 
+#visio .participant:not(.screen_off)[data-name]::before,
 #visio .participant.screen_off video.screen {
     display: none;
 }

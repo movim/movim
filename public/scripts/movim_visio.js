@@ -18,10 +18,14 @@ var MovimVisio = {
     activeSpeakerIntervalId: null,
 
     bundleRegex: 'a=group:(\\S+) (.+)',
-    msidRegex: 'a=msid:(.+)',
+    midRegex: 'a=mid:(.+)',
 
     load: function () {
         MovimVisio.localVideo = document.getElementById('local_video');
+
+        // Disable the video toggle by default
+        MovimVisio.localVideo.classList.add('video_off');
+
         MovimVisio.localVideo.addEventListener('loadeddata', () => {
             MovimVisio.localVideo.play()
         });
@@ -42,7 +46,6 @@ var MovimVisio = {
         let visio = document.querySelector('#visio');
         delete visio.dataset.type;
         visio.dataset.jid = jid;
-        visio.dataset.type = (withVideo) ? 'video' : 'audio';
         visio.dataset.muji = isMuji ? 'true' : 'false';
 
         if (isMuji == true) {
@@ -69,7 +72,7 @@ var MovimVisio = {
             } else {
                 // Calling
                 MovimVisio.id = crypto.randomUUID();
-                MovimVisio.calling = true; // TODO, remove me ?
+                //MovimVisio.calling = true; // TODO, remove me ?
                 Visio_ajaxPropose(jid, MovimVisio.id, withVideo);
             }
         }
@@ -96,14 +99,14 @@ var MovimVisio = {
 
         MovimTpl.loadingPage();
 
-        navigator.mediaDevices.getUserMedia(VisioUtils.getConstraints(withVideo)).then(stream => {
+        return navigator.mediaDevices.getUserMedia(VisioUtils.getConstraints(withVideo)).then(stream => {
             MovimTpl.finishedPage();
 
             MovimVisio.localStream = stream;
 
             if (lobby) {
                 lobby.classList.add('configure');
-            } else {
+            } else if (MovimVisio.localAudio.srcObject == null) {
                 Visio_ajaxClear();
                 return;
             }
@@ -113,10 +116,14 @@ var MovimVisio = {
                     VisioUtils.enableLobbyCallButton();
                 }
 
-                if (track.kind == 'audio') {
+                if (track.kind == 'audio' && MovimVisio.localAudio && MovimVisio.localAudio.srcObject == null /* In case we're just adding the video */) {
                     MovimVisio.localAudio.srcObject = stream;
                 } else if (withVideo && track.kind === 'video') {
                     MovimVisio.localVideo.srcObject = stream;
+
+                    // Toggle the video on
+                    MovimVisio.localVideo.classList.remove('video_off');
+                    document.querySelector('#toggle_video i').innerText = 'videocam';
 
                     if (lobby) {
                         let cameraPreview = lobby.querySelector('video#camera_preview');
@@ -130,11 +137,9 @@ var MovimVisio = {
 
             VisioUtils.handleAudio();
 
-            if (withVideo) {
-                VisioUtils.enableScreenSharingButton();
+            if (lobby) {
+                navigator.mediaDevices.enumerateDevices().then(devices => MovimVisio.gotDevices(withVideo, devices));
             }
-
-            navigator.mediaDevices.enumerateDevices().then(devices => MovimVisio.gotDevices(withVideo, devices));
         }, (e) => {
             MovimTpl.finishedPage();
         });
@@ -227,7 +232,7 @@ var MovimVisio = {
         clearInterval(MovimVisio.activeSpeakerIntervalId);
 
         let visio = document.querySelector('#visio');
-        delete visio.dataset.type;
+        //delete visio.dataset.type;
         delete visio.dataset.jid;
         delete visio.dataset.muji;
 
@@ -247,6 +252,8 @@ var MovimVisio = {
                 stream.getTracks().forEach(track => track.stop());
                 stream = null;
             }
+
+            MovimVisio.localAudio.srcObject = null;
         }
 
         if (MovimVisio.localVideo) {
@@ -256,6 +263,8 @@ var MovimVisio = {
                 stream.getTracks().forEach(track => track.stop());
                 stream = null;
             }
+
+            MovimVisio.localVideo.srcObject = null;
         }
 
         if (MovimVisio.localStream) {

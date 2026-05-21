@@ -230,7 +230,7 @@ var Rooms = {
 
 MovimWebsocket.initiate(() => {
     clearInterval(Rooms.refreshMujisInterval);
-    Rooms.refreshMujisInterval = setInterval(Rooms.refreshMujis, 5 * 1000);
+    Rooms.refreshMujisInterval = setInterval(Rooms.refreshMujis, 15 * 1000);
 
     Rooms_ajaxHttpGet();
     Rooms.checkNoConnected();

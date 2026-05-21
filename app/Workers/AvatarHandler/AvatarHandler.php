@@ -85,7 +85,6 @@ class AvatarHandler
                         $key = $jid;
                     }
 
-
                     if ($key) {
                         $image = new Image;
                         $image->fromBin($bin);
