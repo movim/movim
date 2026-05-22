@@ -31,16 +31,18 @@ class Presence extends Payload
              */
             $wasMuji = false;
 
-            $arr = explode('|', (new Notif($this->me, sessionId: $this->sessionId))->getCurrent());
-            if (isset($arr[1]) && $presence->jid == $arr[1]) {
-                $dbPresence = linker($this->sessionId)->user?->session?->presences()
-                    ->where('jid', $presence->jid)
-                    ->where('mucjid', $presence->mucjid)
-                    ->where('resource', $presence->resource)
-                    ->whereNotNull('muji_xml')
-                    ->first();
-                if ($dbPresence) {
-                    $wasMuji = true;
+            if ($currentNotif = (new Notif($this->me, sessionId: $this->sessionId))->getCurrent()) {
+                $arr = explode('|', $currentNotif);
+                if (isset($arr[1]) && $presence->jid == $arr[1]) {
+                    $dbPresence = linker($this->sessionId)->user?->session?->presences()
+                        ->where('jid', $presence->jid)
+                        ->where('mucjid', $presence->mucjid)
+                        ->where('resource', $presence->resource)
+                        ->whereNotNull('muji_xml')
+                        ->first();
+                    if ($dbPresence) {
+                        $wasMuji = true;
+                    }
                 }
             }
 

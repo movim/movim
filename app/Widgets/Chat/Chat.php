@@ -283,7 +283,7 @@ class Chat extends \Movim\Widget\Base
                     rpcCall: 'Notif.incomingMessage'
                 );
             } elseif ($message->isMuc()) {
-                if ($conference->isFromSpace()) {
+                if ($conference && $conference->isFromSpace()) {
                     $subscription = $this->me->subscriptions()
                         ->spaces()
                         ->where('server', $conference->space_server)
