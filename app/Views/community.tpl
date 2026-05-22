@@ -5,7 +5,6 @@
     <?php $this->widget('SendTo');?>
     <?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
     <?php $this->widget('PostActions');?>
-    <?php $this->widget('Visio');?>
 
     <nav aria-label="<?php echo __('global.main_menu') ?>" class="on_desktop">
         <?php $this->widget('Presence');?>

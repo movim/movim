@@ -3,7 +3,6 @@
 namespace App\Widgets\Visio;
 
 use App\Message;
-use App\Widgets\Rooms\Rooms;
 use App\Widgets\Dialog\Dialog;
 
 use Movim\ImageSize;

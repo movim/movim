@@ -44,4 +44,7 @@
 <?php $this->widget('Preview');?>
 <?php $this->widget('Notif');?>
 <?php $this->widget('Toast');?>
+<?php if ($this->user) { ?>
+    <?php $this->widget('Visio');?>
+<?php } ?>
 <div id="endcommon" class="hide"></div>

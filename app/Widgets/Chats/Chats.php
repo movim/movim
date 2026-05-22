@@ -184,7 +184,7 @@ class Chats extends Base
         $this->rpc('Chats.refreshFilters');
     }
 
-    public function ajaxOpen($jid, ?bool $andShow = false, ?bool $history = true)
+    public function ajaxOpen(string $jid, ?bool $andShow = false, ?bool $history = true)
     {
         if (!validateJid($jid) || $jid != $this->me->id) {
             if ($history) {

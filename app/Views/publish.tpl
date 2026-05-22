@@ -2,7 +2,6 @@
 <?php $this->widget('Upload'); ?>
 <?php $this->widget('Notifications');?>
 <?php if($this->user?->hasOMEMO()) $this->widget('ChatOmemo');?>
-<?php $this->widget('Visio');?>
 
 <nav aria-label="<?php echo __('global.main_menu') ?>" class="on_desktop">
     <?php $this->widget('Presence');?>
