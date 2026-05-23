@@ -173,9 +173,8 @@ class Base
     {
         global $language;
 
-        $carbon = Carbon::parse($datetime)->locale(
-            $this->sessionId ? linker($this->sessionId)->locale->language : $language
-        )->timezone($this->resolveTimezone());
+        $locale = $this->sessionId ? linker($this->sessionId)->locale->language : $language;
+        $carbon = Carbon::parse($datetime)->locale($locale ?? 'en')->timezone($this->resolveTimezone());
 
         if ($compact == false) {
             return $carbon->isoFormat('D MMMM YYYY H:mm');
