@@ -42,11 +42,10 @@ class Api
                 case 'mujiincall':
                     $response = $api->isMujiInCall($request->getParsedBody());
                     break;
-                case 'unregister':
-                    $response = $api->sessionUnregister($request->getParsedBody());
-                    break;
                 case 'disconnect':
-                    $response = $api->sessionDisconnect($request->getParsedBody());
+                case 'unregister':
+                    $api->sessionUnregister($request->getParsedBody());
+                    $response = 'Unregistered';
                     break;
                 case 'sessionstree':
                     $response = $this->_core->dumpSessionsTree();
@@ -102,16 +101,8 @@ class Api
 
     public function sessionUnregister($post)
     {
-        if ($session = $this->_core->findSession($post['sid'])) {
+        if (array_key_exists('sid', $post) && $session = $this->_core->findSession($post['sid'])) {
             $session->messageIn(json_encode(['func' => 'unregister']));
-        }
-    }
-
-    public function sessionDisconnect($post)
-    {
-        if (array_key_exists('sid', $post)) {
-            $sid = $post['sid'];
-            return $this->_core->forceClose($sid);
         }
     }
 }

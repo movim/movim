@@ -159,7 +159,14 @@ class Base
             $matches
         );
 
-        return $matches[2];
+        $widgets = $matches[2];
+
+        // Specific case for Visio, see common.tpl as well
+        if ($this->user) {
+            array_push($widgets, 'Visio');
+        }
+
+        return $widgets;
     }
 
     public function load() {}

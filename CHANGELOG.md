@@ -10,6 +10,8 @@ v0.33.2 (master)
 * Improved files enclosure support in Posts
 * Detect if an uploaded file "failed" (is empty)
 * Fix #1444 Don't overwrite unknown vCard4 elements when handling them in Movim
+* Allow webcam and screen sharing to be started in audio video calls
+* Session management fixes
 
 v0.33.1
 ---------------------------

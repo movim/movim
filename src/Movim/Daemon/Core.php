@@ -236,15 +236,6 @@ class Core implements MessageComponentInterface
         }
     }
 
-    public function forceClose($sid)
-    {
-        foreach ($this->workers as $worker) {
-            if ($worker->hasSession($sid)) {
-                $worker->closeSession($sid);
-            }
-        }
-    }
-
     public function findSession(string $sid): ?Session
     {
         foreach ($this->workers as $worker) {
