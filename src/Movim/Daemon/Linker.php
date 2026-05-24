@@ -18,6 +18,7 @@ use Moxl\Parser;
 use Moxl\Xec\Payload\Packet;
 use React\Dns\Model\Message;
 use React\Dns\Resolver\ResolverInterface;
+use React\EventLoop\TimerInterface;
 use React\Socket\Connection;
 use React\Socket\Connector;
 use React\Socket\HappyEyeBallsConnector;
@@ -33,6 +34,7 @@ class Linker
     public ?User $user = null;
 
     public ?PresenceBuffer $presenceBuffer = null;
+    public ?TimerInterface $presenceBufferTimer = null;
     public ?ChatOwnState $chatOwnState = null;
     public ?CurrentCall $currentCall = null;
     public ?ChatroomPings $chatroomPings = null;
@@ -84,7 +86,7 @@ class Linker
         // Presence buffer
         $this->presenceBuffer = new PresenceBuffer($this->user);
         global $loop;
-        $loop->addPeriodicTimer(1, fn() => $this->presenceBuffer->save());
+        $this->presenceBufferTimer = $loop->addPeriodicTimer(1, fn() => $this->presenceBuffer->save());
 
         $this->chatOwnState = new ChatOwnState($this->user);
         $this->currentCall = new CurrentCall($this->user, $this->sessionId);
@@ -131,6 +133,11 @@ class Linker
 
     public function logout(): void
     {
+        if ($this->presenceBufferTimer) {
+            global $loop;
+            $loop->cancelTimer($this->presenceBufferTimer);
+        }
+
         if ($this->connected()) {
             $this->writeXMPP(\Moxl\Stanza\Stream::end());
             $this->connection->close();
@@ -139,18 +146,6 @@ class Linker
 
     public function handleJSON(\stdClass $request, ?string $sessionId = null)
     {
-        // TODO fixme! Healing the missing user that seems to disapear sometimes
-        /*if (
-            $this->user == null
-            && $sessionId != null
-            && $user = User::where('id', function ($query) use ($sessionId) {
-                $query->select('user_id')
-                    ->from('sessions')
-                    ->where('id', $sessionId);
-            })->first()
-        ) {
-            $this->attachUser($user);
-        }*/
         (new RPC($this->user))->handleJSON($request, $sessionId);
     }
 

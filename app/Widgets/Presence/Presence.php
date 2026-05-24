@@ -96,7 +96,7 @@ class Presence extends Base
                 ->ajaxTerminate($this->currentCall()->jid, $this->currentCall()->id);
         }
 
-        linker($this->me->session->id)->writeXMPP(Stream::end());
+        linker($this->me->session->id)->logout();
     }
 
     public function ajaxHttpGetPresence()

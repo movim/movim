@@ -118,22 +118,6 @@ class SessionsWorker
         }
     }
 
-    /*public function cleanSessions()
-    {
-        foreach ($this->sessions as $sid => $session) {
-            if (
-                $session->countClients() == 0
-                && $session->registered == false
-            ) {
-                $session->killLinker();
-            }
-
-            if ($session->process == null) {
-                unset($this->sessions[$sid]);
-            }
-        }
-    }*/
-
     private function register(LoopInterface $loop)
     {
         // Only load the required extensions

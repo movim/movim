@@ -8,9 +8,7 @@ use Monolog\Handler\SyslogHandler;
 use Monolog\Logger;
 use Movim\Image;
 use Movim\ImageSize;
-use Movim\Widget\Base;
 use Movim\Daemon\Linker;
-use Moxl\Xec\Payload\Packet;
 use React\Http\Message\Response;
 use React\Promise\PromiseInterface;
 
