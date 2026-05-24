@@ -4,8 +4,13 @@
         {if="$community->occupants > 0"}condensed{/if}
         "
     id="{$id}"
-    onclick="MovimUtils.reload('{$c->route('community', [$community->server, $community->node])}')"
-    title="{$community->server} - {$community->node}"
+    {if="$community->node"}
+        onclick="MovimUtils.reload('{$c->route('community', [$community->server, $community->node])}')"
+        title="{$community->server} - {$community->node}"
+    {else}
+        onclick="MovimUtils.reload('{$c->route('community', $community->server)}')"
+        title="{$community->server}"
+    {/if}
 >
     {if="$community->subscription == 'subscribed'"}
         <span class="control icon gray">

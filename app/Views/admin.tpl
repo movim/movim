@@ -38,6 +38,6 @@
     </div>
 </main>
 
-<?php if ($this->user && $this->user?->hasPubsub() && $this->user?->hasUpload()) { ?>
+<?php if ($this->user?->hasPubsub() && $this->user?->hasUpload()) { ?>
     <?php $this->widget('PublishStories');?>
 <?php } ?>
