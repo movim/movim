@@ -189,16 +189,16 @@
         },
         {
             "name": "cakephp/core",
-            "version": "5.3.5",
+            "version": "5.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
-                "reference": "eb012517900ed288f580aa3487e9a09f28ea85f9"
+                "reference": "9c458b0e9322ec88bc4c758b33cde6a0abf49d12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/core/zipball/eb012517900ed288f580aa3487e9a09f28ea85f9",
-                "reference": "eb012517900ed288f580aa3487e9a09f28ea85f9",
+                "url": "https://api.github.com/repos/cakephp/core/zipball/9c458b0e9322ec88bc4c758b33cde6a0abf49d12",
+                "reference": "9c458b0e9322ec88bc4c758b33cde6a0abf49d12",
                 "shasum": ""
             },
             "require": {
@@ -252,20 +252,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/core"
             },
-            "time": "2026-03-31T06:25:23+00:00"
+            "time": "2026-05-15T03:31:14+00:00"
         },
         {
             "name": "cakephp/database",
-            "version": "5.3.5",
+            "version": "5.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "cf94dcb57c54a1a308fd866b038cd6995910e36e"
+                "reference": "442d12bf0a1edeffc555a59de9f955cb0619c7ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/cf94dcb57c54a1a308fd866b038cd6995910e36e",
-                "reference": "cf94dcb57c54a1a308fd866b038cd6995910e36e",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/442d12bf0a1edeffc555a59de9f955cb0619c7ca",
+                "reference": "442d12bf0a1edeffc555a59de9f955cb0619c7ca",
                 "shasum": ""
             },
             "require": {
@@ -319,20 +319,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/database"
             },
-            "time": "2026-03-31T06:25:23+00:00"
+            "time": "2026-05-21T19:38:13+00:00"
         },
         {
             "name": "cakephp/datasource",
-            "version": "5.3.5",
+            "version": "5.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
-                "reference": "512464eb27b19316b515ec338089b83822c9ab5a"
+                "reference": "b768f0c0bf0fca815f83c4caef14e7fbb2409bf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/datasource/zipball/512464eb27b19316b515ec338089b83822c9ab5a",
-                "reference": "512464eb27b19316b515ec338089b83822c9ab5a",
+                "url": "https://api.github.com/repos/cakephp/datasource/zipball/b768f0c0bf0fca815f83c4caef14e7fbb2409bf5",
+                "reference": "b768f0c0bf0fca815f83c4caef14e7fbb2409bf5",
                 "shasum": ""
             },
             "require": {
@@ -386,20 +386,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/datasource"
             },
-            "time": "2026-04-04T08:08:42+00:00"
+            "time": "2026-05-20T10:27:33+00:00"
         },
         {
             "name": "cakephp/utility",
-            "version": "5.3.5",
+            "version": "5.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
-                "reference": "4ac9826fe5faa1505ec5aa3c171d6b58b6ab4e99"
+                "reference": "4c703a010b9d955fed44731669e35d3043425cc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/4ac9826fe5faa1505ec5aa3c171d6b58b6ab4e99",
-                "reference": "4ac9826fe5faa1505ec5aa3c171d6b58b6ab4e99",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/4c703a010b9d955fed44731669e35d3043425cc7",
+                "reference": "4c703a010b9d955fed44731669e35d3043425cc7",
                 "shasum": ""
             },
             "require": {
@@ -450,7 +450,7 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/utility"
             },
-            "time": "2026-03-09T09:38:36+00:00"
+            "time": "2026-05-21T19:38:13+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1566,16 +1566,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.10.3",
+            "version": "7.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "47ba23c7a55247e2e1b7407aca90e9bbed0d9d86"
+                "reference": "aec528da477062d3af11f51e6b33402be233b21f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/47ba23c7a55247e2e1b7407aca90e9bbed0d9d86",
-                "reference": "47ba23c7a55247e2e1b7407aca90e9bbed0d9d86",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/aec528da477062d3af11f51e6b33402be233b21f",
+                "reference": "aec528da477062d3af11f51e6b33402be233b21f",
                 "shasum": ""
             },
             "require": {
@@ -1673,7 +1673,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.10.3"
+                "source": "https://github.com/guzzle/guzzle/tree/7.10.4"
             },
             "funding": [
                 {
@@ -1689,7 +1689,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-20T22:59:19+00:00"
+            "time": "2026-05-22T19:00:53+00:00"
         },
         {
             "name": "guzzlehttp/promises",
