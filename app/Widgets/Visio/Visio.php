@@ -517,7 +517,7 @@ class Visio extends Base
         }
     }
 
-    public function ajaxMujiInit(string $to, \stdClass $sdp)
+    public function ajaxMujiPublish(string $to, \stdClass $sdp, ?bool $init = false)
     {
         $conference = $this->me->session
             ->conferences()->where('conference', $to)
@@ -537,17 +537,20 @@ class Visio extends Base
                 ->setMuji($stj->generate())
                 ->request();
 
-            // Inject all the existing presences
-            foreach ($conference->mujiPresences as $mujiPresence) {
-                if ($mujiPresence->mucjid != $this->me->id) {
-                    $this->onMujiPresence((new Packet)->pack(
-                        $mujiPresence,
-                        $mujiPresence->mucjid . '/' . $mujiPresence->mucjidresource
-                    ));
+            if ($init) {
+                // Inject all the existing presences
+                foreach ($conference->mujiPresences as $mujiPresence) {
+                    if ($mujiPresence->mucjid != $this->me->id) {
+                        $this->onMujiPresence((new Packet)->pack(
+                            $mujiPresence,
+                            $mujiPresence->mucjid . '/' . $mujiPresence->mucjidresource
+                        ));
+                    }
                 }
+
+                $this->rpc('MovimJingles.startCalls', $conference->conference);
             }
 
-            $this->rpc('MovimJingles.startCalls', $conference->conference);
         }
     }
 
@@ -628,11 +631,11 @@ class Visio extends Base
         ]);
     }
 
-    public function ajaxSessionAccept(string $to, string $id, $sdp)
+    public function ajaxSessionAccept(string $to, string $id, string $sdp)
     {
         $stj = new SDPtoJingle(
             user: $this->me,
-            sdp: $sdp->sdp,
+            sdp: $sdp,
             sid: $id,
             responder: $to,
             action: 'session-accept'
@@ -644,7 +647,7 @@ class Visio extends Base
             ->request();
     }
 
-    public function ajaxCandidate(string $to, string $id, $sdp)
+    public function ajaxCandidate(string $to, string $id, \stdClass $sdp)
     {
         // Firefox is passing the ufrag as an argument, Chrome as a parameter in the candidate
         $ufrag = $sdp->usernameFragment ?? null;

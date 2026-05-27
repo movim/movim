@@ -114,9 +114,21 @@ class Presence extends Model
             || $this->muji_xml != null;
     }
 
+    public function hasMujiScreenSharing(): bool
+    {
+        return $this->hasMuji() && str_contains($this->attributes['muji_xml'], 'name="slides"');
+    }
+
     public function hasVideoMuji(): bool
     {
-        return $this->hasMuji() && str_contains($this->attributes['muji_xml'], 'media="video"');
+        // Simple string comparison, no need to parse the XML
+        foreach (explode('<content', $this->attributes['muji_xml']) as $content) {
+            if (str_contains($content, 'media="video"') && !str_contains($content, 'name="slides"')) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static function findByStanza(User $user, \SimpleXMLElement $stanza): Presence

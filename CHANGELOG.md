@@ -11,6 +11,7 @@ v0.33.2 (master)
 * Detect if an uploaded file "failed" (is empty)
 * Fix #1444 Don't overwrite unknown vCard4 elements when handling them in Movim
 * Allow webcam and screen sharing to be started in audio video calls
+* Fix joining of screen sharing sessions
 * Session management fixes
 
 v0.33.1

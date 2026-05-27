@@ -91,7 +91,15 @@
                     <img loading="lazy" src="{$value->conferencePicture}">
                 </span>
                 <div>
-                    <p>{$value->resource}</p>
+                    <p>
+                        {if="$value->hasMujiScreenSharing()"}
+                            <span class="info live"><i class="material-symbols">screen_share</i></span>
+                        {/if}
+                        {if="$value->hasVideoMuji()"}
+                            <span class="info"><i class="material-symbols">videocam</i></span>
+                        {/if}
+                        {$value->resource}
+                    </p>
                 </div>
             </li>
         {/loop}

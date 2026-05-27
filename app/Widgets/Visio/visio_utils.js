@@ -182,12 +182,14 @@ var VisioUtils = {
                 button.innerText = 'stop_screen_share';
 
                 MovimJingles.enableScreenSharing();
+                MovimVisio.mujiPublish();
             } catch (err) {
                 console.error("Error: " + err);
             }
             return;
         } else {
             VisioUtils.disableScreenSharing();
+            MovimVisio.mujiPublish();
         }
     },
 
