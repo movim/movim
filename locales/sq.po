@@ -125,7 +125,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 12:49+0200\n"
+"POT-Creation-Date: 2026-05-27 10:04+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2026\n"
 "Language-Team: Albanian (http://app.transifex.com/movim/movim/language/sq/)\n"
@@ -848,7 +848,7 @@ msgstr "Filloni një bisedë të re duke klikuar mbi butonin %s."
 
 #: [chats]new_title
 msgid "Start a new conversation"
-msgstr ""
+msgstr "Nisni një bisedë të re"
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -1209,7 +1209,7 @@ msgstr "Aktivizoni për llogarinë tuaj fshehtëzim skaj më skaj në Movim"
 
 #: [config]omemoenabled_warning
 msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
-msgstr ""
+msgstr "Që të fshehtëzojë dhe shfshehtëzojë mesazhe, Movim-i po përdor ca kod të dhënë nga përkatësia web %s. Nëse doni të shkëmbeni të dhëna me spec, ju lutemi, sigurohuni se e besoni plotësisht kodin e emetuar nga kjo palë ndërmjetëse."
 
 #: [config]night_mode
 msgid "Night Mode"
@@ -2038,7 +2038,7 @@ msgstr "Doni vërtet të dilni?"
 
 #: [status]my_avatar
 msgid "My profile picture"
-msgstr ""
+msgstr "Fotoja e profilit tim"
 
 #: [preview]link_copied
 msgid "Link copied to clipboard"
@@ -2306,7 +2306,7 @@ msgstr "Kjo dhomë fjalosjeje duket të jetë pjesë e një Hapësire, s’jemi 
 
 #: [rooms]first_room_placeholder
 msgid "Press the %s button to add a first room"
-msgstr ""
+msgstr "Shtypni butonin %s që të shtoni një dhomë të parë"
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
@@ -2671,7 +2671,7 @@ msgstr "Gabim formësimi hapësire"
 
 #: [spaceinfo]admin_title
 msgid "Space administration"
-msgstr ""
+msgstr "Administrim hapësire"
 
 #: [spaceinfo]destroy_title
 msgid "Destroy the space"
@@ -2727,15 +2727,15 @@ msgstr "Hiqe nga hapësira"
 
 #: [spacesmenu]create_space_title
 msgid "Create a space"
-msgstr ""
+msgstr "Krijoni një hapësirë"
 
 #: [spacesmenu]add_space_title
 msgid "Add a new space"
-msgstr ""
+msgstr "Shtoni një hapësirë të re"
 
 #: [spacesmenu]join_space_title
 msgid "Join a space"
-msgstr ""
+msgstr "Bëhuni pjesë e një hapësite"
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2927,7 +2927,7 @@ msgstr "Po ngarkohet te llogaria juaj"
 
 #: [upload]encrypted_warning
 msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
-msgstr ""
+msgstr "Do të dërgoni një kartelë të pafshehtëzuar në një diskutim të fshehtëzuar. Jeni i sigurt për këtë?"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -3135,15 +3135,15 @@ msgstr "Kaloni te një nyjë tjetër"
 
 #: [global]main_menu
 msgid "Main menu"
-msgstr ""
+msgstr "Menuja kryesore"
 
 #: [global]bottom_menu
 msgid "Bottom menu"
-msgstr ""
+msgstr "Menu e poshthme"
 
 #: [global]skip_main
 msgid "Skip to main content"
-msgstr ""
+msgstr "Kalo te lënda kryesore"
 
 #: [page]about
 msgid "About"
@@ -4086,18 +4086,3 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
-
-#~ msgid "A conference call has started"
-#~ msgstr "Ka nisur një thirrje konferencë"
-
-#~ msgid "The conference call has ended"
-#~ msgstr "Thirrja konferencë ka përfunduar"
-
-#~ msgid "You are invited in an audio conference call"
-#~ msgstr "Jeni ftuar në një thirrje konferencë me audio"
-
-#~ msgid "You are invited in a video conference call"
-#~ msgstr "Jeni ftuar në një thirrje konferencë me video"
-
-#~ msgid "Cannot create a conference call on your server"
-#~ msgstr "S’mund të krijohet një thirrje konferencë te shërbyesi juaj"

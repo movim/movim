@@ -1,0 +1,84 @@
+#. extracted from ../app/Widgets/SpaceInfo/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-27 10:04+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.19.5\n"
+
+#: [spaceinfo]config_title
+msgid "Space configuration"
+msgstr ""
+
+#: [spaceinfo]config_saved
+msgid "Space configuration saved"
+msgstr ""
+
+#: [spaceinfo]config_error
+msgid "Space configuration error"
+msgstr ""
+
+#: [spaceinfo]admin_title
+msgid "Space administration"
+msgstr ""
+
+#: [spaceinfo]destroy_title
+msgid "Destroy the space"
+msgstr ""
+
+#: [spaceinfo]destroy_text
+msgid ""
+"You are going to destroy the following Space, all the chatrooms within it "
+"will also be destroyed"
+msgstr ""
+
+#: [spaceinfo]invite_title
+msgid "Invite new contacts"
+msgstr ""
+
+#: [spaceinfo]invite_text
+msgid "A moderator will have to approve the join request"
+msgstr ""
+
+#: [spaceinfo]invite_uri_title
+msgid "Send an invitation key to your contacts"
+msgstr ""
+
+#: [spaceinfo]leave_title
+msgid "Leave the space"
+msgstr ""
+
+#: [spaceinfo]add_room_title
+msgid "Add a room"
+msgstr ""
+
+#: [spaceinfo]pending_approvals
+msgid "%s subscriptions requests are waiting for your approval"
+msgstr ""
+
+#: [spaceinfo]pending_request
+msgid "%s is waiting for your approval to join the space"
+msgstr ""
+
+#: [spaceinfo]pending_action
+msgid "Manage the request"
+msgstr ""
+
+#: [spaceinfo]pinned
+msgid "Pin this space in the bar"
+msgstr ""
+
+#: [spaceinfo]owner_cannot_leave
+msgid "An owner cannot leave his own Space"
+msgstr ""
+
+#: [spaceinfo]affiliation_none
+msgid "Remove from the space"
+msgstr ""

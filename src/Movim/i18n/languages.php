@@ -3,13 +3,13 @@
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
+
 /**
  * Return an array containing all the presents languages in i18n/
- *
  */
 function getLangList()
 {
-    $lang_list = [
+    return [
         'aa' => "Afar",
         'ab' => "Abkhazian",
         'ach' => "Acholi",
@@ -39,7 +39,7 @@ function getLangList()
         'cpf_dom' => "Krey&ograve;l",
         'cpf_hat' => "Kr&eacute;y&ograve;l (P&eacute;yi Dayiti)",
         'cs' => "&#269;e&#353;tina",
-        'cy' => "Cymraeg",    # welsh, gallois
+        'cy' => "Cymraeg",
         'da' => "Dansk",
         'de' => "Deutsch",
         'dz' => "Bhutani",
@@ -53,7 +53,7 @@ function getLangList()
         'et' => "Eesti",
         'eu' => "Euskara",
         'fa' => "&#1601;&#1575;&#1585;&#1587;&#1609;",
-        'ff' => "Fulah", // peul
+        'ff' => "Fulah",
         'fi' => "Suomi",
         'fj' => "Fiji",
         'fo' => "F&#248;royskt",
@@ -69,10 +69,10 @@ function getLangList()
         'gd' => "Scots Gaelic",
         'gl' => "Galego",
         'gn' => "Guarani",
-        'grc' => "&#7944;&#961;&#967;&#945;&#943;&#945; &#7961;&#955;&#955;&#951;&#957;&#953;&#954;&#942;", // grec ancien
+        'grc' => "&#7944;&#961;&#967;&#945;&#943;&#945; &#7961;&#955;&#955;&#951;&#957;&#953;&#954;&#942;",
         'gu' => "Gujarati",
         'ha' => "Hausa",
-        'hbo' => "&#1506;&#1489;&#1512;&#1497;&#1514;&#1470;&#1492;&#1514;&#1504;&#1498;", // hebreu classique ou biblique
+        'hbo' => "&#1506;&#1489;&#1512;&#1497;&#1514;&#1470;&#1492;&#1514;&#1504;&#1498;",
         'he' => "&#1506;&#1489;&#1512;&#1497;&#1514;",
         'hi' => "&#2361;&#2367;&#2306;&#2342;&#2368;",
         'hr' => "Hrvatski",
@@ -102,13 +102,13 @@ function getLangList()
         'la' => "lingua latina",
         'lb' => "L&euml;tzebuergesch",
         'ln' => "Lingala",
-        'lo' => "&#3742;&#3762;&#3754;&#3762;&#3749;&#3762;&#3751;", # lao
+        'lo' => "&#3742;&#3762;&#3754;&#3762;&#3749;&#3762;&#3751;",
         'lt' => "Lietuvi&#371;",
         'lu' => "Luba-katanga",
         'lv' => "Latvie&#353;u",
         'lzh' => "Classical Chinese",
-        'man' => "Mandingue", # a traduire en mandingue
-        'mfv' => "Manjak", # ISO-639-3
+        'man' => "Mandingue",
+        'mfv' => "Manjak",
         'mg' => "Malagasy",
         'mi' => "Maori",
         'mk' => "&#1084;&#1072;&#1082;&#1077;&#1076;&#1086;&#1085;&#1089;&#1082;&#1080; &#1112;&#1072;&#1079;&#1080;&#1082;",
@@ -123,7 +123,7 @@ function getLangList()
         'na' => "Nauru",
         'nap' => "Napulitano",
         'ne' => "Nepali",
-        'nqo' => "N'ko", // www.manden.org
+        'nqo' => "N'ko",
         'nl' => "Nederlands",
         'no' => "Norsk",
         'nb' => "Norsk bokm&aring;l",
@@ -162,21 +162,21 @@ function getLangList()
         'sh_latn' => 'Srpskohrvastski',
         'sh_cyrl' => '&#1057;&#1088;&#1087;&#1089;&#1082;&#1086;&#1093;&#1088;&#1074;&#1072;&#1090;&#1089;&#1082;&#1080;',
         'si' => "Sinhalese",
-        'sk' => "Sloven&#269;ina",    // (Slovakia)
-        'sl' => "Sloven&#353;&#269;ina",    // (Slovenia)
+        'sk' => "Sloven&#269;ina",
+        'sl' => "Sloven&#353;&#269;ina",
         'sm' => "Samoan",
         'sn' => "Shona",
         'so' => "Somali",
         'sq' => "Shqip",
         'sr' => "&#1089;&#1088;&#1087;&#1089;&#1082;&#1080;",
-        'src' => 'Sardu logudor&#233;su', // sarde cf 'sc'
+        'src' => 'Sardu logudor&#233;su',
         'sro' => 'Sardu campidan&#233;su',
         'ss' => "Siswati",
         'st' => "Sesotho",
         'su' => "Sundanese",
         'sv' => "Svenska",
         'sw' => "Kiswahili",
-        'ta' => "&#2980;&#2990;&#3007;&#2996;&#3021;", // Tamil
+        'ta' => "&#2980;&#2990;&#3007;&#2996;&#3021;",
         'te' => "Telugu",
         'tg' => "Tajik",
         'th' => "&#3652;&#3607;&#3618;",
@@ -189,7 +189,7 @@ function getLangList()
         'ts' => "Tsonga",
         'tt' => "&#1058;&#1072;&#1090;&#1072;&#1088;",
         'tw' => "Twi",
-        'ty' => "Reo m&#257;`ohi", // tahitien
+        'ty' => "Reo m&#257;`ohi",
         'ug' => "Uighur",
         'uk' => "&#1091;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;",
         'ur' => "&#1649;&#1585;&#1583;&#1608;",
@@ -202,10 +202,8 @@ function getLangList()
         'yi' => "Yiddish",
         'yo' => "Yoruba",
         'za' => "Zhuang",
-        'zh' => "&#20013;&#25991;", // chinois (ecriture simplifiee)
-        'zh_tw' => "&#21488;&#28771;&#20013;&#25991;", // chinois taiwan (ecr. traditionnelle)
+        'zh' => "&#20013;&#25991;",
+        'zh_tw' => "&#21488;&#28771;&#20013;&#25991;",
         'zu' => "Zulu"
     ];
-
-    return $lang_list;
 }

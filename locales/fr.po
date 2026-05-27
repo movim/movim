@@ -132,7 +132,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 12:49+0200\n"
+"POT-Creation-Date: 2026-05-27 10:04+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2026\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -4093,18 +4093,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "A conference call has started"
-#~ msgstr "Une téléconférence a démarré"
-
-#~ msgid "The conference call has ended"
-#~ msgstr "La téléconférence est terminée"
-
-#~ msgid "You are invited in an audio conference call"
-#~ msgstr "Vous êtes invité à rejoindre une conférence audio"
-
-#~ msgid "You are invited in a video conference call"
-#~ msgstr "Vous êtes invité à rejoindre une conférence vidéo"
-
-#~ msgid "Cannot create a conference call on your server"
-#~ msgstr "La téléconférence ne peut être créée sur votre serveur"

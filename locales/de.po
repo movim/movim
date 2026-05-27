@@ -146,7 +146,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 12:49+0200\n"
+"POT-Creation-Date: 2026-05-27 10:04+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>, 2015\n"
 "Language-Team: German (http://app.transifex.com/movim/movim/language/de/)\n"
@@ -4107,18 +4107,3 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
-
-#~ msgid "A conference call has started"
-#~ msgstr "Ein Gruppenanruf wurde gestartet"
-
-#~ msgid "The conference call has ended"
-#~ msgstr "Der Gruppenanruf wurde beendet"
-
-#~ msgid "You are invited in an audio conference call"
-#~ msgstr "Du wurdest zu einem Audio-Gruppenanruf eingeladen"
-
-#~ msgid "You are invited in a video conference call"
-#~ msgstr "Du wurdest zu einem Video-Gruppenanruf eingeladen"
-
-#~ msgid "Cannot create a conference call on your server"
-#~ msgstr "Kann keinen Gruppenanruf auf deinem Server erstellen"

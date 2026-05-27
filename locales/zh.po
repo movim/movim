@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 12:49+0200\n"
+"POT-Creation-Date: 2026-05-27 10:04+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2026\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -486,7 +486,7 @@ msgstr "头像未更新"
 
 #: [avatar]change
 msgid "Change my profile picture"
-msgstr "更改我的个人资料照片"
+msgstr "更改我的头像"
 
 #: [avatar]too_big
 msgid "Your picture is too big"
@@ -862,7 +862,7 @@ msgstr "点击 %s 按钮，开始新对话。"
 
 #: [chats]new_title
 msgid "Start a new conversation"
-msgstr ""
+msgstr "开始新对话"
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -1223,7 +1223,7 @@ msgstr "在 Movim 上为您的账号启用端到端加密"
 
 #: [config]omemoenabled_warning
 msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
-msgstr ""
+msgstr "Movim 使用来自 %s 网络域名的代码来加密和解密消息。如果您需要收发敏感信息，请确保您完全信任此中间方提供的代码。"
 
 #: [config]night_mode
 msgid "Night Mode"
@@ -2052,7 +2052,7 @@ msgstr "确定要退出登录吗？"
 
 #: [status]my_avatar
 msgid "My profile picture"
-msgstr ""
+msgstr "我的头像"
 
 #: [preview]link_copied
 msgid "Link copied to clipboard"
@@ -2320,7 +2320,7 @@ msgstr "此群聊似乎属于某个空间，我们无法找到是哪个，但我
 
 #: [rooms]first_room_placeholder
 msgid "Press the %s button to add a first room"
-msgstr ""
+msgstr "按下 %s 按钮添加第一个群聊"
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
@@ -2685,7 +2685,7 @@ msgstr "空间配置错误"
 
 #: [spaceinfo]admin_title
 msgid "Space administration"
-msgstr ""
+msgstr "空间管理"
 
 #: [spaceinfo]destroy_title
 msgid "Destroy the space"
@@ -2741,15 +2741,15 @@ msgstr "从空间移除"
 
 #: [spacesmenu]create_space_title
 msgid "Create a space"
-msgstr ""
+msgstr "创建空间"
 
 #: [spacesmenu]add_space_title
 msgid "Add a new space"
-msgstr ""
+msgstr "添加新空间"
 
 #: [spacesmenu]join_space_title
 msgid "Join a space"
-msgstr ""
+msgstr "加入空间"
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
@@ -2941,7 +2941,7 @@ msgstr "正在上传到您的账号"
 
 #: [upload]encrypted_warning
 msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
-msgstr ""
+msgstr "您将在加密聊天中发送未加密的文件。您确定吗？"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -3149,15 +3149,15 @@ msgstr "切换到其他实例"
 
 #: [global]main_menu
 msgid "Main menu"
-msgstr ""
+msgstr "主菜单"
 
 #: [global]bottom_menu
 msgid "Bottom menu"
-msgstr ""
+msgstr "底部菜单"
 
 #: [global]skip_main
 msgid "Skip to main content"
-msgstr ""
+msgstr "跳转到主要内容"
 
 #: [page]about
 msgid "About"
@@ -4100,18 +4100,3 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "A conference call has started"
-#~ msgstr "群聊通话已开始"
-
-#~ msgid "The conference call has ended"
-#~ msgstr "群聊通话已结束"
-
-#~ msgid "You are invited in an audio conference call"
-#~ msgstr "您已受邀参加群聊音频通话"
-
-#~ msgid "You are invited in a video conference call"
-#~ msgstr "您已受邀参加群聊视频通话"
-
-#~ msgid "Cannot create a conference call on your server"
-#~ msgstr "无法在服务器上创建群聊通话"

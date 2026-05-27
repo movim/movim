@@ -125,7 +125,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 12:49+0200\n"
+"POT-Creation-Date: 2026-05-27 10:04+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023-2024,2026\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
@@ -166,15 +166,15 @@ msgstr "APIa"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr "Movim XMPPn oinarri duen komunikazio plataforma da. Proiektuak, hemen ageri diren software eta baliabideak izan ezik, ondorengo lizentzia darabil:"
+msgstr "Movim XMPPn oinarri duen komunikazio-plataforma da. Proiektuak, hemen ageri diren software eta baliabideak izan ezik, ondorengo lizentzia darabil:"
 
 #: [about]sourcecode_title
 msgid "Sourcecode"
-msgstr ""
+msgstr "Iturburu-kodea"
 
 #: [about]sourcecode_text
 msgid "Check out the sourcecode on the Github repository"
-msgstr ""
+msgstr "Aztertu iturburu-kodea Github gordailuan"
 
 #: [account]title [page]account
 msgid "Account"
@@ -194,7 +194,7 @@ msgstr "Pasahitza"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr "Egiaztatu pasahitza"
+msgstr "Berretsi pasahitza"
 
 #: [account]password_changed
 msgid "The password has been updated"
@@ -210,19 +210,19 @@ msgstr "Ezabatu kontua"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr ""
+msgstr "XMPP kontua eta hari lotutako informazio guztia ezabatuko duzu (profila, kontaktuak eta argitalpenak)."
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr "Idatzi erabiltzaile izena"
+msgstr "Idatzi erabiltzaile-izen osoa"
 
 #: [account]delete_text_error
 msgid "Please provide a valid username."
-msgstr "Idatzi erabiltzaile izen egoki bat."
+msgstr "Idatzi baliozko erabiltzaile-izen bat."
 
 #: [account]gateway_title
 msgid "Gateways"
-msgstr "Zubiak"
+msgstr "Pasabideak"
 
 #: [account]clear
 msgid "Leave this instance"
@@ -230,11 +230,11 @@ msgstr "Utzi instantzia hau"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr ""
+msgstr "Kontuari lotutako informazio guztia ezabatuko duzu Movim-en zerbitzari honetatik (profila, kontaktuak eta argitalpenak)."
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from Movim."
-msgstr ""
+msgstr "Ekintza honek ez du zure kontua ezabatuko, baina Movim-eko saioa amaituko du."
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
@@ -242,15 +242,15 @@ msgstr "Ezabatu OMEMO gakoak"
 
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr "Ondorengo OMEMO gakoa suntsitzear zaude. Aurrerantzean kontaktuek ezingo dute gako hori mezuak zifratzeko erabili. Eragiketa ezin da desegin. Ziur zaude?"
+msgstr "Honako OMEMO gakoa suntsitzear zaude. Aurrerantzean kontaktuek ezingo dute gako hori mezuak zifratzeko erabili. Ekintza ezin da desegin. Ziur zaude?"
 
 #: [adhoc]title
 msgid "Actions"
-msgstr "Eragiketak"
+msgstr "Ekintzak"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr "Eragiketak amaitu du"
+msgstr "Ekintzak amaitu du"
 
 #: [tools]title
 msgid "Developer Tools"
@@ -258,19 +258,19 @@ msgstr "Garatzaileen tresnak"
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
-msgstr ""
+msgstr "Bihurtu SDP Jingle"
 
 #: [tools]sdp_title
 msgid "SDP"
-msgstr ""
+msgstr "SDP"
 
 #: [tools]jingle_to_sdp
 msgid "Convert Jingle to SDP"
-msgstr ""
+msgstr "Bihurtu Jingle SDP"
 
 #: [tools]jingle_title
 msgid "Jingle stanza"
-msgstr ""
+msgstr "Jingle estrofa"
 
 #: [admin]general
 msgid "General Settings"
@@ -286,7 +286,7 @@ msgstr "Lehenetsitako hizkuntza"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr "Erregistratu hitz-jarioa"
+msgstr "Erregistro xehea"
 
 #: [general]join_title
 msgid "Your instance is public?"
@@ -294,7 +294,7 @@ msgstr "Publikoa al da zure instantzia?"
 
 #: [general]join_text
 msgid "Register your instance on join.movim.eu and join the Movim federation!"
-msgstr ""
+msgstr "Erregistratu zure instantzia join.movim.eu-n eta batu Movim-en federaziora!"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
@@ -302,7 +302,7 @@ msgstr "Mugatu iradokizunak"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
-msgstr ""
+msgstr "Iradoki soilik txat-gelak, Komunitateak eta erabiltzailearen XMPP zerbitzarian eta erlazionatutako zerbitzuetan eskuragarri dauden beste eduki batzuk"
 
 #: [chatonly]title
 msgid "Chat only"
@@ -310,11 +310,11 @@ msgstr "Txata bakarrik"
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
-msgstr "Ezgaitu giza-ezaugarri guztiak (Komunitateak, bloga…) eta txata bakarrik mantendu"
+msgstr "Ezgaitu ezaugarri sozial guztiak (Komunitateak, bloga…), eta mantendu soilik txata"
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr "Administrariaren egiaztagiria"
+msgstr "Administrazio-egiaztagiria"
 
 #: [credentials]username [input]username
 msgid "Username"
@@ -330,7 +330,7 @@ msgstr "Ezgaitu XMPPn izena emateko aukera"
 
 #: [disableregistration]text
 msgid "Remove the XMPP registration flow and buttons from the interface"
-msgstr "Kendu XMPPn izena emateko prozedura eta botoiak pantailatik"
+msgstr "Kendu begien bistatik XMPPn izena emateko prozedura eta botoiak"
 
 #: [whitelist]title
 msgid "Allowed XMPP Servers"
@@ -338,7 +338,7 @@ msgstr "Baimendutako XMPP zerbitzariak"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
+msgstr "Zure Movim kapsulan baimendutako XMPP zerbitzarien zerrenda bat zehaztu eta beste guztien konexioa debekatu nahi baduzu, jarri hemen domeinu-izena(k), komaz bereizita (adib: movim.eu,jabber.fr)"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
@@ -351,7 +351,7 @@ msgstr "Baimendutako XMPP zerbitzarien zerrenda"
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr "Informazio mezua"
+msgstr "Informazio-mezua"
 
 #: [information]description [communityconfig]description
 msgid "Description"
@@ -371,7 +371,7 @@ msgstr "Egiaztatu irudia ez dela handiegia eta edozein webgunetik eskuragai dago
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr "Mezu hau saioa hsteko orrian erakutsiko da. Zure Movim instantziako Arau eta Baldintzen esteka jartzeko erabil dezakezu."
+msgstr "Mezu hau saioa hasteko orrian bistaratuko da. Zure Movim instantziako Arau eta Baldintzen esteka jartzeko erabil dezakezu."
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
@@ -380,7 +380,7 @@ msgstr "Utzi eremu hau hutsik ez baduzu inolako mezurik erakutsi nahi."
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr "Informazio mezua"
+msgstr "Informazio-mezua"
 
 #: [xmpp]title
 msgid "Default XMPP server"
@@ -400,23 +400,23 @@ msgstr "XMPP zerbitzari nagusiaren herrialdea"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr "Aukeratu zerrenda honetako herrialde bat"
+msgstr "Hautatu herrialde bat zerrendatik"
 
 #: [tenor]title
 msgid "Tenor integration"
-msgstr "Tenor integrazioa"
+msgstr "Tenor-ekin integrazioa"
 
 #: [tenor]label
 msgid "Your Tenor API Key"
-msgstr "Tenor APIaren gakoa"
+msgstr "Tenor-en APIaren gakoa"
 
 #: [tenor]info1
 msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
-msgstr "Movimek Tenorren APIa darabil txatetan GIFak bilatu eta txertatzeko"
+msgstr "Movim-ek Tenor-en APIa darabil txatetan GIFak bilatu eta txertatzeko"
 
 #: [tenor]info2
 msgid "Access Tenor and get your API key"
-msgstr "Sartu Tenorrera eta eskuratu API gakoa"
+msgstr "Sartu Tenor-en eta eskuratu API-gakoa"
 
 #: [log]empty
 msgid "Empty"
@@ -432,11 +432,11 @@ msgstr "Sistemaren erregistroa eta fitxategiak"
 
 #: [maxsessions]title
 msgid "Maximum of connected sessions"
-msgstr ""
+msgstr "Aldi berean konektatu daitezkeen gehienezko saio-kopurua"
 
 #: [maxsessions]info
 msgid "Movim will forbid new users to connect when the limit is reached, set it to 0 to disable"
-msgstr ""
+msgstr "Movim-ek erabiltzaile berrien konexioa galaraziko du mugara ailegatzerakoan; ezgaitzeko ezarri 0"
 
 #: [adminreported]reported_by
 msgid "Reported by %s users"
@@ -444,7 +444,7 @@ msgstr "%s erabiltzailek salatu dute"
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
-msgstr "Kontu horiek Movimen erabiltzaile batzuek salatu zituzten"
+msgstr "Kontu horiek Movim-en erabiltzaile batzuek salatu dituzte"
 
 #: [adminreported]info2
 msgid "You can choose to block them for all the other users"
@@ -480,7 +480,7 @@ msgstr "Irudia handiegia da"
 
 #: [avatar]missing
 msgid "No avatar yet"
-msgstr "Abatarrik ez oraingoz"
+msgstr "Oraindik ez dago abatarrik"
 
 #: [banner]change
 msgid "Change my banner"
@@ -496,7 +496,7 @@ msgstr "Goiburuko irudia ez da eguneratu"
 
 #: [banner]missing
 msgid "No banner yet"
-msgstr "Goiburuko irudirik ez oraingoz"
+msgstr "Oraindik ez dago goiburuko irudirik"
 
 #: [blocked]title
 msgid "Blocked"
@@ -508,7 +508,7 @@ msgstr "Blokeatu kontua"
 
 #: [blocked]unblock_account
 msgid "Unblock the account"
-msgstr "Desblokeatu kontua"
+msgstr "Utzi kontua blokeatzeari"
 
 #: [blocked]account_blocked
 msgid "Account blocked"
@@ -516,7 +516,7 @@ msgstr "Kontua blokeatu da"
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
-msgstr "Kontua desblokeatu da"
+msgstr "Kontua blokeatzeari utzi zaio"
 
 #: [blocked]placeholder
 msgid "You will find here the users you have blocked"
@@ -524,11 +524,11 @@ msgstr "Blokeatu dituzun erabiltzaileak topatuko dituzu hemen"
 
 #: [blocked]info
 msgid "The following users are blocked by Movim and cannot contact you anymore"
-msgstr "Ondorengo erabiltzaileak Movimek blokeatu ditu eta ezin dira zurekin harremanetan jarri"
+msgstr "Honako erabiltzaileak Movim-ek blokeatu ditu, eta ezin dira zurekin harremanetan jarri"
 
 #: [blocked]info2
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
-msgstr "Administraria zerrenda honen jakinaren gainean dago eta erabiltzaile horiek bere ardurapean duen sistema osoan blokeatu ditzazke"
+msgstr "Administraria zerrenda honen jakinaren gainean dago, eta bere ardurapean duen sistema osoan blokeatu ditzake erabiltzaile horiek"
 
 #: [blog]title
 msgid "%s’s blog"
@@ -544,11 +544,11 @@ msgstr "Mezua argitaratu da"
 
 #: [message]react
 msgid "Add a reaction"
-msgstr "Gehitu erreakzioa"
+msgstr "Erreakzionatu"
 
 #: [message]retract
 msgid "Retract"
-msgstr "Hitza jan"
+msgstr "Jan hitza"
 
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
@@ -564,11 +564,11 @@ msgstr "Ezin izan da mezua bidali. Saiatu berriro geroago"
 
 #: [message]encrypted [omemo]encrypted
 msgid "Encrypted message"
-msgstr "Enkriptatutako mezua"
+msgstr "Zifratutako mezua"
 
 #: [message]retracted
 msgid "Retracted message"
-msgstr "Atzera botatako mezua"
+msgstr "Jandako mezua"
 
 #: [message]composing
 msgid "Composing…"
@@ -580,7 +580,7 @@ msgstr "Gonbidapena"
 
 #: [message]paused
 msgid "Paused…"
-msgstr "Galditu da…"
+msgstr "Gelditu da…"
 
 #: [message]gone
 msgid "Contact gone"
@@ -592,7 +592,7 @@ msgstr "↑ aurreko mezua editatu nahi baduzu"
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
-msgstr ":shortcut: emoji bat gehitu nahi baduzu"
+msgstr ":shortcut: emoji bat txertatu nahi baduzu"
 
 #: [message]visitor_help
 msgid "You are not allowed to send messages in this chatroom"
@@ -616,7 +616,7 @@ msgstr "Ohiko kontaktuak"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr "Ez dago ezer oraingoz…"
+msgstr "Oraindik ez dago ezer…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
@@ -624,15 +624,15 @@ msgstr "Ez izan lotsatia, bidali hasierako mezua elkarrizketa hasteko"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr "Txat-gela batera sartzeko gonbidapena jaso duzu"
+msgstr "Txat-gela batean batzeko gonbidapena jaso duzu"
 
 #: [chat]invitation_self
 msgid "You sent an invitation to join a chatroom"
-msgstr "Txat-gela baten sartzeko gonbidapena bidali duzu"
+msgstr "Txat-gela batean batzeko gonbidapena bidali duzu"
 
 #: [chat]invitation_join
 msgid "Join %s"
-msgstr "%s(e)ra sartu"
+msgstr "%s(e)n batu"
 
 #: [chat]profile
 msgid "See the profile"
@@ -704,7 +704,7 @@ msgstr "Errorea mezua bidaltzerakoan"
 
 #: [chat]clear_history
 msgid "Clear the local history"
-msgstr "Garbitu historia lokalean"
+msgstr "Garbitu lokaleko historia"
 
 #: [chat]clear_history_text
 msgid "You are going to delete %s local messages, are you sure?"
@@ -712,19 +712,19 @@ msgstr "%s mezu lokal ezabatuko dituzu, ziur zaude?"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
-msgstr "Ezin da gauzatu enkriptatutako txatetan"
+msgstr "Ezin da gauzatu zifratutako txatetan"
 
 #: [chat]first_messages_title
 msgid "This is the beginning of this conversation"
-msgstr "Hau da elkarrizketaren. hasiera"
+msgstr "Hau da elkarrizketaren hasiera"
 
 #: [chat]first_messages_text
 msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
-msgstr "Kontaktu gisa gehitu edo nahi ez dituzun mezuak ekiditeko blokeatu dezakezu"
+msgstr "Kontaktu gisa gehitu dezakezu, edo blokeatu nahi ez dituzun mezuak ekiditeko"
 
 #: [chat]first_messages_add
 msgid "Add to my contacts"
-msgstr "Gehitu nire kontaktuetan"
+msgstr "Gehitu nire kontaktuetara"
 
 #: [chat]first_messages_block
 msgid "Block"
@@ -788,11 +788,11 @@ msgstr "OMEMO hatz-markak"
 
 #: [omemo]generating_bundle
 msgid "Generating the encryption keys, please wait…"
-msgstr "Enkriptazio-gakoak sortzen; itxaron…"
+msgstr "Zifratze-gakoak sortzen; itxaron…"
 
 #: [omemo]generated_bundle
 msgid "Encryption keys generated"
-msgstr "Enkriptazio gakoak sortu dira"
+msgstr "Zifratze-gakoak sortu dira"
 
 #: [omemo]resolving_devices
 msgid "Resolving OMEMO devices"
@@ -800,15 +800,15 @@ msgstr "OMEMO gailuak ebazten"
 
 #: [omemo]building_sessions
 msgid "Building encrypted sessions"
-msgstr ""
+msgstr "Zifratutako saioak sortzen"
 
 #: [omemo]building_own_sessions
 msgid "Building own encryption sessions"
-msgstr "Enkriptazio saio propioa sortzen"
+msgstr "Zifratze-saio propioak sortzen"
 
 #: [omemo]encrypted_disabled
 msgid "Encryption disabled"
-msgstr "Enkriptazioa ezgaituta"
+msgstr "Zifratzea ezgaituta"
 
 #: [omemo]encrypted_loading
 msgid "Send a message to build the encrypted session"
@@ -816,19 +816,19 @@ msgstr "Bidali mezu bat zifratutako saioa sortzeko"
 
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
-msgstr "Enkriptazioa gaitzen kontaktu honentzat"
+msgstr "Kontaktuarentzat zifratzea gaitzen"
 
 #: [omemo]enable_room
 msgid "Enabling encryption for the chatroom"
-msgstr "Txat-gelarako zifraketa gaitzen"
+msgstr "Txat-gelarako zifratzea gaitzen"
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
-msgstr "Enkriptazioa ezgaitzen kontaktu honentzat"
+msgstr "Kontaktuarentzat zifratzea ezgaitzen"
 
 #: [omemo]disable_room
 msgid "Disabling encryption for the chatroom"
-msgstr "Txat-gelarako zifraketa ezgaitzen"
+msgstr "Txat-gelarako zifratzea ezgaitzen"
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -848,7 +848,7 @@ msgstr "Hasi elkarrizketa berri bat %s botoia sakatuz."
 
 #: [chats]new_title
 msgid "Start a new conversation"
-msgstr ""
+msgstr "Hasi elkarrizketa berria"
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -880,7 +880,7 @@ msgstr "Kontaktuak"
 
 #: [communities]empty_text
 msgid "Discover, follow and share"
-msgstr "Aurkitu, jarraitu eta partekatu"
+msgstr "Arakatu, jarraitu eta partekatu"
 
 #: [communities]counter
 msgid "%s communities"
@@ -896,7 +896,7 @@ msgstr "Komunitateen zerbitzariak"
 
 #: [communities]servers_text
 msgid "Discover the Communities by servers"
-msgstr "Aurkitu Komunitateak zerbitzariaren arabera"
+msgstr "Arakatu Komunitateak zerbitzariaren arabera"
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -908,11 +908,11 @@ msgstr "Zerbitzaria ez da existitzen"
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
-msgstr "Gustuko izan ditzazkezun komunitateak"
+msgstr "Gogoko izan ditzakezun komunitateak"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
-msgstr "Komunitatea arazorik gabe sortu da"
+msgstr "Komunitatea ondo sortu da"
 
 #: [communitiesserver]empty_server
 msgid "There is no Communities yet on this server."
@@ -932,7 +932,7 @@ msgstr "My Little Pony - fan-kluba"
 
 #: [communitiesserver]name_error
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr "Idatzi komunitate izen egoki bat (lau karaktere edo gehiago)"
+msgstr "Idatzi baliozko komunitate-izen bat (lau karaktere edo gehiago)"
 
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
@@ -940,7 +940,7 @@ msgstr "Ezin duzu zerbitzari honetan komunitate berri bat sortu"
 
 #: [communitiesserver]disco_error
 msgid "Issue when trying to discover the items"
-msgstr "Arazoa elementu berriak deskubritzen saiatzean"
+msgstr "Arazoa elementu berriak arakatzen saiatzean"
 
 #: [communitiesserver]remoteservernotfound
 msgid "The server %s cannot be reached"
@@ -968,7 +968,7 @@ msgstr "Nire Komunitateen harpidetzak"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
-msgstr "Komunitatea arazorik gabe ezabatu da"
+msgstr "Komunitatea ondo ezabatu da"
 
 #: [communityaffiliation]delete_title
 msgid "Delete the community"
@@ -976,7 +976,7 @@ msgstr "Ezabatu komunitatea"
 
 #: [communityaffiliation]delete_text
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr "Ondorengo komunitatea ezabatzear zaude. Baieztatu eragiketa."
+msgstr "Honako komunitatea ezabatzear zaude. Baieztatu ekintza."
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
@@ -988,7 +988,7 @@ msgstr "Errorea nodoa ezabatzean"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
-msgstr "Errorea nodo konfigurazioa ezartzerakoan"
+msgstr "Errorea nodoaren konfigurazioa ezartzerakoan"
 
 #: [communityaffiliation]owners [room]affiliation_owners
 msgid "Owners"
@@ -1097,7 +1097,7 @@ msgstr "Eman etiketa bat komunitate honi"
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
-msgstr "Nire Komunitatearen Izena"
+msgstr "Nire Komunitatearen izena"
 
 #: [communityheader]share_follow
 msgid "Share this follow to everyone"
@@ -1197,7 +1197,7 @@ msgstr "Erakutsi helduentzako edukia"
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
-msgstr "#nsfw etiketa duten argitalpenak ikusi ahal izango duzu"
+msgstr "#nsfw etiketa duten argitalpenak ikusi ahal izango dituzu"
 
 #: [config]omemoenabled
 msgid "Use OMEMO"
@@ -1205,11 +1205,11 @@ msgstr "Erabili OMEMO"
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
-msgstr "Gaitu Movimen ertzetik ertzerako zifratzea zure konturako"
+msgstr "Gaitu zure konturako Movim-en ertzetik ertzerako zifratzea"
 
 #: [config]omemoenabled_warning
 msgid "To encrypt and decrypt messages Movim is using some code delivered from the %s web domain. If you want to exchange sensitive information please ensure that you fully trust the code issued by this intermediary."
-msgstr ""
+msgstr "Mezuak zifratzeko eta deszifratzeko Movim %s web-domeinuak eskainitako kode bat erabiltzen ari da. Informazio sentikorra trukatu nahi baduzu, ziurtatu erabat fidatzen zarela bitartekari honek eskainitako kodeaz."
 
 #: [config]night_mode
 msgid "Night Mode"
@@ -1229,11 +1229,11 @@ msgstr "Txat-orrialde nagusia"
 
 #: [config]chatmain_text
 msgid "Set the chat page to the default when opening Movim"
-msgstr ""
+msgstr "Lehenetsi txat-orrialdea Movim irekitzerakoan"
 
 #: [config]mam_text
 msgid "Server-side chat messages archiving preferences"
-msgstr "Zerbitzariaren aldeko txat mezuen artxibatze-hobespenak"
+msgstr "Zerbitzariaren aldeko txat-mezuen artxibatze-hobespenak"
 
 #: [config]mam_always
 msgid "Always"
@@ -1285,7 +1285,7 @@ msgstr "Mezu berria"
 
 #: [config]accent_color
 msgid "Accent color"
-msgstr ""
+msgstr "Nabarmentzeko kolorea"
 
 #: [config]change_nickname_title
 msgid "Be careful"
@@ -1297,11 +1297,11 @@ msgstr "Pantaila-izena aldatzeak blog publikoa, jarioa eta artikuluen URLak alda
 
 #: [confirm]title
 msgid "Confirmation of authentication"
-msgstr "Autentifikazio-egiaztagiria"
+msgstr "Autentifikazioaren baieztapena"
 
 #: [confirm]description
 msgid "The following platform would like your confirmation to authentify this account"
-msgstr "Ondorengo plataformak zure baieztapena nahi du kontu hau egiaztatzeko"
+msgstr "Honako plataformak zure baieztapena nahi du kontu hau egiaztatzeko"
 
 #: [confirm]code
 msgid "Authentication code"
@@ -1449,7 +1449,7 @@ msgstr "Taldea"
 
 #: [delete]text
 msgid "You are going to remove one of your contacts, please confirm your action"
-msgstr "Kontaktuetako bat kenduko duzu; baieztatu ekintza"
+msgstr "Baieztatu kontaktuetako bat kendu nahi duzula"
 
 #: [age]years
 msgid "%s years"
@@ -1645,7 +1645,7 @@ msgstr "Kontua arazorik gabe sortu da"
 
 #: [error]connection
 msgid "Movim cannot connect to the server"
-msgstr ""
+msgstr "Movim ezin da zerbitzarira konektatu"
 
 #: [error]impossible
 msgid "Impossible login"
@@ -1681,11 +1681,11 @@ msgstr "XMPP autentifikazioak kale egin du"
 
 #: [error]max_sessions_reached
 msgid "This Movim instance is currently full."
-msgstr ""
+msgstr "Movim instantzia hau erabat beteta dago."
 
 #: [error]max_sessions_reached_join
 msgid "Try a different one on %s"
-msgstr ""
+msgstr "Saia zaitez %s(e)ko beste batekin"
 
 #: [connection]socket_connected
 msgid "Connected to the server"
@@ -1846,7 +1846,7 @@ msgstr "Beti ezgaitu dezakezu ezarpenetan aukera hau"
 
 #: [post]publish_something
 msgid "Publish something"
-msgstr ""
+msgstr "Argitaratu zerbait"
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1874,7 +1874,7 @@ msgstr "Argitalpen hauek duela gutxi argitaratu dira zu (oraindik) harpidedun ez
 
 #: [post]new_blog
 msgid "New blog post"
-msgstr ""
+msgstr "Blog sarrera berria"
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -2022,7 +2022,7 @@ msgstr "Ezarpenen orrira joan zaitezke zure burua deskribatu eta irudi bat ezart
 
 #: [status]visit_blog
 msgid "Visit my blog"
-msgstr ""
+msgstr "Bisitatu nire bloga"
 
 #: [status]disconnect
 msgid "Disconnect"
@@ -2038,7 +2038,7 @@ msgstr "Ziur saioa amaitu nahi duzula?"
 
 #: [status]my_avatar
 msgid "My profile picture"
-msgstr ""
+msgstr "Nire profilaren irudia"
 
 #: [preview]link_copied
 msgid "Link copied to clipboard"
@@ -2134,7 +2134,7 @@ msgstr "Testua luzeegia da, %s karaktere gehienez"
 
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
-msgstr ""
+msgstr "Soilik harpidetzaileek dute zure blogera sarbidea. Edonorentzat egin dezakezu eskuragarri ezarpenen orrialdean."
 
 #: [publish]embedded_link
 msgid "The media will be embedded"
@@ -2142,7 +2142,7 @@ msgstr "Multimedia txertatuko da"
 
 #: [publish]web_title
 msgid "Create a public HTTP URL from this publication"
-msgstr ""
+msgstr "Sortu HTTP URL publikoa argitalpen honetarako"
 
 #: [publish]web_text
 msgid "This will allow anyone outside Movim to have access to your publication"
@@ -2162,35 +2162,35 @@ msgstr "Markdown sintaxiaren gida"
 
 #: [story]new
 msgid "New story"
-msgstr ""
+msgstr "Story berria"
 
 #: [story]new_edit
 msgid "Edit your story"
-msgstr ""
+msgstr "Editatu Story-a"
 
 #: [story]new_publish
 msgid "Publish your story"
-msgstr ""
+msgstr "Argitaratu Story-a"
 
 #: [story]to_roster
 msgid "Publish to my contacts"
-msgstr ""
+msgstr "Argitaratu kontaktuentzat"
 
 #: [story]uploading
 msgid "Uploading the story"
-msgstr ""
+msgstr "Story-a igotzen"
 
 #: [story]publishing
 msgid "Publishing the story"
-msgstr ""
+msgstr "Story-a argitaratzen"
 
 #: [story]publishing_text
 msgid "Almost there…"
-msgstr ""
+msgstr "Gutxi falta da…"
 
 #: [story]published
 msgid "Story published"
-msgstr ""
+msgstr "Story-a argitaratu da"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -2254,31 +2254,31 @@ msgstr "Gehitu bat \"+\" botoia erabiliz."
 
 #: [rooms]type_room
 msgid "Type of chatroom"
-msgstr ""
+msgstr "Txat-gela mota"
 
 #: [rooms]default_room
 msgid "Standard chatroom"
-msgstr ""
+msgstr "Txat-gela arrunta"
 
 #: [rooms]gateway_room
 msgid "Gateway chatroom"
-msgstr ""
+msgstr "Pasabide txat-gela"
 
 #: [rooms]show_all
 msgid "Show all chatrooms"
-msgstr ""
+msgstr "Erakutsi txat-gela guztiak"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected chatrooms"
-msgstr ""
+msgstr "Ezkutatu deskonektatutako txat-gelak"
 
 #: [rooms]destroy_title
 msgid "Destroy the chatroom"
-msgstr ""
+msgstr "Suntsitu txat-gela"
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following chatroom?"
-msgstr ""
+msgstr "Ziur betiko suntsitu nahi duzula ondorengo txat-gela?"
 
 #: [rooms]explore_placeholder
 msgid "Name or description"
@@ -2290,35 +2290,35 @@ msgstr "Izena ematea ezinbestekoa da zerbitzua erabili ahal izateko"
 
 #: [rooms]discover
 msgid "Discover a room"
-msgstr ""
+msgstr "Arakatu gelak"
 
 #: [rooms]disco_error
 msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
-msgstr ""
+msgstr "Movim ez da baliozko txat-gelarik topatzeko gai izan. Saia zaitez beste identifikatzaile batekin."
 
 #: [rooms]disco_not_muc
 msgid "You are trying to add something that is not a chatroom"
-msgstr ""
+msgstr "Txat-gela ez den zerbait gehitzen saiatzen ari zara"
 
 #: [rooms]disco_maybe_space
 msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
-msgstr ""
+msgstr "Badirudi txat-gela hau Gune bateko parte dela, baina ezin izan dugu jakin zeinetakoa; txat-gelara baino, Gunera batzea gomendatzen dizugu"
 
 #: [rooms]first_room_placeholder
 msgid "Press the %s button to add a first room"
-msgstr ""
+msgstr "Sakatu %s botoia lehenengo gela bat gehitzeko"
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
-msgstr ""
+msgstr "Batu txat-gelara saioa hastean"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
-msgstr ""
+msgstr "Txat-gelaren helbide okerra"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a valid nickname (2 to 40 characters)"
-msgstr ""
+msgstr "Sartu baliozko goitizen bat (2 eta 40 karaktere artean)"
 
 #: [chatrooms]banned
 msgid "Banned"
@@ -2326,11 +2326,11 @@ msgstr "Debekatuta"
 
 #: [chatrooms]conflict
 msgid "Nickname already taken"
-msgstr ""
+msgstr "Goitizena hartuta dago"
 
 #: [chatrooms]connected
 msgid "Joined the chatroom"
-msgstr ""
+msgstr "Txat-gelara batu da"
 
 #: [chatrooms]created
 msgid "Chatroom created"
@@ -2338,11 +2338,11 @@ msgstr "Txat-gela sortu da"
 
 #: [chatrooms]destroyed
 msgid "Chatroom destroyed"
-msgstr ""
+msgstr "Txat-gela suntsitu da"
 
 #: [chatrooms]disconnected
 msgid "Left the chatroom"
-msgstr ""
+msgstr "Txat-gelatik irten da"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2354,7 +2354,7 @@ msgstr "Ez duzu txat-gela honetan sartzeko baimenik"
 
 #: [chatrooms]id
 msgid "Chatroom Address"
-msgstr ""
+msgstr "Txat-gelaren helbidea"
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exist"
@@ -2403,19 +2403,19 @@ msgstr "Agortu egin da urruneko zerbitzariko konexioa"
 
 #: [chatrooms]remove_text
 msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr ""
+msgstr "Baieztatu honako txat-gelatik betiko atera nahi duzula."
 
 #: [chatrooms]remove_title
 msgid "Permanently leave a chatroom"
-msgstr ""
+msgstr "Utzi txat-gela bat betiko"
 
 #: [chatrooms]rooms
 msgid "Rooms"
-msgstr ""
+msgstr "Gelak"
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
-msgstr ""
+msgstr "Txat-gela partaide-kopuruen mugara iritsi da"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -2432,7 +2432,7 @@ msgstr "Laster-markak eguneratu dira"
 
 #: [room]anonymous_title
 msgid "Public Channel"
-msgstr ""
+msgstr "Kanal publikoa"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2468,7 +2468,7 @@ msgstr "Profil publikoak"
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's XMPP Addresses"
-msgstr ""
+msgstr "Txat-gela honetako partaideek batak besteen XMPP helbideak ikus ditzakete"
 
 #: [room]archived
 msgid "Archived"
@@ -2542,7 +2542,7 @@ msgstr "Ez jakinarazi inoiz"
 
 #: [room]notify_mentioned
 msgid "Notify when mentioned"
-msgstr ""
+msgstr "Jakinarazi aipatzerakoan"
 
 #: [room]notify_always
 msgid "Always notify"
@@ -2579,7 +2579,7 @@ msgstr "Ez da txat-gela lokalik aurkitu"
 
 #: [roomsexplore]global_title
 msgid "Channels"
-msgstr ""
+msgstr "Kanalak"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
@@ -2587,7 +2587,7 @@ msgstr "Ez da txat-gela globalik aurkitu"
 
 #: [roomsexplore]find_more
 msgid "Find more channels"
-msgstr ""
+msgstr "Bilatu kanal gehiago"
 
 #: [roomsexplore]find_more_text
 msgid "%s in total"
@@ -2607,7 +2607,7 @@ msgstr "Oraindik kontakturik gabe?"
 
 #: [search]no_contacts_text
 msgid "Find one by searching for their name or address"
-msgstr ""
+msgstr "Aurkitu norbait bere izena edo helbidea erabiliz"
 
 #: [search]tags
 msgid "Tags"
@@ -2627,11 +2627,11 @@ msgstr "Partekatu argitalpen berrian"
 
 #: [sendto]selected
 msgid "contacts selected"
-msgstr ""
+msgstr "hautatutako kontaktuak"
 
 #: [sendto]pick
 msgid "Pick the contacts you want to share this content with"
-msgstr ""
+msgstr "Hautatu zein kontakturekin partekatu nahi duzun edukia"
 
 #: [sendto]shared_with
 msgid "Post shared"
@@ -2639,7 +2639,7 @@ msgstr "Argitalpena partekatu da"
 
 #: [sendto]shared_contacts
 msgid "Post shared with %s contacts"
-msgstr ""
+msgstr "Argitalpena %s kontakturekin partekatu da"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2655,159 +2655,159 @@ msgstr "Bidalketa Movim erabiliz partekatu da"
 
 #: [sendto]sharing_story
 msgid "Story shared using Movim"
-msgstr ""
+msgstr "Story-a Movim erabiliz partekatu da"
 
 #: [spaceinfo]config_title
 msgid "Space configuration"
-msgstr ""
+msgstr "Gunearen konfigurazioa"
 
 #: [spaceinfo]config_saved
 msgid "Space configuration saved"
-msgstr ""
+msgstr "Gorde da Gunearen konfigurazioa"
 
 #: [spaceinfo]config_error
 msgid "Space configuration error"
-msgstr ""
+msgstr "Errorea Gunearen konfigurazioan"
 
 #: [spaceinfo]admin_title
 msgid "Space administration"
-msgstr ""
+msgstr "Gunearen administrazioa"
 
 #: [spaceinfo]destroy_title
 msgid "Destroy the space"
-msgstr ""
+msgstr "Suntsitu Gunea"
 
 #: [spaceinfo]destroy_text
 msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
-msgstr ""
+msgstr "Honako Gunea suntsitzear zaude, eta barne dituen txat-gelak ere suntsituko dira"
 
 #: [spaceinfo]invite_title
 msgid "Invite new contacts"
-msgstr ""
+msgstr "Gonbidatu kontaktu berriak"
 
 #: [spaceinfo]invite_text
 msgid "A moderator will have to approve the join request"
-msgstr ""
+msgstr "Moderatzaile batek onartu beharko du batzeko eskaera"
 
 #: [spaceinfo]invite_uri_title
 msgid "Send an invitation key to your contacts"
-msgstr ""
+msgstr "Bidali gonbidapen-gakoa zure kontaktuei"
 
 #: [spaceinfo]leave_title [spacesmenu]leave_title
 msgid "Leave the space"
-msgstr ""
+msgstr "Utzi Gunea"
 
 #: [spaceinfo]add_room_title
 msgid "Add a room"
-msgstr ""
+msgstr "Gehitu gela bat"
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
-msgstr ""
+msgstr "%s harpidetza-eskaera dituzu oniritziaren zain"
 
 #: [spaceinfo]pending_request
 msgid "%s is waiting for your approval to join the space"
-msgstr ""
+msgstr "%s zure oniritziaren zain dago Gunera batzeko"
 
 #: [spaceinfo]pending_action
 msgid "Manage the request"
-msgstr ""
+msgstr "Kudeatu eskaera"
 
 #: [spaceinfo]pinned
 msgid "Pin this space in the bar"
-msgstr ""
+msgstr "Finkatu gune hau barran"
 
 #: [spaceinfo]owner_cannot_leave
 msgid "An owner cannot leave his own Space"
-msgstr ""
+msgstr "Jabeak ezin du bere Gunea utzi"
 
 #: [spaceinfo]affiliation_none
 msgid "Remove from the space"
-msgstr ""
+msgstr "Kendu Gunetik"
 
 #: [spacesmenu]create_space_title
 msgid "Create a space"
-msgstr ""
+msgstr "Sortu Gune bat"
 
 #: [spacesmenu]add_space_title
 msgid "Add a new space"
-msgstr ""
+msgstr "Gehitu Gune berri bat"
 
 #: [spacesmenu]join_space_title
 msgid "Join a space"
-msgstr ""
+msgstr "Batu Gune batera"
 
 #: [spacesmenu]invite_space_title
 msgid "You got an invite?"
-msgstr ""
+msgstr "Gonbidapenik duzu?"
 
 #: [spacesmenu]space_title
 msgid "Space title"
-msgstr ""
+msgstr "Gunearen izena"
 
 #: [spacesmenu]space_title_empty
 msgid "Your Space title is empty"
-msgstr ""
+msgstr "Zure Gunearen izena hutsik dago"
 
 #: [spacesmenu]space_created
 msgid "Space created"
-msgstr ""
+msgstr "Gunea sortu da"
 
 #: [spacesmenu]loading_space_info
 msgid "Loading the space"
-msgstr ""
+msgstr "Gunea kargatzen"
 
 #: [spacesmenu]subscribed
 msgid "Subscribed to the space"
-msgstr ""
+msgstr "Gunera harpidetu zara"
 
 #: [spacesmenu]invitation_key
 msgid "Use an invitation key"
-msgstr ""
+msgstr "Erabili gonbidapen-gako bat"
 
 #: [spacesmenu]key_required
 msgid "A valid key is required"
-msgstr ""
+msgstr "Baliozko gako bat behar da"
 
 #: [spacesmenu]locked_title
 msgid "Locked space"
-msgstr ""
+msgstr "Babestutako Gunea"
 
 #: [spacesmenu]locked_text
 msgid "You are not authorized to join the space at the moment"
-msgstr ""
+msgstr "Une honetan ez duzu Gunera batzeko baimenik"
 
 #: [spacesmenu]locked_try_again
 msgid "Try again"
-msgstr ""
+msgstr "Saiatu berriro"
 
 #: [spacesmenu]leave_text
 msgid "Are you sure that you want to leave the space?"
-msgstr ""
+msgstr "Ziur zaude Gunea utzi nahi duzula?"
 
 #: [spacesmenu]pending_subscription_title
 msgid "A request has been send to a moderator."
-msgstr ""
+msgstr "Eskaera moderatzaile bati bidali zaio."
 
 #: [spacesmenu]pending_subscription_text
 msgid "You will be able to join the space once its accepted."
-msgstr ""
+msgstr "Onartutakoan Gunera batu ahal izango zara."
 
 #: [spacesmenu]pending_subscription_add_title
 msgid "Add %s to the space"
-msgstr ""
+msgstr "Gehitu %s Gunera"
 
 #: [spacesmenu]pending_subscription_refuse_title
 msgid "Deny the access"
-msgstr ""
+msgstr "Ukatu sarbidea"
 
 #: [spacesmenu]contact_added
 msgid "Contact added in the space"
-msgstr ""
+msgstr "Kontaktua gehitu da Gunera"
 
 #: [spacesmenu]contact_denied
 msgid "Contact denied in the space"
-msgstr ""
+msgstr "Kontaktua Gunera gehitzea galarazi da"
 
 #: [sticker]title
 msgid "Stickers"
@@ -2831,27 +2831,27 @@ msgstr "Tenorri esker"
 
 #: [stories]publish
 msgid "New Story"
-msgstr ""
+msgstr "Story berria"
 
 #: [stories]title
 msgid "Stories"
-msgstr ""
+msgstr "Story-ak"
 
 #: [stories]new_story
 msgid "New Story from %s"
-msgstr ""
+msgstr "%s(r)en Story berria"
 
 #: [stories]forbidden
 msgid "You don't have access to this story, send an invitation to the author to access it"
-msgstr ""
+msgstr "Ez duzu Story honetara sarbiderik; eskatu gonbidapena egileari sarbidea izateko"
 
 #: [stories]share_title
 msgid "Some of your contacts might not have access to this story"
-msgstr ""
+msgstr "Agian zure kontaktuetako batzuek ez dute Story honetara sarbiderik izango"
 
 #: [stories]share_text
 msgid "They might have to subscribe to the publisher account"
-msgstr ""
+msgstr "Litekeena da argitaratzailearen kontura harpidetu behar izatea"
 
 #: [stories]comment
 msgid "Send a comment to %s"
@@ -2859,19 +2859,19 @@ msgstr "Bidali iruzkina %s(r)i"
 
 #: [stories]delete_title
 msgid "Story deletion"
-msgstr ""
+msgstr "Story-en ezabapena"
 
 #: [stories]delete_text
 msgid "Are you sure that you want to delete this story?"
-msgstr ""
+msgstr "Ziur Story hau ezabatu nahi duzula?"
 
 #: [stories]deleted
 msgid "Story deleted"
-msgstr ""
+msgstr "Story-a ezabatu da"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
-msgstr ""
+msgstr "Movim deszentralizatutako sare soziala da; honako XMPP zerbitzari(et)an izena ematera gonbidatzen zaitugu"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2923,11 +2923,11 @@ msgstr "Fitxategiaren gehienezko tamaina %s"
 
 #: [upload]upload_xmpp
 msgid "Uploading to your account"
-msgstr ""
+msgstr "Zure kontura igotzen"
 
 #: [upload]encrypted_warning
 msgid "You will send an unencrypted file in an encrypted discussion. Are you sure about it?"
-msgstr ""
+msgstr "Zifratu gabeko fitxategi bat bidaliko duzu zifratutako eztabaida batera. Ziur zaude?"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -3003,7 +3003,7 @@ msgstr "Une honetan Movim modu motelean ari da funtzionatzen"
 
 #: [degraded]text_1
 msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed, and profile) are disabled by the administrator."
-msgstr ""
+msgstr "Zure zerbitzariak ez du XMPP Pubsub iraunkortasuna onartzen, edo ezaugarri sozialak (komunitateak, albisteen jarioa eta profila) ezgaitu ditu administrariak."
 
 #: [degraded]text_2
 msgid "Please contact your server administrator to see if this feature can be enabled."
@@ -3027,15 +3027,15 @@ msgstr "… deika ari da"
 
 #: [visio]declined
 msgid "Declined"
-msgstr ""
+msgstr "Baztertu da"
 
 #: [visio]in_call
 msgid "Ongoing call"
-msgstr ""
+msgstr "Aribidean dagoen deia"
 
 #: [visio]joined_call
 msgid "Joined call"
-msgstr ""
+msgstr "Deira batu da"
 
 #: [visio]failed
 msgid "Failed"
@@ -3055,15 +3055,15 @@ msgstr "Parte-hartzaile guztiek utzi dute deia"
 
 #: [visio]by
 msgid "by %s"
-msgstr ""
+msgstr "%s(r)en eskutik"
 
 #: [visio]hang_up
 msgid "Hang up the call"
-msgstr ""
+msgstr "Moztu deia"
 
 #: [visio]hang_up_text
 msgid "You are going to hang up the current call, are you sure?"
-msgstr ""
+msgstr "Ziur zaude uneko deia eseki nahi duzula?"
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -3075,19 +3075,19 @@ msgstr "%s(r)i deitzen"
 
 #: [visiolobby]muji_create
 msgid "Creating a conference call in %s"
-msgstr ""
+msgstr "%s(e)n konferentzia sortzen"
 
 #: [visiolobby]muji_join
 msgid "Joining the conference call"
-msgstr ""
+msgstr "Konferentziara batzen"
 
 #: [visiolobby]setup
 msgid "Setting up your camera and microphone"
-msgstr ""
+msgstr "Kamera eta mikrofonoa konfiguratzen"
 
 #: [visiolobby]devices_disco
 msgid "Please allow your browser to share your devices to configure them"
-msgstr ""
+msgstr "Baimendu nabigatzaileak zure gailuak partekatzea konfiguratu ahal izateko"
 
 #: [visiolobby]microphone_label
 msgid "Default microphone"
@@ -3111,7 +3111,7 @@ msgstr "Ez da mikrofonotik datorren soinurik detektatu"
 
 #: [visiolobby]no_mic_sound2
 msgid "Try make some noise, select another source or check your system settings"
-msgstr ""
+msgstr "Saia zaitez zarataren bat egiten, hautatu beste iturri bat edo egiaztatu zure sistemaren ezarpenak"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
@@ -3135,15 +3135,15 @@ msgstr "Aldatu beste pod batera"
 
 #: [global]main_menu
 msgid "Main menu"
-msgstr ""
+msgstr "Menu nagusia"
 
 #: [global]bottom_menu
 msgid "Bottom menu"
-msgstr ""
+msgstr "Behealdeko menua"
 
 #: [global]skip_main
 msgid "Skip to main content"
-msgstr ""
+msgstr "Joan edukira zuzenean"
 
 #: [page]about
 msgid "About"
@@ -3208,7 +3208,7 @@ msgstr "Partekatu"
 
 #: [page]space
 msgid "Space"
-msgstr ""
+msgstr "Gunea"
 
 #: [page]tag
 msgid "Tag"
@@ -3437,7 +3437,7 @@ msgstr "Erlazionatutako komunitatea"
 
 #: [input]open_me_using
 msgid "Open me using"
-msgstr ""
+msgstr "Ireki nazazu honakoa erabiliz"
 
 #: [day]title
 msgid "Day"
@@ -4053,7 +4053,7 @@ msgstr "Kidea"
 
 #: [affiliation]outcast
 msgid "Outcast"
-msgstr "Zokoratu"
+msgstr "Kanpotarra"
 
 #: [affiliation]no_aff
 msgid "No affiliation"

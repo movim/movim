@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 12:49+0200\n"
+"POT-Creation-Date: 2026-05-27 10:04+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Yurt Page, 2025\n"
 "Language-Team: Russian (http://app.transifex.com/movim/movim/language/ru/)\n"
@@ -4100,18 +4100,3 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
-
-#~ msgid "A conference call has started"
-#~ msgstr "Начался конференц-звонок"
-
-#~ msgid "The conference call has ended"
-#~ msgstr "Конференц-звонок закончен"
-
-#~ msgid "You are invited in an audio conference call"
-#~ msgstr "Вы приглашены на звонок аудиоконференции."
-
-#~ msgid "You are invited in a video conference call"
-#~ msgstr "Вы приглашены на звонок видеоконференции"
-
-#~ msgid "Cannot create a conference call on your server"
-#~ msgstr "Не удаётся создать конференц-звонок на вашем сервере"
