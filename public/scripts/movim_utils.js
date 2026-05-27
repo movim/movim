@@ -256,12 +256,12 @@ var MovimUtils = {
         };
     },
     htmlEscape: function (string) {
-        return String(string)
-            .replace(/&/g, '&amp;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#39;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;');
+        return string
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
     },
     enhanceArticlesContent: function () {
         document.querySelectorAll('article section > div video')
@@ -474,19 +474,15 @@ var MovimUtils = {
         return Array.from({ length: end - start + 1 }, (_, i) => i)
     },
     linkify: function (inputText) {
-        var replacedText, replacePattern1, replacePattern2;
+        const replacePattern1 = /(^|[ ])(\b(https?|ftp):\/\/[-A-Z0-9+&amp;@#\/%?=~_|!:,.;]*[-A-Z0-9+&amp;@#\/%=~_|])($|[ ])/gim;
+        const replacePattern2 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
 
-        //URLs starting with http://, https://, or ftp://
-        replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
-        replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
-
-        //Change email addresses to mailto:: links.
-        replacePattern2 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
+        let replacedText = inputText.replace(replacePattern1, '<a href="$2" target="_blank" rel="noopener noreferrer">$2</a>');
         replacedText = replacedText.replace(replacePattern2, '<a href="mailto:$1">$1</a>');
 
         return replacedText;
     },
-    logError: function(error) {
+    logError: function (error) {
         console.log(error.name + ': ' + error.message);
         console.error(error);
     },
