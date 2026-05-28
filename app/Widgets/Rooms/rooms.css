@@ -38,6 +38,22 @@
     transform: scale(0.75);
 }
 
+#rooms>ul.list>li>ul>li:not(:first-child)>div>p>span.info {
+    font-size: 2rem;
+    margin-left: 1.5rem;
+}
+
+#rooms>ul.list>li>ul>li:not(:first-child)>div>p>span.info.live {
+    background-color: var(--p-red);
+    color: white;
+    padding: 0 1rem;
+    border-radius: 1rem;
+    box-shadow: var(--elevation-4);
+    line-height: 3.5rem;
+    margin-top: 0.25rem;
+    font-variation-settings: 'FILL' 1;
+}
+
 #rooms>ul.list {
     order: 1;
 }

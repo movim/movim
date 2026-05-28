@@ -102,7 +102,6 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
             }
         } else if (event.track.kind === 'video') {
             if (this.tracksScreen[event.transceiver.mid]) {
-                //if (this.remoteVideo.srcObject && this.remoteVideo.srcObject.id != srcObject.id) {
                 this.remoteScreenVideo.srcObject = srcObject;
                 this.tracksTypes['mid' + event.transceiver.mid] = 'video_screen';
                 this.remoteScreenVideo.oncanplay = event => {
@@ -127,8 +126,10 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
             });
 
             this.pc.createOffer()
-                .then((offer) => this.pc.setLocalDescription(offer))
-                .then(() => this.updateContent())
+                .then(offer => {
+                    offer.sdp = this.maybeInjectScreenCategory(offer.sdp);
+                    return this.pc.setLocalDescription(offer)
+                }).then(() => this.updateContent())
                 .catch(err => MovimUtils.logError(err));
         }
     };
@@ -141,9 +142,16 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
         }
     };
 
+    /**
+     * Add all the existing tracks
+     */
     MovimVisio.localStream.getTracks().forEach(track => {
         this.pc.addTrack(track, MovimVisio.localStream);
     });
+
+    if (MovimVisio.screenSharing.srcObject) {
+        this.enableScreenSharing();
+    }
 }
 
 MovimJingleSession.prototype.handleRemoteAudio = async function () {
@@ -252,13 +260,13 @@ MovimJingleSession.prototype.onContentAdd = function (sdp, mids) {
     remoteDescription += sdp.match('m=[^]*');
     remoteDescription = remoteDescription.replace(/^a=group.*/m, sdp.match(/a=group.*/)[0]);
 
-    this.detectTracksScreen(sdp);
+    this.maybeDetectTracksScreen(sdp);
 
     this.pc.setRemoteDescription({ 'sdp': remoteDescription + "\n", 'type': 'offer' })
         .then(() => {
             this.pc.createAnswer()
                 .then(answer => this.pc.setLocalDescription(answer))
-                .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription))
+                .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription.sdp))
                 .catch(MovimUtils.logError);
         })
         .catch(error => MovimUtils.logError(error));
@@ -266,27 +274,16 @@ MovimJingleSession.prototype.onContentAdd = function (sdp, mids) {
 
 MovimJingleSession.prototype.onContentModify = function (sdp, mid) {
     // TODO, implement mid
-
-    this.detectTracksScreen(sdp);
+    this.maybeDetectTracksScreen(sdp);
 
     this.pc.setRemoteDescription({ 'sdp': sdp + "\n", 'type': 'offer' })
         .then(() => {
             this.pc.createAnswer()
                 .then(answer => this.pc.setLocalDescription(answer))
-                .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription))
+                .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription.sdp))
                 .catch(MovimUtils.logError);
         })
         .catch(error => MovimUtils.logError(error));
-}
-
-MovimJingleSession.prototype.detectTracksScreen = function (sdp) {
-    sdp.split('m=').forEach(media => {
-        let content = media.match(/a=content:(.*)/);
-        if (content && content.includes('slides')) {
-            let mid = media.match(/a=mid:(.*)/);
-            this.tracksScreen[mid[1]] = true;
-        }
-    });
 }
 
 MovimJingleSession.prototype.onContentRemove = function (sdp, mids) {
@@ -308,7 +305,7 @@ MovimJingleSession.prototype.onContentRemove = function (sdp, mids) {
         .then(() => {
             this.pc.createAnswer()
                 .then(answer => this.pc.setLocalDescription(answer))
-                .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription))
+                .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription.sdp))
                 .catch(MovimUtils.logError);
         })
         .catch(error => MovimUtils.logError(error));
@@ -337,31 +334,7 @@ MovimJingleSession.prototype.updateContent = function () {
     let destroyedMedias = oldMedias.filter((e) => !newMedias.includes(e));
 
     let changed = false;
-
-    let localDescription = this.pc.localDescription.sdp;
-    let medias = this.pc.localDescription.sdp.split('m=');
-
-    // Inject RFC4796 content attribute to respect XEP-0507: Jingle Content Category
-    if (this.audioSharingSender || this.screenSharingSender) {
-        let ids = [];
-        if (this.audioSharingSender) ids.push(this.audioSharingSender.track.id);
-        if (this.screenSharingSender) ids.push(this.screenSharingSender.track.id);
-
-        newMedias = medias.map(media => {
-            let mid = media.match(MovimVisio.midRegex);
-            if (mid != null) {
-                if (transceiver = this.pc.getTransceivers().find(transceiver => transceiver.mid == mid[1])) {
-                    if (ids.includes(transceiver.sender.track.id)) {
-                        return media + 'a=content:slides' + "\n";
-                    }
-                }
-            }
-
-            return media;
-        });
-
-        localDescription = newMedias.join('m=');
-    }
+    let localDescription = this.maybeInjectScreenCategory(this.pc.localDescription.sdp);
 
     if (createdMedias.length > 0) {
         changed = true;
@@ -380,6 +353,8 @@ MovimJingleSession.prototype.updateContent = function () {
 }
 
 MovimJingleSession.prototype.onAcceptSDP = function (sdp) {
+    this.maybeDetectTracksScreen(sdp);
+
     this.pc.setRemoteDescription({ 'sdp': sdp + "\n", 'type': 'answer' })
         .catch(error => {
             MovimVisio.goodbye('incompatible-parameters');
@@ -392,7 +367,13 @@ MovimJingleSession.prototype.onInitiateSDP = function (sdp) {
         .then(() => {
             this.pc.createAnswer()
                 .then(answer => this.pc.setLocalDescription(answer))
-                .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription))
+                .then(() => {
+                    Visio_ajaxSessionAccept(
+                        this.fullJid,
+                        this.id,
+                        this.maybeInjectScreenCategory(this.pc.localDescription.sdp)
+                    )
+                })
                 .catch(MovimUtils.logError);
         }).catch(error => MovimUtils.logError(error));
 }
@@ -425,20 +406,20 @@ MovimJingleSession.prototype.disableScreenSharing = function () {
     }
 }
 
-MovimJingleSession.prototype.resolveMid = function (track) {
+MovimJingleSession.prototype.resolveTransceiver = function (track) {
     transceiver = this.pc.getTransceivers().find(transceiver => transceiver.sender.track && transceiver.sender.track.id == track.id);
-    return transceiver ? transceiver.mid : null;
+    return transceiver ?? null;
 }
 
 MovimJingleSession.prototype.mute = function (track) {
-    if (mid = this.resolveMid(track)) {
-        Visio_ajaxMute(this.fullJid, this.id, 'mid' + mid);
+    if (transceiver = this.resolveTransceiver(track)) {
+        Visio_ajaxMute(this.fullJid, this.id, 'mid' + transceiver.mid);
     }
 }
 
 MovimJingleSession.prototype.unmute = function (track) {
-    if (mid = this.resolveMid(track)) {
-        Visio_ajaxUnmute(this.fullJid, this.id, 'mid' + mid);
+    if (transceiver = this.resolveTransceiver(track)) {
+        Visio_ajaxUnmute(this.fullJid, this.id, 'mid' + transceiver.mid);
     } else if (track.kind == 'video') {
         this.pc.addTrack(track);
     }
@@ -482,6 +463,45 @@ MovimJingleSession.prototype.insertDtmf = function (s) {
     if (!rtc || !rtc.dtmf.canInsertDTMF) return;
 
     rtc.dtmf.insertDTMF(s);
+}
+
+/**
+ * Detect RFC4796 content attribute
+ */
+MovimJingleSession.prototype.maybeDetectTracksScreen = function (sdp) {
+    sdp.split('m=').forEach(media => {
+        let content = media.match(/a=content:(.*)/);
+        if (content && content.includes('slides')) {
+            let mid = media.match(/a=mid:(.*)/);
+            this.tracksScreen[mid[1]] = true;
+        }
+    });
+}
+
+/**
+ * Inject RFC4796 content attribute to respect XEP-0507: Jingle Content Category
+ */
+MovimJingleSession.prototype.maybeInjectScreenCategory = function (sdp) {
+    if (this.audioSharingSender?.track || this.screenSharingSender?.track) {
+        let ids = [];
+        if (this.audioSharingSender) ids.push(this.audioSharingSender.track.id);
+        if (this.screenSharingSender) ids.push(this.screenSharingSender.track.id);
+
+        sdp = sdp.split('m=').map(media => {
+            let mid = media.match(MovimVisio.midRegex);
+            if (mid != null) {
+                if (transceiver = this.pc.getTransceivers().find(transceiver => transceiver.mid == mid[1])) {
+                    if (ids.includes(transceiver.sender.track.id)) {
+                        return media + 'a=content:slides' + "\n";
+                    }
+                }
+            }
+
+            return media;
+        }).join('m=');
+    }
+
+    return sdp;
 }
 
 var MovimJingles = {
@@ -559,6 +579,8 @@ var MovimJingles = {
     },
 
     enableVideo: function (enable = true) {
+        MovimVisio.mujiPublish();
+
         MovimVisio.localStream.getTracks().filter(track => track.kind == 'video').forEach(track => {
             track.enabled = enable;
 

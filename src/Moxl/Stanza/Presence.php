@@ -18,7 +18,6 @@ class Presence
         int $priority = 0,
         ?string $type = null,
         bool $muc = false,
-        //bool $mam = false,
         bool $mujiPreparing = false,
         ?DOMElement $muji = null,
         ?int $last = 0,

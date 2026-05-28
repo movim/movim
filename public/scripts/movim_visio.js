@@ -49,19 +49,7 @@ var MovimVisio = {
         visio.dataset.muji = isMuji ? 'true' : 'false';
 
         if (isMuji == true) {
-            let pc = new RTCPeerConnection({ 'iceServers': MovimVisio.services });
-
-            navigator.mediaDevices.getUserMedia(VisioUtils.getConstraints(withVideo)).then(stream => {
-                stream.getTracks().forEach(track => {
-                    pc.addTrack(track, stream);
-                });
-
-                pc.createOffer().then(function (offer) {
-                    Visio_ajaxMujiInit(MovimVisio.id, offer);
-                    pc.close();
-                });
-            });
-
+            MovimVisio.mujiPublish(true);
             MovimVisio.activeSpeakerIntervalId = setInterval(MovimJingles.checkActiveSpeaker, 1000);
         } else {
             MovimJingles.initSession(jid, fullJid, id);
@@ -72,12 +60,57 @@ var MovimVisio = {
             } else {
                 // Calling
                 MovimVisio.id = crypto.randomUUID();
-                //MovimVisio.calling = true; // TODO, remove me ?
                 Visio_ajaxPropose(jid, MovimVisio.id, withVideo);
             }
         }
 
         Notif.setCallStatus(MovimVisio.states.in_call);
+    },
+
+    mujiPublish: function (init) {
+        let pc = new RTCPeerConnection({ 'iceServers': MovimVisio.services });
+
+        /**
+         * Ugly heuristic because it is not possible to match the SDP mids with the tranceiver sender track ids...
+         */
+        let id = 0;
+
+        MovimVisio.localStream.getTracks().forEach(track => {
+            pc.addTrack(track, MovimVisio.localStream);
+            id++;
+        });
+
+        let screenIds = [];
+
+        if (MovimVisio.screenSharing.srcObject) {
+            MovimVisio.screenSharing.srcObject.getTracks().forEach(track => {
+                pc.addTrack(track);
+                screenIds.push(id);
+                id++;
+            });
+        }
+
+        pc.createOffer().then(function (offer) {
+            if (MovimVisio.screenSharing.srcObject) {
+                // XEP-0507: Jingle Content Category
+                newMedias = offer.sdp.split('m=').map(media => {
+                    let mid = media.match(MovimVisio.midRegex);
+                    if (mid != null) {
+                        if (screenIds.includes(parseInt(mid[1]))) {
+                            return media + 'a=content:slides' + "\n";
+                        }
+                    }
+
+                    return media;
+                });
+
+                localDescription = newMedias.join('m=');
+                offer.sdp = localDescription;
+            }
+
+            Visio_ajaxMujiPublish(MovimVisio.id, offer, init);
+            pc.close();
+        });
     },
 
     setStates: function (states) {

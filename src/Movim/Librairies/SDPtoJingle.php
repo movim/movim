@@ -356,6 +356,7 @@ class SDPtoJingle
                             $description->addAttribute('maxptime', $matches[1]);
                             break;
 
+                        // https://xmpp.org/extensions/xep-0507.html
                         case 'content':
                             foreach (explode(',', $matches[1]) as $contentCategory) {
                                 $category = $description->addChild('category');
