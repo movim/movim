@@ -240,7 +240,7 @@ class Contact extends Model
         $this->adrlocality = !empty($vcard->adr->locality)
             ? (string)$vcard->adr->locality
             : null;
-        $this->adrcountry = !empty($vcard->adr->locality)
+        $this->adrcountry = !empty($vcard->adr->country)
             ? (string)$vcard->adr->country
             : null;
         $this->adrpostalcode = !empty($vcard->adr->code)
