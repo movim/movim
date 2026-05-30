@@ -1,6 +1,10 @@
 <section>
     <form name="spacerooms_edit">
-        <h3>{$c->__('rooms.edit')}</h3>
+        {if="$conference->call"}
+            <h3>{$c->__('rooms.conference_call_edit')}</h3>
+        {else}
+            <h3>{$c->__('rooms.edit')}</h3>
+        {/if}
 
         <input type="hidden" name="server" value="{$conference->space_server|echapJS}">
         <input type="hidden" name="node" value="{$conference->space_node|echapJS}">
@@ -9,7 +13,11 @@
             <ul class="list">
                 <li>
                     <span class="primary icon gray">
-                        <i class="material-symbols">short_text</i>
+                        {if="$conference->call"}
+                            <i class="material-symbols">adaptive_audio_mic</i>
+                        {else}
+                            <i class="material-symbols">short_text</i>
+                        {/if}
                     </span>
                     <div>
                         <input

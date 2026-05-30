@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Chat;
 
+use App\Conference;
 use Moxl\Xec\Action\Message\Publish;
 use Moxl\Xec\Action\Message\Reactions;
 
@@ -538,7 +539,6 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('Notif.setTitle', $this->__('page.chats') . ' • ' . $conference->name);
             }
 
-            //if ($light == false) {
             $this->rpc('MovimUtils.pushSoftState', $conference->route);
             $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareChat($room, muc: true));
             $this->rpc('Chat.getPresences', $room);
@@ -546,31 +546,51 @@ class Chat extends \Movim\Widget\Base
             $this->onChatState(linker($this->sessionId)->chatStates->getState($room), first: false);
 
             $this->rpc('MovimTpl.showPanel');
-            $this->rpc('Chat.focus');
-
-            (new Dictaphone($this->me, sessionId: $this->sessionId))->ajaxHttpGet();
-            //}
 
             if ($this->currentCall()?->isStarted()) {
                 $this->rpc('MovimVisio.moveToChat', $this->currentCall()?->getBareJid());
             }
 
-            $this->rpc('Chat.setObservers');
-            $this->rpc('MovimTpl.fill', '#' . cleanupId($room) . '-conversation', '');
-            $this->getMessages($room, muc: true);
-            $this->rpc('Notif.current', $conference->notifKey);
-            $this->rpc('Chat.scrollToSeparator');
-
-            if ($this->me->hasOMEMO() && $conference->isGroupChat()) {
-                $this->rpc('Chat.setGroupChatMembers', $conference->members->pluck('jid')->toArray());
-                $this->rpc('Chat.checkOMEMOState', $room, true);
+            if ($conference->isConferenceCall()) {
+                $this->rpc('MovimUtils.addClass', '#chat_widget', 'call');
+                $this->getConferenceCall($conference);
             } else {
-                $this->rpc('Chat.setGroupChatMembers', []);
+                $this->rpc('MovimUtils.removeClass', '#chat_widget', 'call');
+                $this->rpc('Chat.focus');
+
+                (new Dictaphone($this->me, sessionId: $this->sessionId))->ajaxHttpGet();
+
+                $this->rpc('Chat.setObservers');
+                $this->rpc('MovimTpl.fill', '#' . cleanupId($room) . '-conversation', '');
+                $this->getMessages($room, muc: true);
+                $this->rpc('Notif.current', $conference->notifKey);
+                $this->rpc('Chat.scrollToSeparator');
+
+                if ($this->me->hasOMEMO() && $conference->isGroupChat()) {
+                    $this->rpc('Chat.setGroupChatMembers', $conference->members->pluck('jid')->toArray());
+                    $this->rpc('Chat.checkOMEMOState', $room, true);
+                } else {
+                    $this->rpc('Chat.setGroupChatMembers', []);
+                }
             }
         } else {
             $this->rpc('RoomsUtils_ajaxHttpRoomDiscover', $room);
             $this->ajaxHttpGetEmpty();
         }
+    }
+
+    /**
+     * Get the conference call view
+     */
+    public function getConferenceCall(Conference $conference)
+    {
+        $this->rpc('MovimTpl.fill', '#chat_conference_call', $this->view(
+            '_chat_conference_call',
+            [
+                'incall' => $this->currentCall()?->isStarted(),
+                'conference' => $conference
+            ]
+        ));
     }
 
     /**

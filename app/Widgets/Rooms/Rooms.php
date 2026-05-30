@@ -48,9 +48,9 @@ class Rooms extends Base
         $this->registerEvent('presence_muc_errornotacceptable', 'onNotAcceptable');
         $this->registerEvent('presence_muc_errorserviceunavailable', 'onServiceUnavailable');
 
-        $this->registerEvent('presence_muji', 'onMujiPresence');
-        $this->registerEvent('presence_was_muji', 'onMujiPresence');
-        $this->registerEvent('presence_muc_muji_leaving', 'onMujiPresence');
+        $this->registerEvent('presence_muji', 'onMujiPresence', 'chat');
+        $this->registerEvent('presence_was_muji', 'onMujiPresence', 'chat');
+        $this->registerEvent('presence_muc_muji_leaving', 'onMujiPresence', 'chat');
     }
 
     public function onDiscoRequest(Packet $packet)

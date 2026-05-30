@@ -1,6 +1,10 @@
 <a href="#" onclick="listIconClick(event)" title="{$conference->name}">
     {if="$conference->isFromSpace()"}
-        <i class="material-symbols icon gray">tag</i>
+        {if="$conference->call"}
+            <i class="material-symbols icon gray">adaptive_audio_mic</i>
+        {else}
+            <i class="material-symbols icon gray">tag</i>
+        {/if}
     {elseif="$withAvatar == false"}
         {autoescape="off"}
             {$conference->name|firstLetterCapitalize|addEmojis}

@@ -42,6 +42,10 @@
     grid-row: header / visio;
 }
 
+#chat_widget.call #visio {
+    grid-row: header / end;
+}
+
 body>#visio:not(:fullscreen) #main,
 body>#visio:not(:fullscreen) #toggle_dtmf,
 
@@ -62,8 +66,7 @@ body>#visio:not(:fullscreen) #toggle_mode,
     display: none;
 }
 
-#visio #switch_camera:not(.enabled)/*,
-#visio #screen_sharing:not(.enabled)*/ {
+#visio #switch_camera:not(.enabled) {
     display: none;
 }
 
@@ -95,7 +98,7 @@ body>#visio:not(:fullscreen) #toggle_mode,
 #visio .infos {
     color: white;
     position: absolute;
-    top: calc(50% - 12rem);
+    top: calc(50% - 15rem);
     width: 100%;
     z-index: -1;
     text-align: center;
@@ -154,8 +157,14 @@ body>#visio:not(:fullscreen) #toggle_mode,
     background-position: center;
     background-repeat: no-repeat;
     background-size: 25%;
+
+    transition: width 0.2s ease-in-out;
 }
 
+#visio video#local_video:hover,
+#visio video#screen_sharing_video.sharing:hover {
+    width: 40%;
+}
 
 body>#visio:not(:fullscreen) video#local_video,
 body>#visio:not(:fullscreen) video#screen_sharing_video.sharing {
@@ -183,6 +192,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 }
 
 @media screen and (max-width: 800px) {
+
     #visio video#local_video,
     #visio video#screen_sharing_video.sharing {
         width: 15rem;
@@ -194,6 +204,18 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     width: 100%;
     z-index: 1;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+}
+
+#visio header span.control {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#visio.movements header span.control,
+#visio header:hover span.control {
+    opacity: 1;
+    pointer-events: initial;
 }
 
 #visio header ul.list li {
@@ -242,6 +264,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     text-overflow: ellipsis;
     white-space: nowrap;
     color: white;
+    pointer-events: none;
     opacity: 0.6;
 }
 

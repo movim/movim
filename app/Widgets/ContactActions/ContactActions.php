@@ -129,7 +129,16 @@ class ContactActions extends Base
         }
 
         if ($muc) {
-            $this->rpc('MovimUtils.reload', $this->route('chat', [$jid, 'room']));
+            $conference = $this->me->session->conferences()
+                ->where('conference', $jid)
+                ->with('info')
+                ->first();
+
+            if ($conference) {
+                $this->rpc('MovimUtils.reload', $conference->route);
+            } else {
+                $this->rpc('MovimUtils.reload', $this->route('chat', [$jid, 'room']));
+            }
         } else {
             $c = new Chats($this->me, sessionId: $this->sessionId);
             $c->ajaxOpen($jid);

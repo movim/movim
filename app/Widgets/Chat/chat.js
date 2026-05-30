@@ -166,8 +166,12 @@ var Chat = {
             }
 
             Chat_ajaxGet(jid, light);
-        } else if (MovimUtils.urlParts().page == 'space' && MovimUtils.isMobile()) {
-            MovimTpl.hidePanel();
+        } else if (MovimUtils.urlParts().page == 'space') {
+            if (MovimUtils.isMobile()) {
+                Chat_ajaxGet();
+            } else {
+                MovimTpl.hidePanel();
+            }
         }
     },
     getPresences: function (room) {

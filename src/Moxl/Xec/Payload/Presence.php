@@ -28,6 +28,7 @@ class Presence extends Payload
 
             /**
              * Trigger presence_muji when the <muji /> element is cleared and if the MUC is actually displayed
+             * only for Muji in groups (non spaces)
              */
             $wasMuji = false;
 

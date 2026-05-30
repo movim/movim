@@ -15,14 +15,12 @@ var Notif = {
 
     incomingMessage: function () {
         if (NOTIFICATION_CHAT) {
-            // From https://free-mobi.org/ringtones/sms/sms-sound-2
-            var tone = new Audio(BASE_URI + 'theme/audio/message.ogg');
+            var tone = new Audio(BASE_URI + 'theme/audio/message.opus');
             tone.play();
         }
     },
     incomingCall: function () {
         if (NOTIFICATION_CALL) {
-            // From https://pixabay.com/sound-effects/ringtone-020-365650/
             Notif.audioCall = new Audio(BASE_URI + 'theme/audio/call.opus');
             Notif.audioCall.addEventListener('ended', function () {
                 this.currentTime = 0;
@@ -30,6 +28,14 @@ var Notif = {
             }, false);
             Notif.audioCall.play();
         }
+    },
+    userJoinedCall: function () {
+        var tone = new Audio(BASE_URI + 'theme/audio/user_joined.opus');
+        tone.play();
+    },
+    userLeftCall: function () {
+        var tone = new Audio(BASE_URI + 'theme/audio/user_left.opus');
+        tone.play();
     },
     incomingCallAnswer: function () {
         if (Notif.audioCall) {
@@ -83,7 +89,7 @@ var Notif = {
         Notif.setTab(key, counter);
         Notif.displayTab();
 
-        if (typeof BottomNavigation == 'object') BottomNavigation?.setChatNotification({[key]: counter});
+        if (typeof BottomNavigation == 'object') BottomNavigation?.setChatNotification({ [key]: counter });
     },
     setTab: function (key, counter) {
         if (Notif.tab_counter1_key == key) {

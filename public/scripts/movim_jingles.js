@@ -152,6 +152,8 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     if (MovimVisio.screenSharing.srcObject) {
         this.enableScreenSharing();
     }
+
+    Notif.userJoinedCall();
 }
 
 MovimJingleSession.prototype.handleRemoteAudio = async function () {
@@ -217,6 +219,8 @@ MovimJingleSession.prototype.terminate = function (reason, muji) {
 
 MovimJingleSession.prototype.close = function () {
     clearInterval(this.adaptToNetworkCondition);
+
+    Notif.userLeftCall();
 
     if (this.pc) {
         this.pc.close();
@@ -694,7 +698,9 @@ var MovimJingles = {
                 Visio_ajaxClear();
             } else {
                 let state = document.querySelector('p.state');
-                state.innerText = MovimVisio.states.no_participants_left;
+                if (state) {
+                    state.innerText = MovimVisio.states.no_participants_left;
+                }
             }
         }
     },

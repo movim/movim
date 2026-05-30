@@ -19,7 +19,11 @@
                         <img src="{$conference->getPicture()}">
                 {else}
                     <span class="primary icon gray on_desktop">
-                        <i class="material-symbols">tag</i>
+                        {if="$conference->call"}
+                            <i class="material-symbols">adaptive_audio_mic</i>
+                        {else}
+                            <i class="material-symbols">tag</i>
+                        {/if}
                     </span>
                 {/if}
             {elseif="!$conference"}
@@ -52,13 +56,13 @@
                 </span>
             {/if}
 
-            {if="$c->database('pgsql')"}
+            {if="!$conference->isConferenceCall() && $c->database('pgsql')"}
                 <span class="control icon active" onclick="ChatActions_ajaxShowSearchDialog('{$jid|echapJS}', true)">
                     <i class="material-symbols">manage_search</i>
                 </span>
             {/if}
 
-            {if="$conference && !$conference->isFromSpace() && $conference->mujiPresences->isEmpty() && $conference->isGroupChat()"}
+            {if="$conference && $conference->isGroupChat() && !$conference->isFromSpace() && $conference->mujiPresences->isEmpty()"}
                 <span class="control icon active {if="$c->database('pgsql')"}divided{/if} {if="$incall"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, false);">
                     <i class="material-symbols">call</i>
                 </span>
@@ -82,7 +86,7 @@
                                 onclick="Visio_ajaxLeaveMuji('{$conference->conference}'); this.classList.add('disabled')">
                             <i class="material-symbols blink">call_end</i>
                         </button>
-                    {else}
+                    {elseif="!$conference->isConferenceCall()"}
                         <button class="button oppose color blue {if="$incall"}disabled{/if}"
                                 onclick="Visio_ajaxJoinMuji('{$conference->conference}', {if="$conference->mujiPresences->first()->hasVideoMuji()"}true{else}false{/if});">
                             <i class="material-symbols">call</i>
