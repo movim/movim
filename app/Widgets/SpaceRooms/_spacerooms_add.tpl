@@ -21,6 +21,24 @@
                 </li>
                 <li>
                     <span class="primary icon gray">
+                        <i class="material-symbols">adaptive_audio_mic</i>
+                    </span>
+                    <span class="control">
+                        <div class="checkbox">
+                            <input
+                                type="checkbox"
+                                id="call"
+                                name="call"/>
+                            <label for="call"></label>
+                        </div>
+                    </span>
+                    <div>
+                        <p>{$c->__('chatrooms.conference_call')}</p>
+                        <p>{$c->__('chatrooms.conference_call_text')}</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="primary icon gray">
                         <i class="material-symbols">push_pin</i>
                     </span>
                     <span class="control">

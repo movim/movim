@@ -28,6 +28,13 @@ class SpaceRooms extends Base
         $this->registerEvent('space_addedroom', 'onEditedRooms');
         $this->registerEvent('space_deletedroom', 'onEditedRooms');
         $this->registerEvent('presence_muc_errorregistrationrequired', 'onRoomRegistrationRequired');
+
+        // We have a memory filter optimisation in onMujiPresence
+        $this->registerEvent('presence', 'onMujiPresence');
+        $this->registerEvent('presence_muji', 'onMujiPresence', 'space*');
+        $this->registerEvent('presence_muc_muji_leaving', 'onMujiLeaving');
+
+        $this->addcss('spacerooms.css');
     }
 
     public function onAffiliations(Packet $packet)
@@ -47,6 +54,45 @@ class SpaceRooms extends Base
     public function onRoomRegistrationRequired(Packet $packet)
     {
         $this->rpc('MovimUtils.addClass', '#space' . cleanupId($packet->content), 'disabled');
+    }
+
+    public function onMujiLeaving(Packet $packet)
+    {
+        $this->rpc('MovimTpl.hidePanel');
+    }
+
+    public function onMujiPresence(Packet $packet)
+    {
+        $sessionKey = 'muji_' . $packet->content->jid;
+        $isMuji = linker($this->sessionId)->session->get($sessionKey);
+
+        if ($isMuji === false) return;
+
+        if (is_array($isMuji)) {
+            $this->ajaxHttpGet($isMuji['server'], $isMuji['node']);
+            return;
+        }
+
+        $conference = $this->me->session->conferences()
+            ->fromSpace()
+            ->where('conference', $packet->content->jid)
+            ->first();
+
+        if ($conference) {
+            if ($conference->call) {
+                /**
+                 * We keep in memory the conference JID and filter on it to prevent DB queries each time we have a presence
+                 */
+                linker($this->sessionId)->session->set($sessionKey, [
+                    'server' => $conference->space_server,
+                    'node' => $conference->space_node
+                ]);
+
+                $this->ajaxHttpGet($conference->space_server, $conference->space_node);
+            } else {
+                linker($this->sessionId)->session->set($sessionKey, false);
+            }
+        }
     }
 
     public function onEditedRooms(Packet $packet)
@@ -166,7 +212,6 @@ class SpaceRooms extends Base
             $conference->name = $form->name->value;
             $conference->pinned = (bool)$form->pinned->value;
             $conference->autojoin = true;
-
             $b = $this->xmpp(new AddRoom);
             $b->setConference($conference)
                 ->request();
@@ -222,6 +267,7 @@ class SpaceRooms extends Base
         $conference->name = $form->name->value;
         $conference->pinned = (bool)$form->pinned->value;
         $conference->autojoin = true;
+        $conference->call = (bool)$form->call->value;
 
         $b = $this->xmpp(new AddRoom);
         $b->setConference($conference)

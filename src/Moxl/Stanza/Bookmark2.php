@@ -68,7 +68,11 @@ class Bookmark2
 
             $extensions = $dom->importNode($domExtensions->documentElement, true);
             $conference->appendChild($extensions);
-        } else if ($configuration->notify !== null || $configuration->pinned == true) {
+        } else if (
+            $configuration->notify !== null
+            || $configuration->pinned == true
+            || $configuration->call == true
+        ) {
             $extensions = $dom->createElement('extensions');
             $conference->appendChild($extensions);
         }
@@ -84,6 +88,12 @@ class Bookmark2
             $pinned = $dom->createElement('pinned');
             $pinned->setAttribute('xmlns', Conference::XMLNS_PINNED);
             $extensions->appendChild($pinned);
+        }
+
+        if ($configuration->call == true) {
+            $conferenceCall = $dom->createElement('conference-call');
+            $conferenceCall->setAttribute('xmlns', Conference::XMLNS_MOVIM_CONFERENCE_CALL);
+            $extensions->appendChild($conferenceCall);
         }
 
         if ($withPublishOption) {

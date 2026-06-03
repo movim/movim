@@ -20,6 +20,9 @@ var MovimVisio = {
     bundleRegex: 'a=group:(\\S+) (.+)',
     midRegex: 'a=mid:(.+)',
 
+    mouseMovement: null,
+    mouseMovementTimeout: 5000,
+
     load: function () {
         MovimVisio.localVideo = document.getElementById('local_video');
 
@@ -35,7 +38,7 @@ var MovimVisio = {
     },
 
     init: function (fullJid, jid, id, withVideo, isMuji) {
-        Visio_ajaxPrepare(jid); // ?muji
+        Visio_ajaxHttpPrepareInfo(jid, isMuji);
 
         MovimVisio.id = id;
 
@@ -64,7 +67,22 @@ var MovimVisio = {
             }
         }
 
+        visio.classList.add('movements');
+
         Notif.setCallStatus(MovimVisio.states.in_call);
+
+        visio.addEventListener('mousemove', e => {
+            clearTimeout(MovimVisio.mouseMovement);
+            visio.classList.add('movements');
+
+            MovimVisio.mouseMovement = setTimeout(() => {
+                visio.classList.remove('movements');
+            }, MovimVisio.mouseMovementTimeout);
+        })
+
+        if (typeof navigator.mediaDevices.getDisplayMedia == 'undefined') {
+            document.querySelector('#screen_sharing').classList.add('hide');
+        }
     },
 
     mujiPublish: function (init) {
@@ -320,24 +338,25 @@ var MovimVisio = {
         }
 
         var parts = MovimUtils.urlParts();
-        if (parts.page != 'chat' || parts.params[0] != jid) {
-            return;
+
+        if ((parts.page == 'chat' && parts.params[0] == jid)
+            || (parts.page == 'space' && parts.params[2] == jid)) {
+            const visio = document.getElementById('visio');
+            const body = document.body;
+
+            document.querySelector('#chat_widget header').after(visio);
+            Chat.scrollRestore();
+
+            const callback = (mutationList, observer) => {
+                if (!document.getElementById('visio')) {
+                    document.getElementById('endcommon').before(visio);
+                }
+            };
+
+            MovimVisio.observer = new MutationObserver(callback);
+            MovimVisio.observer.observe(body, { childList: true, subtree: true });
         }
 
-        const visio = document.getElementById('visio');
-        const body = document.body;
-
-        document.querySelector('#chat_widget header').after(visio);
-        Chat.scrollRestore();
-
-        const callback = (mutationList, observer) => {
-            if (!document.getElementById('visio')) {
-                document.getElementById('endcommon').before(visio);
-            }
-        };
-
-        MovimVisio.observer = new MutationObserver(callback);
-        MovimVisio.observer.observe(body, { childList: true, subtree: true });
     },
 
     callStop: function (id, jid) {

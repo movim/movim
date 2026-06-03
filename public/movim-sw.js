@@ -1,4 +1,4 @@
-var version = 9;
+var version = 10;
 var cacheKey = 'movim_' + version;
 
 const channel = new BroadcastChannel('messages');
@@ -18,7 +18,9 @@ self.addEventListener('install', (e) => {
             '/scripts/thumbhash.js',
             '/scripts/movim_emojis_list.js',
             '/theme/audio/call.opus',
-            '/theme/audio/message.ogg',
+            '/theme/audio/message.message',
+            '/theme/audio/user_joined.opus',
+            '/theme/audio/user_left.message',
             '/theme/fonts/MaterialSymbols/MaterialSymbols-Outlined.woff2',
             '/theme/fonts/Roboto/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2',
             '/theme/fonts/Roboto/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2',

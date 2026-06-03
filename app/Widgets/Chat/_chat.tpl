@@ -1,6 +1,7 @@
 
 {if="$muc"}
     <nav class="spin" id="{$jid|cleanupId}-nav"></nav>
+    <div id="chat_conference_call" class="spin"></div>
 {/if}
 
 <header id="{$jid|cleanupId}-header">

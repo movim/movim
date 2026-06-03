@@ -16,6 +16,7 @@ class Conference extends Model
 
     public const XMLNS_NOTIFICATIONS = 'urn:xmpp:notification-settings:0';
     public const XMLNS_PINNED = 'urn:xmpp:bookmarks-pinning:0';
+    public const XMLNS_MOVIM_CONFERENCE_CALL = '{https://movim.eu}bookmarks-conference-call';
     public const NOTIFICATIONS = [
         0 => 'never',
         1 => 'on-mention',
@@ -58,6 +59,11 @@ class Conference extends Model
     public function isFromSpace(): bool
     {
         return $this->space_server != null && $this->space_node != null;
+    }
+
+    public function isConferenceCall(): bool
+    {
+        return $this->isFromSpace() && $this->call;
     }
 
     public function spaceInfo()
@@ -222,6 +228,13 @@ class Conference extends Model
                 unset($item->conference->extensions->pinned);
             }
 
+            if (
+                $item->conference->extensions->{'conference-call'}
+                && $item->conference->extensions->{'conference-call'}->attributes()->xmlns == self::XMLNS_MOVIM_CONFERENCE_CALL
+            ) {
+                $this->call = true;
+            }
+
             $this->extensions = $item->conference->extensions->asXML();
         }
     }
@@ -332,6 +345,7 @@ class Conference extends Model
             'nick' => $this->attributes['nick'] ?? null,
             'autojoin' => $this->attributes['autojoin'] ?? null,
             'pinned' => $this->attributes['pinned'] ?? false,
+            'call' => $this->attributes['call'] ?? false,
             'created_at' => $this->attributes['created_at'] ?? $now,
             'updated_at' => $this->attributes['updated_at'] ?? $now,
             'extensions' => $this->attributes['extensions'] ?? null,

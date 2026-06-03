@@ -417,7 +417,7 @@ class Visio extends Base
 
         if ($conference) {
             $this->ajaxGetMujiLobby(
-                jid: $to,
+                to: $to,
                 calling: false,
                 withVideo: $withVideo,
                 id: $to
@@ -443,11 +443,11 @@ class Visio extends Base
         }
     }
 
-    public function ajaxGetMujiLobby(string $jid, bool $calling = false, ?bool $withVideo = false, ?string $id = null)
+    public function ajaxGetMujiLobby(string $to, bool $calling = false, ?bool $withVideo = false, ?string $id = null)
     {
         $view = $this->tpl();
         $view->assign('conference', $this->me->session
-            ->conferences()->where('conference', $jid)
+            ->conferences()->where('conference', $to)
             ->first());
         $view->assign('calling', $calling);
         $view->assign('withvideo', $withVideo);
@@ -550,7 +550,6 @@ class Visio extends Base
 
                 $this->rpc('MovimJingles.startCalls', $conference->conference);
             }
-
         }
     }
 
@@ -591,16 +590,25 @@ class Visio extends Base
         }
     }
 
-    public function ajaxPrepare(string $jid)
+    public function ajaxHttpPrepareInfo(string $to, ?bool $isMuji = false)
     {
-        $bareJid = \bareJid($jid);
-        $contact = \App\Contact::firstOrNew(['id' => $bareJid]);
+        $bareJid = \bareJid($to);
 
-        $view = $this->tpl();
-        $view->assign('contact', $contact);
+        if ($isMuji) {
+            $conference = $this->me->session
+                ->conferences()->where('conference', $to)
+                ->first();
 
+            $this->rpc('MovimTpl.fill', '#visio_contact', $this->view('_visio_conference_info', [
+                'conference' => $conference
+            ]));
+        } else {
+
+            $this->rpc('MovimTpl.fill', '#visio_contact', $this->view('_visio_contact_info', [
+                'contact' => \App\Contact::firstOrNew(['id' => $bareJid])
+            ]));
+        }
         $this->rpc('MovimVisio.moveToChat', $bareJid);
-        $this->rpc('MovimTpl.fill', '#visio_contact', $view->draw('_visio_contact'));
     }
 
     public function setDefaultServices()

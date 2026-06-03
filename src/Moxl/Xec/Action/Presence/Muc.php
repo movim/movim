@@ -133,6 +133,12 @@ class Muc extends Action
                 $this->deliver();
             }
 
+            if ($this->_muji) {
+                $this->method('muji_handle');
+                $this->pack($presence);
+                $this->deliver();
+            }
+
             if ($this->_notify) {
                 $this->method('handle'); // Reset
                 $this->pack($presence);
