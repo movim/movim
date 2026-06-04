@@ -200,7 +200,7 @@ ul.list.compact li .primary~*:not(.primary):not(.control):not(.bubble) {
 }
 
 ul.list:not(.gallery) li:not(.story)>.control~*:not(.primary):not(.control):not(.bubble) {
-    margin-inline-start: 1rem;
+    margin-inline-end: 1rem;
 }
 
 ul.list li .primary>a,
