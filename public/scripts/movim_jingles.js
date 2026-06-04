@@ -58,7 +58,7 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     this.callStatus.classList.add('status');
     this.participant.appendChild(this.callStatus);
 
-    setInterval(() => {
+    this.screenQualityInterval = setInterval(() => {
         this.callStatus.classList.remove('screen_hd', 'screen_fhd');
         if (!this.participant.classList.contains('screen_off')) {
             if (this.remoteScreenVideo.videoWidth >= 1920) {
@@ -219,6 +219,7 @@ MovimJingleSession.prototype.terminate = function (reason, muji) {
 
 MovimJingleSession.prototype.close = function () {
     clearInterval(this.adaptToNetworkCondition);
+    clearInterval(this.screenQualityInterval);
 
     Notif.userLeftCall();
 
@@ -411,18 +412,20 @@ MovimJingleSession.prototype.disableScreenSharing = function () {
 }
 
 MovimJingleSession.prototype.resolveTransceiver = function (track) {
-    transceiver = this.pc.getTransceivers().find(transceiver => transceiver.sender.track && transceiver.sender.track.id == track.id);
+    const transceiver = this.pc.getTransceivers().find(transceiver => transceiver.sender.track && transceiver.sender.track.id == track.id);
     return transceiver ?? null;
 }
 
 MovimJingleSession.prototype.mute = function (track) {
-    if (transceiver = this.resolveTransceiver(track)) {
+    const transceiver = this.resolveTransceiver(track);
+    if (transceiver) {
         Visio_ajaxMute(this.fullJid, this.id, 'mid' + transceiver.mid);
     }
 }
 
 MovimJingleSession.prototype.unmute = function (track) {
-    if (transceiver = this.resolveTransceiver(track)) {
+    const transceiver = this.resolveTransceiver(track);
+    if (transceiver) {
         Visio_ajaxUnmute(this.fullJid, this.id, 'mid' + transceiver.mid);
     } else if (track.kind == 'video') {
         this.pc.addTrack(track);
@@ -494,7 +497,8 @@ MovimJingleSession.prototype.maybeInjectScreenCategory = function (sdp) {
         sdp = sdp.split('m=').map(media => {
             let mid = media.match(MovimVisio.midRegex);
             if (mid != null) {
-                if (transceiver = this.pc.getTransceivers().find(transceiver => transceiver.mid == mid[1])) {
+                const transceiver = this.pc.getTransceivers().find(transceiver => transceiver.mid == mid[1]);
+                if (transceiver) {
                     if (ids.includes(transceiver.sender.track.id)) {
                         return media + 'a=content:slides' + "\n";
                     }
@@ -512,7 +516,7 @@ var MovimJingles = {
     sessions: {},
 
     startCalls: function (mujiRoom) {
-        for (jid of Object.keys(MovimJingles.sessions)) {
+        for (const jid of Object.keys(MovimJingles.sessions)) {
             MovimJingles.onProceed(jid, MovimJingles.sessions[jid].fullJid, MovimJingles.sessions[jid].id, mujiRoom);
         }
     },
@@ -534,7 +538,7 @@ var MovimJingles = {
         let maxLevel = 0;
         let maxJid = null;
 
-        for (jid of Object.keys(MovimJingles.sessions)) {
+        for (const jid of Object.keys(MovimJingles.sessions)) {
             if (maxLevel < MovimJingles.sessions[jid].audioLevel) {
                 maxLevel = MovimJingles.sessions[jid].audioLevel;
                 maxJid = jid;
@@ -542,7 +546,7 @@ var MovimJingles = {
         }
 
         if (maxJid != null) {
-            for (jid of Object.keys(MovimJingles.sessions)) {
+            for (const jid of Object.keys(MovimJingles.sessions)) {
                 MovimJingles.sessions[jid].participant.classList.remove('active');
             }
 
@@ -551,19 +555,19 @@ var MovimJingles = {
     },
 
     onManageTrack: function (stream, enable) {
-        for (jid of Object.keys(MovimJingles.sessions)) {
+        for (const jid of Object.keys(MovimJingles.sessions)) {
             MovimJingles.sessions[jid].onManageTrack(stream, enable);
         }
     },
 
     enableScreenSharing: function () {
-        for (jid of Object.keys(MovimJingles.sessions)) {
+        for (const jid of Object.keys(MovimJingles.sessions)) {
             MovimJingles.sessions[jid].enableScreenSharing();
         }
     },
 
     disableScreenSharing: function () {
-        for (jid of Object.keys(MovimJingles.sessions)) {
+        for (const jid of Object.keys(MovimJingles.sessions)) {
             MovimJingles.sessions[jid].disableScreenSharing();
         }
     },
@@ -572,7 +576,7 @@ var MovimJingles = {
         MovimVisio.localStream.getTracks().filter(track => track.kind == 'audio').forEach(track => {
             track.enabled = enable;
 
-            for (jid of Object.keys(MovimJingles.sessions)) {
+            for (const jid of Object.keys(MovimJingles.sessions)) {
                 if (enable) {
                     MovimJingles.sessions[jid].unmute(track);
                 } else {
@@ -588,7 +592,7 @@ var MovimJingles = {
         MovimVisio.localStream.getTracks().filter(track => track.kind == 'video').forEach(track => {
             track.enabled = enable;
 
-            for (jid of Object.keys(MovimJingles.sessions)) {
+            for (const jid of Object.keys(MovimJingles.sessions)) {
                 if (enable) {
                     MovimJingles.sessions[jid].unmute(track);
                 } else {
@@ -599,7 +603,7 @@ var MovimJingles = {
     },
 
     insertDtmf: function (s) {
-        for (jid of Object.keys(MovimJingles.sessions)) {
+        for (const jid of Object.keys(MovimJingles.sessions)) {
             MovimJingles.sessions[jid].insertDtmf(s);
         }
     },
@@ -706,7 +710,7 @@ var MovimJingles = {
     },
 
     terminateAll: function (reason) {
-        for (jid of Object.keys(MovimJingles.sessions)) {
+        for (const jid of Object.keys(MovimJingles.sessions)) {
             MovimJingles.terminate(jid, reason);
         }
 
