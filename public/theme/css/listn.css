@@ -25,13 +25,8 @@ ul.list.compact>li>div {
 
 ul.list.compact>li>span.chip {
     position: absolute;
-    right: 1rem;
+    inset-inline-end: 1rem;
     top: 2rem;
-}
-
-*[dir="rtl"] ul.list.compact>li>span.chip {
-    left: 1rem;
-    right: auto;
 }
 
 ul.list.controls>li {
@@ -717,7 +712,7 @@ header ul.context_menu {
     overflow: hidden;
     position: absolute;
     top: 0;
-    right: 0;
+    inset-inline-end: 0;
     margin: 0.5rem;
     z-index: 3;
     box-shadow: var(--elevation-2);
@@ -726,11 +721,6 @@ header ul.context_menu {
     opacity: 0;
     pointer-events: none;
     min-width: 25rem;
-}
-
-body[dir="rtl"] header ul.context_menu {
-    left: 0;
-    right: auto;
 }
 
 header ul.list.context_menu li {
@@ -753,7 +743,7 @@ ul.list li.divided:after,
 *.divided:not(.spaced):not(li)>*:not(:last-child):not(.subheader):after,
 *.divided.spaced>*:not(:last-child):not(.subheader):after {
     position: absolute;
-    right: 0;
+    inset-inline-end: 0;
     bottom: 0;
     content: "";
     display: block;

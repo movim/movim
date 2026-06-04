@@ -53,14 +53,9 @@ form > div .select:has(option:nth-child(2)):after {
     font-size: 4rem;
     color: rgba(var(--movim-font), 0.75);
     position: absolute;
-    right: 0rem;
     bottom: 0rem;
     pointer-events: none;
-}
-
-*[dir="rtl"] form > div .select:has(option:nth-child(2))::after {
-    left: 1.25rem;
-    right: auto;
+    inset-inline-end: 0;
 }
 
 form > div .select:hover:after {

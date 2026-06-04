@@ -176,7 +176,7 @@ body.finished:before {
 
 main {
     position: absolute;
-    right: 0;
+    inset-inline-end: 0;
     top: 0;
     transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
     overflow-y: auto;
@@ -186,11 +186,6 @@ main {
     display: flex;
     justify-content: center;
     flex-direction: row-reverse;
-}
-
-body[dir="rtl"] main {
-    left: 0;
-    right: auto;
 }
 
 @media print {
@@ -230,13 +225,8 @@ main>section#sidebar {
 
 main>section#sidebar+div {
     width: 85rem;
-    padding-right: 1rem;
+    padding-inline-end: 1rem;
     box-sizing: border-box;
-}
-
-body[dir="rtl"] main>section#sidebar+div {
-    padding-left: 1rem;
-    padding-right: 0;
 }
 
 /* Two blocks */
@@ -290,11 +280,7 @@ main>div:first-child:nth-last-child(2)+div {
     }
 
     main>section#sidebar+div {
-        padding-right: 0;
-    }
-
-    body[dir="rtl"] main>section#sidebar+div {
-        padding-left: 0;
+        padding-inline-end: 0;
     }
 
     main>section#sidebar {
