@@ -14,14 +14,8 @@
     height: 14.5rem;
 }
 
-*[dir="rtl"] #stories div.lists ul.list:last-child,
-*[dir="ltr"] #stories div.lists ul.list:first-child {
-    padding-right: 0;
-}
-
-*[dir="rtl"] #stories div.lists ul.list:first-child,
-*[dir="ltr"] #stories div.lists ul.list:last-child {
-    padding-left: 1rem;
+#stories div.lists ul.list:first-child {
+    padding-inline-end: 0;
 }
 
 #stories ul.list.flex li.block {

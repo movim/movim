@@ -88,12 +88,6 @@ form > div .select:not(:has(option:nth-child(2))) {
 
 /* Placeholders to mimic FF */
 
-::-webkit-input-placeholder, /* WebKit browsers */
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #fff;
-    opacity: 0.5;
-}
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -295,9 +289,6 @@ form > div .radio > input[type="radio"] + label:hover {
 }
 
 form > div .radio > input[type="radio"]:checked + label {
-    background-color: blue;
-    background-color: #009688;
-    border-color: #009688;
     box-shadow: inset 0 0 0 0.4rem rgb(var(--movim-background-main));
 
 }
@@ -327,11 +318,7 @@ form > div textarea[readonly] {
 /* Button */
 
 .button.oppose {
-    float: right;
-}
-
-*[dir="rtl"] .button.oppose {
-    float: left;
+    float: inline-end;
 }
 
 .button:disabled,
@@ -526,8 +513,7 @@ li.action div.action .button {
     z-index: -1;
     opacity: 0;
     height: auto;
-    overflow: hidden;
     white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow-wrap: break-word; /* future version of deprecated 'word-wrap' */
+    overflow: hidden;
+    overflow-wrap: break-word;
 }

@@ -5,9 +5,6 @@
     font: inherit;
     vertical-align: baseline;
     list-style-type: none;
-}
-
-* {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -92,11 +89,6 @@ body>nav {
 body>nav hr {
     margin: 0.5rem 0;
 }
-
-/*
-body>nav.active {
-    width: 45rem;
-}*/
 
 body>div.drawer:not(:empty)~main,
 body>div.drawer:not(:empty)~nav,
@@ -189,8 +181,6 @@ main {
     transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
     overflow-y: auto;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    /* Hack to have a non-blocking scrolling in iOS… */
     width: 100%;
 
     display: flex;
@@ -432,7 +422,7 @@ img.avatar:not([src=""])+.placeholder {
 
     .on_mobile,
     .on_mobile_after:after {
-        display: inherit !important;
+        display: revert !important;
     }
 
     .on_mobile.material-symbols {

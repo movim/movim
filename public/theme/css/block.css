@@ -66,7 +66,7 @@ ul.flex.card li.subheader {
 }
 
 @media screen and (min-width: 451px) and (max-width: 900px) {
-    .flex.flex.third {
+    .flex.third {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -74,7 +74,7 @@ ul.flex.card li.subheader {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .flex.flex.fifth {
+    .flex.fifth {
         grid-template-columns: repeat(4, 1fr);
     }
 
@@ -144,7 +144,6 @@ ul.flex.gallery li.block img.main {
     max-width: calc(100% + 3rem);
     width: calc(100% + 3rem);
     filter: none;
-    /*flex: 0 0 60%;*/
     mask-image: linear-gradient(to bottom, black calc(100% - 20rem), transparent);
     margin-bottom: -10rem;
 }

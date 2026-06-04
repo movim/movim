@@ -132,12 +132,7 @@ ul.list li .primary {
 
 ul.list li .primary:not(.bubble)[onclick] {
     flex: 0 0 6.5rem;
-    margin-left: -1.5rem;
-}
-
-*[dir="rtl"] ul.list li .primary:not(.bubble)[onclick] {
-    margin-right: -1.5rem;
-    margin-left: auto;
+    margin-inline-start: -1.5rem;
 }
 
 ul.list li.primary ul.list.compact>li .primary {
@@ -157,13 +152,7 @@ ul.list li.invite:not(.subheader)>span.primary+span.primary {
 }
 
 ul.list:not(.navigation) li>span.control:last-of-type:not(:has(>.checkbox)):not(.toggleable) {
-    margin-right: -1.5rem;
-}
-
-
-*[dir="rtl"] ul.list:not(.navigation) li>span.control:last-of-type:not(:has(>.checkbox)):not(.toggleable) {
-    margin-right: 0;
-    margin-left: -1.5rem;
+    margin-inline-end: -1.5rem;
 }
 
 header>ul.list li>span.control:last-of-type,
@@ -207,31 +196,16 @@ ul.list.thick:not(.navigation) li:not(.subheader) .primary:not(.bubble):not(.thu
 }
 
 ul.list li .primary~*:not(.primary):not(.control):not(.bubble) {
-    margin-left: 1rem;
-}
-
-*[dir="rtl"] ul.list li .primary~*:not(.primary):not(.control):not(.bubble) {
-    margin-left: 0;
-    margin-right: 1rem;
+    margin-inline-start: 1rem;
 }
 
 ul.list.compact li .primary~*:not(.primary):not(.control):not(.bubble) {
-    margin-left: 0.5rem;
+    margin-inline-start: 0.5rem;
     padding-bottom: 0;
 }
 
-*[dir="rtl"] ul.list.compact li .primary~*:not(.primary):not(.control):not(.bubble) {
-    margin-left: 0;
-    margin-right: 0.5rem;
-}
-
 ul.list:not(.gallery) li:not(.story)>.control~*:not(.primary):not(.control):not(.bubble) {
-    margin-right: 1rem;
-}
-
-*[dir="rtl"] ul.list:not(.gallery) li:not(.story)>.control~*:not(.primary):not(.control):not(.bubble) {
-    margin-right: 0;
-    margin-left: 1rem;
+    margin-inline-start: 1rem;
 }
 
 ul.list li .primary>a,
@@ -276,16 +250,12 @@ ul.list li>div>p>span.second.sticked {
 
 ul.list li>div>p>span.info,
 ul.list li>div.bubble:after {
-    float: right;
+    float: inline-end;
     font-size: 1.5rem;
     margin-left: 0.5rem;
     max-width: 70%;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-*[dir="rtl"] ul.list li>div>p>span.info {
-    float: left;
 }
 
 /* Size automagicaly the content */
@@ -588,7 +558,7 @@ ul.list li>div.bubble>div>p {
     max-width: 100%;
     min-width: 20rem;
     font-size: 1.75rem;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
     white-space: pre-wrap;
     word-break: normal;
     position: relative;

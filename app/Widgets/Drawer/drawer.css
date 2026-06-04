@@ -19,8 +19,6 @@
 .drawer>section {
     height: 100%;
     overflow-y: auto;
-    /* Hack to have a non-blocking scrolling in iOS… */
-    -webkit-overflow-scrolling: touch;
     position: relative;
 }
 

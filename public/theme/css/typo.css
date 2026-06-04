@@ -78,7 +78,7 @@ xmp {
     padding: 0.5rem 1rem;
     font-size: 1.6rem;
     background-color: rgb(var(--movim-gray));
-    word-wrap:break-word;
+    overflow-wrap:break-word;
     direction: ltr;
     overflow-x: auto;
 }
