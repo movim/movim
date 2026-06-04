@@ -22,6 +22,7 @@ if ('serviceWorker' in navigator) {
                 break;
             case 'space_chat':
                 MovimUtils.reload(event.data.data.server, event.data.data.node, event.data.data.room);
+                break;
             case 'chat':
                 Search.chat(event.data.data.jid, event.data.data.muc);
                 break;
