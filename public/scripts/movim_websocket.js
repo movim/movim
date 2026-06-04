@@ -64,10 +64,10 @@ var MovimWebsocket = {
     },
 
     init: function () {
+        var uri = 'ws:' + BASE_URI + 'ws/';
+
         if (window.location.protocol === "https:") {
             var uri = 'wss:' + BASE_URI + 'ws/';
-        } else {
-            var uri = 'ws:' + BASE_URI + 'ws/';
         }
 
         if (this.connection !== null) {
@@ -123,7 +123,7 @@ var MovimWebsocket = {
                 this.closed = true;
                 MovimWebsocket.statusBar.classList.remove('hide', 'connect');
                 MovimWebsocket.connection.close();
-            } if (e.code == 1006) {
+            } else if (e.code == 1006) {
                 MovimWebsocket.reconnect();
             } else if (e.code == 1000) {
                 MovimUtils.disconnect();
