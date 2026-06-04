@@ -31,7 +31,7 @@ p+p>.chip:last-child,
     margin-right: 0;
 }
 
-.chip:has(i) {
+.chip:has(i:not(.on_mobile)) {
     padding-inline-start: 0;
 }
 
