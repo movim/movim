@@ -26,12 +26,12 @@ var MovimUtils = {
         return 'id-' + string.replace(/([^a-z0-9]+)/gi, '-').toLowerCase();
     },
     hash(string) {
-        var hash = 0;
+        let hash = 0;
 
-        if (string.length == 0) return hash;
+        if (string.length === 0) return hash;
 
-        for (i = 0; i < string.length; i++) {
-            char = string.charCodeAt(i);
+        for (let i = 0; i < string.length; i++) {
+            const char = string.charCodeAt(i);
             hash = ((hash << 5) - hash) + char;
             hash = hash & hash;
         }
@@ -134,19 +134,16 @@ var MovimUtils = {
                 'Content-Type': 'application/json'
             }
         }).then(reponse => {
-            onloaders = [];
-            onfocused = [];
-
             reponse.text().then(value => {
                 MovimTpl.finishedPage();
 
                 let page = JSON.parse(value);
 
-                if (noHistory != true) {
+                if (noHistory !== true) {
                     MovimUtils.pushSoftState(uri);
                 }
 
-                if (typeof MovimWebsocket != 'undefined') {
+                if (typeof MovimWebsocket !== 'undefined') {
                     MovimWebsocket.clear();
                 }
 
@@ -161,7 +158,7 @@ var MovimUtils = {
                 // CSS
 
                 page.widgetsCSS.forEach(url => {
-                    var css = document.createElement("link");
+                    const css = document.createElement('link');
                     css.setAttribute('rel', 'stylesheet');
                     css.href = url;
                     css.classList.add('widget');
@@ -170,23 +167,20 @@ var MovimUtils = {
 
                 // Javascript
 
-                const promises = [];
-                page.widgetsScripts.forEach(script => {
-                    promises.push(new Promise(function (resolve, reject) {
-                        var js = document.createElement("script");
-                        js.src = script;
-                        js.setAttribute('type', 'text/javascript');
-                        js.onload = resolve;
-                        js.onerror = resolve;
-                        js.classList.add('widget');
-                        document.head.appendChild(js);
-                    }));
-                });
+                const promises = page.widgetsScripts.map(script => new Promise((resolve) => {
+                    const js = document.createElement('script');
+                    js.src = script;
+                    js.setAttribute('type', 'text/javascript');
+                    js.onload = resolve;
+                    js.onerror = resolve;
+                    js.classList.add('widget');
+                    document.head.appendChild(js);
+                }));
 
-                var js = document.createElement("script");
-                js.classList.add('inline');
-                js.innerHTML = page.inlineScripts;
-                document.head.appendChild(js);
+                const inlineJs = document.createElement('script');
+                inlineJs.classList.add('inline');
+                inlineJs.innerHTML = page.inlineScripts;
+                document.head.appendChild(inlineJs);
 
                 // Events
                 Promise.all(promises).then(() => {
@@ -240,12 +234,7 @@ var MovimUtils = {
         }
     },
     copyToClipboard: function (text) {
-        var input = document.body.appendChild(document.createElement('input'));
-        input.value = text;
-        input.focus();
-        input.select();
-        document.execCommand('copy');
-        input.parentNode.removeChild(input);
+        navigator.clipboard.writeText(text).catch(err => MovimUtils.logError(err));
     },
     applyAutoheight: function () {
         var textareas = document.querySelectorAll('textarea[data-autoheight=true]')
