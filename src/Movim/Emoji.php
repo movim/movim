@@ -27,33 +27,33 @@ namespace Movim;
 
 class Emoji
 {
-    protected static $instance = null;
+    protected static ?self $instance = null;
 
-    private $_emoji;
-    private $_string;
-    private $_lastEmoji = null;
-    private $_lastEmojiUrl = null;
-    private $_lastEmojiTitle = null;
+    private array $emoji;
+    private ?string $string = null;
+    private ?string $lastEmoji = null;
+    private ?string $lastEmojiUrl = null;
+    private ?string $lastEmojiTitle = null;
 
     protected function __construct()
     {
-        $this->_emoji = require('Emoji/CompiledEmoji.php');
+        $this->emoji = require('Emoji/CompiledEmoji.php');
     }
 
-    public function getEmojis()
+    public function getEmojis(): array
     {
-        return $this->_emoji;
+        return $this->emoji;
     }
 
     public function replace(string $string, bool $noTitle = false): string
     {
         // Remove the Variation Selectors (Unicode block) for a proper comparison
-        $this->_string = preg_replace('/[\x{fe00}\x{fe0f}]/u', '', $string);
-        $this->_lastEmoji = null;
+        $this->string = preg_replace('/[\x{fe00}\x{fe0f}]/u', '', $string);
+        $this->lastEmoji = null;
 
         $replaced = preg_replace_callback(
             '/(?:\p{Extended_Pictographic}[\p{Emoji_Modifier}\p{M}]*(?:\p{Join_Control}\p{Extended_Pictographic}[\p{Emoji_Modifier}\p{M}]*)*|\s|.)\p{M}*/u',
-            function ($matches) use ($noTitle) {
+            function (array $matches) use ($noTitle): string {
                 $astext = implode(
                     '-',
                     array_map(
@@ -62,22 +62,22 @@ class Emoji
                     )
                 );
 
-                if (!isset($this->_emoji[$astext])) {
+                if (!isset($this->emoji[$astext])) {
                     return $matches[0];
                 }
 
-                $this->_lastEmoji = $matches[0];
-                $this->_lastEmojiUrl = BASE_URI . 'theme/img/emojis/svg/' . $astext . '.svg';
+                $this->lastEmoji = $matches[0];
+                $this->lastEmojiUrl = BASE_URI . 'theme/img/emojis/svg/' . $astext . '.svg';
 
                 $dom = new \DOMDocument('1.0', 'UTF-8');
                 $dom->appendChild($img = $dom->createElement('img'));
                 $img->setAttribute('class', 'emoji');
-                $img->setAttribute('alt', $this->_emoji[$astext]);
+                $img->setAttribute('alt', $this->emoji[$astext]);
                 if (!$noTitle) {
-                    $this->_lastEmojiTitle = \emojiShortcut($this->_emoji[$astext]);
-                    $img->setAttribute('title', ':' . $this->_lastEmojiTitle . ':');
+                    $this->lastEmojiTitle = \emojiShortcut($this->emoji[$astext]);
+                    $img->setAttribute('title', ':' . $this->lastEmojiTitle . ':');
                 }
-                $img->setAttribute('src', $this->_lastEmojiUrl);
+                $img->setAttribute('src', $this->lastEmojiUrl);
 
                 return $dom->saveXML($dom->documentElement);
             },
@@ -89,29 +89,29 @@ class Emoji
 
     public function isSingleEmoji(): bool
     {
-        return $this->_string !== null && trim($this->_string) === $this->_lastEmoji;
+        return $this->string !== null && trim($this->string) === $this->lastEmoji;
     }
 
-    public function getLastSingleEmojiURL()
+    public function getLastSingleEmojiURL(): ?string
     {
-        return $this->_lastEmojiUrl;
+        return $this->lastEmojiUrl;
     }
 
-    public function getLastSingleEmojiTitle()
+    public function getLastSingleEmojiTitle(): ?string
     {
-        return $this->_lastEmojiTitle;
+        return $this->lastEmojiTitle;
     }
 
     public static function getInstance()
     {
         if (!isset(static::$instance)) {
-            static::$instance = new Emoji;
+            static::$instance = new static;
         }
 
-        static::$instance->_string = null;
-        static::$instance->_lastEmoji = null;
-        static::$instance->_lastEmojiUrl = null;
-        static::$instance->_lastEmojiTitle = null;
+        static::$instance->string = null;
+        static::$instance->lastEmoji = null;
+        static::$instance->lastEmojiUrl = null;
+        static::$instance->lastEmojiTitle = null;
 
         return static::$instance;
     }
