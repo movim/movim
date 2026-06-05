@@ -28,9 +28,9 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
 
     document.querySelector('#participants').appendChild(this.participant);
 
-    this.participant.classList.add('video_off');
-    this.participant.classList.add('screen_off');
     this.participant.classList.add('audio_off');
+    this.participant.classList.add('screen_off');
+    this.participant.classList.add('video_off');
 
     this.remoteScreenVideo = document.createElement('video');
     this.remoteScreenVideo.classList.add('screen');
@@ -54,9 +54,43 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     this.remoteScreenAudio.autoplay = true;
     this.participant.appendChild(this.remoteScreenAudio);
 
-    this.callStatus = document.createElement('span')
+    this.callStatus = document.createElement('div')
     this.callStatus.classList.add('status');
     this.participant.appendChild(this.callStatus);
+
+    this.audioOffStatus = document.createElement('span');
+    this.audioOffStatus.classList.add('audio_off');
+    this.callStatus.appendChild(this.audioOffStatus);
+
+    this.videoOffStatus = document.createElement('span');
+    this.videoOffStatus.classList.add('video_off');
+    this.callStatus.appendChild(this.videoOffStatus);
+
+    this.screenStatus = document.createElement('span');
+    this.screenStatus.classList.add('screen');
+    this.callStatus.appendChild(this.screenStatus);
+
+    // Pin button
+    this.pin = document.createElement('span');
+    this.pin.classList.add('pin');
+    this.participant.appendChild(this.pin);
+
+    this.pin.addEventListener('click', e => {
+        VisioUtils.toggleMode(true);
+
+        if (MovimJingles.pinned == this.jid) {
+            MovimJingles.pinned = null;
+            Visio_ajaxHttpUnpin();
+        } else {
+            MovimJingles.pinned = this.jid;
+
+            if (this.name) {
+                Visio_ajaxHttpPin(this.name);
+            }
+        }
+
+        MovimJingles.checkActiveSpeaker();
+    })
 
     this.screenQualityInterval = setInterval(() => {
         this.callStatus.classList.remove('screen_hd', 'screen_fhd');
@@ -70,7 +104,7 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     }, 3000);
 
     if (this.name) {
-        this.participant.dataset.name = this.name;
+        this.callStatus.dataset.name = this.name;
     }
 
     if (this.avatarUrl) {
@@ -154,6 +188,7 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     }
 
     Notif.userJoinedCall();
+    MovimJingles.checkActiveSpeaker();
 }
 
 MovimJingleSession.prototype.handleRemoteAudio = async function () {
@@ -514,6 +549,7 @@ MovimJingleSession.prototype.maybeInjectScreenCategory = function (sdp) {
 
 var MovimJingles = {
     sessions: {},
+    pinned: null,
 
     startCalls: function (mujiRoom) {
         for (const jid of Object.keys(MovimJingles.sessions)) {
@@ -543,14 +579,20 @@ var MovimJingles = {
                 maxLevel = MovimJingles.sessions[jid].audioLevel;
                 maxJid = jid;
             }
+
+            MovimJingles.sessions[jid].participant.classList.remove('active', 'pinned');
+        }
+
+        // Pinned has priority
+        if (MovimJingles.pinned && MovimJingles.sessions[MovimJingles.pinned]) {
+            MovimJingles.sessions[MovimJingles.pinned].participant.classList.add('active', 'pinned');
+            return;
         }
 
         if (maxJid != null) {
-            for (const jid of Object.keys(MovimJingles.sessions)) {
-                MovimJingles.sessions[jid].participant.classList.remove('active');
-            }
-
             MovimJingles.sessions[maxJid].participant.classList.add('active');
+        } else if (Object.values(MovimJingles.sessions).length > 0) {
+            Object.values(MovimJingles.sessions)[0].participant.classList.add('active');
         }
     },
 

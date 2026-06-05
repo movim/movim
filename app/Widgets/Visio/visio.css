@@ -203,7 +203,17 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     position: absolute;
     width: 100%;
     z-index: 1;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+}
+
+#visio header::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 115%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
 #visio header span.control {
@@ -213,7 +223,9 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 }
 
 #visio.movements header span.control,
-#visio header:hover span.control {
+#visio.movements header::before,
+#visio header:hover span.control,
+#visio header:hover::before {
     opacity: 1;
     pointer-events: initial;
 }
@@ -256,6 +268,25 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     display: none;
 }
 
+#visio header span#toggle_audio::after {
+    content: '';
+    display: inline-block;
+    width: 0.3rem;
+    height: 2rem;
+    min-height: 0.3rem;
+    background-color: white;
+    position: relative;
+    border-radius: 1rem;
+    transition: height .4s;
+    height: calc(var(--level) * 2.5rem);
+    opacity: 0.75;
+    margin-top: -1rem;
+    margin-left: -0.4rem;
+    margin-right: 0;
+    box-shadow: var(--elevation-4);
+    vertical-align: middle;
+}
+
 #visio header #no_mic_sound {
     animation: fadein 0.3s;
     font-size: 1.5rem;
@@ -273,313 +304,216 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     position: absolute;
 }
 
-#visio .ring {
-    -webkit-animation: Rotate 2000ms infinite;
-    animation: Rotate 2000ms infinite;
-}
-
 #visio #participants {
     display: flex;
-    flex-wrap: wrap;
     height: 100%;
     justify-content: center;
-}
-
-#visio #local_video,
-#visio .participant video {
-    transition: opacity 0.5s ease-in-out, outline 0.4s ease 0s;
+    align-content: center;
+    padding: 0 1rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 #visio .participant {
     position: relative;
-    padding: 0.5rem;
-    box-sizing: border-box;
-    max-height: 100%;
-    flex: 1 auto;
-
+    aspect-ratio: 4/3;
+    background-color: #222;
+    border-radius: 1rem;
+    overflow: hidden;
+    flex: 1;
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    max-height: 100vh;
+    transition: outline 0.3s;
+    outline: 0.5rem solid rgb(255, 255, 255, calc(var(--level) * 0.75));
+    justify-content: center;
+    order: 2;
 }
 
+#visio #participants .participant:only-child {
+    max-height: 96%;
+}
+
+#visio:not([data-muji="true"]) .participant:only-child {
+    outline: none;
+}
+
+#visio #participants:has(.participant:nth-child(2)) .participant {
+    flex-basis: 48%;
+    flex-grow: 0;
+}
+
+#visio #participants:has(.participant:nth-child(5)) .participant {
+    flex-basis: 32%;
+}
+
+@media screen and (max-width: 800px) {
+    #visio #participants:has(.participant:nth-child(5)) .participant {
+        flex-basis: 48%;
+    }
+}
+
+/* Video elements */
+
 #visio .participant video {
-    max-width: 100%;
     height: 100%;
-    margin: 0 auto;
-    display: block;
-    border-radius: 0.5rem;
+    max-height: 100%;
+    width: auto;
     object-fit: cover;
+    position: absolute;
 }
 
 #visio .participant video.screen {
-    max-height: 100%;
     height: auto;
+    width: 100%;
 }
 
-#visio .participant:not(.screen_off) video.screen+video {
-    position: absolute;
-    bottom: 5.5rem;
-    left: 1rem;
-    width: 20rem;
-    max-width: 40%;
-    height: auto;
-    box-shadow: var(--elevation-4);
-}
-
-#visio .participant:not(.screen_off).video_off video.screen+video {
-    display: none;
-}
-
-/** Active speaker view **/
-
-#visio #participants.active .participant:not(.active),
-body>#visio:not(:fullscreen) #participants.active .participant:not(.active) {
-    display: none;
-}
-
-/** Grid view **/
-
-#visio #participants .participant:not(.audio_off) span.status::before,
-#visio span#toggle_audio::after {
-    content: '';
-    display: inline-block;
-    width: 0.3rem;
-    height: 2rem;
-    min-height: 0.3rem;
-    background-color: white;
-    position: relative;
-    bottom: 0;
-    border-radius: 1rem;
-    transition: height .4s;
-    height: calc(var(--level) * 1.5rem);
-    opacity: 0.75;
-    margin-top: -0.75rem;
-    box-shadow: var(--elevation-4);
-    vertical-align: middle;
-}
-
-#visio span#toggle_audio::after {
-    height: calc(var(--level) * 2.5rem);
-    margin-left: -0.4rem;
-    margin-right: 0;
-}
-
-#visio #participants:not(.active):has(.participant:nth-child(2)) .participant {
-    flex: 1 0 calc(50% - 0.5rem);
-    max-width: 50%;
-}
-
-#visio #participants:not(.active):has(.participant:nth-child(2)) .participant video {
-    max-height: 50vw;
-}
-
-#visio #participants:not(.active):has(.participant:nth-child(3)) .participant {
-    height: 50%;
-}
-
-#visio #participants:not(.active):has(.participant:nth-child(5)) .participant {
-    flex: 1 0 calc(33.33% - 0.5rem);
-}
-
-#visio #participants:not(.active):has(.participant:nth-child(7)) .participant {
-    height: 33.33%;
-}
-
-body>#visio #participants:not(.active):has(.participant:nth-child(3)) .participant,
-body>#visio #participants:not(.active):has(.participant:nth-child(5)) .participant,
-body>#visio #participants:not(.active):has(.participant:nth-child(7)) .participant {
-    height: 100%;
-}
-
-/** Active speaker mode */
-body>#visio #participants.active:not(.active):has(.participant:nth-child(2)) .participant {
-    flex: 1 auto;
-    max-width: 100%;
-}
-
-#visio .participant span.status,
-#visio .participant::before {
-    position: absolute;
-    bottom: 5.5rem;
-    left: 2rem;
-    line-height: 1.5rem;
-    display: inline-block;
-    color: white;
-    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.85);
-    font-size: 2rem;
-    background-color: transparent;
-    transition: opacity 0.5s ease-in-out, background-color 0.5s ease-in-out, transform .3s cubic-bezier(.4, 0, .2, 1);
-    z-index: 1;
-}
-
-#visio .participant span.status::after {
-    font-family: 'Material Symbols';
-    font-variation-settings: 'FILL' 1;
-    content: '\e029';
-    letter-spacing: 1.25rem;
-    opacity: 0.5;
-}
-
-#visio .participant img.avatar {
-    position: absolute;
-    width: 15rem;
-    height: 15rem;
-    left: calc(50% - 7.5rem);
-    top: calc(50% - 7.5rem);
-    border-radius: 50%;
-    transition: opacity 0.5s ease-in-out;
+#visio .participant.screen_off video.screen {
     opacity: 0;
-    display: none;
 }
 
-#visio .participant.video_off.screen_off img.avatar {
-    opacity: 1;
-    display: initial;
-}
-
-#visio .participant:not([data-name]) span.status {
-    bottom: 2rem;
-}
-
-#visio .participant span.status.screen_hd::after {
-    content: '\e029 \e0e2 \e052';
-}
-
-#visio .participant span.status.screen_fhd::after {
-    content: '\e029 \e0e2 \f58b';
-}
-
-#visio .participant.audio_off span.status::after {
-    content: '\e02b';
-}
-
-#visio .participant.video_off span.status::after {
-    content: '\e029 \f83b';
-}
-
-#visio .participant.audio_off span.status.screen_hd::after {
-    content: '\e0e2 \e052 \e02b';
-}
-
-#visio .participant.audio_off span.status.screen_fhd::after {
-    content: '\e0e2 \f58b \e02b';
-}
-
-#visio .participant.audio_off.video_off span.status::after {
-    content: '\e02b \f83b';
-}
-
-#visio .participant.audio_off.video_off span.status.screen_hd::after {
-    content: '\e0e2 \e052 \e02b \f83b';
-}
-
-#visio .participant.audio_off.video_off span.status.screen_fhd::after {
-    content: '\e0e2 \f58b \e02b \f83b';
-}
-
-#visio .participant:not(.screen_off) span.status {
+#visio .participant:not(.screen_off) video:not(.screen) {
+    height: 10%;
+    border-radius: 0.5rem;
     bottom: 1rem;
     left: 1rem;
-    padding: 1rem;
-    padding-right: 0.5rem;
-    border-radius: 0.5rem;
-    background-color: var(--p-red);
-    box-shadow: var(--elevation-4);
-    text-shadow: unset;
 }
 
-#visio .participant[data-name]::before {
-    bottom: 2rem;
-    content: attr(data-name);
+#visio .participant:not(.screen_off) video:not(.screen):hover {
+    height: 30%;
 }
 
-#visio .participant:not(.screen_off) span.status::after {
-    opacity: 1;
-    vertical-align: bottom;
+#visio #local_video,
+#visio .participant video {
+    transition: opacity 0.5s ease-in-out, outline 0.4s ease 0s, height 0.3s;
 }
 
 #visio #local_video.video_off,
 #visio .participant.video_off video:not(.screen) {
     opacity: 0;
+    pointer-events: none;
 }
 
-#visio .participant:not(.screen_off)[data-name]::before,
-#visio .participant.screen_off video.screen {
+/* Avatar */
+
+#visio .participant img.avatar {
+    position: absolute;
+    width: auto;
+    height: 15rem;
+    max-height: 50%;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    display: block;
+    align-self: center;
+    border-radius: 100%;
+}
+
+#visio .participant.video_off.screen_off img.avatar {
+    opacity: 1;
+}
+
+/* Status box */
+
+#visio .participant div.status {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.3);
+    bottom: 1rem;
+    position: absolute;
+    line-height: 3.5rem;
+    font-size: 1.75rem;
+    font-weight: bold;
+    padding: 0 1.25rem;
+    border-radius: 1rem;
+    color: white;
+    box-shadow: var(--elevation-1);
+    transition: background-color 0.3s ease-in-out;
+    white-space: nowrap;
+}
+
+#visio .participant:not(.screen_off) div.status {
+    background-color: var(--p-red);
+}
+
+#visio .participant div.status[data-name]::before {
+    content: attr(data-name);
+    margin-right: 1rem;
+    vertical-align: center;
+}
+
+#visio .participant div.status span::before {
+    font-family: 'Material Symbols';
+    font-variation-settings: 'FILL' 1;
+    vertical-align: center;
+    margin: 0.5rem;
+}
+
+#visio .participant div.status span.video_off::before {
+    content: '\e04c';
+}
+
+#visio .participant:not(.audio_off) div.status span.audio_off,
+#visio .participant:not(.video_off) div.status span.video_off,
+#visio .participant:not(.pinned) div.status span.pin,
+#visio .participant.screen_off div.status span.screen {
     display: none;
 }
 
-@-webkit-keyframes Rotate {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-
-    4% {
-        -webkit-transform: rotate(-22.5deg);
-    }
-
-    8% {
-        -webkit-transform: rotate(0deg);
-    }
-
-    12% {
-        -webkit-transform: rotate(22.5deg);
-    }
-
-    16% {
-        -webkit-transform: rotate(0deg);
-    }
-
-    20% {
-        -webkit-transform: rotate(-22.5deg);
-    }
-
-    24% {
-        -webkit-transform: rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: rotate(0deg);
-    }
+#visio .participant div.status span.audio_off::before {
+    content: '\e02b';
 }
 
-@keyframes Rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    4% {
-        transform: rotate(-22.5deg);
-    }
-
-    8% {
-        transform: rotate(0deg);
-    }
-
-    12% {
-        transform: rotate(-22.5deg);
-    }
-
-    16% {
-        transform: rotate(0deg);
-    }
-
-    20% {
-        transform: rotate(-22.5deg);
-    }
-
-    24% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
+#visio .participant div.status span.screen::before {
+    font-family: 'sans-serif';
+    content: 'LIVE';
 }
 
-#visio #toggle_audio i {
-    transition: color 0.2s ease-out;
+/* Pin button */
+
+#visio .participant span.pin {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 2rem;
+    line-height: 3.5rem;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--elevation-1);
+    bottom: 1rem;
+    left: 1rem;
+    position: absolute;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
 }
 
-#visio .infos img {
-    transition: border-color 0.2s ease-out;
+#visio .participant.pinned span.pin,
+#visio .participant:not(.pinned):hover span.pin {
+    opacity: 1;
+}
+
+#visio .participant span.pin:hover {
+    cursor: pointer;
+}
+
+#visio .participant span.pin::before {
+    font-family: 'Material Symbols';
+    content: '\e6aa';
+}
+
+#visio .participant span.pin:hover::before,
+#visio .participant.pinned span.pin::before {
+    font-variation-settings: 'FILL' 1;
+}
+
+/* Active speaker */
+
+#visio #participants.active .participant.active {
+    height: 80%;
+    width: 100%;
+    order: 1;
+    flex: 1 0 auto;
+}
+
+#visio #participants.active .participant:not(.active) {
+    height: 15%;
+    max-width: 25rem;
+    flex: 1;
 }

@@ -117,11 +117,11 @@ var VisioUtils = {
         }
     },
 
-    toggleMode: function () {
+    toggleMode: function (active) {
         let button = document.querySelector('#toggle_mode i');
         let participants = document.querySelector('#participants');
 
-        if (button.innerText == 'tile_small') {
+        if (button.innerText == 'tile_small' || active) {
             participants.classList.add('active');
             button.innerHTML = 'tile_large';
         } else {

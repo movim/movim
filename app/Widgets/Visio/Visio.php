@@ -319,6 +319,16 @@ class Visio extends Base
             ->request();
     }
 
+    public function ajaxHttpPin(string $name)
+    {
+        $this->toast($this->__('visio.pinned', $name));
+    }
+
+    public function ajaxHttpUnpin()
+    {
+        $this->toast($this->__('visio.unpinned'));
+    }
+
     public function ajaxProceed(string $to, string $id)
     {
         $this->currentCall()->start($to, $id);
