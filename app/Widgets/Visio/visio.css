@@ -288,7 +288,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     background-color: white;
     position: relative;
     border-radius: 1rem;
-    transition: height .4s;
+    transition: height .1s;
     height: calc(var(--level) * 2.5rem);
     opacity: 0.75;
     margin-top: -1rem;
@@ -450,6 +450,10 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     vertical-align: center;
 }
 
+#visio .participant:not(.audio_off):not(.video_off).screen_off div.status[data-name]::before {
+    margin-right: 0;
+}
+
 #visio .participant div.status span::before {
     font-family: 'Material Symbols';
     font-variation-settings: 'FILL' 1;
@@ -515,14 +519,14 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 
 /* Active speaker */
 
-#visio #participants.active .participant.active {
+#visio #participants.active:has(.participant:nth-child(2)) .participant.active {
     height: 80%;
     width: 100%;
     order: 1;
     flex: 1 0 auto;
 }
 
-#visio #participants.active .participant:not(.active) {
+#visio #participants.active:has(.participant:nth-child(2)) .participant:not(.active) {
     height: 15%;
     max-width: 25rem;
     flex: 1;

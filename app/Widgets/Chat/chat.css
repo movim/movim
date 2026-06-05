@@ -166,6 +166,8 @@ main:not(.enabled) #chat_widget {
     grid-column: start / end;
     grid-row: header / end;
     background-color: rgb(var(--movim-background-main));
+    display: flex;
+    align-items: center;
 }
 
 #chat_widget.call nav,

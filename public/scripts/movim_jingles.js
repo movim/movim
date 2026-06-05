@@ -232,9 +232,9 @@ MovimJingleSession.prototype.clearRemoteAudioMessage = function () {
 
 MovimJingleSession.prototype.processRemoteAudioMessage = function (message) {
     if (message.isMuteStep >= 5) {
-        this.remoteVideo.classList.add('audio_off');
+        this.participant.classList.add('audio_off');
     } else {
-        this.remoteVideo.classList.remove('audio_off');
+        this.participant.classList.remove('audio_off');
     }
 
     this.lastPostMessage = message.published;
