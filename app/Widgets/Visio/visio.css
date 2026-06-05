@@ -1,27 +1,13 @@
 #visio {
     display: block;
     position: fixed;
-    bottom: 7rem;
-    right: 2rem;
-    width: 40rem;
-    height: 25rem;
-    background-color: #111;
-    border-radius: 1rem;
     transition: opacity 0.3s ease-in-out,
         bottom 0.3s ease-in-out,
         right 0.3s ease-in-out,
         width 0.3s ease-in-out,
         height 0.3s ease-in-out,
         transform 0.3s ease-in-out;
-    z-index: 3;
-}
-
-@media screen and (max-width: 800px) {
-    #visio {
-        right: 1rem;
-        width: 34rem;
-        height: 22rem;
-    }
+    background-color: #111;
 }
 
 #dialog:not(:empty)~#visio,
@@ -48,9 +34,6 @@
 
 body>#visio:not(:fullscreen) #main,
 body>#visio:not(:fullscreen) #toggle_dtmf,
-
-body>#visio:not(:fullscreen) .participant:before,
-body>#visio:not(:fullscreen) .participant:after,
 
 #chat_widget #visio #switch_chat,
 #visio:not([data-jid]),
@@ -166,6 +149,30 @@ body>#visio:not(:fullscreen) #toggle_mode,
     width: 40%;
 }
 
+/* Minimized */
+
+body>#visio:not(:fullscreen) {
+    bottom: 7rem;
+    right: 1rem;
+    width: 40rem;
+    height: 25rem;
+    border-radius: 1rem;
+    z-index: 3;
+}
+
+body>#visio:not(:fullscreen) #participants:has(.participant:nth-child(2)) .participant,
+body>#visio:not(:fullscreen) #participants:has(.participant:nth-child(5)) .participant,
+body>#visio:not(:fullscreen) #participants .participant.active {
+    height: 92%;
+    flex-basis: 100%;
+}
+
+body>#visio:not(:fullscreen) .participant span.pin,
+body>#visio:not(:fullscreen) #participants .participant:not(.active) {
+    display: none;
+}
+
+
 body>#visio:not(:fullscreen) video#local_video,
 body>#visio:not(:fullscreen) video#screen_sharing_video.sharing {
     width: 10rem;
@@ -179,10 +186,14 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 }
 
 @media screen and (max-width: 800px) {
-
     #chat_widget #visio:not(:fullscreen) #visio_contact,
     body>#visio:not(:fullscreen) .participant img.avatar {
         transform: scale(0.7);
+    }
+
+    body>#visio:not(:fullscreen) #visio {
+        width: 30rem;
+        height: 20rem;
     }
 }
 
@@ -365,7 +376,6 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 
 #visio .participant video.screen {
     height: auto;
-    width: 100%;
 }
 
 #visio .participant.screen_off video.screen {
