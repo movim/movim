@@ -438,6 +438,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     box-shadow: var(--elevation-1);
     transition: background-color 0.3s ease-in-out;
     white-space: nowrap;
+    z-index: 1;
 }
 
 #visio .participant:not(.screen_off) div.status {
