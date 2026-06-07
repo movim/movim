@@ -15,15 +15,17 @@ class MucUser extends Payload
             $members = [];
 
             foreach ($stanza->item as $item) {
-                $member = new Member;
-                $member->conference = $from;
-                $member->jid = (string)$item->attributes()->jid;
-                $member->affiliation = (string)$item->attributes()->affiliation;
-                $member->role = (string)$item->attributes()->role ?? null;
-                $member->nick = (string)$item->attributes()->nick ?? null;
-                $member->version = (string)$stanza->mav->attributes()->until;
+                if ($item->attributes()->affiliation && !empty($item->attributes()->jid)) {
+                    $member = new Member;
+                    $member->conference = $from;
+                    $member->jid = (string)$item->attributes()->jid;
+                    $member->affiliation = (string)$item->attributes()->affiliation;
+                    $member->role = (string)$item->attributes()->role ?? null;
+                    $member->nick = (string)$item->attributes()->nick ?? null;
+                    $member->version = (string)$stanza->mav->attributes()->until;
 
-                array_push($members, $member->toArray());
+                    array_push($members, $member->toArray());
+                }
             }
 
             Member::where('conference', $from)->delete();
