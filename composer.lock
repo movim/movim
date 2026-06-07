@@ -4322,16 +4322,16 @@
         },
         {
             "name": "ratchet/rfc6455",
-            "version": "v0.4.0",
+            "version": "v0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ratchetphp/RFC6455.git",
-                "reference": "859d95f85dda0912c6d5b936d036d044e3af47ef"
+                "reference": "9b05f371219cbaf9748b505f139617dd0715592b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ratchetphp/RFC6455/zipball/859d95f85dda0912c6d5b936d036d044e3af47ef",
-                "reference": "859d95f85dda0912c6d5b936d036d044e3af47ef",
+                "url": "https://api.github.com/repos/ratchetphp/RFC6455/zipball/9b05f371219cbaf9748b505f139617dd0715592b",
+                "reference": "9b05f371219cbaf9748b505f139617dd0715592b",
                 "shasum": ""
             },
             "require": {
@@ -4375,9 +4375,9 @@
             "support": {
                 "chat": "https://gitter.im/reactphp/reactphp",
                 "issues": "https://github.com/ratchetphp/RFC6455/issues",
-                "source": "https://github.com/ratchetphp/RFC6455/tree/v0.4.0"
+                "source": "https://github.com/ratchetphp/RFC6455/tree/v0.4.1"
             },
-            "time": "2025-02-24T01:18:22+00:00"
+            "time": "2026-06-06T14:34:23+00:00"
         },
         {
             "name": "react/async",
@@ -7500,16 +7500,16 @@
         },
         {
             "name": "web-token/jwt-library",
-            "version": "4.1.6",
+            "version": "4.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-library.git",
-                "reference": "e8ab00927a3856f3f0c8218226382cd6a58928a1"
+                "reference": "fbcbf2c276d04d8b056f5c2957815abd5dfb704d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-library/zipball/e8ab00927a3856f3f0c8218226382cd6a58928a1",
-                "reference": "e8ab00927a3856f3f0c8218226382cd6a58928a1",
+                "url": "https://api.github.com/repos/web-token/jwt-library/zipball/fbcbf2c276d04d8b056f5c2957815abd5dfb704d",
+                "reference": "fbcbf2c276d04d8b056f5c2957815abd5dfb704d",
                 "shasum": ""
             },
             "require": {
@@ -7573,7 +7573,7 @@
             ],
             "support": {
                 "issues": "https://github.com/web-token/jwt-library/issues",
-                "source": "https://github.com/web-token/jwt-library/tree/4.1.6"
+                "source": "https://github.com/web-token/jwt-library/tree/4.1.7"
             },
             "funding": [
                 {
@@ -7585,7 +7585,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2026-04-14T07:44:20+00:00"
+            "time": "2026-06-06T18:12:39+00:00"
         },
         {
             "name": "wyrihaximus/constants",
