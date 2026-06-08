@@ -32,7 +32,6 @@
     grid-row: header / end;
 }
 
-body>#visio:not(:fullscreen) #main,
 body>#visio:not(:fullscreen) #toggle_dtmf,
 
 #chat_widget #visio #switch_chat,
@@ -92,16 +91,6 @@ body>#visio:not(:fullscreen) #toggle_mode,
 #visio[data-muji='true'] #participants:not(:empty)~.infos,
 #visio #dtmf:not(.hide)~.infos {
     opacity: 0;
-}
-
-#visio #main {
-    outline: 0.5rem solid transparent;
-    bottom: 2rem;
-    /* Override global CSS */
-}
-
-#visio[data-muji=true] #main {
-    display: none;
 }
 
 #visio .infos #remote_level {
@@ -168,7 +157,7 @@ body>#visio:not(:fullscreen) #participants .participant.active {
 }
 
 body>#visio:not(:fullscreen) .participant span.pin,
-body>#visio:not(:fullscreen) #participants .participant:not(.active) {
+body>#visio[data-muji='true']:not(:fullscreen) #participants .participant:not(.active) {
     display: none;
 }
 
@@ -336,17 +325,13 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     align-items: center;
     max-height: 100vh;
     transition: outline 0.3s;
-    outline: 0.5rem solid rgb(255, 255, 255, calc(var(--level) * 0.75));
+    outline: 0.25rem solid rgb(255, 255, 255, calc(var(--level) * 0.75));
     justify-content: center;
     order: 2;
 }
 
 #visio #participants .participant:only-child {
     max-height: 96%;
-}
-
-#visio:not([data-muji="true"]) .participant:only-child {
-    outline: none;
 }
 
 #visio #participants:has(.participant:nth-child(2)) .participant {
@@ -497,6 +482,10 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     position: absolute;
     transition: opacity 0.2s ease-in-out;
     opacity: 0;
+}
+
+#visio:not([data-muji=true]) .participant span.pin {
+    display: none;
 }
 
 #visio .participant.pinned span.pin,

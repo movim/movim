@@ -24,7 +24,6 @@ var VisioUtils = {
         let javascriptNode = VisioUtils.audioContext.createScriptProcessor(128 * 64, 1, 1);
         let icon = document.querySelector('#toggle_audio i');
         let toggleAudio = document.getElementById('toggle_audio');
-        let mainButton = document.getElementById('main');
         icon.innerText = 'mic';
         let isMuteStep = 251;
         let noMicSound = document.querySelector('#no_mic_sound');
@@ -90,11 +89,6 @@ var VisioUtils = {
                         step++;
                     });
                 }
-            }
-
-            if (isMuteStep <= 5) {
-                mainButton.style.outlineColor = 'rgba(255, 255, 255, ' + level.toFixed(2) + ')';
-                toggleAudio.style.setProperty('--level', level.toFixed(2));
             }
         }
     },

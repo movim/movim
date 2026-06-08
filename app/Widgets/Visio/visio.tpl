@@ -80,10 +80,4 @@
     <audio id="local_audio" autoplay muted></audio>
     <video id="screen_sharing_video" autoplay muted poster="{$c->baseUri}theme/img/empty.png"></video>
     <video id="local_video" autoplay muted poster="{$c->baseUri}theme/img/empty.png"></video>
-
-    <div class="controls">
-        <button id="main" class="button action color red" onclick="MovimVisio.goodbye()">
-            <i class="material-symbols">call_end</i>
-        </button>
-    </div>
 </div>

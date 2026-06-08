@@ -397,7 +397,9 @@ MovimJingleSession.prototype.onAcceptSDP = function (sdp) {
 
     this.pc.setRemoteDescription({ 'sdp': sdp + "\n", 'type': 'answer' })
         .catch(error => {
-            MovimVisio.goodbye('incompatible-parameters');
+            let visio = document.querySelector('#visio');
+            Visio_ajaxGoodbye(visio.dataset.jid, this.id, 'incompatible-parameters');
+
             MovimUtils.logError(error);
         });
 }
@@ -756,6 +758,7 @@ var MovimJingles = {
             MovimJingles.terminate(jid, reason);
         }
 
+        MovimJingles.pinned = null;
         Visio_ajaxClear();
     }
 }

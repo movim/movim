@@ -37,7 +37,7 @@ var MovimVisio = {
         MovimVisio.localAudio = document.getElementById('local_audio');
     },
 
-    init: function (fullJid, jid, id, withVideo, isMuji) {
+    init: function (fullJid, jid, id, withVideo, isMuji, contactName, contactAvatarUrl) {
         Visio_ajaxHttpPrepareInfo(jid, isMuji);
 
         MovimVisio.id = id;
@@ -55,7 +55,7 @@ var MovimVisio = {
             MovimVisio.mujiPublish(true);
             MovimVisio.activeSpeakerIntervalId = setInterval(MovimJingles.checkActiveSpeaker, 1000);
         } else {
-            MovimJingles.initSession(jid, fullJid, id);
+            MovimJingles.initSession(jid, fullJid, id, contactName, contactAvatarUrl);
 
             if (MovimVisio.id) {
                 // Called
@@ -266,11 +266,6 @@ var MovimVisio = {
         if (withVideo && cameraFound == false) {
             localStorage.defaultCamera = cameraSelect.value;
         }
-    },
-
-    goodbye: function (reason) {
-        let visio = document.querySelector('#visio');
-        Visio_ajaxGoodbye(visio.dataset.jid, this.id, reason);
     },
 
     clear: function () {
