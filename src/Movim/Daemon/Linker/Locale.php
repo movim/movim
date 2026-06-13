@@ -7,7 +7,7 @@ use Movim\i18n\Locale as I18nLocale;
 
 class Locale
 {
-    public ?string $language = null;
+    public ?string $language = I18nLocale::DEFAULT_LANGUAGE;
     private array $translations = [];
     private ?User $user = null;
 
@@ -28,7 +28,7 @@ class Locale
             $this->language = $locale->detect($this->browserLanguage);
         }
 
-        $this->translations = $locale->load($this->language ?? I18nLocale::DEFAULT_LANGUAGE);
+        $this->translations = $locale->load($this->language);
     }
 
     public function translate(string $key, ?array $args = null): string
