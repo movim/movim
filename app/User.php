@@ -305,11 +305,9 @@ class User extends Model
         return (bool)$this->omemoenabled;
     }
 
-    public function hasPubsub()
+    public function hasPubsub(bool $withChatOnlyDisabled = true)
     {
-        $configuration = Configuration::get();
-        return (!$configuration->chatonly
-            && $this->capability
+        $hasPubsub = ($this->capability
             && $this->capability->hasFeature('http://jabber.org/protocol/pubsub#persistent-items')
             && ($this->capability->hasFeature('http://jabber.org/protocol/pubsub#multi-items')
                 || ($this->session->serverCapability
@@ -317,6 +315,18 @@ class User extends Model
                 )
             )
         );
+
+        if ($withChatOnlyDisabled) {
+            return ($hasPubsub && !Configuration::get()->chatonly);
+        }
+
+        return $hasPubsub;
+    }
+
+    public function hasSocialFeatures(): bool
+    {
+        $configuration = Configuration::get();
+        return (!$configuration->chatonly);
     }
 
     public function hasUpload(): bool

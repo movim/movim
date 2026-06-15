@@ -31,7 +31,7 @@
         <?php $this->widget('Tabs');?>
         <ul class="tabs" id="navtabs"></ul>
         <?php $this->widget('Vcard4');?>
-        <?php if ($this->user?->hasPubsub()) { ?>
+        <?php if ($this->user?->hasPubsub(false)) { ?>
             <?php $this->widget('Avatar');?>
             <?php $this->widget('Config');?>
         <?php } ?>

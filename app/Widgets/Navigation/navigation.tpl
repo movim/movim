@@ -28,8 +28,6 @@
                 <p>{$c->__('page.explore')}</p>
             </div>
         </li>
-    {/if}
-    {if="$c->me->hasPubsub()"}
         <li onclick="Navigation_ajaxHttpPublish()"
             class="on_desktop publish_something"
             title="{$c->__('post.publish_something')}"

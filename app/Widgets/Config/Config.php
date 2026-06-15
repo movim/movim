@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Config;
 
+use App\Configuration;
 use App\Post;
 use App\User;
 use App\Widgets\Dialog\Dialog;
@@ -37,6 +38,7 @@ class Config extends Base
         $view->assign('accent_colors', User::ACCENT_COLORS);
         $view->assign('configuration', $this->me);
         $view->assign('domain', parse_url(config('daemon.url'), PHP_URL_HOST));
+        $view->assign('chat_only', Configuration::get()->chatonly);
 
         return $view->draw('_config_form');
     }

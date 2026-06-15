@@ -83,7 +83,7 @@
 
     <div class="block">
         <ul class="list middle">
-            <li>
+            <li {if="$chat_only"}class="hide"{/if}>
                 <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">forum</i>
                 </span>
@@ -133,7 +133,7 @@
                 </div>
             </li>
 
-            <li>
+            <li {if="$chat_only"}class="hide"{/if}>
                 <span class="primary icon gray" aria-hidden="true">
                     <i class="material-symbols">explicit</i>
                 </span>

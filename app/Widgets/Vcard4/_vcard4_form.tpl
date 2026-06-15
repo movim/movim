@@ -1,4 +1,4 @@
-{if="$me->hasPubsub()"}
+{if="$me->hasPubsub(false)"}
 <form name="vcard4" id="vcard4form">
     <div>
         <ul class="list">
