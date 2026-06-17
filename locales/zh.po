@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-27 10:04+0200\n"
+"POT-Creation-Date: 2026-06-17 09:36+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2026\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -2250,6 +2250,11 @@ msgstr "创建群聊"
 msgid "Edit a chatroom"
 msgstr "编辑群聊"
 
+#: [rooms]conference_call_edit
+#, fuzzy
+msgid "Edit a conference call"
+msgstr "加入群聊通话"
+
 #: [rooms]join
 msgid "Join a chatroom"
 msgstr "加入群聊"
@@ -2402,6 +2407,15 @@ msgstr "需要密码"
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
 msgstr "固定此群聊"
+
+#: [chatrooms]conference_call
+#, fuzzy
+msgid "Conference call"
+msgstr "加入群聊通话"
+
+#: [chatrooms]conference_call_text
+msgid "Call your contacts and share your webcam or screen"
+msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -3063,13 +3077,13 @@ msgstr "…正在连接"
 msgid "End of call"
 msgstr "通话结束"
 
+#: [visio]waiting_participants
+msgid "Waiting for incoming participants"
+msgstr ""
+
 #: [visio]no_participants_left
 msgid "All participants have left the call"
 msgstr "所有参与者均已离开通话"
-
-#: [visio]by
-msgid "by %s"
-msgstr "由 %s"
 
 #: [visio]hang_up
 msgid "Hang up the call"
@@ -3078,6 +3092,16 @@ msgstr "挂断通话"
 #: [visio]hang_up_text
 msgid "You are going to hang up the current call, are you sure?"
 msgstr "您将挂断当前通话，确定吗？"
+
+#: [visio]pinned
+#, fuzzy
+msgid "%s pinned"
+msgstr "已固定"
+
+#: [visio]unpinned
+#, fuzzy
+msgid "Unpinned"
+msgstr "已固定"
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -4100,3 +4124,6 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "by %s"
+#~ msgstr "由 %s"

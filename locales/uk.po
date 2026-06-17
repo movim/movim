@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-27 10:04+0200\n"
+"POT-Creation-Date: 2026-06-17 09:36+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: sergey solovey, 2022,2024\n"
 "Language-Team: Ukrainian (http://app.transifex.com/movim/movim/language/uk/)\n"
@@ -2235,6 +2235,10 @@ msgstr "Створити чат"
 msgid "Edit a chatroom"
 msgstr "Редагувати чат"
 
+#: [rooms]conference_call_edit
+msgid "Edit a conference call"
+msgstr ""
+
 #: [rooms]join
 msgid "Join a chatroom"
 msgstr "Приєднатися до чату"
@@ -2387,6 +2391,14 @@ msgstr "Потрібен пароль"
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
 msgstr "Закріпити цей чат"
+
+#: [chatrooms]conference_call
+msgid "Conference call"
+msgstr ""
+
+#: [chatrooms]conference_call_text
+msgid "Call your contacts and share your webcam or screen"
+msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -3048,12 +3060,12 @@ msgstr "...з'єднання"
 msgid "End of call"
 msgstr ""
 
-#: [visio]no_participants_left
-msgid "All participants have left the call"
+#: [visio]waiting_participants
+msgid "Waiting for incoming participants"
 msgstr ""
 
-#: [visio]by
-msgid "by %s"
+#: [visio]no_participants_left
+msgid "All participants have left the call"
 msgstr ""
 
 #: [visio]hang_up
@@ -3062,6 +3074,15 @@ msgstr ""
 
 #: [visio]hang_up_text
 msgid "You are going to hang up the current call, are you sure?"
+msgstr ""
+
+#: [visio]pinned
+#, fuzzy
+msgid "%s pinned"
+msgstr "%s зараз забанені"
+
+#: [visio]unpinned
+msgid "Unpinned"
 msgstr ""
 
 #: [visiolobby]called
