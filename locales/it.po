@@ -131,7 +131,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-17 09:36+0200\n"
+"POT-Creation-Date: 2026-06-17 18:04+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: svp -, 2025\n"
 "Language-Team: Italian (http://app.transifex.com/movim/movim/language/it/)\n"
@@ -2243,9 +2243,8 @@ msgid "Edit a chatroom"
 msgstr "Modifica una chat room"
 
 #: [rooms]conference_call_edit
-#, fuzzy
 msgid "Edit a conference call"
-msgstr "Entrando nella chiamata in conferenza"
+msgstr ""
 
 #: [rooms]join
 msgid "Join a chatroom"
@@ -2401,9 +2400,8 @@ msgid "Pin this chatroom"
 msgstr "Fissa questa chatroom"
 
 #: [chatrooms]conference_call
-#, fuzzy
 msgid "Conference call"
-msgstr "Entrando nella chiamata in conferenza"
+msgstr ""
 
 #: [chatrooms]conference_call_text
 msgid "Call your contacts and share your webcam or screen"
@@ -3086,14 +3084,12 @@ msgid "You are going to hang up the current call, are you sure?"
 msgstr ""
 
 #: [visio]pinned
-#, fuzzy
 msgid "%s pinned"
-msgstr "Fissato"
+msgstr ""
 
 #: [visio]unpinned
-#, fuzzy
 msgid "Unpinned"
-msgstr "Fissato"
+msgstr ""
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -4116,6 +4112,3 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digita qui"
-
-#~ msgid "by %s"
-#~ msgstr "da %s"

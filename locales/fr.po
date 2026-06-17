@@ -132,7 +132,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-17 09:36+0200\n"
+"POT-Creation-Date: 2026-06-17 18:04+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2026\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -2244,9 +2244,8 @@ msgid "Edit a chatroom"
 msgstr "Éditer un salon de discussion"
 
 #: [rooms]conference_call_edit
-#, fuzzy
 msgid "Edit a conference call"
-msgstr "Rejoindre la téléconférence"
+msgstr "Éditer un salon de conférence téléphonique"
 
 #: [rooms]join
 msgid "Join a chatroom"
@@ -2402,13 +2401,12 @@ msgid "Pin this chatroom"
 msgstr "Épingler ce salon"
 
 #: [chatrooms]conference_call
-#, fuzzy
 msgid "Conference call"
-msgstr "Rejoindre la téléconférence"
+msgstr "Conférence téléphonique"
 
 #: [chatrooms]conference_call_text
 msgid "Call your contacts and share your webcam or screen"
-msgstr ""
+msgstr "Appelez vos contacts et partagez votre webcam ou écran"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -3072,7 +3070,7 @@ msgstr "Fin de l'appel"
 
 #: [visio]waiting_participants
 msgid "Waiting for incoming participants"
-msgstr ""
+msgstr "En attente de participants"
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
@@ -3087,14 +3085,12 @@ msgid "You are going to hang up the current call, are you sure?"
 msgstr "Souhaitez vous réellement raccrocher cet appel ?"
 
 #: [visio]pinned
-#, fuzzy
 msgid "%s pinned"
-msgstr "Épinglé"
+msgstr "%s épinglé"
 
 #: [visio]unpinned
-#, fuzzy
 msgid "Unpinned"
-msgstr "Épinglé"
+msgstr "Dé-épinglé"
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -4117,6 +4113,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "by %s"
-#~ msgstr "par %s"
