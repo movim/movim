@@ -60,7 +60,7 @@ Links
 
 Translations
 ------------
-Help us translate Movim on https://explore.transifex.com/movim/movim/
+Help us translate Movim on [Transifex](https://explore.transifex.com/movim/movim/).
 
 License
 -------

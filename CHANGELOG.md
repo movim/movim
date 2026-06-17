@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.33.2 (master)
+v0.34.1 (master)
+---------------------------
+
+v0.34
 ---------------------------
 * Remove the templater
 * Remove the invitation based Muji system and drop the XEP-0482: Call Invites
@@ -13,6 +16,7 @@ v0.33.2 (master)
 * Allow webcam and screen sharing to be started in audio video calls
 * Fix joining of screen sharing sessions
 * Session management fixes
+* New sounds notifications
 
 v0.33.1
 ---------------------------
