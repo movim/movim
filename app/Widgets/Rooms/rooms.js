@@ -81,9 +81,9 @@ var Rooms = {
         });
 
         if (localStorage.getItem('rooms_all') == 'true') {
-            document.querySelector('#rooms span.chip[data-filter=all]').classList.add('enabled');
+            document.querySelector('#rooms span.chip[data-filter=all]')?.classList.add('enabled');
         } else {
-            document.querySelector('#rooms span.chip[data-filter=connected]').classList.add('enabled');
+            document.querySelector('#rooms span.chip[data-filter=connected]')?.classList.add('enabled');
         }
     },
 

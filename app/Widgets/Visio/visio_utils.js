@@ -88,6 +88,8 @@ var VisioUtils = {
 
                         step++;
                     });
+
+                    toggleAudio.style.setProperty('--level', level.toFixed(2));
                 }
             }
         }

@@ -23,7 +23,7 @@ class Locale
     public const RTL_SCRIPTS = ['Adlm', 'Arab', 'Aran', 'Armi', 'Avst', 'Cprt', 'Hebr', 'Khar', 'Lydi', 'Mand', 'Mani', 'Mend', 'Narb', 'Nbat', 'Nkoo', 'Orkh', 'Palm', 'Phli', 'Phlp', 'Phnx', 'Prti', 'Samr', 'Sarb', 'Syrc', 'Thaa'];
     public $hash = [];
 
-    private $iniCache = CACHE_PATH . 'locales.ini.cache';
+    private string $iniCache = CACHE_PATH . 'locales.ini.cache';
 
     private function __construct()
     {
@@ -70,11 +70,11 @@ class Locale
 
         // Cache
         foreach (array_keys(self::getList()) as $language) {
-            $translations = $this->load($language);
-
-            $locales = fopen(CACHE_PATH . $language . '.po.cache', "w") or die("Unable to open file!");
-            fwrite($locales, '<?php' . PHP_EOL . '$translations = ' . var_export($translations, true) . ';' . PHP_EOL . '?>');
-            fclose($locales);
+            if ($translations = $this->load($language)) {
+                $locales = fopen(CACHE_PATH . $language . '.po.cache', "w") or die("Unable to open file!");
+                fwrite($locales, '<?php' . PHP_EOL . '$translations = ' . var_export($translations, true) . ';' . PHP_EOL . '?>');
+                fclose($locales);
+            }
         }
     }
 
