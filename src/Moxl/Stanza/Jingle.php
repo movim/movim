@@ -12,6 +12,7 @@ class Jingle
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
+        $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
         $dom->appendChild($message);
 
@@ -37,9 +38,10 @@ class Jingle
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
+        $message->setAttribute('type', 'chat');
         $dom->appendChild($message);
 
-        $accept = $dom->createElementNS('urn:xmpp:jingle:jingle-message:0', 'accept');
+        $accept = $dom->createElementNS('urn:xmpp:jingle-message:0', 'accept');
         $accept->setAttribute('id', $id);
         $message->appendChild($accept);
 
@@ -50,6 +52,7 @@ class Jingle
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
+        $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
         $dom->appendChild($message);
 
@@ -64,6 +67,7 @@ class Jingle
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
+        $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
         $dom->appendChild($message);
 
@@ -78,6 +82,7 @@ class Jingle
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
+        $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
         $dom->appendChild($message);
 
@@ -98,6 +103,7 @@ class Jingle
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
+        $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
         $dom->appendChild($message);
 
@@ -118,6 +124,7 @@ class Jingle
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
+        $message->setAttribute('type', 'chat');
         if ($to) {
             $message->setAttribute('to', $to);
         }
