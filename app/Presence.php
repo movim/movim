@@ -79,6 +79,13 @@ class Presence extends Model
         return getPicture($this->jid, $this->jid, $size);
     }
 
+    public function getFullJidAttribute(): string
+    {
+        return !empty($this->resource)
+            ? $this->jid . '/' . $this->resource
+            : $this->jid;
+    }
+
     public function getPresencetextAttribute()
     {
         return getPresences()[$this->value];

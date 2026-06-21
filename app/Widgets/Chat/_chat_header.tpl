@@ -290,14 +290,14 @@
                         {if="$value->capability && $value->capability->isJingleAudio() && $value->jid"}
                             {$call = true}
                             <span title="{$c->__('button.audio_call')}" class="control icon active {if="$c->database('pgsql')"}divided{/if} on_desktop"
-                                onclick="Visio_ajaxGetLobby('{$value->jid|echapJS}', true);">
+                                onclick="Visio_ajaxGetLobby('{$value->fullJid|echapJS}', true);">
                                 <i class="material-symbols">phone</i>
                             </span>
                         {/if}
                         {if="$value->capability && $value->capability->isJingleVideo() && $value->jid"}
                             {$call = true}
                             <span title="{$c->__('button.video_call')}" class="control icon active on_desktop"
-                                onclick="Visio_ajaxGetLobby('{$value->jid|echapJS}', true, true);">
+                                onclick="Visio_ajaxGetLobby('{$value->fullJid|echapJS}', true, true);">
                                 <i class="material-symbols">videocam</i>
                             </span>
                             {break}
@@ -312,10 +312,10 @@
             </span>
 
             <div>
-                {if="$contactincall"}
-                    <button class="button oppose color red"
+                {if="$c->currentCall()?->isJidInCall($jid)"}
+                    <button class="button oppose color {if="$c->currentCall()->isAnswered()"}red{else}dorange{/if}"
                             onclick="Visio_ajaxRemoteGoodbye()">
-                        <i class="material-symbols icon blink">call_end</i>
+                        <i class="material-symbols icon {if="!$c->currentCall()->isAnswered()"}shake{/if}">call_end</i>
                     </button>
                 {/if}
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->id|echapJS}')">
@@ -334,7 +334,7 @@
                 </p>
                 <p class="compose first line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->id|echapJS}')"></p>
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->id|echapJS}')">
-                    {if="$contactincall"}
+                    {if="$c->currentCall()?->isJidInCall($jid)"}
                         <i class="material-symbols icon green blink">phone_in_talk</i>
                         {$c->__('visio.in_call')} •
                     {/if}

@@ -20,10 +20,9 @@ class CurrentCall
     public ?string $id = null;
     public ?string $mujiRoom = null;
     public ?Carbon $startTime = null;
+    public bool $answered = false;
 
-    public function __construct(private User $user, private string $sessionId)
-    {
-    }
+    public function __construct(private User $user, private string $sessionId) {}
 
     public function start(string $jid, string $id, ?string $mujiRoom = null): bool
     {
@@ -33,6 +32,10 @@ class CurrentCall
         $this->id = $id;
         $this->mujiRoom = $mujiRoom;
         $this->startTime = Carbon::now();
+
+        if ($mujiRoom) {
+            $this->answered = true;
+        }
 
         Wrapper::getInstance()->iterate(
             key: 'currentcall_started',
@@ -44,6 +47,15 @@ class CurrentCall
         return true;
     }
 
+    public function answer(string $jid, string $id): bool
+    {
+        if ($this->isJidInCall($jid) && $this->hasId($id)) {
+            $this->answered = true;
+        }
+
+        return $this->answered;
+    }
+
     public function stop(string $jid, string $id): bool
     {
         if ($this->getBareJid() != \bareJid($jid) || $this->id != $id) return false;
@@ -53,6 +65,7 @@ class CurrentCall
         $mujiRoom = $this->mujiRoom;
 
         $this->jid = $this->id = $this->mujiRoom = $this->startTime = null;
+        $this->answered = false;
 
         Wrapper::getInstance()->iterate(
             key: 'currentcall_stopped',
@@ -77,6 +90,11 @@ class CurrentCall
     public function isStarted(): bool
     {
         return $this->jid != null && $this->id != null;
+    }
+
+    public function isAnswered(): bool
+    {
+        return $this->jid != null && $this->id != null && $this->answered == true;
     }
 
     public function getBareJid(): ?string

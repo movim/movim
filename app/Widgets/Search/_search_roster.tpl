@@ -27,7 +27,7 @@
                 {loop="$value->presences"}
                     {if="$value->capability && $value->capability->isJingleAudio()"}
                         <span title="{$c->__('button.audio_call')}" class="control icon active gray"
-                            onclick="Visio_ajaxGetLobby('{$value->jid|echapJS}', true); Drawer.clear();">
+                            onclick="Visio_ajaxGetLobby('{$value->fullJid|echapJS}', true); Drawer.clear();">
                             <a href="#" onclick="listIconClick(event)">
                                 <i class="material-symbols">phone</i>
                             </a>
@@ -35,7 +35,7 @@
                     {/if}
                     {if="$value->capability && $value->capability->isJingleVideo()"}
                         <span title="{$c->__('button.video_call')}" class="control icon active gray"
-                            onclick="Visio_ajaxGetLobby('{$value->jid|echapJS}', true, true); Drawer.clear();">
+                            onclick="Visio_ajaxGetLobby('{$value->fullJid|echapJS}', true, true); Drawer.clear();">
                             <a href="#" onclick="listIconClick(event)">
                                 <i class="material-symbols">videocam</i>
                             </a>

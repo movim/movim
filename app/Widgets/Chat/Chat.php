@@ -1813,7 +1813,6 @@ class Chat extends \Movim\Widget\Base
 
         $view->assign('jid', $jid);
         $view->assign('muc', $muc);
-        $view->assign('contactincall', $this->currentCall()?->isJidInCall($jid));
         $view->assign('incall', $this->currentCall()?->isStarted());
         $view->assign(
             'info',

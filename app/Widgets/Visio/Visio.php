@@ -174,13 +174,15 @@ class Visio extends Base
     public function onProceed(Packet $packet)
     {
         $this->currentCall()->start($packet->from, $packet->content);
+        $this->currentCall()->answer($packet->from, $packet->content);
         $this->rpc('MovimJingles.onProceed', \bareJid($packet->from), $packet->from, $packet->content /* id */);
     }
 
     // Deprecated
     public function onAccept(Packet $packet)
     {
-        $this->currentCall()->start($packet->from, $packet->content);
+        $this->currentCall()->start($packet->from, $packet->content); // Just in case
+        $this->currentCall()->answer($packet->from, $packet->content);
         $this->rpc('Notif.incomingCallAnswer');
 
         (new Dialog($this->me, sessionId: $this->sessionId))->ajaxClear();
@@ -312,8 +314,10 @@ class Visio extends Base
 
         Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message), user: $this->me, sessionId: $this->sessionId);
 
+        $this->currentCall()->start($to, $id);
+
         $p = $this->xmpp(new MessagePropose);
-        $p->setTo($to)
+        $p->setTo(bareJid($to))
             ->setId($id)
             ->setWithVideo($withVideo)
             ->request();
@@ -332,6 +336,8 @@ class Visio extends Base
     public function ajaxProceed(string $to, string $id)
     {
         $this->currentCall()->start($to, $id);
+        $this->currentCall()->answer($to, $id);
+
         $this->rpc('Notif.incomingCallAnswer');
 
         $p = $this->xmpp(new MessageProceed);
@@ -716,14 +722,13 @@ class Visio extends Base
      */
     public function ajaxGoodbye(string $to, string $sid, ?string $reason = 'success')
     {
-        if ($this->currentCall()->isStarted()) {
-            $this->currentCall()->stop($to, $sid);
+        if ($this->currentCall()->isAnswered()) {
             $st = $this->xmpp(new MessageFinish);
             $st->setTo($to)
                 ->setId($sid)
                 ->setReason($reason ?? 'success')
                 ->request();
-        } else {
+        } else if ($this->currentCall()->isStarted()) {
             $sr = $this->xmpp(new MessageRetract);
             $sr->setTo($to)
                 ->setId($sid)
@@ -740,6 +745,8 @@ class Visio extends Base
 
             Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message), user: $this->me, sessionId: $this->sessionId);
         }
+
+        $this->currentCall()->stop($to, $sid);
 
         $this->toast($this->__('visio.ended'));
         $this->rpc('MovimJingles.terminateAll', $reason);

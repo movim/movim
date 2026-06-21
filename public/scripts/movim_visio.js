@@ -63,7 +63,7 @@ var MovimVisio = {
             } else {
                 // Calling
                 MovimVisio.id = crypto.randomUUID();
-                Visio_ajaxPropose(jid, MovimVisio.id, withVideo);
+                Visio_ajaxPropose(fullJid, MovimVisio.id, withVideo);
             }
         }
 
