@@ -904,32 +904,10 @@ function socketAPITime(): int
     return filemtime(API_SOCKET);
 }
 
-/**
- * @desc Get distance between two coordinates
- *
- * @param float $latitudeFrom
- * @param float $longitudeFrom
- * @param float $latitudeTo
- * @param float $longitudeTo
- *
- * @return float [km]
- */
-/*function getDistance(float $latitudeFrom, float $longitudeFrom, float $latitudeTo, float $longitudeTo): float
-{
-    $rad = M_PI / 180;
-
-    $theta = $longitudeFrom - $longitudeTo;
-    $dist = sin($latitudeFrom * $rad)
-        * sin($latitudeTo * $rad) +  cos($latitudeFrom * $rad)
-        * cos($latitudeTo * $rad) * cos($theta * $rad);
-
-    return acos($dist) / $rad * 60 *  1.853;
-}*/
-
 /*
  * @desc Get the URI of a smiley
  */
-function getSmileyPath($id)
+function getSmileyPath(string $id)
 {
     return BASE_URI . 'theme/img/emojis/svg/' . $id . '.svg';
 }
@@ -939,13 +917,13 @@ function getSmileyPath($id)
  */
 function avatarPlaceholder(string $id): string
 {
-    return \Movim\Route::urlize('picture', null, ['type' => 'avatar', 'id' => urlencode($id)]);
+    return \Movim\Route::urlize('picture', get: ['type' => 'avatar', 'id' => urlencode($id)]);
 }
 
 /*
  * @desc Protect a picture URL by using the internal Proxy
  */
-function protectPicture($url)
+function protectPicture(string $url)
 {
     $emptyPicture =  \Movim\Route::urlize('picture');
     $emptyPicture = preg_replace("(^//)", 'https://', $emptyPicture);
@@ -955,7 +933,7 @@ function protectPicture($url)
         return $url;
     }
 
-    return \Movim\Route::urlize('picture', null, ['type' => 'picture', 'url' => urlencode($url)]);
+    return \Movim\Route::urlize('picture', get: ['type' => 'picture', 'url' => urlencode($url)]);
 }
 
 /*

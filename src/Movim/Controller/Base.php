@@ -30,37 +30,16 @@ class Base
         );
     }
 
-    /**
-     * Returns the value of a $_GET variable. Mainly used to avoid getting
-     * notices from PHP when attempting to fetch an empty variable.
-     * @param  name is the desired variable's name.
-     * @return the value of the requested variable, or FALSE.
-     */
-    protected function fetchGet($name)
+    protected function fetchGet(string $key): ?string
     {
-        if (isset($_GET[$name])) {
-            return htmlentities(urldecode($_GET[$name]));
+        if (isset($_GET[$key])) {
+            return htmlentities(urldecode($_GET[$key]));
         }
 
-        return false;
+        return null;
     }
 
-    /**
-     * Returns the value of a $_POST variable. Mainly used to avoid getting
-     * notices from PHP when attempting to fetch an empty variable.
-     * @param  name is the desired variable's name.
-     * @return the value of the requested variable, or FALSE.
-     */
-    protected function fetchPost($name)
-    {
-        if (isset($_POST[$name])) {
-            return htmlentities($_POST[$name]);
-        }
-
-        return false;
-    }
-
-    protected function redirect($page, $params = false)
+    protected function redirect(string $page, ?array $params = null)
     {
         $url = Route::urlize($page, $params);
         header('Location: ' . $url);

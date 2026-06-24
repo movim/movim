@@ -10,8 +10,8 @@ use React\Http\Browser;
 
 class Picture extends Base
 {
-    private $compressLimit = SMALL_PICTURE_LIMIT * 6;
-    private $sizeLimit = 1920;
+    private int $compressLimit = SMALL_PICTURE_LIMIT * 6;
+    private int $sizeLimit = 1920;
 
     public function display()
     {
@@ -29,7 +29,7 @@ class Picture extends Base
 
         $browser = (new Browser())
             ->withHeader('User-Agent', DEFAULT_HTTP_USER_AGENT)
-            ->withFollowRedirects(true);
+            ->withFollowRedirects(false);
 
         $browser->withTimeout(2)->head($url)->then(function (ResponseInterface $response) use ($url, $browser) {
             $contentLength = null;

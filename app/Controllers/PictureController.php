@@ -8,10 +8,7 @@ class PictureController extends Base
 {
     public function load()
     {
-        if ($this->fetchGet('type') == 'picture') {
-            $this->session_only = true;
-        }
-
+        $this->session_only = ($this->fetchGet('type') != 'avatar');
         $this->set_cookie = false;
         $this->raw = true;
     }

@@ -48,5 +48,5 @@ $session = $bootstrap->boot();
 $request = new Front($session?->user);
 $request->handle();
 
-Wrapper::getInstance(false);
+Wrapper::getInstance();
 Wrapper::destroyInstance();
