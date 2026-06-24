@@ -12,6 +12,6 @@
     {$info->name}
 {/if}
 <br />
-<a href="#" onclick="SpacesMenu_ajaxManageInvitation('{$message->jidfrom}', '{$message->body}', '{$message->subject}')">
+<a href="#" onclick="SpacesMenu_ajaxManageInvitation('{$message->jidfrom}', '{$message->body|echapJS}', '{$message->subject|echapJS}')">
     {$c->__('spaceinfo.pending_action')}
 </a>
