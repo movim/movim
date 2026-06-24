@@ -27,7 +27,7 @@ class Picture extends Base
             $url = getImgurThumbnail($url);
         }
 
-        $browser = (new Browser())
+        $browser = (new Browser(createSSRFSafeConnector()))
             ->withHeader('User-Agent', DEFAULT_HTTP_USER_AGENT)
             ->withFollowRedirects(false);
 
