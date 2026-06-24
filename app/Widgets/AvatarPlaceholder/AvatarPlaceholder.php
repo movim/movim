@@ -6,7 +6,7 @@ class AvatarPlaceholder extends \Movim\Widget\Base
 {
     public function display()
     {
-        $id = urldecode($this->get('id') ?? 'M');
+        $id = $this->get('id') ?? 'M';
 
         $letters = firstLetterCapitalize(slugify($id));
         header_remove('Content-Type');

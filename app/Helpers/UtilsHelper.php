@@ -917,7 +917,7 @@ function getSmileyPath(string $id)
  */
 function avatarPlaceholder(string $id): string
 {
-    return \Movim\Route::urlize('picture', get: ['type' => 'avatar', 'id' => urlencode($id)]);
+    return \Movim\Route::urlize('picture', get: ['type' => 'avatar', 'id' => $id]);
 }
 
 /*
@@ -933,7 +933,7 @@ function protectPicture(string $url)
         return $url;
     }
 
-    return \Movim\Route::urlize('picture', get: ['type' => 'picture', 'url' => urlencode($url)]);
+    return \Movim\Route::urlize('picture', get: ['type' => 'picture', 'url' => $url]);
 }
 
 /*

@@ -17,7 +17,7 @@ class Picture extends Base
     {
         set_error_handler([$this, 'error'], E_ALL);
 
-        $url = str_replace(' ', '%20', html_entity_decode(urldecode($this->get('url'))));
+        $url = $this->get('url');
         $parsedUrl = parse_url($url);
         if (
             is_array($parsedUrl)
