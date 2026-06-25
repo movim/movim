@@ -6,11 +6,14 @@ use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Logger;
+use Movim\Daemon\Linker;
 use Movim\Image;
 use Movim\ImageSize;
-use Movim\Daemon\Linker;
+use Movim\Librairies\SSRFSafeConnector;
 use React\Http\Message\Response;
 use React\Promise\PromiseInterface;
+use React\Socket\Connector;
+use React\Socket\TcpConnector;
 
 use function React\Async\await;
 
@@ -102,6 +105,26 @@ function config(string $key, $default = null)
     }
 
     return $default;
+}
+
+/**
+ * Return a SSRF safe connector, that blocks local IPs
+ */
+function createSSRFSafeConnector(): Connector
+{
+    $dnsConfig = \React\Dns\Config\Config::loadSystemConfigBlocking();
+    if (!$dnsConfig->nameservers) {
+        $dnsConfig->nameservers[] = '8.8.8.8';
+    }
+
+    $resolver = (new React\Dns\Resolver\Factory)->createCached($dnsConfig);
+    $safeTcp  = new SSRFSafeConnector(new TcpConnector);
+
+    return new Connector([
+        'tcp' => $safeTcp,
+        'dns' => $resolver,
+        'tls' => true,
+    ]);
 }
 
 /**

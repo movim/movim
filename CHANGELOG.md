@@ -3,6 +3,9 @@ Movim Changelog
 
 v0.34.1 (master)
 ---------------------------
+* Add a SSRFSafeConnector to the URL resolvers to prevent SSRF attacks
+* Fix 1-to-1 call flow and corretly display the ringing state
+* Fix XSS via Space invitation
 
 v0.34
 ---------------------------
