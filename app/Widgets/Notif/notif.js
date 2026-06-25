@@ -277,5 +277,15 @@ if (typeof MovimWebsocket != 'undefined') {
         });
 
         MovimEvents.registerWindow('focus', 'notifs', () => Notif.focus());
+
+        document.addEventListener('visibilitychange', () => {
+            const isBackground = document.visibilityState === 'hidden';
+            Notif.focused = !isBackground;
+            Notif_ajaxSetBackgroundState(isBackground);
+        });
+
+        if (document.visibilityState === 'visible') {
+            Notif_ajaxSetBackgroundState(false);
+        }
     });
 }

@@ -80,7 +80,8 @@ class Notif extends Base
         $session = linker($this->sessionId)->session;
         $notifs = $session->get('notifs');
 
-        if ($session->get('session_down')) {
+        $isBackground = $session->get('in_background', true);
+        if ($isBackground) {
             requestPusher(
                 userId: $this->me->id,
                 tag: $key,
@@ -305,6 +306,12 @@ class Notif extends Base
             null,
             true
         );
+    }
+
+    public function ajaxSetBackgroundState(bool $hidden)
+    {
+        $session = linker($this->sessionId)->session;
+        $session->set('in_background', $hidden);
     }
 
     public function ajaxRequestDenied()
