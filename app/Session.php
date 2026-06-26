@@ -49,14 +49,18 @@ class Session extends Model
 
     public function topContacts()
     {
-        return $this->contacts()->join(DB::raw('(
-            select jidfrom as id, count(*) as number
-            from messages
-            where published >= \'' . date('Y-m-d', strtotime('-4 week')) . '\'
-            and type = \'chat\'
-            and user_id = \'' . $this->user_id . '\'
-            group by jidfrom) as top
-            '), 'top.id', '=', 'rosters.jid', 'left outer')
+        return $this->contacts()->leftJoinSub(
+            DB::table('messages')
+                ->select('jidfrom as id', DB::raw('count(*) as number'))
+                ->where('published', '>=', date('Y-m-d', strtotime('-4 week')))
+                ->where('type', 'chat')
+                ->where('user_id', $this->user_id)
+                ->groupBy('jidfrom'),
+            'top',
+            function ($join) {
+                $join->on('top.id', 'rosters.jid');
+            }
+        )
             ->orderByRaw('-top.number')
             ->orderBy('jid');
     }
@@ -83,7 +87,9 @@ class Session extends Model
      */
     public function interestingCommunities(int $limit = 10)
     {
-        $where = '(server, node) in (
+        $params = [$this->id, $this->user_id, $limit];
+
+        $where = "(server, node) in (
             select server, node from (
                 select count(*) as count, subscriptions.server, subscriptions.node, recents.published
                 from subscriptions
@@ -92,23 +98,23 @@ class Session extends Model
                     group by server, node) as recents on recents.server = subscriptions.server and recents.node = subscriptions.node
                 where public = true
                 and jid in (
-                    select jid from rosters where session_id = \'' . $this->id . '\'
+                    select jid from rosters where session_id = ?
                 )
-                and (subscriptions.server, subscriptions.node) not in (select server, node from subscriptions where jid = \'' . $this->user_id . '\')
+                and (subscriptions.server, subscriptions.node) not in (select server, node from subscriptions where jid = ?)
                 group by subscriptions.server, subscriptions.node, published
                 order by published desc, count desc
-                limit ' . $limit . '
-            ) as sub';
+                limit ?
+            ) as sub";
 
         $configuration = Configuration::get();
         if ($configuration->restrictsuggestions) {
-            $host = $this->user->session->host;
-            $where .= ' where server like \'%.' . $host . '\'';
+            array_push($params, '%.' . $this->user->session->host);
+            $where .= " where server like ?";
         }
 
         $where .= ')';
 
-        return Info::whereRaw($where);
+        return Info::whereRaw($where, $params);
     }
 
     public function init(string $username, string $password, string $host, string $sessionId, string $timezone)
