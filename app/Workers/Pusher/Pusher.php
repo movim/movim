@@ -25,6 +25,7 @@ class Pusher
 
     public function send(
         string $userId,
+        array $linkerPushEndpoints,
         string $tag,
         string $title,
         string $body,
@@ -35,6 +36,7 @@ class Pusher
         foreach (
             PushSubscription::where('user_id', $userId)
                 ->where('enabled', true)
+                ->whereNotIn('endpoint', $linkerPushEndpoints)
                 ->whereNotNull('activity_at')->get() as $pushSubscription
         ) {
             $this->webPush->queueNotification(

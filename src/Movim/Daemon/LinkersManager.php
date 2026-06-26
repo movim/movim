@@ -105,6 +105,14 @@ class LinkersManager
                     $linker->register($message->host);
                 }
                 break;
+
+            case 'push_endpoint_add':
+                $linker->pushEndpointAdd($message->endpoint);
+                break;
+
+            case 'push_endpoint_remove':
+                $linker->pushEndpointRemove($message->endpoint);
+                break;
         }
     }
 }

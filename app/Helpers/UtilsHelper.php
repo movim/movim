@@ -829,6 +829,7 @@ function requestAvatarBase64(
  */
 function requestPusher(
     string $userId,
+    array $linkerPushEndpoints,
     string $tag,
     string $title,
     string $body,
@@ -850,7 +851,8 @@ function requestPusher(
         'body' => $body,
         'picture' => $picture,
         'actions' => $actions,
-        'data' => $data
+        'data' => $data,
+        'linker_push_endpoints' => $linkerPushEndpoints
     ]));
 }
 
