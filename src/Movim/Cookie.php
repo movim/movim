@@ -14,7 +14,7 @@ class Cookie
             ? $_COOKIE['MOVIM_SESSION_ID']
             : null;
 
-        if (!validateCookie($sessionId)) {
+        if ($sessionId == null || !validateCookie($sessionId)) {
             self::renew();
         } else {
             self::setCookie($sessionId);
