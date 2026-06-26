@@ -6,6 +6,10 @@ v0.34.1 (master)
 * Add a SSRFSafeConnector to the URL resolvers to prevent SSRF attacks
 * Fix 1-to-1 call flow and corretly display the ringing state
 * Fix XSS via Space invitation
+* Protected properly the Picture resolver
+* Validate the Cookies format
+* Refactor some complex SQL requests to bind paramaters properly
+* Register the Websockets Push Endpoints in the Linker and use it to know exactly which push subscriptions we should trigger
 
 v0.34
 ---------------------------
