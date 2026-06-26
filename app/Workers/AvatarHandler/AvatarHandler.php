@@ -12,7 +12,7 @@ class AvatarHandler
 {
     public static function getAvatarCachePath(string $jid, string $type)
     {
-        return CACHE_PATH . hash('sha256', $jid.$type);
+        return CACHE_PATH . hash('sha256', $jid . $type);
     }
 
     public function url(
@@ -21,19 +21,17 @@ class AvatarHandler
         ?string $node = null,
         ?bool $banner = false
     ): Promise {
-        $connector = null;
+        $tlsContext = true;
 
         // Disable SSL if the host requested is the local one
         if (parse_url(config('daemon.url'), PHP_URL_HOST) == parse_url($url, PHP_URL_HOST)) {
-            $connector = new Connector([
-                'tls' => [
-                    'verify_peer' => false,
-                    'verify_peer_name' => false
-                ]
-            ]);
+            $tlsContext = [
+                'verify_peer' => false,
+                'verify_peer_name' => false
+            ];
         }
 
-        $browser = (new Browser($connector))
+        $browser = (new Browser(SSRFSafeConnector($tlsContext)))
             ->withTimeout(5)
             ->withHeader('User-Agent', DEFAULT_HTTP_USER_AGENT)
             ->withFollowRedirects(true);

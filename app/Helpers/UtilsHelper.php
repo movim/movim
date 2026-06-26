@@ -110,7 +110,7 @@ function config(string $key, $default = null)
 /**
  * Return a SSRF safe connector, that blocks local IPs
  */
-function SSRFSafeConnector(): Connector
+function SSRFSafeConnector(array|bool $tlsContext = true): Connector
 {
     $config = \React\Dns\Config\Config::loadSystemConfigBlocking();
     $resolver = $config->nameservers ? reset($config->nameservers) : '8.8.8.8';
@@ -119,7 +119,7 @@ function SSRFSafeConnector(): Connector
     return new Connector([
         'tcp' => $safeTcp,
         'dns' => $resolver,
-        'tls' => true,
+        'tls' => $tlsContext,
     ]);
 }
 
@@ -739,7 +739,7 @@ function generateKey(?int $size = 16, bool $withCapitals = true): string
     return $hash;
 }
 
-define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (X11; Linux x86_64; rv:149.0) Gecko/20100101 Firefox/149.0');
+define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (X11; Linux x86_64; rv:154.0) Gecko/20100101 Firefox/154.00');
 
 /**
  * @desc Request a url async
