@@ -264,7 +264,7 @@ class Login extends Base
             return;
         }
 
-        if ($sessionId != null && strlen($sessionId) != 32) {
+        if (!validateCookie($sessionId)) {
             $this->showErrorBlock('password_format');
             return;
         }

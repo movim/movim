@@ -3,22 +3,22 @@
 use Movim\i18n\Locale;
 use Respect\Validation\Validator;
 
-function validateServerNode($server, $node)
+function validateServerNode(?string $server = null, ?string $node = null)
 {
     return validateServer($server) && validateNode($node);
 }
 
-function validateServer($server)
+function validateServer(?string $server = null)
 {
     return (Validator::stringType()->noWhitespace()->length(6, 64)->isValid($server));
 }
 
-function validateNode($node)
+function validateNode(?string $node = null)
 {
     return (Validator::stringType()->length(2, 256)->isValid($node));
 }
 
-function validateTag($tag)
+function validateTag(?string $tag = null)
 {
     return Validator::stringType()->notEmpty()->isValid($tag);
 }
@@ -26,6 +26,11 @@ function validateTag($tag)
 function validateForm($data)
 {
     return Validator::in(array_keys(Locale::getList()))->isValid($data->language->value);
+}
+
+function validateCookie(string $cookie)
+{
+    return Validator::regex('/^[a-zA-Z0-9]{32}$/')->isValid($cookie);
 }
 
 // RFC 7622: https://www.rfc-editor.org/rfc/rfc7622
