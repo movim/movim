@@ -72,9 +72,10 @@ class Notif extends Base
         $session = linker($this->sessionId)->session;
         $notifs = $session->get('notifs');
 
-        if ($session->get('session_down')) {
+        //if ($session->get('session_down')) {
             requestPusher(
                 userId: $this->me->id,
+                linkerPushEndpoints: linker($this->sessionId)?->pushEndpoints ?? [],
                 tag: $key,
                 title: $title,
                 body: $body,
@@ -82,7 +83,7 @@ class Notif extends Base
                 actions: $actions,
                 data: $data,
             );
-        } else {
+        //} else {
             (new RPC(user: $this->me, sessionId: $this->sessionId))->call(
                 'Notif.desktop',
                 $key,
@@ -93,7 +94,7 @@ class Notif extends Base
                 $actions,
                 $data,
             );
-        }
+        //}
 
         $notifsKey = $session->get('notifs_key');
 

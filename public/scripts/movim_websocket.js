@@ -63,7 +63,19 @@ var MovimWebsocket = {
         }
     },
 
-    init: function () {
+    resolvePushEndpoint: async function () {
+        if (!('serviceWorker' in navigator)) return null;
+
+        const registration = await navigator.serviceWorker.getRegistration(SW_URI);
+        if (!registration) return null;
+
+        const pushSubscription = await registration.pushManager.getSubscription();
+        if (!pushSubscription) return null;
+
+        return pushSubscription.endpoint;
+    },
+
+    init: async function () {
         var uri = 'ws:' + BASE_URI + 'ws/';
 
         if (window.location.protocol === "https:") {
@@ -75,7 +87,13 @@ var MovimWebsocket = {
             this.connection.close();
         }
 
-        this.connection = new WebSocket(uri + '?path=' + MovimUtils.urlParts().page);
+        const pushEndpoint = await this.resolvePushEndpoint();
+
+        if (pushEndpoint) {
+            uri += '?push=' + encodeURIComponent(pushEndpoint);
+        }
+
+        this.connection = new WebSocket(uri);
 
         this.connection.onopen = function (e) {
             console.log("Connection established!");
