@@ -28,7 +28,7 @@ function validateForm($data)
     return Validator::in(array_keys(Locale::getList()))->isValid($data->language->value);
 }
 
-function validateCookie(string $cookie)
+function validateCookie(?string $cookie = null)
 {
     return Validator::regex('/^[a-zA-Z0-9]{32}$/')->isValid($cookie);
 }
