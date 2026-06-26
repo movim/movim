@@ -52,14 +52,6 @@ class Notif extends Base
 
     /**
      * @brief Notify something
-     *
-     * @param string $key The key to group the notifications
-     * @param string $title The displayed title
-     * @param string $body The displayed body
-     * @param string $body The displayed URL
-     * @param integer $time The displayed time (in secondes)
-     * @param integer $action An action
-     * @return void
      */
     public function append(
         string $key,

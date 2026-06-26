@@ -829,9 +829,9 @@ function requestAvatarBase64(
  */
 function requestPusher(
     string $userId,
-    ?string $tag = null,
+    string $tag,
     string $title,
-    ?string $body = null,
+    string $body,
     ?string $picture = null,
     ?array $actions = [],
     ?array $data = [],

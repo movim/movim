@@ -25,9 +25,9 @@ class Pusher
 
     public function send(
         string $userId,
+        string $tag,
         string $title,
-        ?string $tag = null,
-        ?string $body = null,
+        string $body,
         ?string $picture = null,
         ?array $actions = [],
         ?array $data = [],
@@ -48,12 +48,12 @@ class Pusher
                 ]),
                 json_encode([
                     'tag' => $tag,
-                    'timestamp' => time(),
                     'title' => $title,
                     'body' => $body,
                     'picture' => $picture,
                     'actions' => $actions,
                     'data' => $data,
+                    'timestamp' => time(),
                 ])
             );
         }

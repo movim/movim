@@ -207,10 +207,10 @@ var Notif = {
             Notif_ajaxHttpRequest();
         }
     },
-    clear: function (group) {
+    clear: function (tag) {
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.getRegistration(SW_URI).then((registration) => {
-                registration.getNotifications({ tag: group }).then((notifications) =>
+                registration.getNotifications({ tag: tag }).then((notifications) =>
                     notifications.forEach(notification => notification.close())
                 );
             });
