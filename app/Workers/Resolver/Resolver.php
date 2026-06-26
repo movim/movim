@@ -24,7 +24,7 @@ class Resolver
 
     public function __construct()
     {
-        $this->browser = new Browser(createSSRFSafeConnector());
+        $this->browser = new Browser(SSRFSafeConnector());
     }
 
     public function resolve(string $url): Promise

@@ -26,18 +26,18 @@ class SSRFSafeConnector implements ConnectorInterface
 
     public function connect($uri)
     {
-        $hostAndPort = \strstr($uri, '?', true) ?: $uri;
-        $host = \strstr($hostAndPort, ':', true) ?: $hostAndPort;
+        $host = parse_url('tls://' . $uri, PHP_URL_HOST); // adding tls:// to parse the URI correctly
 
-        $ip = trim($host, '[]');
+        if (!empty($host)) {
+            $ip = trim($host, '[]');
+            if ($ip !== '' && $this->isPrivateIp($ip)) {
+                $error = 'Blocked SSRF attempt to: ' . $ip . ' (' . $uri . ')';
+                \logError($error);
 
-        if ($ip !== '' && $this->isPrivateIp($ip)) {
-            $error = 'Blocked SSRF attempt to: ' . $ip;
-            \logError($error);
-
-            return \React\Promise\reject(
-                new \RuntimeException($error)
-            );
+                return \React\Promise\reject(
+                    new \RuntimeException($error)
+                );
+            }
         }
 
         return $this->connector->connect($uri);

@@ -110,14 +110,10 @@ function config(string $key, $default = null)
 /**
  * Return a SSRF safe connector, that blocks local IPs
  */
-function createSSRFSafeConnector(): Connector
+function SSRFSafeConnector(): Connector
 {
-    $dnsConfig = \React\Dns\Config\Config::loadSystemConfigBlocking();
-    if (!$dnsConfig->nameservers) {
-        $dnsConfig->nameservers[] = '8.8.8.8';
-    }
-
-    $resolver = (new React\Dns\Resolver\Factory)->createCached($dnsConfig);
+    $config = \React\Dns\Config\Config::loadSystemConfigBlocking();
+    $resolver = $config->nameservers ? reset($config->nameservers) : '8.8.8.8';
     $safeTcp  = new SSRFSafeConnector(new TcpConnector);
 
     return new Connector([
