@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-17 18:04+0200\n"
+"POT-Creation-Date: 2026-06-28 18:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Egon Borovan <egon.boro@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (http://app.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -349,10 +349,29 @@ msgstr "Ponechte toto pole prázdné, chcete-li povolit přístup ke všem XMPP 
 msgid "List of allowed XMPP servers"
 msgstr ""
 
-#: [information]title
-msgctxt "[information]title"
-msgid "Information Message"
-msgstr "Informační zpráva"
+#: [ssrfwhitelist]title
+msgid "Whitelisted Domains for SSRF Protection"
+msgstr ""
+
+#: [ssrfwhitelist]info1
+msgid "Movim is protecting you against SSRF vulnerabilities. This means that Movim blocks all URLs (shared links, avatars, and pictures) that point to your local network IPs."
+msgstr ""
+
+#: [ssrfwhitelist]info2
+msgid "See the related SSRF documentation on developer.mozilla.org."
+msgstr ""
+
+#: [ssrfwhitelist]info3
+msgid "Add all domains hosted locally here (for example, if you host a blog, an XMPP file upload service, or other web services)."
+msgstr ""
+
+#: [ssrfwhitelist]info4
+msgid "This setting will be applied after a daemon restart."
+msgstr ""
+
+#: [ssrfwhitelist]label
+msgid "List of Locally Authorized Domains"
+msgstr ""
 
 #: [information]description [communityconfig]description
 msgid "Description"
@@ -379,7 +398,7 @@ msgid "Leave this field blank if you don’t want to show any message."
 msgstr "Pokud nechcete zobrazovat žádnou zprávu, ponechte toto pole prázdné."
 
 #: [information]label
-msgctxt "[information]label"
+#, fuzzy
 msgid "Information Message"
 msgstr "Informační zpráva"
 
@@ -4107,3 +4126,7 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#~ msgctxt "[information]label"
+#~ msgid "Information Message"
+#~ msgstr "Informační zpráva"

@@ -146,7 +146,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-17 18:04+0200\n"
+"POT-Creation-Date: 2026-06-28 18:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>, 2015\n"
 "Language-Team: German (http://app.transifex.com/movim/movim/language/de/)\n"
@@ -369,10 +369,29 @@ msgstr "Dieses Feld leer lassen, um den Zugriff auf alle XMPP-Konten zu erlauben
 msgid "List of allowed XMPP servers"
 msgstr "Liste der erlaubten XMPP-Server"
 
-#: [information]title
-msgctxt "[information]title"
-msgid "Information Message"
-msgstr "Informationsnachricht"
+#: [ssrfwhitelist]title
+msgid "Whitelisted Domains for SSRF Protection"
+msgstr ""
+
+#: [ssrfwhitelist]info1
+msgid "Movim is protecting you against SSRF vulnerabilities. This means that Movim blocks all URLs (shared links, avatars, and pictures) that point to your local network IPs."
+msgstr ""
+
+#: [ssrfwhitelist]info2
+msgid "See the related SSRF documentation on developer.mozilla.org."
+msgstr ""
+
+#: [ssrfwhitelist]info3
+msgid "Add all domains hosted locally here (for example, if you host a blog, an XMPP file upload service, or other web services)."
+msgstr ""
+
+#: [ssrfwhitelist]info4
+msgid "This setting will be applied after a daemon restart."
+msgstr ""
+
+#: [ssrfwhitelist]label
+msgid "List of Locally Authorized Domains"
+msgstr ""
 
 #: [information]description [communityconfig]description
 msgid "Description"
@@ -399,7 +418,7 @@ msgid "Leave this field blank if you don’t want to show any message."
 msgstr "Lassen Sie dieses Feld leer wenn Sie keine Nachricht anzeigen wollen."
 
 #: [information]label
-msgctxt "[information]label"
+#, fuzzy
 msgid "Information Message"
 msgstr "Informationsnachricht"
 
@@ -4127,3 +4146,7 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgctxt "[information]label"
+#~ msgid "Information Message"
+#~ msgstr "Informationsnachricht"

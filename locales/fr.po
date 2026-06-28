@@ -132,7 +132,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-17 18:04+0200\n"
+"POT-Creation-Date: 2026-06-28 18:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2026\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -355,10 +355,29 @@ msgstr "Laissez ce champ vide si vous souhaitez autoriser la connexion à tous l
 msgid "List of allowed XMPP servers"
 msgstr "Liste des serveurs XMPP autorisés"
 
-#: [information]title
-msgctxt "[information]title"
-msgid "Information Message"
-msgstr "Message d’information"
+#: [ssrfwhitelist]title
+msgid "Whitelisted Domains for SSRF Protection"
+msgstr "Domaines sur liste blanche pour la protection SSRF"
+
+#: [ssrfwhitelist]info1
+msgid "Movim is protecting you against SSRF vulnerabilities. This means that Movim blocks all URLs (shared links, avatars, and pictures) that point to your local network IPs."
+msgstr "Movim vous protège des vulnérabilités SSRF, de ce fait Movim bloque toutes les URLs (liens partagés, avatars et images) hébergés sur votre réseau local."
+
+#: [ssrfwhitelist]info2
+msgid "See the related SSRF documentation on developer.mozilla.org."
+msgstr "Découvrez la documentation relative aux SSRF sur deverloper.mozilla.org."
+
+#: [ssrfwhitelist]info3
+msgid "Add all domains hosted locally here (for example, if you host a blog, an XMPP file upload service, or other web services)."
+msgstr "Ajoutez tous les domaines que vous hébergez localement ici (par exemple si vous hébergez un blog, un service XMPP d'envois de fichier, ou d'autres services web)."
+
+#: [ssrfwhitelist]info4
+msgid "This setting will be applied after a daemon restart."
+msgstr "Les changements seront pris en compte au redémarrage du démon."
+
+#: [ssrfwhitelist]label
+msgid "List of Locally Authorized Domains"
+msgstr "Liste des domaines autorisés"
 
 #: [information]description [communityconfig]description
 msgid "Description"
@@ -385,7 +404,6 @@ msgid "Leave this field blank if you don’t want to show any message."
 msgstr "Laissez ce champ vide si vous ne voulez afficher aucun message."
 
 #: [information]label
-msgctxt "[information]label"
 msgid "Information Message"
 msgstr "Message d’information"
 

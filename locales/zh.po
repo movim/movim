@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-17 18:04+0200\n"
+"POT-Creation-Date: 2026-06-28 18:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2026\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -362,10 +362,29 @@ msgstr "如果允许访问所有 XMPP 账号，请将此字段留空。"
 msgid "List of allowed XMPP servers"
 msgstr "允许的 XMPP 服务器列表"
 
-#: [information]title
-msgctxt "[information]title"
-msgid "Information Message"
-msgstr "通知消息"
+#: [ssrfwhitelist]title
+msgid "Whitelisted Domains for SSRF Protection"
+msgstr ""
+
+#: [ssrfwhitelist]info1
+msgid "Movim is protecting you against SSRF vulnerabilities. This means that Movim blocks all URLs (shared links, avatars, and pictures) that point to your local network IPs."
+msgstr ""
+
+#: [ssrfwhitelist]info2
+msgid "See the related SSRF documentation on developer.mozilla.org."
+msgstr ""
+
+#: [ssrfwhitelist]info3
+msgid "Add all domains hosted locally here (for example, if you host a blog, an XMPP file upload service, or other web services)."
+msgstr ""
+
+#: [ssrfwhitelist]info4
+msgid "This setting will be applied after a daemon restart."
+msgstr ""
+
+#: [ssrfwhitelist]label
+msgid "List of Locally Authorized Domains"
+msgstr ""
 
 #: [information]description [communityconfig]description
 msgid "Description"
@@ -392,7 +411,7 @@ msgid "Leave this field blank if you don’t want to show any message."
 msgstr "如果不想显示任何消息，请将此字段留空。"
 
 #: [information]label
-msgctxt "[information]label"
+#, fuzzy
 msgid "Information Message"
 msgstr "通知消息"
 
@@ -4120,3 +4139,7 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgctxt "[information]label"
+#~ msgid "Information Message"
+#~ msgstr "通知消息"
