@@ -39,6 +39,7 @@ class Session
 
         if ($this->countClients() > 0) {
             $this->stateOut(state: 'up');
+            $this->pushEndpointState($conn, 'add');
         }
     }
 
@@ -67,6 +68,8 @@ class Session
                 $loop->cancelTimer($timer);
             });
         }
+
+        $this->pushEndpointState($conn, 'remove');
     }
 
     public function countClients()
@@ -121,6 +124,18 @@ class Session
             foreach ($this->clients as $client) {
                 $client->send($msg);
             }
+        }
+    }
+
+    public function pushEndpointState(ConnectionInterface $conn, string $state)
+    {
+        parse_str($conn->httpRequest->getUri()->getQuery(), $results);
+
+        if (isset($results['push']) && filter_var($results['push'], FILTER_VALIDATE_URL)) {
+            $message = new \stdClass;
+            $message->func = 'push_endpoint_' . $state;
+            $message->endpoint = $results['push'];
+            $this->messageIn(json_encode($message));
         }
     }
 }

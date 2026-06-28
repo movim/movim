@@ -43,6 +43,7 @@ class Linker
     public Authentication $authentication;
     public Session $session;
     public ?string $timezone = 'UTC';
+    public array $pushEndpoints = [];
 
     private ?string $timestampSend = null;
     private ?string $timestampReceive = null;
@@ -161,9 +162,24 @@ class Linker
         }
     }
 
-    function writeOut(\stdClass $message)
+    public function writeOut(\stdClass $message)
     {
         $this->linkersManager->sendWebsocket($this->sessionId, $message);
+    }
+
+    public function pushEndpointAdd(string $endpoint)
+    {
+        if (!in_array($endpoint, $this->pushEndpoints)) {
+            array_push($this->pushEndpoints, $endpoint);
+        }
+    }
+
+    public function pushEndpointRemove(string $endpoint)
+    {
+        $key = array_search($endpoint, $this->pushEndpoints);
+        if ($key !== false) {
+            unset($this->pushEndpoints[$key]);
+        }
     }
 
     private function xmppBehaviour(Connection $connection)
