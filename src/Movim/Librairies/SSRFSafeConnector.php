@@ -6,8 +6,6 @@ use React\Socket\ConnectorInterface;
 
 class SSRFSafeConnector implements ConnectorInterface
 {
-    private ConnectorInterface $connector;
-
     // Lists found on https://docs.n8n.io/deploy/host-n8n/configure-n8n/security/enable-ssrf-protection#default-blocked-ranges
     private const EXTRA_BLOCKED_CIDRS_V4 = [
         ['169.254.0.0', 16], // Link-local
@@ -19,16 +17,16 @@ class SSRFSafeConnector implements ConnectorInterface
         ['fe80::', 10], // IPv6 link-local addresses
     ];
 
-    public function __construct(ConnectorInterface $connector)
-    {
-        $this->connector = $connector;
-    }
+    public function __construct(
+        private ConnectorInterface $connector,
+        private array $domainsWhitelist = []
+    ) {}
 
     public function connect($uri)
     {
         $host = parse_url('tls://' . $uri, PHP_URL_HOST); // adding tls:// to parse the URI correctly
 
-        if (!empty($host)) {
+        if (!empty($host) && !$this->isUriWhitelisted($uri)) {
             $ip = trim($host, '[]');
             if ($ip !== '' && $this->isPrivateIp($ip)) {
                 $error = 'Blocked SSRF attempt to: ' . $ip . ' (' . $uri . ')';
@@ -88,5 +86,22 @@ class SSRFSafeConnector implements ConnectorInterface
         $mask = str_pad($mask, $bytes, "\x00");
 
         return ($ipBin & $mask) === ($rangeBin & $mask);
+    }
+
+    private function isUriWhitelisted(string $uri): bool
+    {
+        $query = parse_url($uri, PHP_URL_QUERY);
+        if ($query == null) return false;
+        parse_str($query, $results);
+
+        if (!empty($results['hostname'])) {
+            foreach ($this->domainsWhitelist as $domain) {
+                if (str_ends_with($domain, $results['hostname'])) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Picture;
 
+use App\Configuration;
 use Exception;
 use Movim\Image;
 use Movim\Widget\Base;
@@ -28,7 +29,9 @@ class Picture extends Base
             $url = getImgurThumbnail($url);
         }
 
-        $browser = (new Browser(SSRFSafeConnector()))
+        $browser = (new Browser(SSRFSafeConnector(
+            domainsWhitelist: Configuration::firstOrNew()->ssrfwhitelist_array
+        )))
             ->withHeader('User-Agent', DEFAULT_HTTP_USER_AGENT)
             ->withFollowRedirects(false);
 

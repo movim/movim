@@ -10,6 +10,7 @@ v0.34.1 (master)
 * Validate the Cookies format
 * Refactor some complex SQL requests to bind paramaters properly
 * Register the Websockets Push Endpoints in the Linker and use it to know exactly which push subscriptions we should trigger
+* Add a setting in the Admin to configure the SSRF whitelist
 
 v0.34
 ---------------------------

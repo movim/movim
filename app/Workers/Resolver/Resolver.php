@@ -2,6 +2,7 @@
 
 namespace App\Workers\Resolver;
 
+use App\Configuration;
 use App\Workers\Resolver\Detectors\ContentLength;
 use App\Workers\Resolver\Detectors\ContentType;
 use App\Workers\Resolver\Detectors\Images as DetectorsImages;
@@ -24,7 +25,9 @@ class Resolver
 
     public function __construct()
     {
-        $this->browser = new Browser(SSRFSafeConnector());
+        $this->browser = new Browser(SSRFSafeConnector(
+            domainsWhitelist: Configuration::firstOrNew()->ssrfwhitelist_array
+        ));
     }
 
     public function resolve(string $url): Promise
@@ -39,7 +42,7 @@ class Resolver
         $embed = new Embed(new Crawler($this->browser), $extractorFactory);
 
         if (!array_key_exists($url, $this->queries)) {
-            $this->queries[$url] = async(fn () => $embed->get($url))();
+            $this->queries[$url] = async(fn() => $embed->get($url))();
         }
 
         $query = $this->queries[$url];

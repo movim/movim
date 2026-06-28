@@ -40,5 +40,6 @@ class AdminMain extends \Movim\Widget\Base
 
         $this->view->assign('langs', Locale::getList());
         $this->view->assign('countries', getCountries());
+        $this->view->assign('basehost', BASE_HOST);
     }
 }

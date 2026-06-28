@@ -18,7 +18,7 @@
                 </div>
             </li>
         </ul>
-        <ul class="list middle">
+        <ul class="list middle card">
             <li class="subheader">
                 <div><p>{$c->__('config.general')}</p></div>
             </li>
@@ -53,6 +53,20 @@
                               onclick="MovimUtils.textareaAutoheight(this);"
                               oninput="MovimUtils.textareaAutoheight(this);"/>{if="$configuration->description"}{$configuration->description}{/if}</textarea>
                     <label for="description">{$c->__('information.description')}</label>
+                </div>
+            </li>
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-symbols">help</i>
+                </span>
+                <div>
+                    <textarea type="text" name="info" id="info"
+                              placeholder="{$c->__('information.label')}"
+                              onclick="MovimUtils.textareaAutoheight(this);"
+                              oninput="MovimUtils.textareaAutoheight(this);"/>{$configuration->info}</textarea>
+                    <label for="info">{$c->__('information.label')}</label>
+                    <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('information.info1')}</span>
+                    <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('information.info2')} {$c->__('publish.content_text')}</span>
                 </div>
             </li>
             <li>
@@ -137,79 +151,102 @@
                     <p class="all">{$c->__('chatonly.text')}</p>
                 </div>
             </li>
-            <li>
-                <span class="primary icon gray">
-                    <i class="material-symbols">person_cancel</i>
-                </span>
-                <span class="control">
-                    <div class="checkbox">
-                        <input
-                            {if="$configuration->disableregistration"}
-                                checked
-                            {/if}
-                            type="checkbox"
-                            id="disableregistration"
-                            name="disableregistration"/>
-                        <label for="disableregistration"></label>
-                    </div>
-                </span>
-                <div>
-                    <p>{$c->__('disableregistration.title')}</p>
-                    <p class="all">{$c->__('disableregistration.text')}</p>
-                </div>
+
+            <li class="block">
+                <ul class="list">
+                    <li>
+                        <div>
+                            <p>XMPP</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="primary icon gray">
+                            <i class="material-symbols">person_cancel</i>
+                        </span>
+                        <span class="control">
+                            <div class="checkbox">
+                                <input
+                                    {if="$configuration->disableregistration"}
+                                        checked
+                                    {/if}
+                                    type="checkbox"
+                                    id="disableregistration"
+                                    name="disableregistration"/>
+                                <label for="disableregistration"></label>
+                            </div>
+                        </span>
+                        <div>
+                            <p>{$c->__('disableregistration.title')}</p>
+                            <p class="all">{$c->__('disableregistration.text')}</p>
+                        </div>
+                    </li>
+                    <li class="subheader">
+                        <div><p>{$c->__('xmpp.title')}</p></div>
+                    </li>
+                    <li>
+                        <span class="primary icon gray">
+                            <i class="material-symbols">domain</i>
+                        </span>
+                        <div>
+                            <input type="text" name="xmppdomain" id="xmppdomain" placeholder="server.tld" value="{$configuration->xmppdomain}" />
+                            <label for="xmppdomain">{$c->__('xmpp.domain')}</label>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="primary icon gray">
+                            <i class="material-symbols">description</i>
+                        </span>
+                        <div>
+                            <textarea type="text" name="xmppdescription" id="xmppdescription" placeholder="{$c->__('xmpp.description')}" />{$configuration->xmppdescription}</textarea>
+                            <label for="xmppdescription">{$c->__('xmpp.description')}</label>
+                        </div>
+                    </li>
+                    <li class="subheader">
+                        <div><p>{$c->__('whitelist.title')}</p></div>
+                    </li>
+                    <li>
+                        <span class="primary icon gray">
+                            <i class="material-symbols">checklist_rtl</i>
+                        </span>
+                        <div>
+                            <input type="text" name="xmppwhitelist" id="xmppwhitelist" placeholder="{$c->__('whitelist.label')}" value="{$configuration->xmppwhitelist_string ?? ''}" />
+                            <label for="xmppwhitelist">{$c->__('whitelist.label')}</label>
+                            <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('whitelist.info1')}</span>
+                            <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('whitelist.info2')}</span>
+                        </div>
+                    </li>
+                </ul>
             </li>
-            <li class="subheader">
-                <div><p>{$c->__('xmpp.title')}</p></div>
+
+            <li class="block">
+                <ul class="list">
+                    <li class="subheader">
+                        <div><p>{$c->__('ssrfwhitelist.title')}</p></div>
+                    </li>
+                    <li>
+                        <span class="primary icon gray">
+                            <i class="material-symbols">security</i>
+                        </span>
+                        <div>
+                            <textarea type="text" name="ssrfwhitelist" id="ssrfwhitelist"
+                                    placeholder="myblog.{$basehost}, upload.{$basehost}..."
+                                    onclick="MovimUtils.textareaAutoheight(this);"
+                                    oninput="MovimUtils.textareaAutoheight(this);"/>{$configuration->ssrfwhitelist ?? ''}</textarea>
+                            <label for="ssrfwhitelist">{$c->__('ssrfwhitelist.label')}</label>
+                            <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('ssrfwhitelist.info1')}</span>
+                            <span class="supporting">
+                                <i class="material-symbols">link</i>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/SSRF" target="_blank">
+                                    {$c->__('ssrfwhitelist.info2')}
+                                </a>
+                            </span>
+                            <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('ssrfwhitelist.info3')}</span>
+                            <span class="supporting"><i class="material-symbols">autorenew</i>{$c->__('ssrfwhitelist.info4')}</span>
+                        </div>
+                    </li>
+                </ul>
             </li>
-            <li>
-                <span class="primary icon gray">
-                    <i class="material-symbols">domain</i>
-                </span>
-                <div>
-                    <input type="text" name="xmppdomain" id="xmppdomain" placeholder="server.tld" value="{$configuration->xmppdomain}" />
-                    <label for="xmppdomain">{$c->__('xmpp.domain')}</label>
-                </div>
-            </li>
-            <li>
-                <span class="primary icon gray">
-                    <i class="material-symbols">description</i>
-                </span>
-                <div>
-                    <textarea type="text" name="xmppdescription" id="xmppdescription" placeholder="{$c->__('xmpp.description')}" />{$configuration->xmppdescription}</textarea>
-                    <label for="xmppdescription">{$c->__('xmpp.description')}</label>
-                </div>
-            </li>
-            <li class="subheader">
-                <div><p>{$c->__('whitelist.title')}</p></div>
-            </li>
-            <li>
-                <span class="primary icon gray">
-                    <i class="material-symbols">checklist_rtl</i>
-                </span>
-                <div>
-                    <input type="text" name="xmppwhitelist" id="xmppwhitelist" placeholder="{$c->__('whitelist.label')}" value="{$configuration->xmppwhitelist_string ?? ''}" />
-                    <label for="xmppwhitelist">{$c->__('whitelist.label')}</label>
-                    <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('whitelist.info1')}</span>
-                    <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('whitelist.info2')}</span>
-                </div>
-            </li>
-            <li class="subheader">
-                <div><p>{$c->__('information.title')}</p></div>
-            </li>
-            <li>
-                <span class="primary icon gray">
-                    <i class="material-symbols">help</i>
-                </span>
-                <div>
-                    <textarea type="text" name="info" id="info"
-                              placeholder="{$c->__('information.label')}"
-                              onclick="MovimUtils.textareaAutoheight(this);"
-                              oninput="MovimUtils.textareaAutoheight(this);"/>{$configuration->info}</textarea>
-                    <label for="info">{$c->__('information.label')}</label>
-                    <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('information.info1')}</span>
-                    <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('information.info2')} {$c->__('publish.content_text')}</span>
-                </div>
-            </li>
+
             <li class="subheader">
                 <div><p>{$c->__('tenor.title')}</p></div>
             </li>

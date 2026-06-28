@@ -22,6 +22,7 @@ class Configuration extends Model
         'loglevel',
         'username',
         'password',
+        'ssrfwhitelist',
         'xmppdomain',
         'xmppdescription',
         'xmppwhitelist',
@@ -36,6 +37,7 @@ class Configuration extends Model
         'loglevel'              => 0,
         'locale'                => 'en',
         'xmppwhitelist'         => null,
+        'ssrfwhitelist'         => null,
         'gifapikey'             => null,
         'maxsessions'           => 0,
     ];
@@ -55,11 +57,18 @@ class Configuration extends Model
         $this->attributes['password'] = password_hash($value, PASSWORD_DEFAULT);
     }
 
-    public function getXmppwhitelistAttribute()
+    public function getXmppwhitelistAttribute(): array
     {
         return (empty($this->attributes['xmppwhitelist']))
             ? []
-            : explode(',', $this->attributes['xmppwhitelist']);
+            : array_map(fn ($domain) => trim($domain), explode(',', $this->attributes['xmppwhitelist']));
+    }
+
+    public function getSsrfwhitelistArrayAttribute(): array
+    {
+        return (empty($this->attributes['ssrfwhitelist']))
+            ? []
+            : array_map(fn ($domain) => trim($domain), explode(',', $this->attributes['ssrfwhitelist']));
     }
 
     public function getXmppwhitelistStringAttribute()

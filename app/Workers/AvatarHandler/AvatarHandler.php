@@ -2,6 +2,7 @@
 
 namespace App\Workers\AvatarHandler;
 
+use App\Configuration;
 use Movim\Image;
 use React\Http\Browser;
 use React\Http\Message\Response;
@@ -10,6 +11,12 @@ use React\Socket\Connector;
 
 class AvatarHandler
 {
+    private array $domainWhitelist = [];
+
+    public function __construct()
+    {
+        $this->domainWhitelist = Configuration::firstOrNew()->ssrfwhitelist_array;
+    }
     public static function getAvatarCachePath(string $jid, string $type)
     {
         return CACHE_PATH . hash('sha256', $jid . $type);
@@ -31,7 +38,7 @@ class AvatarHandler
             ];
         }
 
-        $browser = (new Browser(SSRFSafeConnector($tlsContext)))
+        $browser = (new Browser(SSRFSafeConnector($tlsContext, $this->domainWhitelist)))
             ->withTimeout(5)
             ->withHeader('User-Agent', DEFAULT_HTTP_USER_AGENT)
             ->withFollowRedirects(true);
