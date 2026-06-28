@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.34.1 (master)
+v0.35 (master)
+---------------------------
+
+v0.34.1
 ---------------------------
 * Add a SSRFSafeConnector to the URL resolvers to prevent SSRF attacks
 * Fix 1-to-1 call flow and corretly display the ringing state
