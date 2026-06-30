@@ -67,7 +67,7 @@ var MovimWebsocket = {
         if (!('serviceWorker' in navigator)) return null;
 
         const registration = await navigator.serviceWorker.getRegistration(SW_URI);
-        if (!registration) return null;
+        if (!registration || !registration.pushManager) return null;
 
         const pushSubscription = await registration.pushManager.getSubscription();
         if (!pushSubscription) return null;
