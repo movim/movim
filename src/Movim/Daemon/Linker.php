@@ -311,7 +311,7 @@ class Linker
             function ($error) {
                 logOut(colorize('TLS error ' . $error->getMessage(), 'blue'), sid: $this->sessionId);
                 Wrapper::getInstance()->iterate('ssl_error', sessionId: $this->sessionId); // TODO give context
-                $this->linkerManager->closeLinker($this->sessionId);
+                $this->linkersManager->closeLinker($this->sessionId);
             }
         );
     }

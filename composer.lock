@@ -1183,16 +1183,16 @@
         },
         {
             "name": "embed/embed",
-            "version": "v4.4.18",
+            "version": "v4.4.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-embed/Embed.git",
-                "reference": "8e53eecc687981c8ca65d7e1ab4e9f63e592fc87"
+                "reference": "c45a9007285524350499f3fa70e7e2f0967af470"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-embed/Embed/zipball/8e53eecc687981c8ca65d7e1ab4e9f63e592fc87",
-                "reference": "8e53eecc687981c8ca65d7e1ab4e9f63e592fc87",
+                "url": "https://api.github.com/repos/php-embed/Embed/zipball/c45a9007285524350499f3fa70e7e2f0967af470",
+                "reference": "c45a9007285524350499f3fa70e7e2f0967af470",
                 "shasum": ""
             },
             "require": {
@@ -1254,7 +1254,7 @@
             "support": {
                 "email": "oom@oscarotero.com",
                 "issues": "https://github.com/oscarotero/Embed/issues",
-                "source": "https://github.com/php-embed/Embed/tree/v4.4.18"
+                "source": "https://github.com/php-embed/Embed/tree/v4.4.19"
             },
             "funding": [
                 {
@@ -1270,7 +1270,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2026-06-19T16:07:17+00:00"
+            "time": "2026-07-08T19:24:10+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -1570,22 +1570,22 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.12.3",
+            "version": "7.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "9aa17bcdd777ee31df9fc83c337ca4ca2340def3"
+                "reference": "aef242412e13128b5049864867bb49fc37dd39de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9aa17bcdd777ee31df9fc83c337ca4ca2340def3",
-                "reference": "9aa17bcdd777ee31df9fc83c337ca4ca2340def3",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/aef242412e13128b5049864867bb49fc37dd39de",
+                "reference": "aef242412e13128b5049864867bb49fc37dd39de",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^2.5",
-                "guzzlehttp/psr7": "^2.12.3",
+                "guzzlehttp/promises": "^2.5.1",
+                "guzzlehttp/psr7": "^2.12.4",
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0",
                 "symfony/deprecation-contracts": "^2.5 || ^3.0",
@@ -1597,8 +1597,8 @@
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.8.2",
                 "ext-curl": "*",
-                "guzzle/client-integration-tests": "3.0.2",
-                "guzzlehttp/test-server": "^0.5.1",
+                "guzzle/client-integration-tests": "3.0.3",
+                "guzzlehttp/test-server": "^0.6",
                 "php-http/message-factory": "^1.1",
                 "phpunit/phpunit": "^8.5.52 || ^9.6.34",
                 "psr/log": "^1.1 || ^2.0 || ^3.0"
@@ -1678,7 +1678,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.12.3"
+                "source": "https://github.com/guzzle/guzzle/tree/7.14.0"
             },
             "funding": [
                 {
@@ -1694,20 +1694,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-06-23T15:29:02+00:00"
+            "time": "2026-07-08T22:54:09+00:00"
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "2.5.0",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "4360e982f87f5f258bf872d094647791db2f4c8e"
+                "reference": "9ad1e4fc607446a055b95870c7f668e93b5cff29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/4360e982f87f5f258bf872d094647791db2f4c8e",
-                "reference": "4360e982f87f5f258bf872d094647791db2f4c8e",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/9ad1e4fc607446a055b95870c7f668e93b5cff29",
+                "reference": "9ad1e4fc607446a055b95870c7f668e93b5cff29",
                 "shasum": ""
             },
             "require": {
@@ -1762,7 +1762,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.5.0"
+                "source": "https://github.com/guzzle/promises/tree/2.5.1"
             },
             "funding": [
                 {
@@ -1778,20 +1778,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-06-02T12:23:43+00:00"
+            "time": "2026-07-08T15:48:39+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.12.3",
+            "version": "2.12.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "7ec62dc3f44aa218487dbed81a9bf9bc647be55d"
+                "reference": "51e27f9e2b332ab3e72f4520d5ff4f3c68c3577c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/7ec62dc3f44aa218487dbed81a9bf9bc647be55d",
-                "reference": "7ec62dc3f44aa218487dbed81a9bf9bc647be55d",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/51e27f9e2b332ab3e72f4520d5ff4f3c68c3577c",
+                "reference": "51e27f9e2b332ab3e72f4520d5ff4f3c68c3577c",
                 "shasum": ""
             },
             "require": {
@@ -1881,7 +1881,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.12.3"
+                "source": "https://github.com/guzzle/psr7/tree/2.12.4"
             },
             "funding": [
                 {
@@ -1897,11 +1897,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-06-23T15:21:08+00:00"
+            "time": "2026-07-08T15:56:20+00:00"
         },
         {
             "name": "illuminate/bus",
-            "version": "v12.62.0",
+            "version": "v12.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -1954,7 +1954,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v12.62.0",
+            "version": "v12.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -2014,7 +2014,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v12.62.0",
+            "version": "v12.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -2060,7 +2060,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v12.62.0",
+            "version": "v12.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -2122,7 +2122,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v12.62.0",
+            "version": "v12.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -2170,16 +2170,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v12.62.0",
+            "version": "v12.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "37d7db7880e6dba9a9c39878cc70ebdcac0e454a"
+                "reference": "13ea191cbbee8cc615188c990ec26428df89fd29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/37d7db7880e6dba9a9c39878cc70ebdcac0e454a",
-                "reference": "37d7db7880e6dba9a9c39878cc70ebdcac0e454a",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/13ea191cbbee8cc615188c990ec26428df89fd29",
+                "reference": "13ea191cbbee8cc615188c990ec26428df89fd29",
                 "shasum": ""
             },
             "require": {
@@ -2239,11 +2239,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-06-05T15:54:13+00:00"
+            "time": "2026-06-19T13:46:51+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v12.62.0",
+            "version": "v12.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -2298,7 +2298,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v12.62.0",
+            "version": "v12.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2344,7 +2344,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v12.62.0",
+            "version": "v12.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -2396,7 +2396,7 @@
         },
         {
             "name": "illuminate/reflection",
-            "version": "v12.62.0",
+            "version": "v12.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/reflection.git",
@@ -2447,7 +2447,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v12.62.0",
+            "version": "v12.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
@@ -5287,16 +5287,16 @@
         },
         {
             "name": "robmorgan/phinx",
-            "version": "0.16.11",
+            "version": "0.16.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/phinx.git",
-                "reference": "a03014fea316ba021fc0776982e5bed2d10228d4"
+                "reference": "1cce44387a9146dc04c312e6a231b17fb30385cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/phinx/zipball/a03014fea316ba021fc0776982e5bed2d10228d4",
-                "reference": "a03014fea316ba021fc0776982e5bed2d10228d4",
+                "url": "https://api.github.com/repos/cakephp/phinx/zipball/1cce44387a9146dc04c312e6a231b17fb30385cd",
+                "reference": "1cce44387a9146dc04c312e6a231b17fb30385cd",
                 "shasum": ""
             },
             "require": {
@@ -5368,9 +5368,9 @@
             ],
             "support": {
                 "issues": "https://github.com/cakephp/phinx/issues",
-                "source": "https://github.com/cakephp/phinx/tree/0.16.11"
+                "source": "https://github.com/cakephp/phinx/tree/0.16.12"
             },
-            "time": "2026-03-15T00:04:32+00:00"
+            "time": "2026-07-03T07:27:17+00:00"
         },
         {
             "name": "spomky-labs/base64url",
@@ -7270,16 +7270,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v5.6.3",
+            "version": "v5.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "955e7815d677a3eaa7075231212f2110983adecc"
+                "reference": "416df702837983f8d5ff48c9c3fee4f5f57b980b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/955e7815d677a3eaa7075231212f2110983adecc",
-                "reference": "955e7815d677a3eaa7075231212f2110983adecc",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/416df702837983f8d5ff48c9c3fee4f5f57b980b",
+                "reference": "416df702837983f8d5ff48c9c3fee4f5f57b980b",
                 "shasum": ""
             },
             "require": {
@@ -7338,7 +7338,7 @@
             ],
             "support": {
                 "issues": "https://github.com/vlucas/phpdotenv/issues",
-                "source": "https://github.com/vlucas/phpdotenv/tree/v5.6.3"
+                "source": "https://github.com/vlucas/phpdotenv/tree/v5.6.4"
             },
             "funding": [
                 {
@@ -7350,7 +7350,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-12-27T19:49:13+00:00"
+            "time": "2026-07-06T19:11:50+00:00"
         },
         {
             "name": "voku/portable-ascii",
