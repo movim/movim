@@ -81,6 +81,17 @@ class Utils
         return $identity;
     }
 
+    public static function getGalenerIdentity(): Identity
+    {
+        $identity = new Identity;
+        $identity->category = 'server';
+        $identity->type = 'im'; // Todo fix me later
+        $identity->lang = null;
+        $identity->name = 'Movim Galene Wrapper';
+
+        return $identity;
+    }
+
     public static function getSupportedServices()
     {
         $features = [
@@ -146,6 +157,15 @@ class Utils
             'http://jabber.org/protocol/geoloc+notify',
             'http://jabber.org/protocol/pubsub',
         ];
+
+        asort($features);
+
+        return $features;
+    }
+
+    public static function getGalenerSupportedServices(): array
+    {
+        $features = ['http://jabber.org/protocol/disco#info'];
 
         asort($features);
 

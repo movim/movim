@@ -57,6 +57,7 @@ class SDPtoJingle
         'senders'         => "/^a=(sendrecv|sendonly|inactive|recvonly)/i",
         'sess_id'         => "/^o=(\S+) (\d+)/i",
         'setup'           => "/^a=setup:(\S+)/i",
+        'ssrc-group'      => "/^a=ssrc-group:(\S+) (.+)/i",
         'ssrc'            => "/^a=ssrc:(\d+) (\w+)(:(\S+))?( (\w+))?/i",
         'ufrag'           => "/^a=ice-ufrag:(\S+)/i",
         'zrtp_hash'       => "/^a=zrtp-hash:(\S+) (\w+)/i",
@@ -348,6 +349,17 @@ class SDPtoJingle
                             $param->addAttribute('value', $matches[4]);
                             break;
 
+                        case 'ssrc-group':
+                            $ssrcGroup = $description->addChild('ssrc-group');
+                            $ssrcGroup->addAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:ssma:0');
+                            $ssrcGroup->addAttribute('semantics', $matches[1]);
+
+                            foreach (explode(' ', trim($matches[2])) as $source) {
+                                $ssrcGroupSource = $ssrcGroup->addChild('source');
+                                $ssrcGroupSource->addAttribute('ssrc', $source);
+                            }
+                            break;
+
                         case 'ptime':
                             $description->addAttribute('ptime', $matches[1]);
                             break;
@@ -410,7 +422,9 @@ class SDPtoJingle
                             break;
 
                         case 'pwd':
-                            linker($this->user->session->id)->session->set('icePwd', $matches[1]);
+                            if ($this->user->session?->id) {
+                                linker($this->user->session->id)?->session->set('icePwd', $matches[1]);
+                            }
                             $this->transport->addAttribute('pwd', $matches[1]);
                             break;
 
@@ -482,7 +496,7 @@ class SDPtoJingle
                             }
 
                             // ufrag to the transport
-                            if ($this->ufrag && linker($this->user->session->id)->session->get('icePwd')) {
+                            if ($this->user->session?->id && $this->ufrag && linker($this->user->session->id)?->session->get('icePwd')) {
                                 $this->transport->addAttribute('ufrag', $this->ufrag);
                                 $this->transport->addAttribute('pwd', linker($this->user->session->id)->session->get('icePwd'));
                             }

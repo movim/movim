@@ -170,8 +170,8 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
 
     this.pc.onicecandidate = event => {
         let candidate = event.candidate;
-
         if (candidate && candidate.candidate && candidate.candidate.length > 0) {
+            console.log(candidate)
             Visio_ajaxCandidate(this.fullJid, this.id, event.candidate);
         }
     };
