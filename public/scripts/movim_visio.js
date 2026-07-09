@@ -23,6 +23,24 @@ var MovimVisio = {
     mouseMovement: null,
     mouseMovementTimeout: 5000,
 
+    sfu: null,
+
+    setSFU: function (from) {
+        MovimVisio.sfu = from;
+
+        let visio = document.querySelector('#visio');
+        visio.dataset.muji = 'true';
+        visio.dataset.sfu = 'true';
+
+        let sfuParticipant = visio.querySelector('div.participant[data-jid="'+from+'"]');
+        if (sfuParticipant) {
+            // Ugly but works for now
+            sfuParticipant.remove();
+        }
+
+        MovimVisio.activeSpeakerIntervalId = setInterval(MovimJingles.checkActiveSpeaker, 1000);
+    },
+
     load: function () {
         MovimVisio.localVideo = document.getElementById('local_video');
 
@@ -272,6 +290,7 @@ var MovimVisio = {
         MovimTpl.finishedPage();
 
         MovimVisio.id = null;
+        MovimVisio.sfu = null;
 
         Notif.setCallStatus(null);
 
@@ -281,6 +300,7 @@ var MovimVisio = {
         //delete visio.dataset.type;
         delete visio.dataset.jid;
         delete visio.dataset.muji;
+        delete visio.dataset.sfu;
 
         if (document.fullscreenElement) {
             document.exitFullscreen();

@@ -303,7 +303,7 @@ class Image
                 $this->_im->clear();
             }
         } catch (\ImagickException $e) {
-            logError($this->_key . ' ' . $e->getMessage());
+            logError($e->getMessage(), ['key' => $this->_key]);
         }
     }
 

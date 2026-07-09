@@ -170,7 +170,6 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
 
     this.pc.onicecandidate = event => {
         let candidate = event.candidate;
-
         if (candidate && candidate.candidate && candidate.candidate.length > 0) {
             Visio_ajaxCandidate(this.fullJid, this.id, event.candidate);
         }
@@ -179,12 +178,15 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     /**
      * Add all the existing tracks
      */
-    MovimVisio.localStream.getTracks().forEach(track => {
-        this.pc.addTrack(track, MovimVisio.localStream);
-    });
 
-    if (MovimVisio.screenSharing.srcObject) {
-        this.enableScreenSharing();
+    if (MovimVisio.sfu == null) {
+        MovimVisio.localStream.getTracks().forEach(track => {
+            this.pc.addTrack(track, MovimVisio.localStream);
+        });
+
+        if (MovimVisio.screenSharing.srcObject) {
+            this.enableScreenSharing();
+        }
     }
 
     Notif.userJoinedCall();
@@ -248,7 +250,9 @@ MovimJingleSession.prototype.processRemoteAudioMessage = function (message) {
 }
 
 MovimJingleSession.prototype.terminate = function (reason, muji) {
-    Visio_ajaxTerminate(this.fullJid, this.id, reason, muji);
+    if (MovimVisio.sfu == null) {
+        Visio_ajaxTerminate(this.fullJid, this.id, reason, muji);
+    }
     this.close();
 }
 
@@ -306,7 +310,7 @@ MovimJingleSession.prototype.onContentAdd = function (sdp, mids) {
         .then(() => {
             this.pc.createAnswer()
                 .then(answer => this.pc.setLocalDescription(answer))
-                .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription.sdp))
+                .then(() => Visio_ajaxContentAccept(this.fullJid, this.id, this.pc.localDescription.sdp))
                 .catch(MovimUtils.logError);
         })
         .catch(error => MovimUtils.logError(error));
@@ -320,7 +324,7 @@ MovimJingleSession.prototype.onContentModify = function (sdp, mid) {
         .then(() => {
             this.pc.createAnswer()
                 .then(answer => this.pc.setLocalDescription(answer))
-                .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription.sdp))
+                .then(() => Visio_ajaxContentAccept(this.fullJid, this.id, this.pc.localDescription.sdp))
                 .catch(MovimUtils.logError);
         })
         .catch(error => MovimUtils.logError(error));
@@ -345,7 +349,7 @@ MovimJingleSession.prototype.onContentRemove = function (sdp, mids) {
         .then(() => {
             this.pc.createAnswer()
                 .then(answer => this.pc.setLocalDescription(answer))
-                .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription.sdp))
+                .then(() => Visio_ajaxContentAccept(this.fullJid, this.id, this.pc.localDescription.sdp))
                 .catch(MovimUtils.logError);
         })
         .catch(error => MovimUtils.logError(error));
@@ -378,6 +382,7 @@ MovimJingleSession.prototype.updateContent = function () {
 
     if (createdMedias.length > 0) {
         changed = true;
+        console.log('CONTENT ADD ?' + this.fullJid + ' ' + this.jid);
         Visio_ajaxContentAdd(this.fullJid, localDescription, this.id, createdMedias);
     }
 
@@ -405,16 +410,27 @@ MovimJingleSession.prototype.onAcceptSDP = function (sdp) {
 }
 
 MovimJingleSession.prototype.onInitiateSDP = function (sdp) {
+    this.maybeDetectTracksScreen(sdp);
+
     this.pc.setRemoteDescription({ 'sdp': sdp + "\n", 'type': 'offer' })
         .then(() => {
             this.pc.createAnswer()
                 .then(answer => this.pc.setLocalDescription(answer))
                 .then(() => {
-                    Visio_ajaxSessionAccept(
-                        this.fullJid,
-                        this.id,
-                        this.maybeInjectScreenCategory(this.pc.localDescription.sdp)
-                    )
+                    if (MovimVisio.sfu != null) {
+                        Visio_ajaxContentAccept(
+                            this.fullJid,
+                            this.id,
+                            this.maybeInjectScreenCategory(this.pc.localDescription.sdp),
+                            this.jid
+                        )
+                    } else {
+                        Visio_ajaxSessionAccept(
+                            this.fullJid,
+                            this.id,
+                            this.maybeInjectScreenCategory(this.pc.localDescription.sdp)
+                        )
+                    }
                 })
                 .catch(MovimUtils.logError);
         }).catch(error => MovimUtils.logError(error));
@@ -657,6 +673,10 @@ var MovimJingles = {
             console.log('Candidate from a non initiated session ' + jid); return;
         }
 
+        console.log('CANDIDATE');
+        console.log(jid);
+        console.log(candidate);
+
         MovimJingles.sessions[jid].onCandidate(candidate, mid, mlineindex);
     },
 
@@ -727,6 +747,8 @@ var MovimJingles = {
     },
 
     terminate: function (jid, reason) {
+        if (MovimJingles.sessions[jid] == undefined) return;
+
         let visio = document.querySelector('#visio');
         MovimJingles.sessions[jid].terminate(reason, (visio.dataset.muji == 'true'));
         delete MovimJingles.sessions[jid];
