@@ -19,6 +19,7 @@ class CurrentCall
     public ?string $jid = null;
     public ?string $id = null;
     public ?string $mujiRoom = null;
+    public ?string $sfuRoom = null;
     public ?Carbon $startTime = null;
     public bool $answered = false;
 
@@ -47,6 +48,16 @@ class CurrentCall
         return true;
     }
 
+    public function setSFURoom(string $jid, string $sfuRoom): bool
+    {
+        if ($this->isJidInCall($jid)) {
+            $this->sfuRoom = $sfuRoom;
+            return true;
+        }
+
+        return false;
+    }
+
     public function answer(string $jid, string $id): bool
     {
         if ($this->isJidInCall($jid) && $this->hasId($id)) {
@@ -64,7 +75,7 @@ class CurrentCall
         $id = $this->id;
         $mujiRoom = $this->mujiRoom;
 
-        $this->jid = $this->id = $this->mujiRoom = $this->startTime = null;
+        $this->jid = $this->id = $this->mujiRoom = $this->startTime = $this->sfuRoom = null;
         $this->answered = false;
 
         Wrapper::getInstance()->iterate(

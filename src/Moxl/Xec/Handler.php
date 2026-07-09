@@ -172,7 +172,7 @@ class Handler
             '36fe2745bdc72b1682be2c008d547e3d' => 'Vcard4',
 
             '0923dd6b12f46f658b4273104a129ec9' => 'JinglePropose',
-            '829715591c7554bad3630dfd3353b4e7' => 'JingleAccept',
+            '829715591c7554bad3630dfd3353b4e7' => 'JingleAccept', // Deprecated
             '0c0238797befe918ac81efaa0200771b' => 'JingleProceed',
             '46ee3ca42af934e8a3b4d42062817aa8' => 'JingleRetract',
             '44d0c16e222fcdee6961c8939b647e15' => 'JingleReject',

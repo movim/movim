@@ -18,6 +18,8 @@ class Dialog extends Base
 
         if ($scroll) {
             (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Dialog.addScroll');
+        } else {
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Dialog.removeScroll');
         }
 
         if ($locked) {

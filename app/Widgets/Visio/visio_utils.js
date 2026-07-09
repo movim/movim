@@ -167,9 +167,7 @@ var VisioUtils = {
         if (MovimVisio.screenSharing.srcObject == null) {
             try {
                 MovimVisio.screenSharing.srcObject = await navigator.mediaDevices.getDisplayMedia({
-                    video: {
-                        cursor: "always"
-                    },
+                    video: { cursor: "always" },
                     audio: true
                 });
 
@@ -177,15 +175,24 @@ var VisioUtils = {
                 VisioUtils.disableSwitchCameraButton();
                 button.innerText = 'stop_screen_share';
 
-                MovimJingles.enableScreenSharing();
-                MovimVisio.mujiPublish();
+                if (MovimVisio.sfu) {
+                    MovimVisio.startScreenshareSFU();
+                } else {
+                    MovimJingles.enableScreenSharing();
+                    MovimVisio.mujiPublish();
+                }
             } catch (err) {
                 console.error("Error: " + err);
             }
             return;
         } else {
-            VisioUtils.disableScreenSharing();
-            MovimVisio.mujiPublish();
+            if (MovimVisio.sfu) {
+                MovimVisio.stopScreenshareSFU();
+                VisioUtils.disableScreenSharing();
+            } else {
+                VisioUtils.disableScreenSharing();
+                MovimVisio.mujiPublish();
+            }
         }
     },
 

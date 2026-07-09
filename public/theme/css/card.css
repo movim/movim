@@ -32,6 +32,7 @@
     filter: blur(0.5rem);
     right: -5rem;
     bottom: -8rem;
+    pointer-events: none;
 }
 
 .card li > div > p > span.info {

@@ -13,6 +13,7 @@ use App\Info;
 use App\Contact;
 use App\Hat;
 use App\User;
+use JidComponent;
 use Movim\Scheduler;
 
 class PresenceBuffer
@@ -144,6 +145,7 @@ class PresenceBuffer
                     $d = new Request($this->user, sessionId: $this->user->session->id);
                     $d->setTo($to)
                         ->setNode($node)
+                        ->setParent(explodeJid($to, JidComponent::Domain))
                         ->request();
                 });
 
@@ -162,7 +164,7 @@ class PresenceBuffer
                     $avatarHashes->each(function ($jid, $avatarhash) {
                         if ($jid != $this->user->id) {
                             Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
-                                if ($this->user?->session) {
+                                if (linker($this->user->session->id)->session) {
                                     $r = new Get($this->user, sessionId: $this->user->session->id);
                                     $r->setAvatarhash($avatarhash)
                                         ->setTo($jid)

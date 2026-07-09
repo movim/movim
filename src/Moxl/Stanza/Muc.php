@@ -67,7 +67,7 @@ class Muc
         return $query;
     }
 
-    public static function changeAffiliation(string $jid, string $affiliation, ?string $reason)
+    public static function changeAffiliation(string $jid, string $affiliation, ?string $reason = null)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#admin', 'query');
@@ -162,7 +162,7 @@ class Muc
         return $query;
     }
 
-    public static function getMembers($affiliation)
+    public static function getMembers(string $affiliation)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#admin', 'query');

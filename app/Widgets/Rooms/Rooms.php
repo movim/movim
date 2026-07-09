@@ -10,6 +10,7 @@ use Movim\Widget\Base;
 
 use App\Conference;
 use App\Member;
+use JidComponent;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;
 use Moxl\Xec\Action\Presence\Unavailable;
@@ -49,6 +50,7 @@ class Rooms extends Base
         $this->registerEvent('presence_muc_errorserviceunavailable', 'onServiceUnavailable');
 
         $this->registerEvent('presence_muji', 'onMujiPresence', 'chat');
+        $this->registerEvent('presence_sfu', 'onSFUPresence', 'chat');
         $this->registerEvent('presence_was_muji', 'onMujiPresence', 'chat');
         $this->registerEvent('presence_muc_muji_leaving', 'onMujiPresence', 'chat');
     }
@@ -107,6 +109,12 @@ class Rooms extends Base
         $this->onPresence($presence->jid);
     }
 
+    public function onSFUPresence(Packet $packet)
+    {
+        $presence = $packet->content;
+        $this->onPresence($presence->jid);
+    }
+
     public function onMessage(Packet $packet)
     {
         $message = $packet->content;
@@ -160,11 +168,9 @@ class Rooms extends Base
                 ->get() as $room
         ) {
             if (!$room->info) {
-                $jid = explodeJid($room->conference);
-
                 $request = $this->xmpp(new Request);
                 $request->setTo($room->conference)
-                    ->setParent($jid['server'])
+                    ->setParent(explodeJid($room->conference, JidComponent::Domain))
                     ->request();
             }
 
@@ -287,11 +293,9 @@ class Rooms extends Base
 
         $this->rpc('MovimUtils.addClass', '#' . \cleanupId($room), 'connecting');
 
-        $jid = explodeJid($room);
-
         $r = $this->xmpp(new Request);
         $r->setTo($room)
-            ->setParent($jid['server'])
+            ->setParent(explodeJid($room, JidComponent::Domain))
             ->request();
 
         $lastMember = Member::where('conference', $room)->orderBy('updated_at', 'desc')->first();
@@ -329,9 +333,7 @@ class Rooms extends Base
         if (!$conference) return;
 
         $resource = $conference->presence?->resource;
-
-        $jid = explodeJid($room);
-        $capability = \App\Info::where('server', $jid['server'])
+        $capability = \App\Info::where('server', explodeJid($room, JidComponent::Domain))
             ->where('node', '')
             ->first();
 

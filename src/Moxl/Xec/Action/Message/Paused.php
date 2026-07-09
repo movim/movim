@@ -16,7 +16,7 @@ class Paused extends Action
 
         $this->send(
             Message::maker(
-                $this->_to,
+                to: $this->_to,
                 messageId: $messageId,
                 type: $this->_muc ? 'groupchat' : 'chat',
                 chatstates: 'paused'

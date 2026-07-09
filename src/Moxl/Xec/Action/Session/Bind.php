@@ -22,7 +22,7 @@ class Bind extends Action
         $jid = explodeJid((string)$stanza->bind->jid);
 
         $session->username = $jid['username'];
-        $session->host = $jid['server'];
+        $session->host = $jid['domain'];
         $session->type = 'bind1';
 
         if ($jid['resource']) {

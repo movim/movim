@@ -13,7 +13,6 @@
                 name="invite"
                 list="contact_list"
                 id="invite"
-                type="email"
                 required
                 placeholder="user@server.tld"/>
             <label>{$c->__('roster.add_contact_info1')}</label>

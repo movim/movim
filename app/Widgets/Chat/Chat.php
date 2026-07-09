@@ -24,7 +24,7 @@ use Moxl\Xec\Action\BOB\Request;
 use Moxl\Xec\Action\Disco\Request as DiscoRequest;
 
 use Illuminate\Database\Capsule\Manager as DB;
-
+use JidComponent;
 use Movim\Image;
 use Movim\XMPPUri;
 use Movim\Librairies\XMPPtoForm;
@@ -71,11 +71,12 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('currentcall_stopped', 'onCallEvent', 'chat');
 
         $this->registerEvent('presence_muji', 'onPresence');
-        $this->registerEvent('presence_was_muji', 'onMujiPresence');
-        $this->registerEvent('presence_muc_muji_leaving', 'onMujiPresence');
+        $this->registerEvent('presence_was_muji', 'onMujiOrSFUPresence', ['chat', 'space*']);
+        $this->registerEvent('presence_muc_muji_leaving', 'onMujiOrSFUPresence', ['chat', 'space*']);
+        $this->registerEvent('presence_sfu', 'onMujiOrSFUPresence', ['chat', 'space*']);
     }
 
-    public function onMujiPresence(Packet $packet)
+    public function onMujiOrSFUPresence(Packet $packet)
     {
         $this->ajaxGetHeader($packet->content->jid, true);
     }
@@ -550,8 +551,9 @@ class Chat extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#chat_conference_call', $this->view(
             '_chat_conference_call',
             [
-                'incall' => $this->currentCall()?->isStarted(),
-                'conference' => $conference
+                'conference' => $conference,
+                'sfu' => $conference->hasRelatedSFUService(),
+                'canedit' => $conference->presence && in_array($conference->presence->mucaffiliation, ['owner', 'admin'])
             ]
         ));
     }
@@ -1174,7 +1176,6 @@ class Chat extends \Movim\Widget\Base
                 $this->xmpp(new MDSDisplayed)
                     ->setTo($jid)
                     ->setId($message->stanzaid)
-                    ->setType($message->type)
                     ->request();
             }
         }
@@ -1753,7 +1754,6 @@ class Chat extends \Movim\Widget\Base
 
         $view->assign('jid', $jid);
         $view->assign('muc', $muc);
-        $view->assign('incall', $this->currentCall()?->isStarted());
         $view->assign(
             'info',
             \App\Info::where('server', $this->me->session->host)
@@ -1769,7 +1769,7 @@ class Chat extends \Movim\Widget\Base
                 ->with('info')
                 ->first());
 
-            $mucinfo = \App\Info::where('server', explodeJid($jid)['server'])
+            $mucinfo = \App\Info::where('server', explodeJid($jid, JidComponent::Domain))
                 ->where('node', '')
                 ->first();
             if ($mucinfo && !empty($mucinfo->abuseaddresses)) {

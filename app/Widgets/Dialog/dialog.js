@@ -2,6 +2,9 @@ var Dialog = {
     addScroll : function() {
         document.querySelector('#dialog').classList.add('scroll');
     },
+    removeScroll : function() {
+        document.querySelector('#dialog').classList.remove('scroll');
+    },
     addLocked : function() {
         document.querySelector('#dialog').classList.add('locked');
     },

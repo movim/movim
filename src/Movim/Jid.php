@@ -9,6 +9,8 @@ class Jid
     public ?string $username;
     public ?string $resource;
 
+    private bool $valid = false;
+
     public function __construct(string $jid)
     {
         if (validateJid($jid)) {
@@ -27,7 +29,14 @@ class Jid
                 $this->username = $arr[0];
                 $this->domain = $arr[1];
             }
+
+            $this->valid = true;
         }
+    }
+
+    public function isValid(): bool
+    {
+        return $this->valid;
     }
 
     public function __toString()
@@ -37,6 +46,9 @@ class Jid
 
     public function bareJid(): string
     {
-        return $this->username . '@' . $this->domain;
+        $username = $this->username
+            ? $this->username . '@'
+            : '';
+        return $username . $this->domain;
     }
 }

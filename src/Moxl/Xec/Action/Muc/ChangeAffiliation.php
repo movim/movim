@@ -31,7 +31,7 @@ class ChangeAffiliation extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $this->pack($this->_affiliation);
+        $this->pack($this->_affiliation, (string)$stanza->attributes()->from);
         $this->deliver();
     }
 

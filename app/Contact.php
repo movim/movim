@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Capsule\Manager as DB;
-
+use JidComponent;
 use Respect\Validation\Validator;
 use Movim\ImageSize;
 use React\Promise\PromiseInterface;
@@ -299,7 +299,7 @@ class Contact extends Model
             return $this->name;
         }
 
-        return explodeJid($this->id)['username'] ?? $this->id;
+        return explodeJid($this->id, JidComponent::Username) ?? $this->id;
     }
 
     public function getAge()

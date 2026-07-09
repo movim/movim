@@ -111,13 +111,13 @@ class Account extends \Movim\Widget\Base
         $p2 = $form->password_confirmation->value;
 
         if ($p1 == $p2) {
-            $arr = explodeJid($this->me->id);
+            $jid = explodeJid($this->me->id);
 
             $this->rpc('Dialog_ajaxClear');
 
             $cp = $this->xmpp(new ChangePassword($this->me, sessionId: $this->sessionId));
-            $cp->setTo($arr['server'])
-                ->setUsername($arr['username'])
+            $cp->setTo($jid['domain'])
+                ->setUsername($jid['username'])
                 ->setPassword($p1)
                 ->request();
         } else {

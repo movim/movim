@@ -7,6 +7,7 @@ use App\Contact;
 use App\Configuration;
 use App\Session as AppSession;
 use Illuminate\Database\Capsule\Manager as DB;
+use JidComponent;
 
 class User extends Model
 {
@@ -279,7 +280,7 @@ class User extends Model
 
     public function hasRegister(): bool
     {
-        $rootInfo = Info::where('server', explodeJid($this->attributes['id'])['server'])
+        $rootInfo = Info::where('server', explodeJid($this->attributes['id'], JidComponent::Domain))
             ->where('node', '')
             ->first();
 

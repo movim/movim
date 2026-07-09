@@ -7,6 +7,7 @@ use DOMElement;
 
 class SDPtoJingle
 {
+    public const JINGLE_PARTICIPANT_XMLNS = '{https://movim.eu}jingle_participant';
     private $sdp;
     private $arr;
     private $jingle;
@@ -57,6 +58,7 @@ class SDPtoJingle
         'senders'         => "/^a=(sendrecv|sendonly|inactive|recvonly)/i",
         'sess_id'         => "/^o=(\S+) (\d+)/i",
         'setup'           => "/^a=setup:(\S+)/i",
+        'ssrc-group'      => "/^a=ssrc-group:(\S+) (.+)/i",
         'ssrc'            => "/^a=ssrc:(\d+) (\w+)(:(\S+))?( (\w+))?/i",
         'ufrag'           => "/^a=ice-ufrag:(\S+)/i",
         'zrtp_hash'       => "/^a=zrtp-hash:(\S+) (\w+)/i",
@@ -71,6 +73,8 @@ class SDPtoJingle
         ?string $action = null,
         ?string $mid = null,
         ?string $ufrag = null,
+        ?string $jingleParticipant = null,
+        private ?string $contentCategory = null,
     ) {
         $this->sdp = $sdp;
         $this->arr = explode("\n", $this->sdp);
@@ -100,6 +104,13 @@ class SDPtoJingle
 
         if ($responder) {
             $this->jingle->addAttribute('responder', $responder);
+        }
+
+        // SFU specific
+        if ($jingleParticipant) {
+            $jingleParticipantNode = $this->jingle->addChild('jingle-participant');
+            $jingleParticipantNode->addAttribute('xmlns', self::JINGLE_PARTICIPANT_XMLNS);
+            $jingleParticipantNode->addAttribute('participant', $jingleParticipant);
         }
     }
 
@@ -192,6 +203,12 @@ class SDPtoJingle
                                 $description = $this->content->addChild('description');
                                 $description->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:1");
                                 $description->addAttribute('media', $matches[1]);
+
+                                if ($this->contentCategory) {
+                                    $category = $description->addChild('category');
+                                    $category->addAttribute('xmlns', 'urn:xmpp:jingle:apps:category:0');
+                                    $category->addAttribute('name', trim($this->contentCategory));
+                                }
                             }
 
                             if (!empty($this->globalFingerprint)) {
@@ -348,6 +365,17 @@ class SDPtoJingle
                             $param->addAttribute('value', $matches[4]);
                             break;
 
+                        case 'ssrc-group':
+                            $ssrcGroup = $description->addChild('ssrc-group');
+                            $ssrcGroup->addAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:ssma:0');
+                            $ssrcGroup->addAttribute('semantics', $matches[1]);
+
+                            foreach (explode(' ', trim($matches[2])) as $source) {
+                                $ssrcGroupSource = $ssrcGroup->addChild('source');
+                                $ssrcGroupSource->addAttribute('ssrc', $source);
+                            }
+                            break;
+
                         case 'ptime':
                             $description->addAttribute('ptime', $matches[1]);
                             break;
@@ -410,7 +438,9 @@ class SDPtoJingle
                             break;
 
                         case 'pwd':
-                            linker($this->user->session->id)->session->set('icePwd', $matches[1]);
+                            if ($this->user->session?->id) {
+                                linker($this->user->session->id)?->session->set('icePwd', $matches[1]);
+                            }
                             $this->transport->addAttribute('pwd', $matches[1]);
                             break;
 
@@ -448,15 +478,13 @@ class SDPtoJingle
                                     }
                             }
 
-                            $candidate->addAttribute(
-                                'generation',
-                                isset($args['generation'])
-                                    ? $args['generation']
-                                    : 0
-                            );
+                            if (isset($args['generation'])) {
+                                $candidate->addAttribute('generation', $args['generation']);
+                            }
 
                             if (isset($args['ufrag'])) {
                                 $this->ufrag = $args['ufrag'];
+                                $this->transport->addAttribute('ufrag', $this->ufrag);
                             }
 
                             if (isset($args['id'])) {
@@ -482,8 +510,7 @@ class SDPtoJingle
                             }
 
                             // ufrag to the transport
-                            if ($this->ufrag && linker($this->user->session->id)->session->get('icePwd')) {
-                                $this->transport->addAttribute('ufrag', $this->ufrag);
+                            if ($this->user->session?->id && $this->ufrag && linker($this->user->session->id)?->session->get('icePwd')) {
                                 $this->transport->addAttribute('pwd', linker($this->user->session->id)->session->get('icePwd'));
                             }
 

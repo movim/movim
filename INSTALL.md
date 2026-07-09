@@ -3,12 +3,13 @@ Movim Deployment
 
 This tutorial describes the different steps you need to take to deploy Movim on your webserver.
 
+Movim also provides a XMPP service that handles the audio and video streams when doing conference-calls. Follow [the dedicated Galener documentation to set-it-up](doc/INSTALL_GALENER.md).
+
 # Get-Started
 
 Movim requires some dependencies to be setup properly.
   * A fully working webserver like Apache, nginx or Caddy
-  * A PHP process manager like php-fpm will usually be required for Nginx
-  * Root access by SSH with access to the webserver user (most of the time via the user www-data)
+  * A PHP process manager like php-fpm
   * A SQL server with a schema for Movim.
      * PostgreSQL (**_strongly recommended_** some features are only available on this database)
      * MariaDB 10.2 or higher with utf8mb4 encoding (necessary for emojis 😃 support) AND `utf8mb4_bin` collation.
@@ -28,7 +29,7 @@ Movim requires some dependencies to be setup properly.
 
 It's mandatory to understand the general architecture of the project to a certain extent before trying to deploy it.
 
-When you use Movim, it acts as an intermediary between the user's browser and an XMPP server. All the data that is sent and received by these two parties are managed by the Movim core, some of them are also saved in a database (for cache purposes).
+When you use Movim, it acts as an intermediary between the user's browser and XMPP servers. All the data that is sent and received by these two parties are managed by the Movim core, some of them are also saved in a database (for cache purposes).
 
 From the browser perspective, all communication with Movim is done using WebSockets and Ajax requests (except for the "default" page loading). These sockets are proxied through your web-server to the Movim daemon. On the XMPP side Movim connects using pure TCP connections (like any XMPP client).
 
@@ -81,7 +82,7 @@ Now you will be able to install the dependencies.
 # Finally install your project's dependencies
 php composer.phar install
 ```
-### Update
+# Update
 
 You can also update your current Movim instance with the following lines (check anyway if the updates do not include any incompatibilities with your current version).
 ```bash
@@ -99,7 +100,7 @@ This part of the tutorial can be followed for the stable and testing installatio
 
 Movim needs reading permissions on its root folder and recursively to be deployed properly. It will also try to create those folders:
 
-  * **log/** for the PHP logs
+  * **log/** for the Movim logs
   * **cache/** for the internal cache (templates and other system files)
   * **public/cache/** for the public caches (pictures, CSS, Javascript…)
 
@@ -157,7 +158,7 @@ This daemon will be killed once your console is closed. Consider using `systemd`
 
 ### 5.1. Virtualhost
 
-Create a virtualhost on your preferred webserver and point the root to the `public/index.php` file. You can have a look at the [default configuration Apache/Caddy or nginx files that we provide](https://github.com/movim/movim/tree/master/etc) if you need some help about that part.
+Create a virtualhost on your preferred webserver and point the root to the `public/index.php` file. You can have a look at the [default configuration Apache, Caddy or nginx files that we provide](https://github.com/movim/movim/tree/master/etc) if you need some help about that part.
 
 Movim is developped to work at the root of a domain or subdomain. __Don't try to deploy it as a subdirectory__ or you might face some unexpected issues.
 
@@ -222,7 +223,7 @@ For caddy you may want to take a look at xcaddy and compiling the server with th
 
 ## 6. Admin panel
 
-The admin panel is available directly from the Movim UI once an admin user is logged in.
+The admin panel is available directly from the Movim UI once an admin user is logged in using its XMPP account.
 
 To set a user admin login at least once (to register it in the database). You can then set him admin using the following command.
 
@@ -230,4 +231,4 @@ To set a user admin login at least once (to register it in the database). You ca
 
 The administrators will be listed on the login page of the instance.
 
-Some of the configuration elements are only applied after the reboot of the daemon.
+Some of the configuration elements are only applied after the restart of the daemon.

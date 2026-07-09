@@ -394,6 +394,10 @@ img.avatar:not([src=""])+.placeholder {
     text-align: center;
 }
 
+.placeholder ul.list p {
+    text-align: left;
+}
+
 /* Display/hide */
 
 .on_mobile {

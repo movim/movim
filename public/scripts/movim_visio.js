@@ -5,6 +5,9 @@ var MovimVisio = {
 
     pc: null,
 
+    screenshareSid: null,
+    screenshareSFUPc: null,
+
     states: null,
     services: [],
 
@@ -23,6 +26,8 @@ var MovimVisio = {
     mouseMovement: null,
     mouseMovementTimeout: 5000,
 
+    sfu: null,
+
     load: function () {
         MovimVisio.localVideo = document.getElementById('local_video');
 
@@ -37,9 +42,7 @@ var MovimVisio = {
         MovimVisio.localAudio = document.getElementById('local_audio');
     },
 
-    init: function (fullJid, jid, id, withVideo, isMuji, contactName, contactAvatarUrl) {
-        Visio_ajaxHttpPrepareInfo(jid, isMuji);
-
+    init: function (fullJid, jid, id, withVideo, isMuji, sfuConference, contactName, contactAvatarUrl) {
         MovimVisio.id = id;
 
         // Set a lock for the current browser (in case there's several others opened)
@@ -50,6 +53,17 @@ var MovimVisio = {
         delete visio.dataset.type;
         visio.dataset.jid = jid;
         visio.dataset.muji = isMuji ? 'true' : 'false';
+
+        if (typeof sfuConference == 'string') {
+            visio.dataset.muji = 'true'; // To use the Muji layout... without using Muji
+            visio.dataset.sfu = 'true';
+            visio.dataset.jid = sfuConference;
+
+            Visio_ajaxHttpPrepareInfo(sfuConference, true);
+            MovimVisio.activeSpeakerIntervalId = setInterval(MovimJingles.checkActiveSpeaker, 1000);
+        } else {
+            Visio_ajaxHttpPrepareInfo(jid, isMuji);
+        }
 
         if (isMuji == true) {
             MovimVisio.mujiPublish(true);
@@ -63,8 +77,20 @@ var MovimVisio = {
             } else {
                 // Calling
                 MovimVisio.id = crypto.randomUUID();
-                Visio_ajaxPropose(fullJid, MovimVisio.id, withVideo);
+                Visio_ajaxPropose(fullJid, MovimVisio.id, withVideo, (typeof sfuConference == 'string'));
             }
+        }
+
+        if (typeof sfuConference == 'string') {
+            MovimVisio.sfu = jid;
+
+            let sfuParticipant = visio.querySelector('div.participant[data-jid="' + jid + '"]');
+            if (sfuParticipant) {
+                // Ugly but works for now
+                sfuParticipant.remove();
+            }
+
+            Visio_ajaxUpgradeCurrentCallToSFU(jid, sfuConference);
         }
 
         visio.classList.add('movements');
@@ -83,6 +109,65 @@ var MovimVisio = {
         if (typeof navigator.mediaDevices.getDisplayMedia == 'undefined') {
             document.querySelector('#screen_sharing').classList.add('hide');
         }
+
+        Dialog_ajaxClear();
+        Notif.snackbarClear();
+    },
+
+    startScreenshareSFU: function () {
+        if (!MovimVisio.screenSharing.srcObject) return;
+
+        const pc = new RTCPeerConnection({
+            iceServers: MovimVisio.services,
+            bundlePolicy: 'max-bundle',
+            iceCandidatePoolSize: 10
+        });
+
+        MovimVisio.screenshareSid = crypto.randomUUID();
+        MovimVisio.screenshareSFUPc = pc;
+
+        MovimVisio.screenSharing.srcObject.getTracks().forEach(track => {
+            pc.addTrack(track, MovimVisio.screenSharing.srcObject);
+        });
+
+        pc.onicecandidate = event => {
+            if (event.candidate && event.candidate.candidate) {
+                Visio_ajaxCandidate(MovimVisio.sfu, MovimVisio.screenshareSid, event.candidate);
+            }
+        };
+
+        pc.createOffer()
+            .then(offer => pc.setLocalDescription(offer))
+            .then(() => Visio_ajaxSessionInitiate(MovimVisio.sfu, pc.localDescription, MovimVisio.screenshareSid, null))
+            .catch(err => MovimUtils.logError(err));
+    },
+
+    stopScreenshareSFU: function () {
+        if (!MovimVisio.screenshareSFUPc) return;
+
+        Visio_ajaxTerminate(MovimVisio.sfu, MovimVisio.screenshareSid, 'success', false);
+
+        MovimVisio.screenshareSFUPc.close();
+        MovimVisio.screenshareSFUPc = null;
+        MovimVisio.screenshareSid = null;
+    },
+
+    onScreenshareAcceptSDP: function (sdp) {
+        if (!MovimVisio.screenshareSFUPc) return;
+
+        MovimVisio.screenshareSFUPc
+            .setRemoteDescription({ 'sdp': sdp + "\n", 'type': 'answer' })
+            .catch(err => MovimUtils.logError(err));
+    },
+
+    onScreenshareCandidate: function (candidate, mid, mlineindex) {
+        if (!MovimVisio.screenshareSFUPc) return;
+
+        MovimVisio.screenshareSFUPc.addIceCandidate(new RTCIceCandidate({
+            'candidate': candidate.split(/\n/).filter(line => line.startsWith('a=candidate')).join('').substring(2),
+            'sdpMid': mid,
+            'sdpMLineIndex': mlineindex
+        })).catch(error => MovimUtils.logError(error));
     },
 
     mujiPublish: function (init) {
@@ -272,6 +357,7 @@ var MovimVisio = {
         MovimTpl.finishedPage();
 
         MovimVisio.id = null;
+        MovimVisio.sfu = null;
 
         Notif.setCallStatus(null);
 
@@ -281,6 +367,7 @@ var MovimVisio = {
         //delete visio.dataset.type;
         delete visio.dataset.jid;
         delete visio.dataset.muji;
+        delete visio.dataset.sfu;
 
         if (document.fullscreenElement) {
             document.exitFullscreen();
@@ -330,6 +417,12 @@ var MovimVisio = {
     moveToChat: function (jid) {
         if (MovimVisio.observer != null) {
             MovimVisio.observer.disconnect();
+        }
+
+        // SFU case
+        if (MovimVisio.sfu != null) {
+            let visio = document.querySelector('#visio');
+            jid = visio.dataset.jid;
         }
 
         var parts = MovimUtils.urlParts();

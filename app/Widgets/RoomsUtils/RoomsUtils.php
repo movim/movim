@@ -388,9 +388,11 @@ class RoomsUtils extends Base
         $xml = new XMPPtoForm($this->me, isGroupChat: $conference && $conference->isGroupChat());
         $form = $xml->getHTML($config->x);
 
-        $this->dialog($this->view('_rooms_config_room', [
+        $this->dialog($this->view('_rooms_config', [
             'form' => $form,
-            'room' => $room
+            'room' => $room,
+            'conference' => $conference,
+            'sfu' => $conference->hasRelatedSFUService()
         ]), true);
     }
 
@@ -409,6 +411,10 @@ class RoomsUtils extends Base
     public function onAffiliationChanged(Packet $packet)
     {
         $affiliation = $packet->content;
+
+        $m = $this->xmpp(new GetMembers);
+        $m->setTo($packet->from)
+            ->request();
 
         switch ($affiliation) {
             case 'owner':
@@ -813,6 +819,26 @@ class RoomsUtils extends Base
         }
     }
 
+    /**
+     * @brief Direct SFU invite
+     */
+    public function ajaxInviteSFU(string $to, string $invitedSFU)
+    {
+        if (!validateJid($to) || !validateJid($invitedSFU)) return;
+
+        $i = $this->xmpp(new Invite);
+        $i->setTo($to)
+            ->setId(generateUUID())
+            ->setInvite($invitedSFU)
+            ->request();
+
+        $p = $this->xmpp(new ChangeAffiliation);
+        $p = $p->setTo($to)
+            ->setJid($invitedSFU)
+            ->setAffiliation('admin')
+            ->request();
+    }
+
     public function onInviteError(Packet $packet)
     {
         $this->toast($packet->content);
@@ -1066,6 +1092,37 @@ class RoomsUtils extends Base
         $p->setTo($room)
             ->setJid($form->jid->value)
             ->setAffiliation($form->affiliation->value)
+            ->request();
+    }
+
+    /**
+     * @brief Dialog to remove a member from the group chat
+     */
+    public function ajaxRemoveMember(string $room, string $jid)
+    {
+        if (!validateJid($room) || !validateJid($jid)) {
+            return;
+        }
+
+        $this->dialog($this->view('_rooms_remove_member', [
+            'room' => $room,
+            'jid' => $jid
+        ]));
+    }
+
+    /**
+     * @brief Confirm the member deletion from the group chat
+     */
+    public function ajaxRemoveMemberConfirm(string $room, string $jid)
+    {
+        if (!validateJid($room) || !validateJid($jid)) {
+            return;
+        }
+
+        $p = $this->xmpp(new ChangeAffiliation);
+        $p->setTo($room)
+            ->setJid($jid)
+            ->setAffiliation('none')
             ->request();
     }
 

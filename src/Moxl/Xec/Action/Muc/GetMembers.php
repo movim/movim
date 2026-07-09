@@ -28,14 +28,10 @@ class GetMembers extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $i = 0;
+        $members = [];
+        $membersJid = [];
 
         foreach ($stanza->query->item as $item) {
-            if ($i == 0) {
-                Member::where('conference', $this->_to)
-                      ->where('affiliation', (string)$item->attributes()->affiliation)
-                      ->delete();
-            }
-
             $member = new Member;
             $member->conference = $this->_to;
             $member->jid = (string)$item->attributes()->jid;
@@ -48,10 +44,17 @@ class GetMembers extends Action
                 $member->nick = (string)$item->attributes()->nick;
             }
 
-            $member->save();
-
             $i++;
+
+            array_push($membersJid, $member->jid);
+            array_push($members, $member->toArray());
         }
+
+        Member::where('conference', $this->_to)
+            ->whereIn('jid', $membersJid)
+            ->delete();
+        Member::saveMany($members);
+
         // Only fire the request for the last one
         if ($stanza->attributes()->id == $this->lastStanzaId) {
             $this->deliver();

@@ -276,6 +276,9 @@ class Info extends Model
 
             return 'language';
         }
+        if ($this->identities->contains('category', 'server')) {
+            return 'dns';
+        }
 
         return 'desktop_windows';
     }
@@ -338,14 +341,14 @@ class Info extends Model
         return $this->hasFeature('urn:xmpp:extdisco:2');
     }
 
-    public function set(\SimpleXMLElement $query, ?string $node = null, $parent = false)
+    public function set(\SimpleXMLElement $query, ?string $node = null, ?string $parent = null)
     {
         $from = (string)$query->attributes()->from;
 
         if (isset($query->query)) {
             $this->server   = strpos($from, '/') == false ? $from : null;
             $this->node     = (string)$query->query->attributes()->node;
-            $this->parent   = $parent == false ? null : $parent;
+            $this->parent   = $parent;
 
             /**
              * Enforce node, it seems that some servers and clients doesn't

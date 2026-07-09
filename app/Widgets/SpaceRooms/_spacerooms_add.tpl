@@ -64,7 +64,7 @@
     </button>
     <button
         class="button flat"
-        onclick="SpaceRooms_ajaxAddCreate(MovimUtils.formToJson('spacerooms_add')); Dialog_ajaxClear();">
+        onclick="SpaceRooms_ajaxAddCreate(MovimUtils.formToJson('spacerooms_add'));">
             {$c->__('button.add')}
     </button>
 </footer>

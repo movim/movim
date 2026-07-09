@@ -12,7 +12,7 @@ class SASL2Success extends Payload
         $jid = explodeJid((string)$stanza->{'authorization-identifier'});
 
         $session->username = $jid['username'];
-        $session->host = $jid['server'];
+        $session->host = $jid['domain'];
         $session->resource = $jid['resource'];
         $session->active = true;
         $session->type = 'bind2';

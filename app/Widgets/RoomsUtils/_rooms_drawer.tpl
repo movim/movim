@@ -232,6 +232,10 @@
 
             <ul class="list thin spin" id="room_presences_list"></ul>
 
+            <br />
+            <hr />
+            <br />
+
             <ul class="list thin">
                 {loop="$members"}
                     <li title="{$value->truename}">

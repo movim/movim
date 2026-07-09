@@ -20,7 +20,7 @@ use function React\Async\await;
 /**
  * Log an error
  */
-function logError(string|Stringable $logs)
+function logError(string|Stringable $logs, ?array $context = [])
 {
     $log = new Logger('movim');
     $log->pushHandler(new SyslogHandler('movim'));
@@ -29,7 +29,7 @@ function logError(string|Stringable $logs)
     $stream->setFormatter(new LineFormatter(null, null, true, true));
     $log->pushHandler($stream);
 
-    $log->error($logs);
+    $log->error($logs, $context);
 }
 
 /**
@@ -180,7 +180,8 @@ function getClientTypes()
         'gateway'       => __('client.gateway'),
         'handheld'      => __('client.phone'),
         'web'           => __('client.web'),
-        'registered'    => __('client.registered')
+        'registered'    => __('client.registered'),
+        'im'            => __('client.im')
     ];
 }
 

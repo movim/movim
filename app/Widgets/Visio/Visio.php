@@ -47,13 +47,19 @@ class Visio extends Base
         //$this->registerEvent('jingle_sessioninitiate_erroritemnotfound', 'onNotFound');
         $this->registerEvent('jingle_sessionaccept', 'onAcceptSDP');
         $this->registerEvent('jingle_transportinfo', 'onCandidate');
+        $this->registerEvent('jingle_transportinfo_sfu', 'onCandidateSFU');
         $this->registerEvent('jingle_sessionterminate', 'onTerminate');
         $this->registerEvent('jingle_sessionmute', 'onMute');
+        $this->registerEvent('jingle_sessionmute_sfu', 'onMuteSFU');
         $this->registerEvent('jingle_sessionunmute', 'onUnmute');
+        $this->registerEvent('jingle_sessionunmute_sfu', 'onUnmuteSFU');
 
         $this->registerEvent('jingle_contentadd', 'onContentAdd');
+        $this->registerEvent('jingle_contentadd_sfu', 'onContentAddSFU');
         $this->registerEvent('jingle_contentmodify', 'onContentModify');
+        $this->registerEvent('jingle_contenctaccept', 'onAcceptSDP');
         $this->registerEvent('jingle_contentremove', 'onContentRemove');
+        $this->registerEvent('jingle_contentremove_sfu', 'onContentRemoveSFU');
 
         $this->registerEvent('externalservices_get_handle', 'onExternalServices');
         $this->registerEvent('externalservices_get_error', 'onExternalServicesError');
@@ -244,6 +250,31 @@ class Visio extends Base
         );
     }
 
+    public function onContentAddSFU(Packet $packet)
+    {
+        $jingle = $packet->content;
+        $jid = (string)$jingle->{'jingle-participant'}->attributes()->participant;
+        $jts = new JingletoSDP($jingle);
+
+        $contact = \App\Contact::firstOrNew(['id' => $jid]);
+        $slides = $jingle->xpath('//category[@name="slides"]');
+
+        $this->rpc(
+            'MovimJingles.initSession',
+            $jid,
+            $packet->from,
+            null,
+            $contact->truename,
+            $contact->getPicture(ImageSize::L)
+        );
+
+        if (is_array($slides) && !empty($slides)) {
+            $this->rpc('MovimJingles.onSFUScreenSharingPropose', $jid, $jts->generate());
+        } else {
+            $this->rpc('MovimJingles.onInitiateSDP', $jid, $jts->generate(), $jts->sid);
+        }
+    }
+
     public function onContentModify(Packet $packet)
     {
         $jts = new JingletoSDP($packet->content);
@@ -272,10 +303,31 @@ class Visio extends Base
         );
     }
 
+    public function onContentRemoveSFU(Packet $packet)
+    {
+        $jingle = $packet->content;
+        $jid = (string)$jingle->{'jingle-participant'}->attributes()->participant;
+
+        $slides = $jingle->xpath('//category[@name="slides"]');
+        if (is_array($slides) && !empty($slides)) {
+            $this->rpc(
+                'MovimJingles.onSFUScreenSharingTerminate',
+                $jid
+            );
+        } else {
+            $this->rpc('MovimJingles.terminate', $jid);
+        }
+    }
+
     public function onAcceptSDP(Packet $packet)
     {
         $jts = new JingletoSDP($packet->content);
-        $this->rpc('MovimJingles.onAcceptSDP', \bareJid($packet->from), $jts->generate());
+        $this->rpc(
+            'MovimJingles.onAcceptSDP',
+            \bareJid($packet->from),
+            $jts->generate(),
+            $jts->sid
+        );
     }
 
     public function onCandidate(Packet $packet)
@@ -283,17 +335,52 @@ class Visio extends Base
         $jts = new JingletoSDP($packet->content);
         $sdp = $jts->generate();
 
-        $this->rpc('MovimJingles.onCandidate', \bareJid($packet->from), $sdp, (string)$jts->name, $jts->name);
+        $this->rpc(
+            'MovimJingles.onCandidate',
+            \bareJid($packet->from),
+            $sdp,
+            (string)$jts->name,
+            $jts->name,
+            $jts->sid
+        );
+    }
+
+    public function onCandidateSFU(Packet $packet)
+    {
+        $jts = new JingletoSDP($packet->content);
+        $sdp = $jts->generate();
+
+        $jid = (string)$packet->content->{'jingle-participant'}->attributes()->participant;
+
+        $this->rpc('MovimJingles.onCandidate', $jid, $sdp, (string)$jts->name, $jts->name);
     }
 
     public function onMute(Packet $packet)
     {
-        $this->rpc('MovimJingles.onMute', \bareJid($packet->from), $packet->content);
+        $stanza = $packet->content;
+        $this->rpc('MovimJingles.onMute', \bareJid($packet->from), 'mid' . (string)$stanza->mute->attributes()->name);
+    }
+
+    public function onMuteSFU(Packet $packet)
+    {
+        $stanza = $packet->content;
+        $from = (string)$packet->content->{'jingle-participant'}->attributes()->participant;
+
+        $this->rpc('MovimJingles.onMute', $from, 'mid' . (string)$stanza->mute->attributes()->name);
     }
 
     public function onUnmute(Packet $packet)
     {
-        $this->rpc('MovimJingles.onUnmute', \bareJid($packet->from), $packet->content);
+        $stanza = $packet->content;
+        $this->rpc('MovimJingles.onUnmute', \bareJid($packet->from), 'mid' . (string)$stanza->unmute->attributes()->name);
+    }
+
+    public function onUnmuteSFU(Packet $packet)
+    {
+        $stanza = $packet->content;
+        $from = (string)$packet->content->{'jingle-participant'}->attributes()->participant;
+
+        $this->rpc('MovimJingles.onUnmute', $from, 'mid' . (string)$stanza->unmute->attributes()->name);
     }
 
     public function ajaxClear()
@@ -301,18 +388,20 @@ class Visio extends Base
         $this->rpc('MovimVisio.clear');
     }
 
-    public function ajaxPropose(string $to, string $id, ?bool $withVideo = false)
+    public function ajaxPropose(string $to, string $id, ?bool $withVideo = false, ?bool $toSFU = false)
     {
-        $message = Message::eventMessageFactory(
-            $this->me,
-            'jingle',
-            bareJid($to),
-            $id
-        );
-        $message->type = 'jingle_outgoing';
-        $message->save();
+        if ($toSFU == false) {
+            $message = Message::eventMessageFactory(
+                $this->me,
+                'jingle',
+                bareJid($to),
+                $id
+            );
+            $message->type = 'jingle_outgoing';
+            $message->save();
 
-        Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message), user: $this->me, sessionId: $this->sessionId);
+            Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message), user: $this->me, sessionId: $this->sessionId);
+        }
 
         $this->currentCall()->start($to, $id);
 
@@ -321,6 +410,11 @@ class Visio extends Base
             ->setId($id)
             ->setWithVideo($withVideo)
             ->request();
+    }
+
+    public function ajaxUpgradeCurrentCallToSFU(string $jid, string $sfuRoom)
+    {
+        $this->currentCall()->setSFURoom($jid, $sfuRoom);
     }
 
     public function ajaxHttpPin(string $name)
@@ -459,8 +553,32 @@ class Visio extends Base
         }
     }
 
-    public function ajaxGetMujiLobby(string $to, bool $calling = false, ?bool $withVideo = false, ?string $id = null)
-    {
+    public function ajaxGetSFULobby(
+        string $sfuJid,
+        string $conferenceJid,
+        bool $calling = false,
+        ?bool $withVideo = false,
+        ?string $id = null
+    ) {
+        $view = $this->tpl();
+        $view->assign('sfujid', $sfuJid);
+        $view->assign('conference', $this->me->session
+            ->conferences()->where('conference', $conferenceJid)
+            ->first());
+        $view->assign('calling', $calling);
+        $view->assign('withvideo', $withVideo);
+        $view->assign('id', $id);
+
+        $this->dialog($view->draw('_visio_lobby'), false, true);
+        $this->rpc('MovimVisio.getUserMedia', $withVideo);
+    }
+
+    public function ajaxGetMujiLobby(
+        string $to,
+        bool $calling = false,
+        ?bool $withVideo = false,
+        ?string $id = null
+    ) {
         $view = $this->tpl();
         $view->assign('conference', $this->me->session
             ->conferences()->where('conference', $to)
@@ -473,8 +591,12 @@ class Visio extends Base
         $this->rpc('MovimVisio.getUserMedia', $withVideo);
     }
 
-    public function ajaxGetLobby(string $jid, bool $calling = false, ?bool $withVideo = false, ?string $id = null)
-    {
+    public function ajaxGetLobby(
+        string $jid,
+        bool $calling = false,
+        ?bool $withVideo = false,
+        ?string $id = null
+    ) {
         $contact = \App\Contact::firstOrNew(['id' => \bareJid($jid)]);
 
         $view = $this->tpl();
@@ -663,6 +785,23 @@ class Visio extends Base
             sid: $id,
             responder: $to,
             action: 'session-accept'
+        );
+
+        $si = $this->xmpp(new SessionInitiate);
+        $si->setTo($to)
+            ->setJingle($stj->generate())
+            ->request();
+    }
+
+    public function ajaxContentAccept(string $to, string $id, string $sdp, ?string $jingleParticipant = null)
+    {
+        $stj = new SDPtoJingle(
+            user: $this->me,
+            sdp: $sdp,
+            sid: $id,
+            responder: $to,
+            action: 'content-accept',
+            jingleParticipant: $jingleParticipant
         );
 
         $si = $this->xmpp(new SessionInitiate);

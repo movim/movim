@@ -5,6 +5,7 @@ namespace App;
 use Movim\ImageSize;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
+use JidComponent;
 use Movim\Route;
 
 class Conference extends Model
@@ -12,7 +13,7 @@ class Conference extends Model
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'conference'];
     protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned', 'space_server', 'space_node'];
-    protected $with = ['contact', 'mujiPresences'];
+    protected $with = ['contact', 'mujiPresences', 'sfuPresence'];
 
     public const XMLNS_NOTIFICATIONS = 'urn:xmpp:notification-settings:0';
     public const XMLNS_PINNED = 'urn:xmpp:bookmarks-pinning:0';
@@ -49,6 +50,12 @@ class Conference extends Model
         return $this->presences()->whereNotNull('muji_xml')->orderBy('updated_at', 'asc');
     }
 
+    public function sfuPresence()
+    {
+        return $this->hasOne(Presence::class, ['jid', 'session_id'], ['conference', 'session_id'])
+            ->whereNotNull('coin_xml');
+    }
+
     public function scopeFromSpace($query, ?bool $from = true)
     {
         return $from
@@ -78,6 +85,18 @@ class Conference extends Model
                 ->from('sessions')
                 ->whereColumn('sessions.id', 'presences.session_id');
         });
+    }
+
+    public function hasRelatedSFUService(): ?Info
+    {
+        $info = $this->info;
+        if (!$info) return null;
+
+        return Info::where('parent', function ($query) use ($info) {
+            $query->select('parent')
+                ->from('infos')
+                ->where('server', $info->parent);
+        })->whereLike('features', '%urn:xmpp:coin:1%')->first();
     }
 
     public function quoted()
@@ -255,7 +274,7 @@ class Conference extends Model
 
     public function getServerAttribute()
     {
-        return \explodeJid($this->conference)['server'];
+        return explodeJid($this->conference, JidComponent::Domain);
     }
 
     public function getConnectedAttribute()

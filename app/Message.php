@@ -280,11 +280,11 @@ class Message extends Model
         }
 
         if (!$this->jidto) {
-            $this->jidto      = $jidTo['jid'];
+            $this->jidto = $jidTo['jid'];
         }
 
         if (!$this->jidfrom) {
-            $this->jidfrom    = $jidFrom['jid'];
+            $this->jidfrom = $jidFrom['jid'];
         }
 
         // If the message is from me
