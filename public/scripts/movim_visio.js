@@ -364,9 +364,11 @@ if (typeof Visio_ajaxHttpGetStates == 'function') {
     Visio_ajaxHttpGetStates();
 }
 
-MovimWebsocket.attach(() => {
-    if (MovimVisio.services.length == 0 && typeof Visio_ajaxResolveServices == 'function') {
-        Visio_ajaxResolveServices();
-        Visio_ajaxCheckStatus(localStorage.getItem('callId'), localStorage.getItem('callJid'));
-    }
-});
+if (typeof MovimWebsocket != 'undefined') {
+    MovimWebsocket.attach(() => {
+        if (MovimVisio.services.length == 0 && typeof Visio_ajaxResolveServices == 'function') {
+            Visio_ajaxResolveServices();
+            Visio_ajaxCheckStatus(localStorage.getItem('callId'), localStorage.getItem('callJid'));
+        }
+    });
+}

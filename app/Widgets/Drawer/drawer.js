@@ -23,7 +23,9 @@ var Drawer = {
     }
 }
 
-MovimWebsocket.initiate(() => document.querySelector('#drawer').innerHTML = '');
+if (typeof MovimWebsocket != 'undefined') {
+    MovimWebsocket.initiate(() => document.querySelector('#drawer').innerHTML = '');
+}
 
 MovimEvents.registerBody('click', 'drawer', (e) => {
     if (Drawer.filled()
