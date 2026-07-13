@@ -24,6 +24,10 @@ article>ul.list.thick:first-child>li>span {
     top: 2rem;
 }
 
+article>ul.list.thick:first-child>li>span.control {
+    top: 0;
+}
+
 article header ul:not(:first-child) {
     padding: 0 1rem;
 }

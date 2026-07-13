@@ -30,6 +30,7 @@ ul.grid.active > li i {
     font-size: 4rem;
     color: white;
     text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12);
+    max-width: max-content;
 }
 
 ul.grid.active > li span {
