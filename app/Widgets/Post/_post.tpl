@@ -266,10 +266,11 @@
                     {/if}
                     {if="$public"}
                         style="background-image: url('{$value->href}')"
+                        onclick="MovimUtils.openInNew('{$value->href}')"
                     {else}
+                        onclick="Preview_ajaxHttpShow('{$value->href}')"
                         style="background-image: url('{$value->href|protectPicture}')"
                     {/if}
-                    onclick="Preview_ajaxHttpShow('{$value->href}')"
                 >
                     <i class="material-symbols">visibility</i>
                 </li>
