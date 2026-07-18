@@ -20,6 +20,12 @@ class MAMResult extends Payload
         ) {
             $session->set('mamid' . (string)$stanza->attributes()->queryid, $messagesCounter + 1);
 
+            if ($stanza->forwarded->message->displayed) {
+                $displayed = new Displayed($this->me, sessionId: $this->sessionId);
+                $displayed->handle($stanza->forwarded->message->displayed, $stanza->forwarded->message);
+                return;
+            }
+
             $message = \App\Message::findByStanza($this->me, $stanza, $parent);
             $message = $message->set($this->me, $stanza->forwarded->message, $stanza->forwarded);
 
