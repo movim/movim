@@ -1,0 +1,4 @@
+/* Highlight selected hat in destroy/assign/remove dialogs */
+li.hat-pick-item.enabled {
+    background-color: rgba(var(--movim-element-action), 0.15);
+}
