@@ -3,6 +3,7 @@
 namespace Moxl\Xec\Payload;
 
 use App\User;
+use Movim\Jid;
 use Moxl\Xec\Payload\Packet;
 use Movim\Widget\Wrapper;
 
@@ -10,6 +11,8 @@ abstract class Payload
 {
     protected ?string $method = null;
     protected ?Packet $packet = null;
+
+    protected ?Jid $from = null;
 
     /**
      * Constructor of class Payload.
@@ -62,10 +65,10 @@ abstract class Payload
         $iq->setAttribute('id', $id);
 
         if (isset($language)) {
-           // Convert php local (ex: "pt_BR") to format RFC 5646 (ex: "pt-BR")
-           $xmlLang = str_replace('_', '-', $language);
-           $iq->setAttribute('xml:lang', $xmlLang);
-	    }
+            // Convert php local (ex: "pt_BR") to format RFC 5646 (ex: "pt-BR")
+            $xmlLang = str_replace('_', '-', $language);
+            $iq->setAttribute('xml:lang', $xmlLang);
+        }
 
         if ($xml != false) {
             $xml = $dom->importNode($xml, true);
@@ -89,9 +92,14 @@ abstract class Payload
      */
     final public function prepare(\SimpleXMLElement $stanza, ?\SimpleXMLElement $parent = null)
     {
-        $this->packet->from = ($parent === null)
-            ? bareJid((string)$stanza->attributes()->from)
-            : bareJid((string)$parent->attributes()->from);
+        $from = ($parent === null)
+            ? $stanza->attributes()->from
+            : $parent->attributes()->from;
+
+        if ($from) {
+            $this->from = new Jid($from);
+            $this->packet->from = $from;
+        }
     }
 
     /**
@@ -129,12 +137,7 @@ abstract class Payload
             $key = $key . '_' . $this->method;
         }
 
-        Wrapper::getInstance()->iterate(
-            key: $key,
-            packet: $this->packet,
-            user: $this->me,
-            sessionId: $this->sessionId
-        );
+        $this->event($key);
     }
 
     /**

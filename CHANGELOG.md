@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.35 (master)
 ---------------------------
+* Implement XEP-0490: Message Displayed Synchronization, only for Group Chats
 
 v0.34.1
 ---------------------------

@@ -324,4 +324,50 @@ class Message
 
         return $moderate;
     }
+
+    public static function mdsDisplay(
+        string $to,
+        string $from,
+        string $id
+    ) {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+
+        $publish = $dom->createElement('publish');
+        $publish->setAttribute('node', 'urn:xmpp:mds:displayed:0');
+        $pubsub->appendChild($publish);
+
+        $item = $dom->createElement('item');
+        $item->setAttribute('id', $to);
+        $publish->appendChild($item);
+
+        $displayed = $dom->createElement('displayed');
+        $displayed->setAttribute('xmlns', 'urn:xmpp:mds:displayed:0');
+        $item->appendChild($displayed);
+
+        $stanzaId = $dom->createElement('stanza-id');
+        $stanzaId->setAttribute('xmlns', 'urn:xmpp:sid:0');
+        $stanzaId->setAttribute('by', $from);
+        $stanzaId->setAttribute('id', $id);
+        $displayed->appendChild($stanzaId);
+
+        $publishOption = $dom->createElement('publish-options');
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
+        $x->setAttribute('type', 'submit');
+        $publishOption->appendChild($x);
+
+        \Moxl\Utils::injectConfigInX($x, [
+            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
+            'pubsub#persist_items' => 'true',
+            'pubsub#access_model' => 'whitelist',
+            'pubsub#send_last_published_item' => 'never',
+            'pubsub#deliver_payloads' => 'true',
+            'pubsub#max_items' => 'max',
+        ]);
+
+        $pubsub->appendChild($publishOption);
+
+        return $pubsub;
+    }
 }

@@ -132,6 +132,7 @@ class Handler
             'f9e18585fd0e0873c52e880c800f267a' => 'ReceiptAck',
             '004a75eb0a92fca2b868732b56863e66' => 'ReceiptRequest',
             '3ca6c24643a9389b91323ddd1aaa84d0' => 'Displayed',
+            '8b3640c99b86af5b3266a3b481fefbae' => 'MDSDisplayed',
             '8bbeda5372a8170a51b2719fd0f1a533' => 'Retracted', // :1
 
             '0977b7387b95f69007332a3e9b386f93' => 'MAMResult', // mam:0

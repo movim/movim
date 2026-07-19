@@ -102,6 +102,8 @@ class Utils
 
             'urn:xmpp:movim-banner:0+notify',
 
+            'urn:xmpp:mds:displayed:0+notify',
+
             'urn:xmpp:receipts',
             'urn:xmpp:carbons:2',
             'jabber:iq:version',

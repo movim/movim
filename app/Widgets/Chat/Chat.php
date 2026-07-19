@@ -33,6 +33,7 @@ use Movim\XMPPUri;
 use Movim\Librairies\XMPPtoForm;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Action\Message\Displayed;
+use Moxl\Xec\Action\Message\MDSDisplayed;
 use Moxl\Xec\Payload\Packet;
 
 class Chat extends \Movim\Widget\Base
@@ -1216,23 +1217,32 @@ class Chat extends \Movim\Widget\Base
 
         $message = $this->me->messages()->where('id', $id)->first();
 
-        if (
-            $message
-            && $message->markable == true
-            && $message->displayed == null
-        ) {
-            $message->displayed = gmdate('Y-m-d H:i:s');
-            $message->save();
+        if ($message && $message->displayed == null) {
+            if ($message->markable == true) {
+                $message->displayed = gmdate('Y-m-d H:i:s');
+                $message->save();
 
-            if (!$message->isMuc()) {
-                (new Displayed($this->me, sessionId: $this->sessionId))->setTo($jid)
-                    ->setId($message->messageid)
-                    ->setType($message->type)
-                    ->request();
+                if (!$message->isMuc()) {
+                    $this->xmpp(new Displayed)
+                        ->setTo($jid)
+                        ->setId($message->messageid)
+                        ->setType($message->type)
+                        ->request();
+                }
+                // https://xmpp.org/extensions/xep-0333.html#rules-muc
+                elseif ($message->stanzaid) {
+                    $this->xmpp(new Displayed)
+                        ->setTo($jid)
+                        ->setId($message->stanzaid)
+                        ->setType($message->type)
+                        ->request();
+                }
             }
-            // https://xmpp.org/extensions/xep-0333.html#rules-muc
-            elseif ($message->stanzaid) {
-                (new Displayed($this->me, sessionId: $this->sessionId))->setTo($jid)
+
+            // Can be heavy on some MUCs, might be optimized
+            if ($message->isMuc()) {
+                $this->xmpp(new MDSDisplayed)
+                    ->setTo($jid)
                     ->setId($message->stanzaid)
                     ->setType($message->type)
                     ->request();

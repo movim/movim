@@ -693,6 +693,15 @@
         </implements>
         <implements>
             <xmpp:SupportedXep>
+                <xmpp:xep rdf:resource="https://xmpp.org/extensions/xep-0490.html"/>
+                <xmpp:status>partial</xmpp:status>
+                <xmpp:version>1.0.1</xmpp:version>
+                <xmpp:since>0.35</xmpp:since>
+                <xmpp:note>Only published for groupchats</xmpp:note>
+            </xmpp:SupportedXep>
+        </implements>
+        <implements>
+            <xmpp:SupportedXep>
                 <xmpp:xep rdf:resource="https://xmpp.org/extensions/xep-0492.html"/>
                 <xmpp:status>complete</xmpp:status>
                 <xmpp:version>0.1.0</xmpp:version>
