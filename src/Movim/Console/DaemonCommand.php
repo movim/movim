@@ -154,10 +154,17 @@ class DaemonCommand extends Command
 
         // Pusher
 
-        $resolverWorker = new Process('exec ' . PHP_BINARY . ' pusher.php', cwd: WORKERS_PATH);
-        $resolverWorker->start($loop);
-        $resolverWorker->on('exit', fn() => $output->writeln('<error>Pusher Worker crashed</error>'));
+        $pusherWorker = new Process('exec ' . PHP_BINARY . ' pusher.php', cwd: WORKERS_PATH);
+        $pusherWorker->start($loop);
+        $pusherWorker->on('exit', fn() => $output->writeln('<error>Pusher Worker crashed</error>'));
         $output->writeln('<info>🔔 Pusher Worker launched</info>');
+
+        // Galene wrapper
+
+        $galenerWorker = new Process('exec ' . PHP_BINARY . ' galener.php', cwd: WORKERS_PATH);
+        $galenerWorker->start($loop);
+        $galenerWorker->on('exit', fn() => $output->writeln('<error>Galener Worker crashed</error>'));
+        $output->writeln('<info>📞 Galener Worker launched</info>');
 
         (new IoServer($app, $socket, $loop))->run();
 

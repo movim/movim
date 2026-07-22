@@ -284,6 +284,11 @@
 
             {$call = false}
 
+            <span title="{$c->__('button.video_call')}" class="control icon red active on_desktop"
+                onclick="Visio_ajaxGetLobby('{$jid|echapJS}', true, true);">
+                <i class="material-symbols">videocam</i>
+            </span>
+
             {if="!$incall"}
                 {if="$roster && $roster->presences->count() > 0"}
                     {loop="$roster->presences"}
