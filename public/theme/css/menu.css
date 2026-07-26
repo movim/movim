@@ -25,7 +25,7 @@ ul.navigation li>span.primary i {
 }
 
 ul.navigation li.active>span.primary i {
-    color: rgba(var(--movim-font), 0.9);
+    color: rgba(var(--movim-font), 0.8);
 }
 
 ul.navigation li.active>span.primary i,
