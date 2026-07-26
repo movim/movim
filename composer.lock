@@ -1440,24 +1440,24 @@
         },
         {
             "name": "fabiang/sasl",
-            "version": "v2.0.0",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabiang/sasl.git",
-                "reference": "d104cc364d380ea2e73f3595e11b9161fd1c1155"
+                "reference": "d829739155eb2a6ffaee7f8f9ff3606dd07002fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabiang/sasl/zipball/d104cc364d380ea2e73f3595e11b9161fd1c1155",
-                "reference": "d104cc364d380ea2e73f3595e11b9161fd1c1155",
+                "url": "https://api.github.com/repos/fabiang/sasl/zipball/d829739155eb2a6ffaee7f8f9ff3606dd07002fa",
+                "reference": "d829739155eb2a6ffaee7f8f9ff3606dd07002fa",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.2.0 || ~8.3.0 || ~8.4.0"
+                "php": ">=8.2.0,<8.6.0"
             },
             "require-dev": {
                 "behat/behat": "^3.18",
-                "phpunit/phpunit": "^10.0 || ^11.5",
+                "phpunit/phpunit": "^10.0 || ^11.5 || ^12.0 || ^13.0",
                 "slevomat/coding-standard": "*",
                 "squizlabs/php_codesniffer": "*",
                 "vimeo/psalm": "^6.0"
@@ -1504,9 +1504,9 @@
             ],
             "support": {
                 "issues": "https://github.com/fabiang/sasl/issues",
-                "source": "https://github.com/fabiang/sasl/tree/v2.0.0"
+                "source": "https://github.com/fabiang/sasl/tree/v2.1.0"
             },
-            "time": "2025-03-03T11:56:34+00:00"
+            "time": "2026-07-22T14:41:14+00:00"
         },
         {
             "name": "fig/http-message-util",
@@ -5277,16 +5277,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "2.4.12",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "f05659faef60b303f194f5e8bc580c288c9699bf"
+                "reference": "48254ed1079fc0879eb03fb2b600f92bb4ecb787"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/f05659faef60b303f194f5e8bc580c288c9699bf",
-                "reference": "f05659faef60b303f194f5e8bc580c288c9699bf",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/48254ed1079fc0879eb03fb2b600f92bb4ecb787",
+                "reference": "48254ed1079fc0879eb03fb2b600f92bb4ecb787",
                 "shasum": ""
             },
             "require": {
@@ -5339,9 +5339,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Respect/Validation/issues",
-                "source": "https://github.com/Respect/Validation/tree/2.4.12"
+                "source": "https://github.com/Respect/Validation/tree/2.5.0"
             },
-            "time": "2026-02-08T00:13:50+00:00"
+            "time": "2026-07-22T15:21:03+00:00"
         },
         {
             "name": "robmorgan/phinx",
