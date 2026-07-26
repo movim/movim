@@ -30,25 +30,28 @@ ul#bottomnavigation li:hover:not(.active)>span.primary>i {
     opacity: 0.8;
 }
 
+ul#bottomnavigation li:before {
+    content: '';
+    display: block;
+    border-radius: 3rem;
+    height: 5rem;
+    width: 8rem;
+    position: absolute;
+    top: 0.5rem;
+    left: calc(50% - 4rem);
+}
+
+ul#bottomnavigation li.active:before {
+    background-color: rgba(var(--movim-element-action), 0.2);
+}
+
+ul#bottomnavigation li:not(.active):hover:before {
+    background-color: rgba(var(--movim-element-action), 0.1);
+}
+
 ul#bottomnavigation li span:not(.counter) {
-    /*line-height: 5rem;
-    padding: 0.25rem 0.5rem;*/
     display: inline-block;
 }
-
-/*
-ul#bottomnavigation li div p {
-    font-size: 1.35rem;
-    font-weight:500;
-    line-height: 2rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-ul#bottomnavigation li:not(.active) div p {
-    color: rgba(var(--movim-font), 0.7)
-}*/
 
 @media screen and (max-width: 1024px) {
     ul#bottomnavigation {
@@ -84,9 +87,8 @@ ul#bottomnavigation li:not(.active) div p {
         pointer-events: none;
     }
 
-    ul#bottomnavigation #bottomnavigation_me {
-        padding-bottom: 0;
-        transform: scale(0.8);
+    ul#bottomnavigation #bottomnavigation_me span {
+        transform: scale(0.7);
     }
 
     ul#bottomnavigation #bottomchatcounter.notifications:after {
