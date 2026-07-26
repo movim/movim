@@ -370,7 +370,7 @@ class Chat extends \Movim\Widget\Base
         if (isset($packet->content)) {
             $message = is_array($packet->content)
                 ? $this->prepareComposeList(array_keys($packet->content))
-                : $this->__('message.composing');
+                : '<i class="material-symbols">edit</i> ' . $this->__('message.composing');
         }
 
         $this->rpc('MovimTpl.fill', '#' . cleanupId($packet->from . '_state'), $message);
