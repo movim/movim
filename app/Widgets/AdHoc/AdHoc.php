@@ -17,6 +17,7 @@ class AdHoc extends \Movim\Widget\Base
     public function load()
     {
         $this->addjs('adhoc.js');
+        $this->addcss('adhoc.css');
         $this->registerEvent('adhoc_get_handle', 'onList');
         $this->registerEvent('adhoc_get_error', 'onListError');
         $this->registerEvent('adhoc_command_handle', 'onCommand');
@@ -55,6 +56,12 @@ class AdHoc extends \Movim\Widget\Base
             $this->dialog($view->draw('_adhoc_note'));
             $this->rpc('AdHoc.initForm');
         } elseif (isset($command->x)) {
+
+            if (str_starts_with($command->attributes()->node, 'urn:xmpp:hats:commands:')) {
+                $this->renderHatCommand($packet->from, $command);
+                return;
+            }
+
             $xml = new XMPPtoForm;
             $form = $xml->getHTML($command->x);
 
@@ -74,6 +81,79 @@ class AdHoc extends \Movim\Widget\Base
             $this->toast($this->__('adhoc.completed'));
             return;
         }
+    }
+
+    private function renderHatCommand(string $jid, \SimpleXMLElement $command): void
+    {
+        $node = (string)$command->attributes()->node;
+        $suffix = substr($node, strlen('urn:xmpp:hats:commands:'));
+
+        switch ($suffix) {
+            case 'create':
+                $this->dialog($this->view('_adhoc_hat_create', [
+                    'jid'        => $jid,
+                    'attributes' => $command->attributes(),
+                    'hueHex'     => '#808080',
+                    'hue'        => '0',
+                    'uri'        => 'urn:uuid:' . generateUUID(),
+                ]), true);
+                break;
+
+            case 'assign':
+            case 'unassign':
+                $this->dialog($this->view('_adhoc_hat_assign', [
+                    'jid'        => $jid,
+                    'attributes' => $command->attributes(),
+                    'isRemove'   => $suffix === 'unassign',
+                    'jidVar'     => $this->findFieldVar($command->x, 'jid-single') ?? 'hats#jid',
+                    'hats'       => $this->parseHatOptions($command->x),
+                ]), true);
+                break;
+
+            case 'destroy':
+                $this->dialog($this->view('_adhoc_hat_destroy', [
+                    'jid'        => $jid,
+                    'attributes' => $command->attributes(),
+                    'hats'       => $this->parseHatOptions($command->x),
+                ]), true);
+                break;
+
+            default:
+                $this->dialog($this->view('_adhoc_error', [
+                    'message' => 'Unknown hat command'
+                ]), true);
+                break;
+        }
+    }
+
+    private function parseHatOptions(\SimpleXMLElement $x): array
+    {
+        $hats = [];
+        foreach ($x->children() as $field) {
+            if ($field->getName() !== 'field') continue;
+            $fieldVar = (string)$field->attributes()->var;
+            foreach ($field->children() as $option) {
+                if ($option->getName() !== 'option') continue;
+                $uri    = (string)$option->value;
+                $hats[] = [
+                    'label'    => (string)$option->attributes()->label ?: $uri,
+                    'value'    => $uri,
+                    'fieldVar' => $fieldVar,
+                    'color'    => stringToColor($uri),
+                ];
+            }
+        }
+        return $hats;
+    }
+
+    private function findFieldVar(\SimpleXMLElement $x, string $type): ?string
+    {
+        foreach ($x->children() as $field) {
+            if ($field->getName() === 'field' && (string)$field->attributes()->type === $type) {
+                return (string)$field->attributes()->var;
+            }
+        }
+        return null;
     }
 
     public function ajaxSDPToJingle()
