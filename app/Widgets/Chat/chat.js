@@ -255,7 +255,7 @@ var Chat = {
                         if (deviceId) {
                             if (isMuc) {
                                 Chat.checkOMEMOState(jid, isMuc);
-                            } else if (store.getSessionsIds(jid).length == 0) {
+                            } else {
                                 ChatOmemo_ajaxGetDevicesList(jid);
                             }
                         } else {

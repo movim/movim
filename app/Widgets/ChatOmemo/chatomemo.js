@@ -125,6 +125,7 @@ var ChatOmemo = {
     bundlesRefreshError(jid) {
         var store = new ChatOmemoStorage();
         store.setContactTombstone(jid);
+        ChatOmemo.disableContactState(jid);
     },
 
     bundlesRefreshed(jid) {
@@ -375,6 +376,7 @@ var ChatOmemo = {
         } else {
             Chat_ajaxGet(jid);
             ChatOmemo_ajaxEnableContactState();
+            ChatOmemo_ajaxGetDevicesList(jid);
         }
     },
     disableContactState: function (jid, muc) {
