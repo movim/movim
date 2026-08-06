@@ -8,7 +8,7 @@ use Moxl\Stanza\Pubsub;
 
 class DeleteBundle extends Action
 {
-    protected $_id;
+    protected string $_id;
     protected array $_devicesIds;
 
     public function request()

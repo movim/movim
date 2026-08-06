@@ -8,8 +8,8 @@ use App\Bundle;
 
 class GetBundle extends Action
 {
-    protected $_to;
-    protected $_id;
+    protected string $_to;
+    protected string $_id;
     protected bool $_notifyLast = false;
 
     public function request()

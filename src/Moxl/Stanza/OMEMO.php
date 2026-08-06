@@ -19,7 +19,7 @@ class OMEMO
         return $pubsub;
     }
 
-    public static function SetDevicesList(array $ids)
+    public static function setDevicesList(array $ids)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -43,10 +43,23 @@ class OMEMO
             $list->appendChild($device);
         }
 
+        $publishOption = $dom->createElement('publish-options');
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
+        $x->setAttribute('type', 'submit');
+        $publishOption->appendChild($x);
+
+        \Moxl\Utils::injectConfigInX($x, [
+            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
+            'pubsub#access_model' => 'open',
+        ]);
+
+        $pubsub->appendChild($publishOption);
+
         return $pubsub;
     }
 
-    public static function getBundle($id)
+    public static function getBundle(string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -60,11 +73,11 @@ class OMEMO
     }
 
     public static function announceBundle(
-        $id,
-        $signedPreKeyPublic,
-        $signedPreKeySignature,
-        $identityKey,
-        $preKeys
+        string $id,
+        string $signedPreKeyPublic,
+        string $signedPreKeySignature,
+        string $identityKey,
+        array $preKeys
     ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -103,6 +116,20 @@ class OMEMO
             $pks->appendChild($pkp);
             $i++;
         }
+
+        $publishOption = $dom->createElement('publish-options');
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
+        $x->setAttribute('type', 'submit');
+        $publishOption->appendChild($x);
+
+        \Moxl\Utils::injectConfigInX($x, [
+            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
+            'pubsub#access_model' => 'open',
+            'pubsub#max_items' => 'max',
+        ]);
+
+        $pubsub->appendChild($publishOption);
 
         return $pubsub;
     }

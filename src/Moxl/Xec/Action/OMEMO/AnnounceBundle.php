@@ -7,11 +7,11 @@ use Moxl\Stanza\OMEMO;
 
 class AnnounceBundle extends Action
 {
-    private $_id;
-    private $_signedPreKeyPublic;
-    private $_signedPreKeySignature;
-    private $_identityKey;
-    private $_preKeys;
+    private string $_id;
+    private string $_signedPreKeyPublic;
+    private string $_signedPreKeySignature;
+    private string $_identityKey;
+    private array $_preKeys;
 
     public function request()
     {
@@ -25,31 +25,31 @@ class AnnounceBundle extends Action
         ), type: 'set');
     }
 
-    public function setId($id)
+    public function setId(string $id)
     {
         $this->_id = $id;
         return $this;
     }
 
-    public function setSignedPreKeyPublic($signedPreKeyPublic)
+    public function setSignedPreKeyPublic(string $signedPreKeyPublic)
     {
         $this->_signedPreKeyPublic = $signedPreKeyPublic;
         return $this;
     }
 
-    public function setSignedPreKeySignature($signedPreKeySignature)
+    public function setSignedPreKeySignature(string $signedPreKeySignature)
     {
         $this->_signedPreKeySignature = $signedPreKeySignature;
         return $this;
     }
 
-    public function setIdentityKey($identityKey)
+    public function setIdentityKey(string $identityKey)
     {
         $this->_identityKey = $identityKey;
         return $this;
     }
 
-    public function setPreKeys($preKeys)
+    public function setPreKeys(array $preKeys)
     {
         $this->_preKeys = $preKeys;
         return $this;

@@ -7,7 +7,7 @@ use Moxl\Stanza\OMEMO;
 
 class GetDevicesList extends Action
 {
-    protected $_to;
+    protected string $_to;
 
     public function request()
     {
