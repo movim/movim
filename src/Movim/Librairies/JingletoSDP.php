@@ -237,6 +237,16 @@ class JingletoSDP
                             }
                             break;
 
+                        case 'ssrc-group':
+                            $sources = '';
+
+                            foreach ($payload->children() as $source) {
+                                $sources .= ' ' . (string)$source->attributes()->ssrc;
+                            }
+
+                            $sdpMedia .= "\r\na=ssrc-group:" . (string)$payload->attributes()->semantics . $sources;
+                            break;
+
                         case 'category':
                             array_push($categories, (string)$payload->attributes()->name);
                             break;

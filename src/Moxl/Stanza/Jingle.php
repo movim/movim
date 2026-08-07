@@ -63,12 +63,15 @@ class Jingle
         return $dom;
     }
 
-    public static function messageProceed(string $to, string $id)
+    public static function messageProceed(string $to, string $id, ?string $from = null)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
         $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
+
+        if ($from) $message->setAttribute('from', $from);
+
         $dom->appendChild($message);
 
         $proceed = $dom->createElementNS('urn:xmpp:jingle-message:0', 'proceed');
@@ -99,7 +102,7 @@ class Jingle
         return $dom;
     }
 
-    public static function messageFinish(string $to, string $id, string $reason)
+    public static function messageFinish(string $to, string $id, ?string $reason = 'success')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
@@ -113,7 +116,6 @@ class Jingle
 
         $jingleReason = $dom->createElementNS('urn:xmpp:jingle:1', 'reason');
         $finish->appendChild($jingleReason);
-
         $jingleReason->appendChild($dom->createElement($reason));
         $jingleReason->appendChild($dom->createElement('text', 'Success'));
 

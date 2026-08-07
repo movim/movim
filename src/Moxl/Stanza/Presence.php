@@ -12,6 +12,7 @@ class Presence
      */
     public static function maker(
         ?User $me = null,
+        ?string $from = null,
         ?string $to = null,
         ?string $status = null,
         ?string $show = null,
@@ -21,13 +22,16 @@ class Presence
         bool $mujiPreparing = false,
         ?DOMElement $muji = null,
         ?int $last = 0,
-        ?string $mavSince = null
+        ?string $mavSince = null,
+        ?bool $withCaps = false
     ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElementNS('jabber:client', 'presence');
         $dom->appendChild($root);
 
-        if ($me && $me->session) {
+        if ($from) {
+            $root->setAttribute('from', $from);
+        } elseif ($me && $me->session) {
             $root->setAttribute('from', $me->id . '/' . $me->session->resource);
             $root->setAttribute('id', linker($me->session->id)->session->get('id'));
         }
@@ -89,20 +93,22 @@ class Presence
             $root->appendChild($x);
         }
 
-        $c = $dom->createElementNS('urn:xmpp:caps', 'c');
-        $hash = $dom->createElement('hash', \Moxl\Utils::getOwnCapabilityHash());
-        $hash->setAttribute('xmlns', 'urn:xmpp:hashes:2');
-        $hash->setAttribute('algo', \Moxl\Utils::CAPABILITY_HASH_ALGORITHM);
+        if ($withCaps) {
+            $c = $dom->createElementNS('urn:xmpp:caps', 'c');
+            $hash = $dom->createElement('hash', \Moxl\Utils::getOwnCapabilityHash());
+            $hash->setAttribute('xmlns', 'urn:xmpp:hashes:2');
+            $hash->setAttribute('algo', \Moxl\Utils::CAPABILITY_HASH_ALGORITHM);
 
-        $c->appendChild($hash);
+            $c->appendChild($hash);
+            $root->appendChild($c);
 
-        $root->appendChild($c);
+            $c = $dom->createElementNS('http://jabber.org/protocol/caps', 'c');
+            $c->setAttribute('hash', 'sha-1');
+            $c->setAttribute('node', 'https://movim.eu/');
+            $c->setAttribute('ver', \Moxl\Utils::generateCaps());
+            $root->appendChild($c);
+        }
 
-        $c = $dom->createElementNS('http://jabber.org/protocol/caps', 'c');
-        $c->setAttribute('hash', 'sha-1');
-        $c->setAttribute('node', 'https://movim.eu/');
-        $c->setAttribute('ver', \Moxl\Utils::generateCaps());
-        $root->appendChild($c);
 
         return $dom;
     }

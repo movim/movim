@@ -22,6 +22,27 @@ class Stream
         return substr($dom->saveXML($dom->documentElement), 0, -17);
     }
 
+    public static function initComponent(string $to): string
+    {
+        $dom = new \DOMDocument('1.0', 'utf-8');
+        $stream = $dom->createElement('stream:stream', ' ');
+        $stream->setAttribute('xmlns', 'jabber:component:accept');
+        $stream->setAttribute('xmlns:stream', 'http://etherx.jabber.org/streams');
+        $stream->setAttribute('to', $to);
+        $dom->appendChild($stream);
+
+        return substr($dom->saveXML($dom->documentElement), 0, -17);
+    }
+
+    public static function initComponentHandshake(string $sid, string $password): string
+    {
+        $dom = new \DOMDocument('1.0', 'utf-8');
+        $stream = $dom->createElement('handshake', sha1($sid.$password));
+        $dom->appendChild($stream);
+
+        return $dom->saveXML($dom->documentElement);
+    }
+
     public static function end(): string
     {
         return '</stream:stream>';

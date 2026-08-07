@@ -24,11 +24,19 @@ class Utils
         return Utils::generateCapabilityHash(collect([Utils::getIdentity()]), Utils::getSupportedServices(), $hash);
     }
 
+    public static function getOwnGalenerCapabilityHash(?string $hash = Utils::CAPABILITY_HASH_ALGORITHM): string
+    {
+        return Utils::generateCapabilityHash(collect([Utils::getGalenerIdentity()]), Utils::getGalenerSupportedServices(), $hash);
+    }
+
     /**
      * https://xmpp.org/extensions/xep-0390.html#algorithm-example
      */
-    public static function generateCapabilityHash(Collection $identities, array $features, ?string $hash = Utils::CAPABILITY_HASH_ALGORITHM)
-    {
+    public static function generateCapabilityHash(
+        Collection $identities,
+        array $features,
+        ?string $hash = Utils::CAPABILITY_HASH_ALGORITHM
+    ): string {
         $data = '';
 
         asort($features);
@@ -77,6 +85,17 @@ class Utils
         $identity->type = 'web';
         $identity->lang = null;
         $identity->name = 'Movim';
+
+        return $identity;
+    }
+
+    public static function getGalenerIdentity(): Identity
+    {
+        $identity = new Identity;
+        $identity->category = 'server';
+        $identity->type = 'im'; // Todo fix me later
+        $identity->lang = null;
+        $identity->name = 'Movim Galene Wrapper';
 
         return $identity;
     }
@@ -154,6 +173,23 @@ class Utils
         return $features;
     }
 
+    public static function getGalenerSupportedServices(): array
+    {
+        $features = [
+            'http://jabber.org/protocol/disco#info',
+            'urn:xmpp:coin:1',
+            'http://jabber.org/protocol/jingle',
+            'urn:xmpp:jingle:1',
+            'urn:xmpp:jingle:apps:rtp:1',
+            'urn:xmpp:jingle:apps:rtp:audio',
+            'urn:xmpp:jingle:apps:rtp:video',
+        ];
+
+        asort($features);
+
+        return $features;
+    }
+
     public static function injectConfigInX(\DOMNode $x, array $inputs)
     {
         foreach ($inputs as $key => $value) {
@@ -185,12 +221,14 @@ class Utils
         }
     }
 
-    public static function generateCaps()
+    public static function generateCaps(?bool $galener = false)
     {
         $s = '';
         $s .= 'client/web//Movim<';
 
-        $support = Utils::getSupportedServices();
+        $support = $galener
+            ? Utils::getGalenerSupportedServices()
+            : Utils::getSupportedServices();
 
         asort($support);
         foreach ($support as $sup) {

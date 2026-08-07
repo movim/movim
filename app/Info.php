@@ -276,6 +276,9 @@ class Info extends Model
 
             return 'language';
         }
+        if ($this->identities->contains('category', 'server')) {
+            return 'dns';
+        }
 
         return 'desktop_windows';
     }
