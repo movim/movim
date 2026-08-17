@@ -194,7 +194,20 @@ var Upload = {
                 ctx = Upload.canvas.getContext("2d");
                 ctx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight);
 
-                Upload.prepare(file);
+                // Always create a fresh Blob from the canvas for iOS Safari.
+                // The original File reference becomes invalid after async gaps,
+                // producing Content-Length: 0 uploads on Safari.
+                if (typeof Upload.canvas.toBlob == 'function') {
+                    Upload.canvas.toBlob(
+                        function (blob) {
+                            Upload.prepare(blob);
+                        },
+                        file.type,
+                        1.0
+                    );
+                } else {
+                    Upload.prepare(file);
+                }
             }
         });
         image.src = src;
