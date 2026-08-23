@@ -6,9 +6,6 @@ use App\Conference;
 use Moxl\Xec\Action\Message\Publish;
 use Moxl\Xec\Action\Message\Reactions;
 
-use Moxl\Xec\Action\Muc\GetConfig;
-use Moxl\Xec\Action\Muc\SetConfig;
-
 use App\Contact;
 use App\Message;
 use App\MessageFile;
@@ -59,9 +56,6 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('chatstate', 'onChatState', 'chat');
         //$this->registerEvent('subject', 'onConferenceSubject', 'chat'); Spam the UI during authentication
         $this->registerEvent('muc_setsubject_handle', 'onConferenceSubject', 'chat');
-        $this->registerEvent('muc_getconfig_handle', 'onRoomConfig', 'chat');
-        $this->registerEvent('muc_setconfig_handle', 'onRoomConfigSaved', 'chat');
-        $this->registerEvent('muc_setconfig_error', 'onRoomConfigError', 'chat');
         $this->registerEvent('presence_muc_handle', 'onMucConnected', ['chat', 'space*']);
         $this->registerEvent('message_publish_error', 'onPublishError', ['chat', 'space*']);
 
@@ -405,38 +399,6 @@ class Chat extends \Movim\Widget\Base
         } elseif (isset($arr[1]) && $arr[1] == $packet->content->jid) {
             $this->ajaxGetRoom($packet->content->jid, noConnect: true);
         }
-    }
-
-    public function onRoomConfigError(Packet $packet)
-    {
-        $this->toast($packet->content);
-    }
-
-    public function onRoomConfig(Packet $packet)
-    {
-        list($config, $room) = array_values($packet->content);
-
-        $conference = $this->me->session->conferences()
-            ->where('conference', $room)
-            ->with('info')
-            ->first();
-
-        $xml = new XMPPtoForm($this->me, isGroupChat: $conference && $conference->isGroupChat());
-        $form = $xml->getHTML($config->x);
-
-        $this->dialog($this->view('_chat_config_room', [
-            'form' => $form,
-            'room' => $room
-        ]), true);
-    }
-
-    public function onRoomConfigSaved(Packet $packet)
-    {
-        $r = $this->xmpp(new DiscoRequest);
-        $r->setTo($packet->content)
-            ->request();
-
-        $this->toast($this->__('chatroom.config_saved'));
     }
 
     public function ajaxInit()
@@ -1173,38 +1135,6 @@ class Chat extends \Movim\Widget\Base
         }
     }
 
-    /**
-     * @brief Configure a room
-     *
-     * @param string $room
-     */
-    public function ajaxGetRoomConfig($room)
-    {
-        if (!validateJid($room)) {
-            return;
-        }
-
-        $gc = $this->xmpp(new GetConfig);
-        $gc->setTo($room)
-            ->request();
-    }
-
-    /**
-     * @brief Save the room configuration
-     *
-     * @param string $room
-     */
-    public function ajaxSetRoomConfig(\stdClass $data, $room)
-    {
-        if (!validateJid($room)) {
-            return;
-        }
-
-        $sc = $this->xmpp(new SetConfig);
-        $sc->setTo($room)
-            ->setData(formToArray($data))
-            ->request();
-    }
 
     /**
      * @brief Set last displayed message

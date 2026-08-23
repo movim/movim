@@ -33,8 +33,13 @@ use Movim\Image;
 
 use Respect\Validation\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
+use Movim\Librairies\XMPPtoForm;
+use Moxl\Xec\Action\MAM\GetConfig;
+use Moxl\Xec\Action\MAM\SetConfig;
 use Moxl\Xec\Action\Muc\DiscoRequest;
+use Moxl\Xec\Action\Muc\GetConfig as MucGetConfig;
 use Moxl\Xec\Action\Muc\GetMembers;
+use Moxl\Xec\Action\Muc\SetConfig as MucSetConfig;
 
 class RoomsUtils extends Base
 {
@@ -56,6 +61,10 @@ class RoomsUtils extends Base
         $this->registerEvent('muc_changeaffiliation_errornotallowed', 'onAffiliationChangeUnauthorized');
         $this->registerEvent('muc_setrole_handle', 'onSetRole');
         $this->registerEvent('message_invite_error', 'onInviteError');
+
+        $this->registerEvent('muc_getconfig_handle', 'onConfig', 'chat');
+        $this->registerEvent('muc_setconfig_handle', 'onConfigSaved', 'chat');
+        $this->registerEvent('muc_setconfig_error', 'onConfigError', 'chat');
 
         $this->registerEvent('muc_discorequest_handle', 'onMucDiscoRequest');
         $this->registerEvent('muc_discorequest_error', 'onMucDiscoError');
@@ -326,6 +335,72 @@ class RoomsUtils extends Base
             $m->setTo($packet->content->jid)
                 ->request();
         }
+    }
+
+    /**
+     * @brief Configure a room
+     *
+     * @param string $room
+     */
+    public function ajaxGetConfig($room)
+    {
+        if (!validateJid($room)) {
+            return;
+        }
+
+        $gc = $this->xmpp(new MucGetConfig);
+        $gc->setTo($room)
+            ->request();
+    }
+
+    /**
+     * @brief Save the room configuration
+     *
+     * @param string $room
+     */
+    public function ajaxSetConfig(\stdClass $data, $room)
+    {
+        if (!validateJid($room)) {
+            return;
+        }
+
+        $sc = $this->xmpp(new MucSetConfig);
+        $sc->setTo($room)
+            ->setData(formToArray($data))
+            ->request();
+    }
+
+
+    public function onConfigError(Packet $packet)
+    {
+        $this->toast($packet->content);
+    }
+
+    public function onConfig(Packet $packet)
+    {
+        list($config, $room) = array_values($packet->content);
+
+        $conference = $this->me->session->conferences()
+            ->where('conference', $room)
+            ->with('info')
+            ->first();
+
+        $xml = new XMPPtoForm($this->me, isGroupChat: $conference && $conference->isGroupChat());
+        $form = $xml->getHTML($config->x);
+
+        $this->dialog($this->view('_rooms_config_room', [
+            'form' => $form,
+            'room' => $room
+        ]), true);
+    }
+
+    public function onConfigSaved(Packet $packet)
+    {
+        $r = $this->xmpp(new DiscoRequest);
+        $r->setTo($packet->content)
+            ->request();
+
+        $this->toast($this->__('chatroom.config_saved'));
     }
 
     /**

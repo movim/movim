@@ -179,7 +179,7 @@
                 </li>
             {/if}
             {if="$conference->presence->mucaffiliation == 'owner'"}
-                <li onclick="Chat_ajaxGetRoomConfig('{$jid|echapJS}')">
+                <li onclick="RoomsUtils_ajaxGetConfig('{$jid|echapJS}')">
                     <span class="primary icon gray">
                         <a href="#" onclick="listIconClick(event)">
                             <i class="material-symbols">settings</i>
