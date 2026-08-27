@@ -36,13 +36,12 @@ class GetMembers extends Action
             $member->conference = $this->_to;
             $member->jid = (string)$item->attributes()->jid;
             $member->affiliation = (string)$item->attributes()->affiliation;
-
-            if ($item->attributes()->role) {
-                $member->role = (string)$item->attributes()->role;
-            }
-            if ($item->attributes()->nick) {
-                $member->nick = (string)$item->attributes()->nick;
-            }
+            $member->role = $item->attributes()->role
+                ? (string)$item->attributes()->role
+                : null;
+            $member->nick = $item->attributes()->nick
+                ? (string)$item->attributes()->nick
+                : null;
 
             $i++;
 
