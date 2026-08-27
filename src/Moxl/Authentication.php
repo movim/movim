@@ -27,7 +27,7 @@ class Authentication
                 $this->_mechanism = SASL::fromString($this->_type)->mechanism([
                     'authcid'  => $this->username,
                     'secret'   => $this->password,
-                    'downgrade_protection' => [
+                    'scram' => [
                         'allowed_mechanisms'       => $mechanisms,
                         'allowed_channel_bindings' => $channelBindings
                     ],
