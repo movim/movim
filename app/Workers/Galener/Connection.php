@@ -76,7 +76,6 @@ class Connection
                             $this->send(['type' => 'ping']);
                             break;
                         case 'ping':
-                            $this->pingCounter++;
                             $this->conference->sendXMPP($this->iq(
                                 type: 'set',
                                 from: $this->conference->getSFUJid(),
