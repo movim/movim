@@ -11,6 +11,6 @@ class PingPong extends Payload
         $to = (string)$parent->attributes()->from;
         $id = (string)$parent->attributes()->id;
 
-        $this->iq(Ping::pong(), to: $to, id: $id, type: 'result');
+        $this->iq(Ping::entity(), to: $to, id: $id, type: 'result');
     }
 }

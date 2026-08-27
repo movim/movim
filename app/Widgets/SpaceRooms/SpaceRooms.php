@@ -29,9 +29,10 @@ class SpaceRooms extends Base
         $this->registerEvent('space_deletedroom', 'onEditedRooms');
         $this->registerEvent('presence_muc_errorregistrationrequired', 'onRoomRegistrationRequired');
 
-        // We have a memory filter optimisation in onMujiPresence
-        $this->registerEvent('presence', 'onMujiPresence');
-        $this->registerEvent('presence_muji', 'onMujiPresence', 'space*');
+        // We have a memory filter optimisation in onMujiOrSFUPresence
+        $this->registerEvent('presence', 'onMujiOrSFUPresence');
+        $this->registerEvent('presence_muji', 'onMujiOrSFUPresence', 'space*');
+        $this->registerEvent('presence_sfu', 'onMujiOrSFUPresence', 'space*');
         $this->registerEvent('presence_muc_muji_leaving', 'onMujiLeaving');
 
         $this->addcss('spacerooms.css');
@@ -61,7 +62,7 @@ class SpaceRooms extends Base
         $this->rpc('MovimTpl.hidePanel');
     }
 
-    public function onMujiPresence(Packet $packet)
+    public function onMujiOrSFUPresence(Packet $packet)
     {
         $sessionKey = 'muji_' . $packet->content->jid;
         $isMuji = linker($this->sessionId)->session->get($sessionKey);
@@ -239,6 +240,8 @@ class SpaceRooms extends Base
             $this->toast($this->__('chatrooms.empty_name'));
             return;
         }
+
+        $this->rpc('Dialog.clear');
 
         $id = generateUUID() . '@' . $this->me->session->getChatroomsServices()->first()->server;
 

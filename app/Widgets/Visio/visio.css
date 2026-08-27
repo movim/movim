@@ -131,6 +131,8 @@ body>#visio:not(:fullscreen) #toggle_mode,
     background-size: 25%;
 
     transition: width 0.2s ease-in-out;
+
+    z-index: 1;
 }
 
 #visio video#local_video:hover,
@@ -175,6 +177,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 }
 
 @media screen and (max-width: 800px) {
+
     #chat_widget #visio:not(:fullscreen) #visio_contact,
     body>#visio:not(:fullscreen) .participant img.avatar {
         transform: scale(0.7);
@@ -323,7 +326,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     flex: 1;
     display: flex;
     align-items: center;
-    max-height: 100vh;
+    max-height: calc(100% - 2rem);
     transition: outline 0.3s;
     outline: 0.25rem solid rgb(255, 255, 255, calc(var(--level) * 0.75));
     justify-content: center;
@@ -339,13 +342,25 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     flex-grow: 0;
 }
 
+#visio #participants:has(.participant:nth-child(3)):not(.active) .participant {
+    max-height: calc(50% - 2rem);
+}
+
 #visio #participants:has(.participant:nth-child(5)) .participant {
     flex-basis: 32%;
+}
+
+#visio #participants:has(.participant:nth-child(7)):not(.active) .participant {
+    max-height: calc(33% - 2rem);
 }
 
 @media screen and (max-width: 800px) {
     #visio #participants:has(.participant:nth-child(5)) .participant {
         flex-basis: 48%;
+    }
+
+    #visio #participants:has(.participant:nth-child(5)):not(.active) .participant {
+        max-height: calc(25% - 2rem);
     }
 }
 
@@ -521,3 +536,9 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     max-width: 25rem;
     flex: 1;
 }
+
+/* Temporary CSS */
+/*
+#visio[data-sfu="true"] #screen_sharing {
+    display: none;
+}*/

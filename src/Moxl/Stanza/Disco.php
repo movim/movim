@@ -6,10 +6,11 @@ use Moxl\Utils;
 
 class Disco
 {
-    public static function answer(string $node)
+    public static function answer(?string $node = null)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/disco#info', 'query');
+
         $query->setAttribute('node', $node);
 
         $identityData = Utils::getIdentity();
@@ -22,6 +23,29 @@ class Disco
         $query->appendChild($identity);
 
         foreach (Utils::getSupportedServices() as $service) {
+            $feature = $dom->createElement('feature');
+            $feature->setAttribute('var', $service);
+            $query->appendChild($feature);
+        }
+
+        return $query;
+    }
+
+    public static function answerGalener()
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/disco#info', 'query');
+
+        $identityData = Utils::getGalenerIdentity();
+
+        $identity = $dom->createElement('identity');
+        $identity->setAttribute('category', $identityData->category);
+        $identity->setAttribute('type', $identityData->type);
+        $identity->setAttribute('name', $identityData->name);
+
+        $query->appendChild($identity);
+
+        foreach (Utils::getGalenerSupportedServices() as $service) {
             $feature = $dom->createElement('feature');
             $feature->setAttribute('var', $service);
             $query->appendChild($feature);

@@ -21,7 +21,7 @@
                     <span class="control icon active divided" onclick="Search.chat('{$contact->id|echapJS}', false); Drawer.clear();">
                         <i class="material-symbols">comment</i>
                     </span>
-                    {if="$roster && $roster->presences->count() > 0 && !$incall"}
+                    {if="$roster && $roster->presences->count() > 0 && !$c->currentCall()?->isStarted()"}
                         {loop="$roster->presences"}
                             {if="$value->capability && $value->capability->isJingleAudio()"}
                                 <span title="{$c->__('button.audio_call')}" class="control icon active"

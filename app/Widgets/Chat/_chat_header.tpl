@@ -62,12 +62,19 @@
                 </span>
             {/if}
 
-            {if="$conference && $conference->isGroupChat() && !$conference->isFromSpace() && $conference->mujiPresences->isEmpty()"}
-                <span class="control icon active {if="$c->database('pgsql')"}divided{/if} {if="$incall"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, false);">
+            {if="$conference && !$conference->sfuPresence && $conference->isGroupChat() && !$conference->isFromSpace() && $conference->mujiPresences->isEmpty()"}
+                <span class="control icon active {if="$c->database('pgsql')"}divided{/if} {if="$c->currentCall()?->isStarted()"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, false);">
                     <i class="material-symbols">call</i>
                 </span>
-                <span class="control icon active {if="$incall"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, true);">
+                <span class="control icon active {if="$c->currentCall()?->isStarted()"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, true);">
                     <i class="material-symbols">videocam</i>
+                </span>
+            {elseif="$conference && $conference->sfuPresence && $conference->sfuPresence->SFUUsersCount == 0"}
+                <!--<span class="control icon active {if="$c->database('pgsql')"}divided{/if} {if="$c->currentCall()?->isStarted()"}disabled{/if}" onclick="Visio_ajaxGetSFULobby('{$conference->sfuPresence->mucjid|echapJS}', '{$conference->conference}', true, false);">
+                    <i class="material-symbols">call</i>
+                </span>-->
+                <span class="control icon active {if="$c->currentCall()?->isStarted()"}disabled{/if}" onclick="Visio_ajaxGetSFULobby('{$conference->sfuPresence->mucjid|echapJS}', '{$conference->conference}', true, true);">
+                    <i class="material-symbols">video_call</i>
                 </span>
             {/if}
 
@@ -87,9 +94,21 @@
                             <i class="material-symbols blink">call_end</i>
                         </button>
                     {elseif="!$conference->isConferenceCall()"}
-                        <button class="button oppose color blue {if="$incall"}disabled{/if}"
+                        <button class="button oppose color blue {if="$c->currentCall()?->isStarted()"}disabled{/if}"
                                 onclick="Visio_ajaxJoinMuji('{$conference->conference}', {if="$conference->mujiPresences->first()->hasVideoMuji()"}true{else}false{/if});">
-                            <i class="material-symbols">call</i>
+                            <i class="material-symbols">call</i> {$conference->mujiPresences->count()}
+                        </button>
+                    {/if}
+                {/if}
+                {if="$conference && $conference->sfuPresence"}
+                    {if="$c->currentCall()?->isJidInCall($conference->sfuPresence->mucjid)"}
+                        <button class="button oppose color red" onclick="Visio_ajaxRemoteGoodbye()">
+                            <i class="material-symbols icon {if="!$c->currentCall()->isAnswered()"}shake{/if}">call_end</i>
+                        </button>
+                    {elseif="$conference->sfuPresence->SFUUsersCount > 0"}
+                        <button class="button oppose color blue {if="$c->currentCall()?->isStarted()"}disabled{/if}"
+                                onclick="Visio_ajaxGetSFULobby('{$conference->sfuPresence->mucjid|echapJS}', '{$conference->conference}', true, true);">
+                            <i class="material-symbols">video_call</i> {$conference->sfuPresence->SFUUsersCount}
                         </button>
                     {/if}
                 {/if}
@@ -145,6 +164,19 @@
                                 {$c->prepareDate($conference->mujiPresences->first()->created_at, true)}
                                 -
                                 {$conference->mujiPresences->count()}
+                                <i class="material-symbols">people</i>
+                            </span>
+                            •
+                        {elseif="$conference->sfuPresence && $conference->sfuPresence->SFUUsersCount > 0"}
+                            {if="$c->currentCall()?->isJidInCall($conference->sfuPresence->mucjid)"}
+                                <i class="material-symbols icon green blink">video_call</i>
+                                {$c->__('visio.joined_call')}
+                            {else}
+                                <i class="material-symbols icon blue blink">video_call</i>
+                                {$c->__('visio.in_call')}
+                            {/if}
+                            <span class="second">
+                                {$conference->sfuPresence->SFUUsersCount}
                                 <i class="material-symbols">people</i>
                             </span>
                             •
@@ -284,7 +316,7 @@
 
             {$call = false}
 
-            {if="!$incall"}
+            {if="!$c->currentCall() || !$c->currentCall()->isStarted()"}
                 {if="$roster && $roster->presences->count() > 0"}
                     {loop="$roster->presences"}
                         {if="$value->capability && $value->capability->isJingleAudio() && $value->jid"}
@@ -322,8 +354,7 @@
                     {if="$roster"}
                         {$roster->truename}
                     {elseif="strpos($contact->id, '/') != false"}
-                        {$exploded = explodeJid($contact->id)}
-                        {$exploded.resource}
+                        {explodeJid($contact->id, JidComponent::Resource)}
                     {else}
                         {$contact->truename}
                     {/if}

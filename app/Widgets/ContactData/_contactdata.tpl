@@ -6,7 +6,7 @@
 
 <ul class="block list middle active divided spaced">
     {if="!$contact->isContact($c->me->id)"}
-        {if="$roster && $roster->presences->count() > 0 && !$incall"}
+        {if="$roster && $roster->presences->count() > 0 && !$c->currentCall()?->isStarted()"}
             {loop="$roster->presences"}
                 {if="$value->capability && $value->capability->isJingleAudio()"}
                     <li onclick="Visio_ajaxGetLobby('{$value->fullJid|echapJS}', true);">

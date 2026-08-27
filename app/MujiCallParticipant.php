@@ -2,6 +2,7 @@
 
 namespace App;
 
+use JidComponent;
 use Movim\Image;
 use Movim\Model;
 
@@ -38,7 +39,7 @@ class MujiCallParticipant extends Model
 
     public function getNameAttribute()
     {
-        return explodeJid($this->jid)['resource'];
+        return explodeJid($this->jid, JidComponent::Resource);
     }
 
     public function getConferencePictureAttribute(): string

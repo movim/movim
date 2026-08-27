@@ -120,7 +120,8 @@ class ContactHeader extends Base
     public function ajaxGetMetadata(string $jid)
     {
         $r = $this->xmpp(new Request);
-        $r->setTo($jid)->setNode(Post::MICROBLOG_NODE)
+        $r->setTo($jid)
+            ->setNode(Post::MICROBLOG_NODE)
             ->request();
     }
 

@@ -9,7 +9,7 @@ class Request extends Action
 {
     protected ?string $_node = null;
     protected ?string $_to = null;
-    protected $_parent;
+    protected ?string $_parent = null;
 
     public function request()
     {
@@ -40,7 +40,7 @@ class Request extends Action
                 $stanza,
                 $this->_node,
                 // If a parent was previously set, we keep it
-                ($found->parent && !$this->_parent)
+                ($found->parent != null && $this->_parent == null)
                     ? $found->parent
                     : $this->_parent
             );

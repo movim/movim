@@ -138,6 +138,47 @@ class Presence extends Model
         return false;
     }
 
+    public function hasSFU(): bool
+    {
+        return (array_key_exists('coin_xml', $this->attributes) && $this->attributes['coin_xml'] != null)
+            || $this->coin_xml != null;
+    }
+
+    public function getSFUUsersAttribute(): array
+    {
+        $users = [];
+
+        if (!empty($this->attributes['coin_xml'])) {
+            $xml = simplexml_load_string($this->attributes['coin_xml']);
+
+            if ($xml !== false) {
+                foreach ($xml->users->user as $user) {
+                    $jid = substr((string)$user->attributes()->entity, 5);
+                    $users[$jid] = [
+                        'jid' => $jid,
+                    ];
+                }
+            }
+
+            $contacts = Contact::whereIn('id', array_keys($users))->get()->keyBy('id');
+
+            foreach ($users as $jid => $user) {
+                if ($contacts->has($jid)) {
+                    $user['name'] = $contacts->get($jid)->truename;
+                    $user['avatar'] = $contacts->get($jid)->getPicture(ImageSize::S);
+                    $users[$jid] = $user;
+                }
+            }
+        }
+
+        return $users;
+    }
+
+    public function getSFUUsersCountAttribute(): int
+    {
+        return count($this->getSFUUsersAttribute());
+    }
+
     public static function findByStanza(User $user, \SimpleXMLElement $stanza): Presence
     {
         $temporary = new self;
@@ -238,6 +279,10 @@ class Presence extends Model
             $this->muji_xml = $stanza->muji->asXML();
         }
 
+        if ($stanza->{'conference-info'} && $stanza->{'conference-info'}->attributes()->xmlns == 'urn:ietf:params:xml:ns:conference-info') {
+            $this->coin_xml = $stanza->{'conference-info'}->asXML();
+        }
+
         if ($stanza->delay && $stanza->delay->attributes()->xmlns == 'urn:xmpp:delay') {
             $this->delay = gmdate(
                 'Y-m-d H:i:s',
@@ -307,6 +352,7 @@ class Presence extends Model
             'updated_at' => $this->attributes['updated_at'] ?? $now,
             'avatarhash' => $this->attributes['avatarhash'] ?? null,
             'muji_xml' => $this->attributes['muji_xml'] ?? null,
+            'coin_xml' => $this->attributes['coin_xml'] ?? null,
         ];
     }
 }

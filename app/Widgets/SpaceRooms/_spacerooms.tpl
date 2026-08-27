@@ -30,6 +30,8 @@
                         <span title="{$value->conference}">
                             {if="$value->mujiPresences->isNotEmpty()"}
                                 <i class="material-symbols call icon {if="$value->presence && $value->presence->hasMuji()"}green blink{else}blue{/if}" title="{$c->__('visio.in_call')}">call</i>
+                            {elseif="$value->sfuPresence && $value->sfuPresence->SFUUsersCount > 0"}
+                                <i class="material-symbols call icon {if="$c->currentCall()?->isJidInCall($value->sfuPresence->mucjid)"}green blink{else}blue{/if}" title="{$c->__('visio.in_call')}">video_call</i>
                             {/if}
                         </span>
                         {$value->name}
@@ -37,6 +39,34 @@
                 </div>
             </li>
             {if="$value->isConferenceCall()"}
+                {if="$value->sfuPresence"}
+                    {loop="$value->sfuPresence->SFUUsers"}
+                        <li>
+                            <span class="primary icon r2 small">
+                                <i class="material-symbols icon gray">
+                                    line_curve
+                                </i>
+                            </span>
+                            <span class="primary icon bubble small">
+                                {if="array_key_exists('avatar', $value)"}
+                                    <img loading="lazy" src="{$value.avatar}">
+                                {else}
+                                    <i class="material-symbols">phone</i>
+                                {/if}
+                            </span>
+                            <div>
+                                <p>
+                                    {if="array_key_exists('name', $value)"}
+                                        {$value.name}
+                                    {else}
+                                        {$value.jid}
+                                    {/if}
+                                </p>
+                            </div>
+                        </li>
+                    {/loop}
+                {/if}
+
                 {loop="$value->mujiPresences"}
                     <li>
                         <span class="primary icon r2 small">

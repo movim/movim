@@ -4,19 +4,22 @@ namespace Moxl\Stanza;
 
 use App\MessageFile;
 use App\MessageOmemoHeader;
+use JidComponent;
 
 class Message
 {
     public static function factory(
         string $to,
-        ?string $type = null,
         string $messageId,
+        ?string $from = null,
+        ?string $type = null,
     ): \DOMDocument {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
         $root = $dom->createElementNS('jabber:client', 'message');
         $root->setAttribute('to', str_replace(' ', '\40', $to));
         if ($type) $root->setAttribute('type', $type);
+        if ($from) $root->setAttribute('from', $from);
         $root->setAttribute('id', $messageId);
         $dom->appendChild($root);
 
@@ -26,6 +29,7 @@ class Message
     public static function maker(
         string $to,
         string $messageId,
+        ?string $from = null,
         ?string $content = null,
         ?string $html = null,
         ?string $type = 'chat',
@@ -44,13 +48,13 @@ class Message
         $replyQuotedBodyLength = 0,
         ?MessageOmemoHeader $messageOMEMO = null
     ) {
-        $dom = Message::factory($to, $type, $messageId);
+        $dom = Message::factory($to, $messageId, $from, $type);
 
         /**
          * https://xmpp.org/extensions/xep-0045.html#privatemessage
          * Resource on the to, we assume that it's a MUC PM
          */
-        if (explodeJid($to)['resource'] !== null) {
+        if (explodeJid($to, JidComponent::Resource) !== null) {
             $xuser = $dom->createElementNS('http://jabber.org/protocol/muc#user', 'x');
             $dom->documentElement->appendChild($xuser);
         }
@@ -93,7 +97,6 @@ class Message
             $dom->documentElement->appendChild($chatstate);
 
             $body = $dom->createElement('body');
-
 
             $bodyContent = (preg_match('(>|<|&)', $content) === 1)
                 ? $dom->createCDATASection($content)

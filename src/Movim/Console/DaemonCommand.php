@@ -26,6 +26,7 @@ use Symfony\Component\Console\Output\NullOutput;
 
 use React\EventLoop\Loop;
 use React\Socket\SocketServer;
+use Respect\Validation\Validator;
 
 class DaemonCommand extends Command
 {
@@ -129,7 +130,7 @@ class DaemonCommand extends Command
         }
 
         $core = new Core($loop, $baseuri);
-        $app  = new HttpServer(new WsServer($core));
+        $app = new HttpServer(new WsServer($core));
 
         $socket = new SocketServer(
             config('daemon.interface') . ':' . config('daemon.port')
@@ -154,10 +155,29 @@ class DaemonCommand extends Command
 
         // Pusher
 
-        $resolverWorker = new Process('exec ' . PHP_BINARY . ' pusher.php', cwd: WORKERS_PATH);
-        $resolverWorker->start($loop);
-        $resolverWorker->on('exit', fn() => $output->writeln('<error>Pusher Worker crashed</error>'));
+        $pusherWorker = new Process('exec ' . PHP_BINARY . ' pusher.php', cwd: WORKERS_PATH);
+        $pusherWorker->start($loop);
+        $pusherWorker->on('exit', fn() => $output->writeln('<error>Pusher Worker crashed</error>'));
         $output->writeln('<info>🔔 Pusher Worker launched</info>');
+
+        // Galene wrapper
+
+        if (
+            config('galener.xmpp_host')
+            && Validator::domain()->validate(config('galener.xmpp_host'))
+            && !empty(config('galener.xmpp_password'))
+        ) {
+            if (empty(config('galener.galene_path')) || !file_exists(config('galener.galene_path'))) {
+                $output->writeln('<comment>📞 Galener Worker, galene executable not accessible</comment>');
+            } else {
+                $galenerWorker = new Process('exec ' . PHP_BINARY . ' galener.php', cwd: WORKERS_PATH);
+                $galenerWorker->start($loop);
+                $galenerWorker->on('exit', fn() => $output->writeln('<error>Galener Worker crashed</error>'));
+                $output->writeln('<info>📞 Galener Worker launched</info>');
+            }
+        } else {
+            $output->writeln('<comment>📞 Galener Worker configuration empty or invalid</comment>');
+        }
 
         (new IoServer($app, $socket, $loop))->run();
 

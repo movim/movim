@@ -63,8 +63,7 @@
             {if="$roster"}
                 {$roster->truename}
             {elseif="strpos($contact->id, '/') != false"}
-                {$exploded = explodeJid($contact->id)}
-                {$exploded.resource}
+                {explodeJid($contact->id, JidComponent::Resource)}
                 <span class="second" title="{$exploded.jid}">
                     {$exploded.jid}
                 </span>

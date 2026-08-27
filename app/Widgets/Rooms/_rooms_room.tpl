@@ -49,7 +49,9 @@
                     {/if}
                     <span title="{$conference->conference}">
                         {if="$conference->mujiPresences->isNotEmpty()"}
-                            <i class="material-symbols call icon {if="$conference->presence->hasMuji()"}green blink{else}blue{/if}" title="{$c->__('visio.in_call')}">call</i>
+                            <i class="material-symbols call icon {if="$conference->presence->hasMuji()"}green blink{else}blue{/if}" title="{$c->__('visio.in_call')}">phone</i>
+                        {elseif="$conference->sfuPresence && $conference->sfuPresence->SFUUsersCount > 0"}
+                            <i class="material-symbols call icon {if="$c->currentCall()?->isJidInCall($conference->sfuPresence->mucjid)"}green blink{else}blue{/if}" title="{$c->__('visio.in_call')}">call</i>
                         {/if}
                         {$conference->title}
                     </span>
@@ -79,6 +81,34 @@
                 <i class="material-symbols">edit</i>
             </span>
         </li>
+
+        {if="$conference->sfuPresence"}
+            {loop="$conference->sfuPresence->SFUUsers"}
+                <li>
+                    <span class="primary icon r2 small">
+                        <i class="material-symbols icon gray">
+                            line_curve
+                        </i>
+                    </span>
+                    <span class="primary icon bubble small">
+                        {if="array_key_exists('avatar', $value)"}
+                            <img loading="lazy" src="{$value.avatar}">
+                        {else}
+                            <i class="material-symbols">phone</i>
+                        {/if}
+                    </span>
+                    <div>
+                        <p>
+                            {if="array_key_exists('name', $value)"}
+                                {$value.name}
+                            {else}
+                                {$value.jid}
+                            {/if}
+                        </p>
+                    </div>
+                </li>
+            {/loop}
+        {/if}
 
         {loop="$conference->mujiPresences"}
             <li>

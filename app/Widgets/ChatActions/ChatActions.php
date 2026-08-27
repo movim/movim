@@ -162,6 +162,18 @@ class ChatActions extends \Movim\Widget\Base
         $this->toast($this->__('chatactions.copied_text'));
     }
 
+    public function ajaxEnableWideConferenceCall(string $conference)
+    {
+        $conference = $this->me->session->conferences()->where('conference', $conference)->with('members')->first();
+
+        if ($sfu = $conference->hasRelatedSFUService()) {
+            $this->dialog($this->view('_chatactions_enable_wide_conference_call', [
+                'conference' => $conference,
+                'sfu' => $sfu
+            ]));
+        }
+    }
+
     /**
      * @brief Edit a message
      */

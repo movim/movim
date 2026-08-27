@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use JidComponent;
 
 class Reaction extends Model
 {
@@ -30,7 +31,7 @@ class Reaction extends Model
         }
 
         if (str_contains($this->jidfrom, '@')) {
-            return explodeJid($this->jidfrom)['username'];
+            return explodeJid($this->jidfrom, JidComponent::Username);
         } else {
             return $this->jidfrom;
         }

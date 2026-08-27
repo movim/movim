@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use JidComponent;
 
 class Member extends Model
 {
@@ -45,7 +46,7 @@ class Member extends Model
             return $this->contact->truename;
         }
 
-        return explodeJid($this->jid)['username'] ?? $this->jid;
+        return explodeJid($this->jid, JidComponent::Username) ?? $this->jid;
     }
 
     public function getColorAttribute(): string
