@@ -2,8 +2,10 @@
 
 namespace App\Workers\Galener\Events;
 
+use App\Info;
 use App\Workers\Galener\Galener;
 use Movim\Jid;
+use Moxl\Stanza\ExternalServices;
 
 class Handshake extends Event
 {
@@ -22,6 +24,18 @@ class Handshake extends Event
                 $conference = $this->conferencesManager->createOrGetConference($jid);
                 $conference->xmppJoin();
             }
+        }
+
+        $infoSFU = Info::where('server', config('galener.xmpp_host'))->where('node', '')
+            ->first();
+
+        if ($infoSFU) {
+            return $this->iq(
+                type: 'get',
+                xml: ExternalServices::request(),
+                from: config('galener.xmpp_host'),
+                to: $infoSFU->parent
+            );
         }
 
         return null;

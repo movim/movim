@@ -9,6 +9,7 @@ use React\Socket\Connector;
 use React\Socket\HappyEyeBallsConnector;
 use Moxl\Stanza\Stream;
 use App\Workers\Galener\XMPPHandler;
+use React\ChildProcess\Process;
 
 class Galener
 {
@@ -16,8 +17,10 @@ class Galener
     private Parser $parser;
     private Connection $connection;
     private XMPPHandler $handler;
+    private Process $process;
+
     public const CONFERENCES_CACHE = DOCUMENT_ROOT . '/' . CACHE_DIR . 'galener/config/';
-    private const DATA_CACHE = DOCUMENT_ROOT . '/' . CACHE_DIR . 'galener/data/';
+    public const DATA_CACHE = DOCUMENT_ROOT . '/' . CACHE_DIR . 'galener/data/';
     private int $galeneHttpPort = 18444;
     private string $galeneHttpAdminUsername;
     private string $galeneHttpAdminPassword;
@@ -58,29 +61,31 @@ class Galener
 
         // Launch galene
 
-        $ex = config('galener.galene_path') .
-            ' -insecure -http localhost:' . $this->galeneHttpPort .
-            ' -data ' . self::DATA_CACHE .
-            ' -groups ' . self::CONFERENCES_CACHE .
-            ' -static ' . substr(config('galener.galene_path'), 0, -6) . 'static/';
-
-        $process = new \React\ChildProcess\Process(
-            $ex
+        $this->process = new \React\ChildProcess\Process(
+            'exec ' . config('galener.galene_path') .
+                ' -insecure -http localhost:' . $this->galeneHttpPort .
+                ' -data ' . self::DATA_CACHE .
+                ' -groups ' . self::CONFERENCES_CACHE .
+                ' -static ' . substr(config('galener.galene_path'), 0, -6) . 'static/'
         );
 
-        $process->stdout?->on('data', function ($chunk) {
+        $this->process->stdout?->on('data', function ($chunk) {
             \logError('galener' . $chunk);
         });
 
-        $process->stdout?->on('error', function (\Exception $e) {
+        $this->process->stderr?->on('data', function ($chunk) {
+            \logError('galener' . $chunk);
+        });
+
+        $this->process->stdout?->on('error', function (\Exception $e) {
             \logError('galener' . $e->getMessage());
         });
 
-        $process->on('exit', function ($exitCode, $termSignal) {
+        $this->process->on('exit', function ($exitCode, $termSignal) {
             echo 'Process exited with code ' . $exitCode . PHP_EOL;
         });
 
-        $process->start();
+        $this->process->start();
 
         $this->xmppHost = config('galener.xmpp_host');
         $this->xmppPassword = config('galener.xmpp_password');
@@ -113,6 +118,11 @@ class Galener
         );
 
         $this->registerXMPP();
+    }
+
+    public function shutdown()
+    {
+        $this->process->terminate();
     }
 
     public function registerXMPP()

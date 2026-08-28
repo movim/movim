@@ -17,13 +17,18 @@ abstract class Event
     abstract static public function getHandlerPaths(): array;
     abstract public function handle(): ?\DOMDocument;
 
-    public function iq(string $type, ?\DOMNode $xml = null, ?string $error = null): \DOMDocument
-    {
+    public function iq(
+        string $type,
+        ?\DOMNode $xml = null,
+        ?string $error = null,
+        ?string $from = null,
+        ?string $to = null
+    ): \DOMDocument {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $iq = $dom->createElementNS('jabber:client', 'iq');
         $dom->appendChild($iq);
-        $iq->setAttribute('to', (string)$this->node->from);
-        $iq->setAttribute('from', (string)$this->node->to);
+        $iq->setAttribute('to', $to ?? (string)$this->node->from);
+        $iq->setAttribute('from', $from ?? (string)$this->node->to);
         $iq->setAttribute('type', $type);
         $iq->setAttribute('id', $this->node->id ?? \generateKey());
 

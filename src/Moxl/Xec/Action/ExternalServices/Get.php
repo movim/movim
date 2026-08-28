@@ -7,7 +7,7 @@ use Moxl\Stanza\ExternalServices;
 
 class Get extends Action
 {
-    protected $_to;
+    protected string $_to;
 
     public function request()
     {
@@ -19,19 +19,21 @@ class Get extends Action
     {
         $services = [];
         foreach ($stanza->services->service as $service) {
-            $item = [
-                'host' => (string)$service['host'],
-                'port' => (string)$service['port'],
-                'transport' => (string)$service['transport'],
-                'type' => (string)$service['type']
-            ];
+            if (in_array($service['type'], ['stun', 'turn'])) {
+                $item = [
+                    'host' => (string)$service['host'],
+                    'port' => (string)$service['port'],
+                    'transport' => (string)$service['transport'],
+                    'type' => (string)$service['type']
+                ];
 
-            if ($service['username'] && $service['password']) {
-                $item['username'] = (string)$service['username'];
-                $item['password'] = (string)$service['password'];
+                if ($service['username'] && $service['password']) {
+                    $item['username'] = (string)$service['username'];
+                    $item['password'] = (string)$service['password'];
+                }
+
+                array_push($services, $item);
             }
-
-            array_push($services, $item);
         }
 
         if (!empty($services)) {

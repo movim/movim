@@ -18,7 +18,7 @@ use Ratchet\WebSocket\WsServer;
 use Movim\Daemon\Core;
 use Movim\Daemon\Api;
 use App\User;
-
+use Movim\Daemon\GalenerManager;
 use Phinx\Migration\Manager;
 use Phinx\Config\Config;
 use React\ChildProcess\Process;
@@ -26,7 +26,6 @@ use Symfony\Component\Console\Output\NullOutput;
 
 use React\EventLoop\Loop;
 use React\Socket\SocketServer;
-use Respect\Validation\Validator;
 
 class DaemonCommand extends Command
 {
@@ -36,10 +35,10 @@ class DaemonCommand extends Command
             ->setName('start')
             ->setDescription('Start the daemon')
             ->addOption(
-                'debug',
-                'd',
-                InputOption::VALUE_NONE,
-                'Output XMPP logs'
+                name: 'debug',
+                shortcut: 'd',
+                mode: InputOption::VALUE_NONE,
+                description: 'Output XMPP logs'
             );
     }
 
@@ -162,22 +161,9 @@ class DaemonCommand extends Command
 
         // Galene wrapper
 
-        if (
-            config('galener.xmpp_host')
-            && Validator::domain()->validate(config('galener.xmpp_host'))
-            && !empty(config('galener.xmpp_password'))
-        ) {
-            if (empty(config('galener.galene_path')) || !file_exists(config('galener.galene_path'))) {
-                $output->writeln('<comment>📞 Galener Worker, galene executable not accessible</comment>');
-            } else {
-                $galenerWorker = new Process('exec ' . PHP_BINARY . ' galener.php', cwd: WORKERS_PATH);
-                $galenerWorker->start($loop);
-                $galenerWorker->on('exit', fn() => $output->writeln('<error>Galener Worker crashed</error>'));
-                $output->writeln('<info>📞 Galener Worker launched</info>');
-            }
-        } else {
-            $output->writeln('<comment>📞 Galener Worker configuration empty or invalid</comment>');
-        }
+        $galenerManager = new GalenerManager(loop: $loop, output: $output);
+        $galenerManager->start();
+        $core->setGalenerManager($galenerManager);
 
         (new IoServer($app, $socket, $loop))->run();
 

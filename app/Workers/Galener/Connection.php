@@ -175,7 +175,10 @@ class Connection
                                 jingleParticipant: (string)$this->users->get((string)$json->id),
                             );
 
-                            if ($this->users->has($json->id)) {
+                            if (
+                                $this->users->has($json->id)
+                                || in_array($json->id,  [$this->streamId, $this->screenshareStreamId])
+                            ) {
                                 $this->conference->sendXMPP($this->iq(
                                     type: 'set',
                                     from: $this->conference->getSFUJid(),

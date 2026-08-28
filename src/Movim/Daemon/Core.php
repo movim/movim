@@ -34,6 +34,8 @@ class Core implements MessageComponentInterface
     public LoopInterface $loop;
     public $baseuri;
 
+    public ?GalenerManager $galenerManager = null;
+
     public function __construct(LoopInterface $loop, $baseuri)
     {
         $this->key = \generateKey(32);
@@ -87,6 +89,11 @@ class Core implements MessageComponentInterface
     public function getKey(): string
     {
         return $this->key;
+    }
+
+    public function setGalenerManager(GalenerManager $galenerManager)
+    {
+        $this->galenerManager = $galenerManager;
     }
 
     public function generateWebServerConfig($port)

@@ -10,14 +10,15 @@ $bootstrap = new Movim\Bootstrap;
 $bootstrap->boot(true);
 
 $application = new Application;
-$application->addCommand(new Movim\Console\ClearTemplatesCache);
 $application->addCommand(new Movim\Console\ClearImagesCache);
+$application->addCommand(new Movim\Console\ClearTemplatesCache);
 $application->addCommand(new Movim\Console\CompileLanguages);
 $application->addCommand(new Movim\Console\CompileOpcache);
 $application->addCommand(new Movim\Console\CompileStickers);
 $application->addCommand(new Movim\Console\ConfigCommand);
 $application->addCommand(new Movim\Console\DaemonCommand);
 $application->addCommand(new Movim\Console\EmojisToJsonCommand);
+$application->addCommand(new Movim\Console\GalenerManager);
 $application->addCommand(new Movim\Console\ImportEmojisPack);
 $application->addCommand(new Movim\Console\SessionsTree);
 $application->addCommand(new Movim\Console\SetAdmin);

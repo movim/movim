@@ -34,6 +34,11 @@ class Api
                 'disconnect',
                 'unregister'   => $this->sessionUnregister($post) ?? 'Unregistered',
                 'sessionstree' => $this->core->dumpSessionsTree(),
+
+                'galenerstart' => (string)$this->core->galenerManager->start(),
+                'galenerstop' => (string)$this->core->galenerManager->stop(),
+                'galenerrestart' => (string)$this->core->galenerManager->restart(),
+                'galenerstatus' => (string)$this->core->galenerManager->status(),
             };
 
             return new Response(
