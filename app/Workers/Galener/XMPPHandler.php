@@ -10,7 +10,7 @@ class XMPPHandler
 
     public function __construct(
         private GaleneAPIClient $apiClient,
-        private ConferencesManager $conferencesManager
+        private ConferencesManager $conferencesManager,
     ) {
         $directory = dirname(__FILE__);
 

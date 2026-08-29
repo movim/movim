@@ -4,6 +4,7 @@ namespace App\Workers\Galener\Events;
 
 use App\Workers\Galener\Galener;
 use DOMDocument;
+use Moxl\Stanza\ExternalServices;
 
 class ServicesDisco extends Event
 {
@@ -39,6 +40,19 @@ class ServicesDisco extends Event
         }
 
         file_put_contents(Galener::DATA_CACHE . 'ice-servers.json', json_encode($services));
+
+        // We refresh the configuration each hours
+        global $loop;
+        $loop->addPeriodicTimer(60 * 60, function () {
+            $this->conferencesManager->sendXMPP(
+                $this->iq(
+                    type: 'get',
+                    xml: ExternalServices::request(),
+                    from: config('galener.xmpp_host'),
+                    to: (string)$this->node->from
+                )
+            );
+        });
 
         return null;
     }
