@@ -149,7 +149,14 @@ The configuration is saved in `cache/galener/data/ice-servers.json` (where Galen
 
 ejabberd doesn't authorize local services to send External Service Discover by default.
 
-#### 1. Declare a new `access_rules`
+#### 1. Declare a new `access_rules` and `acl`
+
+```
+acl:
+  sfu_acl:
+    server:
+      - "<sfu.test.com>" # your SFU service subdomain
+```
 
 ```
 access_rules:
