@@ -1,7 +1,7 @@
-Movim Galener Deployment
-========================
+Movim Galener
+=============
 
-This tutorial describes the different steps needed to set up the Galener XMPP service.
+This tutorial describes the different steps needed to set up the Galener XMPP SFU service.
 
 # General information
 
@@ -58,7 +58,7 @@ Owners of group chats hosted on that XMPP server will then see a dedicated butto
 
 When a group chat participant wants to join the call, they call the SFU's virtual user in their room. This user then negotiates an XMPP Jingle session with them and instructs them to forward their media streams (audio and video) to the Galene SFU.
 
-# Setting it up
+# Setting up Galener
 
 ## Create an XMPP service
 
@@ -70,8 +70,9 @@ First, you need to create a new XMPP component on your XMPP server.
 For ejabberd, here is an example of the SFU component declaration in `ejabberd.yml`:
 
 ```
+listen
   -
-    port: 5353
+    port: 5347
     module: ejabberd_service
     access: all
     ip: "::"
@@ -123,3 +124,84 @@ As a group chat owner, you'll see the following button in your room's configurat
 You'll then see the service join your room (in our example, `sfu.xmpp.server`) as an administrator and invite a dedicated virtual user into the group chat.
 
 Movim will automatically detect that this dedicated user can be called, and all participants will be able to initiate a Wide Conference Call.
+
+# Manage Galener
+
+## Manage the worker
+
+Movim Galener can be managed from the console using the `php daemon.php galener` action.
+
+You can start, stop, restart or check the status of the service:
+
+    $ php daemon.php galener [start|stop|restart|status]
+
+    🟢 Running // example
+
+⚠️ Restarting Galener this way doesn't apply the new `GALENER_*` setting in the .env. You still have to restart the whole Movim daemon to do so.
+
+## STUN/TURN configuration discovery
+
+Movim Galener tries to automatically retrieve the STUN/TURN configuration from your XMPP server using [XEP-0215: External Service Discovery](https://xmpp.org/extensions/xep-0215.html) and refresh it every hour.
+
+The configuration is saved in `cache/galener/data/ice-servers.json` (where Galene store its ICE Servers configuration). If you cannot find the `ice-servers.json` file there it means that Movim Galener doesn't have the rights to retrieve the configuration.
+
+### ejabberd configuration
+
+ejabberd doesn't authorize local services to send External Service Discover by default.
+
+#### 1. Declare a new `access_rules`
+
+```
+access_rules:
+  stun_disco:
+    - allow: local
+    - allow: sfu_acl
+```
+
+#### 2. Use it in the `mod_stun_disco` configuration
+
+```
+modules:
+  mod_stun_disco:
+    access: stun_disco
+    credentials_lifetime: 12h
+    services:
+      -
+        host: "<your server ipv4>"
+        port: 3478
+        type: stun
+        transport: udp
+        restricted: false
+      -
+        host: "<your server ipv4>"
+        port: 3478
+        type: turn
+        transport: udp
+        restricted: true
+```
+
+### 3. Add the proper `listen` options
+
+```
+listen:
+  -
+    port: 3478
+    transport: udp
+    module: ejabberd_stun
+    use_turn: true
+    turn_ipv4_address: "<your server ipv4>"
+    # Restrict the port ranges to the standard ones
+    turn_min_port: 49152
+    turn_max_port: 65535
+  -
+    port: 3478
+    module: ejabberd_stun
+    use_turn: true
+    turn_ipv4_address: "<your server ipv4>"
+    turn_min_port: 49152
+    turn_max_port: 65535
+```
+
+You can find more informations on the [ejabberd documentation: mod_stun_disco](https://docs.ejabberd.im/archive/20.07/modules/#mod_stun_disco).
+
+And restart your Movim Galener service to force-refresh the STUN/TURN configuration.

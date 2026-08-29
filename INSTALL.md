@@ -3,7 +3,7 @@ Movim Deployment
 
 This tutorial describes the different steps you need to take to deploy Movim on your webserver.
 
-Movim also provides a XMPP service that handles the audio and video streams when doing conference-calls. Follow [the dedicated Galener documentation to set-it-up](doc/INSTALL_GALENER.md).
+Movim also provides a XMPP service that handles the audio and video streams when doing conference-calls. Follow [the dedicated Galener documentation to set-it-up](doc/GALENER.md).
 
 # Get-Started
 
