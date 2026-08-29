@@ -50,13 +50,15 @@ class RPC
             return;
         }
 
-        $wrapper = new Wrapper;
-        $wrapper->runWidget(
-            widgetName: (string)$request->w,
-            method: (string)$request->f,
-            params: isset($request->p) ? (array)$request->p : [],
-            user: $this->user,
-            sessionId: $sid
-        );
+        if (preg_match('/^ajax/', (string)$request->f)) {
+            $wrapper = new Wrapper;
+            $wrapper->runWidget(
+                widgetName: (string)$request->w,
+                method: (string)$request->f,
+                params: isset($request->p) ? (array)$request->p : [],
+                user: $this->user,
+                sessionId: $sid
+            );
+        }
     }
 }
