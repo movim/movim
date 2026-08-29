@@ -2,8 +2,8 @@
     <h3>{$c->__('room.configure_user')}</h3>
     <ul class="list thick">
         <li>
-            <span class="control icon active divided" onclick="RoomsUtils_ajaxRemoveMember('{$room->conference}', '{$contact->id}')">
-                <i class="material-symbols">delete</i>
+            <span title="{$c->__('room.group_chat_remove')}" class="control icon active divided" onclick="RoomsUtils_ajaxRemoveMember('{$room->conference}', '{$contact->id}')">
+                <i class="material-symbols">group_remove</i>
             </span>
             <span class="primary icon bubble small {if="$presence"}status {$presence->presencekey}{/if}">
                 <img loading="lazy" src="{$contact->getPicture()}">
@@ -14,6 +14,7 @@
             </div>
         </li>
     </ul>
+
     {if="$member"}
     <form name="changeaffiliation">
         <input type="hidden" name="jid" value="{$contact->id}"/>
@@ -25,7 +26,7 @@
                     </span>
                     <div>
                         <div class="select">
-                            <select type="list-single" label="Maximum Number of Occupants" id="affiliation" name="affiliation"
+                            <select type="list-single" id="affiliation" name="affiliation"
                                 onchange="RoomsUtils_ajaxChangeAffiliationConfirm('{$room->conference}', MovimUtils.formToJson('changeaffiliation'));">
                                 <option value="owner" {if="$member->affiliation == 'owner'"}selected{/if} {if="$room->presence && $room->presence->mucaffiliation != 'owner'"}disabled{/if}>
                                     {$c->__('affiliation.owner')}
