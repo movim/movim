@@ -368,5 +368,25 @@ var VisioUtils = {
         }
 
         Visio_ajaxClear(); Dialog_ajaxClear(); Notif.snackbarClear();
+    },
+
+    updateStartedAtCounters: function (startedAt) {
+        document.querySelectorAll('span[data-started-at]').forEach(span => {
+            var dateStartedAt = Date.parse(span.dataset.startedAt);
+            var dateNow = new Date();
+
+            var seconds = Math.floor((dateNow - (dateStartedAt)) / 1000);
+            var minutes = Math.floor(seconds / 60);
+            var hours = Math.floor(minutes / 60);
+            var days = Math.floor(hours / 24);
+
+            hours = hours - (days * 24);
+            minutes = minutes - (days * 24 * 60) - (hours * 60);
+            seconds = seconds - (days * 24 * 60 * 60) - (hours * 60 * 60) - (minutes * 60);
+
+            span.innerHTML = hours > 0
+                ? hours + ':' + String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0')
+                : String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+        });
     }
 }

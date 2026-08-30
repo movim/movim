@@ -6,6 +6,7 @@ use Movim\Image;
 use Movim\ImageSize;
 use Moxl\Xec\Action\Presence\Muc;
 use Awobaz\Compoships\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Presence extends Model
 {
@@ -148,7 +149,7 @@ class Presence extends Model
     {
         $users = [];
 
-        if (!empty($this->attributes['coin_xml'])) {
+        if ($this->hasSFU()) {
             $xml = simplexml_load_string($this->attributes['coin_xml']);
 
             if ($xml !== false) {
@@ -177,6 +178,23 @@ class Presence extends Model
     public function getSFUUsersCountAttribute(): int
     {
         return count($this->getSFUUsersAttribute());
+    }
+
+    public function getSFUStartedAtAttribute(): ?Carbon
+    {
+        $startedAt = null;
+
+        if ($this->hasSFU()) {
+            $xml = simplexml_load_string($this->attributes['coin_xml']);
+
+            if ($xml !== false) {
+                if ($xml->{'conference-started-at'}) {
+                    $startedAt = Carbon::parse($xml->{'conference-started-at'}->attributes()->{'started-at'});
+                }
+            }
+        }
+
+        return $startedAt;
     }
 
     public static function findByStanza(User $user, \SimpleXMLElement $stanza): Presence

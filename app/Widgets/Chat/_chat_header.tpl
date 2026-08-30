@@ -175,15 +175,25 @@
                                 <i class="material-symbols icon blue blink">video_call</i>
                                 {$c->__('visio.in_call')}
                             {/if}
+                            <span class="second" title="{$c->prepareDate($conference->sfuPresence->SFUStartedAt)}" data-started-at="{$conference->sfuPresence->SFUStartedAt->toISOString()}">00:00</span>
                             <span class="second">
                                 {$conference->sfuPresence->SFUUsersCount}
                                 <i class="material-symbols">people</i>
                             </span>
                             •
+                            {loop="$conference->sfuPresence->SFUUsers"}
+                                <span class="icon bubble tiny">
+                                    {if="array_key_exists('avatar', $value)"}
+                                        <img loading="lazy" src="{$value.avatar}">
+                                    {else}
+                                        <i class="material-symbols">phone</i>
+                                    {/if}
+                                </span><span>{if="array_key_exists('name', $value)"}{$value.name}{else}{$value.jid}{/if}</span>
+                            {/loop}
                         {/if}
                         {if="!$conference->connected"}
                             {$c->__('button.connecting')}…
-                        {elseif="$conference->connected && $conference->isGroupChat()"}
+                        {elseif="$conference->connected && $conference->isGroupChat() && !$conference->sfuPresence"}
                             {$connected = $conference->otherPresences()->take(25)->get()}
                             {loop="$connected"}
                                 <span onclick="Chat.quoteMUC('{$value->resource}', true);" class="icon bubble tiny">
@@ -192,7 +202,7 @@
                                 {if="$key < $connected->count() -1"}
                                 {/if}
                             {/loop}
-                        {elseif="!empty($conference->subject)"}
+                        {elseif="!empty($conference->subject) && !$conference->sfuPresence"}
                             <span onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">{$conference->subject}</span>
                         {/if}
                     {/if}

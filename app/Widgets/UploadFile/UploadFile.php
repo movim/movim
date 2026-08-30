@@ -6,7 +6,6 @@ use App\Upload;
 use Movim\Widget\Base;
 use Psr\Http\Message\ResponseInterface;
 use React\Http\Browser;
-use React\Stream\ReadableResourceStream;
 
 class UploadFile extends Base
 {

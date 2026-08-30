@@ -300,6 +300,11 @@ MovimJingleSession.prototype.onCandidate = function (candidate, mid, mlineindex)
         'sdpMLineIndex': mlineindex
     });
 
+    // When we share our own screen have some candidates from the SFU for our PC
+    if (this.jid == MovimVisio.sfu && MovimVisio.screenshareSFUPc) {
+        MovimVisio.screenshareSFUPc.addIceCandidate(iceCandidate).catch(error => MovimUtils.logError(error));
+    }
+
     if (this.screenSharingPc) {
         // In this case we send the candidate to both pcs, and let it sort it out ¯\_(ツ)_/¯
         this.screenSharingPc.addIceCandidate(iceCandidate).catch(error => MovimUtils.logError(error));

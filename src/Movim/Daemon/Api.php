@@ -31,12 +31,13 @@ class Api
                 'linked'       => (string) count($this->core->getStartedSessions()),
                 'started'      => (string) $this->sessionsStarted(),
                 'mujiincall'   => (string) $this->isMujiInCall($post),
+                //'jidincall'    => (string) $this->isJidInCall($post),
                 'disconnect',
                 'unregister'   => $this->sessionUnregister($post) ?? 'Unregistered',
                 'sessionstree' => $this->core->dumpSessionsTree(),
 
                 'galenerstart' => (string)$this->core->galenerManager->start(),
-                'galenerstop' => (string)$this->core->galenerManager->stop(),
+                'galenerstop'  => (string)$this->core->galenerManager->stop(),
                 'galenerrestart' => (string)$this->core->galenerManager->restart(),
                 'galenerstatus' => (string)$this->core->galenerManager->status(),
             };
@@ -95,6 +96,21 @@ class Api
 
         return $linker->currentCall->isJidInCall($post['jid'])
             && $linker->currentCall->mujiRoom === $post['mujiroom'];
+    }
+
+    public function isJidInCall(array $post): bool
+    {
+        if (!isset($post['sessionid'], $post['jid'])) {
+            return false;
+        }
+
+        $linker = linker($post['sessionid']);
+
+        if (!$linker || !$linker->currentCall) {
+            return false;
+        }
+
+        return $linker->currentCall->isJidInCall($post['jid']);
     }
 
     public function sessionUnregister(array $post): void

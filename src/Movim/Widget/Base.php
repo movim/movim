@@ -148,6 +148,18 @@ class Base
             : null;
     }
 
+    /*public function isJidInCall(string $jid): bool
+    {
+        $sessionId = $this->sessionId ?? $this->me->session?->id;
+
+        return linker($sessionId)
+            ? linker($sessionId)->currentCall->isJidInCall($jid)
+            : (bool)requestAPI('jidincall', post: [
+                'sessionid' => $sessionId,
+                'jid' => $jid,
+            ]);
+    }*/
+
     public function dialog(...$args)
     {
         (new Dialog($this->me))->fill(...$args);

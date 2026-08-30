@@ -22,6 +22,9 @@
                 {/if}
                 <div>
                     <p class="line">
+                        {if="$value->sfuPresence && $value->sfuPresence->SFUStartedAt"}
+                            <span class="info" title="{$c->prepareDate($value->sfuPresence->SFUStartedAt)}" data-started-at="{$value->sfuPresence->SFUStartedAt->toISOString()}"></span>
+                        {/if}
                         {if="$value->pinned"}
                             <span class="info">
                                 <i class="material-symbols fill" title="{$c->__('room.pinned')}">push_pin</i>

@@ -26,6 +26,8 @@ var MovimVisio = {
     mouseMovement: null,
     mouseMovementTimeout: 5000,
 
+    startedAtTimer: null,
+
     sfu: null,
 
     load: function () {
@@ -109,6 +111,12 @@ var MovimVisio = {
         if (typeof navigator.mediaDevices.getDisplayMedia == 'undefined') {
             document.querySelector('#screen_sharing').classList.add('hide');
         }
+
+        if (MovimVisio.startedAtTimer) {
+            clearInterval(MovimVisio.startedAtTimer);
+        }
+
+        setInterval(VisioUtils.updateStartedAtCounters, 1000);
 
         Dialog_ajaxClear();
         Notif.snackbarClear();

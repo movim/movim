@@ -22,6 +22,9 @@
 
             <div>
                 <p class="line">
+                    {if="$conference->sfuPresence && $conference->sfuPresence->SFUStartedAt"}
+                        <span class="info" title="{$c->prepareDate($conference->sfuPresence->SFUStartedAt)}" data-started-at="{$conference->sfuPresence->SFUStartedAt->toISOString()}"></span>
+                    {/if}
                     {if="$conference->pinned"}
                         <span class="info">
                             <i class="material-symbols fill" title="{$c->__('room.pinned')}">push_pin</i>
@@ -51,7 +54,7 @@
                         {if="$conference->mujiPresences->isNotEmpty()"}
                             <i class="material-symbols call icon {if="$conference->presence->hasMuji()"}green blink{else}blue{/if}" title="{$c->__('visio.in_call')}">phone</i>
                         {elseif="$conference->sfuPresence && $conference->sfuPresence->SFUUsersCount > 0"}
-                            <i class="material-symbols call icon {if="$c->currentCall()?->isJidInCall($conference->sfuPresence->mucjid)"}green blink{else}blue{/if}" title="{$c->__('visio.in_call')}">call</i>
+                            <i class="material-symbols call icon {if="$c->currentCall()?->isJidInCall($conference->sfuPresence->mucjid)"}green blink{else}blue{/if}" title="{$c->__('visio.in_call')}">video_call</i>
                         {/if}
                         {$conference->title}
                     </span>

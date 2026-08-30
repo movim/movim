@@ -2,6 +2,7 @@
 
 namespace App\Workers\Galener;
 
+use Carbon\Carbon;
 use DOMDocument;
 use Movim\Jid;
 use Moxl\Stanza\Message;
@@ -15,6 +16,9 @@ class Conference
     private array $members = [];
     private bool $connected = false;
     private string $resource;
+    private ?Carbon $startedAt = null;
+
+    public const CONFERENCE_STARTED_AT_XMLNS = '{https://movim.eu}conference_started_at';
 
     public function __construct(
         public string $jid,
@@ -33,6 +37,11 @@ class Conference
     {
         if ($this->connected && array_key_exists($jid->bareJid(), $this->members)) {
             $this->connections[(string)$jid] = new Connection(conference: $this, jid: $jid, apiClient: $this->apiClient);
+
+            if (count($this->connections) == 1) {
+                $this->startedAt = Carbon::now();
+            }
+
             $this->sendXMPP($this->generatePresence());
         }
     }
@@ -42,6 +51,11 @@ class Conference
         if (array_key_exists((string)$jid, $this->connections)) {
             $this->connections[(string)$jid]->end();
             unset($this->connections[(string)$jid]);
+
+            if (count($this->connections) == 0) {
+                $this->startedAt = null;
+            }
+
             $this->sendXMPP($this->generatePresence());
         }
     }
@@ -185,6 +199,13 @@ class Conference
             $conferenceInfo->setAttribute('entity', 'xmpp:' . (string)$this->members[$this->getSFUJid()]);
             $conferenceInfo->setAttribute('state', 'full');
             $conferenceInfo->setAttribute('version', '1');
+
+            if ($this->startedAt) {
+                $conferenceStartedAt = $presence->createElement('conference-started-at');
+                $conferenceStartedAt->setAttribute('xmlns', self::CONFERENCE_STARTED_AT_XMLNS);
+                $conferenceStartedAt->setAttribute('started-at', $this->startedAt->toISOString());
+                $conferenceInfo->appendChild($conferenceStartedAt);
+            }
 
             $conferenceState = $presence->createElement('conference-state');
             $conferenceState->appendChild($presence->createElement('user-count', count($this->connections)));
