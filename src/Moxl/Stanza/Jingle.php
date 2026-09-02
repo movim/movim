@@ -122,19 +122,30 @@ class Jingle
         return $dom;
     }
 
-    public static function messageReject($id, $to = false)
-    {
+    public static function messageReject(
+        string $id,
+        ?string $to = null,
+        ?string $from = null,
+        ?string $reasonText = null
+    ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
         $message->setAttribute('type', 'chat');
-        if ($to) {
-            $message->setAttribute('to', $to);
-        }
+
+        if ($to) $message->setAttribute('to', $to);
+        if ($from) $message->setAttribute('from', $from);
+
         $dom->appendChild($message);
 
-        $proceed = $dom->createElementNS('urn:xmpp:jingle-message:0', 'reject');
-        $proceed->setAttribute('id', $id);
-        $message->appendChild($proceed);
+        $reject = $dom->createElementNS('urn:xmpp:jingle-message:0', 'reject');
+        $reject->setAttribute('id', $id);
+        $message->appendChild($reject);
+
+        $reason = $dom->createElementNS('urn:xmpp:jingle:1', 'reason');
+        $reject->appendChild($reason);
+
+        $reason->appendChild($dom->createElement('cancel'));
+        $reason->appendChild($dom->createElement('text', $reasonText ?? 'Rejected'));
 
         return $dom;
     }

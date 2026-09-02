@@ -372,6 +372,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     width: auto;
     object-fit: cover;
     position: absolute;
+    z-index: 1;
 }
 
 #visio .participant video.screen {

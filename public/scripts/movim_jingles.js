@@ -125,7 +125,7 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
             srcObject = new MediaStream();
             srcObject.addTrack(event.track);
         }
-
+console.log(event.track)
         if (event.track.kind == 'audio') {
             if (this.tracksScreen[event.transceiver.mid]) {
                 this.remoteScreenAudio.srcObject = srcObject;

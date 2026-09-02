@@ -32,12 +32,16 @@ class Presence extends Event
                                 $this->conferencesManager->detroyConference($this->node->from);
                             } else/*if (in_array($item->attributes()->affiliation, ['owner', 'admin']))*/ {
                                 $conference->xmppAddMember(new Jid((string)$item->attributes()->jid));
-                            /*} else {
+                                /*} else {
                                 $conference->xmppNotAdminMessage();*/
                                 // For now ejabberd cannot allow the service to be admin https://github.com/processone/ejabberd/issues/4611
                             }
                         } else {
-                            $conference->xmppAddMember(new Jid((string)$item->attributes()->jid));
+                            if ($this->node->type === 'unavailable') {
+                                $conference->xmppRemoveMember(new Jid((string)$item->attributes()->jid));
+                            } else {
+                                $conference->xmppAddMember(new Jid((string)$item->attributes()->jid));
+                            }
                         }
                     }
                 }

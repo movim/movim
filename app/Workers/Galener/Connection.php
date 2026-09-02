@@ -248,6 +248,27 @@ class Connection
         }
     }
 
+    public function xmppTerminate(XMPPNode $node)
+    {
+        $sid = (string)$node->stanza->jingle->attributes()->sid;
+
+        if ($sid === $this->screenshareSid) {
+            $this->xmppScreenshareTerminate($node);
+            return;
+        }
+
+        if ($sid === $this->jingleSid) {
+            if ($this->streamId) {
+                $this->send(['type' => 'close', 'id' => $this->streamId]);
+            }
+
+            $this->jingleSid = null;
+            $this->contents = collect();
+            $this->acceptedContents = collect();
+            $this->users = collect();
+        }
+    }
+
     public function xmppPong(XMPPNode $node)
     {
         $this->send(['type' => 'pong']);

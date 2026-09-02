@@ -14,7 +14,15 @@ class JinglePropose extends Event
     public function handle(): ?\DOMDocument
     {
         $conference = $this->conferencesManager->getConferenceBySFUJid($this->node->to);
-        $conference->addConnection($this->node->from);
+
+        if (!$conference || !$conference->addConnection($this->node->from)) {
+            return Jingle::messageReject(
+                to: $this->node->from,
+                from: $this->node->to,
+                id: (string)$this->node->stanza->propose->attributes()->id,
+                reasonText: 'Galener: propose from ' . (string)$this->node->from . ' had no matching member/conference yet'
+            );
+        }
 
         return Jingle::messageProceed(
             to: $this->node->from,

@@ -25,7 +25,7 @@ class Jingle extends Event
 
                 case 'session-terminate':
                     if ($connection = $conference->getConnection($this->node->from)) {
-                        $connection->xmppScreenshareTerminate($this->node);
+                        $connection->xmppTerminate($this->node);
                     }
                     break;
 

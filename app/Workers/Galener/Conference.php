@@ -33,7 +33,7 @@ class Conference
      * Connections
      */
 
-    public function addConnection(Jid $jid)
+    public function addConnection(Jid $jid): bool
     {
         if ($this->connected && array_key_exists($jid->bareJid(), $this->members)) {
             $this->connections[(string)$jid] = new Connection(conference: $this, jid: $jid, apiClient: $this->apiClient);
@@ -43,7 +43,10 @@ class Conference
             }
 
             $this->sendXMPP($this->generatePresence());
+            return true;
         }
+
+        return false;
     }
 
     public function removeConnection(Jid $jid)
@@ -154,6 +157,12 @@ class Conference
             $this->connected = true;
             $this->sendXMPP($this->generatePresence());
         }
+    }
+
+    public function xmppRemoveMember(Jid $jid)
+    {
+        unset($this->members[$jid->bareJid()]);
+        $this->removeConnection($connection->jid);
     }
 
     public function getSFUJid(): string
