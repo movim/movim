@@ -1,8 +1,10 @@
 var VisioUtils = {
+    microphone: null,
     maxLevel: 0,
     remoteMaxLevel: 0,
     audioContext: null,
-    remoteAudioContext: null,
+    meter: null,
+    rafId: null,
 
     handleAudio: function () {
         if (VisioUtils.audioContext) {
@@ -13,7 +15,7 @@ var VisioUtils = {
         VisioUtils.audioContext = new AudioContext();
 
         try {
-            var microphone = VisioUtils.audioContext.createMediaStreamSource(
+            VisioUtils.microphone = VisioUtils.audioContext.createMediaStreamSource(
                 MovimVisio.localAudio.srcObject
             );
         } catch (error) {
@@ -33,65 +35,88 @@ var VisioUtils = {
             defaultMicrophone.classList.add('muted');
         }
 
-        microphone.connect(javascriptNode);
-        javascriptNode.connect(VisioUtils.audioContext.destination);
+        VisioUtils.meter = VisioUtils.audioContext.createAnalyser();
+        VisioUtils.meter.fftSize = 256;
+        VisioUtils.microphone.connect(VisioUtils.meter);
 
-        javascriptNode.onaudioprocess = function (event) {
-            let inpt = event.inputBuffer.getChannelData(0);
-            let instant = 0.0;
-            let sum = 0.0;
+        function startAnalyzer() {
+            if (!VisioUtils.meter) return;
 
-            for (let i = 0; i < inpt.length; ++i) {
-                sum += inpt[i] * inpt[i];
+            const dataArray = new Uint8Array(VisioUtils.meter.frequencyBinCount);
+
+            function update() {
+                VisioUtils.meter.getByteFrequencyData(dataArray);
+
+                let sum = 0;
+                for (let i = 0; i < dataArray.length; i++) {
+                    sum += dataArray[i];
+                }
+
+                const avg = sum / dataArray.length;
+                const level = Math.min(1, (avg / 255) ** .3);
+                VisioUtils.rafId = requestAnimationFrame(update);
+
+                let step = 0;
+
+                if (level == 0) {
+                    isMuteStep++;
+                } else {
+                    isMuteStep = 0;
+                }
+
+                if (isMuteStep > 32) {
+                    if (noMicSound) {
+                        noMicSound.classList.remove('disabled');
+                    }
+
+                    if (defaultMicrophone) {
+                        defaultMicrophone.classList.add('muted');
+                    }
+                } else {
+                    if (noMicSound) {
+                        noMicSound.classList.add('disabled');
+                    }
+
+                    if (defaultMicrophone) {
+                        defaultMicrophone.classList.remove('muted');
+                    }
+
+                    // Lobby level
+                    if (isMuteStep <= 5) {
+                        document.querySelectorAll('.level span').forEach(span => {
+                            if (step < Math.floor(level * 10)) {
+                                span.classList.remove('disabled');
+                            } else {
+                                span.classList.add('disabled');
+                            }
+
+                            step++;
+                        });
+
+                        toggleAudio.style.setProperty('--level', level.toFixed(2));
+                    }
+                }
             }
+            update();
+        }
 
-            instant = Math.sqrt(sum / inpt.length);
-            VisioUtils.maxLevel = Math.max(VisioUtils.maxLevel, instant);
+        startAnalyzer();
+    },
 
-            if (VisioUtils.maxLevel <= 0.005) VisioUtils.maxLevel = 0.005;
+    stopAudio: function () {
+        if (VisioUtils.rafId) {
+            cancelAnimationFrame(VisioUtils.rafId);
+            VisioUtils.rafId = null;
+        }
 
-            let base = (instant / VisioUtils.maxLevel);
-            let level = (base > 0.05) ? base ** .3 : 0;
-            let step = 0;
+        if (VisioUtils.microphone) {
+            VisioUtils.microphone.disconnect();
+            VisioUtils.microphone = null;
+        }
 
-            if (level == 0) {
-                isMuteStep++;
-            } else {
-                isMuteStep = 0;
-            }
-
-            if (isMuteStep > 32) {
-                if (noMicSound) {
-                    noMicSound.classList.remove('disabled');
-                }
-
-                if (defaultMicrophone) {
-                    defaultMicrophone.classList.add('muted');
-                }
-            } else {
-                if (noMicSound) {
-                    noMicSound.classList.add('disabled');
-                }
-
-                if (defaultMicrophone) {
-                    defaultMicrophone.classList.remove('muted');
-                }
-
-                // Lobby level
-                if (isMuteStep <= 5) {
-                    document.querySelectorAll('.level span').forEach(span => {
-                        if (step < Math.floor(level * 10)) {
-                            span.classList.remove('disabled');
-                        } else {
-                            span.classList.add('disabled');
-                        }
-
-                        step++;
-                    });
-
-                    toggleAudio.style.setProperty('--level', level.toFixed(2));
-                }
-            }
+        if (VisioUtils.audioContext) {
+            VisioUtils.audioContext.close();
+            VisioUtils.audioContext = null;
         }
     },
 

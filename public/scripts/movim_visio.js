@@ -381,10 +381,7 @@ var MovimVisio = {
             document.exitFullscreen();
         }
 
-        if (VisioUtils.audioContext) {
-            VisioUtils.audioContext.close();
-            VisioUtils.audioContext = null;
-        }
+        VisioUtils.stopAudio();
 
         if (MovimVisio.localAudio) {
             let stream = MovimVisio.localAudio.srcObject;

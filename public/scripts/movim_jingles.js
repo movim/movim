@@ -45,6 +45,7 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     this.remoteVideo.autoplay = true;
     this.remoteVideo.disablePictureInPicture = true;
     this.remoteVideo.poster = BASE_URI + 'theme/img/empty.png';
+    this.remoteVideo.muted = true;
     this.participant.appendChild(this.remoteVideo);
 
     this.remoteAudio = document.createElement('audio');
@@ -308,7 +309,7 @@ MovimJingleSession.prototype.onCandidate = function (candidate, mid, mlineindex)
     if (this.screenSharingPc) {
         // In this case we send the candidate to both pcs, and let it sort it out ¯\_(ツ)_/¯
         this.screenSharingPc.addIceCandidate(iceCandidate).catch(error => MovimUtils.logError(error));
-    } else if (this.pc) {
+    } else if (this.pc && this.pc.remoteDescription) {
         this.pc.addIceCandidate(iceCandidate).catch(error => MovimUtils.logError(error));
     }
 }
