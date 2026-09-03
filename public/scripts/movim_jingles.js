@@ -114,7 +114,7 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
         let background = document.createElement('img');
         background.classList.add('avatar');
         background.src = this.avatarUrl;
-        this.participant.appendChild(background);
+        this.participant.prepend(background);
     }
 
     this.pc.ontrack = event => {
@@ -126,7 +126,7 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
             srcObject = new MediaStream();
             srcObject.addTrack(event.track);
         }
-console.log(event.track)
+
         if (event.track.kind == 'audio') {
             if (this.tracksScreen[event.transceiver.mid]) {
                 this.remoteScreenAudio.srcObject = srcObject;

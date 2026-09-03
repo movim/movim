@@ -45,6 +45,8 @@ var VisioUtils = {
             const dataArray = new Uint8Array(VisioUtils.meter.frequencyBinCount);
 
             function update() {
+                if (!VisioUtils.meter) return;
+
                 VisioUtils.meter.getByteFrequencyData(dataArray);
 
                 let sum = 0;
