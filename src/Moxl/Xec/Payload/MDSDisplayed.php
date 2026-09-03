@@ -11,7 +11,8 @@ class MDSDisplayed extends Payload
         }
 
         if (
-            $parent->addresses?->attributes()->xmlns == 'http://jabber.org/protocol/address'
+            $parent->addresses
+            && $parent->addresses->attributes()->xmlns == 'http://jabber.org/protocol/address'
             && $this->me?->session
             && $parent->addresses->address->attributes()->jid == $this->me->id . '/' . $this->me->session->resource
         ) {

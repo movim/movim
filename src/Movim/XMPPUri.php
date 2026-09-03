@@ -18,7 +18,7 @@ class XMPPUri
     public function __construct(string $uri)
     {
         $this->uri = parse_url($uri);
-        if ($this->uri && $this->uri['scheme'] == 'xmpp') {
+        if ($this->uri && array_key_exists('scheme', $this->uri) && $this->uri['scheme'] == 'xmpp') {
             if (isset($this->uri['query'])) {
                 if ($this->uri['query'] == 'join') {
                     $this->type = 'room';

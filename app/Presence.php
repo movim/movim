@@ -150,7 +150,7 @@ class Presence extends Model
         $users = [];
 
         if ($this->hasSFU()) {
-            $xml = simplexml_load_string($this->attributes['coin_xml']);
+            $xml = @simplexml_load_string($this->attributes['coin_xml']);
 
             if ($xml !== false) {
                 foreach ($xml->users->user as $user) {
@@ -185,7 +185,7 @@ class Presence extends Model
         $startedAt = null;
 
         if ($this->hasSFU()) {
-            $xml = simplexml_load_string($this->attributes['coin_xml']);
+            $xml = @simplexml_load_string($this->attributes['coin_xml']);
 
             if ($xml !== false) {
                 if ($xml->{'conference-started-at'}) {

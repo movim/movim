@@ -289,47 +289,48 @@ class Chat extends \Movim\Widget\Base
 
                     if (
                         $subscription
-                        && (
+                    ) {
+                        if (
                             $subscription->notify == 'always'
                             || ($subscription->notify == 'on-mention' && $message->quoted)
-                        )
-                    ) {
-                        $title = $conference->spaceInfo?->name
-                            ? $conference->spaceInfo->name . ' • '
-                            : '';
-                        $title .= $conference->name ?? $from;
+                        ) {
+                            $title = $conference->spaceInfo?->name
+                                ? $conference->spaceInfo->name . ' • '
+                                : '';
+                            $title .= $conference->name ?? $from;
 
-                        $this->notif(
-                            key: $conference->notifKey,
-                            title: $title,
-                            body: $message->resource . ': ' . $rawbody,
-                            url: $conference->route,
-                            picture: $subscription->info?->getPicture(placeholder: $subscription->info?->name),
-                            time: 4,
-                            actions: [[
-                                'title' => $this->__('button.reply'),
-                                'action' => 'space_chat',
-                            ]],
-                            data: [
-                                'server' => $conference->space_server,
-                                'node' => $conference->space_node,
-                                'room' => $conference->conference
-                            ],
-                            rpcCall: 'Notif.incomingMessage'
+                            $this->notif(
+                                key: $conference->notifKey,
+                                title: $title,
+                                body: $message->resource . ': ' . $rawbody,
+                                url: $conference->route,
+                                picture: $subscription->info?->getPicture(placeholder: $subscription->info?->name),
+                                time: 4,
+                                actions: [[
+                                    'title' => $this->__('button.reply'),
+                                    'action' => 'space_chat',
+                                ]],
+                                data: [
+                                    'server' => $conference->space_server,
+                                    'node' => $conference->space_node,
+                                    'room' => $conference->conference
+                                ],
+                                rpcCall: 'Notif.incomingMessage'
+                            );
+                        }
+
+                        Wrapper::getInstance()->iterate(
+                            'space_counter',
+                            (new Packet)->pack(
+                                $this->me->unreads(space: [$conference->space_server, $conference->space_node]),
+                                $subscription->counterId
+                            ),
+                            user: $this->me,
+                            sessionId: $this->sessionId
                         );
+
+                        $spaceCounter = true;
                     }
-
-                    Wrapper::getInstance()->iterate(
-                        'space_counter',
-                        (new Packet)->pack(
-                            $this->me->unreads(space: [$conference->space_server, $conference->space_node]),
-                            $subscription->counterId
-                        ),
-                        user: $this->me,
-                        sessionId: $this->sessionId
-                    );
-
-                    $spaceCounter = true;
                 } elseif ($conference && $conference->notify == 0) {
                     $message->seen = true;
                     $message->save();
