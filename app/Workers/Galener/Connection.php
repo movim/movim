@@ -134,6 +134,7 @@ class Connection
                                 if (
                                     (string)$key == (string)$json->id
                                     && ($this->users->has((string)$json->id))
+                                    && $this->jingleSid
                                 ) {
                                     $stj = new SDPtoJingle(
                                         user: new User([
