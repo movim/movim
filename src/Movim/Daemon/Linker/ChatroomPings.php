@@ -17,8 +17,8 @@ class ChatroomPings
 {
     private $_chatrooms = [];
     private $_chatroomsTimeout = [];
-    private $_pingIn = 5 * 60;
-    private $_pongTimeout = 5 * 60 + 120;
+    public const PING_IN = 5 * 60;
+    public const PONG_TIMEOUT = 5 * 60 + 120;
 
     public function __construct(private ?User $user = null)
     {
@@ -35,7 +35,7 @@ class ChatroomPings
 
         $this->clear($from);
 
-        $this->_chatrooms[$from] = $loop->addTimer($this->_pingIn, function () use ($from) {
+        $this->_chatrooms[$from] = $loop->addTimer(self::PING_IN, function () use ($from) {
             $presence = $this->user->session->conferences()
                 ->where('conference', $from)
                 ->first()?->presence;
@@ -48,7 +48,7 @@ class ChatroomPings
             }
         });
 
-        $this->_chatroomsTimeout[$from] = $loop->addTimer($this->_pongTimeout, function () use ($from) {
+        $this->_chatroomsTimeout[$from] = $loop->addTimer(self::PONG_TIMEOUT, function () use ($from) {
             (new WidgetRooms($this->user, sessionId: $this->user->session->id))->ajaxExit($from);
         });
     }

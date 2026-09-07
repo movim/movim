@@ -4,11 +4,14 @@ namespace App\Workers\Galener;
 
 use Carbon\Carbon;
 use DOMDocument;
+use Movim\Daemon\Linker\ChatroomPings;
 use Movim\Jid;
 use Moxl\Stanza\Message;
 use Moxl\Stanza\Muc;
+use Moxl\Stanza\Ping;
 use Moxl\Stanza\Presence;
 use Moxl\Stanza\Register;
+use React\EventLoop\TimerInterface;
 
 class Conference
 {
@@ -17,6 +20,7 @@ class Conference
     private bool $connected = false;
     private string $resource;
     private ?Carbon $startedAt = null;
+    private ?TimerInterface $pingTimer = null;
 
     public const CONFERENCE_STARTED_AT_XMLNS = '{https://movim.eu}conference_started_at';
 
@@ -27,6 +31,13 @@ class Conference
     ) {
         $this->apiClient->createGroup($jid);
         $this->resource = config('galener.xmpp_host') . '_' . generateKey(6);
+
+        global $loop;
+        $this->pingTimer = $loop->addPeriodicTimer(ChatroomPings::PING_IN, function () {
+            if ($this->connected) {
+                $this->xmppPing();
+            }
+        });
     }
 
     /**
@@ -133,6 +144,26 @@ class Conference
         $this->sendXMPP($dom);
 
         $this->apiClient->deleteGroup($this->jid);
+
+        global $loop;
+        $loop->cancelTimer($this->pingTimer);
+    }
+
+
+    public function xmppPing()
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $iq = $dom->createElementNS('jabber:client', 'iq');
+        $dom->appendChild($iq);
+        $iq->setAttribute('to', $this->getRoomJid());
+        $iq->setAttribute('from', $this->getSFUJid());
+        $iq->setAttribute('type', 'get');
+        $iq->setAttribute('id', \generateKey());
+
+        $xml = $dom->importNode(Ping::entity(), true);
+        $iq->appendChild($xml);
+
+        $this->sendXMPP($dom);
     }
 
     public function xmppNotAdminMessage()
@@ -162,7 +193,7 @@ class Conference
     public function xmppRemoveMember(Jid $jid)
     {
         unset($this->members[$jid->bareJid()]);
-        $this->removeConnection($connection->jid);
+        $this->removeConnection($jid);
     }
 
     public function getSFUJid(): string
