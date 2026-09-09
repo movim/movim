@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-28 18:29+0200\n"
+"POT-Creation-Date: 2026-09-09 12:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://app.transifex.com/movim/movim/language/en/)\n"
@@ -347,27 +347,27 @@ msgstr "List of allowed XMPP servers"
 
 #: [ssrfwhitelist]title
 msgid "Whitelisted Domains for SSRF Protection"
-msgstr ""
+msgstr "Whitelisted Domains for SSRF Protection"
 
 #: [ssrfwhitelist]info1
 msgid "Movim is protecting you against SSRF vulnerabilities. This means that Movim blocks all URLs (shared links, avatars, and pictures) that point to your local network IPs."
-msgstr ""
+msgstr "Movim is protecting you against SSRF vulnerabilities. This means that Movim blocks all URLs (shared links, avatars, and pictures) that point to your local network IPs."
 
 #: [ssrfwhitelist]info2
 msgid "See the related SSRF documentation on developer.mozilla.org."
-msgstr ""
+msgstr "See the related SSRF documentation on developer.mozilla.org."
 
 #: [ssrfwhitelist]info3
 msgid "Add all domains hosted locally here (for example, if you host a blog, an XMPP file upload service, or other web services)."
-msgstr ""
+msgstr "Add all domains hosted locally here (for example, if you host a blog, an XMPP file upload service, or other web services)."
 
 #: [ssrfwhitelist]info4
 msgid "This setting will be applied after a daemon restart."
-msgstr ""
+msgstr "This setting will be applied after a daemon restart."
 
 #: [ssrfwhitelist]label
 msgid "List of Locally Authorized Domains"
-msgstr ""
+msgstr "List of Locally Authorized Domains"
 
 #: [information]description [communityconfig]description
 msgid "Description"
@@ -394,7 +394,6 @@ msgid "Leave this field blank if you don’t want to show any message."
 msgstr "Leave this field blank if you don’t want to show any message."
 
 #: [information]label
-#, fuzzy
 msgid "Information Message"
 msgstr "Information Message"
 
@@ -777,6 +776,22 @@ msgstr "Subject changed"
 #: [chatroom]administration [page]administration
 msgid "Administration"
 msgstr "Administration"
+
+#: [wide_conference_call]enable_title
+msgid "Enable Wide Conference Call"
+msgstr "Enable Wide Conference Call"
+
+#: [wide_conference_call]enable_text
+msgid "Scale this call to more participants."
+msgstr "Scale this call to more participants."
+
+#: [wide_conference_call]enable_info
+msgid "An SFU (Selective Forwarding Unit) service was detected on this server. Unlike the current peer-to-peer (P2P) setup, where every participant sends their audio/video stream directly to everyone else, an SFU relays streams through a central server. This significantly reduces the bandwidth and CPU load on each participant's device, allowing the conference call to scale to many more people."
+msgstr "An SFU (Selective Forwarding Unit) service was detected on this server. Unlike the current peer-to-peer (P2P) setup, where every participant sends their audio/video stream directly to everyone else, an SFU relays streams through a central server. This significantly reduces the bandwidth and CPU load on each participant's device, allowing the conference call to scale to many more people."
+
+#: [wide_conference_call]enable_info2
+msgid "Enabling Wide Conference Call will invite the SFU service into this conference call."
+msgstr "Enabling Wide Conference Call will invite the SFU service into this conference call."
 
 #: [chatactions]copy_text
 msgid "Copy the text"
@@ -2523,6 +2538,14 @@ msgctxt "[room]group_chat_members"
 msgid "Members"
 msgstr "Members"
 
+#: [room]group_chat_remove
+msgid "Remove a member"
+msgstr "Remove a member"
+
+#: [room]group_chat_remove_text
+msgid "You will remove the following member, are you sure?"
+msgstr "You will remove the following member, are you sure?"
+
 #: [room]banned_add
 msgid "Ban someone"
 msgstr "Ban someone"
@@ -3535,6 +3558,10 @@ msgstr "Registered"
 msgid "Gateway"
 msgstr "Gateway"
 
+#: [client]im
+msgid "Server"
+msgstr "Server"
+
 #: [presence]online
 msgid "Online"
 msgstr "Online"
@@ -4122,7 +4149,3 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
-
-#~ msgctxt "[information]label"
-#~ msgid "Information Message"
-#~ msgstr "Information Message"

@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-28 18:29+0200\n"
+"POT-Creation-Date: 2026-09-09 12:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2026\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -256,7 +256,7 @@ msgstr "OMEMO 密钥删除"
 
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr "您将销毁以下 OMEMO 密钥。您的联系人将无法再使用该密钥加密消息。此操作无法撤销。您确定吗？"
+msgstr "您即将销毁以下 OMEMO 密钥。您的联系人将无法再使用该密钥加密消息。此操作无法撤销。您确定吗？"
 
 #: [adhoc]title
 msgid "Actions"
@@ -364,27 +364,27 @@ msgstr "允许的 XMPP 服务器列表"
 
 #: [ssrfwhitelist]title
 msgid "Whitelisted Domains for SSRF Protection"
-msgstr ""
+msgstr "SSRF 防护白名单域名"
 
 #: [ssrfwhitelist]info1
 msgid "Movim is protecting you against SSRF vulnerabilities. This means that Movim blocks all URLs (shared links, avatars, and pictures) that point to your local network IPs."
-msgstr ""
+msgstr "Movim 正在保护您免受 SSRF 漏洞的攻击。这意味着 Movim 会阻止所有指向您本地网络 IP 地址的 URL（包括共享链接、头像和图片）。"
 
 #: [ssrfwhitelist]info2
 msgid "See the related SSRF documentation on developer.mozilla.org."
-msgstr ""
+msgstr "请参阅 developer.mozilla.org 上的相关 SSRF 文档。"
 
 #: [ssrfwhitelist]info3
 msgid "Add all domains hosted locally here (for example, if you host a blog, an XMPP file upload service, or other web services)."
-msgstr ""
+msgstr "请在此处添加所有本地托管的域名（例如，如果您托管博客、XMPP 文件上传服务或其他 Web 服务）。"
 
 #: [ssrfwhitelist]info4
 msgid "This setting will be applied after a daemon restart."
-msgstr ""
+msgstr "此设置将在守护进程重启后生效。"
 
 #: [ssrfwhitelist]label
 msgid "List of Locally Authorized Domains"
-msgstr ""
+msgstr "本地授权域名列表"
 
 #: [information]description [communityconfig]description
 msgid "Description"
@@ -411,9 +411,8 @@ msgid "Leave this field blank if you don’t want to show any message."
 msgstr "如果不想显示任何消息，请将此字段留空。"
 
 #: [information]label
-#, fuzzy
 msgid "Information Message"
-msgstr "通知消息"
+msgstr "信息消息"
 
 #: [xmpp]title
 msgid "Default XMPP server"
@@ -741,7 +740,7 @@ msgstr "清除本地历史记录"
 
 #: [chat]clear_history_text
 msgid "You are going to delete %s local messages, are you sure?"
-msgstr "您将删除 %s 条本地消息，确定吗？"
+msgstr "您即将删除 %s 条本地消息，确定吗？"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
@@ -794,6 +793,22 @@ msgstr "主题已更改"
 #: [chatroom]administration [page]administration
 msgid "Administration"
 msgstr "管理"
+
+#: [wide_conference_call]enable_title
+msgid "Enable Wide Conference Call"
+msgstr ""
+
+#: [wide_conference_call]enable_text
+msgid "Scale this call to more participants."
+msgstr ""
+
+#: [wide_conference_call]enable_info
+msgid "An SFU (Selective Forwarding Unit) service was detected on this server. Unlike the current peer-to-peer (P2P) setup, where every participant sends their audio/video stream directly to everyone else, an SFU relays streams through a central server. This significantly reduces the bandwidth and CPU load on each participant's device, allowing the conference call to scale to many more people."
+msgstr ""
+
+#: [wide_conference_call]enable_info2
+msgid "Enabling Wide Conference Call will invite the SFU service into this conference call."
+msgstr ""
 
 #: [chatactions]copy_text
 msgid "Copy the text"
@@ -1009,7 +1024,7 @@ msgstr "删除社区"
 
 #: [communityaffiliation]delete_text
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr "您将删除以下社区。请确认您的操作。"
+msgstr "您即将删除以下社区。请确认您的操作。"
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
@@ -1142,7 +1157,7 @@ msgstr "它将出现在您的个人资料中"
 
 #: [communityheader]unfollow_text
 msgid "You are going to unfollow this community"
-msgstr "您将取消关注此社区"
+msgstr "您即将取消关注此社区"
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
@@ -1482,7 +1497,7 @@ msgstr "分组"
 
 #: [delete]text
 msgid "You are going to remove one of your contacts, please confirm your action"
-msgstr "您将移除一位联系人，请确认您的操作"
+msgstr "您即将移除您的其中一位联系人，请确认您的操作"
 
 #: [age]years
 msgid "%s years"
@@ -1955,11 +1970,11 @@ msgstr "他人将无法点赞或评论"
 
 #: [post]comments_disabled_yes
 msgid "Comments disabled for this post"
-msgstr "已禁用此帖子的评论"
+msgstr "已为此帖子禁用评论"
 
 #: [post]comments_disabled_no
 msgid "Comments enabled for this post"
-msgstr "已启用此帖子的评论"
+msgstr "已为此帖子启用评论"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1967,7 +1982,7 @@ msgstr "删除此帖子"
 
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
-msgstr "您将删除此帖子，请确认您的操作"
+msgstr "您即将删除此帖子，请确认您的操作"
 
 #: [post]delete_comment
 msgid "Are you sure that you want to delete this comment?"
@@ -2448,7 +2463,7 @@ msgstr "远程服务器连接超时"
 
 #: [chatrooms]remove_text
 msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr "您将永久离开以下群聊。请确认您的操作。"
+msgstr "您即将永久离开以下群聊。请确认您的操作。"
 
 #: [chatrooms]remove_title
 msgid "Permanently leave a chatroom"
@@ -2539,6 +2554,14 @@ msgstr "添加新成员"
 msgctxt "[room]group_chat_members"
 msgid "Members"
 msgstr "成员"
+
+#: [room]group_chat_remove
+msgid "Remove a member"
+msgstr ""
+
+#: [room]group_chat_remove_text
+msgid "You will remove the following member, are you sure?"
+msgstr ""
 
 #: [room]banned_add
 msgid "Ban someone"
@@ -2724,7 +2747,7 @@ msgstr "解散空间"
 
 #: [spaceinfo]destroy_text
 msgid "You are going to destroy the following Space, all the chatrooms within it will also be destroyed"
-msgstr "您将解散以下空间，其中的所有群聊也会被解散"
+msgstr "您即将解散以下空间，其中的所有群聊也会被解散"
 
 #: [spaceinfo]invite_title
 msgid "Invite new contacts"
@@ -3108,7 +3131,7 @@ msgstr "挂断通话"
 
 #: [visio]hang_up_text
 msgid "You are going to hang up the current call, are you sure?"
-msgstr "您将挂断当前通话，确定吗？"
+msgstr "您即将挂断当前通话，确定吗？"
 
 #: [visio]pinned
 msgid "%s pinned"
@@ -3542,7 +3565,7 @@ msgstr "手机"
 
 #: [client]web
 msgid "Web"
-msgstr "网络"
+msgstr "Web"
 
 #: [client]registered
 msgid "Registered"
@@ -3551,6 +3574,10 @@ msgstr "已注册"
 #: [client]gateway
 msgid "Gateway"
 msgstr "网关"
+
+#: [client]im
+msgid "Server"
+msgstr "服务器"
 
 #: [presence]online
 msgid "Online"
@@ -4139,7 +4166,3 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgctxt "[information]label"
-#~ msgid "Information Message"
-#~ msgstr "通知消息"

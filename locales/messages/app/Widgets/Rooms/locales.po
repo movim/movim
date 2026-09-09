@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-28 18:29+0200\n"
+"POT-Creation-Date: 2026-09-09 12:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -311,6 +311,14 @@ msgstr ""
 #: [room]group_chat_members
 msgctxt "[room]group_chat_members"
 msgid "Members"
+msgstr ""
+
+#: [room]group_chat_remove
+msgid "Remove a member"
+msgstr ""
+
+#: [room]group_chat_remove_text
+msgid "You will remove the following member, are you sure?"
 msgstr ""
 
 #: [room]banned_add

@@ -127,7 +127,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-28 18:29+0200\n"
+"POT-Creation-Date: 2026-09-09 12:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 386902c248cb697d9d6d058103e08443_c36ce9b <3e1ab06cc760e2987b063fda7f345e3f_237544>, 2018\n"
 "Language-Team: Hungarian (http://app.transifex.com/movim/movim/language/hu/)\n"
@@ -399,7 +399,6 @@ msgid "Leave this field blank if you don’t want to show any message."
 msgstr "Hagyd üresen ezt a mezőt, ha nem akarsz megjeleníteni semmilyen üzenetet!"
 
 #: [information]label
-#, fuzzy
 msgid "Information Message"
 msgstr "Információs üzenet"
 
@@ -782,6 +781,22 @@ msgstr "A tárgy megváltozott"
 #: [chatroom]administration [page]administration
 msgid "Administration"
 msgstr "Adminisztráció"
+
+#: [wide_conference_call]enable_title
+msgid "Enable Wide Conference Call"
+msgstr ""
+
+#: [wide_conference_call]enable_text
+msgid "Scale this call to more participants."
+msgstr ""
+
+#: [wide_conference_call]enable_info
+msgid "An SFU (Selective Forwarding Unit) service was detected on this server. Unlike the current peer-to-peer (P2P) setup, where every participant sends their audio/video stream directly to everyone else, an SFU relays streams through a central server. This significantly reduces the bandwidth and CPU load on each participant's device, allowing the conference call to scale to many more people."
+msgstr ""
+
+#: [wide_conference_call]enable_info2
+msgid "Enabling Wide Conference Call will invite the SFU service into this conference call."
+msgstr ""
 
 #: [chatactions]copy_text
 msgid "Copy the text"
@@ -2528,6 +2543,14 @@ msgctxt "[room]group_chat_members"
 msgid "Members"
 msgstr "Tagok"
 
+#: [room]group_chat_remove
+msgid "Remove a member"
+msgstr ""
+
+#: [room]group_chat_remove_text
+msgid "You will remove the following member, are you sure?"
+msgstr ""
+
 #: [room]banned_add
 msgid "Ban someone"
 msgstr ""
@@ -3540,6 +3563,10 @@ msgstr "Regisztrálva"
 msgid "Gateway"
 msgstr "Átjáró"
 
+#: [client]im
+msgid "Server"
+msgstr "Szerver"
+
 #: [presence]online
 msgid "Online"
 msgstr "Elérhető"
@@ -4127,7 +4154,3 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
-
-#~ msgctxt "[information]label"
-#~ msgid "Information Message"
-#~ msgstr "Információs üzenet"

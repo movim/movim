@@ -132,7 +132,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-28 18:29+0200\n"
+"POT-Creation-Date: 2026-09-09 12:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2026\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -786,6 +786,22 @@ msgstr "Sujet mis à jour"
 #: [chatroom]administration [page]administration
 msgid "Administration"
 msgstr "Administration"
+
+#: [wide_conference_call]enable_title
+msgid "Enable Wide Conference Call"
+msgstr "Activer la Conférence Étendue"
+
+#: [wide_conference_call]enable_text
+msgid "Scale this call to more participants."
+msgstr "Adaptez cet appel pour inclure davantage de participants."
+
+#: [wide_conference_call]enable_info
+msgid "An SFU (Selective Forwarding Unit) service was detected on this server. Unlike the current peer-to-peer (P2P) setup, where every participant sends their audio/video stream directly to everyone else, an SFU relays streams through a central server. This significantly reduces the bandwidth and CPU load on each participant's device, allowing the conference call to scale to many more people."
+msgstr "Un service SFU (Selective Forwarding Unit) a été détecté sur ce serveur. Contrairement à la configuration actuelle en pair-à-pair (P2P), où chaque participant envoie son flux audio/vidéo directement à tous les autres, un SFU relaie les flux via un serveur central. Cela réduit considérablement la bande passante et la charge CPU sur l'appareil de chaque participant, permettant ainsi à la conférence téléphonique de prendre en charge un nombre bien plus important de personnes."
+
+#: [wide_conference_call]enable_info2
+msgid "Enabling Wide Conference Call will invite the SFU service into this conference call."
+msgstr "L'activation de l'option « Conférence Étendue » invitera le service SFU à participer à cette conférence téléphonique."
 
 #: [chatactions]copy_text
 msgid "Copy the text"
@@ -2532,6 +2548,14 @@ msgctxt "[room]group_chat_members"
 msgid "Members"
 msgstr "Membres"
 
+#: [room]group_chat_remove
+msgid "Remove a member"
+msgstr "Retirer un membre"
+
+#: [room]group_chat_remove_text
+msgid "You will remove the following member, are you sure?"
+msgstr "Vous allez supprimer le membre suivant ; êtes-vous sûr ?"
+
 #: [room]banned_add
 msgid "Ban someone"
 msgstr "Bannir quelqu'un"
@@ -3543,6 +3567,10 @@ msgstr "Inscrit"
 #: [client]gateway
 msgid "Gateway"
 msgstr "Passerelle"
+
+#: [client]im
+msgid "Server"
+msgstr "Serveur"
 
 #: [presence]online
 msgid "Online"

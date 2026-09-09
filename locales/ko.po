@@ -1,6 +1,6 @@
 #
 # Translators:
-# Sinyeol An <soundlake@gmail.com>, 2018-2019
+# Sinyeol An <soundlake@gmail.com>, 2018-2019,2026
 # 조수연, 2022
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/About/locales.ini
@@ -124,9 +124,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-28 18:29+0200\n"
+"POT-Creation-Date: 2026-09-09 12:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: 조수연, 2022\n"
+"Last-Translator: Sinyeol An <soundlake@gmail.com>, 2018-2019,2026\n"
 "Language-Team: Korean (http://app.transifex.com/movim/movim/language/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -169,11 +169,11 @@ msgstr "Movim은 XMPP를 바탕으로 하는 커뮤니케이션 플랫폼입니�
 
 #: [about]sourcecode_title
 msgid "Sourcecode"
-msgstr ""
+msgstr "소스코드"
 
 #: [about]sourcecode_text
 msgid "Check out the sourcecode on the Github repository"
-msgstr ""
+msgstr "깃헙 저장소에서 소스코드를 확인해보세요."
 
 #: [account]title [page]account
 msgid "Account"
@@ -181,7 +181,7 @@ msgstr "계정"
 
 #: [account]account_management
 msgid "Account management"
-msgstr ""
+msgstr "계정 관리"
 
 #: [account]password_change_title
 msgid "Change my password"
@@ -209,7 +209,7 @@ msgstr "계정 삭제하기"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr ""
+msgstr "당신은 당신의 XMPP 계정과 그와 관련된 모든 정보들을 삭제할 것입니다. (프로필, 연락처, 게시물 포함)"
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
@@ -229,11 +229,11 @@ msgstr "이 인스턴스에서 나가기"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr ""
+msgstr "당신은 당신의 계정과 관련된 모든 정보들을 해당 Movim 인스턴스에서 삭제할 것입니다. (프로필, 연락처, 게시물 포함)"
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from Movim."
-msgstr ""
+msgstr "이 작업을 수행해도 계정이 삭제되지는 않지만 이 Movim 인스턴스에서 연결이 끊어집니다."
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
@@ -241,7 +241,7 @@ msgstr "OMEMO 키 삭제"
 
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr ""
+msgstr "다음 OMEMO 키를 삭제합니다. 대화 상대가 해당 키를 사용하여 메시지를 더 이상 암호화할 수 없습니다. 이 작업은 되돌릴 수 없습니다. 진행하시겠습니까?"
 
 #: [adhoc]title
 msgid "Actions"
@@ -253,11 +253,11 @@ msgstr "작업 완료"
 
 #: [tools]title
 msgid "Developer Tools"
-msgstr ""
+msgstr "개발자 도구"
 
 #: [tools]sdp_to_jingle
 msgid "Convert SDP to Jingle"
-msgstr ""
+msgstr "SDP에서 Jingle로 변환"
 
 #: [tools]sdp_title
 msgid "SDP"
@@ -265,7 +265,7 @@ msgstr ""
 
 #: [tools]jingle_to_sdp
 msgid "Convert Jingle to SDP"
-msgstr ""
+msgstr "Jingle에서 SDP로 변환"
 
 #: [tools]jingle_title
 msgid "Jingle stanza"
@@ -293,7 +293,7 @@ msgstr ""
 
 #: [general]join_text
 msgid "Register your instance on join.movim.eu and join the Movim federation!"
-msgstr ""
+msgstr "당신의 인스턴스를 join.movim.eu에 등록하고 Movim 연맹에 가입하세요."
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
@@ -301,7 +301,7 @@ msgstr "추천 중지"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
-msgstr ""
+msgstr "사용자 XMPP 서버 및 관련 서비스에서 사용할 수 있는 채팅방, 커뮤니티 및 기타 콘텐츠만 추천합니다"
 
 #: [chatonly]title
 msgid "Chat only"
@@ -333,11 +333,11 @@ msgstr "인터페이스에서 XMPP 등록 흐름 및 버튼을 제거합니다"
 
 #: [whitelist]title
 msgid "Allowed XMPP Servers"
-msgstr ""
+msgstr "허가된 XMPP 서버"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
+msgstr "Movim 포드에 승인된 XMPP 서버 목록을 지정하고 다른 모든 서버에 대한 연결을 금지하려면 여기에 해당 도메인 이름을 쉼표와 함께 입력하세요(예: movim.eu,jabber.fr)."
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
@@ -345,7 +345,7 @@ msgstr "모든 XMPP 계정에 대한 액세스를 허용하는 경우 이 필드
 
 #: [whitelist]label
 msgid "List of allowed XMPP servers"
-msgstr ""
+msgstr "허가된 XMPP 서버 목록"
 
 #: [ssrfwhitelist]title
 msgid "Whitelisted Domains for SSRF Protection"
@@ -396,7 +396,6 @@ msgid "Leave this field blank if you don’t want to show any message."
 msgstr "메시지를 표시하지 않으려면 이 필드를 공백으로 둡니다."
 
 #: [information]label
-#, fuzzy
 msgid "Information Message"
 msgstr "정보 메시지"
 
@@ -450,23 +449,23 @@ msgstr "Syslog 및 파일"
 
 #: [maxsessions]title
 msgid "Maximum of connected sessions"
-msgstr ""
+msgstr "최대 연결 가능한 세션"
 
 #: [maxsessions]info
 msgid "Movim will forbid new users to connect when the limit is reached, set it to 0 to disable"
-msgstr ""
+msgstr "한도에 도달했을 때, Movim은 새 사용자가 연결되는 것을 제한합니다. 제한을 두지 않으려면 0으로 설정하세요."
 
 #: [adminreported]reported_by
 msgid "Reported by %s users"
-msgstr ""
+msgstr "%s 명의 사용자가 신고하였습니다."
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
-msgstr ""
+msgstr "일부 Movim 사용자들이 해당 계정들을 신고하였습니다."
 
 #: [adminreported]info2
 msgid "You can choose to block them for all the other users"
-msgstr ""
+msgstr "다른 모든 사용자에게 해당 사용자를 차단하도록 설정할 수 있습니다."
 
 #: [adminsessions]title
 msgid "Sessions"
@@ -482,75 +481,75 @@ msgstr "파일"
 
 #: [avatar]updated
 msgid "Profile Picture Updated"
-msgstr ""
+msgstr "프로필 사진 업데이트"
 
 #: [avatar]not_updated
 msgid "Profile Picture Not Updated"
-msgstr ""
+msgstr "프로필 사진이 업데이트되지 않음"
 
 #: [avatar]change
 msgid "Change my profile picture"
-msgstr ""
+msgstr "내 프로필 사진 바꾸기"
 
 #: [avatar]too_big
 msgid "Your picture is too big"
-msgstr ""
+msgstr "사진이 너무 큽니다."
 
 #: [avatar]missing
 msgid "No avatar yet"
-msgstr ""
+msgstr "아직 아바타 없음"
 
 #: [banner]change
 msgid "Change my banner"
-msgstr ""
+msgstr "내 배너 바꾸기"
 
 #: [banner]updated
 msgid "Banner Updated"
-msgstr ""
+msgstr "배너 업데이트됨"
 
 #: [banner]not_updated
 msgid "Banner Not Updated"
-msgstr ""
+msgstr "배너 업데이트 안 됨"
 
 #: [banner]missing
 msgid "No banner yet"
-msgstr ""
+msgstr "아직 배너 없음"
 
 #: [blocked]title
 msgid "Blocked"
-msgstr ""
+msgstr "차단됨"
 
 #: [blocked]block_account
 msgid "Block the account"
-msgstr ""
+msgstr "계정 차단하기"
 
 #: [blocked]unblock_account
 msgid "Unblock the account"
-msgstr ""
+msgstr "계정 차단 해제하기"
 
 #: [blocked]account_blocked
 msgid "Account blocked"
-msgstr ""
+msgstr "차단된 계정"
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
-msgstr ""
+msgstr "차단되지 않은 계정"
 
 #: [blocked]placeholder
 msgid "You will find here the users you have blocked"
-msgstr ""
+msgstr "이곳에 당신이 차단한 사용자들이 있습니다"
 
 #: [blocked]info
 msgid "The following users are blocked by Movim and cannot contact you anymore"
-msgstr ""
+msgstr "다음 사용자들은 Movim에 의해 차단되었으며, 당신에게 더이상 연락할 수 없습니다."
 
 #: [blocked]info2
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
-msgstr ""
+msgstr "관리자도 이 목록을 확인하여 해당 사용자를 시스템 전체에서 차단할 수 있습니다."
 
 #: [blog]title
 msgid "%s’s blog"
-msgstr ""
+msgstr "%s의 블로그"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -779,6 +778,22 @@ msgstr "제목이 변경됨"
 #: [chatroom]administration [page]administration
 msgid "Administration"
 msgstr "관리"
+
+#: [wide_conference_call]enable_title
+msgid "Enable Wide Conference Call"
+msgstr ""
+
+#: [wide_conference_call]enable_text
+msgid "Scale this call to more participants."
+msgstr ""
+
+#: [wide_conference_call]enable_info
+msgid "An SFU (Selective Forwarding Unit) service was detected on this server. Unlike the current peer-to-peer (P2P) setup, where every participant sends their audio/video stream directly to everyone else, an SFU relays streams through a central server. This significantly reduces the bandwidth and CPU load on each participant's device, allowing the conference call to scale to many more people."
+msgstr ""
+
+#: [wide_conference_call]enable_info2
+msgid "Enabling Wide Conference Call will invite the SFU service into this conference call."
+msgstr ""
 
 #: [chatactions]copy_text
 msgid "Copy the text"
@@ -2525,6 +2540,14 @@ msgctxt "[room]group_chat_members"
 msgid "Members"
 msgstr "멤버"
 
+#: [room]group_chat_remove
+msgid "Remove a member"
+msgstr ""
+
+#: [room]group_chat_remove_text
+msgid "You will remove the following member, are you sure?"
+msgstr ""
+
 #: [room]banned_add
 msgid "Ban someone"
 msgstr "누군가를 차단하기"
@@ -3537,6 +3560,10 @@ msgstr "등록됨"
 msgid "Gateway"
 msgstr "게이트웨이"
 
+#: [client]im
+msgid "Server"
+msgstr ""
+
 #: [presence]online
 msgid "Online"
 msgstr "온라인"
@@ -4124,7 +4151,3 @@ msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 #: [field]type_here
 msgid "Type here"
 msgstr "여기에 입력하세요"
-
-#~ msgctxt "[information]label"
-#~ msgid "Information Message"
-#~ msgstr "정보 메시지"
