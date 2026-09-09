@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.35 (master)
+v0.35.1
+---------------------------
+
+v0.35
 ---------------------------
 * Implement XEP-0490: Message Displayed Synchronization, only for Group Chats
 * Add Galener and the SFU support in the Movim Voice system
