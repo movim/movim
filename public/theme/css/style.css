@@ -80,9 +80,6 @@ body>nav {
     position: absolute;
     overflow-y: auto;
     user-select: none;
-    background-color: rgb(var(--movim-background));
-    box-shadow: var(--elevation-3);
-
     padding: 1rem 0;
 }
 
@@ -114,7 +111,6 @@ body>nav li {
     body>nav {
         padding: 0;
         padding-bottom: 7rem;
-        background-color: rgba(var(--movim-background-main), 0.5);
     }
 }
 
@@ -238,7 +234,7 @@ main>div:first-child:nth-last-child(2)+div {
     width: 25%;
     overflow-y: auto;
     box-shadow: var(--elevation-2);
-    background-color: rgb(var(--movim-background-main));
+    background-color: rgb(var(--movim-background));
 }
 
 @media screen and (max-width: 1024px) {

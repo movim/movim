@@ -34,7 +34,7 @@ input, textarea, select {
 }
 
 article h4 {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 h4 {
@@ -70,7 +70,7 @@ span.info i:not(:last-child) {
 }
 
 label, span.info b { /* Caption */
-    font-weight: 600;
+    font-weight: 700;
 }
 
 h1.line,

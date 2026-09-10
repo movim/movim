@@ -4,21 +4,21 @@ input {
     filter: none;
 }
 
-li > form {
+li>form {
     display: block;
 }
 
-form > div:not(.clear):not(.control) {
+form>div:not(.clear):not(.control) {
     min-height: 9rem;
     position: relative;
     box-sizing: border-box;
 }
 
-form > div.compact:not(.clear):not(.control) {
+form>div.compact:not(.clear):not(.control) {
     min-height: 0;
 }
 
-form > div label {
+form>div label {
     position: absolute;
     top: 1.5rem;
     text-overflow: ellipsis;
@@ -28,17 +28,17 @@ form > div label {
     user-select: none;
 }
 
-form > div textarea[required] + label:after,
-form > div input[required]:not([type=checkbox]) + label:after {
+form>div textarea[required]+label:after,
+form>div input[required]:not([type=checkbox])+label:after {
     content: '✱';
     margin-left: 0.5rem;
 }
 
-form > div.icon {
+form>div.icon {
     padding-left: 9rem;
 }
 
-form > div textarea,
+form>div textarea,
 #hiddendiv {
     border: none;
     resize: none;
@@ -46,7 +46,7 @@ form > div textarea,
     box-sizing: border-box;
 }
 
-form > div .select:has(option:nth-child(2)):after {
+form>div .select:has(option:nth-child(2)):after {
     font-family: 'Material Symbols';
     content: "\e5c5";
     display: block;
@@ -58,11 +58,11 @@ form > div .select:has(option:nth-child(2)):after {
     inset-inline-end: 0;
 }
 
-form > div .select:hover:after {
+form>div .select:hover:after {
     color: rgba(var(--movim-font), 0.6);
 }
 
-form > div .select select {
+form>div .select select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -73,11 +73,11 @@ form > div .select select {
     mask-image: linear-gradient(to right, black calc(100% - 15rem), transparent);
 }
 
-*[dir="rtl"] form > div .select select {
+*[dir="rtl"] form>div .select select {
     mask-image: linear-gradient(to left, black calc(100% - 15rem), transparent);
 }
 
-form > div .select:not(:has(option:nth-child(2))) {
+form>div .select:not(:has(option:nth-child(2))) {
     pointer-events: none;
 }
 
@@ -86,27 +86,27 @@ form > div .select:not(:has(option:nth-child(2))) {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active  {
+input:-webkit-autofill:active {
     transition: background-color 0s 50000s;
     -webkit-text-fill-color: rgba(var(--movim-font), 0.87) !important;
 }
 
 /* Webkit weird CSS, sic */
 
-form > div .select select,
-form > div input:not([type=submit]),
-form > div textarea {
+form>div .select select,
+form>div input:not([type=submit]),
+form>div textarea {
     outline-width: 0;
 }
 
-form > div .select select option,
-form > div .select select optgroup {
+form>div .select select option,
+form>div .select select optgroup {
     background-color: rgb(var(--movim-background-main));
 }
 
-form > div .select,
-form > div input:not([type=submit]),
-form > div textarea {
+form>div .select,
+form>div input:not([type=submit]),
+form>div textarea {
     display: block;
     padding: 1rem 0;
     padding-top: 4rem;
@@ -114,40 +114,43 @@ form > div textarea {
     background-color: transparent;
     margin-bottom: 1rem;
 
-    -webkit-appearance: none; /* iOS */
-    border-radius: 0; /* iOS */
-    overflow: hidden; /* Fixme */
+    -webkit-appearance: none;
+    /* iOS */
+    border-radius: 0;
+    /* iOS */
+    overflow: hidden;
+    /* Fixme */
 
     position: relative;
     z-index: 1;
 }
 
-form > div .select,
-form > div input:not([type=submit]),
-form > div textarea {
+form>div .select,
+form>div input:not([type=submit]),
+form>div textarea {
     box-shadow: 0px 1px 0px rgba(var(--movim-font), 0.12);
 }
 
-form > div > img,
-form > div > p {
+form>div>img,
+form>div>p {
     padding-top: 1.5rem;
 }
 
-form > div .select {
+form>div .select {
     position: relative;
     padding-top: 4rem;
     padding-bottom: 0;
 }
 
-form > div.compact > .select,
-form > div.compact > input:not([type=submit]),
-form > div.compact > textarea {
+form>div.compact>.select,
+form>div.compact>input:not([type=submit]),
+form>div.compact>textarea {
     padding-top: 2.5rem;
 }
 
 /* Supporting text */
 ul.list li div span.supporting,
-form div > span.supporting {
+form div>span.supporting {
     line-height: 2.25rem;
     font-size: 1.5rem;
     color: rgba(var(--movim-font), 0.60);
@@ -156,12 +159,13 @@ form div > span.supporting {
 }
 
 /* Webkit hack */
-form > div input:not([type=submit]):-webkit-autofill {
+form>div input:not([type=submit]):-webkit-autofill {
     -webkit-box-shadow: 0 0 0 50px transparent inset;
 }
-form > div input:not([type=submit]):-webkit-autofill:focus {
+
+form>div input:not([type=submit]):-webkit-autofill:focus {
     box-shadow: none;
-    -webkit-text-fill-color: #333;
+    -webkit-text-fill-color: rgba(var(--movim-font), 0.87);
 }
 
 /* File */
@@ -173,15 +177,15 @@ input[type=file] {
 
 /* Checkbox element */
 
-form > div .checkbox > input[type="checkbox"],
-form > div .radio > input[type="radio"] {
+form>div .checkbox>input[type="checkbox"],
+form>div .radio>input[type="radio"] {
     display: inline;
     width: 0;
     height: 0;
     position: initial;
 }
 
-form > div .checkbox {
+form>div .checkbox {
     position: relative;
     width: 6rem;
     height: 4rem;
@@ -190,11 +194,11 @@ form > div .checkbox {
     left: -1rem;
 }
 
-form > div ul.list .control .checkbox {
+form>div ul.list .control .checkbox {
     left: 0;
 }
 
-form > div .checkbox > input[type="checkbox"]:before {
+form>div .checkbox>input[type="checkbox"]:before {
     content: '';
     display: block;
     position: absolute;
@@ -207,16 +211,16 @@ form > div .checkbox > input[type="checkbox"]:before {
     top: 0;
 }
 
-form > div .checkbox > input[type="checkbox"]:before {
+form>div .checkbox>input[type="checkbox"]:before {
     border-radius: 4rem;
 }
 
-form > div .checkbox > input[type="checkbox"]:focus:before {
+form>div .checkbox>input[type="checkbox"]:focus:before {
     outline: 3px solid var(--movim-accent);
     outline-offset: 2px;
 }
 
-form > div .checkbox > input[type="checkbox"] + label {
+form>div .checkbox>input[type="checkbox"]+label {
     z-index: 1;
     display: block;
     background-color: rgba(var(--movim-font), 0.2);
@@ -232,19 +236,19 @@ form > div .checkbox > input[type="checkbox"] + label {
     transition: left 0.3s ease, top 0.2s ease, width 0.2s ease, height 0.2s ease, box-shadow 0.1s ease;
 }
 
-form > div .checkbox > input[type="checkbox"] + label i {
+form>div .checkbox>input[type="checkbox"]+label i {
     vertical-align: middle;
     color: rgba(var(--movim-font), 0.5);
     line-height: 1.75em;
     font-size: 1.75rem;
 }
 
-form > div .checkbox:hover > input[type="checkbox"] + label {
+form>div .checkbox:hover>input[type="checkbox"]+label {
     cursor: pointer;
     box-shadow: 0 0 0 1.75rem rgba(var(--movim-font), 0.05);
 }
 
-form > div .checkbox > input[type="checkbox"]:checked + label {
+form>div .checkbox>input[type="checkbox"]:checked+label {
     color: white;
     width: 3rem;
     height: 3rem;
@@ -253,13 +257,13 @@ form > div .checkbox > input[type="checkbox"]:checked + label {
     background-color: white;
 }
 
-form > div .checkbox > input[type="checkbox"]:checked + label i {
+form>div .checkbox>input[type="checkbox"]:checked+label i {
     color: var(--movim-accent);
 }
 
 /* Radio */
 
-form > div .radio > input[type="radio"] + label {
+form>div .radio>input[type="radio"]+label {
     display: inline-block;
     width: 2rem;
     height: 2rem;
@@ -272,41 +276,41 @@ form > div .radio > input[type="radio"] + label {
     margin-bottom: 0;
 }
 
-form > div .radio > input[type="radio"]:focus + label {
+form>div .radio>input[type="radio"]:focus+label {
     outline: 3px solid var(--movim-accent);
     outline-offset: 2px;
 }
 
-form > div .radio > input[type="radio"] + label:hover {
+form>div .radio>input[type="radio"]+label:hover {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.1);
     box-shadow: 0 0 0 1.5rem rgba(var(--movim-font), 0.1);
 }
 
-form > div .radio > input[type="radio"]:checked + label {
+form>div .radio>input[type="radio"]:checked+label {
     box-shadow: inset 0 0 0 0.4rem rgb(var(--movim-background-main));
 
 }
 
-form > div .radio > input[type="radio"]:checked + label:hover {
+form>div .radio>input[type="radio"]:checked+label:hover {
     box-shadow: inset 0 0 0rem 0.4rem rgb(var(--movim-background-main)), 0 0 0 1.55rem rgba(var(--movim-font), 0.05);
 }
 
 /* Disabled */
 
-form > div input:disabled,
-form > div input:disabled + label,
-form > div select:disabled,
-form > div select:disabled + label,
-form > div textarea:disabled,
-form > div textarea:disabled + label {
+form>div input:disabled,
+form>div input:disabled+label,
+form>div select:disabled,
+form>div select:disabled+label,
+form>div textarea:disabled,
+form>div textarea:disabled+label {
     opacity: 0.5;
 }
 
 /* Readonly */
 
-form > div input[readonly],
-form > div textarea[readonly] {
+form>div input[readonly],
+form>div textarea[readonly] {
     opacity: 0.75;
 }
 
@@ -319,7 +323,7 @@ form > div textarea[readonly] {
 .button:disabled,
 .button.inactive {
     opacity: 0.6;
-    pointer-events:none;
+    pointer-events: none;
 }
 
 .button:focus-visible {
@@ -329,7 +333,8 @@ form > div textarea[readonly] {
 
 .button,
 input[type=button] {
-    -webkit-appearance:none; /* iOS */
+    -webkit-appearance: none;
+    /* iOS */
     min-width: 5rem;
     text-align: center;
     display: inline-block;
@@ -342,7 +347,10 @@ input[type=button] {
     border-radius: 3rem;
     padding: 0 2rem;
     border: 0;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.3s ease,
+        box-shadow 0.3s ease,
+        border-radius 0.2s var(--standard-easing),
+        filter 0.2s var(--standard-easing);
     background-image: none;
     user-select: none;
 }
@@ -355,8 +363,8 @@ input[type=button] {
     box-shadow: var(--elevation-2);
 }
 
-p > .button,
-p> input[type=button] {
+p>.button,
+p>input[type=button] {
     margin: 0.75rem 0;
 }
 
@@ -369,7 +377,9 @@ input[type=button]:not(.color) {
     background-color: white;
 }
 
-.button:active {
+.button:active,
+input[type=button]:active {
+    filter: saturate(0.8) brightness(0.9);
     box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.23), 0 0.5rem 1.25rem rgba(0, 0, 0, 0.16);
 }
 
@@ -386,6 +396,7 @@ a.button:visited:hover,
 input[type=button]:hover {
     cursor: pointer;
     text-decoration: none;
+    border-radius: 1rem;
 }
 
 .button.flat:not(.color):hover,
@@ -428,9 +439,9 @@ input[type=button].flat:not(.color):focus {
     line-height: 5rem;
 }
 
-body > nav.active ~ main .button.action,
-body > div.dialog:not(:empty) ~ main .button.action,
-body > div.drawer:not(:empty):not(.empty) ~ main .button.action {
+body>nav.active~main .button.action,
+body>div.dialog:not(:empty)~main .button.action,
+body>div.drawer:not(:empty):not(.empty)~main .button.action {
     transform: scale(0.9);
     opacity: 0;
 }
@@ -444,15 +455,15 @@ body > div.drawer:not(:empty):not(.empty) ~ main .button.action {
 }
 
 .button.action,
-.button.action > i {
+.button.action>i {
     transition: all 0.4s ease 0s;
 }
 
-.button.action.active > i {
+.button.action.active>i {
     transform: rotate(45deg);
 }
 
-ul.list li div > .button {
+ul.list li div>.button {
     margin: 0.25rem;
 }
 
@@ -466,36 +477,36 @@ li.action div.action .button {
     margin: 0 0.25rem;
 }
 
-.snackbar#status_websocket:not(.hide) ~ main > section#sidebar ~ * .button.action {
+.snackbar#status_websocket:not(.hide)~main>section#sidebar~* .button.action {
     display: none;
 }
 
 @media screen and (min-width: 1025px) {
-    main > div:first-child:nth-last-child(2) + div .button.action {
+    main>div:first-child:nth-last-child(2)+div .button.action {
         right: calc(75% - 3rem);
     }
 
-    *[dir="rtl"] main > div:first-child:nth-last-child(2) + div .button.action {
+    *[dir="rtl"] main>div:first-child:nth-last-child(2)+div .button.action {
         right: auto;
         left: calc(75% - 3rem);
     }
 
-    section#sidebar ~ * .button.action {
+    section#sidebar~* .button.action {
         right: calc(50% - 21rem);
     }
 
-    *[dir="rtl"] section#sidebar ~ * .button.action {
+    *[dir="rtl"] section#sidebar~* .button.action {
         right: auto;
         left: calc(50% - 21rem);
     }
 }
 
 @media screen and (min-width: 1680px) {
-    main > div:first-child:nth-last-child(2) + div .button.action {
+    main>div:first-child:nth-last-child(2)+div .button.action {
         right: calc(63.75% + 2rem);
     }
 
-    section#sidebar ~ * .button.action {
+    section#sidebar~* .button.action {
         right: calc(42.5% - 17rem);
     }
 }

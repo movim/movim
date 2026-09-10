@@ -21,13 +21,11 @@ use App\Widgets\Rooms\Rooms;
 use App\Widgets\RoomsUtils\RoomsUtils;
 use Carbon\Carbon;
 use Moxl\Xec\Action\BOB\Request;
-use Moxl\Xec\Action\Disco\Request as DiscoRequest;
 
 use Illuminate\Database\Capsule\Manager as DB;
 use JidComponent;
 use Movim\Image;
 use Movim\XMPPUri;
-use Movim\Librairies\XMPPtoForm;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Action\Message\Displayed;
 use Moxl\Xec\Action\Message\MDSDisplayed;
@@ -364,12 +362,15 @@ class Chat extends \Movim\Widget\Base
         $message = '';
 
         if (isset($packet->content)) {
-            $message = is_array($packet->content)
-                ? $this->prepareComposeList(array_keys($packet->content))
-                : '<i class="material-symbols">edit</i> ' . $this->__('message.composing');
+            $message = $this->view('_chat_compose_bubble', [
+                'list' => is_array($packet->content) ? implode(', ', array_keys($packet->content)) : null,
+                'contact' => is_array($packet->content) ? null : Contact::firstOrNew(['id' => $packet->from])
+            ]);
         }
 
+        $this->rpc('Chat.setScroll');
         $this->rpc('MovimTpl.fill', '#' . cleanupId($packet->from . '_state'), $message);
+        $this->rpc('Chat.scrollRestore');
     }
 
     public function onConferenceSubject(Packet $packet)
@@ -1810,13 +1811,6 @@ class Chat extends \Movim\Widget\Base
             'users' => $users,
             'pagination' => $pagination,
             'page' => $page
-        ]);
-    }
-
-    private function prepareComposeList(array $list)
-    {
-        return $this->view('_chat_compose_list', [
-            'list' => implode(', ', $list)
         ]);
     }
 

@@ -214,7 +214,7 @@ span.icon.status:after {
     position: absolute;
     transition: border-radius 0.25s var(--standard-easing);
     border-radius: 2em;
-    background-color: #DDD;
+    background-color: rgb(var(--movim-element-action));
     box-shadow: var(--elevation-0);
 }
 

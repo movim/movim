@@ -28,6 +28,7 @@
             {/if}
         </div>
         <ul class="list spin conversation" id="{$jid|cleanupId}-conversation"></ul>
+        <ul class="list state" id="{$jid|cleanupId}-state"></ul>
         <div class="placeholder empty">
             <i class="material-symbols fill">chat</i>
             <h1>{$c->__('chat.new_title')}</h1>

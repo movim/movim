@@ -82,9 +82,7 @@ ul#bottomnavigation li:active {
     ul.navigation li:active {
         transform: translateY(1px);
     }
-}
 
-@media screen and (min-width: 1025px) and (min-width: 1681px) {
     ul.list.active.navigation li:hover:not(.subheader):before,
     ul.list.active.navigation li.active:not(.subheader):before {
         width: calc(100% - 1rem);

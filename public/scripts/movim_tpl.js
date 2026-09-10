@@ -57,6 +57,8 @@ var MovimTpl = {
         window.history.replaceState(null, null, ' ');
     },
     fill: function (selector, html) {
+        console.log(selector)
+        console.log(html)
         target = document.querySelector(selector);
         if (target) {
             target.innerHTML = html;

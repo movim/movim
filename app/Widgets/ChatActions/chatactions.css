@@ -16,6 +16,11 @@ ul#message_preview li > div.bubble::after {
 ul#message_preview li div.bubble {
     max-width: calc(100% - 2rem);
     pointer-events: none;
+    background-color: rgb(var(--movim-background-main));
+}
+
+ul#message_preview.list li > div.bubble:not(.file)::before {
+    background-color: rgb(var(--movim-background-main));
 }
 
 ul#message_preview li div.bubble:not(.file) {

@@ -1,13 +1,15 @@
 /* Color */
 
 body {
-    --movim-background-main: 255, 255, 255;
-    --movim-background: 238, 238, 238;
+    --movim-background-main: 238, 238, 238;
+    --movim-background: 255, 255, 255;
     --movim-gray: 35, 35, 35;
     --movim-font: 0, 0, 0;
     --movim-header-font: 200, 200, 200;
     --movim-element-action: 153, 153, 153;
     scrollbar-color: rgba(var(--movim-font), 0.2) transparent;
+    --movim-shadow: 0, 0, 0;
+    --movim-shadow-strength: 1;
 }
 
 /* Night mode, using an enforced class and with the browser media-query, the two following
@@ -20,6 +22,7 @@ body.nightmode {
     --movim-font: 255, 255, 255;
     --movim-element-action: 74, 86, 99;
     scrollbar-color: rgba(var(--movim-font), 0.1) transparent;
+    --movim-shadow-strength: 1.2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,6 +33,7 @@ body.nightmode {
         --movim-font: 255, 255, 255;
         --movim-element-action: 74, 86, 99;
         scrollbar-color: rgba(var(--movim-font), 0.1) transparent;
+        --movim-shadow-strength: 1.6;
     }
 }
 
@@ -76,7 +80,7 @@ ul.list li.color>div>p>span.second {
 
 body,
 #drawer .card>.block:not(.subheader):not(.simple):not(.color) {
-    background-color: rgb(var(--movim-background));
+    background-color: rgb(var(--movim-background-main));
 }
 
 .drawer,
@@ -84,7 +88,7 @@ body,
 ul.context_menu,
 ul>li.date>div>p,
 .card>.block:not(.subheader):not(.simple):not(.color) {
-    background-color: rgb(var(--movim-background-main));
+    background-color: rgb(var(--movim-background));
 }
 
 main>header a,
@@ -413,8 +417,8 @@ a {
     border-color: var(--movim-accent);
 }
 
-span.control.icon a i,
-span.primary.icon a i {
+span.control.icon a > i,
+span.primary.icon a > i {
     color: rgba(var(--movim-font), 0.68);
 }
 
@@ -431,7 +435,7 @@ form textarea:focus:not(:invalid)+label {
     color: var(--movim-accent);
 }
 
-form > div .select:has(:focus),
+form>div .select:has(:focus),
 form input:focus:not(:invalid):not(.button),
 form textarea:focus:not(:invalid):not(.button) {
     box-shadow: 0px 2px 0px var(--movim-accent);

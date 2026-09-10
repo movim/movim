@@ -145,7 +145,7 @@ dl dd {
 }
 
 dl di {
-    border-bottom: 1px solid #DDD;
+    border-bottom: 1px solid rgba(var(--movim-font), 0.12);
     display: block;
     padding: 1em 0;
 }

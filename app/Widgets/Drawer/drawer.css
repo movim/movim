@@ -55,9 +55,9 @@
 
 
 #drawer ul.list>li.search form div:after {
-    background-color: rgb(var(--movim-background));
+    background-color: rgb(var(--movim-background-main));
 }
 
 #drawer ul.list>li.search form div:focus-within:after {
-    background-color: rgba(var(--movim-background), 0.8);
+    background-color: rgba(var(--movim-background-main), 0.8);
 }

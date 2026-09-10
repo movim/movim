@@ -218,9 +218,7 @@
         <ul class="list middle flex">
             <li class="block large">
                 <span class="primary icon gray">
-                    <a href="#" onclick="listIconClick(event)">
-                        <i class="material-symbols">wifi_tethering</i>
-                    </a>
+                    <i class="material-symbols">wifi_tethering</i>
                 </span>
                 <span class="control icon gray active" onclick="Preview.copyToClipboard('{$post->openlink->href}')">
                     <a href="#" onclick="listIconClick(event)">

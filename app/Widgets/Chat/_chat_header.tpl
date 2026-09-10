@@ -148,7 +148,6 @@
                     {/if}
                 </p>
 
-                <p class="compose first line" id="{$jid|cleanupId}-state"></p>
                 <p class="line active">
                     {if="$conference"}
                         {if="$conference->mujiPresences->isNotEmpty()"}
@@ -373,7 +372,7 @@
                         <span class="tag color red">{$c->__('blocked.title')}</span>
                     {/if}
                 </p>
-                <p class="compose first line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->id|echapJS}')"></p>
+
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->id|echapJS}')">
                     {if="$c->currentCall()?->isJidInCall($jid)"}
                         <i class="material-symbols icon green blink">phone_in_talk</i>

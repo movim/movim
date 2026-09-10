@@ -3,6 +3,8 @@ Movim Changelog
 
 v0.35.1
 ---------------------------
+* Re-adapt the UI colours and CSS cleanup
+* New composing bubble in the chat
 
 v0.35
 ---------------------------
