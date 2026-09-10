@@ -1087,7 +1087,7 @@ class Chat extends \Movim\Widget\Base
             ->first();
 
         if ($contextMessage) {
-            $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '-conversation', '');
+            $this->rpc('MovimTpl.fill', '#' . cleanupId($contextMessage->jid) . '-conversation', '');
             $this->ajaxGetHistory($jid, $contextMessage->published, muc: $contextMessage->isMuc(), prepend: false, tryMam: false);
             $this->rpc('Chat.scrollAndBlinkMessageMid', $mid);
             $this->rpc('MovimUtils.addClass', '#chat_widget .contained', 'history');
