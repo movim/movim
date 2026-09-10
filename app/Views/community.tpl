@@ -16,7 +16,7 @@
     <?php $this->widget('BottomNavigation');?>
 <?php } ?>
 
-<main style="background-color: rgb(var(--movim-background))">
+<main>
     <?php if (!$this->user) { ?>
         <section id="sidebar">
             <?php $this->widget('CommunityDataPublic'); ?>
