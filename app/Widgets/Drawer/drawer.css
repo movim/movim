@@ -34,6 +34,10 @@
     height: auto;
 }
 
+.drawer ul.list li.subheader.sticky {
+    background-color: rgb(var(--movim-background));
+}
+
 @media screen and (min-width: 570px) {
     .drawer {
         width: 70rem;
