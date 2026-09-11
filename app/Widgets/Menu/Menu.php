@@ -140,19 +140,19 @@ class Menu extends Base
     public function ajaxHttpGetAll($page = 0)
     {
         $this->getList('all', $page);
-        $this->rpc('MovimUtils.pushSoftState', $this->route('news'));
+        $this->rpc('MovimUtils.pushSoftState', $this->route('news', $page ?: null));
     }
 
     public function ajaxHttpGetCommunities($page = 0)
     {
         $this->getList('news', $page);
-        $this->rpc('MovimUtils.pushSoftState', $this->route('news', false, [], 'communities'));
+        $this->rpc('MovimUtils.pushSoftState', $this->route('news', $page ?: null, [], 'communities'));
     }
 
     public function ajaxHttpGetContacts($page = 0)
     {
         $this->getList('feed', $page);
-        $this->rpc('MovimUtils.pushSoftState', $this->route('news', false, [], 'contacts'));
+        $this->rpc('MovimUtils.pushSoftState', $this->route('news', $page ?: null, [], 'contacts'));
     }
 
     private function getList($type = 'all', $page = 0)
