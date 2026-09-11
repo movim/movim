@@ -9,6 +9,13 @@ if ('serviceWorker' in navigator) {
             console.log('Service Worker Registered');
         });
 
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (refreshing) return;
+        refreshing = true;
+        window.location.reload();
+    });
+
     const channel = new BroadcastChannel('messages');
     channel.addEventListener('message', event => {
         Notif.snackbarClear();

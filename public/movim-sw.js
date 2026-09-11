@@ -4,6 +4,8 @@ var cacheKey = 'movim_' + version;
 const channel = new BroadcastChannel('messages');
 
 self.addEventListener('install', (e) => {
+    self.skipWaiting();
+
     // Workaround for https://issues.chromium.org/issues/466790291
     e.addRoutes({
         condition: {
