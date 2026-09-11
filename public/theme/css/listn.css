@@ -26,7 +26,6 @@ ul.list.compact>li>div {
 ul.list.compact>li>span.chip {
     position: absolute;
     inset-inline-end: 1rem;
-    top: 2rem;
 }
 
 ul.list.controls>li {
