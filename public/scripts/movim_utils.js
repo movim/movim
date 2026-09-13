@@ -135,56 +135,59 @@ var MovimUtils = {
             }
         }).then(reponse => {
             reponse.text().then(value => {
-                MovimTpl.finishedPage();
-
                 let page = JSON.parse(value);
 
-                if (noHistory !== true) {
-                    MovimUtils.pushSoftState(uri);
-                }
+                const oldWidgetCss = Array.from(
+                    document.head.querySelectorAll('link[rel=stylesheet].widget')
+                );
 
-                if (typeof MovimWebsocket !== 'undefined') {
-                    MovimWebsocket.clear();
-                }
-
-                document.head.querySelectorAll('link[rel=stylesheet].widget').forEach(e => e.remove());
-                document.head.querySelectorAll('script[type=\'text/javascript\'].widget').forEach(e => e.remove());
-                document.head.querySelectorAll('script[type=\'text/javascript\'].inline').forEach(e => e.remove());
-                document.querySelectorAll('#endcommon ~ *').forEach(e => e.remove());
-
-                document.body.insertAdjacentHTML('beforeend', page.content);
-                document.title = page.title;
-
-                // CSS
-
-                page.widgetsCSS.forEach(url => {
+                const cssPromises = page.widgetsCSS.map(url => new Promise((resolve) => {
                     const css = document.createElement('link');
                     css.setAttribute('rel', 'stylesheet');
                     css.href = url;
                     css.classList.add('widget');
+                    css.onload = resolve;
+                    css.onerror = resolve;
                     document.head.appendChild(css);
-                });
-
-                // Javascript
-
-                const promises = page.widgetsScripts.map(script => new Promise((resolve) => {
-                    const js = document.createElement('script');
-                    js.src = script;
-                    js.setAttribute('type', 'text/javascript');
-                    js.onload = resolve;
-                    js.onerror = resolve;
-                    js.classList.add('widget');
-                    document.head.appendChild(js);
                 }));
 
-                const inlineJs = document.createElement('script');
-                inlineJs.classList.add('inline');
-                inlineJs.innerHTML = page.inlineScripts;
-                document.head.appendChild(inlineJs);
+                Promise.all(cssPromises).then(() => {
+                    MovimTpl.finishedPage();
 
-                // Events
-                Promise.all(promises).then(() => {
-                    MovimEvents.triggerWindow('loaded', null);
+                    if (noHistory !== true) {
+                        MovimUtils.pushSoftState(uri);
+                    }
+
+                    if (typeof MovimWebsocket !== 'undefined') {
+                        MovimWebsocket.clear();
+                    }
+
+                    oldWidgetCss.forEach(e => e.remove());
+                    document.head.querySelectorAll('script[type=\'text/javascript\'].widget').forEach(e => e.remove());
+                    document.head.querySelectorAll('script[type=\'text/javascript\'].inline').forEach(e => e.remove());
+                    document.querySelectorAll('#endcommon ~ *').forEach(e => e.remove());
+
+                    document.body.insertAdjacentHTML('beforeend', page.content);
+                    document.title = page.title;
+
+                    const promises = page.widgetsScripts.map(script => new Promise((resolve) => {
+                        const js = document.createElement('script');
+                        js.src = script;
+                        js.setAttribute('type', 'text/javascript');
+                        js.onload = resolve;
+                        js.onerror = resolve;
+                        js.classList.add('widget');
+                        document.head.appendChild(js);
+                    }));
+
+                    const inlineJs = document.createElement('script');
+                    inlineJs.classList.add('inline');
+                    inlineJs.innerHTML = page.inlineScripts;
+                    document.head.appendChild(inlineJs);
+
+                    Promise.all(promises).then(() => {
+                        MovimEvents.triggerWindow('loaded', null);
+                    });
                 });
             });
         }).catch(error => {

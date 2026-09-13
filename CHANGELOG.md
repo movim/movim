@@ -6,6 +6,7 @@ v0.35.1
 * Re-adapt the UI colours and CSS cleanup
 * New composing bubble in the chat
 * Drop addHashtagsLinks and addUrls and introduce linkify with a propre HTML parser instead of regexs
+* Fix CSS redraw page blink issues when soft loading pages
 
 v0.35
 ---------------------------
