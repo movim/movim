@@ -620,26 +620,31 @@ class Post extends Model
         }
 
         $extra = false;
+
         // We try to extract a picture
-        $xml = \simplexml_load_string('<div>' . $this->contentcleaned . '</div>');
-        if ($xml) {
-            $results = $xml->xpath('//img/@src');
+        try {
+            $dom = \Dom\HTMLDocument::createFromString(
+                '<div id="movim-root">' . $this->contentcleaned . '</div>',
+                LIBXML_HTML_NOIMPLIED,
+                'UTF-8'
+            );
+            $xpath = new \Dom\XPath($dom);
 
-            if (is_array($results) && !empty($results)) {
-                $extra = (string)$results[0];
+            $img = $xpath->query('//*[local-name()="img"]/@src')->item(0);
+
+            if ($img) {
+                $extra = $img->nodeValue;
             } else {
-                $results = $xml->xpath('//video/@poster');
-                if (is_array($results) && !empty($results)) {
-                    $extra = (string)$results[0];
+                $poster = $xpath->query('//*[local-name()="video"]/@poster')->item(0);
+                if ($poster) {
+                    $extra = $poster->nodeValue;
                 }
             }
 
-            $results = $xml->xpath('//a');
-            if (is_array($results) && !empty($results)) {
-                foreach ($results as $link) {
-                    $link->addAttribute('target', '_blank');
-                }
+            foreach ($xpath->query('//*[local-name()="a"]') as $link) {
+                $link->setAttribute('target', '_blank');
             }
+        } catch (\Throwable $e) {
         }
 
         $this->like = $this->isLike();
@@ -936,19 +941,26 @@ class Post extends Model
         $contentCleaned = $this->contentcleaned;
 
         if ($public == false) {
-            $dom = new \DOMDocument('1.0', 'UTF-8');
-            $dom->loadHTML('<?xml encoding="UTF-8">' . $this->contentcleaned);
-            $xpath = new \DOMXPath($dom);
+            $dom = \Dom\HTMLDocument::createFromString(
+                '<div id="movim-root">' . $this->contentcleaned . '</div>',
+                LIBXML_HTML_NOIMPLIED,
+                'UTF-8'
+            );
 
-            foreach ($xpath->query("//img/@src") as $src) {
+            $xpath = new \Dom\XPath($dom);
+            foreach ($xpath->query('//*[local-name()="img"]/@src') as $src) {
                 $src->textContent = protectPicture($src->nodeValue);
             }
 
-            $contentCleaned = substr($dom->saveXML($dom->documentElement), 12, -14);
+            $contentCleaned = '';
+
+            foreach ($dom->getElementById('movim-root')->childNodes as $child) {
+                $contentCleaned .= $dom->saveHTML($child);
+            }
         }
 
         return ($addHashTagLinks)
-            ? addHashtagsLinks($contentCleaned)
+            ? linkify($contentCleaned, hashtagLinks: true)
             : $contentCleaned;
     }
 

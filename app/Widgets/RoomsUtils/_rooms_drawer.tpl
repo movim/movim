@@ -77,7 +77,7 @@
                     </p>
                     <p class="all">
                         {autoescape="off"}
-                            {$conference->subject|addUrls|nl2br}
+                            {$conference->subject|linkify|nl2br}
                         {/autoescape}
                     </p>
                 </div>
@@ -95,7 +95,7 @@
                     </p>
                     <p class="all">
                         {autoescape="off"}
-                            {$conference->info->description|addUrls|nl2br}
+                            {$conference->info->description|linkify|nl2br}
                         {/autoescape}
                     </p>
                 </div>

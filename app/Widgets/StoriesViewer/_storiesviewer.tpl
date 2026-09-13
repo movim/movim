@@ -53,7 +53,7 @@
     <ul class="list middle">
         <li>
             <div>
-                <p class="title">{autoescape="off"}{$story->title|addHashtagsLinks}{/autoescape}</p>
+                <p class="title">{autoescape="off"}{$story->title|linkify}{/autoescape}</p>
             </div>
         </li>
         {if="!$story->isMine($c->me) && $story->contact"}

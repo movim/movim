@@ -86,7 +86,7 @@
                 {if="!$post->isBrief()"}
                     <p class="all" {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                         {autoescape="off"}
-                            {$post->title|addHashtagsLinks|addEmojis}
+                            {$post->title|linkify|addEmojis}
                         {/autoescape}
                     </p>
                 {else}
@@ -136,7 +136,7 @@
                 {if="$post->isBrief()"}
                     <p class="brief all">
                         {autoescape="off"}
-                            {$post->title|addUrls|addHashtagsLinks|nl2br|prepareString|addEmojis}
+                            {$post->title|linkify:true|nl2br|linkify|addEmojis}
                         {/autoescape}
                     </p>
                 {/if}

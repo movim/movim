@@ -152,7 +152,7 @@
                 </p>
                 <p class="all">
                     {autoescape="off"}
-                        {$value->title|addHashtagsLinks|prepareString}
+                        {$value->title|linkify:true|addEmojis}
                     {/autoescape}
                 </p>
             </div>

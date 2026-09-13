@@ -1233,7 +1233,7 @@ class Chat extends \Movim\Widget\Base
         return $this->view('_chat', [
             'jid' => $jid,
             'muc' => $muc,
-            'emoji' => prepareString('😀')
+            'emoji' => addEmojis('😀')
         ]);
     }
 
@@ -1392,7 +1392,7 @@ class Chat extends \Movim\Widget\Base
         } elseif (isset($message->html) && !isset($message->file)) {
             $message->body = $message->html;
         } elseif (!isset($message->file)) {
-            $message->addUrls();
+            $message->linkify();
 
             if (is_string($message->body)) {
                 $message->body = $emoji->replace($message->body);

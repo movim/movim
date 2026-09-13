@@ -8,7 +8,6 @@ namespace Movim\Console;
 
 use App\Contact;
 use App\Info;
-use App\Presence;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\ArrayInput;

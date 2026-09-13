@@ -90,7 +90,7 @@
                 {if="$post->isBrief()"}
                     <p class="brief all" title="{$post->title}">
                         {autoescape="off"}
-                            {$post->title|addUrls|addHashtagsLinks|nl2br|prepareString|addEmojis}
+                            {$post->title|linkify:true|nl2br|linkify|addEmojis}
                         {/autoescape}
                     </p>
                 {/if}

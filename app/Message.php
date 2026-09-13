@@ -774,10 +774,10 @@ class Message extends Model
         $this->body = $this->html = 'retracted';
     }
 
-    public function addUrls()
+    public function linkify()
     {
         if (is_string($this->body)) {
-            $this->body = addUrls($this->body);
+            $this->body = linkify($this->body);
         }
     }
 

@@ -281,7 +281,7 @@ class Stickers extends \Movim\Widget\Base
      */
     public function ajaxSmileyGet($string)
     {
-        return prepareString($string);
+        return addEmojis($string);
     }
 
     public function getSmileyPath($id)

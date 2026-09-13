@@ -4,41 +4,126 @@ use Cocur\Slugify\Slugify;
 use Movim\Route;
 use Movim\XMPPUri;
 
-function addUrls($string)
+/**
+ * Add missing links and links to hashtags
+ */
+function linkify(string $html, bool $hashtagLinks = true): string
 {
-    // Add missing links
-    return preg_replace_callback(
-        "/<a[^>]*>[^<]*<\/a|\".*?\"|((?i)\b((?:https?|xmpp:(?:\/{1,3}|[a-z0-9%+#])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\([^\s()<>]+|(\([^\s()<>]+\))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’])))/",
-        function ($match) {
-            if (isset($match[1])) {
-                $content = $match[1];
+    if (trim($html) === '') {
+        return $html;
+    }
 
-                $lastTag = false;
-                if (in_array(substr($content, -3, 3), ['&lt', '&gt'])) {
-                    $lastTag = substr($content, -3, 3);
-                    $content = substr($content, 0, -3);
-                }
-
-                if (substr($content, 0, 5) == 'xmpp:') {
-                    $uri = new XMPPUri($content);
-                    $route = $uri->getRoute();
-
-                    return $route
-                        ? stripslashes('<a href="#" onclick=\"MovimUtils.reload(\'' . $route . '\')\">' . $content . '</a>')
-                        : $content;
-                }
-
-                if (in_array(parse_url($content, PHP_URL_SCHEME), ['http', 'https'])) {
-                    return stripslashes('<a href=\"' . $content . '\" target=\"_blank\" rel=\"noopener noreferrer\">' . $content . '</a>') .
-                        ($lastTag !== false ? $lastTag : '');
-                }
-
-                return $content;
-            }
-            return $match[0];
-        },
-        $string
+    $dom = \Dom\HTMLDocument::createFromString(
+        '<div id="movim-root">' . $html . '</div>',
+        LIBXML_HTML_NOIMPLIED,
+        'UTF-8'
     );
+
+    $xpath = new \Dom\XPath($dom);
+    $container = $dom->getElementById('movim-root');
+
+    $textNodes = $xpath->query('//text()[not(ancestor::*[local-name()="a"])]', $container);
+
+    $urlPattern = '(?<url>\b(?:https?|xmpp:(?:\/{1,3}|[a-z0-9%+#])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\([^\s()<>]+|(?:\([^\s()<>]+\))*)+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\x{00AB}\x{00BB}\x{201C}\x{201D}\x{2018}\x{2019}]))';
+
+    $hashtagPattern = '(?:(?<=[\s>])|^)#(?<tag>\w+)';
+
+    $pattern = $hashtagLinks
+        ? '/' . $urlPattern . '|' . $hashtagPattern . '/iu'
+        : '/' . $urlPattern . '/iu';
+
+    foreach (iterator_to_array($textNodes) as $node) {
+        $text = $node->textContent;
+
+        if (!preg_match($pattern, $text)) {
+            continue;
+        }
+
+        preg_match_all($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+
+        $fragment = $dom->createDocumentFragment();
+        $lastPos = 0;
+        $count = count($matches[0]);
+
+        for ($i = 0; $i < $count; $i++) {
+            [$full, $pos] = $matches[0][$i];
+
+            if ($pos > $lastPos) {
+                $fragment->appendChild($dom->createTextNode(substr($text, $lastPos, $pos - $lastPos)));
+            }
+
+            $isUrl = isset($matches['url'][$i]) && $matches['url'][$i][1] !== -1;
+
+            $fragment->appendChild(
+                $isUrl
+                    ? buildUrlNode($dom, $matches['url'][$i][0])
+                    : buildHashtagNode($dom, $matches['tag'][$i][0])
+            );
+
+            $lastPos = $pos + strlen($full);
+        }
+
+        if ($lastPos < strlen($text)) {
+            $fragment->appendChild($dom->createTextNode(substr($text, $lastPos)));
+        }
+
+        $node->parentNode->replaceChild($fragment, $node);
+    }
+
+    $result = '';
+    foreach ($container->childNodes as $child) {
+        $result .= $dom->saveHTML($child);
+    }
+
+    return $result;
+}
+
+function buildUrlNode(\Dom\HTMLDocument $dom, string $content): \Dom\Node
+{
+    if (str_starts_with($content, 'xmpp:')) {
+        $uri = new XMPPUri($content);
+        $route = $uri->getRoute();
+
+        if ($route) {
+            $a = $dom->createElement('a');
+            $a->setAttribute('href', '#');
+            $a->setAttribute('onclick', "MovimUtils.reload('" . $route . "')");
+            $a->textContent = $content;
+            return $a;
+        }
+
+        return $dom->createTextNode($content);
+    }
+
+    if (in_array(parse_url($content, PHP_URL_SCHEME), ['http', 'https'])) {
+        $a = $dom->createElement('a');
+        $a->setAttribute('href', $content);
+        $a->setAttribute('target', '_blank');
+        $a->setAttribute('rel', 'noopener noreferrer');
+        $a->textContent = $content;
+        return $a;
+    }
+
+    if (preg_match('/^www\d{0,3}\./i', $content)) {
+        $a = $dom->createElement('a');
+        $a->setAttribute('href', 'https://' . $content);
+        $a->setAttribute('target', '_blank');
+        $a->setAttribute('rel', 'noopener noreferrer');
+        $a->textContent = $content;
+        return $a;
+    }
+
+    return $dom->createTextNode($content);
+}
+
+function buildHashtagNode(\Dom\HTMLDocument $dom, string $tag): \Dom\Node
+{
+    $a = $dom->createElement('a');
+    $a->setAttribute('class', 'innertag');
+    $a->setAttribute('href', '#');
+    $a->setAttribute('onclick', "MovimUtils.reload('" . Route::urlize('tag', $tag) . "')");
+    $a->textContent = '#' . $tag;
+    return $a;
 }
 
 function emojiToCodePoint(string $emoji): string
@@ -48,18 +133,7 @@ function emojiToCodePoint(string $emoji): string
     return $unicode;
 }
 
-function addHashtagsLinks($string)
-{
-    return preg_replace_callback("/([\n\r\s>]|^)#(\w+)/u", function ($match) {
-        return
-            $match[1] .
-            '<a class="innertag" href="#" onclick="MovimUtils.reload(\'' . Route::urlize('tag', $match[2]) . '\')">' .
-            '#' . $match[2] .
-            '</a>';
-    }, $string);
-}
-
-function addEmojis($string, bool $noTitle = false)
+function addEmojis(string $string, bool $noTitle = false): string
 {
     $emoji = \Movim\Emoji::getInstance();
     return $emoji->replace($string, $noTitle);
@@ -72,14 +146,6 @@ function slugify(string $string): string
 {
     $slugify = new Slugify;
     return $slugify->slugify($string);
-}
-
-/**
- * @desc Prepare the string (add the a to the links and show the smileys)
- */
-function prepareString($string, bool $preview = false)
-{
-    return addEmojis(addUrls($string, $preview));
 }
 
 /**

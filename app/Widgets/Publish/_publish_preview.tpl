@@ -2,14 +2,14 @@
     {if="empty($title)"}
         <h3>{$c->__('publish.preview')}</h3>
     {else}
-        <h3>{autoescape="off"}{$title|addHashtagsLinks}{/autoescape}</h3>
+        <h3>{autoescape="off"}{$title|linkify}{/autoescape}</h3>
     {/if}
     <br />
     <article>
         <section>
             <div>
                 {autoescape="off"}
-                    {$content|addHashtagsLinks}
+                    {$content|linkify}
                 {/autoescape}
             </div>
         </section>

@@ -54,7 +54,7 @@
             </a>
         </p>
         {if="!$post->isBrief()"}
-            <p dir="auto">{autoescape="off"}{$post->getSummary()|prepareString}{/autoescape}</p>
+            <p dir="auto">{autoescape="off"}{$post->getSummary()|linkify|addEmojis}{/autoescape}</p>
         {/if}
         <p class="line">
             {if="$post->contact"}
