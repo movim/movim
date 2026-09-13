@@ -757,6 +757,64 @@ class Post extends Model
             $attachment->category = 'picture';
             $this->attachments[] = $attachment;
         }
+
+        // WordPress-style feeds expose the featured image both as an enclosure
+        // and at the top of <content:encoded>. When the leading content image
+        // matches one of the enclosure pictures, strip it from contentcleaned
+        // so the card doesn't render the same image twice.
+        if ($picture && $extra) {
+            $extraKey = $this->normalizeImageUrl($extra);
+
+            foreach ($this->attachments as $att) {
+                if ($att->category === 'picture'
+                    && ($att->type ?? '') !== 'content'
+                    && $this->normalizeImageUrl($att->href) === $extraKey) {
+                    $this->stripLeadingContentImage();
+                    break;
+                }
+            }
+        }
+    }
+
+    private function stripLeadingContentImage(): void
+    {
+        if (empty($this->contentcleaned)) return;
+
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        if (!@$dom->loadHTML('<?xml encoding="UTF-8">' . $this->contentcleaned)) return;
+
+        $img = (new \DOMXPath($dom))->query('//img')->item(0);
+        if (!$img) return;
+
+        // Absorb wrappers like <figure><a><img/></a></figure> so we don't leave empty shells behind.
+        $target = $img;
+        while (($parent = $target->parentNode) instanceof \DOMElement
+            && in_array($parent->nodeName, ['a', 'figure'], true)
+            && $this->wrapsOnly($parent, $target)) {
+            $target = $parent;
+        }
+
+        $target->parentNode?->removeChild($target);
+        $this->contentcleaned = substr($dom->saveXML($dom->documentElement), 12, -14);
+    }
+
+    private function wrapsOnly(\DOMElement $parent, \DOMNode $child): bool
+    {
+        foreach ($parent->childNodes as $c) {
+            if ($c === $child) continue;
+            if ($c->nodeType === XML_TEXT_NODE && trim($c->textContent) === '') continue;
+            return false;
+        }
+        return true;
+    }
+
+    private function normalizeImageUrl(string $url): string
+    {
+        $parsed = parse_url($url);
+        if ($parsed === false || empty($parsed['host']) || empty($parsed['path'])) return '';
+        // Ignore WordPress size suffix `-WxH` before the extension: image-1280x853.jpg -> image.jpg
+        $path = preg_replace('/-\d{2,5}x\d{2,5}(\.[a-zA-Z]{2,5})$/', '$1', $parsed['path']);
+        return strtolower($parsed['host']) . $path;
     }
 
     private function resolveUrl(string $url)
