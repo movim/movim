@@ -1,6 +1,7 @@
 /* Article */
 
 header:has(+ article) {
+    background-color: rgb(var(--movim-background-main));
     position: sticky;
     z-index: 1;
     top: 0;
@@ -41,7 +42,7 @@ article section {
     font-size: 2rem;
     line-height: 3rem;
     font-weight: 500;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
 }
 
 article section[dir=rtl] {
