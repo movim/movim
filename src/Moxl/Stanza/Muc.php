@@ -18,7 +18,7 @@ class Muc
         return $dom;
     }
 
-    public static function destroy($to)
+    public static function destroy(string $to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');

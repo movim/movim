@@ -2,6 +2,8 @@
 
 namespace Moxl\Xec\Payload;
 
+use Moxl\Xec\Action\Muc\GetConfig;
+
 class Message extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -41,18 +43,60 @@ class Message extends Payload
             linker($this->sessionId)->chatroomPings->touch($message->jidfrom);
         }
 
+        /**
+         * Muc events
+         */
+        if (
+            $stanza->x
+            && $stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
+            && $stanza->x->status
+            && $stanza->x->status->attributes()->code == '104'
+        ) {
+            $getConfig = new GetConfig($this->me, $this->sessionId);
+            $getConfig->setTo((string)$stanza->attributes()->from)
+                ->request();
+            return;
+        }
+
+        /**
+         * Pubsub events
+         */
+
         if (
             $stanza->event
             && $stanza->event->attributes()->xmlns == 'http://jabber.org/protocol/pubsub#event'
-            && $stanza->event->subscription
         ) {
-            if ($stanza->event->subscription->attributes()->subscription == 'subscribed') {
+            $from = (string)$stanza->attributes()->from;
+            if (
+                $stanza->event->subscription
+                && $stanza->event->subscription->attributes()->subscription == 'subscribed'
+            ) {
                 $this->pack([
-                    'server' => (string)$stanza->attributes()->from,
+                    'server' => $from,
                     'node' => (string)$stanza->event->subscription->attributes()->node
                 ]);
                 $this->event('message_pubsub_subscribed');
+            } elseif (
+                $stanza->event->configuration
+                && isset($stanza->event->configuration->x)
+                && (string)$stanza->event->configuration->x->attributes()->xmlns == 'jabber:x:data'
+            ) {
+                $node = $stanza->event->configuration->attributes()->node;
+                $info = \App\Info::where('server', $from)->where('node', $node)->first();
+
+                if ($info) {
+                    $info->setXForm($stanza->configuration->x);
+                    $info->save();
+
+                    $this->pack([
+                        'server' => $from,
+                        'node' => $node
+                    ]);
+                    $this->event('message_pubsub_configuration');
+                }
             }
+
+            return;
         }
 
         if ($stanza->composing || $stanza->paused || $stanza->active) {

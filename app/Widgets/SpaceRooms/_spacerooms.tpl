@@ -37,7 +37,7 @@
                                 <i class="material-symbols call icon {if="$c->currentCall()?->isJidInCall($value->sfuPresence->mucjid)"}green blink{else}blue{/if}" title="{$c->__('visio.in_call')}">video_call</i>
                             {/if}
                         </span>
-                        {$value->name}
+                        {$value->title}
                     </p>
                 </div>
             </li>

@@ -213,9 +213,6 @@ class SpaceRooms extends Base
             $conference->name = $form->name->value;
             $conference->pinned = (bool)$form->pinned->value;
             $conference->autojoin = true;
-            $b = $this->xmpp(new AddRoom);
-            $b->setConference($conference)
-                ->request();
 
             $sc = $this->xmpp(new SetConfig);
             $sc->setTo($form->conference->value)
@@ -230,6 +227,10 @@ class SpaceRooms extends Base
                     'muc#roomconfig_whois' => 'anyone',
                     'muc#roomconfig_publicroom' => 'false',
                 ])
+                ->request();
+
+            $b = $this->xmpp(new AddRoom);
+            $b->setConference($conference)
                 ->request();
         }
     }

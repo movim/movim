@@ -63,7 +63,7 @@ class RoomsUtils extends Base
         $this->registerEvent('message_invite_error', 'onInviteError');
 
         $this->registerEvent('muc_getconfig_handle', 'onConfig', 'chat');
-        $this->registerEvent('muc_setconfig_handle', 'onConfigSaved', 'chat');
+        $this->registerEvent('muc_setconfig_handle', 'onConfigSaved', ['chat', 'space*']);
         $this->registerEvent('muc_setconfig_error', 'onConfigError', 'chat');
 
         $this->registerEvent('muc_discorequest_handle', 'onMucDiscoRequest');

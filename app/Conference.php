@@ -292,12 +292,8 @@ class Conference extends Model
         return cleanupId($this->space_server . $this->space_node . '-counter');
     }
 
-    public function getTitleAttribute()
+    public function getTitleAttribute(): string
     {
-        if (!empty($this->name)) {
-            return $this->name;
-        }
-
         if ($this->info) {
             return $this->info->name;
         }

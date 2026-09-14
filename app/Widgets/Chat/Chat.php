@@ -262,7 +262,7 @@ class Chat extends \Movim\Widget\Base
             ) {
                 $this->notif(
                     key: $conference->notifKey,
-                    title: $conference->name ?? $from,
+                    title: $conference->title,
                     body: $message->resource . ': ' . $rawbody,
                     url: $conference->route,
                     picture: $conference->getPicture(),
@@ -295,7 +295,7 @@ class Chat extends \Movim\Widget\Base
                             $title = $conference->spaceInfo?->name
                                 ? $conference->spaceInfo->name . ' • '
                                 : '';
-                            $title .= $conference->name ?? $from;
+                            $title .= $conference->title;
 
                             $this->notif(
                                 key: $conference->notifKey,
@@ -500,9 +500,9 @@ class Chat extends \Movim\Widget\Base
             }
 
             if ($conference->isFromSpace() && $info = $conference->spaceInfo) {
-                $this->rpc('Notif.setTitle', $this->__('page.space') . ' • ' . $info->name . ' • ' . $conference->name);
+                $this->rpc('Notif.setTitle', $this->__('page.space') . ' • ' . $info->name . ' • ' . $conference->title);
             } else {
-                $this->rpc('Notif.setTitle', $this->__('page.chats') . ' • ' . $conference->name);
+                $this->rpc('Notif.setTitle', $this->__('page.chats') . ' • ' . $conference->title);
             }
 
             $this->rpc('MovimUtils.pushSoftState', $conference->route);

@@ -7,6 +7,8 @@ v0.35.1
 * New composing bubble in the chat
 * Drop addHashtagsLinks and addUrls and introduce linkify with a propre HTML parser instead of regexs
 * Fix CSS redraw page blink issues when soft loading pages
+* Don't rely on the Bookmark name anymore but only the MUC title from the configuration instead
+* Fix MUC configuration refresh
 
 v0.35
 ---------------------------

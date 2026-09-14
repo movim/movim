@@ -118,7 +118,7 @@
                     {else}
                         class="line"
                     {/if}>
-                    {if="$conference && $conference->title"}
+                    {if="$conference"}
                         {$conference->title}
                         {if="$conference->notify == 0"}
                             <span class="second" title="{$c->__('room.notify_never')}">

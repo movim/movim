@@ -3,7 +3,7 @@
     <br />
     <h4 class="gray">{$c->__('rooms.destroy_text')}</h4>
     <br />
-    <h4 class="gray">{$conference->name ?? $conference->conference}</h4>
+    <h4 class="gray">{$conference->title}</h4>
 </section>
 <footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">

@@ -1,4 +1,4 @@
-<a href="#" onclick="listIconClick(event)" title="{$conference->name}">
+<a href="#" onclick="listIconClick(event)" title="{$conference->title}">
     {if="$conference->isFromSpace()"}
         {if="$conference->call"}
             <i class="material-symbols icon gray">adaptive_audio_mic</i>
@@ -7,7 +7,7 @@
         {/if}
     {elseif="$withAvatar == false"}
         {autoescape="off"}
-            {$conference->name|firstLetterCapitalize|addEmojis}
+            {$conference->title|firstLetterCapitalize|addEmojis}
         {/autoescape}
     {/if}
     {if="$conference->notify == 2 && $conference->unreads_count > 0"}

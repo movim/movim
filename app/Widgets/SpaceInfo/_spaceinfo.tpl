@@ -23,7 +23,7 @@
             <p class="line">
                 {autoescape="off"}{$subscription->info->name|addEmojis}{/autoescape}
             </p>
-            <p class="line two" title="{$subscription->info->description}">
+            <p class="line two" {if="!empty($subscription->info->description)"}title="{$subscription->info->description}"{/if}>
                 {if="!empty($subscription->info->description)"}
                     {autoescape="off"}{$subscription->info->description|addEmojis}{/autoescape}
                 {else}

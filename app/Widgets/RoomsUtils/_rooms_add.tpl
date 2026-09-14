@@ -2,18 +2,14 @@
     {if="isset($id)"}
         <ul class="list thick">
             <li>
+                {if="isset($conference)"}
+                    <span class="primary icon bubble">
+                        <img src="{$conference->getPicture(\Movim\ImageSize::M)}">
+                    </span>
+                {/if}
                 <div>
-                    {if="$create"}
-                        <p>{$c->__('rooms.create')}</p>
-                    {else}
-                        {if="isset($conference)"}
-                            <p>{$c->__('rooms.edit')}</p>
-                        {else}
-                            <p>{$c->__('rooms.join')}</p>
-                        {/if}
-                    {/if}
-
-                    <p>{$id}</p>
+                    <p class="line">{if="isset($conference)"}{$conference->title}{else}{$id}{/if}</p>
+                    <p>{$c->__('rooms.edit')}</p>
                 </div>
             </li>
         </ul>
@@ -100,9 +96,6 @@
             <ul class="list">
                 {if="!$create"}
                     <li>
-                        <span class="primary icon gray">
-                            <i class="material-symbols">short_text</i>
-                        </span>
                         <div>
                             <input
                                 {if="isset($conference)"}
@@ -113,9 +106,8 @@
                                     value="{$name}"
                                 {/if}
                                 name="name"
-                                placeholder="{$c->__('chatrooms.name_placeholder')}"
+                                type="hidden"
                                 required />
-                            <label>{$c->__('chatrooms.name')}</label>
                         </div>
                     </li>
                 {/if}
