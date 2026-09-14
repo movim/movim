@@ -363,7 +363,8 @@
                     {if="$roster"}
                         {$roster->truename}
                     {elseif="strpos($contact->id, '/') != false"}
-                        {explodeJid($contact->id, JidComponent::Resource)}
+                        {$explodedJid = explodeJid($contact->id)}
+                        {$explodedJid.resource}
                     {else}
                         {$contact->truename}
                     {/if}
@@ -374,7 +375,7 @@
                 </p>
 
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->id|echapJS}')">
-                    {if="$c->currentCall()?->isJidInCall($jid)"}
+                    {if="$c->currentCall()->isJidInCall($jid)"}
                         <i class="material-symbols icon green blink">phone_in_talk</i>
                         {$c->__('visio.in_call')} •
                     {/if}
