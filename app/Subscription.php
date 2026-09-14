@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Movim\ImageSize;
 use Movim\Model;
 
 class Subscription extends Model
@@ -38,6 +39,13 @@ class Subscription extends Model
             ->orderBy('pinned', 'desc')
             ->orderBy('name', 'asc')
             ->withCount('unreads', 'quoted');
+    }
+
+    public function getPicture(ImageSize $size = ImageSize::M): string
+    {
+        return $this->contact
+            ? $this->contact->getPicture($size)
+            : avatarPlaceholder($this->jid);
     }
 
     public function setExtensions(?\SimpleXMLElement $extensions = null)

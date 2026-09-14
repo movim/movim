@@ -1,5 +1,5 @@
 
-<form name="spaceinfo_affiliations">
+<form name="spaceinfo_affiliations" oninput="MovimUtils.formSetDirty('spaceinfo_affiliations')">
     <div>
         <ul class="list flex">
             <li>
@@ -12,11 +12,7 @@
             {loop="$affiliations"}
                 <li>
                     <span class="primary icon bubble">
-                        {if="$value->contact"}
-                            <img src="{$value->contact->getPicture()}">
-                        {else}
-                            <img src="{getPicture(placeholder: $value->jid)}">
-                        {/if}
+                        <img src="{$value->getPicture()}">
                     </span>
                     <div>
                         <p class="line">

@@ -270,7 +270,9 @@ function formToArray(stdClass $form): array
     $values = [];
 
     foreach ($form as $key => $value) {
-        $values[$key] = $value->value;
+        if ($key != 'isDirty') {
+            $values[$key] = $value->value;
+        }
     }
 
     return $values;

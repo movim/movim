@@ -55,14 +55,26 @@ var MovimUtils = {
         MovimUtils.addClass('ul.list.rooms li[data-jid="' + jid + '"]', 'active');
     },
 
-    formToJson: function (formname) {
+    formSetDirty: function (formname) {
         var form = document.forms[formname];
 
         if (!form) {
             return false;
         }
 
+        form.dataset.dirty = true;
+    },
+
+    formToJson: function (formname) {
+        var form = document.forms[formname];
+
+        if (!form) {
+            return;
+        }
+
         var json = {};
+
+        json['isDirty'] = Boolean(form.dataset.dirty);
 
         for (var i = 0; i < form.elements.length; i++) {
             json_att = {};

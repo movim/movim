@@ -73,7 +73,6 @@ class GetSubscriptions extends Action
         }
 
         $this->pack([
-            'subscriptions' => $tab,
             'to' => $this->_to,
             'node' => $this->_node
         ]);

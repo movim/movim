@@ -92,7 +92,7 @@ class CommunityAffiliations extends Base
 
     public function onSubscriptions(Packet $packet)
     {
-        list($subscriptions, $server, $node) = array_values($packet->content);
+        list($server, $node) = array_values($packet->content);
 
         $view = $this->tpl();
 

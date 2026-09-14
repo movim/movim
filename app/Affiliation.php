@@ -3,6 +3,7 @@
 namespace App;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
+use Movim\ImageSize;
 
 class Affiliation extends Model
 {
@@ -17,5 +18,12 @@ class Affiliation extends Model
     public function getAffiliationtextAttribute(): string
     {
         return getAffiliations()[$this->affiliation];
+    }
+
+    public function getPicture(ImageSize $size = ImageSize::M): string
+    {
+        return $this->contact
+            ? $this->contact->getPicture($size)
+            : avatarPlaceholder($this->jid);
     }
 }

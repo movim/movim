@@ -1,5 +1,5 @@
 <section class="scroll">
-    <form name="spaceinfo_config">
+    <form name="spaceinfo_config" oninput="MovimUtils.formSetDirty('spaceinfo_config')">
         <div>
             <ul class="list">
                 <li>

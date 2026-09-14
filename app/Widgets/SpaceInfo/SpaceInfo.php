@@ -17,6 +17,7 @@ use Moxl\Xec\Action\PubsubSubscription\Add;
 use Moxl\Xec\Action\Space\Destroy as SpaceDestroy;
 use Moxl\Xec\Action\Space\GetConfig;
 use Moxl\Xec\Action\Space\GetPendingSubscriptions;
+use Moxl\Xec\Action\Space\GetSubscriptions;
 use Moxl\Xec\Action\Space\SetAffiliations;
 use Moxl\Xec\Action\Space\SetConfig;
 use Moxl\Xec\Payload\Packet;
@@ -33,6 +34,7 @@ class SpaceInfo extends Base
         $this->registerEvent('space_setconfig_error', 'onConfigError');
         $this->registerEvent('space_destroy_handle', 'onDestroy');
         $this->registerEvent('space_getpendings_handle', 'onPendings');
+        $this->registerEvent('space_getsubscriptions_handle', 'onSubscriptions', 'space*');
         $this->registerEvent('space_setaffiliations_handle', 'onSetAffiliations');
         $this->addjs('spaceinfo.js');
         $this->addcss('spaceinfo.css');
@@ -74,6 +76,40 @@ class SpaceInfo extends Base
                     ->with('contact')
                     ->get()
             ]));
+
+            // Some users doesn't have an affiliation so we complete with the subscriptions
+            $getSubscriptions = $this->xmpp(new GetSubscriptions);
+            $getSubscriptions->setTo($server)->setNode($node)
+                ->request();
+        }
+    }
+
+    public function onSubscriptions(Packet $packet)
+    {
+        list($server, $node) = array_values($packet->content);
+
+        $affiliation = Affiliation::where('server', $server)
+            ->where('node', $node)
+            ->where('jid', $this->me->id)
+            ->first();
+
+        if ($affiliation && $affiliation->affiliation == 'owner') {
+            $this->rpc(
+                'MovimTpl.append',
+                '#spaceinfo_affiliations ul.list',
+                $this->view('_spaceinfo_affiliations_subscriptions', [
+                    'subscriptions' => Subscription::where('server', $server)
+                        ->where('node', $node)
+                        ->whereNotIn('jid', function ($query) use ($server, $node) {
+                            $query->select('jid')
+                                ->from('affiliations')
+                                ->where('server', $server)
+                                ->where('node', $node);
+                        })
+                        ->with('contact')
+                        ->get()
+                ])
+            );
         }
     }
 
@@ -242,11 +278,13 @@ class SpaceInfo extends Base
             return;
         }
 
-        $r = $this->xmpp(new SetConfig);
-        $r->setTo($server)
-            ->setNode($node)
-            ->setData(formToArray($data))
-            ->request();
+        if ($data->isDirty) {
+            $r = $this->xmpp(new SetConfig);
+            $r->setTo($server)
+                ->setNode($node)
+                ->setData(formToArray($data))
+                ->request();
+        }
     }
 
     public function ajaxGetAvatar(string $server, string $node)
@@ -319,10 +357,28 @@ class SpaceInfo extends Base
 
     public function ajaxSetAffiliations(string $server, string $node, \stdClass $data)
     {
+        if (!$data->isDirty) return;
+
         $currentAffiliations = Affiliation::where('server', $server)
             ->where('node', $node)
             ->get()
             ->pluck('affiliation', 'jid');
+
+        // Inject the 'none' subscriptions
+        foreach (
+            Subscription::where('server', $server)
+                ->where('node', $node)
+                ->whereNotIn('jid', function ($query) use ($server, $node) {
+                    $query->select('jid')
+                        ->from('affiliations')
+                        ->where('server', $server)
+                        ->where('node', $node);
+                })
+                ->with('contact')
+                ->get() as $subscription
+        ) {
+            $currentAffiliations->put($subscription->jid, 'none');
+        }
 
         $affiliations = [];
         foreach ($data as $key => $input) {
