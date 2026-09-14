@@ -11,9 +11,33 @@ class Post extends Payload
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
+        $from = (string)$parent->attributes()->from;
+
+        if (
+            (string)$stanza->attributes()->xmlns == 'http://jabber.org/protocol/pubsub#event'
+            && $stanza->configuration
+            && isset($stanza->configuration->x)
+            && (string)$stanza->configuration->x->attributes()->xmlns == 'jabber:x:data'
+        ) {
+            $node = $stanza->configuration->attributes()->node;
+            $info = \App\Info::where('server', $from)->where('node', $node)->first();
+
+            if ($info) {
+                $info->setXForm($stanza->configuration->x);
+                $info->save();
+
+                $this->pack([
+                    'server' => $from,
+                    'node' => $node
+                ]);
+                $this->event('node_configuration');
+            }
+
+            return;
+        }
+
         if (!$stanza->items || !$stanza->items->item) return;
 
-        $from = (string)$parent->attributes()->from;
         $node = (string)$stanza->items->attributes()->node;
 
         if (

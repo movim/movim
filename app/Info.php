@@ -429,96 +429,101 @@ class Info extends Model
             $this->attributes['features'] = serialize($features);
 
             foreach ($query->query->x as $x) {
-                $results = $x->xpath('.//field[@var="FORM_TYPE"]/value/text()');
-                $formType = $results ? (string)$results[0] : null;
+                $this->setXForm($x);
+            }
+        }
+    }
 
-                foreach ($x->field as $field) {
-                    switch ((string)$field->attributes()->var) {
-                        // https://xmpp.org/extensions/xep-0444.html#disco-restricted
-                        case 'allowlist':
-                            if ($formType == 'urn:xmpp:reactions:0:restrictions') {
-                                $arr = [];
-                                foreach ($field->children() as $value) {
-                                    $arr[] = (string)$value;
-                                }
-                                $this->reactionsrestrictions = $arr;
-                            }
-                            break;
-                        case 'pubsub#title':
-                            $this->name = (string)$field->value;
-                            break;
-                        case 'pubsub#type':
-                            $this->type = (string)$field->value;
-                            break;
-                        case 'pubsub#creation_date':
-                            $this->created = toSQLDate($field->value);
-                            break;
-                        case 'pubsub#access_model':
-                            $this->pubsubaccessmodel = (string)$field->value;
-                            break;
-                        case 'pubsub#publish_model':
-                            $this->pubsubpublishmodel = (string)$field->value;
-                            break;
-                        case 'muc#roominfo_pubsub':
-                            if (!empty((string)$field->value)) {
-                                $this->related = (string)$field->value;
-                            }
-                            break;
-                        case 'muc#roominfo_description':
-                        case 'pubsub#description':
-                        case 'max-file-size': // https://xmpp.org/extensions/xep-0363.html#disco
-                            if (!empty((string)$field->value)) {
-                                $this->description = (string)$field->value;
-                            }
-                            break;
-                        case 'pubsub#num_subscribers':
-                        case 'muc#roominfo_occupants':
-                            $this->occupants = (int)$field->value;
-                            break;
-                        case 'abuse-addresses':
-                            $arr = [];
-                            foreach ($field->children() as $value) {
-                                $arr[] = (string)$value;
-                            }
-                            $this->abuseaddresses = $arr;
-                            break;
-                        case 'admin-addresses':
-                            $arr = [];
-                            foreach ($field->children() as $value) {
-                                $arr[] = (string)$value;
-                            }
-                            $this->adminaddresses = $arr;
-                            break;
-                        case 'feedback-addresses':
-                            $arr = [];
-                            foreach ($field->children() as $value) {
-                                $arr[] = (string)$value;
-                            }
-                            $this->feedbackaddresses = $arr;
-                            break;
-                        case 'sales-addresses':
-                            $arr = [];
-                            foreach ($field->children() as $value) {
-                                $arr[] = (string)$value;
-                            }
-                            $this->salesaddresses = $arr;
-                            break;
-                        case 'security-addresses':
-                            $arr = [];
-                            foreach ($field->children() as $value) {
-                                $arr[] = (string)$value;
-                            }
-                            $this->securityaddresses = $arr;
-                            break;
-                        case 'support-addresses':
-                            $arr = [];
-                            foreach ($field->children() as $value) {
-                                $arr[] = (string)$value;
-                            }
-                            $this->supportaddresses = $arr;
-                            break;
+    public function setXForm(\SimpleXMLElement $x)
+    {
+        $results = $x->xpath('.//field[@var="FORM_TYPE"]/value/text()');
+        $formType = $results ? (string)$results[0] : null;
+
+        foreach ($x->field as $field) {
+            switch ((string)$field->attributes()->var) {
+                // https://xmpp.org/extensions/xep-0444.html#disco-restricted
+                case 'allowlist':
+                    if ($formType == 'urn:xmpp:reactions:0:restrictions') {
+                        $arr = [];
+                        foreach ($field->children() as $value) {
+                            $arr[] = (string)$value;
+                        }
+                        $this->reactionsrestrictions = $arr;
                     }
-                }
+                    break;
+                case 'pubsub#title':
+                    $this->name = (string)$field->value;
+                    break;
+                case 'pubsub#type':
+                    $this->type = (string)$field->value;
+                    break;
+                case 'pubsub#creation_date':
+                    $this->created = toSQLDate($field->value);
+                    break;
+                case 'pubsub#access_model':
+                    $this->pubsubaccessmodel = (string)$field->value;
+                    break;
+                case 'pubsub#publish_model':
+                    $this->pubsubpublishmodel = (string)$field->value;
+                    break;
+                case 'muc#roominfo_pubsub':
+                    if (!empty((string)$field->value)) {
+                        $this->related = (string)$field->value;
+                    }
+                    break;
+                case 'muc#roominfo_description':
+                case 'pubsub#description':
+                case 'max-file-size': // https://xmpp.org/extensions/xep-0363.html#disco
+                    if (!empty((string)$field->value)) {
+                        $this->description = (string)$field->value;
+                    }
+                    break;
+                case 'pubsub#num_subscribers':
+                case 'muc#roominfo_occupants':
+                    $this->occupants = (int)$field->value;
+                    break;
+                case 'abuse-addresses':
+                    $arr = [];
+                    foreach ($field->children() as $value) {
+                        $arr[] = (string)$value;
+                    }
+                    $this->abuseaddresses = $arr;
+                    break;
+                case 'admin-addresses':
+                    $arr = [];
+                    foreach ($field->children() as $value) {
+                        $arr[] = (string)$value;
+                    }
+                    $this->adminaddresses = $arr;
+                    break;
+                case 'feedback-addresses':
+                    $arr = [];
+                    foreach ($field->children() as $value) {
+                        $arr[] = (string)$value;
+                    }
+                    $this->feedbackaddresses = $arr;
+                    break;
+                case 'sales-addresses':
+                    $arr = [];
+                    foreach ($field->children() as $value) {
+                        $arr[] = (string)$value;
+                    }
+                    $this->salesaddresses = $arr;
+                    break;
+                case 'security-addresses':
+                    $arr = [];
+                    foreach ($field->children() as $value) {
+                        $arr[] = (string)$value;
+                    }
+                    $this->securityaddresses = $arr;
+                    break;
+                case 'support-addresses':
+                    $arr = [];
+                    foreach ($field->children() as $value) {
+                        $arr[] = (string)$value;
+                    }
+                    $this->supportaddresses = $arr;
+                    break;
             }
         }
     }
