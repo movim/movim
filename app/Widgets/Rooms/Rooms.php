@@ -19,8 +19,8 @@ class Rooms extends Base
 {
     public function load()
     {
-        $this->addcss('chatrooms.css');
-        $this->addjs('chatrooms.js');
+        $this->addcss('rooms.css');
+        $this->addjs('rooms.js');
 
         $this->registerEvent('bookmark2_get_handle', 'onBookmarkGet');
         $this->registerEvent('bookmark2', 'onBookmarkSet');
