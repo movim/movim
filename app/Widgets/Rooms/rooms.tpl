@@ -11,9 +11,6 @@
 
             <span class="chip active" data-filter="all" onclick="Rooms.toggleShowAll()">{$c->__('chatrooms.filter_all')}</span>
             <span class="chip active" data-filter="connected" onclick="Rooms.toggleShowAll()">{$c->__('chatrooms.filter_connected')}</span>
-            <span class="control icon active gray" onclick="Rooms.toggleEdit()">
-                <i class="material-symbols">rule</i>
-            </span>
         </li>
     </ul>
 

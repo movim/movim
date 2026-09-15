@@ -18,10 +18,6 @@ var Rooms = {
         Rooms.default_services = services;
     },
 
-    toggleEdit: function () {
-        document.querySelector('#rooms ul.list.rooms').classList.toggle('edition');
-    },
-
     toggleScroll: function () {
         var chats = document.querySelector('#chats_widget_header');
         var rooms = document.querySelector('#rooms');
@@ -144,6 +140,20 @@ var Rooms = {
                 items[i].onclick = function (e) {
                     Chat.getRoom(this.dataset.jid);
                 }
+
+                let touchTimer;
+
+                items[i].ontouchstart = function (e) {
+                    e.stopPropagation();
+                    touchTimer = setTimeout(() => {
+                        touchTimer = null;
+                        RoomsUtils_ajaxAdd(this.dataset.jid);
+                    }, 1000);
+                }
+
+                items[i].ontouchend = function (e) {
+                    clearTimeout(touchTimer);
+                }
             }
 
             if (
@@ -220,7 +230,7 @@ var Rooms = {
         }
     },
 
-    refreshMujis: function() {
+    refreshMujis: function () {
         // Doesn't refresh the list while we're on it
         document.querySelectorAll('#rooms li.muji:not(.active)').forEach(room => {
             Rooms_ajaxRefresh(room.dataset.jid);

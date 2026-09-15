@@ -15,7 +15,7 @@
                 {if="!$conference->isFromSpace()"}
                     <span class="primary icon bubble active
                         {if="!$conference->connected"}disabled{/if}"
-                        onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">
+                        onclick="RoomsUtils_ajaxGetDrawer('{$conference->conference|echapJS}')">
                         <img src="{$conference->getPicture()}">
                 {else}
                     <span class="primary icon gray on_desktop">
@@ -202,7 +202,7 @@
                                 {/if}
                             {/loop}
                         {elseif="!empty($conference->subject) && !$conference->sfuPresence"}
-                            <span onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">{$conference->subject}</span>
+                            <span onclick="RoomsUtils_ajaxGetDrawer('{$conference->conference|echapJS}')">{$conference->subject}</span>
                         {/if}
                     {/if}
                 </p>
@@ -220,7 +220,7 @@
                 </li>
             {/if}
             {if="$conference->presence->mucaffiliation == 'owner'"}
-                <li onclick="RoomsUtils_ajaxGetConfig('{$jid|echapJS}')">
+                <li onclick="RoomsUtils_ajaxGetConfig('{$conference->conference|echapJS}')">
                     <span class="primary icon gray">
                         <a href="#" onclick="listIconClick(event)">
                             <i class="material-symbols">settings</i>
@@ -232,7 +232,7 @@
                 </li>
             {/if}
             {if="$conference->presence->mucrole == 'moderator'"}
-                <li onclick="RoomsUtils_ajaxGetSubject('{$jid|echapJS}')">
+                <li onclick="RoomsUtils_ajaxGetSubject('{$conference->conference|echapJS}')">
                     <span class="primary icon gray">
                         <a href="#" onclick="listIconClick(event)">
                             <i class="material-symbols">short_text</i>
@@ -245,6 +245,15 @@
             {/if}
             <hr />
         {/if}
+
+        <li>
+            <span class="control icon gray" onclick="RoomsUtils_ajaxAdd('{$conference->conference|echapJS}');">
+                <i class="material-symbols">edit</i>
+            </span>
+            <div>
+                <p>{$c->__('button.edit')}</p>
+            </div>
+        </li>
 
         {if="!empty($info->abuseaddresses)"}
             {$parsed = parse_url($info->abuseaddresses[0])}

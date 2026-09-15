@@ -22,6 +22,7 @@
 
 #rooms ul li.room {
     white-space: nowrap;
+    overflow-x: hidden;
 }
 
 #gateway_rooms:empty {
@@ -32,9 +33,27 @@
     display: none;
 }
 
-#rooms ul.list.rooms li:not(.connecting) li span.control.connecting,
-#rooms ul.list.rooms:not(.edition) li span.control.edition {
+#rooms ul.list.rooms li:not(.connecting) li span.control.connecting {
     display: none;
+}
+
+#rooms ul.list.rooms li span.control.edition {
+    position: absolute;
+    display: block;
+    right: -7rem;
+    margin: 0;
+    width: 5.5rem;
+    background-color: rgb(var(--movim-background));
+    top: 0;
+    height: 5.25rem;
+    line-height: 5.25rem;
+    box-shadow: var(--elevation-1);
+    transition: right 0.2s var(--accelerate-easing);
+}
+
+#rooms ul.list.rooms li:hover span.control.edition {
+    right: 0;
+    transition: right 0.2s var(--decelerate-easing) 0.75s;
 }
 
 #rooms ul.list.rooms {
