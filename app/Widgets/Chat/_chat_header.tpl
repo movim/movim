@@ -246,8 +246,8 @@
             <hr />
         {/if}
 
-        <li>
-            <span class="control icon gray" onclick="RoomsUtils_ajaxAdd('{$conference->conference|echapJS}');">
+        <li onclick="RoomsUtils_ajaxAdd('{$conference->conference|echapJS}');">
+            <span class="primary icon gray">
                 <i class="material-symbols">edit</i>
             </span>
             <div>
