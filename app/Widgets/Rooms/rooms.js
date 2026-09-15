@@ -148,7 +148,7 @@ var Rooms = {
                     touchTimer = setTimeout(() => {
                         touchTimer = null;
                         RoomsUtils_ajaxAdd(this.dataset.jid);
-                    }, 1000);
+                    }, 500);
                 }
 
                 items[i].ontouchend = function (e) {
