@@ -417,7 +417,7 @@ class Connection
         ?string $to = null
     ): \DOMDocument {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $iq = $dom->createElementNS('jabber:client', 'iq');
+        $iq = $dom->createElement('iq');
         $dom->appendChild($iq);
         $iq->setAttribute('from', $from);
         $iq->setAttribute('to', $to != null ? $to :  $this->jid);

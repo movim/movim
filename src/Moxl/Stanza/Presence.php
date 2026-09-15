@@ -23,10 +23,20 @@ class Presence
         ?DOMElement $muji = null,
         ?int $last = 0,
         ?string $mavSince = null,
-        ?bool $withCaps = true
+        ?bool $withCaps = true,
+        ?string $namespace = 'jabber:client'
     ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $root = $dom->createElementNS('jabber:client', 'presence');
+
+        if ($namespace !== null)
+        {
+            $root = $dom->createElementNS($namespace, 'presence');
+        }
+        else
+        {
+            $root = $dom->createElement('presence');
+        }
+
         $dom->appendChild($root);
 
         if ($from) {
