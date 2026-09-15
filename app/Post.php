@@ -550,10 +550,12 @@ class Post extends Model
             $this->delay = $delay;
         }
 
-        // Tags parsing
-        if ($entry->entry->category) {
-            $tags = [];
+        /**
+         * Tags parsing
+         **/
+        $tags = [];
 
+        if ($entry->entry->category) {
             if (
                 $entry->entry->category->count() == 1
                 && isset($entry->entry->category->attributes()->term)
@@ -567,32 +569,31 @@ class Post extends Model
                     }
                 }
             }
+        }
 
-            // Extract more tags if possible
-            $tagsContent = getHashtags(htmlspecialchars($this->title ?? ''))
-                + getHashtags(htmlspecialchars($this->contentraw ?? ''));
+        // Extract more tags if possible
+        $tagsContent = getHashtags(htmlspecialchars($this->title ?? ''))
+            + getHashtags(htmlspecialchars($this->contentraw ?? ''));
+        foreach ($tagsContent as $tag) {
+            $tags[strtolower($tag)] = true;
+        }
 
-            foreach ($tagsContent as $tag) {
-                $tags[$tag] = true;
+        if (!empty($tags)) {
+            $existingTags = \App\Tag::whereIn('name', array_keys($tags))->get();
+
+            foreach ($existingTags as $tag) {
+                $this->tags[] = $tag->id;
+
+                if ($tag->name == 'nsfw') $this->nsfw = true;
+                unset($tags[$tag->name]);
             }
 
             if (!empty($tags)) {
-                $existingTags = \App\Tag::whereIn('name', array_keys($tags))->get();
+                foreach ($tags as $tag => $set) {
+                    $dbTag = \App\Tag::firstOrCreateSafe(['name' => strtolower((string)$tag)]);
 
-                foreach ($existingTags as $tag) {
-                    $this->tags[] = $tag->id;
-
-                    if ($tag->name == 'nsfw') $this->nsfw = true;
-                    unset($tags[$tag->name]);
-                }
-
-                if (!empty($tags)) {
-                    foreach ($tags as $tag => $set) {
-                        $dbTag = \App\Tag::firstOrCreateSafe(['name' => strtolower((string)$tag)]);
-
-                        $this->tags[] = $dbTag->id;
-                        if ($dbTag->name == 'nsfw') $this->nsfw = true;
-                    }
+                    $this->tags[] = $dbTag->id;
+                    if ($dbTag->name == 'nsfw') $this->nsfw = true;
                 }
             }
         }
