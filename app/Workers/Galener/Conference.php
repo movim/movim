@@ -97,7 +97,8 @@ class Conference
         $this->sendXMPP(Presence::maker(
             to: (string)$this->jid . '/sfu',
             from: config('galener.xmpp_host'),
-            muc: true
+            muc: true,
+            namespace: null
         ));
 
         // ...and we join
@@ -108,7 +109,7 @@ class Conference
     {
         // We set the conference user admin in the room
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $iq = $dom->createElementNS('jabber:client', 'iq');
+        $iq = $dom->createElement('iq');
         $dom->appendChild($iq);
         $iq->setAttribute('to', (string)$this->jid);
         $iq->setAttribute('from', config('galener.xmpp_host'));
@@ -127,11 +128,12 @@ class Conference
             to: $this->getRoomJid(),
             from: $this->getSFUJid(),
             muc: true,
-            type: 'unavailable'
+            type: 'unavailable',
+            namespace: null
         ));
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $iq = $dom->createElementNS('jabber:client', 'iq');
+        $iq = $dom->createElement('iq');
         $dom->appendChild($iq);
         $iq->setAttribute('to', (string)$this->jid);
         $iq->setAttribute('from', $this->getSFUJid());
@@ -153,7 +155,7 @@ class Conference
     public function xmppPing()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $iq = $dom->createElementNS('jabber:client', 'iq');
+        $iq = $dom->createElement('iq');
         $dom->appendChild($iq);
         $iq->setAttribute('to', $this->getRoomJid());
         $iq->setAttribute('from', $this->getSFUJid());
@@ -212,7 +214,8 @@ class Conference
             to: $this->getRoomJid(),
             from: $this->getSFUJid(),
             muc: true,
-            withCaps: false
+            withCaps: false,
+            namespace: null
         );
 
         // Adding capabilities
