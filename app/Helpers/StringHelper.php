@@ -165,10 +165,10 @@ function readTime($content)
 /**
  * @desc Return the tags in a string
  */
-function getHashtags($string): array
+function getHashtags(string $string): array
 {
     $hashtags = [];
-    preg_match_all("/(^| )#(\w+)/u", $string, $matches);
+    preg_match_all("/(^|\s)#(\w+)/u", $string, $matches);
 
     if ($matches) {
         $hashtags = $matches[2];
