@@ -75,7 +75,7 @@
             <span class="control icon gray connecting">
                 <i class="material-symbols spin">progress_activity</i>
             </span>
-            <span class="control icon active gray edition" onclick="event.stopPropagation(); RoomsUtils_ajaxAdd('{$conference->conference|echapJS}');">
+            <span class="control icon active gray edition on_desktop" onclick="event.stopPropagation(); RoomsUtils_ajaxAdd('{$conference->conference|echapJS}');">
                 <i class="material-symbols">edit</i>
             </span>
         </li>
