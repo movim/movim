@@ -9,12 +9,12 @@
                 {/if}
                 <div>
                     <p class="line">{if="isset($conference)"}{$conference->title}{else}{$id}{/if}</p>
-                    <p>{$c->__('rooms.edit')}</p>
+                    <p>{$c->__('chatrooms.edit')}</p>
                 </div>
             </li>
         </ul>
     {else}
-        <h3>{$c->__('rooms.create')}</h3>
+        <h3>{$c->__('chatrooms.create')}</h3>
     {/if}
 
     <form name="bookmarkmucadd">
@@ -69,7 +69,7 @@
                     placeholder="{$c->__('chatrooms.name_placeholder')}"
                     onblur="RoomsUtils_ajaxResolveSlug(this.value)"
                     required />
-                <label>{$c->__('chatrooms.name')}</label>
+                <label>{$c->__('general.name')}</label>
             </div>
         {/if}
 
@@ -125,7 +125,7 @@
                             {/if}
                             name="nick"
                             placeholder="{$username}"/>
-                        <label>{$c->__('chatrooms.nickname')}</label>
+                        <label>{$c->__('general.nickname')}</label>
                     </div>
                 </li>
                 <li>

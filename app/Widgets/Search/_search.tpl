@@ -8,7 +8,7 @@
                 </span>
                 <div>
                     <p class="line two">
-                        {$c->__('rooms.join')}
+                        {$c->__('chatrooms.join')}
                     </p>
                     <p></p>
                 </div>
@@ -20,7 +20,7 @@
                 </span>
                 <div>
                     <p class="line two">
-                        {$c->__('rooms.create')}
+                        {$c->__('chatrooms.create')}
                     </p>
                     <p></p>
                 </div>

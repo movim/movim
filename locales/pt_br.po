@@ -137,7 +137,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-09 12:29+0200\n"
+"POT-Creation-Date: 2026-09-15 18:27+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Guilherme Alves, 2026\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -760,38 +760,6 @@ msgstr ""
 msgid "Block"
 msgstr ""
 
-#: [chatroom]members
-msgid "Members"
-msgstr "Membros"
-
-#: [chatroom]connected
-msgid "Connected to the chatroom"
-msgstr "Conectado à Sala de Bate-papo"
-
-#: [chatroom]disconnected
-msgid "Disconnected from the chatroom"
-msgstr "Desconectado da Sala de Bate-papo"
-
-#: [chatroom]config [communityaffiliation]configuration [page]configuration
-msgid "Configuration"
-msgstr "Configuração"
-
-#: [chatroom]config_saved [communityaffiliation]config_saved
-msgid "Configuration saved"
-msgstr "Configuração salva"
-
-#: [chatroom]subject
-msgid "Subject"
-msgstr "Assunto"
-
-#: [chatroom]subject_changed
-msgid "Subject changed"
-msgstr "Assunto alterado"
-
-#: [chatroom]administration [page]administration
-msgid "Administration"
-msgstr "Administração"
-
 #: [wide_conference_call]enable_title
 msgid "Enable Wide Conference Call"
 msgstr ""
@@ -916,7 +884,7 @@ msgstr "Vídeo"
 msgid "Audio"
 msgstr ""
 
-#: [chats_filter]all [menu]all [rooms_filter]all
+#: [chats_filter]all [menu]all [chatrooms]filter_all
 msgid "All"
 msgstr "Tudo"
 
@@ -1000,6 +968,10 @@ msgstr "Ainda sem servidores comunitários..."
 msgid "It seems that we can't find any communities for the moment"
 msgstr "Parece que não conseguimos localizar nenhuma comunidade por enquanto"
 
+#: [communityaffiliation]configuration [chatrooms]config [page]configuration
+msgid "Configuration"
+msgstr "Configuração"
+
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Inscrições"
@@ -1031,6 +1003,10 @@ msgstr "Parece que esta comunidade não existe. Você deseja removê-la de suas 
 #: [communityaffiliation]delete_error
 msgid "Error during the node deletion"
 msgstr ""
+
+#: [communityaffiliation]config_saved [chatrooms]config_saved
+msgid "Configuration saved"
+msgstr "Configuração salva"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
@@ -1381,7 +1357,7 @@ msgstr "Contato excluído"
 msgid "General Information"
 msgstr "Informações gerais"
 
-#: [general]name [chatrooms]name
+#: [general]name
 msgid "Name"
 msgstr "Nome"
 
@@ -1393,7 +1369,7 @@ msgstr ""
 msgid "he/she/they/…"
 msgstr ""
 
-#: [general]nickname [chatrooms]nickname
+#: [general]nickname
 msgid "Nickname"
 msgstr "Apelido"
 
@@ -1753,7 +1729,7 @@ msgstr "Conectar-se com contas desses servidores"
 msgid "Login using any XMPP account or create a new one"
 msgstr "Conectar-se usando qualquer conta XMPP ou criar uma nova"
 
-#: [form]connected [rooms_filter]connected
+#: [form]connected [chatrooms]filter_connected
 msgid "Connected"
 msgstr "Conectado"
 
@@ -2274,93 +2250,14 @@ msgstr "O sistema de registro deste servidor está momentaneamente indisponível
 msgid "Registration forbidden"
 msgstr "Registro proibido"
 
-#: [rooms]create
-msgid "Create a chatroom"
-msgstr "Criar uma sala de bate-papo"
-
-#: [rooms]edit
-msgid "Edit a chatroom"
-msgstr "Editar uma Sala de Bate-papo"
-
-#: [rooms]conference_call_edit
-msgid "Edit a conference call"
-msgstr ""
-
-#: [rooms]join
-msgid "Join a chatroom"
-msgstr "Participar de uma sala de bate-papo"
-
-#: [rooms]join_custom
-msgid "Join a custom chatroom"
-msgstr "Participar de uma sala de bate-papo personalizada"
-
-#: [rooms]empty_text1
-msgid "You don’t have any chatroom yet."
-msgstr "Você ainda não tem nenhuma sala de bate-papo."
-
-#: [rooms]empty_text2
-msgid "Add one by clicking on the add button."
-msgstr "Adicione pressionando o botão adicionar"
-
-#: [rooms]type_room
-msgid "Type of chatroom"
-msgstr ""
-
-#: [rooms]default_room
-msgid "Standard chatroom"
-msgstr ""
-
-#: [rooms]gateway_room
-msgid "Gateway chatroom"
-msgstr ""
-
-#: [rooms]show_all
-msgid "Show all chatrooms"
-msgstr ""
-
-#: [rooms]hide_disconnected
-msgid "Hide disconnected chatrooms"
-msgstr ""
-
-#: [rooms]destroy_title
-msgid "Destroy the chatroom"
-msgstr ""
-
-#: [rooms]destroy_text
-msgid "Are you sure you want to permanently destroy the following chatroom?"
-msgstr ""
-
-#: [rooms]explore_placeholder
-msgid "Name or description"
-msgstr "Nome ou descrição"
-
-#: [rooms]disco_registration_required
-msgid "A registration is required before using the service"
-msgstr ""
-
-#: [rooms]discover
-msgid "Discover a room"
-msgstr ""
-
-#: [rooms]disco_error
-msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
-msgstr ""
-
-#: [rooms]disco_not_muc
-msgid "You are trying to add something that is not a chatroom"
-msgstr ""
-
-#: [rooms]disco_maybe_space
-msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
-msgstr ""
-
-#: [rooms]first_room_placeholder
-msgid "Press the %s button to add a first room"
-msgstr ""
-
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
 msgstr ""
+
+#: [chatrooms]avatar
+#, fuzzy
+msgid "Change the chatroom avatar"
+msgstr "Conectado à Sala de Bate-papo"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
@@ -2374,6 +2271,23 @@ msgstr ""
 msgid "Banned"
 msgstr "Banido"
 
+#: [chatrooms]conference_call
+msgid "Conference call"
+msgstr ""
+
+#: [chatrooms]conference_call_edit
+msgid "Edit the conference call"
+msgstr ""
+
+#: [chatrooms]conference_call_text
+msgid "Call your contacts and share your webcam or screen"
+msgstr ""
+
+#: [chatrooms]configure
+#, fuzzy
+msgid "Configure the chatroom"
+msgstr "Conectado à Sala de Bate-papo"
+
 #: [chatrooms]conflict
 msgid "Nickname already taken"
 msgstr ""
@@ -2382,24 +2296,90 @@ msgstr ""
 msgid "Joined the chatroom"
 msgstr ""
 
+#: [chatrooms]create
+msgid "Create a chatroom"
+msgstr "Criar uma sala de bate-papo"
+
 #: [chatrooms]created
 msgid "Chatroom created"
 msgstr "Sala de bate-papo criada"
 
+#: [chatrooms]default_room
+msgid "Standard chatroom"
+msgstr ""
+
+#: [chatrooms]destroy_text
+msgid "Are you sure you want to permanently destroy the following chatroom?"
+msgstr ""
+
+#: [chatrooms]destroy_title
+msgid "Destroy the chatroom"
+msgstr ""
+
 #: [chatrooms]destroyed
 msgid "Chatroom destroyed"
+msgstr ""
+
+#: [chatrooms]disco_error
+msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
+msgstr ""
+
+#: [chatrooms]disco_maybe_space
+msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [chatrooms]disco_not_muc
+msgid "You are trying to add something that is not a chatroom"
+msgstr ""
+
+#: [chatrooms]disco_registration_required
+msgid "A registration is required before using the service"
 msgstr ""
 
 #: [chatrooms]disconnected
 msgid "Left the chatroom"
 msgstr ""
 
+#: [chatrooms]discover
+#, fuzzy
+msgid "Discover a chatroom"
+msgstr "Participar de uma sala de bate-papo"
+
+#: [chatrooms]edit
+#, fuzzy
+msgid "Edit the chatroom"
+msgstr "Editar uma Sala de Bate-papo"
+
 #: [chatrooms]empty_name
 msgid "Empty name"
 msgstr "Nome vazio"
 
+#: [chatrooms]empty_text1
+msgid "You don’t have any chatroom yet."
+msgstr "Você ainda não tem nenhuma sala de bate-papo."
+
+#: [chatrooms]empty_text2
+msgid "Add one by clicking on the add button."
+msgstr "Adicione pressionando o botão adicionar"
+
+#: [chatrooms]explore_placeholder
+msgid "Name or description"
+msgstr "Nome ou descrição"
+
+#: [chatrooms]first_room_placeholder
+msgid "Press the %s button to add a first chatroom"
+msgstr ""
+
 #: [chatrooms]forbidden
 msgid "You are not allowed to join this chatroom"
+msgstr ""
+
+#: [chatrooms]gateway_room
+msgid "Gateway chatroom"
+msgstr ""
+
+#: [chatrooms]hide_disconnected
+msgid "Hide disconnected chatrooms"
 msgstr ""
 
 #: [chatrooms]id
@@ -2414,13 +2394,21 @@ msgstr ""
 msgid "Your nickname is not valid"
 msgstr "Seu apelido não é válido"
 
+#: [chatrooms]join
+msgid "Join a chatroom"
+msgstr "Participar de uma sala de bate-papo"
+
+#: [chatrooms]join_custom
+msgid "Join a custom chatroom"
+msgstr "Participar de uma sala de bate-papo personalizada"
+
 #: [chatrooms]members
-msgctxt "[chatrooms]members"
 msgid "Members"
 msgstr "Membros"
 
 #: [chatrooms]name_placeholder
-msgid "My Favorite Room"
+#, fuzzy
+msgid "My Favorite Chatroom"
 msgstr "Minha Sala Favorita"
 
 #: [chatrooms]notacceptable
@@ -2438,14 +2426,6 @@ msgstr "Um senha é obrigatória"
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
 msgstr "Fixar esta sala de bate-papo"
-
-#: [chatrooms]conference_call
-msgid "Conference call"
-msgstr ""
-
-#: [chatrooms]conference_call_text
-msgid "Call your contacts and share your webcam or screen"
-msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2467,20 +2447,28 @@ msgstr ""
 msgid "Permanently leave a chatroom"
 msgstr ""
 
-#: [chatrooms]rooms
-msgid "Rooms"
-msgstr ""
-
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
 msgstr ""
+
+#: [chatrooms]show_all
+msgid "Show all chatrooms"
+msgstr ""
+
+#: [chatrooms]subject
+msgid "Subject"
+msgstr "Assunto"
 
 #: [chatrooms]title
 msgid "Chatrooms"
 msgstr "Salas de Bate-papo"
 
+#: [chatrooms]type_room
+msgid "Type of chatroom"
+msgstr ""
+
 #: [chatrooms]users
-msgctxt "[chatrooms]users"
+#, fuzzy
 msgid "Users"
 msgstr "Usuários"
 
@@ -2548,11 +2536,6 @@ msgstr "Bate-papo em grupo privado com membros convidados"
 msgid "Add a new member"
 msgstr "Adicionar um novo membro"
 
-#: [room]group_chat_members
-msgctxt "[room]group_chat_members"
-msgid "Members"
-msgstr "Membros"
-
 #: [room]group_chat_remove
 msgid "Remove a member"
 msgstr ""
@@ -2593,11 +2576,6 @@ msgstr "Motivo"
 msgid "Channel"
 msgstr "Canal"
 
-#: [room]channel_users
-msgctxt "[room]channel_users"
-msgid "Users"
-msgstr "Usuários"
-
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joinable"
 msgstr "Canal público com livre visualização e participação"
@@ -2621,11 +2599,6 @@ msgstr "Fixado"
 #: [room]affiliation_admins
 msgid "Admins"
 msgstr ""
-
-#: [room]affiliation_members
-msgctxt "[room]affiliation_members"
-msgid "Members"
-msgstr "Membros"
 
 #: [room]visitor
 msgid "Visitor"
@@ -3226,6 +3199,10 @@ msgstr "Sobre"
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Criar conta"
+
+#: [page]administration
+msgid "Administration"
+msgstr "Administração"
 
 #: [page]avatar
 msgid "Profile Picture"
@@ -4164,3 +4141,28 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
+
+#~ msgctxt "[chatrooms]members"
+#~ msgid "Members"
+#~ msgstr "Membros"
+
+#~ msgctxt "[room]group_chat_members"
+#~ msgid "Members"
+#~ msgstr "Membros"
+
+#~ msgctxt "[room]affiliation_members"
+#~ msgid "Members"
+#~ msgstr "Membros"
+
+#~ msgid "Connected to the chatroom"
+#~ msgstr "Conectado à Sala de Bate-papo"
+
+#~ msgid "Disconnected from the chatroom"
+#~ msgstr "Desconectado da Sala de Bate-papo"
+
+#~ msgid "Subject changed"
+#~ msgstr "Assunto alterado"
+
+#~ msgctxt "[room]channel_users"
+#~ msgid "Users"
+#~ msgstr "Usuários"

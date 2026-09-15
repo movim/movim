@@ -33,9 +33,7 @@
 }
 
 #rooms ul.list.rooms li:not(.connecting) li span.control.connecting,
-#rooms ul.list.rooms:not(.edition) li span.control.edition,
-#rooms ul.list.rooms:not(.edition)~ul.list.head li.join,
-#rooms ul.list.rooms:not(.edition)~ul.list.head li.add {
+#rooms ul.list.rooms:not(.edition) li span.control.edition {
     display: none;
 }
 

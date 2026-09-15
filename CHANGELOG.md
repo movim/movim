@@ -9,6 +9,7 @@ v0.35.1
 * Fix CSS redraw page blink issues when soft loading pages
 * Don't rely on the Bookmark name anymore but only the MUC title from the configuration instead
 * Fix MUC configuration refresh
+* Simplify and modernize the MUC administration and configuration flows, refactor and cleanup the related translations
 
 v0.35
 ---------------------------

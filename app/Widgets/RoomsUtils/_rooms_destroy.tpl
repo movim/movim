@@ -1,7 +1,7 @@
 <section>
-    <h3>{$c->__('rooms.destroy_title')}</h3>
+    <h3>{$c->__('chatrooms.destroy_title')}</h3>
     <br />
-    <h4 class="gray">{$c->__('rooms.destroy_text')}</h4>
+    <h4 class="gray">{$c->__('chatrooms.destroy_text')}</h4>
     <br />
     <h4 class="gray">{$room}</h4>
 </section>

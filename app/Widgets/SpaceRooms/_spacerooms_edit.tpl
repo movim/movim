@@ -1,9 +1,9 @@
 <section>
     <form name="spacerooms_edit">
         {if="$conference->call"}
-            <h3>{$c->__('rooms.conference_call_edit')}</h3>
+            <h3>{$c->__('chatrooms.conference_call_edit')}</h3>
         {else}
-            <h3>{$c->__('rooms.edit')}</h3>
+            <h3>{$c->__('chatrooms.edit')}</h3>
         {/if}
 
         <input type="hidden" name="server" value="{$conference->space_server|echapJS}">
@@ -25,7 +25,7 @@
                             placeholder="{$c->__('chatrooms.name_placeholder')}"
                             value="{$conference->title}"
                             required />
-                        <label>{$c->__('chatrooms.name')}</label>
+                        <label>{$c->__('general.name')}</label>
                     </div>
                 </li>
                 <li>

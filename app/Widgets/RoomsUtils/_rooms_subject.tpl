@@ -1,10 +1,10 @@
 <section>
     <form name="changesubject">
-        <h3>{$c->__('chatroom.subject')}</h3>
+        <h3>{$c->__('chatrooms.subject')}</h3>
 
         <div>
-            <textarea name="subject" placeholder="{$c->__('chatroom.subject')}" data-autoheight="true">{if="$room->subject"}{$room->subject}{/if}</textarea>
-            <label for="subject">{$c->__('chatroom.subject')}</label>
+            <textarea name="subject" placeholder="{$c->__('chatrooms.subject')}" data-autoheight="true">{if="$room->subject"}{$room->subject}{/if}</textarea>
+            <label for="subject">{$c->__('chatrooms.subject')}</label>
         </div>
     </form>
 </section>

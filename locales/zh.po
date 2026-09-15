@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-09 12:29+0200\n"
+"POT-Creation-Date: 2026-09-15 18:27+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2026\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -762,38 +762,6 @@ msgstr "添加到我的联系人"
 msgid "Block"
 msgstr "屏蔽"
 
-#: [chatroom]members
-msgid "Members"
-msgstr "成员"
-
-#: [chatroom]connected
-msgid "Connected to the chatroom"
-msgstr "已连接到群聊"
-
-#: [chatroom]disconnected
-msgid "Disconnected from the chatroom"
-msgstr "已断开与群聊的连接"
-
-#: [chatroom]config [communityaffiliation]configuration [page]configuration
-msgid "Configuration"
-msgstr "配置"
-
-#: [chatroom]config_saved [communityaffiliation]config_saved
-msgid "Configuration saved"
-msgstr "配置已保存"
-
-#: [chatroom]subject
-msgid "Subject"
-msgstr "主题"
-
-#: [chatroom]subject_changed
-msgid "Subject changed"
-msgstr "主题已更改"
-
-#: [chatroom]administration [page]administration
-msgid "Administration"
-msgstr "管理"
-
 #: [wide_conference_call]enable_title
 msgid "Enable Wide Conference Call"
 msgstr ""
@@ -918,7 +886,7 @@ msgstr "视频"
 msgid "Audio"
 msgstr "音频"
 
-#: [chats_filter]all [menu]all [rooms_filter]all
+#: [chats_filter]all [menu]all [chatrooms]filter_all
 msgid "All"
 msgstr "所有"
 
@@ -1002,6 +970,10 @@ msgstr "还没有社区服务器…"
 msgid "It seems that we can't find any communities for the moment"
 msgstr "目前似乎找不到任何社区"
 
+#: [communityaffiliation]configuration [chatrooms]config [page]configuration
+msgid "Configuration"
+msgstr "配置"
+
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "订阅"
@@ -1033,6 +1005,10 @@ msgstr "此社区似乎已不存在。您要将其从您的订阅中移除吗？
 #: [communityaffiliation]delete_error
 msgid "Error during the node deletion"
 msgstr "删除节点时出错"
+
+#: [communityaffiliation]config_saved [chatrooms]config_saved
+msgid "Configuration saved"
+msgstr "配置已保存"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
@@ -1383,7 +1359,7 @@ msgstr "联系人已删除"
 msgid "General Information"
 msgstr "基本信息"
 
-#: [general]name [chatrooms]name
+#: [general]name
 msgid "Name"
 msgstr "名称"
 
@@ -1395,7 +1371,7 @@ msgstr "代词"
 msgid "he/she/they/…"
 msgstr "他/她/TA/…"
 
-#: [general]nickname [chatrooms]nickname
+#: [general]nickname
 msgid "Nickname"
 msgstr "昵称"
 
@@ -1755,7 +1731,7 @@ msgstr "使用这些服务器的账号登录"
 msgid "Login using any XMPP account or create a new one"
 msgstr "使用任何 XMPP 账号登录或创建新账号"
 
-#: [form]connected [rooms_filter]connected
+#: [form]connected [chatrooms]filter_connected
 msgid "Connected"
 msgstr "已连接"
 
@@ -2276,93 +2252,14 @@ msgstr "此服务器的注册系统当前不可用"
 msgid "Registration forbidden"
 msgstr "禁止注册"
 
-#: [rooms]create
-msgid "Create a chatroom"
-msgstr "创建群聊"
-
-#: [rooms]edit
-msgid "Edit a chatroom"
-msgstr "编辑群聊"
-
-#: [rooms]conference_call_edit
-msgid "Edit a conference call"
-msgstr "编辑群聊通话"
-
-#: [rooms]join
-msgid "Join a chatroom"
-msgstr "加入群聊"
-
-#: [rooms]join_custom
-msgid "Join a custom chatroom"
-msgstr "加入自定义群聊"
-
-#: [rooms]empty_text1
-msgid "You don’t have any chatroom yet."
-msgstr "您还没有任何群聊。"
-
-#: [rooms]empty_text2
-msgid "Add one by clicking on the add button."
-msgstr "点击添加按钮添加群聊。"
-
-#: [rooms]type_room
-msgid "Type of chatroom"
-msgstr "群聊类型"
-
-#: [rooms]default_room
-msgid "Standard chatroom"
-msgstr "标准群聊"
-
-#: [rooms]gateway_room
-msgid "Gateway chatroom"
-msgstr "网关群聊"
-
-#: [rooms]show_all
-msgid "Show all chatrooms"
-msgstr "显示所有群聊"
-
-#: [rooms]hide_disconnected
-msgid "Hide disconnected chatrooms"
-msgstr "隐藏已断开连接的群聊"
-
-#: [rooms]destroy_title
-msgid "Destroy the chatroom"
-msgstr "解散群聊"
-
-#: [rooms]destroy_text
-msgid "Are you sure you want to permanently destroy the following chatroom?"
-msgstr "您确定要永久解散以下群聊吗？"
-
-#: [rooms]explore_placeholder
-msgid "Name or description"
-msgstr "名称或描述"
-
-#: [rooms]disco_registration_required
-msgid "A registration is required before using the service"
-msgstr "使用服务前需要注册"
-
-#: [rooms]discover
-msgid "Discover a room"
-msgstr "解散群聊"
-
-#: [rooms]disco_error
-msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
-msgstr "Movim 无法找到有效的群聊。请尝试使用其他标识符。"
-
-#: [rooms]disco_not_muc
-msgid "You are trying to add something that is not a chatroom"
-msgstr "您尝试添加的并非群聊"
-
-#: [rooms]disco_maybe_space
-msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
-msgstr "此群聊似乎属于某个空间，我们无法找到是哪个，但我们强烈建议您加入该空间"
-
-#: [rooms]first_room_placeholder
-msgid "Press the %s button to add a first room"
-msgstr "按下 %s 按钮添加第一个群聊"
-
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
 msgstr "登录后自动加入此群聊"
+
+#: [chatrooms]avatar
+#, fuzzy
+msgid "Change the chatroom avatar"
+msgstr "已加入群聊"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
@@ -2376,6 +2273,24 @@ msgstr "请输入有效的昵称（2 到 40 个字符）"
 msgid "Banned"
 msgstr "已封禁"
 
+#: [chatrooms]conference_call
+msgid "Conference call"
+msgstr "群聊通话"
+
+#: [chatrooms]conference_call_edit
+#, fuzzy
+msgid "Edit the conference call"
+msgstr "编辑群聊通话"
+
+#: [chatrooms]conference_call_text
+msgid "Call your contacts and share your webcam or screen"
+msgstr "呼叫您的联系人并共享您的网络摄像头或屏幕"
+
+#: [chatrooms]configure
+#, fuzzy
+msgid "Configure the chatroom"
+msgstr "已加入群聊"
+
 #: [chatrooms]conflict
 msgid "Nickname already taken"
 msgstr "昵称已被占用"
@@ -2384,25 +2299,92 @@ msgstr "昵称已被占用"
 msgid "Joined the chatroom"
 msgstr "已加入群聊"
 
+#: [chatrooms]create
+msgid "Create a chatroom"
+msgstr "创建群聊"
+
 #: [chatrooms]created
 msgid "Chatroom created"
 msgstr "群聊已创建"
+
+#: [chatrooms]default_room
+msgid "Standard chatroom"
+msgstr "标准群聊"
+
+#: [chatrooms]destroy_text
+msgid "Are you sure you want to permanently destroy the following chatroom?"
+msgstr "您确定要永久解散以下群聊吗？"
+
+#: [chatrooms]destroy_title
+msgid "Destroy the chatroom"
+msgstr "解散群聊"
 
 #: [chatrooms]destroyed
 msgid "Chatroom destroyed"
 msgstr "群聊已解散"
 
+#: [chatrooms]disco_error
+msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
+msgstr "Movim 无法找到有效的群聊。请尝试使用其他标识符。"
+
+#: [chatrooms]disco_maybe_space
+msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr "此群聊似乎属于某个空间，我们无法找到是哪个，但我们强烈建议您加入该空间"
+
+#: [chatrooms]disco_not_muc
+msgid "You are trying to add something that is not a chatroom"
+msgstr "您尝试添加的并非群聊"
+
+#: [chatrooms]disco_registration_required
+msgid "A registration is required before using the service"
+msgstr "使用服务前需要注册"
+
 #: [chatrooms]disconnected
 msgid "Left the chatroom"
 msgstr "已离开群聊"
+
+#: [chatrooms]discover
+#, fuzzy
+msgid "Discover a chatroom"
+msgstr "解散群聊"
+
+#: [chatrooms]edit
+#, fuzzy
+msgid "Edit the chatroom"
+msgstr "编辑群聊"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
 msgstr "空名称"
 
+#: [chatrooms]empty_text1
+msgid "You don’t have any chatroom yet."
+msgstr "您还没有任何群聊。"
+
+#: [chatrooms]empty_text2
+msgid "Add one by clicking on the add button."
+msgstr "点击添加按钮添加群聊。"
+
+#: [chatrooms]explore_placeholder
+msgid "Name or description"
+msgstr "名称或描述"
+
+#: [chatrooms]first_room_placeholder
+#, fuzzy
+msgid "Press the %s button to add a first chatroom"
+msgstr "按下 %s 按钮添加第一个群聊"
+
 #: [chatrooms]forbidden
 msgid "You are not allowed to join this chatroom"
 msgstr "不允许您加入此群聊"
+
+#: [chatrooms]gateway_room
+msgid "Gateway chatroom"
+msgstr "网关群聊"
+
+#: [chatrooms]hide_disconnected
+msgid "Hide disconnected chatrooms"
+msgstr "隐藏已断开连接的群聊"
 
 #: [chatrooms]id
 msgid "Chatroom Address"
@@ -2416,13 +2398,21 @@ msgstr "群聊不存在"
 msgid "Your nickname is not valid"
 msgstr "您的昵称无效"
 
+#: [chatrooms]join
+msgid "Join a chatroom"
+msgstr "加入群聊"
+
+#: [chatrooms]join_custom
+msgid "Join a custom chatroom"
+msgstr "加入自定义群聊"
+
 #: [chatrooms]members
-msgctxt "[chatrooms]members"
 msgid "Members"
 msgstr "成员"
 
 #: [chatrooms]name_placeholder
-msgid "My Favorite Room"
+#, fuzzy
+msgid "My Favorite Chatroom"
 msgstr "收藏的群聊"
 
 #: [chatrooms]notacceptable
@@ -2440,14 +2430,6 @@ msgstr "需要密码"
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
 msgstr "固定此群聊"
-
-#: [chatrooms]conference_call
-msgid "Conference call"
-msgstr "群聊通话"
-
-#: [chatrooms]conference_call_text
-msgid "Call your contacts and share your webcam or screen"
-msgstr "呼叫您的联系人并共享您的网络摄像头或屏幕"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2469,20 +2451,28 @@ msgstr "您即将永久离开以下群聊。请确认您的操作。"
 msgid "Permanently leave a chatroom"
 msgstr "永久离开群聊"
 
-#: [chatrooms]rooms
-msgid "Rooms"
-msgstr "群聊"
-
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
 msgstr "群聊参与者已达上限"
+
+#: [chatrooms]show_all
+msgid "Show all chatrooms"
+msgstr "显示所有群聊"
+
+#: [chatrooms]subject
+msgid "Subject"
+msgstr "主题"
 
 #: [chatrooms]title
 msgid "Chatrooms"
 msgstr "群聊"
 
+#: [chatrooms]type_room
+msgid "Type of chatroom"
+msgstr "群聊类型"
+
 #: [chatrooms]users
-msgctxt "[chatrooms]users"
+#, fuzzy
 msgid "Users"
 msgstr "用户"
 
@@ -2550,11 +2540,6 @@ msgstr "与受邀成员的私人群聊"
 msgid "Add a new member"
 msgstr "添加新成员"
 
-#: [room]group_chat_members
-msgctxt "[room]group_chat_members"
-msgid "Members"
-msgstr "成员"
-
 #: [room]group_chat_remove
 msgid "Remove a member"
 msgstr ""
@@ -2595,11 +2580,6 @@ msgstr "原因"
 msgid "Channel"
 msgstr "频道"
 
-#: [room]channel_users
-msgctxt "[room]channel_users"
-msgid "Users"
-msgstr "用户"
-
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joinable"
 msgstr "可公开发现和可加入的公开频道"
@@ -2623,11 +2603,6 @@ msgstr "已固定"
 #: [room]affiliation_admins
 msgid "Admins"
 msgstr "管理员"
-
-#: [room]affiliation_members
-msgctxt "[room]affiliation_members"
-msgid "Members"
-msgstr "成员"
 
 #: [room]visitor
 msgid "Visitor"
@@ -3228,6 +3203,10 @@ msgstr "关于"
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "账号创建"
+
+#: [page]administration
+msgid "Administration"
+msgstr "管理"
 
 #: [page]avatar
 msgid "Profile Picture"
@@ -4166,3 +4145,31 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgctxt "[chatrooms]members"
+#~ msgid "Members"
+#~ msgstr "成员"
+
+#~ msgctxt "[room]group_chat_members"
+#~ msgid "Members"
+#~ msgstr "成员"
+
+#~ msgctxt "[room]affiliation_members"
+#~ msgid "Members"
+#~ msgstr "成员"
+
+#~ msgid "Connected to the chatroom"
+#~ msgstr "已连接到群聊"
+
+#~ msgid "Disconnected from the chatroom"
+#~ msgstr "已断开与群聊的连接"
+
+#~ msgid "Subject changed"
+#~ msgstr "主题已更改"
+
+#~ msgid "Rooms"
+#~ msgstr "群聊"
+
+#~ msgctxt "[room]channel_users"
+#~ msgid "Users"
+#~ msgstr "用户"

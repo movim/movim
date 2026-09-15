@@ -8,7 +8,7 @@
                 <i class="material-symbols">chevron_right</i>
             </span>
             <div>
-                <p class="line">{$c->__('rooms.join_custom')}</p>
+                <p class="line">{$c->__('chatrooms.join_custom')}</p>
             </div>
         </li>
     </ul>
@@ -23,7 +23,7 @@
                 <div>
                     <input name="keyword" autocomplete="off"
                         title="{$c->__('search.keyword')}"
-                        placeholder="{$c->__('rooms.explore_placeholder')}"
+                        placeholder="{$c->__('chatrooms.explore_placeholder')}"
                         oninput="RoomsExplore.searchSomething(this.value)"
                         type="text">
                 </div>

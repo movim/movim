@@ -7,7 +7,7 @@
                 <span class="primary icon bubble active"
                     style="background-image: url({$conference->getPicture()});">
                 </span>
-                <span title="{$c->__('chatroom.config')}"
+                <span title="{$c->__('chatrooms.config')}"
                       class="control icon active"
                       onclick="RoomsUtils_ajaxAdd('{$room|echapJS}'); Drawer.clear()">
                     <i class="material-symbols">edit</i>
@@ -213,7 +213,7 @@
     <ul class="tabs" id="navtabs"></ul>
 
     {if="$conference->isGroupChat()"}
-        <div class="tabelem" title="{$c->__('room.group_chat_members')}" id="room_members">
+        <div class="tabelem" title="{$c->__('chatrooms.members')}" id="room_members">
             <ul class="list">
                 <li class="active" onclick="RoomsUtils_ajaxAskInvite('{$conference->conference|echapJS}'); Drawer.clear();">
                     <span class="primary icon gray">
@@ -285,7 +285,7 @@
             </ul>
         </div>
     {else}
-        <div class="tabelem" title="{$c->__('room.channel_users')}" id="room_users">
+        <div class="tabelem" title="{$c->__('chatrooms.users')}" id="room_users">
             <ul class="list">
                 <li class="active" onclick="RoomsUtils_ajaxAskInvite('{$conference->conference|echapJS}'); Drawer.clear();">
                     <span class="primary icon gray">

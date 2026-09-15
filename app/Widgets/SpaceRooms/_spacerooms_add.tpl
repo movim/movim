@@ -15,7 +15,7 @@
                             name="name"
                             placeholder="{$c->__('chatrooms.name_placeholder')}"
                             required />
-                        <label>{$c->__('chatrooms.name')}</label>
+                        <label>{$c->__('general.name')}</label>
 
                     </div>
                 </li>

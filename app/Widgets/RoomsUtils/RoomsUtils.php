@@ -317,7 +317,7 @@ class RoomsUtils extends Base
 
     public function onDiscoRegistrationRequired(Packet $packet)
     {
-        $this->toast($this->__('rooms.disco_registration_required'));
+        $this->toast($this->__('chatrooms.disco_registration_required'));
     }
 
     public function onSetRole(Packet $packet)
@@ -385,14 +385,18 @@ class RoomsUtils extends Base
             ->with('info')
             ->first();
 
-        $xml = new XMPPtoForm($this->me, isGroupChat: $conference && $conference->isGroupChat());
+        if (!$conference) return;
+
+        $xml = new XMPPtoForm(
+            $this->me,
+            isGroupChat: $conference && $conference->isGroupChat(),
+            title: false
+        );
         $form = $xml->getHTML($config->x);
 
         $this->dialog($this->view('_rooms_config', [
             'form' => $form,
-            'room' => $room,
-            'conference' => $conference,
-            'sfu' => $conference->hasRelatedSFUService()
+            'conference' => $conference
         ]), true);
     }
 
@@ -402,7 +406,7 @@ class RoomsUtils extends Base
         $r->setTo($packet->content)
             ->request();
 
-        $this->toast($this->__('chatroom.config_saved'));
+        $this->toast($this->__('chatrooms.config_saved'));
     }
 
     /**
@@ -591,7 +595,7 @@ class RoomsUtils extends Base
             $request->setTo($room)
                 ->request();
         } elseif (!empty($room)) {
-            $this->toast($this->__('rooms.disco_not_muc'));
+            $this->toast($this->__('chatrooms.disco_not_muc'));
         }
     }
 

@@ -63,7 +63,7 @@
         {if="$conference && $conference->presence && $conference->presence->mucrole == 'moderator' && $conference->info && $conference->info->hasModeration()"}
             <li class="subheader">
                 <div>
-                    <p>{$c->__('chatroom.administration')}</p>
+                    <p>{$c->__('page.administration')}</p>
                 </div>
             </li>
             <li onclick="ChatActions_ajaxHttpDaemonModerate({$message->mid})">

@@ -29,7 +29,7 @@
                 </span>
                 <div>
                     <p></p>
-                    <p>{$c->__('rooms.disco_maybe_space')}</p>
+                    <p>{$c->__('chatrooms.disco_maybe_space')}</p>
                 </div>
             </li>
         </ul>
@@ -42,7 +42,7 @@
             </span>
             <div>
                 <p></p>
-                <p>{$c->__('rooms.disco_not_muc')}</p>
+                <p>{$c->__('chatrooms.disco_not_muc')}</p>
             </div>
         </li>
     </ul>

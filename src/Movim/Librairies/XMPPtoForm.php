@@ -12,8 +12,11 @@ class XMPPtoForm
     private $stanza;
     private \DOMDocument $html;
 
-    public function __construct(private ?User $user = null, private ?bool $isGroupChat = false)
-    {
+    public function __construct(
+        private ?User $user = null,
+        private ?bool $isGroupChat = false,
+        private ?bool $title = true
+    ) {
         $this->html = new \DOMDocument('1.0', 'UTF-8');
     }
 
@@ -45,7 +48,9 @@ class XMPPtoForm
         foreach ($this->xmpp->children() as $element) {
             switch ($element->getName()) {
                 case 'title':
-                    $this->outTitle($element);
+                    if ($this->title == true) {
+                        $this->outTitle($element);
+                    }
                     break;
                 case 'instructions':
                     $this->outP($element);
@@ -259,7 +264,8 @@ class XMPPtoForm
         }
     }
 
-    private function outMultilineText($element) {
+    private function outMultilineText($element)
+    {
         $p = $this->html->createElement('p');
         foreach ((array)$element->value as $value) {
             $p->appendChild($this->html->createTextNode(htmlspecialchars_decode((string)$value)));
@@ -268,7 +274,8 @@ class XMPPtoForm
         $this->html->appendChild($p);
     }
 
-    private function outJidLinks($element) {
+    private function outJidLinks($element)
+    {
         foreach ((array)$element->value as $value) {
             $p = $this->html->createElement('p');
             $link = $this->html->createElement('a', $value);

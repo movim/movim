@@ -5,7 +5,7 @@
         </span>
         <div>
             <p></p>
-            <p>{$c->__('rooms.disco_error')}</p>
+            <p>{$c->__('chatrooms.disco_error')}</p>
         </div>
     </li>
 </ul>

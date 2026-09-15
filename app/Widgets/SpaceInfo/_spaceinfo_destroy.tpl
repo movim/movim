@@ -18,7 +18,7 @@
                 </p>
                 <p>
                     <i class="material-symbols">people</i> {$subscription->spaceAffiliations()->count()} {$c->__('chatrooms.members')}<br />
-                    <i class="material-symbols">tag</i> {$subscription->spaceRooms()->count()} {$c->__('chatrooms.rooms')}
+                    <i class="material-symbols">tag</i> {$subscription->spaceRooms()->count()} {$c->__('chatrooms.title')}
                 </p>
             </div>
         </li>

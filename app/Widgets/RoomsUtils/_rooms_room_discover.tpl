@@ -3,13 +3,13 @@
         <ul class="list thick">
             <li>
                 <div>
-                    <p>{$c->__('rooms.discover')}</p>
+                    <p>{$c->__('chatrooms.discover')}</p>
                     <p class="line">{$room}</p>
                 </div>
             </li>
         </ul>
     {else}
-        <h3>{$c->__('rooms.discover')}</h3>
+        <h3>{$c->__('chatrooms.discover')}</h3>
     {/if}
 
     <form name="rooms_discover">
@@ -19,7 +19,7 @@
                 <div>
                     <div class="select">
                         <select onchange="RoomsUtils_ajaxDiscoGateway(this.value)">
-                            <option value="">{$c->__('rooms.default_room')}</option>
+                            <option value="">{$c->__('chatrooms.default_room')}</option>
                             {loop="$gateways"}
                                 {if="$group != $value->parent"}
                                     {if="$group != null"}
@@ -40,7 +40,7 @@
                             {/if}
                         </select>
                     </div>
-                    <label>{$c->__('rooms.type_room')}</label>
+                    <label>{$c->__('chatrooms.type_room')}</label>
                 </div>
             {/if}
 

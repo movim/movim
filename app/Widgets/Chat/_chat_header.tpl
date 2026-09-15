@@ -215,7 +215,7 @@
             {if="$conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner'"}
                 <li class="subheader">
                     <div>
-                        <p class="line">{$c->__('chatroom.administration')}</p>
+                        <p class="line">{$c->__('page.administration')}</p>
                     </div>
                 </li>
             {/if}
@@ -227,7 +227,7 @@
                         </a>
                     </span>
                     <div>
-                        <p>{$c->__('chatroom.config')}</p>
+                        <p>{$c->__('chatrooms.config')}</p>
                     </div>
                 </li>
             {/if}
@@ -239,24 +239,11 @@
                         </a>
                     </span>
                     <div>
-                        <p>{$c->__('chatroom.subject')}</p>
-                    </div>
-                </li>
-                <li onclick="RoomsUtils_ajaxGetAvatar('{$jid|echapJS}')">
-                    <span class="primary icon gray"></span>
-                    <div>
-                        <p>{$c->__('page.avatar')}</p>
+                        <p>{$c->__('chatrooms.subject')}</p>
                     </div>
                 </li>
             {/if}
-            {if="$conference->presence->mucaffiliation == 'owner'"}
-                <li class="divided" onclick="RoomsUtils_ajaxAskDestroy('{$jid|echapJS}')">
-                    <span class="primary icon"></span>
-                    <div>
-                        <p>{$c->__('button.destroy')}</p>
-                    </div>
-                </li>
-            {/if}
+            <hr />
         {/if}
 
         {if="!empty($info->abuseaddresses)"}

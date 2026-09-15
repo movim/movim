@@ -125,7 +125,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-09 12:29+0200\n"
+"POT-Creation-Date: 2026-09-15 18:27+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023-2024,2026\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
@@ -748,38 +748,6 @@ msgstr "Gehitu nire kontaktuetara"
 msgid "Block"
 msgstr "Blokeatu"
 
-#: [chatroom]members
-msgid "Members"
-msgstr "Kideak"
-
-#: [chatroom]connected
-msgid "Connected to the chatroom"
-msgstr "Txat-gelara konektatutakoak"
-
-#: [chatroom]disconnected
-msgid "Disconnected from the chatroom"
-msgstr "Txat-gelara konektatuta ez daudenak"
-
-#: [chatroom]config [communityaffiliation]configuration [page]configuration
-msgid "Configuration"
-msgstr "Ezarpenak"
-
-#: [chatroom]config_saved [communityaffiliation]config_saved
-msgid "Configuration saved"
-msgstr "Ezarpenak gorde dira"
-
-#: [chatroom]subject
-msgid "Subject"
-msgstr "Gaia"
-
-#: [chatroom]subject_changed
-msgid "Subject changed"
-msgstr "Gaia aldatu da"
-
-#: [chatroom]administration [page]administration
-msgid "Administration"
-msgstr "Administrazioa"
-
 #: [wide_conference_call]enable_title
 msgid "Enable Wide Conference Call"
 msgstr ""
@@ -904,7 +872,7 @@ msgstr "Bideoa"
 msgid "Audio"
 msgstr "Audioa"
 
-#: [chats_filter]all [menu]all [rooms_filter]all
+#: [chats_filter]all [menu]all [chatrooms]filter_all
 msgid "All"
 msgstr "Guztia"
 
@@ -988,6 +956,10 @@ msgstr "Oraindik ez dago Komunitate-zerbitzaririk…"
 msgid "It seems that we can't find any communities for the moment"
 msgstr "Badirudi une honetan ezin dugula komunitaterik aurkitu"
 
+#: [communityaffiliation]configuration [chatrooms]config [page]configuration
+msgid "Configuration"
+msgstr "Ezarpenak"
+
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Harpidetzak"
@@ -1019,6 +991,10 @@ msgstr "Badirudi komunitate honek existitzeari utzi diola. Zure harpidetzetatik 
 #: [communityaffiliation]delete_error
 msgid "Error during the node deletion"
 msgstr "Errorea nodoa ezabatzean"
+
+#: [communityaffiliation]config_saved [chatrooms]config_saved
+msgid "Configuration saved"
+msgstr "Ezarpenak gorde dira"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
@@ -1369,7 +1345,7 @@ msgstr "Kontaktua ezabatu da"
 msgid "General Information"
 msgstr "Informazio orokorra"
 
-#: [general]name [chatrooms]name
+#: [general]name
 msgid "Name"
 msgstr "Izena"
 
@@ -1381,7 +1357,7 @@ msgstr "Izenordainak"
 msgid "he/she/they/…"
 msgstr "hura…"
 
-#: [general]nickname [chatrooms]nickname
+#: [general]nickname
 msgid "Nickname"
 msgstr "Goitizena"
 
@@ -1741,7 +1717,7 @@ msgstr "Hasi saioa zerbitzari hauetako kontuekin"
 msgid "Login using any XMPP account or create a new one"
 msgstr "Hasi saioa XMPP kontu batekin edo sortu berri bat"
 
-#: [form]connected [rooms_filter]connected
+#: [form]connected [chatrooms]filter_connected
 msgid "Connected"
 msgstr "Konektatuta"
 
@@ -2262,93 +2238,14 @@ msgstr "Une honetan ezin da zerbitzari honetan izena eman"
 msgid "Registration forbidden"
 msgstr "Izen-ematea ez dago baimenduta"
 
-#: [rooms]create
-msgid "Create a chatroom"
-msgstr "Sortu txat-gela"
-
-#: [rooms]edit
-msgid "Edit a chatroom"
-msgstr "Editatu txat-gela"
-
-#: [rooms]conference_call_edit
-msgid "Edit a conference call"
-msgstr ""
-
-#: [rooms]join
-msgid "Join a chatroom"
-msgstr "Sartu txat-gelara"
-
-#: [rooms]join_custom
-msgid "Join a custom chatroom"
-msgstr "Sartu neurrira egindago txat-gelara"
-
-#: [rooms]empty_text1
-msgid "You don’t have any chatroom yet."
-msgstr "Oraindik ez duzu txat-gelarik."
-
-#: [rooms]empty_text2
-msgid "Add one by clicking on the add button."
-msgstr "Gehitu bat \"+\" botoia erabiliz."
-
-#: [rooms]type_room
-msgid "Type of chatroom"
-msgstr "Txat-gela mota"
-
-#: [rooms]default_room
-msgid "Standard chatroom"
-msgstr "Txat-gela arrunta"
-
-#: [rooms]gateway_room
-msgid "Gateway chatroom"
-msgstr "Pasabide txat-gela"
-
-#: [rooms]show_all
-msgid "Show all chatrooms"
-msgstr "Erakutsi txat-gela guztiak"
-
-#: [rooms]hide_disconnected
-msgid "Hide disconnected chatrooms"
-msgstr "Ezkutatu deskonektatutako txat-gelak"
-
-#: [rooms]destroy_title
-msgid "Destroy the chatroom"
-msgstr "Suntsitu txat-gela"
-
-#: [rooms]destroy_text
-msgid "Are you sure you want to permanently destroy the following chatroom?"
-msgstr "Ziur betiko suntsitu nahi duzula ondorengo txat-gela?"
-
-#: [rooms]explore_placeholder
-msgid "Name or description"
-msgstr "Izena edo deskribapena"
-
-#: [rooms]disco_registration_required
-msgid "A registration is required before using the service"
-msgstr "Izena ematea ezinbestekoa da zerbitzua erabili ahal izateko"
-
-#: [rooms]discover
-msgid "Discover a room"
-msgstr "Arakatu gelak"
-
-#: [rooms]disco_error
-msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
-msgstr "Movim ez da baliozko txat-gelarik topatzeko gai izan. Saia zaitez beste identifikatzaile batekin."
-
-#: [rooms]disco_not_muc
-msgid "You are trying to add something that is not a chatroom"
-msgstr "Txat-gela ez den zerbait gehitzen saiatzen ari zara"
-
-#: [rooms]disco_maybe_space
-msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
-msgstr "Badirudi txat-gela hau Gune bateko parte dela, baina ezin izan dugu jakin zeinetakoa; txat-gelara baino, Gunera batzea gomendatzen dizugu"
-
-#: [rooms]first_room_placeholder
-msgid "Press the %s button to add a first room"
-msgstr "Sakatu %s botoia lehenengo gela bat gehitzeko"
-
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
 msgstr "Batu txat-gelara saioa hastean"
+
+#: [chatrooms]avatar
+#, fuzzy
+msgid "Change the chatroom avatar"
+msgstr "Txat-gelara batu da"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
@@ -2362,6 +2259,24 @@ msgstr "Sartu baliozko goitizen bat (2 eta 40 karaktere artean)"
 msgid "Banned"
 msgstr "Debekatuta"
 
+#: [chatrooms]conference_call
+msgid "Conference call"
+msgstr ""
+
+#: [chatrooms]conference_call_edit
+#, fuzzy
+msgid "Edit the conference call"
+msgstr "Konferentziara batzen"
+
+#: [chatrooms]conference_call_text
+msgid "Call your contacts and share your webcam or screen"
+msgstr ""
+
+#: [chatrooms]configure
+#, fuzzy
+msgid "Configure the chatroom"
+msgstr "Txat-gelara batu da"
+
 #: [chatrooms]conflict
 msgid "Nickname already taken"
 msgstr "Goitizena hartuta dago"
@@ -2370,25 +2285,92 @@ msgstr "Goitizena hartuta dago"
 msgid "Joined the chatroom"
 msgstr "Txat-gelara batu da"
 
+#: [chatrooms]create
+msgid "Create a chatroom"
+msgstr "Sortu txat-gela"
+
 #: [chatrooms]created
 msgid "Chatroom created"
 msgstr "Txat-gela sortu da"
+
+#: [chatrooms]default_room
+msgid "Standard chatroom"
+msgstr "Txat-gela arrunta"
+
+#: [chatrooms]destroy_text
+msgid "Are you sure you want to permanently destroy the following chatroom?"
+msgstr "Ziur betiko suntsitu nahi duzula ondorengo txat-gela?"
+
+#: [chatrooms]destroy_title
+msgid "Destroy the chatroom"
+msgstr "Suntsitu txat-gela"
 
 #: [chatrooms]destroyed
 msgid "Chatroom destroyed"
 msgstr "Txat-gela suntsitu da"
 
+#: [chatrooms]disco_error
+msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
+msgstr "Movim ez da baliozko txat-gelarik topatzeko gai izan. Saia zaitez beste identifikatzaile batekin."
+
+#: [chatrooms]disco_maybe_space
+msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr "Badirudi txat-gela hau Gune bateko parte dela, baina ezin izan dugu jakin zeinetakoa; txat-gelara baino, Gunera batzea gomendatzen dizugu"
+
+#: [chatrooms]disco_not_muc
+msgid "You are trying to add something that is not a chatroom"
+msgstr "Txat-gela ez den zerbait gehitzen saiatzen ari zara"
+
+#: [chatrooms]disco_registration_required
+msgid "A registration is required before using the service"
+msgstr "Izena ematea ezinbestekoa da zerbitzua erabili ahal izateko"
+
 #: [chatrooms]disconnected
 msgid "Left the chatroom"
 msgstr "Txat-gelatik irten da"
+
+#: [chatrooms]discover
+#, fuzzy
+msgid "Discover a chatroom"
+msgstr "Arakatu gelak"
+
+#: [chatrooms]edit
+#, fuzzy
+msgid "Edit the chatroom"
+msgstr "Editatu txat-gela"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
 msgstr "Izenik ez"
 
+#: [chatrooms]empty_text1
+msgid "You don’t have any chatroom yet."
+msgstr "Oraindik ez duzu txat-gelarik."
+
+#: [chatrooms]empty_text2
+msgid "Add one by clicking on the add button."
+msgstr "Gehitu bat \"+\" botoia erabiliz."
+
+#: [chatrooms]explore_placeholder
+msgid "Name or description"
+msgstr "Izena edo deskribapena"
+
+#: [chatrooms]first_room_placeholder
+#, fuzzy
+msgid "Press the %s button to add a first chatroom"
+msgstr "Sakatu %s botoia lehenengo gela bat gehitzeko"
+
 #: [chatrooms]forbidden
 msgid "You are not allowed to join this chatroom"
 msgstr "Ez duzu txat-gela honetan sartzeko baimenik"
+
+#: [chatrooms]gateway_room
+msgid "Gateway chatroom"
+msgstr "Pasabide txat-gela"
+
+#: [chatrooms]hide_disconnected
+msgid "Hide disconnected chatrooms"
+msgstr "Ezkutatu deskonektatutako txat-gelak"
 
 #: [chatrooms]id
 msgid "Chatroom Address"
@@ -2402,13 +2384,21 @@ msgstr "Txat gela hori ez da existitzen"
 msgid "Your nickname is not valid"
 msgstr "Zure goitizena ez da baliogarria"
 
+#: [chatrooms]join
+msgid "Join a chatroom"
+msgstr "Sartu txat-gelara"
+
+#: [chatrooms]join_custom
+msgid "Join a custom chatroom"
+msgstr "Sartu neurrira egindago txat-gelara"
+
 #: [chatrooms]members
-msgctxt "[chatrooms]members"
 msgid "Members"
 msgstr "Kideak"
 
 #: [chatrooms]name_placeholder
-msgid "My Favorite Room"
+#, fuzzy
+msgid "My Favorite Chatroom"
 msgstr "Nire gela gustukoena"
 
 #: [chatrooms]notacceptable
@@ -2426,14 +2416,6 @@ msgstr "Pasahitza ezinbestekoa da"
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
 msgstr "Finkatu txat-gela hau"
-
-#: [chatrooms]conference_call
-msgid "Conference call"
-msgstr ""
-
-#: [chatrooms]conference_call_text
-msgid "Call your contacts and share your webcam or screen"
-msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2455,20 +2437,28 @@ msgstr "Baieztatu honako txat-gelatik betiko atera nahi duzula."
 msgid "Permanently leave a chatroom"
 msgstr "Utzi txat-gela bat betiko"
 
-#: [chatrooms]rooms
-msgid "Rooms"
-msgstr "Gelak"
-
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
 msgstr "Txat-gela partaide-kopuruen mugara iritsi da"
+
+#: [chatrooms]show_all
+msgid "Show all chatrooms"
+msgstr "Erakutsi txat-gela guztiak"
+
+#: [chatrooms]subject
+msgid "Subject"
+msgstr "Gaia"
 
 #: [chatrooms]title
 msgid "Chatrooms"
 msgstr "Txat-gelak"
 
+#: [chatrooms]type_room
+msgid "Type of chatroom"
+msgstr "Txat-gela mota"
+
 #: [chatrooms]users
-msgctxt "[chatrooms]users"
+#, fuzzy
 msgid "Users"
 msgstr "Erabiltzaileak"
 
@@ -2536,11 +2526,6 @@ msgstr "Talde-txat pribatua kide gonbidatuekin"
 msgid "Add a new member"
 msgstr "Gehitu kide berria"
 
-#: [room]group_chat_members
-msgctxt "[room]group_chat_members"
-msgid "Members"
-msgstr "Kideak"
-
 #: [room]group_chat_remove
 msgid "Remove a member"
 msgstr ""
@@ -2581,11 +2566,6 @@ msgstr "Zergatia"
 msgid "Channel"
 msgstr "Kanala"
 
-#: [room]channel_users
-msgctxt "[room]channel_users"
-msgid "Users"
-msgstr "Erabiltzaileak"
-
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joinable"
 msgstr "Edonork aurkitu dezakeen eta bertara edonor sar daitekeen kanal publikoa"
@@ -2609,11 +2589,6 @@ msgstr "Finkatuta"
 #: [room]affiliation_admins
 msgid "Admins"
 msgstr "Administrariak"
-
-#: [room]affiliation_members
-msgctxt "[room]affiliation_members"
-msgid "Members"
-msgstr "Kideak"
 
 #: [room]visitor
 msgid "Visitor"
@@ -3214,6 +3189,10 @@ msgstr "Honi buruz"
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Kontuaren sorrera"
+
+#: [page]administration
+msgid "Administration"
+msgstr "Administrazioa"
 
 #: [page]avatar
 msgid "Profile Picture"
@@ -4152,3 +4131,31 @@ msgstr "Ezin da APIa eskuratu, saiatu berriro beranduago"
 #: [field]type_here
 msgid "Type here"
 msgstr "Idatzi hemen"
+
+#~ msgctxt "[chatrooms]members"
+#~ msgid "Members"
+#~ msgstr "Kideak"
+
+#~ msgctxt "[room]group_chat_members"
+#~ msgid "Members"
+#~ msgstr "Kideak"
+
+#~ msgctxt "[room]affiliation_members"
+#~ msgid "Members"
+#~ msgstr "Kideak"
+
+#~ msgid "Connected to the chatroom"
+#~ msgstr "Txat-gelara konektatutakoak"
+
+#~ msgid "Disconnected from the chatroom"
+#~ msgstr "Txat-gelara konektatuta ez daudenak"
+
+#~ msgid "Subject changed"
+#~ msgstr "Gaia aldatu da"
+
+#~ msgid "Rooms"
+#~ msgstr "Gelak"
+
+#~ msgctxt "[room]channel_users"
+#~ msgid "Users"
+#~ msgstr "Erabiltzaileak"

@@ -9,31 +9,11 @@
                 </p>
             </div>
 
-            <span class="chip active" data-filter="all" onclick="Rooms.toggleShowAll()">{$c->__('rooms_filter.all')}</span>
-            <span class="chip active" data-filter="connected" onclick="Rooms.toggleShowAll()">{$c->__('rooms_filter.connected')}</span>
+            <span class="chip active" data-filter="all" onclick="Rooms.toggleShowAll()">{$c->__('chatrooms.filter_all')}</span>
+            <span class="chip active" data-filter="connected" onclick="Rooms.toggleShowAll()">{$c->__('chatrooms.filter_connected')}</span>
             <span class="control icon active gray" onclick="Rooms.toggleEdit()">
                 <i class="material-symbols">rule</i>
             </span>
-        </li>
-        <li class="join divided" onclick="RoomsExplore_ajaxSearch();">
-            <span class="primary icon gray">
-                <i class="material-symbols">groups</i>
-            </span>
-            <div>
-                <p class="line">
-                    {$c->__('button.join')}
-                </p>
-            </div>
-        </li>
-        <li class="add divided" onclick="RoomsUtils_ajaxAdd(false, null, true); Drawer.clear()">
-            <span class="primary icon transparent gray">
-                <i class="material-symbols">group_add</i>
-            </span>
-            <div>
-                <p class="line">
-                    {$c->__('button.create')}
-                </p>
-            </div>
         </li>
     </ul>
 
@@ -49,10 +29,10 @@
             </span>
             <div>
                 <p class="line">
-                    {$c->__('rooms.hide_disconnected')}
+                    {$c->__('chatrooms.hide_disconnected')}
                 </p>
                 <p class="line">
-                    {$c->__('rooms.show_all')}
+                    {$c->__('chatrooms.show_all')}
                 </p>
             </div>
         </li>

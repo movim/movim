@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-09 12:29+0200\n"
+"POT-Creation-Date: 2026-09-15 18:27+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: sergey solovey, 2022,2024\n"
 "Language-Team: Ukrainian (http://app.transifex.com/movim/movim/language/uk/)\n"
@@ -747,38 +747,6 @@ msgstr "Додати до моїх контактів"
 msgid "Block"
 msgstr "Заблокувати"
 
-#: [chatroom]members
-msgid "Members"
-msgstr "Учасники"
-
-#: [chatroom]connected
-msgid "Connected to the chatroom"
-msgstr "Підключено до чату"
-
-#: [chatroom]disconnected
-msgid "Disconnected from the chatroom"
-msgstr "Відключено від чату"
-
-#: [chatroom]config [communityaffiliation]configuration [page]configuration
-msgid "Configuration"
-msgstr "Конфігурація"
-
-#: [chatroom]config_saved [communityaffiliation]config_saved
-msgid "Configuration saved"
-msgstr "Конфігурацію збережено"
-
-#: [chatroom]subject
-msgid "Subject"
-msgstr "Тема"
-
-#: [chatroom]subject_changed
-msgid "Subject changed"
-msgstr "Тема змінена"
-
-#: [chatroom]administration [page]administration
-msgid "Administration"
-msgstr "Адміністрування"
-
 #: [wide_conference_call]enable_title
 msgid "Enable Wide Conference Call"
 msgstr ""
@@ -903,7 +871,7 @@ msgstr "Відео"
 msgid "Audio"
 msgstr "Аудіо"
 
-#: [chats_filter]all [menu]all [rooms_filter]all
+#: [chats_filter]all [menu]all [chatrooms]filter_all
 msgid "All"
 msgstr "Всі"
 
@@ -987,6 +955,10 @@ msgstr "Серверів спільнот наразі немає..."
 msgid "It seems that we can't find any communities for the moment"
 msgstr "Схоже, що наразі ми не можемо знайти жодної спільноти"
 
+#: [communityaffiliation]configuration [chatrooms]config [page]configuration
+msgid "Configuration"
+msgstr "Конфігурація"
+
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Підписки"
@@ -1018,6 +990,10 @@ msgstr "Здається, ця спільнота більше не існує. 
 #: [communityaffiliation]delete_error
 msgid "Error during the node deletion"
 msgstr ""
+
+#: [communityaffiliation]config_saved [chatrooms]config_saved
+msgid "Configuration saved"
+msgstr "Конфігурацію збережено"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
@@ -1368,7 +1344,7 @@ msgstr "Контакт видалено"
 msgid "General Information"
 msgstr "Загальна інформація"
 
-#: [general]name [chatrooms]name
+#: [general]name
 msgid "Name"
 msgstr "Ім'я"
 
@@ -1380,7 +1356,7 @@ msgstr ""
 msgid "he/she/they/…"
 msgstr ""
 
-#: [general]nickname [chatrooms]nickname
+#: [general]nickname
 msgid "Nickname"
 msgstr "Нікнейм"
 
@@ -1740,7 +1716,7 @@ msgstr "Увійдіть за допомогою облікових записі
 msgid "Login using any XMPP account or create a new one"
 msgstr "Увійдіть за допомогою будь-якого облікового запису XMPP або створіть новий"
 
-#: [form]connected [rooms_filter]connected
+#: [form]connected [chatrooms]filter_connected
 msgid "Connected"
 msgstr "Підключено"
 
@@ -2261,93 +2237,14 @@ msgstr "Система реєстрації даного сервера нара
 msgid "Registration forbidden"
 msgstr "Реєстрація заборонена"
 
-#: [rooms]create
-msgid "Create a chatroom"
-msgstr "Створити чат"
-
-#: [rooms]edit
-msgid "Edit a chatroom"
-msgstr "Редагувати чат"
-
-#: [rooms]conference_call_edit
-msgid "Edit a conference call"
-msgstr ""
-
-#: [rooms]join
-msgid "Join a chatroom"
-msgstr "Приєднатися до чату"
-
-#: [rooms]join_custom
-msgid "Join a custom chatroom"
-msgstr "Приєднатися до спеціального чату"
-
-#: [rooms]empty_text1
-msgid "You don’t have any chatroom yet."
-msgstr ""
-
-#: [rooms]empty_text2
-msgid "Add one by clicking on the add button."
-msgstr "Додайте його, натиснувши на кнопку \"Додати\"."
-
-#: [rooms]type_room
-msgid "Type of chatroom"
-msgstr ""
-
-#: [rooms]default_room
-msgid "Standard chatroom"
-msgstr ""
-
-#: [rooms]gateway_room
-msgid "Gateway chatroom"
-msgstr ""
-
-#: [rooms]show_all
-msgid "Show all chatrooms"
-msgstr ""
-
-#: [rooms]hide_disconnected
-msgid "Hide disconnected chatrooms"
-msgstr ""
-
-#: [rooms]destroy_title
-msgid "Destroy the chatroom"
-msgstr ""
-
-#: [rooms]destroy_text
-msgid "Are you sure you want to permanently destroy the following chatroom?"
-msgstr ""
-
-#: [rooms]explore_placeholder
-msgid "Name or description"
-msgstr "Назва або опис"
-
-#: [rooms]disco_registration_required
-msgid "A registration is required before using the service"
-msgstr "Перед використанням сервісу необхідно пройти реєстрацію"
-
-#: [rooms]discover
-msgid "Discover a room"
-msgstr ""
-
-#: [rooms]disco_error
-msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
-msgstr ""
-
-#: [rooms]disco_not_muc
-msgid "You are trying to add something that is not a chatroom"
-msgstr ""
-
-#: [rooms]disco_maybe_space
-msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
-msgstr ""
-
-#: [rooms]first_room_placeholder
-msgid "Press the %s button to add a first room"
-msgstr ""
-
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
 msgstr ""
+
+#: [chatrooms]avatar
+#, fuzzy
+msgid "Change the chatroom avatar"
+msgstr "Підключено до чату"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
@@ -2361,6 +2258,23 @@ msgstr ""
 msgid "Banned"
 msgstr "Заблоковані"
 
+#: [chatrooms]conference_call
+msgid "Conference call"
+msgstr ""
+
+#: [chatrooms]conference_call_edit
+msgid "Edit the conference call"
+msgstr ""
+
+#: [chatrooms]conference_call_text
+msgid "Call your contacts and share your webcam or screen"
+msgstr ""
+
+#: [chatrooms]configure
+#, fuzzy
+msgid "Configure the chatroom"
+msgstr "Підключено до чату"
+
 #: [chatrooms]conflict
 msgid "Nickname already taken"
 msgstr ""
@@ -2369,25 +2283,91 @@ msgstr ""
 msgid "Joined the chatroom"
 msgstr ""
 
+#: [chatrooms]create
+msgid "Create a chatroom"
+msgstr "Створити чат"
+
 #: [chatrooms]created
 msgid "Chatroom created"
 msgstr "Чат створено"
+
+#: [chatrooms]default_room
+msgid "Standard chatroom"
+msgstr ""
+
+#: [chatrooms]destroy_text
+msgid "Are you sure you want to permanently destroy the following chatroom?"
+msgstr ""
+
+#: [chatrooms]destroy_title
+msgid "Destroy the chatroom"
+msgstr ""
 
 #: [chatrooms]destroyed
 msgid "Chatroom destroyed"
 msgstr ""
 
+#: [chatrooms]disco_error
+msgid "Movim was not able to find a valid chatroom. Try maybe with another identifier."
+msgstr ""
+
+#: [chatrooms]disco_maybe_space
+msgid "This chatroom seems to be part of a Space, we are not able to find which one but we strongly advise you to join the Space instead"
+msgstr ""
+
+#: [chatrooms]disco_not_muc
+msgid "You are trying to add something that is not a chatroom"
+msgstr ""
+
+#: [chatrooms]disco_registration_required
+msgid "A registration is required before using the service"
+msgstr "Перед використанням сервісу необхідно пройти реєстрацію"
+
 #: [chatrooms]disconnected
 msgid "Left the chatroom"
 msgstr ""
+
+#: [chatrooms]discover
+#, fuzzy
+msgid "Discover a chatroom"
+msgstr "Приєднатися до чату"
+
+#: [chatrooms]edit
+#, fuzzy
+msgid "Edit the chatroom"
+msgstr "Редагувати чат"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
 msgstr "Порожнє ім'я"
 
+#: [chatrooms]empty_text1
+msgid "You don’t have any chatroom yet."
+msgstr ""
+
+#: [chatrooms]empty_text2
+msgid "Add one by clicking on the add button."
+msgstr "Додайте його, натиснувши на кнопку \"Додати\"."
+
+#: [chatrooms]explore_placeholder
+msgid "Name or description"
+msgstr "Назва або опис"
+
+#: [chatrooms]first_room_placeholder
+msgid "Press the %s button to add a first chatroom"
+msgstr ""
+
 #: [chatrooms]forbidden
 msgid "You are not allowed to join this chatroom"
 msgstr "Вам не дозволено приєднуватися до цього чату"
+
+#: [chatrooms]gateway_room
+msgid "Gateway chatroom"
+msgstr ""
+
+#: [chatrooms]hide_disconnected
+msgid "Hide disconnected chatrooms"
+msgstr ""
 
 #: [chatrooms]id
 msgid "Chatroom Address"
@@ -2401,13 +2381,21 @@ msgstr "Чату не існує"
 msgid "Your nickname is not valid"
 msgstr "Ваш нік не є дійсним"
 
+#: [chatrooms]join
+msgid "Join a chatroom"
+msgstr "Приєднатися до чату"
+
+#: [chatrooms]join_custom
+msgid "Join a custom chatroom"
+msgstr "Приєднатися до спеціального чату"
+
 #: [chatrooms]members
-msgctxt "[chatrooms]members"
 msgid "Members"
 msgstr "Учасники"
 
 #: [chatrooms]name_placeholder
-msgid "My Favorite Room"
+#, fuzzy
+msgid "My Favorite Chatroom"
 msgstr "Мої улюблені кімнати"
 
 #: [chatrooms]notacceptable
@@ -2425,14 +2413,6 @@ msgstr "Потрібен пароль"
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
 msgstr "Закріпити цей чат"
-
-#: [chatrooms]conference_call
-msgid "Conference call"
-msgstr ""
-
-#: [chatrooms]conference_call_text
-msgid "Call your contacts and share your webcam or screen"
-msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2454,20 +2434,28 @@ msgstr ""
 msgid "Permanently leave a chatroom"
 msgstr ""
 
-#: [chatrooms]rooms
-msgid "Rooms"
-msgstr ""
-
 #: [chatrooms]serviceunavailable
 msgid "The chatroom participant limit has been reached"
 msgstr ""
+
+#: [chatrooms]show_all
+msgid "Show all chatrooms"
+msgstr ""
+
+#: [chatrooms]subject
+msgid "Subject"
+msgstr "Тема"
 
 #: [chatrooms]title
 msgid "Chatrooms"
 msgstr "Кімнати для спілкування"
 
+#: [chatrooms]type_room
+msgid "Type of chatroom"
+msgstr ""
+
 #: [chatrooms]users
-msgctxt "[chatrooms]users"
+#, fuzzy
 msgid "Users"
 msgstr "Користувачі"
 
@@ -2535,11 +2523,6 @@ msgstr "Приватний груповий чат із запрошеними �
 msgid "Add a new member"
 msgstr "Додати нового учасника"
 
-#: [room]group_chat_members
-msgctxt "[room]group_chat_members"
-msgid "Members"
-msgstr "Учасники"
-
 #: [room]group_chat_remove
 msgid "Remove a member"
 msgstr ""
@@ -2580,11 +2563,6 @@ msgstr "Причина"
 msgid "Channel"
 msgstr "Канал"
 
-#: [room]channel_users
-msgctxt "[room]channel_users"
-msgid "Users"
-msgstr "Користувачі"
-
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joinable"
 msgstr "Публічний канал, який можна відкрити та приєднатися до нього"
@@ -2608,11 +2586,6 @@ msgstr ""
 #: [room]affiliation_admins
 msgid "Admins"
 msgstr ""
-
-#: [room]affiliation_members
-msgctxt "[room]affiliation_members"
-msgid "Members"
-msgstr "Учасники"
 
 #: [room]visitor
 msgid "Visitor"
@@ -3213,6 +3186,10 @@ msgstr "Про"
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Створення облікового запису"
+
+#: [page]administration
+msgid "Administration"
+msgstr "Адміністрування"
 
 #: [page]avatar
 msgid "Profile Picture"
@@ -4151,3 +4128,28 @@ msgstr "API недоступний, спробуйте пізніше"
 #: [field]type_here
 msgid "Type here"
 msgstr "Напишіть тут"
+
+#~ msgctxt "[chatrooms]members"
+#~ msgid "Members"
+#~ msgstr "Учасники"
+
+#~ msgctxt "[room]group_chat_members"
+#~ msgid "Members"
+#~ msgstr "Учасники"
+
+#~ msgctxt "[room]affiliation_members"
+#~ msgid "Members"
+#~ msgstr "Учасники"
+
+#~ msgid "Connected to the chatroom"
+#~ msgstr "Підключено до чату"
+
+#~ msgid "Disconnected from the chatroom"
+#~ msgstr "Відключено від чату"
+
+#~ msgid "Subject changed"
+#~ msgstr "Тема змінена"
+
+#~ msgctxt "[room]channel_users"
+#~ msgid "Users"
+#~ msgstr "Користувачі"

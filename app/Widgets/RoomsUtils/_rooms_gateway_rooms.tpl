@@ -18,4 +18,4 @@
         {/if}
     </select>
 </div>
-<label>{$c->__('rooms.gateway_room')}</label>
+<label>{$c->__('chatrooms.gateway_room')}</label>

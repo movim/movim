@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-09 12:29+0200\n"
+"POT-Creation-Date: 2026-09-15 18:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -207,38 +207,6 @@ msgstr ""
 
 #: [chat]first_messages_block
 msgid "Block"
-msgstr ""
-
-#: [chatroom]members
-msgid "Members"
-msgstr ""
-
-#: [chatroom]connected
-msgid "Connected to the chatroom"
-msgstr ""
-
-#: [chatroom]disconnected
-msgid "Disconnected from the chatroom"
-msgstr ""
-
-#: [chatroom]config
-msgid "Configuration"
-msgstr ""
-
-#: [chatroom]config_saved
-msgid "Configuration saved"
-msgstr ""
-
-#: [chatroom]subject
-msgid "Subject"
-msgstr ""
-
-#: [chatroom]subject_changed
-msgid "Subject changed"
-msgstr ""
-
-#: [chatroom]administration
-msgid "Administration"
 msgstr ""
 
 #: [wide_conference_call]enable_title

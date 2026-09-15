@@ -108,7 +108,7 @@ class Presence extends Model
             return getPresenceAffiliations()[$this->mucaffiliation];
         }
 
-        return __('rooms_filter.connected');
+        return __('chatrooms.filter_connected');
     }
 
     public function getConferenceColorAttribute(): string

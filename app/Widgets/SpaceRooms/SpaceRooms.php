@@ -160,7 +160,7 @@ class SpaceRooms extends Base
         $this->rpc('MovimTpl.fill', '#spacerooms_widget', $this->view('_spacerooms', [
             'subscription' => $subscription,
             'edit' => $edit,
-            'addplaceholder' => __('rooms.first_room_placeholder', '<i class="material-symbols">rule</i>')
+            'addplaceholder' => __('chatrooms.first_room_placeholder', '<i class="material-symbols">rule</i>')
         ]));
     }
 

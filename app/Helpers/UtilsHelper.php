@@ -649,7 +649,7 @@ function getPresenceAffiliations()
     return [
         'owner' => __('room.affiliation_owners'),
         'admin' => __('room.affiliation_admins'),
-        'member' => __('room.affiliation_members'),
+        'member' => __('chatrooms.members'),
     ];
 }
 
