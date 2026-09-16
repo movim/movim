@@ -24,7 +24,7 @@ function linkify(string $html, bool $hashtagLinks = true): string
 
     $textNodes = $xpath->query('//text()[not(ancestor::*[local-name()="a"])]', $container);
 
-    $urlPattern = '(?<url>\b(?:https?|xmpp:(?:\/{1,3}|[a-z0-9%+#])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\([^\s()<>]+|(?:\([^\s()<>]+\))*)+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\x{00AB}\x{00BB}\x{201C}\x{201D}\x{2018}\x{2019}]))';
+    $urlPattern = '(?<url>\b(?:https?|xmpp:(?:\/{1,3}|[a-z0-9%+#])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\([^\s()<>]+\))+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\x{00AB}\x{00BB}\x{201C}\x{201D}\x{2018}\x{2019}]))';
 
     $hashtagPattern = '(?:(?<=[\s>])|^)#(?<tag>\w+)';
 
