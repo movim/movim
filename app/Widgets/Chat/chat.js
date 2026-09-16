@@ -1483,7 +1483,7 @@ var Chat = {
             var url = new URL(file.url);
 
             // Tenor implementation and inline files
-            if (url.host && url.host == 'media.tenor.com'
+            if (url.host && ['media.tenor.com', 'static.klipy.com'].includes(url.host)
                 || file.type == 'audio/ogg' || file.type == 'audio/opus' || file.type == 'audio/mpeg'
                 || file.disposition == 'inline') {
                 return div;
@@ -1583,7 +1583,7 @@ var Chat = {
         var url = new URL(file.url);
 
         // Tenor implementation
-        if ((url.host && url.host == 'media.tenor.com') || file.disposition == 'inline') {
+        if ((url.host && ['media.tenor.com', 'static.klipy.com'].includes(url.host)) || file.disposition == 'inline') {
             video.classList.add('gif');
         } else {
             video.setAttribute('controls', 'controls');
