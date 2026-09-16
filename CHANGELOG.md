@@ -10,6 +10,7 @@ v0.35.1
 * Don't rely on the Bookmark name anymore but only the MUC title from the configuration instead
 * Fix MUC configuration refresh
 * Simplify and modernize the MUC administration and configuration flows, refactor and cleanup the related translations
+* Close properly the Galener Connection and prevent some race conditions
 
 v0.35
 ---------------------------

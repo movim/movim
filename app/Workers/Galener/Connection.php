@@ -28,6 +28,8 @@ class Connection
     private Collection $contents;
     private Collection $acceptedContents;
 
+    private bool $ended = false;
+
     private const GALENE_LABEL_TO_CONTENT_CATEGORY = [
         'camera' => 'speaker',
         'screenshare' => 'slides',
@@ -65,6 +67,11 @@ class Connection
             \Ratchet\Client\connect('ws://localhost:' . $this->apiClient->port . '/ws', headers: [
                 'Origin' => 'https://localhost:' . $this->apiClient->port
             ])->then(function ($websocket) {
+                if ($this->ended) {
+                    $websocket->close();
+                    return;
+                }
+
                 $this->websocket = $websocket;
                 $this->websocket->on('message', function ($message) {
                     $json = json_decode($message);
@@ -208,8 +215,16 @@ class Connection
 
     public function end()
     {
-        $this->websocket->close();
-        //$this->apiClient->removeUserFromGroup($this->conference->id, $this->jid->bareJid());
+        $this->ended = true;
+
+        if (isset($this->websocket)) {
+            $this->websocket->close();
+        }
+
+        $this->websocketBuffer = [];
+        $this->apiClient->removeUserFromGroup($this->conference->jid, $this->jid->bareJid())->then(null, function ($e) {
+            \logError('❌ Galener: failed to remove user from group: ' . $e->getMessage());
+        });
     }
 
     public function xmppOfferOrScreenshare(XMPPNode $node)
@@ -393,6 +408,10 @@ class Connection
 
     private function send(array $array)
     {
+        if ($this->ended) {
+            return;
+        }
+
         if (!isset($this->websocket)) {
             array_push($this->websocketBuffer, $array);
             return;
