@@ -141,18 +141,31 @@ var Rooms = {
                     Chat.getRoom(this.dataset.jid);
                 }
 
-                let touchTimer;
+                if (MovimUtils.isMobile()) {
+                    let touchTimer;
+                    let moveX = 0;
+                    let moveY = 0;
 
-                items[i].ontouchstart = function (e) {
-                    e.stopPropagation();
-                    touchTimer = setTimeout(() => {
-                        touchTimer = null;
-                        RoomsUtils_ajaxAdd(this.dataset.jid);
-                    }, 500);
-                }
+                    items[i].ontouchstart = function (event) {
+                        event.stopPropagation();
+                        touchTimer = setTimeout(() => {
+                            touchTimer = null;
 
-                items[i].ontouchend = function (e) {
-                    clearTimeout(touchTimer);
+                            if (moveX == 0 && moveY == 0) {
+                                RoomsUtils_ajaxAdd(this.dataset.jid);
+                            }
+                        }, 500);
+                    }
+
+                    items[i].ontouchmove = function (event) {
+                        moveX += Math.abs(event.targetTouches[0].pageX);
+                        moveY += Math.abs(event.targetTouches[0].pageY);
+                    }
+
+                    items[i].ontouchend = function (event) {
+                        clearTimeout(touchTimer);
+                        moveX = moveY = 0;
+                    }
                 }
             }
 
