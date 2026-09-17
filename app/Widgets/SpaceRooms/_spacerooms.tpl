@@ -1,8 +1,7 @@
 {loop="$subscription->spaceRooms"}
-    <li onclick="Chat.getRoom('{$value->conference}')" id="space{$value->conference|cleanupId}"
-            data-jid="{$value->conference}">
+    <li id="space{$value->conference|cleanupId}">
         <ul class="list thin">
-            <li>
+            <li data-jid="{$value->conference}">
                 <span class="primary icon gray"
                     id="{$value->conference|cleanupId}-rooms-primary">
                     {autoescape="off"}
@@ -11,13 +10,10 @@
                 </span>
 
                 {if="$edit"}
-                    <span class="control icon gray active" onclick="SpaceRooms_ajaxAskEdit('{$value->space_server}', '{$value->space_node}', '{$value->conference}')"
+                    <span class="control icon gray active edition on_desktop"
+                        onclick="event.stopPropagation(); SpaceRooms_ajaxAskEdit('{$value->conference}')"
                         title="{$c->__('button.edit')}">
                         <i class="material-symbols">edit</i>
-                    </span>
-                    <span class="control icon gray active" onclick="SpaceRooms_ajaxAskDestroy('{$value->space_server}', '{$value->space_node}', '{$value->conference}')"
-                        title="{$c->__('button.delete')}">
-                        <i class="material-symbols">delete</i>
                     </span>
                 {/if}
                 <div>

@@ -10,6 +10,7 @@ use Movim\XMPPUri;
 use Moxl\Stanza\Space;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Muc\ChangeAffiliation;
+use Moxl\Xec\Action\Pubsub\GetAffiliations;
 use Moxl\Xec\Action\Pubsub\SetAffiliations;
 use Moxl\Xec\Action\Pubsub\Unsubscribe;
 use Moxl\Xec\Action\PubsubSubscription\Add;
@@ -118,6 +119,15 @@ class SpacesMenu extends Base
                 if (!$space->info) {
                     $this->ajaxGetSpaceInfo($space->server, $space->node);
                 }
+
+                /**
+                 * Refresh our own affiliation
+                 */
+                $affiliation = $this->xmpp(new GetAffiliations);
+                $affiliation->setTo($space->server)
+                    ->setNode($space->node)
+                    ->asJid($this->me->id)
+                    ->request();
 
                 $this->ajaxGetRooms($space->server, $space->node);
             }

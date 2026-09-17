@@ -41,13 +41,9 @@
                 title="{$c->__('spaceinfo.admin_title')}">
                 <i class="material-symbols">settings</i>
             </span>
-            <span class="control icon gray active" onclick="SpacesMenu.get('{$subscription->server}', '{$subscription->node}', '{$c->route('space', [$subscription->server, $subscription->node])}')">
-                <i class="material-symbols">rule</i>
-            </span>
-        {else}
-            <span class="control icon gray active" onclick="SpaceInfo_ajaxGetAffiliations('{$subscription->server}', '{$subscription->node}')"
-                title="{$c->__('spaceinfo.config_title')}">
-                <i class="material-symbols">rule</i>
+            <span class="control icon gray active" onclick="SpaceRooms_ajaxAdd('{$subscription->server}', '{$subscription->node}')"
+                title="{$c->__('spaceinfo.add_room_title')}">
+                <i class="material-symbols">add</i>
             </span>
         {/if}
         <div>
@@ -76,17 +72,5 @@
             </p>
         </div>
     </li>
-    {if="$edit"}
-        <li class="active" onclick="SpaceRooms_ajaxAdd('{$subscription->server}', '{$subscription->node}')">
-            <span class="primary icon">
-                <a href="#" onclick="listIconClick(event)">
-                    <i class="material-symbols icon gray">add</i>
-                </a>
-            </span>
-            <div>
-                <p>{$c->__('spaceinfo.add_room_title')}</p>
-            </div>
-        </li>
-    {/if}
     <li id="spaceinfo_pendings"></li>
 </ul>

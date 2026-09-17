@@ -8,13 +8,14 @@ use Moxl\Xec\Action;
 
 class GetAffiliations extends Action
 {
-    protected $_to;
-    protected $_node;
+    protected ?string $_to;
+    protected ?string $_node;
+    protected ?string $_asJid = null;
 
     public function request()
     {
         $this->store();
-        $this->iq(Pubsub::getAffiliations($this->_node), to: $this->_to, type: 'get');
+        $this->iq(Pubsub::getAffiliations($this->_node, asOwner: $this->_asJid == null), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -25,13 +26,19 @@ class GetAffiliations extends Action
             $affiliation = new Affiliation;
             $affiliation->server = $this->_to;
             $affiliation->node = $this->_node;
-            $affiliation->jid = (string)$i['jid'];
+            $affiliation->jid = $this->_asJid ?? (string)$i['jid'];
             $affiliation->affiliation = (string)$i['affiliation'];
             $affiliation->save();
         }
 
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
+    }
+
+    public function asJid(string $jid)
+    {
+        $this->_asJid = $jid;
+        return $this;
     }
 
     public function errorForbidden(string $errorId, ?string $message = null)

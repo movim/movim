@@ -306,10 +306,12 @@ class Pubsub
         return $pubsub;
     }
 
-    public static function getAffiliations(string $node)
+    public static function getAffiliations(string $node, ?bool $asOwner = true)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
+        $pubsub = $dom->createElementNS($asOwner
+            ? 'http://jabber.org/protocol/pubsub#owner'
+            : 'http://jabber.org/protocol/pubsub', 'pubsub');
         $affiliations = $dom->createElement('affiliations');
         $affiliations->setAttribute('node', $node);
         $pubsub->appendChild($affiliations);

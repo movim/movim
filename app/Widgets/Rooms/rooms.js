@@ -147,7 +147,8 @@ var Rooms = {
                     let moveY = 0;
 
                     items[i].ontouchstart = function (event) {
-                        event.stopPropagation();
+                        event.preventDefault();
+
                         touchTimer = setTimeout(() => {
                             touchTimer = null;
 

@@ -1,10 +1,23 @@
 <section>
     <form name="spacerooms_edit">
-        {if="$conference->call"}
-            <h3>{$c->__('chatrooms.conference_call_edit')}</h3>
-        {else}
-            <h3>{$c->__('chatrooms.edit')}</h3>
-        {/if}
+        <ul class="list">
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-symbols">tag</i>
+                </span>
+                <span class="control icon gray divided active" onclick="SpaceRooms_ajaxAskDestroy('{$conference->space_server}', '{$conference->space_node}', '{$conference->conference}');">
+                    <i class="material-symbols">delete</i>
+                </span>
+                <div>
+                    <p class="line">{$conference->title}</p>
+                    {if="$conference->call"}
+                        <p>{$c->__('chatrooms.conference_call_edit')}</p>
+                    {else}
+                        <p>{$c->__('chatrooms.edit')}</p>
+                    {/if}
+                </div>
+            </li>
+        </ul>
 
         <input type="hidden" name="server" value="{$conference->space_server|echapJS}">
         <input type="hidden" name="node" value="{$conference->space_node|echapJS}">

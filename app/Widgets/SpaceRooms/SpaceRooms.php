@@ -36,20 +36,14 @@ class SpaceRooms extends Base
         $this->registerEvent('presence_muc_muji_leaving', 'onMujiLeaving');
 
         $this->addcss('spacerooms.css');
+        $this->addjs('spacerooms.js');
     }
 
     public function onAffiliations(Packet $packet)
     {
         list($server, $node) = array_values($packet->content);
 
-        $affiliation = Affiliation::where('server', $server)
-            ->where('node', $node)
-            ->where('jid', $this->me->id)
-            ->first();
-
-        if ($affiliation && $affiliation->affiliation == 'owner') {
-            $this->ajaxHttpGet($server, $node, edit: true);
-        }
+        $this->ajaxHttpGet($server, $node);
     }
 
     public function onRoomRegistrationRequired(Packet $packet)
@@ -151,17 +145,23 @@ class SpaceRooms extends Base
         ]));
     }
 
-    public function ajaxHttpGet(string $server, string $node, ?bool $edit = false)
+    public function ajaxHttpGet(string $server, string $node)
     {
         $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
         if (!$subscription) return;
 
+        $affiliation = Affiliation::where('server', $server)
+            ->where('node', $node)
+            ->where('jid', $this->me->id)
+            ->first();
+
         $this->rpc('MovimTpl.fill', '#spacerooms_widget', $this->view('_spacerooms', [
             'subscription' => $subscription,
-            'edit' => $edit,
+            'edit' => ($affiliation && $affiliation->affiliation == 'owner'),
             'addplaceholder' => __('chatrooms.first_room_placeholder', '<i class="material-symbols">rule</i>')
         ]));
+        $this->rpc('SpaceRooms.init');
     }
 
     public function ajaxAdd(string $server, string $node)
@@ -179,21 +179,20 @@ class SpaceRooms extends Base
         }
     }
 
-    public function ajaxAskEdit(string $server, string $node, string $conference)
+    public function ajaxAskEdit(string $conferenceId)
     {
-        $affiliation = Affiliation::where('server', $server)
-            ->where('node', $node)
-            ->where('jid', $this->me->id)
+        $conference = $this->me->session
+            ->conferences()
+            ->where('conference', $conferenceId)
             ->first();
 
-        if ($affiliation->affiliation == 'owner') {
-            $subscription = $this->me->subscriptions()
-                ->spaces()
-                ->where('server', $server)
-                ->where('node', $node)
+        if ($conference && $conference->isFromSpace()) {
+            $affiliation = Affiliation::where('server', $conference->space_server)
+                ->where('node', $conference->space_node)
+                ->where('jid', $this->me->id)
                 ->first();
 
-            if ($subscription && $conference = $subscription->spaceRooms()->where('conference', $conference)->first()) {
+            if ($affiliation->affiliation == 'owner') {
                 $this->dialog($this->view('_spacerooms_edit', [
                     'conference' => $conference
                 ]));

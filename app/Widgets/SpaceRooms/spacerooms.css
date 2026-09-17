@@ -2,4 +2,24 @@
 ul#spacerooms_widget>li {
     padding-left: 0;
     padding-right: 0;
+    user-select: none;
+}
+
+ul#spacerooms_widget li span.control.edition {
+    position: absolute;
+    display: block;
+    right: -7rem;
+    margin: 0;
+    width: 5.5rem;
+    background-color: rgb(var(--movim-background));
+    top: 0;
+    height: 5.25rem;
+    line-height: 5.25rem;
+    box-shadow: var(--elevation-1);
+    transition: right 0.2s var(--accelerate-easing);
+}
+
+ul#spacerooms_widget li:hover span.control.edition {
+    right: 0;
+    transition: right 0.2s var(--decelerate-easing) 0.75s;
 }

@@ -66,7 +66,7 @@ class SpaceInfo extends Base
             ->first();
 
         if ($affiliation && $affiliation->affiliation == 'owner') {
-            $this->ajaxHttpGet($server, $node, edit: true);
+            $this->ajaxHttpGet($server, $node);
             $this->ajaxGetPendings($server, $node);
 
             $this->rpc('MovimTpl.fill', '#spaceinfo_affiliations', $this->view('_spaceinfo_affiliations', [
@@ -154,7 +154,7 @@ class SpaceInfo extends Base
     public function onConfigSaved(Packet $packet)
     {
         $this->toast($this->__('spaceinfo.config_saved'));
-        $this->ajaxHttpGet($packet->content['server'], $packet->content['node'], edit: true);
+        $this->ajaxHttpGet($packet->content['server'], $packet->content['node']);
 
         (new SpacesMenu(user: $this->me, sessionId: $this->sessionId))
             ->ajaxGetSpaceInfo($packet->content['server'], $packet->content['node']);
@@ -199,15 +199,20 @@ class SpaceInfo extends Base
         }
     }
 
-    public function ajaxHttpGet(string $server, string $node, ?bool $edit = false)
+    public function ajaxHttpGet(string $server, string $node)
     {
         $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
         if ($subscription) {
             if ($subscription->info) {
+                $affiliation = Affiliation::where('server', $server)
+                    ->where('node', $node)
+                    ->where('jid', $this->me->id)
+                    ->first();
+
                 $this->rpc('MovimTpl.fill', '#spaceinfo_widget', $this->view('_spaceinfo', [
                     'subscription' => $subscription,
-                    'edit' => $edit
+                    'edit' => ($affiliation && $affiliation->affiliation == 'owner')
                 ]));
             } else {
                 $this->rpc('SpacesMenu_ajaxGetSpaceInfo', $server, $node);
