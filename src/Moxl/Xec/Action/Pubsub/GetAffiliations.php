@@ -23,12 +23,14 @@ class GetAffiliations extends Action
         Affiliation::where('server', $this->_to)->where('node', $this->_node)->delete();
 
         foreach ($stanza->pubsub->affiliations->children() as $i) {
-            $affiliation = new Affiliation;
-            $affiliation->server = $this->_to;
-            $affiliation->node = $this->_node;
-            $affiliation->jid = $this->_asJid ?? (string)$i['jid'];
-            $affiliation->affiliation = (string)$i['affiliation'];
-            $affiliation->save();
+            if (in_array((string)$i['affiliation'], Affiliation::TYPES)) {
+                $affiliation = new Affiliation;
+                $affiliation->server = $this->_to;
+                $affiliation->node = $this->_node;
+                $affiliation->jid = $this->_asJid ?? (string)$i['jid'];
+                $affiliation->affiliation = (string)$i['affiliation'];
+                $affiliation->save();
+            }
         }
 
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);

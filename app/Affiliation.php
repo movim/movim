@@ -9,6 +9,7 @@ class Affiliation extends Model
 {
     public $primaryKey = ['server', 'node', 'jid'];
     public $incrementing = false;
+    public const TYPES = ['member', 'none', 'outcast', 'owner', 'publisher', 'publish-only'];
 
     public function contact()
     {
