@@ -13,7 +13,6 @@ class Pong extends Event
     {
         $conference = $this->conferencesManager->getConferenceBySFUJid($this->node->to);
 
-
         if ($conference) {
             if ($connection = $conference->getConnection($this->node->from)) {
                 if ($this->node->stanza->error) {

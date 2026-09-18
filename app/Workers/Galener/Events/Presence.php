@@ -29,7 +29,7 @@ class Presence extends Event
                             // We are kicked out so we leave
                             if ($item->attributes()->affiliation == 'none') {
                                 $conference->xmppLeaveAndDestroy();
-                                $this->conferencesManager->detroyConference($this->node->from);
+                                $this->conferencesManager->destroyConference($this->node->from);
                             } else/*if (in_array($item->attributes()->affiliation, ['owner', 'admin']))*/ {
                                 $conference->xmppAddMember(new Jid((string)$item->attributes()->jid));
                                 /*} else {

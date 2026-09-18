@@ -52,7 +52,7 @@ class ConferencesManager
         return null;
     }
 
-    public function detroyConference(Jid $jid): bool
+    public function destroyConference(Jid $jid): bool
     {
         if (array_key_exists($jid->bareJid(), $this->conferences)) {
             unset($this->conferences[$jid->bareJid()]);

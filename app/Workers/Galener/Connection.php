@@ -73,6 +73,13 @@ class Connection
                 }
 
                 $this->websocket = $websocket;
+
+                $this->websocket->on('close', function () {
+                    if (!$this->ended) {
+                        $this->conference->removeConnection($this->jid);
+                    }
+                });
+
                 $this->websocket->on('message', function ($message) {
                     $json = json_decode($message);
                     switch ($json->type) {
@@ -84,7 +91,7 @@ class Connection
                             break;
                         case 'ping':
                             $this->conference->sendXMPP($this->iq(
-                                type: 'set',
+                                type: 'get',
                                 from: $this->conference->getSFUJid(),
                                 id: generateUUID(),
                                 xml: Ping::entity()
