@@ -18,8 +18,6 @@ var SpaceRooms = {
                     let moveY = 0;
 
                     li.ontouchstart = function (event) {
-                        event.preventDefault();
-
                         touchTimer = setTimeout(() => {
                             touchTimer = null;
 
