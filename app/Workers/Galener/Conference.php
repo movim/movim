@@ -19,7 +19,7 @@ class Conference
     private array $members = [];
     private bool $connected = false;
     private string $resource;
-    private ?Carbon $startedAt = null;
+    public ?Carbon $startedAt = null;
     private ?TimerInterface $pingTimer = null;
 
     public const CONFERENCE_STARTED_AT_XMLNS = '{https://movim.eu}conference_started_at';

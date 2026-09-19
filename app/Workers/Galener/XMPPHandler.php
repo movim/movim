@@ -27,7 +27,6 @@ class XMPPHandler
     public function handle(SimpleXMLElement $node): ?\DOMDocument
     {
         $path = $node->getName();
-
         if (array_key_exists($path, $this->paths)) {
             $xmppNode = new XMPPNode($node);
             $event = new $this->paths[$path](

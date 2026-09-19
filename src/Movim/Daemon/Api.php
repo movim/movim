@@ -98,7 +98,7 @@ class Api
             && $linker->currentCall->mujiRoom === $post['mujiroom'];
     }
 
-    public function isJidInCall(array $post): bool
+    /*public function isJidInCall(array $post): bool
     {
         if (!isset($post['sessionid'], $post['jid'])) {
             return false;
@@ -111,7 +111,7 @@ class Api
         }
 
         return $linker->currentCall->isJidInCall($post['jid']);
-    }
+    }*/
 
     public function sessionUnregister(array $post): void
     {

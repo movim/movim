@@ -10,6 +10,7 @@ use React\Socket\HappyEyeBallsConnector;
 use Moxl\Stanza\Stream;
 use App\Workers\Galener\XMPPHandler;
 use React\ChildProcess\Process;
+use React\Socket\SocketServer;
 
 class Galener
 {
@@ -116,6 +117,11 @@ class Galener
                 $this->handler->handle($node)
             )
         );
+
+        if (file_exists(GALENER_API_SOCKET)) unlink(GALENER_API_SOCKET);
+
+        $socketApi = new SocketServer('unix://' . GALENER_API_SOCKET);
+        new Api($socketApi, conferencesManager: $conferencesManager);
 
         $this->registerXMPP();
     }

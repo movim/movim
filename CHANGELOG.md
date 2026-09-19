@@ -11,6 +11,7 @@ v0.35.1
 * Fix MUC configuration refresh
 * Simplify and modernize the MUC administration and configuration flows, refactor and cleanup the related translations
 * Close properly the Galener Connection and prevent some race conditions
+* Complete the daemon.php galener status with a detailed report of the Galener status if launched
 
 v0.35
 ---------------------------

@@ -63,7 +63,6 @@ class SessionsTree extends Command
             $root->addChild($workerNode);
         }
 
-
         $tree = TreeHelper::createTree($output, $root, style: TreeStyle::rounded());
         $tree->render();
 

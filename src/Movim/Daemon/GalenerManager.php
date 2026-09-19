@@ -63,11 +63,14 @@ class GalenerManager
                 }
             });
 
+            if (file_exists(GALENER_API_SOCKET)) unlink(GALENER_API_SOCKET);
+
             return $message;
         }
 
-        $message = 'Not started';
+        $message = '⚪ Not started';
         $this->output->writeln('<info>' . self::GALENER_WORKER_CONSOLE . $message . '</info>');
+
         return $message;
     }
 

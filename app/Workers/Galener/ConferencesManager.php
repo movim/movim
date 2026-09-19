@@ -9,7 +9,7 @@ class ConferencesManager
     public function __construct(
         private GaleneAPIClient $apiClient,
         private $sendXMPP,
-        private array $conferences = []
+        public array $conferences = []
     ) {}
 
     public function sendXMPP(?\DOMDocument $dom = null)

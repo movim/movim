@@ -887,13 +887,18 @@ function requestURL(string $url, int $timeout = 10, array $headers = []): Promis
 /**
  * Request the internal API
  */
-function requestAPI(string $action, int $timeout = 2, ?array $post = null, ?bool $await = true): string|false
-{
-    if (!file_exists(API_SOCKET)) return false;
+function requestAPI(
+    string $action,
+    int $timeout = 2,
+    ?array $post = null,
+    ?bool $await = true,
+    ?string $socket = API_SOCKET
+): string|false {
+    if (!file_exists($socket)) return false;
 
     $browser = (new React\Http\Browser(
         new React\Socket\FixedUriConnector(
-            API_SOCKET,
+            $socket,
             new React\Socket\UnixConnector()
         )
     ))->withTimeout($timeout)
