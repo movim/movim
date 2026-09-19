@@ -1,14 +1,8 @@
 <ul class="list middle">
     <li>
-        {if="$edit"}
-            <span class="primary icon bubble space color gray active edit_avatar" onclick="SpaceInfo_ajaxGetAvatar('{$subscription->server}', '{$subscription->node}')">
-                <img src="{$subscription->info->getPicture(placeholder: $subscription->info->name)}">
-            </span>
-        {else}
-            <span class="primary icon bubble space">
-                <img src="{$subscription->info->getPicture(placeholder: $subscription->info->name)}">
-            </span>
-        {/if}
+        <span class="primary icon bubble space">
+            <img src="{$subscription->info->getPicture(placeholder: $subscription->info->name)}">
+        </span>
         {if="$subscription->info"}
             <span class="control icon gray active" onclick="SpaceInfo_ajaxInvite('{$subscription->server}', '{$subscription->node}')"
                 title="{$c->__('spaceinfo.invite_title')}">

@@ -120,20 +120,21 @@ class SpacesMenu extends Base
                     $this->ajaxGetSpaceInfo($space->server, $space->node);
                 }
 
-                /**
-                 * Refresh our own affiliation
-                 */
-                $affiliation = $this->xmpp(new GetAffiliations);
-                $affiliation->setTo($space->server)
-                    ->setNode($space->node)
-                    ->asJid($this->me->id)
-                    ->request();
-
+                $this->ajaxGetOwnAffiliation($space->server, $space->node);
                 $this->ajaxGetRooms($space->server, $space->node);
             }
 
             $this->ajaxHttpGet();
         }
+    }
+
+    public function ajaxGetOwnAffiliation(string $server, string $node)
+    {
+        $affiliation = $this->xmpp(new GetAffiliations);
+        $affiliation->setTo($server)
+            ->setNode($node)
+            ->asJid($this->me->id)
+            ->request();
     }
 
     public function ajaxGetRooms(string $server, string $node)
@@ -286,6 +287,13 @@ class SpacesMenu extends Base
             $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
             if ($subscription) {
+                /**
+                 * Because affiliations are not updated in real-time for now on ejabberd
+                 * refresh it manually each time we switch Space...
+                 * see https://github.com/processone/ejabberd/issues/4546
+                 */
+                $this->rpc('SpacesMenu_ajaxGetOwnAffiliation', $server, $node);
+
                 $this->rpc('SpaceRooms_ajaxHttpGet', $server, $node);
                 $this->rpc('SpaceInfo_ajaxHttpGet', $server, $node);
 

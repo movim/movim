@@ -20,7 +20,15 @@ class GetAffiliations extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        Affiliation::where('server', $this->_to)->where('node', $this->_node)->delete();
+        $deleteAffiliations = Affiliation::where('server', $this->_to)
+            ->where('node', $this->_node);
+
+        if ($this->_asJid != null) {
+            $deleteAffiliations = $deleteAffiliations->where('jid', $this->_asJid);
+            $this->method('own');
+        }
+
+        $deleteAffiliations->delete();
 
         foreach ($stanza->pubsub->affiliations->children() as $i) {
             if (in_array((string)$i['affiliation'], Affiliation::TYPES)) {

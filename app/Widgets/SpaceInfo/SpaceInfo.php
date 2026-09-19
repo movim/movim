@@ -170,18 +170,21 @@ class SpaceInfo extends Base
 
     public function onConfig(Packet $packet)
     {
-        $view = $this->tpl();
+        $subscription = $this->me->subscriptions()->space($packet->content['server'], $packet->content['node'])->first();
 
-        $xml = new XMPPtoForm($this->me);
-        $view->assign('server', $packet->content['server']);
-        $view->assign('node', $packet->content['node']);
-        $view->assign('config', $xml->getArray($packet->content['config']->x));
-        $view->assign('attributes', $packet->content['config']->attributes());
+        if ($subscription) {
+            $view = $this->tpl();
 
-        $this->drawer('spaceinfo_config', $view->draw('_spaceinfo_config'), tiny: true);
-        $this->rpc('MovimUtils.applyAutoheight');
+            $xml = new XMPPtoForm($this->me);
+            $view->assign('config', $xml->getArray($packet->content['config']->x));
+            $view->assign('attributes', $packet->content['config']->attributes());
+            $view->assign('subscription', $subscription);
 
-        $this->ajaxGetAffiliations($packet->content['server'], $packet->content['node']);
+            $this->drawer('spaceinfo_config', $view->draw('_spaceinfo_config'), tiny: true);
+            $this->rpc('MovimUtils.applyAutoheight');
+
+            $this->ajaxGetAffiliations($packet->content['server'], $packet->content['node']);
+        }
     }
 
     public function ajaxEditMember(string $server, string $node)

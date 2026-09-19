@@ -1,7 +1,7 @@
 <section>
     <ul class="list thick">
         <li>
-            <span class="control icon active white" onclick="Notifications_ajaxDeleteContact('{$roster->jid|echapJS}')"
+            <span class="control icon active white divided" onclick="Notifications_ajaxDeleteContact('{$roster->jid|echapJS}')"
                 title="{$c->__('button.delete')}">
                 <i class="material-symbols">delete</i>
             </span>
