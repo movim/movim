@@ -43,7 +43,7 @@ class ServicesDisco extends Event
 
         // We refresh the configuration each hours
         global $loop;
-        $loop->addPeriodicTimer(60 * 60, function () {
+        $loop->addTimer(60 * 60, function () {
             $this->conferencesManager->sendXMPP(
                 $this->iq(
                     type: 'get',
