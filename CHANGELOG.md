@@ -1,6 +1,9 @@
 Movim Changelog
 ================
 
+v0.35.2 (master)
+---------------------------
+
 v0.35.1
 ---------------------------
 * Re-adapt the UI colours and CSS cleanup
