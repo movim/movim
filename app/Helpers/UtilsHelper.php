@@ -227,6 +227,7 @@ function requiredExtensions(): array
     $extensions = [
         'dom',
         'imagick',
+        'intl',
         'mbstring',
         'openssl',
         'pdo',
