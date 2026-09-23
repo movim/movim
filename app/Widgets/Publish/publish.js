@@ -40,7 +40,6 @@ var Publish = {
             }, 1000);
         });
 
-        MovimUtils.applyAutoheight();
         Publish_ajaxOpenlinkPreview(id);
         Publish_ajaxCheckPrivacy(id);
     },
@@ -100,7 +99,6 @@ var Publish = {
 
 MovimWebsocket.attach(() => {
     Publish.get('brief');
-    MovimUtils.applyAutoheight();
 });
 
 MovimEvents.registerWindow('loaded', 'publish', () => {

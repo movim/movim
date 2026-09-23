@@ -3,7 +3,7 @@
         <h3>{$c->__('chatrooms.subject')}</h3>
 
         <div>
-            <textarea name="subject" placeholder="{$c->__('chatrooms.subject')}" data-autoheight="true">{if="$room->subject"}{$room->subject}{/if}</textarea>
+            <textarea name="subject" placeholder="{$c->__('chatrooms.subject')}" oninput="MovimUtils.textareaAutoheight(this);">{if="$room->subject"}{$room->subject}{/if}</textarea>
             <label for="subject">{$c->__('chatrooms.subject')}</label>
         </div>
     </form>

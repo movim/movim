@@ -7,7 +7,7 @@
                         <i class="material-symbols">code</i>
                     </span>
                     <div>
-                        <textarea dir="auto" name="sdp" id="sdp" placeholder="" style="min-height: 60rem;" data-autoheight="true">{$sdp}</textarea>
+                        <textarea dir="auto" name="sdp" id="sdp" placeholder="" style="min-height: 60rem;" oninput="MovimUtils.textareaAutoheight(this);">{$sdp}</textarea>
                         <label for="sdp">{$c->__('tools.sdp_title')}</label>
                     </div>
                 </li>

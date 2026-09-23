@@ -61,8 +61,6 @@ var PublishStories = {
 
         PublishStories.close();
         PublishStories.getStream(true);
-
-        MovimUtils.applyAutoheight();
     },
 
     draw: function () {

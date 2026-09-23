@@ -45,7 +45,6 @@ class Post extends Base
                     '#post_widget.' . cleanupId($parent->nodeid) . ' #comments',
                     $this->prepareComments($parent)
                 );
-                $this->rpc('MovimUtils.applyAutoheight');
                 $this->rpc('Post.checkCommentAction');
             } else {
                 $this->rpc(
@@ -69,7 +68,6 @@ class Post extends Base
                     '#post_widget.' . cleanupId($parent->nodeid) . ' #comments',
                     $this->prepareComments($parent)
                 );
-                $this->rpc('MovimUtils.applyAutoheight');
             }
 
             if ($post->isLike()) {
@@ -95,7 +93,6 @@ class Post extends Base
                 '#post_widget.' . cleanupId($post->nodeid) . ' #comments',
                 $this->prepareComments($post)
             );
-            $this->rpc('MovimUtils.applyAutoheight');
             $this->rpc('Post.checkCommentAction');
         }
     }

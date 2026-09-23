@@ -10,7 +10,7 @@
                         <textarea dir="auto" name="jingle" id="jingle" placeholder="<jingle xmlns='urn:xmpp:jingle:1'
 action='session-initiate'
 initiator='romeo@montague.lit/orchard
-..." style="min-height: 60rem;" data-autoheight="true"></textarea>
+..." style="min-height: 60rem;" oninput="MovimUtils.textareaAutoheight(this);"></textarea>
                         <label for="jingle">{$c->__('tools.jingle_title')}</label>
                     </div>
                 </li>

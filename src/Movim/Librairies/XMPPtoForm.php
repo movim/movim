@@ -105,7 +105,9 @@ class XMPPtoForm
                                 $this->outCheckbox($element);
                                 break;
                             case 'text-single':
-                                if ($element['var'] == 'pubsub#max_items') {
+                                if ($element['var'] == 'muc#roomconfig_roomdesc') {
+                                    $this->outTextarea($element);
+                                } elseif ($element['var'] == 'pubsub#max_items') {
                                     $this->outInput($element, false, 'max');
                                 } elseif ($element['var'] == 'muc#roomconfig_pubsub') {
                                     $this->outSelectPubsubNode($element);
@@ -362,6 +364,7 @@ class XMPPtoForm
         $textarea->setAttribute('label', $s['label'] ?? $s['var']);
         $textarea->setAttribute('id', $s['var']);
         $textarea->setAttribute('name', $s['var']);
+        $textarea->setAttribute('oninput', 'MovimUtils.textareaAutoheight(this)');
 
         if ($s->required) {
             $textarea->setAttribute('required', 'required');

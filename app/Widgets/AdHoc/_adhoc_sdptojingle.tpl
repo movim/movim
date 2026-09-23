@@ -10,7 +10,7 @@
                         <textarea dir="auto" name="sdp" id="sdp" placeholder="v=0
 o=jdoe 2890844526 2890842807 IN IP4 10.47.16.5
 s=SDP Seminar
-..." style="min-height: 60rem;" data-autoheight="true"></textarea>
+..." style="min-height: 60rem;" oninput="MovimUtils.textareaAutoheight(this);"></textarea>
                         <label for="sdp">{$c->__('tools.sdp_title')}</label>
                     </div>
                 </li>

@@ -139,6 +139,28 @@ function addEmojis(string $string, bool $noTitle = false): string
     return $emoji->replace($string, $noTitle);
 }
 
+function extractEmojis(string $text): array
+{
+    $pattern =
+        '/' .
+        // Flag sequences: pair of regional indicator symbols (e.g. 🇫🇷)
+        '\p{Regional_Indicator}{2}' .
+        '|' .
+        // Keycap sequences: 0-9, #, * + optional VS16 + combining keycap (e.g. 1️⃣)
+        '[0-9#\*]\x{FE0F}?\x{20E3}' .
+        '|' .
+        // Any pictographic/emoji-capable base character, optionally extended
+        // by skin-tone modifiers, a variation selector, or ZWJ-joined emoji
+        // (covers combos like family/profession sequences, e.g. 👨‍👩‍👧‍👦)
+        '\p{Extended_Pictographic}' .
+        '(?:\x{FE0F}|\p{Emoji_Modifier}|\x{200D}\p{Extended_Pictographic}\x{FE0F}?)*' .
+        '/u';
+
+    preg_match_all($pattern, $text, $matches);
+
+    return $matches[0];
+}
+
 /**
  * Slugify a string
  */
@@ -246,7 +268,7 @@ function explodeJid(string $jid, ?JidComponent $component = null): array|string|
     }
 
     if ($component != null) {
-        return match($component) {
+        return match ($component) {
             JidComponent::Bare => $jid,
             JidComponent::Username => $username,
             JidComponent::Domain => $domain,

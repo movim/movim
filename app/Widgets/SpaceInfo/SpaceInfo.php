@@ -181,7 +181,6 @@ class SpaceInfo extends Base
             $view->assign('subscription', $subscription);
 
             $this->drawer('spaceinfo_config', $view->draw('_spaceinfo_config'), tiny: true);
-            $this->rpc('MovimUtils.applyAutoheight');
 
             $this->ajaxGetAffiliations($packet->content['server'], $packet->content['node']);
         }

@@ -1813,9 +1813,4 @@ class Chat extends \Movim\Widget\Base
             'page' => $page
         ]);
     }
-
-    public function getSmileyPath($id)
-    {
-        return getSmileyPath($id);
-    }
 }

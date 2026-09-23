@@ -934,14 +934,6 @@ function socketAPITime(): int
     return filemtime(API_SOCKET);
 }
 
-/*
- * @desc Get the URI of a smiley
- */
-function getSmileyPath(string $id)
-{
-    return BASE_URI . 'theme/img/emojis/svg/' . $id . '.svg';
-}
-
 /**
  * @desc Return the url of an avatar placeholder
  */

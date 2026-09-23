@@ -251,14 +251,6 @@ var MovimUtils = {
     copyToClipboard: function (text) {
         navigator.clipboard.writeText(text).catch(err => MovimUtils.logError(err));
     },
-    applyAutoheight: function () {
-        var textareas = document.querySelectorAll('textarea[data-autoheight=true]')
-
-        for (var i = 0; i < textareas.length; i++) {
-            MovimUtils.textareaAutoheight(textareas[i]);
-            textareas[i].addEventListener('keyup', e => MovimUtils.textareaAutoheight(e.target));
-        };
-    },
     htmlEscape: function (string) {
         return string
             .replaceAll("&", "&amp;")

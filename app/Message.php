@@ -854,6 +854,22 @@ class Message extends Model
         return intval($next_id['0']->nextval);
     }
 
+    /**
+     * Suggest emojis from the message for reactions
+     */
+    public function suggestEmojis(): array
+    {
+        $emojis = extractEmojis($this->body);
+
+        foreach ($this->reactions as $reaction) {
+            if (!in_array($reaction->emoji, $emojis)) {
+                array_push($emojis, $reaction->emoji);
+            }
+        }
+
+        return $emojis;
+    }
+
     // https://xmpp.org/extensions/xep-0444.html#business-id
     // https://xmpp.org/extensions/xep-0461.html#business-id
     private function resolveParentMessage(string $from, string $id): ?Message

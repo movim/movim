@@ -171,13 +171,16 @@ class Stickers extends \Movim\Widget\Base
             })->first()
             : null;
 
-        $emojis = $this->tpl();
-        $emojis->assign('mid', $mid);
-        $emojis->assign('reactionsrestrictions', $info ? $info->reactionsrestrictions : null);
-        $emojis->assign('favorites', $this->me->emojis);
-        $emojis->assign('gotemojis', $mid == null && Emoji::count() > 0);
+        $message = $this->me->messages()->where('mid', $mid)->first();
 
-        $this->drawer('emojis', $emojis->draw('_stickers_emojis'), actions: true, tiny: true);
+        $this->drawer('emojis', $this->view('_stickers_emojis', [
+            'mid' => $mid,
+            'suggested' => $message ? $message->suggestEmojis() : [],
+            'reactionsrestrictions' => $info ? $info->reactionsrestrictions : null,
+            'favorites' => $this->me->emojis,
+            'gotemojis' => $mid == null && Emoji::count() > 0,
+        ]), actions: true, tiny: true);
+
         $this->rpc('Stickers.setEmojisEvent', $mid);
     }
 
@@ -279,13 +282,8 @@ class Stickers extends \Movim\Widget\Base
     /**
      * @brief Get the path of an emoji
      */
-    public function ajaxSmileyGet($string)
+    public function ajaxSmileyGet(string $string): string
     {
         return addEmojis($string);
-    }
-
-    public function getSmileyPath($id)
-    {
-        return getSmileyPath($id);
     }
 }

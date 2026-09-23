@@ -43,7 +43,7 @@
 
     <form onsubmit="return: false;" name="metadata">
         <div>
-            <textarea id="title" type="text" dir="auto" name="title" required data-autoheight="true" placeholder="{$c->__('publish.placeholder')}" spellcheck="false"></textarea>
+            <textarea id="title" type="text" dir="auto" name="title" required oninput="MovimUtils.textareaAutoheight(this);" placeholder="{$c->__('publish.placeholder')}" spellcheck="false"></textarea>
         </div>
     </form>
 

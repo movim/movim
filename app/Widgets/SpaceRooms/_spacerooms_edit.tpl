@@ -29,7 +29,7 @@
                         {if="$conference->call"}
                             <i class="material-symbols">adaptive_audio_mic</i>
                         {else}
-                            <i class="material-symbols">short_text</i>
+                            <i class="material-symbols">title</i>
                         {/if}
                     </span>
                     <div>

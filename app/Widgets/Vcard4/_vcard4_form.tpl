@@ -60,7 +60,7 @@
                     <i class="material-symbols">short_text</i>
                 </span>
                 <div>
-                    <textarea dir="auto" name="desc" id="desctext" placeholder="{$c->__('general.about')}" style="min-height: 3rem;" data-autoheight="true">{$desc ?? ''}</textarea>
+                    <textarea dir="auto" name="desc" id="desctext" placeholder="{$c->__('general.about')}" style="min-height: 3rem;" oninput="MovimUtils.textareaAutoheight(this);">{$desc ?? ''}</textarea>
                     <label for="desc">{$c->__('general.about')}</label>
                 </div>
             </li>

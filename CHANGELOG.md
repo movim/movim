@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.35.2 (master)
 ---------------------------
+* Suggest emojis when adding a reaction based on the message context (body and existing emojis)
 
 v0.35.1
 ---------------------------

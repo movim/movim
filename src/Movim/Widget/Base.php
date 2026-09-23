@@ -241,6 +241,11 @@ class Base
         return DB::getDriverName() == $driver;
     }
 
+    public function emoji(string $id): string
+    {
+        return BASE_URI . 'theme/img/emojis/svg/' . $id . '.svg';
+    }
+
     public function rpc($funcname, ...$args)
     {
         (new \Movim\RPC(

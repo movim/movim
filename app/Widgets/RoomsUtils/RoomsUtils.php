@@ -512,7 +512,6 @@ class RoomsUtils extends Base
                 ->where('conference', $room)
                 ->first()
         ]));
-        $this->rpc('MovimUtils.applyAutoheight');
     }
 
     /**
