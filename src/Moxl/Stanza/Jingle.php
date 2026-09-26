@@ -63,10 +63,18 @@ class Jingle
         return $dom;
     }
 
-    public static function messageProceed(string $to, string $id, ?string $from = null)
-    {
+    public static function messageProceed(
+        string $to,
+        string $id,
+        ?string $from = null,
+        ?string $namespace = 'jabber:client'
+    ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $message = $dom->createElementNS('jabber:client', 'message');
+
+        $message = ($namespace !== null)
+            ? $dom->createElementNS($namespace, 'message')
+            : $dom->createElement('message');
+
         $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
 
@@ -126,10 +134,15 @@ class Jingle
         string $id,
         ?string $to = null,
         ?string $from = null,
-        ?string $reasonText = null
+        ?string $reasonText = null,
+        ?string $namespace = 'jabber:client'
     ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $message = $dom->createElementNS('jabber:client', 'message');
+
+        $message = ($namespace !== null)
+            ? $dom->createElementNS($namespace, 'message')
+            : $dom->createElement('message');
+
         $message->setAttribute('type', 'chat');
 
         if ($to) $message->setAttribute('to', $to);
