@@ -4,7 +4,7 @@ Movim Changelog
 v0.35.2 (master)
 ---------------------------
 * Suggest emojis when adding a reaction based on the message context (body and existing emojis)
-* Bump minimum PHP version requirement to 8.4.
+* Bump minimum PHP version requirement to 8.4
 
 v0.35.1
 ---------------------------
