@@ -16,8 +16,8 @@ class JingleFinish extends Event
         if ($conference) {
             $conference->removeConnection($this->node->from);
             return $this->iq(type: 'result');
-        } else {
-            return $this->iq(type: 'error', error: 'service-unavailable');
         }
+
+        return $this->iq(type: 'error', error: 'service-unavailable');
     }
 }

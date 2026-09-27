@@ -20,6 +20,7 @@ class MucInvitation extends Event
 
             return $this->iq(type: 'get', xml: Disco::request());
         }
+
         return null;
     }
 }
