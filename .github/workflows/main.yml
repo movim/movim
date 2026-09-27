@@ -12,116 +12,79 @@ permissions:
   contents: read
 
 jobs:
-
-  setup-with-mariadb:
-
+  setup:
     runs-on: ubuntu-latest
-
+    strategy:
+      fail-fast: false
+      matrix:
+        db: [mariadb, postgres]
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.4'
-        extensions: mbstring, intl, pdo_mysql, pdo_pgsql, curl, dom, xml
-        coverage: none
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, intl, pdo_mysql, pdo_pgsql, curl, dom, xml
 
-    #- name: Validate composer.json and composer.lock
-    #  run: composer validate --strict
+      - name: Cache Composer packages
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v4
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+      - name: Install movim dependencies
+        run: composer install --prefer-dist --no-progress
 
-    - name: Install movim dependencies
-      run: composer install --prefer-dist --no-progress
+      - name: Setup .env file
+        run: |
+          cp .env.example .env
+          if [ "${{ matrix.db }}" = "mariadb" ]; then
+            sed -i \
+              -e 's/^DB_DRIVER=.*/DB_DRIVER=mysql/' \
+              -e 's/^DB_PORT=.*/DB_PORT=3306/' \
+              -e 's/^DB_HOST=.*/DB_HOST=127.0.0.1/' \
+              .env
+          fi
 
-    - name: Setup .env file
-      run: |
-        cp .env.example .env
-        sed -i \
-        -e 's/^DB_DRIVER=.*/DB_DRIVER=mysql/' \
-        -e 's/^DB_PORT=.*/DB_PORT=3306/' \
-        -e 's/^DB_HOST=.*/DB_HOST=127.0.0.1/' \
-        .env
-        cat .env
+      - name: Setup MariaDB
+        if: matrix.db == 'mariadb'
+        uses: getong/mariadb-action@v1.11
+        with:
+          mariadb version: 'latest'
+          mysql database: 'movim'
+          mysql user: 'movim'
+          mysql password: 'movim'
 
-    #https://github.com/getong/mariadb-action
-    - uses: getong/mariadb-action@v1.11
-      with:
-        mariadb version: 'latest'
-        mysql database: 'movim'
-        mysql user: 'movim'
-        mysql password: 'movim'
+      - name: Setup Postgres
+        if: matrix.db == 'postgres'
+        uses: Daniel-Marynicz/postgresql-action@master
+        with:
+          postgres_image_tag: latest
+          app_user: movim
+          app_user_password: movim
+          app_db: movim
+          postgres_extensions: pgcrypto
 
-    - name: Perform database migration using composer
-      run: composer movim:migrate
+      - name: Perform database migration using composer
+        run: composer movim:migrate
 
-    - name: Perform database rollback
-      run: php vendor/bin/phinx rollback -t 20180314212906
+      - name: Perform database rollback
+        run: php vendor/bin/phinx rollback -t 20180314212906
 
-    - name: ...and migrate again
-      run: composer movim:migrate
+      - name: ...and migrate again
+        run: composer movim:migrate
 
-    - name: Start movim daemon
-      run: php daemon.php start &
-
-  setup-with-postgres:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.4'
-        extensions: mbstring, intl, pdo_mysql, pdo_pgsql, curl, dom, xml
-        coverage: none
-
-    #- name: Validate composer.json and composer.lock
-    #  run: composer validate --strict
-
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v4
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-
-    - name: Install movim dependencies
-      run: composer install --prefer-dist --no-progress
-
-    - name: Setup .env file
-      run: cp .env.example .env
-
-    # https://github.com/Daniel-Marynicz/postgresql-action
-    - name: Setup Postgres database
-      uses: Daniel-Marynicz/postgresql-action@master
-      with:
-       postgres_image_tag: latest
-       app_user: movim
-       app_user_password: movim
-       app_db: movim
-       postgres_extensions: pgcrypto
-
-    - name: Perform database migration using composer
-      run: composer movim:migrate
-
-    - name: Perform database rollback
-      run: php vendor/bin/phinx rollback -t 20180314212906
-
-    - name: ...and migrate again
-      run: composer movim:migrate
-
-    - name: Start movim daemon
-      run: php daemon.php start &
+      - name: Start movim daemon and verify it stays up
+        run: |
+          php daemon.php start &
+          DAEMON_PID=$!
+          sleep 5
+          if ! kill -0 "$DAEMON_PID" 2>/dev/null; then
+            echo "::error::movim daemon exited unexpectedly after startup"
+            exit 1
+          fi
+          echo "movim daemon is running (pid $DAEMON_PID)"
+          kill "$DAEMON_PID"
