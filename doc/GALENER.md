@@ -3,14 +3,14 @@ Movim Galener
 
 This tutorial describes the different steps needed to set up the Galener XMPP SFU service.
 
-# General information
+# General Information
 
-## Video call structures
+## Video Call Structures
 
 Audio and video calls on XMPP are organized into different network topologies.
 Media sessions are negotiated using a set of XMPP extensions called Jingle.
 
-### One-to-one calls
+### One-to-One Calls
 
 When two people call each other, they negotiate direct peer-to-peer audio and video streams through the XMPP network.
 
@@ -18,11 +18,11 @@ This means that once the call is fully negotiated, the audio and video data are 
 
 ![One-to-one](direct.png)
 
-### One-to-many calls
+### One-to-Many Calls
 
 When several people want to call each other, there are two possible topologies.
 
-#### I. Mesh calls
+#### I. Mesh Calls
 
 These calls are negotiated using the XMPP extension [XEP-0272: Multiparty Jingle (Muji)](https://xmpp.org/extensions/xep-0272.html).
 
@@ -34,13 +34,13 @@ With N peers, this results in N×(N-1)/2 connections, and each device has to enc
 
 ![Mesh](mesh.png)
 
-#### II. SFU calls
+#### II. SFU Calls
 
 Each participant initiates a call with a central SFU (Selective Forwarding Unit), which then forwards (routes, without decoding or re-encoding) the appropriate streams to everyone else. The upload cost per peer stays constant no matter how many participants join.
 
 ![SFU](sfu.png)
 
-## Movim architecture
+## Movim Architecture
 
 Movim supports all three modes described above. The one-to-one and mesh modes don't require any specific server beyond the default XMPP network used for the initial negotiation.
 
@@ -48,7 +48,7 @@ Since version 0.35, Movim provides a dedicated XMPP service that can be plugged 
 
 This SFU component, called Galener, wraps the [Galene video-conferencing server](https://galene.org/) and provides an XMPP Jingle interface to it.
 
-### How does it work?
+### "How does it work?"
 
 Once fully set up, when the Movim daemon is launched, the `galener.php` Movim worker connects to a configured XMPP server and announces itself on the XMPP network as an SFU service for that server.
 
@@ -58,9 +58,9 @@ Owners of group chats hosted on that XMPP server will then see a dedicated butto
 
 When a group chat participant wants to join the call, they call the SFU's virtual user in their room. This user then negotiates an XMPP Jingle session with them and instructs them to forward their media streams (audio and video) to the Galene SFU.
 
-# Setting up Galener
+# Galener Setup
 
-## Create an XMPP service
+## Create an XMPP Service
 
 First, you need to create a new XMPP component on your XMPP server.
 
@@ -81,9 +81,20 @@ listen
         password: "<galener_password>"
 ```
 
+For Prosody, here is an example config snippet in `prosody.cfg.lua`:
+
+```
+-- Global section
+component_interfaces = { "::" } -- Prosody listens on port 5347 for components by default
+
+-- SFU component
+Component "sfu.xmpp.server"
+  component_secret = "<galener_password>"
+```
+
 Then reload your XMPP server.
 
-## Set up Galene for Movim
+## Galene for Movim Setup
 
 Set up Galene alongside Movim; see the related [Galene installation guide](https://galene.org/galene-install.html) to configure it properly. If you already have Galene set up elsewhere, we strongly recommend using a dedicated setup for Movim instead.
 
@@ -105,7 +116,7 @@ GALENER_XMPP_PASSWORD=<galener_password>
 GALENER_GALENE_PATH=</path/to/the/galene/directory>/galene
 ```
 
-## Launch Galener and invite the component
+## Launch Galener and Invite the Component
 
 If everything is set up properly, you should see the following line when restarting the Movim daemon:
 
@@ -127,7 +138,7 @@ Movim will automatically detect that this dedicated user can be called, and all 
 
 # Manage Galener
 
-## Manage the worker
+## Manage the Worker
 
 Movim Galener can be managed from the console using the `php daemon.php galener` action.
 
@@ -139,13 +150,13 @@ You can start, stop, restart or check the status of the service:
 
 ⚠️ Restarting Galener this way doesn't apply the new `GALENER_*` setting in the .env. You still have to restart the whole Movim daemon to do so.
 
-## STUN/TURN configuration discovery
+## STUN/TURN Configuration Discovery
 
 Movim Galener tries to automatically retrieve the STUN/TURN configuration from your XMPP server using [XEP-0215: External Service Discovery](https://xmpp.org/extensions/xep-0215.html) and refresh it every hour.
 
 The configuration is saved in `cache/galener/data/ice-servers.json` (where Galene store its ICE Servers configuration). If you cannot find the `ice-servers.json` file there it means that Movim Galener doesn't have the rights to retrieve the configuration.
 
-### ejabberd configuration
+### ejabberd Configuration
 
 ejabberd doesn't authorize local services to send External Service Discover by default.
 
@@ -187,7 +198,7 @@ modules:
         restricted: true
 ```
 
-### 3. Add the proper `listen` options
+#### 3. Add the proper `listen` options
 
 ```
 listen:
@@ -211,4 +222,35 @@ listen:
 
 You can find more informations on the [ejabberd documentation: mod_stun_disco](https://docs.ejabberd.im/archive/20.07/modules/#mod_stun_disco).
 
-And restart your Movim Galener service to force-refresh the STUN/TURN configuration.
+### Prosody Configuration
+
+Prosody only allows client connections to access External Service Discovery by default.
+
+After configuring your STUN/TURN server with [`mod_external_services`](https://prosody.im/doc/modules/mod_external_services) or [`mod_turn_external`](https://prosody.im/doc/modules/mod_turn_external), add the following option either in the global section of your configuration:
+
+```
+external_service_access = {
+  "<sfu.test.com>" -- your SFU service subdomain
+  "<test.com>"     -- add other necessary domains, like your virtual hosts
+}
+```
+
+or in the virtual host configuration section for the parent domain of your SFU service subdomain:
+
+```
+VirtualHost "<test.com>"
+  modules_enabled = { "external_services" }
+
+  external_services = {
+    -- TURN/STUN config here...
+  }
+
+  external_service_access = {
+    "<sfu.test.com>" -- your SFU service subdomain
+    "<test.com>"     -- also allow users on this virtual host
+  }
+```
+
+### Refresh
+
+After modifying your configuration, restart your Movim Galener service to force-refresh the STUN/TURN configuration.
