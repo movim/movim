@@ -79,6 +79,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.4'
+        extensions: mbstring, intl, pdo_mysql, pdo_pgsql, curl, dom, xml
+        coverage: none
+
     #- name: Validate composer.json and composer.lock
     #  run: composer validate --strict
 
