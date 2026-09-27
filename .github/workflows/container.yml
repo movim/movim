@@ -9,10 +9,19 @@ jobs:
     runs-on: "ubuntu-24.04"
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Build and publish a Docker image for ${{ github.repository }}
-        uses: macbre/push-to-ghcr@master
+      - uses: actions/checkout@v4
+
+      - name: Log in to the GitHub Container registry
+        uses: docker/login-action@v3
         with:
-          dockerfile: Containerfile
-          image_name: ${{ github.repository }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and publish a Docker image for ${{ github.repository }}
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Containerfile
+          push: true
+          tags: ghcr.io/${{ github.repository }}:latest
