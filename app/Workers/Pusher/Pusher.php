@@ -14,7 +14,7 @@ class Pusher
     {
         $keys = json_decode(file_get_contents(CACHE_PATH . 'vapid_keys.json'));
 
-        $this->webPush = new WebPush([
+        $this->webPush = new WebPush(auth: [
             'VAPID' => [
                 'subject' => 'https://movim.eu',
                 'publicKey' => $keys->publicKey,

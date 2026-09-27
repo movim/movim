@@ -14,7 +14,7 @@ use Movim\i18n\Locale;
 
 class CompileLanguages extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('compileLanguages')

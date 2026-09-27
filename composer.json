@@ -12,7 +12,7 @@
         }
     },
     "require": {
-        "php": ">=8.2.0",
+        "php": ">=8.4.0",
         "ext-gd": "*",
         "ext-dom": "*",
         "ext-mbstring": "*",
@@ -20,40 +20,44 @@
         "ext-json": "*",
         "ext-curl": "*",
 
-        "fabiang/sasl": "^2.0",
-        "rain/raintpl": "^3.1",
-        "embed/embed": "^v4.4",
-        "league/commonmark": "^2.8",
+        "fabiang/sasl": "^2.2.1",
+        "rain/raintpl": "^3.1.1",
+        "embed/embed": "^4.4.19",
+        "league/commonmark": "^2.10.3",
 
-        "respect/validation": "^2.4",
-        "ezyang/htmlpurifier": "^4.19",
-        "cocur/slugify": "^4.7",
+        "respect/validation": "^2.5",
+        "ezyang/htmlpurifier": "^4.19.1",
+        "cocur/slugify": "^4.7.1",
         "dflydev/fig-cookies": "^3.2",
         "defuse/php-encryption": "^2.4",
 
-        "robmorgan/phinx": "^0.16",
-        "illuminate/database": "^12",
-        "illuminate/events": "^12",
-        "doctrine/dbal": "^4",
-        "monolog/monolog": "^3.10",
+        "robmorgan/phinx": "^0.16.12",
+        "illuminate/database": "^12.69.2",
+        "illuminate/events": "^12.69.2",
+        "doctrine/dbal": "^4.5",
+        "monolog/monolog": "^3.12",
 
-        "plesk/ratchetphp": "^1.0",
-        "react/child-process": "^0.6",
-        "react/http": "^1.11",
+        "plesk/ratchetphp": "^1.0.6",
+        "react/child-process": "^0.6.7",
+        "react/http": "^1.11.1",
         "react/dns": "^1.14",
         "ratchet/pawl": "^0.4.3",
         "react/promise-timer": "^1.11",
-        "minishlink/web-push": "^10.0",
-        "vlucas/phpdotenv": "^5.6",
-        "awobaz/compoships": "^3.0",
+        "minishlink/web-push": "^11.0",
+        "vlucas/phpdotenv": "^5.7",
+        "awobaz/compoships": "^3.1",
         "wyrihaximus/react-cron": "^4.0",
-        "nyholm/psr7": "^1.8"
+        "nyholm/psr7": "^1.8.2",
+        "guzzlehttp/guzzle": "^7.15.5"
     },
     "config": {
         "platform": {
-            "php": "8.2"
+            "php": "8.4"
         },
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "scripts": {
         "movim:migrate": "vendor/bin/phinx migrate --ansi",

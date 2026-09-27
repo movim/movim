@@ -14,7 +14,7 @@ use Movim\Emoji;
 
 class EmojisToJsonCommand extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('emojisToJson')

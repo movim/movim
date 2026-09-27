@@ -305,14 +305,26 @@ class Bootstrap
      * Error Handlers…
      */
 
-    public function systemErrorHandler($errno, string $errstr, string $errfile = '', int $errline = 0, $trace = '')
+    public function systemErrorHandler($errno, string $errstr, string $errfile = '', int $errline = 0, ?string $trace = null)
     {
         if (\is_array($trace)) $trace = '';
 
         $error = $errstr . " in " . $errfile . ' (line ' . $errline . ")\n";
-        $fullError = $trace != ''
-            ? $error . 'Trace' . "\n" . $trace
-            : $error;
+
+        $serializedTrace = $trace;
+
+        if ($serializedTrace == null) {
+            $backtrace = debug_backtrace();
+
+            $i = 0;
+
+            foreach ($backtrace as $step) {
+                $serializedTrace .= '#' . $i . ' ' . $step['file'] . '(' . $step['line'] . '): ' . $step['function'] . "\n";
+                $i++;
+            }
+        }
+
+        $fullError = $error . 'Trace:' . "\n" . $serializedTrace;
 
         if (php_sapi_name() != 'cli' && ob_get_contents() == '') {
             echo 'An error occured during the Movim boot check the ' . config('paths.log') . 'error.log file' . "\n";

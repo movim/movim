@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class SessionsTree extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('sessionsTree')
             ->setDescription('Display the current sessions tree')

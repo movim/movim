@@ -15,7 +15,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ConfigCommand extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('config')

@@ -23,7 +23,7 @@ use function React\Async\await;
 
 class ImportEmojisPack extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('importEmojisPack')

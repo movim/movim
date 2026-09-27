@@ -15,7 +15,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CompileStickers extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('compileStickers')

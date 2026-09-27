@@ -13,7 +13,7 @@ use Symfony\Component\Console\Helper\ProgressBar;
 
 class CompileOpcache extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('compileOpcache')

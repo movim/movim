@@ -16,7 +16,7 @@ use App\User;
 
 class SetAdmin extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('setAdmin')

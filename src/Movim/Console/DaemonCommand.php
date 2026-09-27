@@ -29,7 +29,7 @@ use React\Socket\SocketServer;
 
 class DaemonCommand extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('start')

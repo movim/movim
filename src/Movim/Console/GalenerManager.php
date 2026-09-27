@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GalenerManager extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('galener')

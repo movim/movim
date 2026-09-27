@@ -18,7 +18,7 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 
 class ClearImagesCache extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('clearImagesCache')

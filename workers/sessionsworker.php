@@ -37,7 +37,7 @@ function logOut($log = '', string $type = 'system', ?string $sid = null)
     fwrite(STDERR, $out);
 }
 
-$wsConnector = new \Ratchet\Client\Connector($loop);
+$wsConnector = new \Ratchet\Client\Connector(loop: $loop);
 $wsConnector('ws://127.0.0.1:' . config('daemon.port'), [], [
     'MOVIM_WORKER_ID' => getenv('wid'),
     'MOVIM_DAEMON_KEY' => getenv('key')
