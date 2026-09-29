@@ -13,7 +13,7 @@ use App\Info;
 use App\Contact;
 use App\Hat;
 use App\User;
-use JidComponent;
+use Movim\Jid;
 use Movim\Scheduler;
 
 class PresenceBuffer
@@ -145,7 +145,7 @@ class PresenceBuffer
                     $d = new Request($this->user, sessionId: $this->user->session->id);
                     $d->setTo($to)
                         ->setNode($node)
-                        ->setParent(explodeJid($to, JidComponent::Domain))
+                        ->setParent((new Jid($to))->domain)
                         ->request();
                 });
 

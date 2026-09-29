@@ -8,7 +8,7 @@ use Awobaz\Compoships\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use JidComponent;
+use Movim\Jid;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;
 use React\Promise\Promise;
@@ -396,7 +396,7 @@ class Post extends Model
         }
 
         return $this->aid
-            ? explodeJid($this->aid, JidComponent::Username)
+            ? (new Jid($this->aid))->username
             : '';
     }
 

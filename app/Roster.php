@@ -2,8 +2,8 @@
 
 namespace App;
 
-use JidComponent;
 use Movim\ImageSize;
+use Movim\Jid;
 use Movim\Model;
 
 class Roster extends Model
@@ -114,6 +114,6 @@ class Roster extends Model
             return $this->contact->truename;
         }
 
-        return explodeJid($this->jid, JidComponent::Username) ?? $this->jid;
+        return (new Jid($this->jid))->username ?? $this->jid;
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App;
 
-use JidComponent;
 use Movim\Image;
+use Movim\Jid;
 use Movim\Model;
 
 class MujiCallParticipant extends Model
@@ -26,20 +26,20 @@ class MujiCallParticipant extends Model
 
     public function isUser(User $user): bool
     {
-        $jid = explodeJid($this->jid);
+        $jid = new Jid($this->jid);
 
-        if ($jid['resource'] == null) {
+        if ($jid->resource == null) {
             return $this->jid == $user->id;
         }
 
-        $presence = Presence::where('jid', $jid['jid'])->where('resource', $jid['resource'])->first();
+        $presence = Presence::where('jid', $jid->bareJid())->where('resource', $jid->resource)->first();
 
         return $presence && $presence->mucjid == $user->id;
     }
 
     public function getNameAttribute()
     {
-        return explodeJid($this->jid, JidComponent::Resource);
+        return (new Jid($this->jid))->resource;
     }
 
     public function getConferencePictureAttribute(): string

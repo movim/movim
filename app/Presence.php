@@ -7,6 +7,7 @@ use Movim\ImageSize;
 use Moxl\Xec\Action\Presence\Muc;
 use Awobaz\Compoships\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Movim\Jid;
 
 class Presence extends Model
 {
@@ -207,9 +208,9 @@ class Presence extends Model
     public function set(User $user, \SimpleXMLElement $stanza): bool
     {
         $this->session_id = $user->session->id;
-        $jid = explodeJid($stanza->attributes()->from);
-        $this->jid = $jid['jid'];
-        $this->resource = $jid['resource'] ?? '';
+        $from = new Jid($stanza->attributes()->from);
+        $this->jid = $from->bareJid();
+        $this->resource = $from->resource ?? '';
         $this->type = $stanza->attributes()->type ?? null;
 
         if ($stanza->status && !empty((string)$stanza->status)) {
@@ -262,9 +263,9 @@ class Presence extends Model
                         if (!empty($c->xpath("//status[@code='110']"))) {
                             $this->mucjid = $user->id;
                         } elseif ($c->item->attributes()->jid) {
-                            $jid = explodeJid((string)$c->item->attributes()->jid);
-                            $this->mucjid = $jid['jid'];
-                            $this->mucjidresource = $jid['resource'];
+                            $jid = new Jid((string)$c->item->attributes()->jid);
+                            $this->mucjid = $jid->bareJid();
+                            $this->mucjidresource = $jid->resource;
                         } else {
                             $this->mucjid = (string)$stanza->attributes()->from;
                         }

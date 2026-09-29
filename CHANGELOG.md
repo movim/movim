@@ -5,6 +5,7 @@ v0.35.2 (master)
 ---------------------------
 * Suggest emojis when adding a reaction based on the message context (body and existing emojis)
 * Bump minimum PHP version requirement to 8.4
+* Remove explodeJid and replace it with the Movim\Jid class
 
 v0.35.1
 ---------------------------

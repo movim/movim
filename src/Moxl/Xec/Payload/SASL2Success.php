@@ -2,6 +2,8 @@
 
 namespace Moxl\Xec\Payload;
 
+use Movim\Jid;
+
 class SASL2Success extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -9,11 +11,11 @@ class SASL2Success extends Payload
         linker($this->sessionId)->authentication->clear();
 
         $session = \App\Session::where('user_id', $this->me->id)->first();
-        $jid = explodeJid((string)$stanza->{'authorization-identifier'});
+        $jid = new Jid((string)$stanza->{'authorization-identifier'});
 
-        $session->username = $jid['username'];
-        $session->host = $jid['domain'];
-        $session->resource = $jid['resource'];
+        $session->username = $jid->username;
+        $session->host = $jid->domain;
+        $session->resource = $jid->resource;
         $session->active = true;
         $session->type = 'bind2';
         $session->save();

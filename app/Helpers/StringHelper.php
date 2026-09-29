@@ -242,49 +242,6 @@ function explodeQueryParams(string $query): array
 }
 
 /**
- * @desc Explode JID
- */
-enum JidComponent
-{
-    case Username;
-    case Domain;
-    case Bare;
-    case Resource;
-}
-
-function explodeJid(string $jid, ?JidComponent $component = null): array|string|null
-{
-    $arr = explode('/', $jid);
-    $jid = $arr[0];
-
-    $resource = count($arr) > 1 ? implode('/', array_slice($arr, 1)) : null;
-    $username = null;
-
-    $arr = explode('@', $jid);
-    $domain = $arr[0];
-    if (isset($arr[1])) {
-        $username = $arr[0];
-        $domain = $arr[1];
-    }
-
-    if ($component != null) {
-        return match ($component) {
-            JidComponent::Bare => $jid,
-            JidComponent::Username => $username,
-            JidComponent::Domain => $domain,
-            JidComponent::Resource => $resource,
-        };
-    }
-
-    return [
-        'username' => $username,
-        'domain' => $domain,
-        'jid' => $jid,
-        'resource' => $resource
-    ];
-}
-
-/**
  * @desc Get base JID, without resource
  */
 function bareJid(string $jid): string

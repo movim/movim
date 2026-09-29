@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Capsule\Manager as DB;
-use JidComponent;
 use Respect\Validation\Validator;
 use Movim\ImageSize;
+use Movim\Jid;
 use React\Promise\PromiseInterface;
 
 class Contact extends Model
@@ -271,6 +271,11 @@ class Contact extends Model
             : null;
     }
 
+    public function getJidAttribute(): Jid
+    {
+        return new Jid($this->id);
+    }
+
     public function getLocationUrlAttribute(): ?string
     {
         if (
@@ -299,7 +304,7 @@ class Contact extends Model
             return $this->name;
         }
 
-        return explodeJid($this->id, JidComponent::Username) ?? $this->id;
+        return (new Jid($this->id))->username ?? $this->id;
     }
 
     public function getAge()

@@ -10,7 +10,7 @@ use Movim\Widget\Base;
 
 use App\Conference;
 use App\Member;
-use JidComponent;
+use Movim\Jid;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;
 use Moxl\Xec\Action\Presence\Unavailable;
@@ -170,7 +170,7 @@ class Rooms extends Base
             if (!$room->info) {
                 $request = $this->xmpp(new Request);
                 $request->setTo($room->conference)
-                    ->setParent(explodeJid($room->conference, JidComponent::Domain))
+                    ->setParent((new Jid($room->conference))->domain)
                     ->request();
             }
 
@@ -295,7 +295,7 @@ class Rooms extends Base
 
         $r = $this->xmpp(new Request);
         $r->setTo($room)
-            ->setParent(explodeJid($room, JidComponent::Domain))
+            ->setParent((new Jid($room))->domain)
             ->request();
 
         $lastMember = Member::where('conference', $room)->orderBy('updated_at', 'desc')->first();
@@ -333,7 +333,7 @@ class Rooms extends Base
         if (!$conference) return;
 
         $resource = $conference->presence?->resource;
-        $capability = \App\Info::where('server', explodeJid($room, JidComponent::Domain))
+        $capability = \App\Info::where('server', (new Jid($room))->domain)
             ->where('node', '')
             ->first();
 

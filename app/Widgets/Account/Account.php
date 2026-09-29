@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Account;
 
+use Movim\Jid;
 use Movim\Librairies\XMPPtoForm;
 use Moxl\Xec\Action\OMEMO\DeleteBundle;
 use Moxl\Xec\Action\Register\ChangePassword;
@@ -111,13 +112,13 @@ class Account extends \Movim\Widget\Base
         $p2 = $form->password_confirmation->value;
 
         if ($p1 == $p2) {
-            $jid = explodeJid($this->me->id);
+            $jid = new Jid($this->me->id);
 
             $this->rpc('Dialog_ajaxClear');
 
             $cp = $this->xmpp(new ChangePassword($this->me, sessionId: $this->sessionId));
-            $cp->setTo($jid['domain'])
-                ->setUsername($jid['username'])
+            $cp->setTo($jid->domain)
+                ->setUsername($jid->username)
                 ->setPassword($p1)
                 ->request();
         } else {

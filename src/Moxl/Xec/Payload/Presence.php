@@ -4,7 +4,7 @@ namespace Moxl\Xec\Payload;
 
 use App\Presence as DBPresence;
 use App\Widgets\Notif\Notif;
-use JidComponent;
+use Movim\Jid;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Handler;
 
@@ -12,7 +12,7 @@ class Presence extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        if ($this->me?->hasBlocked(explodeJid($stanza->attributes()->from, JidComponent::Bare))) {
+        if ($this->me?->hasBlocked((new Jid($stanza->attributes()->from))->bareJid())) {
             return;
         }
 

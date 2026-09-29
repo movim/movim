@@ -5,7 +5,7 @@ namespace App;
 use Movim\ImageSize;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
-use JidComponent;
+use Movim\Jid;
 use Movim\Route;
 
 class Conference extends Model
@@ -274,7 +274,7 @@ class Conference extends Model
 
     public function getServerAttribute()
     {
-        return explodeJid($this->conference, JidComponent::Domain);
+        return (new Jid($this->conference))->domain;
     }
 
     public function getConnectedAttribute()

@@ -10,6 +10,7 @@ use Movim\Image;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
+use Movim\Jid;
 use Movim\XMPPUri;
 use Moxl\Xec\Action\Pubsub\GetItem;
 
@@ -266,8 +267,8 @@ class Message extends Model
         // We reset the URL resolution to refresh it once the message is displayed
         $this->resolved = false;
 
-        $jidTo = explodeJid((string)$stanza->attributes()->to);
-        $jidFrom = explodeJid((string)$stanza->attributes()->from);
+        $jidTo = new Jid((string)$stanza->attributes()->to);
+        $jidFrom = new Jid((string)$stanza->attributes()->from);
 
         $this->user_id    = $user->id;
 
@@ -280,11 +281,11 @@ class Message extends Model
         }
 
         if (!$this->jidto) {
-            $this->jidto = $jidTo['jid'];
+            $this->jidto = $jidTo->bareJid();
         }
 
         if (!$this->jidfrom) {
-            $this->jidfrom = $jidFrom['jid'];
+            $this->jidfrom = $jidFrom->bareJid();
         }
 
         // If the message is from me
@@ -292,8 +293,8 @@ class Message extends Model
             $this->seen = true;
         }
 
-        if (isset($jidFrom['resource'])) {
-            $this->resource = $jidFrom['resource'];
+        if (isset($jidFrom->resource)) {
+            $this->resource = $jidFrom->resource;
         }
 
         if ($stanza->delay) {
@@ -363,8 +364,8 @@ class Message extends Model
             $this->mucpm = true;
             if ($parent && (string)$parent->attributes()->xmlns == 'urn:xmpp:forward:0') {
                 $this->jidto = (string)$stanza->attributes()->to;
-            } elseif (isset($jidFrom['resource'])) {
-                $this->jidfrom = $jidFrom['jid'] . '/' . $jidFrom['resource'];
+            } elseif (isset($jidFrom->resource)) {
+                $this->jidfrom = (string)$jidFrom;
             }
         }
 

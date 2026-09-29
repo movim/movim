@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\Session;
 
+use Movim\Jid;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Stream;
 
@@ -19,14 +20,14 @@ class Bind extends Action
     {
         $session = $this->me->session;
 
-        $jid = explodeJid((string)$stanza->bind->jid);
+        $jid = (new Jid((string)$stanza->bind->jid));
 
-        $session->username = $jid['username'];
-        $session->host = $jid['domain'];
+        $session->username = $jid->username;
+        $session->host = $jid->domain;
         $session->type = 'bind1';
 
-        if ($jid['resource']) {
-            $session->resource = $jid['resource'];
+        if ($jid->resource) {
+            $session->resource = $jid->resource;
         }
 
         $session->save();

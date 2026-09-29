@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 use App\MessageFile;
 use App\MessageOmemoHeader;
-use JidComponent;
+use Movim\Jid;
 
 class Message
 {
@@ -54,7 +54,7 @@ class Message
          * https://xmpp.org/extensions/xep-0045.html#privatemessage
          * Resource on the to, we assume that it's a MUC PM
          */
-        if (explodeJid($to, JidComponent::Resource) !== null) {
+        if ((new Jid($to))->resource !== null) {
             $xuser = $dom->createElementNS('http://jabber.org/protocol/muc#user', 'x');
             $dom->documentElement->appendChild($xuser);
         }

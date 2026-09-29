@@ -23,8 +23,8 @@ use Carbon\Carbon;
 use Moxl\Xec\Action\BOB\Request;
 
 use Illuminate\Database\Capsule\Manager as DB;
-use JidComponent;
 use Movim\Image;
+use Movim\Jid;
 use Movim\XMPPUri;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Action\Message\Displayed;
@@ -217,8 +217,8 @@ class Chat extends \Movim\Widget\Base
                 $name = $roster ? $roster->truename : $contact->truename;
 
                 // Specific case where the message is a MUC PM
-                $jid = explodeJid($message->jidfrom);
-                if ($jid['username'] == $name && $jid['resource'] == $message->resource) {
+                $jid = new Jid($message->jidfrom);
+                if ($jid->username == $name && $jid->resource == $message->resource) {
                     $name = $message->resource;
                 }
 
@@ -1771,7 +1771,7 @@ class Chat extends \Movim\Widget\Base
                 ->with('info')
                 ->first());
 
-            $mucinfo = \App\Info::where('server', explodeJid($jid, JidComponent::Domain))
+            $mucinfo = \App\Info::where('server', (new Jid($jid))->domain)
                 ->where('node', '')
                 ->first();
             if ($mucinfo && !empty($mucinfo->abuseaddresses)) {

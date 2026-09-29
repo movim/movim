@@ -359,8 +359,7 @@
                     {if="$roster"}
                         {$roster->truename}
                     {elseif="strpos($contact->id, '/') != false"}
-                        {$explodedJid = explodeJid($contact->id)}
-                        {$explodedJid.resource}
+                        {$contact->jid->resource}
                     {else}
                         {$contact->truename}
                     {/if}
