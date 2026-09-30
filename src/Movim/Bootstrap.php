@@ -327,7 +327,7 @@ class Bootstrap
         $fullError = $error . 'Trace:' . "\n" . $serializedTrace;
 
         if (php_sapi_name() != 'cli' && ob_get_contents() == '') {
-            echo 'An error occured during the Movim boot check the ' . config('paths.log') . 'error.log file' . "\n";
+            echo 'An error occured during the Movim boot check the ' . config('paths.log') . 'errors.log file' . "\n";
         }
 
         logError($fullError);
