@@ -12,6 +12,7 @@ use Movim\Widget\Base;
 
 use Moxl\Stanza\Stream;
 use Moxl\Xec\Action\Blocking\Request;
+use Moxl\Xec\Action\Carbons;
 use Moxl\Xec\Action\Presence\Away;
 use Moxl\Xec\Action\Presence\Chat;
 use Moxl\Xec\Action\Pubsub\GetItemsId;
@@ -56,7 +57,8 @@ class Presence extends Base
 
         if ($this->me->session->type == 'bind1') {
             // http://xmpp.org/extensions/xep-0280.html
-            \Moxl\Stanza\Carbons::enable(); // TODO fixme
+            $c = $this->xmpp(new Carbons\Enable);
+            $c->request();
         }
 
         // We refresh the roster
