@@ -270,7 +270,7 @@ class Message extends Model
         $jidTo = new Jid((string)$stanza->attributes()->to);
         $jidFrom = new Jid((string)$stanza->attributes()->from);
 
-        $this->user_id    = $user->id;
+        $this->user_id = $user->id;
 
         if (!$this->id) {
             $this->id = 'm_' . generateUUID();
@@ -280,7 +280,7 @@ class Message extends Model
             $this->messageid  = (string)$stanza->attributes()->id;
         }
 
-        if (!$this->jidto) {
+        if (!$this->jidto && $jidTo->isValid()) {
             $this->jidto = $jidTo->bareJid();
         }
 
