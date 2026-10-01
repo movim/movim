@@ -2,6 +2,8 @@
 
 namespace Moxl\Stanza;
 
+use Moxl\Utils;
+
 class Jingle
 {
     /**
@@ -11,7 +13,7 @@ class Jingle
     public static function messagePropose(string $to, string $id, bool $withVideo = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $message = $dom->createElementNS('jabber:client', 'message');
+        $message = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
         $dom->appendChild($message);
@@ -37,7 +39,7 @@ class Jingle
     public static function messageAccept(string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $message = $dom->createElementNS('jabber:client', 'message');
+        $message = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $message->setAttribute('type', 'chat');
         $dom->appendChild($message);
 
@@ -51,7 +53,7 @@ class Jingle
     public static function messageRinging(string $to, string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $message = $dom->createElementNS('jabber:client', 'message');
+        $message = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
         $dom->appendChild($message);
@@ -66,7 +68,7 @@ class Jingle
     public static function messageProceed(string $to, string $id, ?string $from = null)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $message = $dom->createElementNS('jabber:client', 'message');
+        $message = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
 
@@ -84,7 +86,7 @@ class Jingle
     public static function messageRetract(string $to, string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $message = $dom->createElementNS('jabber:client', 'message');
+        $message = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
         $dom->appendChild($message);
@@ -105,7 +107,7 @@ class Jingle
     public static function messageFinish(string $to, string $id, ?string $reason = 'success')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $message = $dom->createElementNS('jabber:client', 'message');
+        $message = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
         $dom->appendChild($message);
@@ -129,7 +131,7 @@ class Jingle
         ?string $reasonText = null
     ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $message = $dom->createElementNS('jabber:client', 'message');
+        $message = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $message->setAttribute('type', 'chat');
 
         if ($to) $message->setAttribute('to', $to);

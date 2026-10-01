@@ -2,12 +2,14 @@
 
 namespace Moxl\Stanza;
 
+use Moxl\Utils;
+
 class Muc
 {
     public static function setSubject(string $id, string $to, string $subject)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $message = $dom->createElementNS('jabber:client', 'message');
+        $message = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $dom->appendChild($message);
         $message->setAttribute('to', str_replace(' ', '\40', $to));
         $message->setAttribute('id', $id);

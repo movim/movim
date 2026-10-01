@@ -9,7 +9,7 @@ class Confirm
     public static function answer($to, $id, $url, $method, $refuse = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $message = $dom->createElementNS('jabber:client', 'message');
+        $message = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $dom->appendChild($message);
         $message->setAttribute('to', str_replace(' ', '\40', $to));
 

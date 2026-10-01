@@ -10,6 +10,7 @@ use Illuminate\Support\Collection;
 class Utils
 {
     public const CAPABILITY_HASH_ALGORITHM = 'sha-256';
+    public const JABBER_CLIENT_XMLNS = 'jabber:client';
 
     /**
      * https://xmpp.org/extensions/xep-0390.html#algorithm-hashnodes
@@ -76,6 +77,29 @@ class Utils
         $data .= chr(28);
 
         return base64_encode(hash(IANAHashToPhp()[$hash], $data, true));
+    }
+
+    public static function removeNamespace(
+        \DomDocument $dom,
+        ?string $namespace = Utils::JABBER_CLIENT_XMLNS
+    ): \DomDocument {
+        $root = $dom->documentElement;
+
+        if ($root !== null && $root->namespaceURI == $namespace) {
+            $newRoot = $dom->createElement($root->localName);
+
+            foreach ($root->attributes as $attribute) {
+                $newRoot->setAttributeNode($attribute->cloneNode(true));
+            }
+
+            while ($root->hasChildNodes()) {
+                $newRoot->appendChild($root->firstChild);
+            }
+
+            $dom->replaceChild($newRoot, $root);
+        }
+
+        return $dom;
     }
 
     public static function getIdentity(): Identity

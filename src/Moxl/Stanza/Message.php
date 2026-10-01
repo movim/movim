@@ -5,6 +5,7 @@ namespace Moxl\Stanza;
 use App\MessageFile;
 use App\MessageOmemoHeader;
 use Movim\Jid;
+use Moxl\Utils;
 
 class Message
 {
@@ -16,7 +17,7 @@ class Message
     ): \DOMDocument {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
-        $root = $dom->createElementNS('jabber:client', 'message');
+        $root = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $root->setAttribute('to', str_replace(' ', '\40', $to));
         if ($type) $root->setAttribute('type', $type);
         if ($from) $root->setAttribute('from', $from);
@@ -279,7 +280,7 @@ class Message
     public static function retract(string $to, string $id, string $type)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $root = $dom->createElementNS('jabber:client', 'message');
+        $root = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $dom->appendChild($root);
         $root->setAttribute('to', str_replace(' ', '\40', $to));
         $root->setAttribute('type', $type);

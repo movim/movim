@@ -2,13 +2,15 @@
 
 namespace Moxl\Stanza;
 
+use Moxl\Utils;
+
 class Stream
 {
     public static function init(string $to, ?string $from = null): string
     {
-        $dom = new \DOMDocument('1.0', 'utf-8');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
         $stream = $dom->createElement('stream:stream', ' ');
-        $stream->setAttribute('xmlns', 'jabber:client');
+        $stream->setAttribute('xmlns', Utils::JABBER_CLIENT_XMLNS);
         $stream->setAttribute('xmlns:stream', 'http://etherx.jabber.org/streams');
         $stream->setAttribute('version', '1.0');
         $stream->setAttribute('to', $to);
@@ -24,7 +26,7 @@ class Stream
 
     public static function initComponent(string $to): string
     {
-        $dom = new \DOMDocument('1.0', 'utf-8');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
         $stream = $dom->createElement('stream:stream', ' ');
         $stream->setAttribute('xmlns', 'jabber:component:accept');
         $stream->setAttribute('xmlns:stream', 'http://etherx.jabber.org/streams');
@@ -36,7 +38,7 @@ class Stream
 
     public static function initComponentHandshake(string $sid, string $password): string
     {
-        $dom = new \DOMDocument('1.0', 'utf-8');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
         $stream = $dom->createElement('handshake', sha1($sid.$password));
         $dom->appendChild($stream);
 
@@ -59,7 +61,7 @@ class Stream
 
     public static function bindSet($resource)
     {
-        $dom = new \DOMDocument('1.0', 'utf-8');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
         $bind = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-bind', 'bind');
         $bind->appendChild($dom->createElement('resource', $resource));
 
@@ -68,7 +70,7 @@ class Stream
 
     public static function bind2Set(string $mechanism, string $initialResponse, string $tag)
     {
-        $dom = new \DOMDocument('1.0', 'utf-8');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
         $authenticate = $dom->createElementNS('urn:xmpp:sasl:2', 'authenticate');
         $authenticate->setAttribute('mechanism', $mechanism);
         $authenticate->appendChild($dom->createElement('initial-response', base64_encode($initialResponse)));
@@ -113,7 +115,7 @@ class Stream
 
     public static function sessionStart()
     {
-        $dom = new \DOMDocument('1.0', 'utf-8');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
         $session = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-session', 'session');
 
         return $session;

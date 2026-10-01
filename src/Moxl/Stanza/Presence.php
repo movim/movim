@@ -4,6 +4,7 @@ namespace Moxl\Stanza;
 
 use App\User;
 use DOMElement;
+use Moxl\Utils;
 
 class Presence
 {
@@ -26,7 +27,7 @@ class Presence
         ?bool $withCaps = true
     ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $root = $dom->createElementNS('jabber:client', 'presence');
+        $root = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'presence');
         $dom->appendChild($root);
 
         if ($from) {

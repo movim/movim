@@ -16,7 +16,7 @@ class Storage
 
     public static function publish(array $data, bool $withPublishOption = true)
     {
-        $dom = new \DOMDocument('1.0', 'utf-8');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
 
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
         $publish = $dom->createElement('publish');

@@ -6,6 +6,7 @@ use App\User;
 use Movim\Jid;
 use Moxl\Xec\Payload\Packet;
 use Movim\Widget\Wrapper;
+use Moxl\Utils;
 
 abstract class Payload
 {
@@ -39,7 +40,7 @@ abstract class Payload
     public function iq(?\DOMNode $xml = null, ?string $to = null, ?string $type = null, $id = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $iq = $dom->createElementNS('jabber:client', 'iq');
+        $iq = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'iq');
         $dom->appendChild($iq);
 
         if ($this->me?->session?->resource) {

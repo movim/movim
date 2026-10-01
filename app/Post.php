@@ -414,14 +414,14 @@ class Post extends Model
                 case 'html':
                     $d = htmlspecialchars_decode((string)$c);
 
-                    $dom = new \DOMDocument('1.0', 'utf-8');
+                    $dom = new \DOMDocument('1.0', 'UTF-8');
                     $dom->loadHTML('<div>' . $d . '</div>', LIBXML_NOERROR);
 
                     $htmlContent = (string)$dom->saveHTML($dom->documentElement->lastChild->lastChild);
                     break;
                 case 'xhtml':
                     $import = null;
-                    $dom = new \DOMDocument('1.0', 'utf-8');
+                    $dom = new \DOMDocument('1.0', 'UTF-8');
 
                     if ($c->children() instanceof \DOMElement) {
                         $import = @dom_import_simplexml($c->children());

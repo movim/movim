@@ -11,6 +11,7 @@ use Moxl\Stanza\Muc;
 use Moxl\Stanza\Ping;
 use Moxl\Stanza\Presence;
 use Moxl\Stanza\Register;
+use Moxl\Utils;
 use React\EventLoop\TimerInterface;
 
 class Conference
@@ -108,7 +109,7 @@ class Conference
     {
         // We set the conference user admin in the room
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $iq = $dom->createElementNS('jabber:client', 'iq');
+        $iq = $dom->createElement('iq');
         $dom->appendChild($iq);
         $iq->setAttribute('to', (string)$this->jid);
         $iq->setAttribute('from', config('galener.xmpp_host'));
@@ -131,7 +132,7 @@ class Conference
         ));
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $iq = $dom->createElementNS('jabber:client', 'iq');
+        $iq = $dom->createElement('iq');
         $dom->appendChild($iq);
         $iq->setAttribute('to', (string)$this->jid);
         $iq->setAttribute('from', $this->getSFUJid());
@@ -153,7 +154,7 @@ class Conference
     public function xmppPing()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $iq = $dom->createElementNS('jabber:client', 'iq');
+        $iq = $dom->createElement('iq');
         $dom->appendChild($iq);
         $iq->setAttribute('to', $this->getRoomJid());
         $iq->setAttribute('from', $this->getSFUJid());
@@ -208,12 +209,12 @@ class Conference
 
     private function generatePresence(): DOMDocument
     {
-        $presence = Presence::maker(
+        $presence = Utils::removeNamespace(Presence::maker(
             to: $this->getRoomJid(),
             from: $this->getSFUJid(),
             muc: true,
             withCaps: false
-        );
+        ));
 
         // Adding capabilities
 
