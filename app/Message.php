@@ -284,7 +284,7 @@ class Message extends Model
             $this->jidto = $jidTo->bareJid();
         }
 
-        if (!$this->jidfrom) {
+        if (!$this->jidfrom && $jidFrom->isValid()) {
             $this->jidfrom = $jidFrom->bareJid();
         }
 
