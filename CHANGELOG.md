@@ -7,6 +7,7 @@ v0.35.2 (master)
 * Bump minimum PHP version requirement to 8.4
 * Remove explodeJid and replace it with the Movim\Jid class
 * Add GALENER_XMPP_IP (default to 127.0.0.1) and drop the DNS resolution from GALENER_XMPP_HOST
+* Allow subjects to be set on Space rooms
 
 v0.35.1
 ---------------------------

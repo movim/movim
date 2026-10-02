@@ -11,6 +11,7 @@ use Moxl\Xec\Action\Muc\ChangeAffiliation;
 use Moxl\Xec\Action\Muc\CreateGroupChat;
 use Moxl\Xec\Action\Muc\Destroy;
 use Moxl\Xec\Action\Muc\SetConfig;
+use Moxl\Xec\Action\Muc\SetSubject;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Space\AddRoom;
 use Moxl\Xec\Action\Space\DeleteRoom;
@@ -230,6 +231,11 @@ class SpaceRooms extends Base
 
             $b = $this->xmpp(new AddRoom);
             $b->setConference($conference)
+                ->request();
+
+            $p = $this->xmpp(new SetSubject);
+            $p->setTo($form->conference->value)
+                ->setSubject($form->subject->value)
                 ->request();
         }
     }
