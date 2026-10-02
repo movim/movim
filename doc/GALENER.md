@@ -110,8 +110,9 @@ Configure the XMPP service and the complete path to the `galene` binary:
 
 ```
 # Galener configuration
-GALENER_XMPP_HOST=sfu.xmpp.server
+GALENER_XMPP_IP=127.0.0.1
 GALENER_XMPP_PORT=5353
+GALENER_XMPP_HOST=sfu.xmpp.server
 GALENER_XMPP_PASSWORD=<galener_password>
 GALENER_GALENE_PATH=</path/to/the/galene/directory>/galene
 ```

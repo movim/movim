@@ -133,20 +133,8 @@ class Galener
 
     public function registerXMPP()
     {
-        $connector = new HappyEyeBallsConnector(
-            null,
-            new Connector([
-                'timeout' => 5.0,
-                'tls' => [
-                    'SNI_enabled' => true,
-                    'allow_self_signed' => false,
-                    'peer_name' => $this->xmppHost
-                ]
-            ]),
-            $this->dns
-        );
-
-        $connector->connect($this->xmppHost . ':' . config('galener.xmpp_port'))->then(
+        $connector = new Connector(['timeout' => 5.0]);
+        $connector->connect(config('galener.xmpp_ip') . ':' . config('galener.xmpp_port'))->then(
             fn($connection) => $this->xmppBehaviour($connection),
             function (\Exception $error) {
                 \logError($error->getMessage());

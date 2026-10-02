@@ -6,6 +6,7 @@ v0.35.2 (master)
 * Suggest emojis when adding a reaction based on the message context (body and existing emojis)
 * Bump minimum PHP version requirement to 8.4
 * Remove explodeJid and replace it with the Movim\Jid class
+* Add GALENER_XMPP_IP (default to 127.0.0.1) and drop the DNS resolution from GALENER_XMPP_HOST
 
 v0.35.1
 ---------------------------
