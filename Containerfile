@@ -3,7 +3,7 @@ FROM docker.io/serversideup/php:8.4-fpm-nginx-alpine3.21
 USER root
 
 # PHP
-RUN install-php-extensions imagick gd bcmath
+RUN install-php-extensions imagick gd bcmath intl
 
 # S6
 COPY ./etc/s6-overlay/s6-rc.d/movim-migrations/ /etc/s6-overlay/s6-rc.d/movim-migrations/
