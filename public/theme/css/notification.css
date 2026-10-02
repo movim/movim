@@ -11,13 +11,22 @@
     color: white;
     box-sizing: border-box;
     pointer-events: none;
-    transition: opacity 0.2s ease, transform 0.4s ease, box-shadow .3s cubic-bezier(.4,0,.2,1);
+    transition: opacity 0.2s ease, transform 0.4s ease, box-shadow .3s cubic-bezier(.4, 0, .2, 1);
     background-color: rgb(var(--movim-gray));
     transform: translateY(0);
 }
 
 .snackbar ul.active {
     pointer-events: auto;
+}
+
+.snackbar:active {
+    transform: translateY(1px);
+    box-shadow: var(--elevation-2);
+}
+
+.snackbar:hover:not(:active) {
+    box-shadow: var(--elevation-4);
 }
 
 .toast {
@@ -33,10 +42,6 @@
     border-radius: 2rem;
     opacity: 1;
     top: 1rem;
-}
-
-.snackbar:hover {
-    box-shadow: var(--elevation-4);
 }
 
 .toast {
@@ -60,14 +65,14 @@
     max-height: initial;
 }
 
-.snackbar#status_websocket:not(.hide) ~ nav,
-.snackbar#status_websocket:not(.hide) ~ main {
+.snackbar#status_websocket:not(.hide)~nav,
+.snackbar#status_websocket:not(.hide)~main {
     opacity: 0.05;
     pointer-events: none;
 }
 
-.snackbar#status_websocket:not(.hide) ~ div.dialog,
-.snackbar#status_websocket:not(.hide) ~ div.drawer {
+.snackbar#status_websocket:not(.hide)~div.dialog,
+.snackbar#status_websocket:not(.hide)~div.drawer {
     opacity: 0;
 }
 
@@ -85,6 +90,7 @@
 }
 
 @media screen and (max-width: 576px) {
+
     .snackbar,
     .toast {
         left: 1rem;

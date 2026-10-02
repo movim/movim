@@ -27,7 +27,7 @@
     top: 0;
     left: 0;
     opacity: 0;
-    background-color: rgb(var(--movim-background));
+    background-color: rgb(var(--movim-gray));
 }
 
 #preview:not(:empty) {
