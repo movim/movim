@@ -78,16 +78,44 @@ class Visio extends Base
 
     public function onSessionDown()
     {
+        $this->endGoneCall();
+    }
+
+    private function endGoneCall(): void
+    {
         $currentCall = $this->currentCall();
 
-        if ($currentCall && $currentCall->isStarted()) {
-            $st = $this->xmpp(new SessionTerminate);
-            $st->setTo($currentCall->jid)
-                ->setJingleSid($currentCall->id)
-                ->setReason('failed-application')
-                ->request();
+        if (!$currentCall || !$currentCall->isStarted()) {
+            return;
+        }
 
-            $currentCall->stop($currentCall->jid, $currentCall->id);
+        $jid = $currentCall->jid;
+        $id = $currentCall->id;
+
+        try {
+            if ($currentCall->mujiRoom) {
+                // Leave the MUC
+                $this->ajaxLeaveMuji($currentCall->mujiRoom);
+            } else {
+                if ($currentCall->isAnswered()) {
+                    $message = Message::eventMessageFactory(
+                        $this->me,
+                        'jingle',
+                        bareJid($jid),
+                        $id
+                    );
+                    $message->type = 'jingle_finish';
+                    $message->save();
+
+                    Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message), user: $this->me, sessionId: $this->sessionId);
+                }
+
+                $this->ajaxTerminate($jid, $id, 'gone');
+                $this->ajaxGoodbye($jid, $id, 'gone');
+            }
+        } finally {
+            // Whatever happened above, a call without a browser can't be ongoing
+            $currentCall->stop($jid, $id);
         }
     }
 
@@ -906,19 +934,7 @@ class Visio extends Base
             && $currentCall->hasId($id)
             && $currentCall->isJidInCall($jid)
         ) {
-            $message = Message::eventMessageFactory(
-                $this->me,
-                'jingle',
-                bareJid($currentCall->jid),
-                $currentCall->id
-            );
-            $message->type = 'jingle_finish';
-            $message->save();
-
-            Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message), user: $this->me, sessionId: $this->sessionId);
-
-            $this->ajaxTerminate($currentCall->jid, $currentCall->id, 'gone');
-            $this->ajaxGoodbye($currentCall->jid, $currentCall->id, 'gone');
+            $this->endGoneCall();
         }
     }
 

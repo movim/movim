@@ -92,15 +92,13 @@ class Session
             return;
         }
 
-        if (isset($this->process)) {
+        if ($this->worker->internalSocket) {
             $this->state = $state;
 
-            if ($this->worker->internalSocket) {
-                $msg = new \stdClass;
-                $msg->func = $this->state;
-                $msg->sid = $this->sid;
-                $this->worker->internalSocket->send(json_encode($msg));
-            }
+            $msg = new \stdClass;
+            $msg->func = $this->state;
+            $msg->sid = $this->sid;
+            $this->worker->internalSocket->send(json_encode($msg));
         }
     }
 
