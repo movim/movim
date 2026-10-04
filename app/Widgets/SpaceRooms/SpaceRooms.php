@@ -317,62 +317,6 @@ class SpaceRooms extends Base
         }
     }
 
-    public function ajaxAddCreate(\stdClass $form)
-    {
-        if (empty($form->name->value)) {
-            $this->toast($this->__('chatrooms.empty_name'));
-            return;
-        }
-
-        $this->rpc('Dialog.clear');
-
-        $id = generateUUID() . '@' . $this->me->session->getChatroomsServices()->first()->server;
-
-        // Send the presence
-        $m = $this->xmpp(new Muc);
-        $m->noNotify()
-            ->setTo($id)
-            ->setNickname($this->me->username)
-            ->request();
-
-        // Configure the MUC
-        $cgc = $this->xmpp(new CreateGroupChat);
-        $cgc->setTo($id)
-            ->setName($form->name->value)
-            ->setPinned($form->pinned->value)
-            ->setNick($this->me->username)
-            ->setNotify(false)
-            ->setPubsubnode('xmpp:' . $form->server->value . '?;node=' . $form->node->value)
-            ->request();
-
-        // Publish the item in the Space
-        $conference = new Conference;
-        $conference->space_server = $form->server->value;
-        $conference->space_node = $form->node->value;
-        $conference->conference = $id;
-        $conference->name = $form->name->value;
-        $conference->pinned = (bool)$form->pinned->value;
-        $conference->autojoin = true;
-        $conference->call = (bool)$form->call->value;
-
-        $b = $this->xmpp(new AddRoom);
-        $b->setConference($conference)
-            ->request();
-
-        // Map all the affiliations from Pubsub to MUC
-        $affiliations = Affiliation::where('server', $form->server->value)
-            ->where('node', $form->node->value)
-            ->get();
-
-        foreach ($affiliations as $affiliation) {
-            $changeAffiliation = $this->xmpp(new ChangeAffiliation);
-            $changeAffiliation->setTo($id)
-                ->setJid($affiliation->jid)
-                ->setAffiliation($affiliation->affiliation)
-                ->request();
-        }
-    }
-
     public function ajaxAskDestroy(string $server, string $node, string $id)
     {
         $subscription = $this->me->subscriptions()->space($server, $node)->first();
