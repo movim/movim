@@ -66,5 +66,8 @@
     "scripts-descriptions": {
         "movim:migrate": "Migrate the database",
         "movim:rollback": "Rollback the changes"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.32"
     }
 }

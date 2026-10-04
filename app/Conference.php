@@ -8,12 +8,23 @@ use Awobaz\Compoships\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Movim\Jid;
 use Movim\Route;
+use Moxl\Stanza\Bookmark2;
 
 class Conference extends Model
 {
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'conference'];
-    protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned', 'space_server', 'space_node'];
+    protected $fillable = [
+        'conference',
+        'name',
+        'nick',
+        'autojoin',
+        'pinned',
+        'space_server',
+        'space_node',
+        'weight',
+        'directory_id'
+    ];
     protected $with = ['contact', 'mujiPresences', 'sfuPresence'];
 
     public const XMLNS_NOTIFICATIONS = 'urn:xmpp:notification-settings:0';
@@ -193,8 +204,13 @@ class Conference extends Model
         return $this->hasOne(Contact::class, 'id', 'conference');
     }
 
-    public function set(Session $session, \SimpleXMLElement $item)
-    {
+    public function set(
+        Session $session,
+        \SimpleXMLElement $item,
+        ?string $spaceServer = null,
+        ?string $spaceNode = null,
+        ?array $directoryIds = null,
+    ) {
         $this->user_id         = $session->user_id;
         $this->session_id      = $session->id;
         $this->conference      = (string)$item->attributes()->id;
@@ -202,6 +218,11 @@ class Conference extends Model
         $this->nick            = (string)$item->conference->nick;
         $this->autojoin        = filter_var($item->conference->attributes()->autojoin, FILTER_VALIDATE_BOOLEAN);
         $this->bookmarkversion = (int)substr((string)$item->conference->attributes()->xmlns, -1, 1);
+
+        if ($spaceServer && $spaceNode) {
+            $this->space_server = $spaceServer;
+            $this->space_node = $spaceNode;
+        }
 
         if ($item->conference->extensions) {
             if (
@@ -246,6 +267,20 @@ class Conference extends Model
             ) {
                 $this->pinned = true;
                 unset($item->conference->extensions->pinned);
+            }
+
+            if (
+                $item->conference->extensions->hierarchy
+                && $item->conference->extensions->hierarchy->attributes()->xmlns == Bookmark2::HIERARCHY_NAMESPACE
+                && $this->space_server && $this->space_node
+            ) {
+                $this->weight = (float)$item->conference->extensions->hierarchy->attributes()->weight;
+
+                if ($item->conference->extensions->hierarchy->attributes()->{'directory-id'}) {
+                    $this->directory_id = (string)$item->conference->extensions->hierarchy->attributes()->{'directory-id'};
+                }
+
+                unset($item->conference->extensions->hierarchy);
             }
 
             if (
@@ -367,6 +402,8 @@ class Conference extends Model
             'extensions' => $this->attributes['extensions'] ?? null,
             'bookmarkversion' => $this->attributes['bookmarkversion'] ?? 0,
             'notify' => $this->attributes['notify'] ?? 1,
+            'weight' => $this->attributes['weight'] ?? null,
+            'directory_id' => $this->attributes['directory_id'] ?? null,
         ];
     }
 }

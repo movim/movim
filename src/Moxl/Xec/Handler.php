@@ -149,7 +149,7 @@ class Handler
             '362b908ec9432a506f86bed0bae7bbb6' => 'Presence', // TLS
             'a0e8e987b067b6b0470606f4f90d5362' => 'Roster',
 
-            'fa9d41e26f664d9056618a4afe213861' => 'Post',
+            'fa9d41e26f664d9056618a4afe213861' => 'PubsubEvent',
 
             '53b95afd89dcb7199dfcca39a90592eb' => 'Confirm', // XEP-0070
 

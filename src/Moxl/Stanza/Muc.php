@@ -69,20 +69,22 @@ class Muc
         return $query;
     }
 
-    public static function changeAffiliation(string $jid, string $affiliation, ?string $reason = null)
+    public static function changeAffiliations(array $affiliations, ?string $reason = null)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#admin', 'query');
         $dom->appendChild($query);
 
-        $item = $dom->createElement('item');
-        $item->setAttribute('affiliation', $affiliation);
-        $item->setAttribute('jid', $jid);
-        $query->appendChild($item);
+        foreach ($affiliations as $jid => $affiliation) {
+            $item = $dom->createElement('item');
+            $item->setAttribute('affiliation', $affiliation);
+            $item->setAttribute('jid', $jid);
+            $query->appendChild($item);
 
-        if ($reason) {
-            $reason = $dom->createElement('reason', $reason);
-            $item->appendChild($reason);
+            if ($reason) {
+                $reason = $dom->createElement('reason', $reason);
+                $item->appendChild($reason);
+            }
         }
 
         return $query;
@@ -162,7 +164,7 @@ class Muc
         return $query;
     }
 
-    public static function getMembers(string $affiliation)
+    public static function getAffiliations(string $affiliation)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#admin', 'query');

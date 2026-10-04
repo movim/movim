@@ -4,21 +4,21 @@ namespace App\Widgets\SpaceInfo;
 
 use App\Affiliation;
 use App\Conference;
+use App\Info;
 use App\Subscription;
 use App\Widgets\SpacesMenu\SpacesMenu;
 use Movim\Image;
 use Movim\Librairies\XMPPtoForm;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Avatar\Set as AvatarSet;
-use Moxl\Xec\Action\Muc\ChangeAffiliation;
 use Moxl\Xec\Action\Muc\Destroy;
+use Moxl\Xec\Action\Muc\SetAffiliations;
 use Moxl\Xec\Action\Pubsub\GetAffiliations;
 use Moxl\Xec\Action\PubsubSubscription\Add;
 use Moxl\Xec\Action\Space\Destroy as SpaceDestroy;
 use Moxl\Xec\Action\Space\GetConfig;
 use Moxl\Xec\Action\Space\GetPendingSubscriptions;
 use Moxl\Xec\Action\Space\GetSubscriptions;
-use Moxl\Xec\Action\Space\SetAffiliations;
 use Moxl\Xec\Action\Space\SetConfig;
 use Moxl\Xec\Payload\Packet;
 
@@ -58,7 +58,7 @@ class SpaceInfo extends Base
 
     public function onAffiliations(Packet $packet)
     {
-        list($server, $node) = array_values($packet->content);
+        [$server, $node] = array_values($packet->content);
 
         $affiliation = Affiliation::where('server', $server)
             ->where('node', $node)
@@ -74,7 +74,7 @@ class SpaceInfo extends Base
                     ->where('node', $node)
                     ->orderBy('affiliation', 'desc')
                     ->with('contact')
-                    ->get()
+                    ->get(),
             ]));
 
             // Some users doesn't have an affiliation so we complete with the subscriptions
@@ -86,7 +86,7 @@ class SpaceInfo extends Base
 
     public function onSubscriptions(Packet $packet)
     {
-        list($server, $node) = array_values($packet->content);
+        [$server, $node] = array_values($packet->content);
 
         $affiliation = Affiliation::where('server', $server)
             ->where('node', $node)
@@ -107,7 +107,7 @@ class SpaceInfo extends Base
                                 ->where('node', $node);
                         })
                         ->with('contact')
-                        ->get()
+                        ->get(),
                 ])
             );
         }
@@ -124,10 +124,9 @@ class SpaceInfo extends Base
         if ($subscription) {
             foreach ($subscription->spaceRooms as $conference) {
                 foreach ($packet->content['data'] as $jid => $affiliation) {
-                    $changeAffiliation = $this->xmpp(new ChangeAffiliation);
+                    $changeAffiliation = $this->xmpp(new SetAffiliations);
                     $changeAffiliation->setTo($conference->conference)
-                        ->setJid($jid)
-                        ->setAffiliation($affiliation)
+                        ->setAffiliations([$jid => $affiliation])
                         ->request();
                 }
             }
@@ -147,7 +146,7 @@ class SpaceInfo extends Base
         });
 
         $this->rpc('MovimUtils.replace', '#spaceinfo_pendings', $this->view('_spaceinfo_pendings', [
-            'pendings' => $pendings
+            'pendings' => $pendings,
         ]));
     }
 
@@ -196,7 +195,7 @@ class SpaceInfo extends Base
                     ->where('node', $node)
                     ->where('jid', $this->me->id)
                     ->first(),
-                'subscription' => $subscription
+                'subscription' => $subscription,
             ]));
         }
     }
@@ -214,7 +213,7 @@ class SpaceInfo extends Base
 
                 $this->rpc('MovimTpl.fill', '#spaceinfo_widget', $this->view('_spaceinfo', [
                     'subscription' => $subscription,
-                    'edit' => ($affiliation && $affiliation->affiliation == 'owner')
+                    'edit' => ($affiliation && $affiliation->affiliation == 'owner'),
                 ]));
             } else {
                 $this->rpc('SpacesMenu_ajaxGetSpaceInfo', $server, $node);
@@ -246,7 +245,7 @@ class SpaceInfo extends Base
 
     public function ajaxGetPendings(string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -258,7 +257,7 @@ class SpaceInfo extends Base
 
     public function ajaxGetAffiliations(string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -269,7 +268,7 @@ class SpaceInfo extends Base
 
     public function ajaxGetConfig(string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -281,7 +280,7 @@ class SpaceInfo extends Base
 
     public function ajaxSetConfig(string $server, string $node, \stdClass $data)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -296,24 +295,24 @@ class SpaceInfo extends Base
 
     public function ajaxGetAvatar(string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
         $this->dialog($this->view('_spaceinfo_avatar', [
-            'info' => \App\Info::where('server', $server)
+            'info' => Info::where('server', $server)
                 ->where('node', $node)
-                ->first()
+                ->first(),
         ]));
     }
 
     public function ajaxSetAvatar(string $server, string $node, \stdClass $form)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
-        $key = $server . $node . 'avatar';
+        $key = $server.$node.'avatar';
 
         $image = new Image;
         $image->fromBase64($form->photobin->value);
@@ -364,7 +363,9 @@ class SpaceInfo extends Base
 
     public function ajaxSetAffiliations(string $server, string $node, \stdClass $data)
     {
-        if (!$data->isDirty) return;
+        if (! $data->isDirty) {
+            return;
+        }
 
         $currentAffiliations = Affiliation::where('server', $server)
             ->where('node', $node)
@@ -406,7 +407,7 @@ class SpaceInfo extends Base
 
     public function ajaxInvite(string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -415,7 +416,7 @@ class SpaceInfo extends Base
                 ->spaces()
                 ->where('server', $server)
                 ->where('node', $node)
-                ->first()
+                ->first(),
         ]));
     }
 }

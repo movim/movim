@@ -2,18 +2,18 @@
 
 namespace App\Widgets\Rooms;
 
-use Moxl\Xec\Action\Disco\Request;
-use Moxl\Xec\Action\Presence\Muc;
-use Illuminate\Database\Capsule\Manager as DB;
-
-use Movim\Widget\Base;
-
 use App\Conference;
+use App\Info;
 use App\Member;
+use Illuminate\Database\Capsule\Manager as DB;
 use Movim\Jid;
+use Movim\Widget\Base;
 use Movim\Widget\Wrapper;
-use Moxl\Xec\Payload\Packet;
+use Moxl\Xec\Action\Disco\Request;
+use Moxl\Xec\Action\MAM\Get;
+use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Presence\Unavailable;
+use Moxl\Xec\Payload\Packet;
 
 class Rooms extends Base
 {
@@ -37,7 +37,7 @@ class Rooms extends Base
         $this->registerEvent('displayed', 'onDisplayed', 'chat');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected', 'chat');
 
-        $this->registerEvent('presence_muc_handle', 'onConnected'/*, 'chat'*/);
+        $this->registerEvent('presence_muc_handle', 'onConnected'/* , 'chat' */);
         $this->registerEvent('presence_muc_errorconflict', 'onConflict');
         $this->registerEvent('presence_muc_errorregistrationrequired', 'onRegistrationRequired');
         $this->registerEvent('presence_muc_errorremoteservernotfound', 'onRemoteServerNotFound');
@@ -72,12 +72,12 @@ class Rooms extends Base
                     : $message->orderBy('published', 'desc');
                 $message = $message->first();
 
-                $g = new \Moxl\Xec\Action\MAM\Get($this->me, sessionId: $this->sessionId);
+                $g = new Get($this->me, sessionId: $this->sessionId);
                 $g->setTo($info->server)
                     ->setLimit(500);
 
                 if (
-                    !empty($message)
+                    ! empty($message)
                     && strtotime($message->published) > strtotime('-3 days')
                 ) {
                     $g->setStart(strtotime($message->published));
@@ -95,10 +95,10 @@ class Rooms extends Base
     public function onChatState(Packet $packet)
     {
         $this->rpc(
-            !empty($packet->content)
+            ! empty($packet->content)
                 ? 'MovimUtils.addClass'
                 : 'MovimUtils.removeClass',
-            '#' . cleanupId($packet->from . '_rooms_primary'),
+            '#'.cleanupId($packet->from.'_rooms_primary'),
             'composing'
         );
     }
@@ -164,17 +164,17 @@ class Rooms extends Base
             $this->me->session->conferences()
                 ->fromSpace(false)
                 ->with('info')
-                ->where('bookmarkversion', (int)$packet->content)
+                ->where('bookmarkversion', (int) $packet->content)
                 ->get() as $room
         ) {
-            if (!$room->info) {
+            if (! $room->info) {
                 $request = $this->xmpp(new Request);
                 $request->setTo($room->conference)
                     ->setParent((new Jid($room->conference))->domain)
                     ->request();
             }
 
-            if ($room->autojoin && !$room->connected) {
+            if ($room->autojoin && ! $room->connected) {
                 $this->ajaxJoin($room->conference, $room->nick);
             }
         }
@@ -191,7 +191,9 @@ class Rooms extends Base
     {
         $conference = $packet->content;
 
-        if (!$conference || $conference->isFromSpace()) return;
+        if (! $conference || $conference->isFromSpace()) {
+            return;
+        }
 
         if ($conference && $conference->autojoin) {
             $this->ajaxJoin($conference->conference, $conference->nick);
@@ -229,7 +231,7 @@ class Rooms extends Base
 
             $this->rpc(
                 'MovimTpl.fill',
-                '#' . cleanupId($room . '_rooms_primary'),
+                '#'.cleanupId($room.'_rooms_primary'),
                 $this->prepareRoomCounter($conference, $conference->getPicture())
             );
 
@@ -287,11 +289,11 @@ class Rooms extends Base
      */
     public function ajaxJoin(string $room, ?string $nickname = null)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
-        $this->rpc('MovimUtils.addClass', '#' . \cleanupId($room), 'connecting');
+        $this->rpc('MovimUtils.addClass', '#'.\cleanupId($room), 'connecting');
 
         $r = $this->xmpp(new Request);
         $r->setTo($room)
@@ -314,11 +316,11 @@ class Rooms extends Base
     /**
      * @brief Exit a room
      *
-     * @param string $room
+     * @param  string  $room
      */
     public function ajaxExit($room)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -330,14 +332,16 @@ class Rooms extends Base
             ->where('conference', $room)
             ->first();
 
-        if (!$conference) return;
+        if (! $conference) {
+            return;
+        }
 
         $resource = $conference->presence?->resource;
-        $capability = \App\Info::where('server', (new Jid($room))->domain)
+        $capability = Info::where('server', (new Jid($room))->domain)
             ->where('node', '')
             ->first();
 
-        if (!$capability || !$capability->hasMAM()) {
+        if (! $capability || ! $capability->hasMAM()) {
             $this->me->messages()->where('jidfrom', $room)->delete();
         }
 
@@ -352,7 +356,7 @@ class Rooms extends Base
         $this->ajaxHttpGet();
 
         if ($resource) {
-            linker($this->sessionId)->session->delete($room . '/' . $resource);
+            linker($this->sessionId)->session->delete($room.'/'.$resource);
 
             $pu = $this->xmpp(new Unavailable);
             $pu->setTo($room)
@@ -381,7 +385,6 @@ class Rooms extends Base
     /**
      * Join errors
      */
-
     public function onConflict()
     {
         $this->toast($this->__('chatrooms.conflict'));

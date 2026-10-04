@@ -64,7 +64,7 @@ class Presence extends Payload
                 function () use ($presence, $stanza) {
                     if ((string)$stanza->attributes()->type == 'subscribe') {
                         $this->pack((string)$stanza->attributes()->from);
-                        $this->event('subscribe');
+                        $this->deliver('subscribe');
                     }
 
                     if ($presence->muc) {

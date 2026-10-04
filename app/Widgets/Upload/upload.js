@@ -424,7 +424,7 @@ MovimEvents.registerBody('dragover', 'upload', (ev) => {
     if (document.getElementById('upload')) return;
     ev.preventDefault();
 
-    if (ev.dataTransfer.items[0].kind == 'file') {
+    if (ev.dataTransfer.items[0] && ev.dataTransfer.items[0].kind == 'file') {
         document.body.classList.add('dropped');
     }
 });

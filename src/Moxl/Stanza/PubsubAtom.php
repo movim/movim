@@ -31,6 +31,8 @@ class PubsubAtom
 
     public $published = false;
 
+    public const ATOM_NAMESPACE = 'http://www.w3.org/2005/Atom';
+
     public function __construct()
     {
         $this->id = generateUUID();

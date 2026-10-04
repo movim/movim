@@ -2,7 +2,9 @@
 
 namespace Moxl\Xec\Payload;
 
+use App\BookmarksDirectory;
 use App\Post as AppPost;
+use Moxl\Stanza\Bookmark2;
 use Moxl\Xec\Action\Pubsub\GetItem;
 
 class Post extends Payload
@@ -44,7 +46,7 @@ class Post extends Payload
                 $this->pack($p->id);
 
                 if ($p->isStory()) {
-                    $this->event('story');
+                    $this->deliver('story');
                 } else {
                     $this->deliver();
                 }
@@ -64,7 +66,7 @@ class Post extends Payload
                     'node' => $node,
                     'nodeid' => (string)$stanza->items->retract->attributes()->id
                 ]);
-                $this->event('space_deletedroom');
+                $this->deliver('space_deletedroom');
                 //$this->deliver();
                 return;
             }
@@ -75,7 +77,7 @@ class Post extends Payload
                 ->delete();
 
             if ($node == AppPost::STORIES_NODE) {
-                $this->event('story_retract');
+                $this->deliver('story_retract');
                 return;
             }
 
@@ -86,6 +88,34 @@ class Post extends Payload
             ]);
             $this->method('retract');
             $this->deliver();
+        } elseif (
+            $stanza->items->item && $stanza->items->item->directories
+            && $stanza->items->item->directories->attributes()->xmlns == Bookmark2::HIERARCHY_NAMESPACE
+        ) {
+            $this->me->session->bookmarksDirectories()
+                ->where('server', $from)
+                ->where('node', $node)
+                ->delete();
+
+            $i = 0;
+
+            foreach ($stanza->items->item->directories->directory as $directory) {
+                $dir = new BookmarksDirectory;
+                $dir->session_id = $this->me->session->id;
+                $dir->server = $from;
+                $dir->node = $node;
+                $dir->id = (string)$directory->attributes()->id;
+                $dir->title = (string)$directory->attributes()->title;
+                $dir->order = $i;
+                $dir->save();
+                $i++;
+            }
+
+            $this->pack([
+                'server' => $from,
+                'node' => $node
+            ]);
+            $this->deliver('space_directories');
         } elseif (
             $stanza->items->item && isset($stanza->items->item->attributes()->id)
             && !filter_var($from, FILTER_VALIDATE_EMAIL)

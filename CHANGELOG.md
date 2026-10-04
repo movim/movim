@@ -10,6 +10,7 @@ v0.35.2 (master)
 * Allow subjects to be set on Space rooms
 * Enable MAM for Spaces MUCs by default for Prosody and ejabberd (hacky but it works)
 * Remove MovimUtils.textareaAutoheight replaced by field-sizing: content; in the CSS
+* Add support for XEP-xxxx: Bookmarks Hierarchy
 
 v0.35.1
 ---------------------------

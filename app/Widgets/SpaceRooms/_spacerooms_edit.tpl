@@ -50,24 +50,6 @@
                         <label>{$c->__('chatrooms.subject')}</label>
                     </div>
                 </li>
-                <li>
-                    <span class="primary icon gray">
-                        <i class="material-symbols">push_pin</i>
-                    </span>
-                    <span class="control">
-                        <div class="checkbox">
-                            <input
-                                type="checkbox"
-                                id="pinned"
-                                {if="$conference->pinned"}checked{/if}
-                                name="pinned"/>
-                            <label for="pinned"></label>
-                        </div>
-                    </span>
-                    <div>
-                        <p>{$c->__('chatrooms.pinned')}</p>
-                    </div>
-                </li>
             </ul>
         </div>
     </form>

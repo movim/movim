@@ -16,8 +16,8 @@ class Location extends Payload
             $contact->save();
 
             if ($from == $this->me->id) {
-                $this->event('mylocation');
-                $this->event('mypresence');
+                $this->deliver('mylocation');
+                $this->deliver('mypresence');
             } else {
                 $this->pack($contact);
                 $this->deliver();

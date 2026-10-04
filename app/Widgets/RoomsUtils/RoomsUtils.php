@@ -2,23 +2,6 @@
 
 namespace App\Widgets\RoomsUtils;
 
-use Moxl\Xec\Action\Bookmark2\Delete;
-use Moxl\Xec\Action\Bookmark2\Set;
-use Moxl\Xec\Action\Disco\Items;
-use Moxl\Xec\Action\Message\Invite;
-use Moxl\Xec\Action\Muc\ChangeAffiliation;
-use Moxl\Xec\Action\Muc\CreateChannel;
-use Moxl\Xec\Action\Muc\CreateGroupChat;
-use Moxl\Xec\Action\Muc\Destroy;
-use Moxl\Xec\Action\Muc\SetRole;
-use Moxl\Xec\Action\Muc\SetSubject;
-use Moxl\Xec\Action\Presence\Muc;
-use Moxl\Xec\Action\Presence\Unavailable;
-use Moxl\Xec\Action\Register\Remove;
-use Moxl\Xec\Action\Vcard\Set as VcardSet;
-use Moxl\Xec\Action\Vcard4\Get as VcardGet;
-use Moxl\Xec\Payload\Packet;
-
 use App\Conference;
 use App\Contact;
 use App\Info;
@@ -27,23 +10,37 @@ use App\Widgets\AdHoc\AdHoc;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
 use App\Widgets\ContactActions\ContactActions;
-
-use Movim\Widget\Base;
-use Movim\Image;
-
-use Respect\Validation\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
+use Movim\Image;
 use Movim\Librairies\XMPPtoForm;
-use Moxl\Xec\Action\MAM\GetConfig;
-use Moxl\Xec\Action\MAM\SetConfig;
+use Movim\Widget\Base;
+use Moxl\Xec\Action\Bookmark2\Delete;
+use Moxl\Xec\Action\Bookmark2\Set;
+use Moxl\Xec\Action\Disco\Items;
+use Moxl\Xec\Action\MAM\Get;
+use Moxl\Xec\Action\Message\Invite;
+use Moxl\Xec\Action\Muc\CreateChannel;
+use Moxl\Xec\Action\Muc\CreateGroupChat;
+use Moxl\Xec\Action\Muc\Destroy;
 use Moxl\Xec\Action\Muc\DiscoRequest;
+use Moxl\Xec\Action\Muc\GetAffiliations;
 use Moxl\Xec\Action\Muc\GetConfig as MucGetConfig;
-use Moxl\Xec\Action\Muc\GetMembers;
+use Moxl\Xec\Action\Muc\SetAffiliations;
 use Moxl\Xec\Action\Muc\SetConfig as MucSetConfig;
+use Moxl\Xec\Action\Muc\SetRole;
+use Moxl\Xec\Action\Muc\SetSubject;
+use Moxl\Xec\Action\Presence\Muc;
+use Moxl\Xec\Action\Presence\Unavailable;
+use Moxl\Xec\Action\Register\Remove;
+use Moxl\Xec\Action\Vcard\Set as VcardSet;
+use Moxl\Xec\Action\Vcard4\Get as VcardGet;
+use Moxl\Xec\Payload\Packet;
+use Respect\Validation\Validator;
 
 class RoomsUtils extends Base
 {
     private $_picturesPagination = 20;
+
     private $_linksPagination = 12;
 
     public function load()
@@ -57,8 +54,8 @@ class RoomsUtils extends Base
         $this->registerEvent('muc_createchannel_handle', 'onChatroomCreated');
         $this->registerEvent('muc_creategroupchat_error', 'onChatroomCreatedError');
         $this->registerEvent('muc_createchannel_error', 'onChatroomCreatedError');
-        $this->registerEvent('muc_changeaffiliation_handle', 'onAffiliationChanged');
-        $this->registerEvent('muc_changeaffiliation_errornotallowed', 'onAffiliationChangeUnauthorized');
+        $this->registerEvent('muc_changeaffiliations_handle', 'onAffiliationChanged');
+        $this->registerEvent('muc_changeaffiliations_errornotallowed', 'onAffiliationChangeUnauthorized');
         $this->registerEvent('muc_setrole_handle', 'onSetRole');
         $this->registerEvent('message_invite_error', 'onInviteError');
 
@@ -80,7 +77,7 @@ class RoomsUtils extends Base
 
     public function ajaxGetDrawer($room = false)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -89,7 +86,9 @@ class RoomsUtils extends Base
             ->with('info')
             ->first();
 
-        if (!$conference) return;
+        if (! $conference) {
+            return;
+        }
 
         $picturesCount = $conference->pictures()->count();
         $linksCount = $conference->links()->count();
@@ -120,7 +119,7 @@ class RoomsUtils extends Base
         $this->drawer('room_drawer', $view->draw('_rooms_drawer'));
         $this->rpc('Tabs.create');
 
-        $this->rpc('RoomsUtils_ajaxAppendPresences', $room, !$conference->isGroupChat(), 0);
+        $this->rpc('RoomsUtils_ajaxAppendPresences', $room, ! $conference->isGroupChat(), 0);
 
         if ($picturesCount > 0) {
             $this->rpc('RoomsUtils_ajaxHttpGetPictures', $room);
@@ -158,7 +157,9 @@ class RoomsUtils extends Base
             ->with('info')
             ->first();
 
-        if (!$conference) return;
+        if (! $conference) {
+            return;
+        }
 
         $presences = $conference->presences()
             ->with('capability');
@@ -177,8 +178,8 @@ class RoomsUtils extends Base
             $presences->pop();
         }
 
-        if (!$havePagination) {
-            $ownerFilter = fn($p) => $p->mucaffiliation == 'owner';
+        if (! $havePagination) {
+            $ownerFilter = fn ($p) => $p->mucaffiliation == 'owner';
             $owners = $presences->reject($ownerFilter);
             $presences = $presences->filter($ownerFilter)->union($owners);
         }
@@ -188,7 +189,7 @@ class RoomsUtils extends Base
             'conference' => $conference,
             'presences' => $presences,
             'page' => $page + 1,
-            'compact' => $compact
+            'compact' => $compact,
         ]);
     }
 
@@ -197,7 +198,7 @@ class RoomsUtils extends Base
         $resolvedFingerprints = collect();
 
         foreach ($contactsFingerprints as $contactFingerprints) {
-            if (!empty($contactFingerprints)) {
+            if (! empty($contactFingerprints)) {
                 foreach ($contactFingerprints as $fingerprint) {
                     $fingerprint->fingerprint = base64ToFingerPrint($fingerprint->fingerprint);
                 }
@@ -222,8 +223,8 @@ class RoomsUtils extends Base
     {
         $this->rpc(
             'MovimTpl.fill',
-            '#' . cleanupId($packet->content) . '-vcard',
-            $this->prepareVcard(\App\Contact::firstOrNew(['id' => $packet->content]))
+            '#'.cleanupId($packet->content).'-vcard',
+            $this->prepareVcard(Contact::firstOrNew(['id' => $packet->content]))
         );
     }
 
@@ -234,22 +235,24 @@ class RoomsUtils extends Base
             ->with('info')
             ->first();
 
-        if (!$conference) return;
+        if (! $conference) {
+            return;
+        }
 
         $r = $this->xmpp(new VcardGet);
         $r->setTo($mucjid)
             ->request();
 
         $this->dialog($this->view('_rooms_participant', [
-            'contact' => \App\Contact::firstOrNew(['id' => $mucjid]),
+            'contact' => Contact::firstOrNew(['id' => $mucjid]),
             'conference' => $conference,
             'clienttype' => getClientTypes(),
             'presence' => $conference->presences()
-                ->with('capability')->where('mucjid', $mucjid)->first()
+                ->with('capability')->where('mucjid', $mucjid)->first(),
         ]));
     }
 
-    public function prepareVcard(\App\Contact $contact)
+    public function prepareVcard(Contact $contact)
     {
         return (new ContactActions($this->me, sessionId: $this->sessionId))->prepareVcard($contact);
     }
@@ -259,14 +262,14 @@ class RoomsUtils extends Base
      */
     public function ajaxGetAvatar($room)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
         $this->dialog($this->view('_rooms_avatar', [
             'room' => $this->me->session->conferences()
                 ->where('conference', $room)
-                ->first()
+                ->first(),
         ]));
     }
 
@@ -275,7 +278,7 @@ class RoomsUtils extends Base
      */
     public function ajaxSetAvatar($room, $form)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -331,7 +334,7 @@ class RoomsUtils extends Base
     public function onNoMavPresence(Packet $packet)
     {
         if (in_array($packet->content->mucaffiliation, ['admin', 'owner'])) {
-            $m = $this->xmpp(new GetMembers);
+            $m = $this->xmpp(new GetAffiliations);
             $m->setTo($packet->content->jid)
                 ->request();
         }
@@ -340,11 +343,11 @@ class RoomsUtils extends Base
     /**
      * @brief Configure a room
      *
-     * @param string $room
+     * @param  string  $room
      */
     public function ajaxGetConfig($room)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -356,11 +359,11 @@ class RoomsUtils extends Base
     /**
      * @brief Save the room configuration
      *
-     * @param string $room
+     * @param  string  $room
      */
     public function ajaxSetConfig(\stdClass $data, $room)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -370,7 +373,6 @@ class RoomsUtils extends Base
             ->request();
     }
 
-
     public function onConfigError(Packet $packet)
     {
         $this->toast($packet->content);
@@ -378,14 +380,16 @@ class RoomsUtils extends Base
 
     public function onConfig(Packet $packet)
     {
-        list($config, $room) = array_values($packet->content);
+        [$config, $room] = array_values($packet->content);
 
         $conference = $this->me->session->conferences()
             ->where('conference', $room)
             ->with('info')
             ->first();
 
-        if (!$conference) return;
+        if (! $conference) {
+            return;
+        }
 
         $xml = new XMPPtoForm(
             $this->me,
@@ -396,7 +400,7 @@ class RoomsUtils extends Base
 
         $this->dialog($this->view('_rooms_config', [
             'form' => $form,
-            'conference' => $conference
+            'conference' => $conference,
         ]), true);
     }
 
@@ -415,10 +419,6 @@ class RoomsUtils extends Base
     public function onAffiliationChanged(Packet $packet)
     {
         $affiliation = $packet->content;
-
-        $m = $this->xmpp(new GetMembers);
-        $m->setTo($packet->from)
-            ->request();
 
         switch ($affiliation) {
             case 'owner':
@@ -477,7 +477,7 @@ class RoomsUtils extends Base
 
         // Disconnect properly
         $nick = $values['nick'] ?? $this->me->username;
-        linker($this->sessionId)->session->delete($values['jid'] . '/' . $nick);
+        linker($this->sessionId)->session->delete($values['jid'].'/'.$nick);
 
         $pu = $this->xmpp(new Unavailable);
         $pu->setTo($values['jid'])
@@ -485,7 +485,7 @@ class RoomsUtils extends Base
             ->request();
 
         $this->me->session->presences()->where('jid', $values['jid'])->delete();
-        //$this->rpc('RoomsUtils.configureDisconnect', $values['jid']);
+        // $this->rpc('RoomsUtils.configureDisconnect', $values['jid']);
 
         $this->rpc('Dialog_ajaxClear');
     }
@@ -503,14 +503,14 @@ class RoomsUtils extends Base
      */
     public function ajaxGetSubject($room)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
         $this->dialog($this->view('_rooms_subject', [
             'room' => $this->me->session->conferences()
                 ->where('conference', $room)
-                ->first()
+                ->first(),
         ]));
     }
 
@@ -520,8 +520,8 @@ class RoomsUtils extends Base
     public function ajaxSetSubject($room, $form)
     {
         if (
-            !validateJid($room)
-            || !Validator::stringType()->length(0, 200)->isValid($form->subject->value)
+            ! validateJid($room)
+            || ! Validator::stringType()->length(0, 200)->isValid($form->subject->value)
         ) {
             return;
         }
@@ -537,7 +537,7 @@ class RoomsUtils extends Base
      */
     public function ajaxAskInvite(string $room)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -546,7 +546,9 @@ class RoomsUtils extends Base
             ->with('info')
             ->first();
 
-        if (!$conference) return;
+        if (! $conference) {
+            return;
+        }
 
         $this->dialog($this->view('_rooms_invite', [
             'contacts' => $this->me->session->contacts()->pluck('jid'),
@@ -557,7 +559,7 @@ class RoomsUtils extends Base
 
     public function ajaxHttpRoomDiscover(?string $room = null)
     {
-        $gateways = \App\Info::select('name', 'server', 'parent')
+        $gateways = Info::select('name', 'server', 'parent')
             ->whereCategory('gateway')
             ->whereNotNull('parent')
             ->groupBy('name', 'server', 'parent')
@@ -565,13 +567,13 @@ class RoomsUtils extends Base
             ->orderBy('server')
             ->get();
 
-        $gateways = $gateways->filter(fn($gateway) => $gateway->parent === $this->me->session->host)
-            ->concat($gateways->reject(fn($gateway) => $gateway->parent === $this->me->session->host));
+        $gateways = $gateways->filter(fn ($gateway) => $gateway->parent === $this->me->session->host)
+            ->concat($gateways->reject(fn ($gateway) => $gateway->parent === $this->me->session->host));
 
         $this->dialog($this->view('_rooms_room_discover', [
             'room' => $room,
             'gateways' => $gateways,
-            'mucservice' => \App\Info::where('parent', $this->me->session->host)
+            'mucservice' => Info::where('parent', $this->me->session->host)
                 ->whereDoesntHave('identities', function ($query) {
                     $query->where('category', 'gateway');
                 })
@@ -593,7 +595,7 @@ class RoomsUtils extends Base
             $request = $this->xmpp(new DiscoRequest);
             $request->setTo($room)
                 ->request();
-        } elseif (!empty($room)) {
+        } elseif (! empty($room)) {
             $this->toast($this->__('chatrooms.disco_not_muc'));
         }
     }
@@ -603,7 +605,7 @@ class RoomsUtils extends Base
         $packet->content->uuidMuc = Validator::uuid()->isValid(substr($packet->content->server, 0, 36));
 
         $this->rpc('MovimTpl.fill', '#rooms_discover_result', $this->view('_rooms_room_discover_result', [
-            'info' => $packet->content
+            'info' => $packet->content,
         ]));
 
         if ($packet->content->isMuc()) {
@@ -624,12 +626,12 @@ class RoomsUtils extends Base
         $view = $this->tpl();
 
         $view->assign('info', $room
-            ? \App\Info::where('server', $room)
-            ->where('node', '')
-            ->whereCategory('conference')
-            ->first()
+            ? Info::where('server', $room)
+                ->where('node', '')
+                ->whereCategory('conference')
+                ->first()
             : null);
-        $view->assign('mucservice', \App\Info::where('parent', $this->me->session->host)
+        $view->assign('mucservice', Info::where('parent', $this->me->session->host)
             ->whereDoesntHave('identities', function ($query) {
                 $query->where('category', 'gateway');
             })
@@ -666,8 +668,8 @@ class RoomsUtils extends Base
 
         $slugified = slugify($name);
 
-        if ($service && !empty($slugified)) {
-            $this->rpc('Rooms.setJid', $slugified . '@' . $service->server);
+        if ($service && ! empty($slugified)) {
+            $this->rpc('Rooms.setJid', $slugified.'@'.$service->server);
         }
     }
 
@@ -676,7 +678,7 @@ class RoomsUtils extends Base
      */
     public function ajaxAddCreate($form)
     {
-        if (!validateJid($form->jid->value)) {
+        if (! validateJid($form->jid->value)) {
             $this->toast($this->__('chatrooms.bad_id'));
         } elseif (trim($form->name->value) == '') {
             $this->toast($this->__('chatrooms.empty_name'));
@@ -692,7 +694,7 @@ class RoomsUtils extends Base
 
     public function ajaxConfigureCreated($form)
     {
-        if (!validateJid($form->jid->value)) {
+        if (! validateJid($form->jid->value)) {
             $this->toast($this->__('chatrooms.bad_id'));
         } else {
             if ($form->type->value == 'groupchat') {
@@ -702,7 +704,7 @@ class RoomsUtils extends Base
                     ->setAutoJoin($form->autojoin->value)
                     ->setPinned($form->pinned->value)
                     ->setNick($form->nick->value ?? $this->me->username)
-                    ->setNotify((int)array_flip(Conference::NOTIFICATIONS)[$form->notify->value])
+                    ->setNotify((int) array_flip(Conference::NOTIFICATIONS)[$form->notify->value])
                     ->request();
             } elseif ($form->type->value == 'channel') {
                 $cgc = $this->xmpp(new CreateChannel);
@@ -711,7 +713,7 @@ class RoomsUtils extends Base
                     ->setAutoJoin($form->autojoin->value)
                     ->setPinned($form->pinned->value)
                     ->setNick($form->nick->value)
-                    ->setNotify((int)array_flip(Conference::NOTIFICATIONS)[$form->notify->value])
+                    ->setNotify((int) array_flip(Conference::NOTIFICATIONS)[$form->notify->value])
                     ->request();
             }
         }
@@ -722,7 +724,7 @@ class RoomsUtils extends Base
      */
     public function ajaxAddConfirm($form)
     {
-        if (!validateJid($form->jid->value)) {
+        if (! validateJid($form->jid->value)) {
             $this->toast($this->__('chatrooms.bad_id'));
         } elseif (trim($form->name->value) == '') {
             $this->toast($this->__('chatrooms.empty_name'));
@@ -736,7 +738,7 @@ class RoomsUtils extends Base
                 'nick' => $form->nick->value,
                 'autojoin' => $form->autojoin->value,
                 'pinned' => $form->pinned->value,
-                'notify' => (int)array_flip(Conference::NOTIFICATIONS)[$form->notify->value],
+                'notify' => (int) array_flip(Conference::NOTIFICATIONS)[$form->notify->value],
             ];
 
             $this->onChatroomCreated($packet);
@@ -748,7 +750,9 @@ class RoomsUtils extends Base
      */
     public function ajaxRemove($room)
     {
-        if (!validateJid($room)) return;
+        if (! validateJid($room)) {
+            return;
+        }
         $this->dialog($this->view('_rooms_remove', ['room' => $room]));
     }
 
@@ -757,7 +761,7 @@ class RoomsUtils extends Base
      */
     public function ajaxRemoveConfirm($room)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -780,11 +784,11 @@ class RoomsUtils extends Base
      */
     public function ajaxInvite($form)
     {
-        if (!validateJid($form->to->value)) {
+        if (! validateJid($form->to->value)) {
             return;
         }
 
-        if (!empty($form->invite->value)) {
+        if (! empty($form->invite->value)) {
             $id = generateUUID();
             $i = $this->xmpp(new Invite);
             $i->setTo($form->to->value)
@@ -810,7 +814,7 @@ class RoomsUtils extends Base
 
             $m = $m->fresh();
 
-            $packet = new \Moxl\Xec\Payload\Packet;
+            $packet = new Packet;
             $packet->content = $m;
 
             (new Chats($this->me, sessionId: $this->sessionId))->onMessage($packet);
@@ -827,7 +831,9 @@ class RoomsUtils extends Base
      */
     public function ajaxInviteSFU(string $to, string $invitedSFU)
     {
-        if (!validateJid($to) || !validateJid($invitedSFU)) return;
+        if (! validateJid($to) || ! validateJid($invitedSFU)) {
+            return;
+        }
 
         $i = $this->xmpp(new Invite);
         $i->setTo($to)
@@ -835,10 +841,9 @@ class RoomsUtils extends Base
             ->setInvite($invitedSFU)
             ->request();
 
-        $p = $this->xmpp(new ChangeAffiliation);
+        $p = $this->xmpp(new SetAffiliations);
         $p = $p->setTo($to)
-            ->setJid($invitedSFU)
-            ->setAffiliation('admin')
+            ->setAffiliations([$invitedSFU => 'admin'])
             ->request();
     }
 
@@ -852,7 +857,9 @@ class RoomsUtils extends Base
      */
     public function ajaxAskDestroy($room)
     {
-        if (!validateJid($room)) return;
+        if (! validateJid($room)) {
+            return;
+        }
         $this->dialog($this->view('_rooms_destroy', ['room' => $room]));
     }
 
@@ -861,7 +868,7 @@ class RoomsUtils extends Base
      */
     public function ajaxDestroy($room)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -875,7 +882,7 @@ class RoomsUtils extends Base
      */
     public function ajaxHttpGetPictures($room, $page = 0)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -884,7 +891,9 @@ class RoomsUtils extends Base
             ->with('info')
             ->first();
 
-        if (!$conference) return;
+        if (! $conference) {
+            return;
+        }
 
         $more = false;
         $pictures = $conference->pictures()
@@ -910,7 +919,7 @@ class RoomsUtils extends Base
      */
     public function ajaxHttpGetLinks($room, $page = 0)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -919,7 +928,9 @@ class RoomsUtils extends Base
             ->with('info')
             ->first();
 
-        if (!$conference) return;
+        if (! $conference) {
+            return;
+        }
 
         $more = false;
         $links = $conference->links()
@@ -945,7 +956,7 @@ class RoomsUtils extends Base
      */
     public function ajaxMucUsersAutocomplete($room)
     {
-        $this->rpc("Chat.onAutocomplete", $this->me->session->conferences()
+        $this->rpc('Chat.onAutocomplete', $this->me->session->conferences()
             ->where('conference', $room)
             ->first()->presences
             ->pluck('resource'));
@@ -959,7 +970,7 @@ class RoomsUtils extends Base
         $this->ajaxResetGatewayRooms();
         $this->rpc('Rooms.selectGatewayRoom', '');
 
-        if (!empty($server)) {
+        if (! empty($server)) {
             $r = $this->xmpp(new Items);
             $r->setTo($server)
                 ->disableSave()
@@ -972,7 +983,7 @@ class RoomsUtils extends Base
      */
     public function ajaxAddBanned(string $room)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -986,16 +997,15 @@ class RoomsUtils extends Base
      */
     public function ajaxAddBannedConfirm(string $room, $form)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
-        $p = $this->xmpp(new ChangeAffiliation);
+        $p = $this->xmpp(new SetAffiliations);
         $p = $p->setTo($room)
-            ->setJid($form->jid->value)
-            ->setAffiliation('outcast');
+            ->setAffiliations([$form->jid->value => 'outcast']);
 
-        if (!empty($form->reason->value)) {
+        if (! empty($form->reason->value)) {
             $p = $p->setReason($form->reason->value);
         }
 
@@ -1007,7 +1017,7 @@ class RoomsUtils extends Base
      */
     public function ajaxRemoveBanned(string $room, string $jid)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -1020,27 +1030,11 @@ class RoomsUtils extends Base
     }
 
     /**
-     * @brief Unban someone
-     */
-    public function ajaxRemoveBannedConfirm(string $room, string $jid)
-    {
-        if (!validateJid($room)) {
-            return;
-        }
-
-        $p = $this->xmpp(new ChangeAffiliation);
-        $p->setTo($room)
-            ->setJid($jid)
-            ->setAffiliation('none')
-            ->request();
-    }
-
-    /**
      * @brief Show the user configuration panel
      */
     public function ajaxConfigureUser(string $room, string $jid)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -1061,7 +1055,7 @@ class RoomsUtils extends Base
      */
     public function ajaxChangeVoice(string $room, string $mucjid, $form)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
@@ -1087,14 +1081,13 @@ class RoomsUtils extends Base
      */
     public function ajaxChangeAffiliationConfirm(string $room, $form)
     {
-        if (!validateJid($room)) {
+        if (! validateJid($room)) {
             return;
         }
 
-        $p = $this->xmpp(new ChangeAffiliation);
+        $p = $this->xmpp(new SetAffiliations);
         $p->setTo($room)
-            ->setJid($form->jid->value)
-            ->setAffiliation($form->affiliation->value)
+            ->setAffiliations([$form->jid->value => $form->affiliation->value])
             ->request();
     }
 
@@ -1103,13 +1096,13 @@ class RoomsUtils extends Base
      */
     public function ajaxRemoveMember(string $room, string $jid)
     {
-        if (!validateJid($room) || !validateJid($jid)) {
+        if (! validateJid($room) || ! validateJid($jid)) {
             return;
         }
 
         $this->dialog($this->view('_rooms_remove_member', [
             'room' => $room,
-            'jid' => $jid
+            'jid' => $jid,
         ]));
     }
 
@@ -1118,14 +1111,13 @@ class RoomsUtils extends Base
      */
     public function ajaxRemoveMemberConfirm(string $room, string $jid)
     {
-        if (!validateJid($room) || !validateJid($jid)) {
+        if (! validateJid($room) || ! validateJid($jid)) {
             return;
         }
 
-        $p = $this->xmpp(new ChangeAffiliation);
+        $p = $this->xmpp(new SetAffiliations);
         $p->setTo($room)
-            ->setJid($jid)
-            ->setAffiliation('none')
+            ->setAffiliations([$jid => 'none'])
             ->request();
     }
 
@@ -1134,7 +1126,7 @@ class RoomsUtils extends Base
      */
     public function ajaxGetMAMHistory(string $jid)
     {
-        $g = $this->xmpp(new \Moxl\Xec\Action\MAM\Get);
+        $g = $this->xmpp(new Get);
 
         $message = $this->me->messages()
             ->where('jidfrom', $jid)
@@ -1170,7 +1162,7 @@ class RoomsUtils extends Base
                 array_shift($explodedName);
                 $item->name = implode(' / ', $explodedName);
 
-                if (!array_key_exists($item->parent, $groups)) {
+                if (! array_key_exists($item->parent, $groups)) {
                     $groups[$item->parent] = 0;
                 }
 
@@ -1183,7 +1175,7 @@ class RoomsUtils extends Base
             return $item;
         })->map(function ($item, $key) use ($groups) {
             if ($item->parent != null && array_key_exists($item->parent, $groups) && $groups[$item->parent] == 1) {
-                $item->name = $item->parent . '/' . $item->name;
+                $item->name = $item->parent.'/'.$item->name;
                 $item->parent = null;
             }
 
@@ -1191,7 +1183,7 @@ class RoomsUtils extends Base
         })->sortBy('parent');
 
         $this->rpc('MovimTpl.fill', '#gateway_rooms', $this->view('_rooms_gateway_rooms', [
-            'rooms' => $rooms
+            'rooms' => $rooms,
         ]));
 
         if ($rooms->count() > 0) {

@@ -319,7 +319,34 @@ class Bootstrap
             $i = 0;
 
             foreach ($backtrace as $step) {
-                $serializedTrace .= '#' . $i . ' ' . $step['file'] . '(' . $step['line'] . '): ' . $step['function'] . "\n";
+                $arguments = '';
+
+                if (array_key_exists('args', $step)) {
+                    $arguments = '(';
+
+                    $i = 0;
+                    foreach ($step['args'] as $value) {
+                        $arguments .= match (gettype($value)) {
+                            'boolean' => $value ? 'true' :  'false',
+                            'integer', 'double' => $value,
+                            'string' => "'" . $value . "'",
+                            'object' => 'Object(' . get_class($value) . ')',
+                            'NULL' => 'NULL',
+                            'array' => 'Array',
+                            default => 'unknown',
+                        };
+
+                        if ($i < sizeof($step['args'])) {
+                            $arguments .= ', ';
+                        }
+
+                        $i++;
+                    }
+
+                    $arguments .= ')';
+                }
+
+                $serializedTrace .= '#' . $i . ' ' . $step['file'] . '(' . $step['line'] . '): ' . $step['function'] . $arguments . "\n";
                 $i++;
             }
         }

@@ -75,7 +75,7 @@ class Message extends Payload
                     'server' => $from,
                     'node' => (string)$stanza->event->subscription->attributes()->node
                 ]);
-                $this->event('message_pubsub_subscribed');
+                $this->deliver('message_pubsub_subscribed');
             } elseif (
                 $stanza->event->configuration
                 && isset($stanza->event->configuration->x)
@@ -92,7 +92,7 @@ class Message extends Payload
                         'server' => $from,
                         'node' => $node
                     ]);
-                    $this->event('message_pubsub_configuration');
+                    $this->deliver('message_pubsub_configuration');
                 }
             }
 
@@ -124,7 +124,7 @@ class Message extends Payload
                 $this->pack($message);
 
                 if ($message->subject && $message->isMuc()) {
-                    $this->event('subject');
+                    $this->deliver('subject');
                 }
 
                 $this->deliver();

@@ -118,8 +118,18 @@ abstract class Payload
      *
      * @return void
      */
-    final public function deliver()
+    final public function deliver(?string $key = null)
     {
+        if ($key) {
+            Wrapper::getInstance()->iterate(
+                key: $key,
+                packet: $this->packet,
+                user: $this->me,
+                sessionId: $this->sessionId
+            );
+            return;
+        }
+
         $action_ns = 'Moxl\Xec\Action';
 
         if (
@@ -138,16 +148,6 @@ abstract class Payload
             $key = $key . '_' . $this->method;
         }
 
-        $this->event($key);
-    }
-
-    /**
-     * Send an event to Movim
-     *
-     * @return void
-     */
-    final public function event(string $key)
-    {
         Wrapper::getInstance()->iterate(
             key: $key,
             packet: $this->packet,

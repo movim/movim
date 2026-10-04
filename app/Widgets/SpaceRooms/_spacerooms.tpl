@@ -1,5 +1,40 @@
-{loop="$subscription->spaceRooms"}
-    <li id="space{$value->conference|cleanupId}">
+{$currentDirectory = null}
+{loop="$space_rooms"}
+    {if="$value->directory_id != $currentDirectory"}
+        {loop="$directories"}
+            <hr />
+            <li {if="$edit"}draggable="true"{/if} class="subheader" data-id="{$value->id}">
+                {if="$edit"}
+                    <div class="controls">
+                        <span class="control icon gray active edition" onclick="SpaceRooms_ajaxAskEditDirectory('{$value->server}', '{$value->node}', '{$value->id}')"
+                            title="{$c->__('spaceinfo.edit_directory_title')}">
+                            <i class="material-symbols">folder_managed</i>
+                        </span>
+                        <span class="control icon gray active edition" onclick="SpaceRooms_ajaxAskAdd('{$value->server}', '{$value->node}', '{$value->id}')"
+                            title="{$c->__('spaceinfo.add_room_title')}">
+                            <i class="material-symbols">add</i>
+                        </span>
+                    </div>
+                {/if}
+                <div>
+                    <p class="line">
+                        <span class="second">
+                            <span class="material-symbols">folder</span>
+                            {$value->title}
+                        </span>
+                    </p>
+                </div>
+            </li>
+            {if="$directories->forget($key)"}{/if}
+            {if="$value1->directory_id == $value->id"}
+                {break}
+            {/if}
+        {/loop}
+    {/if}
+
+    {$currentDirectory = $value->directory_id}
+
+    <li {if="$edit"}draggable="true"{/if} data-jid="{$value->conference|echapJS}" data-weight="{$value->weight}" id="space{$value->conference|cleanupId}">
         <ul class="list thin">
             <li data-jid="{$value->conference}">
                 <span class="primary icon gray"
@@ -10,21 +45,18 @@
                 </span>
 
                 {if="$edit"}
-                    <span class="control icon gray active edition on_desktop"
-                        onclick="event.stopPropagation(); SpaceRooms_ajaxAskEdit('{$value->conference}')"
-                        title="{$c->__('button.edit')}">
-                        <i class="material-symbols">edit</i>
-                    </span>
+                    <div class="controls">
+                        <span class="control icon gray active edition on_desktop"
+                            onclick="event.stopPropagation(); SpaceRooms_ajaxAskEdit('{$value->conference}')"
+                            title="{$c->__('button.edit')}">
+                            <i class="material-symbols">edit</i>
+                        </span>
+                    </div>
                 {/if}
                 <div>
                     <p class="line">
                         {if="$value->sfuPresence && $value->sfuPresence->SFUStartedAt"}
                             <span class="info" title="{$c->prepareDate($value->sfuPresence->SFUStartedAt)}" data-started-at="{$value->sfuPresence->SFUStartedAt->toISOString()}"></span>
-                        {/if}
-                        {if="$value->pinned"}
-                            <span class="info">
-                                <i class="material-symbols fill" title="{$c->__('room.pinned')}">push_pin</i>
-                            </span>
                         {/if}
                         <span title="{$value->conference}">
                             {if="$value->mujiPresences->isNotEmpty()"}
@@ -94,7 +126,32 @@
     </li>
 {/loop}
 
-{if="$subscription->spaceRooms->isEmpty()"}
+{loop="$directories"}
+    <li {if="$edit"}draggable="true"{/if} class="subheader" data-id="{$value->id}">
+        {if="$edit"}
+            <div class="controls">
+                <span class="control icon gray active edition" onclick="SpaceRooms_ajaxAskEditDirectory('{$value->server}', '{$value->node}', '{$value->id}')"
+                    title="{$c->__('spaceinfo.edit_directory_title')}">
+                    <i class="material-symbols">folder_managed</i>
+                </span>
+                <span class="control icon gray active edition" onclick="SpaceRooms_ajaxAskAdd('{$value->server}', '{$value->node}', '{$value->id}')"
+                    title="{$c->__('spaceinfo.add_room_title')}">
+                    <i class="material-symbols">add</i>
+                </span>
+            </div>
+        {/if}
+        <div>
+            <p class="line">
+                <span class="second">
+                    <span class="material-symbols">folder</span>
+                    {$value->title}
+                </span>
+            </p>
+        </div>
+    </li>
+{/loop}
+
+{if="$space_rooms->isEmpty()"}
     <div class="placeholder">
         <i class="material-symbols fill">chat_dashed</i>
         <h1>{$c->__('chats.empty_title')}</h1>

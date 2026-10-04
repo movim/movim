@@ -62,7 +62,7 @@ class MucUser extends Payload
                     $message->save();
 
                     $this->pack($message);
-                    $this->event('muc_event_message');
+                    $this->deliver('muc_event_message');
                 }
             }
 

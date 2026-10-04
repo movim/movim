@@ -26,6 +26,6 @@ class MessageReject extends Action
         $message->save();
 
         $this->pack($message);
-        $this->event('jingle_message');
+        $this->deliver('jingle_message');
     }
 }

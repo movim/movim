@@ -7,14 +7,14 @@ use Moxl\Xec\Action;
 
 class TestPostPublish extends Action
 {
-    protected $_node;
-    protected $_to;
-    protected $_id = 'test_post';
+    protected string $_node;
+    protected string $_to;
+    public const TEST_POST_ID = 'test_post';
 
     public function request()
     {
         $this->store();
-        $this->iq(Pubsub::testPostPublish($this->_node, $this->_id), to: $this->_to, type: 'set');
+        $this->iq(Pubsub::testPostPublish($this->_node, TestPostPublish::TEST_POST_ID), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -22,7 +22,7 @@ class TestPostPublish extends Action
         $delete = new PostDelete(me: $this->me, sessionId: $this->sessionId);
         $delete->setTo($this->_to)
                ->setNode($this->_node)
-               ->setId($this->_id)
+               ->setId(TestPostPublish::TEST_POST_ID)
                ->request();
 
         $this->pack(['to' => $this->_to, 'node' => $this->_node]);

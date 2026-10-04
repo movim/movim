@@ -15,6 +15,6 @@ class Vcard4 extends Payload
         $contact->save();
 
         $this->pack($contact->id);
-        $this->event('vcard');
+        $this->deliver('vcard');
     }
 }

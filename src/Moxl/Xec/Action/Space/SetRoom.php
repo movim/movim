@@ -8,7 +8,7 @@ use Moxl\Stanza\Space;
 use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\SetConfig;
 
-class AddRoom extends Action
+class SetRoom extends Action
 {
     protected ?Conference $_conference = null;
     protected bool $_withPublishOption = true;
