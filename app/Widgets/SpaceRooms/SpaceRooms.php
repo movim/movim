@@ -6,6 +6,7 @@ use App\Affiliation;
 use App\Conference;
 use App\Widgets\Rooms\Rooms;
 use App\Widgets\SpacesMenu\SpacesMenu;
+use Movim\Jid;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Muc\ChangeAffiliation;
 use Moxl\Xec\Action\Muc\CreateGroupChat;
@@ -165,7 +166,7 @@ class SpaceRooms extends Base
         $this->rpc('SpaceRooms.init');
     }
 
-    public function ajaxAdd(string $server, string $node)
+    public function ajaxAskAdd(string $server, string $node)
     {
         $affiliation = Affiliation::where('server', $server)
             ->where('node', $node)
@@ -177,6 +178,73 @@ class SpaceRooms extends Base
                 'server' => $server,
                 'node' => $node,
             ]));
+        }
+    }
+
+    public function ajaxAdd(\stdClass $form)
+    {
+        if (empty($form->name->value)) {
+            $this->toast($this->__('chatrooms.empty_name'));
+            return;
+        }
+
+        $this->rpc('Dialog.clear');
+
+        $id = generateUUID() . '@' . $this->me->session->getChatroomsServices()->first()->server;
+
+        // Send the presence
+        $m = $this->xmpp(new Muc);
+        $m->noNotify()
+            ->setTo($id)
+            ->setNickname($this->me->username)
+            ->request();
+
+        $config = [
+            'muc#roomconfig_pubsub' => 'xmpp:' . $form->server->value . '?;node=' . $form->node->value
+        ];
+
+        if ($info = resolveServiceServerInfo((new Jid($id))->domain)) {
+            match ($info->name) {
+                'ejabberd' => $config += ['mam' => 'true'],
+                'Prosody' => $config += ['muc#roomconfig_enablearchiving' => 'true'],
+            };
+        };
+
+        // Configure the MUC
+        $cgc = $this->xmpp(new CreateGroupChat);
+        $cgc->setTo($id)
+            ->setName($form->name->value)
+            ->setPinned($form->pinned->value)
+            ->setNick($this->me->username)
+            ->setNotify(false)
+            ->setExtraConfig($config)
+            ->request();
+
+        // Publish the item in the Space
+        $conference = new Conference;
+        $conference->space_server = $form->server->value;
+        $conference->space_node = $form->node->value;
+        $conference->conference = $id;
+        $conference->name = $form->name->value;
+        $conference->pinned = (bool)$form->pinned->value;
+        $conference->autojoin = true;
+        $conference->call = (bool)$form->call->value;
+
+        $b = $this->xmpp(new AddRoom);
+        $b->setConference($conference)
+            ->request();
+
+        // Map all the affiliations from Pubsub to MUC
+        $affiliations = Affiliation::where('server', $form->server->value)
+            ->where('node', $form->node->value)
+            ->get();
+
+        foreach ($affiliations as $affiliation) {
+            $changeAffiliation = $this->xmpp(new ChangeAffiliation);
+            $changeAffiliation->setTo($id)
+                ->setJid($affiliation->jid)
+                ->setAffiliation($affiliation->affiliation)
+                ->request();
         }
     }
 
@@ -214,19 +282,28 @@ class SpaceRooms extends Base
             $conference->pinned = (bool)$form->pinned->value;
             $conference->autojoin = true;
 
+            $config = [
+                'muc#roomconfig_roomname' => $form->name->value,
+                'muc#roomconfig_pubsub' => $subscription->uri,
+
+                // Just in case, we resend Group Chat configuration
+                'muc#roomconfig_persistentroom' => 'true',
+                'muc#roomconfig_changesubject' => 'false',
+                'muc#roomconfig_membersonly' => 'true',
+                'muc#roomconfig_whois' => 'anyone',
+                'muc#roomconfig_publicroom' => 'false',
+            ];
+
+            if ($info = resolveServiceServerInfo((new Jid($form->conference->value))->domain)) {
+                match ($info->name) {
+                    'ejabberd' => $config += ['mam' => 'true'],
+                    'Prosody' => $config += ['muc#roomconfig_enablearchiving' => 'true'],
+                };
+            };
+
             $sc = $this->xmpp(new SetConfig);
             $sc->setTo($form->conference->value)
-                ->setData([
-                    'muc#roomconfig_roomname' => $form->name->value,
-                    'muc#roomconfig_pubsub' => $subscription->uri,
-
-                    // Just in case, we resend Group Chat configuration
-                    'muc#roomconfig_persistentroom' => 'true',
-                    'muc#roomconfig_changesubject' => 'false',
-                    'muc#roomconfig_membersonly' => 'true',
-                    'muc#roomconfig_whois' => 'anyone',
-                    'muc#roomconfig_publicroom' => 'false',
-                ])
+                ->setData($config)
                 ->request();
 
             $b = $this->xmpp(new AddRoom);

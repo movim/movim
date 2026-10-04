@@ -109,7 +109,7 @@ class Muc
         return $query;
     }
 
-    public static function createGroupChat(string $name, ?string $pubsubNode = null)
+    public static function createGroupChat(string $name, array $extraConfig = [])
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
@@ -131,9 +131,7 @@ class Muc
             //'muc#roomconfig_allowpm' => 'false'
         ];
 
-        if ($pubsubNode) {
-            $config['muc#roomconfig_pubsub'] = $pubsubNode;
-        }
+        $config += $extraConfig;
 
         \Moxl\Utils::injectConfigInX($x, $config);
         return $query;

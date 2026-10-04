@@ -35,7 +35,7 @@
                 title="{$c->__('spaceinfo.admin_title')}">
                 <i class="material-symbols">settings</i>
             </span>
-            <span class="control icon gray active" onclick="SpaceRooms_ajaxAdd('{$subscription->server}', '{$subscription->node}')"
+            <span class="control icon gray active" onclick="SpaceRooms_ajaxAskAdd('{$subscription->server}', '{$subscription->node}')"
                 title="{$c->__('spaceinfo.add_room_title')}">
                 <i class="material-symbols">add</i>
             </span>
