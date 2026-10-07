@@ -14,7 +14,6 @@
 </noscript>
 <?php } ?>
 
-<div id="hiddendiv" aria-hidden="true"></div>
 <div role="status" id="snackbar" class="snackbar"></div>
 <div role="status" id="status_websocket" class="snackbar hide">
     <ul class="list thick active">

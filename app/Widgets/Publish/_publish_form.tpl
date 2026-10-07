@@ -76,7 +76,6 @@
                         id="title"
                         rows="1"
                         required
-                        oninput="MovimUtils.textareaAutoheight(this);"
                         placeholder="{$c->__('publish.placeholder')}"
                         type="text">{$draft->title ?? ''}</textarea>
                     <label for="desc">{if="$type == 'article'"}{$c->__('publish.title')}{/if} <span class="save"><i class="material-symbols">check</i></span></label>
@@ -86,7 +85,6 @@
                         dir="auto"
                         name="content"
                         placeholder="{$c->__('publish.content_text')}"
-                        oninput="MovimUtils.textareaAutoheight(this);"
                         >{$draft->content ?? ''}</textarea>
                     <label for="desc">{$c->__('publish.content')} <span class="save"><i class="material-symbols">check</i></span></label>
                     <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('publish.help_hashtag')}</span>

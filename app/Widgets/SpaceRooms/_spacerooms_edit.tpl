@@ -46,7 +46,7 @@
                         <i class="material-symbols">short_text</i>
                     </span>
                     <div>
-                        <textarea dir="auto" name="subject" placeholder="{$c->__('chatrooms.subject')}" style="min-height: 5rem;" oninput="MovimUtils.textareaAutoheight(this);">{$conference->subject ?? ''}</textarea>
+                        <textarea dir="auto" name="subject" placeholder="{$c->__('chatrooms.subject')}" style="min-height: 12rem;">{$conference->subject ?? ''}</textarea>
                         <label>{$c->__('chatrooms.subject')}</label>
                     </div>
                 </li>

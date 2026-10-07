@@ -13,14 +13,6 @@ var AdHoc = {
         }
     },
     initForm: function () {
-        var textareas = document.querySelectorAll('#dialog form[name=command] textarea');
-        var i = 0;
-
-        while (i < textareas.length) {
-            MovimUtils.textareaAutoheight(textareas[i]);
-            i++;
-        }
-
         var form = document.querySelector('#dialog form[name=command]');
 
         if (form) {

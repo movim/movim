@@ -8,7 +8,7 @@
         </div>
 
         <div>
-            <textarea name="reason" placeholder="{$c->__('room.reason')}" oninput="MovimUtils.textareaAutoheight(this);"></textarea>
+            <textarea name="reason" placeholder="{$c->__('room.reason')}"></textarea>
             <label for="reason">{$c->__('room.reason')} ({$c->__('input.optional')})</label>
         </div>
     </form>

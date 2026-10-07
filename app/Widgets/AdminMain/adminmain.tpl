@@ -49,9 +49,7 @@
                     <i class="material-symbols">description</i>
                 </span>
                 <div>
-                    <textarea type="text" name="description" id="description" placeholder="{$c->__('information.description_placeholder')}"
-                              onclick="MovimUtils.textareaAutoheight(this);"
-                              oninput="MovimUtils.textareaAutoheight(this);"/>{if="$configuration->description"}{$configuration->description}{/if}</textarea>
+                    <textarea type="text" name="description" id="description" placeholder="{$c->__('information.description_placeholder')}"/>{if="$configuration->description"}{$configuration->description}{/if}</textarea>
                     <label for="description">{$c->__('information.description')}</label>
                 </div>
             </li>
@@ -61,9 +59,7 @@
                 </span>
                 <div>
                     <textarea type="text" name="info" id="info"
-                              placeholder="{$c->__('information.label')}"
-                              onclick="MovimUtils.textareaAutoheight(this);"
-                              oninput="MovimUtils.textareaAutoheight(this);"/>{$configuration->info}</textarea>
+                              placeholder="{$c->__('information.label')}"/>{$configuration->info}</textarea>
                     <label for="info">{$c->__('information.label')}</label>
                     <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('information.info1')}</span>
                     <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('information.info2')} {$c->__('publish.content_text')}</span>
@@ -229,9 +225,7 @@
                         </span>
                         <div>
                             <textarea type="text" name="ssrfwhitelist" id="ssrfwhitelist"
-                                    placeholder="myblog.{$basehost}, upload.{$basehost}..."
-                                    onclick="MovimUtils.textareaAutoheight(this);"
-                                    oninput="MovimUtils.textareaAutoheight(this);"/>{$configuration->ssrfwhitelist ?? ''}</textarea>
+                                    placeholder="myblog.{$basehost}, upload.{$basehost}..."/>{$configuration->ssrfwhitelist ?? ''}</textarea>
                             <label for="ssrfwhitelist">{$c->__('ssrfwhitelist.label')}</label>
                             <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('ssrfwhitelist.info1')}</span>
                             <span class="supporting">

@@ -232,22 +232,6 @@ var MovimUtils = {
         textarea.innerHTML = text;
         return textarea.value;
     },
-    textareaAutoheight: function (textbox) {
-        if (textbox != null) {
-            var val = MovimUtils.htmlEscape(textbox.value).replace(/\n/g, '<br>');
-            var hidden = document.querySelector('#hiddendiv');
-            hidden.innerHTML = val + '<br/>';
-
-            textboxStyle = window.getComputedStyle(textbox);
-
-            hidden.style.paddingTop = textboxStyle.paddingTop;
-            hidden.style.paddingBottom = textboxStyle.paddingBottom;
-            hidden.style.width = textboxStyle.width;
-            hidden.style.fontSize = textboxStyle.fontSize;
-
-            textbox.style.height = hidden.scrollHeight + 'px';
-        }
-    },
     copyToClipboard: function (text) {
         navigator.clipboard.writeText(text).catch(err => MovimUtils.logError(err));
     },

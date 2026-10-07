@@ -80,7 +80,6 @@
                 <div>
                     <textarea
                         dir="auto"
-                        oninput="MovimUtils.textareaAutoheight(this);"
                         name="comment"
                         placeholder="{$c->__('field.type_here')}"
                     ></textarea>

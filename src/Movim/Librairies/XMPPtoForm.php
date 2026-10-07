@@ -364,7 +364,6 @@ class XMPPtoForm
         $textarea->setAttribute('label', $s['label'] ?? $s['var']);
         $textarea->setAttribute('id', $s['var']);
         $textarea->setAttribute('name', $s['var']);
-        $textarea->setAttribute('oninput', 'MovimUtils.textareaAutoheight(this)');
 
         if ($s->required) {
             $textarea->setAttribute('required', 'required');

@@ -9,6 +9,7 @@ v0.35.2 (master)
 * Add GALENER_XMPP_IP (default to 127.0.0.1) and drop the DNS resolution from GALENER_XMPP_HOST
 * Allow subjects to be set on Space rooms
 * Enable MAM for Spaces MUCs by default for Prosody and ejabberd (hacky but it works)
+* Remove MovimUtils.textareaAutoheight replaced by field-sizing: content; in the CSS
 
 v0.35.1
 ---------------------------

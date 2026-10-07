@@ -387,7 +387,6 @@ var Chat = {
         Chat.edit = false;
         var textarea = Chat.getTextarea();
         textarea.value = localStorage.getItem(textarea.dataset.jid + '_message');
-        MovimUtils.textareaAutoheight(textarea);
     },
     editPrevious: function () {
         var textarea = Chat.getTextarea();
@@ -402,14 +401,6 @@ var Chat = {
             Toast.send(Chat.action_impossible_encrypted_error);
         }
     },
-    /*editMessage: function(mid)
-    {
-        var textarea = Chat.getTextarea();
-        if (textarea.value == ''
-        && !Boolean(textarea.dataset.muc)) {
-            Chat_ajaxEdit(mid);
-        }
-    },*/
     resolveMessage: function (mid) {
         ChatActions_ajaxHttpResolveMessage(mid);
     },
@@ -494,7 +485,6 @@ var Chat = {
                 Chat.typingTimer = setTimeout(e => Chat.checkResolveUrl(this.value), 1000);
             }
 
-            MovimUtils.textareaAutoheight(this);
             Chat.checkEmojis(this.value);
             Chat.scrollRestore();
             Chat.toggleAction();
@@ -665,7 +655,6 @@ var Chat = {
             textarea.dataset.mid = mid;
         }
 
-        MovimUtils.textareaAutoheight(textarea);
         textarea.focus();
     },
     setConfig(pagination, delivery_error, action_impossible_encrypted_error) {

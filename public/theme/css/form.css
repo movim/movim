@@ -38,8 +38,8 @@ form>div.icon {
     padding-left: 9rem;
 }
 
-form>div textarea,
-#hiddendiv {
+form>div textarea {
+    field-sizing: content;
     border: none;
     resize: none;
     line-height: 3rem;
@@ -509,17 +509,4 @@ li.action div.action .button {
     section#sidebar~* .button.action {
         right: calc(42.5% - 17rem);
     }
-}
-
-/* The textarea hidden div */
-
-#hiddendiv {
-    position: fixed;
-    display: block;
-    z-index: -1;
-    opacity: 0;
-    height: auto;
-    white-space: pre-wrap;
-    overflow: hidden;
-    overflow-wrap: break-word;
 }
