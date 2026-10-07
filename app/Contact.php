@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Eloquent\Builder;
 use Respect\Validation\Validator;
 use Movim\ImageSize;
 use Movim\Jid;
@@ -30,7 +31,7 @@ class Contact extends Model
         return $this->belongsTo(User::class, 'id');
     }
 
-    public function scopeSuggest($query, User $user, ?string $like = null)
+    public function scopeSuggest(Builder $query, User $user, ?string $like = null)
     {
         return $query
             ->whereIn('id', function ($query) use ($like) {
@@ -55,7 +56,7 @@ class Contact extends Model
         return stringToColor($this->id);
     }
 
-    public function scopeOrderByPresence($query)
+    public function scopeOrderByPresence(Builder $query)
     {
         return $query->leftJoin(DB::raw('(
             select min(value) as value, jid

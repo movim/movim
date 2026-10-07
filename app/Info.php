@@ -3,6 +3,7 @@
 namespace App;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Moxl\Stanza\Space;
 use Moxl\Utils;
@@ -51,26 +52,26 @@ class Info extends Model
         }
     }
 
-    public function scopeWhereCategory($query, $category)
+    public function scopeWhereCategory(Builder $query, string $category)
     {
         return $query->whereHas('identities', function ($query) use ($category) {
             $query->where('category', $category);
         });
     }
 
-    public function scopeWhereType($query, $type)
+    public function scopeWhereType(Builder $query, string $type)
     {
         return $query->whereHas('identities', function ($query) use ($type) {
             $query->where('type', $type);
         });
     }
 
-    public function scopeSpace($query)
+    public function scopeSpace(Builder $query)
     {
         return $query->where('type', Space::NAMESPACE);
     }
 
-    public function scopeRestrictUserHost($query, User $user)
+    public function scopeRestrictUserHost(Builder $query, User $user)
     {
         $configuration = Configuration::get();
 
@@ -84,7 +85,7 @@ class Info extends Model
         }
     }
 
-    public function scopeRestrictMucServices($query)
+    public function scopeRestrictMucServices(Builder $query)
     {
         $query->whereIn('parent', function ($query) {
             $query->select('server')

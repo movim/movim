@@ -9,6 +9,7 @@ use Movim\Image;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Movim\Jid;
 use Movim\XMPPUri;
@@ -126,7 +127,7 @@ class Message extends Model
         return null;
     }
 
-    public function scopeJid($query, User $user, string $jid)
+    public function scopeJid(Builder $query, User $user, string $jid)
     {
         $jidFromToMessages = DB::table('messages')
             ->where('user_id', $user->id)

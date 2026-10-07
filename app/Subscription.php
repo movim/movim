@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Movim\ImageSize;
 use Movim\Model;
 
@@ -109,24 +110,24 @@ class Subscription extends Model
         return $user->unreads(space: [$this->server, $this->node]);
     }
 
-    public function scopeSpaces($query, ?bool $yes = true)
+    public function scopeSpaces(Builder $query, ?bool $yes = true)
     {
         return $query->where('space', $yes);
     }
 
-    public function scopeSpace($query, string $server, string $node)
+    public function scopeSpace(Builder $query, string $server, string $node)
     {
         return $query->where('space', true)
             ->where('server', $server)
             ->where('node', $node);
     }
 
-    public function scopeCommunities($query)
+    public function scopeCommunities(Builder $query)
     {
         return $query->where('node', '!=', Post::MICROBLOG_NODE);
     }
 
-    public function scopeNotComments($query)
+    public function scopeNotComments(Builder $query)
     {
         return $query->where('node', 'not like', Post::COMMENTS_NODE . '/%');
     }

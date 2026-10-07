@@ -7,6 +7,7 @@ use Respect\Validation\Validator;
 use Awobaz\Compoships\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Movim\Jid;
 use Movim\Widget\Wrapper;
@@ -212,22 +213,22 @@ class Post extends Model
         return ($this->title != null && $this->updated != null);
     }
 
-    public function scopeRestrictToMicroblog($query)
+    public function scopeRestrictToMicroblog(Builder $query)
     {
         return $query->where('posts.node', Post::MICROBLOG_NODE);
     }
 
-    public function scopeRestrictToCommunities($query)
+    public function scopeRestrictToCommunities(Builder $query)
     {
         return $query->where('posts.node', '!=', Post::MICROBLOG_NODE);
     }
 
-    public function scopeWithoutComments($query)
+    public function scopeWithoutComments(Builder $query)
     {
         return $query->whereNull('posts.parent_id');
     }
 
-    public function scopeRestrictUserHost($query, User $user)
+    public function scopeRestrictUserHost(Builder $query, User $user)
     {
         $configuration = Configuration::get();
 
@@ -242,7 +243,7 @@ class Post extends Model
         }
     }
 
-    public function scopeRestrictNSFW($query, User $user)
+    public function scopeRestrictNSFW(Builder $query, User $user)
     {
         $query->where('nsfw', false);
 
@@ -251,7 +252,7 @@ class Post extends Model
         }
     }
 
-    public function scopeRecents($query)
+    public function scopeRecents(Builder $query)
     {
         $query->join(
             DB::raw('(
@@ -335,13 +336,13 @@ class Post extends Model
         );
     }
 
-    public function scopeMyStories($query, User $user, ?int $id = null)
+    public function scopeMyStories(Builder $query, User $user, ?int $id = null)
     {
         $query = $query->whereIn('id', function ($query) use ($user) {
             $filters = DB::table('posts')->where('id', -1);
 
             $filters = \App\Post::withMineScope($filters, $user, Post::STORIES_NODE);
-            $filters = \App\Post::withStoriesScope($filters, $user, Post::STORIES_NODE);
+            $filters = \App\Post::withStoriesScope($filters, $user);
 
             $query->select('id')->from(
                 $filters,

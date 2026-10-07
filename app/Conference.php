@@ -5,6 +5,7 @@ namespace App;
 use Movim\ImageSize;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Movim\Jid;
 use Movim\Route;
 
@@ -56,7 +57,7 @@ class Conference extends Model
             ->whereNotNull('coin_xml');
     }
 
-    public function scopeFromSpace($query, ?bool $from = true)
+    public function scopeFromSpace(Builder $query, ?bool $from = true)
     {
         return $from
             ? $query->whereNotNull('space_server')->whereNotNull('space_node')
