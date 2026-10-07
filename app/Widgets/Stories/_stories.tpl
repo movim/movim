@@ -12,24 +12,26 @@
             </div>
         </li>
         {loop="$stories"}
-            <li class="block story {if="$value->my_views_count > 0"}seen{/if}" onclick="StoriesViewer_ajaxHttpGet({$value->id})">
-                <img class="main" src="{$value->picture->href|protectPicture}">
-                <div>
-                    <p class="line">{$value->title}</p>
-                    <p class="line">
-                        {if="$value->contact"}
-                            <span class="icon bubble tiny">
-                                <a href="#" onclick="listIconClick(event)">
-                                    <img src="{$value->contact->getPicture()}">
-                                </a>
-                            </span>
-                        {/if}
-                        <a href="#" onclick="MovimUtils.reload('{$c->route('contact', $value->aid)}')">
-                            {$value->truename}
-                        </a>
-                    </p>
-                </div>
-            </li>
+            {if="$value->picture"}
+                <li class="block story {if="$value->my_views_count > 0"}seen{/if}" onclick="StoriesViewer_ajaxHttpGet({$value->id})">
+                    <img class="main" src="{$value->picture->href|protectPicture}">
+                    <div>
+                        <p class="line">{$value->title}</p>
+                        <p class="line">
+                            {if="$value->contact"}
+                                <span class="icon bubble tiny">
+                                    <a href="#" onclick="listIconClick(event)">
+                                        <img src="{$value->contact->getPicture()}">
+                                    </a>
+                                </span>
+                            {/if}
+                            <a href="#" onclick="MovimUtils.reload('{$c->route('contact', $value->aid)}')">
+                                {$value->truename}
+                            </a>
+                        </p>
+                    </div>
+                </li>
+            {/if}
         {/loop}
     </ul>
     {if="$topcontacts->isNotEmpty()"}
