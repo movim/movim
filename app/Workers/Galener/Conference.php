@@ -116,7 +116,7 @@ class Conference
         $iq->setAttribute('type', 'set');
         $iq->setAttribute('id', \generateKey());
 
-        $xml = $dom->importNode(Muc::changeAffiliation($this->getSFUJid(), 'admin'), true);
+        $xml = $dom->importNode(Muc::changeAffiliations([$this->getSFUJid() => 'admin']), true);
         $iq->appendChild($xml);
 
         $this->sendXMPP($dom);
