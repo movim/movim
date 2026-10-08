@@ -38,6 +38,9 @@ jobs:
       - name: Install movim dependencies
         run: composer install --prefer-dist --no-progress
 
+      - name: Check code style with Laravel Pint
+        run: php vendor/bin/pint --test
+
       - name: Setup .env file
         run: |
           cp .env.example .env
