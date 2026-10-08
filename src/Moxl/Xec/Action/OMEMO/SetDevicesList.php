@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\OMEMO;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\OMEMO;
+use Moxl\Xec\Action;
 
 class SetDevicesList extends Action
 {
@@ -18,6 +18,7 @@ class SetDevicesList extends Action
     public function setList(array $list)
     {
         $this->_list = $list;
+
         return $this;
     }
 

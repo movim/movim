@@ -9,7 +9,6 @@ use Movim\Widget\Base;
 use Movim\XMPPUri;
 use Moxl\Stanza\Space;
 use Moxl\Xec\Action\Disco\Request;
-use Moxl\Xec\Action\Muc\SetAffiliations as MucSetAffiliations;
 use Moxl\Xec\Action\Pubsub\GetAffiliations;
 use Moxl\Xec\Action\Pubsub\SetAffiliations;
 use Moxl\Xec\Action\Pubsub\Unsubscribe;
@@ -45,7 +44,7 @@ class SpacesMenu extends Base
 
     public function onCounter(Packet $packet)
     {
-        $this->rpc('MovimUtils.setDataItem', '#' . $packet->from, 'counter', $packet->content);
+        $this->rpc('MovimUtils.setDataItem', '#'.$packet->from, 'counter', $packet->content);
     }
 
     public function onClosedNode(Packet $packet)
@@ -115,7 +114,7 @@ class SpacesMenu extends Base
     {
         if ($packet->content['type'] == Subscription::SPACE_NODE) {
             foreach ($this->me->subscriptions()->spaces()->get() as $space) {
-                if (!$space->info) {
+                if (! $space->info) {
                     $this->ajaxGetSpaceInfo($space->server, $space->node);
                 }
 
@@ -165,7 +164,7 @@ class SpacesMenu extends Base
             'server' => $server,
             'node' => $node,
             'info' => Info::space()->where('server', $server)->where('node', $node)->first(),
-            'contact' => Contact::firstOrNew(['id' => $jid])
+            'contact' => Contact::firstOrNew(['id' => $jid]),
         ]));
     }
 
@@ -210,6 +209,7 @@ class SpacesMenu extends Base
     {
         if (empty($form->uri->value)) {
             $this->toast($this->__('spacesmenu.key_required'));
+
             return;
         }
 
@@ -295,7 +295,7 @@ class SpacesMenu extends Base
                 $this->rpc('SpaceRooms_ajaxHttpGet', $server, $node);
                 $this->rpc('SpaceInfo_ajaxHttpGet', $server, $node);
 
-                if (!$isMobile) {
+                if (! $isMobile) {
                     $this->rpc('SpaceRooms_ajaxHttpGetChat', $server, $node, $conference);
                 }
             } else {
@@ -307,13 +307,15 @@ class SpacesMenu extends Base
     public function ajaxAdd(?string $server = null, ?string $node = null)
     {
         if ($server && $node && validateServerNode($server, $node)) {
-            if (!validateServerNode($server, $node)) return;
+            if (! validateServerNode($server, $node)) {
+                return;
+            }
 
             $info = Info::space()->where('server', $server)->where('node', $node)->first();
 
             $this->dialog($this->view('_spacesmenu_add', [
-                'uri' => 'xmpp:' . $server . '?;node=' . $node,
-                'info' => $info
+                'uri' => 'xmpp:'.$server.'?;node='.$node,
+                'info' => $info,
             ]));
         } else {
             $this->dialog($this->view('_spacesmenu_add'));
@@ -329,6 +331,7 @@ class SpacesMenu extends Base
     {
         if (empty($form->title->value)) {
             $this->toast($this->__('spacesmenu.space_title_empty'));
+
             return;
         }
 
@@ -345,7 +348,7 @@ class SpacesMenu extends Base
     {
         $this->dialog($this->view('_spacesmenu_locked', [
             'server' => $server,
-            'node' => $node
+            'node' => $node,
         ]));
     }
 
@@ -353,7 +356,7 @@ class SpacesMenu extends Base
     {
         $this->dialog($this->view('_spacesmenu_leave', [
             'server' => $server,
-            'node' => $node
+            'node' => $node,
         ]));
     }
 
@@ -362,7 +365,7 @@ class SpacesMenu extends Base
         return $this->view('_spacesmenu', [
             'server' => $server,
             'node' => $node,
-            'spaces' => $this->me->subscriptions()->spaces()->orderBy('pinned', 'desc')->with('info')->get()
+            'spaces' => $this->me->subscriptions()->spaces()->orderBy('pinned', 'desc')->with('info')->get(),
         ]);
     }
 }

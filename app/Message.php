@@ -2,25 +2,29 @@
 
 namespace App;
 
+use Awobaz\Compoships\Compoships;
+use Carbon\Carbon;
 use DOMDocument;
 use DOMXPath;
-use Movim\Model;
-use Movim\Image;
-
-use Illuminate\Database\QueryException;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
+use Movim\Emoji;
+use Movim\Image;
 use Movim\Jid;
+use Movim\Model;
 use Movim\XMPPUri;
 use Moxl\Xec\Action\Pubsub\GetItem;
 
 class Message extends Model
 {
-    use \Awobaz\Compoships\Compoships;
+    use Compoships;
 
     protected $primaryKey = ['user_id', 'jidfrom', 'id'];
+
     public $incrementing = false;
+
     public $mucpm; // Only used in Message Payloads to detect composer/paused PM messages
 
     protected $guarded = [];
@@ -28,13 +32,13 @@ class Message extends Model
     protected $with = ['reactions', 'parent.from', 'resolvedUrl', 'replace', 'file'];
 
     protected $attributes = [
-        'type'    => 'chat'
+        'type' => 'chat',
     ];
 
     protected $casts = [
         'markable' => 'boolean',
-        'quoted'   => 'boolean',
-        'seen'     => 'boolean',
+        'quoted' => 'boolean',
+        'seen' => 'boolean',
     ];
 
     private ?Collection $messageFiles = null;
@@ -53,6 +57,7 @@ class Message extends Model
         'jingle_retract',
         'space_pending',
     ];
+
     public const MESSAGE_TYPE_MUC = [
         'groupchat',
         'muc_admin',
@@ -137,6 +142,7 @@ class Message extends Model
                     ->where('user_id', $user->id)
                     ->where('jidto', $jid)
             );
+
         return $query->select('*')->from(
             $jidFromToMessages,
             'messages'
@@ -198,7 +204,7 @@ class Message extends Model
 
     public static function findByStanza(User $user, ?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null): Message
     {
-        $jidfrom = bareJid((string)$stanza->attributes()->from);
+        $jidfrom = bareJid((string) $stanza->attributes()->from);
 
         if (
             $stanza->attributes()->xmlns
@@ -206,8 +212,8 @@ class Message extends Model
         ) {
             return self::firstOrNew([
                 'user_id' => $user->id,
-                'stanzaid' => (string)$stanza->attributes()->id,
-                'jidfrom' => bareJid((string)$stanza->forwarded->message->attributes()->from)
+                'stanzaid' => (string) $stanza->attributes()->id,
+                'jidfrom' => bareJid((string) $stanza->forwarded->message->attributes()->from),
             ]);
         } elseif (
             $stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
@@ -217,14 +223,15 @@ class Message extends Model
         ) {
             return self::firstOrNew([
                 'user_id' => $user->id,
-                'stanzaid' => (string)$stanza->{'stanza-id'}->attributes()->id,
-                'jidfrom' => $jidfrom
+                'stanzaid' => (string) $stanza->{'stanza-id'}->attributes()->id,
+                'jidfrom' => $jidfrom,
             ]);
         } else {
             $message = new Message;
             $message->user_id = $user->id;
-            $message->id = 'm_' . generateUUID();
+            $message->id = 'm_'.generateUUID();
             $message->jidfrom = $jidfrom;
+
             return $message;
         }
     }
@@ -233,15 +240,15 @@ class Message extends Model
     {
         $last = $user->getLastMessage($this->isMuc() ? $this->jidfrom : $this->jidto, $this->isMuc());
 
-        return ($last && $this->mid == $last->mid);
+        return $last && $this->mid == $last->mid;
     }
 
     public static function eventMessageFactory(User $user, string $type, string $from, string $thread): Message
     {
         $userid = $user->id;
-        $message = new \App\Message;
+        $message = new Message;
         $message->user_id = $userid;
-        $message->id = 'm_' . generateUUID();
+        $message->id = 'm_'.generateUUID();
         $message->jidto = $userid;
         $message->jidfrom = $from;
         $message->published = gmdate('Y-m-d H:i:s');
@@ -268,24 +275,24 @@ class Message extends Model
         // We reset the URL resolution to refresh it once the message is displayed
         $this->resolved = false;
 
-        $jidTo = new Jid((string)$stanza->attributes()->to);
-        $jidFrom = new Jid((string)$stanza->attributes()->from);
+        $jidTo = new Jid((string) $stanza->attributes()->to);
+        $jidFrom = new Jid((string) $stanza->attributes()->from);
 
         $this->user_id = $user->id;
 
-        if (!$this->id) {
-            $this->id = 'm_' . generateUUID();
+        if (! $this->id) {
+            $this->id = 'm_'.generateUUID();
         }
 
         if ($stanza->attributes()->id) {
-            $this->messageid  = (string)$stanza->attributes()->id;
+            $this->messageid = (string) $stanza->attributes()->id;
         }
 
-        if (!$this->jidto && $jidTo->isValid()) {
+        if (! $this->jidto && $jidTo->isValid()) {
             $this->jidto = $jidTo->bareJid();
         }
 
-        if (!$this->jidfrom && $jidFrom->isValid()) {
+        if (! $this->jidfrom && $jidFrom->isValid()) {
             $this->jidfrom = $jidFrom->bareJid();
         }
 
@@ -302,21 +309,21 @@ class Message extends Model
             $this->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
         } elseif ($parent && $parent->delay) {
             $this->published = gmdate('Y-m-d H:i:s', strtotime($parent->delay->attributes()->stamp));
-        } elseif (!isset($stanza->replace) || $this->published === null) {
+        } elseif (! isset($stanza->replace) || $this->published === null) {
             $this->published = gmdate('Y-m-d H:i:s');
         }
 
         $this->type = 'chat';
         if ($stanza->attributes()->type) {
-            $this->type = (string)$stanza->attributes()->type;
+            $this->type = (string) $stanza->attributes()->type;
         }
 
         // https://xmpp.org/extensions/xep-0359.html#stanza-id
         if (
             $stanza->{'origin-id'}
-            && (string)$stanza->{'origin-id'}->attributes()->xmlns == 'urn:xmpp:sid:0'
+            && (string) $stanza->{'origin-id'}->attributes()->xmlns == 'urn:xmpp:sid:0'
         ) {
-            $this->originid = (string)$stanza->{'origin-id'}->attributes()->id;
+            $this->originid = (string) $stanza->{'origin-id'}->attributes()->id;
         }
 
         // https://xmpp.org/extensions/xep-0359.html#origin-id for groupchat only
@@ -324,7 +331,7 @@ class Message extends Model
             $this->isMuc()
             && $stanza->{'stanza-id'}
             && $stanza->{'stanza-id'}->attributes()->id
-            && (string)$stanza->{'stanza-id'}->attributes()->xmlns == 'urn:xmpp:sid:0'
+            && (string) $stanza->{'stanza-id'}->attributes()->xmlns == 'urn:xmpp:sid:0'
             && ($stanza->{'stanza-id'}->attributes()->by == $this->jidfrom
                 || $stanza->{'stanza-id'}->attributes()->by == $user->id
             )
@@ -333,7 +340,7 @@ class Message extends Model
                 $session = linker($user->session->id)->session;
 
                 // Cache the state in Session for performances purpose
-                $sessionKey = $this->jidfrom . '_stanza_id';
+                $sessionKey = $this->jidfrom.'_stanza_id';
                 $conferenceStanzaIdEnabled = $session->get($sessionKey, null);
 
                 if ($conferenceStanzaIdEnabled == null) {
@@ -345,10 +352,10 @@ class Message extends Model
                 }
 
                 if ($session->get($sessionKey, false)) {
-                    $this->stanzaid = (string)$stanza->{'stanza-id'}->attributes()->id;
+                    $this->stanzaid = (string) $stanza->{'stanza-id'}->attributes()->id;
                 }
             } else {
-                $this->stanzaid = (string)$stanza->{'stanza-id'}->attributes()->id;
+                $this->stanzaid = (string) $stanza->{'stanza-id'}->attributes()->id;
             }
         }
 
@@ -360,22 +367,22 @@ class Message extends Model
         if (
             $this->type !== 'groupchat'
             && $stanza->x
-            && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
+            && (string) $stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
         ) {
             $this->mucpm = true;
-            if ($parent && (string)$parent->attributes()->xmlns == 'urn:xmpp:forward:0') {
-                $this->jidto = (string)$stanza->attributes()->to;
+            if ($parent && (string) $parent->attributes()->xmlns == 'urn:xmpp:forward:0') {
+                $this->jidto = (string) $stanza->attributes()->to;
             } elseif (isset($jidFrom->resource)) {
-                $this->jidfrom = (string)$jidFrom;
+                $this->jidfrom = (string) $jidFrom;
             }
         }
 
-        # XEP-0444: Message Reactions
+        // XEP-0444: Message Reactions
         if (
             isset($stanza->reactions)
             && $stanza->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0'
         ) {
-            $parentMessage = $this->resolveParentMessage($this->jidfrom, (string)$stanza->reactions->attributes()->id);
+            $parentMessage = $this->resolveParentMessage($this->jidfrom, (string) $stanza->reactions->attributes()->id);
 
             if ($parentMessage) {
                 $resource = $this->isMuc()
@@ -388,15 +395,15 @@ class Message extends Model
                     ->delete();
 
                 $emojis = [];
-                $now = \Carbon\Carbon::now();
-                $emoji = \Movim\Emoji::getInstance();
+                $now = Carbon::now();
+                $emoji = Emoji::getInstance();
 
                 foreach ($stanza->reactions->reaction as $children) {
-                    $emoji->replace((string)$children);
+                    $emoji->replace((string) $children);
                     if ($emoji->isSingleEmoji()) {
                         $reaction = new Reaction;
                         $reaction->message_mid = $parentMessage->mid;
-                        $reaction->emoji = (string)$children;
+                        $reaction->emoji = (string) $children;
                         $reaction->jidfrom = $resource;
                         $reaction->created_at = $now;
                         $reaction->updated_at = $now;
@@ -418,23 +425,23 @@ class Message extends Model
             return null;
         } elseif ($stanza->body || $stanza->subject) {
             if ($stanza->body) {
-                $this->body = (string)$stanza->body;
+                $this->body = (string) $stanza->body;
             }
 
             if ($stanza->subject) {
-                $this->subject = (string)$stanza->subject;
+                $this->subject = (string) $stanza->subject;
             }
 
             if ($stanza->thread) {
-                $this->thread = (string)$stanza->thread;
+                $this->thread = (string) $stanza->thread;
             }
 
             // XEP-0333: Chat Markers
-            $this->markable = (bool)($stanza->markable && $stanza->markable->attributes()->xmlns == 'urn:xmpp:chat-markers:0');
+            $this->markable = (bool) ($stanza->markable && $stanza->markable->attributes()->xmlns == 'urn:xmpp:chat-markers:0');
 
             // Reply can be handled by XEP-0461: Message Replies or by the threadid Jabber mechanism
             if ($stanza->reply && $stanza->reply->attributes()->xmlns == 'urn:xmpp:reply:0') {
-                $parentMessage = $this->resolveParentMessage($this->jidfrom, (string)$stanza->reply->attributes()->id);
+                $parentMessage = $this->resolveParentMessage($this->jidfrom, (string) $stanza->reply->attributes()->id);
 
                 if (
                     $parentMessage
@@ -451,7 +458,7 @@ class Message extends Model
                 ) {
                     $this->body = mb_substr(
                         htmlspecialchars_decode($this->body, ENT_XML1),
-                        (int)$stanza->fallback->body->attributes()->end
+                        (int) $stanza->fallback->body->attributes()->end
                     );
                 }
             }
@@ -474,11 +481,11 @@ class Message extends Model
 
             if (
                 $stanza->html
-                && (string)$stanza->html->attributes()->xmlns = 'http://jabber.org/protocol/xhtml-im'
+                && (string) $stanza->html->attributes()->xmlns = 'http://jabber.org/protocol/xhtml-im'
             ) {
                 $head = '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';
                 $dom = new DOMDocument('1.0', 'UTF-8');
-                $dom->loadHTML($head .  (string)$stanza->html->body);
+                $dom->loadHTML($head.(string) $stanza->html->body);
                 $xpath = new DOMXPath($dom);
                 $imgs = $xpath->query("//img[starts-with(@src,'cid:')]");
 
@@ -498,11 +505,11 @@ class Message extends Model
                                 'algorythm' => $cid['algorythm'],
                                 'alt' => $img->getAttribute('alt'),
                             ];
-                            $img->replaceWith(self::$inlinePlaceholder . $key);
+                            $img->replaceWith(self::$inlinePlaceholder.$key);
                         }
 
                         $this->attributes['inlines'] = serialize($inlines);
-                        $this->body = (string)$dom->textContent;
+                        $this->body = (string) $dom->textContent;
                     }
 
                     // One sticker only
@@ -520,29 +527,29 @@ class Message extends Model
             // XEP-0385: Stateless Inline Media Sharing (SIMS)
             if (
                 $stanza->reference
-                && (string)$stanza->reference->attributes()->xmlns == 'urn:xmpp:reference:0'
+                && (string) $stanza->reference->attributes()->xmlns == 'urn:xmpp:reference:0'
             ) {
                 $messageFile = new MessageFile;
 
                 if (
                     $stanza->reference->{'media-sharing'}
-                    && (string)$stanza->reference->{'media-sharing'}->attributes()->xmlns == 'urn:xmpp:sims:1'
+                    && (string) $stanza->reference->{'media-sharing'}->attributes()->xmlns == 'urn:xmpp:sims:1'
                 ) {
                     $file = $stanza->reference->{'media-sharing'}->file;
 
                     if (isset($file)) {
                         if (preg_match('/\w+\/[-+.\w]+/', $file->{'media-type'}) == 1) {
-                            $messageFile->type = (string)$file->{'media-type'};
+                            $messageFile->type = (string) $file->{'media-type'};
                         }
-                        $messageFile->size = (int)$file->size;
-                        $messageFile->name = (string)$file->name;
+                        $messageFile->size = (int) $file->size;
+                        $messageFile->name = (string) $file->name;
                     }
 
                     if ($stanza->reference->{'media-sharing'}->sources) {
                         $source = $stanza->reference->{'media-sharing'}->sources->reference;
 
-                        if (!filter_var((string)$source->attributes()->uri, FILTER_VALIDATE_URL) === false) {
-                            $messageFile->url = (string)$source->attributes()->uri;
+                        if (! filter_var((string) $source->attributes()->uri, FILTER_VALIDATE_URL) === false) {
+                            $messageFile->url = (string) $source->attributes()->uri;
                         }
                     }
 
@@ -561,22 +568,22 @@ class Message extends Model
 
                     if (
                         $stanza->reference->{'media-sharing'}->file->thumbnail
-                        && (string)$stanza->reference->{'media-sharing'}->file->thumbnail->attributes()->xmlns == 'urn:xmpp:thumbs:1'
+                        && (string) $stanza->reference->{'media-sharing'}->file->thumbnail->attributes()->xmlns == 'urn:xmpp:thumbs:1'
                     ) {
                         $thumbnailAttributes = $stanza->reference->{'media-sharing'}->file->thumbnail->attributes();
 
-                        if (!filter_var((string)$thumbnailAttributes->uri, FILTER_VALIDATE_URL) === false) {
-                            $messageFile->thumbnail_width = (int)$thumbnailAttributes->width;
-                            $messageFile->thumbnail_height = (int)$thumbnailAttributes->height;
-                            $messageFile->thumbnail_type = (string)$thumbnailAttributes->{'media-type'};
-                            $messageFile->thumbnail_url = (string)$thumbnailAttributes->uri;
+                        if (! filter_var((string) $thumbnailAttributes->uri, FILTER_VALIDATE_URL) === false) {
+                            $messageFile->thumbnail_width = (int) $thumbnailAttributes->width;
+                            $messageFile->thumbnail_height = (int) $thumbnailAttributes->height;
+                            $messageFile->thumbnail_type = (string) $thumbnailAttributes->{'media-type'};
+                            $messageFile->thumbnail_url = (string) $thumbnailAttributes->uri;
                         }
 
-                        if (substr((string)$thumbnailAttributes->uri, 0, 28) == 'data:image/thumbhash;base64,') {
-                            $messageFile->thumbnail_width = (int)$thumbnailAttributes->width;
-                            $messageFile->thumbnail_height = (int)$thumbnailAttributes->height;
-                            $messageFile->thumbnail_type = (string)$thumbnailAttributes->{'media-type'};
-                            $messageFile->thumbnail_url = substr((string)$thumbnailAttributes->uri, 28);
+                        if (substr((string) $thumbnailAttributes->uri, 0, 28) == 'data:image/thumbhash;base64,') {
+                            $messageFile->thumbnail_width = (int) $thumbnailAttributes->width;
+                            $messageFile->thumbnail_height = (int) $thumbnailAttributes->height;
+                            $messageFile->thumbnail_type = (string) $thumbnailAttributes->{'media-type'};
+                            $messageFile->thumbnail_url = substr((string) $thumbnailAttributes->uri, 28);
                         }
                     }
 
@@ -589,68 +596,68 @@ class Message extends Model
                         if (empty($messageFile->name)) {
                             $messageFile->name =
                                 pathinfo(parse_url($messageFile->uri, PHP_URL_PATH), PATHINFO_BASENAME)
-                                . ' (' . parse_url($messageFile->uri, PHP_URL_HOST) . ')';
+                                .' ('.parse_url($messageFile->uri, PHP_URL_HOST).')';
                         }
 
                         $this->picture = $messageFile->isPicture;
                         $this->messageFiles->push($messageFile);
                     }
                 } else {
-                    $this->posturi = (string)$stanza->reference->attributes()->uri;
+                    $this->posturi = (string) $stanza->reference->attributes()->uri;
                 }
             }
 
             if (
                 $stanza->encryption
-                && (string)$stanza->encryption->attributes()->xmlns == 'urn:xmpp:eme:0'
+                && (string) $stanza->encryption->attributes()->xmlns == 'urn:xmpp:eme:0'
             ) {
                 $this->encrypted = true;
             }
 
             if (
                 $stanza->replace
-                && (string)$stanza->replace->attributes()->xmlns == 'urn:xmpp:message-correct:0'
+                && (string) $stanza->replace->attributes()->xmlns == 'urn:xmpp:message-correct:0'
             ) {
                 // Here the replaceid could be a bad one, we will handle it later
-                $this->replaceid = (string)$stanza->replace->attributes()->id;
+                $this->replaceid = (string) $stanza->replace->attributes()->id;
             }
 
             if (isset($stanza->x->invite)) {
                 $this->type = 'invitation';
                 $this->subject = $this->jidfrom;
-                $this->jidfrom = bareJid((string)$stanza->x->invite->attributes()->from);
+                $this->jidfrom = bareJid((string) $stanza->x->invite->attributes()->from);
             }
         } elseif (
             isset($stanza->x)
             && $stanza->x->attributes()->xmlns == 'jabber:x:conference'
         ) {
             $this->type = 'invitation';
-            $this->body = (string)$stanza->x->attributes()->reason;
-            $this->subject = (string)$stanza->x->attributes()->jid;
+            $this->body = (string) $stanza->x->attributes()->reason;
+            $this->subject = (string) $stanza->x->attributes()->jid;
         } elseif (
             isset($stanza->x)
             && $stanza->x->attributes()->xmlns == 'jabber:x:data'
         ) {
             // Message dataform
             if (
-                (string)$stanza->x->xpath("//field[@var='FORM_TYPE']/value")[0]
+                (string) $stanza->x->xpath("//field[@var='FORM_TYPE']/value")[0]
                 == 'http://jabber.org/protocol/pubsub#subscribe_authorization'
             ) {
                 $this->type = 'space_pending';
-                $this->body = (string)$stanza->x->xpath("//field[@var='pubsub#node']/value")[0];
-                $this->subject = (string)$stanza->x->xpath("//field[@var='pubsub#subscriber_jid']/value")[0];
+                $this->body = (string) $stanza->x->xpath("//field[@var='pubsub#node']/value")[0];
+                $this->subject = (string) $stanza->x->xpath("//field[@var='pubsub#subscriber_jid']/value")[0];
             }
         }
 
-        # XEP-0384 OMEMO Encryption
+        // XEP-0384 OMEMO Encryption
         if (
             isset($stanza->encrypted)
             && $stanza->encrypted->attributes()->xmlns == 'eu.siacs.conversations.axolotl'
         ) {
             $omemoHeader = new MessageOmemoHeader;
             $omemoHeader->set($stanza);
-            $this->attributes['omemoheader'] = (string)$omemoHeader;
-            $this->attributes['bundleid'] = (int)$omemoHeader->sid;
+            $this->attributes['omemoheader'] = (string) $omemoHeader;
+            $this->attributes['bundleid'] = (int) $omemoHeader->sid;
         }
 
         return $this;
@@ -661,7 +668,9 @@ class Message extends Model
      */
     public function resolvePost()
     {
-        if (!$this->posturi || !empty($this->postid)) return;
+        if (! $this->posturi || ! empty($this->postid)) {
+            return;
+        }
 
         $xmppUri = new XMPPUri($this->posturi);
 
@@ -683,7 +692,9 @@ class Message extends Model
      */
     public function getInlinedBodyAttribute(?bool $alt = false, ?object $triggerRequest = null): ?string
     {
-        if (!array_key_exists('body', $this->attributes)) return null;
+        if (! array_key_exists('body', $this->attributes)) {
+            return null;
+        }
 
         $body = $this->attributes['body'];
 
@@ -691,7 +702,7 @@ class Message extends Model
             foreach ($this->getInlinesAttribute() as $key => $inline) {
                 if ($alt == true) {
                     $body = str_replace(
-                        Message::$inlinePlaceholder . $key,
+                        Message::$inlinePlaceholder.$key,
                         $inline['alt'],
                         $body
                     );
@@ -702,7 +713,7 @@ class Message extends Model
                 $url = Image::getOrCreate($inline['hash']);
 
                 if ($url) {
-                    $dom = new \DOMDocument('1.0', 'UTF-8');
+                    $dom = new DOMDocument('1.0', 'UTF-8');
                     $img = $dom->createElement('img');
                     $img->setAttribute('class', 'inline');
                     $img->setAttribute('src', $url);
@@ -711,13 +722,13 @@ class Message extends Model
                     $dom->append($img);
 
                     $body = str_replace(
-                        Message::$inlinePlaceholder . $key,
+                        Message::$inlinePlaceholder.$key,
                         $dom->saveHTML($dom->documentElement),
                         $body
                     );
                 } else {
                     $body = str_replace(
-                        Message::$inlinePlaceholder . $key,
+                        Message::$inlinePlaceholder.$key,
                         $inline['alt'],
                         $body
                     );
@@ -734,20 +745,19 @@ class Message extends Model
 
     public function isEmpty(): bool
     {
-        return (empty($this->body)
+        return empty($this->body)
             && empty($this->sticker)
-            && !$this->file
-        );
+            && ! $this->file;
     }
 
     public function isMuc(): bool
     {
-        return ($this->type == 'groupchat');
+        return $this->type == 'groupchat';
     }
 
     public function isSubject(): bool
     {
-        return !empty($this->subject);
+        return ! empty($this->subject);
     }
 
     public function isMine(): bool
@@ -761,12 +771,12 @@ class Message extends Model
                 ->count() > 0;
         }
 
-        return ($this->user_id == $this->jidfrom);
+        return $this->user_id == $this->jidfrom;
     }
 
     public function isClassic(): bool
     {
-        return in_array($this->type,  ['chat', 'groupchat']);
+        return in_array($this->type, ['chat', 'groupchat']);
     }
 
     public function retract()
@@ -795,12 +805,12 @@ class Message extends Model
         return
             strlen($this->attributes['jidto']) < 256
             && strlen($this->attributes['jidfrom']) < 256
-            && (!isset($this->attributes['resource']) || strlen($this->attributes['resource']) < 256)
-            && (!isset($this->attributes['thread']) || strlen($this->attributes['thread']) < 128)
-            && (!isset($this->attributes['replaceid']) || strlen($this->attributes['replaceid']) < 64)
-            && (!isset($this->attributes['originid']) || strlen($this->attributes['originid']) < 255)
-            && (!isset($this->attributes['id']) || strlen($this->attributes['id']) < 64)
-            && (!isset($this->attributes['oldid']) || strlen($this->attributes['oldid']) < 64);
+            && (! isset($this->attributes['resource']) || strlen($this->attributes['resource']) < 256)
+            && (! isset($this->attributes['thread']) || strlen($this->attributes['thread']) < 128)
+            && (! isset($this->attributes['replaceid']) || strlen($this->attributes['replaceid']) < 64)
+            && (! isset($this->attributes['originid']) || strlen($this->attributes['originid']) < 255)
+            && (! isset($this->attributes['id']) || strlen($this->attributes['id']) < 64)
+            && (! isset($this->attributes['oldid']) || strlen($this->attributes['oldid']) < 64);
     }
 
     // toArray is already used
@@ -853,6 +863,7 @@ class Message extends Model
     public function getNextStatementId()
     {
         $next_id = DB::select("select nextval('messages_mid_seq'::regclass)");
+
         return intval($next_id['0']->nextval);
     }
 
@@ -864,7 +875,7 @@ class Message extends Model
         $emojis = extractEmojis($this->body);
 
         foreach ($this->reactions as $reaction) {
-            if (!in_array($reaction->emoji, $emojis)) {
+            if (! in_array($reaction->emoji, $emojis)) {
                 array_push($emojis, $reaction->emoji);
             }
         }
@@ -888,7 +899,7 @@ class Message extends Model
                 ->first();
 
             // Rare case, origin-id
-            if (!$parentMessage) {
+            if (! $parentMessage) {
                 $parentMessage = $this->user->messages()->jid($this->user, $from)
                     ->where('originid', $id)
                     ->first();

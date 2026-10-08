@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class CreatePostUserViewsTable extends Migration
 {
@@ -12,12 +12,12 @@ class CreatePostUserViewsTable extends Migration
             $table->integer('post_id')->unsigned();
 
             $table->foreign('user_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
+                ->references('id')->on('users')
+                ->onDelete('cascade');
 
             $table->foreign('post_id')
-                  ->references('id')->on('posts')
-                  ->onDelete('cascade');
+                ->references('id')->on('posts')
+                ->onDelete('cascade');
 
             $table->timestamps();
 

@@ -3,6 +3,7 @@
 namespace Moxl\Xec\Action\Blocking;
 
 use App\Reported;
+use Carbon\Carbon;
 use Moxl\Stanza\Blocking;
 use Moxl\Xec\Action;
 
@@ -19,22 +20,23 @@ class Request extends Action
         $jids = collect();
 
         foreach ($stanza->blocklist->item as $item) {
-            $jids->push((string)$item->attributes()->jid);
+            $jids->push((string) $item->attributes()->jid);
         }
 
         $jids = $jids->unique();
 
         Reported::insert($jids->diff(Reported::whereIn('id', $jids)->get()->pluck('id'))->map(function ($jid) {
-            $now = \Carbon\Carbon::now();
+            $now = Carbon::now();
+
             return [
                 'id' => $jid,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
             ];
         })->toArray());
 
         $this->me->reported()->syncWithoutDetaching($jids->mapWithKeys(function ($jid) {
-            return [$jid  => ['synced' => true]];
+            return [$jid => ['synced' => true]];
         }));
         $this->me->refreshBlocked();
 

@@ -2,12 +2,13 @@
 
 namespace Moxl\Xec\Action\Muc;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Muc;
+use Moxl\Xec\Action;
 
 class SetConfig extends Action
 {
     protected $_to;
+
     protected $_data;
 
     public function request()

@@ -12,18 +12,15 @@ class SetCorrectCollationToAllTables extends Migration
             foreach ($this->schema->getConnection()->select('
                 select concat("ALTER TABLE `", TABLE_NAME,"` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;") as result
                 from information_schema.tables
-                where table_schema="' . config('database.database') . '"
+                where table_schema="'.config('database.database').'"
                 and table_type="BASE TABLE"
             ') as $convert) {
                 $this->schema->getConnection()->statement($convert->result);
-            };
+            }
 
             $this->enableForeignKeyCheck();
         }
     }
 
-    public function down()
-    {
-
-    }
+    public function down() {}
 }

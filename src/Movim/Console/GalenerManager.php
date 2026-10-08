@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -42,13 +43,14 @@ class GalenerManager extends Command
         if ($message == 'status') {
             $message = requestAPI('galenerstatus', socket: API_SOCKET);
 
-            $output->writeln('<info>' . $message . '</info>');
+            $output->writeln('<info>'.$message.'</info>');
 
             if (file_exists(GALENER_API_SOCKET)) {
                 $tree = requestAPI('conferences', socket: GALENER_API_SOCKET);
 
                 if ($tree == false) {
                     $output->writeln('<error>Cannot get the information, did you tried with the daemon user?</error>');
+
                     return Command::FAILURE;
                 }
 
@@ -57,21 +59,21 @@ class GalenerManager extends Command
                 $root = new TreeNode('⚙️  Movim Galener');
 
                 foreach ($tree as $jid => $conference) {
-                    $conferenceNode = new TreeNode('📹 ' . $conference['sfu_jid']);
+                    $conferenceNode = new TreeNode('📹 '.$conference['sfu_jid']);
 
-                    $statusNode = new TreeNode('➡️  <options=bold>In room</> ' . $jid);
+                    $statusNode = new TreeNode('➡️  <options=bold>In room</> '.$jid);
                     $conferenceNode->addChild($statusNode);
 
                     if ($conference['started_at']) {
-                        $startedAt = new TreeNode('🕒 <options=bold>Started since</> ' . $conference['started_at']);
+                        $startedAt = new TreeNode('🕒 <options=bold>Started since</> '.$conference['started_at']);
                         $conferenceNode->addChild($startedAt);
                     }
 
-                    $connectionsNode = new TreeNode('📑 <options=bold>Connected</> '. count($conference['connections']));
+                    $connectionsNode = new TreeNode('📑 <options=bold>Connected</> '.count($conference['connections']));
                     $conferenceNode->addChild($connectionsNode);
 
                     foreach ($conference['connections'] as $connection) {
-                        $connectionNode = new TreeNode('👤 ' . $connection);
+                        $connectionNode = new TreeNode('👤 '.$connection);
                         $connectionsNode->addChild($connectionNode);
                     }
 
@@ -82,7 +84,7 @@ class GalenerManager extends Command
                 $tree->render();
             }
         } else {
-            $output->writeln('<info>' . $message . '</info>');
+            $output->writeln('<info>'.$message.'</info>');
         }
 
         return Command::SUCCESS;

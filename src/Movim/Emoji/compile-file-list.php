@@ -16,16 +16,16 @@ foreach (glob('../../../public/theme/img/emojis/svg/*.svg') as $file) {
     $name = pathinfo($file, PATHINFO_FILENAME);
 
     if (array_key_exists($name, $unicodeData)) {
-        $compiled[(string)$name] = $unicodeData[$name];
+        $compiled[(string) $name] = $unicodeData[$name];
     }
 }
 
-$dump = '<?php ' . PHP_EOL . 'return [' . PHP_EOL;
+$dump = '<?php '.PHP_EOL.'return ['.PHP_EOL;
 
 foreach ($compiled as $key => $value) {
-    $dump .= "    '" . $key . "' => '" . $value . "',". PHP_EOL;
+    $dump .= "    '".$key."' => '".$value."',".PHP_EOL;
 }
 
-$dump .= '];' . PHP_EOL;
+$dump .= '];'.PHP_EOL;
 
 file_put_contents('CompiledEmoji.php', $dump);

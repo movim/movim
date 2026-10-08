@@ -2,30 +2,33 @@
 
 namespace App;
 
-use Movim\Image;
-use Movim\ImageSize;
-use Moxl\Xec\Action\Presence\Muc;
 use Awobaz\Compoships\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Movim\Image;
+use Movim\ImageSize;
 use Movim\Jid;
+use Moxl\Xec\Action\Presence\Muc;
 
 class Presence extends Model
 {
     protected $primaryKey = ['session_id', 'jid', 'mucjid', 'resource'];
+
     public bool $noMav = false;
+
     public $incrementing = false;
+
     public $hatsToSave = [];
 
     protected $attributes = [
         'mucjid' => '', // Required to use it in the primary key
-        'muc' => false
+        'muc' => false,
     ];
 
     protected $fillable = [
         'session_id',
         'jid',
         'resource',
-        'mucjid'
+        'mucjid',
     ];
 
     protected $with = ['hats'];
@@ -54,7 +57,9 @@ class Presence extends Model
 
     public function getSeenAttribute(): ?string
     {
-        if ($this->value == 1) return null;
+        if ($this->value == 1) {
+            return null;
+        }
 
         // XEP-0319
         if ($this->idle) {
@@ -63,7 +68,9 @@ class Presence extends Model
         // ...supersedes XEP-0256
         elseif ($this->resource == '' && $this->delay) {
             $delay = strtotime($this->delay);
-            if ($this->last) $delay += $this->last;
+            if ($this->last) {
+                $delay += $this->last;
+            }
 
             return gmdate('Y-m-d H:i:s', $delay);
         } elseif ($this->delay) {
@@ -83,8 +90,8 @@ class Presence extends Model
 
     public function getFullJidAttribute(): string
     {
-        return !empty($this->resource)
-            ? $this->jid . '/' . $this->resource
+        return ! empty($this->resource)
+            ? $this->jid.'/'.$this->resource
             : $this->jid;
     }
 
@@ -132,7 +139,7 @@ class Presence extends Model
     {
         // Simple string comparison, no need to parse the XML
         foreach (explode('<content', $this->attributes['muji_xml']) as $content) {
-            if (str_contains($content, 'media="video"') && !str_contains($content, 'name="slides"')) {
+            if (str_contains($content, 'media="video"') && ! str_contains($content, 'name="slides"')) {
                 return true;
             }
         }
@@ -155,7 +162,7 @@ class Presence extends Model
 
             if ($xml !== false) {
                 foreach ($xml->users->user as $user) {
-                    $jid = substr((string)$user->attributes()->entity, 5);
+                    $jid = substr((string) $user->attributes()->entity, 5);
                     $users[$jid] = [
                         'jid' => $jid,
                     ];
@@ -202,6 +209,7 @@ class Presence extends Model
     {
         $temporary = new self;
         $temporary->set($user, $stanza);
+
         return $temporary;
     }
 
@@ -213,30 +221,30 @@ class Presence extends Model
         $this->resource = $from->resource ?? '';
         $this->type = $stanza->attributes()->type ?? null;
 
-        if ($stanza->status && !empty((string)$stanza->status)) {
-            $this->status = (string)$stanza->status;
+        if ($stanza->status && ! empty((string) $stanza->status)) {
+            $this->status = (string) $stanza->status;
         }
 
         if ($stanza->c) {
-            $this->node = (string)$stanza->c->attributes()->xmlns == 'urn:xmpp:caps'
-                ? 'urn:xmpp:caps#' . (string)$stanza->c->hash->attributes()->algo . '.' . (string)$stanza->c->hash
-                : (string)$stanza->c->attributes()->node . '#' . (string)$stanza->c->attributes()->ver;
+            $this->node = (string) $stanza->c->attributes()->xmlns == 'urn:xmpp:caps'
+                ? 'urn:xmpp:caps#'.(string) $stanza->c->hash->attributes()->algo.'.'.(string) $stanza->c->hash
+                : (string) $stanza->c->attributes()->node.'#'.(string) $stanza->c->attributes()->ver;
         }
 
-        $this->priority = ($stanza->priority) ? (int)$stanza->priority : 0;
+        $this->priority = ($stanza->priority) ? (int) $stanza->priority : 0;
 
-        if ((string)$stanza->attributes()->type == 'error') {
+        if ((string) $stanza->attributes()->type == 'error') {
             $this->value = 6;
         } elseif (
-            (string)$stanza->attributes()->type == 'unavailable'
-            || (string)$stanza->attributes()->type == 'unsubscribed'
+            (string) $stanza->attributes()->type == 'unavailable'
+            || (string) $stanza->attributes()->type == 'unsubscribed'
         ) {
             $this->value = 5;
-        } elseif ((string)$stanza->show == 'away') {
+        } elseif ((string) $stanza->show == 'away') {
             $this->value = 2;
-        } elseif ((string)$stanza->show == 'dnd') {
+        } elseif ((string) $stanza->show == 'dnd') {
             $this->value = 3;
-        } elseif ((string)$stanza->show == 'xa') {
+        } elseif ((string) $stanza->show == 'xa') {
             $this->value = 4;
         } else {
             $this->value = 1;
@@ -252,33 +260,33 @@ class Presence extends Model
 
                         $session = linker($this->session_id)->session;
 
-                        if ($session->get(Muc::$mucId . (string)$stanza->attributes()->from)) {
+                        if ($session->get(Muc::$mucId.(string) $stanza->attributes()->from)) {
                             $this->mucjid = $user->id;
                         }
 
-                        if (!isset($c->item)) {
+                        if (! isset($c->item)) {
                             break;
                         }
 
-                        if (!empty($c->xpath("//status[@code='110']"))) {
+                        if (! empty($c->xpath("//status[@code='110']"))) {
                             $this->mucjid = $user->id;
                         } elseif ($c->item->attributes()->jid) {
-                            $jid = new Jid((string)$c->item->attributes()->jid);
+                            $jid = new Jid((string) $c->item->attributes()->jid);
                             $this->mucjid = $jid->bareJid();
                             $this->mucjidresource = $jid->resource;
                         } else {
-                            $this->mucjid = (string)$stanza->attributes()->from;
+                            $this->mucjid = (string) $stanza->attributes()->from;
                         }
 
                         if ($c->item->attributes()->role) {
-                            $this->mucrole = (string)$c->item->attributes()->role;
+                            $this->mucrole = (string) $c->item->attributes()->role;
                         }
                         if ($c->item->attributes()->affiliation) {
-                            $this->mucaffiliation = (string)$c->item->attributes()->affiliation;
+                            $this->mucaffiliation = (string) $c->item->attributes()->affiliation;
                         }
 
                         // XEP-0463: MUC Affiliations Versioning
-                        $this->noMav = (!$c->mav);
+                        $this->noMav = (! $c->mav);
                         break;
                     case 'vcard-temp:x:update':
                         // Ugly hack to fix https://xmpp.org/extensions/xep-0486.html#presence
@@ -286,8 +294,8 @@ class Presence extends Model
                             $this->muc = true;
                         }
 
-                        if (!empty((string)$c->photo)) {
-                            $this->avatarhash = (string)$c->photo;
+                        if (! empty((string) $c->photo)) {
+                            $this->avatarhash = (string) $c->photo;
                         }
                         break;
                 }
@@ -306,7 +314,7 @@ class Presence extends Model
             $this->delay = gmdate(
                 'Y-m-d H:i:s',
                 strtotime(
-                    (string)$stanza->delay->attributes()->stamp
+                    (string) $stanza->delay->attributes()->stamp
                 )
             );
         }
@@ -315,30 +323,30 @@ class Presence extends Model
             $this->idle = gmdate(
                 'Y-m-d H:i:s',
                 strtotime(
-                    (string)$stanza->idle->attributes()->since
+                    (string) $stanza->idle->attributes()->since
                 )
             );
         }
 
         if ($stanza->query && $stanza->query->attributes()->xmlns == 'jabber:iq:last') {
-            $this->last = (int)$stanza->query->attributes()->seconds;
+            $this->last = (int) $stanza->query->attributes()->seconds;
         }
 
         if ($stanza->hats && $stanza->hats->attributes()->xmlns == 'urn:xmpp:hats:0') {
             foreach ($stanza->hats->hat as $hat) {
                 array_push($this->hatsToSave, new Hat([
-                    'uri' => (string)$hat->attributes()->uri,
-                    'title' => (string)$hat->attributes()->title,
-                    'hue' => $hat->attributes()->hue ? round((float)$hat->attributes()->hue, 2) : null,
+                    'uri' => (string) $hat->attributes()->uri,
+                    'title' => (string) $hat->attributes()->title,
+                    'hue' => $hat->attributes()->hue ? round((float) $hat->attributes()->hue, 2) : null,
                 ]));
             }
         }
 
         if (
-            ($this->mucjid != null && !validateJid($this->mucjid))
-            || ($this->mucjidresource != null && !validateResource($this->mucjidresource))
-            || !validateJid($this->jid)
-            || ($this->resource != '' && !validateResource($this->resource))
+            ($this->mucjid != null && ! validateJid($this->mucjid))
+            || ($this->mucjidresource != null && ! validateResource($this->mucjidresource))
+            || ! validateJid($this->jid)
+            || ($this->resource != '' && ! validateResource($this->resource))
         ) {
             return false;
         }
@@ -348,11 +356,11 @@ class Presence extends Model
 
     public function toArray()
     {
-        $now = \Carbon\Carbon::now();
+        $now = Carbon::now();
 
         return [
             'session_id' => $this->attributes['session_id'] ?? null,
-            'jid' => $this->attributes['jid']  ?? null,
+            'jid' => $this->attributes['jid'] ?? null,
             'resource' => $this->attributes['resource'] ?? '',
             'value' => $this->attributes['value'] ?? null,
             'type' => $this->attributes['type'] ?? null,
@@ -365,7 +373,7 @@ class Presence extends Model
             'muc' => $this->attributes['muc'] ?? null,
             'mucjid' => $this->attributes['mucjid'] ?? '',
             'mucjidresource' => $this->attributes['mucjidresource'] ?? null,
-            'mucaffiliation' => $this->attributes['mucaffiliation']  ?? null,
+            'mucaffiliation' => $this->attributes['mucaffiliation'] ?? null,
             'mucrole' => $this->attributes['mucrole'] ?? null,
             'created_at' => $this->attributes['created_at'] ?? $now,
             'updated_at' => $this->attributes['updated_at'] ?? $now,

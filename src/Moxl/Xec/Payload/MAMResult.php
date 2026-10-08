@@ -2,31 +2,35 @@
 
 namespace Moxl\Xec\Payload;
 
-//use App\MessageBuffer;
+use App\Message;
+use Carbon\Carbon;
+
+// use App\MessageBuffer;
 
 class MAMResult extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $to = bareJid((string)$parent->attributes()->to);
+        $to = bareJid((string) $parent->attributes()->to);
         $session = linker($this->sessionId)->session;
 
-        $messagesCounter = $session->get('mamid' . (string)$stanza->attributes()->queryid);
+        $messagesCounter = $session->get('mamid'.(string) $stanza->attributes()->queryid);
 
         if (
             $stanza->forwarded->delay
             && isset($stanza->attributes()->queryid)
             && $messagesCounter >= 0
         ) {
-            $session->set('mamid' . (string)$stanza->attributes()->queryid, $messagesCounter + 1);
+            $session->set('mamid'.(string) $stanza->attributes()->queryid, $messagesCounter + 1);
 
             if ($stanza->forwarded->message->displayed) {
                 $displayed = new Displayed($this->me, sessionId: $this->sessionId);
                 $displayed->handle($stanza->forwarded->message->displayed, $stanza->forwarded->message);
+
                 return;
             }
 
-            $message = \App\Message::findByStanza($this->me, $stanza, $parent);
+            $message = Message::findByStanza($this->me, $stanza, $parent);
             $message = $message->set($this->me, $stanza->forwarded->message, $stanza->forwarded);
 
             // parent message doesn't exists
@@ -38,12 +42,12 @@ class MAMResult extends Payload
              * Enforce the stanzaid based on the MAM result id
              * https://xmpp.org/extensions/xep-0313.html#results
              */
-            if (!$message->stanzaid) {
-                $message->stanzaid = (string)$stanza->attributes()->id;
+            if (! $message->stanzaid) {
+                $message->stanzaid = (string) $stanza->attributes()->id;
             }
 
             if (
-                $message->published && strtotime($message->published) > mktime(0, 0, 0, gmdate("m"), gmdate("d") - 3, gmdate("Y"))
+                $message->published && strtotime($message->published) > mktime(0, 0, 0, gmdate('m'), gmdate('d') - 3, gmdate('Y'))
             ) {
                 if (
                     $stanza->forwarded->message->retract
@@ -51,6 +55,7 @@ class MAMResult extends Payload
                 ) {
                     $retracted = new Retracted($this->me, sessionId: $this->sessionId);
                     $retracted->handle($stanza->forwarded->message->retract, $stanza->forwarded->message);
+
                     return;
                 }
             }
@@ -59,27 +64,27 @@ class MAMResult extends Payload
                 $message->jidfrom = bareJid(($message->jidfrom));
             }
 
-            if (!empty($to) && empty($message->jidto)) {
+            if (! empty($to) && empty($message->jidto)) {
                 $message->jidto = $to;
             }
 
             if (
-                !$message->encrypted
+                ! $message->encrypted
                 && $message->valid()
-                && (!$message->isEmpty() || $message->isSubject())
+                && (! $message->isEmpty() || $message->isSubject())
             ) {
                 // Set the "old" message as seen
-                if (\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $message->published)->addWeek()->isBefore(\Carbon\Carbon::now())) {
+                if (Carbon::createFromFormat('Y-m-d H:i:s', $message->published)->addWeek()->isBefore(Carbon::now())) {
                     $message->seen = true;
                 }
 
-                //MessageBuffer::getInstance()->append($message, function() use ($message) {
+                // MessageBuffer::getInstance()->append($message, function() use ($message) {
                 $message->save();
                 $message->clearUnreads();
 
                 $this->pack($message);
                 $this->deliver();
-                //});
+                // });
             }
         }
     }

@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class AddAutoincrementToUrlsTable extends Migration
 {
@@ -22,8 +22,8 @@ class AddAutoincrementToUrlsTable extends Migration
             $table->integer('urlid')->unsigned()->nullable();
 
             $table->foreign('urlid')
-                  ->references('id')->on('urls')
-                  ->onDelete('set null');
+                ->references('id')->on('urls')
+                ->onDelete('set null');
         });
 
         $this->enableForeignKeyCheck();

@@ -4,13 +4,15 @@ namespace Moxl\Xec\Action\Muc;
 
 use App\Member;
 use Carbon\Carbon;
-use Moxl\Xec\Action;
 use Moxl\Stanza\Muc;
+use Moxl\Xec\Action;
 
 class SetAffiliations extends Action
 {
     protected string $_to;
+
     protected array $_affiliations = [];
+
     protected ?string $_reason = null;
 
     private const AFFILIATIONS = ['owner', 'admin', 'member', 'outcast', 'none'];
@@ -40,7 +42,7 @@ class SetAffiliations extends Action
                 ->update(['affiliation' => $affiliation, 'updated_at' => Carbon::now()]);
         }
 
-        $this->pack($this->_affiliations, (string)$stanza->attributes()->from);
+        $this->pack($this->_affiliations, (string) $stanza->attributes()->from);
         $this->deliver();
     }
 

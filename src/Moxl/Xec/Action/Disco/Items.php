@@ -2,16 +2,18 @@
 
 namespace Moxl\Xec\Action\Disco;
 
+use App\Info;
 use Moxl\Stanza\Avatar;
-use Moxl\Xec\Action;
-use Moxl\Xec\Action\Disco\Request;
 use Moxl\Stanza\Disco;
+use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\GetItem;
 
 class Items extends Action
 {
     protected $_to;
+
     protected $_save = true;
+
     protected $_manual = false;
 
     public function request()
@@ -23,12 +25,14 @@ class Items extends Action
     public function enableManual()
     {
         $this->_manual = true;
+
         return $this;
     }
 
     public function disableSave()
     {
         $this->_save = false;
+
         return $this;
     }
 
@@ -39,11 +43,11 @@ class Items extends Action
                 $this->method('manual');
             }
 
-            $parent = \App\Info::where('server', $this->_to)
+            $parent = Info::where('server', $this->_to)
                 ->where('node', '')
                 ->first();
 
-            $nodes = \App\Info::where('server', $this->_to)
+            $nodes = Info::where('server', $this->_to)
                 ->whereNot('node', '')
                 ->get()
                 ->keyBy('node');
@@ -53,17 +57,17 @@ class Items extends Action
             foreach ($stanza->query->item as $item) {
                 if ($this->_save) {
                     if ($item->attributes()->node) {
-                        $info = $nodes->get((string)$item->attributes()->node)
-                            ?? new \App\Info([
+                        $info = $nodes->get((string) $item->attributes()->node)
+                            ?? new Info([
                                 'server' => $this->_to,
-                                'node' => (string)$item->attributes()->node
+                                'node' => (string) $item->attributes()->node,
                             ]);
 
                         if ($parent && $parent->isPubsubService()) {
                             $info->setPubsubItem($item);
 
-                            if (!$info->isMicroblogCommentsNode()) {
-                                if (!$info->pubsubaccessmodel) {
+                            if (! $info->isMicroblogCommentsNode()) {
+                                if (! $info->pubsubaccessmodel) {
                                     $r = new Request($this->me, sessionId: $this->sessionId);
                                     $r->setTo($info->server)
                                         ->setNode($info->node)
@@ -83,7 +87,7 @@ class Items extends Action
                         }
                     } elseif ($parent && $parent->identities->contains('category', 'server')) {
                         $r = new Request($this->me, sessionId: $this->sessionId);
-                        $r->setTo((string)$item->attributes()->jid)
+                        $r->setTo((string) $item->attributes()->jid)
                             ->setParent($this->_to)
                             ->request();
                     }
@@ -101,7 +105,7 @@ class Items extends Action
             $list = [];
 
             foreach ($stanza->query->item as $item) {
-                $list[(string)$item->attributes()->jid] = (string)$item->attributes()->name;
+                $list[(string) $item->attributes()->jid] = (string) $item->attributes()->name;
             }
 
             if (count($list) > 0) {

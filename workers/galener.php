@@ -1,11 +1,12 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
-$bootstrap = new Movim\Bootstrap;
+$bootstrap = new Bootstrap;
 $bootstrap->boot(true);
 
 use App\Workers\Galener\Galener;
+use Movim\Bootstrap;
 use React\EventLoop\Loop;
 
 $loop = Loop::get();

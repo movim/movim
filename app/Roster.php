@@ -2,30 +2,35 @@
 
 namespace App;
 
+use Awobaz\Compoships\Compoships;
+use Carbon\Carbon;
 use Movim\ImageSize;
 use Movim\Jid;
 use Movim\Model;
 
 class Roster extends Model
 {
-    use \Awobaz\Compoships\Compoships;
+    use Compoships;
 
     public $incrementing = false;
+
     protected $primaryKey = ['session_id', 'jid'];
+
     protected $fillable = ['session_id', 'jid', 'name', 'ask', 'subscription', 'group'];
+
     public $with = ['contact'];
 
     public function upsert(): Roster
     {
         return parent::updateOrCreate([
             'session_id' => $this->session_id,
-            'jid' => $this->jid
+            'jid' => $this->jid,
         ], $this->only(['name', 'ask', 'subscription', 'group']));
     }
 
     public static function saveMany(array $rosters)
     {
-        $now = \Carbon\Carbon::now();
+        $now = Carbon::now();
         $rosters = collect($rosters)->map(function (array $data) use ($now) {
             return array_merge([
                 'created_at' => $now,
@@ -61,35 +66,34 @@ class Roster extends Model
     public function set(User $user, \SimpleXMLElement $stanza): bool
     {
         $this->session_id = $user->session->id;
-        $this->jid = (string)$stanza->attributes()->jid;
+        $this->jid = (string) $stanza->attributes()->jid;
 
         $this->name = (isset($stanza->attributes()->name)
-            && !empty((string)$stanza->attributes()->name))
-            ? (string)$stanza->attributes()->name
+            && ! empty((string) $stanza->attributes()->name))
+            ? (string) $stanza->attributes()->name
             : null;
 
         $this->ask = $stanza->attributes()->ask
-            ? (string)$stanza->attributes()->ask
+            ? (string) $stanza->attributes()->ask
             : null;
 
         $this->subscription = $stanza->attributes()->subscription
-            ? (string)$stanza->attributes()->subscription
+            ? (string) $stanza->attributes()->subscription
             : null;
 
         $this->group = $stanza->group
-            ? (string)$stanza->group
+            ? (string) $stanza->group
             : null;
 
-        return (
+        return
             strlen($this->jid) < 256 &&
             ($this->name == null || strlen($this->name) < 256) &&
-            ($this->group == null || strlen($this->group) < 256)
-        );
+            ($this->group == null || strlen($this->group) < 256);
     }
 
     public function getSearchTerms()
     {
-        return cleanupId($this->jid) . '-' .
+        return cleanupId($this->jid).'-'.
             cleanupId($this->group);
     }
 
@@ -100,14 +104,14 @@ class Roster extends Model
 
     public function getBanner(ImageSize $size = ImageSize::XXL)
     {
-        $banner = !empty($this->id) ? getPicture($this->id . '_banner', $this->truename, $size) : null;
+        $banner = ! empty($this->id) ? getPicture($this->id.'_banner', $this->truename, $size) : null;
 
         return $banner == null ? $this->getPicture($size) : $banner;
     }
 
     public function getTruenameAttribute()
     {
-        if ($this->name && !filter_var($this->name, FILTER_VALIDATE_EMAIL)) {
+        if ($this->name && ! filter_var($this->name, FILTER_VALIDATE_EMAIL)) {
             return $this->name;
         }
         if ($this->contact && $this->contact->truename) {

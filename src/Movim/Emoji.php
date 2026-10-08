@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -30,14 +31,18 @@ class Emoji
     protected static ?self $instance = null;
 
     private array $emoji;
+
     private ?string $string = null;
+
     private ?string $lastEmoji = null;
+
     private ?string $lastEmojiUrl = null;
+
     private ?string $lastEmojiTitle = null;
 
     protected function __construct()
     {
-        $this->emoji = require('Emoji/CompiledEmoji.php');
+        $this->emoji = require 'Emoji/CompiledEmoji.php';
     }
 
     public function getEmojis(): array
@@ -62,20 +67,20 @@ class Emoji
                     )
                 );
 
-                if (!isset($this->emoji[$astext])) {
+                if (! isset($this->emoji[$astext])) {
                     return $matches[0];
                 }
 
                 $this->lastEmoji = $matches[0];
-                $this->lastEmojiUrl = BASE_URI . 'theme/img/emojis/svg/' . $astext . '.svg';
+                $this->lastEmojiUrl = BASE_URI.'theme/img/emojis/svg/'.$astext.'.svg';
 
                 $dom = new \DOMDocument('1.0', 'UTF-8');
                 $dom->appendChild($img = $dom->createElement('img'));
                 $img->setAttribute('class', 'emoji');
                 $img->setAttribute('alt', $this->emoji[$astext]);
-                if (!$noTitle) {
+                if (! $noTitle) {
                     $this->lastEmojiTitle = \emojiShortcut($this->emoji[$astext]);
-                    $img->setAttribute('title', ':' . $this->lastEmojiTitle . ':');
+                    $img->setAttribute('title', ':'.$this->lastEmojiTitle.':');
                 }
                 $img->setAttribute('src', $this->lastEmojiUrl);
 
@@ -104,7 +109,7 @@ class Emoji
 
     public static function getInstance()
     {
-        if (!isset(static::$instance)) {
+        if (! isset(static::$instance)) {
             static::$instance = new static;
         }
 

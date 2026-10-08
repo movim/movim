@@ -2,9 +2,11 @@
 
 namespace App\Widgets\Shortcuts;
 
+use App\Contact;
+use Movim\Widget\Base;
 use Moxl\Xec\Payload\Packet;
 
-class Shortcuts extends \Movim\Widget\Base
+class Shortcuts extends Base
 {
     public function load()
     {
@@ -37,10 +39,12 @@ class Shortcuts extends \Movim\Widget\Base
     public function ajaxGet()
     {
         // Shortcuts_ajaxGet can be called from public contexts
-        if (!$this->me || !$this->sessionId) return;
+        if (! $this->me || ! $this->sessionId) {
+            return;
+        }
 
         $notifs = linker($this->sessionId)->session->get('notifs') ?? [];
-        //if (empty($notifs)) return;
+        // if (empty($notifs)) return;
 
         $jids = [];
         $notifs = array_reverse($notifs);
@@ -72,7 +76,7 @@ class Shortcuts extends \Movim\Widget\Base
             } elseif ($contacts->has($jid)) {
                 $element = $contacts->get($jid);
             } else {
-                $element = \App\Contact::firstOrNew(['id' => $jid]);
+                $element = Contact::firstOrNew(['id' => $jid]);
             }
 
             if ($counter > 0) {

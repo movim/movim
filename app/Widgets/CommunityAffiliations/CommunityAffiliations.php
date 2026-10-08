@@ -3,14 +3,16 @@
 namespace App\Widgets\CommunityAffiliations;
 
 use App\Affiliation;
+use App\Contact;
+use App\Info;
 use App\Post;
+use App\Subscription;
 use App\Widgets\CommunityHeader\CommunityHeader;
 use Movim\Widget\Base;
-
 use Moxl\Xec\Action\Pubsub\Delete;
 use Moxl\Xec\Action\Pubsub\GetAffiliations;
-use Moxl\Xec\Action\Pubsub\SetAffiliations;
 use Moxl\Xec\Action\Pubsub\GetSubscriptions;
+use Moxl\Xec\Action\Pubsub\SetAffiliations;
 use Moxl\Xec\Payload\Packet;
 use Respect\Validation\Validator;
 
@@ -30,23 +32,23 @@ class CommunityAffiliations extends Base
 
     public function onAffiliations(Packet $packet)
     {
-        list($server, $node) = array_values($packet->content);
+        [$server, $node] = array_values($packet->content);
 
         $affiliations = Affiliation::where('server', $server)
             ->where('node', $node)
             ->get();
 
-        $infoServer = \App\Info::where('server', $server)->where('node', '')->first();
+        $infoServer = Info::where('server', $server)->where('node', '')->first();
 
         $view = $this->tpl();
         $view->assign('myaffiliation', $affiliations->where('jid', $this->me->id)->first());
-        $view->assign('info', \App\Info::where('server', $server)
+        $view->assign('info', Info::where('server', $server)
             ->where('node', $node)
             ->first());
         $view->assign('server', $server);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
-        $view->assign('rostersubscriptions', \App\Subscription::where('server', $server)
+        $view->assign('rostersubscriptions', Subscription::where('server', $server)
             ->where('node', $node)
             ->where('public', true)
             ->whereIn('jid', function ($query) {
@@ -55,7 +57,7 @@ class CommunityAffiliations extends Base
                     ->where('session_id', $this->me->session->id);
             })
             ->get());
-        $view->assign('allsubscriptionscount', \App\Subscription::where('server', $server)
+        $view->assign('allsubscriptionscount', Subscription::where('server', $server)
             ->where('node', $node)
             ->where('public', true)
             ->count());
@@ -69,7 +71,7 @@ class CommunityAffiliations extends Base
         // If the configuration is open, we fill it
         $view = $this->tpl();
 
-        $view->assign('subscriptions', \App\Subscription::where('server', $server)
+        $view->assign('subscriptions', Subscription::where('server', $server)
             ->where('node', $node)
             ->get());
         $view->assign('server', $server);
@@ -92,11 +94,11 @@ class CommunityAffiliations extends Base
 
     public function onSubscriptions(Packet $packet)
     {
-        list($server, $node) = array_values($packet->content);
+        [$server, $node] = array_values($packet->content);
 
         $view = $this->tpl();
 
-        $view->assign('subscriptions', \App\Subscription::where('server', $server)
+        $view->assign('subscriptions', Subscription::where('server', $server)
             ->where('node', $node)
             ->get());
         $view->assign('server', $server);
@@ -109,7 +111,7 @@ class CommunityAffiliations extends Base
     {
         if (
             $packet->content['server'] != $this->me->id
-            && !str_starts_with($packet->content['node'], Post::COMMENTS_NODE)
+            && ! str_starts_with($packet->content['node'], Post::COMMENTS_NODE)
         ) {
             $this->rpc(
                 'MovimUtils.redirect',
@@ -123,7 +125,7 @@ class CommunityAffiliations extends Base
 
     public function onDelete(Packet $packet)
     {
-        if (!str_starts_with($packet->content['node'], Post::COMMENTS_NODE)) {
+        if (! str_starts_with($packet->content['node'], Post::COMMENTS_NODE)) {
             $this->toast($this->__('communityaffiliation.deleted'));
         }
 
@@ -142,13 +144,13 @@ class CommunityAffiliations extends Base
 
     public function getContact($jid)
     {
-        return \App\Contact::firstOrNew(['id' => $jid]);
+        return Contact::firstOrNew(['id' => $jid]);
     }
 
     public function ajaxShowFullPublicSubscriptionsList(string $server, string $node)
     {
         $view = $this->tpl();
-        $view->assign('subscriptions', \App\Subscription::where('server', $server)
+        $view->assign('subscriptions', Subscription::where('server', $server)
             ->where('node', $node)
             ->where('public', true)
             ->get());
@@ -158,7 +160,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxGetAffiliations(string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -169,7 +171,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxGetSubscriptions(string $server, string $node, $notify = true)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -182,7 +184,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxDelete(string $server, string $node, $clean = false)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -196,7 +198,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxDeleteConfirm(string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -220,11 +222,11 @@ class CommunityAffiliations extends Base
 
     public function ajaxChangeAffiliation(string $server, string $node, $form)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
-        $caps = \App\Info::where('server', $server)->where('node', '')->first();
+        $caps = Info::where('server', $server)->where('node', '')->first();
 
         if (
             Validator::in($caps ? array_keys($caps->getPubsubRoles()) : [])->isValid($form->role->value)

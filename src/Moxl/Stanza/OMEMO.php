@@ -3,6 +3,7 @@
 namespace Moxl\Stanza;
 
 use App\Bundle;
+use Moxl\Utils;
 
 class OMEMO
 {
@@ -49,7 +50,7 @@ class OMEMO
         $x->setAttribute('type', 'submit');
         $publishOption->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, [
+        Utils::injectConfigInX($x, [
             'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
             'pubsub#access_model' => 'open',
         ]);
@@ -66,7 +67,7 @@ class OMEMO
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $items = $dom->createElement('items');
-        $items->setAttribute('node', Bundle::OMEMO_BUNDLE . $id);
+        $items->setAttribute('node', Bundle::OMEMO_BUNDLE.$id);
         $pubsub->appendChild($items);
 
         return $pubsub;
@@ -84,7 +85,7 @@ class OMEMO
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', Bundle::OMEMO_BUNDLE . $id);
+        $publish->setAttribute('node', Bundle::OMEMO_BUNDLE.$id);
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
@@ -123,7 +124,7 @@ class OMEMO
         $x->setAttribute('type', 'submit');
         $publishOption->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, [
+        Utils::injectConfigInX($x, [
             'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
             'pubsub#access_model' => 'open',
             'pubsub#max_items' => 'max',

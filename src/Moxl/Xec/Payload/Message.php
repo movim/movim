@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Payload;
 
+use App\Info;
 use Moxl\Xec\Action\Muc\GetConfig;
 
 class Message extends Payload
@@ -53,36 +54,36 @@ class Message extends Payload
             && $stanza->x->status->attributes()->code == '104'
         ) {
             $getConfig = new GetConfig($this->me, $this->sessionId);
-            $getConfig->setTo((string)$stanza->attributes()->from)
+            $getConfig->setTo((string) $stanza->attributes()->from)
                 ->request();
+
             return;
         }
 
         /**
          * Pubsub events
          */
-
         if (
             $stanza->event
             && $stanza->event->attributes()->xmlns == 'http://jabber.org/protocol/pubsub#event'
         ) {
-            $from = (string)$stanza->attributes()->from;
+            $from = (string) $stanza->attributes()->from;
             if (
                 $stanza->event->subscription
                 && $stanza->event->subscription->attributes()->subscription == 'subscribed'
             ) {
                 $this->pack([
                     'server' => $from,
-                    'node' => (string)$stanza->event->subscription->attributes()->node
+                    'node' => (string) $stanza->event->subscription->attributes()->node,
                 ]);
                 $this->deliver('message_pubsub_subscribed');
             } elseif (
                 $stanza->event->configuration
                 && isset($stanza->event->configuration->x)
-                && (string)$stanza->event->configuration->x->attributes()->xmlns == 'jabber:x:data'
+                && (string) $stanza->event->configuration->x->attributes()->xmlns == 'jabber:x:data'
             ) {
                 $node = $stanza->event->configuration->attributes()->node;
-                $info = \App\Info::where('server', $from)->where('node', $node)->first();
+                $info = Info::where('server', $from)->where('node', $node)->first();
 
                 if ($info) {
                     $info->setXForm($stanza->configuration->x);
@@ -90,7 +91,7 @@ class Message extends Payload
 
                     $this->pack([
                         'server' => $from,
-                        'node' => $node
+                        'node' => $node,
                     ]);
                     $this->deliver('message_pubsub_configuration');
                 }
@@ -101,7 +102,7 @@ class Message extends Payload
 
         if ($stanza->composing || $stanza->paused || $stanza->active) {
             $from = ($message->isMuc())
-                ? $message->jidfrom . '/' . $message->resource
+                ? $message->jidfrom.'/'.$message->resource
                 : $message->jidfrom;
 
             if ($stanza->composing) {
@@ -115,7 +116,7 @@ class Message extends Payload
 
         if (
             $message->valid()
-            && (!$message->isEmpty() || $message->isSubject())
+            && (! $message->isEmpty() || $message->isSubject())
         ) {
             $message->save();
             $message = $message->fresh();

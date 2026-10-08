@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use App\Info;
+use Movim\Migration;
 
 class ClearBuggyPubsubNodesInInfosTable extends Migration
 {
@@ -10,8 +10,5 @@ class ClearBuggyPubsubNodesInInfosTable extends Migration
         Info::where('node', '0')->delete();
     }
 
-    public function down()
-    {
-
-    }
+    public function down() {}
 }

@@ -4,16 +4,19 @@ namespace Moxl\Xec\Action\Space;
 
 use App\BookmarksDirectory;
 use Illuminate\Support\Collection;
-use Moxl\Xec\Action;
 use Moxl\Stanza\Bookmark2;
 use Moxl\Stanza\Space;
+use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\SetConfig;
 
 class SetDirectories extends Action
 {
     protected ?Collection $_directories;
+
     protected string $_to;
+
     protected string $_node;
+
     protected bool $_withPublishOption = true;
 
     public function request()
@@ -30,6 +33,7 @@ class SetDirectories extends Action
     public function setDirectories(Collection $directories)
     {
         $this->_directories = $directories;
+
         return $this;
     }
 

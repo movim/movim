@@ -2,7 +2,9 @@
 
 namespace App\Widgets\AvatarPlaceholder;
 
-class AvatarPlaceholder extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class AvatarPlaceholder extends Base
 {
     public function display()
     {
@@ -11,7 +13,7 @@ class AvatarPlaceholder extends \Movim\Widget\Base
         $letters = firstLetterCapitalize(slugify($id));
         header_remove('Content-Type');
         header('Content-Type: image/svg+xml');
-        header('Cache-Control: max-age=' . 3600 * 24);
+        header('Cache-Control: max-age='. 3600 * 24);
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->formatOutput = true;

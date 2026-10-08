@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class CreateRostersTable extends Migration
 {
@@ -19,8 +19,8 @@ class CreateRostersTable extends Migration
             $table->primary(['session_id', 'jid']);
 
             $table->foreign('session_id')
-                  ->references('id')->on('sessions')
-                  ->onDelete('cascade');
+                ->references('id')->on('sessions')
+                ->onDelete('cascade');
         });
     }
 

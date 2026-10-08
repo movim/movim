@@ -3,20 +3,22 @@
 namespace Moxl\Xec\Action\Presence;
 
 use App\Presence as DBPresence;
-use Moxl\Xec\Action;
 use Moxl\Stanza\Presence;
+use Moxl\Xec\Action;
 
 class Unavailable extends Action
 {
     protected $_status;
+
     protected $_to;
+
     protected $_resource;
 
     public function request()
     {
         $this->store();
         $this->send(Presence::maker($this->me,
-            to: $this->_to . '/' . $this->_resource,
+            to: $this->_to.'/'.$this->_resource,
             status: $this->_status,
             type: 'unavailable'
         ));
@@ -33,7 +35,5 @@ class Unavailable extends Action
         });
     }
 
-    public function error(string $errorId, ?string $message = null)
-    {
-    }
+    public function error(string $errorId, ?string $message = null) {}
 }

@@ -9,7 +9,9 @@ use Moxl\Xec\Action;
 class SetAffiliations extends Action
 {
     protected string $_to;
+
     protected string $_node;
+
     protected array $_data;
 
     public function request()
@@ -42,7 +44,7 @@ class SetAffiliations extends Action
         $this->pack([
             'server' => $this->_to,
             'node' => $this->_node,
-            'data' => $this->_data
+            'data' => $this->_data,
         ]);
         $this->deliver();
     }

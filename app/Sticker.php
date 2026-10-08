@@ -14,7 +14,7 @@ class Sticker extends Model
 
     public function getImagePathAttribute(): string
     {
-        return PUBLIC_STICKERS_PATH . '/' . $this->attributes['pack'] . '/' . $this->attributes['filename'];
+        return PUBLIC_STICKERS_PATH.'/'.$this->attributes['pack'].'/'.$this->attributes['filename'];
     }
 
     public function getUrlAttribute(): string

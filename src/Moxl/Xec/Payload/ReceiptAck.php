@@ -7,19 +7,19 @@ class ReceiptAck extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         // Handle only MUC messages with a proper stanza-id
-        $message = ('groupchat' == (string)$parent->attributes()->type)
+        $message = ((string) $parent->attributes()->type == 'groupchat')
             ? $this->me->messages()
-                    ->where('stanzaid', (string)$stanza->attributes()->id)
-                    ->where('jidfrom', current(explode('/',
-                        (string)$parent->attributes()->from
-                    )))
-                    ->first()
+                ->where('stanzaid', (string) $stanza->attributes()->id)
+                ->where('jidfrom', current(explode('/',
+                    (string) $parent->attributes()->from
+                )))
+                ->first()
             : $this->me->messages()
-                    ->where('originid', (string)$stanza->attributes()->id)
-                    ->where('jidfrom', current(explode('/',
-                        (string)$parent->attributes()->to
-                    )))
-                    ->first();
+                ->where('originid', (string) $stanza->attributes()->id)
+                ->where('jidfrom', current(explode('/',
+                    (string) $parent->attributes()->to
+                )))
+                ->first();
 
         if ($message && $message->delivered == null) {
             $message->delivered = gmdate('Y-m-d H:i:s');

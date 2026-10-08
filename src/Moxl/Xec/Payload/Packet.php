@@ -5,6 +5,7 @@ namespace Moxl\Xec\Payload;
 class Packet
 {
     public ?string $from;
+
     public $content;
 
     public function pack($content, ?string $from = null)

@@ -2,12 +2,12 @@
 
 namespace App\Widgets\Vcard4;
 
+use App\Contact;
 use App\User;
 use Movim\Widget\Base;
-
+use Moxl\Xec\Action\Nickname\Set as Nickname;
 use Moxl\Xec\Action\Vcard4\Get;
 use Moxl\Xec\Action\Vcard4\Set;
-use Moxl\Xec\Action\Nickname\Set as Nickname;
 use Moxl\Xec\Payload\Packet;
 use Respect\Validation\Validator;
 
@@ -23,7 +23,7 @@ class Vcard4 extends Base
     {
         $vcardform = $this->tpl();
 
-        $contact = \App\Contact::firstOrNew(['id' => $jid]);
+        $contact = Contact::firstOrNew(['id' => $jid]);
 
         $vcardform->assign('me', User::where('id', $this->me->id)->first());
         $vcardform->assign('contact', $contact);
@@ -85,10 +85,10 @@ class Vcard4 extends Base
             ? $vcard->url->value
             : null;
 
-        $contact->adrlocality     = $vcard->locality->value;
-        $contact->adrcountry      = $vcard->country->value;
+        $contact->adrlocality = $vcard->locality->value;
+        $contact->adrcountry = $vcard->country->value;
 
-        $contact->email   = Validator::email()->notEmpty()->isValid($vcard->email->value)
+        $contact->email = Validator::email()->notEmpty()->isValid($vcard->email->value)
             ? $vcard->email->value
             : null;
 

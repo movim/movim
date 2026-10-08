@@ -2,19 +2,20 @@
 
 namespace Moxl\Xec\Payload;
 
+use App\Contact;
 use Moxl\Xec\Action\Avatar\Get;
 
 class AvatarMetadata extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $jid = bareJid((string)$parent->attributes()->from);
+        $jid = bareJid((string) $parent->attributes()->from);
         $infos = $stanza->xpath('//info[not(@url)]/@id');
 
-        if (is_array($infos) && !empty($infos)) {
-            $c = \App\Contact::firstOrNew(['id' => $jid]);
+        if (is_array($infos) && ! empty($infos)) {
+            $c = Contact::firstOrNew(['id' => $jid]);
 
-            if ((string)$infos[0] != $c->avatarhash) {
+            if ((string) $infos[0] != $c->avatarhash) {
                 $g = new Get($this->me, sessionId: $this->sessionId);
                 $g->setTo($jid)
                     ->request();

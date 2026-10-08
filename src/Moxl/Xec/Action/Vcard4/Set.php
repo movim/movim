@@ -3,13 +3,14 @@
 namespace Moxl\Xec\Action\Vcard4;
 
 use App\Contact;
-use Moxl\Xec\Action;
 use Moxl\Stanza\Vcard4;
+use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\SetConfig;
 
 class Set extends Action
 {
     protected Contact $_data;
+
     protected bool $_withPublishOption = true;
 
     public function request()
@@ -38,8 +39,8 @@ class Set extends Action
     {
         $config = new SetConfig($this->me, sessionId: $this->sessionId);
         $config->setNode(Vcard4::$node)
-               ->setData(Vcard4::$nodeConfig)
-               ->request();
+            ->setData(Vcard4::$nodeConfig)
+            ->request();
 
         $this->_withPublishOption = false;
         $this->request();

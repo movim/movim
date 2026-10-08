@@ -2,9 +2,6 @@
 
 namespace App\Widgets\Chats;
 
-use Movim\Widget\Base;
-use Illuminate\Database\Capsule\Manager as DB;
-
 use App\Contact;
 use App\Message;
 use App\OpenChat;
@@ -12,7 +9,9 @@ use App\Roster;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Notif\Notif;
 use Carbon\Carbon;
-use Movim\Widget\Wrapper;
+use Illuminate\Database\Capsule\Manager as DB;
+use Movim\Widget\Base;
+use Moxl\Xec\Action\MAM\Get;
 use Moxl\Xec\Payload\Packet;
 
 class Chats extends Base
@@ -30,7 +29,7 @@ class Chats extends Base
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('jingle_message', 'onMessage');
-        $this->registerEvent('presence', 'onPresence'/*, 'chat'*/);
+        $this->registerEvent('presence', 'onPresence'/* , 'chat' */);
         $this->registerEvent('chatstate', 'onChatState', 'chat');
 
         $this->registerEvent('currentcall_started', 'onCallEvent', 'chat');
@@ -47,7 +46,7 @@ class Chats extends Base
     {
         $message = $packet->content;
 
-        if (!$message->isMuc()) {
+        if (! $message->isMuc()) {
             // If the message is from me
             if ($message->user_id == $message->jidto) {
                 $from = $message->jidfrom;
@@ -61,7 +60,7 @@ class Chats extends Base
 
     public function chatOpen(string $jid)
     {
-        if (!validateJid($jid)) {
+        if (! validateJid($jid)) {
             return;
         }
 
@@ -113,10 +112,10 @@ class Chats extends Base
     {
         if ($this->me->openChats()->where('jid', $packet->from)->count() > 0) {
             $this->rpc(
-                !empty($packet->content)
+                ! empty($packet->content)
                     ? 'MovimUtils.addClass'
                     : 'MovimUtils.removeClass',
-                $this->getItemId($packet->from) . ' span.primary',
+                $this->getItemId($packet->from).' span.primary',
                 'composing'
             );
         }
@@ -133,7 +132,7 @@ class Chats extends Base
      */
     public function ajaxGetMAMHistory(?string $jid = null)
     {
-        $g = $this->xmpp(new \Moxl\Xec\Action\MAM\Get);
+        $g = $this->xmpp(new Get);
 
         // The following requests seems to be heavy for PostgreSQL
         // see https://stackoverflow.com/questions/40365098/why-is-postgres-not-using-my-index-on-a-simple-order-by-limit-1
@@ -156,7 +155,7 @@ class Chats extends Base
 
             $g->request();
         } elseif (validateJid($jid)) {
-            $message = \App\Message::jid($this->me, $jid);
+            $message = Message::jid($this->me, $jid);
 
             $message = (DB::getDriverName() == 'pgsql')
                 ? $message->orderByRaw('published asc nulls last')
@@ -186,7 +185,7 @@ class Chats extends Base
 
     public function ajaxOpen(string $jid, ?bool $andShow = false, ?bool $history = true)
     {
-        if (!validateJid($jid) || $jid != $this->me->id) {
+        if (! validateJid($jid) || $jid != $this->me->id) {
             if ($history) {
                 $this->ajaxGetMAMHistory($jid);
             }
@@ -212,7 +211,7 @@ class Chats extends Base
 
     public function ajaxClose(string $jid, ?bool $closeDiscussion = false)
     {
-        if (!validateJid($jid)) {
+        if (! validateJid($jid)) {
             return;
         }
 
@@ -233,14 +232,14 @@ class Chats extends Base
 
         $this->rpc('Stories_ajaxHttpGet');
 
-        (new Notif($this->me, sessionId: $this->sessionId))->ajaxClear('chat|' . $jid);
+        (new Notif($this->me, sessionId: $this->sessionId))->ajaxClear('chat|'.$jid);
     }
 
     public function prepareChats()
     {
         $chats = $this->resolveChats();
 
-        if (!isset($chats)) {
+        if (! isset($chats)) {
             return '';
         }
 
@@ -253,7 +252,7 @@ class Chats extends Base
 
             if ($cached) {
                 $html .= $cached;
-            } else if (validateJid($key)) {
+            } elseif (validateJid($key)) {
                 $html = '';
                 break;
             }
@@ -263,11 +262,11 @@ class Chats extends Base
         if ($html == '') {
             $view->cacheClear('_chats_item');
 
-            $contacts = \App\Contact::whereIn('id', $chats)->get()->keyBy('id');
+            $contacts = Contact::whereIn('id', $chats)->get()->keyBy('id');
 
             foreach ($chats as $jid) {
-                if (!$contacts->has($jid)) {
-                    $contacts->put($jid, new \App\Contact(['id' => $jid]));
+                if (! $contacts->has($jid)) {
+                    $contacts->put($jid, new Contact(['id' => $jid]));
                 }
             }
 
@@ -304,7 +303,7 @@ class Chats extends Base
                     : $message->jidfrom;
 
                 // $selectedMessages contains jidfrom and jidto together, we only take the most recent
-                if (!$messages->has($key) || $message->published > $messages->get($key)->published) {
+                if (! $messages->has($key) || $message->published > $messages->get($key)->published) {
                     $messages->put($key, $message);
                 }
             }
@@ -327,7 +326,7 @@ class Chats extends Base
         ?Message $message = null,
         ?string $status = null
     ) {
-        if (!validateJid($jid)) {
+        if (! validateJid($jid)) {
             return;
         }
 
@@ -349,6 +348,7 @@ class Chats extends Base
     public function resolveContactFromJid(string $jid): Contact
     {
         $contact = Contact::find($jid);
+
         return $contact ? $contact : new Contact(['id' => $jid]);
     }
 
@@ -360,7 +360,7 @@ class Chats extends Base
 
     public function resolveMessageFromJid(string $jid): ?Message
     {
-        return \App\Message::jid($this->me, $jid)
+        return Message::jid($this->me, $jid)
             ->orderBy('published', 'desc')
             ->first();
     }
@@ -423,6 +423,6 @@ class Chats extends Base
 
     private function getItemId(string $jid): string
     {
-        return '#' . cleanupId(slugify($jid) . '_chat_item');
+        return '#'.cleanupId(slugify($jid).'_chat_item');
     }
 }

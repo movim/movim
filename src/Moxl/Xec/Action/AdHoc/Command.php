@@ -2,18 +2,19 @@
 
 namespace Moxl\Xec\Action\AdHoc;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\AdHoc;
+use Moxl\Xec\Action;
 
 class Command extends Action
 {
     protected $_to;
+
     protected $_node;
 
     public function request()
     {
         $this->store();
-        $this->iq(Adhoc::command($this->_node), to: $this->_to, type: 'set');
+        $this->iq(AdHoc::command($this->_node), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -27,7 +28,7 @@ class Command extends Action
     {
         $this->pack([
             'errorid' => $errorId,
-            'message' => $message
+            'message' => $message,
         ]);
         $this->deliver();
     }

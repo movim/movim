@@ -2,13 +2,15 @@
 
 namespace Moxl\Xec\Action\Muc;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Muc;
+use Moxl\Xec\Action;
 
 class SetRole extends Action
 {
     protected $_to;
+
     protected $_nick;
+
     protected $_role;
 
     public function request()

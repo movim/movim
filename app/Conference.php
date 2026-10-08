@@ -2,10 +2,10 @@
 
 namespace App;
 
-use Movim\ImageSize;
-
 use Awobaz\Compoships\Database\Eloquent\Model;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Movim\ImageSize;
 use Movim\Jid;
 use Movim\Route;
 use Moxl\Stanza\Bookmark2;
@@ -13,7 +13,9 @@ use Moxl\Stanza\Bookmark2;
 class Conference extends Model
 {
     public $incrementing = false;
+
     protected $primaryKey = ['session_id', 'conference'];
+
     protected $fillable = [
         'conference',
         'name',
@@ -23,17 +25,21 @@ class Conference extends Model
         'space_server',
         'space_node',
         'weight',
-        'directory_id'
+        'directory_id',
     ];
+
     protected $with = ['contact', 'mujiPresences', 'sfuPresence'];
 
     public const XMLNS_NOTIFICATIONS = 'urn:xmpp:notification-settings:0';
+
     public const XMLNS_PINNED = 'urn:xmpp:bookmarks-pinning:0';
+
     public const XMLNS_MOVIM_CONFERENCE_CALL = '{https://movim.eu}bookmarks-conference-call';
+
     public const NOTIFICATIONS = [
         0 => 'never',
         1 => 'on-mention',
-        2 => 'always'
+        2 => 'always',
     ];
 
     public static function saveMany(array $conferences)
@@ -102,7 +108,9 @@ class Conference extends Model
     public function hasRelatedSFUService(): ?Info
     {
         $info = $this->info;
-        if (!$info) return null;
+        if (! $info) {
+            return null;
+        }
 
         return Info::where('parent', function ($query) use ($info) {
             $query->select('parent')
@@ -188,7 +196,7 @@ class Conference extends Model
                 $query->where('node', function ($query) {
                     $query->select('node')
                         ->from('presences')
-                        //->where('session_id', me()->session->id)
+                        // ->where('session_id', me()->session->id)
                         ->whereColumn('jid', 'infos.server')
                         ->where('resource', '')
                         ->take(1);
@@ -211,13 +219,13 @@ class Conference extends Model
         ?string $spaceNode = null,
         ?array $directoryIds = null,
     ) {
-        $this->user_id         = $session->user_id;
-        $this->session_id      = $session->id;
-        $this->conference      = (string)$item->attributes()->id;
-        $this->name            = (string)$item->conference->attributes()->name;
-        $this->nick            = (string)$item->conference->nick;
-        $this->autojoin        = filter_var($item->conference->attributes()->autojoin, FILTER_VALIDATE_BOOLEAN);
-        $this->bookmarkversion = (int)substr((string)$item->conference->attributes()->xmlns, -1, 1);
+        $this->user_id = $session->user_id;
+        $this->session_id = $session->id;
+        $this->conference = (string) $item->attributes()->id;
+        $this->name = (string) $item->conference->attributes()->name;
+        $this->nick = (string) $item->conference->nick;
+        $this->autojoin = filter_var($item->conference->attributes()->autojoin, FILTER_VALIDATE_BOOLEAN);
+        $this->bookmarkversion = (int) substr((string) $item->conference->attributes()->xmlns, -1, 1);
 
         if ($spaceServer && $spaceNode) {
             $this->space_server = $spaceServer;
@@ -247,17 +255,17 @@ class Conference extends Model
                 if ($item->conference->extensions->notifications) {
                     unset($item->conference->extensions->notifications);
                 }
-            } else if ( // Deprecated
+            } elseif ( // Deprecated
                 $item->conference->extensions->notifications
                 && $item->conference->extensions->notifications->attributes()->xmlns == 'xmpp:movim.eu/notifications:0'
             ) {
                 $notifications = [
                     'never' => 0,
                     'quoted' => 1,
-                    'always' => 2
+                    'always' => 2,
                 ];
 
-                $this->notify = (int)$notifications[(string)$item->conference->extensions->notifications->attributes()->notify];
+                $this->notify = (int) $notifications[(string) $item->conference->extensions->notifications->attributes()->notify];
                 unset($item->conference->extensions->notifications);
             }
 
@@ -274,10 +282,10 @@ class Conference extends Model
                 && $item->conference->extensions->hierarchy->attributes()->xmlns == Bookmark2::HIERARCHY_NAMESPACE
                 && $this->space_server && $this->space_node
             ) {
-                $this->weight = (float)$item->conference->extensions->hierarchy->attributes()->weight;
+                $this->weight = (float) $item->conference->extensions->hierarchy->attributes()->weight;
 
                 if ($item->conference->extensions->hierarchy->attributes()->{'directory-id'}) {
-                    $this->directory_id = (string)$item->conference->extensions->hierarchy->attributes()->{'directory-id'};
+                    $this->directory_id = (string) $item->conference->extensions->hierarchy->attributes()->{'directory-id'};
                 }
 
                 unset($item->conference->extensions->hierarchy);
@@ -297,8 +305,8 @@ class Conference extends Model
     public function getNotifKeyAttribute(): string
     {
         return $this->isFromSpace()
-            ? 'space' . $this->space_server . $this->space_node . '|' . $this->conference
-            : 'chat|' . $this->conference;
+            ? 'space'.$this->space_server.$this->space_node.'|'.$this->conference
+            : 'chat|'.$this->conference;
     }
 
     public function getRouteAttribute(): string
@@ -325,7 +333,7 @@ class Conference extends Model
 
     public function getSpaceCounterIdAttribute(): string
     {
-        return cleanupId($this->space_server . $this->space_node . '-counter');
+        return cleanupId($this->space_server.$this->space_node.'-counter');
     }
 
     public function getTitleAttribute(): string
@@ -339,11 +347,15 @@ class Conference extends Model
             $i = 0;
             foreach ($this->members()->take(3)->get() as $member) {
                 $title .= $member->truename;
-                if ($i < 2) $title .= ', ';
+                if ($i < 2) {
+                    $title .= ', ';
+                }
                 $i++;
             }
 
-            if ($this->members()->count() > 3) $title .= '…';
+            if ($this->members()->count() > 3) {
+                $title .= '…';
+            }
 
             return $title;
         }
@@ -377,7 +389,7 @@ class Conference extends Model
     public function isGroupChat(): bool
     {
         if ($this->info) {
-            return $this->info->mucmembersonly && !$this->info->mucsemianonymous;
+            return $this->info->mucmembersonly && ! $this->info->mucsemianonymous;
         }
 
         return false;
@@ -385,11 +397,12 @@ class Conference extends Model
 
     public function toArray()
     {
-        $now = \Carbon\Carbon::now();
+        $now = Carbon::now();
+
         return [
             'user_id' => $this->attributes['user_id'] ?? null,
             'session_id' => $this->attributes['session_id'] ?? null,
-            'conference' => $this->attributes['conference']  ?? null,
+            'conference' => $this->attributes['conference'] ?? null,
             'space_server' => $this->attributes['space_server'] ?? null,
             'space_node' => $this->attributes['space_node'] ?? null,
             'name' => $this->attributes['name'] ?? null,

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2024 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -17,17 +18,24 @@ use Moxl\Xec\Payload\Packet;
 class CurrentCall
 {
     public ?string $jid = null;
+
     public ?string $id = null;
+
     public ?string $mujiRoom = null;
+
     public ?string $sfuRoom = null;
+
     public ?Carbon $startTime = null;
+
     public bool $answered = false;
 
     public function __construct(private User $user, private string $sessionId) {}
 
     public function start(string $jid, string $id, ?string $mujiRoom = null): bool
     {
-        if ($this->isStarted()) return false;
+        if ($this->isStarted()) {
+            return false;
+        }
 
         $this->jid = $jid;
         $this->id = $id;
@@ -52,6 +60,7 @@ class CurrentCall
     {
         if ($this->isJidInCall($jid)) {
             $this->sfuRoom = $sfuRoom;
+
             return true;
         }
 
@@ -69,7 +78,9 @@ class CurrentCall
 
     public function stop(string $jid, string $id): bool
     {
-        if ($this->getBareJid() != \bareJid($jid) || $this->id != $id) return false;
+        if ($this->getBareJid() != \bareJid($jid) || $this->id != $id) {
+            return false;
+        }
 
         $jid = $this->getBareJid();
         $id = $this->id;
@@ -110,7 +121,9 @@ class CurrentCall
 
     public function getBareJid(): ?string
     {
-        if (!$this->isStarted()) return null;
+        if (! $this->isStarted()) {
+            return null;
+        }
 
         return \bareJid($this->jid);
     }

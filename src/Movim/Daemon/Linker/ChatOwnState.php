@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -7,7 +8,6 @@
 namespace Movim\Daemon\Linker;
 
 use App\User;
-
 use Moxl\Xec\Action\Message\Composing;
 use Moxl\Xec\Action\Message\Paused;
 
@@ -17,13 +17,14 @@ use Moxl\Xec\Action\Message\Paused;
 class ChatOwnState
 {
     private $_to = null;
+
     private $_muc = false;
+
     private $_timer;
+
     private $_timeout = 5;
 
-    public function __construct(private User $user)
-    {
-    }
+    public function __construct(private User $user) {}
 
     public function composing(string $to, bool $muc = false)
     {

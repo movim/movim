@@ -2,20 +2,21 @@
 
 namespace App\Widgets\Infos;
 
-use Movim\Widget\Base;
-
 use App\Configuration;
+use App\Info;
+use App\Presence;
 use App\User;
+use Movim\Widget\Base;
 
 class Infos extends Base
 {
     public function display()
     {
         $configuration = Configuration::get();
-        $gitHeadPath = DOCUMENT_ROOT . '/.git/refs/heads/master';
+        $gitHeadPath = DOCUMENT_ROOT.'/.git/refs/heads/master';
         $hash = file_exists($gitHeadPath) ? substr(file_get_contents($gitHeadPath), 0, 7) : 'release';
 
-        $presences = \App\Presence::select('jid', 'resource', 'node')
+        $presences = Presence::select('jid', 'resource', 'node')
             ->where('node', '!=', '')
             ->where('resource', '!=', '')
             ->orderBy('node')
@@ -25,7 +26,7 @@ class Infos extends Base
         $clients = [];
 
         foreach ($presences as $presence) {
-            if (!isset($clients[$presence->node])) {
+            if (! isset($clients[$presence->node])) {
                 $clients[$presence->node] = 0;
             }
 
@@ -37,7 +38,7 @@ class Infos extends Base
         foreach ($clients as $name => $value) {
             $resolvedName = $this->getCapabilityName($name);
 
-            if (!isset($resolvedClients[$resolvedName])) {
+            if (! isset($resolvedClients[$resolvedName])) {
                 $resolvedClients[$resolvedName] = 0;
             }
 
@@ -45,31 +46,31 @@ class Infos extends Base
         }
 
         arsort($resolvedClients);
-        $connected = (int)requestAPI('started');
+        $connected = (int) requestAPI('started');
 
         $infos = [
-            'url'           => BASE_URI,
-            'language'      => $configuration->locale,
-            'whitelist'     => $configuration->xmppwhitelist,
-            'banner'        => empty($configuration->banner) ? null : $configuration->banner,
-            'admins'        => (array)User::select('id')->where('admin', true)->get()->pluck('id')->toArray(),
-            'description'   => $configuration->description,
-            'unregister'    => $configuration->unregister,
-            'maxsessions'   => $configuration->maxsessions,
-            'php_version'   => phpversion(),
-            'version'       => APP_VERSION,
-            'database'      => config('database.driver'),
-            'population'    => User::count(),
-            'linked'        => (int)requestAPI('linked'),
-            'started'       => $connected,
-            'connected'     => $connected,
-            'commit'        => $hash,
-            'statistics'    => [
+            'url' => BASE_URI,
+            'language' => $configuration->locale,
+            'whitelist' => $configuration->xmppwhitelist,
+            'banner' => empty($configuration->banner) ? null : $configuration->banner,
+            'admins' => (array) User::select('id')->where('admin', true)->get()->pluck('id')->toArray(),
+            'description' => $configuration->description,
+            'unregister' => $configuration->unregister,
+            'maxsessions' => $configuration->maxsessions,
+            'php_version' => phpversion(),
+            'version' => APP_VERSION,
+            'database' => config('database.driver'),
+            'population' => User::count(),
+            'linked' => (int) requestAPI('linked'),
+            'started' => $connected,
+            'connected' => $connected,
+            'commit' => $hash,
+            'statistics' => [
                 'presences' => [
                     'total' => $presences->count(),
-                    'clients' => $resolvedClients
-                ]
-            ]
+                    'clients' => $resolvedClients,
+                ],
+            ],
         ];
 
         $this->view->assign('json', json_encode($infos));
@@ -77,10 +78,11 @@ class Infos extends Base
 
     private function getCapabilityName($node)
     {
-        $capability = \App\Info::where('node', $node)->first();
+        $capability = Info::where('node', $node)->first();
 
-        if ($capability && !filter_var($capability->name, FILTER_VALIDATE_URL)) {
+        if ($capability && ! filter_var($capability->name, FILTER_VALIDATE_URL)) {
             $parts = explode(' ', $capability->name);
+
             return reset($parts);
         }
 

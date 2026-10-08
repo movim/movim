@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2024 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -7,8 +8,8 @@
 namespace Movim\Daemon\Linker;
 
 use App\User;
-use Moxl\Xec\Action\Ping\Room;
 use App\Widgets\Rooms\Rooms as WidgetRooms;
+use Moxl\Xec\Action\Ping\Room;
 
 /**
  * Handling XEP-0410: MUC Self-Ping (Schrödinger's Chat) pings and timeouts
@@ -16,13 +17,14 @@ use App\Widgets\Rooms\Rooms as WidgetRooms;
 class ChatroomPings
 {
     private $_chatrooms = [];
+
     private $_chatroomsTimeout = [];
+
     public const PING_IN = 5 * 60;
+
     public const PONG_TIMEOUT = 5 * 60 + 120;
 
-    public function __construct(private ?User $user = null)
-    {
-    }
+    public function __construct(private ?User $user = null) {}
 
     public function has(string $from): bool
     {
@@ -42,9 +44,9 @@ class ChatroomPings
 
             if ($presence) {
                 $pingRoom = new Room($this->user, sessionId: $this->user->session->id);
-                $pingRoom->setResource($from . '/' . $presence->resource)
-                         ->setRoom($from)
-                         ->request();
+                $pingRoom->setResource($from.'/'.$presence->resource)
+                    ->setRoom($from)
+                    ->request();
             }
         });
 

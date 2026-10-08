@@ -11,7 +11,7 @@ class Handler
     public function handle(\SimpleXMLElement $child)
     {
         $id = (in_array($child->getName(), ['iq', 'presence', 'message']))
-            ? (string)$child->attributes()->id
+            ? (string) $child->attributes()->id
             : '';
 
         $session = linker($this->sessionId)->session;
@@ -42,10 +42,10 @@ class Handler
                 $message = null;
 
                 if ($error->text) {
-                    $message = (string)$error->text;
+                    $message = (string) $error->text;
                 }
 
-                logInfo('Handler: ' . get_class($action) . ' ' . $id . ' - ' . $errorid);
+                logInfo('Handler: '.get_class($action).' '.$id.' - '.$errorid);
 
                 $propagate = true;
 
@@ -57,7 +57,7 @@ class Handler
 
                 // We also call a global error handler
                 if (method_exists($action, 'error') && $propagate == true) {
-                    logInfo('Handler: Global error - ' . $id . ' - ' . $errorid);
+                    logInfo('Handler: Global error - '.$id.' - '.$errorid);
                     $action->method('error');
                     $action->error($errorid, $message);
                 }
@@ -82,7 +82,7 @@ class Handler
                 }
             }
 
-            if ($child->getName() == 'iq' && !$handledFirst && !$handledSecond && !$handledThird) {
+            if ($child->getName() == 'iq' && ! $handledFirst && ! $handledSecond && ! $handledThird) {
                 Handler::searchPayload('iq_error', $child);
             }
         }
@@ -95,7 +95,7 @@ class Handler
 
         foreach ($s->attributes() as $key => $value) {
             if (($key == 'xmlns' && $ns == '')
-                || 'xmlns:' === substr($key, 0, 6)
+                || substr($key, 0, 6) === 'xmlns:'
             ) {
                 $ns = $value;
             }
@@ -104,17 +104,17 @@ class Handler
         $matchPayloadWithNode = $matchPayload = false;
 
         if ($s->items && $s->items->attributes()->node) {
-            $node = (string)$s->items->attributes()->node;
-            $hash = md5($name . $ns . $node);
-            logInfo('Handler: Searching a payload for "' . $name . ':' . $ns . ' [' . $node . ']", "' . $hash . '"');
+            $node = (string) $s->items->attributes()->node;
+            $hash = md5($name.$ns.$node);
+            logInfo('Handler: Searching a payload for "'.$name.':'.$ns.' ['.$node.']", "'.$hash.'"');
             $matchPayloadWithNode = $this->searchPayload($hash, $s, $sparent);
         }
 
-        $hash = md5($name . $ns);
-        logInfo('Handler: Searching a payload for "' . $name . ':' . $ns . '", "' . $hash . '"');
+        $hash = md5($name.$ns);
+        logInfo('Handler: Searching a payload for "'.$name.':'.$ns.'", "'.$hash.'"');
         $matchPayload = $this->searchPayload($hash, $s, $sparent);
 
-        if (!$matchPayloadWithNode && !$matchPayload) {
+        if (! $matchPayloadWithNode && ! $matchPayload) {
             return false;
         }
 
@@ -165,7 +165,7 @@ class Handler
 
             '54c22c37d17c78ee657ea3d40547a970' => 'Version',
 
-            //'1cb493832467273efa384bbffa6dc35a' => 'AvatarData',
+            // '1cb493832467273efa384bbffa6dc35a' => 'AvatarData',
             '0f59aa7fb0492a008df1b807e91dda3b' => 'AvatarMetadata',
             '64d80ef76ceb442578e658fa39cde8c9' => 'BannerMetadata', // Movim specific for now
 
@@ -204,19 +204,20 @@ class Handler
         ];
 
         if (isset($hashToClass[$hash])) {
-            $classname = '\\Moxl\\Xec\\Payload\\' . $hashToClass[$hash];
+            $classname = '\\Moxl\\Xec\\Payload\\'.$hashToClass[$hash];
             $payloadClass = new $classname;
             $payloadClass->attachUser($this->user);
             $payloadClass->attachSession($this->sessionId);
             $payloadClass->prepare($s, $sparent);
             $payloadClass->handle($s, $sparent);
 
-            logInfo('Handler: Firing Payload\\' . $hashToClass[$hash]);
+            logInfo('Handler: Firing Payload\\'.$hashToClass[$hash]);
 
             return true;
         }
 
         logInfo('Handler: This event is not listed');
+
         return false;
     }
 

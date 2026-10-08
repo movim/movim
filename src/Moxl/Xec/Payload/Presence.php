@@ -17,13 +17,15 @@ class Presence extends Payload
         }
 
         if (
-            (string)$stanza->attributes()->type === 'error'
+            (string) $stanza->attributes()->type === 'error'
             && isset($stanza->attributes()->id)
         ) {
             // Let's drop errors with an id, useless for us
         } else {
             $presence = (new DBPresence);
-            if (!$presence->set($this->me, $stanza)) return;
+            if (! $presence->set($this->me, $stanza)) {
+                return;
+            }
 
             /**
              * Trigger presence_muji when the <muji /> element is cleared and if the MUC is actually displayed
@@ -48,13 +50,13 @@ class Presence extends Payload
 
             // Trigger the presence before the buffer, we need it before the Jingle messages
             if ($presence->hasMuji() || $wasMuji) {
-                $this->pack($presence, $presence->mucjid . '/' . $presence->mucjidresource);
+                $this->pack($presence, $presence->mucjid.'/'.$presence->mucjidresource);
                 $this->method($wasMuji ? 'was_muji' : 'muji');
                 $this->deliver();
             }
 
             if ($presence->hasSFU()) {
-                $this->pack($presence, $presence->mucjid . '/' . $presence->mucjidresource);
+                $this->pack($presence, $presence->mucjid.'/'.$presence->mucjidresource);
                 $this->method('sfu');
                 $this->deliver();
             }
@@ -62,8 +64,8 @@ class Presence extends Payload
             linker($this->sessionId)->presenceBuffer->append(
                 $presence,
                 function () use ($presence, $stanza) {
-                    if ((string)$stanza->attributes()->type == 'subscribe') {
-                        $this->pack((string)$stanza->attributes()->from);
+                    if ((string) $stanza->attributes()->type == 'subscribe') {
+                        $this->pack((string) $stanza->attributes()->from);
                         $this->deliver('subscribe');
                     }
 
@@ -72,7 +74,9 @@ class Presence extends Payload
                             // Spectrum2 specific bug, we can receive two self-presences, one with several caps items
                             $cCount = 0;
                             foreach ($stanza->children() as $key => $content) {
-                                if ($key == 'c') $cCount++;
+                                if ($key == 'c') {
+                                    $cCount++;
+                                }
                             }
 
                             if ($cCount > 1) {
@@ -91,24 +95,24 @@ class Presence extends Payload
                              * id back in the stanza
                              */
                             elseif (
-                                $session->get(Muc::$mucId . (string)$stanza->attributes()->from)
-                                && !isset($stanza->attributes()->id)
+                                $session->get(Muc::$mucId.(string) $stanza->attributes()->from)
+                                && ! isset($stanza->attributes()->id)
                             ) {
                                 /**
                                  * Add back the id to the stanza and send it back to the stanza handler
                                  */
-                                $stanza->addAttribute('id', $session->get(Muc::$mucId . (string)$stanza->attributes()->from));
+                                $stanza->addAttribute('id', $session->get(Muc::$mucId.(string) $stanza->attributes()->from));
                                 (new Handler($this->me, sessionId: $this->sessionId))->handle($stanza);
                             }
                         }
-                    } elseif ($presence->value == 5 && !empty($presence->resource)) {
+                    } elseif ($presence->value == 5 && ! empty($presence->resource)) {
                         $presence->delete();
                     }
 
                     /**
                      * Don't handle for MUC presences before we are fully authenticated
                      */
-                    if (!$presence->muc || linker($this->sessionId)?->chatroomPings?->has($presence->jid)) {
+                    if (! $presence->muc || linker($this->sessionId)?->chatroomPings?->has($presence->jid)) {
                         $this->pack($presence);
                         $this->deliver();
                     }

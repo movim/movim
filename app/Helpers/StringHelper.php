@@ -1,6 +1,10 @@
 <?php
 
 use Cocur\Slugify\Slugify;
+use Dom\HTMLDocument;
+use Dom\Node;
+use Dom\XPath;
+use Movim\Emoji;
 use Movim\Route;
 use Movim\XMPPUri;
 
@@ -13,13 +17,13 @@ function linkify(string $html, bool $hashtagLinks = true): string
         return $html;
     }
 
-    $dom = \Dom\HTMLDocument::createFromString(
-        '<div id="movim-root">' . $html . '</div>',
+    $dom = HTMLDocument::createFromString(
+        '<div id="movim-root">'.$html.'</div>',
         LIBXML_HTML_NOIMPLIED,
         'UTF-8'
     );
 
-    $xpath = new \Dom\XPath($dom);
+    $xpath = new XPath($dom);
     $container = $dom->getElementById('movim-root');
 
     $textNodes = $xpath->query('//text()[not(ancestor::*[local-name()="a"])]', $container);
@@ -29,13 +33,13 @@ function linkify(string $html, bool $hashtagLinks = true): string
     $hashtagPattern = '(?:(?<=[\s>])|^)#(?<tag>\w+)';
 
     $pattern = $hashtagLinks
-        ? '/' . $urlPattern . '|' . $hashtagPattern . '/iu'
-        : '/' . $urlPattern . '/iu';
+        ? '/'.$urlPattern.'|'.$hashtagPattern.'/iu'
+        : '/'.$urlPattern.'/iu';
 
     foreach (iterator_to_array($textNodes) as $node) {
         $text = $node->textContent;
 
-        if (!preg_match($pattern, $text)) {
+        if (! preg_match($pattern, $text)) {
             continue;
         }
 
@@ -78,7 +82,7 @@ function linkify(string $html, bool $hashtagLinks = true): string
     return $result;
 }
 
-function buildUrlNode(\Dom\HTMLDocument $dom, string $content): \Dom\Node
+function buildUrlNode(HTMLDocument $dom, string $content): Node
 {
     if (str_starts_with($content, 'xmpp:')) {
         $uri = new XMPPUri($content);
@@ -87,8 +91,9 @@ function buildUrlNode(\Dom\HTMLDocument $dom, string $content): \Dom\Node
         if ($route) {
             $a = $dom->createElement('a');
             $a->setAttribute('href', '#');
-            $a->setAttribute('onclick', "MovimUtils.reload('" . $route . "')");
+            $a->setAttribute('onclick', "MovimUtils.reload('".$route."')");
             $a->textContent = $content;
+
             return $a;
         }
 
@@ -101,59 +106,64 @@ function buildUrlNode(\Dom\HTMLDocument $dom, string $content): \Dom\Node
         $a->setAttribute('target', '_blank');
         $a->setAttribute('rel', 'noopener noreferrer');
         $a->textContent = $content;
+
         return $a;
     }
 
     if (preg_match('/^www\d{0,3}\./i', $content)) {
         $a = $dom->createElement('a');
-        $a->setAttribute('href', 'https://' . $content);
+        $a->setAttribute('href', 'https://'.$content);
         $a->setAttribute('target', '_blank');
         $a->setAttribute('rel', 'noopener noreferrer');
         $a->textContent = $content;
+
         return $a;
     }
 
     return $dom->createTextNode($content);
 }
 
-function buildHashtagNode(\Dom\HTMLDocument $dom, string $tag): \Dom\Node
+function buildHashtagNode(HTMLDocument $dom, string $tag): Node
 {
     $a = $dom->createElement('a');
     $a->setAttribute('class', 'innertag');
     $a->setAttribute('href', '#');
-    $a->setAttribute('onclick', "MovimUtils.reload('" . Route::urlize('tag', $tag) . "')");
-    $a->textContent = '#' . $tag;
+    $a->setAttribute('onclick', "MovimUtils.reload('".Route::urlize('tag', $tag)."')");
+    $a->textContent = '#'.$tag;
+
     return $a;
 }
 
 function emojiToCodePoint(string $emoji): string
 {
     $emoji = mb_convert_encoding($emoji, 'UTF-32', 'UTF-8');
-    $unicode = strtolower(preg_replace("/^[0]+/", "", bin2hex($emoji)));
+    $unicode = strtolower(preg_replace('/^[0]+/', '', bin2hex($emoji)));
+
     return $unicode;
 }
 
 function addEmojis(string $string, bool $noTitle = false): string
 {
-    $emoji = \Movim\Emoji::getInstance();
+    $emoji = Emoji::getInstance();
+
     return $emoji->replace($string, $noTitle);
 }
 
 function extractEmojis(string $text): array
 {
     $pattern =
-        '/' .
+        '/'.
         // Flag sequences: pair of regional indicator symbols (e.g. 🇫🇷)
-        '\p{Regional_Indicator}{2}' .
-        '|' .
+        '\p{Regional_Indicator}{2}'.
+        '|'.
         // Keycap sequences: 0-9, #, * + optional VS16 + combining keycap (e.g. 1️⃣)
-        '[0-9#\*]\x{FE0F}?\x{20E3}' .
-        '|' .
+        '[0-9#\*]\x{FE0F}?\x{20E3}'.
+        '|'.
         // Any pictographic/emoji-capable base character, optionally extended
         // by skin-tone modifiers, a variation selector, or ZWJ-joined emoji
         // (covers combos like family/profession sequences, e.g. 👨‍👩‍👧‍👦)
-        '\p{Extended_Pictographic}' .
-        '(?:\x{FE0F}|\p{Emoji_Modifier}|\x{200D}\p{Extended_Pictographic}\x{FE0F}?)*' .
+        '\p{Extended_Pictographic}'.
+        '(?:\x{FE0F}|\p{Emoji_Modifier}|\x{200D}\p{Extended_Pictographic}\x{FE0F}?)*'.
         '/u';
 
     preg_match_all($pattern, $text, $matches);
@@ -167,6 +177,7 @@ function extractEmojis(string $text): array
 function slugify(string $string): string
 {
     $slugify = new Slugify;
+
     return $slugify->slugify($string);
 }
 
@@ -177,7 +188,9 @@ function readTime($content)
 {
     $minutes = floor(str_word_count(strip_tags($content)) / 200);
 
-    if ($minutes == 0) return false;
+    if ($minutes == 0) {
+        return false;
+    }
 
     return $minutes == 1
         ? __('post.read_time_singular', $minutes)
@@ -204,7 +217,7 @@ function getHashtags(string $string): array
  */
 function echapJS(string $string): string
 {
-    return str_replace(["\\", "'"], ["\\\\", "\\'"], $string);
+    return str_replace(['\\', "'"], ['\\\\', "\\'"], $string);
 }
 
 /**
@@ -212,7 +225,7 @@ function echapJS(string $string): string
  */
 function unechap(string $string): string
 {
-    return str_replace("\\\\", "\\", $string);
+    return str_replace('\\\\', '\\', $string);
 }
 
 /**
@@ -223,7 +236,9 @@ function getCid($string): ?array
     preg_match("/([\w\-]+)\+(\w+)\@/", $string, $matches);
 
     if (is_array($matches) && count($matches) > 1) {
-        if (!array_key_exists($matches[1], \IANAHashToPhp())) return null;
+        if (! array_key_exists($matches[1], \IANAHashToPhp())) {
+            return null;
+        }
 
         return ['algorythm' => \IANAHashToPhp()[$matches[1]], 'hash' => $matches[2]];
     }
@@ -238,6 +253,7 @@ function explodeQueryParams(string $query): array
 {
     $params = [];
     parse_str(str_replace(';', '&', $query), $params);
+
     return $params;
 }
 
@@ -259,15 +275,15 @@ function humanSize($bytes, int $precision = 2): string
         __('filesize.kilobyte'),
         __('filesize.megabyte'),
         __('filesize.gigabyte'),
-        __('filesize.terabyte')
+        __('filesize.terabyte'),
     ];
 
     $bytes = max($bytes, 0);
-    $pow = floor(($bytes ? log((float)$bytes) : 0) / log(1024));
+    $pow = floor(($bytes ? log((float) $bytes) : 0) / log(1024));
     $pow = min($pow, count($units) - 1);
     $bytes /= pow(1024, $pow);
 
-    return (string)round($bytes, $precision) . ' ' . $units[$pow];
+    return (string) round($bytes, $precision).' '.$units[$pow];
 }
 
 /**
@@ -286,17 +302,17 @@ function humanDistance(float $distance): string
 function colorize($string, string $color): string
 {
     $colors = [
-        'black'     => 30,
-        'red'       => 31,
-        'green'     => 32,
-        'yellow'    => 33,
-        'blue'      => 34,
-        'purple'    => 35,
+        'black' => 30,
+        'red' => 31,
+        'green' => 32,
+        'yellow' => 33,
+        'blue' => 34,
+        'purple' => 35,
         'turquoise' => 36,
-        'white'     => 37
+        'white' => 37,
     ];
 
-    return "\033[" . $colors[$color] . "m" . $string . "\033[0m";
+    return "\033[".$colors[$color].'m'.$string."\033[0m";
 }
 
 /**
@@ -330,7 +346,7 @@ function typeIsAudio(string $type): bool
             'audio/vorbis',
             'audio/speex',
             'audio/mpeg',
-            'audio/webm'
+            'audio/webm',
         ]
     );
 }
@@ -372,7 +388,9 @@ function isLongitude(float $longitude): bool
  */
 function stringToColor(?string $string = null): string
 {
-    if ($string == null) return 'dorange';
+    if ($string == null) {
+        return 'dorange';
+    }
 
     // Get the Hue angle from the XEP definition
     $arr = unpack('C*', hex2bin(hash('sha1', $string)));
@@ -390,7 +408,9 @@ function hueToPalette(float $hueAngle)
     // Pick the closest color from the palette
     $color = round($hueAngle / (360 / count($colors)));
 
-    if ($color == 16) $color = 15;
+    if ($color == 16) {
+        $color = 15;
+    }
 
     return $colors[$color];
 }
@@ -401,28 +421,30 @@ function hueToPalette(float $hueAngle)
 function palette(bool $withBlack = false): array
 {
     $palette = [
-        'dorange'   => '#FF5722',
-        'orange'    => '#FF9800',
-        'amber'     => '#FFC107',
-        'yellow'    => '#FFEB3B',
-        'lime'      => '#CDDC39',
-        'lgreen'    => '#8BC34A',
-        'green'     => '#4CAF50',
-        'teal'      => '#009688',
-        'cyan'      => '#00BCD4',
-        'lblue'     => '#03A9F4',
-        'blue'      => '#2196F3',
-        'indigo'    => '#3F51B5',
-        'dpurple'   => '#673AB7',
-        'purple'    => '#9C27B0',
-        'pink'      => '#E91E63',
-        'red'       => '#F44336',
+        'dorange' => '#FF5722',
+        'orange' => '#FF9800',
+        'amber' => '#FFC107',
+        'yellow' => '#FFEB3B',
+        'lime' => '#CDDC39',
+        'lgreen' => '#8BC34A',
+        'green' => '#4CAF50',
+        'teal' => '#009688',
+        'cyan' => '#00BCD4',
+        'lblue' => '#03A9F4',
+        'blue' => '#2196F3',
+        'indigo' => '#3F51B5',
+        'dpurple' => '#673AB7',
+        'purple' => '#9C27B0',
+        'pink' => '#E91E63',
+        'red' => '#F44336',
     ];
 
-    if ($withBlack) return $palette + [
-        'black'     => '#000000',
-        'gray'      => '#9E9E9E',
-    ];
+    if ($withBlack) {
+        return $palette + [
+            'black' => '#000000',
+            'gray' => '#9E9E9E',
+        ];
+    }
 
     return $palette;
 }
@@ -432,7 +454,9 @@ function palette(bool $withBlack = false): array
  */
 function stripTags($string): string
 {
-    if ($string == null) return '';
+    if ($string == null) {
+        return '';
+    }
 
     return strip_tags(
         preg_replace(
@@ -462,7 +486,7 @@ function emojiShortcut($string): string
  */
 function purifyHTML($string, $base = null): string
 {
-    $config = \HTMLPurifier_Config::createDefault();
+    $config = HTMLPurifier_Config::createDefault();
     $config->set('HTML.Doctype', 'XHTML 1.1');
     $config->set('Cache.SerializerPath', '/tmp');
     $config->set('HTML.DefinitionID', 'html5-definitions');
@@ -495,8 +519,9 @@ function purifyHTML($string, $base = null): string
         ]);
     }
 
-    $purifier = new \HTMLPurifier($config);
+    $purifier = new HTMLPurifier($config);
     $trimmed = trim($purifier->purify($string));
+
     return preg_replace('#(\s*<br\s*/?>)*\s*$#i', '', $trimmed);
 }
 
@@ -523,6 +548,7 @@ function firstLetterCapitalize($string, bool $firstOnly = false): string
 {
     $size = ($firstOnly) ? 1 : 2;
     $string = empty($string) ? 'M' : $string;
+
     return mb_convert_case(mb_substr($string, 0, $size), MB_CASE_TITLE);
 }
 
@@ -531,8 +557,9 @@ function firstLetterCapitalize($string, bool $firstOnly = false): string
  */
 function cleanupId(string $string = '', bool $withHash = false): string
 {
-    $id = 'id-' . strtolower(preg_replace('/([^a-z0-9]+)/i', '-', $string));
-    return $withHash ? $id . '-' . substr(hash('sha256', $string), 0, 6) : $id;
+    $id = 'id-'.strtolower(preg_replace('/([^a-z0-9]+)/i', '-', $string));
+
+    return $withHash ? $id.'-'.substr(hash('sha256', $string), 0, 6) : $id;
 }
 
 /**
@@ -540,7 +567,7 @@ function cleanupId(string $string = '', bool $withHash = false): string
  */
 function hashId(string $string = ''): string
 {
-    return 'id-' . substr(hash('sha256', $string), 0, 6);
+    return 'id-'.substr(hash('sha256', $string), 0, 6);
 }
 
 /**
@@ -556,11 +583,11 @@ function truncate($str, int $width): string
  */
 function urilize($path, bool $noTime = false): string
 {
-    if ($noTime || !file_exists(PUBLIC_PATH . '/' . $path)) {
-        return BASE_URI . $path;
+    if ($noTime || ! file_exists(PUBLIC_PATH.'/'.$path)) {
+        return BASE_URI.$path;
     }
 
-    return BASE_URI . $path . '?t=' . filemtime(PUBLIC_PATH . '/' . $path);
+    return BASE_URI.$path.'?t='.filemtime(PUBLIC_PATH.'/'.$path);
 }
 
 /**

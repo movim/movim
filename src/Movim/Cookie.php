@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -14,7 +15,7 @@ class Cookie
             ? $_COOKIE['MOVIM_SESSION_ID']
             : null;
 
-        if ($sessionId == null || !validateCookie($sessionId)) {
+        if ($sessionId == null || ! validateCookie($sessionId)) {
             self::renew();
         } else {
             self::setCookie($sessionId);
@@ -38,7 +39,7 @@ class Cookie
 
     private static function setCookie($key)
     {
-        if (!headers_sent()) {
+        if (! headers_sent()) {
             self::clearCookieHeader();
             setcookie('MOVIM_SESSION_ID', $key, [
                 'expires' => self::getTime(),

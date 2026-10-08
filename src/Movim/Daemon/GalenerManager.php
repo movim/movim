@@ -11,41 +11,48 @@ use Symfony\Component\Console\Output\OutputInterface;
 class GalenerManager
 {
     private ?Process $galenerWorker = null;
+
     private ?TimerInterface $restartTimer;
+
     private const GALENER_WORKER_CONSOLE = '📞 Galener Worker: ';
+
     public function __construct(private LoopInterface $loop, private OutputInterface $output) {}
 
     public function start(): string
     {
         if ($this->galenerWorker != null) {
             $message = 'Already started';
-            $this->output->writeln('<info>' . self::GALENER_WORKER_CONSOLE . $message . '</info>');
+            $this->output->writeln('<info>'.self::GALENER_WORKER_CONSOLE.$message.'</info>');
+
             return $message;
         }
 
         if (
             config('galener.xmpp_host')
             && Validator::domain()->validate(config('galener.xmpp_host'))
-            && !empty(config('galener.xmpp_password'))
+            && ! empty(config('galener.xmpp_password'))
         ) {
-            if (empty(config('galener.galene_path')) || !file_exists(config('galener.galene_path'))) {
+            if (empty(config('galener.galene_path')) || ! file_exists(config('galener.galene_path'))) {
                 $message = 'galene executable not accessible';
-                $this->output->writeln('<comment>' . self::GALENER_WORKER_CONSOLE . $message . '</comment>');
+                $this->output->writeln('<comment>'.self::GALENER_WORKER_CONSOLE.$message.'</comment>');
+
                 return $message;
             } else {
-                $this->galenerWorker = new Process('exec ' . PHP_BINARY . ' galener.php', cwd: WORKERS_PATH);
+                $this->galenerWorker = new Process('exec '.PHP_BINARY.' galener.php', cwd: WORKERS_PATH);
                 $this->galenerWorker->start($this->loop);
                 $this->galenerWorker->on('exit', function () {
-                    $this->output->writeln('<info>' . self::GALENER_WORKER_CONSOLE . '🔴 Stopped</info>');
+                    $this->output->writeln('<info>'.self::GALENER_WORKER_CONSOLE.'🔴 Stopped</info>');
                     $this->galenerWorker = null;
                 });
                 $message = '🟢 Launched';
-                $this->output->writeln('<info>' . self::GALENER_WORKER_CONSOLE . $message . '</info>');
+                $this->output->writeln('<info>'.self::GALENER_WORKER_CONSOLE.$message.'</info>');
+
                 return $message;
             }
         } else {
             $message = 'Configuration empty or invalid';
-            $this->output->writeln('<comment>' . self::GALENER_WORKER_CONSOLE . $message . '</comment>');
+            $this->output->writeln('<comment>'.self::GALENER_WORKER_CONSOLE.$message.'</comment>');
+
             return $message;
         }
     }
@@ -54,7 +61,7 @@ class GalenerManager
     {
         if ($this->galenerWorker != null) {
             $message = '🟠 Stopping';
-            $this->output->writeln('<info>' . self::GALENER_WORKER_CONSOLE . $message . '</info>');
+            $this->output->writeln('<info>'.self::GALENER_WORKER_CONSOLE.$message.'</info>');
             $this->galenerWorker->terminate(SIGTERM);
 
             $this->loop->addTimer(5.0, function () {
@@ -63,13 +70,15 @@ class GalenerManager
                 }
             });
 
-            if (file_exists(GALENER_API_SOCKET)) unlink(GALENER_API_SOCKET);
+            if (file_exists(GALENER_API_SOCKET)) {
+                unlink(GALENER_API_SOCKET);
+            }
 
             return $message;
         }
 
         $message = '⚪ Not started';
-        $this->output->writeln('<info>' . self::GALENER_WORKER_CONSOLE . $message . '</info>');
+        $this->output->writeln('<info>'.self::GALENER_WORKER_CONSOLE.$message.'</info>');
 
         return $message;
     }
@@ -84,7 +93,7 @@ class GalenerManager
                     $this->loop->cancelTimer($this->restartTimer);
                     $this->start();
                 } else {
-                    $this->output->writeln('<comment>' . self::GALENER_WORKER_CONSOLE . 'Waiting for the worker to stop to restart it…</comment>');
+                    $this->output->writeln('<comment>'.self::GALENER_WORKER_CONSOLE.'Waiting for the worker to stop to restart it…</comment>');
                 }
             });
 
@@ -92,7 +101,8 @@ class GalenerManager
         }
 
         $message = 'Not started';
-        $this->output->writeln('<info>' . self::GALENER_WORKER_CONSOLE . $message . '</info>');
+        $this->output->writeln('<info>'.self::GALENER_WORKER_CONSOLE.$message.'</info>');
+
         return $message;
     }
 
@@ -101,7 +111,8 @@ class GalenerManager
         $message = $this->galenerWorker != null
             ? '🟢 Running'
             : '🔴 Not running';
-        $this->output->writeln('<info>' . self::GALENER_WORKER_CONSOLE . $message . '</info>');
+        $this->output->writeln('<info>'.self::GALENER_WORKER_CONSOLE.$message.'</info>');
+
         return $message;
     }
 }

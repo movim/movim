@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -12,6 +13,7 @@ use Psr\SimpleCache\CacheInterface;
 class Session implements CacheInterface
 {
     protected $values = [];
+
     private $seconds = 60; // Amount of seconds where the removable values are kept
 
     public function get(string $key, mixed $default = null): mixed
@@ -34,19 +36,19 @@ class Session implements CacheInterface
         return $values;
     }
 
-    public function set(string $key, mixed $value, null|int|\DateInterval $ttl = null): bool
+    public function set(string $key, mixed $value, null|int|DateInterval $ttl = null): bool
     {
         $obj = new \StdClass;
         $obj->removable = $ttl != null;
-        $obj->value     = $value;
-        $obj->time      = time();
+        $obj->value = $value;
+        $obj->time = time();
 
         $this->values[$key] = $obj;
 
         return true;
     }
 
-    public function setMultiple(iterable $values, null|int|\DateInterval $ttl = null): bool
+    public function setMultiple(iterable $values, null|int|DateInterval $ttl = null): bool
     {
         foreach ($values as $key => $value) {
             $this->set($key, $value, $ttl);
@@ -58,6 +60,7 @@ class Session implements CacheInterface
     public function delete(string $key): bool
     {
         unset($this->values[$key]);
+
         return true;
     }
 
@@ -73,6 +76,7 @@ class Session implements CacheInterface
     public function clear(): bool
     {
         $this->values = [];
+
         return true;
     }
 
@@ -91,7 +95,7 @@ class Session implements CacheInterface
         foreach ($this->values as $key => $object) {
             if (
                 $object->removable
-                && $object->time < (int)$t - $this->seconds
+                && $object->time < (int) $t - $this->seconds
             ) {
                 unset($this->values[$key]);
             }

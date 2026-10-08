@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class ChangeMessageFilesNameLength extends Migration
 {
@@ -14,7 +14,7 @@ class ChangeMessageFilesNameLength extends Migration
 
     public function down()
     {
-       $this->schema->table('message_files', function (Blueprint $table) {
+        $this->schema->table('message_files', function (Blueprint $table) {
             $table->string('name', 255)->change();
         });
     }

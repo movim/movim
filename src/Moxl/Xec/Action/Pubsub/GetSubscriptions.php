@@ -2,14 +2,19 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
+use App\Info;
+use App\Subscription;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 
 class GetSubscriptions extends Action
 {
     protected $_to;
+
     protected $_node;
+
     protected $_notify = true;
+
     protected $_sync;
 
     public function request()
@@ -20,13 +25,15 @@ class GetSubscriptions extends Action
 
     public function setNotify($notify)
     {
-        $this->_notify = (bool)$notify;
+        $this->_notify = (bool) $notify;
+
         return $this;
     }
 
     public function setSync()
     {
         $this->_sync = true;
+
         return $this;
     }
 
@@ -37,24 +44,24 @@ class GetSubscriptions extends Action
 
         foreach ($stanza->pubsub->subscriptions->children() as $s) {
             $sub = [
-                'jid' => (string)$s->attributes()->jid,
-                'subscription' => (string)$s->attributes()->subscription,
-                'subid' => (string)$s->attributes()->subid
+                'jid' => (string) $s->attributes()->jid,
+                'subscription' => (string) $s->attributes()->subscription,
+                'subid' => (string) $s->attributes()->subid,
             ];
             array_push($tab, $sub);
-            $jids[(string)$s->attributes()->jid] = true;
+            $jids[(string) $s->attributes()->jid] = true;
         }
 
-        \App\Info::where('server', $this->_to)
+        Info::where('server', $this->_to)
             ->where('node', $this->_node)
             ->update(['occupants' => count($tab)]);
 
         if (empty($tab)) {
-            \App\Subscription::where('server', $this->_to)
+            Subscription::where('server', $this->_to)
                 ->where('node', $this->_node)
                 ->delete();
         } else {
-            $existingJids = \App\Subscription::where('server', $this->_to)
+            $existingJids = Subscription::where('server', $this->_to)
                 ->where('node', $this->_node)
                 ->whereIn('jid', array_keys($jids))
                 ->pluck('jid')
@@ -63,10 +70,10 @@ class GetSubscriptions extends Action
             $jidsToSave = array_diff(array_keys($jids), $existingJids);
 
             foreach ($jidsToSave as $jid) {
-                $subscription = new \App\Subscription([
-                    'jid' => (string)$jid,
+                $subscription = new Subscription([
+                    'jid' => (string) $jid,
                     'server' => $this->_to,
-                    'node' => $this->_node
+                    'node' => $this->_node,
                 ]);
                 $subscription->save();
             }
@@ -74,7 +81,7 @@ class GetSubscriptions extends Action
 
         $this->pack([
             'to' => $this->_to,
-            'node' => $this->_node
+            'node' => $this->_node,
         ]);
 
         if ($this->_notify) {

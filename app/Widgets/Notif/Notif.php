@@ -2,13 +2,12 @@
 
 namespace App\Widgets\Notif;
 
-use Movim\Widget\Base;
-use Movim\RPC;
-use Carbon\Carbon;
-
 use App\PushSubscription;
 use App\User;
 use App\Widgets\Chat\Chat;
+use Carbon\Carbon;
+use Movim\RPC;
+use Movim\Widget\Base;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;
 
@@ -46,7 +45,9 @@ class Notif extends Base
 
     public function executeRPC()
     {
-        if ($this->rpcCall) (new RPC(user: $this->me, sessionId: $this->sessionId))->call($this->rpcCall);
+        if ($this->rpcCall) {
+            (new RPC(user: $this->me, sessionId: $this->sessionId))->call($this->rpcCall);
+        }
         $this->rpcCall = null;
     }
 
@@ -64,7 +65,7 @@ class Notif extends Base
         ?array $data = [],
     ) {
         if ($picture == null) {
-            $picture = BASE_URI . '/theme/img/app/128.png';
+            $picture = BASE_URI.'/theme/img/app/128.png';
         }
 
         $data['url'] = $url;
@@ -153,7 +154,6 @@ class Notif extends Base
         Wrapper::getInstance()->iterate('notifs', (new Packet)->pack($notifs), user: $this->me, sessionId: $this->sessionId);
     }
 
-
     /**
      * @brief Get the current Notif key
      */
@@ -165,7 +165,7 @@ class Notif extends Base
     /**
      * @brief Clear the counter of a key
      *
-     * @param string $key The key to group the notifications
+     * @param  string  $key  The key to group the notifications
      * @return void
      */
     public function ajaxClear(string $key)
@@ -201,28 +201,34 @@ class Notif extends Base
 
     /**
      * @brief Get all the keys
+     *
      * @return void
      */
     public function ajaxGet(?bool $chat = true)
     {
         $notifs = linker($this->sessionId)->session->get('notifs');
 
-        if ($notifs == null) $notifs = [];
+        if ($notifs == null) {
+            $notifs = [];
+        }
 
-        if ($chat) $notifs['chat'] = $this->me?->unreads() ?? 0;
+        if ($chat) {
+            $notifs['chat'] = $this->me?->unreads() ?? 0;
+        }
         (new RPC(user: $this->me, sessionId: $this->sessionId))->call('Notif.refresh', $notifs);
     }
 
     /**
      * @brief Set the current used key (to prevent notifications on current view)
      *
-     * @param string $key
      * @return void
      */
     public function ajaxCurrent(string $key)
     {
         // Clear the specific keys
-        if (strpos($key, '|') !== false) (new Notif($this->me, sessionId: $this->sessionId))->ajaxClear($key);
+        if (strpos($key, '|') !== false) {
+            (new Notif($this->me, sessionId: $this->sessionId))->ajaxClear($key);
+        }
 
         $session = linker($this->sessionId)->session;
 
@@ -236,10 +242,6 @@ class Notif extends Base
 
     /**
      * @brief Register a push notification subscription
-     *
-     * @param string $endpoint
-     * @param string $auth
-     * @param string $p256dh
      */
     public function ajaxRegisterPushSubscrition(string $endpoint, string $auth, string $p256dh, ?string $userAgent)
     {

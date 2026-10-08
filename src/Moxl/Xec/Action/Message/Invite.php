@@ -2,14 +2,17 @@
 
 namespace Moxl\Xec\Action\Message;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Message;
+use Moxl\Xec\Action;
 
 class Invite extends Action
 {
     protected $_to;
+
     protected $_content;
+
     protected $_id;
+
     protected $_invite;
 
     public function request()

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -7,9 +8,7 @@
 namespace Movim\Daemon;
 
 use Movim\Bootstrap;
-
 use Psr\Http\Message\ServerRequestInterface;
-
 use React\Http\HttpServer;
 use React\Http\Message\Response;
 use React\Socket\SocketServer;
@@ -26,20 +25,20 @@ class Api
             $response = '';
             $post = (array) ($request->getParsedBody() ?? []);
             $response = match ($request->getUri()->getHost()) {
-                'ajax'         => $this->handleAjax($post) ?? '',
-                'exists'       => (string) $this->sessionExists($post),
-                'linked'       => (string) count($this->core->getStartedSessions()),
-                'started'      => (string) $this->sessionsStarted(),
-                'mujiincall'   => (string) $this->isMujiInCall($post),
-                //'jidincall'    => (string) $this->isJidInCall($post),
+                'ajax' => $this->handleAjax($post) ?? '',
+                'exists' => (string) $this->sessionExists($post),
+                'linked' => (string) count($this->core->getStartedSessions()),
+                'started' => (string) $this->sessionsStarted(),
+                'mujiincall' => (string) $this->isMujiInCall($post),
+                // 'jidincall'    => (string) $this->isJidInCall($post),
                 'disconnect',
-                'unregister'   => $this->sessionUnregister($post) ?? 'Unregistered',
+                'unregister' => $this->sessionUnregister($post) ?? 'Unregistered',
                 'sessionstree' => $this->core->dumpSessionsTree(),
 
-                'galenerstart' => (string)$this->core->galenerManager->start(),
-                'galenerstop'  => (string)$this->core->galenerManager->stop(),
-                'galenerrestart' => (string)$this->core->galenerManager->restart(),
-                'galenerstatus' => (string)$this->core->galenerManager->status(),
+                'galenerstart' => (string) $this->core->galenerManager->start(),
+                'galenerstop' => (string) $this->core->galenerManager->stop(),
+                'galenerrestart' => (string) $this->core->galenerManager->restart(),
+                'galenerstatus' => (string) $this->core->galenerManager->status(),
             };
 
             return new Response(
@@ -50,13 +49,13 @@ class Api
         };
 
         $server = new HttpServer($handler);
-        $server->on('error', fn(\Throwable $e) => (new Bootstrap)->exceptionHandler($e));
+        $server->on('error', fn (\Throwable $e) => (new Bootstrap)->exceptionHandler($e));
         $server->listen($socket);
     }
 
     public function handleAjax(array $post): void
     {
-        if (!isset($post['sid'], $post['json'])) {
+        if (! isset($post['sid'], $post['json'])) {
             return;
         }
 
@@ -67,30 +66,30 @@ class Api
 
     public function sessionExists(array $post): bool
     {
-        if (!isset($post['sid'])) {
+        if (! isset($post['sid'])) {
             return false;
         }
 
         $sessions = $this->core->getStartedSessions();
 
-        return (array_key_exists($post['sid'], $sessions)
-            && $sessions[$post['sid']] === true);
+        return array_key_exists($post['sid'], $sessions)
+            && $sessions[$post['sid']] === true;
     }
 
     public function sessionsStarted(): int
     {
-        return count(array_filter($this->core->getStartedSessions(), fn($s) => $s === true));
+        return count(array_filter($this->core->getStartedSessions(), fn ($s) => $s === true));
     }
 
     public function isMujiInCall(array $post): bool
     {
-        if (!isset($post['sessionid'], $post['jid'], $post['mujiroom'])) {
+        if (! isset($post['sessionid'], $post['jid'], $post['mujiroom'])) {
             return false;
         }
 
         $linker = linker($post['sessionid']);
 
-        if (!$linker || !$linker->currentCall) {
+        if (! $linker || ! $linker->currentCall) {
             return false;
         }
 
@@ -115,7 +114,7 @@ class Api
 
     public function sessionUnregister(array $post): void
     {
-        if (!isset($post['sid'])) {
+        if (! isset($post['sid'])) {
             return;
         }
 

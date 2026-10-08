@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Payload;
 
+use App\Session;
 use Movim\Jid;
 
 class SASL2Success extends Payload
@@ -10,8 +11,8 @@ class SASL2Success extends Payload
     {
         linker($this->sessionId)->authentication->clear();
 
-        $session = \App\Session::where('user_id', $this->me->id)->first();
-        $jid = new Jid((string)$stanza->{'authorization-identifier'});
+        $session = Session::where('user_id', $this->me->id)->first();
+        $jid = new Jid((string) $stanza->{'authorization-identifier'});
 
         $session->username = $jid->username;
         $session->host = $jid->domain;

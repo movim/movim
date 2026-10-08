@@ -5,14 +5,14 @@ namespace App\Widgets\AdHoc;
 use Movim\Librairies\JingletoSDP;
 use Movim\Librairies\SDPtoJingle;
 use Movim\Librairies\XMPPtoForm;
-use Moxl\Xec\Action\AdHoc\Get;
+use Movim\Widget\Base;
 use Moxl\Xec\Action\AdHoc\Command;
+use Moxl\Xec\Action\AdHoc\Get;
 use Moxl\Xec\Action\AdHoc\Submit;
-
 use Moxl\Xec\Payload\Packet;
 use stdClass;
 
-class AdHoc extends \Movim\Widget\Base
+class AdHoc extends Base
 {
     public function load()
     {
@@ -32,14 +32,14 @@ class AdHoc extends \Movim\Widget\Base
         } else {
             $view = $this->tpl();
             $view->assign('list', $packet->content);
-            $this->rpc('MovimTpl.fill', '#adhoc_widget_' . cleanupId($packet->from), $view->draw('_adhoc_list'));
+            $this->rpc('MovimTpl.fill', '#adhoc_widget_'.cleanupId($packet->from), $view->draw('_adhoc_list'));
             $this->rpc('AdHoc.refresh');
         }
     }
 
     public function onListError(Packet $packet)
     {
-        $this->rpc('MovimTpl.remove', '#adhoc_widget_' . cleanupId($packet->from));
+        $this->rpc('MovimTpl.remove', '#adhoc_widget_'.cleanupId($packet->from));
         $this->rpc('Tabs.create');
     }
 
@@ -61,7 +61,7 @@ class AdHoc extends \Movim\Widget\Base
             $view->assign('form', $form);
             $view->assign('attributes', $command->attributes());
             $view->assign('actions', null);
-            $view->assign('status', (string)$command->attributes()->status);
+            $view->assign('status', (string) $command->attributes()->status);
 
             if (isset($command->actions)) {
                 $view->assign('actions', $command->actions);
@@ -69,9 +69,10 @@ class AdHoc extends \Movim\Widget\Base
 
             $this->dialog($view->draw('_adhoc_form'), true);
             $this->rpc('AdHoc.initForm');
-        } elseif ((string)$command->attributes()->status === 'completed') {
+        } elseif ((string) $command->attributes()->status === 'completed') {
             $this->rpc('Dialog.clear');
             $this->toast($this->__('adhoc.completed'));
+
             return;
         }
     }
@@ -107,6 +108,7 @@ class AdHoc extends \Movim\Widget\Base
 
         if ($xml == false) {
             $this->toast($this->__('error.oops'));
+
             return;
         }
 

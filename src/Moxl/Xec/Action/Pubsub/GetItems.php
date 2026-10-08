@@ -2,21 +2,26 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
+use App\Info;
 use App\Post;
 use Carbon\Carbon;
-use Moxl\Stanza\Pubsub;
-use Moxl\Xec\Action;
-
 use Moxl\Stanza\Avatar;
+use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\PubsubAtom;
+use Moxl\Xec\Action;
 
 class GetItems extends Action
 {
     protected $_to;
+
     protected $_node;
+
     protected $_since;
+
     protected ?int $_paging;
+
     protected ?string $_after = null;
+
     protected ?string $_before = null;
 
     protected bool $_paginated = false;
@@ -36,6 +41,7 @@ class GetItems extends Action
     {
         $this->_after = $after;
         $this->_paginated = true;
+
         return $this;
     }
 
@@ -43,6 +49,7 @@ class GetItems extends Action
     {
         $this->_before = $before;
         $this->_paginated = true;
+
         return $this;
     }
 
@@ -55,7 +62,7 @@ class GetItems extends Action
         foreach ($stanza->pubsub->items->item as $item) {
             if (
                 isset($item->entry)
-                && (string)$item->entry->attributes()->xmlns == PubsubAtom::ATOM_NAMESPACE
+                && (string) $item->entry->attributes()->xmlns == PubsubAtom::ATOM_NAMESPACE
             ) {
                 if (
                     $this->_since == null
@@ -64,7 +71,7 @@ class GetItems extends Action
                     $p = new Post([
                         'server' => $this->_to,
                         'node' => $this->_node,
-                        'nodeid' => (string)$item->attributes()->id
+                        'nodeid' => (string) $item->attributes()->id,
                     ]);
                     $p->set($item);
                     $posts[$p->nodeid] = $p;
@@ -74,13 +81,13 @@ class GetItems extends Action
                 }
             } elseif (
                 isset($item->metadata)
-                && (string)$item->metadata->attributes()->xmlns == Avatar::NODE_METADATA
+                && (string) $item->metadata->attributes()->xmlns == Avatar::NODE_METADATA
                 && isset($item->metadata->info->attributes()->url)
             ) {
                 requestAvatarUrl(
                     jid: $this->_to,
                     node: $this->_node,
-                    url: (string)$item->metadata->info->attributes()->url
+                    url: (string) $item->metadata->info->attributes()->url
                 );
             }
         }
@@ -125,11 +132,11 @@ class GetItems extends Action
             $stanza->pubsub->set
             && $stanza->pubsub->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
         ) {
-            $first = (string)$stanza->pubsub->set->first;
-            $last = (string)$stanza->pubsub->set->last;
-            $count = (int)$stanza->pubsub->set->count;
+            $first = (string) $stanza->pubsub->set->first;
+            $last = (string) $stanza->pubsub->set->last;
+            $count = (int) $stanza->pubsub->set->count;
 
-            $info = \App\Info::where('server', $this->_to)
+            $info = Info::where('server', $this->_to)
                 ->where('node', $this->_node)
                 ->first();
 
@@ -140,15 +147,15 @@ class GetItems extends Action
         }
 
         $this->pack([
-            'server'    => $this->_to,
-            'node'      => $this->_node,
-            'ids'       => $ids,
-            'first'     => ($this->_after) ? $last : $first,
-            'last'      => ($this->_after) ? $first : $last,
-            'count'     => $count,
+            'server' => $this->_to,
+            'node' => $this->_node,
+            'ids' => $ids,
+            'first' => ($this->_after) ? $last : $first,
+            'last' => ($this->_after) ? $first : $last,
+            'count' => $count,
             'paginated' => $this->_paginated,
-            'before'    => $this->_before,
-            'after'     => $this->_after
+            'before' => $this->_before,
+            'after' => $this->_after,
         ]);
 
         $this->deliver();

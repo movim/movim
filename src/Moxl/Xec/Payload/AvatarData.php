@@ -9,11 +9,11 @@ class AvatarData extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $jid = bareJid((string)$parent->attributes()->from);
+        $jid = bareJid((string) $parent->attributes()->from);
 
         requestAvatarBase64(
             jid: $jid,
-            base64: (string)$stanza->items->item->data,
+            base64: (string) $stanza->items->item->data,
             type: Avatar::NODE_DATA
         )->then(
             function (Response $response) use ($jid) {

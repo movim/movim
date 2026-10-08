@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Hat extends Model
@@ -15,7 +16,7 @@ class Hat extends Model
 
     public function toArray()
     {
-        $now = \Carbon\Carbon::now();
+        $now = Carbon::now();
 
         return [
             'uri' => $this->attributes['uri'],

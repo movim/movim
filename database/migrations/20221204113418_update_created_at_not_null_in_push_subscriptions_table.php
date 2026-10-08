@@ -1,8 +1,8 @@
 <?php
 
 use App\PushSubscription;
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class UpdateCreatedAtNotNullInPushSubscriptionsTable extends Migration
 {

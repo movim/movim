@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class CreateReactionsTable extends Migration
 {
@@ -29,7 +29,7 @@ class CreateReactionsTable extends Migration
             $table->timestamps();
 
             $table->foreign('message_mid')->references('mid')
-                  ->on('messages')->onDelete('cascade');
+                ->on('messages')->onDelete('cascade');
 
             $table->unique(['message_mid', 'jidfrom', 'emoji']);
         });

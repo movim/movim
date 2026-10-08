@@ -2,15 +2,15 @@
 
 namespace Moxl\Xec\Action\Location;
 
-use Moxl\Xec\Action;
-use Moxl\Stanza\Location;
-
 use App\Contact;
+use Moxl\Stanza\Location;
+use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\SetConfig;
 
 class Publish extends Action
 {
     protected $_geo;
+
     protected bool $_withPublishOption = true;
 
     public function request()
@@ -21,22 +21,23 @@ class Publish extends Action
 
     public function setGeo(array $geo)
     {
-        $this->_geo  = $geo;
+        $this->_geo = $geo;
+
         return $this;
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $from = bareJid((string)$stanza->attributes()->from);
+        $from = bareJid((string) $stanza->attributes()->from);
 
         $contact = Contact::firstOrNew(['id' => $from]);
 
         if (empty($this->_geo)) {
             $contact->loclatitude = $contact->loclongitude = $contact->loctimestamp = null;
         } else {
-            $contact->loclatitude      = $this->_geo['latitude'];
-            $contact->loclongitude     = $this->_geo['longitude'];
-            $contact->loctimestamp     = date('Y-m-d H:i:s');
+            $contact->loclatitude = $this->_geo['latitude'];
+            $contact->loclongitude = $this->_geo['longitude'];
+            $contact->loctimestamp = date('Y-m-d H:i:s');
         }
 
         $contact->save();
@@ -53,8 +54,8 @@ class Publish extends Action
     {
         $config = new SetConfig($this->me, sessionId: $this->sessionId);
         $config->setNode(Location::$node)
-               ->setData(Location::$nodeConfig)
-               ->request();
+            ->setData(Location::$nodeConfig)
+            ->request();
 
         $this->_withPublishOption = false;
         $this->request();

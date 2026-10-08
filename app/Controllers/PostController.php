@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Post;
 use Movim\Controller\Base;
 
 class PostController extends Base
@@ -15,19 +16,19 @@ class PostController extends Base
     {
         $this->page->setTitle(__('page.post'));
 
-        if (!$this->user) {
-            $post = \App\Post::where([
+        if (! $this->user) {
+            $post = Post::where([
                 'server' => $this->fetchGet('s'),
                 'node' => $this->fetchGet('n'),
                 'nodeid' => $this->fetchGet('i'),
-                'open' => true
+                'open' => true,
             ])->first();
 
             if ($post) {
                 if ($post->isMicroblog()) {
                     $this->redirect('blog', [$this->fetchGet('s'), $this->fetchGet('i')]);
                 } else {
-                    $this->redirect('node', [$this->fetchGet('s'),$this->fetchGet('n'), $this->fetchGet('i')]);
+                    $this->redirect('node', [$this->fetchGet('s'), $this->fetchGet('n'), $this->fetchGet('i')]);
                 }
             } else {
                 $this->redirect('notfound');

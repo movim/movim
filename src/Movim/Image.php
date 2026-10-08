@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -9,11 +10,15 @@ namespace Movim;
 class Image
 {
     private $_key;
+
     private $_im;
+
     private $_inMemory = false;
 
     public static $formats = ['jpeg' => '.jpg', 'png' => '.png', 'webp' => '.webp', 'gif' => '.gif'];
+
     public static $hash = 'sha256'; // Cache need to be cleared in a migration if changed
+
     private static $originalType = '_o';
 
     public function __construct()
@@ -51,11 +56,11 @@ class Image
      */
     public function load(string $format = DEFAULT_PICTURE_FORMAT, ?string $directory = CACHE_DIR): bool
     {
-        if (!empty($this->_key)) {
+        if (! empty($this->_key)) {
             return $this->fromPath(
-                PUBLIC_PATH . $directory .
-                    hash(Image::$hash, $this->_key) .
-                    self::$originalType .
+                PUBLIC_PATH.$directory.
+                    hash(Image::$hash, $this->_key).
+                    self::$originalType.
                     self::$formats[$format]
             );
         }
@@ -83,7 +88,7 @@ class Image
         if (file_exists($path)) {
             $size = filesize($path);
             if ($size > 0) {
-                $handle = fopen($path, "r");
+                $handle = fopen($path, 'r');
                 $bin = fread($handle, $size);
                 fclose($handle);
 
@@ -102,7 +107,7 @@ class Image
     public function fromBase64(?string $base = null): bool
     {
         if ($base) {
-            return $this->fromBin((string)base64_decode((string)$base));
+            return $this->fromBin((string) base64_decode((string) $base));
         }
 
         return false;
@@ -115,7 +120,8 @@ class Image
     {
         if ($bin) {
             try {
-                $this->_im->readImageBlob((string)$bin);
+                $this->_im->readImageBlob((string) $bin);
+
                 return true;
             } catch (\ImagickException $e) {
                 error_log($e->getMessage());
@@ -148,23 +154,23 @@ class Image
         ?bool $noTime = false,
         ?string $directory = CACHE_DIR,
     ): ?string {
-        if (!in_array($format, array_keys(self::$formats))) {
+        if (! in_array($format, array_keys(self::$formats))) {
             $format = DEFAULT_PICTURE_FORMAT;
         }
 
         $type = $width != null
-            ? '_' . $width
+            ? '_'.$width
             : self::$originalType;
 
         /**
          * The file is in the cache and we can directly return it
          */
         if (file_exists(
-            PUBLIC_PATH . $directory . hash(Image::$hash, $key) .
-                $type . self::$formats[$format]
+            PUBLIC_PATH.$directory.hash(Image::$hash, $key).
+                $type.self::$formats[$format]
         )) {
             return urilize(
-                $directory . hash(Image::$hash, $key) . $type . self::$formats[$format],
+                $directory.hash(Image::$hash, $key).$type.self::$formats[$format],
                 $noTime
             );
         }
@@ -175,19 +181,19 @@ class Image
         elseif (
             $width != null
             && file_exists(
-                PUBLIC_PATH . $directory . hash(Image::$hash, $key) .
-                    self::$originalType . self::$formats[$format]
+                PUBLIC_PATH.$directory.hash(Image::$hash, $key).
+                    self::$originalType.self::$formats[$format]
             )
         ) {
             $im = new Image;
             $im->setKey($key);
-            if (!$im->load($format)) {
-                logError('Cannot load ' . $key . ' original file');
+            if (! $im->load($format)) {
+                logError('Cannot load '.$key.' original file');
             }
             $im->save($width, $height, $format);
 
             return urilize(
-                $directory . hash(Image::$hash, $key) . $type . self::$formats[$format],
+                $directory.hash(Image::$hash, $key).$type.self::$formats[$format],
                 $noTime
             );
         }
@@ -202,14 +208,16 @@ class Image
         ?int $quality = DEFAULT_PICTURE_QUALITY,
         ?string $directory = CACHE_DIR
     ) {
-        if (!$this->_key && !$this->_inMemory) return;
+        if (! $this->_key && ! $this->_inMemory) {
+            return;
+        }
 
-        $type = $width != null ? '_' . $width
+        $type = $width != null ? '_'.$width
             : self::$originalType;
 
-        if (!$this->_inMemory) {
+        if (! $this->_inMemory) {
             // Cleanup the existing files
-            $path = PUBLIC_PATH . $directory . hash(Image::$hash, $this->_key) . $type . self::$formats[$format];
+            $path = PUBLIC_PATH.$directory.hash(Image::$hash, $this->_key).$type.self::$formats[$format];
 
             // If the file exists we replace it
             if (file_exists($path)) {
@@ -219,9 +227,9 @@ class Image
                 if ($width == false) {
                     foreach (
                         glob(
-                            PUBLIC_PATH . $directory .
-                                hash(Image::$hash, $this->_key) .
-                                '*' . self::$formats[$format],
+                            PUBLIC_PATH.$directory.
+                                hash(Image::$hash, $this->_key).
+                                '*'.self::$formats[$format],
                             GLOB_NOSORT
                         ) as $pathThumb
                     ) {
@@ -267,15 +275,15 @@ class Image
             // Auto-rotate
             switch ($this->_im->getImageOrientation()) {
                 case \Imagick::ORIENTATION_BOTTOMRIGHT:
-                    $this->_im->rotateimage("#000", 180);
+                    $this->_im->rotateimage('#000', 180);
                     break;
 
                 case \Imagick::ORIENTATION_RIGHTTOP:
-                    $this->_im->rotateimage("#000", 90);
+                    $this->_im->rotateimage('#000', 90);
                     break;
 
                 case \Imagick::ORIENTATION_LEFTBOTTOM:
-                    $this->_im->rotateimage("#000", -90);
+                    $this->_im->rotateimage('#000', -90);
                     break;
             }
 
@@ -297,7 +305,7 @@ class Image
                 }
             }
 
-            if (!$this->_inMemory && $path) {
+            if (! $this->_inMemory && $path) {
                 $this->_im = $this->_im->deconstructImages();
                 $this->_im->writeImages($path, true);
                 $this->_im->clear();

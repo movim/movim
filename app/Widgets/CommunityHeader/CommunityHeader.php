@@ -2,15 +2,16 @@
 
 namespace App\Widgets\CommunityHeader;
 
+use App\Info;
 use App\Post;
 use Movim\Widget\Base;
 use Moxl\Stanza\Space;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Pubsub\Subscribe;
+use Moxl\Xec\Action\Pubsub\TestPostPublish;
 use Moxl\Xec\Action\Pubsub\Unsubscribe;
 use Moxl\Xec\Action\PubsubSubscription\Add as SubscriptionAdd;
 use Moxl\Xec\Action\PubsubSubscription\Remove as SubscriptionRemove;
-use Moxl\Xec\Action\Pubsub\TestPostPublish;
 use Moxl\Xec\Payload\Packet;
 use stdClass;
 
@@ -38,13 +39,14 @@ class CommunityHeader extends Base
                 'space',
                 [$info->server, $info->node]
             ));
+
             return;
         }
 
         if (
             $info->identities->contains('category', 'pubsub')
             && $info->identities->contains('type', 'leaf')
-            && !$info->isMicroblogCommentsNode()
+            && ! $info->isMicroblogCommentsNode()
         ) {
             $this->rpc('MovimTpl.fill', '#community_header', $this->prepareHeader($info->server, $info->node));
         }
@@ -70,7 +72,7 @@ class CommunityHeader extends Base
 
     public function onSubscribed(Packet $packet)
     {
-        list($server, $node) = array_values($packet->content);
+        [$server, $node] = array_values($packet->content);
 
         if ($node != Post::MICROBLOG_NODE) {
             $this->ajaxGetMetadata($server, $node);
@@ -86,7 +88,7 @@ class CommunityHeader extends Base
 
     public function onUnsubscribed(Packet $packet)
     {
-        list($server, $node) = array_values($packet->content);
+        [$server, $node] = array_values($packet->content);
 
         if ($node != Post::MICROBLOG_NODE) {
             $this->ajaxGetMetadata($server, $node);
@@ -97,7 +99,7 @@ class CommunityHeader extends Base
 
     public function ajaxGetMetadata(string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -108,7 +110,7 @@ class CommunityHeader extends Base
 
     public function ajaxAskSubscribe(string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -116,7 +118,7 @@ class CommunityHeader extends Base
 
         $view->assign('server', $server);
         $view->assign('node', $node);
-        $view->assign('info', \App\Info::where('server', $server)
+        $view->assign('info', Info::where('server', $server)
             ->where('node', $node)
             ->first());
 
@@ -125,7 +127,7 @@ class CommunityHeader extends Base
 
     public function ajaxSubscribe(stdClass $form, string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -147,7 +149,7 @@ class CommunityHeader extends Base
 
     public function ajaxAskUnsubscribe(string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -155,7 +157,7 @@ class CommunityHeader extends Base
 
         $view->assign('server', $server);
         $view->assign('node', $node);
-        $view->assign('info', \App\Info::where('server', $server)
+        $view->assign('info', Info::where('server', $server)
             ->where('node', $node)
             ->first());
 
@@ -164,7 +166,7 @@ class CommunityHeader extends Base
 
     public function ajaxUnsubscribe(string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -194,7 +196,7 @@ class CommunityHeader extends Base
      */
     public function ajaxTestPublish(string $server, string $node)
     {
-        if (!validateServerNode($server, $node)) {
+        if (! validateServerNode($server, $node)) {
             return;
         }
 
@@ -208,7 +210,7 @@ class CommunityHeader extends Base
     {
         $view = $this->tpl();
 
-        $info = \App\Info::where('server', $server)
+        $info = Info::where('server', $server)
             ->where('node', $node)
             ->first();
 
@@ -220,9 +222,9 @@ class CommunityHeader extends Base
         $view->assign('num', $info ?
             ($info->items > 0)
             ? $info->items
-            : \App\Post::where('server', $server)
-            ->where('node', $node)
-            ->count()
+            : Post::where('server', $server)
+                ->where('node', $node)
+                ->count()
             : 0);
         $view->assign('node', $node);
         $view->assign('server', $server);

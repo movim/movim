@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Stories;
 
+use App\Contact;
 use App\Post;
 use App\Widgets\Chats\Chats;
 use Movim\Widget\Base;
@@ -24,12 +25,12 @@ class Stories extends Base
         $post = Post::find($packet->content);
 
         if ($post && $post->isRecentStory()) {
-            if (!$post->isMine($this->me)) {
-                $contact = \App\Contact::firstOrNew(['id' => $post->server]);
+            if (! $post->isMine($this->me)) {
+                $contact = Contact::firstOrNew(['id' => $post->server]);
 
                 $this->notif(
                     key: 'news',
-                    title: '📝 ' . __('stories.new_story', $contact->truename),
+                    title: '📝 '.__('stories.new_story', $contact->truename),
                     body: $post->title,
                     url: $this->route('chat'),
                     picture: $contact->getPicture(),

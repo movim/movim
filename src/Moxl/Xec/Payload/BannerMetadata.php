@@ -8,7 +8,7 @@ class BannerMetadata extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $jid = bareJid((string)$parent->attributes()->from);
+        $jid = bareJid((string) $parent->attributes()->from);
 
         if (
             isset($stanza->items->item->metadata->info)
@@ -16,9 +16,9 @@ class BannerMetadata extends Payload
         ) {
             requestAvatarUrl(
                 jid: $jid,
-                url: (string)$stanza->items->item->metadata->info->attributes()->url,
+                url: (string) $stanza->items->item->metadata->info->attributes()->url,
                 banner: true
-            )->then(function (ResponseInterface $response) use ($jid) {
+            )->then(function (ResponseInterface $response) {
                 $this->deliver();
             });
         }

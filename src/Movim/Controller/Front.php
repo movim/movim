@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -6,8 +7,8 @@
 
 namespace Movim\Controller;
 
-use Movim\Route;
 use Movim\Cookie;
+use Movim\Route;
 use Movim\RPC;
 
 class Front extends Base
@@ -33,26 +34,27 @@ class Front extends Base
                 ? json_decode($content) // Simple ajax request to a Widget
                 : requestAPI('ajax', post: [ // Ajax request that is going to the daemon
                     'sid' => $this->user->session->id,
-                    'json' => rawurlencode($content)
+                    'json' => rawurlencode($content),
                 ]);
 
             if ($payload && $payload->b && $payload->b->c) {
                 $c = $this->loadController($payload->b->c);
                 $c->load();
 
-                if (($c->session_only && !$this->user)
-                    || (!$c->session_only && !in_array($payload->b->w, $c->listWidgets()))
+                if (($c->session_only && ! $this->user)
+                    || (! $c->session_only && ! in_array($payload->b->w, $c->listWidgets()))
                 ) {
                     header('HTTP/1.0 403 Forbidden');
                     exit;
                 }
             }
 
-            if (!empty($payload)) {
+            if (! empty($payload)) {
                 $rpc = new RPC(user: $this->user, sessionId: $this->user?->session?->id);
                 $rpc->handleJSON($payload->b);
                 $rpc->writeJSON();
             }
+
             return;
         }
 
@@ -65,7 +67,7 @@ class Front extends Base
             Cookie::clearCookieHeader();
         }
 
-        if ($c->session_only && !$this->user) {
+        if ($c->session_only && ! $this->user) {
             $this->redirect('login');
         }
 
@@ -75,7 +77,8 @@ class Front extends Base
 
     public function loadController(string $page)
     {
-        $className = 'App\\Controllers\\' . ucfirst($page) . 'Controller';
+        $className = 'App\\Controllers\\'.ucfirst($page).'Controller';
+
         return new $className($this->user);
     }
 }

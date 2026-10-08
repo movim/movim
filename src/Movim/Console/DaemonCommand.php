@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -6,26 +7,23 @@
 
 namespace Movim\Console;
 
+use App\User;
+use Movim\Daemon\Api;
+use Movim\Daemon\Core;
+use Movim\Daemon\GalenerManager;
+use Phinx\Config\Config;
+use Phinx\Migration\Manager;
+use Ratchet\Http\HttpServer;
+use Ratchet\Server\IoServer;
+use Ratchet\WebSocket\WsServer;
+use React\ChildProcess\Process;
+use React\EventLoop\Loop;
+use React\Socket\SocketServer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
-
-use Ratchet\Server\IoServer;
-use Ratchet\Http\HttpServer;
-use Ratchet\WebSocket\WsServer;
-
-use Movim\Daemon\Core;
-use Movim\Daemon\Api;
-use App\User;
-use Movim\Daemon\GalenerManager;
-use Phinx\Migration\Manager;
-use Phinx\Config\Config;
-use React\ChildProcess\Process;
 use Symfony\Component\Console\Output\NullOutput;
-
-use React\EventLoop\Loop;
-use React\Socket\SocketServer;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class DaemonCommand extends Command
 {
@@ -44,7 +42,7 @@ class DaemonCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $config = new Config(require(DOCUMENT_ROOT . '/phinx.php'));
+        $config = new Config(require DOCUMENT_ROOT.'/phinx.php');
         $manager = new Manager($config, $input, new NullOutput);
 
         if ($manager->printStatus('movim')['hasDownMigration']) {
@@ -55,8 +53,9 @@ class DaemonCommand extends Command
         }
 
         foreach (requiredExtensions() as $extension) {
-            if (!extension_loaded($extension)) {
-                $output->writeln('<comment>The following PHP extension is missing: ' . $extension . '</comment>');
+            if (! extension_loaded($extension)) {
+                $output->writeln('<comment>The following PHP extension is missing: '.$extension.'</comment>');
+
                 return Command::FAILURE;
             }
         }
@@ -64,19 +63,19 @@ class DaemonCommand extends Command
         $loop = Loop::get();
 
         if (config('daemon.url')) {
-            # Underlying `Validator`, URL validation is done via
-            # FILTER_VALIDATE_URL, where the FILTER_FLAG_SCHEME_REQUIRED was
-            # deprecated & then removed in later PHP versions now *reqiring* a
-            # scheme. Base URIs are allowed to be scheme-less which helps users
-            # looking to support both HTTP & HTTPS (either for testing purposes
-            # or otherwise). As such, we can append a missing scheme in order
-            # satisfy this validator requirement, but still use the scheme-less
-            # URI in practice.
+            // Underlying `Validator`, URL validation is done via
+            // FILTER_VALIDATE_URL, where the FILTER_FLAG_SCHEME_REQUIRED was
+            // deprecated & then removed in later PHP versions now *reqiring* a
+            // scheme. Base URIs are allowed to be scheme-less which helps users
+            // looking to support both HTTP & HTTPS (either for testing purposes
+            // or otherwise). As such, we can append a missing scheme in order
+            // satisfy this validator requirement, but still use the scheme-less
+            // URI in practice.
             $schemeEnforcedURL = parse_url(config('daemon.url'), PHP_URL_SCHEME)
                 ? config('daemon.url')
-                : 'https://' . ltrim(config('daemon.url'), '/');
+                : 'https://'.ltrim(config('daemon.url'), '/');
             if (filter_var($schemeEnforcedURL, FILTER_VALIDATE_URL)) {
-                $baseuri = rtrim(config('daemon.url'), '/') . '/';
+                $baseuri = rtrim(config('daemon.url'), '/').'/';
             }
         } else {
             $output->writeln('<comment>Please configure DAEMON_URL in .env</comment>');
@@ -85,7 +84,7 @@ class DaemonCommand extends Command
 
         if ($paths = $this->checkDirectories()) {
             foreach ($paths as $path) {
-                $output->writeln('<error>Can’t create ' . $path . ' directory</error>');
+                $output->writeln('<error>Can’t create '.$path.' directory</error>');
             }
 
             $output->writeln('<info>You can create them yourself or let the daemon create them for you.</info>');
@@ -97,32 +96,32 @@ class DaemonCommand extends Command
             $output->writeln('<comment>Please set at least one user as an admin once its account is logged in</comment>');
 
             $output->writeln('<info>To set an existing user admin</info>');
-            $output->writeln('<info>php daemon.php setAdmin {jid}</info>' . "\n");
+            $output->writeln('<info>php daemon.php setAdmin {jid}</info>'."\n");
         }
 
-        $clearTemplatesCache = new Process('exec ' . PHP_BINARY . ' ' . DOCUMENT_ROOT . '/daemon.php clearTemplatesCache');
+        $clearTemplatesCache = new Process('exec '.PHP_BINARY.' '.DOCUMENT_ROOT.'/daemon.php clearTemplatesCache');
         $clearTemplatesCache->start($loop);
-        $clearTemplatesCache->on('exit', fn($out) => $output->writeln('<info>Templates cache cleared</info>'));
+        $clearTemplatesCache->on('exit', fn ($out) => $output->writeln('<info>Templates cache cleared</info>'));
 
-        $compileLanguages = new Process('exec ' . PHP_BINARY . ' ' . DOCUMENT_ROOT . '/daemon.php compileLanguages');
+        $compileLanguages = new Process('exec '.PHP_BINARY.' '.DOCUMENT_ROOT.'/daemon.php compileLanguages');
         $compileLanguages->start($loop);
-        $compileLanguages->on('exit', fn($out) => $output->writeln('<info>po files compiled</info>'));
+        $compileLanguages->on('exit', fn ($out) => $output->writeln('<info>po files compiled</info>'));
 
-        $compileStickers = new Process('exec ' . PHP_BINARY . ' ' . DOCUMENT_ROOT . '/daemon.php compileStickers');
+        $compileStickers = new Process('exec '.PHP_BINARY.' '.DOCUMENT_ROOT.'/daemon.php compileStickers');
         $compileStickers->start($loop);
-        $compileStickers->on('exit', fn($out) => $output->writeln('<info>Stickers compiled</info>'));
+        $compileStickers->on('exit', fn ($out) => $output->writeln('<info>Stickers compiled</info>'));
 
         $output->writeln('<info>Movim daemon launched</info>');
-        $output->writeln('<info>Base URL: ' . $baseuri . '</info>');
+        $output->writeln('<info>Base URL: '.$baseuri.'</info>');
 
         if ($input->getOption('debug')) {
-            $output->writeln("\n" . '<comment>Debug is enabled, check the logs in syslog or ' . DOCUMENT_ROOT . '/log/</comment>');
+            $output->writeln("\n".'<comment>Debug is enabled, check the logs in syslog or '.DOCUMENT_ROOT.'/log/</comment>');
         }
 
         if (isOpcacheEnabled()) {
-            $compileOpcache = new Process('exec ' . PHP_BINARY . ' ' . DOCUMENT_ROOT . '/daemon.php compileOpcache');
+            $compileOpcache = new Process('exec '.PHP_BINARY.' '.DOCUMENT_ROOT.'/daemon.php compileOpcache');
             $compileOpcache->start($loop);
-            $compileOpcache->on('exit', fn($out) => $output->writeln('<info>Files compiled in Opcache</info>'));
+            $compileOpcache->on('exit', fn ($out) => $output->writeln('<info>Files compiled in Opcache</info>'));
         } else {
             $output->writeln('<error>Opcache is disabled, it is strongly advised to enable it in PHP CLI php.ini</error>');
             $output->writeln('Set opcache.enable=1 and opcache.enable_cli=1 in the PHP CLI ini file');
@@ -132,31 +131,31 @@ class DaemonCommand extends Command
         $app = new HttpServer(new WsServer($core));
 
         $socket = new SocketServer(
-            config('daemon.interface') . ':' . config('daemon.port')
+            config('daemon.interface').':'.config('daemon.port')
         );
 
-        $socketApi = new SocketServer('unix://' . API_SOCKET);
+        $socketApi = new SocketServer('unix://'.API_SOCKET);
         new Api($socketApi, $core);
 
         // Avatar Handler
 
-        $avatarHandler = new Process('exec ' . PHP_BINARY . ' avatarhandler.php', cwd: WORKERS_PATH);
+        $avatarHandler = new Process('exec '.PHP_BINARY.' avatarhandler.php', cwd: WORKERS_PATH);
         $avatarHandler->start($loop);
-        $avatarHandler->on('exit', fn() => $output->writeln('<error>Avatar Handler Worker crashed</error>'));
+        $avatarHandler->on('exit', fn () => $output->writeln('<error>Avatar Handler Worker crashed</error>'));
         $output->writeln('<info>😋 Avatar Handler Worker launched</info>');
 
         // Resolver
 
-        $resolverWorker = new Process('exec ' . PHP_BINARY . ' resolver.php', cwd: WORKERS_PATH);
+        $resolverWorker = new Process('exec '.PHP_BINARY.' resolver.php', cwd: WORKERS_PATH);
         $resolverWorker->start($loop);
-        $resolverWorker->on('exit', fn() => $output->writeln('<error>Resolver Worker crashed</error>'));
+        $resolverWorker->on('exit', fn () => $output->writeln('<error>Resolver Worker crashed</error>'));
         $output->writeln('<info>🌍 Resolver Worker launched</info>');
 
         // Pusher
 
-        $pusherWorker = new Process('exec ' . PHP_BINARY . ' pusher.php', cwd: WORKERS_PATH);
+        $pusherWorker = new Process('exec '.PHP_BINARY.' pusher.php', cwd: WORKERS_PATH);
         $pusherWorker->start($loop);
-        $pusherWorker->on('exit', fn() => $output->writeln('<error>Pusher Worker crashed</error>'));
+        $pusherWorker->on('exit', fn () => $output->writeln('<error>Pusher Worker crashed</error>'));
         $output->writeln('<info>🔔 Pusher Worker launched</info>');
 
         // Galene wrapper
@@ -176,16 +175,16 @@ class DaemonCommand extends Command
             CACHE_PATH,
             PUBLIC_CACHE_PATH,
             PUBLIC_IMAGES_PATH,
-            config('paths.log')
+            config('paths.log'),
         ];
         $errors = [];
 
         foreach ($paths as $path) {
-            if (!file_exists($path) && !@mkdir($path)) {
+            if (! file_exists($path) && ! @mkdir($path)) {
                 array_push($errors, $path);
             }
         }
 
-        return !empty($errors) ? $errors : null;
+        return ! empty($errors) ? $errors : null;
     }
 }

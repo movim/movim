@@ -17,7 +17,7 @@ class Handshake extends Event
     public function handle(): ?\DOMDocument
     {
         // Load the configured Conferences
-        foreach (glob(Galener::CONFERENCES_CACHE . '*.json') as $conferenceFile) {
+        foreach (glob(Galener::CONFERENCES_CACHE.'*.json') as $conferenceFile) {
             $jid = new Jid(pathinfo($conferenceFile, PATHINFO_FILENAME));
 
             if ($jid->isValid()) {

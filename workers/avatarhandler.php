@@ -1,12 +1,12 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
-$bootstrap = new Movim\Bootstrap;
+$bootstrap = new Bootstrap;
 $bootstrap->boot(true);
 
 use App\Workers\AvatarHandler\AvatarHandler;
-
+use Movim\Bootstrap;
 use Psr\Http\Message\ServerRequestInterface;
 use React\EventLoop\Loop;
 use React\Http\HttpServer;
@@ -21,9 +21,11 @@ $resolver = new AvatarHandler;
 $handler = function (ServerRequestInterface $request) use ($resolver) {
     return new Promise(function ($resolve) use ($request, $resolver) {
         $query = null;
-        $data = json_decode((string)$request->getBody());
+        $data = json_decode((string) $request->getBody());
 
-        if (!$data) return;
+        if (! $data) {
+            return;
+        }
 
         switch ($request->getUri()->getPath()) {
             case '/url':
@@ -52,11 +54,11 @@ $handler = function (ServerRequestInterface $request) use ($resolver) {
 };
 
 $server = new HttpServer($handler);
-$server->on('error', function (\Throwable $e) {
+$server->on('error', function (Throwable $e) {
     \logError($e);
 });
 
-$path = 'unix://' . AVATAR_HANDLER_SOCKET;
+$path = 'unix://'.AVATAR_HANDLER_SOCKET;
 $server->listen(new SocketServer($path));
 
 $loop->run();

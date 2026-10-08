@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Invite;
 use Movim\Controller\Base;
 use Respect\Validation\Validator;
 
@@ -13,9 +14,11 @@ class LoginController extends Base
 
         if ($this->user) {
             if ($this->fetchGet('i') && Validator::length(8)->isValid($this->fetchGet('i'))) {
-                $invitation = \App\Invite::find($this->fetchGet('i'));
+                $invitation = Invite::find($this->fetchGet('i'));
 
-                if (!$invitation) $this->redirect('main');
+                if (! $invitation) {
+                    $this->redirect('main');
+                }
 
                 $this->redirect('chat', [$invitation->resource, 'room']);
             } else {

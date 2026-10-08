@@ -3,8 +3,8 @@
 namespace Moxl\Xec\Action\Session;
 
 use Movim\Jid;
-use Moxl\Xec\Action;
 use Moxl\Stanza\Stream;
+use Moxl\Xec\Action;
 
 class Bind extends Action
 {
@@ -20,7 +20,7 @@ class Bind extends Action
     {
         $session = $this->me->session;
 
-        $jid = (new Jid((string)$stanza->bind->jid));
+        $jid = (new Jid((string) $stanza->bind->jid));
 
         $session->username = $jid->username;
         $session->host = $jid->domain;
@@ -34,6 +34,6 @@ class Bind extends Action
 
         $ss = new Start($this->me, sessionId: $this->sessionId);
         $ss->setTo($session->host)
-           ->request();
+            ->request();
     }
 }

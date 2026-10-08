@@ -2,17 +2,21 @@
 
 namespace App\Widgets\Account;
 
+use App\Info;
+use App\Message;
+use App\Post;
 use Movim\Jid;
 use Movim\Librairies\XMPPtoForm;
+use Movim\Widget\Base;
+use Moxl\Xec\Action\AdHoc\Get as AdHocGet;
 use Moxl\Xec\Action\OMEMO\DeleteBundle;
 use Moxl\Xec\Action\Register\ChangePassword;
-use Moxl\Xec\Action\Register\Remove;
 use Moxl\Xec\Action\Register\Get;
+use Moxl\Xec\Action\Register\Remove;
 use Moxl\Xec\Action\Register\Set;
-use Moxl\Xec\Action\AdHoc\Get as AdHocGet;
 use Moxl\Xec\Payload\Packet;
 
-class Account extends \Movim\Widget\Base
+class Account extends Base
 {
     public function load()
     {
@@ -43,7 +47,7 @@ class Account extends \Movim\Widget\Base
 
         $this->rpc(
             'MovimTpl.fill',
-            '#gateway_' . cleanupId($packet->from),
+            '#gateway_'.cleanupId($packet->from),
             $view->draw('_account_gateway_adhoc_list')
         );
     }
@@ -58,7 +62,7 @@ class Account extends \Movim\Widget\Base
 
     public function onRemoved()
     {
-        \App\Post::restrictToMicroblog()->where('server', $this->me->id)->delete();
+        Post::restrictToMicroblog()->where('server', $this->me->id)->delete();
         $this->me->delete();
         $this->rpc('Presence_ajaxLogout');
     }
@@ -176,7 +180,7 @@ class Account extends \Movim\Widget\Base
             $fingerprint->fingerprint = base64ToFingerPrint($fingerprint->fingerprint);
         }
 
-        $latests = \App\Message::selectRaw('max(published) as latest, bundleid')
+        $latests = Message::selectRaw('max(published) as latest, bundleid')
             ->where('user_id', $this->me->id)
             ->where('jidfrom', $this->me->id)
             ->groupBy('bundleid')
@@ -231,7 +235,7 @@ class Account extends \Movim\Widget\Base
 
     public function ajaxGetRegistration($server)
     {
-        if (!validateServer($server)) {
+        if (! validateServer($server)) {
             return;
         }
 
@@ -242,7 +246,7 @@ class Account extends \Movim\Widget\Base
 
     public function ajaxRegister($server, $form)
     {
-        if (!validateServer($server)) {
+        if (! validateServer($server)) {
             return;
         }
         $s = $this->xmpp(new Set($this->me, sessionId: $this->sessionId));
@@ -253,7 +257,7 @@ class Account extends \Movim\Widget\Base
 
     public function prepareGateways()
     {
-        $gateways = \App\Info::where('parent', $this->me->session->host)
+        $gateways = Info::where('parent', $this->me->session->host)
             ->whereCategory('gateway')
             ->with('contact')
             ->get();

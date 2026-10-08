@@ -12,6 +12,7 @@ use React\Http\Browser;
 class Picture extends Base
 {
     private int $compressLimit = SMALL_PICTURE_LIMIT * 6;
+
     private int $sizeLimit = 1920;
 
     public function display()
@@ -39,7 +40,7 @@ class Picture extends Base
             $contentLength = null;
 
             if ($response->hasHeader('Content-Length')) {
-                $contentLength = (int)$response->getHeader('Content-Length')[0];
+                $contentLength = (int) $response->getHeader('Content-Length')[0];
             }
 
             $max = $contentLength && $contentLength > $this->compressLimit
@@ -48,7 +49,7 @@ class Picture extends Base
 
             $browser->withTimeout(10)->withResponseBuffer($max)->get($url)->then(function (ResponseInterface $response) {
                 $imported = false;
-                $body = (string)$response->getBody();
+                $body = (string) $response->getBody();
                 $p = new Image;
 
                 // In case of an animated GIF we get only the first frame
@@ -67,26 +68,28 @@ class Picture extends Base
                     }
 
                     header_remove('Content-Type');
-                    header('Content-Type: image/' . DEFAULT_PICTURE_FORMAT);
-                    header('Cache-Control: max-age=' . 3600 * 24);
-                    print $p ? $p->getImage()->getImagesBlob() : $body;
+                    header('Content-Type: image/'.DEFAULT_PICTURE_FORMAT);
+                    header('Cache-Control: max-age='. 3600 * 24);
+                    echo $p ? $p->getImage()->getImagesBlob() : $body;
 
                     return;
                 }
             });
         }, function (Exception $e) {
-            header("HTTP/1.1 301 Moved Permanently");
+            header('HTTP/1.1 301 Moved Permanently');
             header('Location: /theme/img/broken_image_filled.svg');
         });
     }
 
     public function error($errno, string $errstr, string $errfile = '', int $errline = 0, $trace = '')
     {
-        if (\is_array($trace)) $trace = '';
+        if (\is_array($trace)) {
+            $trace = '';
+        }
 
-        $error = $errstr . " in " . $errfile . ' (line ' . $errline . ")\n";
+        $error = $errstr.' in '.$errfile.' (line '.$errline.")\n";
         $fullError = $trace != ''
-            ? $error . 'Trace' . "\n" . $trace
+            ? $error.'Trace'."\n".$trace
             : $error;
 
         logError($fullError);

@@ -8,8 +8,11 @@ use Moxl\Xec\Action;
 class Unsubscribe extends Action
 {
     protected $_to;
+
     protected $_from;
+
     protected $_node;
+
     protected $_subid;
 
     public function request()

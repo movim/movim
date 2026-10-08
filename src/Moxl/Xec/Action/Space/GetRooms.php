@@ -13,6 +13,7 @@ use Psr\Http\Message\ResponseInterface;
 class GetRooms extends Action
 {
     protected ?string $_to = null;
+
     protected ?string $_node = null;
 
     public function request()
@@ -40,8 +41,8 @@ class GetRooms extends Action
                     $dir->session_id = $this->me->session->id;
                     $dir->server = $this->_to;
                     $dir->node = $this->_node;
-                    $dir->id = (string)$directory->attributes()->id;
-                    $dir->title = (string)$directory->attributes()->title;
+                    $dir->id = (string) $directory->attributes()->id;
+                    $dir->title = (string) $directory->attributes()->title;
                     $dir->order = $i;
                     $dir->save();
                     $i++;
@@ -50,7 +51,7 @@ class GetRooms extends Action
         }
 
         foreach ($stanza->pubsub->items->item as $item) {
-            if ($item->conference && $item->conference->attributes()->xmlns == Bookmark2::NODE . Bookmark2::VERSION) {
+            if ($item->conference && $item->conference->attributes()->xmlns == Bookmark2::NODE.Bookmark2::VERSION) {
                 $conference = new Conference;
                 $conference->set(
                     $this->me->session,
@@ -66,19 +67,19 @@ class GetRooms extends Action
             if (
                 $item->attributes()->id == Avatar::NODE_METADATA
                 && isset($item->metadata)
-                && (string)$item->metadata->attributes()->xmlns == Avatar::NODE_METADATA
+                && (string) $item->metadata->attributes()->xmlns == Avatar::NODE_METADATA
                 && isset($item->metadata->info)
                 && isset($item->metadata->info->attributes()->url)
             ) {
                 requestAvatarUrl(
                     jid: $this->_to,
                     node: $this->_node,
-                    url: (string)$item->metadata->info->attributes()->url
+                    url: (string) $item->metadata->info->attributes()->url
                 )->then(function (ResponseInterface $response) {
                     $this->method('avatar');
                     $this->pack([
                         'server' => $this->_to,
-                        'node' => $this->_node
+                        'node' => $this->_node,
                     ]);
                     $this->deliver();
                 });

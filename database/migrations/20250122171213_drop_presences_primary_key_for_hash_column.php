@@ -1,8 +1,8 @@
 <?php
 
-use Movim\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class DropPresencesPrimaryKeyForHashColumn extends Migration
 {
@@ -22,7 +22,7 @@ class DropPresencesPrimaryKeyForHashColumn extends Migration
             });
 
             $this->enableForeignKeyCheck();
-        };
+        }
     }
 
     public function down()

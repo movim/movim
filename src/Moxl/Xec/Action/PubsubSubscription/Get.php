@@ -2,13 +2,14 @@
 
 namespace Moxl\Xec\Action\PubsubSubscription;
 
-use Moxl\Xec\Action;
-use Moxl\Stanza\Pubsub;
 use App\Subscription;
+use Moxl\Stanza\Pubsub;
+use Moxl\Xec\Action;
 
 class Get extends Action
 {
     protected $_to;
+
     protected $_pepnode = Subscription::PUBLIC_NODE;
 
     public function request()
@@ -31,13 +32,13 @@ class Get extends Action
                 $i->subscription &&
                 in_array($i->subscription->attributes()->xmlns, [
                     Subscription::SUBSCRIPTION_XMLNS,
-                    'urn:xmpp:pubsub:subscription' /* should be the first one, only there for retro-compatibility */
+                    'urn:xmpp:pubsub:subscription', /* should be the first one, only there for retro-compatibility */
                 ])
             ) {
                 $subscription = Subscription::firstOrNew([
                     'jid' => $this->_to,
-                    'server' => (string)$i->subscription->attributes()->server,
-                    'node' => (string)$i->subscription->attributes()->node
+                    'server' => (string) $i->subscription->attributes()->server,
+                    'node' => (string) $i->subscription->attributes()->node,
                 ]);
 
                 $insertAsWell = false;
@@ -63,7 +64,7 @@ class Get extends Action
 
                 $subscription->setExtensions($i->subscription->extensions);
 
-                if (!$subscription->exists || $insertAsWell) {
+                if (! $subscription->exists || $insertAsWell) {
                     array_push($subscriptions, $subscription->toArray());
                 }
             }

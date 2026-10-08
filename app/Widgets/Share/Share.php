@@ -43,13 +43,13 @@ class Share extends Base
 
         if (array_key_exists('url', $_POST) && $validateUrl->isValid($_POST['url'])) {
             $url = $_POST['url'];
-        } else if (array_key_exists('description', $_POST) && $validateUrl->isValid($_POST['description'])) {
+        } elseif (array_key_exists('description', $_POST) && $validateUrl->isValid($_POST['description'])) {
             $url = $_POST['description'];
         }
 
         if ($url) {
             $url = Route::urlize('share', base64_encode($url));
-            header('Location: ' . $url);
+            header('Location: '.$url);
             exit;
         }
     }

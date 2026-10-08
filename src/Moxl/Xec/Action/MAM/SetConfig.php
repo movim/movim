@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\MAM;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\MAM;
+use Moxl\Xec\Action;
 
 class SetConfig extends Action
 {

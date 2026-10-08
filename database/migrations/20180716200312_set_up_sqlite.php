@@ -1,7 +1,6 @@
 <?php
 
 use Movim\Migration;
-use Illuminate\Database\Schema\Blueprint;
 
 class SetUpSqlite extends Migration
 {

@@ -17,6 +17,7 @@ use function React\Async\await;
 class Crawler extends HttpCrawler
 {
     private RequestFactoryInterface $requestFactory;
+
     private UriFactoryInterface $uriFactory;
 
     private array $defaultHeaders = [

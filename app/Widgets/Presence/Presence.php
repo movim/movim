@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Presence;
 
+use App\Contact;
 use App\Post;
 use App\Presence as AppPresence;
 use App\Subscription;
@@ -9,10 +10,10 @@ use App\Widgets\Chats\Chats;
 use App\Widgets\Visio\Visio;
 use Movim\Daemon\Session;
 use Movim\Widget\Base;
-
-use Moxl\Stanza\Stream;
+use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Action\Blocking\Request;
 use Moxl\Xec\Action\Carbons;
+use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Action\Presence\Away;
 use Moxl\Xec\Action\Presence\Chat;
 use Moxl\Xec\Action\Pubsub\GetItemsId;
@@ -145,7 +146,7 @@ class Presence extends Base
     // We discover the server services
     public function ajaxServerDisco()
     {
-        $c = $this->xmpp(new \Moxl\Xec\Action\Disco\Items);
+        $c = $this->xmpp(new Items);
         $c->setTo($this->me->session->host)
             ->request();
     }
@@ -153,7 +154,7 @@ class Presence extends Base
     // We refresh the profile
     public function ajaxProfileRefresh()
     {
-        $a = $this->xmpp(new \Moxl\Xec\Action\Avatar\Get);
+        $a = $this->xmpp(new Get);
         $a->setTo($this->me->id)
             ->request();
 
@@ -198,7 +199,7 @@ class Presence extends Base
     public function ajaxHttpMenu()
     {
         $this->drawer('menu', $this->view('_presence_menu', [
-            'contact' => $this->me->contact ?? new \App\Contact,
+            'contact' => $this->me->contact ?? new Contact,
             'presence' => AppPresence::where('resource', $this->me->session->resource)->firstOrNew(),
             'presencetxt' => getPresencesTxt(),
         ]), tiny: true);
@@ -209,11 +210,12 @@ class Presence extends Base
         // If the user is still on a logued-in page after a daemon restart
         if ($this->me->id == false) {
             $this->rpc('MovimUtils.disconnect');
+
             return false;
         }
 
         return $this->view('_presence', [
-            'me' => $this->me->contact ?? new \App\Contact,
+            'me' => $this->me->contact ?? new Contact,
             'presence' => AppPresence::where('resource', $this->me->session->resource)->firstOrNew(),
             'presencetxt' => getPresencesTxt(),
         ]);
@@ -228,6 +230,6 @@ class Presence extends Base
         }
 
         $this->view->assign('page', $this->_view);
-        //$this->view->assign('submenu', !in_array($this->_view, $subMenuPages));
+        // $this->view->assign('submenu', !in_array($this->_view, $subMenuPages));
     }
 }

@@ -5,12 +5,14 @@ namespace App;
 use Awobaz\Compoships\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
+use Movim\ImageSize;
 use Moxl\Stanza\Space;
 use Moxl\Utils;
 
 class Info extends Model
 {
     protected $fillable = ['server', 'node', 'avatarhash'];
+
     protected $with = ['identities'];
 
     private ?Collection $freshIdentities = null;
@@ -31,8 +33,10 @@ class Info extends Model
         if (
             $this->isEmptyFeatures()
             && empty($this->freshIdentities)
-            && !$this->isDirty('avatarhash')
-        ) return;
+            && ! $this->isDirty('avatarhash')
+        ) {
+            return;
+        }
 
         try {
             unset($this->identities);
@@ -80,7 +84,7 @@ class Info extends Model
                 $host = $user->session->host;
                 $query->select('server')
                     ->from('infos')
-                    ->where('server', 'like', '%.' . $host);
+                    ->where('server', 'like', '%.'.$host);
             });
         }
     }
@@ -162,6 +166,7 @@ class Info extends Model
             ? unserialize($this->attributes['salesaddresses'])
             : [];
     }
+
     public function setSecurityaddressesAttribute(array $arr)
     {
         $this->attributes['securityaddresses'] = serialize($arr);
@@ -223,7 +228,7 @@ class Info extends Model
                 $params = explodeQueryParams($uri['query']);
 
                 if (isset($params['node'])) {
-                    return \App\Info::where('server', $uri['path'])
+                    return Info::where('server', $uri['path'])
                         ->where('node', $params['node'])
                         ->first();
                 }
@@ -244,14 +249,13 @@ class Info extends Model
     public function getGatewayTypeAttribute(): ?string
     {
         $identityType = $this->identities->filter(
-            fn($value, $key) =>
-            $value->category == 'gateway'
+            fn ($value, $key) => $value->category == 'gateway'
         )->first();
 
         return $identityType ? $identityType->type : null;
     }
 
-    public function getPicture(\Movim\ImageSize $size = \Movim\ImageSize::M, ?string $placeholder = null): string
+    public function getPicture(ImageSize $size = ImageSize::M, ?string $placeholder = null): string
     {
         return getPicture($this->attributes['avatarhash'] ?? null, $placeholder ?? $this->node, $size);
     }
@@ -286,7 +290,7 @@ class Info extends Model
 
     public function hasFeature(string $feature): bool
     {
-        return (in_array($feature, unserialize($this->attributes['features'])));
+        return in_array($feature, unserialize($this->attributes['features']));
     }
 
     public function isMuc(): bool
@@ -296,7 +300,7 @@ class Info extends Model
 
     public function isGroupChat(): bool
     {
-        return $this->mucmembersonly && !$this->mucsemianonymous;
+        return $this->mucmembersonly && ! $this->mucsemianonymous;
     }
 
     public function isAccount(): bool
@@ -344,12 +348,12 @@ class Info extends Model
 
     public function set(\SimpleXMLElement $query, ?string $node = null, ?string $parent = null)
     {
-        $from = (string)$query->attributes()->from;
+        $from = (string) $query->attributes()->from;
 
         if (isset($query->query)) {
-            $this->server   = strpos($from, '/') == false ? $from : null;
-            $this->node     = (string)$query->query->attributes()->node;
-            $this->parent   = $parent;
+            $this->server = strpos($from, '/') == false ? $from : null;
+            $this->node = (string) $query->query->attributes()->node;
+            $this->parent = $parent;
 
             /**
              * Enforce node, it seems that some servers and clients doesn't
@@ -366,27 +370,26 @@ class Info extends Model
 
             foreach ($query->query->identity as $i) {
                 $identity = new Identity;
-                $identity->category = (string)$i->attributes()->category;
-                $identity->type     = (string)$i->attributes()->type;
+                $identity->category = (string) $i->attributes()->category;
+                $identity->type = (string) $i->attributes()->type;
 
                 if ($i->attributes()->name) {
-                    $identity->name = (string)$i->attributes()->name;
+                    $identity->name = (string) $i->attributes()->name;
                 }
 
                 if ($i->attributes()->{'xml-lang'}) {
-                    $identity->lang = (string)$i->attributes()->{'xml-lang'};
+                    $identity->lang = (string) $i->attributes()->{'xml-lang'};
                 }
 
                 $this->freshIdentities->push($identity);
                 $this->name = ($i->attributes()->name)
-                    ? (string)$i->attributes()->name
+                    ? (string) $i->attributes()->name
                     : $this->node;
             }
 
-
             $features = [];
             foreach ($query->query->feature as $feature) {
-                switch ((string)$feature->attributes()->var) {
+                switch ((string) $feature->attributes()->var) {
                     case 'muc_public':
                         $this->mucpublic = true;
                         break;
@@ -425,7 +428,7 @@ class Info extends Model
                         break;
                 }
 
-                array_push($features, (string)$feature->attributes()->var);
+                array_push($features, (string) $feature->attributes()->var);
             }
             $this->attributes['features'] = serialize($features);
 
@@ -438,90 +441,90 @@ class Info extends Model
     public function setXForm(\SimpleXMLElement $x)
     {
         $results = $x->xpath('.//field[@var="FORM_TYPE"]/value/text()');
-        $formType = $results ? (string)$results[0] : null;
+        $formType = $results ? (string) $results[0] : null;
 
         foreach ($x->field as $field) {
-            switch ((string)$field->attributes()->var) {
+            switch ((string) $field->attributes()->var) {
                 // https://xmpp.org/extensions/xep-0444.html#disco-restricted
                 case 'allowlist':
                     if ($formType == 'urn:xmpp:reactions:0:restrictions') {
                         $arr = [];
                         foreach ($field->children() as $value) {
-                            $arr[] = (string)$value;
+                            $arr[] = (string) $value;
                         }
                         $this->reactionsrestrictions = $arr;
                     }
                     break;
                 case 'pubsub#title':
-                    $this->name = (string)$field->value;
+                    $this->name = (string) $field->value;
                     break;
                 case 'pubsub#type':
-                    $this->type = (string)$field->value;
+                    $this->type = (string) $field->value;
                     break;
                 case 'pubsub#creation_date':
                     $this->created = toSQLDate($field->value);
                     break;
                 case 'pubsub#access_model':
-                    $this->pubsubaccessmodel = (string)$field->value;
+                    $this->pubsubaccessmodel = (string) $field->value;
                     break;
                 case 'pubsub#publish_model':
-                    $this->pubsubpublishmodel = (string)$field->value;
+                    $this->pubsubpublishmodel = (string) $field->value;
                     break;
                 case 'muc#roominfo_pubsub':
-                    if (!empty((string)$field->value)) {
-                        $this->related = (string)$field->value;
+                    if (! empty((string) $field->value)) {
+                        $this->related = (string) $field->value;
                     }
                     break;
                 case 'muc#roominfo_description':
                 case 'pubsub#description':
                 case 'max-file-size': // https://xmpp.org/extensions/xep-0363.html#disco
-                    if (!empty((string)$field->value)) {
-                        $this->description = (string)$field->value;
+                    if (! empty((string) $field->value)) {
+                        $this->description = (string) $field->value;
                     }
                     break;
                 case 'pubsub#num_subscribers':
                 case 'muc#roominfo_occupants':
-                    $this->occupants = (int)$field->value;
+                    $this->occupants = (int) $field->value;
                     break;
                 case 'abuse-addresses':
                     $arr = [];
                     foreach ($field->children() as $value) {
-                        $arr[] = (string)$value;
+                        $arr[] = (string) $value;
                     }
                     $this->abuseaddresses = $arr;
                     break;
                 case 'admin-addresses':
                     $arr = [];
                     foreach ($field->children() as $value) {
-                        $arr[] = (string)$value;
+                        $arr[] = (string) $value;
                     }
                     $this->adminaddresses = $arr;
                     break;
                 case 'feedback-addresses':
                     $arr = [];
                     foreach ($field->children() as $value) {
-                        $arr[] = (string)$value;
+                        $arr[] = (string) $value;
                     }
                     $this->feedbackaddresses = $arr;
                     break;
                 case 'sales-addresses':
                     $arr = [];
                     foreach ($field->children() as $value) {
-                        $arr[] = (string)$value;
+                        $arr[] = (string) $value;
                     }
                     $this->salesaddresses = $arr;
                     break;
                 case 'security-addresses':
                     $arr = [];
                     foreach ($field->children() as $value) {
-                        $arr[] = (string)$value;
+                        $arr[] = (string) $value;
                     }
                     $this->securityaddresses = $arr;
                     break;
                 case 'support-addresses':
                     $arr = [];
                     foreach ($field->children() as $value) {
-                        $arr[] = (string)$value;
+                        $arr[] = (string) $value;
                     }
                     $this->supportaddresses = $arr;
                     break;
@@ -531,32 +534,32 @@ class Info extends Model
 
     public function setPubsubItem($item)
     {
-        $this->server = (string)$item->attributes()->jid;
-        $this->node   = (string)$item->attributes()->node;
+        $this->server = (string) $item->attributes()->jid;
+        $this->node = (string) $item->attributes()->node;
 
         if ($item->attributes()->name) {
-            $this->name   = (string)$item->attributes()->name;
+            $this->name = (string) $item->attributes()->name;
         }
 
         $this->freshIdentities = collect();
         $identity = new Identity;
         $identity->category = 'pubsub';
-        $identity->type     = 'leaf';
+        $identity->type = 'leaf';
 
         $this->freshIdentities->push($identity);
     }
 
     public function getPubsubRoles()
     {
-        $roles = ['owner' => __('affiliation.owner'), 'none' =>  __('affiliation.no_aff')];
+        $roles = ['owner' => __('affiliation.owner'), 'none' => __('affiliation.no_aff')];
 
         $features = unserialize($this->attributes['features']);
 
         if (is_array($features)) {
             foreach ($features as $feature) {
                 preg_match("/http:\/\/jabber.org\/protocol\/pubsub#(.*)-affiliation$/", $feature, $matches);
-                if (!empty($matches)) {
-                    $roles[$matches[1]] = __('affiliation.' . $matches[1]);
+                if (! empty($matches)) {
+                    $roles[$matches[1]] = __('affiliation.'.$matches[1]);
                 }
             }
         }
@@ -575,13 +578,13 @@ class Info extends Model
 
     public function isPubsubService(): bool
     {
-        return ($this->identities->contains('category', 'pubsub')
-            && $this->identities->contains('type', 'service'));
+        return $this->identities->contains('category', 'pubsub')
+            && $this->identities->contains('type', 'service');
     }
 
     public function isMicroblogCommentsNode(): bool
     {
-        return (str_starts_with($this->node, Post::COMMENTS_NODE));
+        return str_starts_with($this->node, Post::COMMENTS_NODE);
     }
 
     public function checkCapabilityHash(): bool
@@ -597,7 +600,7 @@ class Info extends Model
         );
 
         if ($this->node != $generatedHash) {
-            \logError('XEP-0390: Wrong hash for ' . $this->node . ' != ' . $generatedHash);
+            \logError('XEP-0390: Wrong hash for '.$this->node.' != '.$generatedHash);
         }
 
         return $this->node == $generatedHash;

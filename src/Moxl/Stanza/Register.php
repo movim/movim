@@ -2,6 +2,8 @@
 
 namespace Moxl\Stanza;
 
+use Moxl\Utils;
+
 class Register
 {
     public static function get()
@@ -28,7 +30,7 @@ class Register
             $x->setAttribute('type', 'submit');
             $query->appendChild($x);
 
-            \Moxl\Utils::injectConfigInX($x, $data);
+            Utils::injectConfigInX($x, $data);
         }
 
         return $query;

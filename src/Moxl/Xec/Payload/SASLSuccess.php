@@ -2,6 +2,8 @@
 
 namespace Moxl\Xec\Payload;
 
+use Moxl\Stanza\Stream;
+
 class SASLSuccess extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -12,6 +14,6 @@ class SASLSuccess extends Payload
         $this->me->refresh();
 
         linker($this->sessionId)->attachUser($this->me);
-        linker($this->sessionId)->writeXMPP(\Moxl\Stanza\Stream::init($this->me->session->host));
+        linker($this->sessionId)->writeXMPP(Stream::init($this->me->session->host));
     }
 }

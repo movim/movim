@@ -2,12 +2,13 @@
 
 namespace Moxl\Xec\Action\Microblog;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
+use Moxl\Xec\Action;
 
 class CommentCreateNode extends Action
 {
     protected $_to;
+
     protected $_parentid;
 
     public function request()

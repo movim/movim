@@ -4,14 +4,15 @@ namespace Moxl\Stanza;
 
 use App\Conference;
 use App\Subscription;
+use Moxl\Utils;
 
 class PubsubSubscription
 {
     private static function generateId(string $server, string $jid, string $node)
     {
         $id = '';
-        $id .= $server . '<';
-        $id .= $node . '<';
+        $id .= $server.'<';
+        $id .= $node.'<';
         $id .= $jid;
 
         return sha1($id);
@@ -69,7 +70,7 @@ class PubsubSubscription
 
             $extensions = $dom->importNode($domExtensions->documentElement, true);
             $subscription->appendChild($extensions);
-        } else if ($notifyValue !== null || $pinned == true) {
+        } elseif ($notifyValue !== null || $pinned == true) {
             $extensions = $dom->createElement('extensions');
             $subscription->appendChild($extensions);
         }
@@ -94,7 +95,7 @@ class PubsubSubscription
             $x->setAttribute('type', 'submit');
             $publishOption->appendChild($x);
 
-            \Moxl\Utils::injectConfigInX($x, self::generateConfig($pepnode));
+            Utils::injectConfigInX($x, self::generateConfig($pepnode));
 
             $pubsub->appendChild($publishOption);
         }
