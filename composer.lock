@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b776bfe80ebb3f254cdab890a240676e",
+    "content-hash": "96e9e8beae34e29b6946c668647e08e7",
     "packages": [
         {
             "name": "awobaz/compoships",
@@ -191,7 +191,7 @@
         },
         {
             "name": "cakephp/core",
-            "version": "5.4.2",
+            "version": "5.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
@@ -258,16 +258,16 @@
         },
         {
             "name": "cakephp/database",
-            "version": "5.4.2",
+            "version": "5.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "91cf7b16e9ebe0050c64db0f4634ac4a76782564"
+                "reference": "25abb44fdbb80b0700ae0a8649a19653253940ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/91cf7b16e9ebe0050c64db0f4634ac4a76782564",
-                "reference": "91cf7b16e9ebe0050c64db0f4634ac4a76782564",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/25abb44fdbb80b0700ae0a8649a19653253940ff",
+                "reference": "25abb44fdbb80b0700ae0a8649a19653253940ff",
                 "shasum": ""
             },
             "require": {
@@ -324,11 +324,11 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/database"
             },
-            "time": "2026-08-28T06:30:11+00:00"
+            "time": "2026-10-03T03:38:06+00:00"
         },
         {
             "name": "cakephp/datasource",
-            "version": "5.4.2",
+            "version": "5.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
@@ -395,7 +395,7 @@
         },
         {
             "name": "cakephp/event",
-            "version": "5.4.2",
+            "version": "5.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/event.git",
@@ -450,16 +450,16 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "5.4.2",
+            "version": "5.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
-                "reference": "98376e5bbcdd84fdda6d6c4207ef6111fc5aed23"
+                "reference": "20f1749f19ed59b5fbc900e683acc72fa2938c17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/98376e5bbcdd84fdda6d6c4207ef6111fc5aed23",
-                "reference": "98376e5bbcdd84fdda6d6c4207ef6111fc5aed23",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/20f1749f19ed59b5fbc900e683acc72fa2938c17",
+                "reference": "20f1749f19ed59b5fbc900e683acc72fa2938c17",
                 "shasum": ""
             },
             "require": {
@@ -510,7 +510,7 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/utility"
             },
-            "time": "2026-08-24T11:32:41+00:00"
+            "time": "2026-09-26T06:05:31+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -3212,16 +3212,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.14.1",
+            "version": "3.14.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon.git",
-                "reference": "34e9109535165bf1d7ff17a610492372ae73a896"
+                "reference": "94cfc34887f07ab5c0efa07914c8f527544e3224"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/34e9109535165bf1d7ff17a610492372ae73a896",
-                "reference": "34e9109535165bf1d7ff17a610492372ae73a896",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/94cfc34887f07ab5c0efa07914c8f527544e3224",
+                "reference": "94cfc34887f07ab5c0efa07914c8f527544e3224",
                 "shasum": ""
             },
             "require": {
@@ -3241,7 +3241,7 @@
                 "doctrine/orm": "^2.15.2 || ^3.0",
                 "friendsofphp/php-cs-fixer": "^v3.87.1",
                 "kylekatarnls/multi-tester": "^2.5.3",
-                "phpmd/phpmd": "^2.15.0",
+                "phpmd/phpmd": "^3.0@dev",
                 "phpstan/extension-installer": "^1.4.3",
                 "phpstan/phpstan": "^2.1.22",
                 "phpunit/phpunit": "^10.5.53",
@@ -3313,7 +3313,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-27T12:07:26+00:00"
+            "time": "2026-10-02T07:26:52+00:00"
         },
         {
             "name": "nette/schema",
@@ -8017,7 +8017,78 @@
             "time": "2023-11-03T06:34:56+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "laravel/pint",
+            "version": "v1.32.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/pint.git",
+                "reference": "006bd7825eb01daf92959d060b89cd9514fe4253"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/006bd7825eb01daf92959d060b89cd9514fe4253",
+                "reference": "006bd7825eb01daf92959d060b89cd9514fe4253",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-tokenizer": "*",
+                "ext-xml": "*",
+                "php": "^8.3.0"
+            },
+            "require-dev": {
+                "composer/semver": "^3.4.4",
+                "friendsofphp/php-cs-fixer": "^3.95.25",
+                "illuminate/view": "^13.31.0",
+                "larastan/larastan": "^3.11.0",
+                "laravel-zero/framework": "^13.0.0",
+                "laravel/agent-detector": "^2.0.2",
+                "laravel/prompts": "^0.3.24",
+                "mockery/mockery": "^1.6.15",
+                "nunomaduro/termwind": "^2.4.0",
+                "pestphp/pest": "^4.7.8"
+            },
+            "bin": [
+                "builds/pint"
+            ],
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "App\\": "app/",
+                    "Database\\Seeders\\": "database/seeders/",
+                    "Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nuno Maduro",
+                    "email": "enunomaduro@gmail.com"
+                }
+            ],
+            "description": "An opinionated code formatter for PHP.",
+            "homepage": "https://laravel.com",
+            "keywords": [
+                "dev",
+                "format",
+                "formatter",
+                "lint",
+                "linter",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/pint/issues",
+                "source": "https://github.com/laravel/pint"
+            },
+            "time": "2026-09-10T10:47:55+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {},

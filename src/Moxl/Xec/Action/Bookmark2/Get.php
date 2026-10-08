@@ -27,10 +27,10 @@ class Get extends Action
         $conferences = [];
         $conferenceIds = [];
 
-        foreach ($stanza->pubsub->items->item as $c) {
-            if ($c->conference && $c->conference->attributes()->xmlns == 'urn:xmpp:bookmarks:1') {
+        foreach ($stanza->pubsub->items->item as $item) {
+            if ($item->conference && $item->conference->attributes()->xmlns == 'urn:xmpp:bookmarks:1') {
                 $conference = new Conference;
-                $conference->set($this->me->session, $c);
+                $conference->set($this->me->session, $item);
                 array_push($conferences, $conference->toArray());
                 array_push($conferenceIds, $conference->conference);
             }

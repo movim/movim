@@ -36,7 +36,7 @@ class MDSDisplayed extends Payload
             }
 
             $this->pack($message);
-            $this->event('displayed');
+            $this->deliver('displayed');
         }
     }
 }

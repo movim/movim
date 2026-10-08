@@ -28,19 +28,19 @@ class Jingle extends Payload
         switch ($action) {
             case 'session-initiate':
                 $this->pack($stanza, $from);
-                $this->event('jingle_sessioninitiate');
+                $this->deliver('jingle_sessioninitiate');
                 break;
             case 'session-info':
                 if ($stanza->mute) {
                     $this->pack($stanza, $from);
-                    $this->event(($stanza->{'jingle-participant'}
+                    $this->deliver(($stanza->{'jingle-participant'}
                         && $stanza->{'jingle-participant'}->attributes()->xmlns == SDPtoJingle::JINGLE_PARTICIPANT_XMLNS)
                         ? 'jingle_sessionmute_sfu'
                         : 'jingle_sessionmute');
                 }
                 if ($stanza->unmute) {
                     $this->pack($stanza, $from);
-                    $this->event(($stanza->{'jingle-participant'}
+                    $this->deliver(($stanza->{'jingle-participant'}
                         && $stanza->{'jingle-participant'}->attributes()->xmlns == SDPtoJingle::JINGLE_PARTICIPANT_XMLNS)
                         ? 'jingle_sessionunmute_sfu'
                         : 'jingle_sessionunmute');
@@ -48,7 +48,7 @@ class Jingle extends Payload
                 break;
             case 'transport-info':
                 $this->pack($stanza, $from);
-                $this->event(($stanza->{'jingle-participant'}
+                $this->deliver(($stanza->{'jingle-participant'}
                     && $stanza->{'jingle-participant'}->attributes()->xmlns == SDPtoJingle::JINGLE_PARTICIPANT_XMLNS)
                     ? 'jingle_transportinfo_sfu'
                     : 'jingle_transportinfo');
@@ -58,37 +58,37 @@ class Jingle extends Payload
                     $message->type = 'jingle_end';
                     $message->save();
                     $this->pack($message);
-                    $this->event('jingle_message');
+                    $this->deliver('jingle_message');
                 }
 
                 $this->pack((string)$stanza->attributes()->sid, $from);
-                $this->event('jingle_sessionterminate');
+                $this->deliver('jingle_sessionterminate');
                 break;
             case 'session-accept':
                 $this->pack($stanza, $from);
-                $this->event('jingle_sessionaccept');
+                $this->deliver('jingle_sessionaccept');
                 break;
             case 'content-add':
                 $this->pack($stanza, $from);
-                $this->event(($stanza->{'jingle-participant'}
+                $this->deliver(($stanza->{'jingle-participant'}
                     && $stanza->{'jingle-participant'}->attributes()->xmlns == SDPtoJingle::JINGLE_PARTICIPANT_XMLNS)
                     ? 'jingle_contentadd_sfu'
                     : 'jingle_contentadd');
                 break;
             case 'content-modify':
                 $this->pack($stanza, $from);
-                $this->event('jingle_contentmodify');
+                $this->deliver('jingle_contentmodify');
                 break;
             case 'content-remove':
                 $this->pack($stanza, $from);
-                $this->event(($stanza->{'jingle-participant'}
+                $this->deliver(($stanza->{'jingle-participant'}
                     && $stanza->{'jingle-participant'}->attributes()->xmlns == SDPtoJingle::JINGLE_PARTICIPANT_XMLNS)
                     ? 'jingle_contentremove_sfu'
                     : 'jingle_contentremove');
                 break;
             case 'content-accept':
                 $this->pack($stanza, $from);
-                $this->event('jingle_contenctaccept');
+                $this->deliver('jingle_contenctaccept');
                 break;
         }
         /*} else {

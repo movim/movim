@@ -8,14 +8,15 @@ use App\Widgets\Rooms\Rooms;
 use App\Widgets\SpacesMenu\SpacesMenu;
 use Movim\Jid;
 use Movim\Widget\Base;
-use Moxl\Xec\Action\Muc\ChangeAffiliation;
+use Moxl\Xec\Action\Muc\SetAffiliations;
 use Moxl\Xec\Action\Muc\CreateGroupChat;
 use Moxl\Xec\Action\Muc\Destroy;
 use Moxl\Xec\Action\Muc\SetConfig;
 use Moxl\Xec\Action\Muc\SetSubject;
 use Moxl\Xec\Action\Presence\Muc;
-use Moxl\Xec\Action\Space\AddRoom;
+use Moxl\Xec\Action\Space\SetRoom;
 use Moxl\Xec\Action\Space\DeleteRoom;
+use Moxl\Xec\Action\Space\SetDirectories;
 use Moxl\Xec\Payload\Packet;
 
 class SpaceRooms extends Base
@@ -23,12 +24,14 @@ class SpaceRooms extends Base
     public function load()
     {
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
-        $this->registerEvent('space_addroom_handle', 'onAffiliations');
+        $this->registerEvent('space_setroom_handle', 'onSetRoom');
         $this->registerEvent('space_deleteroom_handle', 'onAffiliations');
         $this->registerEvent('space_getrooms_handle', 'onRooms');
         $this->registerEvent('space_getrooms_erroritemnotfound', 'onNotFound');
         $this->registerEvent('space_addedroom', 'onEditedRooms');
         $this->registerEvent('space_deletedroom', 'onEditedRooms');
+        $this->registerEvent('space_setdirectories_handle', 'onDirectories');
+        $this->registerEvent('space_directories', 'onDirectories');
         $this->registerEvent('presence_muc_errorregistrationrequired', 'onRoomRegistrationRequired');
 
         // We have a memory filter optimisation in onMujiOrSFUPresence
@@ -39,6 +42,12 @@ class SpaceRooms extends Base
 
         $this->addcss('spacerooms.css');
         $this->addjs('spacerooms.js');
+    }
+
+    public function onSetRoom(Packet $packet)
+    {
+        $this->toast($this->__('spaceinfo.edited_room'));
+        $this->onAffiliations(packet: $packet);
     }
 
     public function onAffiliations(Packet $packet)
@@ -90,6 +99,12 @@ class SpaceRooms extends Base
                 linker($this->sessionId)->session->set($sessionKey, false);
             }
         }
+    }
+
+    public function onDirectories(Packet $packet)
+    {
+        $this->toast($this->__('spaceinfo.edited_directories'));
+        $this->ajaxHttpGet($packet->content['server'], $packet->content['node']);
     }
 
     public function onEditedRooms(Packet $packet)
@@ -158,15 +173,31 @@ class SpaceRooms extends Base
             ->where('jid', $this->me->id)
             ->first();
 
+        $directories = $this->me->session->bookmarksDirectories()
+            ->where('server', $server)
+            ->where('node', $node)
+            ->orderBy('order')
+            ->get()
+            ->keyBy('id');
+
         $this->rpc('MovimTpl.fill', '#spacerooms_widget', $this->view('_spacerooms', [
-            'subscription' => $subscription,
+            'space_rooms' => $subscription->spaceRooms->sortBy(function ($conference) use ($directories) {
+                $directoriesKeys = $directories->keys();
+                $directoriesKeys->prepend('null');
+                return $directoriesKeys->flip()->get($conference->directory_id ?? 'null', $directories->count());
+            }),
+            'directories' => $directories,
             'edit' => ($affiliation && $affiliation->affiliation == 'owner'),
             'addplaceholder' => __('chatrooms.first_room_placeholder', '<i class="material-symbols">rule</i>')
         ]));
         $this->rpc('SpaceRooms.init');
+
+        if ($affiliation && $affiliation->affiliation == 'owner') {
+            $this->rpc('SpaceRooms.editable');
+        }
     }
 
-    public function ajaxAskAdd(string $server, string $node)
+    public function ajaxAskAdd(string $server, string $node, ?string $directoryId = null)
     {
         $affiliation = Affiliation::where('server', $server)
             ->where('node', $node)
@@ -177,6 +208,13 @@ class SpaceRooms extends Base
             $this->dialog($this->view('_spacerooms_add', [
                 'server' => $server,
                 'node' => $node,
+                'directory' => $directoryId
+                    ? $this->me->session->bookmarksDirectories()
+                    ->where('server', $server)
+                    ->where('node', $node)
+                    ->where('id', $directoryId)
+                    ->first()
+                    : null,
             ]));
         }
     }
@@ -230,22 +268,31 @@ class SpaceRooms extends Base
         $conference->autojoin = true;
         $conference->call = (bool)$form->call->value;
 
-        $b = $this->xmpp(new AddRoom);
+        if (
+            $form->directory_id
+            && $directory = $this->me->session->bookmarksDirectories()
+            ->where('server', $form->server->value)
+            ->where('node', $form->node->value)
+            ->where('id', $form->directory_id->value)->first()
+        ) {
+            $conference->weight = (float)$directory->conferences()->count();
+            $conference->directory_id = $directory->id;
+        }
+
+        $b = $this->xmpp(new SetRoom);
         $b->setConference($conference)
             ->request();
 
         // Map all the affiliations from Pubsub to MUC
         $affiliations = Affiliation::where('server', $form->server->value)
             ->where('node', $form->node->value)
-            ->get();
+            ->pluck('affiliation', 'jid')
+            ->toArray();
 
-        foreach ($affiliations as $affiliation) {
-            $changeAffiliation = $this->xmpp(new ChangeAffiliation);
-            $changeAffiliation->setTo($id)
-                ->setJid($affiliation->jid)
-                ->setAffiliation($affiliation->affiliation)
-                ->request();
-        }
+        $changeAffiliation = $this->xmpp(new SetAffiliations);
+        $changeAffiliation->setTo($id)
+            ->setAffiliations($affiliations)
+            ->request();
     }
 
     public function ajaxAskEdit(string $conferenceId)
@@ -306,13 +353,36 @@ class SpaceRooms extends Base
                 ->setData($config)
                 ->request();
 
-            $b = $this->xmpp(new AddRoom);
+            $b = $this->xmpp(new SetRoom);
             $b->setConference($conference)
                 ->request();
 
             $p = $this->xmpp(new SetSubject);
             $p->setTo($form->conference->value)
                 ->setSubject($form->subject->value)
+                ->request();
+        }
+    }
+
+
+    public function ajaxSetHierarchy(string $server, string $node, string $id, float $weight, ?string $directoryId = null)
+    {
+        $subscription = $this->me->subscriptions()->space($server, $node)->first();
+
+        if ($subscription && $conference = $subscription->spaceRooms()->where('conference', $id)->first()) {
+            $conference->weight = $weight;
+
+            if ($directoryId == null || $this->me->session->bookmarksDirectories()
+                ->where('server', $server)
+                ->where('node', $node)
+                ->where('id', $directoryId)
+                ->exists()
+            ) {
+                $conference->directory_id = $directoryId;
+            }
+
+            $b = $this->xmpp(new SetRoom);
+            $b->setConference($conference)
                 ->request();
         }
     }
@@ -341,6 +411,153 @@ class SpaceRooms extends Base
             ->setNode($node)
             ->setId($id)
             ->request();
+    }
+
+    public function ajaxAskAddDirectory(string $server, string $node)
+    {
+        $affiliation = Affiliation::where('server', $server)
+            ->where('node', $node)
+            ->where('jid', $this->me->id)
+            ->first();
+
+        if ($affiliation->affiliation == 'owner') {
+            $this->dialog($this->view('_spacerooms_add_directory', [
+                'server' => $server,
+                'node' => $node,
+            ]));
+        }
+    }
+
+    public function ajaxAddDirectory(\stdClass $form)
+    {
+        if (empty($form->title->value)) {
+            $this->toast($this->__('chatrooms.empty_name'));
+            return;
+        }
+
+        $this->rpc('Dialog.clear');
+
+        $directories = $this->me->session->bookmarksDirectories()
+            ->where('server', $form->server->value)
+            ->where('node', $form->node->value)
+            ->pluck('title', 'id');
+
+        $directories->put(generateUUID(), $form->title->value);
+
+        $setDirectories = $this->xmpp(new SetDirectories);
+        $setDirectories->setTo($form->server->value)
+            ->setNode($form->node->value)
+            ->setDirectories($directories)
+            ->request();
+    }
+
+    public function ajaxAskEditDirectory(string $server, string $node, string $directoryId)
+    {
+        $affiliation = Affiliation::where('server', $server)
+            ->where('node', $node)
+            ->where('jid', $this->me->id)
+            ->first();
+
+        if (
+            $affiliation->affiliation == 'owner'
+            && $directory = $this->me->session->bookmarksDirectories()
+            ->where('server', $server)
+            ->where('node', $node)
+            ->where('id', $directoryId)
+            ->first()
+        ) {
+            $this->dialog($this->view('_spacerooms_edit_directory', [
+                'directory' => $directory
+            ]));
+        }
+    }
+
+    public function ajaxEditDirectory(\stdClass $form)
+    {
+        $directories = $this->me->session->bookmarksDirectories()
+            ->where('server', $form->server->value)
+            ->where('node', $form->node->value)
+            ->pluck('title', 'id');
+
+        if ($directories->has($form->directory_id->value)) {
+            $directories->put($form->directory_id->value, $form->title->value);
+
+            $setDirectories = $this->xmpp(new SetDirectories);
+            $setDirectories->setTo($form->server->value)
+                ->setNode($form->node->value)
+                ->setDirectories($directories)
+                ->request();
+        }
+    }
+
+    public function ajaxAskDestroyDirectory(string $server, string $node, string $directoryId)
+    {
+        $affiliation = Affiliation::where('server', $server)
+            ->where('node', $node)
+            ->where('jid', $this->me->id)
+            ->first();
+
+        if (
+            $affiliation->affiliation == 'owner'
+            && $directory = $this->me->session->bookmarksDirectories()
+            ->where('server', $server)
+            ->where('node', $node)
+            ->where('id', $directoryId)
+            ->withCount('conferences')
+            ->first()
+        ) {
+            $this->dialog($this->view('_spacerooms_destroy_directory', [
+                'directory' => $directory
+            ]));
+        }
+    }
+
+    public function ajaxDestroyDirectory(\stdClass $form)
+    {
+        $directories = $this->me->session->bookmarksDirectories()
+            ->where('server', $form->server->value)
+            ->where('node', $form->node->value)
+            ->get();
+
+        if ($directories->contains('id', $form->directory_id->value)) {
+            if ($directory = $directories->firstWhere('id', $form->directory_id->value)) {
+                foreach ($directory->conferences as $conference) {
+                    $conference->directory_id = null;
+
+                    $b = $this->xmpp(new SetRoom);
+                    $b->setConference($conference)
+                        ->request();
+                }
+
+                $directories = $directories->whereNotIn('id', [$form->directory_id->value]);
+
+                $setDirectories = $this->xmpp(new SetDirectories);
+                $setDirectories->setTo($form->server->value)
+                    ->setNode($form->node->value)
+                    ->setDirectories($directories->pluck('title', 'id'))
+                    ->request();
+            }
+        }
+    }
+
+    public function ajaxSortDirectories(string $server, string $node, array $ids)
+    {
+        $directories = $this->me->session->bookmarksDirectories()
+            ->where('server', $server)
+            ->where('node', $node)
+            ->pluck('title', 'id');
+
+        if (collect($ids)->diff($directories->keys())->isEmpty()) {
+            $directories = $directories->sortBy(function ($value, $key) use ($ids) {
+                return array_search($key, $ids);
+            });
+
+            $setDirectories = $this->xmpp(new SetDirectories);
+            $setDirectories->setTo($server)
+                ->setNode($node)
+                ->setDirectories($directories)
+                ->request();
+        }
     }
 
     public function prepareRoomCounter(Conference $conference)

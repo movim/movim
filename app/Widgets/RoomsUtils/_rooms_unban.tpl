@@ -10,7 +10,7 @@
     <button
         name="submit"
         class="button flat"
-        onclick="RoomsUtils_ajaxRemoveBannedConfirm('{$room->conference}', '{$jid|echapJS}'); Dialog_ajaxClear()">
+        onclick="RoomsUtils_ajaxRemoveMemberConfirm('{$room->conference}', '{$jid|echapJS}'); Dialog_ajaxClear()">
         {$c->__('button.submit')}
     </button>
 </footer>

@@ -1,25 +1,70 @@
+ul#spacerooms_widget {
+    overflow: hidden;
+}
 
 ul#spacerooms_widget>li {
-    padding-left: 0;
-    padding-right: 0;
     user-select: none;
 }
 
-ul#spacerooms_widget li span.control.edition {
+ul#spacerooms_widget li div.controls {
     position: absolute;
-    display: block;
-    right: -7rem;
-    margin: 0;
-    width: 5.5rem;
-    background-color: rgb(var(--movim-background));
+    right: 0;
     top: 0;
-    height: 5.25rem;
-    line-height: 5.25rem;
+    transform: translateX(100%);
+    background-color: rgb(var(--movim-background));
+    transition: transform 0.2s var(--accelerate-easing);
     box-shadow: var(--elevation-1);
-    transition: right 0.2s var(--accelerate-easing);
+    height: 5.25rem;
 }
 
-ul#spacerooms_widget li:hover span.control.edition {
-    right: 0;
-    transition: right 0.2s var(--decelerate-easing) 0.75s;
+ul#spacerooms_widget li div.controls span {
+    padding: 0 1rem;
+    line-height: 5.25rem;
+    height: 5.25rem;
+    display: inline-block;
+}
+
+ul#spacerooms_widget li div.controls span:hover {
+    cursor: pointer;
+    user-select: none;
+    background-color: rgba(var(--movim-element-action), 0.1);
+    font-variation-settings: 'FILL' 1;
+}
+
+ul#spacerooms_widget li:hover div.controls {
+    transform: translateX(0);
+    transition: transform 0.2s var(--decelerate-easing) 0.75s;
+}
+
+ul#spacerooms_widget li.dragging:active {
+    cursor: grabbing;
+}
+
+ul#spacerooms_widget:has(li.subheader.dragging) li:not(.dragging):not(.subheader) div {
+    opacity: 0.15;
+}
+
+ul#spacerooms_widget li.dragging {
+    opacity: 0.5;
+}
+
+ul#spacerooms_widget li {
+    transition: padding-bottom 0.1s ease;
+}
+
+ul#spacerooms_widget li.dropping {
+    padding-bottom: 2rem;
+}
+
+ul#spacerooms_widget li.dropping:before {
+    animation: fadein 0.3s;
+    content: '';
+    display: block;
+    width: calc(100% - 3rem);
+    height: 0.5rem;
+    background-color: var(--movim-accent);
+    border-radius: 1rem;
+    position: absolute;
+    top: 6rem;
+    left: 1.5rem;
 }

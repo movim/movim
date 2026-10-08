@@ -1,9 +1,30 @@
 <section>
+    <ul class="list thick">
+        <li>
+            <span class="primary icon gray">
+                {if="$directory"}
+                    <i class="material-symbols">folder</i>
+                {else}
+                    <i class="material-symbols">tag</i>
+                {/if}
+            </span>
+            <div>
+                {if="$directory"}
+                    <p>{$c->__('spaceinfo.add_room_title')}</p>
+                    <p>{$directory->title}</p>
+                {else}
+                    <h3>{$c->__('spaceinfo.add_room_title')}</h3>
+                {/if}
+            </div>
+        </li>
+    </ul>
     <form name="spacerooms_add">
-        <h3>{$c->__('spaceinfo.add_room_title')}</h3>
 
         <input type="hidden" name="server" value="{$server|echapJS}">
         <input type="hidden" name="node" value="{$node|echapJS}">
+        {if="$directory"}
+            <input type="hidden" name="directory_id" value="{$directory->id|echapJS}">
+        {/if}
         <div>
             <ul class="list">
                 <li>
@@ -35,23 +56,6 @@
                     <div>
                         <p>{$c->__('chatrooms.conference_call')}</p>
                         <p>{$c->__('chatrooms.conference_call_text')}</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="primary icon gray">
-                        <i class="material-symbols">push_pin</i>
-                    </span>
-                    <span class="control">
-                        <div class="checkbox">
-                            <input
-                                type="checkbox"
-                                id="pinned"
-                                name="pinned"/>
-                            <label for="pinned"></label>
-                        </div>
-                    </span>
-                    <div>
-                        <p>{$c->__('chatrooms.pinned')}</p>
                     </div>
                 </li>
             </ul>

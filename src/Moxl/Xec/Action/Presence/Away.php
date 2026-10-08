@@ -23,7 +23,7 @@ class Away extends Action
         $presence->set($this->me, $stanza);
 
         linker($this->sessionId)->presenceBuffer->append($presence, function () {
-            $this->event('mypresence');
+            $this->deliver('mypresence');
         });
     }
 }

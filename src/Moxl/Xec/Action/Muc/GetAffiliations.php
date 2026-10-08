@@ -6,23 +6,23 @@ use Moxl\Xec\Action;
 use Moxl\Stanza\Muc;
 use App\Member;
 
-class GetMembers extends Action
+class GetAffiliations extends Action
 {
-    protected $_to;
-    private $lastStanzaId;
+    protected string $_to;
+    private string $lastStanzaId;
 
     public function request()
     {
         $this->lastStanzaId = \generateKey(6);
 
         $this->store();
-        $this->iq(Muc::getMembers('member'), to: $this->_to, type: 'get');
+        $this->iq(Muc::getAffiliations('member'), to: $this->_to, type: 'get');
         $this->store();
-        $this->iq(Muc::getMembers('outcast'), to: $this->_to, type: 'get');
+        $this->iq(Muc::getAffiliations('outcast'), to: $this->_to, type: 'get');
         $this->store();
-        $this->iq(Muc::getMembers('owner'), to: $this->_to, type: 'get');
+        $this->iq(Muc::getAffiliations('owner'), to: $this->_to, type: 'get');
         $this->store($this->lastStanzaId);
-        $this->iq(Muc::getMembers('admin'), to: $this->_to, type: 'get');
+        $this->iq(Muc::getAffiliations('admin'), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

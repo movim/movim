@@ -18,7 +18,7 @@ class AvatarData extends Payload
         )->then(
             function (Response $response) use ($jid) {
                 $this->pack($jid);
-                $this->event('vcard');
+                $this->deliver('vcard');
             }
         );
     }

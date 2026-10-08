@@ -21,7 +21,7 @@ class JingleReject extends Payload
             $message->save();
 
             $this->pack($message);
-            $this->event('jingle_message');
+            $this->deliver('jingle_message');
         }
 
         $this->pack((string)$stanza->attributes()->id, (string)$parent->attributes()->from);

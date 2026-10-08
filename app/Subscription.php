@@ -37,8 +37,7 @@ class Subscription extends Model
     public function spaceRooms()
     {
         return $this->hasMany(Conference::class, ['space_server', 'space_node', 'user_id'], ['server', 'node', 'jid'])
-            ->orderBy('pinned', 'desc')
-            ->orderBy('name', 'asc')
+            ->orderBy('weight', 'asc')
             ->withCount('unreads', 'quoted');
     }
 

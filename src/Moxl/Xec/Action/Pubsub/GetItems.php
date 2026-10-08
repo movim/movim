@@ -8,6 +8,7 @@ use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 
 use Moxl\Stanza\Avatar;
+use Moxl\Stanza\PubsubAtom;
 
 class GetItems extends Action
 {
@@ -54,7 +55,7 @@ class GetItems extends Action
         foreach ($stanza->pubsub->items->item as $item) {
             if (
                 isset($item->entry)
-                && (string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom'
+                && (string)$item->entry->attributes()->xmlns == PubsubAtom::ATOM_NAMESPACE
             ) {
                 if (
                     $this->_since == null

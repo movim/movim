@@ -7,6 +7,7 @@ use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 
 use Moxl\Stanza\Avatar;
+use Moxl\Stanza\PubsubAtom;
 use Psr\Http\Message\ResponseInterface;
 
 class GetItem extends Action
@@ -38,7 +39,7 @@ class GetItem extends Action
             foreach ($stanza->pubsub->items->item as $item) {
                 if (
                     isset($item->entry)
-                    && (string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom'
+                    && (string)$item->entry->attributes()->xmlns == PubsubAtom::ATOM_NAMESPACE
                 ) {
                     $p = \App\Post::firstOrNew([
                         'server' => $this->_to,
@@ -62,13 +63,13 @@ class GetItem extends Action
                         $this->deliver();
                     } elseif ($p->isStory()) {
                         $this->pack($p->id);
-                        $this->event('story');
+                        $this->deliver('story');
                     } elseif ($p->isComment()) {
                         $this->pack($p->id);
-                        $this->event('post_comment_published');
+                        $this->deliver('post_comment_published');
                     } else {
                         $this->pack($p->id);
-                        $this->event($this->fromPayload ? 'post' : 'post_refreshed');
+                        $this->deliver($this->fromPayload ? 'post' : 'post_refreshed');
                     }
 
                     if ($this->_messagemid) {
@@ -111,9 +112,7 @@ class GetItem extends Action
 
                     if ($subscription) {
                         $conference = new Conference;
-                        $conference->set($this->me->session, $item);
-                        $conference->space_server = $this->_to;
-                        $conference->space_node = $this->_node;
+                        $conference->set($this->me->session, item: $item, spaceServer: $this->_to, spaceNode: $this->_node);
 
                         $subscription->spaceRooms()->where('conference', $conference->conference)->delete();
 
@@ -123,7 +122,7 @@ class GetItem extends Action
                             'server' => $this->_to,
                             'node' => $this->_node
                         ]);
-                        $this->event('space_addedroom');
+                        $this->deliver('space_addedroom');
                     }
                 }
             }

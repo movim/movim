@@ -3,11 +3,13 @@
 namespace Moxl\Stanza;
 
 use App\Conference;
+use Illuminate\Support\Collection;
 
 class Bookmark2
 {
     public const VERSION = '1';
     public const NODE = 'urn:xmpp:bookmarks:';
+    public const HIERARCHY_NAMESPACE = 'https://slidge.im/spaces/bookmarks-hierarchy';
     public const NODE_CONFIG = [
         'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
         'pubsub#persist_items' => 'true',
@@ -17,7 +19,7 @@ class Bookmark2
         'pubsub#notify_retract' => 'true',
     ];
 
-    public static function get($version = self::VERSION)
+    public static function get(?string $version = self::VERSION)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -25,6 +27,52 @@ class Bookmark2
         $items = $dom->createElement('items');
         $items->setAttribute('node', self::NODE . $version);
         $pubsub->appendChild($items);
+
+        return $pubsub;
+    }
+
+    public static function setDirectories(
+        Collection $directories,
+        ?string $version = self::VERSION,
+        ?string $node = null,
+        ?bool $withPublishOption = true,
+        ?array $nodeConfig = self::NODE_CONFIG
+    ) {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+
+        $publish = $dom->createElement('publish');
+        $publish->setAttribute('node', $node == null
+            ? self::NODE . $version
+            : $node);
+        $pubsub->appendChild($publish);
+
+        $item = $dom->createElement('item');
+        $item->setAttribute('id', self::HIERARCHY_NAMESPACE);
+        $publish->appendChild($item);
+
+        $directoriesNode = $dom->createElement('directories');
+        $directoriesNode->setAttribute('xmlns', self::HIERARCHY_NAMESPACE);
+        $item->appendChild($directoriesNode);
+
+        foreach ($directories  as $id => $title) {
+            $directory = $dom->createElement('directory');
+            $directory->setAttribute('id', $id);
+            $directory->setAttribute('title', $title);
+            $directoriesNode->appendChild($directory);
+        }
+
+        if ($withPublishOption) {
+            $publishOption = $dom->createElement('publish-options');
+            $x = $dom->createElement('x');
+            $x->setAttribute('xmlns', 'jabber:x:data');
+            $x->setAttribute('type', 'submit');
+            $publishOption->appendChild($x);
+
+            \Moxl\Utils::injectConfigInX($x, $nodeConfig);
+
+            $pubsub->appendChild($publishOption);
+        }
 
         return $pubsub;
     }
@@ -62,19 +110,16 @@ class Bookmark2
             $conference->appendChild($nick);
         }
 
+        $extensions = $dom->createElement('extensions');
+        $conference->appendChild($extensions);
+
         if ($configuration->extensions) {
             $domExtensions = new \DOMDocument('1.0', 'UTF-8');
             $domExtensions->loadXML($configuration->extensions);
 
-            $extensions = $dom->importNode($domExtensions->documentElement, true);
-            $conference->appendChild($extensions);
-        } else if (
-            $configuration->notify !== null
-            || $configuration->pinned == true
-            || $configuration->call == true
-        ) {
-            $extensions = $dom->createElement('extensions');
-            $conference->appendChild($extensions);
+            foreach ($domExtensions->documentElement->childNodes as $child) {
+                $extensions->appendChild($dom->importNode($child, true));
+            }
         }
 
         if ($configuration->notify !== null) {
@@ -88,6 +133,24 @@ class Bookmark2
             $pinned = $dom->createElement('pinned');
             $pinned->setAttribute('xmlns', Conference::XMLNS_PINNED);
             $extensions->appendChild($pinned);
+        }
+
+        if ($configuration->weight !== null) {
+            $hierarchy = $dom->getElementsByTagName('hierarchy');
+
+            if ($hierarchy->length > 0) {
+                $hierarchy->item(0)->remove();
+            }
+
+            $hierarchy = $dom->createElement('hierarchy');
+            $hierarchy->setAttribute('xmlns', Bookmark2::HIERARCHY_NAMESPACE);
+            $hierarchy->setAttribute('weight', $configuration->weight);
+
+            if ($configuration->directory_id) {
+                $hierarchy->setAttribute('directory-id', $configuration->directory_id);
+            }
+
+            $extensions->appendChild($hierarchy);
         }
 
         if ($configuration->call == true) {

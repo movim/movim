@@ -47,6 +47,11 @@ class Session extends Model
         return $this->hasMany(Conference::class)->orderBy('conference');
     }
 
+    public function bookmarksDirectories()
+    {
+        return $this->hasMany(BookmarksDirectory::class)->orderBy('order');
+    }
+
     public function topContacts()
     {
         return $this->contacts()->leftJoinSub(
