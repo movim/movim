@@ -12,19 +12,12 @@ class Muc extends Action
     public static $mucId = 'MUC_ID';
 
     protected $_to;
-
     protected $_nickname;
-
     protected $_create = false;
-
     protected $_mujiPreparing = false;
-
     protected $_mujiLeaving = false;
-
     protected ?DOMElement $_muji = null;
-
     protected ?string $_mavsince = null;
-
     protected bool $_withVideo = false;
 
     // Disable the event
@@ -44,11 +37,11 @@ class Muc extends Action
          * Some servers doesn't return the ID, so save it in another session key-value
          * and use the to and nickname as a key ¯\_(ツ)_/¯
          */
-        $session->set(self::$mucId.$this->_to.'/'.$this->_nickname, $this->stanzaId);
+        $session->set(self::$mucId . $this->_to . '/' . $this->_nickname, $this->stanzaId);
 
         $this->send(Presence::maker(
             $this->me,
-            to: $this->_to.'/'.$this->_nickname,
+            to: $this->_to . '/' . $this->_nickname,
             muc: true,
             mujiPreparing: $this->_mujiPreparing,
             muji: $this->_muji,
@@ -59,42 +52,36 @@ class Muc extends Action
     public function enableCreate()
     {
         $this->_create = true;
-
         return $this;
     }
 
     public function enableMujiPreparing()
     {
         $this->_mujiPreparing = true;
-
         return $this;
     }
 
     public function enableMujiLeaving()
     {
         $this->_mujiLeaving = true;
-
         return $this;
     }
 
     public function setMuji(DOMElement $muji)
     {
         $this->_muji = $muji;
-
         return $this;
     }
 
     public function withVideo(bool $withVideo)
     {
         $this->_withVideo = $withVideo;
-
         return $this;
     }
 
     public function noNotify()
     {
         $this->_notify = false;
-
         return $this;
     }
 
@@ -104,15 +91,15 @@ class Muc extends Action
         $presence->set($this->me, $stanza);
 
         if ($stanza->attributes()->to) {
-            $presence->mucjid = bareJid((string) $stanza->attributes()->to);
+            $presence->mucjid = bareJid((string)$stanza->attributes()->to);
         }
 
         if ($this->_create) {
-            AppPresence::where([
+            \App\Presence::where([
                 'session_id' => $presence->session_id,
                 'jid' => $presence->jid,
                 'mucjid' => $presence->mucjid,
-                'resource' => $presence->resource,
+                'resource' => $presence->resource
             ])->delete();
 
             $presence->save();
@@ -129,7 +116,6 @@ class Muc extends Action
                 $this->method('muji_preparing');
                 $this->pack(['with_video' => $this->_withVideo, 'presence' => $presence]);
                 $this->deliver();
-
                 return;
             }
 
@@ -137,7 +123,6 @@ class Muc extends Action
                 $this->method('muji_leaving');
                 $this->pack($presence);
                 $this->deliver();
-
                 return;
             }
 
@@ -233,7 +218,7 @@ class Muc extends Action
         if (substr_count($this->_nickname, '_') > 5) {
             $this->deliver();
         } else {
-            $this->setNickname($this->_nickname.'_');
+            $this->setNickname($this->_nickname . '_');
             $this->request();
             $this->deliver();
         }

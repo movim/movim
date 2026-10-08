@@ -2,7 +2,6 @@
 
 namespace App\Widgets\Help;
 
-use App\Info;
 use Movim\Widget\Base;
 
 class Help extends Base
@@ -20,9 +19,9 @@ class Help extends Base
         $this->view->assign(
             'info',
             $this->me
-                ? Info::where('server', $this->me->session->host)
-                    ->where('node', '')
-                    ->first()
+                ? \App\Info::where('server', $this->me->session->host)
+                ->where('node', '')
+                ->first()
                 : null
         );
     }

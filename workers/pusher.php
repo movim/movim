@@ -1,12 +1,11 @@
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
-$bootstrap = new Bootstrap;
+$bootstrap = new Movim\Bootstrap;
 $bootstrap->boot(true);
 
 use App\Workers\Pusher\Pusher;
-use Movim\Bootstrap;
 use Psr\Http\Message\ServerRequestInterface;
 use React\EventLoop\Loop;
 use React\Http\HttpServer;
@@ -17,26 +16,26 @@ $loop = Loop::get();
 $pusher = new Pusher;
 
 $handler = function (ServerRequestInterface $request) use ($pusher) {
-    $data = json_decode((string) $request->getBody());
+    $data = json_decode((string)$request->getBody());
 
     return new Promise(function () use ($data, $pusher) {
         $pusher->send(
             userId: $data->user_id,
-            linkerPushEndpoints: (array) $data->linker_push_endpoints,
+            linkerPushEndpoints: (array)$data->linker_push_endpoints,
             title: $data->title,
             tag: $data->tag,
             body: $data->body,
             picture: $data->picture,
             actions: $data->actions,
-            data: (array) $data->data,
+            data: (array)$data->data,
         );
     });
 };
 
 $server = new HttpServer($handler);
-$server->on('error', function (Throwable $e) {
+$server->on('error', function (\Throwable $e) {
     \logError($e);
 });
 
-$path = 'unix://'.PUSHER_SOCKET;
+$path = 'unix://' . PUSHER_SOCKET;
 $server->listen(new SocketServer($path));

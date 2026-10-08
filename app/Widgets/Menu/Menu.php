@@ -2,15 +2,13 @@
 
 namespace App\Widgets\Menu;
 
-use App\Contact;
-use App\Info;
-use App\Post as AppPost;
 use App\User;
+use App\Post as AppPost;
 use App\Widgets\ContactsSuggestions\ContactsSuggestions;
 use App\Widgets\Post\Post;
-use Illuminate\Database\Capsule\Manager as DB;
-use Movim\ImageSize;
 use Movim\Widget\Base;
+
+use Illuminate\Database\Capsule\Manager as DB;
 use Moxl\Xec\Payload\Packet;
 
 class Menu extends Base
@@ -30,7 +28,7 @@ class Menu extends Base
 
     public function onRetract(Packet $packet)
     {
-        $this->rpc('MovimTpl.remove', '#'.cleanupId($packet->content['nodeid']));
+        $this->rpc('MovimTpl.remove', '#' . cleanupId($packet->content['nodeid']));
     }
 
     public function onSubscription(Packet $packet)
@@ -42,7 +40,7 @@ class Menu extends Base
     {
         $post = AppPost::find($packet->content);
 
-        if (! $post) {
+        if (!$post) {
             return;
         }
 
@@ -50,11 +48,11 @@ class Menu extends Base
         $count = 0;
 
         if ($since) {
-            $count = AppPost::whereIn('id', function ($query) use ($since) {
+            $count = \App\Post::whereIn('id', function ($query) use ($since) {
                 $filters = DB::table('posts')->where('id', -1);
 
-                $filters = AppPost::withMineScope($filters, $this->me, since: $since);
-                $filters = AppPost::withFollowScope($filters, $this->me, since: $since);
+                $filters = \App\Post::withMineScope($filters, $this->me, since: $since);
+                $filters = \App\Post::withFollowScope($filters, $this->me, since: $since);
 
                 $query->select('id')->from(
                     $filters,
@@ -63,38 +61,37 @@ class Menu extends Base
             })->withoutComments()->count();
         }
 
-        if ($post->isEdited() && ! $post->isComment()) {
-            $this->rpc('MovimTpl.fill', '#menu_widget #'.cleanupId($post->nodeid), $this->preparePost($post));
-
+        if ($post->isEdited() && !$post->isComment()) {
+            $this->rpc('MovimTpl.fill', '#menu_widget #' . cleanupId($post->nodeid), $this->preparePost($post));
             return;
         }
 
-        if ($post->isComment() && ! $post->isMine($this->me)) {
-            $contact = Contact::where('id', $post->aid)->first();
+        if ($post->isComment() && !$post->isMine($this->me)) {
+            $contact = \App\Contact::where('id', $post->aid)->first();
             $parent = $post->parent;
 
             if ($parent && $contact) {
                 $this->notif(
                     key: 'comments',
-                    title: ($post->isLike()) ? '❤️ '.$contact->truename : $post->title,
-                    body: '📝 '.$parent->title,
+                    title: ($post->isLike()) ? '❤️ ' . $contact->truename : $post->title,
+                    body: '📝 ' . $parent->title,
                     url: $this->route('post', [$parent->server, $parent->node, $parent->nodeid]),
                     picture: $contact->getPicture(),
                     time: 4
                 );
             }
         } elseif (
-            ! $post->isComment()
+            !$post->isComment()
             && $count > 0
             && (strtotime($post->published) > strtotime($since))
         ) {
             if ($post->isMicroblog()) {
-                $contact = Contact::firstOrNew(['id' => $post->server]);
+                $contact = \App\Contact::firstOrNew(['id' => $post->server]);
 
-                if (! $post->isMine($this->me)) {
+                if (!$post->isMine($this->me)) {
                     $this->notif(
                         key: 'news',
-                        title: '📝 '.$contact->truename,
+                        title: '📝 ' . $contact->truename,
                         body: $post->title,
                         url: $this->route('post', [$post->server, $post->node, $post->nodeid]),
                         picture: $contact->getPicture(),
@@ -106,7 +103,7 @@ class Menu extends Base
                     );
                 }
             } else {
-                $info = Info::where('server', $post->server)
+                $info = \App\Info::where('server', $post->server)
                     ->where('node', $post->node)
                     ->first();
                 $logo = avatarPlaceholder($post->node);
@@ -116,7 +113,7 @@ class Menu extends Base
                     if ($info->name) {
                         $title = $info->name;
                     }
-                    $logo = $info->getPicture(ImageSize::L);
+                    $logo = $info->getPicture(\Movim\ImageSize::L);
                 }
 
                 $this->notif(
@@ -174,11 +171,11 @@ class Menu extends Base
         $view = $this->tpl();
 
         $since = $this->me->posts_since;
-        $posts = AppPost::whereIn('id', function ($query) use ($since) {
+        $posts = \App\Post::whereIn('id', function ($query) use ($since) {
             $filters = DB::table('posts')->where('id', -1);
 
-            $filters = AppPost::withMineScope($filters, $this->me, since: $since);
-            $filters = AppPost::withFollowScope($filters, $this->me, since: $since);
+            $filters = \App\Post::withMineScope($filters, $this->me, since: $since);
+            $filters = \App\Post::withFollowScope($filters, $this->me, since: $since);
 
             $query->select('id')->from(
                 $filters,
@@ -197,24 +194,24 @@ class Menu extends Base
             }
         }
 
-        $items = AppPost::skip($page * $this->_paging + $count)->withoutComments();
+        $items = \App\Post::skip($page * $this->_paging + $count)->withoutComments();
 
         $items->whereIn('id', function ($query) use ($type) {
             $filters = DB::table('posts')->where('id', -1);
 
             switch ($type) {
                 case 'all':
-                    $filters = AppPost::withFollowScope($filters, $this->me);
-                    $filters = AppPost::withMineScope($filters, $this->me);
+                    $filters = \App\Post::withFollowScope($filters, $this->me);
+                    $filters = \App\Post::withMineScope($filters, $this->me);
                     break;
 
                 case 'feed':
-                    $filters = AppPost::withContactsFollowScope($filters, $this->me);
-                    $filters = AppPost::withMineScope($filters, $this->me);
+                    $filters = \App\Post::withContactsFollowScope($filters, $this->me);
+                    $filters = \App\Post::withMineScope($filters, $this->me);
                     break;
 
                 case 'news':
-                    $filters = AppPost::withCommunitiesFollowScope($filters, $this->me);
+                    $filters = \App\Post::withCommunitiesFollowScope($filters, $this->me);
                     break;
             }
 

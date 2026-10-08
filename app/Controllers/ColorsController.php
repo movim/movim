@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controllers;
-
 use Movim\Controller\Base;
 
 class ColorsController extends Base

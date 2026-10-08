@@ -1,8 +1,8 @@
 <?php
 
 use App\Post;
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class UpdateTitleUpdatedNotNullPostsTable extends Migration
 {

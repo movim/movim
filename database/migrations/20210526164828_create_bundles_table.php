@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateBundlesTable extends Migration
 {
@@ -31,8 +31,8 @@ class CreateBundlesTable extends Migration
             $table->string('device_id', 64);
 
             $table->foreign('bundle_id')
-                ->references('id')->on('bundles')
-                ->onDelete('cascade');
+                  ->references('id')->on('bundles')
+                  ->onDelete('cascade');
 
             $table->timestamps();
         });

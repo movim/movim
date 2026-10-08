@@ -1,5 +1,4 @@
 <?php
-
 /*
  * SPDX-FileCopyrightText: 2024 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -12,11 +11,8 @@ use App\Post;
 class XMPPUri
 {
     private ?string $type = null;
-
     private ?string $category = null;
-
     private array $uri = [];
-
     private array $params = [];
 
     public function __construct(string $uri)
@@ -35,7 +31,6 @@ class XMPPUri
                     if (isset($queryParams['item'])) {
                         $this->type = 'post';
                         $this->params = [$this->uri['path'], $queryParams['node'], $queryParams['item']];
-
                         return;
                     }
 
@@ -57,7 +52,7 @@ class XMPPUri
                 }
             } elseif (isset($this->uri['host']) && isset($this->uri['user'])) {
                 $this->type = 'contact';
-                $this->params = [$this->uri['user'].'@'.$this->uri['host']];
+                $this->params = [$this->uri['user'] . '@' . $this->uri['host']];
             } else {
                 $this->type = 'contact';
                 $this->params = [$this->uri['path']];
@@ -127,13 +122,11 @@ class XMPPUri
 
     public function getPost(): ?Post
     {
-        if ($this->type != 'post') {
-            return null;
-        }
+        if ($this->type != 'post') return null;
 
         return Post::where('server', $this->params[0])
-            ->where('node', $this->params[1])
-            ->where('nodeid', $this->params[2])
+            ->where('node',  $this->params[1])
+            ->where('nodeid',  $this->params[2])
             ->first();
     }
 }

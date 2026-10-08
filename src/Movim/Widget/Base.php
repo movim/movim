@@ -1,5 +1,4 @@
 <?php
-
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -11,45 +10,36 @@ use App\User;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Notif\Notif;
-use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Support\Carbon;
+
 use Movim\Controller\Ajax;
 use Movim\Daemon\Linker\CurrentCall;
-use Movim\Route;
-use Movim\RPC;
 use Movim\Template\Partial;
+
 use Moxl\Xec\Action;
+
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Carbon;
 use Rain\Tpl;
 
 class Base
 {
     protected array $js = [];     // Contains javascripts
-
     protected array $css = [];    // Contains CSS files
-
     protected $ajax;        // Contains ajax client code
-
     protected ?string $name = null;
-
     protected $view;
-
     public ?User $me = null;
 
     protected $_view;
 
     public $baseUri;
-
     public array $events = [];
-
     public array $tasks = [];
-
     public array $filters = [];
 
     // Meta tags
     public $title;
-
     public $image;
-
     public $description;
 
     public function __construct(
@@ -76,9 +66,9 @@ class Base
             // Put default widget init here.
             $this->ajax = Ajax::getInstance();
 
-            if (! $this->ajax->isRegistered($this->name)) {
+            if (!$this->ajax->isRegistered($this->name)) {
                 // Generating Ajax calls.
-                $refl = new \ReflectionClass('App\\Widgets\\'.$this->name.'\\'.$this->name);
+                $refl = new \ReflectionClass('App\\Widgets\\' . $this->name . '\\' . $this->name);
                 $meths = $refl->getMethods();
 
                 foreach ($meths as $method) {
@@ -101,10 +91,10 @@ class Base
             }
 
             $config = [
-                'tpl_dir' => $this->respath('', true),
-                'cache_dir' => CACHE_PATH,
-                'tpl_ext' => 'tpl',
-                'auto_escape' => true,
+                'tpl_dir'       => $this->respath('', true),
+                'cache_dir'     => CACHE_PATH,
+                'tpl_ext'       => 'tpl',
+                'auto_escape'   => true
             ];
 
             // We load the template engine
@@ -127,7 +117,6 @@ class Base
         if ($this->sessionId) {
             $args = func_get_args();
             $string = array_shift($args);
-
             return linker($this->sessionId)->locale->translate($string, $args);
         }
 
@@ -138,7 +127,6 @@ class Base
     {
         $action->attachSession($this->sessionId);
         $action->attachUser($this->me);
-
         return $action;
     }
 
@@ -184,15 +172,16 @@ class Base
 
     public function route(...$args): ?string
     {
-        return Route::urlize(...$args);
+        return \Movim\Route::urlize(...$args);
     }
 
     /**
      * Return a human-readable date
      *
-     * @param  timestamp  $string
+     * @param timestamp $string
+     * @return string
      */
-    public function prepareDate(string $datetime = '', ?bool $compact = false, ?bool $hours = true): string
+    function prepareDate(string $datetime = '', ?bool $compact = false, ?bool $hours = true): string
     {
         global $language;
 
@@ -221,9 +210,10 @@ class Base
     /**
      * Return a human-readable time
      *
-     * @param  timestamp  $string
+     * @param timestamp $string
+     * @return string
      */
-    public function prepareTime(string $datetime = ''): string
+    function prepareTime(string $datetime = ''): string
     {
         $time = strtotime($datetime);
         $time = $time != false ? $time : time();
@@ -234,9 +224,7 @@ class Base
 
     private function resolveTimezone(): string
     {
-        if (defined('SESSION_TIMEZONE')) {
-            return SESSION_TIMEZONE;
-        }
+        if (defined('SESSION_TIMEZONE')) return SESSION_TIMEZONE;
 
         return $this->sessionId
             ? linker($this->sessionId)->timezone ?? date_default_timezone_get()
@@ -255,12 +243,12 @@ class Base
 
     public function emoji(string $id): string
     {
-        return BASE_URI.'theme/img/emojis/svg/'.$id.'.svg';
+        return BASE_URI . 'theme/img/emojis/svg/' . $id . '.svg';
     }
 
     public function rpc($funcname, ...$args)
     {
-        (new RPC(
+        (new \Movim\RPC(
             user: $this->me,
             sessionId: $this->sessionId
         ))->call($funcname, ...$args);
@@ -295,8 +283,8 @@ class Base
             $this->display(...$params);
         }
 
-        return (file_exists($this->respath(strtolower($this->name).'.tpl', true)))
-            ? trim((string) $this->view->draw(strtolower($this->name), true))
+        return (file_exists($this->respath(strtolower($this->name) . '.tpl', true)))
+            ? trim((string)$this->view->draw(strtolower($this->name), true))
             : '';
     }
 
@@ -318,7 +306,6 @@ class Base
 
     /**
      * @brief Returns the path to the specified widget file.
-     *
      * @param file is the file's name to make up the path for.
      * @param fspath is optional, returns the OS path if true, the URL by default.
      */
@@ -332,10 +319,10 @@ class Base
             ? (new \ReflectionClass($this))->getShortName()
             : (new \ReflectionClass($this))->getParentClass()->getShortName();
 
-        $path = 'app/Widgets/'.$folder.'/'.$file;
+        $path = 'app/Widgets/' . $folder . '/' . $file;
 
         if ($fspath) {
-            $path = DOCUMENT_ROOT.'/'.$path;
+            $path = DOCUMENT_ROOT . '/' . $path;
         } else {
             $path = urilize($path, $notime);
         }
@@ -379,11 +366,11 @@ class Base
     {
         $this->setName();
 
-        $local = DOCUMENT_ROOT.'/app/Widgets/'.$this->name.'/'.$filename;
-        $cache = PUBLIC_CACHE_PATH.$this->name.'_'.$filename;
-        $path = 'cache/'.$this->name.'_'.$filename;
+        $local = DOCUMENT_ROOT . '/app/Widgets/' . $this->name . '/' . $filename;
+        $cache = PUBLIC_CACHE_PATH . $this->name . '_' . $filename;
+        $path = 'cache/' . $this->name . '_' . $filename;
 
-        if (! \file_exists($cache)) {
+        if (!\file_exists($cache)) {
             \symlink($local, $cache);
         }
 
@@ -422,21 +409,20 @@ class Base
 
     /**
      * @brief Registers an event handler.
-     *
-     * @param  $key  The event key
-     * @param  $method  The function to call
-     * @param  $filter  Only call this function if the session notif_key is good
+     * @param $key The event key
+     * @param $method The function to call
+     * @param $filter Only call this function if the session notif_key is good
      */
     protected function registerEvent(string $key, string $method, string|array|null $filter = null)
     {
-        if (! array_key_exists($key, $this->events)) {
+        if (!array_key_exists($key, $this->events)) {
             $this->events[$key] = [$method];
         } else {
             $this->events[$key][] = $method;
         }
 
         if ($filter != null) {
-            $this->filters[$key.'_'.$method] = is_string($filter) ? [$filter] : $filter;
+            $this->filters[$key . '_' . $method] = is_string($filter) ? [$filter] : $filter;
         }
     }
 }

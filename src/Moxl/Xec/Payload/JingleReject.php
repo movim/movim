@@ -8,14 +8,14 @@ class JingleReject extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $from = (string) $parent->attributes()->from;
+        $from = (string)$parent->attributes()->from;
 
-        if (! $stanza->muji) {
+        if (!$stanza->muji) {
             $message = Message::eventMessageFactory(
                 $this->me,
                 'jingle',
                 bareJid($from),
-                (string) $stanza->attributes()->id
+                (string)$stanza->attributes()->id
             );
             $message->type = 'jingle_reject';
             $message->save();
@@ -24,7 +24,7 @@ class JingleReject extends Payload
             $this->deliver('jingle_message');
         }
 
-        $this->pack((string) $stanza->attributes()->id, (string) $parent->attributes()->from);
+        $this->pack((string)$stanza->attributes()->id, (string)$parent->attributes()->from);
         $this->deliver();
     }
 }

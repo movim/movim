@@ -17,7 +17,6 @@ use Moxl\Xec\Payload\Packet;
 class ContactActions extends Base
 {
     private $_picturesPagination = 20;
-
     private $_linksPagination = 12;
 
     public function load()
@@ -45,22 +44,22 @@ class ContactActions extends Base
 
     public function ajaxGetDrawer($jid)
     {
-        if (! validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
         $tpl = $this->tpl();
-        $tpl->assign('contact', Contact::firstOrNew(['id' => $jid]));
+        $tpl->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
 
         $picturesCount = 0;
         $linksCount = 0;
 
         if ($jid != $this->me->id) {
-            $picturesCount = Message::jid($this->me, $jid)
+            $picturesCount = \App\Message::jid($this->me, $jid)
                 ->where('picture', true)
                 ->orderBy('published', 'desc')
                 ->count();
-            $linksCount = Message::jid($this->me, $jid)
+            $linksCount = \App\Message::jid($this->me, $jid)
                 ->where('picture', false)
                 ->whereNotNull('urlid')
                 ->count();
@@ -102,7 +101,7 @@ class ContactActions extends Base
             $fingerprint->fingerprint = base64ToFingerPrint($fingerprint->fingerprint);
         }
 
-        $latests = Message::selectRaw('max(published) as latest, bundleid')
+        $latests = \App\Message::selectRaw('max(published) as latest, bundleid')
             ->where('user_id', $this->me->id)
             ->where('jidfrom', $jid)
             ->groupBy('bundleid')
@@ -124,7 +123,7 @@ class ContactActions extends Base
 
     public function ajaxChat(string $jid, ?bool $muc = false)
     {
-        if (! validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -166,7 +165,7 @@ class ContactActions extends Base
         $tpl = $this->tpl();
 
         $more = false;
-        $pictures = Message::jid($this->me, $jid)
+        $pictures = \App\Message::jid($this->me, $jid)
             ->where('picture', true)
             ->orderBy('published', 'desc')
             ->take($this->_picturesPagination + 1)
@@ -190,7 +189,7 @@ class ContactActions extends Base
         $tpl = $this->tpl();
 
         $more = false;
-        $links = Message::jid($this->me, $jid)
+        $links = \App\Message::jid($this->me, $jid)
             ->where('picture', false)
             ->whereNotNull('urlid')
             ->orderBy('published', 'desc')
@@ -214,7 +213,7 @@ class ContactActions extends Base
     {
         return $this->view('_contactactions_vcard', [
             'contact' => $contact,
-            'roster' => $roster,
+            'roster' => $roster
         ]);
     }
 

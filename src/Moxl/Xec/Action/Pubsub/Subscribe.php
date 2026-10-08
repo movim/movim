@@ -10,11 +10,8 @@ use Moxl\Xec\Action\PubsubSubscription\Add as SubscriptionAdd;
 class Subscribe extends Action
 {
     protected $_to;
-
     protected $_from;
-
     protected $_node;
-
     protected $_data;
 
     public function request()
@@ -27,10 +24,10 @@ class Subscribe extends Action
     {
         $sa = new SubscriptionAdd($this->me, sessionId: $this->sessionId);
         $sa->setServer($this->_to)
-            ->setNode($this->_node)
-            ->setFrom($this->_from)
-            ->setPEPNode(Subscription::PRIVATE_NODE)
-            ->request();
+           ->setNode($this->_node)
+           ->setFrom($this->_from)
+           ->setPEPNode(Subscription::PRIVATE_NODE)
+           ->request();
 
         $this->pack(['server' => $this->_to, 'node' => $this->_node, 'data', $this->_data]);
         $this->deliver();

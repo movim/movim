@@ -1,5 +1,4 @@
 <?php
-
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -21,13 +20,13 @@ class RPC
         $payload = new \stdClass;
         $payload->func = $funcname;
 
-        if (! empty($args)) {
+        if (!empty($args)) {
             $payload->p = $args;
         }
 
         if (php_sapi_name() != 'cli') {
             array_push(self::$json, $payload);
-        } elseif ($this->sessionId || $this?->user?->session) {
+        } else if ($this->sessionId || $this?->user?->session) {
             global $linkersManager;
             $linkersManager->sendWebsocket(
                 $this->sessionId ?? $this->user->session->id,
@@ -47,16 +46,16 @@ class RPC
      */
     public function handleJSON(\stdClass $request, ?string $sid = null)
     {
-        if (! isset($request->w)) {
+        if (!isset($request->w)) {
             return;
         }
 
-        if (preg_match('/^ajax/', (string) $request->f)) {
+        if (preg_match('/^ajax/', (string)$request->f)) {
             $wrapper = new Wrapper;
             $wrapper->runWidget(
-                widgetName: (string) $request->w,
-                method: (string) $request->f,
-                params: isset($request->p) ? (array) $request->p : [],
+                widgetName: (string)$request->w,
+                method: (string)$request->f,
+                params: isset($request->p) ? (array)$request->p : [],
                 user: $this->user,
                 sessionId: $sid
             );

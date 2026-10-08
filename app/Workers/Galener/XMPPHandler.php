@@ -14,9 +14,9 @@ class XMPPHandler
     ) {
         $directory = dirname(__FILE__);
 
-        foreach (array_diff(scandir($directory.'/Events'), ['..', '.', 'Event.php']) as $eventFile) {
+        foreach (array_diff(scandir($directory . '/Events'), ['..', '.', 'Event.php']) as $eventFile) {
             $classname = substr($eventFile, 0, -4);
-            $eventPath = 'App\\Workers\\Galener\\Events\\'.$classname;
+            $eventPath = 'App\\Workers\\Galener\\Events\\' . $classname;
 
             foreach ($eventPath::getHandlerPaths() as $path) {
                 $this->paths[$path] = $eventPath;
@@ -34,18 +34,17 @@ class XMPPHandler
                 apiClient: $this->apiClient,
                 conferencesManager: $this->conferencesManager
             );
-
             return $event->handle();
         }
 
         if ($child = $node->children()[0]) {
-            $path .= '|'.$child->getName();
+            $path .= '|' . $child->getName();
 
             if ($childNamespace = $child->attributes()->{'xmlns'} ?? null) {
-                $path .= '{'.$childNamespace.'}';
+                $path .= '{' . $childNamespace . '}';
             }
             if ($childNode = $child->attributes()->{'node'} ?? null) {
-                $path .= '@'.$childNode;
+                $path .= '@' . $childNode;
             }
         }
 
@@ -56,7 +55,6 @@ class XMPPHandler
                 apiClient: $this->apiClient,
                 conferencesManager: $this->conferencesManager
             );
-
             return $event->handle();
         }
 

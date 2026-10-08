@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\Roster;
 
-use Moxl\Stanza\Roster;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Roster;
 
 class RemoveItem extends Action
 {
@@ -18,9 +18,9 @@ class RemoveItem extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->me->session
-            ->contacts()
-            ->where('jid', $this->_to)
-            ->delete();
+              ->contacts()
+              ->where('jid', $this->_to)
+              ->delete();
 
         $this->pack($this->_to);
         $this->deliver();

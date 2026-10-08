@@ -2,9 +2,11 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
+use App\Contact;
+use App\Configuration;
 use App\Session as AppSession;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Eloquent\Model;
 use Movim\Jid;
 
 class User extends Model
@@ -20,21 +22,15 @@ class User extends Model
         'notificationcall',
         'omemoenabled',
         'accentcolor',
-        'posts_since',
+        'posts_since'
     ];
-
     public $with = ['session', 'capability'];
-
     protected $keyType = 'string';
-
     public $incrementing = false;
-
     private $unreads = null;
 
     private $blockListInitialized = false;
-
     private $userBlocked = [];
-
     private $globalBlocked = [];
 
     protected $casts = [
@@ -116,7 +112,7 @@ class User extends Model
 
     public function rosterStoriesAllSeen(Roster $roster): bool
     {
-        return ! $this->rosterStories($roster)->whereNotIn('id', function ($query) {
+        return !$this->rosterStories($roster)->whereNotIn('id', function ($query) {
             $query->select('post_id')
                 ->from('post_user_views')
                 ->where('user_id', $this->id);
@@ -172,9 +168,7 @@ class User extends Model
 
     public function unreads(?string $jid = null, bool $quoted = false, ?array $space = null, bool $cached = false): int
     {
-        if ($this->unreads !== null && $cached) {
-            return $this->unreads;
-        }
+        if ($this->unreads !== null && $cached) return $this->unreads;
 
         $union = DB::table('messages')
             ->where('user_id', $this->id)
@@ -208,9 +202,7 @@ class User extends Model
                 }
             });
 
-        if ($space == null) {
-            $unreads = $unreads->unionAll($union);
-        }
+        if ($space == null) $unreads = $unreads->unionAll($union);
 
         $unreads = ($jid != null)
             ? $unreads->where('jidfrom', $jid)
@@ -249,41 +241,41 @@ class User extends Model
     public function setConfig(array $config)
     {
         if (isset($config['language'])) {
-            $this->language = (string) $config['language'];
+            $this->language = (string)$config['language'];
         }
 
         if (isset($config['accentcolor']) && in_array($config['accentcolor'], User::ACCENT_COLORS)) {
-            $this->accentcolor = (string) $config['accentcolor'];
+            $this->accentcolor = (string)$config['accentcolor'];
         }
 
         if (isset($config['nsfw'])) {
-            $this->nsfw = (bool) $config['nsfw'];
+            $this->nsfw = (bool)$config['nsfw'];
         }
 
         if (isset($config['omemoenabled'])) {
-            $this->omemoenabled = (bool) $config['omemoenabled'];
+            $this->omemoenabled = (bool)$config['omemoenabled'];
         }
 
         if (isset($config['chatmain'])) {
-            $this->chatmain = (bool) $config['chatmain'];
+            $this->chatmain = (bool)$config['chatmain'];
         }
 
         if (isset($config['nightmode'])) {
-            $this->nightmode = (bool) $config['nightmode'];
+            $this->nightmode = (bool)$config['nightmode'];
         }
 
         if (isset($config['notificationcall'])) {
-            $this->notificationcall = (bool) $config['notificationcall'];
+            $this->notificationcall = (bool)$config['notificationcall'];
         }
 
         if (isset($config['notificationchat'])) {
-            $this->notificationchat = (bool) $config['notificationchat'];
+            $this->notificationchat = (bool)$config['notificationchat'];
         }
     }
 
     public function isRestricted(): bool
     {
-        return Configuration::get()->restrictsuggestions;
+        return \App\Configuration::get()->restrictsuggestions;
     }
 
     public function hasRegister(): bool
@@ -301,17 +293,17 @@ class User extends Model
 
     public function hasMAM(): bool
     {
-        return $this->capability && $this->capability->hasFeature('urn:xmpp:mam:2');
+        return ($this->capability && $this->capability->hasFeature('urn:xmpp:mam:2'));
     }
 
     public function hasBookmarksConvertion(): bool
     {
-        return $this->capability && $this->capability->hasFeature('urn:xmpp:bookmarks:1#compat');
+        return ($this->capability && $this->capability->hasFeature('urn:xmpp:bookmarks:1#compat'));
     }
 
     public function hasOMEMO(): bool
     {
-        return (bool) $this->omemoenabled;
+        return (bool)$this->omemoenabled;
     }
 
     public function hasPubsub(bool $withChatOnlyDisabled = true)
@@ -326,7 +318,7 @@ class User extends Model
         );
 
         if ($withChatOnlyDisabled) {
-            return $hasPubsub && ! Configuration::get()->chatonly;
+            return ($hasPubsub && !Configuration::get()->chatonly);
         }
 
         return $hasPubsub;
@@ -335,18 +327,17 @@ class User extends Model
     public function hasSocialFeatures(): bool
     {
         $configuration = Configuration::get();
-
-        return ! $configuration->chatonly;
+        return (!$configuration->chatonly);
     }
 
     public function hasUpload(): bool
     {
-        return $this->session && $this->session->getUploadService();
+        return ($this->session && $this->session->getUploadService());
     }
 
     public function hasSpaces(): bool
     {
-        return $this->session && $this->session->getSpacesService();
+        return ($this->session && $this->session->getSpacesService());
     }
 
     public function setPublic()
@@ -364,8 +355,8 @@ class User extends Model
     public function refreshBlocked()
     {
         $this->blockListInitialized = true;
-        $this->userBlocked = (array) $this->reported()->get()->pluck('id')->toArray();
-        $this->globalBlocked = (array) Reported::where('blocked', true)->get()->pluck('id')->toArray();
+        $this->userBlocked = (array)$this->reported()->get()->pluck('id')->toArray();
+        $this->globalBlocked = (array)Reported::where('blocked', true)->get()->pluck('id')->toArray();
     }
 
     public function hasBlocked(string $jid, bool $localOnly = false): bool

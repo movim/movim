@@ -3,9 +3,8 @@
 namespace App\Widgets\AdminReported;
 
 use App\Reported;
-use Movim\Widget\Base;
 
-class AdminReported extends Base
+class AdminReported extends \Movim\Widget\Base
 {
     public function load()
     {
@@ -15,9 +14,7 @@ class AdminReported extends Base
 
     public function ajaxBlock(string $jid, bool $checked)
     {
-        if (! $this->me->admin) {
-            return;
-        }
+        if (!$this->me->admin) return;
 
         $reported = Reported::where('id', $jid)->first();
 
@@ -35,9 +32,7 @@ class AdminReported extends Base
 
     public function ajaxHttpGet()
     {
-        if (! $this->me->admin) {
-            return;
-        }
+        if (!$this->me->admin) return;
 
         $this->rpc('MovimTpl.fill', '#adminreported_widget', $this->prepareReported());
     }
@@ -46,7 +41,6 @@ class AdminReported extends Base
     {
         $view = $this->tpl();
         $view->assign('reported', Reported::with('users')->orderBy('created_at', 'desc')->get());
-
         return $view->draw('_adminreported_reported');
     }
 }

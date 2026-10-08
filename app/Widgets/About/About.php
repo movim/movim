@@ -2,9 +2,7 @@
 
 namespace App\Widgets\About;
 
-use Movim\Widget\Base;
-
-class About extends Base
+class About extends \Movim\Widget\Base
 {
     public function display()
     {

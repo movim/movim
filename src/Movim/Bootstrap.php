@@ -1,5 +1,4 @@
 <?php
-
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -11,10 +10,11 @@ define('DOCUMENT_ROOT', dirname(__FILE__, 3));
 
 use App\Configuration;
 use App\Session;
-use Dotenv\Dotenv;
-use Illuminate\Container\Container;
+
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
+use Illuminate\Container\Container;
+use Dotenv\Dotenv;
 use Movim\i18n\Locale;
 
 $language = null;
@@ -27,7 +27,7 @@ class Bootstrap
         $this->loadHelpers();
         $this->setLogs();
 
-        if (! defined('APP_TITLE')) {
+        if (!defined('APP_TITLE')) {
             $this->setConstants();
         }
 
@@ -49,7 +49,7 @@ class Bootstrap
 
     private function setConstants()
     {
-        if (file_exists(DOCUMENT_ROOT.'/.env')) {
+        if (file_exists(DOCUMENT_ROOT . '/.env')) {
             (Dotenv::createUnsafeImmutable(DOCUMENT_ROOT))->safeLoad();
         }
 
@@ -63,23 +63,23 @@ class Bootstrap
         }
 
         if (isset($_SERVER['SERVER_NAME'])) {
-            define('BASE_DOMAIN', $_SERVER['SERVER_NAME']);
+            define('BASE_DOMAIN', $_SERVER["SERVER_NAME"]);
         }
 
         define('BASE_URI', $this->getBaseUri());
-        define('APP_PATH', DOCUMENT_ROOT.'/app/');
-        define('CONFIG_PATH', DOCUMENT_ROOT.'/config/');
-        define('LOCALES_PATH', DOCUMENT_ROOT.'/locales/');
-        define('PUBLIC_PATH', DOCUMENT_ROOT.'/public/');
+        define('APP_PATH', DOCUMENT_ROOT . '/app/');
+        define('CONFIG_PATH', DOCUMENT_ROOT . '/config/');
+        define('LOCALES_PATH', DOCUMENT_ROOT . '/locales/');
+        define('PUBLIC_PATH', DOCUMENT_ROOT . '/public/');
         define('CACHE_DIR', 'cache/');
         define('IMAGES_DIR', 'images/');
-        define('PUBLIC_CACHE_PATH', PUBLIC_PATH.CACHE_DIR);
-        define('PUBLIC_IMAGES_PATH', PUBLIC_PATH.IMAGES_DIR);
-        define('PUBLIC_EMOJIS_PATH', PUBLIC_PATH.'emojis/');
-        define('PUBLIC_STICKERS_PATH', PUBLIC_PATH.'stickers/');
-        define('VIEWS_PATH', DOCUMENT_ROOT.'/app/Views/');
-        define('WIDGETS_PATH', DOCUMENT_ROOT.'/app/Widgets/');
-        define('WORKERS_PATH', DOCUMENT_ROOT.'/workers/');
+        define('PUBLIC_CACHE_PATH', PUBLIC_PATH . CACHE_DIR);
+        define('PUBLIC_IMAGES_PATH', PUBLIC_PATH . IMAGES_DIR);
+        define('PUBLIC_EMOJIS_PATH', PUBLIC_PATH . 'emojis/');
+        define('PUBLIC_STICKERS_PATH', PUBLIC_PATH . 'stickers/');
+        define('VIEWS_PATH', DOCUMENT_ROOT . '/app/Views/');
+        define('WIDGETS_PATH', DOCUMENT_ROOT . '/app/Widgets/');
+        define('WORKERS_PATH', DOCUMENT_ROOT . '/workers/');
 
         define('CACHE_PATH', config('paths.cache'));
 
@@ -88,16 +88,16 @@ class Bootstrap
         define('DEFAULT_PICTURE_FORMAT', 'webp');
         define('DEFAULT_PICTURE_QUALITY', 95);
 
-        define('API_SOCKET', CACHE_PATH.'socketapi.sock');
-        define('GALENER_API_SOCKET', CACHE_PATH.'galenersocketapi.sock');
-        define('AVATAR_HANDLER_SOCKET', CACHE_PATH.'avatarhandler.sock');
-        define('PUSHER_SOCKET', CACHE_PATH.'pusher.sock');
-        define('RESOLVER_SOCKET', CACHE_PATH.'resolver.sock');
+        define('API_SOCKET', CACHE_PATH . 'socketapi.sock');
+        define('GALENER_API_SOCKET', CACHE_PATH . 'galenersocketapi.sock');
+        define('AVATAR_HANDLER_SOCKET', CACHE_PATH . 'avatarhandler.sock');
+        define('PUSHER_SOCKET', CACHE_PATH . 'pusher.sock');
+        define('RESOLVER_SOCKET', CACHE_PATH . 'resolver.sock');
     }
 
     private function getVersion()
     {
-        if ($f = fopen(DOCUMENT_ROOT.'/VERSION', 'r')) {
+        if ($f = fopen(DOCUMENT_ROOT . '/VERSION', 'r')) {
             return trim(fgets($f));
         }
     }
@@ -114,11 +114,11 @@ class Bootstrap
             $dirname = substr($dirname, 0, strrpos($dirname, 'index.php'));
         }
 
-        $path = (($dirname == DIRECTORY_SEPARATOR) ? '' : $dirname).'/';
+        $path = (($dirname == DIRECTORY_SEPARATOR) ? '' : $dirname) . '/';
 
         $uri = '//';
         $uri .= (array_key_exists('HTTP_HOST', $_SERVER))
-            ? str_replace('//', '/', $_SERVER['HTTP_HOST'].$path)
+            ? str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path)
             : $path;
 
         if (substr($uri, -8, 8) == 'picture/') {
@@ -139,13 +139,13 @@ class Bootstrap
     {
         $capsule = new Capsule;
         $capsule->addConnection([
-            'driver' => config('database.driver'),
-            'host' => config('database.host'),
-            'port' => config('database.port'),
-            'database' => config('database.database'),
-            'username' => config('database.username'),
-            'password' => config('database.password'),
-            'charset' => (config('database.driver') == 'mysql') ? 'utf8mb4' : 'utf8',
+            'driver'    => config('database.driver'),
+            'host'      => config('database.host'),
+            'port'      => config('database.port'),
+            'database'  => config('database.database'),
+            'username'  => config('database.username'),
+            'password'  => config('database.password'),
+            'charset'   => (config('database.driver') == 'mysql') ? 'utf8mb4' : 'utf8',
             'collation' => (config('database.driver') == 'mysql') ? 'utf8mb4_bin' : 'utf8_unicode_ci',
         ]);
 
@@ -171,7 +171,7 @@ class Bootstrap
             $dispatcher->listen('Illuminate\Database\Events\QueryExecuted', function ($query) use (&$sqlQueryExecuted) {
                 $sqlQueryExecuted = time();
 
-                // \logInfo('SQL: ' . $query->sql . ' | values: ' . implode(', ', $query->bindings) . ' | time: ' . $query->time);
+                //\logInfo('SQL: ' . $query->sql . ' | values: ' . implode(', ', $query->bindings) . ' | time: ' . $query->time);
             });
 
             $capsule->setEventDispatcher($dispatcher);
@@ -183,7 +183,7 @@ class Bootstrap
 
     private function loadHelpers()
     {
-        foreach (glob(DOCUMENT_ROOT.'/app/Helpers/*Helper.php') as $file) {
+        foreach (glob(DOCUMENT_ROOT . '/app/Helpers/*Helper.php') as $file) {
             require_once $file;
         }
     }
@@ -221,14 +221,13 @@ class Bootstrap
         if (array_key_exists('MOVIM_SESSION_ID', $_COOKIE)) {
             $sessionId = $_COOKIE['MOVIM_SESSION_ID'];
 
-            $process = (bool) requestAPI('exists', post: ['sid' => $sessionId]);
+            $process = (bool)requestAPI('exists', post: ['sid' => $sessionId]);
             $session = Session::find($sessionId);
 
             if ($session) {
                 // There a session in the DB but no process
-                if (! $process) {
+                if (!$process) {
                     $session->delete();
-
                     return null;
                 }
 
@@ -298,20 +297,19 @@ class Bootstrap
             'Toast',
             'Upload',
             'Vcard4',
-            'Visio',
+            'Visio'
         ];
     }
 
     /**
      * Error Handlers…
      */
+
     public function systemErrorHandler($errno, string $errstr, string $errfile = '', int $errline = 0, ?string $trace = null)
     {
-        if (\is_array($trace)) {
-            $trace = '';
-        }
+        if (\is_array($trace)) $trace = '';
 
-        $error = $errstr.' in '.$errfile.' (line '.$errline.")\n";
+        $error = $errstr . " in " . $errfile . ' (line ' . $errline . ")\n";
 
         $serializedTrace = $trace;
 
@@ -329,16 +327,16 @@ class Bootstrap
                     $i = 0;
                     foreach ($step['args'] as $value) {
                         $arguments .= match (gettype($value)) {
-                            'boolean' => $value ? 'true' : 'false',
+                            'boolean' => $value ? 'true' :  'false',
                             'integer', 'double' => $value,
-                            'string' => "'".$value."'",
-                            'object' => 'Object('.get_class($value).')',
+                            'string' => "'" . $value . "'",
+                            'object' => 'Object(' . get_class($value) . ')',
                             'NULL' => 'NULL',
                             'array' => 'Array',
                             default => 'unknown',
                         };
 
-                        if ($i < count($step['args'])) {
+                        if ($i < sizeof($step['args'])) {
                             $arguments .= ', ';
                         }
 
@@ -348,15 +346,15 @@ class Bootstrap
                     $arguments .= ')';
                 }
 
-                $serializedTrace .= '#'.$i.' '.$step['file'].'('.$step['line'].'): '.$step['function'].$arguments."\n";
+                $serializedTrace .= '#' . $i . ' ' . $step['file'] . '(' . $step['line'] . '): ' . $step['function'] . $arguments . "\n";
                 $i++;
             }
         }
 
-        $fullError = $error.'Trace:'."\n".$serializedTrace;
+        $fullError = $error . 'Trace:' . "\n" . $serializedTrace;
 
         if (php_sapi_name() != 'cli' && ob_get_contents() == '') {
-            echo 'An error occured during the Movim boot check the '.config('paths.log').'errors.log file'."\n";
+            echo 'An error occured during the Movim boot check the ' . config('paths.log') . 'errors.log file' . "\n";
         }
 
         logError($fullError);
@@ -368,7 +366,7 @@ class Bootstrap
     {
         $this->systemErrorHandler(
             E_ERROR,
-            get_class($exception).': '.$exception->getMessage(),
+            get_class($exception) . ': ' . $exception->getMessage(),
             $exception->getFile(),
             $exception->getLine(),
             $exception->getTraceAsString()

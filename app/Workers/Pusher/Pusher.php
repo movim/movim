@@ -12,14 +12,14 @@ class Pusher
 
     public function __construct()
     {
-        $keys = json_decode(file_get_contents(CACHE_PATH.'vapid_keys.json'));
+        $keys = json_decode(file_get_contents(CACHE_PATH . 'vapid_keys.json'));
 
         $this->webPush = new WebPush(auth: [
             'VAPID' => [
                 'subject' => 'https://movim.eu',
                 'publicKey' => $keys->publicKey,
-                'privateKey' => $keys->privateKey,
-            ],
+                'privateKey' => $keys->privateKey
+            ]
         ]);
     }
 
@@ -45,8 +45,8 @@ class Pusher
                     'contentEncoding' => 'aesgcm',
                     'keys' => [
                         'auth' => $pushSubscription->auth,
-                        'p256dh' => $pushSubscription->p256dh,
-                    ],
+                        'p256dh' => $pushSubscription->p256dh
+                    ]
                 ]),
                 json_encode([
                     'tag' => $tag,

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateMAMEarliestTable extends Migration
 {
@@ -16,7 +16,7 @@ class CreateMAMEarliestTable extends Migration
             $table->dateTime('earliest');
 
             $table->foreign('user_id')->references('id')
-                ->on('users')->onDelete('cascade');
+                  ->on('users')->onDelete('cascade');
 
             $table->timestamps();
 

@@ -2,21 +2,19 @@
 
 namespace Moxl\Xec\Action\IqGateway;
 
-use Moxl\Stanza\IqGateway;
 use Moxl\Xec\Action;
+use Moxl\Stanza\IqGateway;
 
 class Set extends Action
 {
     protected $_to;
-
     protected $_prompt;
-
     protected $_extra;
 
     public function request()
     {
         $this->store();
-        $this->iq(IqGateway::set($this->_prompt), to: $this->_to, type: 'set');
+        $this->iq(IqGateway::set($this->_prompt), to: $this->_to, type: 'set');;
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -24,7 +22,7 @@ class Set extends Action
         $this->prepare($stanza, $parent);
         $this->pack([
             'query' => $stanza->query,
-            'extra' => $this->_extra,
+            'extra' => $this->_extra
         ]);
         $this->deliver();
     }
@@ -33,7 +31,7 @@ class Set extends Action
     {
         $this->pack([
             'errorid' => $errorId,
-            'message' => $message,
+            'message' => $message
         ]);
         $this->deliver();
     }

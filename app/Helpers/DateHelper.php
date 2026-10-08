@@ -11,5 +11,5 @@ function getTimezoneOffset(string $timezone): int
 
 function toSQLDate($date): string
 {
-    return date(MOVIM_SQL_DATE, strtotime((string) $date));
+    return date(MOVIM_SQL_DATE, strtotime((string)$date));
 }

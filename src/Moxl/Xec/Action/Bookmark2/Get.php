@@ -2,14 +2,13 @@
 
 namespace Moxl\Xec\Action\Bookmark2;
 
-use App\Conference;
-use Moxl\Stanza\Bookmark2;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Bookmark2;
+use App\Conference;
 
 class Get extends Action
 {
     protected $_to;
-
     protected $_version = '1';
 
     public function request()
@@ -22,7 +21,7 @@ class Get extends Action
     {
         $this->me->session
             ->conferences()
-            ->where('bookmarkversion', (int) $this->_version)
+            ->where('bookmarkversion', (int)$this->_version)
             ->delete();
 
         $conferences = [];

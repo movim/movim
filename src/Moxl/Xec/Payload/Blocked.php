@@ -8,7 +8,7 @@ class Blocked extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $jid = (string) $stanza->item->attributes()->jid;
+        $jid = (string)$stanza->item->attributes()->jid;
 
         $r = Reported::firstOrCreate(['id' => $jid]);
         $this->me->reported()->syncWithoutDetaching([$r->id => ['synced' => true]]);

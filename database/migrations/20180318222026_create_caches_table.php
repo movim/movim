@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateCachesTable extends Migration
 {
@@ -15,8 +15,8 @@ class CreateCachesTable extends Migration
 
             $table->primary(['user_id', 'name']);
             $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
         });
     }
 

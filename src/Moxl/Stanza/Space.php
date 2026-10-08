@@ -2,12 +2,9 @@
 
 namespace Moxl\Stanza;
 
-use Moxl\Utils;
-
 class Space
 {
     public const NAMESPACE = 'urn:xmpp:spaces:0';
-
     public const NODE_CONFIG = [
         'pubsub#type' => Space::NAMESPACE,
         'pubsub#notify_retract' => 'true',
@@ -40,7 +37,7 @@ class Space
         $x->setAttribute('type', 'submit');
         $configure->appendChild($x);
 
-        Utils::injectConfigInX($x, array_merge([
+        \Moxl\Utils::injectConfigInX($x, array_merge([
             'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#node_config',
             'pubsub#title' => $title,
         ], self::NODE_CONFIG));

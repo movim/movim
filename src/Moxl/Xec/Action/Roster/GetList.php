@@ -2,9 +2,9 @@
 
 namespace Moxl\Xec\Action\Roster;
 
-use App\Roster as DBRoster;
-use Moxl\Stanza\Roster;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Roster;
+use App\Roster as DBRoster;
 
 class GetList extends Action
 {

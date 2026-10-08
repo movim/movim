@@ -10,6 +10,6 @@ class SessionBind extends Payload
     {
         $ss = new Bind($this->me, sessionId: $this->sessionId);
         $ss->setResource($this->me->session->resource)
-            ->request();
+           ->request();
     }
 }

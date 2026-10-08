@@ -1,5 +1,4 @@
 <?php
-
 /*
  * SPDX-FileCopyrightText: 2023 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -23,7 +22,7 @@ class ClearTemplatesCache extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         foreach (glob(
-            CACHE_PATH.
+            CACHE_PATH .
                 '*.rtpl.*',
             GLOB_NOSORT
         ) as $cacheFile) {

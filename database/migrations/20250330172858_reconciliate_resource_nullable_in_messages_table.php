@@ -1,8 +1,8 @@
 <?php
 
+use Movim\Migration;
 use App\Message;
 use Illuminate\Database\Schema\Blueprint;
-use Movim\Migration;
 
 /**
  * Required after the behavior change introduced in

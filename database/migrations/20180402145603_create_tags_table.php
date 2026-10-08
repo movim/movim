@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateTagsTable extends Migration
 {
@@ -21,9 +21,9 @@ class CreateTagsTable extends Migration
             $table->integer('tag_id')->unsigned();
 
             $table->foreign('post_id')->references('id')
-                ->on('posts')->onDelete('cascade');
+                  ->on('posts')->onDelete('cascade');
             $table->foreign('tag_id')->references('id')
-                ->on('tags')->onDelete('cascade');
+                  ->on('tags')->onDelete('cascade');
 
             $table->timestamps();
 

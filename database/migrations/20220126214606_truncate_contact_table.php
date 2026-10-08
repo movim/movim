@@ -1,7 +1,7 @@
 <?php
 
-use App\Contact;
 use Movim\Migration;
+use App\Contact;
 
 class TruncateContactTable extends Migration
 {
@@ -10,5 +10,7 @@ class TruncateContactTable extends Migration
         Contact::truncate();
     }
 
-    public function down() {}
+    public function down()
+    {
+    }
 }

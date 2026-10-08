@@ -29,7 +29,7 @@ class ConferencesManager
             sendXMPP: $this->sendXMPP
         );
 
-        return $this->conferences[(string) $jid];
+        return $this->conferences[(string)$jid];
     }
 
     public function getConferenceBySFUJid(Jid $jid): ?Conference
@@ -56,7 +56,6 @@ class ConferencesManager
     {
         if (array_key_exists($jid->bareJid(), $this->conferences)) {
             unset($this->conferences[$jid->bareJid()]);
-
             return true;
         }
 

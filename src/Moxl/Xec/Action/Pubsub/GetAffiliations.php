@@ -9,9 +9,7 @@ use Moxl\Xec\Action;
 class GetAffiliations extends Action
 {
     protected ?string $_to;
-
     protected ?string $_node;
-
     protected ?string $_asJid = null;
 
     public function request()
@@ -33,12 +31,12 @@ class GetAffiliations extends Action
         $deleteAffiliations->delete();
 
         foreach ($stanza->pubsub->affiliations->children() as $i) {
-            if (in_array((string) $i['affiliation'], Affiliation::TYPES)) {
+            if (in_array((string)$i['affiliation'], Affiliation::TYPES)) {
                 $affiliation = new Affiliation;
                 $affiliation->server = $this->_to;
                 $affiliation->node = $this->_node;
-                $affiliation->jid = $this->_asJid ?? (string) $i['jid'];
-                $affiliation->affiliation = (string) $i['affiliation'];
+                $affiliation->jid = $this->_asJid ?? (string)$i['jid'];
+                $affiliation->affiliation = (string)$i['affiliation'];
                 $affiliation->save();
             }
         }
@@ -50,7 +48,6 @@ class GetAffiliations extends Action
     public function asJid(string $jid)
     {
         $this->_asJid = $jid;
-
         return $this;
     }
 

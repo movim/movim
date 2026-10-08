@@ -8,19 +8,13 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Logger;
 use Movim\Daemon\Linker;
-use Movim\i18n\Locale;
 use Movim\Image;
 use Movim\ImageSize;
 use Movim\Librairies\SSRFSafeConnector;
-use Movim\Route;
-use React\Dns\Config\Config;
-use React\Http\Browser;
 use React\Http\Message\Response;
 use React\Promise\PromiseInterface;
 use React\Socket\Connector;
-use React\Socket\FixedUriConnector;
 use React\Socket\TcpConnector;
-use React\Socket\UnixConnector;
 
 use function React\Async\await;
 
@@ -32,7 +26,7 @@ function logError(string|Stringable $logs, ?array $context = [])
     $log = new Logger('movim');
     $log->pushHandler(new SyslogHandler('movim'));
 
-    $stream = new StreamHandler(config('paths.log').'/errors.log');
+    $stream = new StreamHandler(config('paths.log') . '/errors.log');
     $stream->setFormatter(new LineFormatter(null, null, true, true));
     $log->pushHandler($stream);
 
@@ -48,7 +42,7 @@ function logInfo(string|Stringable $logs)
         $log = new Logger('movim');
         $log->pushHandler(new SyslogHandler('movim'));
 
-        $stream = new StreamHandler(config('paths.log').'/info.log');
+        $stream = new StreamHandler(config('paths.log') . '/info.log');
         $stream->setFormatter(new LineFormatter(null, null, true));
         $log->pushHandler($stream);
 
@@ -62,7 +56,7 @@ function logInfo(string|Stringable $logs)
 function logDebug($logs)
 {
     $log = new Logger('movim');
-    $log->pushHandler(new StreamHandler(config('paths.log').'/debug.log'));
+    $log->pushHandler(new StreamHandler(config('paths.log') . '/debug.log'));
     if (is_array($logs)) {
         $log->debug('', $logs);
     } else {
@@ -76,9 +70,7 @@ function logDebug($logs)
 function linker(string $sid): ?Linker
 {
     global $linkersManager;
-    if ($linkersManager == null) {
-        return null;
-    }
+    if ($linkersManager == null) return null;
 
     return $linkersManager->linker($sid);
 }
@@ -89,13 +81,11 @@ function linker(string $sid): ?Linker
 function config(string $key, $default = null)
 {
     $path = explode('.', $key);
-    $config = require CONFIG_PATH.$path[0].'.php';
+    $config = require(CONFIG_PATH . $path[0] . '.php');
 
-    if (! isset($path[1])) {
-        return $config;
-    }
+    if (!isset($path[1])) return $config;
 
-    if (array_key_exists($path[1], $config) && ! empty($config[$path[1]])) {
+    if (array_key_exists($path[1], $config) && !empty($config[$path[1]])) {
         $casted = null;
 
         switch ($config[$path[1]]) {
@@ -123,9 +113,9 @@ function config(string $key, $default = null)
  */
 function SSRFSafeConnector(array|bool $tlsContext = true, ?array $domainsWhitelist = []): Connector
 {
-    $config = Config::loadSystemConfigBlocking();
+    $config = \React\Dns\Config\Config::loadSystemConfigBlocking();
     $resolver = $config->nameservers ? reset($config->nameservers) : '8.8.8.8';
-    $safeTcp = new SSRFSafeConnector(new TcpConnector, $domainsWhitelist);
+    $safeTcp  = new SSRFSafeConnector(new TcpConnector, $domainsWhitelist);
 
     return new Connector([
         'tcp' => $safeTcp,
@@ -150,9 +140,9 @@ function listOpcacheCompilableFiles(): array
     $files = [];
 
     foreach (['vendor', 'app', 'src'] as $dir) {
-        $directory = new RecursiveDirectoryIterator(DOCUMENT_ROOT.'/'.$dir);
-        $iterator = new RecursiveIteratorIterator($directory);
-        $regex = new RegexIterator($iterator, '/^.+\.php$/i', RecursiveRegexIterator::GET_MATCH);
+        $directory = new \RecursiveDirectoryIterator(DOCUMENT_ROOT . '/' . $dir);
+        $iterator = new \RecursiveIteratorIterator($directory);
+        $regex = new \RegexIterator($iterator, '/^.+\.php$/i', \RecursiveRegexIterator::GET_MATCH);
 
         foreach ($regex as $key => $file) {
             array_push($files, $file[0]);
@@ -184,15 +174,15 @@ function compileOpcache()
 function getClientTypes()
 {
     return [
-        'bot' => __('client.bot'),
-        'console' => __('client.console'),
-        'pc' => __('client.desktop'),
-        'phone' => __('client.phone'),
-        'gateway' => __('client.gateway'),
-        'handheld' => __('client.phone'),
-        'web' => __('client.web'),
-        'registered' => __('client.registered'),
-        'im' => __('client.im'),
+        'bot'           => __('client.bot'),
+        'console'       => __('client.console'),
+        'pc'            => __('client.desktop'),
+        'phone'         => __('client.phone'),
+        'gateway'       => __('client.gateway'),
+        'handheld'      => __('client.phone'),
+        'web'           => __('client.web'),
+        'registered'    => __('client.registered'),
+        'im'            => __('client.im')
     ];
 }
 
@@ -203,11 +193,11 @@ function resolveInfos($postCollection)
 {
     $serverNodes = $postCollection->map(function ($item) {
         return ['server' => $item->server, 'node' => $item->node];
-    })->unique(fn ($item) => $item['server'].$item['node']);
+    })->unique(fn($item) => $item['server'] . $item['node']);
 
     if ($serverNodes->isNotEmpty()) {
         $first = $serverNodes->first();
-        $infos = Info::where([
+        $infos = \App\Info::where([
             'server' => $first['server'],
             'node' => $first['node'],
         ]);
@@ -219,11 +209,10 @@ function resolveInfos($postCollection)
             ]);
         });
 
-        $infos = $infos->get()->keyBy(fn ($item) => $item['server'].$item['node']);
+        $infos = $infos->get()->keyBy(fn($item) => $item['server'] . $item['node']);
 
         $postCollection->map(function ($item) use ($infos) {
-            $item->info = $infos->get($item->server.$item->node);
-
+            $item->info = $infos->get($item->server . $item->node);
             return $item;
         });
 
@@ -296,7 +285,7 @@ function formToArray(stdClass $form): array
  */
 function getPicture(?string $key, string $placeholder, ImageSize $size = ImageSize::M): string
 {
-    [$width, $height] = match ($size) {
+    [$width, $height] =  match ($size) {
         ImageSize::XXL => [1280, 300],
         ImageSize::XL => [512, false],
         ImageSize::L => [210, false],
@@ -305,7 +294,7 @@ function getPicture(?string $key, string $placeholder, ImageSize $size = ImageSi
         ImageSize::O => [false, false],
     };
 
-    return (! empty($key) && $url = Image::getOrCreate($key, $width, $height))
+    return (!empty($key) && $url = Image::getOrCreate($key, $width, $height))
         ? $url
         : avatarPlaceholder($placeholder);
 }
@@ -619,7 +608,7 @@ function getCountries()
         'EH' => 'Western Sahara',
         'YE' => 'Yemen',
         'ZM' => 'Zambia',
-        'ZW' => 'Zimbabwe',
+        'ZW' => 'Zimbabwe'
     ];
 }
 
@@ -628,8 +617,8 @@ function getImgurThumbnail(string $uri)
     $matches = [];
     preg_match('/https?:\/\/i.imgur.com\/([a-zA-Z0-9]{7})(.*)/', $uri, $matches);
 
-    if (! empty($matches)) {
-        return 'https://i.imgur.com/'.$matches[1].'g'.$matches[2];
+    if (!empty($matches)) {
+        return 'https://i.imgur.com/' . $matches[1] . 'g' . $matches[2];
     }
 }
 
@@ -641,7 +630,7 @@ function getPresences()
         3 => __('presence.dnd'),
         4 => __('presence.xa'),
         5 => __('presence.offline'),
-        6 => __('presence.error'),
+        6 => __('presence.error')
     ];
 }
 
@@ -653,7 +642,7 @@ function getPresencesTxt()
         3 => 'dnd',
         4 => 'xa',
         5 => 'offline',
-        6 => 'server_error',
+        6 => 'server_error'
     ];
 }
 
@@ -745,23 +734,20 @@ function generateUUID($string = false)
 {
     $data = ($string != false) ? $string : openssl_random_pseudo_bytes(16);
 
-    $data[6] = chr(ord($data[6]) & 0x0F | 0x40); // set version to 0010
-    $data[8] = chr(ord($data[8]) & 0x3F | 0x80); // set bits 6-7 to 10
+    $data[6] = chr(ord($data[6]) & 0x0f | 0x40); // set version to 0010
+    $data[8] = chr(ord($data[8]) & 0x3f | 0x80); // set bits 6-7 to 10
 
     return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
 }
 
 /**
  * @desc Generate a simple random key
- *
  * @params The size of the key
  */
 function generateKey(?int $size = 16, bool $withCapitals = true): string
 {
     $hashChars = 'abcdefghijklmnopqrstuvwxyz';
-    if ($withCapitals) {
-        $hashChars .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    }
+    if ($withCapitals) $hashChars .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
     $hash = '';
 
@@ -779,7 +765,7 @@ define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (X11; Linux x86_64; rv:154.0) Gec
  */
 function requestAsyncURL(string $url, int $timeout = 10, array $headers = []): PromiseInterface
 {
-    $browser = new Browser;
+    $browser = new React\Http\Browser;
 
     return $browser->withTimeout($timeout)->get($url, $headers);
 }
@@ -789,12 +775,12 @@ function requestAsyncURL(string $url, int $timeout = 10, array $headers = []): P
  */
 function requestResolverWorker(string $url, int $timeout = 30): PromiseInterface
 {
-    $connector = new FixedUriConnector(
-        'unix://'.RESOLVER_SOCKET,
-        new UnixConnector
+    $connector = new React\Socket\FixedUriConnector(
+        'unix://' . RESOLVER_SOCKET,
+        new React\Socket\UnixConnector()
     );
 
-    $browser = new Browser($connector);
+    $browser = new React\Http\Browser($connector);
     $data['url'] = $url;
 
     return $browser
@@ -814,17 +800,17 @@ function requestAvatarUrl(
     ?string $node = null,
     ?bool $banner = false
 ): PromiseInterface {
-    $connector = new FixedUriConnector(
-        'unix://'.AVATAR_HANDLER_SOCKET,
-        new UnixConnector
+    $connector = new React\Socket\FixedUriConnector(
+        'unix://' . AVATAR_HANDLER_SOCKET,
+        new React\Socket\UnixConnector()
     );
 
-    $browser = new Browser($connector);
+    $browser = new React\Http\Browser($connector);
     $data = [
         'url' => $url,
         'jid' => $jid,
         'node' => $node,
-        'banner' => $banner,
+        'banner' => $banner
     ];
 
     return $browser
@@ -837,15 +823,15 @@ function requestAvatarBase64(
     string $base64,
     string $type
 ): PromiseInterface {
-    $connector = new FixedUriConnector(
-        'unix://'.AVATAR_HANDLER_SOCKET,
-        new UnixConnector
+    $connector = new React\Socket\FixedUriConnector(
+        'unix://' . AVATAR_HANDLER_SOCKET,
+        new React\Socket\UnixConnector()
     );
 
-    $browser = new Browser($connector);
+    $browser = new React\Http\Browser($connector);
     $data = [
         'jid' => $jid,
-        'type' => $type,
+        'type' => $type
     ];
 
     $path = AvatarHandler::getAvatarCachePath($jid, $type);
@@ -854,7 +840,7 @@ function requestAvatarBase64(
     return $browser
         ->withTimeout(10)
         ->post('http://avatarhandler/base64', [], json_encode($data))
-        ->always(fn () => unlink($path));
+        ->always(fn() => unlink($path));
 }
 
 /**
@@ -870,12 +856,12 @@ function requestPusher(
     ?array $actions = [],
     ?array $data = [],
 ): PromiseInterface {
-    $connector = new FixedUriConnector(
-        'unix://'.PUSHER_SOCKET,
-        new UnixConnector
+    $connector = new React\Socket\FixedUriConnector(
+        'unix://' . PUSHER_SOCKET,
+        new React\Socket\UnixConnector()
     );
 
-    $browser = new Browser($connector);
+    $browser = new React\Http\Browser($connector);
 
     return $browser->post('http://pusher', [], json_encode([
         'user_id' => $userId,
@@ -885,7 +871,7 @@ function requestPusher(
         'picture' => $picture,
         'actions' => $actions,
         'data' => $data,
-        'linker_push_endpoints' => $linkerPushEndpoints,
+        'linker_push_endpoints' => $linkerPushEndpoints
     ]));
 }
 
@@ -898,15 +884,15 @@ function requestURL(string $url, int $timeout = 10, array $headers = []): Promis
 
     // Disable SSL if the host requested is the local one
     if (parse_url(config('daemon.url'), PHP_URL_HOST) == parse_url($url, PHP_URL_HOST)) {
-        $connector = new Connector([
+        $connector = new React\Socket\Connector([
             'tls' => [
                 'verify_peer' => false,
-                'verify_peer_name' => false,
-            ],
+                'verify_peer_name' => false
+            ]
         ]);
     }
 
-    $browser = (new Browser($connector))
+    $browser = (new React\Http\Browser($connector))
         ->withTimeout($timeout)
         ->withHeader('User-Agent', DEFAULT_HTTP_USER_AGENT)
         ->withFollowRedirects(true);
@@ -924,20 +910,18 @@ function requestAPI(
     ?bool $await = true,
     ?string $socket = API_SOCKET
 ): string|false {
-    if (! file_exists($socket)) {
-        return false;
-    }
+    if (!file_exists($socket)) return false;
 
-    $browser = (new Browser(
-        new FixedUriConnector(
+    $browser = (new React\Http\Browser(
+        new React\Socket\FixedUriConnector(
             $socket,
-            new UnixConnector
+            new React\Socket\UnixConnector()
         )
     ))->withTimeout($timeout)
         ->withHeader('Content-Type', 'application/x-www-form-urlencoded')
         ->withHeader('Host', $action);
 
-    $url = 'http:/'.$action;
+    $url = 'http:/' . $action;
 
     try {
         $query = $post
@@ -946,9 +930,8 @@ function requestAPI(
 
         if ($await) {
             $response = await($query);
-
-            return (string) $response->getBody();
-        }
+            return (string)$response->getBody();
+        };
 
         return false;
     } catch (Exception $e) {
@@ -961,9 +944,7 @@ function requestAPI(
  */
 function socketAPITime(): int
 {
-    if (! file_exists(API_SOCKET)) {
-        return 0;
-    }
+    if (!file_exists(API_SOCKET)) return 0;
 
     return filemtime(API_SOCKET);
 }
@@ -973,7 +954,7 @@ function socketAPITime(): int
  */
 function avatarPlaceholder(string $id): string
 {
-    return Route::urlize('picture', get: ['type' => 'avatar', 'id' => $id]);
+    return \Movim\Route::urlize('picture', get: ['type' => 'avatar', 'id' => $id]);
 }
 
 /*
@@ -981,15 +962,15 @@ function avatarPlaceholder(string $id): string
  */
 function protectPicture(string $url)
 {
-    $emptyPicture = Route::urlize('picture');
-    $emptyPicture = preg_replace('(^//)', 'https://', $emptyPicture);
+    $emptyPicture =  \Movim\Route::urlize('picture');
+    $emptyPicture = preg_replace("(^//)", 'https://', $emptyPicture);
 
     // The picture is already protected
     if (substr($url, 0, strlen($emptyPicture)) === $emptyPicture) {
         return $url;
     }
 
-    return Route::urlize('picture', get: ['type' => 'picture', 'url' => $url]);
+    return \Movim\Route::urlize('picture', get: ['type' => 'picture', 'url' => $url]);
 }
 
 /*
@@ -997,7 +978,7 @@ function protectPicture(string $url)
  */
 function __()
 {
-    $locale = Locale::start();
+    $locale = Movim\i18n\Locale::start();
 
     $args = func_get_args();
     $string = array_shift($args);
@@ -1014,19 +995,13 @@ function __()
 function getBrowser(string $userAgent): ?string
 {
     $t = strtolower($userAgent);
-    $t = ' '.$t;
+    $t = ' ' . $t;
 
-    if (strpos($t, 'opera')) {
-        return 'Opera';
-    } elseif (strpos($t, 'edge')) {
-        return 'Edge';
-    } elseif (strpos($t, 'chrome')) {
-        return 'Chrome';
-    } elseif (strpos($t, 'safari')) {
-        return 'Safari';
-    } elseif (strpos($t, 'firefox')) {
-        return 'Firefox';
-    }
+    if (strpos($t, 'opera')) return 'Opera';
+    elseif (strpos($t, 'edge')) return 'Edge';
+    elseif (strpos($t, 'chrome')) return 'Chrome';
+    elseif (strpos($t, 'safari')) return 'Safari';
+    elseif (strpos($t, 'firefox')) return 'Firefox';
 
     return null;
 }
@@ -1036,22 +1011,22 @@ function getBrowser(string $userAgent): ?string
  */
 function getPlatform(string $userAgent): ?string
 {
-    $oses = [
-        '/windows nt 10/i' => 'Windows 10',
-        '/windows nt 6.3/i' => 'Windows 8.1',
-        '/windows nt 6.2/i' => 'Windows 8',
-        '/windows nt 6.1/i' => 'Windows 7',
-        '/windows nt 6.0/i' => 'Windows Vista',
-        '/macintosh|mac os x/i' => 'Mac OS X',
-        '/mac_powerpc/i' => 'Mac OS 9',
-        '/linux/i' => 'Linux',
-        '/ubuntu/i' => 'Ubuntu',
-        '/iphone/i' => 'iPhone',
-        '/ipod/i' => 'iPod',
-        '/ipad/i' => 'iPad',
-        '/android/i' => 'Android',
-        '/blackberry/i' => 'BlackBerry',
-        '/webos/i' => 'Mobile',
+    $oses =  [
+        '/windows nt 10/i'      =>  'Windows 10',
+        '/windows nt 6.3/i'     =>  'Windows 8.1',
+        '/windows nt 6.2/i'     =>  'Windows 8',
+        '/windows nt 6.1/i'     =>  'Windows 7',
+        '/windows nt 6.0/i'     =>  'Windows Vista',
+        '/macintosh|mac os x/i' =>  'Mac OS X',
+        '/mac_powerpc/i'        =>  'Mac OS 9',
+        '/linux/i'              =>  'Linux',
+        '/ubuntu/i'             =>  'Ubuntu',
+        '/iphone/i'             =>  'iPhone',
+        '/ipod/i'               =>  'iPod',
+        '/ipad/i'               =>  'iPad',
+        '/android/i'            =>  'Android',
+        '/blackberry/i'         =>  'BlackBerry',
+        '/webos/i'              =>  'Mobile'
     ];
 
     foreach ($oses as $regex => $value) {
@@ -1102,7 +1077,6 @@ function base64ToFingerPrint(string $base64): string
 {
     $buffer = base64_decode($base64);
     $hex = unpack('H*', $buffer);
-
     return implode(' ', str_split(substr($hex[1], 2), 8));
 }
 
@@ -1112,14 +1086,21 @@ function base64ToFingerPrint(string $base64): string
 function mimeToIcon(string $type): string
 {
     return match (true) {
-        $type === 'application/pdf' => 'picture_as_pdf',
-        (bool) preg_match('/^application\/(zip|x-zip|x-tar|x-rar|x-7z|gzip|x-bzip)/', $type) => 'folder_zip',
-        (bool) preg_match('/^application\/(msword|vnd\.oasis\.opendocument\.text|vnd\.openxmlformats-officedocument\.wordprocessingml)/', $type) => 'description',
-        (bool) preg_match('/^application\/(vnd\.ms-excel|vnd\.oasis\.opendocument\.spreadsheet|vnd\.openxmlformats-officedocument\.spreadsheetml)/', $type) => 'table_chart',
-        (bool) preg_match('/^application\/(vnd\.ms-powerpoint|vnd\.oasis\.opendocument\.presentation|vnd\.openxmlformats-officedocument\.presentationml)/', $type) => 'slideshow',
-        (bool) preg_match('/^text\/(html|xml|css|javascript)/', $type),
-        (bool) preg_match('/^application\/(json|xml|javascript)/', $type) => 'code',
-        (bool) preg_match('/^text\//', $type) => 'article',
+        $type === 'application/pdf'
+        => 'picture_as_pdf',
+        (bool)preg_match('/^application\/(zip|x-zip|x-tar|x-rar|x-7z|gzip|x-bzip)/', $type)
+        => 'folder_zip',
+        (bool)preg_match('/^application\/(msword|vnd\.oasis\.opendocument\.text|vnd\.openxmlformats-officedocument\.wordprocessingml)/', $type)
+        => 'description',
+        (bool)preg_match('/^application\/(vnd\.ms-excel|vnd\.oasis\.opendocument\.spreadsheet|vnd\.openxmlformats-officedocument\.spreadsheetml)/', $type)
+        => 'table_chart',
+        (bool)preg_match('/^application\/(vnd\.ms-powerpoint|vnd\.oasis\.opendocument\.presentation|vnd\.openxmlformats-officedocument\.presentationml)/', $type)
+        => 'slideshow',
+        (bool)preg_match('/^text\/(html|xml|css|javascript)/', $type),
+        (bool)preg_match('/^application\/(json|xml|javascript)/', $type)
+        => 'code',
+        (bool)preg_match('/^text\//', $type)
+        => 'article',
         typeIsAudio($type) => 'audio_file',
         typeIsVideo($type) => 'video_file',
         typeIsPicture($type) => 'image',

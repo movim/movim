@@ -4,6 +4,7 @@ namespace App\Widgets\ContactBlogConfig;
 
 use App\Post;
 use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Payload\Packet;
 

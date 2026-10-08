@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Attachment extends Model
 {
     protected $primaryKey = 'id';
-
     protected $guarded = [];
 
     public function post()

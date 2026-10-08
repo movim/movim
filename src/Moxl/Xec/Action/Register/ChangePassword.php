@@ -2,15 +2,13 @@
 
 namespace Moxl\Xec\Action\Register;
 
-use Moxl\Stanza\Register;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Register;
 
 class ChangePassword extends Action
 {
     private $_to;
-
     private $_username;
-
     private $_password;
 
     public function request()
@@ -22,21 +20,18 @@ class ChangePassword extends Action
     public function setTo($to)
     {
         $this->_to = $to;
-
         return $this;
     }
 
     public function setUsername($username)
     {
         $this->_username = $username;
-
         return $this;
     }
 
     public function setPassword($password)
     {
         $this->_password = $password;
-
         return $this;
     }
 

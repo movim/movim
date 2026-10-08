@@ -21,7 +21,7 @@ class ContactsSuggestions extends Base
 
     public function onSubscription(Packet $packet)
     {
-        [$jid, $node] = array_values($packet->content);
+        list($jid, $node) = array_values($packet->content);
         if ($node == Post::MICROBLOG_NODE) {
             $this->ajaxHttpGet();
         }

@@ -49,7 +49,7 @@ class MessageFile extends Model
                         return [
                             'url' => $this->url,
                             'thumb' => $thumb,
-                            'picture' => true,
+                            'picture' => true
                         ];
                     }
                     break;
@@ -84,28 +84,28 @@ class MessageFile extends Model
         $upload = Upload::find($file->id);
 
         if ($upload && $upload->uploaded && isMimeType($upload->type)) {
-            $this->name = (string) $upload->name;
+            $this->name = (string)$upload->name;
 
             if (isset($upload->size)) {
-                $this->size = (int) $upload->size;
+                $this->size = (int)$upload->size;
             }
 
-            $this->type = (string) $upload->type;
+            $this->type = (string)$upload->type;
             $this->url = $upload->geturl;
 
             if (isset($file->thumbnail)
             && Validator::url()->isValid($file->thumbnail->uri)) {
-                $this->thumbnail_type = (string) $file->thumbnail->type;
-                $this->thumbnail_width = (int) $file->thumbnail->width;
-                $this->thumbnail_height = (int) $file->thumbnail->height;
-                $this->thumbnail_url = (string) $file->thumbnail->uri;
+                $this->thumbnail_type = (string)$file->thumbnail->type;
+                $this->thumbnail_width = (int)$file->thumbnail->width;
+                $this->thumbnail_height = (int)$file->thumbnail->height;
+                $this->thumbnail_url = (string)$file->thumbnail->uri;
             }
 
             if (isset($file->thumbhash)) {
                 $this->thumbnail_type = 'image/thumbhash';
-                $this->thumbnail_url = (string) $file->thumbhash;
-                $this->thumbnail_width = (int) $file->thumbhashWidth;
-                $this->thumbnail_height = (int) $file->thumbhashHeight;
+                $this->thumbnail_url = (string)$file->thumbhash;
+                $this->thumbnail_width = (int)$file->thumbhashWidth;
+                $this->thumbnail_height = (int)$file->thumbhashHeight;
             }
 
             return true;

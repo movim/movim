@@ -1,8 +1,8 @@
 <?php
 
-use App\Info;
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use App\Info;
 
 class AddNotifyAndExtensionsToConferencesTable extends Migration
 {

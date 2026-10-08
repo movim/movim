@@ -10,19 +10,19 @@ class MucUser extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         // XEP-0463: MUC Affiliations Versioning
-        if ($stanza->mav && (string) $stanza->mav->attributes()->xmlns == 'urn:xmpp:muc:affiliations:1') {
-            $from = bareJid((string) $parent->attributes()->from);
+        if ($stanza->mav && (string)$stanza->mav->attributes()->xmlns == 'urn:xmpp:muc:affiliations:1') {
+            $from = bareJid((string)$parent->attributes()->from);
             $members = [];
 
             foreach ($stanza->item as $item) {
-                if ($item->attributes()->affiliation && ! empty($item->attributes()->jid)) {
+                if ($item->attributes()->affiliation && !empty($item->attributes()->jid)) {
                     $member = new Member;
                     $member->conference = $from;
-                    $member->jid = (string) $item->attributes()->jid;
-                    $member->affiliation = (string) $item->attributes()->affiliation;
-                    $member->role = (string) $item->attributes()->role ?? null;
-                    $member->nick = (string) $item->attributes()->nick ?? null;
-                    $member->version = (string) $stanza->mav->attributes()->until;
+                    $member->jid = (string)$item->attributes()->jid;
+                    $member->affiliation = (string)$item->attributes()->affiliation;
+                    $member->role = (string)$item->attributes()->role ?? null;
+                    $member->nick = (string)$item->attributes()->nick ?? null;
+                    $member->version = (string)$stanza->mav->attributes()->until;
 
                     array_push($members, $member->toArray());
                 }
@@ -31,22 +31,20 @@ class MucUser extends Payload
             Member::where('conference', $from)->delete();
             Member::saveMany($members);
             $this->deliver();
-        } elseif (isset($stanza->item)) {
-            $from = bareJid((string) $parent->attributes()->from);
-            $jid = bareJid((string) $stanza->item->attributes()->jid);
+        } else if (isset($stanza->item)) {
+            $from = bareJid((string)$parent->attributes()->from);
+            $jid = bareJid((string)$stanza->item->attributes()->jid);
 
-            if (empty($jid)) {
-                return;
-            }
+            if (empty($jid)) return;
 
             $member = Member::firstOrNew([
                 'conference' => $from,
-                'jid' => $jid,
+                'jid' => $jid
             ]);
 
             // Only track changes
-            if ($member->exists && $member->affiliation != (string) $stanza->item->attributes()->affiliation) {
-                $type = match ((string) $stanza->item->attributes()->affiliation) {
+            if ($member->exists && $member->affiliation != (string)$stanza->item->attributes()->affiliation) {
+                $type = match ((string)$stanza->item->attributes()->affiliation) {
                     'admin' => 'muc_admin',
                     'owner' => 'muc_owner',
                     'outcast' => 'muc_outcast',
@@ -58,7 +56,7 @@ class MucUser extends Payload
                     $message = Message::eventMessageFactory(
                         user: $this->me,
                         type: $type,
-                        from: bareJid((string) $from),
+                        from: bareJid((string)$from),
                         thread: $jid
                     );
                     $message->save();
@@ -68,7 +66,7 @@ class MucUser extends Payload
                 }
             }
 
-            $member->affiliation = (string) $stanza->item->attributes()->affiliation;
+            $member->affiliation = (string)$stanza->item->attributes()->affiliation;
             $member->save();
         }
     }

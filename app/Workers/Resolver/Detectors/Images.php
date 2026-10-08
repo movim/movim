@@ -12,7 +12,7 @@ class Images extends DetectorsDetector
         $images = [];
 
         foreach ($document->select('.//img')->nodes() as $node) {
-            if (! empty($src = $node->getAttribute('src'))) {
+            if (!empty($src = $node->getAttribute('src'))) {
                 $images[] = $src;
             }
         }

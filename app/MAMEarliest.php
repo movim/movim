@@ -2,14 +2,13 @@
 
 namespace App;
 
-use Awobaz\Compoships\Compoships;
 use Awobaz\Compoships\Database\Eloquent\Model;
 
 class MAMEarliest extends Model
 {
     protected $table = 'mam_earliest';
 
-    use Compoships;
+    use \Awobaz\Compoships\Compoships;
 
     public function user()
     {

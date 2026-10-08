@@ -23,13 +23,13 @@ class PublishStories extends Base
 
     public function onPublish(Packet $packet)
     {
-        [$to, $node, $id, $repost, $comments] = array_values($packet->content);
+        list($to, $node, $id, $repost, $comments) = array_values($packet->content);
 
         if ($node == Post::STORIES_NODE) {
             $this->toast($this->__('story.published'));
 
             // If the  Story was not cached we force reload
-            if (! Post::where('server', $to)->where('node', $node)->where('nodeid', $id)->exists()) {
+            if (!Post::where('server', $to)->where('node', $node)->where('nodeid', $id)->exists()) {
                 $gi = $this->xmpp(new GetItem);
                 $gi->setTo($to)
                     ->setNode($node)
@@ -59,7 +59,7 @@ class PublishStories extends Base
             'MovimTpl.fill',
             '#publishcontactscount',
             $this->view('_publishstories_contactscount', [
-                'rostercount' => $this->me->session->contacts()->whereIn('subscription', ['both', 'from'])->count(),
+                'rostercount' => $this->me->session->contacts()->whereIn('subscription', ['both', 'from'])->count()
             ])
         );
     }
@@ -72,9 +72,7 @@ class PublishStories extends Base
 
         $upload = Upload::find($uploadId);
 
-        if (! $upload) {
-            return;
-        }
+        if (!$upload) return;
 
         $publish = $this->xmpp(new PostPublish);
         $publish->setTo($this->me->id)

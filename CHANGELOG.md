@@ -11,7 +11,6 @@ v0.35.2 (master)
 * Enable MAM for Spaces MUCs by default for Prosody and ejabberd (hacky but it works)
 * Remove MovimUtils.textareaAutoheight replaced by field-sizing: content; in the CSS
 * Add support for XEP-xxxx: Bookmarks Hierarchy
-* Add Laravel Pint and reformat most of the Movim code to comply with it, also add it to the Github pipeline
 
 v0.35.1
 ---------------------------

@@ -2,7 +2,7 @@
 
 namespace Moxl\Xec\Payload;
 
-use App\Message;
+use App\Message as Message;
 use Movim\Librairies\SDPtoJingle;
 use Moxl\Stanza\Jingle as JingleStanza;
 
@@ -10,19 +10,19 @@ class Jingle extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $from = (string) $parent->attributes()->from;
-        $id = (string) $parent->attributes()->id;
+        $from = (string)$parent->attributes()->from;
+        $id   = (string)$parent->attributes()->id;
 
-        $action = (string) $stanza->attributes()->action;
+        $action = (string)$stanza->attributes()->action;
 
         $message = Message::eventMessageFactory(
             $this->me,
             'jingle',
-            bareJid((string) $from),
-            (string) $stanza->attributes()->sid
+            bareJid((string)$from),
+            (string)$stanza->attributes()->sid
         );
 
-        // if ($linkersManager->currentCall($this->me->session->id)->hasId($message->thread)) {
+        //if ($linkersManager->currentCall($this->me->session->id)->hasId($message->thread)) {
         $this->iq(to: $from, id: $id, type: 'result');
 
         switch ($action) {
@@ -54,14 +54,14 @@ class Jingle extends Payload
                     : 'jingle_transportinfo');
                 break;
             case 'session-terminate':
-                if (! $stanza->muji && linker($this->me->session->id)->currentCall->hasId($stanza->attributes()->sid)) {
+                if (!$stanza->muji && linker($this->me->session->id)->currentCall->hasId($stanza->attributes()->sid)) {
                     $message->type = 'jingle_end';
                     $message->save();
                     $this->pack($message);
                     $this->deliver('jingle_message');
                 }
 
-                $this->pack((string) $stanza->attributes()->sid, $from);
+                $this->pack((string)$stanza->attributes()->sid, $from);
                 $this->deliver('jingle_sessionterminate');
                 break;
             case 'session-accept':

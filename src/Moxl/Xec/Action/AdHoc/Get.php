@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\AdHoc;
 
-use Moxl\Stanza\AdHoc;
 use Moxl\Xec\Action;
+use Moxl\Stanza\AdHoc;
 
 class Get extends Action
 {
@@ -12,7 +12,7 @@ class Get extends Action
     public function request()
     {
         $this->store();
-        $this->iq(AdHoc::get(), to: $this->_to, type: 'get');
+        $this->iq(Adhoc::get(), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

@@ -2,7 +2,6 @@
 
 namespace App\Widgets\BottomNavigation;
 
-use App\Contact;
 use App\Presence;
 use Movim\Widget\Base;
 use Moxl\Xec\Payload\Packet;
@@ -38,15 +37,15 @@ class BottomNavigation extends Base
     public function prepareMe(): string
     {
         return $this->view('_bottomnavigation_me', [
-            'me' => $this->me->contact ?? new Contact,
+            'me' => $this->me->contact ?? new \App\Contact,
             'presence' => Presence::where('resource', $this->me->session->resource)->firstOrNew(),
-            'presencetxt' => getPresencesTxt(),
+            'presencetxt' => getPresencesTxt()
         ]);
     }
 
     public function display()
     {
-        $this->view->assign('me', $this->me->contact ?? new Contact);
+        $this->view->assign('me', $this->me->contact ?? new \App\Contact);
         $this->view->assign('page', $this->_view);
     }
 }

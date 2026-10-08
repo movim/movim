@@ -16,7 +16,7 @@ class Jingle extends Event
         $conference = $this->conferencesManager->getConferenceBySFUJid($this->node->to);
 
         if ($conference) {
-            switch ((string) $this->node->stanza->jingle->attributes()->action) {
+            switch ((string)$this->node->stanza->jingle->attributes()->action) {
                 case 'session-initiate':
                     if ($connection = $conference->getConnection($this->node->from)) {
                         $connection->xmppOfferOrScreenshare($this->node);

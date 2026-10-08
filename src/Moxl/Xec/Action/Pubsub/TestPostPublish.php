@@ -8,9 +8,7 @@ use Moxl\Xec\Action;
 class TestPostPublish extends Action
 {
     protected string $_node;
-
     protected string $_to;
-
     public const TEST_POST_ID = 'test_post';
 
     public function request()
@@ -23,9 +21,9 @@ class TestPostPublish extends Action
     {
         $delete = new PostDelete(me: $this->me, sessionId: $this->sessionId);
         $delete->setTo($this->_to)
-            ->setNode($this->_node)
-            ->setId(TestPostPublish::TEST_POST_ID)
-            ->request();
+               ->setNode($this->_node)
+               ->setId(TestPostPublish::TEST_POST_ID)
+               ->request();
 
         $this->pack(['to' => $this->_to, 'node' => $this->_node]);
         $this->deliver();

@@ -15,7 +15,6 @@ class JingleFinish extends Event
 
         if ($conference) {
             $conference->removeConnection($this->node->from);
-
             return $this->iq(type: 'result');
         }
 

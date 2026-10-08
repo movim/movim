@@ -8,11 +8,12 @@ use App\User;
 use App\Widgets\Dialog\Dialog;
 use Movim\i18n\Locale;
 use Movim\Widget\Base;
+
+use Moxl\Xec\Action\Storage\Set;
 use Moxl\Xec\Action\MAM\GetConfig;
 use Moxl\Xec\Action\MAM\SetConfig;
 use Moxl\Xec\Action\Pubsub\GetConfig as PubsubGetConfig;
 use Moxl\Xec\Action\Pubsub\SetConfig as PubsubSetConfig;
-use Moxl\Xec\Action\Storage\Set;
 use Moxl\Xec\Payload\Packet;
 use Respect\Validation\Validator;
 
@@ -78,7 +79,7 @@ class Config extends Base
         $value = $packet->content['config']->xpath('//field[@var=\'pubsub#access_model\']/value/text()');
 
         if (is_array($value)) {
-            $view->assign('default', (string) $value[0]);
+            $view->assign('default', (string)$value[0]);
             $this->rpc('MovimTpl.fill', '#config_widget_blog', $view->draw('_config_blog'));
         }
     }
@@ -116,10 +117,9 @@ class Config extends Base
 
     public function ajaxSubmit($data)
     {
-        if (! validateForm($data)) {
+        if (!validateForm($data)) {
             $this->refreshConfig();
             $this->toast($this->__('config.not_valid'));
-
             return;
         }
 
@@ -147,9 +147,8 @@ class Config extends Base
     public function ajaxSaveNickname(string $nickname)
     {
         if (Validator::regex('/^[a-z_\-\d]{3,64}$/i')->isValid($nickname)) {
-            if (User::where('nickname', $nickname)->where('id', '!=', $this->me->id)->first()) {
+            if (\App\User::where('nickname', $nickname)->where('id', '!=', $this->me->id)->first()) {
                 $this->toast($this->__('profile.nickname_conflict'));
-
                 return;
             }
 
@@ -183,8 +182,8 @@ class Config extends Base
     public function updateSystemVariable(string $variable, $value)
     {
         match ($variable) {
-            'notificationcall' => $this->rpc('Config.updateSystemVariable', 'NOTIFICATION_CALL', (bool) $value),
-            'notificationchat' => $this->rpc('Config.updateSystemVariable', 'NOTIFICATION_CHAT', (bool) $value),
+            'notificationcall' => $this->rpc('Config.updateSystemVariable', 'NOTIFICATION_CALL', (bool)$value),
+            'notificationchat' => $this->rpc('Config.updateSystemVariable', 'NOTIFICATION_CHAT', (bool)$value),
         };
     }
 

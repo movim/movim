@@ -3,8 +3,10 @@
 namespace App\Widgets\Chat;
 
 use App\Conference;
+use Moxl\Xec\Action\Message\Publish;
+use Moxl\Xec\Action\Message\Reactions;
+
 use App\Contact;
-use App\Info;
 use App\Message;
 use App\MessageFile;
 use App\MessageOmemoHeader;
@@ -18,26 +20,21 @@ use App\Widgets\Post\Post;
 use App\Widgets\Rooms\Rooms;
 use App\Widgets\RoomsUtils\RoomsUtils;
 use Carbon\Carbon;
+use Moxl\Xec\Action\BOB\Request;
+
 use Illuminate\Database\Capsule\Manager as DB;
-use Movim\Emoji;
 use Movim\Image;
 use Movim\Jid;
-use Movim\Widget\Base;
-use Movim\Widget\Wrapper;
 use Movim\XMPPUri;
-use Moxl\Xec\Action\BOB\Request;
+use Movim\Widget\Wrapper;
 use Moxl\Xec\Action\Message\Displayed;
 use Moxl\Xec\Action\Message\MDSDisplayed;
-use Moxl\Xec\Action\Message\Publish;
-use Moxl\Xec\Action\Message\Reactions;
 use Moxl\Xec\Payload\Packet;
 
-class Chat extends Base
+class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 50;
-
     private $_wrapper = [];
-
     private $_mucPresences = [];
 
     public function load()
@@ -55,7 +52,7 @@ class Chat extends Base
         $this->registerEvent('displayed', 'onMessage', ['chat', 'space*']);
         $this->registerEvent('mam_get_handle', 'onMAMRetrieved', ['chat', 'space*']);
         $this->registerEvent('chatstate', 'onChatState', 'chat');
-        // $this->registerEvent('subject', 'onConferenceSubject', 'chat'); Spam the UI during authentication
+        //$this->registerEvent('subject', 'onConferenceSubject', 'chat'); Spam the UI during authentication
         $this->registerEvent('muc_setsubject_handle', 'onConferenceSubject', 'chat');
         $this->registerEvent('presence_muc_handle', 'onMucConnected', ['chat', 'space*']);
         $this->registerEvent('message_publish_error', 'onPublishError', ['chat', 'space*']);
@@ -87,7 +84,7 @@ class Chat extends Base
         $jid = $packet->content->jid;
         $arr = explode('|', (new Notif($this->me, sessionId: $this->sessionId))->getCurrent());
         if (isset($arr[1]) && $jid == $arr[1]) {
-            if (! $packet->content->muc || $packet->content->hasMuji()) {
+            if (!$packet->content->muc || $packet->content->hasMuji()) {
                 $this->ajaxGetHeader($jid, $packet->content->muc);
             } elseif ($packet->content->muc) {
                 $this->rpc('Chat_ajaxHttpGetPresences', $jid);
@@ -172,7 +169,7 @@ class Chat extends Base
         $spaceCounter = false;
 
         if (
-            $message->isEmpty() && ! in_array(
+            $message->isEmpty() && !in_array(
                 $message->type,
                 array_merge(Message::MESSAGE_TYPE, Message::MESSAGE_TYPE_MUC)
             )
@@ -181,21 +178,21 @@ class Chat extends Base
         }
 
         if ($message->file) {
-            $rawbody = '📄 '.$this->__('avatar.file');
+            $rawbody = '📄 ' . $this->__('avatar.file');
 
             if ($message->file->isPicture) {
-                $rawbody = '🖼️ '.$this->__('chats.picture');
+                $rawbody = '🖼️ ' . $this->__('chats.picture');
             } elseif ($message->file->isAudio) {
-                $rawbody = '🎵 '.$this->__('chats.audio');
+                $rawbody = '🎵 ' . $this->__('chats.audio');
             } elseif ($message->file->isVideo) {
-                $rawbody = '🎞️ '.$this->__('chats.video');
+                $rawbody = '🎞️ ' . $this->__('chats.video');
             }
         }
 
         if (
             $message->user_id == $message->jidto
-            && ! $history
-            && ! $message->isEmpty()
+            && !$history
+            && !$message->isEmpty()
             && $message->seen == false
             && $message->jidfrom != $message->jidto
         ) {
@@ -204,15 +201,15 @@ class Chat extends Base
 
             $conference = $message->isMuc()
                 ? $this->me->session
-                    ->conferences()->where('conference', $from)
-                    ->first()
+                ->conferences()->where('conference', $from)
+                ->first()
                 : null;
 
             if (
                 $contact != null
-                && ! $message->isMuc()
-                && ! $message->retracted
-                && ! $message->oldid
+                && !$message->isMuc()
+                && !$message->retracted
+                && !$message->oldid
             ) {
                 $roster = $this->me->session->contacts()->where('jid', $from)->first();
                 $chatStates->clearState($from);
@@ -226,7 +223,7 @@ class Chat extends Base
                 }
 
                 $body = $message->encrypted && is_array($message->omemoheader)
-                    ? '🔒 '.$this->__('message.encrypted')
+                    ? "🔒 " . $this->__('message.encrypted')
                     : $rawbody;
 
                 if ($message->type == 'space_pending') {
@@ -235,7 +232,7 @@ class Chat extends Base
                 // Prevent some spammy notifications
                 if ($roster || $contact->exists) {
                     $this->notif(
-                        key: 'chat|'.$from,
+                        key: 'chat|' . $from,
                         title: $name ?? $from, // truename should be fine but its not
                         body: $body,
                         url: $this->route('chat', $contact->id),
@@ -247,7 +244,7 @@ class Chat extends Base
                         ]],
                         data: [
                             'jid' => $contact->id,
-                            'muc' => $message->isMuc(),
+                            'muc' => $message->isMuc()
                         ],
                         rpcCall: 'Notif.incomingMessage'
                     );
@@ -256,17 +253,17 @@ class Chat extends Base
             // If it's a groupchat message
             elseif (
                 $message->isMuc()
-                && ! $message->retracted
+                && !$message->retracted
                 && $conference
-                && ! $conference->isFromSpace()
+                && !$conference->isFromSpace()
                 && (($conference->notificationKey == 'on-mention' && $message->quoted)
                     || $conference->notificationKey == 'always')
-                && ! $receipt
+                && !$receipt
             ) {
                 $this->notif(
                     key: $conference->notifKey,
                     title: $conference->title,
-                    body: $message->resource.': '.$rawbody,
+                    body: $message->resource . ': ' . $rawbody,
                     url: $conference->route,
                     picture: $conference->getPicture(),
                     time: 4,
@@ -276,7 +273,7 @@ class Chat extends Base
                     ]],
                     data: [
                         'jid' => $contact->id,
-                        'muc' => true,
+                        'muc' => true
                     ],
                     rpcCall: 'Notif.incomingMessage'
                 );
@@ -296,14 +293,14 @@ class Chat extends Base
                             || ($subscription->notify == 'on-mention' && $message->quoted)
                         ) {
                             $title = $conference->spaceInfo?->name
-                                ? $conference->spaceInfo->name.' • '
+                                ? $conference->spaceInfo->name . ' • '
                                 : '';
                             $title .= $conference->title;
 
                             $this->notif(
                                 key: $conference->notifKey,
                                 title: $title,
-                                body: $message->resource.': '.$rawbody,
+                                body: $message->resource . ': ' . $rawbody,
                                 url: $conference->route,
                                 picture: $subscription->info?->getPicture(placeholder: $subscription->info?->name),
                                 time: 4,
@@ -314,7 +311,7 @@ class Chat extends Base
                                 data: [
                                     'server' => $conference->space_server,
                                     'node' => $conference->space_node,
-                                    'room' => $conference->conference,
+                                    'room' => $conference->conference
                                 ],
                                 rpcCall: 'Notif.incomingMessage'
                             );
@@ -352,14 +349,14 @@ class Chat extends Base
 
     public function onSticker(Packet $packet)
     {
-        [$to, $cid] = array_values($packet->content);
+        list($to, $cid) = array_values($packet->content);
         $this->ajaxGet($to);
     }
 
     public function onChatState(Packet $packet, $first = true)
     {
         if ($first) {
-            $this->rpc('MovimUtils.removeClass', '#'.cleanupId($packet->from.'_state'), 'first');
+            $this->rpc('MovimUtils.removeClass', '#' . cleanupId($packet->from . '_state'), 'first');
         }
 
         $message = '';
@@ -367,12 +364,12 @@ class Chat extends Base
         if (isset($packet->content)) {
             $message = $this->view('_chat_compose_bubble', [
                 'list' => is_array($packet->content) ? implode(', ', array_keys($packet->content)) : null,
-                'contact' => is_array($packet->content) ? null : Contact::firstOrNew(['id' => $packet->from]),
+                'contact' => is_array($packet->content) ? null : Contact::firstOrNew(['id' => $packet->from])
             ]);
         }
 
         $this->rpc('Chat.setScroll');
-        $this->rpc('MovimTpl.fill', '#'.cleanupId($packet->from.'_state'), $message);
+        $this->rpc('MovimTpl.fill', '#' . cleanupId($packet->from . '_state'), $message);
         $this->rpc('Chat.scrollRestore');
     }
 
@@ -418,7 +415,7 @@ class Chat extends Base
             [
                 'pagination' => $this->_pagination,
                 'delivery_error' => $this->__('message.error'),
-                'action_impossible_encrypted_error' => $this->__('chat.action_impossible_encrypted'),
+                'action_impossible_encrypted_error' => $this->__('chat.action_impossible_encrypted')
             ]
         );
     }
@@ -430,7 +427,7 @@ class Chat extends Base
     {
         $this->rpc(
             'MovimTpl.fill',
-            '#'.cleanupId($jid.'_header'),
+            '#' . cleanupId($jid . '_header'),
             $this->prepareHeader($jid, $muc)
         );
 
@@ -444,6 +441,7 @@ class Chat extends Base
 
     /**
      * @brief Get a discussion
+     * @param string $jid
      */
     public function ajaxGet(?string $jid = null, ?bool $light = false)
     {
@@ -473,9 +471,9 @@ class Chat extends Base
             }
 
             $this->rpc('Chat.setObservers');
-            $this->rpc('MovimTpl.fill', '#'.cleanupId($jid).'-conversation', '');
+            $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '-conversation', '');
             $this->getMessages($jid);
-            $this->rpc('Notif.current', 'chat|'.$jid);
+            $this->rpc('Notif.current', 'chat|' . $jid);
             $this->rpc('Chat.scrollToSeparator');
 
             if ($this->me->hasOMEMO()) {
@@ -486,26 +484,25 @@ class Chat extends Base
 
     /**
      * @brief Get a chatroom
-     *
-     * @param  string  $jid
+     * @param string $jid
      */
     public function ajaxGetRoom(string $room, $noConnect = false)
     {
-        if (! validateJid($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
         $conference = $this->me->session->conferences()->where('conference', $room)->with('members')->first();
 
         if ($conference) {
-            if (! $conference->connected && ! $noConnect) {
+            if (!$conference->connected && !$noConnect) {
                 $this->rpc('Rooms_ajaxJoin', $conference->conference, $conference->nick);
             }
 
             if ($conference->isFromSpace() && $info = $conference->spaceInfo) {
-                $this->rpc('Notif.setTitle', $this->__('page.space').' • '.$info->name.' • '.$conference->title);
+                $this->rpc('Notif.setTitle', $this->__('page.space') . ' • ' . $info->name . ' • ' . $conference->title);
             } else {
-                $this->rpc('Notif.setTitle', $this->__('page.chats').' • '.$conference->title);
+                $this->rpc('Notif.setTitle', $this->__('page.chats') . ' • ' . $conference->title);
             }
 
             $this->rpc('MovimUtils.pushSoftState', $conference->route);
@@ -530,7 +527,7 @@ class Chat extends Base
                 (new Dictaphone($this->me, sessionId: $this->sessionId))->ajaxHttpGet();
 
                 $this->rpc('Chat.setObservers');
-                $this->rpc('MovimTpl.fill', '#'.cleanupId($room).'-conversation', '');
+                $this->rpc('MovimTpl.fill', '#' . cleanupId($room) . '-conversation', '');
                 $this->getMessages($room, muc: true);
                 $this->rpc('Notif.current', $conference->notifKey);
                 $this->rpc('Chat.scrollToSeparator');
@@ -558,7 +555,7 @@ class Chat extends Base
             [
                 'conference' => $conference,
                 'sfu' => $conference->hasRelatedSFUService(),
-                'canedit' => $conference->presence && in_array($conference->presence->mucaffiliation, ['owner', 'admin']),
+                'canedit' => $conference->presence && in_array($conference->presence->mucaffiliation, ['owner', 'admin'])
             ]
         ));
     }
@@ -591,9 +588,7 @@ class Chat extends Base
             $messageFile = new MessageFile;
             $valid = $messageFile->import($file);
 
-            if (! $valid) {
-                $messageFile = null;
-            }
+            if (!$valid) $messageFile = null;
         } else {
             $url = Url::resolve(trim($message), timeout: 0);
 
@@ -603,7 +598,7 @@ class Chat extends Base
         }
 
         if ($omemo) {
-            $messageOMEMOHeader = new MessageOmemoHeader;
+            $messageOMEMOHeader = new MessageOMEMOHeader;
             $messageOMEMOHeader->import($omemo);
         }
 
@@ -621,6 +616,8 @@ class Chat extends Base
     /**
      * @brief Send a resolved message
      *
+     * @param string $to
+     * @param string $message
      * @return void
      */
     public function sendMessage(
@@ -631,7 +628,7 @@ class Chat extends Base
         ?MessageFile $file = null,
         ?int $replyToMid = 0,
         ?bool $mucReceipts = false,
-        ?MessageOmemoHeader $messageOMEMOHeader = null
+        ?MessageOMEMOHeader $messageOMEMOHeader = null
     ) {
         $tempId = null;
 
@@ -648,15 +645,15 @@ class Chat extends Base
             return;
         }
 
-        $m = new Message;
-        $m->id = generateUUID();
-        $m->originid = $m->id;
-        $m->messageid = $m->id;
-        $m->replaceid = $replace ? $replace->originid : null;
-        $m->user_id = $this->me->id;
-        $m->jidto = $to;
-        $m->jidfrom = $this->me->id;
-        $m->published = gmdate('Y-m-d H:i:s');
+        $m = new \App\Message;
+        $m->id          = generateUUID();
+        $m->originid    = $m->id;
+        $m->messageid   = $m->id;
+        $m->replaceid   = $replace ? $replace->originid : null;
+        $m->user_id     = $this->me->id;
+        $m->jidto       = $to;
+        $m->jidfrom     = $this->me->id;
+        $m->published   = gmdate('Y-m-d H:i:s');
 
         $reply = null;
 
@@ -679,13 +676,13 @@ class Chat extends Base
 
         $m->markable = true;
         $m->seen = true;
-        $m->type = 'chat';
+        $m->type    = 'chat';
         $m->resource = $this->me->session->resource;
 
         if ($muc) {
-            $m->type = 'groupchat';
-            $m->resource = $this->me->username;
-            $m->jidfrom = $to;
+            $m->type        = 'groupchat';
+            $m->resource    = $this->me->username;
+            $m->jidfrom     = $to;
         }
 
         $p = $this->xmpp(new Publish);
@@ -730,7 +727,7 @@ class Chat extends Base
             }
 
             if ($quotable) {
-                $p->setReplyto($reply->jidfrom.'/'.$reply->resource);
+                $p->setReplyto($reply->jidfrom . '/' . $reply->resource);
                 $matches = [];
                 preg_match_all('/^/m', $reply->body, $matches);
 
@@ -739,8 +736,8 @@ class Chat extends Base
                 );
 
                 // Prepend quoted message body
-                $quotedBody = preg_replace('/^/m', '> ', $reply->body);
-                $p->setContent($quotedBody."\n".$body);
+                $quotedBody = preg_replace('/^/m', "> ", $reply->body);
+                $p->setContent($quotedBody . "\n" . $body);
             } else {
                 $p->setContent($body);
             }
@@ -755,10 +752,10 @@ class Chat extends Base
         $matchedCustomEmojis = [];
         preg_match_all('/:([a-z0-9\-]+):/', $m->body, $matchedCustomEmojis);
 
-        if (! empty($matchedCustomEmojis[1])) {
+        if (!empty($matchedCustomEmojis[1])) {
             $favoritesEmojis = $this->me->emojis->keyBy('pivot.alias');
 
-            $html = '<p>'.$m->body.'</p>';
+            $html = '<p>' . $m->body . '</p>';
 
             $replaced = false;
             $inlines = [];
@@ -779,19 +776,19 @@ class Chat extends Base
                     ];
 
                     $m->body = str_replace(
-                        ':'.$matched.':',
-                        Message::$inlinePlaceholder.$key,
+                        ':' . $matched . ':',
+                        Message::$inlinePlaceholder . $key,
                         $m->body
                     );
 
                     $dom = new \DOMDocument('1.0', 'UTF-8');
                     $img = $dom->createElement('img');
-                    $img->setAttribute('src', 'cid:'.\phpToIANAHash()[$emoji->cache_hash_algorythm].'+'.$emoji->cache_hash.'@bob.xmpp.org');
-                    $img->setAttribute('alt', ':'.$emoji->pivot->alias.':');
+                    $img->setAttribute('src', 'cid:' . \phpToIANAHash()[$emoji->cache_hash_algorythm] . '+' . $emoji->cache_hash . '@bob.xmpp.org');
+                    $img->setAttribute('alt', ':' . $emoji->pivot->alias . ':');
                     $dom->append($img);
 
                     $html = str_replace(
-                        ':'.$matched.':',
+                        ':' . $matched . ':',
                         $dom->saveXML($dom->documentElement),
                         $html
                     );
@@ -806,7 +803,7 @@ class Chat extends Base
 
         if ($messageOMEMOHeader) {
             $m->encrypted = true;
-            $m->omemoheader = (string) $messageOMEMOHeader;
+            $m->omemoheader = (string)$messageOMEMOHeader;
             $m->bundleid = $messageOMEMOHeader->sid;
             $p->setMessageOMEMO($messageOMEMOHeader);
         }
@@ -821,7 +818,7 @@ class Chat extends Base
         }
 
         /* Is it really clean ? */
-        if (! $p->getMuc()) {
+        if (!$p->getMuc()) {
             $m->body = htmlentities(trim($m->body), ENT_XML1, 'UTF-8');
             $m->save();
 
@@ -834,7 +831,7 @@ class Chat extends Base
                 $m = $m->fresh();
             }
 
-            $packet = new Packet;
+            $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
 
             // We refresh the Chats list
@@ -848,6 +845,8 @@ class Chat extends Base
     /**
      * @brief Send a correction message
      *
+     * @param string $to
+     * @param string $message
      * @return void
      */
     public function ajaxHttpDaemonCorrect(string $to, int $mid, string $message = '')
@@ -870,7 +869,7 @@ class Chat extends Base
             ->where('mid', $mid)
             ->first();
 
-        $emojiHandler = Emoji::getInstance();
+        $emojiHandler = \Movim\Emoji::getInstance();
         $emojiHandler->replace($emoji);
 
         if ($parentMessage && $emojiHandler->isSingleEmoji()) {
@@ -883,9 +882,7 @@ class Chat extends Base
                     ->where('muc', true)
                     ->first();
 
-                if (! $mucPresence) {
-                    return;
-                }
+                if (!$mucPresence) return;
             }
 
             $jidfrom = ($parentMessage->isMuc())
@@ -901,7 +898,7 @@ class Chat extends Base
 
             // This reaction was not published yet
             if ($emojis->where('emoji', $emoji)->count() == 0) {
-                $now = Carbon::now();
+                $now = \Carbon\Carbon::now();
 
                 $reaction = new Reaction;
                 $reaction->message_mid = $parentMessage->mid;
@@ -912,20 +909,20 @@ class Chat extends Base
                 $reaction->updated_at = $now;
                 $reaction->emoji = $emoji;
 
-                if (! $parentMessage->isMuc()) {
+                if (!$parentMessage->isMuc()) {
                     $reaction->save();
                 }
 
                 $newEmojis = $emojis->push($reaction);
             } else {
-                if (! $parentMessage->isMuc()) {
+                if (!$parentMessage->isMuc()) {
                     $parentMessage->reactions()
                         ->where('jidfrom', $jidfrom)
                         ->where('emoji', $emoji)
                         ->delete();
                 }
 
-                $newEmojis = $emojis->filter(fn ($value, $key) => $value->emoji != $emoji);
+                $newEmojis = $emojis->filter(fn($value, $key) => $value->emoji != $emoji);
             }
 
             $r->setTo($parentMessage->jidfrom != $parentMessage->user_id
@@ -933,7 +930,7 @@ class Chat extends Base
                 : $parentMessage->jidto)
                 ->setId(\generateUUID())
                 // https://xmpp.org/extensions/xep-0444.html#business-id
-                ->setParentid(! $parentMessage->isMuc() && $parentMessage->messageid
+                ->setParentid(!$parentMessage->isMuc() && $parentMessage->messageid
                     ? $parentMessage->messageid
                     : $parentMessage->stanzaid)
                 ->setReactions($newEmojis->pluck('emoji')->toArray());
@@ -944,8 +941,8 @@ class Chat extends Base
 
             $r->request();
 
-            if (! $parentMessage->isMuc()) {
-                $packet = new Packet;
+            if (!$parentMessage->isMuc()) {
+                $packet = new \Moxl\Xec\Payload\Packet;
                 $packet->content = $parentMessage;
                 $this->onMessage($packet);
             }
@@ -969,20 +966,19 @@ class Chat extends Base
     /**
      * @brief Get the last message sent
      *
+     * @param string $to
      * @return void
      */
     public function ajaxLast(string $to, $muc = false)
     {
         $m = $this->me->getLastMessage($to, $muc);
 
-        if (! $m) {
-            return;
-        }
+        if (!$m) return;
 
         // We might get an already edited message, be sure to load the id of the original one
         $mid = $m->mid;
 
-        if ($m && ! empty($m->replaceid)) {
+        if ($m && !empty($m->replaceid)) {
             $originalMessage = $this->me->messages()
                 ->where('originid', $m->replaceid)
                 ->first();
@@ -996,9 +992,9 @@ class Chat extends Base
 
         if (
             $m
-            && ! isset($m->sticker_cid)
-            && ! isset($m->file)
-            && ! empty($m->body)
+            && !isset($m->sticker_cid)
+            && !isset($m->file)
+            && !empty($m->body)
         ) {
             $this->rpc('Chat.setTextarea', htmlspecialchars_decode($m->body), $mid);
         }
@@ -1007,7 +1003,7 @@ class Chat extends Base
     /**
      * @brief Get a sent message
      *
-     * @param  string  $mid
+     * @param string $mid
      * @return void
      */
     public function ajaxEdit($mid)
@@ -1018,8 +1014,8 @@ class Chat extends Base
 
         if (
             $m
-            && ! isset($m->sticker_cid)
-            && ! isset($m->file)
+            && !isset($m->sticker_cid)
+            && !isset($m->file)
         ) {
             $this->rpc('Chat.setTextarea', htmlspecialchars_decode($m->body), $mid);
         }
@@ -1028,7 +1024,7 @@ class Chat extends Base
     /**
      * @brief Reply to a message
      *
-     * @param  string  $mid
+     * @param string $mid
      * @return void
      */
     public function ajaxHttpDaemonReply($mid)
@@ -1040,10 +1036,10 @@ class Chat extends Base
         if (
             $message->isClassic()
             && (($message->isMuc() && $message->stanzaid)
-                || (! $message->isMuc() && $message->messageid))
+                || (!$message->isMuc() && $message->messageid))
         ) {
             $this->rpc('MovimTpl.fill', '#reply', $this->view('_chat_reply', [
-                'message' => $message,
+                'message' => $message
             ]));
             $this->rpc('Chat.focus');
         }
@@ -1060,11 +1056,12 @@ class Chat extends Base
     /**
      * @brief Send a "composing" message
      *
+     * @param string $to
      * @return void
      */
     public function ajaxSendComposing(string $to, ?bool $muc = false)
     {
-        if (! validateJid($to)) {
+        if (!validateJid($to)) {
             return;
         }
 
@@ -1076,11 +1073,9 @@ class Chat extends Base
      */
     public function ajaxGetMessageContext(string $jid, int $mid)
     {
-        if (! validateJid($jid)) {
-            return;
-        }
+        if (!validateJid($jid)) return;
 
-        $contextMessage = Message::jid($this->me, $jid)
+        $contextMessage = \App\Message::jid($this->me, $jid)
             ->where('published', '<=', function ($query) use ($mid) {
                 $query->select('published')
                     ->from('messages')
@@ -1092,7 +1087,7 @@ class Chat extends Base
             ->first();
 
         if ($contextMessage) {
-            $this->rpc('MovimTpl.fill', '#'.cleanupId($contextMessage->jid).'-conversation', '');
+            $this->rpc('MovimTpl.fill', '#' . cleanupId($contextMessage->jid) . '-conversation', '');
             $this->ajaxGetHistory($jid, $contextMessage->published, muc: $contextMessage->isMuc(), prepend: false, tryMam: false);
             $this->rpc('Chat.scrollAndBlinkMessageMid', $mid);
             $this->rpc('MovimUtils.addClass', '#chat_widget .contained', 'history');
@@ -1107,11 +1102,9 @@ class Chat extends Base
      */
     public function ajaxGetHistory(string $jid, ?string $date = null, bool $muc = false, bool $prepend = true, bool $tryMam = true)
     {
-        if (! validateJid($jid) || $this->me == null) {
-            return;
-        }
+        if (!validateJid($jid) || $this->me == null) return;
 
-        $messages = Message::jid($this->me, $jid);
+        $messages = \App\Message::jid($this->me, $jid);
 
         if ($date !== null) {
             $messages = $messages->where('published', $prepend ? '<' : '>=', date(MOVIM_SQL_DATE, strtotime($date)));
@@ -1146,12 +1139,13 @@ class Chat extends Base
         }
     }
 
+
     /**
      * @brief Set last displayed message
      */
     public function ajaxDisplayed($jid, $id)
     {
-        if (! validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -1162,7 +1156,7 @@ class Chat extends Base
                 $message->displayed = gmdate('Y-m-d H:i:s');
                 $message->save();
 
-                if (! $message->isMuc()) {
+                if (!$message->isMuc()) {
                     $this->xmpp(new Displayed)
                         ->setTo($jid)
                         ->setId($message->messageid)
@@ -1192,26 +1186,28 @@ class Chat extends Base
     /**
      * @brief Ask to clear the history
      *
-     * @param  string  $jid
+     * @param string $jid
      */
     public function ajaxClearHistory($jid)
     {
         $this->dialog($this->view('_chat_clear', [
             'jid' => $jid,
-            'count' => Message::jid($this->me, $jid)->count(),
+            'count' => \App\Message::jid($this->me, $jid)->count()
         ]));
     }
 
     /**
      * @brief Clear the history
+     *
+     * @param string $jid
      */
     public function ajaxClearHistoryConfirm(string $jid)
     {
-        if (! validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
-        Message::whereIn('id', function ($query) use ($jid) {
+        \App\Message::whereIn('id', function ($query) use ($jid) {
             $jidFromToMessages = DB::table('messages')
                 ->where('user_id', $this->me->id)
                 ->where('jidfrom', $jid)
@@ -1237,7 +1233,7 @@ class Chat extends Base
         return $this->view('_chat', [
             'jid' => $jid,
             'muc' => $muc,
-            'emoji' => addEmojis('😀'),
+            'emoji' => addEmojis('😀')
         ]);
     }
 
@@ -1245,31 +1241,31 @@ class Chat extends Base
     {
         $this->rpc(
             'MovimTpl.fill',
-            '#'.cleanupId($room).'-nav',
+            '#' . cleanupId($room) . '-nav',
             $this->view('_chat_room_nav', [
                 'contactsHtml' => (new RoomsUtils($this->me, sessionId: $this->sessionId))->preparePresences(
                     $room,
                     havePagination: false,
                     compact: true
-                ),
+                )
             ])
         );
     }
 
     public function ajaxClearAndGetMessages(string $jid, $muc = false)
     {
-        $this->rpc('MovimTpl.fill', '#'.cleanupId($jid).'-conversation', '');
+        $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '-conversation', '');
         $this->getMessages($jid, muc: $muc);
         $this->rpc('MovimUtils.removeClass', '#chat_widget .contained', 'history');
     }
 
     public function getMessages(string $jid, ?bool $muc = false, ?bool $seenOnly = false, ?bool $event = true)
     {
-        if (! validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
-        $messagesQuery = Message::jid($this->me, $jid);
+        $messagesQuery = \App\Message::jid($this->me, $jid);
 
         $messagesQuery = $muc
             ? $messagesQuery->whereIn('type', Message::MESSAGE_TYPE_MUC)->whereNull('subject')
@@ -1287,7 +1283,7 @@ class Chat extends Base
         if ($unreadsCount > 0) {
             $messagesClear = clone $messagesQuery;
             // Two queries as Eloquent doesn't seems to map correctly the parameters
-            Message::whereIn('mid', $messagesClear->where('seen', false)->pluck('mid'))->update(['seen' => true]);
+            \App\Message::whereIn('mid', $messagesClear->where('seen', false)->pluck('mid'))->update(['seen' => true]);
         }
 
         // Prepare the muc presences if possible
@@ -1299,11 +1295,11 @@ class Chat extends Base
                 ->whereIn('resource', $messages->pluck('resource')->unique())
                 ->get()
                 ->keyBy(function ($presence) {
-                    return $presence->jid.$presence->resource;
+                    return $presence->jid . $presence->resource;
                 });
         }
 
-        if (! $seenOnly) {
+        if (!$seenOnly) {
             $messages = $messages->reverse();
 
             foreach ($messages as $message) {
@@ -1350,7 +1346,7 @@ class Chat extends Base
             $earliest = $muc ? $earliest->where('to', $jid)
                 : $earliest->where('jid', $jid);
 
-            if (! $earliest->first()) {
+            if (!$earliest->first()) {
                 $this->rpc('Chat.getHistory', true);
             }
         } elseif ($messages->count() < $this->_pagination) {
@@ -1360,7 +1356,7 @@ class Chat extends Base
             $me = $earliest->first();
 
             if (
-                ! $me ||
+                !$me ||
                 (new Carbon($me->earliest))->isAfter(new Carbon($messages->first()->published))
             ) {
                 $this->rpc('Chat.getHistory', true);
@@ -1377,25 +1373,25 @@ class Chat extends Base
         $message->jidto = echapJS($message->jidto);
         $message->jidfrom = echapJS($message->jidfrom);
 
-        $emoji = Emoji::getInstance();
+        $emoji = \Movim\Emoji::getInstance();
 
         // URL messages
-        if (! empty($message->body)) {
+        if (!empty($message->body)) {
             $message->url = filter_var(trim($message->body), FILTER_VALIDATE_URL);
         }
 
         // If the message doesn't contain a file but is a URL, we try to resolve it
-        if (! $message->file && $message->url && $message->resolved == false) {
-            $this->rpc('Chat.resolveMessage', (int) $message->mid);
+        if (!$message->file && $message->url && $message->resolved == false) {
+            $this->rpc('Chat.resolveMessage', (int)$message->mid);
         }
 
         if ($message->retracted) {
-            $message->body = '<i class="material-symbols">delete</i> '.__('message.retracted');
+            $message->body = '<i class="material-symbols">delete</i> ' . __('message.retracted');
         } elseif ($message->encrypted) {
             $message->body = __('message.encrypted');
-        } elseif (isset($message->html) && ! isset($message->file)) {
+        } elseif (isset($message->html) && !isset($message->file)) {
             $message->body = $message->html;
-        } elseif (! isset($message->file)) {
+        } elseif (!isset($message->file)) {
             $message->linkify();
 
             if (is_string($message->body)) {
@@ -1404,16 +1400,16 @@ class Chat extends Base
         }
 
         if (isset($message->subject) && $message->type == 'headline') {
-            $message->body = $message->subject.': '.$message->body;
+            $message->body = $message->subject . ': ' . $message->body;
         }
 
         // XEP-0393
-        if (! empty($message->body)) {
+        if (!empty($message->body)) {
             $message->body = (preg_replace('/^```(\n*)([\s\S]*?)```([A-Za-z \t]*)*$/m', "<code class='block'>$2</code>", $message->body));
-            $message->body = (preg_replace('/(?<=^|[\s,\*,_,~])(`(?!\s).+?(?<!\s)`)/', '<code>$1</code>', $message->body));
-            $message->body = (preg_replace('/(?<=^|[\s,_,`,~])(\*(?!\s).+?(?<!\s)\*)/', '<b>$1</b>', $message->body));
-            $message->body = (preg_replace('/(?<=^|[\s,\*,`,~])(_(?!\s).+?(?<!\s)_)/', '<em>$1</em>', $message->body));
-            $message->body = (preg_replace('/(?<=^|[\s,\*,_,`])(~(?!\s).+?(?<!\s)~)/', '<s>$1</s>', $message->body));
+            $message->body = (preg_replace('/(?<=^|[\s,\*,_,~])(`(?!\s).+?(?<!\s)`)/', "<code>$1</code>", $message->body));
+            $message->body = (preg_replace('/(?<=^|[\s,_,`,~])(\*(?!\s).+?(?<!\s)\*)/', "<b>$1</b>", $message->body));
+            $message->body = (preg_replace('/(?<=^|[\s,\*,`,~])(_(?!\s).+?(?<!\s)_)/', "<em>$1</em>", $message->body));
+            $message->body = (preg_replace('/(?<=^|[\s,\*,_,`])(~(?!\s).+?(?<!\s)~)/', "<s>$1</s>", $message->body));
         }
 
         // Inlines
@@ -1431,7 +1427,7 @@ class Chat extends Base
             $stickerImage = $message->stickerImage;
 
             if (
-                ! $stickerImage
+                !$stickerImage
                 && $message->jidfrom != $message->session
             ) {
                 $r = $this->xmpp(new Request);
@@ -1447,7 +1443,7 @@ class Chat extends Base
                 $message->sticker = [
                     'url' => Image::getOrCreate($stickerImage->getKey()), // Todo, don't reload
                     'width' => $stickerSize['width'],
-                    'height' => $stickerSize['height'],
+                    'height' => $stickerSize['height']
                 ];
             }
 
@@ -1457,12 +1453,12 @@ class Chat extends Base
         // Jumbo emoji
         if (
             $emoji->isSingleEmoji()
-            && ! isset($message->html)
+            && !isset($message->html)
             && $message->isClassic()
         ) {
             $message->sticker = [
                 'url' => $emoji->getLastSingleEmojiURL(),
-                'title' => ':'.$emoji->getLastSingleEmojiTitle().':',
+                'title' => ':' . $emoji->getLastSingleEmojiTitle() . ':',
                 'height' => 60,
             ];
 
@@ -1470,7 +1466,7 @@ class Chat extends Base
         }
 
         // Attached file
-        if (! $message->retracted) {
+        if (!$message->retracted) {
             if ($message->postid != null) {
                 $post = $message->post()->first();
 
@@ -1496,9 +1492,9 @@ class Chat extends Base
                 }
             } elseif (isset($message->file) && $message->file->type != 'xmpp') {
                 if (
-                    ! $message->file->preview
-                    && ! typeIsAudio($message->file->type)
-                    && ! typeIsVideo($message->file->type)
+                    !$message->file->preview
+                    && !typeIsAudio($message->file->type)
+                    && !typeIsVideo($message->file->type)
                 ) {
                     $view = $this->tpl();
                     $view->assign('file', $message->file);
@@ -1510,12 +1506,12 @@ class Chat extends Base
         }
 
         if (
-            $message->resolvedUrl && ! $message->file
-            && ! $message->card && ! $message->sticker
+            $message->resolvedUrl && !$message->file
+            && !$message->card && !$message->sticker
         ) {
             $resolved = $message->resolvedUrl;
             if ($resolved) {
-                $message->card = $this->prepareEmbed($resolved);
+                $message->card =  $this->prepareEmbed($resolved);
             }
 
             if ($message->body == null) {
@@ -1530,14 +1526,14 @@ class Chat extends Base
         // Parent
         if ($message->parent) {
             if ($message->parent->file) {
-                $message->parent->body = '<i class="material-symbols">insert_drive_file</i> '.__('avatar.file');
+                $message->parent->body = '<i class="material-symbols">insert_drive_file</i> ' . __('avatar.file');
 
                 if (typeIsPicture($message->parent->file->type)) {
-                    $message->parent->body = '<i class="material-symbols">image</i> '.__('chats.picture');
+                    $message->parent->body = '<i class="material-symbols">image</i> ' . __('chats.picture');
                 } elseif (typeIsAudio($message->parent->file->type)) {
-                    $message->parent->body = '<i class="material-symbols">equalizer</i> '.__('chats.audio');
+                    $message->parent->body = '<i class="material-symbols">equalizer</i> ' . __('chats.audio');
                 } elseif (typeIsVideo($message->parent->file->type)) {
-                    $message->parent->body = '<i class="material-symbols">local_movies</i> '.__('chats.video');
+                    $message->parent->body = '<i class="material-symbols">local_movies</i> ' . __('chats.video');
                 }
             }
 
@@ -1586,7 +1582,7 @@ class Chat extends Base
         }
 
         // We create the date wrapper
-        if (! array_key_exists($date, $this->_wrapper)) {
+        if (!array_key_exists($date, $this->_wrapper)) {
             $this->_wrapper[$date] = [];
         }
 
@@ -1597,8 +1593,8 @@ class Chat extends Base
             $message->resolveColor();
 
             // Cache the resolved presences for a while
-            $key = $message->jidfrom.$message->resource;
-            if (! isset($this->_mucPresences[$key])) {
+            $key = $message->jidfrom . $message->resource;
+            if (!isset($this->_mucPresences[$key])) {
                 $this->_mucPresences[$key] = $this->me->session->presences()
                     ->where('jid', $message->jidfrom)
                     ->where('resource', $message->resource)
@@ -1619,7 +1615,7 @@ class Chat extends Base
         }
 
         // Only used for message replacement
-        $message->originid = $message->originid == null && ! $message->isMuc()
+        $message->originid = $message->originid == null && !$message->isMuc()
             ? $message->messageid
             : null;
 
@@ -1629,7 +1625,7 @@ class Chat extends Base
             && (
                 ($message->replace->jidfrom != $message->jidfrom || $message->replace->resource != $message->resource)
                 ||
-                ($message->isMuc() && ! $this->_mucPresences[$message->jidfrom.$message->resource])
+                ($message->isMuc() && !$this->_mucPresences[$message->jidfrom . $message->resource])
             )
         ) {
             unset($message->replace);
@@ -1637,7 +1633,7 @@ class Chat extends Base
         }
 
         if ($message->seen === false) {
-            $message->seen = ('chat|'.$message->jidfrom == $n->getCurrent());
+            $message->seen = ('chat|' . $message->jidfrom == $n->getCurrent());
         }
 
         if (
@@ -1649,15 +1645,15 @@ class Chat extends Base
                 ->update(['seen' => true]);
         }
 
-        $msgkey = '<'.$message->jidfrom;
+        $msgkey = '<' . $message->jidfrom;
         $msgkey .= ($message->isMuc() && $message->resource != null)
             ? cleanupId($message->resource, true)
             : '';
-        $msgkey .= '>'.substr($message->published, 11, 5);
+        $msgkey .= '>' . substr($message->published, 11, 5);
 
         $counter = count($this->_wrapper[$date]);
 
-        $this->_wrapper[$date][$counter.$msgkey] = $message;
+        $this->_wrapper[$date][$counter . $msgkey] = $message;
 
         if ($message->type == 'invitation') {
             $view = $this->tpl();
@@ -1687,7 +1683,7 @@ class Chat extends Base
                 $view->assign('contact', Contact::firstOrNew(['id' => $message->subject]));
             }
 
-            $message->body = $view->draw('_chat_'.$message->type);
+            $message->body = $view->draw('_chat_' . $message->type);
         }
 
         if ($message->type == 'jingle_end') {
@@ -1706,7 +1702,7 @@ class Chat extends Base
                 $view->assign('diff', $diff);
             }
 
-            $message->body = trim((string) $view->draw('_chat_jingle_end'));
+            $message->body = trim((string)$view->draw('_chat_jingle_end'));
         }
 
         return $this->_wrapper;
@@ -1716,7 +1712,7 @@ class Chat extends Base
     {
         return $this->view('_chat_embed', [
             'url' => $url,
-            'message' => $message,
+            'message' => $message
         ]);
     }
 
@@ -1738,21 +1734,19 @@ class Chat extends Base
             ->get();
 
         foreach ($reactions as $reaction) {
-            if (! array_key_exists($reaction->emoji, $merged)) {
+            if (!array_key_exists($reaction->emoji, $merged)) {
                 $merged[$reaction->emoji] = [];
             }
 
             $merged[$reaction->emoji][] = $reaction->jidfrom;
         }
 
-        if (empty($merged)) {
-            return null;
-        }
+        if (empty($merged)) return null;
 
         return $this->view('_chat_reactions', [
             'message' => $message,
             'reactions' => $merged,
-            'me' => $this->me->id,
+            'me' => $this->me->id
         ]);
     }
 
@@ -1764,7 +1758,7 @@ class Chat extends Base
         $view->assign('muc', $muc);
         $view->assign(
             'info',
-            Info::where('server', $this->me->session->host)
+            \App\Info::where('server', $this->me->session->host)
                 ->where('node', '')
                 ->first()
         );
@@ -1777,10 +1771,10 @@ class Chat extends Base
                 ->with('info')
                 ->first());
 
-            $mucinfo = Info::where('server', (new Jid($jid))->domain)
+            $mucinfo = \App\Info::where('server', (new Jid($jid))->domain)
                 ->where('node', '')
                 ->first();
-            if ($mucinfo && ! empty($mucinfo->abuseaddresses)) {
+            if ($mucinfo && !empty($mucinfo->abuseaddresses)) {
                 $view->assign('info', $mucinfo);
             }
         } else {
@@ -1794,7 +1788,7 @@ class Chat extends Base
     public function prepareEmpty()
     {
         return $this->view('_chat_empty', [
-            'top' => $this->me->session->topContactsToChat()->take(15)->get(),
+            'top' => $this->me->session->topContactsToChat()->take(15)->get()
         ]);
     }
 
@@ -1816,7 +1810,7 @@ class Chat extends Base
             'presencestxt' => getPresencesTxt(),
             'users' => $users,
             'pagination' => $pagination,
-            'page' => $page,
+            'page' => $page
         ]);
     }
 }

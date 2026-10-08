@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateSessionsTable extends Migration
 {
@@ -20,7 +20,7 @@ class CreateSessionsTable extends Migration
             $table->primary('id');
             $table->unique('username', 'host');
             $table->foreign('user_id')
-                ->references('id')->on('users');
+                  ->references('id')->on('users');
         });
     }
 

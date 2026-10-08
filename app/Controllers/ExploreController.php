@@ -13,7 +13,7 @@ class ExploreController extends Base
 
     public function dispatch()
     {
-        if (! empty($this->fetchGet('s') && $this->fetchGet('s') == 'servers')) {
+        if (!empty($this->fetchGet('s') && $this->fetchGet('s') == 'servers')) {
             $this->page->setTitle(__('communities.servers'));
         } else {
             $this->page->setTitle(__('page.explore'));

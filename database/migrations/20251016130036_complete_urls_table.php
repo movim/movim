@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Schema\Blueprint;
+use App\Url;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Capsule\Manager as DB;
 
 class CompleteUrlsTable extends Migration
 {

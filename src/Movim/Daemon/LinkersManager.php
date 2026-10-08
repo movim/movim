@@ -4,24 +4,20 @@ namespace Movim\Daemon;
 
 use Movim\Widget\Wrapper;
 use Ratchet\Client\WebSocket;
-use React\Dns\Config\Config;
-use React\Dns\Resolver\Factory;
 use React\Dns\Resolver\ResolverInterface;
 
 class LinkersManager
 {
     private ResolverInterface $dns;
-
     private ?WebSocket $websocket = null;
-
     private array $linkers = [];
 
     public function __construct()
     {
-        $config = Config::loadSystemConfigBlocking();
+        $config = \React\Dns\Config\Config::loadSystemConfigBlocking();
         $server = $config->nameservers ? reset($config->nameservers) : '8.8.8.8';
 
-        $factory = new Factory;
+        $factory = new \React\Dns\Resolver\Factory();
         $this->dns = $factory->create($server);
     }
 
@@ -63,11 +59,10 @@ class LinkersManager
                 browserLocale: $message->browserLocale
             );
             logOut(colorize('Linker created', 'green'), sid: $message->sid);
-
             return;
         }
 
-        if (! array_key_exists($message->sid, $this->linkers)) {
+        if (!array_key_exists($message->sid, $this->linkers)) {
             return;
         }
 
@@ -82,7 +77,7 @@ class LinkersManager
             case 'down':
                 if ($linker->connected()) {
                     Wrapper::getInstance()->iterate(
-                        key: 'session_'.$message->func,
+                        key: 'session_' . $message->func,
                         sessionId: $message->sid,
                         user: $linker->user
                     );

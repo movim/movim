@@ -11,15 +11,11 @@ class UploadFile extends Base
 {
     public function display()
     {
-        if (! $this->get('f')) {
-            return;
-        }
+        if (!$this->get('f')) return;
 
         $upload = Upload::findOrFail($this->get('f'));
 
-        if (! $upload) {
-            return;
-        }
+        if (!$upload) return;
 
         $json = [
             'func' => 'message',
@@ -27,17 +23,17 @@ class UploadFile extends Base
                 'c' => 'upload',
                 'w' => 'Upload',
                 'f' => 'ajaxHttpUploadXMPP',
-                'p' => [$this->get('f')],
-            ],
+                'p' => [$this->get('f')]
+            ]
         ];
 
         requestAPI('ajax', post: [
             'sid' => $this->me->session->id,
-            'json' => rawurlencode(json_encode($json)),
+            'json' => rawurlencode(json_encode($json))
         ], await: false);
 
         if (array_key_exists($upload->id, $_FILES)) {
-            $browser = (new Browser)->withTimeout(10)
+            $browser = (new Browser())->withTimeout(10)
                 ->withFollowRedirects(true);
 
             if ($_FILES[$upload->id]['size'] == 0) {
@@ -45,13 +41,12 @@ class UploadFile extends Base
 
                 requestAPI('ajax', post: [
                     'sid' => $this->me->session->id,
-                    'json' => rawurlencode(json_encode($json)),
+                    'json' => rawurlencode(json_encode($json))
                 ], await: false);
 
                 \logError('Uploaded file is empty, check your PHP file upload limit');
 
                 http_response_code(503);
-
                 return;
             }
 
@@ -76,7 +71,7 @@ class UploadFile extends Base
             $browser->put(
                 $upload->puturl,
                 is_array($upload->headers) ? $upload->headers : [],
-                body: file_get_contents($filePath) // $file
+                body: file_get_contents($filePath) //$file
             )->then(
                 function (ResponseInterface $response) use ($upload) {
                     $upload->uploaded = true;

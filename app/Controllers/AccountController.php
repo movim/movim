@@ -2,14 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Configuration;
 use Movim\Controller\Base;
 
 class AccountController extends Base
 {
     public function dispatch()
     {
-        if (Configuration::get()->disableregistration) {
+        if (\App\Configuration::get()->disableregistration) {
             $this->redirect('login');
         }
 

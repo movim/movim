@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Capsule\Manager as DB;
 
 class CreateIdentitiesTable extends Migration
 {
@@ -30,7 +30,7 @@ class CreateIdentitiesTable extends Migration
             $table->timestamps();
 
             $table->foreign('info_id')->references('id')
-                ->on('infos')->onDelete('cascade');
+                  ->on('infos')->onDelete('cascade');
 
             $table->index('category');
             $table->index('type');

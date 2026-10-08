@@ -4,6 +4,7 @@ namespace App\Widgets\ContactSubscriptions;
 
 use App\Subscription;
 use Movim\Widget\Base;
+
 use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
 use Moxl\Xec\Payload\Packet;
 
@@ -19,7 +20,7 @@ class ContactSubscriptions extends Base
     {
         if ($packet->content['node'] == Subscription::PUBLIC_NODE) {
             $jid = $packet->content['to'];
-            $this->rpc('MovimTpl.fill', '#'.cleanupId($jid).'_contact_subscriptions', $this->prepareSubscriptions($jid));
+            $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '_contact_subscriptions', $this->prepareSubscriptions($jid));
             $this->rpc('Notif_ajaxGet');
         }
     }
@@ -27,7 +28,7 @@ class ContactSubscriptions extends Base
     public function prepareSubscriptions($jid)
     {
         $view = $this->tpl();
-        $view->assign('subscriptions', Subscription::where('jid', $jid)
+        $view->assign('subscriptions', \App\Subscription::where('jid', $jid)
             ->where('public', true)
             ->get());
 
@@ -36,7 +37,7 @@ class ContactSubscriptions extends Base
 
     public function ajaxRefresh($jid)
     {
-        if (! validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 

@@ -7,15 +7,10 @@ use XMLParser;
 class Parser
 {
     private ?XMLParser $parser = null;
-
     private int $depth = 0;
-
     private $node = null;
-
     private $handler = null;
-
     private $raw = false;
-
     private $callback = null;
 
     public function __construct($callback)
@@ -36,7 +31,7 @@ class Parser
         xml_set_character_data_handler($this->parser, $this->contents(...));
         xml_parser_set_option($this->parser, XML_OPTION_CASE_FOLDING, 0);
         xml_parser_set_option($this->parser, XML_OPTION_SKIP_WHITE, 1);
-        xml_parser_set_option($this->parser, XML_OPTION_TARGET_ENCODING, 'UTF-8');
+        xml_parser_set_option($this->parser, XML_OPTION_TARGET_ENCODING, "UTF-8");
 
         libxml_use_internal_errors(true);
 
@@ -47,18 +42,17 @@ class Parser
     public function parse(string $data, bool $end = false): int
     {
         if (
-            substr($data, 0, 5) === '<?xml'
-            || substr($data, 0, 14) === '<stream:stream'
+            '<?xml' === substr($data, 0, 5)
+            || '<stream:stream' === substr($data, 0, 14)
         ) {
             $this->reset();
         }
 
-        $data = preg_replace('/>\s+</', '><', $data);
-
+        $data = preg_replace('/>\s+</', "><", $data);
         return xml_parse($this->parser, $data, $end);
     }
 
-    private function start(XMLParser $parser, string $name, array $attrs)
+    private function start(\XMLParser $parser, string $name, array $attrs)
     {
         $name = str_replace(':', '', $name);
 
@@ -66,10 +60,10 @@ class Parser
             $this->node = $this->handler = simplexml_load_string("<$name></$name>", 'SimpleXMLElement', LIBXML_COMPACT | LIBXML_PARSEHUGE);
         } elseif ($this->depth > 1) {
             if ($this->raw != false) {
-                $this->handler[0] .= '<'.$name;
+                $this->handler[0] .= '<' . $name;
                 if ($this->raw <= $this->depth) {
                     foreach ($attrs as $name => $value) {
-                        $this->handler[0] .= ' '.$name."='".$value."'";
+                        $this->handler[0] .= ' ' . $name . "='" . $value . "'";
                     }
                 }
                 $this->handler[0] .= '>';
@@ -80,8 +74,8 @@ class Parser
 
         if (isset($this->handler) && $this->raw == false) {
             foreach ($attrs as $name => $value) {
-                if (substr($name, 0, 6) === 'xmlns:') {
-                    $name = 'xmlns:'.$name;
+                if ('xmlns:' === substr($name, 0, 6)) {
+                    $name = 'xmlns:' . $name;
                 }
                 if ($value === 'http://www.w3.org/1999/xhtml') {
                     $this->raw = $this->depth;
@@ -93,7 +87,7 @@ class Parser
         $this->depth++;
     }
 
-    private function end(XMLParser $parser, string $name)
+    private function end(\XMLParser $parser, string $name)
     {
         $name = str_replace(':', '', $name);
 
@@ -103,7 +97,7 @@ class Parser
             $this->raw != false
             && $this->depth > $this->raw
         ) {
-            $this->handler[0] .= '</'.$name.'>';
+            $this->handler[0] .= '</' . $name . '>';
         }
 
         if (
@@ -116,14 +110,14 @@ class Parser
         if ($this->depth == 1) {
             call_user_func_array($this->callback, [$this->node]);
         } elseif ($this->depth > 1 && $this->raw == false) {
-            $this->handler = current($this->handler->xpath('parent::*'));
+            $this->handler = current($this->handler->xpath("parent::*"));
         }
     }
 
-    private function contents(XMLParser $parser, string $data)
+    private function contents(\XMLParser $parser, string $data)
     {
         if (isset($this->handler)) {
-            $this->handler[0] .= (string) htmlentities($data, ENT_XML1, 'UTF-8', false);
+            $this->handler[0] .= (string)htmlentities($data, ENT_XML1, 'UTF-8', false);
         }
     }
 

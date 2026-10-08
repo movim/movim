@@ -3,12 +3,11 @@
 namespace App\Workers\AvatarHandler;
 
 use App\Configuration;
-use App\Contact;
-use App\Info;
 use Movim\Image;
 use React\Http\Browser;
 use React\Http\Message\Response;
 use React\Promise\Promise;
+use React\Socket\Connector;
 
 class AvatarHandler
 {
@@ -18,10 +17,9 @@ class AvatarHandler
     {
         $this->domainWhitelist = Configuration::firstOrNew()->ssrfwhitelist_array;
     }
-
     public static function getAvatarCachePath(string $jid, string $type)
     {
-        return CACHE_PATH.hash('sha256', $jid.$type);
+        return CACHE_PATH . hash('sha256', $jid . $type);
     }
 
     public function url(
@@ -36,7 +34,7 @@ class AvatarHandler
         if (parse_url(config('daemon.url'), PHP_URL_HOST) == parse_url($url, PHP_URL_HOST)) {
             $tlsContext = [
                 'verify_peer' => false,
-                'verify_peer_name' => false,
+                'verify_peer_name' => false
             ];
         }
 
@@ -51,39 +49,37 @@ class AvatarHandler
             $query->then(function (Response $response) use ($resolve, $jid, $node, $banner) {
                 if ($response->getStatusCode() != 200) {
                     $resolve(['jid' => $jid, 'node' => $node, 'key' => null]);
-
                     return;
                 }
 
                 try {
                     $key = null;
-                    $bin = (string) $response->getBody();
+                    $bin = (string)$response->getBody();
 
                     if (empty($bin)) {
                         $resolve(['jid' => $jid, 'node' => $node, 'key' => null]);
-
                         return;
                     }
 
                     $hash = sha1($bin);
 
                     if ($node != null) {
-                        Info::where('server', $jid)
+                        \App\Info::where('server', $jid)
                             ->where('node', $node)
                             ->update(['avatarhash' => $hash]);
 
                         $key = $hash;
                     } elseif ($banner == true) {
-                        $contact = Contact::firstOrNew(['id' => $jid]);
+                        $contact = \App\Contact::firstOrNew(['id' => $jid]);
 
                         if ($contact->bannerhash != $hash) {
                             $contact->bannerhash = $hash;
                             $contact->save();
 
-                            $key = $jid.'_banner';
+                            $key = $jid . '_banner';
                         }
                     } else {
-                        $contact = Contact::firstOrNew(['id' => $jid]);
+                        $contact = \App\Contact::firstOrNew(['id' => $jid]);
 
                         if ($contact->avatarhash != $hash) {
                             $contact->avatarhash = $hash;
@@ -120,7 +116,7 @@ class AvatarHandler
             $p->fromBin($bin);
             $p->save();
 
-            $contact = Contact::firstOrNew(['id' => $jid]);
+            $contact = \App\Contact::firstOrNew(['id' => $jid]);
             $contact->avatarhash = sha1($bin);
             $contact->avatartype = $type;
             $contact->save();

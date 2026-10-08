@@ -2,11 +2,11 @@
 
 namespace App\Widgets\RoomsExplore;
 
-use App\Configuration;
-use App\Contact;
-use App\Info;
-use Movim\Widget\Base;
 use Moxl\Xec\Action\ExtendedChannelSearch\Search;
+use Movim\Widget\Base;
+
+use App\Contact;
+use App\Widgets\Drawer\Drawer;
 use Moxl\Xec\Payload\Packet;
 
 class RoomsExplore extends Base
@@ -75,7 +75,7 @@ class RoomsExplore extends Base
      */
     public function ajaxSearchRooms(?string $keyword = null)
     {
-        $configuration = Configuration::get();
+        $configuration = \App\Configuration::get();
 
         if ($configuration->restrictsuggestions) {
             $this->searchLocally($keyword);
@@ -89,7 +89,7 @@ class RoomsExplore extends Base
     private function searchLocally($keyword = false)
     {
         $view = $this->tpl();
-        $rooms = Info::whereCategory('conference')
+        $rooms = \App\Info::whereCategory('conference')
             ->restrictUserHost($this->me)
             ->restrictMucServices()
             ->whereType('text')
@@ -100,9 +100,9 @@ class RoomsExplore extends Base
 
         if ($keyword) {
             $rooms = $rooms->where(function ($query) use ($keyword) {
-                $query->where('name', 'like', '%'.$keyword.'%')
-                    ->orWhere('server', 'like', '%'.$keyword.'%')
-                    ->orWhere('description', 'like', '%'.$keyword.'%');
+                $query->where('name', 'like', '%' . $keyword . '%')
+                    ->orWhere('server', 'like', '%' . $keyword . '%')
+                    ->orWhere('description', 'like', '%' . $keyword . '%');
             });
         }
 

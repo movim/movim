@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\Session;
 
-use Moxl\Stanza\Stream;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Stream;
 
 class Start extends Action
 {

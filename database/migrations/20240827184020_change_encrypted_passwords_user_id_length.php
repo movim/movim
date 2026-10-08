@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class ChangeEncryptedPasswordsUserIdLength extends Migration
 {
@@ -43,7 +43,7 @@ class ChangeEncryptedPasswordsUserIdLength extends Migration
     private function recreateMySQLForeignKeys()
     {
         if ($this->schema->getConnection()->getDriverName() == 'mysql') {
-            $this->schema->table('encrypted_passwords', function (Blueprint $table) {
+           $this->schema->table('encrypted_passwords', function (Blueprint $table) {
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             });
         }

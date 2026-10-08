@@ -17,15 +17,10 @@ use React\EventLoop\TimerInterface;
 class Conference
 {
     public array $connections = [];
-
     private array $members = [];
-
     private bool $connected = false;
-
     private string $resource;
-
     public ?Carbon $startedAt = null;
-
     private ?TimerInterface $pingTimer = null;
 
     public const CONFERENCE_STARTED_AT_XMLNS = '{https://movim.eu}conference_started_at';
@@ -36,7 +31,7 @@ class Conference
         private GaleneAPIClient $apiClient,
     ) {
         $this->apiClient->createGroup($jid);
-        $this->resource = config('galener.xmpp_host').'_'.generateKey(6);
+        $this->resource = config('galener.xmpp_host') . '_' . generateKey(6);
 
         global $loop;
         $this->pingTimer = $loop->addPeriodicTimer(ChatroomPings::PING_IN, function () {
@@ -49,17 +44,17 @@ class Conference
     /**
      * Connections
      */
+
     public function addConnection(Jid $jid): bool
     {
         if ($this->connected && array_key_exists($jid->bareJid(), $this->members)) {
-            $this->connections[(string) $jid] = new Connection(conference: $this, jid: $jid, apiClient: $this->apiClient);
+            $this->connections[(string)$jid] = new Connection(conference: $this, jid: $jid, apiClient: $this->apiClient);
 
             if (count($this->connections) == 1) {
                 $this->startedAt = Carbon::now();
             }
 
             $this->sendXMPP($this->generatePresence());
-
             return true;
         }
 
@@ -68,9 +63,9 @@ class Conference
 
     public function removeConnection(Jid $jid)
     {
-        if (array_key_exists((string) $jid, $this->connections)) {
-            $this->connections[(string) $jid]->end();
-            unset($this->connections[(string) $jid]);
+        if (array_key_exists((string)$jid, $this->connections)) {
+            $this->connections[(string)$jid]->end();
+            unset($this->connections[(string)$jid]);
 
             if (count($this->connections) == 0) {
                 $this->startedAt = null;
@@ -82,8 +77,8 @@ class Conference
 
     public function getConnection(Jid $jid): ?Connection
     {
-        if (array_key_exists((string) $jid, $this->connections)) {
-            return $this->connections[(string) $jid];
+        if (array_key_exists((string)$jid, $this->connections)) {
+            return $this->connections[(string)$jid];
         }
 
         return null;
@@ -92,7 +87,8 @@ class Conference
     /**
      * XMPP actions
      */
-    public function sendXMPP(?DOMDocument $dom = null)
+
+    public function sendXMPP(?\DOMDocument $dom = null)
     {
         ($this->sendXMPP)($dom);
     }
@@ -100,7 +96,7 @@ class Conference
     public function xmppJoin()
     {
         $this->sendXMPP(Presence::maker(
-            to: (string) $this->jid.'/sfu',
+            to: (string)$this->jid . '/sfu',
             from: config('galener.xmpp_host'),
             muc: true
         ));
@@ -112,10 +108,10 @@ class Conference
     public function xmppSetAdmin()
     {
         // We set the conference user admin in the room
-        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
         $iq = $dom->createElement('iq');
         $dom->appendChild($iq);
-        $iq->setAttribute('to', (string) $this->jid);
+        $iq->setAttribute('to', (string)$this->jid);
         $iq->setAttribute('from', config('galener.xmpp_host'));
         $iq->setAttribute('type', 'set');
         $iq->setAttribute('id', \generateKey());
@@ -135,10 +131,10 @@ class Conference
             type: 'unavailable'
         ));
 
-        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
         $iq = $dom->createElement('iq');
         $dom->appendChild($iq);
-        $iq->setAttribute('to', (string) $this->jid);
+        $iq->setAttribute('to', (string)$this->jid);
         $iq->setAttribute('from', $this->getSFUJid());
         $iq->setAttribute('type', 'set');
         $iq->setAttribute('id', \generateKey());
@@ -154,9 +150,10 @@ class Conference
         $loop->cancelTimer($this->pingTimer);
     }
 
+
     public function xmppPing()
     {
-        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
         $iq = $dom->createElement('iq');
         $dom->appendChild($iq);
         $iq->setAttribute('to', $this->getRoomJid());
@@ -173,7 +170,7 @@ class Conference
     public function xmppNotAdminMessage()
     {
         $xml = Message::maker(
-            to: (string) $this->jid,
+            to: (string)$this->jid,
             messageId: \generateKey(),
             from: $this->getSFUJid(),
             type: 'groupchat',
@@ -202,12 +199,12 @@ class Conference
 
     public function getSFUJid(): string
     {
-        return hash('sha1', $this->jid).'@'.config('galener.xmpp_host');
+        return hash('sha1', $this->jid) . '@' . config('galener.xmpp_host');
     }
 
     public function getRoomJid(): string
     {
-        return (string) $this->jid.'/'.$this->resource;
+        return (string)$this->jid . '/' . $this->resource;
     }
 
     private function generatePresence(): DOMDocument
@@ -222,9 +219,9 @@ class Conference
         // Adding capabilities
 
         $c = $presence->createElementNS('urn:xmpp:caps', 'c');
-        $hash = $presence->createElement('hash', Utils::getOwnGalenerCapabilityHash());
+        $hash = $presence->createElement('hash', \Moxl\Utils::getOwnGalenerCapabilityHash());
         $hash->setAttribute('xmlns', 'urn:xmpp:hashes:2');
-        $hash->setAttribute('algo', Utils::CAPABILITY_HASH_ALGORITHM);
+        $hash->setAttribute('algo', \Moxl\Utils::CAPABILITY_HASH_ALGORITHM);
         $c->appendChild($hash);
 
         $presence->documentElement->appendChild($c);
@@ -240,7 +237,7 @@ class Conference
         if ($this->connected) {
             $conferenceInfo = $presence->createElement('conference-info');
             $conferenceInfo->setAttribute('xmlns', 'urn:ietf:params:xml:ns:conference-info');
-            $conferenceInfo->setAttribute('entity', 'xmpp:'.(string) $this->members[$this->getSFUJid()]);
+            $conferenceInfo->setAttribute('entity', 'xmpp:' . (string)$this->members[$this->getSFUJid()]);
             $conferenceInfo->setAttribute('state', 'full');
             $conferenceInfo->setAttribute('version', '1');
 
@@ -260,7 +257,7 @@ class Conference
 
             foreach ($this->connections as $connection) {
                 $user = $presence->createElement('user');
-                $user->setAttribute('entity', 'xmpp:'.$connection->jid->bareJid());
+                $user->setAttribute('entity', 'xmpp:' . $connection->jid->bareJid());
                 $user->setAttribute('state', 'full');
                 $users->appendChild($user);
             }

@@ -6,15 +6,15 @@ use App\Message;
 use App\Url;
 use App\Widgets\Chat\Chat;
 use App\Widgets\ContactActions\ContactActions;
-use Illuminate\Database\Capsule\Manager as DB;
-use Movim\Widget\Base;
 use Moxl\Xec\Action\Blocking\Block;
 use Moxl\Xec\Action\Blocking\Unblock;
 use Moxl\Xec\Action\Message\Moderate;
 use Moxl\Xec\Action\Message\Retract;
+
+use Illuminate\Database\Capsule\Manager as DB;
 use Moxl\Xec\Payload\Packet;
 
-class ChatActions extends Base
+class ChatActions extends \Movim\Widget\Base
 {
     public function load()
     {
@@ -76,7 +76,7 @@ class ChatActions extends Base
             ->with('reactions.contact')
             ->first();
 
-        if ($message && $message->isClassic() && ! $message->retracted) {
+        if ($message && $message->isClassic() && !$message->retracted) {
             $view = $this->tpl();
 
             $message->body = $message->inlinedBody;
@@ -102,9 +102,7 @@ class ChatActions extends Base
      */
     public function ajaxShowSearchDialog(string $jid, ?bool $muc = false)
     {
-        if (DB::getDriverName() != 'pgsql') {
-            return;
-        }
+        if (DB::getDriverName() != 'pgsql') return;
 
         $view = $this->tpl();
         $view->assign('jid', $jid);
@@ -117,17 +115,13 @@ class ChatActions extends Base
 
     public function ajaxSearchMessages(string $jid, string $keywords, ?bool $muc = false)
     {
-        if (DB::getDriverName() != 'pgsql') {
-            return;
-        }
-        if (! validateJid($jid)) {
-            return;
-        }
+        if (DB::getDriverName() != 'pgsql') return;
+        if (!validateJid($jid)) return;
 
-        if (! empty($keywords)) {
+        if (!empty($keywords)) {
             $keywords = str_replace(' ', ' & ', trim($keywords));
 
-            $messagesQuery = Message::jid($this->me, $jid)
+            $messagesQuery = \App\Message::jid($this->me, $jid)
                 ->selectRaw('*, ts_headline(\'simple\', body, plainto_tsquery(\'simple\', ?), \'StartSel=<mark>,StopSel=</mark>\') AS headline', [$keywords])
                 ->whereRaw('to_tsvector(\'simple\', body) @@ to_tsquery(\'simple\', ?)', [$keywords])
                 ->orderBy('published', 'desc')
@@ -154,14 +148,12 @@ class ChatActions extends Base
         $view = $this->tpl();
         $view->assign('message', $message);
         $view->assign('search', $search);
-
         return $view->draw('_chatactions_message');
     }
 
     public function prepareSearchPlaceholder()
     {
         $view = $this->tpl();
-
         return $view->draw('_chatactions_search_placeholder');
     }
 
@@ -177,7 +169,7 @@ class ChatActions extends Base
         if ($sfu = $conference->hasRelatedSFUService()) {
             $this->dialog($this->view('_chatactions_enable_wide_conference_call', [
                 'conference' => $conference,
-                'sfu' => $sfu,
+                'sfu' => $sfu
             ]));
         }
     }
@@ -194,7 +186,7 @@ class ChatActions extends Base
     /**
      * @brief Retract a message
      *
-     * @param  string  $mid
+     * @param string $mid
      * @return void
      */
     public function ajaxHttpDaemonRetract($mid)
@@ -212,12 +204,12 @@ class ChatActions extends Base
                 ->setId($retract->stanzaid ?? $retract->originid)
                 ->request();
 
-            if (! $retract->isMuc()) {
+            if (!$retract->isMuc()) {
                 $retract->retract();
                 $retract->save();
             }
 
-            $packet = new Packet;
+            $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $retract;
 
             $c = new Chat($this->me, sessionId: $this->sessionId);
@@ -228,7 +220,7 @@ class ChatActions extends Base
     /**
      * @brief Moderate a message
      *
-     * @param  string  $mid
+     * @param string $mid
      * @return void
      */
     public function ajaxHttpDaemonModerate($mid)

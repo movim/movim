@@ -2,7 +2,6 @@
 
 namespace App\Widgets\ChatOmemo;
 
-use Movim\Widget\Base;
 use Moxl\Xec\Action\OMEMO\AnnounceBundle;
 use Moxl\Xec\Action\OMEMO\CleanDevicesList;
 use Moxl\Xec\Action\OMEMO\GetBundle;
@@ -10,7 +9,7 @@ use Moxl\Xec\Action\OMEMO\GetDevicesList;
 use Moxl\Xec\Action\OMEMO\SetDevicesList;
 use Moxl\Xec\Payload\Packet;
 
-class ChatOmemo extends Base
+class ChatOmemo extends \Movim\Widget\Base
 {
     public function load()
     {
@@ -27,7 +26,7 @@ class ChatOmemo extends Base
 
     public function onDevicesList(Packet $packet)
     {
-        [$from, $devices] = array_values($packet->content);
+        list($from, $devices) = array_values($packet->content);
 
         if ($from == $this->me->id) {
             $this->rpc('ChatOmemo.ownDevicesReceived', $from, $devices);
@@ -36,7 +35,7 @@ class ChatOmemo extends Base
 
     public function onDevices(Packet $packet)
     {
-        [$from, $devices] = array_values($packet->content);
+        list($from, $devices) = array_values($packet->content);
 
         $this->rpc(
             $from == $this->me->id
@@ -125,13 +124,13 @@ class ChatOmemo extends Base
 
     public function ajaxAnnounceBundle($bundle, array $devicesIds)
     {
-        if (! array_key_exists($bundle->deviceId, $devicesIds)) {
+        if (!array_key_exists($bundle->deviceId, $devicesIds)) {
             array_push($devicesIds, $bundle->deviceId);
         }
 
         $preKeys = [];
         foreach ($bundle->preKeys as $preKey) {
-            array_push($preKeys, (string) $preKey->key);
+            array_push($preKeys, (string)$preKey->key);
         }
 
         $ab = $this->xmpp(new AnnounceBundle);

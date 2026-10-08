@@ -8,34 +8,24 @@ use DOMElement;
 class SDPtoJingle
 {
     public const JINGLE_PARTICIPANT_XMLNS = '{https://movim.eu}jingle_participant';
-
     private $sdp;
-
     private $arr;
-
     private $jingle;
 
-    private $content = null;
-
-    private $transport = null;
+    private $content    = null;
+    private $transport  = null;
 
     private ?string $action = null;
 
     private $ufrag = null;
-
     private $mid = null;
-
     private $msid = null;
-
     private $sid = null;
-
     private $mujiRoom = null;
 
     // Move the global fingerprint into each medias
     private $globalFingerprint = [];
-
     private $fmtpCache = [];
-
     private $rtcpFbCache = [];
 
     private $directionToSenders = [
@@ -46,32 +36,32 @@ class SDPtoJingle
     ];
 
     private $regex = [
-        'bandwidth' => "/^b=(\w+):(\d+)/i",
-        'candidate' => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay|ufrag)\s?(.+)?/i",
-        'content' => "/^a=content:(\S+)/i",
-        'crypto' => "/^a=crypto:(\d{1,9}) (\w+) (\S+)( (\S+))?/i",
-        'extmap' => "/^a=extmap:([^\s\/]+)(\/([^\s\/]+))? (\S+)/i",
-        'fingerprint' => "/^a=fingerprint:(\S+) (\S+)/i",
-        'fmtp' => "/^a=fmtp:(\d+) (.+)/i",
-        'group' => "/^a=group:(\S+) (.+)/i",
-        'maxptime' => "/^a=maxptime:(\d+)/i",
-        'media' => '/^m=(audio|video|application|data)/i',
-        'mid' => "/^a=mid:(\S+)/i",
-        'msid' => '/^a=msid:(.+)/i',
-        'ptime' => "/^a=ptime:(\d+)/i",
-        'pwd' => "/^a=ice-pwd:(\S+)/i",
+        'bandwidth'       => "/^b=(\w+):(\d+)/i",
+        'candidate'       => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay|ufrag)\s?(.+)?/i",
+        'content'         => "/^a=content:(\S+)/i",
+        'crypto'          => "/^a=crypto:(\d{1,9}) (\w+) (\S+)( (\S+))?/i",
+        'extmap'          => "/^a=extmap:([^\s\/]+)(\/([^\s\/]+))? (\S+)/i",
+        'fingerprint'     => "/^a=fingerprint:(\S+) (\S+)/i",
+        'fmtp'            => "/^a=fmtp:(\d+) (.+)/i",
+        'group'           => "/^a=group:(\S+) (.+)/i",
+        'maxptime'        => "/^a=maxptime:(\d+)/i",
+        'media'           => "/^m=(audio|video|application|data)/i",
+        'mid'             => "/^a=mid:(\S+)/i",
+        'msid'            => "/^a=msid:(.+)/i",
+        'ptime'           => "/^a=ptime:(\d+)/i",
+        'pwd'             => "/^a=ice-pwd:(\S+)/i",
         'rtcp_fb_trr_int' => "/^a=rtcp-fb:(\d+) trr-int (\d+)/i",
-        'rtcp_fb' => "/^a=rtcp-fb:(\S+) (\S+)( (\S+))?/i",
-        'rtcp_mux' => '/^a=rtcp-mux/i',
-        'rtpmap' => "/^a=rtpmap:(\d+) (([^\s\/]+)(\/(\d+)(\/([^\s\/]+))?)?)?/i",
-        'sctpmap' => "/^a=sctpmap:(\d+) (\S+) (\d+)/i",
-        'senders' => '/^a=(sendrecv|sendonly|inactive|recvonly)/i',
-        'sess_id' => "/^o=(\S+) (\d+)/i",
-        'setup' => "/^a=setup:(\S+)/i",
-        'ssrc-group' => "/^a=ssrc-group:(\S+) (.+)/i",
-        'ssrc' => "/^a=ssrc:(\d+) (\w+)(:(\S+))?( (\w+))?/i",
-        'ufrag' => "/^a=ice-ufrag:(\S+)/i",
-        'zrtp_hash' => "/^a=zrtp-hash:(\S+) (\w+)/i",
+        'rtcp_fb'         => "/^a=rtcp-fb:(\S+) (\S+)( (\S+))?/i",
+        'rtcp_mux'        => "/^a=rtcp-mux/i",
+        'rtpmap'          => "/^a=rtpmap:(\d+) (([^\s\/]+)(\/(\d+)(\/([^\s\/]+))?)?)?/i",
+        'sctpmap'         => "/^a=sctpmap:(\d+) (\S+) (\d+)/i",
+        'senders'         => "/^a=(sendrecv|sendonly|inactive|recvonly)/i",
+        'sess_id'         => "/^o=(\S+) (\d+)/i",
+        'setup'           => "/^a=setup:(\S+)/i",
+        'ssrc-group'      => "/^a=ssrc-group:(\S+) (.+)/i",
+        'ssrc'            => "/^a=ssrc:(\d+) (\w+)(:(\S+))?( (\w+))?/i",
+        'ufrag'           => "/^a=ice-ufrag:(\S+)/i",
+        'zrtp_hash'       => "/^a=zrtp-hash:(\S+) (\w+)/i",
     ];
 
     public function __construct(
@@ -138,8 +128,8 @@ class SDPtoJingle
             $this->content = $this->jingle->addChild('content');
             $this->content->addAttribute('creator', 'initiator');
 
-            $this->transport = $this->content->addChild('transport');
-            $this->transport->addAttribute('xmlns', 'urn:xmpp:jingle:transports:ice-udp:1');
+            $this->transport    = $this->content->addChild('transport');
+            $this->transport->addAttribute('xmlns', "urn:xmpp:jingle:transports:ice-udp:1");
             $this->msid = null;
 
             // A hack to ensure that Dino is returning complete Muji content proposal
@@ -159,7 +149,7 @@ class SDPtoJingle
                  * http://xmpp.org/extensions/xep-0167.html#format
                  * doesn't specifiy a case where we only have a value
                  */
-                // $parameter->addAttribute('value', $p[0]);
+                //$parameter->addAttribute('value', $p[0]);
             } else {
                 $parameter = $payloadtype->addChild('parameter');
                 $parameter->addAttribute('name', $p[0]);
@@ -172,7 +162,7 @@ class SDPtoJingle
     {
         foreach ($params as $matches) {
             $rtcpfp = $payloadtype->addChild('rtcp-fb');
-            $rtcpfp->addAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:rtcp-fb:0');
+            $rtcpfp->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:rtcp-fb:0");
             $rtcpfp->addAttribute('type', $matches[2]);
 
             if (isset($matches[4])) {
@@ -211,7 +201,7 @@ class SDPtoJingle
                             // The description node
                             if ($this->action != 'transport-info') {
                                 $description = $this->content->addChild('description');
-                                $description->addAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:1');
+                                $description->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:1");
                                 $description->addAttribute('media', $matches[1]);
 
                                 if ($this->contentCategory) {
@@ -221,9 +211,9 @@ class SDPtoJingle
                                 }
                             }
 
-                            if (! empty($this->globalFingerprint)) {
+                            if (!empty($this->globalFingerprint)) {
                                 $fingerprint = $this->transport->addChild('fingerprint', $this->globalFingerprint['fingerprint']);
-                                $fingerprint->addAttribute('xmlns', 'urn:xmpp:jingle:apps:dtls:0');
+                                $fingerprint->addAttribute('xmlns', "urn:xmpp:jingle:apps:dtls:0");
                                 $fingerprint->addAttribute('hash', $this->globalFingerprint['hash']);
                             }
 
@@ -269,7 +259,8 @@ class SDPtoJingle
 
                             break;
 
-                            // http://xmpp.org/extensions/xep-0167.html#format
+
+                        // http://xmpp.org/extensions/xep-0167.html#format
                         case 'fmtp':
                             $params = explode(';', trim($matches[2]));
                             if (
@@ -282,7 +273,7 @@ class SDPtoJingle
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0293.html
+                        // http://xmpp.org/extensions/xep-0293.html
                         case 'rtcp_fb':
                             if ($matches[1] == '*') {
                                 $this->addRtcpFbParameters($description, [$matches]);
@@ -293,7 +284,7 @@ class SDPtoJingle
                                 ) {
                                     $this->addRtcpFbParameters($payloadtype, [$matches]);
                                 } else {
-                                    if (! isset($this->rtcpFbCache[$matches[1]])) {
+                                    if (!isset($this->rtcpFbCache[$matches[1]])) {
                                         $this->rtcpFbCache[$matches[1]] = [];
                                     }
 
@@ -305,15 +296,15 @@ class SDPtoJingle
 
                         case 'rtcp_fb_trr_int':
                             $rtcpfp = $payloadtype->addChild('rtcp-fb-trr-int');
-                            $rtcpfp->addAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:rtcp-fb:0');
+                            $rtcpfp->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:rtcp-fb:0");
                             $rtcpfp->addAttribute('id', $matches[1]);
                             $rtcpfp->addAttribute('value', $matches[2]);
                             break;
 
-                            // http://xmpp.org/extensions/xep-0167.html#srtp
+                        // http://xmpp.org/extensions/xep-0167.html#srtp
                         case 'crypto':
                             $encryption = $description->addChild('encryption');
-                            $crypto = $encryption->addChild('crypto');
+                            $crypto     = $encryption->addChild('crypto');
                             $crypto->addAttribute('crypto-suite', $matches[2]);
                             $crypto->addAttribute('key-params', $matches[3]);
                             $crypto->addAttribute('tag', $matches[1]);
@@ -322,22 +313,22 @@ class SDPtoJingle
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0262.html
+                        // http://xmpp.org/extensions/xep-0262.html
                         case 'zrtp_hash':
-                            $zrtphash = $encryption->addChild('zrtp-hash', $matches[2]);
-                            $zrtphash->addAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:zrtp:1');
+                            $zrtphash   = $encryption->addChild('zrtp-hash', $matches[2]);
+                            $zrtphash->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:zrtp:1");
                             $zrtphash->addAttribute('version', $matches[1]);
                             break;
 
-                            // Non standard
+                        // Non standard
                         case 'rtcp_mux':
                             $description->addChild('rtcp-mux');
                             break;
 
-                            // http://xmpp.org/extensions/xep-0294.html
+                        // http://xmpp.org/extensions/xep-0294.html
                         case 'extmap':
                             $rtphdrext = $description->addChild('rtp-hdrext');
-                            $rtphdrext->addAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:rtp-hdrext:0');
+                            $rtphdrext->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:rtp-hdrext:0");
                             $rtphdrext->addAttribute('id', $matches[1]);
                             $rtphdrext->addAttribute('uri', $matches[4]);
                             if (isset($matches[3]) && $matches[3] != '') {
@@ -345,21 +336,21 @@ class SDPtoJingle
                             }
                             break;
 
-                            // https://xmpp.org/extensions/xep-0166.html#def-content
+                        // https://xmpp.org/extensions/xep-0166.html#def-content
                         case 'senders':
                             if ($this->content != null) {
                                 $this->content->addAttribute('senders', $this->directionToSenders[$matches[1]]);
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0339.html
+                        // http://xmpp.org/extensions/xep-0339.html
                         case 'ssrc':
-                            $sources = $description->xpath('source[@ssrc="'.$matches[1].'"]');
+                            $sources = $description->xpath('source[@ssrc="' . $matches[1] . '"]');
                             $ssrc = is_array($sources) && count($sources) > 0 ? $sources[0] : null;
 
                             if ($ssrc == null) {
                                 $ssrc = $description->addChild('source');
-                                $ssrc->addAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:ssma:0');
+                                $ssrc->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:ssma:0");
                                 $ssrc->addAttribute('ssrc', $matches[1]);
                             }
 
@@ -393,7 +384,7 @@ class SDPtoJingle
                             $description->addAttribute('maxptime', $matches[1]);
                             break;
 
-                            // https://xmpp.org/extensions/xep-0507.html
+                        // https://xmpp.org/extensions/xep-0507.html
                         case 'content':
                             foreach (explode(',', $matches[1]) as $contentCategory) {
                                 $category = $description->addChild('category');
@@ -402,10 +393,10 @@ class SDPtoJingle
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0338.html
+                        // http://xmpp.org/extensions/xep-0338.html
                         case 'group':
                             $group = $this->jingle->addChild('group');
-                            $group->addAttribute('xmlns', 'urn:xmpp:jingle:apps:grouping:0');
+                            $group->addAttribute('xmlns', "urn:xmpp:jingle:apps:grouping:0");
                             $group->addAttribute('semantics', $matches[1]);
 
                             $params = explode(' ', $matches[2]);
@@ -416,29 +407,29 @@ class SDPtoJingle
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0320.html
+                        // http://xmpp.org/extensions/xep-0320.html
                         case 'fingerprint':
                             if ($this->content == null) {
                                 $this->globalFingerprint['fingerprint'] = $matches[2];
-                                $this->globalFingerprint['hash'] = $matches[1];
+                                $this->globalFingerprint['hash']        = $matches[1];
                             } else {
                                 $fingerprint = $this->transport->addChild('fingerprint', $matches[2]);
-                                $fingerprint->addAttribute('xmlns', 'urn:xmpp:jingle:apps:dtls:0');
+                                $fingerprint->addAttribute('xmlns', "urn:xmpp:jingle:apps:dtls:0");
                                 $fingerprint->addAttribute('hash', $matches[1]);
                             }
 
                             break;
 
-                            // https://xmpp.org/extensions/xep-0343.html
+                        // https://xmpp.org/extensions/xep-0343.html
                         case 'sctpmap':
                             $sctpmap = $this->transport->addChild('sctpmap');
-                            $sctpmap->addAttribute('xmlns', 'urn:xmpp:jingle:transports:dtls-sctp:1');
+                            $sctpmap->addAttribute('xmlns', "urn:xmpp:jingle:transports:dtls-sctp:1");
                             $sctpmap->addAttribute('number', $matches[1]);
                             $sctpmap->addAttribute('protocol', $matches[2]);
                             $sctpmap->addAttribute('streams', $matches[3]);
                             break;
 
-                            // http://xmpp.org/extensions/xep-0320.html
+                        // http://xmpp.org/extensions/xep-0320.html
                         case 'setup':
                             if ($this->content != null) {
                                 $fingerprint->addAttribute('setup', $matches[1]);
@@ -479,13 +470,12 @@ class SDPtoJingle
                             $args = [];
                             if (isset($matches[9])) {
                                 $keyValues = explode(' ', trim($matches[9]));
-                                foreach ($keyValues as $key) {
+                                foreach ($keyValues as $key)
 
                                     foreach (array_chunk($keyValues, 2) as $pair) {
-                                        [$key, $value] = $pair;
+                                        list($key, $value) = $pair;
                                         $args[$key] = $value;
                                     }
-                                }
                             }
 
                             if (isset($args['generation'])) {

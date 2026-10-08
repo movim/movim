@@ -1,5 +1,4 @@
 <?php
-
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -20,7 +19,6 @@ use React\EventLoop\Timer\Timer;
 class ChatStates
 {
     private $_composing = [];
-
     private $_timeout = 30;
 
     public function __construct(private ?User $user = null) {}
@@ -65,15 +63,15 @@ class ChatStates
         global $loop;
 
         $explodedFrom = new Jid($from);
-        $jid = $this->resolveJid(! $mucPM ? $explodedFrom->bareJid() : $from, $to);
+        $jid = $this->resolveJid(!$mucPM ? $explodedFrom->bareJid() : $from, $to);
 
         $timer = $loop->addTimer($this->_timeout, function () use ($from, $to) {
             $this->paused($from, $to);
         });
 
         // Resource within a MUC
-        if (! $mucPM && isset($explodedFrom->resource)) {
-            if (! array_key_exists($jid, $this->_composing)) {
+        if (!$mucPM && isset($explodedFrom->resource)) {
+            if (!array_key_exists($jid, $this->_composing)) {
                 $this->_composing[$jid] = [];
             }
 
@@ -95,9 +93,9 @@ class ChatStates
     public function paused(string $from, string $to, bool $mucPM = false)
     {
         $explodedFrom = new Jid($from);
-        $jid = $this->resolveJid(! $mucPM ? $explodedFrom->bareJid() : $from, $to);
+        $jid = $this->resolveJid(!$mucPM ? $explodedFrom->bareJid() : $from, $to);
 
-        $this->clearState($jid, ! $mucPM ? $explodedFrom->resource : null);
+        $this->clearState($jid, !$mucPM ? $explodedFrom->resource : null);
 
         Wrapper::getInstance()->iterate(
             'chatstate',

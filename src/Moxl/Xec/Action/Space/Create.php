@@ -2,15 +2,13 @@
 
 namespace Moxl\Xec\Action\Space;
 
-use Moxl\Stanza\Space;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Space;
 
 class Create extends Action
 {
     protected $_to;
-
     protected $_node;
-
     protected $_title;
 
     public function request()

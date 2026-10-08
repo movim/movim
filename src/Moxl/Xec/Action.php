@@ -25,7 +25,7 @@ abstract class Action extends Payload
     public function __call($name, $args)
     {
         if (substr($name, 0, 3) == 'set') {
-            $property = '_'.strtolower(substr($name, 3));
+            $property = '_' . strtolower(substr($name, 3));
 
             if (array_key_exists(0, $args)) {
                 $this->$property = $args[0];

@@ -4,20 +4,17 @@ namespace Movim\Daemon;
 
 use App\Session;
 use Movim\Daemon\Session as DaemonSession;
-use Ratchet\ConnectionInterface;
-use React\ChildProcess\Process;
 use React\EventLoop\LoopInterface;
+use React\ChildProcess\Process;
+use Ratchet\ConnectionInterface;
 
 class SessionsWorker
 {
     public const MAX_SESSIONS = 8;
 
     public string $id;
-
     public ?Process $process = null;
-
     public ?ConnectionInterface $internalSocket = null;
-
     private array $sessions = [];
 
     public function __construct(
@@ -34,7 +31,7 @@ class SessionsWorker
         $this->internalSocket = $conn;
 
         if (config('daemon.verbose')) {
-            echo colorize('🔧 '.$this->id, 'turquoise').': '.colorize($conn->resourceId." internal connected\n", 'green');
+            echo colorize('🔧 ' . $this->id, 'turquoise') . ": " . colorize($conn->resourceId . " internal connected\n", 'green');
         }
 
         /**
@@ -55,10 +52,8 @@ class SessionsWorker
 
     public function newSession(string $sid, ConnectionInterface $connection): ?DaemonSession
     {
-        if (! $this->hasSession($sid)) {
-            if (config('daemon.verbose')) {
-                echo colorize($this->id, 'turquoise').' '.colorize("new session\n", 'green');
-            }
+        if (!$this->hasSession($sid)) {
+            if (config('daemon.verbose')) echo colorize($this->id, 'turquoise') . ' ' . colorize("new session\n", 'green');
             $this->sessions[$sid] = new DaemonSession(
                 worker: $this,
                 sid: $sid,
@@ -66,9 +61,7 @@ class SessionsWorker
                 language: $this->getLanguage($connection)
             );
 
-            if (config('daemon.verbose')) {
-                echo colorize($this->id, 'turquoise').' '.colorize("attach connection to session\n", 'green');
-            }
+            if (config('daemon.verbose')) echo colorize($this->id, 'turquoise') . ' ' . colorize("attach connection to session\n", 'green');
             $this->attachSession($sid, $connection);
 
             // If we already have an attached worker
@@ -116,7 +109,7 @@ class SessionsWorker
     public function close()
     {
         if (config('daemon.verbose')) {
-            echo colorize('🔧 '.$this->id, 'turquoise').': '.colorize("closing the worker\n", 'green');
+            echo colorize('🔧 ' . $this->id, 'turquoise') . ": " . colorize("closing the worker\n", 'green');
         }
 
         if ($this->process) {
@@ -131,7 +124,7 @@ class SessionsWorker
         $configuration = '-n ';
 
         foreach (requiredExtensions() as $extension) {
-            $configuration .= '-dextension='.$extension.'.so ';
+            $configuration .= '-dextension=' . $extension . '.so ';
         }
 
         // Enable Opcache
@@ -141,21 +134,21 @@ class SessionsWorker
 
         // Launching the linker
         $this->process = new Process(
-            'exec '.PHP_BINARY.' '.$configuration.' -d=memory_limit=512M sessionsworker.php ',
+            'exec ' . PHP_BINARY . ' ' . $configuration . ' -d=memory_limit=512M sessionsworker.php ',
             cwd: WORKERS_PATH,
             env: [
-                'wid' => $this->id,
-                'baseuri' => $this->baseuri,
-                'DAEMON_DEBUG' => config('daemon.debug'),
-                'DAEMON_PORT' => config('daemon.port'),
+                'wid'           => $this->id,
+                'baseuri'       => $this->baseuri,
+                'DAEMON_DEBUG'  => config('daemon.debug'),
+                'DAEMON_PORT'   => config('daemon.port'),
                 'DAEMON_VERBOSE' => config('daemon.verbose'),
-                'DB_DATABASE' => config('database.database'),
-                'DB_DRIVER' => config('database.driver'),
-                'DB_HOST' => config('database.host'),
-                'DB_PASSWORD' => config('database.password'),
-                'DB_PORT' => config('database.port'),
-                'DB_USERNAME' => config('database.username'),
-                'key' => $this->key,
+                'DB_DATABASE'   => config('database.database'),
+                'DB_DRIVER'     => config('database.driver'),
+                'DB_HOST'       => config('database.host'),
+                'DB_PASSWORD'   => config('database.password'),
+                'DB_PORT'       => config('database.port'),
+                'DB_USERNAME'   => config('database.username'),
+                'key'           => $this->key,
             ]
         );
         $this->process->start($loop);
@@ -163,7 +156,7 @@ class SessionsWorker
         // The linker died, we close properly the session
         $this->process->on('exit', function ($output) {
             if (config('daemon.verbose')) {
-                echo colorize($this->id, 'yellow').' : '.colorize("sessionsworker killed \n", 'red');
+                echo colorize($this->id, 'yellow') . " : " . colorize("sessionsworker killed \n", 'red');
             }
 
             $this->process = null;
@@ -180,7 +173,6 @@ class SessionsWorker
     private function getLanguage(ConnectionInterface $connection)
     {
         $languages = $connection->httpRequest->getHeader('Accept-Language');
-
-        return (is_array($languages) && ! empty($languages)) ? $languages[0] : false;
+        return (is_array($languages) && !empty($languages)) ? $languages[0] : false;
     }
 }

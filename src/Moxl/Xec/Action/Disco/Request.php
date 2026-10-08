@@ -2,16 +2,13 @@
 
 namespace Moxl\Xec\Action\Disco;
 
-use App\Info;
-use Moxl\Stanza\Disco;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Disco;
 
 class Request extends Action
 {
     protected ?string $_node = null;
-
     protected ?string $_to = null;
-
     protected ?string $_parent = null;
 
     public function request()
@@ -23,7 +20,7 @@ class Request extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         // Info
-        $info = new Info;
+        $info = new \App\Info;
         $info->set($stanza, $this->_node, $this->_parent);
 
         /**
@@ -31,12 +28,10 @@ class Request extends Action
          */
         if (
             str_starts_with($info->node, 'urn:xmpp:caps')
-            && ! $info->checkCapabilityHash()
-        ) {
-            return;
-        }
+            && !$info->checkCapabilityHash()
+        ) return;
 
-        $found = Info::where('server', $info->server)
+        $found = \App\Info::where('server', $info->server)
             ->where('node', $info->node)
             ->first();
 

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateMujiCallsTable extends Migration
 {
@@ -16,8 +16,8 @@ class CreateMujiCallsTable extends Migration
             $table->boolean('video', false);
 
             $table->foreign('session_id')
-                ->references('id')->on('sessions')
-                ->onDelete('cascade');
+                  ->references('id')->on('sessions')
+                  ->onDelete('cascade');
 
             $table->primary(['id', 'session_id']);
 
@@ -34,12 +34,12 @@ class CreateMujiCallsTable extends Migration
             $table->primary(['session_id', 'muji_call_id', 'jid']);
 
             $table->foreign('session_id')
-                ->references('id')->on('sessions')
-                ->onDelete('cascade');
+                  ->references('id')->on('sessions')
+                  ->onDelete('cascade');
 
             $table->foreign(['session_id', 'muji_call_id'])
-                ->references(['session_id', 'id'])->on('muji_calls')
-                ->onDelete('cascade');
+                  ->references(['session_id', 'id'])->on('muji_calls')
+                  ->onDelete('cascade');
 
             $table->timestamps();
         });

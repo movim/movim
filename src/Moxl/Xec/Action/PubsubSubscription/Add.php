@@ -3,29 +3,22 @@
 namespace Moxl\Xec\Action\PubsubSubscription;
 
 use App\Subscription;
-use Moxl\Stanza\PubsubSubscription;
 use Moxl\Xec\Action;
+use Moxl\Stanza\PubsubSubscription;
 use Moxl\Xec\Action\Pubsub\SetConfig;
 
 class Add extends Action
 {
     protected $_server;
-
     protected $_from;
-
     protected $_node;
-
     protected $_data = [];
-
     protected $_pepnode = Subscription::PUBLIC_NODE;
-
     // See https://github.com/processone/ejabberd/issues/3044#issuecomment-1605349858
     protected $_withPublishOption = true;
 
     protected ?string $_extensionsxml = null;
-
     protected ?int $_notify = null;
-
     protected ?bool $_pinned = false;
 
     public function request()
@@ -48,10 +41,10 @@ class Add extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $subscription = Subscription::firstOrNew([
+        $subscription = \App\Subscription::firstOrNew([
             'jid' => $this->_from,
             'server' => $this->_server,
-            'node' => $this->_node,
+            'node' => $this->_node
         ]);
 
         if ($this->_pepnode == Subscription::PUBLIC_NODE) {
@@ -88,8 +81,8 @@ class Add extends Action
     {
         $config = new SetConfig($this->me, sessionId: $this->sessionId);
         $config->setNode($this->_pepnode)
-            ->setData(PubsubSubscription::generateConfig($this->_pepnode))
-            ->request();
+               ->setData(PubsubSubscription::generateConfig($this->_pepnode))
+               ->request();
 
         $this->_withPublishOption = false;
         $this->request();

@@ -2,16 +2,14 @@
 
 namespace Moxl\Xec\Action\OMEMO;
 
-use App\Bundle;
-use Moxl\Stanza\OMEMO;
 use Moxl\Xec\Action;
+use Moxl\Stanza\OMEMO;
+use App\Bundle;
 
 class GetBundle extends Action
 {
     protected string $_to;
-
     protected string $_id;
-
     protected bool $_notifyLast = false;
 
     public function request()
@@ -25,7 +23,6 @@ class GetBundle extends Action
     public function notifyLast()
     {
         $this->_notifyLast = true;
-
         return $this;
     }
 

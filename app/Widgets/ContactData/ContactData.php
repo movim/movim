@@ -2,10 +2,7 @@
 
 namespace App\Widgets\ContactData;
 
-use App\Contact;
-use App\Message;
 use Movim\Widget\Base;
-use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Payload\Packet;
 
 class ContactData extends Base
@@ -32,7 +29,7 @@ class ContactData extends Base
 
     public function prepareData($jid)
     {
-        if (! validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -40,11 +37,11 @@ class ContactData extends Base
 
         $view->assign(
             'message',
-            Message::jid($this->me, $jid)
-                ->orderBy('published', 'desc')
-                ->first()
+            \App\Message::jid($this->me, $jid)
+                        ->orderBy('published', 'desc')
+                        ->first()
         );
-        $view->assign('contact', Contact::firstOrNew(['id' => $jid]));
+        $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('roster', $this->me->session->contacts()->where('jid', $jid)->first());
 
         return $view->draw('_contactdata');
@@ -61,24 +58,24 @@ class ContactData extends Base
 
     public function ajaxGet($jid)
     {
-        if (! validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
-        $this->rpc('MovimTpl.fill', '#'.cleanupId($jid).'_contact_data', $this->prepareData($jid));
+        $this->rpc('MovimTpl.fill', '#'.cleanupId($jid) . '_contact_data', $this->prepareData($jid));
         $this->rpc('Notif_ajaxGet');
     }
 
     public function ajaxRefresh($jid)
     {
-        if (! validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
-        $contact = Contact::find($jid);
+        $contact = \App\Contact::find($jid);
 
-        if (! $contact || $contact->isOld()) {
-            $a = $this->xmpp(new Get);
+        if (!$contact || $contact->isOld()) {
+            $a = $this->xmpp(new \Moxl\Xec\Action\Avatar\Get);
             $a->setTo($jid)->request();
 
             $a = $this->xmpp(new \Moxl\Xec\Action\Banner\Get);
@@ -86,7 +83,7 @@ class ContactData extends Base
 
             $r = $this->xmpp(new \Moxl\Xec\Action\Vcard4\Get);
             $r->setTo($jid)->request();
-        } elseif ($contact) {
+        } else if ($contact) {
             $this->rpc('Notif_ajaxGet');
         }
     }

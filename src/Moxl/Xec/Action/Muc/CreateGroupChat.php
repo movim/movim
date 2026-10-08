@@ -2,23 +2,17 @@
 
 namespace Moxl\Xec\Action\Muc;
 
-use Moxl\Stanza\Muc;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Muc;
 
 class CreateGroupChat extends Action
 {
     protected string $_to;
-
     protected string $_name;
-
     protected string $_nick;
-
     protected $_autojoin;
-
     protected $_pinned;
-
     protected bool $_notify = true;
-
     protected array $_extraConfig = [];
 
     public function request()
@@ -45,7 +39,6 @@ class CreateGroupChat extends Action
     public function setExtraConfig(array $extraConfig)
     {
         $this->_extraConfig = $extraConfig;
-
         return $this;
     }
 

@@ -3,6 +3,7 @@
 namespace App\Widgets\Confirm;
 
 use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Confirm\Accept;
 use Moxl\Xec\Action\Confirm\Refuse;
 use Moxl\Xec\Payload\Packet;
@@ -31,19 +32,19 @@ class Confirm extends Base
     {
         $accept = $this->xmpp(new Accept);
         $accept->setTo($to)
-            ->setId($id)
-            ->setUrl($url)
-            ->setMethod($method)
-            ->request();
+               ->setId($id)
+               ->setUrl($url)
+               ->setMethod($method)
+               ->request();
     }
 
     public function ajaxRefuse($to, $id, $url, $method)
     {
         $refuse = $this->xmpp(new Refuse);
         $refuse->setTo($to)
-            ->setId($id)
-            ->setUrl($url)
-            ->setMethod($method)
-            ->request();
+               ->setId($id)
+               ->setUrl($url)
+               ->setMethod($method)
+               ->request();
     }
 }

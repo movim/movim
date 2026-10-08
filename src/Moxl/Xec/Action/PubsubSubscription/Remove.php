@@ -3,17 +3,14 @@
 namespace Moxl\Xec\Action\PubsubSubscription;
 
 use App\Subscription;
-use Moxl\Stanza\PubsubSubscription;
 use Moxl\Xec\Action;
+use Moxl\Stanza\PubsubSubscription;
 
 class Remove extends Action
 {
     protected $_server;
-
     protected $_from;
-
     protected $_node;
-
     protected $_pepnode = Subscription::PUBLIC_NODE;
 
     public function request()

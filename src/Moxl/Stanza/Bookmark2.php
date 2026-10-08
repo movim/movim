@@ -4,16 +4,12 @@ namespace Moxl\Stanza;
 
 use App\Conference;
 use Illuminate\Support\Collection;
-use Moxl\Utils;
 
 class Bookmark2
 {
     public const VERSION = '1';
-
     public const NODE = 'urn:xmpp:bookmarks:';
-
     public const HIERARCHY_NAMESPACE = 'https://slidge.im/spaces/bookmarks-hierarchy';
-
     public const NODE_CONFIG = [
         'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
         'pubsub#persist_items' => 'true',
@@ -29,7 +25,7 @@ class Bookmark2
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
         $items = $dom->createElement('items');
-        $items->setAttribute('node', self::NODE.$version);
+        $items->setAttribute('node', self::NODE . $version);
         $pubsub->appendChild($items);
 
         return $pubsub;
@@ -47,7 +43,7 @@ class Bookmark2
 
         $publish = $dom->createElement('publish');
         $publish->setAttribute('node', $node == null
-            ? self::NODE.$version
+            ? self::NODE . $version
             : $node);
         $pubsub->appendChild($publish);
 
@@ -59,7 +55,7 @@ class Bookmark2
         $directoriesNode->setAttribute('xmlns', self::HIERARCHY_NAMESPACE);
         $item->appendChild($directoriesNode);
 
-        foreach ($directories as $id => $title) {
+        foreach ($directories  as $id => $title) {
             $directory = $dom->createElement('directory');
             $directory->setAttribute('id', $id);
             $directory->setAttribute('title', $title);
@@ -73,7 +69,7 @@ class Bookmark2
             $x->setAttribute('type', 'submit');
             $publishOption->appendChild($x);
 
-            Utils::injectConfigInX($x, $nodeConfig);
+            \Moxl\Utils::injectConfigInX($x, $nodeConfig);
 
             $pubsub->appendChild($publishOption);
         }
@@ -93,7 +89,7 @@ class Bookmark2
 
         $publish = $dom->createElement('publish');
         $publish->setAttribute('node', $node == null
-            ? self::NODE.$version
+            ? self::NODE . $version
             : $node);
         $pubsub->appendChild($publish);
 
@@ -102,7 +98,7 @@ class Bookmark2
         $publish->appendChild($item);
 
         $conference = $dom->createElement('conference');
-        $conference->setAttribute('xmlns', self::NODE.$version);
+        $conference->setAttribute('xmlns', self::NODE . $version);
         $conference->setAttribute('name', $configuration->name);
         if ($configuration->autojoin) {
             $conference->setAttribute('autojoin', 'true');
@@ -170,7 +166,7 @@ class Bookmark2
             $x->setAttribute('type', 'submit');
             $publishOption->appendChild($x);
 
-            Utils::injectConfigInX($x, $nodeConfig);
+            \Moxl\Utils::injectConfigInX($x, $nodeConfig);
 
             $pubsub->appendChild($publishOption);
         }

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreatePostsTable extends Migration
 {
@@ -55,8 +55,8 @@ class CreatePostsTable extends Migration
             $table->timestamps();
 
             $table->foreign('post_id')
-                ->references('id')->on('posts')
-                ->onDelete('cascade');
+                  ->references('id')->on('posts')
+                  ->onDelete('cascade');
         });
     }
 

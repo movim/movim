@@ -2,13 +2,13 @@
 
 namespace App\Widgets\CommunityConfig;
 
-use App\Info;
 use Movim\Image;
 use Movim\Librairies\XMPPtoForm;
 use Movim\Widget\Base;
-use Moxl\Xec\Action\Avatar\Set as AvatarSet;
+
 use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Action\Pubsub\SetConfig;
+use Moxl\Xec\Action\Avatar\Set as AvatarSet;
 use Moxl\Xec\Payload\Packet;
 
 class CommunityConfig extends Base
@@ -23,7 +23,7 @@ class CommunityConfig extends Base
 
     public function onConfig(Packet $packet)
     {
-        [$config, $accessModel, $origin, $node, $advanced] = array_values($packet->content);
+        list($config, $accessModel, $origin, $node, $advanced) = array_values($packet->content);
 
         $view = $this->tpl();
 
@@ -59,12 +59,12 @@ class CommunityConfig extends Base
 
     public function ajaxGetAvatar($origin, $node)
     {
-        if (! validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
         $view = $this->tpl();
-        $view->assign('info', Info::where('server', $origin)
+        $view->assign('info', \App\Info::where('server', $origin)
             ->where('node', $node)
             ->first());
 
@@ -73,11 +73,11 @@ class CommunityConfig extends Base
 
     public function ajaxSetAvatar($origin, $node, $form)
     {
-        if (! validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
-        $key = $origin.$node.'avatar';
+        $key = $origin . $node . 'avatar';
 
         $image = new Image;
         $image->fromBase64($form->photobin->value);
@@ -96,7 +96,7 @@ class CommunityConfig extends Base
 
     public function ajaxGetConfig($origin, $node, $advanced = false)
     {
-        if (! validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -113,7 +113,7 @@ class CommunityConfig extends Base
 
     public function ajaxSetConfig(\stdClass $data, $origin, $node)
     {
-        if (! validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 

@@ -2,19 +2,16 @@
 
 namespace App;
 
-use Awobaz\Compoships\Compoships;
 use Movim\Image;
 use Movim\Jid;
 use Movim\Model;
 
 class MujiCallParticipant extends Model
 {
-    use Compoships;
+    use \Awobaz\Compoships\Compoships;
 
     public $incrementing = false;
-
     protected $primaryKey = ['session_id', 'muji_call_id', 'jid'];
-
     protected $fillable = ['session_id', 'muji_call_id', 'jid', 'left_at', 'inviter'];
 
     public function session()

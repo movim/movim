@@ -2,8 +2,8 @@
 
 namespace App\Widgets\Drawer;
 
-use Movim\RPC;
 use Movim\Widget\Base;
+use Movim\RPC;
 
 class Drawer extends Base
 {

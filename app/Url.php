@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Respect\Validation\Validator;
-
 use function React\Async\await;
 
 class Url extends Model
@@ -13,14 +12,10 @@ class Url extends Model
     {
         if (Validator::url()->isValid($url)) {
             $hash = hash('sha256', $url);
-            $dbUrl = Url::where('hash', $hash)->first();
+            $dbUrl = \App\Url::where('hash', $hash)->first();
 
-            if ($dbUrl) {
-                return $dbUrl;
-            }
-            if ($timeout == 0) {
-                return null;
-            }
+            if ($dbUrl) return $dbUrl;
+            if ($timeout == 0) return null;
 
             try {
                 $resolved = await(requestResolverWorker($url, $timeout));
@@ -49,8 +44,7 @@ class Url extends Model
 
                     return $dbUrl;
                 }
-            } catch (\Exception $e) {
-            }
+            } catch (\Exception $e) {}
         }
 
         return null;
@@ -61,7 +55,7 @@ class Url extends Model
         $dbTags = [];
 
         foreach ($tags as $tag) {
-            array_push($dbTags, (string) $tag);
+            array_push($dbTags, (string)$tag);
         }
 
         $this->attributes['serialized_tags'] = serialize($dbTags);
@@ -80,10 +74,10 @@ class Url extends Model
             $image = is_array($image) ? $image['url'] : $image; // hack
             if (filter_var($image, FILTER_VALIDATE_URL)) {
                 array_push($dbImages, [
-                    'url' => (string) $image,
+                    'url' => (string)$image,
                     'size' => $image == $this->attributes['url']
                         ? $this->attributes['content_length']
-                        : 0,
+                        : 0
                 ]);
             }
         }
@@ -111,7 +105,7 @@ class Url extends Model
             $file->name = $this->title ?? $name;
             $file->type = $this->content_type;
             $file->size = count($this->images) > 0 ? $this->content_length : 0;
-            $file->url = $this->url;
+            $file->url  = $this->url;
 
             return $file;
         }

@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 return [
     '1f004' => 'mahjong red dragon',
     '1f0cf' => 'joker',

@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\OMEMO;
 
-use Moxl\Stanza\OMEMO;
 use Moxl\Xec\Action;
+use Moxl\Stanza\OMEMO;
 
 class GetDevicesList extends Action
 {
@@ -20,9 +20,9 @@ class GetDevicesList extends Action
         $devicesIds = [];
 
         foreach ($stanza->pubsub->items->item as $item) {
-            if ((string) $item->attributes()->id == 'current' || $stanza->pubsub->items->count() == 1) {
+            if ((string)$item->attributes()->id == 'current' || $stanza->pubsub->items->count() == 1) {
                 foreach ($item->list->device as $device) {
-                    array_push($devicesIds, (string) $device->attributes()->id);
+                    array_push($devicesIds, (string)$device->attributes()->id);
                 }
             }
         }
@@ -50,7 +50,7 @@ class GetDevicesList extends Action
 
         $this->pack([
             'from' => $this->_to,
-            'devices' => $devicesIds,
+            'devices' => $devicesIds
         ]);
         $this->deliver();
     }

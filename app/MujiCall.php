@@ -2,19 +2,15 @@
 
 namespace App;
 
-use Awobaz\Compoships\Compoships;
 use Awobaz\Compoships\Database\Eloquent\Model;
 
 class MujiCall extends Model
 {
-    use Compoships;
+    use \Awobaz\Compoships\Compoships;
 
     public $incrementing = false;
-
     protected $primaryKey = ['session_id', 'id'];
-
     protected $fillable = ['session_id', 'id', 'muc', 'jidfrom', 'video', 'isfromconference'];
-
     protected $with = ['participants', 'presences'];
 
     public function session()
@@ -54,10 +50,10 @@ class MujiCall extends Model
         return linker($this->session_id)
             ? linker($this->session_id)->currentCall->isJidInCall($this->jidfrom)
             && linker($this->session_id)->currentCall->mujiRoom == $this->muc
-            : (bool) requestAPI('mujiincall', post: [
+            : (bool)requestAPI('mujiincall', post: [
                 'sessionid' => $this->session_id,
                 'jid' => $this->jidfrom,
-                'mujiroom' => $this->muc,
+                'mujiroom' => $this->muc
             ]);
     }
 

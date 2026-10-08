@@ -8,11 +8,8 @@ use Moxl\Xec\Action;
 class SetSubscription extends Action
 {
     protected $_to;
-
     protected $_node;
-
     protected $_jid;
-
     protected $_subscription;
 
     public function request()
@@ -31,7 +28,7 @@ class SetSubscription extends Action
             'server' => $this->_to,
             'node' => $this->_node,
             'jid' => $this->_jid,
-            'subscription' => $this->_subscription,
+            'subscription' => $this->_subscription
         ]);
         $this->deliver();
     }

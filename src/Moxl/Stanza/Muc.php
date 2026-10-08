@@ -64,7 +64,7 @@ class Muc
         $x->setAttribute('type', 'submit');
         $query->appendChild($x);
 
-        Utils::injectConfigInX($x, $data);
+        \Moxl\Utils::injectConfigInX($x, $data);
 
         return $query;
     }
@@ -101,7 +101,7 @@ class Muc
         $x->setAttribute('type', 'submit');
         $query->appendChild($x);
 
-        Utils::injectConfigInX($x, [
+        \Moxl\Utils::injectConfigInX($x, [
             'FORM_TYPE' => 'http://jabber.org/protocol/muc#roomconfig',
             'muc#roomconfig_persistentroom' => 'false',
             'muc#roomconfig_membersonly' => 'false',
@@ -130,13 +130,12 @@ class Muc
             'muc#roomconfig_membersonly' => 'true',
             'muc#roomconfig_whois' => 'anyone',
             'muc#roomconfig_publicroom' => 'false',
-            // 'muc#roomconfig_allowpm' => 'false'
+            //'muc#roomconfig_allowpm' => 'false'
         ];
 
         $config += $extraConfig;
 
-        Utils::injectConfigInX($x, $config);
-
+        \Moxl\Utils::injectConfigInX($x, $config);
         return $query;
     }
 
@@ -151,7 +150,7 @@ class Muc
         $x->setAttribute('type', 'submit');
         $query->appendChild($x);
 
-        Utils::injectConfigInX($x, [
+        \Moxl\Utils::injectConfigInX($x, [
             'FORM_TYPE' => 'http://jabber.org/protocol/muc#roomconfig',
             'muc#roomconfig_roomname' => $name,
             'muc#roomconfig_persistentroom' => 'true',
@@ -159,7 +158,7 @@ class Muc
             'muc#roomconfig_membersonly' => 'false',
             'muc#roomconfig_whois' => 'moderators',
             'muc#roomconfig_publicroom' => 'true',
-            // 'muc#roomconfig_allowpm' => 'anyone'
+            //'muc#roomconfig_allowpm' => 'anyone'
         ]);
 
         return $query;

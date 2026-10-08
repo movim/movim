@@ -1,14 +1,17 @@
 <?php
 
-use App\Contact;
 use Movim\Migration;
+use App\Contact;
+use Illuminate\Database\Schema\Blueprint;
 
 class ClearAvatarHashContactsTable extends Migration
 {
     public function up()
     {
-        Contact::whereNotNull('avatarhash')->update(['avatarhash' => null]);
+        App\Contact::whereNotNull('avatarhash')->update(['avatarhash' => null]);
     }
 
-    public function down() {}
+    public function down()
+    {
+    }
 }

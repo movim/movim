@@ -7,9 +7,7 @@ use Movim\Model;
 class Bundle extends Model
 {
     public $incrementing = false;
-
     public const OMEMO_BUNDLE = 'eu.siacs.conversations.axolotl.bundles:';
-
     protected $primaryKey = ['user_id', 'jid', 'bundleid'];
 
     public function set(User $user, string $jid, string $bundleId, $bundle)
@@ -18,16 +16,16 @@ class Bundle extends Model
         $this->jid = $jid;
         $this->bundleid = $bundleId;
 
-        $this->signedprekeypublic = (string) $bundle->signedPreKeyPublic;
-        $this->signedprekeyid = (int) $bundle->signedPreKeyPublic->attributes()->signedPreKeyId;
-        $this->signedprekeysignature = (string) $bundle->signedPreKeySignature;
+        $this->signedprekeypublic = (string)$bundle->signedPreKeyPublic;
+        $this->signedprekeyid = (int)$bundle->signedPreKeyPublic->attributes()->signedPreKeyId;
+        $this->signedprekeysignature = (string)$bundle->signedPreKeySignature;
 
-        $this->identitykey = (string) $bundle->identityKey;
+        $this->identitykey = (string)$bundle->identityKey;
 
         $prekeys = [];
 
         foreach ($bundle->prekeys->preKeyPublic as $prekey) {
-            $prekeys[(string) $prekey->attributes()->preKeyId] = (string) $prekey;
+            $prekeys[(string)$prekey->attributes()->preKeyId] = (string)$prekey;
         }
 
         $this->prekeys = serialize($prekeys);
@@ -42,9 +40,7 @@ class Bundle extends Model
     {
         $preKeys = unserialize($this->attributes['prekeys']);
 
-        if (empty($preKeys)) {
-            return null;
-        }
+        if (empty($preKeys)) return null;
 
         $pickedKey = array_rand($preKeys);
 
@@ -54,7 +50,7 @@ class Bundle extends Model
             'signedprekeypublic' => $this->signedprekeypublic,
             'signedprekeyid' => $this->signedprekeyid,
             'signedprekeysignature' => $this->signedprekeysignature,
-            'prekey' => ['id' => $pickedKey, 'value' => $this->prekeys[$pickedKey]],
+            'prekey' => ['id' => $pickedKey, 'value' => $this->prekeys[$pickedKey]]
         ];
     }
 }

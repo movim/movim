@@ -3,13 +3,11 @@
 namespace App\Widgets\Register;
 
 use Movim\Librairies\XMPPtoForm;
-use Movim\Widget\Base;
-use Moxl\Stanza\Stream;
-use Moxl\Xec\Action\Register\Get;
 use Moxl\Xec\Action\Register\Set;
+use Moxl\Xec\Action\Register\Get;
 use Moxl\Xec\Payload\Packet;
 
-class Register extends Base
+class Register extends \Movim\Widget\Base
 {
     public function load()
     {
@@ -30,7 +28,7 @@ class Register extends Base
 
         $xtf = new XMPPtoForm;
         $html = '';
-        if (! empty($form->x)) {
+        if (!empty($form->x)) {
             switch ($form->x->attributes()->xmlns) {
                 case 'jabber:x:data':
                     $formview = $this->tpl();
@@ -38,7 +36,7 @@ class Register extends Base
                     $html = $formview->draw('_register_form');
                     break;
                 case 'jabber:x:oob':
-                    $this->rpc('MovimUtils.redirect', (string) $form->x->url);
+                    $this->rpc('MovimUtils.redirect', (string)$form->x->url);
                     break;
             }
         } else {
@@ -88,7 +86,7 @@ class Register extends Base
 
     public function ajaxGetForm(string $host)
     {
-        linker($this->sessionId)->writeXMPP(Stream::init($host));
+        linker($this->sessionId)->writeXMPP(\Moxl\Stanza\Stream::init($host));
 
         $g = $this->xmpp(new Get);
         $g->setTo($host)->request();
@@ -101,7 +99,6 @@ class Register extends Base
             && $form->re_password->value != $form->password->value
         ) {
             $this->toast($this->__('account.password_not_same'));
-
             return;
         }
 

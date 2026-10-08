@@ -2,10 +2,10 @@
 
 namespace App\Widgets\CommunitiesServers;
 
-use App\Info;
 use Movim\Widget\Base;
-use Moxl\Xec\Action\Disco\Items;
+
 use Moxl\Xec\Action\Disco\Request;
+use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Payload\Packet;
 
 class CommunitiesServers extends Base
@@ -53,9 +53,8 @@ class CommunitiesServers extends Base
     {
         $origin = $form->server->value;
 
-        if (! validateServer($origin)) {
+        if (!validateServer($origin)) {
             $this->toast($this->__('communities.disco_error'));
-
             return;
         }
 
@@ -75,7 +74,7 @@ class CommunitiesServers extends Base
 
     public function prepareCommunities()
     {
-        $servers = Info::whereCategory('pubsub')
+        $servers = \App\Info::whereCategory('pubsub')
             ->whereType('service')
             ->where('node', '')
             ->restrictUserHost($this->me)

@@ -8,7 +8,6 @@ use Moxl\Xec\Action;
 class Subscribe extends Action
 {
     protected $_to;
-
     protected $_status;
 
     public function request()

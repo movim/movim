@@ -17,12 +17,12 @@ class NewsNav extends Base
         $view = $this->tpl();
 
         $posts = \App\Post::where('open', true)
-            ->orderBy('posts.published', 'desc')
-            ->restrictToCommunities()
-            ->restrictUserHost($this->me)
-            ->restrictNSFW($this->me)
-            ->recents()
-            ->take(6);
+                          ->orderBy('posts.published', 'desc')
+                          ->restrictToCommunities()
+                          ->restrictUserHost($this->me)
+                          ->restrictNSFW($this->me)
+                          ->recents()
+                          ->take(6);
 
         if (isset($server) && $server != 'subscriptions') {
             $posts->where('posts.server', $server);

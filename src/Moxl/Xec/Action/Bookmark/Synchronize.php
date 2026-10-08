@@ -2,9 +2,8 @@
 
 namespace Moxl\Xec\Action\Bookmark;
 
-use App\Conference;
-use Moxl\Stanza\Bookmark;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Bookmark;
 use Moxl\Xec\Action\Bookmark2\Set;
 
 /**
@@ -22,16 +21,16 @@ class Synchronize extends Action
 
     protected function saveItem($c)
     {
-        $conference = new Conference;
+        $conference = new \App\Conference;
 
-        $conference->conference = (string) $c->attributes()->jid;
-        $conference->name = (string) $c->attributes()->name;
-        $conference->nick = (string) $c->nick;
-        $conference->autojoin = filter_var($c->attributes()->autojoin, FILTER_VALIDATE_BOOLEAN);
+        $conference->conference     = (string)$c->attributes()->jid;
+        $conference->name           = (string)$c->attributes()->name;
+        $conference->nick           = (string)$c->nick;
+        $conference->autojoin       = filter_var($c->attributes()->autojoin, FILTER_VALIDATE_BOOLEAN);
 
         $s = new Set($this->me, sessionId: $this->sessionId);
         $s->setConference($conference)
-            ->request();
+          ->request();
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

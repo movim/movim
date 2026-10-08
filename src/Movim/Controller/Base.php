@@ -1,5 +1,4 @@
 <?php
-
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -8,23 +7,17 @@
 namespace Movim\Controller;
 
 use App\User;
-use Movim\Route;
 use Movim\Template\Builder;
+use Movim\Route;
 
 class Base
 {
     public string $name = 'main'; // The name of the current page
-
     protected bool $session_only = false; // The page is protected by a session?
-
     protected bool $set_cookie = true; // Set a fresh cookie
-
     protected bool $raw = false; // Display only the content?
-
     protected bool $public = false; // It's a public page
-
     protected bool $js_check = true; // Browser check if Javascript is enabled
-
     protected ?Builder $page;
 
     public function __construct(protected ?User $user = null)
@@ -49,7 +42,7 @@ class Base
     protected function redirect(string $page, ?array $params = null)
     {
         $url = Route::urlize($page, $params);
-        header('Location: '.$url);
+        header('Location: ' . $url);
         exit;
     }
 
@@ -89,7 +82,7 @@ class Base
         $this->page->addScript('libsignal_protocol.min.js', noTime: true);
         $this->page->addScript('thumbhash.js', noTime: true);
 
-        if (! $this->public) {
+        if (!$this->public) {
             $this->page->addScript('movim_websocket.js');
         }
 
@@ -141,7 +134,7 @@ class Base
     public function listWidgets(): array
     {
         preg_match_all('/widget(\(\'(\w+)\'\))/',
-            file_get_contents(VIEWS_PATH.'/'.$this->name.'.tpl'),
+            file_get_contents(VIEWS_PATH . '/' . $this->name . '.tpl'),
             $matches
         );
 

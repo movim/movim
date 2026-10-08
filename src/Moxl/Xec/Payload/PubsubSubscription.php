@@ -8,10 +8,10 @@ class PubsubSubscription extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $from = bareJid((string) $parent->attributes()->from);
+        $from = bareJid((string)$parent->attributes()->from);
 
         $g = new Get($this->me, sessionId: $this->sessionId);
         $g->setTo($from)
-            ->request();
+          ->request();
     }
 }

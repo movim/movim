@@ -10,5 +10,7 @@ class UnresolveMessageUrls extends Migration
         Message::whereNull('urlid')->update(['resolved' => false]);
     }
 
-    public function down() {}
+    public function down()
+    {
+    }
 }

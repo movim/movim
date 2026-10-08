@@ -2,16 +2,14 @@
 
 namespace App\Widgets\CommunitiesServer;
 
-use App\Info;
-use Movim\Widget\Base;
-use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Action\Disco\Request;
+use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Action\Pubsub\Create;
 use Moxl\Xec\Action\Pubsub\TestCreate;
 use Moxl\Xec\Payload\Packet;
 use Respect\Validation\Validator;
 
-class CommunitiesServer extends Base
+class CommunitiesServer extends \Movim\Widget\Base
 {
     public function load()
     {
@@ -31,7 +29,7 @@ class CommunitiesServer extends Base
     {
         $this->toast($this->__('communitiesserver.created'));
 
-        [$origin, $node] = array_values($packet->content);
+        list($origin, $node) = array_values($packet->content);
         $this->ajaxDisco($origin);
         $this->rpc('MovimUtils.reload', $this->route('community', [$origin, $node]));
     }
@@ -55,8 +53,8 @@ class CommunitiesServer extends Base
     {
         $info = $packet->content;
 
-        if ($info && ! $info->isAccount()) {
-            $this->rpc('MovimTpl.replace', '#'.cleanupId($info->server.$info->node), $this->prepareTicket($info));
+        if ($info && !$info->isAccount()) {
+            $this->rpc('MovimTpl.replace', '#' . cleanupId($info->server . $info->node), $this->prepareTicket($info));
         }
     }
 
@@ -64,7 +62,7 @@ class CommunitiesServer extends Base
     {
         $origin = $packet->content;
 
-        Info::where('server', $origin)->delete();
+        \App\Info::where('server', $origin)->delete();
 
         $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($origin));
 
@@ -88,9 +86,8 @@ class CommunitiesServer extends Base
 
     public function ajaxDisco($origin)
     {
-        if (! validateServer($origin)) {
+        if (!validateServer($origin)) {
             $this->toast($this->__('communitiesserver.disco_error'));
-
             return;
         }
 
@@ -106,7 +103,7 @@ class CommunitiesServer extends Base
      */
     public function ajaxTestAdd($origin)
     {
-        if (! validateServer($origin)) {
+        if (!validateServer($origin)) {
             return;
         }
 
@@ -117,14 +114,13 @@ class CommunitiesServer extends Base
 
     public function ajaxAddConfirm($origin, $form)
     {
-        if (! validateServer($origin)) {
+        if (!validateServer($origin)) {
             return;
         }
 
         $validate_name = Validator::stringType()->length(4, 80);
-        if (! $validate_name->isValid($form->name->value)) {
+        if (!$validate_name->isValid($form->name->value)) {
             $this->toast($this->__('communitiesserver.name_error'));
-
             return;
         }
 
@@ -132,7 +128,6 @@ class CommunitiesServer extends Base
 
         if ($uri == '') {
             $this->toast($this->__('communitiesserver.name_error'));
-
             return;
         }
 
@@ -145,13 +140,11 @@ class CommunitiesServer extends Base
 
     public function prepareCommunitiesServer($origin)
     {
-        $item = Info::where('server', $origin)->where('node', '')->first();
+        $item = \App\Info::where('server', $origin)->where('node', '')->first();
 
-        if (! $item || ! $item->isPubsubService()) {
-            return;
-        }
+        if (!$item || !$item->isPubsubService()) return;
 
-        $nodes = Info::where('infos.server', $origin)
+        $nodes = \App\Info::where('infos.server', $origin)
             ->where('infos.node', '!=', '')
             ->leftJoinSub(
                 function ($query) use ($origin) {
@@ -184,18 +177,17 @@ class CommunitiesServer extends Base
         $view->assign('server', $origin);
 
         if (isset($item->name)) {
-            $this->rpc('Notif.setTitle', $this->__('page.communities').' • '.$item->name);
+            $this->rpc('Notif.setTitle', $this->__('page.communities') . ' • ' . $item->name);
         }
 
         return $view->draw('_communitiesserver');
     }
 
-    public function prepareTicket(Info $community)
+    public function prepareTicket(\App\Info $community)
     {
         $view = $this->tpl();
         $view->assign('community', $community);
-        $view->assign('id', cleanupId($community->server.$community->node));
-
+        $view->assign('id', cleanupId($community->server . $community->node));
         return $view->draw('_communitiesserver_ticket');
     }
 

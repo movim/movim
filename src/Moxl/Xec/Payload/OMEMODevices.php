@@ -8,7 +8,7 @@ class OMEMODevices extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $from = (string) $parent->attributes()->from;
+        $from = (string)$parent->attributes()->from;
         $list = $stanza->items->item->list;
 
         if ($list) {
@@ -16,7 +16,7 @@ class OMEMODevices extends Payload
 
             foreach ($list as $devices) {
                 foreach ($devices as $device) {
-                    array_push($devicesIds, (string) $device->attributes()->id);
+                    array_push($devicesIds, (string)$device->attributes()->id);
                 }
             }
 
@@ -35,7 +35,7 @@ class OMEMODevices extends Payload
 
             $this->pack([
                 'from' => $from,
-                'devices' => $devicesIds,
+                'devices' => $devicesIds
             ]);
             $this->deliver();
         }

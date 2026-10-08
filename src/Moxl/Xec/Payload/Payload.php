@@ -4,13 +4,13 @@ namespace Moxl\Xec\Payload;
 
 use App\User;
 use Movim\Jid;
+use Moxl\Xec\Payload\Packet;
 use Movim\Widget\Wrapper;
 use Moxl\Utils;
 
 abstract class Payload
 {
     protected ?string $method = null;
-
     protected ?Packet $packet = null;
 
     protected ?Jid $from = null;
@@ -46,7 +46,7 @@ abstract class Payload
         if ($this->me?->session?->resource) {
             $iq->setAttribute(
                 'from',
-                $this->me->id.'/'.$this->me->session->resource
+                $this->me->id . '/' . $this->me->session->resource
             );
         }
 
@@ -127,7 +127,6 @@ abstract class Payload
                 user: $this->me,
                 sessionId: $this->sessionId
             );
-
             return;
         }
 
@@ -146,7 +145,7 @@ abstract class Payload
         }
 
         if ($this->method) {
-            $key = $key.'_'.$this->method;
+            $key = $key . '_' . $this->method;
         }
 
         Wrapper::getInstance()->iterate(

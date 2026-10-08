@@ -2,25 +2,27 @@
 
 namespace Movim\Daemon\Linker;
 
-use App\Contact;
-use App\Hat;
-use App\Info;
-use App\Presence;
-use App\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use Movim\Jid;
-use Movim\Scheduler;
+
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Vcard\Get;
+
+use App\Presence;
+use App\Info;
+use App\Contact;
+use App\Hat;
+use App\User;
+use Movim\Jid;
+use Movim\Scheduler;
 
 class PresenceBuffer
 {
     public function __construct(
         public User $user,
         private ?Collection $_models = null,
-        private ?Collection $_hats = null,
-        private ?Collection $_calls = null
+        private ?Collection  $_hats = null,
+        private ?Collection  $_calls = null
     ) {
         $this->_models = collect();
         $this->_hats = collect();
@@ -88,10 +90,10 @@ class PresenceBuffer
 
                     foreach ($table->get() as $presenceHat) {
                         foreach ($this->_hats[$this->getPresenceKey($presenceHat)] as $hat) {
-                            if (! in_array($this->getPresenceKey($presenceHat).$hat->uri, $keysCheck)) {
+                            if (!in_array($this->getPresenceKey($presenceHat) . $hat->uri, $keysCheck)) {
                                 $hat['presence_id'] = $presenceHat->id;
                                 array_push($hats, $hat->toArray());
-                                array_push($keysCheck, $this->getPresenceKey($presenceHat).$hat->uri);
+                                array_push($keysCheck, $this->getPresenceKey($presenceHat) . $hat->uri);
                             }
                         }
                     }
@@ -109,14 +111,14 @@ class PresenceBuffer
                 $this->_models->each(function ($presence) use (&$nodes, &$avatarHashes) {
                     // Capabilities
                     if ($presence['node']) {
-                        $resource = ! empty($presence['resource']) ? '/'.$presence['resource'] : '';
-                        $nodes->put($presence['node'], $presence['jid'].$resource);
+                        $resource = !empty($presence['resource']) ? '/' . $presence['resource'] : '';
+                        $nodes->put($presence['node'], $presence['jid'] . $resource);
                     }
 
                     // Vcards
                     if (isset($presence['avatarhash'])) {
-                        $fullJid = ! empty($presence['resource'])
-                            ? $presence['jid'].'/'.$presence['resource']
+                        $fullJid = !empty($presence['resource'])
+                            ? $presence['jid'] . '/' . $presence['resource']
                             : $presence['jid'];
 
                         $jid = ($presence['muc'])
@@ -133,7 +135,7 @@ class PresenceBuffer
 
                 // Remove the already saved capabilities
                 $infos->each(function ($info) use (&$nodes) {
-                    if ($nodes->has($info->node) && ! $info->isEmptyFeatures()) {
+                    if ($nodes->has($info->node) && !$info->isEmptyFeatures()) {
                         $nodes->pull($info->node);
                     }
                 });
@@ -155,12 +157,13 @@ class PresenceBuffer
 
                     // Remove the existing Contacts
                     $avatarHashes = $avatarHashes->reject(
-                        fn ($jid, $avatarhash) => $contactsHashes->has($jid) && $contactsHashes->get($jid) == $avatarhash
+                        fn($jid, $avatarhash) =>
+                        $contactsHashes->has($jid) && $contactsHashes->get($jid) == $avatarhash
                     );
 
                     $avatarHashes->each(function ($jid, $avatarhash) {
                         if ($jid != $this->user->id) {
-                            Scheduler::getInstance()->append('avatar_'.$jid.'_'.$avatarhash, function () use ($jid, $avatarhash) {
+                            Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
                                 if (linker($this->user->session->id)->session) {
                                     $r = new Get($this->user, sessionId: $this->user->session->id);
                                     $r->setAvatarhash($avatarhash)
@@ -180,7 +183,7 @@ class PresenceBuffer
         }
 
         if ($this->_calls->isNotEmpty()) {
-            $this->_calls->each(fn ($call) => $call());
+            $this->_calls->each(fn($call) => $call());
             $this->_calls = collect();
         }
     }
@@ -189,7 +192,7 @@ class PresenceBuffer
     {
         $this->_models[$this->getPresenceKey($presence)] = $presence->toArray();
 
-        if (! empty($presence->hatsToSave)) {
+        if (!empty($presence->hatsToSave)) {
             $this->_hats[$this->getPresenceKey($presence)] = $presence->hatsToSave;
         }
 
@@ -198,6 +201,6 @@ class PresenceBuffer
 
     private function getPresenceKey(Presence|\stdClass $presence)
     {
-        return $presence->jid.$presence->mucjid.$presence->resource;
+        return $presence->jid . $presence->mucjid . $presence->resource;
     }
 }

@@ -2,16 +2,16 @@
 
 namespace App\Widgets\Notifications;
 
-use App\Contact;
 use App\Post;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Notif\Notif;
-use Movim\Widget\Base;
-use Moxl\Xec\Action\Presence\Subscribe;
 use Moxl\Xec\Action\Presence\Subscribed;
-use Moxl\Xec\Action\Presence\Unsubscribe;
 use Moxl\Xec\Action\Presence\Unsubscribed;
 use Moxl\Xec\Action\Roster\AddItem;
+use Moxl\Xec\Action\Presence\Subscribe;
+
+use Movim\Widget\Base;
+use Moxl\Xec\Action\Presence\Unsubscribe;
 use Moxl\Xec\Action\Roster\RemoveItem;
 use Moxl\Xec\Payload\Packet;
 
@@ -37,7 +37,7 @@ class Notifications extends Base
     {
         $post = Post::find($packet->content);
 
-        if ($post && $post->isComment() && ! $post->isMine($this->me)) {
+        if ($post && $post->isComment() && !$post->isMine($this->me)) {
             $this->ajaxSetCounter();
         }
     }
@@ -47,7 +47,7 @@ class Notifications extends Base
         $contact = $this->me->session->contacts()->where('jid', $packet->content)->first();
 
         // If the invitation was accepted or removed from another connected client
-        if (($contact && $contact->subscription == 'both') || ! $contact) {
+        if (($contact && $contact->subscription == 'both') || !$contact) {
             $this->removeInvitation($packet->content);
         }
     }
@@ -57,12 +57,12 @@ class Notifications extends Base
         $from = $packet->content;
 
         if (is_string($from)) {
-            $contact = Contact::find($from);
+            $contact = \App\Contact::find($from);
 
             // Don't notify if the contact is not in stored already, for spam reasons
             if ($contact) {
                 $this->notif(
-                    key: 'invite|'.$from,
+                    key: 'invite|' . $from,
                     title: $contact->truename,
                     body: $this->__('invitations.wants_to_talk', $contact->truename),
                     url: $this->route('chat', $contact->id),
@@ -90,7 +90,7 @@ class Notifications extends Base
     {
         $since = $this->me->notifications_since ?? date(MOVIM_SQL_DATE, 0);
 
-        $count = Post::whereIn('parent_id', function ($query) {
+        $count = \App\Post::whereIn('parent_id', function ($query) {
             $query->select('id')
                 ->from('posts')
                 ->where('aid', $this->me->id);
@@ -107,7 +107,7 @@ class Notifications extends Base
     public function ajaxAddAsk($jid)
     {
         $view = $this->tpl();
-        $view->assign('contact', Contact::firstOrNew(['id' => $jid]));
+        $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('groups', $this->me->session->contacts()
             ->select('group')
             ->whereNotNull('group')
@@ -120,13 +120,13 @@ class Notifications extends Base
     public function ajaxAdd($form)
     {
         $r = $this->xmpp(new AddItem);
-        $r->setTo((string) $form->searchjid->value)
-            ->setName((string) $form->alias->value)
-            ->setGroup((string) $form->group->value)
+        $r->setTo((string)$form->searchjid->value)
+            ->setName((string)$form->alias->value)
+            ->setGroup((string)$form->group->value)
             ->request();
 
         $p = $this->xmpp(new Subscribe);
-        $p->setTo((string) $form->searchjid->value)
+        $p->setTo((string)$form->searchjid->value)
             ->request();
 
         (new Dialog($this->me, sessionId: $this->sessionId))->ajaxClear();
@@ -134,7 +134,7 @@ class Notifications extends Base
 
     public function ajaxDeleteContact($jid)
     {
-        if (! validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -164,13 +164,13 @@ class Notifications extends Base
             ->where('jid', $jid)
             ->delete();
 
-        if (! $roster) {
+        if (!$roster) {
             $r = $this->xmpp(new AddItem);
             $r->setTo($jid)
                 ->request();
         }
 
-        if (! $roster || $roster->subscription == 'none' || $roster->subscription == 'from') {
+        if (!$roster || $roster->subscription == 'none' || $roster->subscription == 'from') {
             $p = $this->xmpp(new Subscribe);
             $p->setTo($jid)
                 ->request();
@@ -203,9 +203,9 @@ class Notifications extends Base
     private function removeInvitation(string $jid)
     {
         $n = new Notif($this->me, sessionId: $this->sessionId);
-        $n->ajaxClear('invite|'.$jid);
+        $n->ajaxClear('invite|' . $jid);
 
-        $this->rpc('MovimTpl.remove', '#invitation-'.cleanupId($jid));
+        $this->rpc('MovimTpl.remove', '#invitation-' . cleanupId($jid));
         $this->ajaxSetCounter();
     }
 
@@ -215,7 +215,7 @@ class Notifications extends Base
      */
     private function prepareNotifications()
     {
-        $notifs = Post::whereIn('parent_id', function ($query) {
+        $notifs = \App\Post::whereIn('parent_id', function ($query) {
             $query->select('id')
                 ->from('posts')
                 ->where('aid', $this->me->id)
@@ -240,7 +240,7 @@ class Notifications extends Base
                 ->whereIn('type', ['subscribe', 'subscribed'])
                 ->get(),
             'spacePendings' => $this->me->messages()->where('type', 'space_pending'),
-            'since' => $since,
+            'since' => $since
         ]);
     }
 }

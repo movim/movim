@@ -2,13 +2,12 @@
 
 namespace Moxl\Xec\Action\Message;
 
-use Moxl\Stanza\Message;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Message;
 
 class Composing extends Action
 {
     protected $_to;
-
     protected bool $_muc = false;
 
     public function request()
@@ -28,7 +27,6 @@ class Composing extends Action
     public function setMuc()
     {
         $this->_muc = true;
-
         return $this;
     }
 }

@@ -2,43 +2,26 @@
 
 namespace App\Widgets\Blog;
 
-use App\Contact;
-use App\Info;
-use App\Post;
-use App\Tag;
-use App\User;
-use App\Widgets\Post\Post as PostWidget;
-use Movim\ImageSize;
 use Movim\Widget\Base;
+use App\Post;
+use App\Widgets\Post\Post as PostWidget;
 
 class Blog extends Base
 {
     public $paging = 9;
-
     public $links = [];
-
     public $url;
 
     private $_from;
-
     private $_node;
-
     private $_item;
-
     private $_id;
-
     private $_contact;
-
     private $_posts = null;
-
     private int $_postsCount = 0;
-
     private int $_page = 0;
-
     private $_mode;
-
     private $_next;
-
     private $_tag;
 
     // Blog nickname
@@ -53,13 +36,13 @@ class Blog extends Base
             $this->_from = $this->get('s');
             $this->_node = $this->get('n');
 
-            if (! validateServerNode($this->_from, $this->_node)) {
+            if (!validateServerNode($this->_from, $this->_node)) {
                 return;
             }
 
-            $this->_item = Info::where('server', $this->_from)
-                ->where('node', $this->_node)
-                ->first();
+            $this->_item = \App\Info::where('server', $this->_from)
+                                    ->where('node', $this->_node)
+                                    ->first();
             $this->_mode = 'group';
 
             if ($this->_item) {
@@ -72,14 +55,14 @@ class Blog extends Base
             $this->links[] = [
                 'rel' => 'alternate',
                 'type' => 'application/atom+xml',
-                'href' => $this->route('feed', [$this->_from, $this->_node]),
+                'href' => $this->route('feed', [$this->_from, $this->_node])
             ];
 
-            if (! $this->get('i')) {
+            if (!$this->get('i')) {
                 $this->links[] = [
                     'rel' => 'alternate',
                     'type' => 'application/atom+xml',
-                    'href' => 'xmpp:'.rawurlencode($this->_from).'?;node='.rawurlencode($this->_node),
+                    'href' => 'xmpp:' . rawurlencode($this->_from) . '?;node=' . rawurlencode($this->_node)
                 ];
             }
         } elseif ($this->_view == 'tag' && validateTag($this->get('t'))) {
@@ -89,13 +72,13 @@ class Blog extends Base
         } else {
             $this->_from = $this->get('f');
 
-            $user = User::where('nickname', $this->_from)->first();
+            $user = \App\User::where('nickname', $this->_from)->first();
             if ($user) {
                 $this->_nickname = $this->_from;
                 $this->_from = $user->id;
             }
 
-            $this->_contact = Contact::find($this->_from);
+            $this->_contact = \App\Contact::find($this->_from);
 
             if (filter_var($this->_from, FILTER_VALIDATE_EMAIL)) {
                 $this->_node = Post::MICROBLOG_NODE;
@@ -107,7 +90,7 @@ class Blog extends Base
                 $this->title = __('blog.title', $this->_contact->truename);
                 $this->description = $this->_contact->description;
 
-                $avatar = $this->_contact->getPicture(ImageSize::L);
+                $avatar = $this->_contact->getPicture(\Movim\ImageSize::L);
                 if ($avatar) {
                     $this->image = $avatar;
                 }
@@ -120,33 +103,33 @@ class Blog extends Base
             $this->links[] = [
                 'rel' => 'alternate',
                 'type' => 'application/atom+xml',
-                'href' => $this->route('feed', [$this->_from]),
+                'href' => $this->route('feed', [$this->_from])
             ];
 
-            if (! $this->get('i')) {
+            if (!$this->get('i')) {
                 $this->links[] = [
                     'rel' => 'alternate',
                     'type' => 'application/atom+xml',
-                    'href' => 'xmpp:'.rawurlencode($this->_from).'?;node='.rawurlencode($this->_node),
+                    'href' => 'xmpp:' . rawurlencode($this->_from) . '?;node=' . rawurlencode($this->_node)
                 ];
             }
         }
 
         $this->_postsCount = Post::where('server', $this->_from)
-            ->where('node', $this->_node)
-            ->where('open', true)
-            ->count();
+                    ->where('node', $this->_node)
+                    ->where('open', true)
+                    ->count();
 
         if ($this->_id = $this->get('i')) {
             $this->_posts = Post::where('server', $this->_from)
-                ->where('node', $this->_node)
-                ->where('nodeid', $this->_id)
-                ->where('open', true)
-                ->get();
+                    ->where('node', $this->_node)
+                    ->where('nodeid', $this->_id)
+                    ->where('open', true)
+                    ->get();
 
             if ($this->_posts->isNotEmpty()) {
                 $this->title = $this->_posts->first()->title;
-                $this->description = ! empty($this->_posts->first()->contentcleaned)
+                $this->description = !empty($this->_posts->first()->contentcleaned)
                     ? $this->_posts->first()->contentcleaned
                     : $this->_posts->first()->title;
 
@@ -165,32 +148,32 @@ class Blog extends Base
                 'rel' => 'alternate',
                 'type' => 'application/atom+xml',
                 'href' => 'xmpp:'
-                    .rawurlencode($this->_from)
-                    .'?;node='
-                    .rawurlencode($this->_node)
-                    .';item='
-                    .rawurlencode($this->_id),
+                    . rawurlencode($this->_from)
+                    . '?;node='
+                    . rawurlencode($this->_node)
+                    . ';item='
+                    . rawurlencode($this->_id)
             ];
         } else {
-            $this->_page = is_numeric($this->get('page')) ? (int) $this->get('page') : 0;
+            $this->_page = is_numeric($this->get('page')) ? (int)$this->get('page') : 0;
 
             if (isset($this->_tag)) {
-                $tag = Tag::where('name', $this->_tag)->first();
+                $tag = \App\Tag::where('name', $this->_tag)->first();
                 if ($tag) {
                     $this->_posts = $tag->posts()
-                        ->orderBy('published', 'desc')
-                        ->take($this->paging + 1)
-                        ->where('open', true)
-                        ->skip($this->_page * $this->paging)->get();
+                         ->orderBy('published', 'desc')
+                         ->take($this->paging + 1)
+                         ->where('open', true)
+                         ->skip($this->_page * $this->paging)->get();
                 }
             } elseif ($this->_mode != 'blog' || ($this->_contact && $this->_contact->isPublic())) {
                 $this->_posts = Post::where('server', $this->_from)
-                    ->where('node', $this->_node)
-                    ->where('open', true)
-                    ->orderBy('published', 'desc')
-                    ->skip($this->_page * $this->paging)
-                    ->take($this->paging + 1)
-                    ->get();
+                        ->where('node', $this->_node)
+                        ->where('open', true)
+                        ->orderBy('published', 'desc')
+                        ->skip($this->_page * $this->paging)
+                        ->take($this->paging + 1)
+                        ->get();
             }
 
             if ($this->_posts !== null) {
@@ -217,7 +200,6 @@ class Blog extends Base
             return (new PostWidget($this->me, sessionId: $this->sessionId))->preparePost($post, false, true);
         } else {
             $post->server = $this->_nickname ?? $post->server;
-
             return (new PostWidget($this->me, sessionId: $this->sessionId))->preparePost($post, true);
         }
     }

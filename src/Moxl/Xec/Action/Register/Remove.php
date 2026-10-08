@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\Register;
 
-use Moxl\Stanza\Register;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Register;
 
 class Remove extends Action
 {

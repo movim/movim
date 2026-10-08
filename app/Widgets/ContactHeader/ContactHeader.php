@@ -2,7 +2,6 @@
 
 namespace App\Widgets\ContactHeader;
 
-use App\Contact;
 use App\Post;
 use App\Widgets\Chats\Chats;
 use Movim\Widget\Base;
@@ -36,7 +35,7 @@ class ContactHeader extends Base
 
     public function onSubscription(Packet $packet)
     {
-        [$jid, $node] = array_values($packet->content);
+        list($jid, $node) = array_values($packet->content);
 
         if ($node == Post::MICROBLOG_NODE) {
             $this->refreshHeader($jid);
@@ -45,7 +44,7 @@ class ContactHeader extends Base
 
     public function onSubscriptionPresenceRequired(Packet $packet)
     {
-        [$jid, $node] = array_values($packet->content);
+        list($jid, $node) = array_values($packet->content);
 
         if ($node == Post::MICROBLOG_NODE) {
             $this->toast($this->__('communityposts.subscribe_presencerequired'));
@@ -55,7 +54,7 @@ class ContactHeader extends Base
 
     public function onSubscriptionUnsupported(Packet $packet)
     {
-        [$jid, $node] = array_values($packet->content);
+        list($jid, $node) = array_values($packet->content);
 
         if ($node == Post::MICROBLOG_NODE) {
             $this->toast($this->__('communityposts.subscribe_unsupported'));
@@ -65,13 +64,13 @@ class ContactHeader extends Base
 
     public function ajaxEditContact($jid)
     {
-        if (! validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
         $this->dialog($this->view('_contactheader_edit', [
-            'roster' => $this->me->session->contacts()->where('jid', $jid)->first(),
-            'groups' => $this->me->session->contacts()->select('group')->groupBy('group')->pluck('group')->toArray(),
+            'roster'=> $this->me->session->contacts()->where('jid', $jid)->first(),
+            'groups' => $this->me->session->contacts()->select('group')->groupBy('group')->pluck('group')->toArray()
         ]));
     }
 
@@ -86,7 +85,7 @@ class ContactHeader extends Base
 
     public function ajaxChat(string $jid)
     {
-        if (! validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -98,9 +97,7 @@ class ContactHeader extends Base
 
     public function ajaxSubscribe(string $jid)
     {
-        if (! validateJid($jid)) {
-            return;
-        }
+        if (!validateJid($jid)) return;
 
         $g = $this->xmpp(new Subscribe);
         $g->setTo($jid)
@@ -111,9 +108,7 @@ class ContactHeader extends Base
 
     public function ajaxUnsubscribe(string $jid)
     {
-        if (! validateJid($jid)) {
-            return;
-        }
+        if (!validateJid($jid)) return;
 
         $g = $this->xmpp(new Unsubscribe);
         $g->setTo($jid)
@@ -134,16 +129,14 @@ class ContactHeader extends Base
     {
         $this->rpc(
             'MovimTpl.fill',
-            '#'.cleanupId($jid).'_contact_header',
+            '#' . cleanupId($jid) . '_contact_header',
             $this->prepareHeader($jid, $disableFollow)
         );
     }
 
     public function prepareHeader(string $jid, ?bool $disableFollow = false)
     {
-        if (! validateJid($jid)) {
-            return;
-        }
+        if (!validateJid($jid)) return;
 
         $view = $this->tpl();
         $view->assign('subscription', $this->me->subscriptions()
@@ -152,7 +145,7 @@ class ContactHeader extends Base
             ->first());
         $view->assign('disablefollow', $disableFollow);
         $view->assign('roster', ($this->me->session->contacts()->where('jid', $jid)->first()));
-        $view->assign('contact', Contact::firstOrNew(['id' => $jid]));
+        $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
 
         return $view->draw('_contactheader');
     }

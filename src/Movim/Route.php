@@ -1,5 +1,4 @@
 <?php
-
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -7,49 +6,47 @@
 
 namespace Movim;
 
-use App\User;
 use Movim\Controller\Base;
+use App\User;
 
 class Route extends Base
 {
     public array $routes = [
-        'about' => ['x'],
-        'account' => false,
-        'admin' => false,
-        'ajax' => false,
-        'ajaxd' => false,
-        'blog' => ['f', 'i'],
-        'chat' => ['f', 'r'],
-        'colors' => false,
-        'community' => ['s', 'n', 'i'],
+        'about'         => ['x'],
+        'account'       => false,
+        'admin'         => false,
+        'ajax'          => false,
+        'ajaxd'         => false,
+        'blog'          => ['f', 'i'],
+        'chat'          => ['f', 'r'],
+        'colors'        => false,
+        'community'     => ['s', 'n', 'i'],
         'configuration' => false,
-        'contact' => ['s'],
-        'disconnect' => ['err'],
-        'explore' => ['s'],
-        'feed' => ['s', 'n'],
-        'help' => false,
-        'infos' => false,
-        'login' => ['i'],
-        'main' => false,
-        'manifest' => false,
-        'news' => false,
-        'node' => ['s', 'n', 'i'],
-        'notfound' => false,
-        'picture' => ['url'],
-        'post' => ['s', 'n', 'i'],
-        'publish' => false,
-        'register' => ['s', 'err'],
-        'room' => ['r'],
-        'share' => ['url'],
-        'space' => ['s', 'n', 'r'],
+        'contact'       => ['s'],
+        'disconnect'    => ['err'],
+        'explore'       => ['s'],
+        'feed'          => ['s', 'n'],
+        'help'          => false,
+        'infos'         => false,
+        'login'         => ['i'],
+        'main'          => false,
+        'manifest'      => false,
+        'news'          => false,
+        'node'          => ['s', 'n', 'i'],
+        'notfound'      => false,
+        'picture'       => ['url'],
+        'post'          => ['s', 'n', 'i'],
+        'publish'       => false,
+        'register'      => ['s', 'err'],
+        'room'          => ['r'],
+        'share'         => ['url'],
+        'space'         => ['s', 'n', 'r'],
         'subscriptions' => false,
-        'system' => false,
-        'tag' => ['t', 'i'],
-        'upload' => ['f'],
+        'system'        => false,
+        'tag'           => ['t', 'i'],
+        'upload'        => ['f'],
     ];
-
     private ?string $_page = null;
-
     private ?string $_redirect = null;
 
     public function __construct(public ?User $user = null) {}
@@ -60,7 +57,7 @@ class Route extends Base
 
         if ($page != null) {
             $this->_page = $page;
-        } elseif (isset($path[1]) && isset($this->routes[$path[1]])) {
+        } else if (isset($path[1]) && isset($this->routes[$path[1]])) {
             $this->_page = $path[1];
 
             if (is_array($this->routes[$this->_page])) {
@@ -92,7 +89,7 @@ class Route extends Base
             }
 
             if ($page > 0 && isset($this->routes[$page])) {
-                header('Location: '.Route::urlize($page, $request));
+                header('Location: ' . Route::urlize($page, $request));
                 exit;
             }
         }
@@ -102,7 +99,7 @@ class Route extends Base
             $this->_redirect = ($this->user?->chatmain)
                 ? 'chat'
                 : 'news';
-        } elseif (! isset($this->routes[$this->_page])) {
+        } else if (!isset($this->routes[$this->_page])) {
             $this->_page = null;
             $this->_redirect = 'notfound';
         }
@@ -120,24 +117,24 @@ class Route extends Base
         $routes = (new Route)->routes;
 
         if (isset($routes[$page])) {
-            $uri = BASE_URI.$page;
+            $uri = BASE_URI . $page;
 
             if ($params != null) {
                 if (is_array($params)) {
                     foreach ($params as $value) {
-                        $uri .= '/'.rawurlencode($value ?? '');
+                        $uri .= '/' . rawurlencode($value ?? '');
                     }
                 } else {
-                    $uri .= '/'.rawurlencode($params ?? '');
+                    $uri .= '/' . rawurlencode($params ?? '');
                 }
             }
 
-            $get = ($get !== []) ? '?'.http_build_query($get) : '';
-            $tab = ($tab != false) ? '#'.$tab : '';
+            $get = ($get !== []) ? '?' . http_build_query($get) : '';
+            $tab = ($tab != false) ? '#' . $tab : '';
 
-            return $uri.$get.$tab;
+            return $uri . $get . $tab;
         } else {
-            logError('Route not set for the page '.$page);
+            logError('Route not set for the page ' . $page);
 
             return null;
         }

@@ -3,29 +3,20 @@
 namespace Moxl\Xec\Action\MAM;
 
 use App\MAMEarliest;
-use Moxl\Stanza\MAM;
 use Moxl\Xec\Action;
-
-// use App\MessageBuffer;
+use Moxl\Stanza\MAM;
+//use App\MessageBuffer;
 
 class Get extends Action
 {
     protected ?string $_to = null;
-
     protected ?string $_queryid = null;
-
     protected ?string $_jid = null;
-
     protected ?int $_start = null;
-
     protected ?int $_end = null;
-
     protected ?int $_limit = null;
-
     protected ?string $_after = null;
-
     protected ?string $_before = null;
-
     protected int $_messageCounter = 0;
 
     public function request()
@@ -34,7 +25,7 @@ class Get extends Action
 
         // Generating the queryid key.
         $this->_queryid = \generateKey(12);
-        $session->set('mamid'.$this->_queryid, 0);
+        $session->set('mamid' . $this->_queryid, 0);
         $this->store();
 
         $this->iq(MAM::get(
@@ -55,14 +46,14 @@ class Get extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        // MessageBuffer::getInstance()->save();
+        //MessageBuffer::getInstance()->save();
 
         $session = linker($this->sessionId)->session;
 
-        $messagesCounter = (int) $session->get('mamid'.$this->_queryid);
+        $messagesCounter = (int)$session->get('mamid' . $this->_queryid);
         $this->pack(['counter' => $messagesCounter, 'forward' => ($this->_start != null)]);
 
-        $session->delete('mamid'.$this->_queryid);
+        $session->delete('mamid' . $this->_queryid);
         $this->deliver();
 
         $totalCounter = $this->_messageCounter + $messagesCounter;
@@ -87,10 +78,10 @@ class Get extends Action
 
         if (
             isset($stanza->fin)
-            && (! isset($stanza->fin->attributes()->complete) || $stanza->fin->attributes()->complete != 'true')
+            && (!isset($stanza->fin->attributes()->complete) || $stanza->fin->attributes()->complete != 'true')
             && isset($stanza->fin->set) && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
             && isset($stanza->fin->set->last)
-            && $this->_after != (string) $stanza->fin->set->last
+            && $this->_after != (string)$stanza->fin->set->last
             && $totalCounter < $this->_limit
         ) {
             $g = new Get($this->me, sessionId: $this->sessionId);
@@ -100,7 +91,7 @@ class Get extends Action
             $g->setStart($this->_start);
             $g->setEnd($this->_end);
             $g->setBefore($this->_before);
-            $g->setAfter((string) $stanza->fin->set->last);
+            $g->setAfter((string)$stanza->fin->set->last);
             $g->setMessageCounter($totalCounter);
             $g->request();
         }

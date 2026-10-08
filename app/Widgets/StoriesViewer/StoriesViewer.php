@@ -19,9 +19,7 @@ class StoriesViewer extends Base
     public function ajaxHttpGet(int $id)
     {
         $post = Post::myStories($this->me)->where('id', $id)->first();
-        if (! $post) {
-            return;
-        }
+        if (!$post) return;
 
         $view = $this->tpl();
         $post->userViews()->syncWithoutDetaching($this->me->id);
@@ -35,9 +33,8 @@ class StoriesViewer extends Base
     {
         $post = Post::myStories($this->me)->where('published', '<', $before)->first();
 
-        if (! $post || $post->my_views_count > 0) {
+        if (!$post || $post->my_views_count > 0) {
             $this->rpc('StoriesViewer.close');
-
             return;
         }
 
@@ -73,9 +70,9 @@ class StoriesViewer extends Base
         if ($post) {
             $p = $this->xmpp(new PostDelete);
             $p->setTo($post->server)
-                ->setNode($post->node)
-                ->setId($post->nodeid)
-                ->request();
+              ->setNode($post->node)
+              ->setId($post->nodeid)
+              ->request();
         }
 
         $this->rpc('StoriesViewer.close');
@@ -84,11 +81,9 @@ class StoriesViewer extends Base
     public function ajaxSendComment(string $id, ?string $comment = null)
     {
         $post = Post::myStories($this->me)->where('id', $id)->first();
-        if (! $post || empty($comment)) {
-            return;
-        }
+        if (!$post || empty($comment)) return;
 
-        $file = new MessageFile;
+        $file = new MessageFile();
         $file->type = 'xmpp/uri';
         $file->url = $post->getRef();
 

@@ -7,11 +7,9 @@ use Fabiang\SASL\SASL;
 class Authentication
 {
     public ?string $username = null;
-
     public ?string $password = null;
 
     private $_mechanism;
-
     private ?string $_type;
 
     public function choose(array $mechanisms, array $channelBindings = [])
@@ -19,7 +17,7 @@ class Authentication
         $choices = [
             'SCRAM-SHA-1',
             'PLAIN',
-            // 'ANONYMOUS'
+            //'ANONYMOUS'
         ];
 
         foreach ($choices as $choice) {
@@ -27,11 +25,11 @@ class Authentication
                 $this->_type = $choice;
 
                 $this->_mechanism = SASL::fromString($this->_type)->mechanism([
-                    'authcid' => $this->username,
-                    'secret' => $this->password,
+                    'authcid'  => $this->username,
+                    'secret'   => $this->password,
                     'scram' => [
-                        'allowed_mechanisms' => $mechanisms,
-                        'allowed_channel_bindings' => $channelBindings,
+                        'allowed_mechanisms'       => $mechanisms,
+                        'allowed_channel_bindings' => $channelBindings
                     ],
                 ]);
 

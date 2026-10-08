@@ -8,6 +8,7 @@ use App\Workers\Resolver\Detectors\ContentType;
 use App\Workers\Resolver\Detectors\Images as DetectorsImages;
 use App\Workers\Resolver\Detectors\Type;
 use App\Workers\Resolver\Extractors\Reddit\Extractor as RedditExtractor;
+
 use Embed\Embed;
 use Embed\Extractor;
 use Embed\ExtractorFactory;
@@ -19,9 +20,7 @@ use function React\Async\async;
 class Resolver
 {
     private array $queries = [];
-
     private Browser $browser;
-
     private $maxSizeCache = 50;
 
     public function __construct()
@@ -42,8 +41,8 @@ class Resolver
 
         $embed = new Embed(new Crawler($this->browser), $extractorFactory);
 
-        if (! array_key_exists($url, $this->queries)) {
-            $this->queries[$url] = async(fn () => $embed->get($url))();
+        if (!array_key_exists($url, $this->queries)) {
+            $this->queries[$url] = async(fn() => $embed->get($url))();
         }
 
         $query = $this->queries[$url];
@@ -65,21 +64,21 @@ class Resolver
     private function extractorToArray(Extractor $extractor): array
     {
         return [
-            'authorName' => $extractor->authorName,
-            'authorUrl' => $extractor->authorUrl ? (string) $extractor->authorUrl : null,
+            'authorName'    => $extractor->authorName,
+            'authorUrl'     => $extractor->authorUrl ? (string)$extractor->authorUrl : null,
             'contentLength' => $extractor->contentLength,
-            'contentType' => $extractor->contentType,
-            'description' => $extractor->description,
-            'icon' => $extractor->icon ? (string) $extractor->icon : null,
-            'image' => $extractor->image ? (string) $extractor->image : null,
-            'images' => $extractor->images,
-            'keywords' => $extractor->keywords,
-            'providerName' => $extractor->providerName,
-            'providerUrl' => $extractor->providerUrl ? (string) $extractor->providerUrl : null,
+            'contentType'   => $extractor->contentType,
+            'description'   => $extractor->description,
+            'icon'          => $extractor->icon ? (string)$extractor->icon : null,
+            'image'         => $extractor->image ? (string)$extractor->image : null,
+            'images'        => $extractor->images,
+            'keywords'      => $extractor->keywords,
+            'providerName'  => $extractor->providerName,
+            'providerUrl'   => $extractor->providerUrl ? (string)$extractor->providerUrl : null,
             'publishedTime' => $extractor->publishedTime ? $extractor->publishedTime->format('c') : null,
-            'title' => $extractor->title,
-            'type' => $extractor->type,
-            'url' => $extractor->url ? (string) $extractor->url : null,
+            'title'         => $extractor->title,
+            'type'          => $extractor->type,
+            'url'           => $extractor->url ? (string)$extractor->url : null,
         ];
     }
 }

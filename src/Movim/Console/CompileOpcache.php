@@ -1,5 +1,4 @@
 <?php
-
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -8,9 +7,9 @@
 namespace Movim\Console;
 
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Helper\ProgressBar;
 
 class CompileOpcache extends Command
 {
@@ -39,7 +38,7 @@ class CompileOpcache extends Command
 
             $progressBar->setMessage('Files compiled');
             $progressBar->advance();
-            $output->writeln('');
+            $output->writeln("");
         } else {
             $output->writeln('<error>Opcache is disabled, it is strongly advised to enable it in PHP CLI php.ini</error>');
             $output->writeln('Set opcache.enable=1 and opcache.enable_cli=1');

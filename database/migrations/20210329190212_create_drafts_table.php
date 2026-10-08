@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateDraftsTable extends Migration
 {
@@ -24,12 +24,12 @@ class CreateDraftsTable extends Migration
             $table->unique(['user_id', 'server', 'node', 'nodeid']);
 
             $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
 
             $table->foreign('reply_id')
-                ->references('id')->on('posts')
-                ->onDelete('cascade');
+                  ->references('id')->on('posts')
+                  ->onDelete('cascade');
         });
 
         $this->schema->create('embeds', function (Blueprint $table) {
@@ -40,8 +40,8 @@ class CreateDraftsTable extends Migration
             $table->timestamps();
 
             $table->foreign('draft_id')
-                ->references('id')->on('drafts')
-                ->onDelete('cascade');
+                  ->references('id')->on('drafts')
+                  ->onDelete('cascade');
 
             $table->unique(['draft_id', 'url']);
         });

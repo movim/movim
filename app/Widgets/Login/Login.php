@@ -2,22 +2,21 @@
 
 namespace App\Widgets\Login;
 
+use Moxl\Xec\Action\Storage\Get;
+use Moxl\Xec\Payload\Packet;
+
+use Respect\Validation\Validator;
+use Defuse\Crypto\Key;
+use Defuse\Crypto\Crypto;
+use League\CommonMark\GithubFlavoredMarkdownConverter;
+
 use App\Configuration;
-use App\Contact;
-use App\EncryptedPassword;
-use App\Invite;
 use App\Session;
 use App\User;
 use App\Widgets\Presence\Presence;
-use Defuse\Crypto\Crypto;
-use Defuse\Crypto\Key;
-use League\CommonMark\GithubFlavoredMarkdownConverter;
-use Movim\Cookie;
+
 use Movim\Widget\Base;
-use Moxl\Stanza\Stream;
-use Moxl\Xec\Action\Storage\Get;
-use Moxl\Xec\Payload\Packet;
-use Respect\Validation\Validator;
+use Movim\Cookie;
 
 class Login extends Base
 {
@@ -67,7 +66,7 @@ class Login extends Base
     {
         $configuration = Configuration::get();
 
-        if (! empty($configuration->info)) {
+        if (!empty($configuration->info)) {
             $converter = new GithubFlavoredMarkdownConverter([
                 'html_input' => 'strip',
                 'allow_unsafe_links' => false,
@@ -81,7 +80,7 @@ class Login extends Base
 
         if (
             isset($configuration->xmppdomain)
-            && ! empty($configuration->xmppdomain)
+            && !empty($configuration->xmppdomain)
         ) {
             $this->view->assign('domain', $configuration->xmppdomain);
         } else {
@@ -94,15 +93,15 @@ class Login extends Base
             $this->get('i')
             && Validator::length(8)->isValid($this->get('i'))
         ) {
-            $invitation = Invite::find($this->get('i'));
+            $invitation = \App\Invite::find($this->get('i'));
 
             if ($invitation) {
                 $this->view->assign('invitation', $invitation);
-                $this->view->assign('contact', Contact::firstOrNew(['id' => $invitation->user_id]));
+                $this->view->assign('contact', \App\Contact::firstOrNew(['id' => $invitation->user_id]));
             }
         }
 
-        $started = (int) requestAPI('started');
+        $started = (int)requestAPI('started');
 
         $this->view->assign('pop', User::count());
         $this->view->assign('admins', User::where('admin', true)->get());
@@ -116,7 +115,7 @@ class Login extends Base
             && isset($_SERVER['PHP_AUTH_PW'])
             && Validator::email()->length(6, 40)->isValid($_SERVER['HTTP_EMAIL'])
         ) {
-            [$username, $host] = explode('@', $_SERVER['HTTP_EMAIL']);
+            list($username, $host) = explode('@', $_SERVER['HTTP_EMAIL']);
             $this->view->assign('httpAuthHost', $host);
             $this->view->assign('httpAuthUser', $_SERVER['HTTP_EMAIL']);
             $this->view->assign('httpAuthPassword', $_SERVER['PHP_AUTH_PW']);
@@ -136,7 +135,7 @@ class Login extends Base
     {
         $view = $this->tpl();
 
-        $key = 'error.'.$error;
+        $key = 'error.' . $error;
         $error_text = $this->__($key);
 
         if ($error_text == $key) {
@@ -205,19 +204,16 @@ class Login extends Base
         ?string $sessionId = null,
         ?bool $check = false
     ) {
-        if ($sessionId == null) {
-            return;
-        }
+        if ($sessionId == null) return;
 
-        if (! validateJid($login)) {
+        if (!validateJid($login)) {
             $this->showErrorBlock('login_format');
-
             return;
         }
 
         try {
             $key = Key::loadFromAsciiSafeString($key);
-            $user = User::find($login);
+            $user = \App\User::find($login);
 
             if ($user) {
                 $ciphertext = $user->encryptedPasswords()->find($deviceId);
@@ -225,7 +221,6 @@ class Login extends Base
                 if ($ciphertext) {
                     if ($check) {
                         $this->rpc('Login.quickLoginRegister');
-
                         return;
                     }
 
@@ -259,44 +254,39 @@ class Login extends Base
     ) {
         $configuration = Configuration::get();
 
-        if (! validateJid($login)) {
+        if (!validateJid($login)) {
             $this->showErrorBlock('login_format');
-
             return;
         }
 
-        if (! Validator::stringType()->length(1, 128)->isValid($password)) {
+        if (!Validator::stringType()->length(1, 128)->isValid($password)) {
             $this->showErrorBlock('password_format');
-
             return;
         }
 
-        if (! validateCookie($sessionId)) {
+        if (!validateCookie($sessionId)) {
             $this->showErrorBlock('password_format');
-
             return;
         }
 
-        $started = (int) requestAPI('started');
+        $started = (int)requestAPI('started');
         if ($configuration->maxsessions > 0 && $started >= $configuration->maxsessions) {
             $this->showErrorBlock('max_sessions_reached');
-
             return;
         }
 
-        [$username, $host] = explode('@', $login);
+        list($username, $host) = explode('@', $login);
 
         if (
-            ! empty($configuration->xmppwhitelist)
-            && ! in_array($host, $configuration->xmppwhitelist)
+            !empty($configuration->xmppwhitelist)
+            && !in_array($host, $configuration->xmppwhitelist)
         ) {
             $this->showErrorBlock('unauthorized');
-
             return;
         }
 
         // We check if we already have an open session
-        $here = Session::where('username', $username)->where('host', $host)->first();
+        $here = \App\Session::where('username', $username)->where('host', $host)->first();
 
         $user = User::firstOrNew(['id' => $login]);
         $user->init();
@@ -306,7 +296,7 @@ class Login extends Base
             $rkey = Key::createNewRandomKey();
             $deviceId = generateKey();
 
-            $key = new EncryptedPassword;
+            $key = new \App\EncryptedPassword;
             $key->user_id = $login;
             $key->id = $deviceId;
             $key->data = Crypto::encrypt($password, $rkey);
@@ -318,15 +308,13 @@ class Login extends Base
         if ($here && password_verify(Session::hashSession($username, $password, $host), $here->hash)) {
             $this->rpc('Login.setCookie', $here->id, date(DATE_COOKIE, Cookie::getTime()));
             $this->rpc('MovimUtils.redirect', $this->route('main'));
-
             return;
-        } elseif (Session::where('username', $username)->where('host', $host)->exists()) {
+        } elseif (\App\Session::where('username', $username)->where('host', $host)->exists()) {
             $this->showErrorBlock('wrong_account');
-
             return;
         }
 
-        $s = new Session;
+        $s = new \App\Session;
         $s->init(
             username: $username,
             password: $password,
@@ -342,6 +330,6 @@ class Login extends Base
         linker($s->id)->timezone = $timezone;
 
         // We start the XMPP session
-        linker($s->id)->writeXMPP(Stream::init(to: $host, from: $login));
+        linker($s->id)->writeXMPP(\Moxl\Stanza\Stream::init(to: $host, from: $login));
     }
 }

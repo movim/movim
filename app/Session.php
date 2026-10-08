@@ -8,11 +8,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 class Session extends Model
 {
     protected $fillable = ['id'];
-
     protected $keyType = 'string';
-
     protected $with = ['serverCapability'];
-
     public $incrementing = false;
 
     public function user()
@@ -97,7 +94,7 @@ class Session extends Model
     {
         $params = [$this->id, $this->user_id, $limit];
 
-        $where = '(server, node) in (
+        $where = "(server, node) in (
             select server, node from (
                 select count(*) as count, subscriptions.server, subscriptions.node, recents.published
                 from subscriptions
@@ -112,12 +109,12 @@ class Session extends Model
                 group by subscriptions.server, subscriptions.node, published
                 order by published desc, count desc
                 limit ?
-            ) as sub';
+            ) as sub";
 
         $configuration = Configuration::get();
         if ($configuration->restrictsuggestions) {
-            array_push($params, '%.'.$this->user->session->host);
-            $where .= ' where server like ?';
+            array_push($params, '%.' . $this->user->session->host);
+            $where .= " where server like ?";
         }
 
         $where .= ')';
@@ -127,14 +124,14 @@ class Session extends Model
 
     public function init(string $username, string $password, string $host, string $sessionId, string $timezone)
     {
-        $this->id = $sessionId;
-        $this->timezone = $timezone;
-        $this->host = $host;
-        $this->username = $username;
-        $this->user_id = $username.'@'.$host;
-        $this->resource = 'movim'.\generateKey();
-        $this->hash = password_hash(Session::hashSession($this->username, $password, $this->host), PASSWORD_DEFAULT);
-        $this->active = false;
+        $this->id          = $sessionId;
+        $this->timezone    = $timezone;
+        $this->host        = $host;
+        $this->username    = $username;
+        $this->user_id     = $username . '@' . $host;
+        $this->resource    = 'movim' . \generateKey();
+        $this->hash        = password_hash(Session::hashSession($this->username, $password, $this->host),  PASSWORD_DEFAULT);
+        $this->active      = false;
     }
 
     public function getUploadService()
@@ -173,7 +170,7 @@ class Session extends Model
 
     public function getCommentsService()
     {
-        return Info::where('server', 'comments.'.$this->host)
+        return Info::where('server', 'comments.' . $this->host)
             ->where('parent', $this->host)
             ->whereCategory('pubsub')
             ->whereType('service')
@@ -182,7 +179,7 @@ class Session extends Model
 
     public function getSpacesService()
     {
-        return Info::where('server', 'spaces.'.$this->host)
+        return Info::where('server', 'spaces.' . $this->host)
             ->where('parent', $this->host)
             ->whereCategory('pubsub')
             ->whereType('service')
@@ -191,6 +188,6 @@ class Session extends Model
 
     public static function hashSession(string $username, string $password, string $host): string
     {
-        return $username."\e".$password."\e".$host;
+        return $username . "\e" . $password . "\e" . $host;
     }
 }

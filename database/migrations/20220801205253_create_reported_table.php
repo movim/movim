@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateReportedTable extends Migration
 {
@@ -18,12 +18,12 @@ class CreateReportedTable extends Migration
             $table->string('reported_id', 256);
 
             $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
 
             $table->foreign('reported_id')
-                ->references('id')->on('reported')
-                ->onDelete('cascade');
+                  ->references('id')->on('reported')
+                  ->onDelete('cascade');
 
             $table->unique(['user_id', 'reported_id']);
 

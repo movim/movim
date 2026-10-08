@@ -8,15 +8,15 @@ use App\Widgets\Rooms\Rooms;
 use App\Widgets\SpacesMenu\SpacesMenu;
 use Movim\Jid;
 use Movim\Widget\Base;
+use Moxl\Xec\Action\Muc\SetAffiliations;
 use Moxl\Xec\Action\Muc\CreateGroupChat;
 use Moxl\Xec\Action\Muc\Destroy;
-use Moxl\Xec\Action\Muc\SetAffiliations;
 use Moxl\Xec\Action\Muc\SetConfig;
 use Moxl\Xec\Action\Muc\SetSubject;
 use Moxl\Xec\Action\Presence\Muc;
+use Moxl\Xec\Action\Space\SetRoom;
 use Moxl\Xec\Action\Space\DeleteRoom;
 use Moxl\Xec\Action\Space\SetDirectories;
-use Moxl\Xec\Action\Space\SetRoom;
 use Moxl\Xec\Payload\Packet;
 
 class SpaceRooms extends Base
@@ -52,14 +52,14 @@ class SpaceRooms extends Base
 
     public function onAffiliations(Packet $packet)
     {
-        [$server, $node] = array_values($packet->content);
+        list($server, $node) = array_values($packet->content);
 
         $this->ajaxHttpGet($server, $node);
     }
 
     public function onRoomRegistrationRequired(Packet $packet)
     {
-        $this->rpc('MovimUtils.addClass', '#space'.cleanupId($packet->content), 'disabled');
+        $this->rpc('MovimUtils.addClass', '#space' . cleanupId($packet->content), 'disabled');
     }
 
     public function onMujiLeaving(Packet $packet)
@@ -69,16 +69,13 @@ class SpaceRooms extends Base
 
     public function onMujiOrSFUPresence(Packet $packet)
     {
-        $sessionKey = 'muji_'.$packet->content->jid;
+        $sessionKey = 'muji_' . $packet->content->jid;
         $isMuji = linker($this->sessionId)->session->get($sessionKey);
 
-        if ($isMuji === false) {
-            return;
-        }
+        if ($isMuji === false) return;
 
         if (is_array($isMuji)) {
             $this->ajaxHttpGet($isMuji['server'], $isMuji['node']);
-
             return;
         }
 
@@ -94,7 +91,7 @@ class SpaceRooms extends Base
                  */
                 linker($this->sessionId)->session->set($sessionKey, [
                     'server' => $conference->space_server,
-                    'node' => $conference->space_node,
+                    'node' => $conference->space_node
                 ]);
 
                 $this->ajaxHttpGet($conference->space_server, $conference->space_node);
@@ -128,7 +125,7 @@ class SpaceRooms extends Base
             $roomWidget = new Rooms(user: $this->me, sessionId: $this->sessionId);
 
             foreach ($subscription->spaceRooms as $room) {
-                if ($room->autojoin && ! $room->connected) {
+                if ($room->autojoin && !$room->connected) {
                     $roomWidget->ajaxJoin($room->conference, $room->nick);
                 }
             }
@@ -150,7 +147,6 @@ class SpaceRooms extends Base
     {
         if ($id) {
             $this->rpc('Chat.getRoom', $id);
-
             return;
         }
 
@@ -158,12 +154,11 @@ class SpaceRooms extends Base
 
         if ($subscription && $firstRoom = $subscription->spaceRooms()->first()) {
             $this->rpc('Chat.getRoom', $firstRoom->conference);
-
             return;
         }
 
         $this->rpc('MovimTpl.fill', '#chat_widget', $this->view('_spacerooms_empty', [
-            'subscription' => $subscription,
+            'subscription' => $subscription
         ]));
     }
 
@@ -171,9 +166,7 @@ class SpaceRooms extends Base
     {
         $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
-        if (! $subscription) {
-            return;
-        }
+        if (!$subscription) return;
 
         $affiliation = Affiliation::where('server', $server)
             ->where('node', $node)
@@ -191,12 +184,11 @@ class SpaceRooms extends Base
             'space_rooms' => $subscription->spaceRooms->sortBy(function ($conference) use ($directories) {
                 $directoriesKeys = $directories->keys();
                 $directoriesKeys->prepend('null');
-
                 return $directoriesKeys->flip()->get($conference->directory_id ?? 'null', $directories->count());
             }),
             'directories' => $directories,
             'edit' => ($affiliation && $affiliation->affiliation == 'owner'),
-            'addplaceholder' => __('chatrooms.first_room_placeholder', '<i class="material-symbols">rule</i>'),
+            'addplaceholder' => __('chatrooms.first_room_placeholder', '<i class="material-symbols">rule</i>')
         ]));
         $this->rpc('SpaceRooms.init');
 
@@ -218,10 +210,10 @@ class SpaceRooms extends Base
                 'node' => $node,
                 'directory' => $directoryId
                     ? $this->me->session->bookmarksDirectories()
-                        ->where('server', $server)
-                        ->where('node', $node)
-                        ->where('id', $directoryId)
-                        ->first()
+                    ->where('server', $server)
+                    ->where('node', $node)
+                    ->where('id', $directoryId)
+                    ->first()
                     : null,
             ]));
         }
@@ -231,13 +223,12 @@ class SpaceRooms extends Base
     {
         if (empty($form->name->value)) {
             $this->toast($this->__('chatrooms.empty_name'));
-
             return;
         }
 
         $this->rpc('Dialog.clear');
 
-        $id = generateUUID().'@'.$this->me->session->getChatroomsServices()->first()->server;
+        $id = generateUUID() . '@' . $this->me->session->getChatroomsServices()->first()->server;
 
         // Send the presence
         $m = $this->xmpp(new Muc);
@@ -247,7 +238,7 @@ class SpaceRooms extends Base
             ->request();
 
         $config = [
-            'muc#roomconfig_pubsub' => 'xmpp:'.$form->server->value.'?;node='.$form->node->value,
+            'muc#roomconfig_pubsub' => 'xmpp:' . $form->server->value . '?;node=' . $form->node->value
         ];
 
         if ($info = resolveServiceServerInfo((new Jid($id))->domain)) {
@@ -255,7 +246,7 @@ class SpaceRooms extends Base
                 'ejabberd' => $config += ['mam' => 'true'],
                 'Prosody' => $config += ['muc#roomconfig_enablearchiving' => 'true'],
             };
-        }
+        };
 
         // Configure the MUC
         $cgc = $this->xmpp(new CreateGroupChat);
@@ -273,18 +264,18 @@ class SpaceRooms extends Base
         $conference->space_node = $form->node->value;
         $conference->conference = $id;
         $conference->name = $form->name->value;
-        $conference->pinned = (bool) $form->pinned->value;
+        $conference->pinned = (bool)$form->pinned->value;
         $conference->autojoin = true;
-        $conference->call = (bool) $form->call->value;
+        $conference->call = (bool)$form->call->value;
 
         if (
             $form->directory_id
             && $directory = $this->me->session->bookmarksDirectories()
-                ->where('server', $form->server->value)
-                ->where('node', $form->node->value)
-                ->where('id', $form->directory_id->value)->first()
+            ->where('server', $form->server->value)
+            ->where('node', $form->node->value)
+            ->where('id', $form->directory_id->value)->first()
         ) {
-            $conference->weight = (float) $directory->conferences()->count();
+            $conference->weight = (float)$directory->conferences()->count();
             $conference->directory_id = $directory->id;
         }
 
@@ -319,7 +310,7 @@ class SpaceRooms extends Base
 
             if ($affiliation->affiliation == 'owner') {
                 $this->dialog($this->view('_spacerooms_edit', [
-                    'conference' => $conference,
+                    'conference' => $conference
                 ]));
             }
         }
@@ -335,7 +326,7 @@ class SpaceRooms extends Base
 
         if ($subscription && $conference = $subscription->spaceRooms()->where('conference', $form->conference->value)->first()) {
             $conference->name = $form->name->value;
-            $conference->pinned = (bool) $form->pinned->value;
+            $conference->pinned = (bool)$form->pinned->value;
             $conference->autojoin = true;
 
             $config = [
@@ -355,7 +346,7 @@ class SpaceRooms extends Base
                     'ejabberd' => $config += ['mam' => 'true'],
                     'Prosody' => $config += ['muc#roomconfig_enablearchiving' => 'true'],
                 };
-            }
+            };
 
             $sc = $this->xmpp(new SetConfig);
             $sc->setTo($form->conference->value)
@@ -372,6 +363,7 @@ class SpaceRooms extends Base
                 ->request();
         }
     }
+
 
     public function ajaxSetHierarchy(string $server, string $node, string $id, float $weight, ?string $directoryId = null)
     {
@@ -440,7 +432,6 @@ class SpaceRooms extends Base
     {
         if (empty($form->title->value)) {
             $this->toast($this->__('chatrooms.empty_name'));
-
             return;
         }
 
@@ -470,13 +461,13 @@ class SpaceRooms extends Base
         if (
             $affiliation->affiliation == 'owner'
             && $directory = $this->me->session->bookmarksDirectories()
-                ->where('server', $server)
-                ->where('node', $node)
-                ->where('id', $directoryId)
-                ->first()
+            ->where('server', $server)
+            ->where('node', $node)
+            ->where('id', $directoryId)
+            ->first()
         ) {
             $this->dialog($this->view('_spacerooms_edit_directory', [
-                'directory' => $directory,
+                'directory' => $directory
             ]));
         }
     }
@@ -509,14 +500,14 @@ class SpaceRooms extends Base
         if (
             $affiliation->affiliation == 'owner'
             && $directory = $this->me->session->bookmarksDirectories()
-                ->where('server', $server)
-                ->where('node', $node)
-                ->where('id', $directoryId)
-                ->withCount('conferences')
-                ->first()
+            ->where('server', $server)
+            ->where('node', $node)
+            ->where('id', $directoryId)
+            ->withCount('conferences')
+            ->first()
         ) {
             $this->dialog($this->view('_spacerooms_destroy_directory', [
-                'directory' => $directory,
+                'directory' => $directory
             ]));
         }
     }

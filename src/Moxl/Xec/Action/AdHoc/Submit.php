@@ -2,25 +2,21 @@
 
 namespace Moxl\Xec\Action\AdHoc;
 
-use Moxl\Stanza\AdHoc;
 use Moxl\Xec\Action;
+use Moxl\Stanza\AdHoc;
 
 class Submit extends Action
 {
     protected $_to;
-
     protected $_node;
-
     protected $_data;
-
     protected $_sessionid;
-
     protected ?string $_action = null;
 
     public function request()
     {
         $this->store();
-        $this->iq(AdHoc::submit($this->_node, $this->_data, $this->_sessionid, $this->_action), to: $this->_to, type: 'set');
+        $this->iq(Adhoc::submit($this->_node, $this->_data, $this->_sessionid, $this->_action), to: $this->_to, type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -34,7 +30,7 @@ class Submit extends Action
     {
         $this->pack([
             'errorid' => $errorId,
-            'message' => $message,
+            'message' => $message
         ]);
         $this->deliver();
     }

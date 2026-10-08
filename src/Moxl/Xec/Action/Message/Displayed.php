@@ -2,15 +2,13 @@
 
 namespace Moxl\Xec\Action\Message;
 
-use Moxl\Stanza\Message;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Message;
 
 class Displayed extends Action
 {
     protected $_to;
-
     protected $_id;
-
     protected $_type;
 
     public function request()

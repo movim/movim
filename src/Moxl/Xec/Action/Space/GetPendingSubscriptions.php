@@ -3,12 +3,12 @@
 namespace Moxl\Xec\Action\Space;
 
 use Moxl\Stanza\AdHoc;
+use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 
 class GetPendingSubscriptions extends Action
 {
     protected $_to;
-
     protected $_node;
 
     public function request()

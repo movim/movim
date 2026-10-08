@@ -1,5 +1,4 @@
 <?php
-
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -7,10 +6,11 @@
 
 namespace Movim\Console;
 
-use Movim\Emoji;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+
+use Movim\Emoji;
 
 class EmojisToJsonCommand extends Command
 {
@@ -36,7 +36,7 @@ class EmojisToJsonCommand extends Command
                 'FEMALE ',
                 'MALE ',
                 'EMOJI COMPONENT ',
-                '  ',
+                '  '
             ], [
                 '',
                 '',
@@ -46,7 +46,7 @@ class EmojisToJsonCommand extends Command
                 '',
                 '',
                 '',
-                ' ',
+                ' '
             ], $value);
             echo $value."\n";
             $filtered[$key] = $value;

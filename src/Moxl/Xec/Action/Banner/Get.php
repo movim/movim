@@ -2,15 +2,13 @@
 
 namespace Moxl\Xec\Action\Banner;
 
-use App\Contact;
-use Moxl\Stanza\Avatar;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Avatar;
 use React\Http\Message\Response;
 
 class Get extends Action
 {
     protected $_to;
-
     protected $_node = false;
 
     public function request()
@@ -26,10 +24,10 @@ class Get extends Action
             && isset($stanza->pubsub->items->item->metadata->info->attributes()->url)
         ) {
             $info = $stanza->pubsub->items->item->metadata->info->attributes();
-            $contact = Contact::firstOrNew(['id' => $this->_to]);
+            $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
 
             if ($info->id != $contact->bannerhash) {
-                requestAvatarUrl(jid: $contact->id, url: (string) $info->url, banner: true)->then(
+                requestAvatarUrl(jid: $contact->id, url: (string)$info->url, banner: true)->then(
                     function (Response $response) use ($contact) {
                         $this->pack($contact);
                         $this->deliver();

@@ -1,5 +1,4 @@
 <?php
-
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -15,32 +14,25 @@ class Wrapper
     private static $instance;
 
     private $_widgets = [];
-
     private $_events = [];
-
     private $_eventWidgets = [];
 
     private $css = []; // All the css loaded by the widgets so far.
-
     private $js = []; // All the js loaded by the widgets so far.
 
     public $title = null; // If a widget has defined a particular title
-
     public $image = null; // If a widget has defined a particular image
-
     public $description = null; // If a widget has defined a particular description
-
     public $url = null; // If a widget has defined a particular url
-
     public $links = []; // If a widget have to inject a link in the header
 
     public function registerAll(array $load = [])
     {
-        $widgets_dir = scandir(APP_PATH.'Widgets/');
+        $widgets_dir = scandir(APP_PATH . "Widgets/");
 
         foreach ($widgets_dir as $widgetDir) {
             if (
-                is_dir(APP_PATH.'Widgets/'.$widgetDir) &&
+                is_dir(APP_PATH . "Widgets/" . $widgetDir) &&
                 $widgetDir != '..' &&
                 $widgetDir != '.'
             ) {
@@ -55,7 +47,7 @@ class Wrapper
 
     public static function getInstance()
     {
-        if (! is_object(self::$instance)) {
+        if (!is_object(self::$instance)) {
             self::$instance = new Wrapper;
         }
 
@@ -71,11 +63,10 @@ class Wrapper
 
     /**
      * @desc Loads a widget and returns it
-     *
-     * @param  $name  the name of the widget
-     * @param  $register  know if we are loading in the daemon or displaying
-     * @param  $user  the user to inject
-     * @param  $view  the name of the current view
+     * @param $name the name of the widget
+     * @param $register know if we are loading in the daemon or displaying
+     * @param $user the user to inject
+     * @param $view the name of the current view
      */
     public function loadWidget(
         string $name,
@@ -84,7 +75,7 @@ class Wrapper
         ?string $view = null,
         ?string $sessionId = null
     ) {
-        $name = 'App\\Widgets\\'.$name.'\\'.$name;
+        $name = 'App\\Widgets\\' . $name . '\\' . $name;
 
         if ($register) {
             $widget = new $name(user: $user, light: true, sessionId: $sessionId);
@@ -143,11 +134,11 @@ class Wrapper
     /**
      * @desc Loads a widget and runs a particular function on it.
      *
-     * @param  $widgetName  is the name of the widget.
-     * @param  $method  is the function to be run.
-     * @param  $params  is an array containing the parameters to be passed along to the method.
-     * @param  $user  the user to inject
-     * @param  $view  the name of the current view
+     * @param $widgetName is the name of the widget.
+     * @param $method is the function to be run.
+     * @param $params is an array containing the parameters to be passed along to the method.
+     * @param $user the user to inject
+     * @param $view the name of the current view
      * @return what the widget's method returns.
      */
     public function runWidget(
@@ -164,7 +155,6 @@ class Wrapper
             return $widget->$method(...$params);
         } catch (\Error $th) {
             logError($th);
-
             return null;
         }
     }
@@ -172,10 +162,10 @@ class Wrapper
     /**
      * @desc Load a widget and call an event method on it
      *
-     * @param  $jid  The jid to inject the correct user
-     * @param  $widgetName  is the name of the widget.
-     * @param  $method  is the function to be run.
-     * @param  $packet  is a Packet to be passed along to the method.
+     * @param $jid The jid to inject the correct user
+     * @param $widgetName is the name of the widget.
+     * @param $method is the function to be run.
+     * @param $packet is a Packet to be passed along to the method.
      */
     public function runUserWidget(string $jid, string $widgetName, string $method, ?Packet $packet = null)
     {
@@ -187,15 +177,15 @@ class Wrapper
      * Calls a particular function with the given parameters on
      * all loaded widgets.
      *
-     * @param  $key  is the key of the incoming event
-     * @param  $packet  is the Packet that is sent as a parameter
+     * @param $key is the key of the incoming event
+     * @param $packet is the Packet that is sent as a parameter
      */
     public function iterate(string $key, ?Packet $packet = null, ?User $user = null, ?string $sessionId = null)
     {
-        if ($packet && ! empty($packet->from)) {
-            logInfo('Package: "'.$key.'" from "'.$packet->from.'" fired');
+        if ($packet && !empty($packet->from)) {
+            logInfo('Package: "' . $key . '" from "' . $packet->from . '" fired');
         } else {
-            logInfo('Package: "'.$key.'"');
+            logInfo('Package: "' . $key . '"');
         }
 
         if (array_key_exists($key, $this->_events)) {
@@ -214,7 +204,7 @@ class Wrapper
                          */
                         if (
                             is_array($widget->filters)
-                            && array_key_exists($key.'_'.$method, $widget->filters)
+                            && array_key_exists($key . '_' . $method, $widget->filters)
                         ) {
                             $notifsKey = linker($sessionId)?->session->get('notifs_key');
 
@@ -225,7 +215,7 @@ class Wrapper
                                 $notifKey = reset($explode);
 
                                 $wildcardFilter = false;
-                                foreach ($widget->filters[$key.'_'.$method] as $filter) {
+                                foreach ($widget->filters[$key . '_' . $method] as $filter) {
                                     if (
                                         substr($filter, -1) == '*'
                                         && substr($notifKey, 0, mb_strlen($filter) - 1) == substr($filter, 0, -1)
@@ -235,7 +225,7 @@ class Wrapper
                                     }
                                 }
 
-                                if ($wildcardFilter || in_array($notifKey, $widget->filters[$key.'_'.$method])) {
+                                if ($wildcardFilter || in_array($notifKey, $widget->filters[$key . '_' . $method])) {
                                     $this->callWidget($widget, $method, $packet);
                                 }
                             }

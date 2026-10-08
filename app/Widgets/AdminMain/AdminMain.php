@@ -4,9 +4,8 @@ namespace App\Widgets\AdminMain;
 
 use App\Configuration;
 use Movim\i18n\Locale;
-use Movim\Widget\Base;
 
-class AdminMain extends Base
+class AdminMain extends \Movim\Widget\Base
 {
     public function load()
     {
@@ -14,7 +13,7 @@ class AdminMain extends Base
 
         $configuration = Configuration::get();
 
-        if (isset($form) && ! empty($form) && isset($form['adminform']) && $this->me->admin) {
+        if (isset($form) && !empty($form) && isset($form['adminform']) && $this->me->admin) {
             $form['disableregistration'] = (isset($form['disableregistration']));
             $form['restrictsuggestions'] = (isset($form['restrictsuggestions']));
             $form['chatonly'] = (isset($form['chatonly']));
@@ -36,7 +35,7 @@ class AdminMain extends Base
         $this->view->assign('logs', [
             0 => $this->__('log.empty'),
             1 => $this->__('log.syslog'),
-            2 => $this->__('log.syslog_files'),
+            2 => $this->__('log.syslog_files')
         ]);
 
         $this->view->assign('langs', Locale::getList());

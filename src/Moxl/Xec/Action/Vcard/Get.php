@@ -2,14 +2,12 @@
 
 namespace Moxl\Xec\Action\Vcard;
 
-use App\Contact;
-use Moxl\Stanza\Vcard;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Vcard;
 
 class Get extends Action
 {
     protected $_to;
-
     protected $_avatarhash;
 
     public function request()
@@ -22,7 +20,7 @@ class Get extends Action
     {
         $notify = true;
 
-        $contact = Contact::firstOrNew(['id' => $this->_to]);
+        $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
         $contact->set($stanza);
         $contact->setAvatar($stanza);
 
@@ -50,7 +48,7 @@ class Get extends Action
 
     public function error(string $errorId, ?string $message = null)
     {
-        $contact = Contact::firstOrNew(['id' => $this->_to]);
+        $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
         $contact->avatarhash = $this->_avatarhash;
         $contact->save();
     }

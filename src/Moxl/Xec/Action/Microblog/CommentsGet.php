@@ -3,15 +3,13 @@
 namespace Moxl\Xec\Action\Microblog;
 
 use App\Post;
-use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Pubsub;
 
 class CommentsGet extends Action
 {
     protected $_to;
-
     protected $_node;
-
     protected $_parentid;
 
     public function request()
@@ -22,8 +20,7 @@ class CommentsGet extends Action
 
     public function setId($id)
     {
-        $this->_node = Post::COMMENTS_NODE.'/'.$id;
-
+        $this->_node = Post::COMMENTS_NODE . '/' . $id;
         return $this;
     }
 
@@ -38,7 +35,7 @@ class CommentsGet extends Action
                 $comment = new Post([
                     'server' => $this->_to,
                     'node' => $this->_node,
-                    'nodeid' => (string) $item->attributes()->id,
+                    'nodeid' => (string)$item->attributes()->id
                 ]);
                 $comment->set($item);
                 $comment->parent_id = $this->_parentid;

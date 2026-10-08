@@ -2,17 +2,14 @@
 
 namespace Moxl\Xec\Action\Roster;
 
-use Moxl\Stanza\Roster;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Roster;
 
 class UpdateItem extends Action
 {
     protected $_to;
-
     protected $_from;
-
     protected $_name;
-
     protected $_group;
 
     public function request()

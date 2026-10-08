@@ -11,15 +11,15 @@ class Retracted extends Payload
                 $stanza->moderated->attributes()->xmlns,
                 [
                     'urn:xmpp:message-moderate:0', // buggy ejabberd implementation
-                    'urn:xmpp:message-moderate:1',
+                    'urn:xmpp:message-moderate:1'
                 ]
             )) || $parent->attributes()->type == 'groupchat'
             ? 'stanzaid'
             : 'originid';
 
         $message = $this->me->messages()
-            ->where($idKey, (string) $stanza->attributes()->id)
-            ->where('jidfrom', bareJid((string) $parent->attributes()->from))
+            ->where($idKey, (string)$stanza->attributes()->id)
+            ->where('jidfrom', bareJid((string)$parent->attributes()->from))
             ->first();
 
         if ($message) {

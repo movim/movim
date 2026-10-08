@@ -2,11 +2,10 @@
 
 namespace App\Widgets\CommunityData;
 
-use App\Info;
-use App\Post;
+use Moxl\Xec\Action\Pubsub\GetItem;
+
 use Movim\Widget\Base;
 use Moxl\Stanza\Avatar;
-use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Payload\Packet;
 
 class CommunityData extends Base
@@ -23,14 +22,14 @@ class CommunityData extends Base
     {
         $info = $packet->content;
 
-        if (! $info->isMicroblogCommentsNode() && ! $info->isAccount()) {
+        if (!$info->isMicroblogCommentsNode() && !$info->isAccount()) {
             $this->rpc('MovimTpl.fill', '#community_data', $this->prepareData($info->server, $info->node));
         }
     }
 
     public function onAvatar(Packet $packet)
     {
-        [$origin, $node] = array_values($packet->content);
+        list($origin, $node) = array_values($packet->content);
 
         $this->rpc('MovimTpl.fill', '#community_data', $this->prepareData($origin, $node));
     }
@@ -55,9 +54,9 @@ class CommunityData extends Base
                 'num',
                 ($info->items > 0)
                     ? $info->items
-                    : Post::where('server', $info->server)
-                        ->where('node', $info->node)
-                        ->count()
+                    : \App\Post::where('server', $info->server)
+                    ->where('node', $info->node)
+                    ->count()
             );
         } else {
             return '';
@@ -69,7 +68,7 @@ class CommunityData extends Base
     public function prepareData($origin, $node)
     {
         $view = $this->tpl();
-        $info = Info::where('server', $origin)
+        $info = \App\Info::where('server', $origin)
             ->where('node', $node)
             ->first();
 
@@ -81,15 +80,15 @@ class CommunityData extends Base
                 'num',
                 ($info->items > 0)
                     ? $info->items
-                    : Post::where('server', $origin)
-                        ->where('node', $node)
-                        ->count()
+                    : \App\Post::where('server', $origin)
+                    ->where('node', $node)
+                    ->count()
             );
 
-            $title = ! empty($info->name) ? $info->name : $node;
+            $title = !empty($info->name) ? $info->name : $node;
             $this->rpc(
                 'Notif.setTitle',
-                $this->__('page.communities').' • '.$title
+                $this->__('page.communities') . ' • ' . $title
             );
         }
 

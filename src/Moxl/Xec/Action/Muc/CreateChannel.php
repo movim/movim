@@ -2,21 +2,16 @@
 
 namespace Moxl\Xec\Action\Muc;
 
-use Moxl\Stanza\Muc;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Muc;
 
 class CreateChannel extends Action
 {
     protected $_to;
-
     protected $_name;
-
     protected $_nick;
-
     protected $_autojoin;
-
     protected $_notify;
-
     protected $_pinned;
 
     public function request()

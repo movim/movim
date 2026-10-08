@@ -4,18 +4,18 @@ namespace App;
 
 use Illuminate\Database\Capsule\Manager as DB;
 
+use App\Message;
+
 class MessageBuffer
 {
     protected static $instance;
-
     private $_models = null;
-
     private $_calls = null;
 
     public static function getInstance()
     {
-        if (! isset(self::$instance)) {
-            self::$instance = new self;
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
         }
 
         return self::$instance;
@@ -61,15 +61,15 @@ class MessageBuffer
         }
 
         if ($this->_calls->isNotEmpty()) {
-            $this->_calls->each(fn ($call) => $call());
+            $this->_calls->each(fn($call) => $call());
             $this->_calls = collect();
         }
     }
 
     public function append(Message $message, $call)
     {
-        // if (empty($message->mid)) {
-        $this->_models[$message->user_id.$message->jidfrom.$message->id] = $message->toRawArray();
+        //if (empty($message->mid)) {
+        $this->_models[$message->user_id . $message->jidfrom . $message->id] = $message->toRawArray();
         $this->_calls->push($call);
         /*} else {
             $message->save();

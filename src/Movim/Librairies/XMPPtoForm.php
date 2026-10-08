@@ -8,11 +8,8 @@ use Movim\Route;
 class XMPPtoForm
 {
     private ?\SimpleXMLElement $xmpp = null;
-
     private string $formType;
-
     private $stanza;
-
     private \DOMDocument $html;
 
     public function __construct(
@@ -26,10 +23,9 @@ class XMPPtoForm
     public function getHTML(\SimpleXMLElement $xmpp, $stanza = false)
     {
         $this->xmpp = $xmpp;
-        $this->formType = (string) $xmpp->attributes()->type;
+        $this->formType = (string)$xmpp->attributes()->type;
         $this->stanza = $stanza;
         $this->create();
-
         return $this->html->saveHTML();
     }
 
@@ -38,7 +34,7 @@ class XMPPtoForm
         $array = [];
 
         foreach ($xmpp->children() as $element) {
-            $array[(string) $element->attributes()->var] = (string) $element->value;
+            $array[(string)$element->attributes()->var] = (string)$element->value;
         }
 
         return $array;
@@ -67,14 +63,14 @@ class XMPPtoForm
                 case 'field':
                     if (
                         isset($element->media)
-                        && (string) $element->media->attributes()->xmlns == 'urn:xmpp:media-element'
+                        && (string)$element->media->attributes()->xmlns == 'urn:xmpp:media-element'
                         && isset($element->media->uri)
                     ) {
                         $uri = parse_url($element->media->uri);
                         switch ($uri['scheme']) {
                             case 'cid':
-                                foreach ($this->stanza->xpath('//data[@cid=\''.$uri['path'].'\']') as $data) {
-                                    $this->outImage('data:'.$data->attributes()->type.';base64,'.(string) $data);
+                                foreach ($this->stanza->xpath('//data[@cid=\'' . $uri['path'] . '\']') as $data) {
+                                    $this->outImage('data:' . $data->attributes()->type . ';base64,' . (string)$data);
                                 }
                                 break;
                             case 'http':
@@ -129,7 +125,7 @@ class XMPPtoForm
                                 $this->outHiddeninput($element);
                                 break;
                             case 'list-multi':
-                                // $this->outList($element, true);
+                                //$this->outList($element, true);
                                 break;
                             case 'list-single':
                                 $this->outList($element);
@@ -159,7 +155,7 @@ class XMPPtoForm
                     $this->outGeneric($element->getName());
                     break;
                 default:
-                    // $this->html .= '';
+                    //$this->html .= '';
             }
         }
 
@@ -168,7 +164,7 @@ class XMPPtoForm
             $colType = [];
 
             $table = $this->html->createElement('table');
-            $table->setAttribute('class', 'table');
+            $table->setAttribute("class", "table");
             $header = $this->html->createElement('tr');
 
             foreach ($reported->children() as $element) {
@@ -176,11 +172,11 @@ class XMPPtoForm
                     continue;
                 }
 
-                array_push($cols, (string) $element->attributes()->var);
+                array_push($cols, (string)$element->attributes()->var);
                 $type = $element->attributes()->type ?? 'text-single';
                 array_push($colType, $type);
 
-                $header->appendChild($this->html->createElement('th', (string) $element->attributes()->label));
+                $header->appendChild($this->html->createElement('th', (string)$element->attributes()->label));
             }
 
             $table->appendChild($header);
@@ -195,15 +191,15 @@ class XMPPtoForm
                         continue;
                     }
 
-                    $idx = array_search((string) $element->attributes()->var, $cols);
+                    $idx = array_search((string)$element->attributes()->var, $cols);
 
                     if ($colType[$idx] == 'jid-single') {
-                        $link = $this->html->createElement('a', (string) $element->value);
+                        $link = $this->html->createElement('a', (string)$element->value);
                         $link->setAttribute('href', Route::urlize('contact', $element->value));
                         $cells[$idx] = $this->html->createElement('td');
                         $cells[$idx]->appendChild($link);
                     } else {
-                        $cells[$idx] = $this->html->createElement('td', (string) $element->value);
+                        $cells[$idx] = $this->html->createElement('td', (string)$element->value);
                     }
                 }
 
@@ -233,7 +229,7 @@ class XMPPtoForm
         $input = $this->html->createElement('input');
         $input->setAttribute('type', $s);
         $input->setAttribute('id', $s);
-        $input->setAttribute('name', 'generic_'.$s);
+        $input->setAttribute('name', 'generic_' . $s);
         $input->setAttribute('required', 'required');
 
         $div->appendChild($input);
@@ -265,16 +261,16 @@ class XMPPtoForm
 
     private function outMultiP($arr)
     {
-        foreach ((array) $arr as $value) {
-            $this->outP((string) $value);
+        foreach ((array)$arr as $value) {
+            $this->outP((string)$value);
         }
     }
 
     private function outMultilineText($element)
     {
         $p = $this->html->createElement('p');
-        foreach ((array) $element->value as $value) {
-            $p->appendChild($this->html->createTextNode(htmlspecialchars_decode((string) $value)));
+        foreach ((array)$element->value as $value) {
+            $p->appendChild($this->html->createTextNode(htmlspecialchars_decode((string)$value)));
             $p->appendChild($this->html->createElement('br'));
         }
         $this->html->appendChild($p);
@@ -282,7 +278,7 @@ class XMPPtoForm
 
     private function outJidLinks($element)
     {
-        foreach ((array) $element->value as $value) {
+        foreach ((array)$element->value as $value) {
             $p = $this->html->createElement('p');
             $link = $this->html->createElement('a', $value);
             $link->setAttribute('href', Route::urlize('contact', $value));
@@ -300,7 +296,7 @@ class XMPPtoForm
                 'muc#roomconfig_membersonly',
                 'muc#roomconfig_whois',
                 'muc#roomconfig_publicroom',
-                'muc#roomconfig_allowpm',
+                'muc#roomconfig_allowpm'
             ]);
         }
 
@@ -343,7 +339,7 @@ class XMPPtoForm
             $input->setAttribute('disabled', 'disabled');
         }
 
-        if ((string) $s->value === 'true' || (string) $s->value === '1') {
+        if ((string)$s->value === 'true' || (string)$s->value === '1') {
             $input->setAttribute('checked', 'checked');
         }
 
@@ -375,7 +371,7 @@ class XMPPtoForm
 
         foreach ($s->children() as $value) {
             if ($value->getName() == 'value') {
-                $textarea->nodeValue .= $value."\n";
+                $textarea->nodeValue .= $value . "\n";
             }
         }
 
@@ -393,7 +389,7 @@ class XMPPtoForm
 
     private function outLabel($container, $s, $forceLabel = false)
     {
-        if (! $forceLabel && ! $s['label']) {
+        if (!$forceLabel && !$s['label']) {
             return;
         }
 
@@ -557,10 +553,10 @@ class XMPPtoForm
                 $opt->setAttribute('value', $option->value);
                 if (
                     in_array(
-                        (string) $option->value,
+                        (string)$option->value,
                         array_map(
                             function ($sxml) {
-                                return (string) $sxml;
+                                return (string)$sxml;
                             },
                             $s->xpath('value')
                         )

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateMembersTable extends Migration
 {
@@ -20,7 +20,7 @@ class CreateMembersTable extends Migration
             $table->index('conference');
 
             $table->foreign('jid')
-                ->references('id')->on('contacts');
+                  ->references('id')->on('contacts');
         });
     }
 

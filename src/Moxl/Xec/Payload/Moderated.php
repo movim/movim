@@ -8,9 +8,9 @@ class Moderated extends Payload
     {
         if ($parent->{'apply-to'} && $parent->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0') {
             $message = $this->me->messages()
-                ->where('stanzaid', (string) $parent->{'apply-to'}->attributes()->id)
-                ->where('jidfrom', bareJid((string) $parent->attributes()->from))
-                ->first();
+                                      ->where('stanzaid', (string)$parent->{'apply-to'}->attributes()->id)
+                                      ->where('jidfrom', bareJid((string)$parent->attributes()->from))
+                                      ->first();
 
             if ($message && $message->isMuc()) {
                 $message->retract();

@@ -3,39 +3,27 @@
 namespace Moxl\Xec\Action\Message;
 
 use App\MessageFile;
-use App\MessageOmemoHeader;
-use Moxl\Stanza\Message;
 use Moxl\Xec\Action;
+use Moxl\Stanza\Message;
+use App\MessageOmemoHeader;
 
 class Publish extends Action
 {
     protected string $_to;
-
     protected ?string $_content = null;
-
     protected ?string $_html = null;
-
     protected bool $_muc = false;
-
     protected bool $_mucreceipts = false;
-
     protected ?string $_id = null;
-
     protected ?string $_replace = null;
-
     protected ?MessageFile $_file = null;
-
     protected $_attachid = false;
-
     protected $_originid = false;
-
     protected $_threadid = false;
 
     // Reply
     protected $_replyid = false;
-
     protected $_replyto = false;
-
     protected $_replyquotedbodylength = 0;
 
     // OMEMO
@@ -52,7 +40,7 @@ class Publish extends Action
             content: $this->_content,
             html: $this->_html,
             chatstates: 'active',
-            receipts: ! $this->_muc || ($this->_muc && $this->_mucreceipts) ? 'request' : null,
+            receipts: !$this->_muc || ($this->_muc && $this->_mucreceipts) ? 'request' : null,
             id: $this->_id,
             replace: $this->_replace,
             file: $this->_file,
@@ -70,7 +58,6 @@ class Publish extends Action
     public function setMuc()
     {
         $this->_muc = true;
-
         return $this;
     }
 
@@ -82,7 +69,6 @@ class Publish extends Action
     public function setMucReceipts()
     {
         $this->_mucreceipts = true;
-
         return $this;
     }
 

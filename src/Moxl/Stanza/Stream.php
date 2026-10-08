@@ -84,7 +84,7 @@ class Stream
         $bind->appendChild($enable);
 
         $userAgent = $dom->createElement('user-agent');
-        $userAgent->setAttribute('id', generateUUID($tag.APP_VERSION.' '.BASE_URI));
+        $userAgent->setAttribute('id', generateUUID($tag . APP_VERSION . ' ' . BASE_URI));
         $userAgent->appendChild($dom->createElement('software', $tag));
 
         $authenticate->appendChild($userAgent);

@@ -2,10 +2,7 @@
 
 namespace App\Widgets\Syndication;
 
-use App\Contact;
-use App\Info;
 use App\Post;
-use App\User;
 use Movim\ImageSize;
 use Movim\Widget\Base;
 
@@ -15,39 +12,39 @@ class Syndication extends Base
     {
         ob_clean();
 
-        if (! $this->get('s')) {
+        if (!$this->get('s')) {
             return;
         }
 
         $from = $this->get('s');
         $item = $contact = null;
 
-        $user = User::where('nickname', $from)->first();
+        $user = \App\User::where('nickname', $from)->first();
         if ($user) {
             $from = $user->id;
         }
 
         if (filter_var($from, FILTER_VALIDATE_EMAIL)) {
             $node = Post::MICROBLOG_NODE;
-            $contact = Contact::firstOrNew(['id' => $from]);
-        } elseif (! $this->get('n')) {
+            $contact = \App\Contact::firstOrNew(['id' => $from]);
+        } elseif (!$this->get('n')) {
             return;
         } else {
             $node = $this->get('n');
-            $item = Info::where('server', $from)
+            $item = \App\Info::where('server', $from)
                 ->where('node', $node)
                 ->first();
         }
 
-        $posts = Post::where('server', $from)
+        $posts = \App\Post::where('server', $from)
             ->where('node', $node)
             ->where('open', true)
             ->orderBy('published', 'desc')
             ->take(20)
             ->get();
 
-        header('Content-Type: application/atom+xml; charset=UTF-8');
-        header('Content-Disposition: inline; filename="'.\cleanupId($from.'-'.$node).'.atom"');
+        header("Content-Type: application/atom+xml; charset=UTF-8");
+        header('Content-Disposition: inline; filename="' . \cleanupId($from . '-' . $node) . '.atom"');
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->formatOutput = true;
@@ -100,7 +97,7 @@ class Syndication extends Base
             $alternate->setAttribute('href', $this->route('community', [$from, $node]));
         }
 
-        $feed->appendChild($dom->createElement('id', 'xmpp:'.$from.'?;node='.rawurlencode($node)));
+        $feed->appendChild($dom->createElement('id', 'xmpp:' . $from . '?;node=' . rawurlencode($node)));
 
         $feed->appendChild($generator = $dom->createElement('generator', 'Movim'));
         $generator->setAttribute('uri', 'https://movim.eu');
@@ -134,7 +131,7 @@ class Syndication extends Base
             foreach ($post->links as $value) {
                 $entry->appendChild($link = $dom->createElement('link'));
                 $link->setAttribute('rel', 'alternate');
-                $link->setAttribute('href', (string) $value->href);
+                $link->setAttribute('href', (string)$value->href);
             }
 
             if ($post->openlink) {

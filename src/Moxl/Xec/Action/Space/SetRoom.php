@@ -11,7 +11,6 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 class SetRoom extends Action
 {
     protected ?Conference $_conference = null;
-
     protected bool $_withPublishOption = true;
 
     public function request()
@@ -29,7 +28,7 @@ class SetRoom extends Action
     {
         $this->pack([
             'server' => $this->_conference->space_server,
-            'node' => $this->_conference->space_node,
+            'node' => $this->_conference->space_node
         ]);
         $this->deliver();
     }

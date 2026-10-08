@@ -2,8 +2,6 @@
 
 namespace App\Widgets\ContactDataPublic;
 
-use App\Contact;
-use App\User;
 use App\Widgets\ContactData\ContactData;
 use App\Widgets\ContactSubscriptions\ContactSubscriptions;
 use Movim\Widget\Base;
@@ -24,12 +22,12 @@ class ContactDataPublic extends Base
     {
         $jid = $this->get('f');
 
-        $user = User::where('nickname', $jid)->first();
+        $user = \App\User::where('nickname', $jid)->first();
         if ($user) {
             $jid = $user->id;
         }
 
-        $this->view->assign('contact', Contact::firstOrNew(['id' => $jid]));
+        $this->view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         $this->view->assign('jid', $jid);
     }
 }

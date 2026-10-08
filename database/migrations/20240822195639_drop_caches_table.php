@@ -3,9 +3,9 @@
 use App\OpenChat;
 use App\User;
 use Carbon\Carbon;
-use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Capsule\Manager as DB;
 
 class DropCachesTable extends Migration
 {
@@ -19,12 +19,12 @@ class DropCachesTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')
-                ->on('users')->onDelete('cascade');
+                  ->on('users')->onDelete('cascade');
 
             $table->primary(['user_id', 'jid']);
         });
 
-        foreach (DB::table('caches')->where('name', 'chats')->get() as $cache) {
+        foreach(DB::table('caches')->where('name', 'chats')->get() as $cache) {
             $chats = $this->extractFromCache($cache);
 
             if (is_array($chats)) {
@@ -35,7 +35,7 @@ class DropCachesTable extends Migration
                         'user_id' => $cache->user_id,
                         'jid' => $jid,
                         'created_at' => Carbon::now(),
-                        'updated_at' => Carbon::now(),
+                        'updated_at' => Carbon::now()
                     ]);
                 }
 
@@ -51,15 +51,15 @@ class DropCachesTable extends Migration
             $table->string('chats_filter', 12)->default('all');
         });
 
-        foreach (DB::table('caches')->where('name', 'since')->get() as $cache) {
+        foreach(DB::table('caches')->where('name', 'since')->get() as $cache) {
             User::where('id', $cache->user_id)->update(['posts_since' => $this->extractFromCache($cache)]);
         }
 
-        foreach (DB::table('caches')->where('name', 'notifs_since')->get() as $cache) {
+        foreach(DB::table('caches')->where('name', 'notifs_since')->get() as $cache) {
             User::where('id', $cache->user_id)->update(['notifications_since' => $this->extractFromCache($cache)]);
         }
 
-        foreach (DB::table('caches')->where('name', 'chats_filter')->get() as $cache) {
+        foreach(DB::table('caches')->where('name', 'chats_filter')->get() as $cache) {
             User::where('id', $cache->user_id)->update(['chats_filter' => $this->extractFromCache($cache)]);
         }
 
@@ -86,8 +86,8 @@ class DropCachesTable extends Migration
 
             $table->primary(['user_id', 'name']);
             $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
         });
     }
 

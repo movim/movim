@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\ExternalServices;
 
-use Moxl\Stanza\ExternalServices;
 use Moxl\Xec\Action;
+use Moxl\Stanza\ExternalServices;
 
 class Get extends Action
 {
@@ -12,7 +12,7 @@ class Get extends Action
     public function request()
     {
         $this->store();
-        $this->iq(ExternalServices::request(), to: $this->_to, type: 'get');
+        $this->iq(ExternalServices::request(), to: $this->_to, type: 'get');;
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
@@ -21,22 +21,22 @@ class Get extends Action
         foreach ($stanza->services->service as $service) {
             if (in_array($service['type'], ['stun', 'turn'])) {
                 $item = [
-                    'host' => (string) $service['host'],
-                    'port' => (string) $service['port'],
-                    'transport' => (string) $service['transport'],
-                    'type' => (string) $service['type'],
+                    'host' => (string)$service['host'],
+                    'port' => (string)$service['port'],
+                    'transport' => (string)$service['transport'],
+                    'type' => (string)$service['type']
                 ];
 
                 if ($service['username'] && $service['password']) {
-                    $item['username'] = (string) $service['username'];
-                    $item['password'] = (string) $service['password'];
+                    $item['username'] = (string)$service['username'];
+                    $item['password'] = (string)$service['password'];
                 }
 
                 array_push($services, $item);
             }
         }
 
-        if (! empty($services)) {
+        if (!empty($services)) {
             $this->pack($services);
             $this->deliver();
         }

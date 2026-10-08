@@ -2,7 +2,6 @@
 
 namespace App\Widgets\CommunitySubscriptions;
 
-use App\Info;
 use App\Widgets\CommunitiesServer\CommunitiesServer;
 use Movim\Widget\Base;
 
@@ -27,7 +26,7 @@ class CommunitySubscriptions extends Base
         $this->rpc('MovimTpl.fill', '#subscriptions', $view->draw('_communitysubscriptions'));
     }
 
-    public function prepareTicket(Info $community)
+    public function prepareTicket(\App\Info $community)
     {
         return (new CommunitiesServer($this->me, sessionId: $this->sessionId))->prepareTicket($community);
     }

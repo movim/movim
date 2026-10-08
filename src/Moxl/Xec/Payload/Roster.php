@@ -8,14 +8,12 @@ class Roster extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        if (! $parent->attributes()->from
-         || (bareJid((string) $parent->attributes()->from) != $this->me->id)
-        ) {
-            return;
-        }
+        if (!$parent->attributes()->from
+         || (bareJid((string)$parent->attributes()->from) != $this->me->id)
+        ) return;
 
-        if ((string) $parent->attributes()->type == 'set') {
-            $jid = bareJid((string) $stanza->item->attributes()->jid);
+        if ((string)$parent->attributes()->type == 'set') {
+            $jid = bareJid((string)$stanza->item->attributes()->jid);
 
             $contact = $this->me->session->contacts()->where('jid', $jid)->first();
 
@@ -23,7 +21,7 @@ class Roster extends Payload
                 $contact->delete();
             }
 
-            if ((string) $stanza->item->attributes()->subscription != 'remove') {
+            if ((string)$stanza->item->attributes()->subscription != 'remove') {
                 $roster = DBRoster::firstOrNew(['jid' => $jid, 'session_id' => $this->sessionId]);
 
                 if ($roster->set($this->me, $stanza->item)) {

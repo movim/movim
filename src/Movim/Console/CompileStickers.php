@@ -1,5 +1,4 @@
 <?php
-
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -29,8 +28,8 @@ class CompileStickers extends Command
 
         StickersPack::query()->delete();
 
-        foreach (glob(PUBLIC_STICKERS_PATH.'*', GLOB_NOSORT) as $pack) {
-            $parsed = parse_ini_file($pack.'/info.ini');
+        foreach (glob(PUBLIC_STICKERS_PATH . '*', GLOB_NOSORT) as $pack) {
+            $parsed = parse_ini_file($pack . '/info.ini');
             $packName = basename($pack);
 
             $stickersPack = new StickersPack;
@@ -40,7 +39,7 @@ class CompileStickers extends Command
             $stickersPack->author = $parsed['author'];
             $stickersPack->save();
 
-            foreach (glob($pack.'/*.png', GLOB_NOSORT) as $path) {
+            foreach (glob($pack . '/*.png', GLOB_NOSORT) as $path) {
                 $key = basename($path, '.png');
 
                 if ($key != 'icon') {
@@ -54,7 +53,7 @@ class CompileStickers extends Command
                     $sticker = new Sticker;
                     $sticker->pack = $packName;
                     $sticker->name = $key;
-                    $sticker->filename = $key.'.png';
+                    $sticker->filename = $key . '.png';
                     $sticker->cache_hash = $hashed;
                     $sticker->cache_hash_algorythm = Image::$hash;
                     $sticker->save();
@@ -63,11 +62,10 @@ class CompileStickers extends Command
                 }
             }
 
-            $output->writeln('<info>'.$packName.' compiled</info>');
+            $output->writeln('<info>' . $packName . ' compiled</info>');
         }
 
-        $output->writeln('<info>'.$count.' stickers compiled</info>');
-
+        $output->writeln('<info>' . $count . ' stickers compiled</info>');
         return Command::SUCCESS;
     }
 }
