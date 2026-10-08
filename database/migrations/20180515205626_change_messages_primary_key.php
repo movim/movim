@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class ChangeMessagesPrimaryKey extends Migration
 {
@@ -15,8 +15,8 @@ class ChangeMessagesPrimaryKey extends Migration
             $table->dropPrimary('messages_pkey');
             $table->primary(['user_id', 'jidfrom', 'id']);
             $table->foreign('user_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 
@@ -30,8 +30,8 @@ class ChangeMessagesPrimaryKey extends Migration
             $table->dropPrimary('messages_pkey');
             $table->primary(['user_id', 'id']);
             $table->foreign('user_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 }

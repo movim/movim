@@ -2,9 +2,9 @@
 
 namespace Moxl\Xec\Action\Presence;
 
-use Moxl\Xec\Action;
-use Moxl\Stanza\Presence;
 use App\Presence as DBPresence;
+use Moxl\Stanza\Presence;
+use Moxl\Xec\Action;
 
 class Chat extends Action
 {

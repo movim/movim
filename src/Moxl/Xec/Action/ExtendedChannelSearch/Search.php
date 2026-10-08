@@ -2,13 +2,15 @@
 
 namespace Moxl\Xec\Action\ExtendedChannelSearch;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\ExtendedChannelSearch;
+use Moxl\Xec\Action;
 
 class Search extends Action
 {
     protected ?string $_keyword;
+
     protected int $_max = 30;
+
     protected bool $_globalSearch = false;
 
     public function request()
@@ -20,6 +22,7 @@ class Search extends Action
     public function enableGlobalSearch()
     {
         $this->_globalSearch = true;
+
         return $this;
     }
 
@@ -29,11 +32,11 @@ class Search extends Action
 
         foreach ($stanza->result->item as $item) {
             array_push($results, [
-                'jid' => (string)$item->attributes()->address,
-                'name' => (string)$item->name,
-                'description' => (string)$item->description,
-                'occupants' => (string)$item->nusers,
-                'public' => (bool)$item->{'is-open'},
+                'jid' => (string) $item->attributes()->address,
+                'name' => (string) $item->name,
+                'description' => (string) $item->description,
+                'occupants' => (string) $item->nusers,
+                'public' => (bool) $item->{'is-open'},
             ]);
         }
 
@@ -41,7 +44,7 @@ class Search extends Action
             'results' => $results,
             'global' => $this->_globalSearch,
             'keyword' => $this->_keyword,
-            'total' => (int)$stanza->result?->set?->last
+            'total' => (int) $stanza->result?->set?->last,
         ]);
         $this->deliver();
     }

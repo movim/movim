@@ -29,17 +29,17 @@ class Configuration extends Model
     ];
 
     protected $attributes = [
-        'id'                    => 1,
-        'unregister'            => false,
-        'disableregistration'   => false,
-        'chatonly'              => false,
-        'restrictsuggestions'   => false,
-        'loglevel'              => 0,
-        'locale'                => 'en',
-        'xmppwhitelist'         => null,
-        'ssrfwhitelist'         => null,
-        'gifapikey'             => null,
-        'maxsessions'           => 0,
+        'id' => 1,
+        'unregister' => false,
+        'disableregistration' => false,
+        'chatonly' => false,
+        'restrictsuggestions' => false,
+        'loglevel' => 0,
+        'locale' => 'en',
+        'xmppwhitelist' => null,
+        'ssrfwhitelist' => null,
+        'gifapikey' => null,
+        'maxsessions' => 0,
     ];
 
     public static function get()
@@ -49,6 +49,7 @@ class Configuration extends Model
         }
 
         self::$instance = self::findOrNew(1);
+
         return self::$instance;
     }
 

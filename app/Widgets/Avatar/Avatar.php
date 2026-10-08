@@ -2,12 +2,14 @@
 
 namespace App\Widgets\Avatar;
 
+use App\Contact;
 use Movim\Image;
+use Movim\Widget\Base;
 use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Action\Avatar\Set;
 use Moxl\Xec\Payload\Packet;
 
-class Avatar extends \Movim\Widget\Base
+class Avatar extends Base
 {
     public function load()
     {
@@ -51,21 +53,22 @@ class Avatar extends \Movim\Widget\Base
     public function prepareForm()
     {
         $avatarform = $this->tpl();
-        $avatarform->assign('me', \App\Contact::firstOrNew(['id' => $this->me->id]));
+        $avatarform->assign('me', Contact::firstOrNew(['id' => $this->me->id]));
+
         return $avatarform->draw('_avatar');
     }
 
     public function ajaxGetForm()
     {
         $view = $this->tpl();
-        $view->assign('me', \App\Contact::firstOrNew(['id' => $this->me->id]));
+        $view->assign('me', Contact::firstOrNew(['id' => $this->me->id]));
         $this->dialog($view->draw('_avatar_form'));
     }
 
     public function ajaxGetBannerForm()
     {
         $view = $this->tpl();
-        $view->assign('me', \App\Contact::firstOrNew(['id' => $this->me->id]));
+        $view->assign('me', Contact::firstOrNew(['id' => $this->me->id]));
         $this->dialog($view->draw('_avatar_banner_form'));
     }
 
@@ -83,7 +86,9 @@ class Avatar extends \Movim\Widget\Base
 
     public function ajaxSubmit($avatar)
     {
-        if (empty($avatar->photobin->value)) return;
+        if (empty($avatar->photobin->value)) {
+            return;
+        }
 
         $r = $this->xmpp(new Set);
         $r->setData($avatar->photobin->value)->request();
@@ -91,9 +96,11 @@ class Avatar extends \Movim\Widget\Base
 
     public function ajaxBannerSubmit($banner)
     {
-        if (empty($banner->photobin->value)) return;
+        if (empty($banner->photobin->value)) {
+            return;
+        }
 
-        $key = $this->me->id . 'banner';
+        $key = $this->me->id.'banner';
 
         $image = new Image;
         $image->fromBase64($banner->photobin->value);

@@ -1,8 +1,8 @@
 <?php
 
 use App\Conference;
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class AddUserIdToConferencesTable extends Migration
 {
@@ -13,7 +13,7 @@ class AddUserIdToConferencesTable extends Migration
         $this->schema->table('conferences', function (Blueprint $table) {
             $table->string('user_id', 256);
             $table->foreign('user_id')->references('id')
-                  ->on('users')->onDelete('cascade');
+                ->on('users')->onDelete('cascade');
         });
     }
 

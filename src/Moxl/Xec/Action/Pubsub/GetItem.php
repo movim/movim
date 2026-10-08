@@ -3,22 +3,27 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use App\Conference;
-use Moxl\Stanza\Pubsub;
-use Moxl\Xec\Action;
-
+use App\Post;
 use Moxl\Stanza\Avatar;
+use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\PubsubAtom;
+use Moxl\Xec\Action;
 use Psr\Http\Message\ResponseInterface;
 
 class GetItem extends Action
 {
     protected $_to;
+
     protected $_node;
+
     protected $_id;
+
     protected ?int $_replypostid = null;
+
     protected bool $fromPayload = false;
 
     protected $_parentid;
+
     protected $_messagemid;
 
     public function request()
@@ -30,6 +35,7 @@ class GetItem extends Action
     public function fromPayload()
     {
         $this->fromPayload = true;
+
         return $this;
     }
 
@@ -39,22 +45,22 @@ class GetItem extends Action
             foreach ($stanza->pubsub->items->item as $item) {
                 if (
                     isset($item->entry)
-                    && (string)$item->entry->attributes()->xmlns == PubsubAtom::ATOM_NAMESPACE
+                    && (string) $item->entry->attributes()->xmlns == PubsubAtom::ATOM_NAMESPACE
                 ) {
-                    $p = \App\Post::firstOrNew([
+                    $p = Post::firstOrNew([
                         'server' => $this->_to,
                         'node' => $this->_node,
-                        'nodeid' => $this->_id
+                        'nodeid' => $this->_id,
                     ]);
                     $p->set($item);
 
                     if (isset($this->_parentid)) {
-                        $p->parent_id    = $this->_parentid;
+                        $p->parent_id = $this->_parentid;
                     }
 
-                    if ($p->isComment() && !isset($p->parent_id)) {
+                    if ($p->isComment() && ! isset($p->parent_id)) {
                         return;
-                    };
+                    }
 
                     $p->save();
 
@@ -86,19 +92,19 @@ class GetItem extends Action
                     }
                 } elseif (
                     isset($item->metadata)
-                    && (string)$item->metadata->attributes()->xmlns == Avatar::NODE_METADATA
+                    && (string) $item->metadata->attributes()->xmlns == Avatar::NODE_METADATA
                     && isset($item->metadata->info)
                     && isset($item->metadata->info->attributes()->url)
                 ) {
                     requestAvatarUrl(
                         jid: $this->_to,
                         node: $this->_node,
-                        url: (string)$item->metadata->info->attributes()->url
+                        url: (string) $item->metadata->info->attributes()->url
                     )->then(function (ResponseInterface $response) {
                         $this->method('avatar');
                         $this->pack([
                             'server' => $this->_to,
-                            'node' => $this->_node
+                            'node' => $this->_node,
                         ]);
                         $this->deliver();
                     });
@@ -120,7 +126,7 @@ class GetItem extends Action
 
                         $this->pack([
                             'server' => $this->_to,
-                            'node' => $this->_node
+                            'node' => $this->_node,
                         ]);
                         $this->deliver('space_addedroom');
                     }

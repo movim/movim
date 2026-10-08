@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Movim\Jid;
 
@@ -24,7 +25,7 @@ class Member extends Model
 
     public static function saveMany(array $members)
     {
-        $now = \Carbon\Carbon::now();
+        $now = Carbon::now();
         $members = collect($members)->map(function (array $data) use ($now) {
             return array_merge([
                 'created_at' => $now,

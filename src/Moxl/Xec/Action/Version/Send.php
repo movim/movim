@@ -2,15 +2,19 @@
 
 namespace Moxl\Xec\Action\Version;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Version;
+use Moxl\Xec\Action;
 
 class Send extends Action
 {
     protected $_to;
+
     protected $_id;
+
     protected $_name;
+
     protected $_version;
+
     protected $_os;
 
     public function request()

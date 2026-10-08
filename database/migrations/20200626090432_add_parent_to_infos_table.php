@@ -1,8 +1,8 @@
 <?php
 
-use Movim\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use App\Info;
+use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class AddParentToInfosTable extends Migration
 {

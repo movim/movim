@@ -2,8 +2,9 @@
 
 namespace Moxl\Xec\Action\Vcard4;
 
-use Moxl\Xec\Action;
+use App\Contact;
 use Moxl\Stanza\Vcard4;
+use Moxl\Xec\Action;
 
 class Get extends Action
 {
@@ -18,7 +19,7 @@ class Get extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza->pubsub->items->item) {
-            $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
+            $contact = Contact::firstOrNew(['id' => $this->_to]);
             $contact->setVcard4($stanza->pubsub->items->item->vcard);
             $contact->save();
 

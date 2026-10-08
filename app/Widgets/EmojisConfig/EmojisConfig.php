@@ -46,9 +46,9 @@ class EmojisConfig extends Base
                 ->exists()
             ) {
                 $this->toast($this->__('emojisconfig.alias_conflict'));
+
                 return;
             }
-
 
             $this->me->emojis()->detach($emoji->id);
             $this->me->emojis()->attach($emoji->id, ['alias' => $form->alias->value]);

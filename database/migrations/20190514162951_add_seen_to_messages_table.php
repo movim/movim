@@ -1,9 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
-
-use App\Message;
+use Movim\Migration;
 
 class AddSeenToMessagesTable extends Migration
 {

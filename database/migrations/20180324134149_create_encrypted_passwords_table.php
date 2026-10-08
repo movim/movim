@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class CreateEncryptedPasswordsTable extends Migration
 {
@@ -16,8 +16,8 @@ class CreateEncryptedPasswordsTable extends Migration
             $table->primary(['user_id', 'id']);
 
             $table->foreign('user_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 

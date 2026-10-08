@@ -15,7 +15,7 @@ class NewsController extends Base
     {
         $this->page->setTitle(__('page.news'));
 
-        if (!$this->user?->hasPubsub()) {
+        if (! $this->user?->hasPubsub()) {
             $this->redirect('contact');
         }
     }

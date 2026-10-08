@@ -1,8 +1,8 @@
 <?php
 
 use App\Affiliation;
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class CreateAffiliationsTable extends Migration
 {

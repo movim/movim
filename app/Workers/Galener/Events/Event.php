@@ -14,7 +14,8 @@ abstract class Event
         protected ConferencesManager $conferencesManager
     ) {}
 
-    abstract static public function getHandlerPaths(): array;
+    abstract public static function getHandlerPaths(): array;
+
     abstract public function handle(): ?\DOMDocument;
 
     public function iq(
@@ -27,8 +28,8 @@ abstract class Event
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $iq = $dom->createElement('iq');
         $dom->appendChild($iq);
-        $iq->setAttribute('to', $to ?? (string)$this->node->from);
-        $iq->setAttribute('from', $from ?? (string)$this->node->to);
+        $iq->setAttribute('to', $to ?? (string) $this->node->from);
+        $iq->setAttribute('from', $from ?? (string) $this->node->to);
         $iq->setAttribute('type', $type);
         $iq->setAttribute('id', $this->node->id ?? \generateKey());
 
@@ -37,7 +38,7 @@ abstract class Event
             $iq->appendChild($xml);
         }
 
-        if ($type == 'error' && !empty($error)) {
+        if ($type == 'error' && ! empty($error)) {
             $errorElement = $dom->createElement('error');
             $errorElement->setAttribute('type', 'cancel');
             $iq->appendChild($errorElement);

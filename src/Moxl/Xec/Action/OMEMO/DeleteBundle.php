@@ -3,23 +3,25 @@
 namespace Moxl\Xec\Action\OMEMO;
 
 use App\Bundle;
-use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
+use Moxl\Xec\Action;
 
 class DeleteBundle extends Action
 {
     protected string $_id;
+
     protected array $_devicesIds;
 
     public function request()
     {
         $this->store();
-        $this->iq(Pubsub::delete(Bundle::OMEMO_BUNDLE . $this->_id), type: 'set');
+        $this->iq(Pubsub::delete(Bundle::OMEMO_BUNDLE.$this->_id), type: 'set');
     }
 
     public function setDevicesIds(array $devicesIds)
     {
         $this->_devicesIds = $devicesIds;
+
         return $this;
     }
 

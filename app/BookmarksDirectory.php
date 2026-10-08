@@ -7,6 +7,7 @@ use Awobaz\Compoships\Database\Eloquent\Model;
 class BookmarksDirectory extends Model
 {
     protected $table = 'bookmarks_directories';
+
     public $incrementing = false;
 
     public function session()

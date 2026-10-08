@@ -2,12 +2,13 @@
 
 namespace Moxl\Xec\Action\Vcard;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Vcard;
+use Moxl\Xec\Action;
 
 class Set extends Action
 {
     protected $_to = false;
+
     protected $_data;
 
     public function request()

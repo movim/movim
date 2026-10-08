@@ -2,13 +2,15 @@
 
 namespace Moxl\Xec\Action\Jingle;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Jingle;
+use Moxl\Xec\Action;
 
 class MessagePropose extends Action
 {
     protected $_to;
+
     protected $_id;
+
     protected bool $_withVideo = false;
 
     public function request()
@@ -20,6 +22,7 @@ class MessagePropose extends Action
     public function setWithVideo(bool $withVideo)
     {
         $this->_withVideo = $withVideo;
+
         return $this;
     }
 }

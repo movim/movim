@@ -23,7 +23,7 @@ class Extractor extends Base
             'description' => new Detectors\Description($this),
             'image' => new Detectors\Image($this),
             'providerName' => new Detectors\ProviderName($this),
-            'title' => new Detectors\Title($this)
+            'title' => new Detectors\Title($this),
         ];
     }
 }

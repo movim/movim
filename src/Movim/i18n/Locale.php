@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -17,13 +18,18 @@ class Locale
     private static $instance;
 
     public const DEFAULT_LANGUAGE = 'en';
+
     public const DEFAULT_DIRECTION = Dir::LTR;
+
     public const LOCALE_REGEXP = '(?<language>[a-z]{2,8})(?:[-_](?<script>[A-Za-z][a-z]{3}))?(?:[-_](?<region>[A-Za-z]{2,3}|[0-9]{3}))?';
+
     public const RTL_LANGUAGES = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv'];
+
     public const RTL_SCRIPTS = ['Adlm', 'Arab', 'Aran', 'Armi', 'Avst', 'Cprt', 'Hebr', 'Khar', 'Lydi', 'Mand', 'Mani', 'Mend', 'Narb', 'Nbat', 'Nkoo', 'Orkh', 'Palm', 'Phli', 'Phlp', 'Phnx', 'Prti', 'Samr', 'Sarb', 'Syrc', 'Thaa'];
+
     public $hash = [];
 
-    private string $iniCache = CACHE_PATH . 'locales.ini.cache';
+    private string $iniCache = CACHE_PATH.'locales.ini.cache';
 
     private function __construct()
     {
@@ -39,17 +45,17 @@ class Locale
     public function compileIni(): array
     {
         $hash = [];
-        $this->loadIni($hash, LOCALES_PATH . 'locales.ini');
+        $this->loadIni($hash, LOCALES_PATH.'locales.ini');
 
         foreach (scandir(WIDGETS_PATH) as $widget) {
-            $path = WIDGETS_PATH . $widget . '/locales.ini';
+            $path = WIDGETS_PATH.$widget.'/locales.ini';
             if (file_exists($path)) {
                 $this->loadIni($hash, $path);
             }
         }
 
-        $locales = fopen($this->iniCache, "w") or die("Unable to open file!");
-        fwrite($locales, '<?php' . PHP_EOL . '$hashes = ' . var_export($hash, true) . ';' . PHP_EOL . '?>');
+        $locales = fopen($this->iniCache, 'w') or exit('Unable to open file!');
+        fwrite($locales, '<?php'.PHP_EOL.'$hashes = '.var_export($hash, true).';'.PHP_EOL.'?>');
         fclose($locales);
 
         return $hash;
@@ -60,7 +66,7 @@ class Locale
         // Clear
         foreach (
             glob(
-                CACHE_PATH .
+                CACHE_PATH.
                     '*.po.cache',
                 GLOB_NOSORT
             ) as $cacheFile
@@ -71,8 +77,8 @@ class Locale
         // Cache
         foreach (array_keys(self::getList()) as $language) {
             if ($translations = $this->load($language)) {
-                $locales = fopen(CACHE_PATH . $language . '.po.cache', "w") or die("Unable to open file!");
-                fwrite($locales, '<?php' . PHP_EOL . '$translations = ' . var_export($translations, true) . ';' . PHP_EOL . '?>');
+                $locales = fopen(CACHE_PATH.$language.'.po.cache', 'w') or exit('Unable to open file!');
+                fwrite($locales, '<?php'.PHP_EOL.'$translations = '.var_export($translations, true).';'.PHP_EOL.'?>');
                 fclose($locales);
             }
         }
@@ -80,7 +86,8 @@ class Locale
 
     /**
      * @desc Load a locales ini file and merge it with hash attribute
-     * @param $file The path of the fie
+     *
+     * @param  $file  The path of the fie
      */
     private function loadIni(array &$hash, string $file)
     {
@@ -96,8 +103,8 @@ class Locale
 
     public static function start()
     {
-        if (!isset(self::$instance)) {
-            self::$instance = new self();
+        if (! isset(self::$instance)) {
+            self::$instance = new self;
         }
 
         return self::$instance;
@@ -106,10 +113,9 @@ class Locale
     /**
      * @desc Return an array containing all the presents languages in i18n
      */
-
     public static function getList(): array
     {
-        require_once('languages.php');
+        require_once 'languages.php';
 
         $langList = getLangList();
         $dir = scandir(LOCALES_PATH);
@@ -132,8 +138,9 @@ class Locale
 
     /**
      * @desc Translate a key
-     * @param $key The key to translate
-     * @param $args Arguments to pass to sprintf
+     *
+     * @param  $key  The key to translate
+     * @param  $args  Arguments to pass to sprintf
      */
     public function translate(
         string $language,
@@ -168,19 +175,20 @@ class Locale
                 if (is_string($skey)) {
                     $string = $skey;
                 } else {
-                    logInfo('Locale: Double definition for "' . $key . '" got ' . serialize($skey));
+                    logInfo('Locale: Double definition for "'.$key.'" got '.serialize($skey));
                     $string = $skey[0];
                 }
             }
 
             if ($args != null) {
                 array_unshift($args, $string);
-                $string = call_user_func_array("sprintf", $args);
+                $string = call_user_func_array('sprintf', $args);
             }
 
             return $string;
         } else {
-            logInfo('Locale: Translation key "' . $key . '" not found');
+            logInfo('Locale: Translation key "'.$key.'" not found');
+
             return $arr[1];
         }
     }
@@ -190,8 +198,9 @@ class Locale
      */
     public static function parseStr(string $str): ?array
     {
-        if (preg_match('/' . self::LOCALE_REGEXP . '/', $str, $loc)) {
+        if (preg_match('/'.self::LOCALE_REGEXP.'/', $str, $loc)) {
             self::reformatLocalePartsToISO639($loc);
+
             return $loc;
         }
 
@@ -211,7 +220,7 @@ class Locale
                     default => $value,
                 };
             }
-        };
+        }
 
         if (empty($locale)) {
             $locale = null;
@@ -225,11 +234,11 @@ class Locale
     {
         $language = self::DEFAULT_LANGUAGE;
 
-        $rexp = '/' . self::LOCALE_REGEXP . '\s*(?:;\s*(Q|q)\s*=\s*(?<quality>1|0\.[0-9]+))?/';
+        $rexp = '/'.self::LOCALE_REGEXP.'\s*(?:;\s*(Q|q)\s*=\s*(?<quality>1|0\.[0-9]+))?/';
 
         if (preg_match_all($rexp, $languages ?? $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '', $locs, PREG_SET_ORDER)) {
             foreach ($locs as &$loc) {
-                if (isset($loc['quality']) && !empty($loc['quality'])) {
+                if (isset($loc['quality']) && ! empty($loc['quality'])) {
                     $loc['quality'] = floatval($loc['quality']);
                 } else {
                     $loc['quality'] = 1.0;
@@ -243,7 +252,8 @@ class Locale
 
             $poFileExists = function (array $l): ?array {
                 $lang = strtolower(implode('_', array_values($l)));
-                return [$lang, file_exists(LOCALES_PATH . $lang . '.po')];
+
+                return [$lang, file_exists(LOCALES_PATH.$lang.'.po')];
             };
 
             foreach ($locs as &$loc) {
@@ -281,7 +291,8 @@ class Locale
 
     /**
      * @desc Load a specific language
-     * @param $language The language key to load
+     *
+     * @param  $language  The language key to load
      */
     public function load(string $language): ?array
     {
@@ -294,14 +305,15 @@ class Locale
     private function loadPo(string $language): ?array
     {
         // Load from the cache
-        $cacheFile = CACHE_PATH . $language . '.po.cache';
+        $cacheFile = CACHE_PATH.$language.'.po.cache';
         if (file_exists($cacheFile) && is_readable($cacheFile)) {
             include $cacheFile;
+
             return $translations;
         }
 
-        $pofile = LOCALES_PATH . $language . '.po';
-        if (!file_exists($pofile) || !is_readable($pofile)) {
+        $pofile = LOCALES_PATH.$language.'.po';
+        if (! file_exists($pofile) || ! is_readable($pofile)) {
             return null;
         }
 
@@ -310,34 +322,34 @@ class Locale
 
         $translations = [];
 
-        $msgid = "";
-        $msgstr = "";
+        $msgid = '';
+        $msgstr = '';
 
-        $last_token = "";
+        $last_token = '';
 
         while ($line = fgets($handle)) {
             if (
-                $line[0] == "#"
-                || trim(rtrim($line)) == ""
+                $line[0] == '#'
+                || trim(rtrim($line)) == ''
                 || preg_match('#^msgctxt#', $line)
             ) {
                 continue;
             }
 
             if (preg_match('#^msgid#', $line)) {
-                if ($last_token == "msgstr") {
+                if ($last_token == 'msgstr') {
                     $translations[$msgid] = $msgstr;
                 }
-                $last_token = "msgid";
+                $last_token = 'msgid';
                 $msgid = $this->getQuotedString($line);
             } elseif (preg_match('#^msgstr#', $line)) {
-                $last_token = "msgstr";
+                $last_token = 'msgstr';
                 $msgstr = $this->getQuotedString($line);
             } else {
                 $last_token .= $this->getQuotedString($line);
             }
         }
-        if ($last_token == "msgstr") {
+        if ($last_token == 'msgstr') {
             $translations[$msgid] = $msgstr;
         }
 
@@ -380,6 +392,7 @@ class Locale
     public static function printISO639(string $str): string
     {
         $parsed = self::parseStr($str);
+
         return is_array($parsed) ? implode('-', array_values($parsed)) : $str;
     }
 
@@ -389,6 +402,7 @@ class Locale
     public static function printPOSIX(string $str): string
     {
         $parsed = self::parseStr($str);
+
         return is_array($parsed) ? implode('_', array_values($parsed)) : $str;
     }
 }

@@ -30,17 +30,17 @@ class Presence extends Event
                             if ($item->attributes()->affiliation == 'none') {
                                 $conference->xmppLeaveAndDestroy();
                                 $this->conferencesManager->destroyConference($this->node->from);
-                            } else/*if (in_array($item->attributes()->affiliation, ['owner', 'admin']))*/ {
-                                $conference->xmppAddMember(new Jid((string)$item->attributes()->jid));
+                            } else { /* if (in_array($item->attributes()->affiliation, ['owner', 'admin'])) */
+                                $conference->xmppAddMember(new Jid((string) $item->attributes()->jid));
                                 /*} else {
                                 $conference->xmppNotAdminMessage();*/
                                 // For now ejabberd cannot allow the service to be admin https://github.com/processone/ejabberd/issues/4611
                             }
                         } else {
                             if ($this->node->type === 'unavailable') {
-                                $conference->xmppRemoveMember(new Jid((string)$item->attributes()->jid));
+                                $conference->xmppRemoveMember(new Jid((string) $item->attributes()->jid));
                             } else {
-                                $conference->xmppAddMember(new Jid((string)$item->attributes()->jid));
+                                $conference->xmppAddMember(new Jid((string) $item->attributes()->jid));
                             }
                         }
                     }

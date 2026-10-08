@@ -14,18 +14,24 @@ use Ratchet\Client\WebSocket;
 class Connection
 {
     private WebSocket $websocket;
+
     private string $id;
+
     private ?string $jingleSid = null;
+
     private ?string $streamId = null;
 
     // Specific Jingle sid to send the screenshare stream
     private ?string $screenshareSid = null;
+
     private ?string $screenshareStreamId = null;
 
     private array $websocketBuffer = [];
 
     private Collection $users;
+
     private Collection $contents;
+
     private Collection $acceptedContents;
 
     private bool $ended = false;
@@ -33,7 +39,7 @@ class Connection
     private const GALENE_LABEL_TO_CONTENT_CATEGORY = [
         'camera' => 'speaker',
         'screenshare' => 'slides',
-        'video' => 'speaker'
+        'video' => 'speaker',
     ];
 
     public function __construct(
@@ -59,23 +65,24 @@ class Connection
         $this->send([
             'type' => 'request',
             'request' => [
-                '' => ['audio', 'video']
-            ]
+                '' => ['audio', 'video'],
+            ],
         ]);
 
         $this->apiClient->addUserToGroup($this->conference->jid, $this->jid->bareJid())->then(function () {
-            \Ratchet\Client\connect('ws://localhost:' . $this->apiClient->port . '/ws', headers: [
-                'Origin' => 'https://localhost:' . $this->apiClient->port
+            \Ratchet\Client\connect('ws://localhost:'.$this->apiClient->port.'/ws', headers: [
+                'Origin' => 'https://localhost:'.$this->apiClient->port,
             ])->then(function ($websocket) {
                 if ($this->ended) {
                     $websocket->close();
+
                     return;
                 }
 
                 $this->websocket = $websocket;
 
                 $this->websocket->on('close', function () {
-                    if (!$this->ended) {
+                    if (! $this->ended) {
                         $this->conference->removeConnection($this->jid);
                     }
                 });
@@ -84,7 +91,7 @@ class Connection
                     $json = json_decode($message);
                     switch ($json->type) {
                         case 'add':
-                            $this->users->put((string)$json->id, new Jid($json->username));
+                            $this->users->put((string) $json->id, new Jid($json->username));
                             break;
                         case 'handshake':
                             $this->send(['type' => 'ping']);
@@ -98,25 +105,25 @@ class Connection
                             ));
                             break;
                         case 'offer':
-                            $this->users->put((string)$json->id, new Jid($json->username));
+                            $this->users->put((string) $json->id, new Jid($json->username));
 
                             $stj = new SDPtoJingle(
                                 user: new User([
-                                    'id' => $this->conference->getSFUJid()
+                                    'id' => $this->conference->getSFUJid(),
                                 ]),
                                 sdp: $json->sdp,
                                 sid: $this->jingleSid,
-                                responder: (string)$this->jid,
+                                responder: (string) $this->jid,
                                 action: 'content-add',
-                                jingleParticipant: (string)$this->users->get((string)$json->id),
-                                contentCategory: self::GALENE_LABEL_TO_CONTENT_CATEGORY[(string)$json->label]
+                                jingleParticipant: (string) $this->users->get((string) $json->id),
+                                contentCategory: self::GALENE_LABEL_TO_CONTENT_CATEGORY[(string) $json->label]
                             );
 
-                            $this->contents->put((string)$json->id, [
-                                'sdp' => (string)$json->sdp,
-                                'label' => (string)$json->label
+                            $this->contents->put((string) $json->id, [
+                                'sdp' => (string) $json->sdp,
+                                'label' => (string) $json->label,
                             ]);
-                            $this->acceptedContents->put((string)$json->id, false);
+                            $this->acceptedContents->put((string) $json->id, false);
                             $this->conference->sendXMPP($this->iq(
                                 type: 'set',
                                 from: $this->conference->getSFUJid(),
@@ -126,13 +133,13 @@ class Connection
                             break;
                         case 'answer':
                             $isScreenshare = $this->screenshareStreamId !== null
-                                && (string)$json->id === $this->screenshareStreamId;
+                                && (string) $json->id === $this->screenshareStreamId;
 
                             $stj = new SDPtoJingle(
                                 user: new User(['id' => $this->conference->getSFUJid()]),
                                 sdp: $json->sdp,
                                 sid: $isScreenshare ? $this->screenshareSid : $this->jingleSid,
-                                responder: (string)$this->jid,
+                                responder: (string) $this->jid,
                                 action: 'session-accept'
                             );
 
@@ -146,19 +153,19 @@ class Connection
                         case 'close':
                             foreach ($this->contents as $key => $content) {
                                 if (
-                                    (string)$key == (string)$json->id
-                                    && ($this->users->has((string)$json->id))
+                                    (string) $key == (string) $json->id
+                                    && ($this->users->has((string) $json->id))
                                     && $this->jingleSid
                                 ) {
                                     $stj = new SDPtoJingle(
                                         user: new User([
-                                            'id' => $this->conference->getSFUJid()
+                                            'id' => $this->conference->getSFUJid(),
                                         ]),
                                         sdp: $content['sdp'],
                                         sid: $this->jingleSid,
-                                        responder: (string)$this->jid,
+                                        responder: (string) $this->jid,
                                         action: 'content-remove',
-                                        jingleParticipant: (string)$this->users->get((string)$json->id),
+                                        jingleParticipant: (string) $this->users->get((string) $json->id),
                                         contentCategory: self::GALENE_LABEL_TO_CONTENT_CATEGORY[$content['label']]
                                     );
 
@@ -174,25 +181,25 @@ class Connection
                                     $this->users->forget($key);
                                     break;
                                 }
-                            };
+                            }
                             break;
                         case 'ice':
                             $stj = new SDPtoJingle(
                                 user: new User([
-                                    'id' => $this->conference->getSFUJid()
+                                    'id' => $this->conference->getSFUJid(),
                                 ]),
-                                sdp: 'a=' . $json->candidate->candidate,
+                                sdp: 'a='.$json->candidate->candidate,
                                 sid: $this->jingleSid,
-                                responder: (string)$this->jid,
+                                responder: (string) $this->jid,
                                 action: 'transport-info',
                                 mid: $json->candidate->sdpMid,
                                 ufrag: $json->candidate->usernameFragment,
-                                jingleParticipant: (string)$this->users->get((string)$json->id),
+                                jingleParticipant: (string) $this->users->get((string) $json->id),
                             );
 
                             if (
                                 $this->users->has($json->id)
-                                || in_array($json->id,  [$this->streamId, $this->screenshareStreamId])
+                                || in_array($json->id, [$this->streamId, $this->screenshareStreamId])
                             ) {
                                 $this->conference->sendXMPP($this->iq(
                                     type: 'set',
@@ -202,7 +209,6 @@ class Connection
                                 ));
                             }
 
-
                             break;
                     }
                 });
@@ -210,13 +216,13 @@ class Connection
                 $this->websocket->send(json_encode([
                     'type' => 'handshake',
                     'version' => ['2'],
-                    'id' => $this->id
+                    'id' => $this->id,
                 ]));
             }, function ($e) {
-                \logError('❌ Galener: ' . $e->getMessage());
+                \logError('❌ Galener: '.$e->getMessage());
             });
         }, function ($e) {
-            \logError('❌ Galener: ' . $e->getMessage());
+            \logError('❌ Galener: '.$e->getMessage());
         });
     }
 
@@ -230,7 +236,7 @@ class Connection
 
         $this->websocketBuffer = [];
         $this->apiClient->removeUserFromGroup($this->conference->jid, $this->jid->bareJid())->then(null, function ($e) {
-            \logError('❌ Galener: failed to remove user from group: ' . $e->getMessage());
+            \logError('❌ Galener: failed to remove user from group: '.$e->getMessage());
         });
     }
 
@@ -245,7 +251,7 @@ class Connection
 
     public function xmppScreenshareOffer(XMPPNode $node)
     {
-        $this->screenshareSid = (string)$node->stanza->jingle->attributes()->sid;
+        $this->screenshareSid = (string) $node->stanza->jingle->attributes()->sid;
         $this->screenshareStreamId = generateUUID();
 
         $this->send([
@@ -256,13 +262,13 @@ class Connection
             'id' => $this->screenshareStreamId,
             'replace' => null,
             'label' => 'screenshare',
-            'sdp' => (new JingletoSDP($node->stanza->jingle))->generate() . "\r\n"
+            'sdp' => (new JingletoSDP($node->stanza->jingle))->generate()."\r\n",
         ]);
     }
 
     public function xmppScreenshareTerminate(XMPPNode $node)
     {
-        $sid = (string)$node->stanza->jingle->attributes()->sid;
+        $sid = (string) $node->stanza->jingle->attributes()->sid;
 
         if ($sid === $this->screenshareSid && $this->screenshareStreamId) {
             $this->send(['type' => 'close', 'id' => $this->screenshareStreamId]);
@@ -273,10 +279,11 @@ class Connection
 
     public function xmppTerminate(XMPPNode $node)
     {
-        $sid = (string)$node->stanza->jingle->attributes()->sid;
+        $sid = (string) $node->stanza->jingle->attributes()->sid;
 
         if ($sid === $this->screenshareSid) {
             $this->xmppScreenshareTerminate($node);
+
             return;
         }
 
@@ -309,31 +316,31 @@ class Connection
             'id' => $this->streamId,
             'replace' => null,
             'label' => 'camera',
-            'sdp' => (new JingletoSDP($node->stanza->jingle))->generate() . "\r\n"
+            'sdp' => (new JingletoSDP($node->stanza->jingle))->generate()."\r\n",
         ]);
     }
 
     public function xmppContentAccept(XMPPNode $node)
     {
         if ($node->stanza->jingle->{'jingle-participant'}?->attributes()->xmlns == SDPtoJingle::JINGLE_PARTICIPANT_XMLNS) {
-            $participantJid = (string)$node->stanza->jingle->{'jingle-participant'}->attributes()->participant;
+            $participantJid = (string) $node->stanza->jingle->{'jingle-participant'}->attributes()->participant;
             $id = null;
 
             foreach ($this->users as $galeneId => $jid) {
-                if ((string)$jid == $participantJid) {
+                if ((string) $jid == $participantJid) {
                     if ($this->acceptedContents->get($galeneId, false) == false) {
                         $id = $galeneId;
                         $this->acceptedContents->put($galeneId, true);
                         break;
                     }
                 }
-            };
+            }
 
             if ($id) {
                 $this->send([
                     'type' => 'answer',
                     'id' => $id,
-                    'sdp' => (new JingletoSDP($node->stanza->jingle))->generate() . "\r\n"
+                    'sdp' => (new JingletoSDP($node->stanza->jingle))->generate()."\r\n",
                 ]);
             }
         }
@@ -341,7 +348,7 @@ class Connection
 
     public function xmppCandidate(XMPPNode $node)
     {
-        $sid = (string)$node->stanza->jingle->attributes()->sid;
+        $sid = (string) $node->stanza->jingle->attributes()->sid;
         $streamId = ($this->screenshareSid !== null && $sid === $this->screenshareSid)
             ? $this->screenshareStreamId
             : $this->streamId;
@@ -357,8 +364,8 @@ class Connection
             'id' => $streamId,
             'candidate' => [
                 'candidate' => $outputCandidates[0],
-                'sdpMLineIndex' => (int)$jts->name,
-                'sdpMid' => (string)$jts->name,
+                'sdpMLineIndex' => (int) $jts->name,
+                'sdpMid' => (string) $jts->name,
             ],
         ]);
     }
@@ -367,7 +374,7 @@ class Connection
     {
         $jingle = Jingle::sessionMute(
             sid: $this->jingleSid,
-            name: 'mid' . (string)$node->stanza->jingle->mute->attributes()->name
+            name: 'mid'.(string) $node->stanza->jingle->mute->attributes()->name
         );
 
         $jingleParticipant = $jingle->ownerDocument->createElement('jingle-participant');
@@ -392,7 +399,7 @@ class Connection
     {
         $jingle = Jingle::sessionUnmute(
             sid: $this->jingleSid,
-            name: 'mid' . (string)$node->stanza->jingle->unmute->attributes()->name
+            name: 'mid'.(string) $node->stanza->jingle->unmute->attributes()->name
         );
 
         $jingleParticipant = $jingle->ownerDocument->createElement('jingle-participant');
@@ -419,12 +426,13 @@ class Connection
             return;
         }
 
-        if (!isset($this->websocket)) {
+        if (! isset($this->websocket)) {
             array_push($this->websocketBuffer, $array);
+
             return;
         }
 
-        if (!empty($this->websocketBuffer)) {
+        if (! empty($this->websocketBuffer)) {
             foreach ($this->websocketBuffer as $bufferedArray) {
                 $this->websocket->send(json_encode($bufferedArray));
             }
@@ -446,7 +454,7 @@ class Connection
         $iq = $dom->createElement('iq');
         $dom->appendChild($iq);
         $iq->setAttribute('from', $from);
-        $iq->setAttribute('to', $to != null ? $to :  $this->jid);
+        $iq->setAttribute('to', $to != null ? $to : $this->jid);
         $iq->setAttribute('type', $type);
         $iq->setAttribute('id', $id);
 

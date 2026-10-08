@@ -2,12 +2,14 @@
 
 namespace Moxl\Xec\Action\Muc;
 
-use Moxl\Xec\Action;
+use App\Message;
 use Moxl\Stanza\Muc;
+use Moxl\Xec\Action;
 
 class SetSubject extends Action
 {
     protected $_to;
+
     protected $_subject;
 
     public function request()
@@ -22,12 +24,12 @@ class SetSubject extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $message = \App\Message::findByStanza($this->me, $stanza);
+        $message = Message::findByStanza($this->me, $stanza);
         $message->set($this->me, $stanza, $parent);
 
         if (
-            !$message->encrypted
-            && (!$message->isEmpty() || $message->isSubject())
+            ! $message->encrypted
+            && (! $message->isEmpty() || $message->isSubject())
         ) {
             $message->save();
             $this->pack($message);

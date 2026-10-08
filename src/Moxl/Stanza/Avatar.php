@@ -2,10 +2,14 @@
 
 namespace Moxl\Stanza;
 
+use Moxl\Utils;
+
 class Avatar
 {
     public const NODE_DATA = 'urn:xmpp:avatar:data';
+
     public const NODE_METADATA = 'urn:xmpp:avatar:metadata';
+
     public static $nodeConfig = [
         'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
         'pubsub#persist_items' => 'true',
@@ -52,7 +56,7 @@ class Avatar
             $x->setAttribute('type', 'submit');
             $publishOption->appendChild($x);
 
-            \Moxl\Utils::injectConfigInX($x, self::$nodeConfig);
+            Utils::injectConfigInX($x, self::$nodeConfig);
 
             $pubsub->appendChild($publishOption);
         }
@@ -100,7 +104,7 @@ class Avatar
             $x->setAttribute('type', 'submit');
             $publishOption->appendChild($x);
 
-            \Moxl\Utils::injectConfigInX($x, self::$nodeConfig);
+            Utils::injectConfigInX($x, self::$nodeConfig);
 
             $pubsub->appendChild($publishOption);
         }

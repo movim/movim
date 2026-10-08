@@ -34,7 +34,7 @@
 
     {$currentDirectory = $value->directory_id}
 
-    <li {if="$edit"}draggable="true"{/if} data-jid="{$value->conference|echapJS}" data-weight="{$value->weight}" id="space{$value->conference|cleanupId}">
+    <li {if="$edit"}draggable="true"{/if} data-jid="{$value->conference|echapJS}" id="space{$value->conference|cleanupId}">
         <ul class="list thin">
             <li data-jid="{$value->conference}">
                 <span class="primary icon gray"

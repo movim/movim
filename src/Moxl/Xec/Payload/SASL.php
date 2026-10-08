@@ -6,7 +6,7 @@ class SASL extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $mechanisms = (array)$stanza->mechanism;
+        $mechanisms = (array) $stanza->mechanism;
 
         /*
          * Weird behaviour on old eJabberd servers, fixed on the new versions
@@ -20,7 +20,7 @@ class SASL extends Payload
         }
 
         if (linker($this->sessionId)->authentication?->password) {
-            if (!is_array($mechanisms)) {
+            if (! is_array($mechanisms)) {
                 $mechanisms = [$mechanisms];
             }
 

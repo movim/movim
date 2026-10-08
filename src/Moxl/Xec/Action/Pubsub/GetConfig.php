@@ -8,7 +8,9 @@ use Moxl\Xec\Action;
 class GetConfig extends Action
 {
     protected $_to;
+
     protected $_node;
+
     protected $_advanced = false;
 
     public function request()
@@ -20,6 +22,7 @@ class GetConfig extends Action
     public function enableAdvanced()
     {
         $this->_advanced = true;
+
         return $this;
     }
 
@@ -30,7 +33,7 @@ class GetConfig extends Action
         $accessModel = null;
 
         if (is_array($value) && count($value) > 0) {
-            $accessModel = (string)$value[0];
+            $accessModel = (string) $value[0];
         }
 
         $this->pack([
@@ -38,7 +41,7 @@ class GetConfig extends Action
             'access_model' => $accessModel,
             'server' => $this->_to,
             'node' => $this->_node,
-            'advanced' => $this->_advanced
+            'advanced' => $this->_advanced,
         ]);
         $this->deliver();
     }

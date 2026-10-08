@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class DropBundleSessionsTable extends Migration
 {
@@ -18,8 +18,8 @@ class DropBundleSessionsTable extends Migration
             $table->string('deviceid', 64);
 
             $table->foreign('bundle_id')
-                  ->references('id')->on('bundles')
-                  ->onDelete('cascade');
+                ->references('id')->on('bundles')
+                ->onDelete('cascade');
 
             $table->unique(['bundle_id', 'deviceid']);
 

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -9,23 +10,33 @@ namespace Movim\Template;
 use App\Configuration;
 use App\User;
 use Movim\Controller\Ajax;
-use Movim\Widget\Wrapper;
 use Movim\i18n\Dir;
 use Movim\i18n\Locale;
+use Movim\Widget\Wrapper;
 use stdClass;
 
 class Builder
 {
     private string $_view = '';
+
     private string $title = APP_TITLE;
+
     private string $content = '';
+
     private string $commonContent = '';
+
     private array $css = [];
+
     private array $scripts = [];
+
     private string $eagerScripts = "/\/(movim_rpc|movim_utils)/";
+
     private string $lang = Locale::DEFAULT_LANGUAGE;
+
     private Dir $dir = Locale::DEFAULT_DIRECTION;
+
     private bool $public;
+
     private $js_check = true;
 
     /**
@@ -36,17 +47,18 @@ class Builder
 
     public function viewsPath(string $file)
     {
-        return VIEWS_PATH . '/' . $file;
+        return VIEWS_PATH.'/'.$file;
     }
 
     /**
      * Returns or prints the link to a file.
+     *
      * @param file is the path to the file
      * @param return optionally returns the link instead of printing it if set to true
      */
     public function linkFile(string $file, $return = false)
     {
-        $path = urilize('theme/' . $file);
+        $path = urilize('theme/'.$file);
 
         if ($return) {
             return $path;
@@ -62,11 +74,11 @@ class Builder
     {
         $this->_view = $view;
         $this->public = $public;
-        $template = $this->_view . '.tpl';
+        $template = $this->_view.'.tpl';
 
         ob_start();
 
-        require($this->viewsPath($template));
+        require $this->viewsPath($template);
         $outp = ob_get_clean();
 
         $scripts = $this->printCSSs();
@@ -128,7 +140,7 @@ class Builder
         $widgets = Wrapper::getInstance();
 
         return isset($widgets->title)
-            ? $this->title . ' • ' . $widgets->title
+            ? $this->title.' • '.$widgets->title
             : $this->title;
     }
 
@@ -139,6 +151,7 @@ class Builder
     {
         if ($this?->user?->language != null) {
             $this->lang = $this->user->language;
+
             return Locale::printISO639($this->lang);
         }
 
@@ -155,7 +168,8 @@ class Builder
      */
     public function dir(): Dir
     {
-        $this->dir = \Movim\i18n\Locale::getDirection($this->lang);
+        $this->dir = Locale::getDirection($this->lang);
+
         return $this->dir;
     }
 
@@ -175,7 +189,7 @@ class Builder
         $title = $this->title;
 
         if (isset($widgets->title)) {
-            $title .= ' • ' . $widgets->title;
+            $title .= ' • '.$widgets->title;
         }
 
         $meta = $dom->createElement('meta');
@@ -200,7 +214,7 @@ class Builder
             $metas->appendChild($meta);
         }
 
-        if (isset($widgets->description) && !empty($widgets->description)) {
+        if (isset($widgets->description) && ! empty($widgets->description)) {
             $widgets->description = truncate(stripTags($widgets->description), 100);
 
             $meta = $dom->createElement('meta');
@@ -217,7 +231,7 @@ class Builder
             $meta->setAttribute('name', 'description');
             $meta->setAttribute('content', $widgets->description);
             $metas->appendChild($meta);
-        } else if (!empty(Configuration::get()->description)) {
+        } elseif (! empty(Configuration::get()->description)) {
             $meta = $dom->createElement('meta');
             $meta->setAttribute('name', 'description');
             $meta->setAttribute('content', Configuration::get()->description);
@@ -261,12 +275,12 @@ class Builder
 
     public function addScript(string $script, ?bool $noTime = false)
     {
-        $this->scripts[] = urilize('scripts/' . $script, $noTime);
+        $this->scripts[] = urilize('scripts/'.$script, $noTime);
     }
 
     public function addCSS(string $file)
     {
-        $this->css[] = $this->linkFile('css/' . $file, true);
+        $this->css[] = $this->linkFile('css/'.$file, true);
     }
 
     public function setContent(string $data)
@@ -305,11 +319,11 @@ class Builder
         $s->setAttribute('type', 'text/javascript');
         $s->setAttribute('src', $script);
 
-        if (!preg_match($this->eagerScripts, $script)) {
+        if (! preg_match($this->eagerScripts, $script)) {
             $s->setAttribute('defer', '');
         }
 
-        if (!empty($class)) {
+        if (! empty($class)) {
             $s->setAttribute('class', $class);
         }
 
@@ -341,7 +355,7 @@ class Builder
         $s->setAttribute('rel', 'stylesheet');
         $s->setAttribute('href', $css);
 
-        if (!empty($class)) {
+        if (! empty($class)) {
             $s->setAttribute('class', $class);
         }
 

@@ -2,12 +2,13 @@
 
 namespace Moxl\Xec\Action\Message;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Message;
+use Moxl\Xec\Action;
 
 class Active extends Action
 {
     protected $_to;
+
     protected bool $_muc = false;
 
     public function request()
@@ -26,6 +27,7 @@ class Active extends Action
     public function setMuc()
     {
         $this->_muc = true;
+
         return $this;
     }
 }

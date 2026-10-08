@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Payload;
 
-use Moxl\Xec\Action\Register\Get;
 use App\Session as DBSession;
+use Moxl\Xec\Action\Register\Get;
 
 class Register extends Payload
 {

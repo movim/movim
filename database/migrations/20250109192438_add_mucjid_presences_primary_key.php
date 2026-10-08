@@ -1,8 +1,8 @@
 <?php
 
-use Movim\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class AddMucjidPresencesPrimaryKey extends Migration
 {
@@ -10,7 +10,6 @@ class AddMucjidPresencesPrimaryKey extends Migration
      * This migration is failing on MySQL (3072 key length limit)
      * We pass it and create a hash of the needed columns the next migration
      */
-
     public function up()
     {
         if ($this->schema->getConnection()->getDriverName() == 'pgsql') {

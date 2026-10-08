@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\Ping;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Ping;
+use Moxl\Xec\Action;
 
 class Server extends Action
 {

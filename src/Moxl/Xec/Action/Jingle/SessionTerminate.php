@@ -2,14 +2,18 @@
 
 namespace Moxl\Xec\Action\Jingle;
 
-use Moxl\Xec\Action;
+use App\Message;
 use Moxl\Stanza\Jingle;
+use Moxl\Xec\Action;
 
 class SessionTerminate extends Action
 {
     protected $_to;
+
     protected $_jingleSid;
+
     protected $_reason = 'success';
+
     protected bool $_isMuji = false;
 
     public function request()
@@ -22,9 +26,9 @@ class SessionTerminate extends Action
     {
         if ($this->_isMuji == false) {
             $userid = $this->me->id;
-            $message = new \App\Message;
+            $message = new Message;
             $message->user_id = $userid;
-            $message->id = 'm_' . generateUUID();
+            $message->id = 'm_'.generateUUID();
             $message->jidto = $userid;
             $message->jidfrom = bareJid($this->_to);
             $message->published = gmdate('Y-m-d H:i:s');
@@ -40,12 +44,14 @@ class SessionTerminate extends Action
     public function enableMuji()
     {
         $this->_isMuji = true;
+
         return $this;
     }
 
     public function setJingleSid($jingleSid)
     {
         $this->_jingleSid = $jingleSid;
+
         return $this;
     }
 
@@ -62,7 +68,7 @@ class SessionTerminate extends Action
                 'failed-transport',
                 'unsupported-applications',
                 'failed-application',
-                'incompatible-parameters'
+                'incompatible-parameters',
             ]
         )) {
             $this->_reason = $reason;

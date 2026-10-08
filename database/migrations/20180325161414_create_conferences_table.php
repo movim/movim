@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class CreateConferencesTable extends Migration
 {
@@ -18,8 +18,8 @@ class CreateConferencesTable extends Migration
             $table->primary(['session_id', 'conference']);
 
             $table->foreign('session_id')
-                  ->references('id')->on('sessions')
-                  ->onDelete('cascade');
+                ->references('id')->on('sessions')
+                ->onDelete('cascade');
         });
     }
 

@@ -2,6 +2,8 @@
 
 namespace App\Widgets\CommunityPosts;
 
+use App\Contact;
+use App\Info;
 use App\Post as AppPost;
 use App\Widgets\ContactActions\ContactActions;
 use App\Widgets\Post\Post;
@@ -12,6 +14,7 @@ use Moxl\Xec\Payload\Packet;
 class CommunityPosts extends Base
 {
     private $_paging = 12;
+
     private $_beforeAfter = 'b=';
 
     public function load()
@@ -29,7 +32,7 @@ class CommunityPosts extends Base
 
     public function onItemsId(Packet $packet)
     {
-        list($origin, $node, $ids, $first, $last, $count, $paginated, $before, $after)
+        [$origin, $node, $ids, $first, $last, $count, $paginated, $before, $after]
             = array_values($packet->content);
 
         $this->displayItems($origin, $node, $ids, $first, $last, $count, $before, $after);
@@ -39,7 +42,9 @@ class CommunityPosts extends Base
     {
         $comment = AppPost::find($packet->content);
 
-        if (!$comment) return;
+        if (! $comment) {
+            return;
+        }
 
         if ($comment->isLike()) {
             $this->toast($packet->content
@@ -49,13 +54,13 @@ class CommunityPosts extends Base
 
         // Full refresh for now
         if ($parent = $comment->getParent()) {
-            $info = \App\Info::where('server', $parent->server)
+            $info = Info::where('server', $parent->server)
                 ->where('node', $parent->node)
                 ->first();
 
             $this->rpc(
                 'MovimTpl.fill',
-                '#' . cleanupId($parent->nodeid),
+                '#'.cleanupId($parent->nodeid),
                 $info && $info->isGallery()
                     ? $this->prepareTicket($parent)
                     : $this->preparePost($parent)
@@ -67,13 +72,13 @@ class CommunityPosts extends Base
     {
         $post = AppPost::find($packet->content);
 
-        $info = \App\Info::where('server', $post->server)
+        $info = Info::where('server', $post->server)
             ->where('node', $post->node)
             ->first();
 
         $this->rpc(
             'MovimTpl.replace',
-            '#' . cleanupId($post->nodeid),
+            '#'.cleanupId($post->nodeid),
             $info->isGallery()
                 ? $this->prepareTicket($post)
                 : $this->preparePost($post)
@@ -87,21 +92,21 @@ class CommunityPosts extends Base
 
     public function onItemsErrorPresenceSubscriptionRequired(Packet $packet)
     {
-        list($origin, $node) = array_values((array)$packet->content);
+        [$origin, $node] = array_values((array) $packet->content);
 
         $view = $this->tpl();
-        $view->assign('contact', \App\Contact::firstOrNew(['id' => $origin]));
+        $view->assign('contact', Contact::firstOrNew(['id' => $origin]));
 
         $this->rpc(
             'MovimTpl.fill',
-            '#communityposts.' . slugify('c' . $origin . '_' . $node),
+            '#communityposts.'.slugify('c'.$origin.'_'.$node),
             $view->draw('_communityposts_presencerequired')
         );
     }
 
     public function onItemsError(Packet $packet)
     {
-        list($origin, $node) = array_values($packet->content);
+        [$origin, $node] = array_values($packet->content);
 
         if ($node != AppPost::MICROBLOG_NODE) {
             if ($this->me->subscriptions()
@@ -112,7 +117,7 @@ class CommunityPosts extends Base
                 $this->rpc('CommunityAffiliations_ajaxDelete', $origin, $node, true);
                 $this->rpc('CommunityAffiliations_ajaxGetAffiliations', $origin, $node);
             } else {
-                \App\Info::where('server', $origin)->where('node', $node)->delete();
+                Info::where('server', $origin)->where('node', $node)->delete();
                 $this->ajaxClear();
             }
         } else {
@@ -130,7 +135,7 @@ class CommunityPosts extends Base
         ?string $before = null,
         ?string $after = null
     ) {
-        if (!validateServerNode($origin, $node)) {
+        if (! validateServerNode($origin, $node)) {
             return;
         }
 
@@ -138,12 +143,12 @@ class CommunityPosts extends Base
 
         $this->rpc(
             'MovimTpl.fill',
-            '#communityposts.' . slugify('c' . $origin . '_' . $node),
+            '#communityposts.'.slugify('c'.$origin.'_'.$node),
             $html
         );
         $this->rpc('MovimUtils.enhanceArticlesContent');
 
-        if ($node == AppPost::MICROBLOG_NODE && !empty($ids)) {
+        if ($node == AppPost::MICROBLOG_NODE && ! empty($ids)) {
             $this->rpc('MovimUtils.removeClass', '#contact_follow', 'hide');
         }
     }
@@ -156,7 +161,7 @@ class CommunityPosts extends Base
 
     public function ajaxGetItems(string $origin, string $node, $before = 'empty')
     {
-        if (!validateServerNode($origin, $node)) {
+        if (! validateServerNode($origin, $node)) {
             return;
         }
 
@@ -184,6 +189,7 @@ class CommunityPosts extends Base
     {
         $view = $this->tpl();
         $view->assign('me', $origin == $this->me->id);
+
         return $view->draw('_communityposts_empty');
     }
 
@@ -219,7 +225,7 @@ class CommunityPosts extends Base
             return $this->prepareEmpty($origin);
         }
 
-        $posts = \App\Post::where('server', $origin)->where('node', $node)
+        $posts = AppPost::where('server', $origin)->where('node', $node)
             ->whereIn('nodeid', $ids)->get();
         $postsWithKeys = [];
 
@@ -231,7 +237,7 @@ class CommunityPosts extends Base
             }
         }
 
-        $info = \App\Info::where('server', $origin)
+        $info = Info::where('server', $origin)
             ->where('node', $node)
             ->first();
 
@@ -252,25 +258,24 @@ class CommunityPosts extends Base
         $view->assign('paging', $this->_paging);
 
         $view->assign('publicposts', ($ids == false)
-            ? \App\Post::where('server', $origin)
-            ->where('node', $node)
-            ->where('open', true)
-            ->orderBy('published', 'desc')
-            ->skip($page * $this->_paging)
-            ->take($this->_paging)
-            ->get()
+            ? AppPost::where('server', $origin)
+                ->where('node', $node)
+                ->where('open', true)
+                ->orderBy('published', 'desc')
+                ->skip($page * $this->_paging)
+                ->take($this->_paging)
+                ->get()
             : false);
 
         $view->assign('first', $first);
         $view->assign('last', $last);
         $view->assign('count', $count);
 
-
         if ($first) {
             $view->assign('previouspage', $this->route(
                 $node == AppPost::MICROBLOG_NODE
                     ? 'contact' : 'community',
-                [$origin, $node, $this->_beforeAfter . $first]
+                [$origin, $node, $this->_beforeAfter.$first]
             ));
         }
 
@@ -288,6 +293,6 @@ class CommunityPosts extends Base
     public function display()
     {
         $node = $this->get('n') ?? AppPost::MICROBLOG_NODE;
-        $this->view->assign('class', slugify('c' . $this->get('s') . '_' . $node));
+        $this->view->assign('class', slugify('c'.$this->get('s').'_'.$node));
     }
 }

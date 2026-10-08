@@ -19,8 +19,12 @@ class Message
 
         $root = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $root->setAttribute('to', str_replace(' ', '\40', $to));
-        if ($type) $root->setAttribute('type', $type);
-        if ($from) $root->setAttribute('from', $from);
+        if ($type) {
+            $root->setAttribute('type', $type);
+        }
+        if ($from) {
+            $root->setAttribute('from', $from);
+        }
         $root->setAttribute('id', $messageId);
         $dom->appendChild($root);
 
@@ -119,7 +123,7 @@ class Message
             $body->setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
 
             $dom2 = new \DOMDocument('1.0', 'UTF-8');
-            $dom2->loadXml('<root>' . $html . '</root>');
+            $dom2->loadXml('<root>'.$html.'</root>');
             $bar = $dom2->documentElement->firstChild; // we want to import the bare tree
             $body->appendChild($dom->importNode($bar, true));
 
@@ -153,7 +157,7 @@ class Message
         }
 
         if (
-            !in_array($receipts, [null, 'received', 'displayed'])
+            ! in_array($receipts, [null, 'received', 'displayed'])
             && $chatstates == 'active'
         ) {
             $markable = $dom->createElementNS('urn:xmpp:chat-markers:0', 'markable');
@@ -180,11 +184,11 @@ class Message
                     $filen->appendChild($dom->createElement('media-type', $file->type));
                 }
 
-                if (!empty((string)$file->name)) {
+                if (! empty((string) $file->name)) {
                     $filen->appendChild($dom->createElement('name', $file->name));
                 }
 
-                if ((int)$file->size > 0) {
+                if ((int) $file->size > 0) {
                     $filen->appendChild($dom->createElement('size', $file->size));
                 }
 
@@ -202,7 +206,7 @@ class Message
                     $thumbnail->setAttribute('media-type', $file->thumbnail_type);
 
                     if ($file->thumbnail_type == 'image/thumbhash') {
-                        $thumbnail->setAttribute('uri', 'data:image/thumbhash;base64,' . $file->thumbnail_url);
+                        $thumbnail->setAttribute('uri', 'data:image/thumbhash;base64,'.$file->thumbnail_url);
                     } else {
                         $thumbnail->setAttribute('uri', $file->thumbnail_url);
                     }
@@ -361,7 +365,7 @@ class Message
         $x->setAttribute('type', 'submit');
         $publishOption->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, [
+        Utils::injectConfigInX($x, [
             'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
             'pubsub#persist_items' => 'true',
             'pubsub#access_model' => 'whitelist',

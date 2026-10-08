@@ -2,9 +2,9 @@
 
 namespace App\Widgets\SendTo;
 
+use App\Contact;
 use App\MessageFile;
 use App\Widgets\Chat\Chat;
-use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post;
 use Movim\Template\Partial;
 use Movim\Widget\Base;
@@ -24,7 +24,7 @@ class SendTo extends Base
         $post = \App\Post::where('id', $postId)->first();
 
         if ($post && $post->openlink) {
-            $shared = new \stdClass;
+            $shared = new stdClass;
             $shared->title = $post->title;
             $shared->url = $post->openlink->href;
             $shared->text = $post->getSummary();
@@ -50,7 +50,7 @@ class SendTo extends Base
             ->get());
 
         $contact = $this->me->contact;
-        $view->assign('me', ($contact == null) ? new \App\Contact : $contact);
+        $view->assign('me', ($contact == null) ? new Contact : $contact);
 
         $this->drawer('send_to_article', $view->draw('_sendto_article'));
     }
@@ -84,7 +84,7 @@ class SendTo extends Base
 
     public function ajaxSend(stdClass $contacts, string $uri)
     {
-        $contacts = (array)$contacts;
+        $contacts = (array) $contacts;
         $message = '';
         $xmppUri = new XMPPUri($uri);
 

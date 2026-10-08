@@ -3,15 +3,12 @@
 namespace App\Widgets\PublishHelp;
 
 use App\Draft;
-use App\Widgets\Drawer\Drawer;
 use App\Widgets\Publish\Publish;
 use Movim\Widget\Base;
 
 class PublishHelp extends Base
 {
-    public function load()
-    {
-    }
+    public function load() {}
 
     public function ajaxDrawer()
     {
@@ -27,6 +24,7 @@ class PublishHelp extends Base
     public function prepareHelp()
     {
         $view = $this->tpl();
+
         return $view->draw('_publishhelp');
     }
 }

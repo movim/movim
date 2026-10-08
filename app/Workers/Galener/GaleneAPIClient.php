@@ -8,7 +8,9 @@ use React\Promise\PromiseInterface;
 class GaleneAPIClient
 {
     private Browser $browser;
+
     private const API_PATH = '/galene-api/v0/';
+
     public const USER_WILDCARD_PASSWORD = 'password';
 
     public function __construct(
@@ -16,18 +18,18 @@ class GaleneAPIClient
         private string $adminUsername,
         private string $adminPassword
     ) {
-        $this->browser = new Browser();
+        $this->browser = new Browser;
     }
 
     private function getPath(): string
     {
-        return 'http://localhost:' . $this->port . self::API_PATH;
+        return 'http://localhost:'.$this->port.self::API_PATH;
     }
 
     private function getHeaders(): array
     {
         return [
-            'Authorization' => 'Basic ' . base64_encode($this->adminUsername . ':' . $this->adminPassword),
+            'Authorization' => 'Basic '.base64_encode($this->adminUsername.':'.$this->adminPassword),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
         ];
@@ -41,7 +43,7 @@ class GaleneAPIClient
     public function createGroup(string $groupName)
     {
         $this->browser->put(
-            $this->getPath() . '.groups/' . rawurlencode($groupName),
+            $this->getPath().'.groups/'.rawurlencode($groupName),
             $this->getHeaders(),
             $this->json(['public' => true])
         );
@@ -50,7 +52,7 @@ class GaleneAPIClient
     public function deleteGroup(string $groupName)
     {
         $this->browser->delete(
-            $this->getPath() . '.groups/' . rawurlencode($groupName),
+            $this->getPath().'.groups/'.rawurlencode($groupName),
             $this->getHeaders()
         );
     }
@@ -58,7 +60,7 @@ class GaleneAPIClient
     public function getGroup(string $groupName): PromiseInterface
     {
         return $this->browser->get(
-            $this->getPath() . '.groups/' . rawurlencode($groupName),
+            $this->getPath().'.groups/'.rawurlencode($groupName),
             $this->getHeaders()
         );
     }
@@ -66,7 +68,7 @@ class GaleneAPIClient
     public function getGroupStatus(string $groupName): PromiseInterface
     {
         return $this->browser->get(
-            $this->getPath() . '.groups/' . rawurlencode($groupName) . '/.status',
+            $this->getPath().'.groups/'.rawurlencode($groupName).'/.status',
             $this->getHeaders()
         );
     }
@@ -74,7 +76,7 @@ class GaleneAPIClient
     public function addUserToGroup(string $groupName, string $username): PromiseInterface
     {
         return $this->browser->put(
-            $this->getPath() . '.groups/' . rawurlencode($groupName) . '/.users/' . $username,
+            $this->getPath().'.groups/'.rawurlencode($groupName).'/.users/'.$username,
             $this->getHeaders(),
             $this->json(['permissions' => 'op'])
         )->then(
@@ -83,7 +85,7 @@ class GaleneAPIClient
                 $headers['Content-Type'] = 'text/plain';
 
                 return $this->browser->post(
-                    $this->getPath() . '.groups/' . rawurlencode($groupName) . '/.users/' . $username . '/.password',
+                    $this->getPath().'.groups/'.rawurlencode($groupName).'/.users/'.$username.'/.password',
                     $headers,
                     self::USER_WILDCARD_PASSWORD
                 );
@@ -94,7 +96,7 @@ class GaleneAPIClient
     public function removeUserFromGroup(string $groupName, string $username): PromiseInterface
     {
         return $this->browser->delete(
-            $this->getPath() . '.groups/' . rawurlencode($groupName) . '/.users/' . $username,
+            $this->getPath().'.groups/'.rawurlencode($groupName).'/.users/'.$username,
             $this->getHeaders()
         );
     }

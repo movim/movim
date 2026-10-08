@@ -3,12 +3,13 @@
 namespace Moxl\Xec\Action\Jingle;
 
 use App\Message;
-use Moxl\Xec\Action;
 use Moxl\Stanza\Jingle;
+use Moxl\Xec\Action;
 
 class MessageReject extends Action
 {
     protected $_to;
+
     protected $_id;
 
     public function request()
@@ -20,7 +21,7 @@ class MessageReject extends Action
             $this->me,
             'jingle',
             bareJid($this->_to),
-            (string)$this->_id
+            (string) $this->_id
         );
         $message->type = 'jingle_reject';
         $message->save();

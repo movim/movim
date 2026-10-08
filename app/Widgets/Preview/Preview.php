@@ -2,8 +2,8 @@
 
 namespace App\Widgets\Preview;
 
+use App\Url;
 use Movim\Widget\Base;
-
 use Respect\Validation\Validator;
 
 class Preview extends Base
@@ -16,14 +16,14 @@ class Preview extends Base
 
     public function ajaxHttpShow(string $url, ?string $messageId = null)
     {
-        if (!Validator::url($url)->isValid($url)) {
+        if (! Validator::url($url)->isValid($url)) {
             return;
         }
 
         $view = $this->tpl();
 
         try {
-            $view->assign('url', \App\Url::resolve($url));
+            $view->assign('url', Url::resolve($url));
         } catch (\Exception $e) {
             error_log($e->getMessage());
         }
@@ -36,13 +36,13 @@ class Preview extends Base
 
     public function ajaxHttpGallery(string $url, $number = 0)
     {
-        if (!Validator::url($url)->isValid($url)) {
+        if (! Validator::url($url)->isValid($url)) {
             return;
         }
 
         $view = $this->tpl();
         try {
-            $view->assign('url', \App\Url::resolve($url));
+            $view->assign('url', Url::resolve($url));
         } catch (\Exception $e) {
             error_log($e->getMessage());
         }

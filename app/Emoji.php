@@ -21,7 +21,7 @@ class Emoji extends Model
 
     public function getImagePathAttribute(): string
     {
-        return PUBLIC_EMOJIS_PATH . '/' . $this->attributes['pack'] . '/' . $this->attributes['filename'];
+        return PUBLIC_EMOJIS_PATH.'/'.$this->attributes['pack'].'/'.$this->attributes['filename'];
     }
 
     public function getUrlAttribute(): string

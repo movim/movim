@@ -20,6 +20,7 @@ class CleanDevicesList extends Action
     public function setCurrentList(array $currentList)
     {
         $this->_currentList = $currentList;
+
         return $this;
     }
 
@@ -28,14 +29,14 @@ class CleanDevicesList extends Action
         $omemoItems = [];
 
         foreach ($stanza->query->item as $item) {
-            if (str_starts_with((string)$item->attributes()->node, Bundle::OMEMO_BUNDLE)) {
-                array_push ($omemoItems, substr((string)$item->attributes()->node, 39));
+            if (str_starts_with((string) $item->attributes()->node, Bundle::OMEMO_BUNDLE)) {
+                array_push($omemoItems, substr((string) $item->attributes()->node, 39));
             }
         }
 
         foreach (array_diff($omemoItems, $this->_currentList) as $bundleId) {
             $delete = new Delete;
-            $delete->setNode(Bundle::OMEMO_BUNDLE . $bundleId)
+            $delete->setNode(Bundle::OMEMO_BUNDLE.$bundleId)
                 ->request();
         }
 

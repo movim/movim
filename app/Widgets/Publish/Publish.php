@@ -2,23 +2,22 @@
 
 namespace App\Widgets\Publish;
 
+use App\Contact;
 use App\Draft;
 use App\DraftEmbed;
+use App\Info;
 use App\Post as AppPost;
 use App\Upload;
 use App\Widgets\Post\Post;
-
 use League\CommonMark\GithubFlavoredMarkdownConverter;
-use Respect\Validation\Validator;
-
 use Movim\Widget\Base;
-
 use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Pubsub\Subscribe;
 use Moxl\Xec\Payload\Packet;
+use Respect\Validation\Validator;
 
 class Publish extends Base
 {
@@ -38,9 +37,9 @@ class Publish extends Base
     {
         $this->toast($this->__('post.published'));
 
-        list($to, $node, $id, $repost, $comments) = array_values($packet->content);
+        [$to, $node, $id, $repost, $comments] = array_values($packet->content);
 
-        if (!$repost && $comments) {
+        if (! $repost && $comments) {
             $this->ajaxCreateComments(($comments === true) ? $to : $comments, $id);
         }
 
@@ -79,18 +78,18 @@ class Publish extends Base
 
     public function onCommentNodeCreated(Packet $packet)
     {
-        list($server, $parentid) = array_values($packet->content);
+        [$server, $parentid] = array_values($packet->content);
 
         $s = $this->xmpp(new Subscribe);
         $s->setTo($server)
             ->setFrom($this->me->id)
-            ->setNode(AppPost::COMMENTS_NODE . '/' . $parentid)
+            ->setNode(AppPost::COMMENTS_NODE.'/'.$parentid)
             ->request();
     }
 
     public function ajaxCreateComments(string $server, string $id)
     {
-        if (!validateServerNode($server, $id)) {
+        if (! validateServerNode($server, $id)) {
             return;
         }
 
@@ -134,7 +133,7 @@ class Publish extends Base
                 'allow_unsafe_links' => true,
             ]);
 
-            $doc->loadXML('<div>' . $converter->convert($draft->content) . '</div>');
+            $doc->loadXML('<div>'.$converter->convert($draft->content).'</div>');
             $view->assign('title', $draft->title);
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
@@ -151,9 +150,10 @@ class Publish extends Base
         $draft = $this->me->drafts()->find($id);
 
         if ($draft && $draft->isNotEmpty()) {
-            if (!$draft->isSmallEnough()) {
+            if (! $draft->isSmallEnough()) {
                 $this->rpc('Publish.enableSend');
                 $this->toast($this->__('publish.too_long', Draft::LENGTH_LIMIT));
+
                 return;
             }
 
@@ -185,11 +185,11 @@ class Publish extends Base
                     $tags = array_merge($tags, $tagsContent);
                 }
 
-                if (!empty($draft->content)) {
+                if (! empty($draft->content)) {
                     $p->setContent($draft->content);
                 }
 
-                if (!empty($contentXhtml)) {
+                if (! empty($contentXhtml)) {
                     $p->setContentXhtml($contentXhtml);
                 }
             }
@@ -197,7 +197,7 @@ class Publish extends Base
             if (Validator::stringType()->notEmpty()->isValid(trim($draft->nodeid))) {
                 $p->setId($draft->nodeid);
 
-                $post = \App\Post::where('server', $draft->server)
+                $post = AppPost::where('server', $draft->server)
                     ->where('node', $draft->node)
                     ->where('nodeid', $draft->nodeid)
                     ->first();
@@ -209,7 +209,7 @@ class Publish extends Base
                 $p->setId($this->titleToSlug($draft->title));
             }
 
-            if (!$draft->comments_disabled) {
+            if (! $draft->comments_disabled) {
                 if ($comments) {
                     $p->enableComments($comments->server);
                 } else {
@@ -226,7 +226,7 @@ class Publish extends Base
             }
 
             if ($draft->reply) {
-                $post = \App\Post::where('server', $draft->reply->server)
+                $post = AppPost::where('server', $draft->reply->server)
                     ->where('node', $draft->reply->node)
                     ->where('nodeid', $draft->reply->nodeid)
                     ->first();
@@ -243,14 +243,16 @@ class Publish extends Base
                     $resolved->type == 'image'
                     && $resolved->image == $embed->url
                 ) {
-                    if (!$hasImage) $hasImage = true;
+                    if (! $hasImage) {
+                        $hasImage = true;
+                    }
 
                     $p->addEnclosure(
                         $resolved->image,
                         $resolved->title,
                         $resolved->content_type
                     );
-                } else if (!str_starts_with($resolved->content_type, 'text/html') || $resolved->type != 'text') {
+                } elseif (! str_starts_with($resolved->content_type, 'text/html') || $resolved->type != 'text') {
                     $p->addEnclosure(
                         $resolved->url,
                         $resolved->title,
@@ -270,13 +272,14 @@ class Publish extends Base
                 }
             }
 
-            $info = \App\Info::where('server', $draft->server)
+            $info = Info::where('server', $draft->server)
                 ->where('node', $draft->node)
                 ->first();
 
-            if ($info && $info->isGallery() && !$hasImage) {
+            if ($info && $info->isGallery() && ! $hasImage) {
                 $this->rpc('Publish.enableSend');
                 $this->toast($this->__('publish.no_picture'));
+
                 return;
             }
 
@@ -315,7 +318,7 @@ class Publish extends Base
         if (Validator::url()->isValid($url)) {
             $embed = $draft->embeds()->where('url', $url)->first();
 
-            if (!$embed) {
+            if (! $embed) {
                 $embed = new DraftEmbed;
                 $embed->draft_id = $draftId;
                 $embed->url = $url;
@@ -350,7 +353,7 @@ class Publish extends Base
             $embed = $draft->embeds()->find($embedId);
 
             if ($embed) {
-                $this->rpc('MovimTpl.remove', '#' . $embed->HTMLId);
+                $this->rpc('MovimTpl.remove', '#'.$embed->HTMLId);
                 $embed->delete();
             }
         }
@@ -361,7 +364,7 @@ class Publish extends Base
         $draft = $this->me->drafts()->find($id);
         $view = $this->tpl();
 
-        if ($draft && $draft->open && !$draft->nodeid) {
+        if ($draft && $draft->open && ! $draft->nodeid) {
             $slug = $this->titleToSlug($draft->title);
 
             $view->assign('link', ($draft->node == AppPost::MICROBLOG_NODE)
@@ -369,6 +372,7 @@ class Publish extends Base
                 : $this->route('community', [$draft->server, $draft->node, $slug]));
 
             $this->rpc('MovimTpl.fill', '#publish_preview_url', $view->draw('_publish_preview_url'));
+
             return;
         }
 
@@ -385,7 +389,7 @@ class Publish extends Base
 
             $this->ajaxCheckPrivacy($id);
 
-            if (!$open) {
+            if (! $open) {
                 $this->rpc('MovimTpl.fill', '#publish_preview_url', '');
             }
 
@@ -436,6 +440,7 @@ class Publish extends Base
     {
         $view = $this->tpl();
         $view->assign('draft', $draft);
+
         return $view->draw('_publish_toggles');
     }
 
@@ -443,6 +448,7 @@ class Publish extends Base
     {
         $view = $this->tpl();
         $view->assign('embed', $embed);
+
         return $view->draw('_publish_embed');
     }
 
@@ -471,7 +477,7 @@ class Publish extends Base
             if ($embed) {
                 $embed->imagenumber = $imageNumber;
                 $embed->save();
-                $this->rpc('MovimTpl.remove', '#' . $embed->HTMLId);
+                $this->rpc('MovimTpl.remove', '#'.$embed->HTMLId);
                 $this->rpc('MovimTpl.append', '#publishembeds', $this->prepareEmbed($embed));
             }
         }
@@ -503,9 +509,9 @@ class Publish extends Base
         }
 
         if ($node == AppPost::MICROBLOG_NODE) {
-            $view->assign('icon', \App\Contact::firstOrNew(['id' => $server]));
+            $view->assign('icon', Contact::firstOrNew(['id' => $server]));
         } else {
-            $info = \App\Info::where('server', $server)
+            $info = Info::where('server', $server)
                 ->where('node', $node)
                 ->first();
             $view->assign('icon', $info);
@@ -517,7 +523,7 @@ class Publish extends Base
             ->where('nodeid', $nodeId)
             ->first();
 
-        if (!$draft) {
+        if (! $draft) {
             $draft = new Draft;
             $draft->user_id = $this->me->id;
             $draft->server = $server;
@@ -529,19 +535,19 @@ class Publish extends Base
         }
 
         if ($draft->content != null) {
-            $type = "article";
+            $type = 'article';
         }
 
         // Reply
         $reply = null;
 
         if ($replyServer && $replyNode && $replyNodeId) {
-            $reply = \App\Post::where('server', $replyServer)
+            $reply = AppPost::where('server', $replyServer)
                 ->where('node', $replyNode)
                 ->where('nodeid', $replyNodeId)
                 ->first();
         } elseif ($draft->reply_id) {
-            $reply = \App\Post::find($draft->reply_id);
+            $reply = AppPost::find($draft->reply_id);
         }
 
         if ($reply) {
@@ -570,8 +576,8 @@ class Publish extends Base
             strtok(wordwrap($title, 80, "\n"), "\n")
         );
 
-        if (!empty($slug) && strlen($slug) > 24) {
-            return $slug . '-' . \generateKey(6);
+        if (! empty($slug) && strlen($slug) > 24) {
+            return $slug.'-'.\generateKey(6);
         }
 
         return \generateUUID();

@@ -5,9 +5,8 @@ namespace App\Widgets\PostActions;
 use App\Post as AppPost;
 use App\Widgets\Post\Post;
 use Movim\Widget\Base;
-
-use Moxl\Xec\Action\Pubsub\PostDelete;
 use Moxl\Xec\Action\Pubsub\Delete;
+use Moxl\Xec\Action\Pubsub\PostDelete;
 use Moxl\Xec\Payload\Packet;
 
 class PostActions extends Base
@@ -20,7 +19,7 @@ class PostActions extends Base
 
     public function onDelete(Packet $packet)
     {
-        list($server, $node, $id) = array_values($packet->content);
+        [$server, $node, $id] = array_values($packet->content);
 
         if (str_starts_with($node, AppPost::COMMENTS_NODE)) {
             $this->toast($this->__('post.comment_deleted'));
@@ -34,17 +33,17 @@ class PostActions extends Base
             );
         }
 
-        $this->rpc('MovimTpl.remove', '#' . cleanupId($id));
+        $this->rpc('MovimTpl.remove', '#'.cleanupId($id));
     }
 
     public function ajaxLike(string $to, string $node, string $id)
     {
-        $p = \App\Post::where('server', $to)
+        $p = AppPost::where('server', $to)
             ->where('node', $node)
             ->where('nodeid', $id)
             ->first();
 
-        if (!isset($p) || $p->isLiked($this->me)) {
+        if (! isset($p) || $p->isLiked($this->me)) {
             return;
         }
 
@@ -54,7 +53,7 @@ class PostActions extends Base
 
     public function ajaxDelete($to, $node, $id)
     {
-        $post = \App\Post::where('server', $to)
+        $post = AppPost::where('server', $to)
             ->where('node', $node)
             ->where('nodeid', $id)
             ->first();
@@ -70,7 +69,7 @@ class PostActions extends Base
 
     public function ajaxDeleteConfirm($to, $node, $id)
     {
-        $post = \App\Post::where('server', $to)
+        $post = AppPost::where('server', $to)
             ->where('node', $node)
             ->where('nodeid', $id)
             ->first();
@@ -82,10 +81,10 @@ class PostActions extends Base
                 ->setId($post->nodeid)
                 ->request();
 
-            if (!$post->isComment()) {
+            if (! $post->isComment()) {
                 $p = $this->xmpp(new Delete);
                 $p->setTo($post->commentserver)
-                    ->setNode(AppPost::COMMENTS_NODE . '/' . $post->commentnodeid)
+                    ->setNode(AppPost::COMMENTS_NODE.'/'.$post->commentnodeid)
                     ->request();
             }
         }
@@ -93,6 +92,6 @@ class PostActions extends Base
 
     public function preparePost($p)
     {
-        return (new \App\Post)->preparePost($p, false, true);
+        return (new AppPost)->preparePost($p, false, true);
     }
 }

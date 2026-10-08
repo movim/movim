@@ -3,8 +3,8 @@
 namespace Moxl\Xec\Action\Ping;
 
 use App\Widgets\Rooms\Rooms as WidgetRooms;
-use Moxl\Xec\Action;
 use Moxl\Stanza\Ping;
+use Moxl\Xec\Action;
 use SimpleXMLElement;
 
 /**
@@ -13,7 +13,9 @@ use SimpleXMLElement;
 class Room extends Action
 {
     protected ?string $_to = null;
+
     protected ?string $_room = null;
+
     protected ?string $_resource = null;
 
     public function request()

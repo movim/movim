@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class CreateEmojisTable extends Migration
 {
@@ -42,9 +42,9 @@ class CreateEmojisTable extends Migration
             $table->string('alias');
 
             $table->foreign('emoji_id')->references('id')
-                  ->on('emojis')->onDelete('cascade');
+                ->on('emojis')->onDelete('cascade');
             $table->foreign('user_id')->references('id')
-                  ->on('users')->onDelete('cascade');
+                ->on('users')->onDelete('cascade');
 
             $table->timestamps();
 

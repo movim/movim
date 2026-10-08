@@ -2,8 +2,8 @@
 
 namespace App\Widgets\Dialog;
 
-use Movim\Widget\Base;
 use Movim\RPC;
+use Movim\Widget\Base;
 
 class Dialog extends Base
 {

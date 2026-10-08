@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\Muc;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Muc;
+use Moxl\Xec\Action;
 
 class Destroy extends Action
 {

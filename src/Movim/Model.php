@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -32,16 +33,16 @@ class Model extends EloquentModel
     /**
      * Set the keys for a save update query.
      *
-     * @param  Builder $query
-     *
+     * @param  Builder  $query
      * @return Builder
+     *
      * @throws Exception
      */
     protected function setKeysForSaveQuery($query)
     {
         foreach ($this->getKeyName() as $key) {
             if (! isset($this->$key)) {
-                throw new Exception(__METHOD__ . 'Missing part of the primary key: ' . $key);
+                throw new Exception(__METHOD__.'Missing part of the primary key: '.$key);
             }
 
             $query->where($key, '=', $this->$key);
@@ -52,14 +53,12 @@ class Model extends EloquentModel
 
     /**
      * Catch the save Exceptions to log them properly
-     *
-     * @param array $options
      */
     public function save(array $options = [])
     {
         try {
             return parent::save($options);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             (new Bootstrap)->exceptionHandler($e);
         }
     }
@@ -67,14 +66,13 @@ class Model extends EloquentModel
     /**
      * Execute a query for a single record by ID.
      *
-     * @param  array $ids Array of keys, like [column => value].
-     * @param  array $columns
-     *
+     * @param  array  $ids  Array of keys, like [column => value].
+     * @param  array  $columns
      * @return mixed|static
      */
     public static function find($ids, $columns = ['*'])
     {
-        $me    = new self;
+        $me = new self;
         $query = $me->newQuery();
         foreach ($me->getKeyName() as $key) {
             $query->where($key, '=', $ids[$key]);

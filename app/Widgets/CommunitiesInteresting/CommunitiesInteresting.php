@@ -2,6 +2,7 @@
 
 namespace App\Widgets\CommunitiesInteresting;
 
+use App\Info;
 use App\Widgets\CommunitiesServer\CommunitiesServer;
 use Movim\Widget\Base;
 
@@ -18,7 +19,7 @@ class CommunitiesInteresting extends Base
         );
     }
 
-    public function prepareTicket(\App\Info $community)
+    public function prepareTicket(Info $community)
     {
         return (new CommunitiesServer($this->me, sessionId: $this->sessionId))->prepareTicket($community);
     }

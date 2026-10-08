@@ -3,6 +3,7 @@
 namespace Moxl\Stanza;
 
 use App\Post;
+use Moxl\Utils;
 
 class Pubsub
 {
@@ -22,14 +23,14 @@ class Pubsub
         $x->setAttribute('type', 'submit');
         $configure->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, [
+        Utils::injectConfigInX($x, [
             'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#node_config',
             'pubsub#persist_items' => 'true',
             'pubsub#deliver_payloads' => 'false',
             'pubsub#send_last_published_item' => 'on_sub',
             'pubsub#access_model' => 'open',
             'pubsub#max_items' => 'max',
-            'pubsub#title' => $name
+            'pubsub#title' => $name,
         ]);
 
         return $pubsub;
@@ -53,7 +54,7 @@ class Pubsub
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $create = $dom->createElement('create');
-        $create->setAttribute('node', Post::COMMENTS_NODE . '/' . $node);
+        $create->setAttribute('node', Post::COMMENTS_NODE.'/'.$node);
         $pubsub->appendChild($create);
 
         $configure = $dom->createElement('configure');
@@ -64,7 +65,7 @@ class Pubsub
         $x->setAttribute('type', 'submit');
         $configure->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, [
+        Utils::injectConfigInX($x, [
             'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#node_config',
             'pubsub#persist_items' => 'true',
             'pubsub#max_items' => 'max',
@@ -99,7 +100,7 @@ class Pubsub
         $unsubscribe->setAttribute('node', $node);
         $unsubscribe->setAttribute('jid', $from);
 
-        if (!empty($subid)) {
+        if (! empty($subid)) {
             $unsubscribe->setAttribute('subid', $subid);
         }
 
@@ -213,14 +214,13 @@ class Pubsub
             $x->setAttribute('type', 'submit');
             $publishOption->appendChild($x);
 
-            \Moxl\Utils::injectConfigInX($x, self::generateConfig($node));
+            Utils::injectConfigInX($x, self::generateConfig($node));
 
             $pubsub->appendChild($publishOption);
         }
 
         return $pubsub;
     }
-
 
     public static function testPostPublish(string $node, string $id)
     {
@@ -244,12 +244,12 @@ class Pubsub
         $x->setAttribute('type', 'submit');
         $publishOption->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, [
+        Utils::injectConfigInX($x, [
             'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
             'pubsub#persist_items' => 'true',
-            //'pubsub#max_items' => 'max',
-            //'pubsub#send_last_published_item' => 'never',
-            //'pubsub#notify_retract' => 'true',
+            // 'pubsub#max_items' => 'max',
+            // 'pubsub#send_last_published_item' => 'never',
+            // 'pubsub#notify_retract' => 'true',
         ]);
 
         $pubsub->appendChild($publishOption);
@@ -301,7 +301,7 @@ class Pubsub
         $x->setAttribute('type', 'submit');
         $configure->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, $data);
+        Utils::injectConfigInX($x, $data);
 
         return $pubsub;
     }

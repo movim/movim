@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\Nickname;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Nickname;
+use Moxl\Xec\Action;
 
 class Set extends Action
 {

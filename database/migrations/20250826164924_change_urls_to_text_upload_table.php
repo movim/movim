@@ -1,13 +1,7 @@
 <?php
 
-use Movim\Migration;
-
-use App\Contact;
-use App\Presence;
-use App\Roster;
-use App\Conference;
-
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class ChangeUrlsToTextUploadTable extends Migration
 {

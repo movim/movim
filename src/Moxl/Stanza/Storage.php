@@ -1,13 +1,17 @@
 <?php
+
 /*
  * Basic stanza for the XEP-0223 implementation
  */
 
 namespace Moxl\Stanza;
 
+use Moxl\Utils;
+
 class Storage
 {
     public static $node = 'movim:configuration';
+
     public static $nodeConfig = [
         'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
         'pubsub#persist_items' => 'true',
@@ -33,7 +37,7 @@ class Storage
 
         $data['FORM_TYPE'] = self::$node;
 
-        \Moxl\Utils::injectConfigInX($x, $data);
+        Utils::injectConfigInX($x, $data);
 
         $publish->appendChild($item);
 
@@ -44,7 +48,7 @@ class Storage
             $x->setAttribute('type', 'submit');
             $publishOption->appendChild($x);
 
-            \Moxl\Utils::injectConfigInX($x, self::$nodeConfig);
+            Utils::injectConfigInX($x, self::$nodeConfig);
 
             $pubsub->appendChild($publishOption);
         }

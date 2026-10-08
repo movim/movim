@@ -3,7 +3,6 @@
 namespace App\Widgets\Upload;
 
 use Movim\Widget\Base;
-
 use Moxl\Xec\Action\Upload\Request;
 use Moxl\Xec\Payload\Packet;
 
@@ -71,7 +70,6 @@ class Upload extends Base
     /**
      * Internal functions called by UploadFile announce the XMPP file upload
      */
-
     public function ajaxHttpError()
     {
         $this->toast($this->__('upload.error_failed'));
@@ -84,7 +82,7 @@ class Upload extends Base
 
     public function ajaxHttpProgressXMPP(int $percentage)
     {
-        $this->rpc('Upload.setProgress', 'cloud_upload', $percentage . '% - ' . $this->__('upload.upload_xmpp'));
+        $this->rpc('Upload.setProgress', 'cloud_upload', $percentage.'% - '.$this->__('upload.upload_xmpp'));
     }
 
     public function ajaxPrepare($file)
@@ -98,7 +96,7 @@ class Upload extends Base
                 'jidto' => $uploadService->server,
                 'name' => $file->name,
                 'size' => $file->size,
-                'type' => $file->type
+                'type' => $file->type,
             ]);
 
             $r = $this->xmpp(new Request);

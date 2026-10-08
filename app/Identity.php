@@ -7,6 +7,7 @@ use Movim\Model;
 class Identity extends Model
 {
     public $primaryKey = ['info_id', 'category', 'type'];
+
     public $incrementing = false;
 
     public function info()
@@ -23,7 +24,7 @@ class Identity extends Model
                     'category' => $identity->category,
                     'type' => $identity->type,
                     'lang' => $identity->lang,
-                    'name' => $identity->name
+                    'name' => $identity->name,
                 ];
             })->all(), $identities->first()->primaryKey);
         }

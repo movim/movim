@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Action\IqGateway;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\IqGateway;
+use Moxl\Xec\Action;
 
 class Get extends Action
 {
@@ -12,7 +12,7 @@ class Get extends Action
     public function request()
     {
         $this->store();
-        $this->iq(IqGateway::get(), to: $this->_to, type: 'get');;
+        $this->iq(IqGateway::get(), to: $this->_to, type: 'get');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

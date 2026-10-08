@@ -2,15 +2,19 @@
 
 namespace Moxl\Xec\Action\Upload;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Upload;
+use Moxl\Xec\Action;
 
 class Request extends Action
 {
     protected $_id;
+
     protected $_to;
+
     protected $_name;
+
     protected $_size;
+
     protected $_type;
 
     private const AUTHORIZED_HEADERS = ['authorization', 'cookie', 'expires'];
@@ -26,17 +30,17 @@ class Request extends Action
         if ($stanza->slot) {
             $params = [
                 'id' => $this->_id,
-                'get' => (string)$stanza->slot->get->attributes()->url,
-                'put' => (string)$stanza->slot->put->attributes()->url,
-                'headers' => null
+                'get' => (string) $stanza->slot->get->attributes()->url,
+                'put' => (string) $stanza->slot->put->attributes()->url,
+                'headers' => null,
             ];
 
             if ($stanza->slot->put->header) {
                 $headers = [];
 
-                foreach($stanza->slot->put->header as $header) {
-                    if (in_array(strtolower((string)$header->attributes()->name), self::AUTHORIZED_HEADERS)) {
-                        $headers[(string)$header->attributes()->name] = str_replace(["\n", "\r"], '', (string)$header);
+                foreach ($stanza->slot->put->header as $header) {
+                    if (in_array(strtolower((string) $header->attributes()->name), self::AUTHORIZED_HEADERS)) {
+                        $headers[(string) $header->attributes()->name] = str_replace(["\n", "\r"], '', (string) $header);
                     }
                 }
 

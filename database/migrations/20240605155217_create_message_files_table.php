@@ -1,9 +1,8 @@
 <?php
 
 use App\Message;
-use App\MessageFile;
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class CreateMessageFilesTable extends Migration
 {
@@ -13,8 +12,8 @@ class CreateMessageFilesTable extends Migration
             $table->integer('message_mid')->unsigned();
 
             $table->foreign('message_mid')
-                  ->references('mid')->on('messages')
-                  ->onDelete('cascade');
+                ->references('mid')->on('messages')
+                ->onDelete('cascade');
 
             $table->string('type');
             $table->string('name');

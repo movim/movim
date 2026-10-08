@@ -12,6 +12,6 @@ class AuthorUrl extends Detector
     {
         $api = $this->extractor->getApi();
 
-        return new Uri('https://reddit.com/u/' . $api->all()[0]['data']['children'][0]['data']['author']);
+        return new Uri('https://reddit.com/u/'.$api->all()[0]['data']['children'][0]['data']['author']);
     }
 }

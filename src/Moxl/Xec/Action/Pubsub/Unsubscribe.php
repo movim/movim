@@ -10,8 +10,11 @@ use Moxl\Xec\Action\PubsubSubscription\Remove as SubscriptionRemove;
 class Unsubscribe extends Action
 {
     protected $_to;
+
     protected $_from;
+
     protected $_node;
+
     protected $_subid;
 
     public function request()
@@ -24,10 +27,10 @@ class Unsubscribe extends Action
     {
         $sa = new SubscriptionRemove($this->me, sessionId: $this->sessionId);
         $sa->setServer($this->_to)
-           ->setNode($this->_node)
-           ->setFrom($this->_from)
-           ->setPEPNode(Subscription::PRIVATE_NODE)
-           ->request();
+            ->setNode($this->_node)
+            ->setFrom($this->_from)
+            ->setPEPNode(Subscription::PRIVATE_NODE)
+            ->request();
 
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();

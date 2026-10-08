@@ -17,6 +17,7 @@ class Pong extends Event
             if ($connection = $conference->getConnection($this->node->from)) {
                 if ($this->node->stanza->error) {
                     $conference->removeConnection($this->node->from);
+
                     return null;
                 } else {
                     $connection->xmppPong($this->node);

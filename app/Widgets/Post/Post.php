@@ -2,13 +2,14 @@
 
 namespace App\Widgets\Post;
 
+use App\Contact;
+use App\Info;
 use App\Post as AppPost;
 use App\Widgets\ContactActions\ContactActions;
 use Movim\Widget\Base;
-
-use Moxl\Xec\Action\Pubsub\GetItem;
-use Moxl\Xec\Action\Microblog\CommentsGet;
 use Moxl\Xec\Action\Microblog\CommentPublish;
+use Moxl\Xec\Action\Microblog\CommentsGet;
+use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Payload\Packet;
 use Respect\Validation\Validator;
 
@@ -42,14 +43,14 @@ class Post extends Base
                 $parent = $post->getParent();
                 $this->rpc(
                     'MovimTpl.fill',
-                    '#post_widget.' . cleanupId($parent->nodeid) . ' #comments',
+                    '#post_widget.'.cleanupId($parent->nodeid).' #comments',
                     $this->prepareComments($parent)
                 );
                 $this->rpc('Post.checkCommentAction');
             } else {
                 $this->rpc(
                     'MovimTpl.fill',
-                    '#post_widget.' . cleanupId($post->nodeid),
+                    '#post_widget.'.cleanupId($post->nodeid),
                     $this->preparePost($post)
                 );
                 $this->rpc('MovimUtils.enhanceArticlesContent');
@@ -65,7 +66,7 @@ class Post extends Base
             if ($parent = $post->getParent()) {
                 $this->rpc(
                     'MovimTpl.fill',
-                    '#post_widget.' . cleanupId($parent->nodeid) . ' #comments',
+                    '#post_widget.'.cleanupId($parent->nodeid).' #comments',
                     $this->prepareComments($parent)
                 );
             }
@@ -85,12 +86,12 @@ class Post extends Base
 
     public function onComments(Packet $packet)
     {
-        $post = \App\Post::find($packet->content);
+        $post = AppPost::find($packet->content);
 
         if ($post) {
             $this->rpc(
                 'MovimTpl.fill',
-                '#post_widget.' . cleanupId($post->nodeid) . ' #comments',
+                '#post_widget.'.cleanupId($post->nodeid).' #comments',
                 $this->prepareComments($post)
             );
             $this->rpc('Post.checkCommentAction');
@@ -100,14 +101,14 @@ class Post extends Base
     public function onPresenceSubscriptionRequired(Packet $packet)
     {
         $view = $this->tpl();
-        $view->assign('contact', \App\Contact::firstOrNew(['id' => $packet->content]));
+        $view->assign('contact', Contact::firstOrNew(['id' => $packet->content]));
         $this->rpc('MovimTpl.fill', '#post_widget', $view->draw('_post_subscription_required'));
     }
 
     public function onCommentsError(Packet $packet)
     {
         $view = $this->tpl();
-        $view->assign('post', \App\Post::find($packet->content));
+        $view->assign('post', AppPost::find($packet->content));
         $this->rpc('MovimTpl.fill', '#comments', $view->draw('_post_comments_error'));
     }
 
@@ -124,7 +125,7 @@ class Post extends Base
 
     public function ajaxGetPost(string $server, string $node, string $nodeid)
     {
-        $p = \App\Post::where('server', $server)
+        $p = AppPost::where('server', $server)
             ->where('node', $node)
             ->where('nodeid', $nodeid)
             ->with('tags')
@@ -141,12 +142,12 @@ class Post extends Base
 
             $html = $this->preparePost($p, requestComments: false);
 
-            $this->rpc('MovimTpl.fill', '#post_widget.' . cleanupId($p->nodeid), $html);
+            $this->rpc('MovimTpl.fill', '#post_widget.'.cleanupId($p->nodeid), $html);
             $this->rpc('MovimUtils.enhanceArticlesContent');
-            $this->rpc('Notif.setTitle', $this->__('page.post') . ' • ' . $p->title);
+            $this->rpc('Notif.setTitle', $this->__('page.post').' • '.$p->title);
 
             // If the post is a reply but we don't have the original
-            if ($p->isReply() && !$p->getReply()) {
+            if ($p->isReply() && ! $p->getReply()) {
                 $gi = $this->xmpp(new GetItem);
                 $gi->setTo($p->replyserver)
                     ->setNode($p->replynode)
@@ -166,7 +167,7 @@ class Post extends Base
 
     public function ajaxGetPostComments(string $server, string $node, string $id)
     {
-        $post = \App\Post::where('server', $server)
+        $post = AppPost::where('server', $server)
             ->where('node', $node)
             ->where('nodeid', $id)
             ->first();
@@ -181,13 +182,13 @@ class Post extends Base
         $this->rpc('MovimUtils.redirect', $this->route('publish', [$server, $node, $id, 'share']));
     }
 
-    public function requestComments(\App\Post $post)
+    public function requestComments(AppPost $post)
     {
         if ($post->id == null) {
             return;
         }
 
-        \App\Post::whereNotNull('parent_id')
+        AppPost::whereNotNull('parent_id')
             ->where('parent_id', $post->id)
             ->delete();
 
@@ -201,13 +202,13 @@ class Post extends Base
     public function publishComment($comment, $to, $node, $id)
     {
         if (
-            !Validator::stringType()->notEmpty()->isValid($comment)
-            || !Validator::stringType()->length(6, 128)->noWhitespace()->isValid($id)
+            ! Validator::stringType()->notEmpty()->isValid($comment)
+            || ! Validator::stringType()->length(6, 128)->noWhitespace()->isValid($id)
         ) {
             return;
         }
 
-        $p = \App\Post::where('server', $to)
+        $p = AppPost::where('server', $to)
             ->where('node', $node)
             ->where('nodeid', $id)
             ->first();
@@ -232,12 +233,12 @@ class Post extends Base
         }
     }
 
-    public function prepareComments(\App\Post $post, ?bool $public = false)
+    public function prepareComments(AppPost $post, ?bool $public = false)
     {
         return $this->view('_post_comments', [
             'post' => $post,
             'public' => $public,
-            'hearth' => addEmojis('♥')
+            'hearth' => addEmojis('♥'),
         ]);
     }
 
@@ -246,7 +247,7 @@ class Post extends Base
         return $this->view('_post_not_found');
     }
 
-    public function preparePost(\App\Post $post, $public = false, $card = false, $requestComments = true)
+    public function preparePost(AppPost $post, $public = false, $card = false, $requestComments = true)
     {
         if (isset($post)) {
             $view = $this->tpl();
@@ -255,12 +256,12 @@ class Post extends Base
 
             if (
                 $post->hasCommentsNode()
-                && !$public && !$card
+                && ! $public && ! $card
             ) {
                 if ($requestComments) {
                     $this->rpc('Post_ajaxGetPostComments', $post->server, $post->node, $post->nodeid); // Broken in case of repost
                 }
-            } elseif (!$card) {
+            } elseif (! $card) {
                 $viewd = $this->tpl();
                 $viewd->assign('post', $post);
 
@@ -272,12 +273,12 @@ class Post extends Base
             $view->assign('commentsdisabled', $commentsDisabled);
             $view->assign('public', $public);
             $view->assign('reply', $post->isReply() ? $post->getReply() : false);
-            $view->assign('repost', $post->isRecycled() ? \App\Contact::find($post->server) : false);
+            $view->assign('repost', $post->isRecycled() ? Contact::find($post->server) : false);
 
             $view->assign('nsfw', $this->me ? $this->me->nsfw : false);
             $view->assign('post', $post);
 
-            if (!$card && $this->me) {
+            if (! $card && $this->me) {
                 $view->assign('counter', $this->me->unreads(cached: true));
             }
 
@@ -289,46 +290,51 @@ class Post extends Base
         return $this->prepareNotFound();
     }
 
-    public function prepareTicket(\App\Post $post, $public = false)
+    public function prepareTicket(AppPost $post, $public = false)
     {
         $view = $this->tpl();
         $view->assign('post', $post);
         $view->assign('public', $public);
+
         return $view->draw('_post_ticket');
     }
 
-    public function preparePostLinks(\App\Post $post)
+    public function preparePostLinks(AppPost $post)
     {
         $view = $this->tpl();
         $view->assign('post', $post);
+
         return $view->draw('_post_links');
     }
 
-    public function preparePostReply(\App\Post $post)
+    public function preparePostReply(AppPost $post)
     {
-        if (!$post->isReply()) {
+        if (! $post->isReply()) {
             return '';
         }
 
         $view = $this->tpl();
         $view->assign('reply', $post->getReply());
+
         return $view->draw('_post_reply');
     }
 
-    public function preparePreviousNext(\App\Post $post)
+    public function preparePreviousNext(AppPost $post)
     {
         $view = $this->tpl();
         $view->assign('post', $post);
+
         return $view->draw('_post_prevnext');
     }
 
-    public function preparePreviousNextBack(\App\Post $post)
+    public function preparePreviousNextBack(AppPost $post)
     {
         $view = $this->tpl();
         $view->assign('post', $post);
-        $view->assign('info', \App\Info::where('server', $post->server)
+        $view->assign('info', Info::where('server', $post->server)
             ->where('node', $post->node)
             ->first());
+
         return $view->draw('_post_prevnext_back');
     }
 

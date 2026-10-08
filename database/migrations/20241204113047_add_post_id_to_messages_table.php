@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class AddPostIdToMessagesTable extends Migration
 {
@@ -13,8 +13,8 @@ class AddPostIdToMessagesTable extends Migration
             $table->integer('postid')->unsigned()->nullable();
 
             $table->foreign('postid')
-                  ->references('id')->on('posts')
-                  ->onDelete('set null');
+                ->references('id')->on('posts')
+                ->onDelete('set null');
         });
 
         $this->enableForeignKeyCheck();

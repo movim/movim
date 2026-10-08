@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class RemoveJidForeignFromMembersTable extends Migration
 {
@@ -19,7 +19,7 @@ class RemoveJidForeignFromMembersTable extends Migration
 
         $this->schema->table('members', function (Blueprint $table) {
             $table->foreign('jid')
-                  ->references('id')->on('contacts');
+                ->references('id')->on('contacts');
         });
 
         $this->enableForeignKeyCheck();

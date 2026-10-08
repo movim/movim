@@ -33,7 +33,7 @@ class Presence
         if ($from) {
             $root->setAttribute('from', $from);
         } elseif ($me && $me->session) {
-            $root->setAttribute('from', $me->id . '/' . $me->session->resource);
+            $root->setAttribute('from', $me->id.'/'.$me->session->resource);
             $root->setAttribute('id', linker($me->session->id)->session->get('id'));
         }
 
@@ -88,7 +88,9 @@ class Presence
 
             $mav = $dom->createElement('mav');
             $mav->setAttribute('xmlns', 'urn:xmpp:muc:affiliations:1');
-            if ($mavSince != null) $mav->setAttribute('since', $mavSince);
+            if ($mavSince != null) {
+                $mav->setAttribute('since', $mavSince);
+            }
             $x->appendChild($mav);
 
             $root->appendChild($x);
@@ -96,9 +98,9 @@ class Presence
 
         if ($withCaps) {
             $c = $dom->createElementNS('urn:xmpp:caps', 'c');
-            $hash = $dom->createElement('hash', \Moxl\Utils::getOwnCapabilityHash());
+            $hash = $dom->createElement('hash', Utils::getOwnCapabilityHash());
             $hash->setAttribute('xmlns', 'urn:xmpp:hashes:2');
-            $hash->setAttribute('algo', \Moxl\Utils::CAPABILITY_HASH_ALGORITHM);
+            $hash->setAttribute('algo', Utils::CAPABILITY_HASH_ALGORITHM);
 
             $c->appendChild($hash);
             $root->appendChild($c);
@@ -106,10 +108,9 @@ class Presence
             $c = $dom->createElementNS('http://jabber.org/protocol/caps', 'c');
             $c->setAttribute('hash', 'sha-1');
             $c->setAttribute('node', 'https://movim.eu/');
-            $c->setAttribute('ver', \Moxl\Utils::generateCaps());
+            $c->setAttribute('ver', Utils::generateCaps());
             $root->appendChild($c);
         }
-
 
         return $dom;
     }

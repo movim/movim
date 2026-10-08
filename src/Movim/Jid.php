@@ -5,8 +5,11 @@ namespace Movim;
 class Jid
 {
     public ?string $jid;
+
     public ?string $domain;
+
     public ?string $username;
+
     public ?string $resource;
 
     private bool $valid = false;
@@ -47,8 +50,9 @@ class Jid
     public function bareJid(): string
     {
         $username = $this->username
-            ? $this->username . '@'
+            ? $this->username.'@'
             : '';
-        return $username . $this->domain;
+
+        return $username.$this->domain;
     }
 }

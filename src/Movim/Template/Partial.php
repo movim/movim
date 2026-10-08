@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -6,8 +7,8 @@
 
 namespace Movim\Template;
 
-use Rain\Tpl;
 use Movim\Widget\Base;
+use Rain\Tpl;
 
 class Partial extends Tpl
 {
@@ -16,10 +17,10 @@ class Partial extends Tpl
     public function __construct(private Base $widget)
     {
         $this->objectConfigure([
-            'tpl_dir'       => WIDGETS_PATH . $widget->getName() . '/',
-            'cache_dir'     => CACHE_PATH,
-            'tpl_ext'       => 'tpl',
-            'auto_escape'   => true
+            'tpl_dir' => WIDGETS_PATH.$widget->getName().'/',
+            'cache_dir' => CACHE_PATH,
+            'tpl_ext' => 'tpl',
+            'auto_escape' => true,
         ]);
 
         $this->assign('c', $widget);
@@ -27,12 +28,12 @@ class Partial extends Tpl
 
     public function draw($templateFilePath, $toString = true): string
     {
-        return (string)parent::draw($templateFilePath, true);
+        return (string) parent::draw($templateFilePath, true);
     }
 
     public function cache(string $templateFilePath, string $key)
     {
-        $compiled = (string)parent::draw($templateFilePath, true);
+        $compiled = (string) parent::draw($templateFilePath, true);
         file_put_contents($this->resolvedCacheKey($templateFilePath, $key), gzcompress($compiled));
 
         return $compiled;
@@ -49,12 +50,12 @@ class Partial extends Tpl
         } else {
             foreach (
                 glob(
-                    CACHE_PATH .
-                        hash('sha256', $this->widget->me->id) .
-                        '_' .
-                        $templateFilePath .
-                        '_' .
-                        '*' .
+                    CACHE_PATH.
+                        hash('sha256', $this->widget->me->id).
+                        '_'.
+                        $templateFilePath.
+                        '_'.
+                        '*'.
                         self::EXTENSION,
                     GLOB_NOSORT
                 ) as $path
@@ -76,10 +77,10 @@ class Partial extends Tpl
 
     private function resolvedCacheKey(string $templateFilePath, string $key): string
     {
-        return CACHE_PATH .
-            hash('sha256', $this->widget->me->id) .
-            '_' . $templateFilePath .
-            '_' . hash('sha256', $key) .
+        return CACHE_PATH.
+            hash('sha256', $this->widget->me->id).
+            '_'.$templateFilePath.
+            '_'.hash('sha256', $key).
             self::EXTENSION;
     }
 }

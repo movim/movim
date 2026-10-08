@@ -2,9 +2,9 @@
 
 namespace Moxl\Xec\Action\Storage;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\Storage;
+use Moxl\Xec\Action;
 
 class Get extends Action
 {
@@ -21,12 +21,12 @@ class Get extends Action
             $config = [];
 
             foreach ($stanza->pubsub->items->item->x->field as $field) {
-                $config[(string)$field->attributes()->var] = (string)$field->value == 'false'
+                $config[(string) $field->attributes()->var] = (string) $field->value == 'false'
                     ? false
-                    : (string)$field->value;
+                    : (string) $field->value;
             }
 
-            if (!empty($config)) {
+            if (! empty($config)) {
                 $me = $this->me;
                 $me->setConfig($config);
                 $me->save();

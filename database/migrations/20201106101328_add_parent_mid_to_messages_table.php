@@ -1,7 +1,7 @@
 <?php
 
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class AddParentMidToMessagesTable extends Migration
 {
@@ -14,8 +14,8 @@ class AddParentMidToMessagesTable extends Migration
             $table->dropColumn('parentthread');
 
             $table->foreign('parentmid')
-                  ->references('mid')->on('messages')
-                  ->onDelete('set null');
+                ->references('mid')->on('messages')
+                ->onDelete('set null');
         });
 
         $this->enableForeignKeyCheck();

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SPDX-FileCopyrightText: 2026 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -7,7 +8,6 @@
 namespace App\Workers\Galener;
 
 use Psr\Http\Message\ServerRequestInterface;
-
 use React\Http\HttpServer;
 use React\Http\Message\Response;
 use React\Socket\SocketServer;
@@ -32,7 +32,7 @@ class Api
         };
 
         $server = new HttpServer($handler);
-        $server->on('error', fn(\Throwable $e) => \logError($e->getMessage()));
+        $server->on('error', fn (\Throwable $e) => \logError($e->getMessage()));
         $server->listen($socket);
     }
 
@@ -43,12 +43,12 @@ class Api
         foreach ($this->conferencesManager->conferences as $conference) {
             $conferences[$conference->getRoomJid()] = [
                 'sfu_jid' => $conference->getSFUJid(),
-                'started_at' => $conference->startedAt ? $conference->startedAt->format('d-m-Y - H:i:s') . ' GMT' : null,
-                'connections' => []
+                'started_at' => $conference->startedAt ? $conference->startedAt->format('d-m-Y - H:i:s').' GMT' : null,
+                'connections' => [],
             ];
 
             foreach ($conference->connections as $connection) {
-                array_push($conferences[$conference->getRoomJid()]['connections'], (string)$connection->jid);
+                array_push($conferences[$conference->getRoomJid()]['connections'], (string) $connection->jid);
             }
         }
 

@@ -2,13 +2,14 @@
 
 namespace Moxl\Xec\Action\Muc;
 
-use Moxl\Xec\Action;
-use Moxl\Stanza\Muc;
 use App\Member;
+use Moxl\Stanza\Muc;
+use Moxl\Xec\Action;
 
 class GetAffiliations extends Action
 {
     protected string $_to;
+
     private string $lastStanzaId;
 
     public function request()
@@ -34,13 +35,13 @@ class GetAffiliations extends Action
         foreach ($stanza->query->item as $item) {
             $member = new Member;
             $member->conference = $this->_to;
-            $member->jid = (string)$item->attributes()->jid;
-            $member->affiliation = (string)$item->attributes()->affiliation;
+            $member->jid = (string) $item->attributes()->jid;
+            $member->affiliation = (string) $item->attributes()->affiliation;
             $member->role = $item->attributes()->role
-                ? (string)$item->attributes()->role
+                ? (string) $item->attributes()->role
                 : null;
             $member->nick = $item->attributes()->nick
-                ? (string)$item->attributes()->nick
+                ? (string) $item->attributes()->nick
                 : null;
 
             $i++;

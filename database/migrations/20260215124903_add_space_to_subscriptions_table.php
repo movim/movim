@@ -1,9 +1,8 @@
 <?php
 
-use App\Conference;
 use App\Subscription;
-use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Movim\Migration;
 
 class AddSpaceToSubscriptionsTable extends Migration
 {

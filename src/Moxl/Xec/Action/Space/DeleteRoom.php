@@ -2,13 +2,15 @@
 
 namespace Moxl\Xec\Action\Space;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
+use Moxl\Xec\Action;
 
 class DeleteRoom extends Action
 {
     protected ?string $_to = null;
+
     protected ?string $_node = null;
+
     protected ?string $_id = null;
 
     public function request()

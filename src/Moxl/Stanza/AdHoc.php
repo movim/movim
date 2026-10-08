@@ -2,6 +2,8 @@
 
 namespace Moxl\Stanza;
 
+use Moxl\Utils;
+
 class AdHoc
 {
     public static function get()
@@ -41,7 +43,7 @@ class AdHoc
         $x->setAttribute('type', 'submit');
         $command->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, $data);
+        Utils::injectConfigInX($x, $data);
 
         return $command;
     }

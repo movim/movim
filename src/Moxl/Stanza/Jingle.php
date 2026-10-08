@@ -9,7 +9,6 @@ class Jingle
     /**
      * XEP-0353: Jingle Message Initiation
      */
-
     public static function messagePropose(string $to, string $id, bool $withVideo = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -72,7 +71,9 @@ class Jingle
         $message->setAttribute('type', 'chat');
         $message->setAttribute('to', $to);
 
-        if ($from) $message->setAttribute('from', $from);
+        if ($from) {
+            $message->setAttribute('from', $from);
+        }
 
         $dom->appendChild($message);
 
@@ -134,8 +135,12 @@ class Jingle
         $message = $dom->createElementNS(Utils::JABBER_CLIENT_XMLNS, 'message');
         $message->setAttribute('type', 'chat');
 
-        if ($to) $message->setAttribute('to', $to);
-        if ($from) $message->setAttribute('from', $from);
+        if ($to) {
+            $message->setAttribute('to', $to);
+        }
+        if ($from) {
+            $message->setAttribute('from', $from);
+        }
 
         $dom->appendChild($message);
 

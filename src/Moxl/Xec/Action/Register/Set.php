@@ -2,12 +2,13 @@
 
 namespace Moxl\Xec\Action\Register;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Register;
+use Moxl\Xec\Action;
 
 class Set extends Action
 {
     protected $_to;
+
     protected $_data;
 
     public function request()
@@ -19,6 +20,7 @@ class Set extends Action
     public function setTo($to)
     {
         $this->_to = $to;
+
         return $this;
     }
 
