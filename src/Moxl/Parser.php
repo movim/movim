@@ -7,15 +7,10 @@ use XMLParser;
 class Parser
 {
     private ?XMLParser $parser = null;
-
     private int $depth = 0;
-
     private $node = null;
-
     private $handler = null;
-
     private $raw = false;
-
     private $callback = null;
 
     public function __construct($callback)
@@ -66,10 +61,10 @@ class Parser
             $this->node = $this->handler = simplexml_load_string("<$name></$name>", 'SimpleXMLElement', LIBXML_COMPACT | LIBXML_PARSEHUGE);
         } elseif ($this->depth > 1) {
             if ($this->raw != false) {
-                $this->handler[0] .= '<'.$name;
+                $this->handler[0] .= '<' . $name;
                 if ($this->raw <= $this->depth) {
                     foreach ($attrs as $name => $value) {
-                        $this->handler[0] .= ' '.$name."='".$value."'";
+                        $this->handler[0] .= ' ' . $name . "='" . $value . "'";
                     }
                 }
                 $this->handler[0] .= '>';
@@ -81,7 +76,7 @@ class Parser
         if (isset($this->handler) && $this->raw == false) {
             foreach ($attrs as $name => $value) {
                 if (substr($name, 0, 6) === 'xmlns:') {
-                    $name = 'xmlns:'.$name;
+                    $name = 'xmlns:' . $name;
                 }
                 if ($value === 'http://www.w3.org/1999/xhtml') {
                     $this->raw = $this->depth;
@@ -103,7 +98,7 @@ class Parser
             $this->raw != false
             && $this->depth > $this->raw
         ) {
-            $this->handler[0] .= '</'.$name.'>';
+            $this->handler[0] .= '</' . $name . '>';
         }
 
         if (

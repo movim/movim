@@ -8,9 +8,7 @@ use Moxl\Xec\Action;
 class GetConfig extends Action
 {
     protected $_to;
-
     protected $_node;
-
     protected $_advanced = false;
 
     public function request()

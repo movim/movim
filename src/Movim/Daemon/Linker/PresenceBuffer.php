@@ -88,10 +88,10 @@ class PresenceBuffer
 
                     foreach ($table->get() as $presenceHat) {
                         foreach ($this->_hats[$this->getPresenceKey($presenceHat)] as $hat) {
-                            if (! in_array($this->getPresenceKey($presenceHat).$hat->uri, $keysCheck)) {
+                            if (! in_array($this->getPresenceKey($presenceHat) . $hat->uri, $keysCheck)) {
                                 $hat['presence_id'] = $presenceHat->id;
                                 array_push($hats, $hat->toArray());
-                                array_push($keysCheck, $this->getPresenceKey($presenceHat).$hat->uri);
+                                array_push($keysCheck, $this->getPresenceKey($presenceHat) . $hat->uri);
                             }
                         }
                     }
@@ -109,14 +109,14 @@ class PresenceBuffer
                 $this->_models->each(function ($presence) use (&$nodes, &$avatarHashes) {
                     // Capabilities
                     if ($presence['node']) {
-                        $resource = ! empty($presence['resource']) ? '/'.$presence['resource'] : '';
-                        $nodes->put($presence['node'], $presence['jid'].$resource);
+                        $resource = ! empty($presence['resource']) ? '/' . $presence['resource'] : '';
+                        $nodes->put($presence['node'], $presence['jid'] . $resource);
                     }
 
                     // Vcards
                     if (isset($presence['avatarhash'])) {
                         $fullJid = ! empty($presence['resource'])
-                            ? $presence['jid'].'/'.$presence['resource']
+                            ? $presence['jid'] . '/' . $presence['resource']
                             : $presence['jid'];
 
                         $jid = ($presence['muc'])
@@ -160,7 +160,7 @@ class PresenceBuffer
 
                     $avatarHashes->each(function ($jid, $avatarhash) {
                         if ($jid != $this->user->id) {
-                            Scheduler::getInstance()->append('avatar_'.$jid.'_'.$avatarhash, function () use ($jid, $avatarhash) {
+                            Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
                                 if (linker($this->user->session->id)->session) {
                                     $r = new Get($this->user, sessionId: $this->user->session->id);
                                     $r->setAvatarhash($avatarhash)
@@ -198,6 +198,6 @@ class PresenceBuffer
 
     private function getPresenceKey(Presence|\stdClass $presence)
     {
-        return $presence->jid.$presence->mucjid.$presence->resource;
+        return $presence->jid . $presence->mucjid . $presence->resource;
     }
 }

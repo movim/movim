@@ -8,7 +8,6 @@ use Moxl\Xec\Action;
 class CommentCreateNode extends Action
 {
     protected $_to;
-
     protected $_parentid;
 
     public function request()

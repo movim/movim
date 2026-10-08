@@ -12,7 +12,7 @@ class Pusher
 
     public function __construct()
     {
-        $keys = json_decode(file_get_contents(CACHE_PATH.'vapid_keys.json'));
+        $keys = json_decode(file_get_contents(CACHE_PATH . 'vapid_keys.json'));
 
         $this->webPush = new WebPush(auth: [
             'VAPID' => [

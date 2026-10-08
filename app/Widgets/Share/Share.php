@@ -49,7 +49,7 @@ class Share extends Base
 
         if ($url) {
             $url = Route::urlize('share', base64_encode($url));
-            header('Location: '.$url);
+            header('Location: ' . $url);
             exit;
         }
     }

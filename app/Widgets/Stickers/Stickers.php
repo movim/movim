@@ -96,7 +96,7 @@ class Stickers extends Base
         $dom->append($p);
 
         $img = $dom->createElement('img');
-        $img->setAttribute('src', 'cid:'.\phpToIANAHash()[$sticker->cache_hash_algorythm].'+'.$sticker->cache_hash.'@bob.xmpp.org');
+        $img->setAttribute('src', 'cid:' . \phpToIANAHash()[$sticker->cache_hash_algorythm] . '+' . $sticker->cache_hash . '@bob.xmpp.org');
         $img->setAttribute('alt', 'Sticker');
         $p->append($img);
 
@@ -201,11 +201,11 @@ class Stickers extends Base
         $keyword = str_replace(' ', '+', $keyword);
 
         requestAsyncURL(
-            'https://tenor.googleapis.com/v2/search?q='.$keyword.
-                '&media_filter=preview,tinywebm'.
-                '&key='.$apiKey.
-                '&limit='.$this->paginate.
-                '&pos='.($page * $this->paginate)
+            'https://tenor.googleapis.com/v2/search?q=' . $keyword .
+                '&media_filter=preview,tinywebm' .
+                '&key=' . $apiKey .
+                '&limit=' . $this->paginate .
+                '&pos=' . ($page * $this->paginate)
         )->then(function (ResponseInterface $response) {
             $view = $this->tpl();
             $results = \json_decode($response->getBody());
@@ -226,7 +226,7 @@ class Stickers extends Base
                         ? '.first'
                         : '.second';
 
-                    $this->rpc('MovimTpl.append', '#gifs .masonry'.$column, $view->draw('_stickers_gifs_result'));
+                    $this->rpc('MovimTpl.append', '#gifs .masonry' . $column, $view->draw('_stickers_gifs_result'));
                     $i++;
                 }
             }
@@ -250,9 +250,9 @@ class Stickers extends Base
         }
 
         requestAsyncURL(
-            'https://tenor.googleapis.com/v2/posts?ids='.$gifId.
-                '&media_filter=preview,tinywebm'.
-                '&key='.$apiKey
+            'https://tenor.googleapis.com/v2/posts?ids=' . $gifId .
+                '&media_filter=preview,tinywebm' .
+                '&key=' . $apiKey
         )->then(function (ResponseInterface $response) use ($to, $muc) {
             $results = \json_decode($response->getBody());
 

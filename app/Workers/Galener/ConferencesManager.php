@@ -10,7 +10,8 @@ class ConferencesManager
         private GaleneAPIClient $apiClient,
         private $sendXMPP,
         public array $conferences = []
-    ) {}
+    ) {
+    }
 
     public function sendXMPP(?\DOMDocument $dom = null)
     {

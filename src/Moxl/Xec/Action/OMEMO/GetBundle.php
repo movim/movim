@@ -9,9 +9,7 @@ use Moxl\Xec\Action;
 class GetBundle extends Action
 {
     protected string $_to;
-
     protected string $_id;
-
     protected bool $_notifyLast = false;
 
     public function request()

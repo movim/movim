@@ -9,9 +9,7 @@ use Moxl\Xec\Action;
 class CommentsGet extends Action
 {
     protected $_to;
-
     protected $_node;
-
     protected $_parentid;
 
     public function request()
@@ -22,7 +20,7 @@ class CommentsGet extends Action
 
     public function setId($id)
     {
-        $this->_node = Post::COMMENTS_NODE.'/'.$id;
+        $this->_node = Post::COMMENTS_NODE . '/' . $id;
 
         return $this;
     }

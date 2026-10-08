@@ -44,7 +44,7 @@ class SpacesMenu extends Base
 
     public function onCounter(Packet $packet)
     {
-        $this->rpc('MovimUtils.setDataItem', '#'.$packet->from, 'counter', $packet->content);
+        $this->rpc('MovimUtils.setDataItem', '#' . $packet->from, 'counter', $packet->content);
     }
 
     public function onClosedNode(Packet $packet)
@@ -314,7 +314,7 @@ class SpacesMenu extends Base
             $info = Info::space()->where('server', $server)->where('node', $node)->first();
 
             $this->dialog($this->view('_spacesmenu_add', [
-                'uri' => 'xmpp:'.$server.'?;node='.$node,
+                'uri' => 'xmpp:' . $server . '?;node=' . $node,
                 'info' => $info,
             ]));
         } else {

@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use App\Workers\Pusher\Pusher;
 use Movim\Bootstrap;
@@ -38,5 +38,5 @@ $server->on('error', function (Throwable $e) {
     \logError($e);
 });
 
-$path = 'unix://'.PUSHER_SOCKET;
+$path = 'unix://' . PUSHER_SOCKET;
 $server->listen(new SocketServer($path));

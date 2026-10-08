@@ -11,8 +11,8 @@ class PubsubSubscription
     private static function generateId(string $server, string $jid, string $node)
     {
         $id = '';
-        $id .= $server.'<';
-        $id .= $node.'<';
+        $id .= $server . '<';
+        $id .= $node . '<';
         $id .= $jid;
 
         return sha1($id);

@@ -9,11 +9,8 @@ use Moxl\Xec\Action;
 class PostPublish extends Action
 {
     private $_node;
-
     private $_to = '';
-
     private PubsubAtom $_atom;
-
     private $_repost;
 
     // See https://github.com/processone/ejabberd/issues/3044#issuecomment-1605349858

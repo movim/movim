@@ -13,9 +13,7 @@ use SimpleXMLElement;
 class Room extends Action
 {
     protected ?string $_to = null;
-
     protected ?string $_room = null;
-
     protected ?string $_resource = null;
 
     public function request()

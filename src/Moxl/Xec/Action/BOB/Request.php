@@ -9,15 +9,10 @@ use Moxl\Xec\Action;
 class Request extends Action
 {
     protected $_to;
-
     protected $_hash;
-
     protected $_algorythm;
-
     protected $_resource;
-
     protected $_messagemid;
-
     private $_phpalgorythm;
 
     public function request()
@@ -27,7 +22,7 @@ class Request extends Action
         // Only request if the resource is available
         if ($this->me->session?->presences()->where('jid', $this->_to)->where('resource', $this->_resource)->exists()
         && $this->_algorythm) {
-            $this->iq(BOB::request($this->_hash, $this->_algorythm), to: $this->_to.'/'.$this->_resource, type: 'set');
+            $this->iq(BOB::request($this->_hash, $this->_algorythm), to: $this->_to . '/' . $this->_resource, type: 'set');
         }
     }
 

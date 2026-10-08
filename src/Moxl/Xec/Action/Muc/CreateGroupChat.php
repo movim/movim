@@ -8,17 +8,11 @@ use Moxl\Xec\Action;
 class CreateGroupChat extends Action
 {
     protected string $_to;
-
     protected string $_name;
-
     protected string $_nick;
-
     protected $_autojoin;
-
     protected $_pinned;
-
     protected bool $_notify = true;
-
     protected array $_extraConfig = [];
 
     public function request()

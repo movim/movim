@@ -18,18 +18,15 @@ use Moxl\Xec\Payload\Packet;
 class CurrentCall
 {
     public ?string $jid = null;
-
     public ?string $id = null;
-
     public ?string $mujiRoom = null;
-
     public ?string $sfuRoom = null;
-
     public ?Carbon $startTime = null;
-
     public bool $answered = false;
 
-    public function __construct(private User $user, private string $sessionId) {}
+    public function __construct(private User $user, private string $sessionId)
+    {
+    }
 
     public function start(string $jid, string $id, ?string $mujiRoom = null): bool
     {

@@ -17,9 +17,7 @@ use function React\Async\await;
 class Crawler extends HttpCrawler
 {
     private RequestFactoryInterface $requestFactory;
-
     private UriFactoryInterface $uriFactory;
-
     private array $defaultHeaders = [
         'User-Agent' => DEFAULT_HTTP_USER_AGENT,
         'Cache-Control' => 'max-age=0',

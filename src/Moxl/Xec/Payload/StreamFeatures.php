@@ -30,7 +30,7 @@ class StreamFeatures extends Payload
                 $this->send(Stream::bind2Set(
                     linker($this->sessionId)->authentication->getType(),
                     linker($this->sessionId)->authentication->getResponse(),
-                    APP_TITLE.'.'.\generateKey(6)
+                    APP_TITLE . '.' . \generateKey(6)
                 ));
             } elseif (
                 $stanza->register

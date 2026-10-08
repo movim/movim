@@ -134,7 +134,7 @@ class ContactHeader extends Base
     {
         $this->rpc(
             'MovimTpl.fill',
-            '#'.cleanupId($jid).'_contact_header',
+            '#' . cleanupId($jid) . '_contact_header',
             $this->prepareHeader($jid, $disableFollow)
         );
     }

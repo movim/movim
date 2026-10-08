@@ -11,16 +11,12 @@ use Ratchet\ConnectionInterface;
 
 class Session
 {
-    const DOWN_TIMER = 10;
+    public const DOWN_TIMER = 10;
 
     private \SplObjectStorage $clients; // Browser Websockets
-
     public int $timestamp;
-
     public bool $registered = false;
-
     public bool $started = false;
-
     private $state;
 
     public function __construct(
@@ -38,7 +34,7 @@ class Session
         $this->clients->offsetSet($conn);
 
         if (config('daemon.verbose')) {
-            echo colorize($this->sid, 'yellow').': '.colorize($conn->resourceId." connected\n", 'green');
+            echo colorize($this->sid, 'yellow') . ': ' . colorize($conn->resourceId . " connected\n", 'green');
         }
 
         if ($this->countClients() > 0) {
@@ -61,7 +57,7 @@ class Session
         $this->clients->offsetUnset($conn);
 
         if (config('daemon.verbose')) {
-            echo colorize($this->sid, 'yellow').': '.colorize($conn->resourceId." deconnected\n", 'red');
+            echo colorize($this->sid, 'yellow') . ': ' . colorize($conn->resourceId . " deconnected\n", 'red');
         }
 
         if ($this->countClients() == 0) {
@@ -137,7 +133,7 @@ class Session
 
         if (isset($results['push']) && filter_var($results['push'], FILTER_VALIDATE_URL)) {
             $message = new \stdClass;
-            $message->func = 'push_endpoint_'.$state;
+            $message->func = 'push_endpoint_' . $state;
             $message->endpoint = $results['push'];
             $this->messageIn(json_encode($message));
         }

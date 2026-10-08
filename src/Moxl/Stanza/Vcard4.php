@@ -8,7 +8,6 @@ use Moxl\Utils;
 class Vcard4
 {
     public static $node = 'urn:xmpp:vcard4';
-
     public static $nodeConfig = [
         'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
         'pubsub#persist_items' => 'true',
@@ -99,7 +98,7 @@ class Vcard4
 
         $vcard->getElementsByTagname('impp')->item(0)?->remove();
         $impp = $dom->createElement('impp');
-        $impp->appendChild($dom->createElement('uri', 'xmpp:'.$data->id));
+        $impp->appendChild($dom->createElement('uri', 'xmpp:' . $data->id));
         $vcard->appendChild($impp);
 
         if (isset($data->email)) {

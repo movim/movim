@@ -75,14 +75,14 @@ class ImportEmojisPack extends Command
         $packs = array_keys(get_object_vars($json));
 
         $question = new ChoiceQuestion(
-            'Select the pack you want to install (defaults to '.$packs[0].')',
+            'Select the pack you want to install (defaults to ' . $packs[0] . ')',
             $packs,
             0
         );
         $question->setErrorMessage('Pack %s is invalid.');
         $pack = $helper->ask($input, $output, $question);
 
-        $output->writeln('<info>Downloading '.$pack.' - '.$json->{$pack}->description.'</info>');
+        $output->writeln('<info>Downloading ' . $pack . ' - ' . $json->{$pack}->description . '</info>');
 
         $response = await(requestURL($json->{$pack}->src, timeout: 5));
 
@@ -109,7 +109,7 @@ class ImportEmojisPack extends Command
         $zip = new ZipArchive;
         $zip->open($tempZip);
 
-        $packPath = PUBLIC_EMOJIS_PATH.$pack;
+        $packPath = PUBLIC_EMOJIS_PATH . $pack;
 
         if (is_dir($packPath)) {
             $question = new ConfirmationQuestion('The pack seems already there, overwrite [y/N] ? ', false);
@@ -133,7 +133,7 @@ class ImportEmojisPack extends Command
 
         $count = 0;
 
-        $meta = json_decode(file_get_contents($packPath.'/meta.json'));
+        $meta = json_decode(file_get_contents($packPath . '/meta.json'));
 
         if (! $meta->metaVersion || $meta->metaVersion != 2) {
             $output->writeln('<error>The meta version of the package is not supported aborting</error>');
@@ -144,7 +144,7 @@ class ImportEmojisPack extends Command
         }
 
         foreach ($meta->emojis as $metaEmoji) {
-            $emojiPath = $packPath.'/'.$metaEmoji->fileName;
+            $emojiPath = $packPath . '/' . $metaEmoji->fileName;
 
             if (file_exists($emojiPath)) {
                 $hashed = hash(Image::$hash, file_get_contents($emojiPath));
@@ -165,18 +165,18 @@ class ImportEmojisPack extends Command
 
                 $count++;
             } else {
-                $output->writeln('<error>'.$emojiPath.' not found</error>');
+                $output->writeln('<error>' . $emojiPath . ' not found</error>');
             }
         }
 
-        $output->writeln('<info>'.$count.' emojis cached</info>');
+        $output->writeln('<info>' . $count . ' emojis cached</info>');
 
         return Command::SUCCESS;
     }
 
     private function rrmdir(string $directory): bool
     {
-        array_map(fn (string $file) => is_dir($file) ? $this->rrmdir($file) : unlink($file), glob($directory.'/'.'*'));
+        array_map(fn (string $file) => is_dir($file) ? $this->rrmdir($file) : unlink($file), glob($directory . '/' . '*'));
 
         return rmdir($directory);
     }

@@ -13,7 +13,7 @@ class Infos extends Base
     public function display()
     {
         $configuration = Configuration::get();
-        $gitHeadPath = DOCUMENT_ROOT.'/.git/refs/heads/master';
+        $gitHeadPath = DOCUMENT_ROOT . '/.git/refs/heads/master';
         $hash = file_exists($gitHeadPath) ? substr(file_get_contents($gitHeadPath), 0, 7) : 'release';
 
         $presences = Presence::select('jid', 'resource', 'node')

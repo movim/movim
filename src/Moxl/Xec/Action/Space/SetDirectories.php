@@ -12,11 +12,8 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 class SetDirectories extends Action
 {
     protected ?Collection $_directories;
-
     protected string $_to;
-
     protected string $_node;
-
     protected bool $_withPublishOption = true;
 
     public function request()

@@ -65,7 +65,7 @@ class ContactData extends Base
             return;
         }
 
-        $this->rpc('MovimTpl.fill', '#'.cleanupId($jid).'_contact_data', $this->prepareData($jid));
+        $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '_contact_data', $this->prepareData($jid));
         $this->rpc('Notif_ajaxGet');
     }
 

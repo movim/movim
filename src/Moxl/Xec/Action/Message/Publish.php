@@ -10,32 +10,20 @@ use Moxl\Xec\Action;
 class Publish extends Action
 {
     protected string $_to;
-
     protected ?string $_content = null;
-
     protected ?string $_html = null;
-
     protected bool $_muc = false;
-
     protected bool $_mucreceipts = false;
-
     protected ?string $_id = null;
-
     protected ?string $_replace = null;
-
     protected ?MessageFile $_file = null;
-
     protected $_attachid = false;
-
     protected $_originid = false;
-
     protected $_threadid = false;
 
     // Reply
     protected $_replyid = false;
-
     protected $_replyto = false;
-
     protected $_replyquotedbodylength = 0;
 
     // OMEMO

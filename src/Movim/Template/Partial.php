@@ -17,7 +17,7 @@ class Partial extends Tpl
     public function __construct(private Base $widget)
     {
         $this->objectConfigure([
-            'tpl_dir' => WIDGETS_PATH.$widget->getName().'/',
+            'tpl_dir' => WIDGETS_PATH . $widget->getName() . '/',
             'cache_dir' => CACHE_PATH,
             'tpl_ext' => 'tpl',
             'auto_escape' => true,
@@ -50,12 +50,12 @@ class Partial extends Tpl
         } else {
             foreach (
                 glob(
-                    CACHE_PATH.
-                        hash('sha256', $this->widget->me->id).
-                        '_'.
-                        $templateFilePath.
-                        '_'.
-                        '*'.
+                    CACHE_PATH .
+                        hash('sha256', $this->widget->me->id) .
+                        '_' .
+                        $templateFilePath .
+                        '_' .
+                        '*' .
                         self::EXTENSION,
                     GLOB_NOSORT
                 ) as $path
@@ -77,10 +77,10 @@ class Partial extends Tpl
 
     private function resolvedCacheKey(string $templateFilePath, string $key): string
     {
-        return CACHE_PATH.
-            hash('sha256', $this->widget->me->id).
-            '_'.$templateFilePath.
-            '_'.hash('sha256', $key).
+        return CACHE_PATH .
+            hash('sha256', $this->widget->me->id) .
+            '_' . $templateFilePath .
+            '_' . hash('sha256', $key) .
             self::EXTENSION;
     }
 }

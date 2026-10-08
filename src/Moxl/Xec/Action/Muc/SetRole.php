@@ -8,9 +8,7 @@ use Moxl\Xec\Action;
 class SetRole extends Action
 {
     protected $_to;
-
     protected $_nick;
-
     protected $_role;
 
     public function request()

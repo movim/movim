@@ -30,39 +30,22 @@ use function React\Promise\Timer\timeout;
 class Linker
 {
     private Parser $parser;
-
     private ?HappyEyeBallsConnector $connector = null;
-
     private ?Connection $connection = null;
-
     private ?string $host = null;
-
     public ?User $user = null;
-
     public ?PresenceBuffer $presenceBuffer = null;
-
     public ?TimerInterface $presenceBufferTimer = null;
-
     public ?ChatOwnState $chatOwnState = null;
-
     public ?CurrentCall $currentCall = null;
-
     public ?ChatroomPings $chatroomPings = null;
-
     public ?ChatStates $chatStates = null;
-
     public ?Locale $locale = null;
-
     public Authentication $authentication;
-
     public Session $session;
-
     public ?string $timezone = 'UTC';
-
     public array $pushEndpoints = [];
-
     private ?string $timestampSend = null;
-
     private ?string $timestampReceive = null;
 
     public function __construct(
@@ -119,7 +102,7 @@ class Linker
         $this->host = $host;
         $results = [];
 
-        timeout($this->dns->resolveAll('_xmpps-client._tcp.'.$host, Message::TYPE_SRV), 3.0)
+        timeout($this->dns->resolveAll('_xmpps-client._tcp.' . $host, Message::TYPE_SRV), 3.0)
             ->then(
                 function ($resolved) use (&$results) {
                     $results['directtls'] = $resolved;
@@ -131,7 +114,7 @@ class Linker
                 }
             );
 
-        timeout($this->dns->resolveAll('_xmpp-client._tcp.'.$host, Message::TYPE_SRV), 3.0)
+        timeout($this->dns->resolveAll('_xmpp-client._tcp.' . $host, Message::TYPE_SRV), 3.0)
             ->then(
                 function ($resolved) use (&$results) {
                     $results['starttls'] = $resolved;
@@ -174,7 +157,7 @@ class Linker
             $this->connection->write(trim($xml));
 
             if (config('daemon.debug')) {
-                logOut(colorize(trim($xml).' ', 'yellow'), type: '>>> XMPP sent', sid: $this->sessionId);
+                logOut(colorize(trim($xml) . ' ', 'yellow'), type: '>>> XMPP sent', sid: $this->sessionId);
             }
         }
     }
@@ -212,7 +195,7 @@ class Linker
             if (! empty($message)) {
 
                 if (config('daemon.debug')) {
-                    logOut(colorize($message.' ', 'yellow'), type: '<<< XMPP received', sid: $this->sessionId);
+                    logOut(colorize($message . ' ', 'yellow'), type: '<<< XMPP received', sid: $this->sessionId);
                 }
 
                 if ($message == '</stream:stream>') {
@@ -285,9 +268,9 @@ class Linker
             }
 
             $socket = $directTLSSocket ? 'tls://' : 'tcp://';
-            $socket .= $host.':'.$port;
+            $socket .= $host . ':' . $port;
 
-            logOut(colorize('Connect to '.$socket.', peer_name: '.$host, 'blue'), sid: $this->sessionId);
+            logOut(colorize('Connect to ' . $socket . ', peer_name: ' . $host, 'blue'), sid: $this->sessionId);
 
             $this->connector = new HappyEyeBallsConnector(
                 null,
@@ -326,7 +309,7 @@ class Linker
         return $encryption->enable($connection)->then(
             fn () => logOut(colorize('TLS enabled', 'blue'), sid: $this->sessionId),
             function ($error) {
-                logOut(colorize('TLS error '.$error->getMessage(), 'blue'), sid: $this->sessionId);
+                logOut(colorize('TLS error ' . $error->getMessage(), 'blue'), sid: $this->sessionId);
                 Wrapper::getInstance()->iterate('ssl_error', sessionId: $this->sessionId); // TODO give context
                 $this->linkersManager->closeLinker($this->sessionId);
             }

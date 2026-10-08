@@ -9,7 +9,6 @@ use Moxl\Xec\Action;
 class SetSubject extends Action
 {
     protected $_to;
-
     protected $_subject;
 
     public function request()

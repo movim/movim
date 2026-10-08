@@ -19,7 +19,7 @@ class ContactSubscriptions extends Base
     {
         if ($packet->content['node'] == Subscription::PUBLIC_NODE) {
             $jid = $packet->content['to'];
-            $this->rpc('MovimTpl.fill', '#'.cleanupId($jid).'_contact_subscriptions', $this->prepareSubscriptions($jid));
+            $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '_contact_subscriptions', $this->prepareSubscriptions($jid));
             $this->rpc('Notif_ajaxGet');
         }
     }

@@ -62,7 +62,7 @@ class Notifications extends Base
             // Don't notify if the contact is not in stored already, for spam reasons
             if ($contact) {
                 $this->notif(
-                    key: 'invite|'.$from,
+                    key: 'invite|' . $from,
                     title: $contact->truename,
                     body: $this->__('invitations.wants_to_talk', $contact->truename),
                     url: $this->route('chat', $contact->id),
@@ -203,9 +203,9 @@ class Notifications extends Base
     private function removeInvitation(string $jid)
     {
         $n = new Notif($this->me, sessionId: $this->sessionId);
-        $n->ajaxClear('invite|'.$jid);
+        $n->ajaxClear('invite|' . $jid);
 
-        $this->rpc('MovimTpl.remove', '#invitation-'.cleanupId($jid));
+        $this->rpc('MovimTpl.remove', '#invitation-' . cleanupId($jid));
         $this->ajaxSetCounter();
     }
 

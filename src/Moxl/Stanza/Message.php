@@ -123,7 +123,7 @@ class Message
             $body->setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
 
             $dom2 = new \DOMDocument('1.0', 'UTF-8');
-            $dom2->loadXml('<root>'.$html.'</root>');
+            $dom2->loadXml('<root>' . $html . '</root>');
             $bar = $dom2->documentElement->firstChild; // we want to import the bare tree
             $body->appendChild($dom->importNode($bar, true));
 
@@ -206,7 +206,7 @@ class Message
                     $thumbnail->setAttribute('media-type', $file->thumbnail_type);
 
                     if ($file->thumbnail_type == 'image/thumbhash') {
-                        $thumbnail->setAttribute('uri', 'data:image/thumbhash;base64,'.$file->thumbnail_url);
+                        $thumbnail->setAttribute('uri', 'data:image/thumbhash;base64,' . $file->thumbnail_url);
                     } else {
                         $thumbnail->setAttribute('uri', $file->thumbnail_url);
                     }

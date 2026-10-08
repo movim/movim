@@ -9,9 +9,7 @@ use Moxl\Xec\Action;
 class PostDelete extends Action
 {
     protected $_to;
-
     protected $_id;
-
     protected $_node;
 
     public function request()

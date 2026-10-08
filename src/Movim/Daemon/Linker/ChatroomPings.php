@@ -17,14 +17,14 @@ use Moxl\Xec\Action\Ping\Room;
 class ChatroomPings
 {
     private $_chatrooms = [];
-
     private $_chatroomsTimeout = [];
 
     public const PING_IN = 5 * 60;
-
     public const PONG_TIMEOUT = 5 * 60 + 120;
 
-    public function __construct(private ?User $user = null) {}
+    public function __construct(private ?User $user = null)
+    {
+    }
 
     public function has(string $from): bool
     {
@@ -44,7 +44,7 @@ class ChatroomPings
 
             if ($presence) {
                 $pingRoom = new Room($this->user, sessionId: $this->user->session->id);
-                $pingRoom->setResource($from.'/'.$presence->resource)
+                $pingRoom->setResource($from . '/' . $presence->resource)
                     ->setRoom($from)
                     ->request();
             }

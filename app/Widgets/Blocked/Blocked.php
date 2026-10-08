@@ -28,7 +28,7 @@ class Blocked extends Base
     public function onUnblock(Packet $packet)
     {
         $this->toast($this->__('blocked.account_unblocked'));
-        $this->rpc('MovimTpl.remove', '#blocked-'.cleanupId($packet->content));
+        $this->rpc('MovimTpl.remove', '#blocked-' . cleanupId($packet->content));
     }
 
     public function ajaxGet()

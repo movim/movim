@@ -40,7 +40,6 @@ use Respect\Validation\Validator;
 class RoomsUtils extends Base
 {
     private $_picturesPagination = 20;
-
     private $_linksPagination = 12;
 
     public function load()
@@ -223,7 +222,7 @@ class RoomsUtils extends Base
     {
         $this->rpc(
             'MovimTpl.fill',
-            '#'.cleanupId($packet->content).'-vcard',
+            '#' . cleanupId($packet->content) . '-vcard',
             $this->prepareVcard(Contact::firstOrNew(['id' => $packet->content]))
         );
     }
@@ -477,7 +476,7 @@ class RoomsUtils extends Base
 
         // Disconnect properly
         $nick = $values['nick'] ?? $this->me->username;
-        linker($this->sessionId)->session->delete($values['jid'].'/'.$nick);
+        linker($this->sessionId)->session->delete($values['jid'] . '/' . $nick);
 
         $pu = $this->xmpp(new Unavailable);
         $pu->setTo($values['jid'])
@@ -669,7 +668,7 @@ class RoomsUtils extends Base
         $slugified = slugify($name);
 
         if ($service && ! empty($slugified)) {
-            $this->rpc('Rooms.setJid', $slugified.'@'.$service->server);
+            $this->rpc('Rooms.setJid', $slugified . '@' . $service->server);
         }
     }
 
@@ -1175,7 +1174,7 @@ class RoomsUtils extends Base
             return $item;
         })->map(function ($item, $key) use ($groups) {
             if ($item->parent != null && array_key_exists($item->parent, $groups) && $groups[$item->parent] == 1) {
-                $item->name = $item->parent.'/'.$item->name;
+                $item->name = $item->parent . '/' . $item->name;
                 $item->parent = null;
             }
 

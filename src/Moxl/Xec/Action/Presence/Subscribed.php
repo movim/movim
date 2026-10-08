@@ -12,7 +12,8 @@ class Subscribed extends Action
     public function request()
     {
         $this->store();
-        $this->send(Presence::maker($this->me,
+        $this->send(Presence::maker(
+            $this->me,
             to: $this->_to,
             type: 'subscribed'
         ));

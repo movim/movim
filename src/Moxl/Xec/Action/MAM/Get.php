@@ -11,21 +11,13 @@ use Moxl\Xec\Action;
 class Get extends Action
 {
     protected ?string $_to = null;
-
     protected ?string $_queryid = null;
-
     protected ?string $_jid = null;
-
     protected ?int $_start = null;
-
     protected ?int $_end = null;
-
     protected ?int $_limit = null;
-
     protected ?string $_after = null;
-
     protected ?string $_before = null;
-
     protected int $_messageCounter = 0;
 
     public function request()
@@ -34,7 +26,7 @@ class Get extends Action
 
         // Generating the queryid key.
         $this->_queryid = \generateKey(12);
-        $session->set('mamid'.$this->_queryid, 0);
+        $session->set('mamid' . $this->_queryid, 0);
         $this->store();
 
         $this->iq(MAM::get(
@@ -59,10 +51,10 @@ class Get extends Action
 
         $session = linker($this->sessionId)->session;
 
-        $messagesCounter = (int) $session->get('mamid'.$this->_queryid);
+        $messagesCounter = (int) $session->get('mamid' . $this->_queryid);
         $this->pack(['counter' => $messagesCounter, 'forward' => ($this->_start != null)]);
 
-        $session->delete('mamid'.$this->_queryid);
+        $session->delete('mamid' . $this->_queryid);
         $this->deliver();
 
         $totalCounter = $this->_messageCounter + $messagesCounter;

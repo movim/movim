@@ -14,14 +14,14 @@ class MAMResult extends Payload
         $to = bareJid((string) $parent->attributes()->to);
         $session = linker($this->sessionId)->session;
 
-        $messagesCounter = $session->get('mamid'.(string) $stanza->attributes()->queryid);
+        $messagesCounter = $session->get('mamid' . (string) $stanza->attributes()->queryid);
 
         if (
             $stanza->forwarded->delay
             && isset($stanza->attributes()->queryid)
             && $messagesCounter >= 0
         ) {
-            $session->set('mamid'.(string) $stanza->attributes()->queryid, $messagesCounter + 1);
+            $session->set('mamid' . (string) $stanza->attributes()->queryid, $messagesCounter + 1);
 
             if ($stanza->forwarded->message->displayed) {
                 $displayed = new Displayed($this->me, sessionId: $this->sessionId);

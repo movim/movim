@@ -33,7 +33,7 @@ class MAM
         ?string $version = '2'
     ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $query = $dom->createElementNS('urn:xmpp:mam:'.$version, 'query');
+        $query = $dom->createElementNS('urn:xmpp:mam:' . $version, 'query');
         $query->setAttribute('queryid', $id);
 
         $x = $dom->createElement('x');
@@ -43,7 +43,7 @@ class MAM
 
         $fieldType = $dom->createElement('field');
         $fieldType->setAttribute('var', 'FORM_TYPE');
-        $fieldType->appendChild($dom->createElement('value', 'urn:xmpp:mam:'.$version));
+        $fieldType->appendChild($dom->createElement('value', 'urn:xmpp:mam:' . $version));
         $x->appendChild($fieldType);
 
         if ($jid !== null) {

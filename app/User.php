@@ -22,21 +22,13 @@ class User extends Model
         'accentcolor',
         'posts_since',
     ];
-
     public $with = ['session', 'capability'];
-
     protected $keyType = 'string';
-
     public $incrementing = false;
-
     private $unreads = null;
-
     private $blockListInitialized = false;
-
     private $userBlocked = [];
-
     private $globalBlocked = [];
-
     protected $casts = [
         'posts_since' => 'datetime:Y-m-d H:i:s',
         'notifications_since' => 'datetime:Y-m-d H:i:s',
@@ -316,10 +308,13 @@ class User extends Model
 
     public function hasPubsub(bool $withChatOnlyDisabled = true)
     {
-        $hasPubsub = ($this->capability
+        $hasPubsub = (
+            $this->capability
             && $this->capability->hasFeature('http://jabber.org/protocol/pubsub#persistent-items')
-            && ($this->capability->hasFeature('http://jabber.org/protocol/pubsub#multi-items')
-                || ($this->session->serverCapability
+            && (
+                $this->capability->hasFeature('http://jabber.org/protocol/pubsub#multi-items')
+                || (
+                    $this->session->serverCapability
                     && $this->session->serverCapability->hasFeature('http://jabber.org/protocol/pubsub#multi-items')
                 )
             )

@@ -9,9 +9,7 @@ use Moxl\Xec\Action;
 class Request extends Action
 {
     protected ?string $_node = null;
-
     protected ?string $_to = null;
-
     protected ?string $_parent = null;
 
     public function request()

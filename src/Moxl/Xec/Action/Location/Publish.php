@@ -10,7 +10,6 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 class Publish extends Action
 {
     protected $_geo;
-
     protected bool $_withPublishOption = true;
 
     public function request()

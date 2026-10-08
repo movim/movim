@@ -20,10 +20,11 @@ use React\EventLoop\Timer\Timer;
 class ChatStates
 {
     private $_composing = [];
-
     private $_timeout = 30;
 
-    public function __construct(private ?User $user = null) {}
+    public function __construct(private ?User $user = null)
+    {
+    }
 
     public function clearState(string $jid, $resource = null)
     {

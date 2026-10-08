@@ -10,7 +10,7 @@ class DiscoInfo extends Event
     public static function getHandlerPaths(): array
     {
         return [
-            'iq|query{http://jabber.org/protocol/disco#info}@urn:xmpp:caps#'.Utils::CAPABILITY_HASH_ALGORITHM.'.'.Utils::getOwnGalenerCapabilityHash(),
+            'iq|query{http://jabber.org/protocol/disco#info}@urn:xmpp:caps#' . Utils::CAPABILITY_HASH_ALGORITHM . '.' . Utils::getOwnGalenerCapabilityHash(),
             'iq|query{http://jabber.org/protocol/disco#info}',
         ];
     }

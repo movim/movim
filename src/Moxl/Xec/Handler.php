@@ -6,7 +6,9 @@ use App\User;
 
 class Handler
 {
-    public function __construct(private ?User $user = null, private ?string $sessionId = null) {}
+    public function __construct(private ?User $user = null, private ?string $sessionId = null)
+    {
+    }
 
     public function handle(\SimpleXMLElement $child)
     {
@@ -45,7 +47,7 @@ class Handler
                     $message = (string) $error->text;
                 }
 
-                logInfo('Handler: '.get_class($action).' '.$id.' - '.$errorid);
+                logInfo('Handler: ' . get_class($action) . ' ' . $id . ' - ' . $errorid);
 
                 $propagate = true;
 
@@ -57,7 +59,7 @@ class Handler
 
                 // We also call a global error handler
                 if (method_exists($action, 'error') && $propagate == true) {
-                    logInfo('Handler: Global error - '.$id.' - '.$errorid);
+                    logInfo('Handler: Global error - ' . $id . ' - ' . $errorid);
                     $action->method('error');
                     $action->error($errorid, $message);
                 }
@@ -105,13 +107,13 @@ class Handler
 
         if ($s->items && $s->items->attributes()->node) {
             $node = (string) $s->items->attributes()->node;
-            $hash = md5($name.$ns.$node);
-            logInfo('Handler: Searching a payload for "'.$name.':'.$ns.' ['.$node.']", "'.$hash.'"');
+            $hash = md5($name . $ns . $node);
+            logInfo('Handler: Searching a payload for "' . $name . ':' . $ns . ' [' . $node . ']", "' . $hash . '"');
             $matchPayloadWithNode = $this->searchPayload($hash, $s, $sparent);
         }
 
-        $hash = md5($name.$ns);
-        logInfo('Handler: Searching a payload for "'.$name.':'.$ns.'", "'.$hash.'"');
+        $hash = md5($name . $ns);
+        logInfo('Handler: Searching a payload for "' . $name . ':' . $ns . '", "' . $hash . '"');
         $matchPayload = $this->searchPayload($hash, $s, $sparent);
 
         if (! $matchPayloadWithNode && ! $matchPayload) {
@@ -204,14 +206,14 @@ class Handler
         ];
 
         if (isset($hashToClass[$hash])) {
-            $classname = '\\Moxl\\Xec\\Payload\\'.$hashToClass[$hash];
+            $classname = '\\Moxl\\Xec\\Payload\\' . $hashToClass[$hash];
             $payloadClass = new $classname;
             $payloadClass->attachUser($this->user);
             $payloadClass->attachSession($this->sessionId);
             $payloadClass->prepare($s, $sparent);
             $payloadClass->handle($s, $sparent);
 
-            logInfo('Handler: Firing Payload\\'.$hashToClass[$hash]);
+            logInfo('Handler: Firing Payload\\' . $hashToClass[$hash]);
 
             return true;
         }

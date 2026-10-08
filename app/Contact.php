@@ -15,9 +15,7 @@ use Respect\Validation\Validator;
 class Contact extends Model
 {
     protected $fillable = ['id', 'nickname'];
-
     protected $keyType = 'string';
-
     public $incrementing = false;
 
     public function save(array $options = [])
@@ -43,7 +41,7 @@ class Contact extends Model
                     ->from('users')
                     ->where('public', true)
                     ->when($like !== null, function ($query) use ($like) {
-                        $query->where('id', 'like', '%'.$like.'%');
+                        $query->where('id', 'like', '%' . $like . '%');
                     });
             })
             ->whereNotIn('id', function ($query) use ($user) {
@@ -139,7 +137,7 @@ class Contact extends Model
 
     public function getBanner(ImageSize $size = ImageSize::XXL)
     {
-        $banner = ! empty($this->id) ? getPicture($this->id.'_banner', $this->truename, $size) : null;
+        $banner = ! empty($this->id) ? getPicture($this->id . '_banner', $this->truename, $size) : null;
 
         return $banner == null ? $this->getPicture($size) : $banner;
     }
@@ -288,9 +286,9 @@ class Contact extends Model
             && Carbon::now()->subDay()->timestamp < strtotime($this->attributes['loctimestamp'])
             && $this->attributes['loclatitude'] != null && $this->attributes['loclongitude'] != null
         ) {
-            return 'https://www.openstreetmap.org/'.
-                '?mlat='.round($this->attributes['loclatitude'], 4).
-                '&mlon='.round($this->attributes['loclongitude'], 4).
+            return 'https://www.openstreetmap.org/' .
+                '?mlat=' . round($this->attributes['loclatitude'], 4) .
+                '&mlon=' . round($this->attributes['loclongitude'], 4) .
                 '/#map=13/';
         }
 
@@ -335,8 +333,8 @@ class Contact extends Model
 
     public function getSearchTerms()
     {
-        return cleanupId($this->id).'-'.
-            cleanupId($this->truename).'-'.
+        return cleanupId($this->id) . '-' .
+            cleanupId($this->truename) . '-' .
             cleanupId($this->groupname);
     }
 

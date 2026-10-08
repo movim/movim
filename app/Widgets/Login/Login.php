@@ -136,7 +136,7 @@ class Login extends Base
     {
         $view = $this->tpl();
 
-        $key = 'error.'.$error;
+        $key = 'error.' . $error;
         $error_text = $this->__($key);
 
         if ($error_text == $key) {

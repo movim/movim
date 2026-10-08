@@ -21,11 +21,11 @@ class ServicesDisco extends Event
 
         foreach ($this->node->stanza->services->service as $service) {
             if ($service->attributes()->type == 'stun') {
-                array_push($stunServices['urls'], 'stun:'.$service->attributes()->host.':'.$service->attributes()->port);
+                array_push($stunServices['urls'], 'stun:' . $service->attributes()->host . ':' . $service->attributes()->port);
             }
 
             if ($service->attributes()->type == 'turn') {
-                array_push($turnServices['urls'], 'turn:'.$service->attributes()->host.':'.$service->attributes()->port);
+                array_push($turnServices['urls'], 'turn:' . $service->attributes()->host . ':' . $service->attributes()->port);
                 $turnServices['username'] = (string) $service->attributes()->username;
                 $turnServices['credential'] = (string) $service->attributes()->password;
             }
@@ -39,7 +39,7 @@ class ServicesDisco extends Event
             array_push($services, $turnServices);
         }
 
-        file_put_contents(Galener::DATA_CACHE.'ice-servers.json', json_encode($services));
+        file_put_contents(Galener::DATA_CACHE . 'ice-servers.json', json_encode($services));
 
         // We refresh the configuration each hours
         global $loop;

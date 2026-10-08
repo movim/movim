@@ -17,7 +17,6 @@ use Moxl\Xec\Payload\Packet;
 class ContactActions extends Base
 {
     private $_picturesPagination = 20;
-
     private $_linksPagination = 12;
 
     public function load()

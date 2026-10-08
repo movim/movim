@@ -7,7 +7,6 @@ use Moxl\Xec\Action;
 class ContentRemove extends Action
 {
     protected $_to;
-
     protected $_jingle;
 
     public function request()

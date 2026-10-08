@@ -10,7 +10,6 @@ use Moxl\Xec\Action;
 class Delete extends Action
 {
     protected $_to;
-
     protected $_node;
 
     public function request()

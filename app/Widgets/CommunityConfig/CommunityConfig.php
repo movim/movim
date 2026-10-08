@@ -77,7 +77,7 @@ class CommunityConfig extends Base
             return;
         }
 
-        $key = $origin.$node.'avatar';
+        $key = $origin . $node . 'avatar';
 
         $image = new Image;
         $image->fromBase64($form->photobin->value);

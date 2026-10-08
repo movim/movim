@@ -22,27 +22,19 @@ class Message extends Model
     use Compoships;
 
     protected $primaryKey = ['user_id', 'jidfrom', 'id'];
-
     public $incrementing = false;
-
     public $mucpm; // Only used in Message Payloads to detect composer/paused PM messages
-
     protected $guarded = [];
-
     protected $with = ['reactions', 'parent.from', 'resolvedUrl', 'replace', 'file'];
-
     protected $attributes = [
         'type' => 'chat',
     ];
-
     protected $casts = [
         'markable' => 'boolean',
         'quoted' => 'boolean',
         'seen' => 'boolean',
     ];
-
     private ?Collection $messageFiles = null;
-
     public static $inlinePlaceholder = 'inline-img:';
 
     public const MESSAGE_TYPE = [
@@ -57,7 +49,6 @@ class Message extends Model
         'jingle_retract',
         'space_pending',
     ];
-
     public const MESSAGE_TYPE_MUC = [
         'groupchat',
         'muc_admin',
@@ -217,7 +208,8 @@ class Message extends Model
             ]);
         } elseif (
             $stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
-            && ($stanza->{'stanza-id'}->attributes()->by == $jidfrom
+            && (
+                $stanza->{'stanza-id'}->attributes()->by == $jidfrom
                 || $stanza->{'stanza-id'}->attributes()->by == $user->id
             )
         ) {
@@ -229,7 +221,7 @@ class Message extends Model
         } else {
             $message = new Message;
             $message->user_id = $user->id;
-            $message->id = 'm_'.generateUUID();
+            $message->id = 'm_' . generateUUID();
             $message->jidfrom = $jidfrom;
 
             return $message;
@@ -248,7 +240,7 @@ class Message extends Model
         $userid = $user->id;
         $message = new Message;
         $message->user_id = $userid;
-        $message->id = 'm_'.generateUUID();
+        $message->id = 'm_' . generateUUID();
         $message->jidto = $userid;
         $message->jidfrom = $from;
         $message->published = gmdate('Y-m-d H:i:s');
@@ -281,7 +273,7 @@ class Message extends Model
         $this->user_id = $user->id;
 
         if (! $this->id) {
-            $this->id = 'm_'.generateUUID();
+            $this->id = 'm_' . generateUUID();
         }
 
         if ($stanza->attributes()->id) {
@@ -332,7 +324,8 @@ class Message extends Model
             && $stanza->{'stanza-id'}
             && $stanza->{'stanza-id'}->attributes()->id
             && (string) $stanza->{'stanza-id'}->attributes()->xmlns == 'urn:xmpp:sid:0'
-            && ($stanza->{'stanza-id'}->attributes()->by == $this->jidfrom
+            && (
+                $stanza->{'stanza-id'}->attributes()->by == $this->jidfrom
                 || $stanza->{'stanza-id'}->attributes()->by == $user->id
             )
         ) {
@@ -340,7 +333,7 @@ class Message extends Model
                 $session = linker($user->session->id)->session;
 
                 // Cache the state in Session for performances purpose
-                $sessionKey = $this->jidfrom.'_stanza_id';
+                $sessionKey = $this->jidfrom . '_stanza_id';
                 $conferenceStanzaIdEnabled = $session->get($sessionKey, null);
 
                 if ($conferenceStanzaIdEnabled == null) {
@@ -485,7 +478,7 @@ class Message extends Model
             ) {
                 $head = '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';
                 $dom = new DOMDocument('1.0', 'UTF-8');
-                $dom->loadHTML($head.(string) $stanza->html->body);
+                $dom->loadHTML($head . (string) $stanza->html->body);
                 $xpath = new DOMXPath($dom);
                 $imgs = $xpath->query("//img[starts-with(@src,'cid:')]");
 
@@ -505,7 +498,7 @@ class Message extends Model
                                 'algorythm' => $cid['algorythm'],
                                 'alt' => $img->getAttribute('alt'),
                             ];
-                            $img->replaceWith(self::$inlinePlaceholder.$key);
+                            $img->replaceWith(self::$inlinePlaceholder . $key);
                         }
 
                         $this->attributes['inlines'] = serialize($inlines);
@@ -596,7 +589,7 @@ class Message extends Model
                         if (empty($messageFile->name)) {
                             $messageFile->name =
                                 pathinfo(parse_url($messageFile->uri, PHP_URL_PATH), PATHINFO_BASENAME)
-                                .' ('.parse_url($messageFile->uri, PHP_URL_HOST).')';
+                                . ' (' . parse_url($messageFile->uri, PHP_URL_HOST) . ')';
                         }
 
                         $this->picture = $messageFile->isPicture;
@@ -702,7 +695,7 @@ class Message extends Model
             foreach ($this->getInlinesAttribute() as $key => $inline) {
                 if ($alt == true) {
                     $body = str_replace(
-                        Message::$inlinePlaceholder.$key,
+                        Message::$inlinePlaceholder . $key,
                         $inline['alt'],
                         $body
                     );
@@ -722,13 +715,13 @@ class Message extends Model
                     $dom->append($img);
 
                     $body = str_replace(
-                        Message::$inlinePlaceholder.$key,
+                        Message::$inlinePlaceholder . $key,
                         $dom->saveHTML($dom->documentElement),
                         $body
                     );
                 } else {
                     $body = str_replace(
-                        Message::$inlinePlaceholder.$key,
+                        Message::$inlinePlaceholder . $key,
                         $inline['alt'],
                         $body
                     );

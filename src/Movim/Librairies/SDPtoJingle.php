@@ -10,41 +10,27 @@ class SDPtoJingle
     public const JINGLE_PARTICIPANT_XMLNS = '{https://movim.eu}jingle_participant';
 
     private $sdp;
-
     private $arr;
-
     private $jingle;
-
     private $content = null;
-
     private $transport = null;
-
     private ?string $action = null;
-
     private $ufrag = null;
-
     private $mid = null;
-
     private $msid = null;
-
     private $sid = null;
-
     private $mujiRoom = null;
 
     // Move the global fingerprint into each medias
     private $globalFingerprint = [];
-
     private $fmtpCache = [];
-
     private $rtcpFbCache = [];
-
     private $directionToSenders = [
         'inactive' => 'none',
         'sendonly' => 'initiator',
         'recvonly' => 'responder',
         'sendrecv' => 'both',
     ];
-
     private $regex = [
         'bandwidth' => "/^b=(\w+):(\d+)/i",
         'candidate' => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay|ufrag)\s?(.+)?/i",
@@ -354,7 +340,7 @@ class SDPtoJingle
 
                             // http://xmpp.org/extensions/xep-0339.html
                         case 'ssrc':
-                            $sources = $description->xpath('source[@ssrc="'.$matches[1].'"]');
+                            $sources = $description->xpath('source[@ssrc="' . $matches[1] . '"]');
                             $ssrc = is_array($sources) && count($sources) > 0 ? $sources[0] : null;
 
                             if ($ssrc == null) {

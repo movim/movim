@@ -312,7 +312,7 @@ class SpaceInfo extends Base
             return;
         }
 
-        $key = $server.$node.'avatar';
+        $key = $server . $node . 'avatar';
 
         $image = new Image;
         $image->fromBase64($form->photobin->value);

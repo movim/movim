@@ -49,7 +49,7 @@ class Bootstrap
 
     private function setConstants()
     {
-        if (file_exists(DOCUMENT_ROOT.'/.env')) {
+        if (file_exists(DOCUMENT_ROOT . '/.env')) {
             (Dotenv::createUnsafeImmutable(DOCUMENT_ROOT))->safeLoad();
         }
 
@@ -67,19 +67,19 @@ class Bootstrap
         }
 
         define('BASE_URI', $this->getBaseUri());
-        define('APP_PATH', DOCUMENT_ROOT.'/app/');
-        define('CONFIG_PATH', DOCUMENT_ROOT.'/config/');
-        define('LOCALES_PATH', DOCUMENT_ROOT.'/locales/');
-        define('PUBLIC_PATH', DOCUMENT_ROOT.'/public/');
+        define('APP_PATH', DOCUMENT_ROOT . '/app/');
+        define('CONFIG_PATH', DOCUMENT_ROOT . '/config/');
+        define('LOCALES_PATH', DOCUMENT_ROOT . '/locales/');
+        define('PUBLIC_PATH', DOCUMENT_ROOT . '/public/');
         define('CACHE_DIR', 'cache/');
         define('IMAGES_DIR', 'images/');
-        define('PUBLIC_CACHE_PATH', PUBLIC_PATH.CACHE_DIR);
-        define('PUBLIC_IMAGES_PATH', PUBLIC_PATH.IMAGES_DIR);
-        define('PUBLIC_EMOJIS_PATH', PUBLIC_PATH.'emojis/');
-        define('PUBLIC_STICKERS_PATH', PUBLIC_PATH.'stickers/');
-        define('VIEWS_PATH', DOCUMENT_ROOT.'/app/Views/');
-        define('WIDGETS_PATH', DOCUMENT_ROOT.'/app/Widgets/');
-        define('WORKERS_PATH', DOCUMENT_ROOT.'/workers/');
+        define('PUBLIC_CACHE_PATH', PUBLIC_PATH . CACHE_DIR);
+        define('PUBLIC_IMAGES_PATH', PUBLIC_PATH . IMAGES_DIR);
+        define('PUBLIC_EMOJIS_PATH', PUBLIC_PATH . 'emojis/');
+        define('PUBLIC_STICKERS_PATH', PUBLIC_PATH . 'stickers/');
+        define('VIEWS_PATH', DOCUMENT_ROOT . '/app/Views/');
+        define('WIDGETS_PATH', DOCUMENT_ROOT . '/app/Widgets/');
+        define('WORKERS_PATH', DOCUMENT_ROOT . '/workers/');
 
         define('CACHE_PATH', config('paths.cache'));
 
@@ -88,16 +88,16 @@ class Bootstrap
         define('DEFAULT_PICTURE_FORMAT', 'webp');
         define('DEFAULT_PICTURE_QUALITY', 95);
 
-        define('API_SOCKET', CACHE_PATH.'socketapi.sock');
-        define('GALENER_API_SOCKET', CACHE_PATH.'galenersocketapi.sock');
-        define('AVATAR_HANDLER_SOCKET', CACHE_PATH.'avatarhandler.sock');
-        define('PUSHER_SOCKET', CACHE_PATH.'pusher.sock');
-        define('RESOLVER_SOCKET', CACHE_PATH.'resolver.sock');
+        define('API_SOCKET', CACHE_PATH . 'socketapi.sock');
+        define('GALENER_API_SOCKET', CACHE_PATH . 'galenersocketapi.sock');
+        define('AVATAR_HANDLER_SOCKET', CACHE_PATH . 'avatarhandler.sock');
+        define('PUSHER_SOCKET', CACHE_PATH . 'pusher.sock');
+        define('RESOLVER_SOCKET', CACHE_PATH . 'resolver.sock');
     }
 
     private function getVersion()
     {
-        if ($f = fopen(DOCUMENT_ROOT.'/VERSION', 'r')) {
+        if ($f = fopen(DOCUMENT_ROOT . '/VERSION', 'r')) {
             return trim(fgets($f));
         }
     }
@@ -114,11 +114,11 @@ class Bootstrap
             $dirname = substr($dirname, 0, strrpos($dirname, 'index.php'));
         }
 
-        $path = (($dirname == DIRECTORY_SEPARATOR) ? '' : $dirname).'/';
+        $path = (($dirname == DIRECTORY_SEPARATOR) ? '' : $dirname) . '/';
 
         $uri = '//';
         $uri .= (array_key_exists('HTTP_HOST', $_SERVER))
-            ? str_replace('//', '/', $_SERVER['HTTP_HOST'].$path)
+            ? str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path)
             : $path;
 
         if (substr($uri, -8, 8) == 'picture/') {
@@ -183,7 +183,7 @@ class Bootstrap
 
     private function loadHelpers()
     {
-        foreach (glob(DOCUMENT_ROOT.'/app/Helpers/*Helper.php') as $file) {
+        foreach (glob(DOCUMENT_ROOT . '/app/Helpers/*Helper.php') as $file) {
             require_once $file;
         }
     }
@@ -311,7 +311,7 @@ class Bootstrap
             $trace = '';
         }
 
-        $error = $errstr.' in '.$errfile.' (line '.$errline.")\n";
+        $error = $errstr . ' in ' . $errfile . ' (line ' . $errline . ")\n";
 
         $serializedTrace = $trace;
 
@@ -331,8 +331,8 @@ class Bootstrap
                         $arguments .= match (gettype($value)) {
                             'boolean' => $value ? 'true' : 'false',
                             'integer', 'double' => $value,
-                            'string' => "'".$value."'",
-                            'object' => 'Object('.get_class($value).')',
+                            'string' => "'" . $value . "'",
+                            'object' => 'Object(' . get_class($value) . ')',
                             'NULL' => 'NULL',
                             'array' => 'Array',
                             default => 'unknown',
@@ -348,15 +348,15 @@ class Bootstrap
                     $arguments .= ')';
                 }
 
-                $serializedTrace .= '#'.$i.' '.$step['file'].'('.$step['line'].'): '.$step['function'].$arguments."\n";
+                $serializedTrace .= '#' . $i . ' ' . $step['file'] . '(' . $step['line'] . '): ' . $step['function'] . $arguments . "\n";
                 $i++;
             }
         }
 
-        $fullError = $error.'Trace:'."\n".$serializedTrace;
+        $fullError = $error . 'Trace:' . "\n" . $serializedTrace;
 
         if (php_sapi_name() != 'cli' && ob_get_contents() == '') {
-            echo 'An error occured during the Movim boot check the '.config('paths.log').'errors.log file'."\n";
+            echo 'An error occured during the Movim boot check the ' . config('paths.log') . 'errors.log file' . "\n";
         }
 
         logError($fullError);
@@ -368,7 +368,7 @@ class Bootstrap
     {
         $this->systemErrorHandler(
             E_ERROR,
-            get_class($exception).': '.$exception->getMessage(),
+            get_class($exception) . ': ' . $exception->getMessage(),
             $exception->getFile(),
             $exception->getLine(),
             $exception->getTraceAsString()

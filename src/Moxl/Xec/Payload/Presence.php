@@ -50,13 +50,13 @@ class Presence extends Payload
 
             // Trigger the presence before the buffer, we need it before the Jingle messages
             if ($presence->hasMuji() || $wasMuji) {
-                $this->pack($presence, $presence->mucjid.'/'.$presence->mucjidresource);
+                $this->pack($presence, $presence->mucjid . '/' . $presence->mucjidresource);
                 $this->method($wasMuji ? 'was_muji' : 'muji');
                 $this->deliver();
             }
 
             if ($presence->hasSFU()) {
-                $this->pack($presence, $presence->mucjid.'/'.$presence->mucjidresource);
+                $this->pack($presence, $presence->mucjid . '/' . $presence->mucjidresource);
                 $this->method('sfu');
                 $this->deliver();
             }
@@ -93,15 +93,14 @@ class Presence extends Payload
                             /**
                              * Server bug case where we actually got an error from our resource but it didn't provide the
                              * id back in the stanza
-                             */
-                            elseif (
-                                $session->get(Muc::$mucId.(string) $stanza->attributes()->from)
+                             */ elseif (
+                                $session->get(Muc::$mucId . (string) $stanza->attributes()->from)
                                 && ! isset($stanza->attributes()->id)
                             ) {
                                 /**
                                  * Add back the id to the stanza and send it back to the stanza handler
                                  */
-                                $stanza->addAttribute('id', $session->get(Muc::$mucId.(string) $stanza->attributes()->from));
+                                $stanza->addAttribute('id', $session->get(Muc::$mucId . (string) $stanza->attributes()->from));
                                 (new Handler($this->me, sessionId: $this->sessionId))->handle($stanza);
                             }
                         }

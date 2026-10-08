@@ -29,15 +29,10 @@ namespace Movim;
 class Emoji
 {
     protected static ?self $instance = null;
-
     private array $emoji;
-
     private ?string $string = null;
-
     private ?string $lastEmoji = null;
-
     private ?string $lastEmojiUrl = null;
-
     private ?string $lastEmojiTitle = null;
 
     protected function __construct()
@@ -72,7 +67,7 @@ class Emoji
                 }
 
                 $this->lastEmoji = $matches[0];
-                $this->lastEmojiUrl = BASE_URI.'theme/img/emojis/svg/'.$astext.'.svg';
+                $this->lastEmojiUrl = BASE_URI . 'theme/img/emojis/svg/' . $astext . '.svg';
 
                 $dom = new \DOMDocument('1.0', 'UTF-8');
                 $dom->appendChild($img = $dom->createElement('img'));
@@ -80,7 +75,7 @@ class Emoji
                 $img->setAttribute('alt', $this->emoji[$astext]);
                 if (! $noTitle) {
                     $this->lastEmojiTitle = \emojiShortcut($this->emoji[$astext]);
-                    $img->setAttribute('title', ':'.$this->lastEmojiTitle.':');
+                    $img->setAttribute('title', ':' . $this->lastEmojiTitle . ':');
                 }
                 $img->setAttribute('src', $this->lastEmojiUrl);
 

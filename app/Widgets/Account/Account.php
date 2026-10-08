@@ -47,7 +47,7 @@ class Account extends Base
 
         $this->rpc(
             'MovimTpl.fill',
-            '#gateway_'.cleanupId($packet->from),
+            '#gateway_' . cleanupId($packet->from),
             $view->draw('_account_gateway_adhoc_list')
         );
     }
@@ -194,7 +194,8 @@ class Account extends Base
 
         $view->assign('fingerprints', $fingerprints);
 
-        $this->rpc('MovimTpl.fill',
+        $this->rpc(
+            'MovimTpl.fill',
             '#account_fingerprints',
             $view->draw('_account_fingerprints')
         );
@@ -288,5 +289,7 @@ class Account extends Base
         return 'list_alt';
     }
 
-    public function display() {}
+    public function display()
+    {
+    }
 }

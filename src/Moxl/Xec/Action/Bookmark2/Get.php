@@ -9,7 +9,6 @@ use Moxl\Xec\Action;
 class Get extends Action
 {
     protected $_to;
-
     protected $_version = '1';
 
     public function request()

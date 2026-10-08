@@ -105,11 +105,11 @@ class ConfigCommand extends Command
                 $configuration->save();
 
                 $output->writeln(
-                    '<info>The configuration key</info> '.
-                    $key.
-                    ' <info>has been updated from</info> '.
-                    $old.
-                    ' <info>to</info> '.
+                    '<info>The configuration key</info> ' .
+                    $key .
+                    ' <info>has been updated from</info> ' .
+                    $old .
+                    ' <info>to</info> ' .
                     $configuration->$key
                 );
             }

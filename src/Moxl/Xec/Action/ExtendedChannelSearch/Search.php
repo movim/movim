@@ -8,9 +8,7 @@ use Moxl\Xec\Action;
 class Search extends Action
 {
     protected ?string $_keyword;
-
     protected int $_max = 30;
-
     protected bool $_globalSearch = false;
 
     public function request()

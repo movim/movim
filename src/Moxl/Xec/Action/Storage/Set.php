@@ -9,7 +9,6 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 class Set extends Action
 {
     protected array $_data;
-
     protected bool $_withPublishOption = true;
 
     public function request()

@@ -7,9 +7,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 class MessageBuffer
 {
     protected static $instance;
-
     private $_models = null;
-
     private $_calls = null;
 
     public static function getInstance()
@@ -69,7 +67,7 @@ class MessageBuffer
     public function append(Message $message, $call)
     {
         // if (empty($message->mid)) {
-        $this->_models[$message->user_id.$message->jidfrom.$message->id] = $message->toRawArray();
+        $this->_models[$message->user_id . $message->jidfrom . $message->id] = $message->toRawArray();
         $this->_calls->push($call);
         /*} else {
             $message->save();

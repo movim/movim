@@ -10,7 +10,6 @@ use Illuminate\Support\Collection;
 class Utils
 {
     public const CAPABILITY_HASH_ALGORITHM = 'sha-256';
-
     public const JABBER_CLIENT_XMLNS = 'jabber:client';
 
     /**
@@ -18,7 +17,7 @@ class Utils
      */
     public static function getCapabilityHashNode(string $capabilityHash, ?string $hash = Utils::CAPABILITY_HASH_ALGORITHM): string
     {
-        return 'urn:xmpp:caps#'.$hash.'.'.$capabilityHash;
+        return 'urn:xmpp:caps#' . $hash . '.' . $capabilityHash;
     }
 
     public static function getOwnCapabilityHash(?string $hash = Utils::CAPABILITY_HASH_ALGORITHM): string
@@ -44,7 +43,7 @@ class Utils
         asort($features);
 
         foreach ($features as $feature) {
-            $data .= $feature.chr(31); // 0x1f (ASCII Unit Separator)
+            $data .= $feature . chr(31); // 0x1f (ASCII Unit Separator)
         }
 
         $data .= chr(28); // 0x1c (ASCII File Separator)
@@ -53,8 +52,8 @@ class Utils
 
         foreach ($identities as $identity) {
             $identityData =
-                $identity->category.chr(31).
-                $identity->type.chr(31);
+                $identity->category . chr(31) .
+                $identity->type . chr(31);
 
             $identityData .= $identity->lang ?? '';
             $identityData .= chr(31);
@@ -130,10 +129,10 @@ class Utils
         $features = [
             Post::MICROBLOG_NODE,
             // Post::MICROBLOG_NODE . '+notify',
-            Post::STORIES_NODE.'+notify',
+            Post::STORIES_NODE . '+notify',
             'urn:xmpp:bookmarks:0+notify',
             'urn:xmpp:bookmarks:1+notify',
-            Subscription::PUBLIC_NODE.'+notify',
+            Subscription::PUBLIC_NODE . '+notify',
 
             'eu.siacs.conversations.axolotl.devicelist+notify',
 
@@ -258,7 +257,7 @@ class Utils
 
         asort($support);
         foreach ($support as $sup) {
-            $s = $s.$sup.'<';
+            $s = $s . $sup . '<';
         }
 
         return base64_encode(sha1(mb_convert_encoding($s, 'UTF-8', 'ISO-8859-1'), true));
@@ -274,13 +273,13 @@ class Utils
 
         for ($i = 0; $i < strlen($s); $i++) {
             if ($s[$i] === '\\') {
-                if (in_array($s[$i + 1].$s[$i + 2], $escapes)) {
+                if (in_array($s[$i + 1] . $s[$i + 2], $escapes)) {
                     $result .= '\\5c';
                 } else {
                     $result .= $s[$i];
                 }
             } elseif (in_array($s[$i], $chars)) {
-                $result .= '\\'.dechex(ord($s[$i]));
+                $result .= '\\' . dechex(ord($s[$i]));
             } else {
                 $result .= $s[$i];
             }

@@ -8,9 +8,7 @@ use Moxl\Xec\Action;
 class Set extends Action
 {
     protected $_to;
-
     protected $_prompt;
-
     protected $_extra;
 
     public function request()

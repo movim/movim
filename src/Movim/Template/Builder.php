@@ -18,36 +18,28 @@ use stdClass;
 class Builder
 {
     private string $_view = '';
-
     private string $title = APP_TITLE;
-
     private string $content = '';
-
     private string $commonContent = '';
-
     private array $css = [];
-
     private array $scripts = [];
-
     private string $eagerScripts = "/\/(movim_rpc|movim_utils)/";
-
     private string $lang = Locale::DEFAULT_LANGUAGE;
-
     private Dir $dir = Locale::DEFAULT_DIRECTION;
-
     private bool $public;
-
     private $js_check = true;
 
     /**
      * Constructor. Determines whether to show the login page to the user or the
      * Movim interface.
      */
-    public function __construct(private ?User $user = null) {}
+    public function __construct(private ?User $user = null)
+    {
+    }
 
     public function viewsPath(string $file)
     {
-        return VIEWS_PATH.'/'.$file;
+        return VIEWS_PATH . '/' . $file;
     }
 
     /**
@@ -58,7 +50,7 @@ class Builder
      */
     public function linkFile(string $file, $return = false)
     {
-        $path = urilize('theme/'.$file);
+        $path = urilize('theme/' . $file);
 
         if ($return) {
             return $path;
@@ -74,7 +66,7 @@ class Builder
     {
         $this->_view = $view;
         $this->public = $public;
-        $template = $this->_view.'.tpl';
+        $template = $this->_view . '.tpl';
 
         ob_start();
 
@@ -140,7 +132,7 @@ class Builder
         $widgets = Wrapper::getInstance();
 
         return isset($widgets->title)
-            ? $this->title.' • '.$widgets->title
+            ? $this->title . ' • ' . $widgets->title
             : $this->title;
     }
 
@@ -189,7 +181,7 @@ class Builder
         $title = $this->title;
 
         if (isset($widgets->title)) {
-            $title .= ' • '.$widgets->title;
+            $title .= ' • ' . $widgets->title;
         }
 
         $meta = $dom->createElement('meta');
@@ -275,12 +267,12 @@ class Builder
 
     public function addScript(string $script, ?bool $noTime = false)
     {
-        $this->scripts[] = urilize('scripts/'.$script, $noTime);
+        $this->scripts[] = urilize('scripts/' . $script, $noTime);
     }
 
     public function addCSS(string $file)
     {
-        $this->css[] = $this->linkFile('css/'.$file, true);
+        $this->css[] = $this->linkFile('css/' . $file, true);
     }
 
     public function setContent(string $data)

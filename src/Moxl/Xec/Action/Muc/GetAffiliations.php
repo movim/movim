@@ -9,7 +9,6 @@ use Moxl\Xec\Action;
 class GetAffiliations extends Action
 {
     protected string $_to;
-
     private string $lastStanzaId;
 
     public function request()

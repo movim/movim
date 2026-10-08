@@ -14,7 +14,9 @@ class RPC
 {
     private static $json = [];
 
-    public function __construct(private ?User $user = null, private ?string $sessionId = null) {}
+    public function __construct(private ?User $user = null, private ?string $sessionId = null)
+    {
+    }
 
     public function call($funcname, ...$args)
     {

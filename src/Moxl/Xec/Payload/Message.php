@@ -102,7 +102,7 @@ class Message extends Payload
 
         if ($stanza->composing || $stanza->paused || $stanza->active) {
             $from = ($message->isMuc())
-                ? $message->jidfrom.'/'.$message->resource
+                ? $message->jidfrom . '/' . $message->resource
                 : $message->jidfrom;
 
             if ($stanza->composing) {

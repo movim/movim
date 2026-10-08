@@ -13,7 +13,6 @@ use Phinx\Migration\AbstractMigration;
 class Migration extends AbstractMigration
 {
     public $capsule;
-
     public $schema;
 
     public function init()

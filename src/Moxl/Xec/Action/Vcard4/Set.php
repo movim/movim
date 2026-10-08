@@ -10,7 +10,6 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 class Set extends Action
 {
     protected Contact $_data;
-
     protected bool $_withPublishOption = true;
 
     public function request()

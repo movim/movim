@@ -11,7 +11,6 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 class SetRoom extends Action
 {
     protected ?Conference $_conference = null;
-
     protected bool $_withPublishOption = true;
 
     public function request()

@@ -10,9 +10,7 @@ use Moxl\Xec\Action;
 class SetAffiliations extends Action
 {
     protected string $_to;
-
     protected array $_affiliations = [];
-
     protected ?string $_reason = null;
 
     private const AFFILIATIONS = ['owner', 'admin', 'member', 'outcast', 'none'];

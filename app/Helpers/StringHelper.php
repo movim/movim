@@ -18,7 +18,7 @@ function linkify(string $html, bool $hashtagLinks = true): string
     }
 
     $dom = HTMLDocument::createFromString(
-        '<div id="movim-root">'.$html.'</div>',
+        '<div id="movim-root">' . $html . '</div>',
         LIBXML_HTML_NOIMPLIED,
         'UTF-8'
     );
@@ -33,8 +33,8 @@ function linkify(string $html, bool $hashtagLinks = true): string
     $hashtagPattern = '(?:(?<=[\s>])|^)#(?<tag>\w+)';
 
     $pattern = $hashtagLinks
-        ? '/'.$urlPattern.'|'.$hashtagPattern.'/iu'
-        : '/'.$urlPattern.'/iu';
+        ? '/' . $urlPattern . '|' . $hashtagPattern . '/iu'
+        : '/' . $urlPattern . '/iu';
 
     foreach (iterator_to_array($textNodes) as $node) {
         $text = $node->textContent;
@@ -91,7 +91,7 @@ function buildUrlNode(HTMLDocument $dom, string $content): Node
         if ($route) {
             $a = $dom->createElement('a');
             $a->setAttribute('href', '#');
-            $a->setAttribute('onclick', "MovimUtils.reload('".$route."')");
+            $a->setAttribute('onclick', "MovimUtils.reload('" . $route . "')");
             $a->textContent = $content;
 
             return $a;
@@ -112,7 +112,7 @@ function buildUrlNode(HTMLDocument $dom, string $content): Node
 
     if (preg_match('/^www\d{0,3}\./i', $content)) {
         $a = $dom->createElement('a');
-        $a->setAttribute('href', 'https://'.$content);
+        $a->setAttribute('href', 'https://' . $content);
         $a->setAttribute('target', '_blank');
         $a->setAttribute('rel', 'noopener noreferrer');
         $a->textContent = $content;
@@ -128,8 +128,8 @@ function buildHashtagNode(HTMLDocument $dom, string $tag): Node
     $a = $dom->createElement('a');
     $a->setAttribute('class', 'innertag');
     $a->setAttribute('href', '#');
-    $a->setAttribute('onclick', "MovimUtils.reload('".Route::urlize('tag', $tag)."')");
-    $a->textContent = '#'.$tag;
+    $a->setAttribute('onclick', "MovimUtils.reload('" . Route::urlize('tag', $tag) . "')");
+    $a->textContent = '#' . $tag;
 
     return $a;
 }
@@ -152,18 +152,18 @@ function addEmojis(string $string, bool $noTitle = false): string
 function extractEmojis(string $text): array
 {
     $pattern =
-        '/'.
+        '/' .
         // Flag sequences: pair of regional indicator symbols (e.g. 🇫🇷)
-        '\p{Regional_Indicator}{2}'.
-        '|'.
+        '\p{Regional_Indicator}{2}' .
+        '|' .
         // Keycap sequences: 0-9, #, * + optional VS16 + combining keycap (e.g. 1️⃣)
-        '[0-9#\*]\x{FE0F}?\x{20E3}'.
-        '|'.
+        '[0-9#\*]\x{FE0F}?\x{20E3}' .
+        '|' .
         // Any pictographic/emoji-capable base character, optionally extended
         // by skin-tone modifiers, a variation selector, or ZWJ-joined emoji
         // (covers combos like family/profession sequences, e.g. 👨‍👩‍👧‍👦)
-        '\p{Extended_Pictographic}'.
-        '(?:\x{FE0F}|\p{Emoji_Modifier}|\x{200D}\p{Extended_Pictographic}\x{FE0F}?)*'.
+        '\p{Extended_Pictographic}' .
+        '(?:\x{FE0F}|\p{Emoji_Modifier}|\x{200D}\p{Extended_Pictographic}\x{FE0F}?)*' .
         '/u';
 
     preg_match_all($pattern, $text, $matches);
@@ -283,7 +283,7 @@ function humanSize($bytes, int $precision = 2): string
     $pow = min($pow, count($units) - 1);
     $bytes /= pow(1024, $pow);
 
-    return (string) round($bytes, $precision).' '.$units[$pow];
+    return (string) round($bytes, $precision) . ' ' . $units[$pow];
 }
 
 /**
@@ -312,7 +312,7 @@ function colorize($string, string $color): string
         'white' => 37,
     ];
 
-    return "\033[".$colors[$color].'m'.$string."\033[0m";
+    return "\033[" . $colors[$color] . 'm' . $string . "\033[0m";
 }
 
 /**
@@ -557,9 +557,9 @@ function firstLetterCapitalize($string, bool $firstOnly = false): string
  */
 function cleanupId(string $string = '', bool $withHash = false): string
 {
-    $id = 'id-'.strtolower(preg_replace('/([^a-z0-9]+)/i', '-', $string));
+    $id = 'id-' . strtolower(preg_replace('/([^a-z0-9]+)/i', '-', $string));
 
-    return $withHash ? $id.'-'.substr(hash('sha256', $string), 0, 6) : $id;
+    return $withHash ? $id . '-' . substr(hash('sha256', $string), 0, 6) : $id;
 }
 
 /**
@@ -567,7 +567,7 @@ function cleanupId(string $string = '', bool $withHash = false): string
  */
 function hashId(string $string = ''): string
 {
-    return 'id-'.substr(hash('sha256', $string), 0, 6);
+    return 'id-' . substr(hash('sha256', $string), 0, 6);
 }
 
 /**
@@ -583,11 +583,11 @@ function truncate($str, int $width): string
  */
 function urilize($path, bool $noTime = false): string
 {
-    if ($noTime || ! file_exists(PUBLIC_PATH.'/'.$path)) {
-        return BASE_URI.$path;
+    if ($noTime || ! file_exists(PUBLIC_PATH . '/' . $path)) {
+        return BASE_URI . $path;
     }
 
-    return BASE_URI.$path.'?t='.filemtime(PUBLIC_PATH.'/'.$path);
+    return BASE_URI . $path . '?t=' . filemtime(PUBLIC_PATH . '/' . $path);
 }
 
 /**

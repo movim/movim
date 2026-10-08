@@ -12,25 +12,19 @@ use Moxl\Xec\Action\Presence\Muc;
 class Presence extends Model
 {
     protected $primaryKey = ['session_id', 'jid', 'mucjid', 'resource'];
-
     public bool $noMav = false;
-
     public $incrementing = false;
-
     public $hatsToSave = [];
-
     protected $attributes = [
         'mucjid' => '', // Required to use it in the primary key
         'muc' => false,
     ];
-
     protected $fillable = [
         'session_id',
         'jid',
         'resource',
         'mucjid',
     ];
-
     protected $with = ['hats'];
 
     public function roster()
@@ -91,7 +85,7 @@ class Presence extends Model
     public function getFullJidAttribute(): string
     {
         return ! empty($this->resource)
-            ? $this->jid.'/'.$this->resource
+            ? $this->jid . '/' . $this->resource
             : $this->jid;
     }
 
@@ -227,8 +221,8 @@ class Presence extends Model
 
         if ($stanza->c) {
             $this->node = (string) $stanza->c->attributes()->xmlns == 'urn:xmpp:caps'
-                ? 'urn:xmpp:caps#'.(string) $stanza->c->hash->attributes()->algo.'.'.(string) $stanza->c->hash
-                : (string) $stanza->c->attributes()->node.'#'.(string) $stanza->c->attributes()->ver;
+                ? 'urn:xmpp:caps#' . (string) $stanza->c->hash->attributes()->algo . '.' . (string) $stanza->c->hash
+                : (string) $stanza->c->attributes()->node . '#' . (string) $stanza->c->attributes()->ver;
         }
 
         $this->priority = ($stanza->priority) ? (int) $stanza->priority : 0;
@@ -260,7 +254,7 @@ class Presence extends Model
 
                         $session = linker($this->session_id)->session;
 
-                        if ($session->get(Muc::$mucId.(string) $stanza->attributes()->from)) {
+                        if ($session->get(Muc::$mucId . (string) $stanza->attributes()->from)) {
                             $this->mucjid = $user->id;
                         }
 

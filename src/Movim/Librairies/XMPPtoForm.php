@@ -8,11 +8,8 @@ use Movim\Route;
 class XMPPtoForm
 {
     private ?\SimpleXMLElement $xmpp = null;
-
     private string $formType;
-
     private $stanza;
-
     private \DOMDocument $html;
 
     public function __construct(
@@ -64,6 +61,7 @@ class XMPPtoForm
                     break;
                 case 'item':
                     array_push($items, $element);
+                    // no break
                 case 'field':
                     if (
                         isset($element->media)
@@ -73,8 +71,8 @@ class XMPPtoForm
                         $uri = parse_url($element->media->uri);
                         switch ($uri['scheme']) {
                             case 'cid':
-                                foreach ($this->stanza->xpath('//data[@cid=\''.$uri['path'].'\']') as $data) {
-                                    $this->outImage('data:'.$data->attributes()->type.';base64,'.(string) $data);
+                                foreach ($this->stanza->xpath('//data[@cid=\'' . $uri['path'] . '\']') as $data) {
+                                    $this->outImage('data:' . $data->attributes()->type . ';base64,' . (string) $data);
                                 }
                                 break;
                             case 'http':
@@ -233,7 +231,7 @@ class XMPPtoForm
         $input = $this->html->createElement('input');
         $input->setAttribute('type', $s);
         $input->setAttribute('id', $s);
-        $input->setAttribute('name', 'generic_'.$s);
+        $input->setAttribute('name', 'generic_' . $s);
         $input->setAttribute('required', 'required');
 
         $div->appendChild($input);
@@ -375,7 +373,7 @@ class XMPPtoForm
 
         foreach ($s->children() as $value) {
             if ($value->getName() == 'value') {
-                $textarea->nodeValue .= $value."\n";
+                $textarea->nodeValue .= $value . "\n";
             }
         }
 

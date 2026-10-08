@@ -95,7 +95,7 @@ class PubsubEvent extends Payload
                 }
             } elseif (
                 $stanza->items->item->conference
-                && $stanza->items->item->conference->attributes()->xmlns == Bookmark2::NODE.Bookmark2::VERSION
+                && $stanza->items->item->conference->attributes()->xmlns == Bookmark2::NODE . Bookmark2::VERSION
             ) {
                 $conference = new Conference;
                 $conference->set(

@@ -9,9 +9,7 @@ use Moxl\Xec\Action;
 class GetItemsId extends Action
 {
     protected $_to;
-
     protected $_node;
-
     private $_forbidenIds = [
         'urn:xmpp:avatar:data',
         'urn:xmpp:avatar:metadata',

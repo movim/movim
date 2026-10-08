@@ -18,18 +18,13 @@ class Locale
     private static $instance;
 
     public const DEFAULT_LANGUAGE = 'en';
-
     public const DEFAULT_DIRECTION = Dir::LTR;
-
     public const LOCALE_REGEXP = '(?<language>[a-z]{2,8})(?:[-_](?<script>[A-Za-z][a-z]{3}))?(?:[-_](?<region>[A-Za-z]{2,3}|[0-9]{3}))?';
-
     public const RTL_LANGUAGES = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv'];
-
     public const RTL_SCRIPTS = ['Adlm', 'Arab', 'Aran', 'Armi', 'Avst', 'Cprt', 'Hebr', 'Khar', 'Lydi', 'Mand', 'Mani', 'Mend', 'Narb', 'Nbat', 'Nkoo', 'Orkh', 'Palm', 'Phli', 'Phlp', 'Phnx', 'Prti', 'Samr', 'Sarb', 'Syrc', 'Thaa'];
 
     public $hash = [];
-
-    private string $iniCache = CACHE_PATH.'locales.ini.cache';
+    private string $iniCache = CACHE_PATH . 'locales.ini.cache';
 
     private function __construct()
     {
@@ -45,17 +40,17 @@ class Locale
     public function compileIni(): array
     {
         $hash = [];
-        $this->loadIni($hash, LOCALES_PATH.'locales.ini');
+        $this->loadIni($hash, LOCALES_PATH . 'locales.ini');
 
         foreach (scandir(WIDGETS_PATH) as $widget) {
-            $path = WIDGETS_PATH.$widget.'/locales.ini';
+            $path = WIDGETS_PATH . $widget . '/locales.ini';
             if (file_exists($path)) {
                 $this->loadIni($hash, $path);
             }
         }
 
         $locales = fopen($this->iniCache, 'w') or exit('Unable to open file!');
-        fwrite($locales, '<?php'.PHP_EOL.'$hashes = '.var_export($hash, true).';'.PHP_EOL.'?>');
+        fwrite($locales, '<?php' . PHP_EOL . '$hashes = ' . var_export($hash, true) . ';' . PHP_EOL . '?>');
         fclose($locales);
 
         return $hash;
@@ -66,7 +61,7 @@ class Locale
         // Clear
         foreach (
             glob(
-                CACHE_PATH.
+                CACHE_PATH .
                     '*.po.cache',
                 GLOB_NOSORT
             ) as $cacheFile
@@ -77,8 +72,8 @@ class Locale
         // Cache
         foreach (array_keys(self::getList()) as $language) {
             if ($translations = $this->load($language)) {
-                $locales = fopen(CACHE_PATH.$language.'.po.cache', 'w') or exit('Unable to open file!');
-                fwrite($locales, '<?php'.PHP_EOL.'$translations = '.var_export($translations, true).';'.PHP_EOL.'?>');
+                $locales = fopen(CACHE_PATH . $language . '.po.cache', 'w') or exit('Unable to open file!');
+                fwrite($locales, '<?php' . PHP_EOL . '$translations = ' . var_export($translations, true) . ';' . PHP_EOL . '?>');
                 fclose($locales);
             }
         }
@@ -175,7 +170,7 @@ class Locale
                 if (is_string($skey)) {
                     $string = $skey;
                 } else {
-                    logInfo('Locale: Double definition for "'.$key.'" got '.serialize($skey));
+                    logInfo('Locale: Double definition for "' . $key . '" got ' . serialize($skey));
                     $string = $skey[0];
                 }
             }
@@ -187,7 +182,7 @@ class Locale
 
             return $string;
         } else {
-            logInfo('Locale: Translation key "'.$key.'" not found');
+            logInfo('Locale: Translation key "' . $key . '" not found');
 
             return $arr[1];
         }
@@ -198,7 +193,7 @@ class Locale
      */
     public static function parseStr(string $str): ?array
     {
-        if (preg_match('/'.self::LOCALE_REGEXP.'/', $str, $loc)) {
+        if (preg_match('/' . self::LOCALE_REGEXP . '/', $str, $loc)) {
             self::reformatLocalePartsToISO639($loc);
 
             return $loc;
@@ -234,7 +229,7 @@ class Locale
     {
         $language = self::DEFAULT_LANGUAGE;
 
-        $rexp = '/'.self::LOCALE_REGEXP.'\s*(?:;\s*(Q|q)\s*=\s*(?<quality>1|0\.[0-9]+))?/';
+        $rexp = '/' . self::LOCALE_REGEXP . '\s*(?:;\s*(Q|q)\s*=\s*(?<quality>1|0\.[0-9]+))?/';
 
         if (preg_match_all($rexp, $languages ?? $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '', $locs, PREG_SET_ORDER)) {
             foreach ($locs as &$loc) {
@@ -253,7 +248,7 @@ class Locale
             $poFileExists = function (array $l): ?array {
                 $lang = strtolower(implode('_', array_values($l)));
 
-                return [$lang, file_exists(LOCALES_PATH.$lang.'.po')];
+                return [$lang, file_exists(LOCALES_PATH . $lang . '.po')];
             };
 
             foreach ($locs as &$loc) {
@@ -305,14 +300,14 @@ class Locale
     private function loadPo(string $language): ?array
     {
         // Load from the cache
-        $cacheFile = CACHE_PATH.$language.'.po.cache';
+        $cacheFile = CACHE_PATH . $language . '.po.cache';
         if (file_exists($cacheFile) && is_readable($cacheFile)) {
             include $cacheFile;
 
             return $translations;
         }
 
-        $pofile = LOCALES_PATH.$language.'.po';
+        $pofile = LOCALES_PATH . $language . '.po';
         if (! file_exists($pofile) || ! is_readable($pofile)) {
             return null;
         }

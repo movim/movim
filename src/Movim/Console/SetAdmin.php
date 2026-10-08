@@ -37,10 +37,10 @@ class SetAdmin extends Command
         if ($user) {
             if ($input->getOption('remove')) {
                 $user->admin = false;
-                $output->writeln('<info>User '.$input->getArgument('jid').' is not admin anymore</info>');
+                $output->writeln('<info>User ' . $input->getArgument('jid') . ' is not admin anymore</info>');
             } else {
                 $user->admin = true;
-                $output->writeln('<info>User '.$input->getArgument('jid').' is now admin</info>');
+                $output->writeln('<info>User ' . $input->getArgument('jid') . ' is now admin</info>');
             }
 
             $user->save();
@@ -48,7 +48,7 @@ class SetAdmin extends Command
             return Command::SUCCESS;
         }
 
-        $output->writeln('<error>User '.$input->getArgument('jid').' not found</error>');
+        $output->writeln('<error>User ' . $input->getArgument('jid') . ' not found</error>');
 
         return Command::FAILURE;
     }

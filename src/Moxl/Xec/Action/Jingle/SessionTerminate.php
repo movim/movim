@@ -9,11 +9,8 @@ use Moxl\Xec\Action;
 class SessionTerminate extends Action
 {
     protected $_to;
-
     protected $_jingleSid;
-
     protected $_reason = 'success';
-
     protected bool $_isMuji = false;
 
     public function request()
@@ -28,7 +25,7 @@ class SessionTerminate extends Action
             $userid = $this->me->id;
             $message = new Message;
             $message->user_id = $userid;
-            $message->id = 'm_'.generateUUID();
+            $message->id = 'm_' . generateUUID();
             $message->jidto = $userid;
             $message->jidfrom = bareJid($this->_to);
             $message->published = gmdate('Y-m-d H:i:s');

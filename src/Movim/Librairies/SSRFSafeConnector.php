@@ -12,7 +12,6 @@ class SSRFSafeConnector implements ConnectorInterface
         ['192.0.0.0',   24], // IETF protocol assignments (RFC 6890)
         ['100.64.0.0',  10], // Carrier-grade NAT https://www.rfc-editor.org/info/rfc6598/#section-7
     ];
-
     private const EXTRA_BLOCKED_CIDRS_V6 = [
         ['fc00::', 7], // IPv6 unique local addresses
         ['fe80::', 10], // IPv6 link-local addresses
@@ -21,16 +20,17 @@ class SSRFSafeConnector implements ConnectorInterface
     public function __construct(
         private ConnectorInterface $connector,
         private array $domainsWhitelist = []
-    ) {}
+    ) {
+    }
 
     public function connect($uri)
     {
-        $host = parse_url('tls://'.$uri, PHP_URL_HOST); // adding tls:// to parse the URI correctly
+        $host = parse_url('tls://' . $uri, PHP_URL_HOST); // adding tls:// to parse the URI correctly
 
         if (! empty($host) && ! $this->isUriWhitelisted($uri)) {
             $ip = trim($host, '[]');
             if ($ip !== '' && $this->isPrivateIp($ip)) {
-                $error = 'Blocked SSRF attempt to: '.$ip.' ('.$uri.')';
+                $error = 'Blocked SSRF attempt to: ' . $ip . ' (' . $uri . ')';
                 \logError($error);
 
                 return \React\Promise\reject(

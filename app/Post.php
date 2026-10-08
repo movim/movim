@@ -20,9 +20,7 @@ use SimpleXMLElement;
 class Post extends Model
 {
     protected $primaryKey = 'id';
-
     protected $guarded = [];
-
     public $with = [
         'attachments',
         'likes',
@@ -30,29 +28,20 @@ class Post extends Model
         'contact',
         'links',
     ];
-
     public $withCount = ['userViews'];
-
     protected $casts = [
         'published' => 'datetime:Y-m-d H:i:s',
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
-
     private $titleLimit = 700;
-
     private $changed = false; // Detect if the set post was different from the cache
-
     public array $attachments = [];
-
     public array $resolvableAttachments = [];
-
     public $tags = [];
 
     public const MICROBLOG_NODE = 'urn:xmpp:microblog:0';
-
     public const COMMENTS_NODE = 'urn:xmpp:microblog:0:comments';
-
     public const STORIES_NODE = 'urn:xmpp:pubsub-social-feed:stories:0';
 
     public function contact()
@@ -187,7 +176,7 @@ class Post extends Model
     {
         try {
             if (! $this->validAtom()) {
-                \logError('Invalid Atom: '.$this->server.'/'.$this->node.'/'.$this->nodeid);
+                \logError('Invalid Atom: ' . $this->server . '/' . $this->node . '/' . $this->nodeid);
 
                 if ($this->created_at) {
                     $this->delete();
@@ -247,8 +236,8 @@ class Post extends Model
                 $host = $user->session->host;
                 $query->select('id')
                     ->from('posts')
-                    ->where('server', 'like', '%.'.$host)
-                    ->orWhere('server', 'like', '@'.$host);
+                    ->where('server', 'like', '%.' . $host)
+                    ->orWhere('server', 'like', '@' . $host);
             });
         }
     }
@@ -428,7 +417,7 @@ class Post extends Model
                     $d = htmlspecialchars_decode((string) $c);
 
                     $dom = new \DOMDocument('1.0', 'UTF-8');
-                    $dom->loadHTML('<div>'.$d.'</div>', LIBXML_NOERROR);
+                    $dom->loadHTML('<div>' . $d . '</div>', LIBXML_NOERROR);
 
                     $htmlContent = (string) $dom->saveHTML($dom->documentElement->lastChild->lastChild);
                     break;
@@ -509,7 +498,7 @@ class Post extends Model
         // Ensure that the author is the publisher
         if (
             $entry->entry->author && $entry->entry->author->uri
-            && 'xmpp:'.bareJid((string) $entry->attributes()->publisher) == (string) $entry->entry->author->uri
+            && 'xmpp:' . bareJid((string) $entry->attributes()->publisher) == (string) $entry->entry->author->uri
         ) {
             $this->aid = substr((string) $entry->entry->author->uri, 5);
             $this->aname = ($entry->entry->author->name)
@@ -533,7 +522,7 @@ class Post extends Model
             : null;
 
         $summary = ($entry->entry->summary && (string) $entry->entry->summary != '')
-            ? '<p class="summary">'.(string) $entry->entry->summary.'</p>'
+            ? '<p class="summary">' . (string) $entry->entry->summary . '</p>'
             : null;
 
         $content = $entry->entry->content
@@ -543,7 +532,7 @@ class Post extends Model
         $this->content = $this->contentcleaned = null;
 
         if ($summary != null || $content != null) {
-            $this->content = trim((string) $summary.(string) $content);
+            $this->content = trim((string) $summary . (string) $content);
             $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
         }
 
@@ -642,7 +631,7 @@ class Post extends Model
         // We try to extract a picture
         try {
             $dom = HTMLDocument::createFromString(
-                '<div id="movim-root">'.$this->contentcleaned.'</div>',
+                '<div id="movim-root">' . $this->contentcleaned . '</div>',
                 LIBXML_HTML_NOIMPLIED,
                 'UTF-8'
             );
@@ -737,11 +726,11 @@ class Post extends Model
 
                 // Youtube
                 if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $enc['href'], $match)) {
-                    $atte->href = 'https://www.youtube.com/embed/'.$match[1];
+                    $atte->href = 'https://www.youtube.com/embed/' . $match[1];
                     $this->attachments[] = $atte;
                     // RedGif
                 } elseif (preg_match('/(?:https:\/\/)?(?:www.)?redgifs.com\/watch\/([a-zA-Z]+)$/', $enc['href'], $match)) {
-                    $atte->href = 'https://www.redgifs.com/ifr/'.$match[1];
+                    $atte->href = 'https://www.redgifs.com/ifr/' . $match[1];
                     $this->attachments[] = $atte;
                     $this->resolveUrl($enc['href']);
                     // PeerTube
@@ -749,7 +738,7 @@ class Post extends Model
                     preg_match('/https:\/\/?(.*)\/w\/(\w{22})/', $enc['href'], $match)
                     || preg_match('/https:\/\/?(.*)\/videos\/watch\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/', $enc['href'], $match)
                 ) {
-                    $atte->href = 'https://'.$match[1].'/videos/embed/'.$match[2];
+                    $atte->href = 'https://' . $match[1] . '/videos/embed/' . $match[2];
                     $this->attachments[] = $atte;
                     // Reddit
                 } elseif (
@@ -841,12 +830,12 @@ class Post extends Model
             return $this->nodeid;
         }
 
-        return 'urn:uuid:'.generateUUID(hash('sha256', $this->server.$this->node.$this->nodeid, true));
+        return 'urn:uuid:' . generateUUID(hash('sha256', $this->server . $this->node . $this->nodeid, true));
     }
 
     public function getRef(): string
     {
-        return 'xmpp:'.$this->server.'?;'.
+        return 'xmpp:' . $this->server . '?;' .
             http_build_query([
                 'node' => $this->node,
                 'item' => $this->nodeid,
@@ -964,7 +953,7 @@ class Post extends Model
 
         if ($public == false) {
             $dom = HTMLDocument::createFromString(
-                '<div id="movim-root">'.$this->contentcleaned.'</div>',
+                '<div id="movim-root">' . $this->contentcleaned . '</div>',
                 LIBXML_HTML_NOIMPLIED,
                 'UTF-8'
             );

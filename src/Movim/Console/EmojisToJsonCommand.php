@@ -48,7 +48,7 @@ class EmojisToJsonCommand extends Command
                 '',
                 ' ',
             ], $value);
-            echo $value."\n";
+            echo $value . "\n";
             $filtered[$key] = $value;
         }
 
@@ -57,7 +57,7 @@ class EmojisToJsonCommand extends Command
             $emojiCode = '';
             $exploded = explode('-', $key);
             foreach ($exploded as $keyElement) {
-                $emojiCode .= '\u{'.$keyElement.'}';
+                $emojiCode .= '\u{' . $keyElement . '}';
             }
 
             $json[emojiShortcut($value)] = ['e' => $emojiCode, 'c' => $key];
@@ -66,9 +66,9 @@ class EmojisToJsonCommand extends Command
         $encoded = \json_encode($json);
         $encoded = str_replace('\\\\', '\\', $encoded);
 
-        \file_put_contents(PUBLIC_PATH.'scripts/movim_emojis_list.js', 'var emojis = '.$encoded);
+        \file_put_contents(PUBLIC_PATH . 'scripts/movim_emojis_list.js', 'var emojis = ' . $encoded);
 
-        $output->writeln('<info>'.\count($json).' emojis saved</info>');
+        $output->writeln('<info>' . \count($json) . ' emojis saved</info>');
 
         return Command::SUCCESS;
     }

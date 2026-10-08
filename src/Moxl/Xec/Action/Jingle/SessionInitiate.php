@@ -7,7 +7,6 @@ use Moxl\Xec\Action;
 class SessionInitiate extends Action
 {
     protected $_to;
-
     protected $_jingle;
 
     public function request()

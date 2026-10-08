@@ -12,9 +12,7 @@ use Moxl\Utils;
 class Info extends Model
 {
     protected $fillable = ['server', 'node', 'avatarhash'];
-
     protected $with = ['identities'];
-
     private ?Collection $freshIdentities = null;
 
     public function identities()
@@ -84,7 +82,7 @@ class Info extends Model
                 $host = $user->session->host;
                 $query->select('server')
                     ->from('infos')
-                    ->where('server', 'like', '%.'.$host);
+                    ->where('server', 'like', '%.' . $host);
             });
         }
     }
@@ -559,7 +557,7 @@ class Info extends Model
             foreach ($features as $feature) {
                 preg_match("/http:\/\/jabber.org\/protocol\/pubsub#(.*)-affiliation$/", $feature, $matches);
                 if (! empty($matches)) {
-                    $roles[$matches[1]] = __('affiliation.'.$matches[1]);
+                    $roles[$matches[1]] = __('affiliation.' . $matches[1]);
                 }
             }
         }
@@ -600,7 +598,7 @@ class Info extends Model
         );
 
         if ($this->node != $generatedHash) {
-            \logError('XEP-0390: Wrong hash for '.$this->node.' != '.$generatedHash);
+            \logError('XEP-0390: Wrong hash for ' . $this->node . ' != ' . $generatedHash);
         }
 
         return $this->node == $generatedHash;

@@ -8,13 +8,9 @@ use Moxl\Xec\Action;
 class Request extends Action
 {
     protected $_id;
-
     protected $_to;
-
     protected $_name;
-
     protected $_size;
-
     protected $_type;
 
     private const AUTHORIZED_HEADERS = ['authorization', 'cookie', 'expires'];

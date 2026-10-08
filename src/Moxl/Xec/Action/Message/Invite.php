@@ -8,11 +8,8 @@ use Moxl\Xec\Action;
 class Invite extends Action
 {
     protected $_to;
-
     protected $_content;
-
     protected $_id;
-
     protected $_invite;
 
     public function request()

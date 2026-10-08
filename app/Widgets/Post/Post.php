@@ -43,14 +43,14 @@ class Post extends Base
                 $parent = $post->getParent();
                 $this->rpc(
                     'MovimTpl.fill',
-                    '#post_widget.'.cleanupId($parent->nodeid).' #comments',
+                    '#post_widget.' . cleanupId($parent->nodeid) . ' #comments',
                     $this->prepareComments($parent)
                 );
                 $this->rpc('Post.checkCommentAction');
             } else {
                 $this->rpc(
                     'MovimTpl.fill',
-                    '#post_widget.'.cleanupId($post->nodeid),
+                    '#post_widget.' . cleanupId($post->nodeid),
                     $this->preparePost($post)
                 );
                 $this->rpc('MovimUtils.enhanceArticlesContent');
@@ -66,7 +66,7 @@ class Post extends Base
             if ($parent = $post->getParent()) {
                 $this->rpc(
                     'MovimTpl.fill',
-                    '#post_widget.'.cleanupId($parent->nodeid).' #comments',
+                    '#post_widget.' . cleanupId($parent->nodeid) . ' #comments',
                     $this->prepareComments($parent)
                 );
             }
@@ -91,7 +91,7 @@ class Post extends Base
         if ($post) {
             $this->rpc(
                 'MovimTpl.fill',
-                '#post_widget.'.cleanupId($post->nodeid).' #comments',
+                '#post_widget.' . cleanupId($post->nodeid) . ' #comments',
                 $this->prepareComments($post)
             );
             $this->rpc('Post.checkCommentAction');
@@ -142,9 +142,9 @@ class Post extends Base
 
             $html = $this->preparePost($p, requestComments: false);
 
-            $this->rpc('MovimTpl.fill', '#post_widget.'.cleanupId($p->nodeid), $html);
+            $this->rpc('MovimTpl.fill', '#post_widget.' . cleanupId($p->nodeid), $html);
             $this->rpc('MovimUtils.enhanceArticlesContent');
-            $this->rpc('Notif.setTitle', $this->__('page.post').' • '.$p->title);
+            $this->rpc('Notif.setTitle', $this->__('page.post') . ' • ' . $p->title);
 
             // If the post is a reply but we don't have the original
             if ($p->isReply() && ! $p->getReply()) {

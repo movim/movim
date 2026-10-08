@@ -115,7 +115,7 @@ class Chats extends Base
                 ! empty($packet->content)
                     ? 'MovimUtils.addClass'
                     : 'MovimUtils.removeClass',
-                $this->getItemId($packet->from).' span.primary',
+                $this->getItemId($packet->from) . ' span.primary',
                 'composing'
             );
         }
@@ -232,7 +232,7 @@ class Chats extends Base
 
         $this->rpc('Stories_ajaxHttpGet');
 
-        (new Notif($this->me, sessionId: $this->sessionId))->ajaxClear('chat|'.$jid);
+        (new Notif($this->me, sessionId: $this->sessionId))->ajaxClear('chat|' . $jid);
     }
 
     public function prepareChats()
@@ -423,6 +423,6 @@ class Chats extends Base
 
     private function getItemId(string $jid): string
     {
-        return '#'.cleanupId(slugify($jid).'_chat_item');
+        return '#' . cleanupId(slugify($jid) . '_chat_item');
     }
 }

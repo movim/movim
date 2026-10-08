@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Configuration extends Model
 {
     protected $table = 'configuration';
-
     private static $instance = null;
-
     public $fillable = [
         'chatonly',
         'description',
@@ -27,7 +25,6 @@ class Configuration extends Model
         'xmppdescription',
         'xmppwhitelist',
     ];
-
     protected $attributes = [
         'id' => 1,
         'unregister' => false,

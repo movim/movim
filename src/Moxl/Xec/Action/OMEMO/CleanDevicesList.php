@@ -36,7 +36,7 @@ class CleanDevicesList extends Action
 
         foreach (array_diff($omemoItems, $this->_currentList) as $bundleId) {
             $delete = new Delete;
-            $delete->setNode(Bundle::OMEMO_BUNDLE.$bundleId)
+            $delete->setNode(Bundle::OMEMO_BUNDLE . $bundleId)
                 ->request();
         }
 

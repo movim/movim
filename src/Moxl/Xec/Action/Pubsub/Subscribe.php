@@ -10,11 +10,8 @@ use Moxl\Xec\Action\PubsubSubscription\Add as SubscriptionAdd;
 class Subscribe extends Action
 {
     protected $_to;
-
     protected $_from;
-
     protected $_node;
-
     protected $_data;
 
     public function request()

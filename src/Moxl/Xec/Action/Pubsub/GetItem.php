@@ -13,17 +13,11 @@ use Psr\Http\Message\ResponseInterface;
 class GetItem extends Action
 {
     protected $_to;
-
     protected $_node;
-
     protected $_id;
-
     protected ?int $_replypostid = null;
-
     protected bool $fromPayload = false;
-
     protected $_parentid;
-
     protected $_messagemid;
 
     public function request()

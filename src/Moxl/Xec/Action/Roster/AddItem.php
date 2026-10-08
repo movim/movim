@@ -9,9 +9,7 @@ use Moxl\Xec\Action;
 class AddItem extends Action
 {
     protected $_to;
-
     protected $_name;
-
     protected $_group;
 
     public function request()

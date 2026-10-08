@@ -21,7 +21,7 @@ class AvatarHandler
 
     public static function getAvatarCachePath(string $jid, string $type)
     {
-        return CACHE_PATH.hash('sha256', $jid.$type);
+        return CACHE_PATH . hash('sha256', $jid . $type);
     }
 
     public function url(
@@ -80,7 +80,7 @@ class AvatarHandler
                             $contact->bannerhash = $hash;
                             $contact->save();
 
-                            $key = $jid.'_banner';
+                            $key = $jid . '_banner';
                         }
                     } else {
                         $contact = Contact::firstOrNew(['id' => $jid]);

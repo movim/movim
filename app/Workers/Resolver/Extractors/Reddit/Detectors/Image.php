@@ -23,7 +23,7 @@ class Image extends Detector
                 $media = array_pop($medias);
                 $key = substr((string) $media['m'], 0, 6);
                 if ($key == 'image/') {
-                    $imageUrl = new Uri('https://i.redd.it/'.$media['id'].'.'.substr((string) $media['m'], 6));
+                    $imageUrl = new Uri('https://i.redd.it/' . $media['id'] . '.' . substr((string) $media['m'], 6));
                 }
             }
         } elseif (array_key_exists('post_hint', $data) && $data['post_hint'] == 'image') {

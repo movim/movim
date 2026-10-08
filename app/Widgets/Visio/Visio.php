@@ -118,8 +118,8 @@ class Visio extends Base
                     $turn = true;
                 }
 
-                $url = $service['type'].':'.$service['host'];
-                $url .= ! empty($service['port']) ? ':'.$service['port'] : '';
+                $url = $service['type'] . ':' . $service['host'];
+                $url .= ! empty($service['port']) ? ':' . $service['port'] : '';
                 $item = ['urls' => $url];
 
                 if (isset($service['username']) && isset($service['password'])) {
@@ -365,7 +365,7 @@ class Visio extends Base
     public function onMute(Packet $packet)
     {
         $stanza = $packet->content;
-        $this->rpc('MovimJingles.onMute', \bareJid($packet->from), 'mid'.(string) $stanza->mute->attributes()->name);
+        $this->rpc('MovimJingles.onMute', \bareJid($packet->from), 'mid' . (string) $stanza->mute->attributes()->name);
     }
 
     public function onMuteSFU(Packet $packet)
@@ -373,13 +373,13 @@ class Visio extends Base
         $stanza = $packet->content;
         $from = (string) $packet->content->{'jingle-participant'}->attributes()->participant;
 
-        $this->rpc('MovimJingles.onMute', $from, 'mid'.(string) $stanza->mute->attributes()->name);
+        $this->rpc('MovimJingles.onMute', $from, 'mid' . (string) $stanza->mute->attributes()->name);
     }
 
     public function onUnmute(Packet $packet)
     {
         $stanza = $packet->content;
-        $this->rpc('MovimJingles.onUnmute', \bareJid($packet->from), 'mid'.(string) $stanza->unmute->attributes()->name);
+        $this->rpc('MovimJingles.onUnmute', \bareJid($packet->from), 'mid' . (string) $stanza->unmute->attributes()->name);
     }
 
     public function onUnmuteSFU(Packet $packet)
@@ -387,7 +387,7 @@ class Visio extends Base
         $stanza = $packet->content;
         $from = (string) $packet->content->{'jingle-participant'}->attributes()->participant;
 
-        $this->rpc('MovimJingles.onUnmute', $from, 'mid'.(string) $stanza->unmute->attributes()->name);
+        $this->rpc('MovimJingles.onUnmute', $from, 'mid' . (string) $stanza->unmute->attributes()->name);
     }
 
     public function ajaxClear()
@@ -619,7 +619,7 @@ class Visio extends Base
 
             $this->notif(
                 key: 'call',
-                title: '📞 '.$contact->truename,
+                title: '📞 ' . $contact->truename,
                 body: $this->__('visio.calling'),
                 url: '',
                 picture: $contact->getPicture(),
@@ -686,7 +686,7 @@ class Visio extends Base
                     if ($mujiPresence->mucjid != $this->me->id) {
                         $this->onMujiPresence((new Packet)->pack(
                             $mujiPresence,
-                            $mujiPresence->mucjid.'/'.$mujiPresence->mucjidresource
+                            $mujiPresence->mucjid . '/' . $mujiPresence->mucjidresource
                         ));
                     }
                 }
@@ -824,7 +824,7 @@ class Visio extends Base
 
         $stj = new SDPtoJingle(
             user: $this->me,
-            sdp: 'a='.$sdp->candidate,
+            sdp: 'a=' . $sdp->candidate,
             sid: $id,
             responder: $to,
             action: 'transport-info',
@@ -939,12 +939,12 @@ class Visio extends Base
 
         foreach ($exp as $media) {
             foreach ($mediaIds as $mediaId) {
-                if (str_contains($media, 'a=mid:'.$mediaId)) {
+                if (str_contains($media, 'a=mid:' . $mediaId)) {
                     array_push($selected, $media);
                 }
             }
         }
 
-        return $exp[0].'m='.implode('m=', $selected);
+        return $exp[0] . 'm=' . implode('m=', $selected);
     }
 }

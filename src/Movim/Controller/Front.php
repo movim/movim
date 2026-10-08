@@ -77,7 +77,7 @@ class Front extends Base
 
     public function loadController(string $page)
     {
-        $className = 'App\\Controllers\\'.ucfirst($page).'Controller';
+        $className = 'App\\Controllers\\' . ucfirst($page) . 'Controller';
 
         return new $className($this->user);
     }

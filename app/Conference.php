@@ -13,9 +13,7 @@ use Moxl\Stanza\Bookmark2;
 class Conference extends Model
 {
     public $incrementing = false;
-
     protected $primaryKey = ['session_id', 'conference'];
-
     protected $fillable = [
         'conference',
         'name',
@@ -27,15 +25,11 @@ class Conference extends Model
         'weight',
         'directory_id',
     ];
-
     protected $with = ['contact', 'mujiPresences', 'sfuPresence'];
 
     public const XMLNS_NOTIFICATIONS = 'urn:xmpp:notification-settings:0';
-
     public const XMLNS_PINNED = 'urn:xmpp:bookmarks-pinning:0';
-
     public const XMLNS_MOVIM_CONFERENCE_CALL = '{https://movim.eu}bookmarks-conference-call';
-
     public const NOTIFICATIONS = [
         0 => 'never',
         1 => 'on-mention',
@@ -305,8 +299,8 @@ class Conference extends Model
     public function getNotifKeyAttribute(): string
     {
         return $this->isFromSpace()
-            ? 'space'.$this->space_server.$this->space_node.'|'.$this->conference
-            : 'chat|'.$this->conference;
+            ? 'space' . $this->space_server . $this->space_node . '|' . $this->conference
+            : 'chat|' . $this->conference;
     }
 
     public function getRouteAttribute(): string
@@ -333,7 +327,7 @@ class Conference extends Model
 
     public function getSpaceCounterIdAttribute(): string
     {
-        return cleanupId($this->space_server.$this->space_node.'-counter');
+        return cleanupId($this->space_server . $this->space_node . '-counter');
     }
 
     public function getTitleAttribute(): string

@@ -30,7 +30,7 @@ class Stories extends Base
 
                 $this->notif(
                     key: 'news',
-                    title: '📝 '.__('stories.new_story', $contact->truename),
+                    title: '📝 ' . __('stories.new_story', $contact->truename),
                     body: $post->title,
                     url: $this->route('chat'),
                     picture: $contact->getPicture(),

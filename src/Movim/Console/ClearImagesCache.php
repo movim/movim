@@ -34,11 +34,11 @@ class ClearImagesCache extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $imagesPath = glob(PUBLIC_CACHE_PATH.'*.jpg', GLOB_NOSORT);
-        $imagesPath = array_merge($imagesPath, glob(PUBLIC_CACHE_PATH.'*.webp', GLOB_NOSORT));
+        $imagesPath = glob(PUBLIC_CACHE_PATH . '*.jpg', GLOB_NOSORT);
+        $imagesPath = array_merge($imagesPath, glob(PUBLIC_CACHE_PATH . '*.webp', GLOB_NOSORT));
 
         $helper = new QuestionHelper;
-        $question = new ConfirmationQuestion(count($imagesPath).' images will be deleted from the file cache and from the database, Movim will have to redownload them from the XMPP network after the daemon restart, are you sure about this [y/N] ? ', false);
+        $question = new ConfirmationQuestion(count($imagesPath) . ' images will be deleted from the file cache and from the database, Movim will have to redownload them from the XMPP network after the daemon restart, are you sure about this [y/N] ? ', false);
 
         if ($helper->ask($input, $output, $question)) {
             // Files

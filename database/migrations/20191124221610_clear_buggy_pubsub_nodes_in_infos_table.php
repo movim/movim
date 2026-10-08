@@ -10,5 +10,7 @@ class ClearBuggyPubsubNodesInInfosTable extends Migration
         Info::where('node', '0')->delete();
     }
 
-    public function down() {}
+    public function down()
+    {
+    }
 }

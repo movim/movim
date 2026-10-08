@@ -9,7 +9,6 @@ use Moxl\Xec\Action;
 class MessageReject extends Action
 {
     protected $_to;
-
     protected $_id;
 
     public function request()

@@ -8,13 +8,9 @@ use Moxl\Xec\Action;
 class Send extends Action
 {
     protected $_to;
-
     protected $_id;
-
     protected $_name;
-
     protected $_version;
-
     protected $_os;
 
     public function request()

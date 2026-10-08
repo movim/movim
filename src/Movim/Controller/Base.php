@@ -14,17 +14,11 @@ use Movim\Template\Builder;
 class Base
 {
     public string $name = 'main'; // The name of the current page
-
     protected bool $session_only = false; // The page is protected by a session?
-
     protected bool $set_cookie = true; // Set a fresh cookie
-
     protected bool $raw = false; // Display only the content?
-
     protected bool $public = false; // It's a public page
-
     protected bool $js_check = true; // Browser check if Javascript is enabled
-
     protected ?Builder $page;
 
     public function __construct(protected ?User $user = null)
@@ -49,7 +43,7 @@ class Base
     protected function redirect(string $page, ?array $params = null)
     {
         $url = Route::urlize($page, $params);
-        header('Location: '.$url);
+        header('Location: ' . $url);
         exit;
     }
 
@@ -140,8 +134,9 @@ class Base
 
     public function listWidgets(): array
     {
-        preg_match_all('/widget(\(\'(\w+)\'\))/',
-            file_get_contents(VIEWS_PATH.'/'.$this->name.'.tpl'),
+        preg_match_all(
+            '/widget(\(\'(\w+)\'\))/',
+            file_get_contents(VIEWS_PATH . '/' . $this->name . '.tpl'),
             $matches
         );
 
@@ -155,7 +150,11 @@ class Base
         return $widgets;
     }
 
-    public function load() {}
+    public function load()
+    {
+    }
 
-    public function dispatch() {}
+    public function dispatch()
+    {
+    }
 }

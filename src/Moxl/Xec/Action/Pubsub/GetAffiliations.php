@@ -9,9 +9,7 @@ use Moxl\Xec\Action;
 class GetAffiliations extends Action
 {
     protected ?string $_to;
-
     protected ?string $_node;
-
     protected ?string $_asJid = null;
 
     public function request()

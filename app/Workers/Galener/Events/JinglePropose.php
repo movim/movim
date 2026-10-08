@@ -21,7 +21,7 @@ class JinglePropose extends Event
                 to: $this->node->from,
                 from: $this->node->to,
                 id: (string) $this->node->stanza->propose->attributes()->id,
-                reasonText: 'Galener: propose from '.(string) $this->node->from.' had no matching member/conference yet'
+                reasonText: 'Galener: propose from ' . (string) $this->node->from . ' had no matching member/conference yet'
             ));
         }
 

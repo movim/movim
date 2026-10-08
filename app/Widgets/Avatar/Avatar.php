@@ -100,7 +100,7 @@ class Avatar extends Base
             return;
         }
 
-        $key = $this->me->id.'banner';
+        $key = $this->me->id . 'banner';
 
         $image = new Image;
         $image->fromBase64($banner->photobin->value);

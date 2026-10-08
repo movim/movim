@@ -1,4 +1,14 @@
 {
+    "preset": "psr12",
+    "rules": {
+        "concat_space": {
+            "spacing": "one"
+        },
+        "new_with_parentheses": {
+            "anonymous_class": false,
+            "named_class": false
+        }
+    },
     "exclude": [
         "cache"
     ]

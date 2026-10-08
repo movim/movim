@@ -10,9 +10,7 @@ namespace Movim\Controller;
 class Ajax extends Base
 {
     protected $funclist = [];
-
     protected static $instance;
-
     protected $widgetlist = [];
 
     public function __construct()
@@ -37,7 +35,7 @@ class Ajax extends Base
         $buffer = '<script type="text/javascript" class="inline">';
         $buffer .= $this->genJsContent();
 
-        return $buffer."</script>\n";
+        return $buffer . "</script>\n";
     }
 
     /**
@@ -54,8 +52,8 @@ class Ajax extends Base
         foreach ($this->funclist as $key => $funcdef) {
             $parlist = implode(',', $funcdef['params']);
 
-            $buffer .= 'function '.$funcdef['object'].'_'
-                .$funcdef['funcname'].'('.$parlist.'){';
+            $buffer .= 'function ' . $funcdef['object'] . '_'
+                . $funcdef['funcname'] . '(' . $parlist . '){';
 
             $function = "MWSs('";
             if ($funcdef['http'] === 1) {
@@ -66,10 +64,10 @@ class Ajax extends Base
             }
 
             $buffer .=
-                $function.
-                $funcdef['object']."','".
-                $funcdef['funcname']."'".
-                (! empty($funcdef['params']) ? ',['.$parlist.']' : '');
+                $function .
+                $funcdef['object'] . "','" .
+                $funcdef['funcname'] . "'" .
+                (! empty($funcdef['params']) ? ',[' . $parlist . ']' : '');
             $buffer .= ')}';
         }
 
@@ -105,7 +103,7 @@ class Ajax extends Base
             $http = 2;
         }
 
-        $this->funclist[$widget.$funcname] = [
+        $this->funclist[$widget . $funcname] = [
             'object' => $widget,
             'funcname' => $funcname,
             'params' => $params,

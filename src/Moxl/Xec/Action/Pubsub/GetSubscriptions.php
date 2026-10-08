@@ -10,11 +10,8 @@ use Moxl\Xec\Action;
 class GetSubscriptions extends Action
 {
     protected $_to;
-
     protected $_node;
-
     protected $_notify = true;
-
     protected $_sync;
 
     public function request()

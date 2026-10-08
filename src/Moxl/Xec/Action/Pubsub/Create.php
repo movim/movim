@@ -8,9 +8,7 @@ use Moxl\Xec\Action;
 class Create extends Action
 {
     protected $_to;
-
     protected $_node;
-
     protected $_name;
 
     public function request()

@@ -8,37 +8,21 @@ use Movim\Route;
 class PubsubAtom
 {
     public $id;
-
     public $name;
-
     public $jid;
-
     public $content;
-
     public $title;
-
     public array $links = [];
-
     public array $enclosures = [];
-
     public $contentxhtml = false;
-
     public $repost;
-
     public $reply;
-
     public $to;
-
     public $node;
-
     public $geo = false;
-
     public $comments = false;
-
     public $open = false;
-
     public $tags = [];
-
     public $published = false;
 
     public const ATOM_NAMESPACE = 'http://www.w3.org/2005/Atom';
@@ -73,12 +57,12 @@ class PubsubAtom
         if ($this->name) {
             $author->appendChild($dom->createElement('name', $this->name));
         }
-        $author->appendChild($dom->createElement('uri', 'xmpp:'.$this->jid));
+        $author->appendChild($dom->createElement('uri', 'xmpp:' . $this->jid));
         $entry->appendChild($author);
 
         $link = $dom->createElement('link');
         $link->setAttribute('rel', 'alternate');
-        $link->setAttribute('href', 'xmpp:'.$this->to.'?;node='.$this->node.';item='.$this->id);
+        $link->setAttribute('href', 'xmpp:' . $this->to . '?;node=' . $this->node . ';item=' . $this->id);
         $entry->appendChild($link);
 
         if ($this->comments) {
@@ -87,11 +71,11 @@ class PubsubAtom
             $link->setAttribute('title', 'comments');
 
             if ($this->repost) {
-                $link->setAttribute('href', 'xmpp:'.$this->repost[0].'?;node='.Post::COMMENTS_NODE.'/'.$this->repost[2]);
+                $link->setAttribute('href', 'xmpp:' . $this->repost[0] . '?;node=' . Post::COMMENTS_NODE . '/' . $this->repost[2]);
             } elseif ($this->comments === true) {
-                $link->setAttribute('href', 'xmpp:'.$this->to.'?;node='.Post::COMMENTS_NODE.'/'.$this->id);
+                $link->setAttribute('href', 'xmpp:' . $this->to . '?;node=' . Post::COMMENTS_NODE . '/' . $this->id);
             } else {
-                $link->setAttribute('href', 'xmpp:'.$this->comments.'?;node='.Post::COMMENTS_NODE.'/'.$this->id);
+                $link->setAttribute('href', 'xmpp:' . $this->comments . '?;node=' . Post::COMMENTS_NODE . '/' . $this->id);
             }
 
             $entry->appendChild($link);
@@ -137,7 +121,7 @@ class PubsubAtom
         if ($this->repost) {
             $link = $dom->createElement('link');
             $link->setAttribute('rel', 'via');
-            $link->setAttribute('href', 'xmpp:'.$this->repost[0].'?;node='.$this->repost[1].';item='.$this->repost[2]);
+            $link->setAttribute('href', 'xmpp:' . $this->repost[0] . '?;node=' . $this->repost[1] . ';item=' . $this->repost[2]);
             $entry->appendChild($link);
         }
 

@@ -23,7 +23,7 @@ class ClearTemplatesCache extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         foreach (glob(
-            CACHE_PATH.
+            CACHE_PATH .
                 '*.rtpl.*',
             GLOB_NOSORT
         ) as $cacheFile) {

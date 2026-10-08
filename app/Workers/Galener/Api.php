@@ -43,7 +43,7 @@ class Api
         foreach ($this->conferencesManager->conferences as $conference) {
             $conferences[$conference->getRoomJid()] = [
                 'sfu_jid' => $conference->getSFUJid(),
-                'started_at' => $conference->startedAt ? $conference->startedAt->format('d-m-Y - H:i:s').' GMT' : null,
+                'started_at' => $conference->startedAt ? $conference->startedAt->format('d-m-Y - H:i:s') . ' GMT' : null,
                 'connections' => [],
             ];
 

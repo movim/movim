@@ -47,7 +47,7 @@ class Syndication extends Base
             ->get();
 
         header('Content-Type: application/atom+xml; charset=UTF-8');
-        header('Content-Disposition: inline; filename="'.\cleanupId($from.'-'.$node).'.atom"');
+        header('Content-Disposition: inline; filename="' . \cleanupId($from . '-' . $node) . '.atom"');
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->formatOutput = true;
@@ -100,7 +100,7 @@ class Syndication extends Base
             $alternate->setAttribute('href', $this->route('community', [$from, $node]));
         }
 
-        $feed->appendChild($dom->createElement('id', 'xmpp:'.$from.'?;node='.rawurlencode($node)));
+        $feed->appendChild($dom->createElement('id', 'xmpp:' . $from . '?;node=' . rawurlencode($node)));
 
         $feed->appendChild($generator = $dom->createElement('generator', 'Movim'));
         $generator->setAttribute('uri', 'https://movim.eu');

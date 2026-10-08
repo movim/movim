@@ -9,17 +9,11 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 class SetMetadata extends Action
 {
     protected $_data;
-
     protected $_to = false;
-
     protected $_node = false;
-
     protected $_url = false;
-
     protected $_widthMetadata = 350;
-
     protected $_heightMetadata = 350;
-
     protected bool $_withPublishOption = true;
 
     public function request()

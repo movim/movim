@@ -10,5 +10,7 @@ class ClearAvatarHashContactsTable extends Migration
         Contact::whereNotNull('avatarhash')->update(['avatarhash' => null]);
     }
 
-    public function down() {}
+    public function down()
+    {
+    }
 }

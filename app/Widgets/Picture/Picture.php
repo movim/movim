@@ -12,7 +12,6 @@ use React\Http\Browser;
 class Picture extends Base
 {
     private int $compressLimit = SMALL_PICTURE_LIMIT * 6;
-
     private int $sizeLimit = 1920;
 
     public function display()
@@ -68,8 +67,8 @@ class Picture extends Base
                     }
 
                     header_remove('Content-Type');
-                    header('Content-Type: image/'.DEFAULT_PICTURE_FORMAT);
-                    header('Cache-Control: max-age='. 3600 * 24);
+                    header('Content-Type: image/' . DEFAULT_PICTURE_FORMAT);
+                    header('Cache-Control: max-age=' . 3600 * 24);
                     echo $p ? $p->getImage()->getImagesBlob() : $body;
 
                     return;
@@ -87,9 +86,9 @@ class Picture extends Base
             $trace = '';
         }
 
-        $error = $errstr.' in '.$errfile.' (line '.$errline.")\n";
+        $error = $errstr . ' in ' . $errfile . ' (line ' . $errline . ")\n";
         $fullError = $trace != ''
-            ? $error.'Trace'."\n".$trace
+            ? $error . 'Trace' . "\n" . $trace
             : $error;
 
         logError($fullError);

@@ -11,11 +11,8 @@ use Moxl\Xec\Action\Pubsub\GetItem;
 class CommentPublish extends Action
 {
     protected $_to;
-
     protected $_node;
-
     protected $_parentid;
-
     protected PubsubAtom $_atom;
 
     public function __construct()
@@ -40,7 +37,7 @@ class CommentPublish extends Action
 
     public function setId(string $id)
     {
-        $this->_node = Post::COMMENTS_NODE.'/'.$id;
+        $this->_node = Post::COMMENTS_NODE . '/' . $id;
         $this->_atom->node = $this->_node;
 
         return $this;

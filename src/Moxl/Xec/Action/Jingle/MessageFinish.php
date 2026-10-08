@@ -8,9 +8,7 @@ use Moxl\Xec\Action;
 class MessageFinish extends Action
 {
     protected $_to;
-
     protected $_id;
-
     protected $_reason;
 
     public function request()

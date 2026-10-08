@@ -10,21 +10,13 @@ use Moxl\Xec\Action;
 class Muc extends Action
 {
     public static $mucId = 'MUC_ID';
-
     protected $_to;
-
     protected $_nickname;
-
     protected $_create = false;
-
     protected $_mujiPreparing = false;
-
     protected $_mujiLeaving = false;
-
     protected ?DOMElement $_muji = null;
-
     protected ?string $_mavsince = null;
-
     protected bool $_withVideo = false;
 
     // Disable the event
@@ -44,11 +36,11 @@ class Muc extends Action
          * Some servers doesn't return the ID, so save it in another session key-value
          * and use the to and nickname as a key ¯\_(ツ)_/¯
          */
-        $session->set(self::$mucId.$this->_to.'/'.$this->_nickname, $this->stanzaId);
+        $session->set(self::$mucId . $this->_to . '/' . $this->_nickname, $this->stanzaId);
 
         $this->send(Presence::maker(
             $this->me,
-            to: $this->_to.'/'.$this->_nickname,
+            to: $this->_to . '/' . $this->_nickname,
             muc: true,
             mujiPreparing: $this->_mujiPreparing,
             muji: $this->_muji,
@@ -233,7 +225,7 @@ class Muc extends Action
         if (substr_count($this->_nickname, '_') > 5) {
             $this->deliver();
         } else {
-            $this->setNickname($this->_nickname.'_');
+            $this->setNickname($this->_nickname . '_');
             $this->request();
             $this->deliver();
         }

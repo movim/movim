@@ -11,7 +11,6 @@ use Moxl\Utils;
 class Storage
 {
     public static $node = 'movim:configuration';
-
     public static $nodeConfig = [
         'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
         'pubsub#persist_items' => 'true',

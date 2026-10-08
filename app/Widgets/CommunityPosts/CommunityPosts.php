@@ -14,7 +14,6 @@ use Moxl\Xec\Payload\Packet;
 class CommunityPosts extends Base
 {
     private $_paging = 12;
-
     private $_beforeAfter = 'b=';
 
     public function load()
@@ -60,7 +59,7 @@ class CommunityPosts extends Base
 
             $this->rpc(
                 'MovimTpl.fill',
-                '#'.cleanupId($parent->nodeid),
+                '#' . cleanupId($parent->nodeid),
                 $info && $info->isGallery()
                     ? $this->prepareTicket($parent)
                     : $this->preparePost($parent)
@@ -78,7 +77,7 @@ class CommunityPosts extends Base
 
         $this->rpc(
             'MovimTpl.replace',
-            '#'.cleanupId($post->nodeid),
+            '#' . cleanupId($post->nodeid),
             $info->isGallery()
                 ? $this->prepareTicket($post)
                 : $this->preparePost($post)
@@ -99,7 +98,7 @@ class CommunityPosts extends Base
 
         $this->rpc(
             'MovimTpl.fill',
-            '#communityposts.'.slugify('c'.$origin.'_'.$node),
+            '#communityposts.' . slugify('c' . $origin . '_' . $node),
             $view->draw('_communityposts_presencerequired')
         );
     }
@@ -143,7 +142,7 @@ class CommunityPosts extends Base
 
         $this->rpc(
             'MovimTpl.fill',
-            '#communityposts.'.slugify('c'.$origin.'_'.$node),
+            '#communityposts.' . slugify('c' . $origin . '_' . $node),
             $html
         );
         $this->rpc('MovimUtils.enhanceArticlesContent');
@@ -275,7 +274,7 @@ class CommunityPosts extends Base
             $view->assign('previouspage', $this->route(
                 $node == AppPost::MICROBLOG_NODE
                     ? 'contact' : 'community',
-                [$origin, $node, $this->_beforeAfter.$first]
+                [$origin, $node, $this->_beforeAfter . $first]
             ));
         }
 
@@ -293,6 +292,6 @@ class CommunityPosts extends Base
     public function display()
     {
         $node = $this->get('n') ?? AppPost::MICROBLOG_NODE;
-        $this->view->assign('class', slugify('c'.$this->get('s').'_'.$node));
+        $this->view->assign('class', slugify('c' . $this->get('s') . '_' . $node));
     }
 }

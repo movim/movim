@@ -30,7 +30,7 @@ class Menu extends Base
 
     public function onRetract(Packet $packet)
     {
-        $this->rpc('MovimTpl.remove', '#'.cleanupId($packet->content['nodeid']));
+        $this->rpc('MovimTpl.remove', '#' . cleanupId($packet->content['nodeid']));
     }
 
     public function onSubscription(Packet $packet)
@@ -64,7 +64,7 @@ class Menu extends Base
         }
 
         if ($post->isEdited() && ! $post->isComment()) {
-            $this->rpc('MovimTpl.fill', '#menu_widget #'.cleanupId($post->nodeid), $this->preparePost($post));
+            $this->rpc('MovimTpl.fill', '#menu_widget #' . cleanupId($post->nodeid), $this->preparePost($post));
 
             return;
         }
@@ -76,8 +76,8 @@ class Menu extends Base
             if ($parent && $contact) {
                 $this->notif(
                     key: 'comments',
-                    title: ($post->isLike()) ? '❤️ '.$contact->truename : $post->title,
-                    body: '📝 '.$parent->title,
+                    title: ($post->isLike()) ? '❤️ ' . $contact->truename : $post->title,
+                    body: '📝 ' . $parent->title,
                     url: $this->route('post', [$parent->server, $parent->node, $parent->nodeid]),
                     picture: $contact->getPicture(),
                     time: 4
@@ -94,7 +94,7 @@ class Menu extends Base
                 if (! $post->isMine($this->me)) {
                     $this->notif(
                         key: 'news',
-                        title: '📝 '.$contact->truename,
+                        title: '📝 ' . $contact->truename,
                         body: $post->title,
                         url: $this->route('post', [$post->server, $post->node, $post->nodeid]),
                         picture: $contact->getPicture(),

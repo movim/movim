@@ -13,17 +13,12 @@ class Subscription extends Model
     use Compoships;
 
     public $incrementing = false;
-
     protected $primaryKey = ['jid', 'server', 'node'];
-
     protected $guarded = [];
 
     public const PUBLIC_NODE = 'urn:xmpp:pubsub:subscription';
-
     public const SPACE_NODE = '{https://movim.eu}spaces_subscriptions_node';
-
     public const PRIVATE_NODE = 'urn:xmpp:pubsub:movim-public-subscription';
-
     public const SUBSCRIPTION_XMLNS = 'urn:xmpp:pubsub:subscription:0';
 
     public static function saveMany(array $subscriptions)
@@ -103,12 +98,12 @@ class Subscription extends Model
 
     public function getCounterIdAttribute(): string
     {
-        return cleanupId($this->server.$this->node.'-counter');
+        return cleanupId($this->server . $this->node . '-counter');
     }
 
     public function getUriAttribute(): string
     {
-        return 'xmpp:'.$this->server.'?;node='.$this->node;
+        return 'xmpp:' . $this->server . '?;node=' . $this->node;
     }
 
     public function spaceUnreads(User $user): int
@@ -135,7 +130,7 @@ class Subscription extends Model
 
     public function scopeNotComments(Builder $query)
     {
-        return $query->where('node', 'not like', Post::COMMENTS_NODE.'/%');
+        return $query->where('node', 'not like', Post::COMMENTS_NODE . '/%');
     }
 
     public function toArray()

@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use App\Workers\Resolver\Resolver;
 use Movim\Bootstrap;
@@ -33,7 +33,7 @@ $server->on('error', function (Throwable $e) {
     \logError($e);
 });
 
-$path = 'unix://'.RESOLVER_SOCKET;
+$path = 'unix://' . RESOLVER_SOCKET;
 // $path = '127.0.0.1:8899';
 $server->listen(new SocketServer($path));
 

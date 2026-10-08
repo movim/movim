@@ -10,15 +10,10 @@ namespace Movim;
 class Image
 {
     private $_key;
-
     private $_im;
-
     private $_inMemory = false;
-
     public static $formats = ['jpeg' => '.jpg', 'png' => '.png', 'webp' => '.webp', 'gif' => '.gif'];
-
     public static $hash = 'sha256'; // Cache need to be cleared in a migration if changed
-
     private static $originalType = '_o';
 
     public function __construct()
@@ -58,9 +53,9 @@ class Image
     {
         if (! empty($this->_key)) {
             return $this->fromPath(
-                PUBLIC_PATH.$directory.
-                    hash(Image::$hash, $this->_key).
-                    self::$originalType.
+                PUBLIC_PATH . $directory .
+                    hash(Image::$hash, $this->_key) .
+                    self::$originalType .
                     self::$formats[$format]
             );
         }
@@ -159,41 +154,40 @@ class Image
         }
 
         $type = $width != null
-            ? '_'.$width
+            ? '_' . $width
             : self::$originalType;
 
         /**
          * The file is in the cache and we can directly return it
          */
         if (file_exists(
-            PUBLIC_PATH.$directory.hash(Image::$hash, $key).
-                $type.self::$formats[$format]
+            PUBLIC_PATH . $directory . hash(Image::$hash, $key) .
+                $type . self::$formats[$format]
         )) {
             return urilize(
-                $directory.hash(Image::$hash, $key).$type.self::$formats[$format],
+                $directory . hash(Image::$hash, $key) . $type . self::$formats[$format],
                 $noTime
             );
         }
 
         /**
          * The file is not in the cache but we do have the original to build the requested size
-         */
-        elseif (
+         */ elseif (
             $width != null
             && file_exists(
-                PUBLIC_PATH.$directory.hash(Image::$hash, $key).
-                    self::$originalType.self::$formats[$format]
+                PUBLIC_PATH . $directory . hash(Image::$hash, $key) .
+                    self::$originalType . self::$formats[$format]
             )
         ) {
             $im = new Image;
             $im->setKey($key);
             if (! $im->load($format)) {
-                logError('Cannot load '.$key.' original file');
+                logError('Cannot load ' . $key . ' original file');
             }
             $im->save($width, $height, $format);
 
             return urilize(
-                $directory.hash(Image::$hash, $key).$type.self::$formats[$format],
+                $directory . hash(Image::$hash, $key) . $type . self::$formats[$format],
                 $noTime
             );
         }
@@ -212,12 +206,12 @@ class Image
             return;
         }
 
-        $type = $width != null ? '_'.$width
+        $type = $width != null ? '_' . $width
             : self::$originalType;
 
         if (! $this->_inMemory) {
             // Cleanup the existing files
-            $path = PUBLIC_PATH.$directory.hash(Image::$hash, $this->_key).$type.self::$formats[$format];
+            $path = PUBLIC_PATH . $directory . hash(Image::$hash, $this->_key) . $type . self::$formats[$format];
 
             // If the file exists we replace it
             if (file_exists($path)) {
@@ -227,9 +221,9 @@ class Image
                 if ($width == false) {
                     foreach (
                         glob(
-                            PUBLIC_PATH.$directory.
-                                hash(Image::$hash, $this->_key).
-                                '*'.self::$formats[$format],
+                            PUBLIC_PATH . $directory .
+                                hash(Image::$hash, $this->_key) .
+                                '*' . self::$formats[$format],
                             GLOB_NOSORT
                         ) as $pathThumb
                     ) {

@@ -39,7 +39,7 @@ class Stream
     public static function initComponentHandshake(string $sid, string $password): string
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $stream = $dom->createElement('handshake', sha1($sid.$password));
+        $stream = $dom->createElement('handshake', sha1($sid . $password));
         $dom->appendChild($stream);
 
         return $dom->saveXML($dom->documentElement);
@@ -84,7 +84,7 @@ class Stream
         $bind->appendChild($enable);
 
         $userAgent = $dom->createElement('user-agent');
-        $userAgent->setAttribute('id', generateUUID($tag.APP_VERSION.' '.BASE_URI));
+        $userAgent->setAttribute('id', generateUUID($tag . APP_VERSION . ' ' . BASE_URI));
         $userAgent->appendChild($dom->createElement('software', $tag));
 
         $authenticate->appendChild($userAgent);

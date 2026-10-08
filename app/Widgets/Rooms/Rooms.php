@@ -98,7 +98,7 @@ class Rooms extends Base
             ! empty($packet->content)
                 ? 'MovimUtils.addClass'
                 : 'MovimUtils.removeClass',
-            '#'.cleanupId($packet->from.'_rooms_primary'),
+            '#' . cleanupId($packet->from . '_rooms_primary'),
             'composing'
         );
     }
@@ -231,7 +231,7 @@ class Rooms extends Base
 
             $this->rpc(
                 'MovimTpl.fill',
-                '#'.cleanupId($room.'_rooms_primary'),
+                '#' . cleanupId($room . '_rooms_primary'),
                 $this->prepareRoomCounter($conference, $conference->getPicture())
             );
 
@@ -293,7 +293,7 @@ class Rooms extends Base
             return;
         }
 
-        $this->rpc('MovimUtils.addClass', '#'.\cleanupId($room), 'connecting');
+        $this->rpc('MovimUtils.addClass', '#' . \cleanupId($room), 'connecting');
 
         $r = $this->xmpp(new Request);
         $r->setTo($room)
@@ -356,7 +356,7 @@ class Rooms extends Base
         $this->ajaxHttpGet();
 
         if ($resource) {
-            linker($this->sessionId)->session->delete($room.'/'.$resource);
+            linker($this->sessionId)->session->delete($room . '/' . $resource);
 
             $pu = $this->xmpp(new Unavailable);
             $pu->setTo($room)

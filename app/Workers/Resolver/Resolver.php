@@ -19,9 +19,7 @@ use function React\Async\async;
 class Resolver
 {
     private array $queries = [];
-
     private Browser $browser;
-
     private $maxSizeCache = 50;
 
     public function __construct()

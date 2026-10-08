@@ -65,7 +65,7 @@ class Notif extends Base
         ?array $data = [],
     ) {
         if ($picture == null) {
-            $picture = BASE_URI.'/theme/img/app/128.png';
+            $picture = BASE_URI . '/theme/img/app/128.png';
         }
 
         $data['url'] = $url;

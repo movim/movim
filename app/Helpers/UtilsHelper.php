@@ -32,7 +32,7 @@ function logError(string|Stringable $logs, ?array $context = [])
     $log = new Logger('movim');
     $log->pushHandler(new SyslogHandler('movim'));
 
-    $stream = new StreamHandler(config('paths.log').'/errors.log');
+    $stream = new StreamHandler(config('paths.log') . '/errors.log');
     $stream->setFormatter(new LineFormatter(null, null, true, true));
     $log->pushHandler($stream);
 
@@ -48,7 +48,7 @@ function logInfo(string|Stringable $logs)
         $log = new Logger('movim');
         $log->pushHandler(new SyslogHandler('movim'));
 
-        $stream = new StreamHandler(config('paths.log').'/info.log');
+        $stream = new StreamHandler(config('paths.log') . '/info.log');
         $stream->setFormatter(new LineFormatter(null, null, true));
         $log->pushHandler($stream);
 
@@ -62,7 +62,7 @@ function logInfo(string|Stringable $logs)
 function logDebug($logs)
 {
     $log = new Logger('movim');
-    $log->pushHandler(new StreamHandler(config('paths.log').'/debug.log'));
+    $log->pushHandler(new StreamHandler(config('paths.log') . '/debug.log'));
     if (is_array($logs)) {
         $log->debug('', $logs);
     } else {
@@ -89,7 +89,7 @@ function linker(string $sid): ?Linker
 function config(string $key, $default = null)
 {
     $path = explode('.', $key);
-    $config = require CONFIG_PATH.$path[0].'.php';
+    $config = require CONFIG_PATH . $path[0] . '.php';
 
     if (! isset($path[1])) {
         return $config;
@@ -150,7 +150,7 @@ function listOpcacheCompilableFiles(): array
     $files = [];
 
     foreach (['vendor', 'app', 'src'] as $dir) {
-        $directory = new RecursiveDirectoryIterator(DOCUMENT_ROOT.'/'.$dir);
+        $directory = new RecursiveDirectoryIterator(DOCUMENT_ROOT . '/' . $dir);
         $iterator = new RecursiveIteratorIterator($directory);
         $regex = new RegexIterator($iterator, '/^.+\.php$/i', RecursiveRegexIterator::GET_MATCH);
 
@@ -203,7 +203,7 @@ function resolveInfos($postCollection)
 {
     $serverNodes = $postCollection->map(function ($item) {
         return ['server' => $item->server, 'node' => $item->node];
-    })->unique(fn ($item) => $item['server'].$item['node']);
+    })->unique(fn ($item) => $item['server'] . $item['node']);
 
     if ($serverNodes->isNotEmpty()) {
         $first = $serverNodes->first();
@@ -219,10 +219,10 @@ function resolveInfos($postCollection)
             ]);
         });
 
-        $infos = $infos->get()->keyBy(fn ($item) => $item['server'].$item['node']);
+        $infos = $infos->get()->keyBy(fn ($item) => $item['server'] . $item['node']);
 
         $postCollection->map(function ($item) use ($infos) {
-            $item->info = $infos->get($item->server.$item->node);
+            $item->info = $infos->get($item->server . $item->node);
 
             return $item;
         });
@@ -629,7 +629,7 @@ function getImgurThumbnail(string $uri)
     preg_match('/https?:\/\/i.imgur.com\/([a-zA-Z0-9]{7})(.*)/', $uri, $matches);
 
     if (! empty($matches)) {
-        return 'https://i.imgur.com/'.$matches[1].'g'.$matches[2];
+        return 'https://i.imgur.com/' . $matches[1] . 'g' . $matches[2];
     }
 }
 
@@ -790,7 +790,7 @@ function requestAsyncURL(string $url, int $timeout = 10, array $headers = []): P
 function requestResolverWorker(string $url, int $timeout = 30): PromiseInterface
 {
     $connector = new FixedUriConnector(
-        'unix://'.RESOLVER_SOCKET,
+        'unix://' . RESOLVER_SOCKET,
         new UnixConnector
     );
 
@@ -815,7 +815,7 @@ function requestAvatarUrl(
     ?bool $banner = false
 ): PromiseInterface {
     $connector = new FixedUriConnector(
-        'unix://'.AVATAR_HANDLER_SOCKET,
+        'unix://' . AVATAR_HANDLER_SOCKET,
         new UnixConnector
     );
 
@@ -838,7 +838,7 @@ function requestAvatarBase64(
     string $type
 ): PromiseInterface {
     $connector = new FixedUriConnector(
-        'unix://'.AVATAR_HANDLER_SOCKET,
+        'unix://' . AVATAR_HANDLER_SOCKET,
         new UnixConnector
     );
 
@@ -871,7 +871,7 @@ function requestPusher(
     ?array $data = [],
 ): PromiseInterface {
     $connector = new FixedUriConnector(
-        'unix://'.PUSHER_SOCKET,
+        'unix://' . PUSHER_SOCKET,
         new UnixConnector
     );
 
@@ -937,7 +937,7 @@ function requestAPI(
         ->withHeader('Content-Type', 'application/x-www-form-urlencoded')
         ->withHeader('Host', $action);
 
-    $url = 'http:/'.$action;
+    $url = 'http:/' . $action;
 
     try {
         $query = $post
@@ -1014,7 +1014,7 @@ function __()
 function getBrowser(string $userAgent): ?string
 {
     $t = strtolower($userAgent);
-    $t = ' '.$t;
+    $t = ' ' . $t;
 
     if (strpos($t, 'opera')) {
         return 'Opera';

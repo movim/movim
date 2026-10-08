@@ -8,9 +8,7 @@ use Moxl\Xec\Action;
 class SessionUnmute extends Action
 {
     protected $_to;
-
     protected $_id;
-
     protected $_name = false;
 
     public function request()

@@ -8,7 +8,6 @@ use Moxl\Xec\Action;
 class TestCreate extends Action
 {
     protected $_to;
-
     protected $_node = 'test_node';
 
     public function request()

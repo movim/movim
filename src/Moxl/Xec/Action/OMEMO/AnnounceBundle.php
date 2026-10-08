@@ -8,13 +8,9 @@ use Moxl\Xec\Action;
 class AnnounceBundle extends Action
 {
     private string $_id;
-
     private string $_signedPreKeyPublic;
-
     private string $_signedPreKeySignature;
-
     private string $_identityKey;
-
     private array $_preKeys;
 
     public function request()

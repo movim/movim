@@ -13,7 +13,6 @@ namespace Movim;
 class Scheduler
 {
     protected static $instance;
-
     private $_stack = [];
 
     public static function getInstance()

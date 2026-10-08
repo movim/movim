@@ -8,7 +8,6 @@ use Moxl\Xec\Action;
 class Command extends Action
 {
     protected $_to;
-
     protected $_node;
 
     public function request()

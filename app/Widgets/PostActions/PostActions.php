@@ -33,7 +33,7 @@ class PostActions extends Base
             );
         }
 
-        $this->rpc('MovimTpl.remove', '#'.cleanupId($id));
+        $this->rpc('MovimTpl.remove', '#' . cleanupId($id));
     }
 
     public function ajaxLike(string $to, string $node, string $id)
@@ -84,7 +84,7 @@ class PostActions extends Base
             if (! $post->isComment()) {
                 $p = $this->xmpp(new Delete);
                 $p->setTo($post->commentserver)
-                    ->setNode(AppPost::COMMENTS_NODE.'/'.$post->commentnodeid)
+                    ->setNode(AppPost::COMMENTS_NODE . '/' . $post->commentnodeid)
                     ->request();
             }
         }

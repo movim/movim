@@ -9,9 +9,7 @@ use Moxl\Xec\Action;
 class SetAffiliations extends Action
 {
     protected string $_to;
-
     protected string $_node;
-
     protected array $_data;
 
     public function request()

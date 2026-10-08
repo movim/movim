@@ -89,7 +89,7 @@ class CommunityData extends Base
             $title = ! empty($info->name) ? $info->name : $node;
             $this->rpc(
                 'Notif.setTitle',
-                $this->__('page.communities').' • '.$title
+                $this->__('page.communities') . ' • ' . $title
             );
         }
 

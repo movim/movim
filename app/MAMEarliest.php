@@ -7,9 +7,9 @@ use Awobaz\Compoships\Database\Eloquent\Model;
 
 class MAMEarliest extends Model
 {
-    protected $table = 'mam_earliest';
-
     use Compoships;
+
+    protected $table = 'mam_earliest';
 
     public function user()
     {

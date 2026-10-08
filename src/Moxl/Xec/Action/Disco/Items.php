@@ -11,9 +11,7 @@ use Moxl\Xec\Action\Pubsub\GetItem;
 class Items extends Action
 {
     protected $_to;
-
     protected $_save = true;
-
     protected $_manual = false;
 
     public function request()

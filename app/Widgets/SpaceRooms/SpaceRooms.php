@@ -59,7 +59,7 @@ class SpaceRooms extends Base
 
     public function onRoomRegistrationRequired(Packet $packet)
     {
-        $this->rpc('MovimUtils.addClass', '#space'.cleanupId($packet->content), 'disabled');
+        $this->rpc('MovimUtils.addClass', '#space' . cleanupId($packet->content), 'disabled');
     }
 
     public function onMujiLeaving(Packet $packet)
@@ -69,7 +69,7 @@ class SpaceRooms extends Base
 
     public function onMujiOrSFUPresence(Packet $packet)
     {
-        $sessionKey = 'muji_'.$packet->content->jid;
+        $sessionKey = 'muji_' . $packet->content->jid;
         $isMuji = linker($this->sessionId)->session->get($sessionKey);
 
         if ($isMuji === false) {
@@ -237,7 +237,7 @@ class SpaceRooms extends Base
 
         $this->rpc('Dialog.clear');
 
-        $id = generateUUID().'@'.$this->me->session->getChatroomsServices()->first()->server;
+        $id = generateUUID() . '@' . $this->me->session->getChatroomsServices()->first()->server;
 
         // Send the presence
         $m = $this->xmpp(new Muc);
@@ -247,7 +247,7 @@ class SpaceRooms extends Base
             ->request();
 
         $config = [
-            'muc#roomconfig_pubsub' => 'xmpp:'.$form->server->value.'?;node='.$form->node->value,
+            'muc#roomconfig_pubsub' => 'xmpp:' . $form->server->value . '?;node=' . $form->node->value,
         ];
 
         if ($info = resolveServiceServerInfo((new Jid($id))->domain)) {

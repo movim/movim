@@ -47,12 +47,12 @@ class Route extends Base
         'tag' => ['t', 'i'],
         'upload' => ['f'],
     ];
-
     private ?string $_page = null;
-
     private ?string $_redirect = null;
 
-    public function __construct(public ?User $user = null) {}
+    public function __construct(public ?User $user = null)
+    {
+    }
 
     public function find(?string $page = null)
     {
@@ -92,7 +92,7 @@ class Route extends Base
             }
 
             if ($page > 0 && isset($this->routes[$page])) {
-                header('Location: '.Route::urlize($page, $request));
+                header('Location: ' . Route::urlize($page, $request));
                 exit;
             }
         }
@@ -120,24 +120,24 @@ class Route extends Base
         $routes = (new Route)->routes;
 
         if (isset($routes[$page])) {
-            $uri = BASE_URI.$page;
+            $uri = BASE_URI . $page;
 
             if ($params != null) {
                 if (is_array($params)) {
                     foreach ($params as $value) {
-                        $uri .= '/'.rawurlencode($value ?? '');
+                        $uri .= '/' . rawurlencode($value ?? '');
                     }
                 } else {
-                    $uri .= '/'.rawurlencode($params ?? '');
+                    $uri .= '/' . rawurlencode($params ?? '');
                 }
             }
 
-            $get = ($get !== []) ? '?'.http_build_query($get) : '';
-            $tab = ($tab != false) ? '#'.$tab : '';
+            $get = ($get !== []) ? '?' . http_build_query($get) : '';
+            $tab = ($tab != false) ? '#' . $tab : '';
 
-            return $uri.$get.$tab;
+            return $uri . $get . $tab;
         } else {
-            logError('Route not set for the page '.$page);
+            logError('Route not set for the page ' . $page);
 
             return null;
         }

@@ -17,14 +17,13 @@ use Moxl\Xec\Action\Message\Paused;
 class ChatOwnState
 {
     private $_to = null;
-
     private $_muc = false;
-
     private $_timer;
-
     private $_timeout = 5;
 
-    public function __construct(private User $user) {}
+    public function __construct(private User $user)
+    {
+    }
 
     public function composing(string $to, bool $muc = false)
     {

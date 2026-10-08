@@ -8,13 +8,13 @@ use Moxl\Xec\Action;
 class Unsubscribe extends Action
 {
     protected $_to;
-
     protected $_status;
 
     public function request()
     {
         $this->store();
-        $this->send(Presence::maker($this->me,
+        $this->send(Presence::maker(
+            $this->me,
             to: $this->_to,
             status: $this->_status,
             type: 'unsubscribe'

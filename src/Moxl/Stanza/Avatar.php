@@ -7,7 +7,6 @@ use Moxl\Utils;
 class Avatar
 {
     public const NODE_DATA = 'urn:xmpp:avatar:data';
-
     public const NODE_METADATA = 'urn:xmpp:avatar:metadata';
 
     public static $nodeConfig = [

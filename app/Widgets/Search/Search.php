@@ -59,7 +59,7 @@ class Search extends Base
                     ->whereIn('tag_id', function ($query) use ($key) {
                         $query->select('id')
                             ->from('tags')
-                            ->where('name', 'like', '%'.strtolower($key).'%');
+                            ->where('name', 'like', '%' . strtolower($key) . '%');
                     })
                     ->groupBy('name')
                     ->orderBy('count', 'desc')
@@ -75,7 +75,7 @@ class Search extends Base
                         ->whereIn('tag_id', function ($query) use ($key) {
                             $query->select('id')
                                 ->from('tags')
-                                ->where('name', 'like', '%'.strtolower($key).'%');
+                                ->where('name', 'like', '%' . strtolower($key) . '%');
                         });
                 })
                     ->whereIn('id', function ($query) {
@@ -104,7 +104,7 @@ class Search extends Base
 
             $view->assign('contacts', $contacts);
 
-            $communities = Info::whereRaw('lower(node) like ?', '%'.strtolower($key).'%')
+            $communities = Info::whereRaw('lower(node) like ?', '%' . strtolower($key) . '%')
                 ->whereRaw('lower(node) not like ?', 'urn:xmpp:microblog:0%')
                 ->whereCategory('pubsub')
                 ->whereType('leaf')

@@ -12,9 +12,7 @@ class MujiCallParticipant extends Model
     use Compoships;
 
     public $incrementing = false;
-
     protected $primaryKey = ['session_id', 'muji_call_id', 'jid'];
-
     protected $fillable = ['session_id', 'muji_call_id', 'jid', 'left_at', 'inviter'];
 
     public function session()

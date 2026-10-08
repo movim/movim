@@ -8,13 +8,9 @@ use Moxl\Xec\Action;
 class Reactions extends Action
 {
     protected $_to;
-
     protected $_muc;
-
     protected $_id;
-
     protected $_parentid;
-
     protected $_reactions;
 
     public function request()

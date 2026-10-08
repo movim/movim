@@ -7,11 +7,8 @@ use Fabiang\SASL\SASL;
 class Authentication
 {
     public ?string $username = null;
-
     public ?string $password = null;
-
     private $_mechanism;
-
     private ?string $_type;
 
     public function choose(array $mechanisms, array $channelBindings = [])

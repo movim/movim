@@ -13,7 +13,6 @@ use Psr\Http\Message\ResponseInterface;
 class GetRooms extends Action
 {
     protected ?string $_to = null;
-
     protected ?string $_node = null;
 
     public function request()
@@ -51,7 +50,7 @@ class GetRooms extends Action
         }
 
         foreach ($stanza->pubsub->items->item as $item) {
-            if ($item->conference && $item->conference->attributes()->xmlns == Bookmark2::NODE.Bookmark2::VERSION) {
+            if ($item->conference && $item->conference->attributes()->xmlns == Bookmark2::NODE . Bookmark2::VERSION) {
                 $conference = new Conference;
                 $conference->set(
                     $this->me->session,

@@ -8,11 +8,8 @@ use Moxl\Xec\Action;
 class Refuse extends Action
 {
     protected $_to;
-
     protected $_id;
-
     protected $_url;
-
     protected $_method;
 
     public function request()

@@ -10,22 +10,15 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 class Add extends Action
 {
     protected $_server;
-
     protected $_from;
-
     protected $_node;
-
     protected $_data = [];
-
     protected $_pepnode = Subscription::PUBLIC_NODE;
 
     // See https://github.com/processone/ejabberd/issues/3044#issuecomment-1605349858
     protected $_withPublishOption = true;
-
     protected ?string $_extensionsxml = null;
-
     protected ?int $_notify = null;
-
     protected ?bool $_pinned = false;
 
     public function request()

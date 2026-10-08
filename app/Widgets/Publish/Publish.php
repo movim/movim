@@ -83,7 +83,7 @@ class Publish extends Base
         $s = $this->xmpp(new Subscribe);
         $s->setTo($server)
             ->setFrom($this->me->id)
-            ->setNode(AppPost::COMMENTS_NODE.'/'.$parentid)
+            ->setNode(AppPost::COMMENTS_NODE . '/' . $parentid)
             ->request();
     }
 
@@ -133,7 +133,7 @@ class Publish extends Base
                 'allow_unsafe_links' => true,
             ]);
 
-            $doc->loadXML('<div>'.$converter->convert($draft->content).'</div>');
+            $doc->loadXML('<div>' . $converter->convert($draft->content) . '</div>');
             $view->assign('title', $draft->title);
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
@@ -353,7 +353,7 @@ class Publish extends Base
             $embed = $draft->embeds()->find($embedId);
 
             if ($embed) {
-                $this->rpc('MovimTpl.remove', '#'.$embed->HTMLId);
+                $this->rpc('MovimTpl.remove', '#' . $embed->HTMLId);
                 $embed->delete();
             }
         }
@@ -477,7 +477,7 @@ class Publish extends Base
             if ($embed) {
                 $embed->imagenumber = $imageNumber;
                 $embed->save();
-                $this->rpc('MovimTpl.remove', '#'.$embed->HTMLId);
+                $this->rpc('MovimTpl.remove', '#' . $embed->HTMLId);
                 $this->rpc('MovimTpl.append', '#publishembeds', $this->prepareEmbed($embed));
             }
         }
@@ -577,7 +577,7 @@ class Publish extends Base
         );
 
         if (! empty($slug) && strlen($slug) > 24) {
-            return $slug.'-'.\generateKey(6);
+            return $slug . '-' . \generateKey(6);
         }
 
         return \generateUUID();

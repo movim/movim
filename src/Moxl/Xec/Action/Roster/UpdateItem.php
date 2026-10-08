@@ -8,11 +8,8 @@ use Moxl\Xec\Action;
 class UpdateItem extends Action
 {
     protected $_to;
-
     protected $_from;
-
     protected $_name;
-
     protected $_group;
 
     public function request()

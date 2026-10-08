@@ -7,7 +7,6 @@ use Moxl\Utils;
 class Space
 {
     public const NAMESPACE = 'urn:xmpp:spaces:0';
-
     public const NODE_CONFIG = [
         'pubsub#type' => Space::NAMESPACE,
         'pubsub#notify_retract' => 'true',

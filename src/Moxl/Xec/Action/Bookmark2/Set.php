@@ -10,9 +10,7 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 class Set extends Action
 {
     protected ?Conference $_conference = null;
-
     protected ?string $_version = '1';
-
     protected bool $_withPublishOption = true;
 
     public function request()
@@ -66,7 +64,7 @@ class Set extends Action
     public function errorConflict(string $errorId, ?string $message = null)
     {
         $config = new SetConfig($this->me, sessionId: $this->sessionId);
-        $config->setNode(Bookmark2::NODE.$this->_version)
+        $config->setNode(Bookmark2::NODE . $this->_version)
             ->setData(Bookmark2::NODE_CONFIG)
             ->request();
 

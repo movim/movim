@@ -24,32 +24,20 @@ use Rain\Tpl;
 class Base
 {
     protected array $js = [];     // Contains javascripts
-
     protected array $css = [];    // Contains CSS files
-
     protected $ajax;        // Contains ajax client code
-
     protected ?string $name = null;
-
     protected $view;
-
     public ?User $me = null;
-
     protected $_view;
-
     public $baseUri;
-
     public array $events = [];
-
     public array $tasks = [];
-
     public array $filters = [];
 
     // Meta tags
     public $title;
-
     public $image;
-
     public $description;
 
     public function __construct(
@@ -78,7 +66,7 @@ class Base
 
             if (! $this->ajax->isRegistered($this->name)) {
                 // Generating Ajax calls.
-                $refl = new \ReflectionClass('App\\Widgets\\'.$this->name.'\\'.$this->name);
+                $refl = new \ReflectionClass('App\\Widgets\\' . $this->name . '\\' . $this->name);
                 $meths = $refl->getMethods();
 
                 foreach ($meths as $method) {
@@ -255,7 +243,7 @@ class Base
 
     public function emoji(string $id): string
     {
-        return BASE_URI.'theme/img/emojis/svg/'.$id.'.svg';
+        return BASE_URI . 'theme/img/emojis/svg/' . $id . '.svg';
     }
 
     public function rpc($funcname, ...$args)
@@ -266,9 +254,13 @@ class Base
         ))->call($funcname, ...$args);
     }
 
-    public function boot() {}
+    public function boot()
+    {
+    }
 
-    public function load() {}
+    public function load()
+    {
+    }
 
     /**
      * Generates the widget's HTML code.
@@ -295,7 +287,7 @@ class Base
             $this->display(...$params);
         }
 
-        return (file_exists($this->respath(strtolower($this->name).'.tpl', true)))
+        return (file_exists($this->respath(strtolower($this->name) . '.tpl', true)))
             ? trim((string) $this->view->draw(strtolower($this->name), true))
             : '';
     }
@@ -332,10 +324,10 @@ class Base
             ? (new \ReflectionClass($this))->getShortName()
             : (new \ReflectionClass($this))->getParentClass()->getShortName();
 
-        $path = 'app/Widgets/'.$folder.'/'.$file;
+        $path = 'app/Widgets/' . $folder . '/' . $file;
 
         if ($fspath) {
-            $path = DOCUMENT_ROOT.'/'.$path;
+            $path = DOCUMENT_ROOT . '/' . $path;
         } else {
             $path = urilize($path, $notime);
         }
@@ -379,9 +371,9 @@ class Base
     {
         $this->setName();
 
-        $local = DOCUMENT_ROOT.'/app/Widgets/'.$this->name.'/'.$filename;
-        $cache = PUBLIC_CACHE_PATH.$this->name.'_'.$filename;
-        $path = 'cache/'.$this->name.'_'.$filename;
+        $local = DOCUMENT_ROOT . '/app/Widgets/' . $this->name . '/' . $filename;
+        $cache = PUBLIC_CACHE_PATH . $this->name . '_' . $filename;
+        $path = 'cache/' . $this->name . '_' . $filename;
 
         if (! \file_exists($cache)) {
             \symlink($local, $cache);
@@ -436,7 +428,7 @@ class Base
         }
 
         if ($filter != null) {
-            $this->filters[$key.'_'.$method] = is_string($filter) ? [$filter] : $filter;
+            $this->filters[$key . '_' . $method] = is_string($filter) ? [$filter] : $filter;
         }
     }
 }

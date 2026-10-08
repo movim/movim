@@ -13,7 +13,6 @@ use Psr\SimpleCache\CacheInterface;
 class Session implements CacheInterface
 {
     protected $values = [];
-
     private $seconds = 60; // Amount of seconds where the removable values are kept
 
     public function get(string $key, mixed $default = null): mixed

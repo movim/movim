@@ -12,11 +12,8 @@ use App\Post;
 class XMPPUri
 {
     private ?string $type = null;
-
     private ?string $category = null;
-
     private array $uri = [];
-
     private array $params = [];
 
     public function __construct(string $uri)
@@ -57,7 +54,7 @@ class XMPPUri
                 }
             } elseif (isset($this->uri['host']) && isset($this->uri['user'])) {
                 $this->type = 'contact';
-                $this->params = [$this->uri['user'].'@'.$this->uri['host']];
+                $this->params = [$this->uri['user'] . '@' . $this->uri['host']];
             } else {
                 $this->type = 'contact';
                 $this->params = [$this->uri['path']];

@@ -8,13 +8,9 @@ use SimpleXMLElement;
 class XMPPNode
 {
     public SimpleXMLElement $stanza;
-
     public Jid $from;
-
     public Jid $to;
-
     public ?string $type;
-
     public ?string $id;
 
     public function __construct(SimpleXMLElement $node)

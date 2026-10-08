@@ -8,9 +8,7 @@ use Moxl\Xec\Action;
 class MessagePropose extends Action
 {
     protected $_to;
-
     protected $_id;
-
     protected bool $_withVideo = false;
 
     public function request()

@@ -9,7 +9,6 @@ use Moxl\Xec\Action;
 class Get extends Action
 {
     protected $_to;
-
     protected $_avatarhash;
 
     public function request()

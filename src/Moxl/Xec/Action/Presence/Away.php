@@ -9,7 +9,6 @@ use Moxl\Xec\Action;
 class Away extends Action
 {
     protected $_status;
-
     protected $_last;
 
     public function request()

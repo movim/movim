@@ -9,7 +9,6 @@ class Draft extends Model
     public const LENGTH_LIMIT = 16384; // ~64kb in UTF8 with 4 bytes per character
 
     protected $with = ['reply'];
-
     private $embeds = [];
 
     public function save(array $options = [])

@@ -10,7 +10,6 @@ use React\Http\Message\Response;
 class Get extends Action
 {
     protected $_to;
-
     protected $_node = false;
 
     public function request()

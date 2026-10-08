@@ -32,14 +32,14 @@ class AdHoc extends Base
         } else {
             $view = $this->tpl();
             $view->assign('list', $packet->content);
-            $this->rpc('MovimTpl.fill', '#adhoc_widget_'.cleanupId($packet->from), $view->draw('_adhoc_list'));
+            $this->rpc('MovimTpl.fill', '#adhoc_widget_' . cleanupId($packet->from), $view->draw('_adhoc_list'));
             $this->rpc('AdHoc.refresh');
         }
     }
 
     public function onListError(Packet $packet)
     {
-        $this->rpc('MovimTpl.remove', '#adhoc_widget_'.cleanupId($packet->from));
+        $this->rpc('MovimTpl.remove', '#adhoc_widget_' . cleanupId($packet->from));
         $this->rpc('Tabs.create');
     }
 

@@ -13,14 +13,16 @@ class UpgradePictureSha256 extends Migration
         Info::whereNotNull('avatarhash')->delete();
 
         // Destroy all the picture cache
-        foreach (glob(PUBLIC_CACHE_PATH.'*.jpg', GLOB_NOSORT) as $path) {
+        foreach (glob(PUBLIC_CACHE_PATH . '*.jpg', GLOB_NOSORT) as $path) {
             @unlink($path);
         }
 
-        foreach (glob(PUBLIC_CACHE_PATH.'*.png', GLOB_NOSORT) as $path) {
+        foreach (glob(PUBLIC_CACHE_PATH . '*.png', GLOB_NOSORT) as $path) {
             @unlink($path);
         }
     }
 
-    public function down() {}
+    public function down()
+    {
+    }
 }

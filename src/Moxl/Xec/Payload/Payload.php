@@ -10,9 +10,7 @@ use Moxl\Utils;
 abstract class Payload
 {
     protected ?string $method = null;
-
     protected ?Packet $packet = null;
-
     protected ?Jid $from = null;
 
     /**
@@ -46,7 +44,7 @@ abstract class Payload
         if ($this->me?->session?->resource) {
             $iq->setAttribute(
                 'from',
-                $this->me->id.'/'.$this->me->session->resource
+                $this->me->id . '/' . $this->me->session->resource
             );
         }
 
@@ -146,7 +144,7 @@ abstract class Payload
         }
 
         if ($this->method) {
-            $key = $key.'_'.$this->method;
+            $key = $key . '_' . $this->method;
         }
 
         Wrapper::getInstance()->iterate(
@@ -167,5 +165,7 @@ abstract class Payload
         $this->method = strtolower($method);
     }
 
-    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null) {}
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
+    {
+    }
 }

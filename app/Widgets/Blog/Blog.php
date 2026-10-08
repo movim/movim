@@ -14,31 +14,18 @@ use Movim\Widget\Base;
 class Blog extends Base
 {
     public $paging = 9;
-
     public $links = [];
-
     public $url;
-
     private $_from;
-
     private $_node;
-
     private $_item;
-
     private $_id;
-
     private $_contact;
-
     private $_posts = null;
-
     private int $_postsCount = 0;
-
     private int $_page = 0;
-
     private $_mode;
-
     private $_next;
-
     private $_tag;
 
     // Blog nickname
@@ -79,13 +66,13 @@ class Blog extends Base
                 $this->links[] = [
                     'rel' => 'alternate',
                     'type' => 'application/atom+xml',
-                    'href' => 'xmpp:'.rawurlencode($this->_from).'?;node='.rawurlencode($this->_node),
+                    'href' => 'xmpp:' . rawurlencode($this->_from) . '?;node=' . rawurlencode($this->_node),
                 ];
             }
         } elseif ($this->_view == 'tag' && validateTag($this->get('t'))) {
             $this->_mode = 'tag';
             $this->_tag = strtolower(html_entity_decode($this->get('t')));
-            $this->title = '#'.$this->_tag;
+            $this->title = '#' . $this->_tag;
         } else {
             $this->_from = $this->get('f');
 
@@ -127,7 +114,7 @@ class Blog extends Base
                 $this->links[] = [
                     'rel' => 'alternate',
                     'type' => 'application/atom+xml',
-                    'href' => 'xmpp:'.rawurlencode($this->_from).'?;node='.rawurlencode($this->_node),
+                    'href' => 'xmpp:' . rawurlencode($this->_from) . '?;node=' . rawurlencode($this->_node),
                 ];
             }
         }
@@ -165,11 +152,11 @@ class Blog extends Base
                 'rel' => 'alternate',
                 'type' => 'application/atom+xml',
                 'href' => 'xmpp:'
-                    .rawurlencode($this->_from)
-                    .'?;node='
-                    .rawurlencode($this->_node)
-                    .';item='
-                    .rawurlencode($this->_id),
+                    . rawurlencode($this->_from)
+                    . '?;node='
+                    . rawurlencode($this->_node)
+                    . ';item='
+                    . rawurlencode($this->_id),
             ];
         } else {
             $this->_page = is_numeric($this->get('page')) ? (int) $this->get('page') : 0;

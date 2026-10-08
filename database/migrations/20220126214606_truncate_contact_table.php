@@ -10,5 +10,7 @@ class TruncateContactTable extends Migration
         Contact::truncate();
     }
 
-    public function down() {}
+    public function down()
+    {
+    }
 }

@@ -8,13 +8,12 @@ use Moxl\Xec\Action;
 class Delete extends Action
 {
     protected $_id;
-
     protected $_version = '1';
 
     public function request()
     {
         $this->store();
-        $this->iq(Pubsub::itemDelete('urn:xmpp:bookmarks:'.$this->_version, $this->_id), type: 'set');
+        $this->iq(Pubsub::itemDelete('urn:xmpp:bookmarks:' . $this->_version, $this->_id), type: 'set');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

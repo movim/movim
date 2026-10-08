@@ -67,7 +67,7 @@ class OMEMO
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $items = $dom->createElement('items');
-        $items->setAttribute('node', Bundle::OMEMO_BUNDLE.$id);
+        $items->setAttribute('node', Bundle::OMEMO_BUNDLE . $id);
         $pubsub->appendChild($items);
 
         return $pubsub;
@@ -85,7 +85,7 @@ class OMEMO
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', Bundle::OMEMO_BUNDLE.$id);
+        $publish->setAttribute('node', Bundle::OMEMO_BUNDLE . $id);
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');

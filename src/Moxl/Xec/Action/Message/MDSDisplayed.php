@@ -8,7 +8,6 @@ use Moxl\Xec\Action;
 class MDSDisplayed extends Action
 {
     protected $_to;
-
     protected $_id;
 
     public function request()

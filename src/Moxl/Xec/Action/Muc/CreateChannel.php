@@ -8,15 +8,10 @@ use Moxl\Xec\Action;
 class CreateChannel extends Action
 {
     protected $_to;
-
     protected $_name;
-
     protected $_nick;
-
     protected $_autojoin;
-
     protected $_notify;
-
     protected $_pinned;
 
     public function request()

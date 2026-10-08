@@ -56,7 +56,7 @@ class CommunitiesServer extends Base
         $info = $packet->content;
 
         if ($info && ! $info->isAccount()) {
-            $this->rpc('MovimTpl.replace', '#'.cleanupId($info->server.$info->node), $this->prepareTicket($info));
+            $this->rpc('MovimTpl.replace', '#' . cleanupId($info->server . $info->node), $this->prepareTicket($info));
         }
     }
 
@@ -184,7 +184,7 @@ class CommunitiesServer extends Base
         $view->assign('server', $origin);
 
         if (isset($item->name)) {
-            $this->rpc('Notif.setTitle', $this->__('page.communities').' • '.$item->name);
+            $this->rpc('Notif.setTitle', $this->__('page.communities') . ' • ' . $item->name);
         }
 
         return $view->draw('_communitiesserver');
@@ -194,7 +194,7 @@ class CommunitiesServer extends Base
     {
         $view = $this->tpl();
         $view->assign('community', $community);
-        $view->assign('id', cleanupId($community->server.$community->node));
+        $view->assign('id', cleanupId($community->server . $community->node));
 
         return $view->draw('_communitiesserver_ticket');
     }

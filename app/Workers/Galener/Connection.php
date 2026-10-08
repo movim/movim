@@ -14,26 +14,17 @@ use Ratchet\Client\WebSocket;
 class Connection
 {
     private WebSocket $websocket;
-
     private string $id;
-
     private ?string $jingleSid = null;
-
     private ?string $streamId = null;
 
     // Specific Jingle sid to send the screenshare stream
     private ?string $screenshareSid = null;
-
     private ?string $screenshareStreamId = null;
-
     private array $websocketBuffer = [];
-
     private Collection $users;
-
     private Collection $contents;
-
     private Collection $acceptedContents;
-
     private bool $ended = false;
 
     private const GALENE_LABEL_TO_CONTENT_CATEGORY = [
@@ -70,8 +61,8 @@ class Connection
         ]);
 
         $this->apiClient->addUserToGroup($this->conference->jid, $this->jid->bareJid())->then(function () {
-            \Ratchet\Client\connect('ws://localhost:'.$this->apiClient->port.'/ws', headers: [
-                'Origin' => 'https://localhost:'.$this->apiClient->port,
+            \Ratchet\Client\connect('ws://localhost:' . $this->apiClient->port . '/ws', headers: [
+                'Origin' => 'https://localhost:' . $this->apiClient->port,
             ])->then(function ($websocket) {
                 if ($this->ended) {
                     $websocket->close();
@@ -188,7 +179,7 @@ class Connection
                                 user: new User([
                                     'id' => $this->conference->getSFUJid(),
                                 ]),
-                                sdp: 'a='.$json->candidate->candidate,
+                                sdp: 'a=' . $json->candidate->candidate,
                                 sid: $this->jingleSid,
                                 responder: (string) $this->jid,
                                 action: 'transport-info',
@@ -219,10 +210,10 @@ class Connection
                     'id' => $this->id,
                 ]));
             }, function ($e) {
-                \logError('❌ Galener: '.$e->getMessage());
+                \logError('❌ Galener: ' . $e->getMessage());
             });
         }, function ($e) {
-            \logError('❌ Galener: '.$e->getMessage());
+            \logError('❌ Galener: ' . $e->getMessage());
         });
     }
 
@@ -236,7 +227,7 @@ class Connection
 
         $this->websocketBuffer = [];
         $this->apiClient->removeUserFromGroup($this->conference->jid, $this->jid->bareJid())->then(null, function ($e) {
-            \logError('❌ Galener: failed to remove user from group: '.$e->getMessage());
+            \logError('❌ Galener: failed to remove user from group: ' . $e->getMessage());
         });
     }
 
@@ -262,7 +253,7 @@ class Connection
             'id' => $this->screenshareStreamId,
             'replace' => null,
             'label' => 'screenshare',
-            'sdp' => (new JingletoSDP($node->stanza->jingle))->generate()."\r\n",
+            'sdp' => (new JingletoSDP($node->stanza->jingle))->generate() . "\r\n",
         ]);
     }
 
@@ -316,7 +307,7 @@ class Connection
             'id' => $this->streamId,
             'replace' => null,
             'label' => 'camera',
-            'sdp' => (new JingletoSDP($node->stanza->jingle))->generate()."\r\n",
+            'sdp' => (new JingletoSDP($node->stanza->jingle))->generate() . "\r\n",
         ]);
     }
 
@@ -340,7 +331,7 @@ class Connection
                 $this->send([
                     'type' => 'answer',
                     'id' => $id,
-                    'sdp' => (new JingletoSDP($node->stanza->jingle))->generate()."\r\n",
+                    'sdp' => (new JingletoSDP($node->stanza->jingle))->generate() . "\r\n",
                 ]);
             }
         }
@@ -374,7 +365,7 @@ class Connection
     {
         $jingle = Jingle::sessionMute(
             sid: $this->jingleSid,
-            name: 'mid'.(string) $node->stanza->jingle->mute->attributes()->name
+            name: 'mid' . (string) $node->stanza->jingle->mute->attributes()->name
         );
 
         $jingleParticipant = $jingle->ownerDocument->createElement('jingle-participant');
@@ -399,7 +390,7 @@ class Connection
     {
         $jingle = Jingle::sessionUnmute(
             sid: $this->jingleSid,
-            name: 'mid'.(string) $node->stanza->jingle->unmute->attributes()->name
+            name: 'mid' . (string) $node->stanza->jingle->unmute->attributes()->name
         );
 
         $jingleParticipant = $jingle->ownerDocument->createElement('jingle-participant');

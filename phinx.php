@@ -9,8 +9,8 @@ $bootstrap->boot(true);
 
 return [
     'paths' => [
-        'migrations' => DOCUMENT_ROOT.'/database/migrations',
-        'seeds' => DOCUMENT_ROOT.'/database/seeds',
+        'migrations' => DOCUMENT_ROOT . '/database/migrations',
+        'seeds' => DOCUMENT_ROOT . '/database/seeds',
     ],
     'environments' => [
         'default_migration_table' => 'phinxlog',

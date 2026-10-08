@@ -33,7 +33,7 @@ class Presence
         if ($from) {
             $root->setAttribute('from', $from);
         } elseif ($me && $me->session) {
-            $root->setAttribute('from', $me->id.'/'.$me->session->resource);
+            $root->setAttribute('from', $me->id . '/' . $me->session->resource);
             $root->setAttribute('id', linker($me->session->id)->session->get('id'));
         }
 

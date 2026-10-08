@@ -13,11 +13,8 @@ class Roster extends Model
     use Compoships;
 
     public $incrementing = false;
-
     protected $primaryKey = ['session_id', 'jid'];
-
     protected $fillable = ['session_id', 'jid', 'name', 'ask', 'subscription', 'group'];
-
     public $with = ['contact'];
 
     public function upsert(): Roster
@@ -93,7 +90,7 @@ class Roster extends Model
 
     public function getSearchTerms()
     {
-        return cleanupId($this->jid).'-'.
+        return cleanupId($this->jid) . '-' .
             cleanupId($this->group);
     }
 
@@ -104,7 +101,7 @@ class Roster extends Model
 
     public function getBanner(ImageSize $size = ImageSize::XXL)
     {
-        $banner = ! empty($this->id) ? getPicture($this->id.'_banner', $this->truename, $size) : null;
+        $banner = ! empty($this->id) ? getPicture($this->id . '_banner', $this->truename, $size) : null;
 
         return $banner == null ? $this->getPicture($size) : $banner;
     }

@@ -22,8 +22,9 @@ class SessionsTree extends Command
         $this->setName('sessionsTree')
             ->setDescription('Display the current sessions tree')
             ->setHelp(
-                '<options=bold>Structure</> ⚙️  - 🔧 worker-id - 👤⚪ session-id (<connected sockets>)'."\n".
-                '<options=bold>Session status</> 🔴 Launched | 🟠 XMPP Socket connected | 🟢 XMPP Session started'."\n");
+                '<options=bold>Structure</> ⚙️  - 🔧 worker-id - 👤⚪ session-id (<connected sockets>)' . "\n" .
+                '<options=bold>Session status</> 🔴 Launched | 🟠 XMPP Socket connected | 🟢 XMPP Session started' . "\n"
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -42,12 +43,12 @@ class SessionsTree extends Command
             $sessions += count($w);
         });
 
-        $root = new TreeNode('⚙️  Movim Daemon 🔧 '.count($tree).' 👤 '.$sessions);
+        $root = new TreeNode('⚙️  Movim Daemon 🔧 ' . count($tree) . ' 👤 ' . $sessions);
 
         $dbSessions = Session::all()->pluck('user_id', 'id');
 
         foreach ($tree as $wid => $worker) {
-            $workerNode = new TreeNode('🔧 '.$wid.' ('.count($worker).')');
+            $workerNode = new TreeNode('🔧 ' . $wid . ' (' . count($worker) . ')');
 
             foreach ($worker as $sid => $session) {
                 $state = '🔴';
@@ -61,10 +62,10 @@ class SessionsTree extends Command
 
                 $jid = '';
                 if ($resolvedJid = $dbSessions->get($sid)) {
-                    $jid = ' <fg=green>'.$resolvedJid.'</>';
+                    $jid = ' <fg=green>' . $resolvedJid . '</>';
                 }
 
-                $sessionNode = new TreeNode('👤 '.$state.' '.$sid.$jid.' ('.$session['clients'].')');
+                $sessionNode = new TreeNode('👤 ' . $state . ' ' . $sid . $jid . ' (' . $session['clients'] . ')');
                 $workerNode->addChild($sessionNode);
             }
 

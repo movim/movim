@@ -5,11 +5,8 @@ namespace App;
 class MessageOmemoHeader
 {
     public $sid;
-
     private $keys = [];
-
     private $iv;
-
     private $payload;
 
     public function import($omemo)

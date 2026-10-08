@@ -8,7 +8,6 @@ use Moxl\Xec\Action;
 class TestPostPublish extends Action
 {
     protected string $_node;
-
     protected string $_to;
 
     public const TEST_POST_ID = 'test_post';

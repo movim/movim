@@ -100,9 +100,9 @@ class RoomsExplore extends Base
 
         if ($keyword) {
             $rooms = $rooms->where(function ($query) use ($keyword) {
-                $query->where('name', 'like', '%'.$keyword.'%')
-                    ->orWhere('server', 'like', '%'.$keyword.'%')
-                    ->orWhere('description', 'like', '%'.$keyword.'%');
+                $query->where('name', 'like', '%' . $keyword . '%')
+                    ->orWhere('server', 'like', '%' . $keyword . '%')
+                    ->orWhere('description', 'like', '%' . $keyword . '%');
             });
         }
 

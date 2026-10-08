@@ -15,7 +15,7 @@ class DraftEmbed extends Model
 
     public function getHTMLIdAttribute()
     {
-        return cleanupId('embed'.$this->id);
+        return cleanupId('embed' . $this->id);
     }
 
     public function resolve(?int $timeout = 30): ?Url

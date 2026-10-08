@@ -8,9 +8,7 @@ use Moxl\Xec\Action;
 class ChangePassword extends Action
 {
     private $_to;
-
     private $_username;
-
     private $_password;
 
     public function request()

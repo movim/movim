@@ -8,13 +8,9 @@ use Moxl\Xec\Action;
 class Submit extends Action
 {
     protected $_to;
-
     protected $_node;
-
     protected $_data;
-
     protected $_sessionid;
-
     protected ?string $_action = null;
 
     public function request()

@@ -13,17 +13,11 @@ use Moxl\Xec\Action;
 class GetItems extends Action
 {
     protected $_to;
-
     protected $_node;
-
     protected $_since;
-
     protected ?int $_paging;
-
     protected ?string $_after = null;
-
     protected ?string $_before = null;
-
     protected bool $_paginated = false;
 
     public function request()

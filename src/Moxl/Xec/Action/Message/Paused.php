@@ -8,7 +8,6 @@ use Moxl\Xec\Action;
 class Paused extends Action
 {
     protected $_to;
-
     protected bool $_muc = false;
 
     public function request()

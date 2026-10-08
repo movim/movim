@@ -11,9 +11,7 @@ use React\Dns\Resolver\ResolverInterface;
 class LinkersManager
 {
     private ResolverInterface $dns;
-
     private ?WebSocket $websocket = null;
-
     private array $linkers = [];
 
     public function __construct()
@@ -82,7 +80,7 @@ class LinkersManager
             case 'down':
                 if ($linker->connected()) {
                     Wrapper::getInstance()->iterate(
-                        key: 'session_'.$message->func,
+                        key: 'session_' . $message->func,
                         sessionId: $message->sid,
                         user: $linker->user
                     );

@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 gc_enable();
 
@@ -30,21 +30,21 @@ $sqlQueryExecuted = time();
 
 function handleSSLErrors($errno, $errstr)
 {
-    logOut(colorize('SSL Error '.$errno.': '.$errstr, 'red'));
+    logOut(colorize('SSL Error ' . $errno . ': ' . $errstr, 'red'));
 }
 
 function logOut($log = '', string $type = 'system', ?string $sid = null)
 {
-    $out = colorize($sid ?? '', 'yellow').' '.colorize($type, 'purple')."   \n";
+    $out = colorize($sid ?? '', 'yellow') . ' ' . colorize($type, 'purple') . "   \n";
     if (! empty($log)) {
-        $out .= $log."\n";
+        $out .= $log . "\n";
     }
 
     fwrite(STDERR, $out);
 }
 
 $wsConnector = new Connector(loop: $loop);
-$wsConnector('ws://127.0.0.1:'.config('daemon.port'), [], [
+$wsConnector('ws://127.0.0.1:' . config('daemon.port'), [], [
     'MOVIM_WORKER_ID' => getenv('wid'),
     'MOVIM_DAEMON_KEY' => getenv('key'),
 ])->then(function (WebSocket $socket) use (&$linkersManager) {

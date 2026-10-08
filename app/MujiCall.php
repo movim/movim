@@ -10,11 +10,8 @@ class MujiCall extends Model
     use Compoships;
 
     public $incrementing = false;
-
     protected $primaryKey = ['session_id', 'id'];
-
     protected $fillable = ['session_id', 'id', 'muc', 'jidfrom', 'video', 'isfromconference'];
-
     protected $with = ['participants', 'presences'];
 
     public function session()

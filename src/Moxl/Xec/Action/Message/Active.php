@@ -8,7 +8,6 @@ use Moxl\Xec\Action;
 class Active extends Action
 {
     protected $_to;
-
     protected bool $_muc = false;
 
     public function request()

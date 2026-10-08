@@ -12,7 +12,8 @@ abstract class Event
         protected XMPPNode $node,
         protected GaleneAPIClient $apiClient,
         protected ConferencesManager $conferencesManager
-    ) {}
+    ) {
+    }
 
     abstract public static function getHandlerPaths(): array;
 

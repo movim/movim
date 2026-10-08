@@ -10,13 +10,15 @@ class ReceiptAck extends Payload
         $message = ((string) $parent->attributes()->type == 'groupchat')
             ? $this->me->messages()
                 ->where('stanzaid', (string) $stanza->attributes()->id)
-                ->where('jidfrom', current(explode('/',
+                ->where('jidfrom', current(explode(
+                    '/',
                     (string) $parent->attributes()->from
                 )))
                 ->first()
             : $this->me->messages()
                 ->where('originid', (string) $stanza->attributes()->id)
-                ->where('jidfrom', current(explode('/',
+                ->where('jidfrom', current(explode(
+                    '/',
                     (string) $parent->attributes()->to
                 )))
                 ->first();

@@ -8,12 +8,12 @@ use Movim\i18n\Locale as I18nLocale;
 class Locale
 {
     public ?string $language = I18nLocale::DEFAULT_LANGUAGE;
-
     private array $translations = [];
-
     private ?User $user = null;
 
-    public function __construct(private string $browserLanguage) {}
+    public function __construct(private string $browserLanguage)
+    {
+    }
 
     public function setUser(User $user)
     {
