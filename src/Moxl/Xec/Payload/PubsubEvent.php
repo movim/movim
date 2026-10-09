@@ -97,27 +97,42 @@ class PubsubEvent extends Payload
                 $stanza->items->item->conference
                 && $stanza->items->item->conference->attributes()->xmlns == Bookmark2::NODE . Bookmark2::VERSION
             ) {
-                $conference = new Conference;
-                $conference->set(
-                    $this->me->session,
-                    item: $stanza->items->item,
-                    spaceServer: $from,
-                    spaceNode: $node
-                );
+                $subscription = $this->me->subscriptions()
+                    ->spaces()
+                    ->where('server', $from)
+                    ->where('node', $node)
+                    ->first();
 
-                $this->me->session->conferences()->where('conference', $conference->conference)->delete();
+                if ($subscription) {
+                    $conference = new Conference;
+                    $conference->set(
+                        $this->me->session,
+                        item: $stanza->items->item,
+                        spaceServer: $from,
+                        spaceNode: $node
+                    );
 
-                $conference->save();
+                    $subscription->spaceRooms()->where('conference', $conference->conference)->delete();
 
-                $this->pack([
-                    'server' => $from,
-                    'node' => $node,
-                ]);
-                $this->deliver('space_addedroom');
+                    $conference->save();
+
+                    $this->pack([
+                        'server' => $from,
+                        'node' => $node,
+                    ]);
+                    $this->deliver('space_addedroom');
+                }
             } elseif (
                 $stanza->items->item->directories
                 && $stanza->items->item->directories->attributes()->xmlns == Bookmark2::HIERARCHY_NAMESPACE
             ) {
+                if (!$this->me->subscriptions()
+                    ->spaces()
+                    ->where('server', $from)
+                    ->where('node', $node)
+                    ->exists()
+                ) return;
+
                 $this->me->session->bookmarksDirectories()
                     ->where('server', $from)
                     ->where('node', $node)
@@ -151,9 +166,9 @@ class PubsubEvent extends Payload
 
                 if (
                     Post::where('server', $from)
-                        ->where('node', $node)
-                        ->where('nodeid', $id)
-                        ->exists()
+                    ->where('node', $node)
+                    ->where('nodeid', $id)
+                    ->exists()
                     && $id != TestPostPublish::TEST_POST_ID
                 ) {
                     $d = new GetItem($this->me, sessionId: $this->sessionId);
