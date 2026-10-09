@@ -131,7 +131,9 @@ class PubsubEvent extends Payload
                     ->where('server', $from)
                     ->where('node', $node)
                     ->exists()
-                ) return;
+                ) {
+                    return;
+                }
 
                 $this->me->session->bookmarksDirectories()
                     ->where('server', $from)
