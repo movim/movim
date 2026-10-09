@@ -1178,7 +1178,7 @@ class Chat extends Base
             }
 
             // Can be heavy on some MUCs, might be optimized
-            if ($message->isMuc()) {
+            if ($message->isMuc() && $message->stanzaid) {
                 $this->xmpp(new MDSDisplayed)
                     ->setTo($jid)
                     ->setId($message->stanzaid)
