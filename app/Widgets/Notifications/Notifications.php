@@ -88,6 +88,10 @@ class Notifications extends Base
 
     public function ajaxSetCounter()
     {
+        if ($this->me == null) {
+            return;
+        }
+
         $since = $this->me->notifications_since ?? date(MOVIM_SQL_DATE, 0);
 
         $count = Post::whereIn('parent_id', function ($query) {
