@@ -19,7 +19,7 @@ function linkify(string $html, bool $hashtagLinks = true): string
 
     $dom = HTMLDocument::createFromString(
         '<div id="movim-root">' . $html . '</div>',
-        LIBXML_HTML_NOIMPLIED,
+        LIBXML_HTML_NOIMPLIED | LIBXML_NOERROR,
         'UTF-8'
     );
 
