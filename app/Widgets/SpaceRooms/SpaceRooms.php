@@ -251,10 +251,11 @@ class SpaceRooms extends Base
         ];
 
         if ($info = resolveServiceServerInfo((new Jid($id))->domain)) {
-            match ($info->name) {
-                'ejabberd' => $config += ['mam' => 'true'],
-                'Prosody' => $config += ['muc#roomconfig_enablearchiving' => 'true'],
-            };
+            if ($info->name == 'ejabber') {
+                $config += ['mam' => 'true'];
+            } elseif ($info->name == 'Prosody') {
+                $config += ['muc#roomconfig_enablearchiving' => 'true'];
+            }
         }
 
         // Configure the MUC
