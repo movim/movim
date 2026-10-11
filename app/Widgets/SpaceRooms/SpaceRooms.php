@@ -254,6 +254,7 @@ class SpaceRooms extends Base
             match ($info->name) {
                 'ejabberd' => $config += ['mam' => 'true'],
                 'Prosody' => $config += ['muc#roomconfig_enablearchiving' => 'true'],
+                default => null,
             };
         }
 
