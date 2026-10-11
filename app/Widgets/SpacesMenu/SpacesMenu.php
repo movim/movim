@@ -9,8 +9,8 @@ use Movim\Widget\Base;
 use Movim\XMPPUri;
 use Moxl\Stanza\Space;
 use Moxl\Xec\Action\Disco\Request;
+use Moxl\Xec\Action\Muc\SetAffiliations as MucSetAffiliations;
 use Moxl\Xec\Action\Pubsub\GetAffiliations;
-use Moxl\Xec\Action\Pubsub\SetAffiliations;
 use Moxl\Xec\Action\Pubsub\Unsubscribe;
 use Moxl\Xec\Action\PubsubSubscription\Add;
 use Moxl\Xec\Action\PubsubSubscription\Remove;
@@ -187,7 +187,7 @@ class SpacesMenu extends Base
                 ->request();
 
             foreach ($subscription->spaceRooms as $conference) {
-                $changeAffiliation = $this->xmpp(new SetAffiliations);
+                $changeAffiliation = $this->xmpp(new MucSetAffiliations);
                 $changeAffiliation->setTo($conference->conference)
                     ->setAffiliations([$jid => 'member'])
                     ->request();
