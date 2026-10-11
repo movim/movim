@@ -233,6 +233,7 @@ main>div:first-child:nth-last-child(2) {
 main>div:first-child:nth-last-child(2)+div {
     width: 25%;
     overflow-y: auto;
+    overflow-x: hidden;
     box-shadow: var(--elevation-2);
     background-color: rgb(var(--movim-background));
 }
