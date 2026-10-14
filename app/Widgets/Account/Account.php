@@ -156,7 +156,9 @@ class Account extends Base
         $presences = $this->me->session->ownPresences;
 
         if ($presences->count() > 0) {
-            $this->rpc('MovimTpl.fill', '#account_presences',
+            $this->rpc(
+                'MovimTpl.fill',
+                '#account_presences',
                 $this->view('_account_presences', [
                     'session' => $this->me->session,
                     'version' => $this->me->session->version,
@@ -286,5 +288,7 @@ class Account extends Base
         return 'list_alt';
     }
 
-    public function display() {}
+    public function display()
+    {
+    }
 }
