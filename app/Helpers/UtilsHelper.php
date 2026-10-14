@@ -679,21 +679,6 @@ function getAffiliations()
 }
 
 /**
- * Resolve the server behind a service
- */
-function resolveServiceServerInfo(string $host): ?Info
-{
-    return Info::where('server', function ($query) use ($host) {
-        $query->select('parent')
-            ->from('infos')
-            ->where('server', $host);
-    })
-        ->whereCategory('server')
-        ->whereType('im')
-        ->first();
-}
-
-/**
  * Map the XMPP form vars to Material Symbols
  */
 function varToIcons(string $var)

@@ -177,7 +177,6 @@
                 <xmpp:xep rdf:resource="https://xmpp.org/extensions/xep-0092.html"/>
                 <xmpp:status>complete</xmpp:status>
                 <xmpp:version>1.1</xmpp:version>
-                <xmpp:note>send only</xmpp:note>
             </xmpp:SupportedXep>
         </implements>
         <implements>

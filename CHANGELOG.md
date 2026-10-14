@@ -12,6 +12,7 @@ v0.35.2 (master)
 * Remove MovimUtils.textareaAutoheight replaced by field-sizing: content; in the CSS
 * Add support for XEP-xxxx: Bookmarks Hierarchy
 * Close Muji and Jingle calls properly if the tabs are closed or the page reloaded, based on the #1641 pull request
+* Implement XEP-0092: Software Version completely, display the server information in the Account Configuration tab and rely on it to configura MAM in the Spaces
 
 v0.35.1
 ---------------------------

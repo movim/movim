@@ -218,10 +218,10 @@ class SpaceRooms extends Base
                 'node' => $node,
                 'directory' => $directoryId
                     ? $this->me->session->bookmarksDirectories()
-                        ->where('server', $server)
-                        ->where('node', $node)
-                        ->where('id', $directoryId)
-                        ->first()
+                    ->where('server', $server)
+                    ->where('node', $node)
+                    ->where('id', $directoryId)
+                    ->first()
                     : null,
             ]));
         }
@@ -250,12 +250,12 @@ class SpaceRooms extends Base
             'muc#roomconfig_pubsub' => 'xmpp:' . $form->server->value . '?;node=' . $form->node->value,
         ];
 
-        if ($info = resolveServiceServerInfo((new Jid($id))->domain)) {
-            if ($info->name == 'ejabber') {
-                $config += ['mam' => 'true'];
-            } elseif ($info->name == 'Prosody') {
-                $config += ['muc#roomconfig_enablearchiving' => 'true'];
-            }
+        if ($version = $this->me->session->version) {
+            match ($version->name) {
+                'ejabberd' => $config += ['mam' => 'true'],
+                'Prosody' => $config += ['muc#roomconfig_enablearchiving' => 'true'],
+                default => null,
+            };
         }
 
         // Configure the MUC
@@ -281,9 +281,9 @@ class SpaceRooms extends Base
         if (
             $form->directory_id
             && $directory = $this->me->session->bookmarksDirectories()
-                ->where('server', $form->server->value)
-                ->where('node', $form->node->value)
-                ->where('id', $form->directory_id->value)->first()
+            ->where('server', $form->server->value)
+            ->where('node', $form->node->value)
+            ->where('id', $form->directory_id->value)->first()
         ) {
             $conference->weight = (float) $directory->conferences()->count();
             $conference->directory_id = $directory->id;
@@ -336,7 +336,6 @@ class SpaceRooms extends Base
 
         if ($subscription && $conference = $subscription->spaceRooms()->where('conference', $form->conference->value)->first()) {
             $conference->name = $form->name->value;
-            $conference->pinned = (bool) $form->pinned->value;
             $conference->autojoin = true;
 
             $config = [
@@ -351,10 +350,11 @@ class SpaceRooms extends Base
                 'muc#roomconfig_publicroom' => 'false',
             ];
 
-            if ($info = resolveServiceServerInfo((new Jid($form->conference->value))->domain)) {
-                match ($info->name) {
+            if ($version = $this->me->session->version) {
+                match ($version->name) {
                     'ejabberd' => $config += ['mam' => 'true'],
                     'Prosody' => $config += ['muc#roomconfig_enablearchiving' => 'true'],
+                    default => null,
                 };
             }
 
@@ -381,7 +381,8 @@ class SpaceRooms extends Base
         if ($subscription && $conference = $subscription->spaceRooms()->where('conference', $id)->first()) {
             $conference->weight = $weight;
 
-            if ($directoryId == null || $this->me->session->bookmarksDirectories()
+            if (
+                $directoryId == null || $this->me->session->bookmarksDirectories()
                 ->where('server', $server)
                 ->where('node', $node)
                 ->where('id', $directoryId)
@@ -471,10 +472,10 @@ class SpaceRooms extends Base
         if (
             $affiliation->affiliation == 'owner'
             && $directory = $this->me->session->bookmarksDirectories()
-                ->where('server', $server)
-                ->where('node', $node)
-                ->where('id', $directoryId)
-                ->first()
+            ->where('server', $server)
+            ->where('node', $node)
+            ->where('id', $directoryId)
+            ->first()
         ) {
             $this->dialog($this->view('_spacerooms_edit_directory', [
                 'directory' => $directory,
@@ -510,11 +511,11 @@ class SpaceRooms extends Base
         if (
             $affiliation->affiliation == 'owner'
             && $directory = $this->me->session->bookmarksDirectories()
-                ->where('server', $server)
-                ->where('node', $node)
-                ->where('id', $directoryId)
-                ->withCount('conferences')
-                ->first()
+            ->where('server', $server)
+            ->where('node', $node)
+            ->where('id', $directoryId)
+            ->withCount('conferences')
+            ->first()
         ) {
             $this->dialog($this->view('_spacerooms_destroy_directory', [
                 'directory' => $directory,

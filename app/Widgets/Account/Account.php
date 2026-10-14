@@ -153,19 +153,16 @@ class Account extends Base
 
     public function ajaxHttpGetPresences()
     {
-        $view = $this->tpl();
-
         $presences = $this->me->session->ownPresences;
 
         if ($presences->count() > 0) {
-            $view->assign('session', $this->me->session);
-            $view->assign('presences', $presences);
-            $view->assign('clienttype', getClientTypes());
-
-            $this->rpc(
-                'MovimTpl.fill',
-                '#account_presences',
-                $view->draw('_account_presences')
+            $this->rpc('MovimTpl.fill', '#account_presences',
+                $this->view('_account_presences', [
+                    'session' => $this->me->session,
+                    'version' => $this->me->session->version,
+                    'presences' => $presences,
+                    'clienttype' => getClientTypes()
+                ])
             );
         }
     }
@@ -289,7 +286,5 @@ class Account extends Base
         return 'list_alt';
     }
 
-    public function display()
-    {
-    }
+    public function display() {}
 }

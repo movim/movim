@@ -52,6 +52,11 @@ class Session extends Model
         return $this->hasMany(BookmarksDirectory::class)->orderBy('order');
     }
 
+    public function version()
+    {
+        return $this->hasOne(Version::class, 'id', 'host');
+    }
+
     public function topContacts()
     {
         return $this->contacts()->leftJoinSub(

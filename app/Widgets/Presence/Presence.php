@@ -20,6 +20,7 @@ use Moxl\Xec\Action\Pubsub\GetItemsId;
 use Moxl\Xec\Action\Pubsub\GetSubscriptions;
 use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
 use Moxl\Xec\Action\Roster\GetList;
+use Moxl\Xec\Action\Version\Get as VersionGet;
 use Moxl\Xec\Payload\Packet;
 
 class Presence extends Base
@@ -69,6 +70,11 @@ class Presence extends Base
         // We refresh the blocklist
         $blocked = $this->xmpp(new Request);
         $blocked->request();
+
+        // We refresh the server version
+        $version = $this->xmpp(new VersionGet);
+        $version->setTo($this->me->session->host)
+            ->request();
 
         // We refresh the messages
         (new Chats(user: $this->me, sessionId: $this->sessionId))->ajaxGetMAMHistory();

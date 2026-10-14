@@ -1,4 +1,23 @@
 <ul class="list middle">
+    {if="$version"}
+    <li class="subheader">
+        <div>
+            <p>{$c->__('account.xmpp_server_info')}</p>
+        </div>
+    </li>
+    <li>
+        <span class="primary icon gray">
+            <i class="material-symbols">page_info</i>
+        </span>
+        <div>
+            <p>{$session->host}</p>
+            <p>
+                {$version->name}<span class="second">• {$version->version} {if="$version->os"} — <i class="material-symbols">hard_drive</i> {$version->os}</i>
+            {/if}</span>
+            </p>
+        </div>
+    </li>
+    {/if}
     <li class="subheader">
         <div>
             <p>{$c->__('clients.title_full')}</p>
