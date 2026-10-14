@@ -82,13 +82,14 @@ class Visio extends Base
         $currentCall = $this->currentCall();
 
         if ($currentCall && $currentCall->isStarted()) {
-            $st = $this->xmpp(new SessionTerminate);
-            $st->setTo($currentCall->jid)
-                ->setJingleSid($currentCall->id)
-                ->setReason('failed-application')
-                ->request();
-
-            $currentCall->stop($currentCall->jid, $currentCall->id);
+            if ($currentCall->mujiRoom) {
+                $this->ajaxLeaveMuji($currentCall->mujiRoom);
+                // No ajaxTerminate loop like on a MovimJingles.terminateAll call
+                // The other clients should handle that case
+            } else {
+                $this->ajaxTerminate(to: $currentCall->jid, sid: $currentCall->id, reason: 'gone');
+                $this->ajaxGoodbye(to: $currentCall->jid, sid: $currentCall->id, reason: 'gone');
+            }
         }
     }
 
@@ -393,6 +394,25 @@ class Visio extends Base
     public function ajaxClear()
     {
         $this->rpc('MovimVisio.clear');
+    }
+
+    /**
+     * @desc Check the call status of the current browser
+     */
+    public function ajaxCheckStatus(?string $id = null, ?string $jid = null)
+    {
+        $currentCall = $this->currentCall();
+
+        if (
+            $currentCall
+            && $currentCall->isStarted()
+            && $id != null
+            && $jid != null
+            && $currentCall->hasId($id)
+            && $currentCall->isJidInCall($jid)
+        ) {
+            $this->onSessionDown();
+        }
     }
 
     public function ajaxPropose(string $to, string $id, ?bool $withVideo = false, ?bool $toSFU = false)
@@ -898,37 +918,6 @@ class Visio extends Base
 
         $this->toast($this->__('visio.ended'));
         $this->rpc('MovimJingles.terminateAll', $reason);
-    }
-
-    /**
-     * @desc Check the call status of the current browser
-     */
-    public function ajaxCheckStatus(?string $id = null, ?string $jid = null)
-    {
-        $currentCall = $this->currentCall();
-
-        if (
-            $currentCall
-            && $currentCall->isStarted()
-            && $id != null
-            && $jid != null
-            && $currentCall->hasId($id)
-            && $currentCall->isJidInCall($jid)
-        ) {
-            $message = Message::eventMessageFactory(
-                $this->me,
-                'jingle',
-                bareJid($currentCall->jid),
-                $currentCall->id
-            );
-            $message->type = 'jingle_finish';
-            $message->save();
-
-            Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message), user: $this->me, sessionId: $this->sessionId);
-
-            $this->ajaxTerminate($currentCall->jid, $currentCall->id, 'gone');
-            $this->ajaxGoodbye($currentCall->jid, $currentCall->id, 'gone');
-        }
     }
 
     private function filterSDPMedia(string $sdp, array $mediaIds)

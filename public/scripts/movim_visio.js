@@ -79,6 +79,7 @@ var MovimVisio = {
             } else {
                 // Calling
                 MovimVisio.id = crypto.randomUUID();
+                localStorage.setItem('callId', MovimVisio.id);
                 Visio_ajaxPropose(fullJid, MovimVisio.id, withVideo, (typeof sfuConference == 'string'));
             }
         }

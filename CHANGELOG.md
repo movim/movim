@@ -11,6 +11,7 @@ v0.35.2 (master)
 * Enable MAM for Spaces MUCs by default for Prosody and ejabberd (hacky but it works)
 * Remove MovimUtils.textareaAutoheight replaced by field-sizing: content; in the CSS
 * Add support for XEP-xxxx: Bookmarks Hierarchy
+* Close Muji and Jingle calls properly if the tabs are closed or the page reloaded, based on the #1641 pull request
 
 v0.35.1
 ---------------------------
