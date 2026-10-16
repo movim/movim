@@ -326,23 +326,23 @@ class Bootstrap
                 if (array_key_exists('args', $step)) {
                     $arguments = '(';
 
-                    $i = 0;
+                    $j = 0;
                     foreach ($step['args'] as $value) {
                         $arguments .= match (gettype($value)) {
                             'boolean' => $value ? 'true' : 'false',
                             'integer', 'double' => $value,
-                            'string' => "'" . $value . "'",
+                            'string' => "'" . substr($value, 0, 120) . "'",
                             'object' => 'Object(' . get_class($value) . ')',
                             'NULL' => 'NULL',
                             'array' => 'Array',
                             default => 'unknown',
                         };
 
-                        if ($i < count($step['args'])) {
+                        if ($j < count($step['args']) - 1) {
                             $arguments .= ', ';
                         }
 
-                        $i++;
+                        $j++;
                     }
 
                     $arguments .= ')';
