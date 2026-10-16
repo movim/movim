@@ -64,7 +64,7 @@
                 {$roster->truename}
             {elseif="strpos($contact->id, '/') != false"}
                 {$contact->jid->resource}
-                <span class="second" title="{$jid.jid}">
+                <span class="second" title="{$contact->jid->bareJid()}">
                     {$contact->jid->bareJid()}
                 </span>
             {else}
