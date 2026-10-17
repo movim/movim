@@ -480,7 +480,9 @@ class SDPtoJingle
 
                             if (isset($args['ufrag'])) {
                                 $this->ufrag = $args['ufrag'];
-                                $this->transport->addAttribute('ufrag', $this->ufrag);
+                                if (!isset($this->transport['ufrag'])) {
+                                    $this->transport->addAttribute('ufrag', $this->ufrag);
+                                }
                             }
 
                             if (isset($args['id'])) {
