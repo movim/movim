@@ -55,7 +55,7 @@ class CommunitiesServer extends Base
     {
         $info = $packet->content;
 
-        if ($info && ! $info->isAccount()) {
+        if ($info && ! $info->isAccount() && $info->server && $info->node) {
             $this->rpc('MovimTpl.replace', '#' . cleanupId($info->server . $info->node), $this->prepareTicket($info));
         }
     }
