@@ -12,7 +12,7 @@ class Presence extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        if ($this->me?->hasBlocked((new Jid($stanza->attributes()->from))->bareJid())) {
+        if (!validateJid($stanza->attributes()->from) || $this->me?->hasBlocked((new Jid($stanza->attributes()->from))->bareJid())) {
             return;
         }
 
