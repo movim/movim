@@ -402,7 +402,7 @@ var Chat = {
         }
     },
     resolveMessage: function (mid) {
-        ChatActions_ajaxHttpResolveMessage(mid);
+        ChatActions_ajaxResolveMessage(mid);
     },
     refreshMessage: function (mid) {
         Chat_ajaxRefreshMessage(mid);
@@ -523,14 +523,7 @@ var Chat = {
             && Chat.lastResolvedUrl != content) {
             Chat.enableSending();
 
-            let resolve = ChatActions_ajaxHttpResolveUrl(content);
-            resolve.then(e => {
-                Chat.disableSending();
-                Chat.finishedSending();
-            }).catch(e => {
-                Chat.disableSending();
-                Chat.finishedSending();
-            });
+            ChatActions_ajaxResolveUrl(content);
 
             Chat.lastResolvedUrl = content;
         }

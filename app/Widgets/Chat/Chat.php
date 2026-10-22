@@ -202,8 +202,8 @@ class Chat extends Base
 
             $conference = $message->isMuc()
                 ? $this->me->session
-                    ->conferences()->where('conference', $from)
-                    ->first()
+                ->conferences()->where('conference', $from)
+                ->first()
                 : null;
 
             if (
@@ -584,6 +584,7 @@ class Chat extends Base
     ) {
         $messageFile = null;
         $messageOMEMOHeader = null;
+        $urlId = null;
 
         if ($file) {
             $messageFile = new MessageFile;
@@ -592,10 +593,10 @@ class Chat extends Base
             if (! $valid) {
                 $messageFile = null;
             }
-        } else {
-            $url = Url::resolve(trim($message), timeout: 0);
+        } elseif ($url = Url::resolveFromDB(trim($message))) {
+            $urlId = $url->id;
 
-            if ($url && $url->messageFile !== null) {
+            if ($url->messageFile !== null) {
                 $messageFile = $url->messageFile;
             }
         }
@@ -612,7 +613,8 @@ class Chat extends Base
             file: $messageFile,
             replyToMid: $replyToMid,
             mucReceipts: $mucReceipts,
-            messageOMEMOHeader: $messageOMEMOHeader
+            messageOMEMOHeader: $messageOMEMOHeader,
+            urlId: $urlId
         );
     }
 
@@ -629,7 +631,8 @@ class Chat extends Base
         ?MessageFile $file = null,
         ?int $replyToMid = 0,
         ?bool $mucReceipts = false,
-        ?MessageOmemoHeader $messageOMEMOHeader = null
+        ?MessageOmemoHeader $messageOMEMOHeader = null,
+        ?string $urlId = null,
     ) {
         $tempId = null;
 
@@ -655,6 +658,7 @@ class Chat extends Base
         $m->jidto = $to;
         $m->jidfrom = $this->me->id;
         $m->published = gmdate('Y-m-d H:i:s');
+        $m->urlid = $urlId;
 
         $reply = null;
 

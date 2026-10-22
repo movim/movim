@@ -250,49 +250,42 @@ class ChatActions extends Base
     /**
      * @brief Try to resolve a message URL
      */
-    public function ajaxHttpResolveMessage($mid)
+    public function ajaxResolveMessage(string|int $mid)
     {
         $message = $this->me->messages()
             ->where('mid', $mid)
             ->first();
 
         if ($message && $message->resolved == false) {
-            try {
-                $url = Url::resolve(htmlspecialchars_decode(trim($message->body)));
+            Url::resolve(htmlspecialchars_decode(trim($message->body)))->then(function (Url $url) use ($message) {
+                $message->urlid = $url->id;
 
-                if ($url) {
-                    $message->urlid = $url->id;
-
-                    if ($url->messageFile) {
-                        $messageFile = $url->messageFile;
-                        $messageFile->message_mid = $message->mid;
-                        $messageFile->save();
-                    }
-
-                    $this->rpc('Chat.refreshMessage', $message->mid);
+                if ($url->messageFile) {
+                    $messageFile = $url->messageFile;
+                    $messageFile->message_mid = $message->mid;
+                    $messageFile->save();
                 }
-            } catch (\Exception $e) {
-                logError($e);
-            }
 
-            $message->resolved = true;
-            $message->save();
+                $message->resolved = true;
+                $message->save();
+
+                $this->rpc('Chat.refreshMessage', $message->mid);
+            });
         }
     }
 
     /**
      * @brief Resolve a URL
      */
-    public function ajaxHttpResolveUrl(string $url)
+    public function ajaxResolveUrl(string $url)
     {
-        try {
-            $url = Url::resolve(trim($url));
-
-            if ($url != null) {
-                $this->rpc('MovimTpl.fill', '#embed', (new Chat($this->me, sessionId: $this->sessionId))->prepareEmbed($url));
-            }
-        } catch (\Exception $e) {
-        }
-        $this->rpc('Chat.disableSending');
+        Url::resolve(trim($url), timeout: 5)->then(function (Url $url) {
+            $this->rpc('MovimTpl.fill', '#embed', (new Chat($this->me, sessionId: $this->sessionId))->prepareEmbed($url));
+            $this->rpc('Chat.finishedSending');
+            $this->rpc('Chat.disableSending');
+        }, function () {
+            $this->rpc('Chat.finishedSending');
+            $this->rpc('Chat.disableSending');
+        });
     }
 }

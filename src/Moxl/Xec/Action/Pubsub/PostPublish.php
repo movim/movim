@@ -74,11 +74,11 @@ class PostPublish extends Action
     }
 
     public function addLink(
-        $href,
-        $title = null,
-        $type = 'text/html',
-        $description = null,
-        $logo = null
+        string $href,
+        ?string $title = null,
+        ?string $type = 'text/html',
+        ?string $description = null,
+        ?string $logo = null
     ) {
         array_push($this->_atom->links, [
             'href' => $href,

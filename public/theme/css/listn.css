@@ -145,7 +145,7 @@ ul.list li.invite:not(.subheader)>span.primary+span.primary {
     margin-left: -2rem;
 }
 
-ul.list:not(.navigation) li>span.control:last-of-type:not(:has(>.checkbox)):not(.toggleable) {
+ul.list:not(.navigation):not(.card) li>span.control:last-of-type:not(:has(>.checkbox)):not(.toggleable) {
     margin-inline-end: -1.5rem;
 }
 

@@ -8,6 +8,7 @@ use App\DraftEmbed;
 use App\Info;
 use App\Post as AppPost;
 use App\Upload;
+use App\Url;
 use App\Widgets\Post\Post;
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 use Movim\Widget\Base;
@@ -236,39 +237,43 @@ class Publish extends Base
             $hasImage = false;
 
             foreach ($draft->embeds as $embed) {
-                $resolved = $embed->resolve();
+                $resolved = $embed->resolveFromDB();
 
-                // The url is an image
-                if (
-                    $resolved->type == 'image'
-                    && $resolved->image == $embed->url
-                ) {
-                    if (! $hasImage) {
-                        $hasImage = true;
+                if ($resolved) {
+                    // The url is an image
+                    if (
+                        $resolved->type == 'image'
+                        && $resolved->image == $embed->url
+                    ) {
+                        if (! $hasImage) {
+                            $hasImage = true;
+                        }
+
+                        $p->addEnclosure(
+                            $resolved->image,
+                            $resolved->title,
+                            $resolved->content_type
+                        );
+                    } elseif (! str_starts_with($resolved->content_type, 'text/html') || $resolved->type != 'text') {
+                        $p->addEnclosure(
+                            $resolved->url,
+                            $resolved->title,
+                            $resolved->content_type
+                        );
                     }
 
-                    $p->addEnclosure(
-                        $resolved->image,
-                        $resolved->title,
-                        $resolved->content_type
-                    );
-                } elseif (! str_starts_with($resolved->content_type, 'text/html') || $resolved->type != 'text') {
-                    $p->addEnclosure(
-                        $resolved->url,
-                        $resolved->title,
-                        $resolved->content_type
-                    );
-                }
-
-                // The url is a link
-                else {
-                    $p->addLink(
-                        $embed->url,
-                        $resolved->title,
-                        $resolved->content_type,
-                        $resolved->description,
-                        $resolved->providerIcon
-                    );
+                    // The url is a link
+                    else {
+                        $p->addLink(
+                            $embed->url,
+                            $resolved->title,
+                            $resolved->content_type,
+                            $resolved->description,
+                            $resolved->providerIcon
+                        );
+                    }
+                } else {
+                    $p->addLink($embed->url);
                 }
             }
 
@@ -302,33 +307,35 @@ class Publish extends Base
         $upload = Upload::find($uploadId);
 
         if ($upload && $upload->uploaded) {
-            $this->addEmbed($draftId, $upload->geturl);
+            $this->ajaxAddUrl($draftId, $upload->geturl);
         }
     }
 
     public function ajaxAddUrl(int $draftId, string $url)
     {
-        $this->addEmbed($draftId, $url);
-    }
-
-    private function addEmbed(int $draftId, string $url)
-    {
         $draft = $this->me->drafts()->find($draftId);
 
         if (Validator::url()->isValid($url)) {
-            $embed = $draft->embeds()->where('url', $url)->first();
+            $this->rpc('MovimTpl.loadingPage');
+            $embed = $draft->embeds()->where('url', $url)->firstOrCreate([
+                'draft_id' => $draftId,
+                'url' => $url,
+            ]);
 
-            if (! $embed) {
-                $embed = new DraftEmbed;
-                $embed->draft_id = $draftId;
-                $embed->url = $url;
-                $embed->save();
-            }
-
-            $embed->refresh();
-
-            $this->rpc('MovimTpl.append', '#publishembeds', $this->prepareEmbed($embed));
-            $this->rpc('Dialog_ajaxClear');
+            $embed->resolve()->then(function (Url $url) use ($embed) {
+                $this->rpc('MovimTpl.append', '#publishembeds', $this->view('_publish_url', [
+                    'url' => $url,
+                    'embed' => $embed
+                ]));
+                $this->rpc('Dialog_ajaxClear');
+                $this->rpc('MovimTpl.finishedPage');
+            }, function () use ($embed) {
+                $this->rpc('MovimTpl.append', '#publishembeds', $this->view('_publish_embed', [
+                    'embed' => $embed
+                ]));
+                $this->rpc('Dialog_ajaxClear');
+                $this->rpc('MovimTpl.finishedPage');
+            });
         } else {
             $this->toast($this->__('publish.valid_url'));
         }
@@ -446,43 +453,16 @@ class Publish extends Base
 
     public function prepareEmbed(DraftEmbed $embed)
     {
-        $view = $this->tpl();
-        $view->assign('embed', $embed);
+        $url = $embed->resolveFromDB();
 
-        return $view->draw('_publish_embed');
-    }
-
-    public function ajaxEmbedChooseImage($id, $embedId)
-    {
-        $draft = $this->me->drafts()->find($id);
-
-        if ($draft) {
-            $embed = $draft->embeds()->find($embedId);
-
-            if ($embed) {
-                $view = $this->tpl();
-                $view->assign('embed', $embed);
-                $this->drawer('publish_images', $view->draw('_publish_images'), true);
-            }
-        }
-    }
-
-    public function ajaxHttpSetImageNumber($id, $embedId, $imageNumber)
-    {
-        $draft = $this->me->drafts()->find($id);
-
-        if ($draft) {
-            $embed = $draft->embeds()->find($embedId);
-
-            if ($embed) {
-                $embed->imagenumber = $imageNumber;
-                $embed->save();
-                $this->rpc('MovimTpl.remove', '#' . $embed->HTMLId);
-                $this->rpc('MovimTpl.append', '#publishembeds', $this->prepareEmbed($embed));
-            }
-        }
-
-        $this->rpc('Drawer.clear');
+        return $url
+            ? $this->view('_publish_url', [
+                'embed' => $embed,
+                'url' => $url
+            ])
+            : $this->view('_publish_embed', [
+                'embed' => $embed
+            ]);
     }
 
     public function ajaxHttpGet(

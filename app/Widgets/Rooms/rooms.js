@@ -59,6 +59,7 @@ var Rooms = {
         if (
             !document.querySelector('#rooms ul.list.rooms li.connected')
             && localStorage.getItem('rooms_all') == 'true'
+            && document.querySelector('#rooms ul.list.rooms')
         ) {
             document.querySelector('#rooms ul.list.rooms').classList.add('all');
         }
@@ -189,7 +190,9 @@ var Rooms = {
     },
 
     clearRooms: function () {
-        document.querySelector('#rooms ul.list.rooms').innerHTML = '';
+        if (rooms = document.querySelector('#rooms ul.list.rooms')) {
+            rooms.innerHTML = '';
+        }
     },
 
     setRoom: function (id, html) {

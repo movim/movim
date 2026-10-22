@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Navigation;
 
+use App\Post;
 use Movim\Widget\Base;
 use Moxl\Xec\Payload\Packet;
 
@@ -25,7 +26,13 @@ class Navigation extends Base
 
     public function ajaxHttpPublish()
     {
-        $this->dialog($this->view('_navigation_publish'));
+        $this->dialog($this->view('_navigation_publish', [
+            'draft' => $this->me->drafts()
+                ->where('server', $this->me->id)
+                ->where('node', Post::MICROBLOG_NODE)
+                ->where('nodeid', '')
+                ->first()
+        ]));
     }
 
     public function display()

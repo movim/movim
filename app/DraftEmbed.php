@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use React\Promise\Promise;
 
 class DraftEmbed extends Model
 {
     protected $table = 'embeds';
+    protected $fillable = ['draft_id', 'url'];
 
     public function draft()
     {
@@ -18,14 +20,13 @@ class DraftEmbed extends Model
         return cleanupId('embed' . $this->id);
     }
 
-    public function resolve(?int $timeout = 30): ?Url
+    public function resolveFromDB(): ?Url
     {
-        try {
-            return Url::resolve($this->url, $timeout);
-        } catch (\Exception $e) {
-            error_log($e->getMessage());
-        }
+        return Url::resolveFromDB($this->url);
+    }
 
-        return null;
+    public function resolve(?int $timeout = 10): Promise
+    {
+        return Url::resolve($this->url, $timeout);
     }
 }

@@ -23,7 +23,7 @@ class Preview extends Base
         $view = $this->tpl();
 
         try {
-            $view->assign('url', Url::resolve($url));
+            $view->assign('url', Url::resolveFromDB($url));
         } catch (\Exception $e) {
             error_log($e->getMessage());
         }
@@ -42,7 +42,7 @@ class Preview extends Base
 
         $view = $this->tpl();
         try {
-            $view->assign('url', Url::resolve($url));
+            $view->assign('url', Url::resolveFromDB($url));
         } catch (\Exception $e) {
             error_log($e->getMessage());
         }

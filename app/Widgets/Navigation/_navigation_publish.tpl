@@ -14,6 +14,9 @@
             </span>
             <div>
                 <p>{$c->__('post.new_blog')}</p>
+                {if="$draft"}
+                    <p>{$c->__('publish.draft_saved')} • {$c->prepareDate($draft->updated_at)}</p>
+                {/if}
             </div>
         </li>
 
