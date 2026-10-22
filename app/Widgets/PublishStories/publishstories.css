@@ -94,7 +94,7 @@
     box-sizing: border-box;
     bottom: 7.25rem;
     border-radius: 2rem;
-    animation: fadein 0.5s;
+    animation: fadeIn 0.5s;
     transition: bottom 0.3s, max-width 0.3s;
 }
 
@@ -146,7 +146,7 @@
 }
 
 #publishstories #publishactions {
-    animation: fadein 0.5s;
+    animation: fadeIn 0.5s;
     max-height: 7rem;
     overflow: hidden;
 }

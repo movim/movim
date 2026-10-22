@@ -341,7 +341,7 @@ span.avatar {
     display: block;
     max-width: 100%;
     background-color: rgb(var(--movim-background-main));
-    animation: fadein 0.2s;
+    animation: fadeIn 0.2s;
     line-height: 100%;
 }
 
@@ -517,7 +517,19 @@ div.bubble .audio_player p {
 
 /* Animations */
 
-@keyframes fadein {
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
     from {
         opacity: 0;
     }
@@ -540,7 +552,7 @@ div.bubble .audio_player p {
     }
 }
 
-@keyframes fadetext {
+@keyframes fadeText {
 
     0%,
     100% {
@@ -631,17 +643,7 @@ div.bubble .audio_player p {
     }
 }
 
-@keyframes bottom-right {
-    from {
-        transform: translate(10%, 20%);
-    }
-
-    to {
-        transform: translate(0, 0);
-    }
-}
-
-@keyframes loadingopacity {
+@keyframes loadingOpacity {
     from {
         opacity: 0.2;
     }
@@ -669,7 +671,7 @@ div.bubble .audio_player p {
     }
 }
 
-@keyframes backgroundblink {
+@keyframes backgroundBlink {
 
     0%,
     50%,

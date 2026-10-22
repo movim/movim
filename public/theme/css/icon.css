@@ -249,7 +249,7 @@ span.icon.composing:after {
     font-size: 2rem;
     font-weight: bold;
     border-radius: 0.5rem;
-    animation: fadetext 1.5s infinite;
+    animation: fadeText 1.5s infinite;
 }
 
 /* Weird bug */

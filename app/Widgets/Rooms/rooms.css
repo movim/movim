@@ -1,11 +1,11 @@
 #rooms {
-    animation: fadein 0.5s;
+    animation: fadeIn 0.5s;
     display: flex;
     flex-direction: column;
 }
 
 #rooms[data-scroll] li.subheader:first-child {
-    animation: backgroundblink 1s;
+    animation: backgroundBlink 1s;
 }
 
 #rooms>ul.list>li i.call {

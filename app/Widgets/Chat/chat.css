@@ -299,7 +299,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .chat_box li.main>span.primary,
 #chat_widget .chat_box li.main>span.control:not(.button):not(.color) {
     font-size: 3.5rem;
-    animation: fadein 0.3s;
+    animation: fadeIn 0.3s;
     flex: 0 0 5rem;
     margin-right: 0;
 }
@@ -353,7 +353,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .chat_box.sending li.main>span.control.send {
-    animation: loadingopacity 0.7s infinite alternate;
+    animation: loadingOpacity 0.7s infinite alternate;
     pointer-events: none;
 }
 
@@ -499,7 +499,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .contained section>ul>li {
-    animation: fadein 0.2s;
+    animation: fadeIn 0.2s;
     padding: 0 1rem;
 }
 
@@ -509,7 +509,7 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .placeholder.show {
     display: block;
-    animation: fadein 1s;
+    animation: fadeIn 1s;
 }
 
 .emojis_grid {
@@ -982,6 +982,8 @@ ul.list li>div.bubble.file div.file a span.size:after {
 
 #embed:not(:empty),
 #reply:not(:empty) {
+    animation: slideUp 0.1s;
+    animation-timing-function: var(--decelerate-easing);
     margin: 0 0.5rem;
     border-top: 1px solid rgba(var(--movim-font), 0.12);
 }
@@ -1006,13 +1008,13 @@ ul.list li>div.bubble.file div.file a span.size:after {
 /* Parent scroll */
 
 #chat_widget .bubble.scroll_blink {
-    animation: backgroundblink 1s;
+    animation: backgroundBlink 1s;
 }
 
 /* Composing state */
 
 #chat_widget .contained section > ul.state > li {
-    animation: fadein 0.2s, composing 0.2s 0.1s var(--decelerate-easing) forwards;
+    animation: fadeIn 0.2s, slideUp 0.2s 0.1s var(--decelerate-easing) forwards;
     transform: translateY(100%);
 }
 
@@ -1061,16 +1063,6 @@ ul.list li>div.bubble.file div.file a span.size:after {
 
 #chat_widget ul.state .bubble:not(.file) > div:last-child {
     padding-right: 7rem;
-}
-
-@keyframes composing {
-    0% {
-        transform: translateY(100%);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
 }
 
 @keyframes loadingFade {

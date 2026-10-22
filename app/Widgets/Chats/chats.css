@@ -47,7 +47,7 @@ ul#chats:empty ~ .placeholder {
 }
 
 ul#chats_widget_header[data-scroll] li.subheader:first-child {
-    animation: backgroundblink 1s;
+    animation: backgroundBlink 1s;
 }
 
 ul#chats_widget_header[data-filter=roster] + ul#chats li:not(.roster) {

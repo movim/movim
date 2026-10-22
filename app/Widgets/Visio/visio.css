@@ -291,7 +291,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 }
 
 #visio header #no_mic_sound {
-    animation: fadein 0.3s;
+    animation: fadeIn 0.3s;
     font-size: 1.5rem;
     line-height: 2.5rem;
     overflow: hidden;

@@ -57,7 +57,7 @@ ul#spacerooms_widget li.dropping {
 }
 
 ul#spacerooms_widget li.dropping:before {
-    animation: fadein 0.3s;
+    animation: fadeIn 0.3s;
     content: '';
     display: block;
     width: calc(100% - 3rem);
