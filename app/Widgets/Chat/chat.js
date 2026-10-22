@@ -44,6 +44,10 @@ var Chat = {
 
     // Temporary messages, for OMEMO local messages
     tempMessages: {},
+
+    // Last sent id, to clear the chatbox if the message is coming back by the websocket
+    lastSentUUID: null,
+
     // Local list of the room members, used to encrypt the messages
     groupChatMembers: [],
 
@@ -274,10 +278,10 @@ var Chat = {
                     if (omemo) {
                         // TODO, disable the other risky features
                         omemo.then(omemoheader => {
-                            tempId = omemoheader.tempId = Math.random().toString(36).substring(2, 15);
-                            Chat.tempMessages[tempId] = text;
+                            Chat.lastSentUUID = id = omemoheader.id = crypto.randomUUID();
+                            Chat.tempMessages[id] = text;
 
-                            let request = Chat_ajaxHttpDaemonSendMessage(jid, tempId, isMuc, null, replyMid, mucReceipts, omemoheader);
+                            let request = Chat_ajaxHttpDaemonSendMessage(id, jid, null, isMuc, null, replyMid, mucReceipts, omemoheader);
                             request.then(e => {
                                 Chat.sentMessage();
                             }).catch(e => {
@@ -286,9 +290,10 @@ var Chat = {
                         });
                     }
                 } else {
-                    let request = Chat_ajaxHttpDaemonSendMessage(jid, text, isMuc, null, replyMid, mucReceipts);
-                    request.then(e => {
-                        Chat.sentMessage();
+                    Chat.lastSentUUID = id = crypto.randomUUID();
+                    let request = Chat_ajaxHttpDaemonSendMessage(id, jid, text, isMuc, null, replyMid, mucReceipts);
+                    request.then(response => {
+                        response.ok ? Chat.sentMessage() : Chat.failedMessage(text);
                     }).catch(e => {
                         Chat.failedMessage(text);
                     });
@@ -296,10 +301,10 @@ var Chat = {
             }
         }
     },
-    sentId: function (tempId, id) {
-        if (Chat.tempMessages[tempId]) {
-            ChatOmemoDB.putMessage(id, Chat.tempMessages[tempId]);
-            delete Chat.tempMessages[tempId];
+    sentId: function (id) {
+        if (Chat.tempMessages[id]) {
+            ChatOmemoDB.putMessage(id, Chat.tempMessages[id]);
+            delete Chat.tempMessages[id];
         }
     },
     setGroupChatMembers: function (members) {
@@ -372,10 +377,15 @@ var Chat = {
         localStorage.removeItem(textarea.dataset.jid + '_message');
         Chat.clearReplace();
         Chat.toggleAction();
+        Chat.lastSentUUID = null;
     },
     failedMessage: function (text) {
+        // Race condition if the Ajax request failed but the message was still handled
+        if (Chat.lastSentUUID == null) return;
+
         Toast.send(Chat.delivery_error);
         Chat.disableSending();
+        Chat.lastSentUUID = null;
 
         // We try to put back the text in place
         var textarea = Chat.getTextarea();
@@ -1047,6 +1057,11 @@ var Chat = {
     },
     appendMessage: function (idjidtime, data, prepend) {
         if (data.body === null) return;
+
+        // Sent message where the Ajax request somehow but the message was still handled by the server
+        if (data.id == Chat.lastSentUUID) {
+            Chat.sentMessage();
+        }
 
         var bubble = null,
             mergeMsg = false,

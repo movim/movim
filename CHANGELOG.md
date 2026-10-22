@@ -14,6 +14,7 @@ v0.35.2 (master)
 * Close Muji and Jingle calls properly if the tabs are closed or the page reloaded, based on the #1641 pull request
 * Implement XEP-0092: Software Version completely, display the server information in the Account Configuration tab and rely on it to configura MAM in the Spaces
 * Fully refactor the URL resolution system to be non-blocking (remove the await)
+* Refactor the message sending flow to improve how some network or request issues are handled
 
 v0.35.1
 ---------------------------

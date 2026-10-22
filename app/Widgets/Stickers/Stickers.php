@@ -273,11 +273,10 @@ class Stickers extends Base
 
                 $chat = new Chat($this->me, sessionId: $this->sessionId);
                 $chat->sendMessage(
-                    $to,
-                    false,
-                    $muc,
-                    null,
-                    $messageFile
+                    id: \generateUUID(),
+                    to: $to,
+                    muc: $muc,
+                    file: $messageFile
                 );
             }
         }, function (\Exception $e) {

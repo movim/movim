@@ -104,12 +104,13 @@ class SendTo extends Base
         $file->type = 'xmpp/uri';
         $file->url = $uri;
 
-        foreach ($contacts as $contact => $muc) {
+        foreach ($contacts as $jid => $muc) {
             $c = new Chat($this->me, sessionId: $this->sessionId);
             $c->sendMessage(
-                $contact,
-                $message,
-                $muc,
+                id: \generateUUID(),
+                to: $jid,
+                message: $message,
+                muc: $muc,
                 file: $file
             );
         }

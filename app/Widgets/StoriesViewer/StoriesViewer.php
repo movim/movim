@@ -92,7 +92,12 @@ class StoriesViewer extends Base
         $file->type = 'xmpp/uri';
         $file->url = $post->getRef();
 
-        (new Chat($this->me, sessionId: $this->sessionId))->sendMessage($post->server, $comment, file: $file);
+        (new Chat($this->me, sessionId: $this->sessionId))->sendMessage(
+            id: \generateUUID(),
+            to: $post->server,
+            message: $comment,
+            file: $file
+        );
 
         $this->toast($this->__('post.comment_published'));
     }

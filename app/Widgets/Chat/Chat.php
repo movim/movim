@@ -31,6 +31,8 @@ use Moxl\Xec\Action\Message\MDSDisplayed;
 use Moxl\Xec\Action\Message\Publish;
 use Moxl\Xec\Action\Message\Reactions;
 use Moxl\Xec\Payload\Packet;
+use Respect\Validation\Validator;
+use stdClass;
 
 class Chat extends Base
 {
@@ -574,13 +576,14 @@ class Chat extends Base
      * @brief Send a message
      */
     public function ajaxHttpDaemonSendMessage(
+        string $id,
         string $to,
-        string $message,
-        bool $muc = false,
-        $file = null,
+        ?string $message = null,
+        ?bool $muc = false,
+        ?stdClass $file = null,
         ?int $replyToMid = 0,
         ?bool $mucReceipts = false,
-        $omemo = null
+        ?stdClass $omemo = null
     ) {
         $messageFile = null;
         $messageOMEMOHeader = null;
@@ -607,6 +610,7 @@ class Chat extends Base
         }
 
         $this->sendMessage(
+            id: $id,
             to: $to,
             message: $message,
             muc: $muc,
@@ -624,9 +628,10 @@ class Chat extends Base
      * @return void
      */
     public function sendMessage(
+        string $id,
         string $to,
-        string $message = '',
-        bool $muc = false,
+        ?string $message = '',
+        ?bool $muc = false,
         ?Message $replace = null,
         ?MessageFile $file = null,
         ?int $replyToMid = 0,
@@ -634,10 +639,11 @@ class Chat extends Base
         ?MessageOmemoHeader $messageOMEMOHeader = null,
         ?string $urlId = null,
     ) {
-        $tempId = null;
+        if (! Validator::uuid(4)->validate($id) || !validateJid($to)) {
+            return;
+        }
 
         if ($messageOMEMOHeader) {
-            $tempId = $message;
             $message = 'Encrypted OMEMO message sent';
         }
 
@@ -650,7 +656,7 @@ class Chat extends Base
         }
 
         $m = new Message;
-        $m->id = generateUUID();
+        $m->id = $id;
         $m->originid = $m->id;
         $m->messageid = $m->id;
         $m->replaceid = $replace ? $replace->originid : null;
@@ -818,8 +824,8 @@ class Chat extends Base
         $p->request();
 
         // We sent the published id back
-        if ($tempId) {
-            $this->rpc('Chat.sentId', $tempId, $m->id);
+        if ($messageOMEMOHeader) {
+            $this->rpc('Chat.sentId', $m->id);
         }
 
         /* Is it really clean ? */
@@ -852,14 +858,20 @@ class Chat extends Base
      *
      * @return void
      */
-    public function ajaxHttpDaemonCorrect(string $to, int $mid, string $message = '')
+    public function ajaxHttpDaemonCorrect(string $id, string $to, int $mid, string $message = '')
     {
         $replace = $this->me->messages()
             ->where('mid', $mid)
             ->first();
 
         if ($replace) {
-            $this->sendMessage($to, $message, $replace->isMuc(), $replace);
+            $this->sendMessage(
+                id: $id,
+                to: $to,
+                message: $message,
+                muc: $replace->isMuc(),
+                replace: $replace
+            );
         }
     }
 
