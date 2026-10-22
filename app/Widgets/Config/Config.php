@@ -125,10 +125,12 @@ class Config extends Base
 
         $config = [];
         foreach ($data as $key => $value) {
-            $config[$key] = $value->value;
+            if ($this->me->isInConfig($key)) {
+                $config[$key] = $value->value;
 
-            if (in_array($key, ['notificationcall', 'notificationchat'])) {
-                $this->updateSystemVariable($key, $value->value);
+                if (in_array($key, ['notificationcall', 'notificationchat'])) {
+                    $this->updateSystemVariable($key, $value->value);
+                }
             }
         }
 

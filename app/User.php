@@ -150,6 +150,11 @@ class User extends Model
         return $this->belongsToMany(Emoji::class)->withPivot('alias')->withTimestamps();
     }
 
+    public function isInConfig(string $key): bool
+    {
+        return in_array($key, $this->fillable);
+    }
+
     public function getUsernameAttribute()
     {
         return $this->contact && $this->contact->nickname
