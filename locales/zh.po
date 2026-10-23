@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-15 18:27+0200\n"
+"POT-Creation-Date: 2026-10-23 11:02+0100\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2026\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -257,6 +257,10 @@ msgstr "OMEMO 密钥删除"
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr "您即将销毁以下 OMEMO 密钥。您的联系人将无法再使用该密钥加密消息。此操作无法撤销。您确定吗？"
+
+#: [account]xmpp_server_info
+msgid "XMPP Server Information"
+msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
@@ -764,19 +768,19 @@ msgstr "屏蔽"
 
 #: [wide_conference_call]enable_title
 msgid "Enable Wide Conference Call"
-msgstr ""
+msgstr "启用大型群聊通话"
 
 #: [wide_conference_call]enable_text
 msgid "Scale this call to more participants."
-msgstr ""
+msgstr "扩展此通话以支持更多参与者。"
 
 #: [wide_conference_call]enable_info
 msgid "An SFU (Selective Forwarding Unit) service was detected on this server. Unlike the current peer-to-peer (P2P) setup, where every participant sends their audio/video stream directly to everyone else, an SFU relays streams through a central server. This significantly reduces the bandwidth and CPU load on each participant's device, allowing the conference call to scale to many more people."
-msgstr ""
+msgstr "在此服务器上检测到 SFU（选择性转发单元）服务。与当前的点对点（P2P）设置（即每位参与者直接向其他人发送他们的音频/视频流）不同，SFU 通过中央服务器中继流。这显著降低了每位参与者设备上的带宽和 CPU 负载，使群聊通话扩展到更多人。"
 
 #: [wide_conference_call]enable_info2
 msgid "Enabling Wide Conference Call will invite the SFU service into this conference call."
-msgstr ""
+msgstr "启用大型群聊通话会将 SFU 服务引入此群聊通话中。"
 
 #: [chatactions]copy_text
 msgid "Copy the text"
@@ -2257,9 +2261,8 @@ msgid "Join this chatroom on login"
 msgstr "登录后自动加入此群聊"
 
 #: [chatrooms]avatar
-#, fuzzy
 msgid "Change the chatroom avatar"
-msgstr "已加入群聊"
+msgstr "更改群聊头像"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
@@ -2278,7 +2281,6 @@ msgid "Conference call"
 msgstr "群聊通话"
 
 #: [chatrooms]conference_call_edit
-#, fuzzy
 msgid "Edit the conference call"
 msgstr "编辑群聊通话"
 
@@ -2287,9 +2289,8 @@ msgid "Call your contacts and share your webcam or screen"
 msgstr "呼叫您的联系人并共享您的网络摄像头或屏幕"
 
 #: [chatrooms]configure
-#, fuzzy
 msgid "Configure the chatroom"
-msgstr "已加入群聊"
+msgstr "配置群聊"
 
 #: [chatrooms]conflict
 msgid "Nickname already taken"
@@ -2344,12 +2345,10 @@ msgid "Left the chatroom"
 msgstr "已离开群聊"
 
 #: [chatrooms]discover
-#, fuzzy
 msgid "Discover a chatroom"
-msgstr "解散群聊"
+msgstr "发现群聊"
 
 #: [chatrooms]edit
-#, fuzzy
 msgid "Edit the chatroom"
 msgstr "编辑群聊"
 
@@ -2370,9 +2369,8 @@ msgid "Name or description"
 msgstr "名称或描述"
 
 #: [chatrooms]first_room_placeholder
-#, fuzzy
 msgid "Press the %s button to add a first chatroom"
-msgstr "按下 %s 按钮添加第一个群聊"
+msgstr "按下 %s 按钮添加首个群聊"
 
 #: [chatrooms]forbidden
 msgid "You are not allowed to join this chatroom"
@@ -2411,9 +2409,8 @@ msgid "Members"
 msgstr "成员"
 
 #: [chatrooms]name_placeholder
-#, fuzzy
 msgid "My Favorite Chatroom"
-msgstr "收藏的群聊"
+msgstr "我收藏的群聊"
 
 #: [chatrooms]notacceptable
 msgid "Not acceptable"
@@ -2472,7 +2469,6 @@ msgid "Type of chatroom"
 msgstr "群聊类型"
 
 #: [chatrooms]users
-#, fuzzy
 msgid "Users"
 msgstr "用户"
 
@@ -2542,11 +2538,11 @@ msgstr "添加新成员"
 
 #: [room]group_chat_remove
 msgid "Remove a member"
-msgstr ""
+msgstr "移除成员"
 
 #: [room]group_chat_remove_text
 msgid "You will remove the following member, are you sure?"
-msgstr ""
+msgstr "您将移除以下成员，确定吗？"
 
 #: [room]banned_add
 msgid "Ban someone"
@@ -2743,6 +2739,34 @@ msgstr "离开空间"
 #: [spaceinfo]add_room_title
 msgid "Add a room"
 msgstr "添加群聊"
+
+#: [spaceinfo]add_directory_title
+msgid "Add a directory"
+msgstr ""
+
+#: [spaceinfo]edit_directory_title
+msgid "Edit a directory"
+msgstr ""
+
+#: [spaceinfo]remove_directory_title
+msgid "Remove a directory"
+msgstr ""
+
+#: [spaceinfo]remove_directory_confirm
+msgid "Do you really want to remove this directory?"
+msgstr ""
+
+#: [spaceinfo]remove_directory_text
+msgid "The %s rooms will be preserved"
+msgstr ""
+
+#: [spaceinfo]edited_directories
+msgid "Edited directories"
+msgstr ""
+
+#: [spaceinfo]edited_room
+msgid "Edited room"
+msgstr ""
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
@@ -4145,31 +4169,3 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgctxt "[chatrooms]members"
-#~ msgid "Members"
-#~ msgstr "成员"
-
-#~ msgctxt "[room]group_chat_members"
-#~ msgid "Members"
-#~ msgstr "成员"
-
-#~ msgctxt "[room]affiliation_members"
-#~ msgid "Members"
-#~ msgstr "成员"
-
-#~ msgid "Connected to the chatroom"
-#~ msgstr "已连接到群聊"
-
-#~ msgid "Disconnected from the chatroom"
-#~ msgstr "已断开与群聊的连接"
-
-#~ msgid "Subject changed"
-#~ msgstr "主题已更改"
-
-#~ msgid "Rooms"
-#~ msgstr "群聊"
-
-#~ msgctxt "[room]channel_users"
-#~ msgid "Users"
-#~ msgstr "用户"

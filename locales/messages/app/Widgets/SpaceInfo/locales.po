@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-15 18:27+0200\n"
+"POT-Creation-Date: 2026-10-23 11:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,6 +57,34 @@ msgstr ""
 
 #: [spaceinfo]add_room_title
 msgid "Add a room"
+msgstr ""
+
+#: [spaceinfo]add_directory_title
+msgid "Add a directory"
+msgstr ""
+
+#: [spaceinfo]edit_directory_title
+msgid "Edit a directory"
+msgstr ""
+
+#: [spaceinfo]remove_directory_title
+msgid "Remove a directory"
+msgstr ""
+
+#: [spaceinfo]remove_directory_confirm
+msgid "Do you really want to remove this directory?"
+msgstr ""
+
+#: [spaceinfo]remove_directory_text
+msgid "The %s rooms will be preserved"
+msgstr ""
+
+#: [spaceinfo]edited_directories
+msgid "Edited directories"
+msgstr ""
+
+#: [spaceinfo]edited_room
+msgid "Edited room"
 msgstr ""
 
 #: [spaceinfo]pending_approvals

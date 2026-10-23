@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-15 18:27+0200\n"
+"POT-Creation-Date: 2026-10-23 11:02+0100\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://app.transifex.com/movim/movim/language/en/)\n"
@@ -240,6 +240,10 @@ msgstr "OMEMO Key deletion"
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
+
+#: [account]xmpp_server_info
+msgid "XMPP Server Information"
+msgstr "XMPP Server Information"
 
 #: [adhoc]title
 msgid "Actions"
@@ -2240,9 +2244,8 @@ msgid "Join this chatroom on login"
 msgstr "Join this chatroom on login"
 
 #: [chatrooms]avatar
-#, fuzzy
 msgid "Change the chatroom avatar"
-msgstr "Joined the chatroom"
+msgstr "Change the chatroom avatar"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
@@ -2261,18 +2264,16 @@ msgid "Conference call"
 msgstr "Conference call"
 
 #: [chatrooms]conference_call_edit
-#, fuzzy
 msgid "Edit the conference call"
-msgstr "Edit a conference call"
+msgstr "Edit the conference call"
 
 #: [chatrooms]conference_call_text
 msgid "Call your contacts and share your webcam or screen"
 msgstr "Call your contacts and share your webcam or screen"
 
 #: [chatrooms]configure
-#, fuzzy
 msgid "Configure the chatroom"
-msgstr "Joined the chatroom"
+msgstr "Configure the chatroom"
 
 #: [chatrooms]conflict
 msgid "Nickname already taken"
@@ -2327,14 +2328,12 @@ msgid "Left the chatroom"
 msgstr "Left the chatroom"
 
 #: [chatrooms]discover
-#, fuzzy
 msgid "Discover a chatroom"
-msgstr "Discover a room"
+msgstr "Discover a chatroom"
 
 #: [chatrooms]edit
-#, fuzzy
 msgid "Edit the chatroom"
-msgstr "Edit a chatroom"
+msgstr "Edit the chatroom"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2353,9 +2352,8 @@ msgid "Name or description"
 msgstr "Name or description"
 
 #: [chatrooms]first_room_placeholder
-#, fuzzy
 msgid "Press the %s button to add a first chatroom"
-msgstr "Press the %s button to add a first room"
+msgstr "Press the %s button to add a first chatroom"
 
 #: [chatrooms]forbidden
 msgid "You are not allowed to join this chatroom"
@@ -2394,9 +2392,8 @@ msgid "Members"
 msgstr "Members"
 
 #: [chatrooms]name_placeholder
-#, fuzzy
 msgid "My Favorite Chatroom"
-msgstr "My Favorite Room"
+msgstr "My Favorite Chatroom"
 
 #: [chatrooms]notacceptable
 msgid "Not acceptable"
@@ -2455,7 +2452,6 @@ msgid "Type of chatroom"
 msgstr "Type of chatroom"
 
 #: [chatrooms]users
-#, fuzzy
 msgid "Users"
 msgstr "Users"
 
@@ -2726,6 +2722,34 @@ msgstr "Leave the space"
 #: [spaceinfo]add_room_title
 msgid "Add a room"
 msgstr "Add a room"
+
+#: [spaceinfo]add_directory_title
+msgid "Add a directory"
+msgstr "Add a directory"
+
+#: [spaceinfo]edit_directory_title
+msgid "Edit a directory"
+msgstr "Edit a directory"
+
+#: [spaceinfo]remove_directory_title
+msgid "Remove a directory"
+msgstr "Remove a directory"
+
+#: [spaceinfo]remove_directory_confirm
+msgid "Do you really want to remove this directory?"
+msgstr "Do you really want to remove this directory?"
+
+#: [spaceinfo]remove_directory_text
+msgid "The %s rooms will be preserved"
+msgstr "The %s rooms will be preserved"
+
+#: [spaceinfo]edited_directories
+msgid "Edited directories"
+msgstr "Edited directories"
+
+#: [spaceinfo]edited_room
+msgid "Edited room"
+msgstr "Edited room"
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
@@ -4128,31 +4152,3 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
-
-#~ msgctxt "[chatrooms]members"
-#~ msgid "Members"
-#~ msgstr "Members"
-
-#~ msgctxt "[room]group_chat_members"
-#~ msgid "Members"
-#~ msgstr "Members"
-
-#~ msgctxt "[room]affiliation_members"
-#~ msgid "Members"
-#~ msgstr "Members"
-
-#~ msgid "Connected to the chatroom"
-#~ msgstr "Connected to the chatroom"
-
-#~ msgid "Disconnected from the chatroom"
-#~ msgstr "Disconnected from the chatroom"
-
-#~ msgid "Subject changed"
-#~ msgstr "Subject changed"
-
-#~ msgid "Rooms"
-#~ msgstr "Rooms"
-
-#~ msgctxt "[room]channel_users"
-#~ msgid "Users"
-#~ msgstr "Users"

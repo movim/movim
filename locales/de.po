@@ -146,7 +146,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-15 18:27+0200\n"
+"POT-Creation-Date: 2026-10-23 11:02+0100\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>, 2015\n"
 "Language-Team: German (http://app.transifex.com/movim/movim/language/de/)\n"
@@ -264,6 +264,10 @@ msgstr "OMEMO-Schlüssellöschung"
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr "Du bist dabei, den folgenden OMEMO-Schlüssel zu zerstören. Deine Kontakte werden Nachrichten nicht mehr mit diesem Schlüssel verschlüsseln können. Diese Aktion kann nicht rückgängig gemacht werden. Bist du sicher?"
+
+#: [account]xmpp_server_info
+msgid "XMPP Server Information"
+msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
@@ -2264,9 +2268,8 @@ msgid "Join this chatroom on login"
 msgstr "Chatraum beim Login betreten"
 
 #: [chatrooms]avatar
-#, fuzzy
 msgid "Change the chatroom avatar"
-msgstr "Chatraum betreten"
+msgstr ""
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
@@ -2285,18 +2288,16 @@ msgid "Conference call"
 msgstr ""
 
 #: [chatrooms]conference_call_edit
-#, fuzzy
 msgid "Edit the conference call"
-msgstr "Tritt Gruppenanruf bei"
+msgstr ""
 
 #: [chatrooms]conference_call_text
 msgid "Call your contacts and share your webcam or screen"
 msgstr ""
 
 #: [chatrooms]configure
-#, fuzzy
 msgid "Configure the chatroom"
-msgstr "Chatraum betreten"
+msgstr ""
 
 #: [chatrooms]conflict
 msgid "Nickname already taken"
@@ -2351,14 +2352,12 @@ msgid "Left the chatroom"
 msgstr "Chatraum verlassen"
 
 #: [chatrooms]discover
-#, fuzzy
 msgid "Discover a chatroom"
-msgstr "Chatraum betreten"
+msgstr ""
 
 #: [chatrooms]edit
-#, fuzzy
 msgid "Edit the chatroom"
-msgstr "Chatraum bearbeiten"
+msgstr ""
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2417,9 +2416,8 @@ msgid "Members"
 msgstr "Mitglieder"
 
 #: [chatrooms]name_placeholder
-#, fuzzy
 msgid "My Favorite Chatroom"
-msgstr "Mein Lieblingsraum"
+msgstr ""
 
 #: [chatrooms]notacceptable
 msgid "Not acceptable"
@@ -2478,7 +2476,6 @@ msgid "Type of chatroom"
 msgstr "Art des Chatraums"
 
 #: [chatrooms]users
-#, fuzzy
 msgid "Users"
 msgstr "Benutzer"
 
@@ -2749,6 +2746,34 @@ msgstr "Diesen Space verlassen"
 #: [spaceinfo]add_room_title
 msgid "Add a room"
 msgstr "Einen Raum hinzufügen"
+
+#: [spaceinfo]add_directory_title
+msgid "Add a directory"
+msgstr ""
+
+#: [spaceinfo]edit_directory_title
+msgid "Edit a directory"
+msgstr ""
+
+#: [spaceinfo]remove_directory_title
+msgid "Remove a directory"
+msgstr ""
+
+#: [spaceinfo]remove_directory_confirm
+msgid "Do you really want to remove this directory?"
+msgstr ""
+
+#: [spaceinfo]remove_directory_text
+msgid "The %s rooms will be preserved"
+msgstr ""
+
+#: [spaceinfo]edited_directories
+msgid "Edited directories"
+msgstr ""
+
+#: [spaceinfo]edited_room
+msgid "Edited room"
+msgstr ""
 
 #: [spaceinfo]pending_approvals
 msgid "%s subscriptions requests are waiting for your approval"
@@ -4151,31 +4176,3 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
-
-#~ msgctxt "[chatrooms]members"
-#~ msgid "Members"
-#~ msgstr "Mitglieder"
-
-#~ msgctxt "[room]group_chat_members"
-#~ msgid "Members"
-#~ msgstr "Mitglieder"
-
-#~ msgctxt "[room]affiliation_members"
-#~ msgid "Members"
-#~ msgstr "Mitglieder"
-
-#~ msgid "Connected to the chatroom"
-#~ msgstr "Mit dem Chatraum verbunden"
-
-#~ msgid "Disconnected from the chatroom"
-#~ msgstr "Vom Chatraum getrennt"
-
-#~ msgid "Subject changed"
-#~ msgstr "Betreff geändert"
-
-#~ msgid "Rooms"
-#~ msgstr "Räume"
-
-#~ msgctxt "[room]channel_users"
-#~ msgid "Users"
-#~ msgstr "Benutzer"

@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-15 18:27+0200\n"
+"POT-Creation-Date: 2026-10-23 11:02+0100\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Yurt Page, 2025\n"
 "Language-Team: Russian (http://app.transifex.com/movim/movim/language/ru/)\n"
@@ -257,6 +257,10 @@ msgstr "Удаление ключа OMEMO"
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr "Вы собираетесь уничтожить следующий ключ OMEMO. Ваши контакты больше не смогут шифровать сообщения с помощью этого ключа. Это действие необратимо. Вы уверены?"
+
+#: [account]xmpp_server_info
+msgid "XMPP Server Information"
+msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
@@ -2257,9 +2261,8 @@ msgid "Join this chatroom on login"
 msgstr "Присоединятся к чату при входе"
 
 #: [chatrooms]avatar
-#, fuzzy
 msgid "Change the chatroom avatar"
-msgstr "Присоединился к чату"
+msgstr ""
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
@@ -2278,18 +2281,16 @@ msgid "Conference call"
 msgstr ""
 
 #: [chatrooms]conference_call_edit
-#, fuzzy
 msgid "Edit the conference call"
-msgstr "Присоединение к звонку"
+msgstr ""
 
 #: [chatrooms]conference_call_text
 msgid "Call your contacts and share your webcam or screen"
 msgstr ""
 
 #: [chatrooms]configure
-#, fuzzy
 msgid "Configure the chatroom"
-msgstr "Присоединился к чату"
+msgstr ""
 
 #: [chatrooms]conflict
 msgid "Nickname already taken"
@@ -2344,14 +2345,12 @@ msgid "Left the chatroom"
 msgstr "Покинул чат"
 
 #: [chatrooms]discover
-#, fuzzy
 msgid "Discover a chatroom"
-msgstr "Присоединится к чат-комнате"
+msgstr ""
 
 #: [chatrooms]edit
-#, fuzzy
 msgid "Edit the chatroom"
-msgstr "Изменить комнату"
+msgstr ""
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2410,9 +2409,8 @@ msgid "Members"
 msgstr "Участники"
 
 #: [chatrooms]name_placeholder
-#, fuzzy
 msgid "My Favorite Chatroom"
-msgstr "Мои любимые комнаты"
+msgstr ""
 
 #: [chatrooms]notacceptable
 msgid "Not acceptable"
@@ -2471,7 +2469,6 @@ msgid "Type of chatroom"
 msgstr "Тип чат-комнаты"
 
 #: [chatrooms]users
-#, fuzzy
 msgid "Users"
 msgstr "Пользователи"
 
@@ -2741,6 +2738,34 @@ msgstr ""
 
 #: [spaceinfo]add_room_title
 msgid "Add a room"
+msgstr ""
+
+#: [spaceinfo]add_directory_title
+msgid "Add a directory"
+msgstr ""
+
+#: [spaceinfo]edit_directory_title
+msgid "Edit a directory"
+msgstr ""
+
+#: [spaceinfo]remove_directory_title
+msgid "Remove a directory"
+msgstr ""
+
+#: [spaceinfo]remove_directory_confirm
+msgid "Do you really want to remove this directory?"
+msgstr ""
+
+#: [spaceinfo]remove_directory_text
+msgid "The %s rooms will be preserved"
+msgstr ""
+
+#: [spaceinfo]edited_directories
+msgid "Edited directories"
+msgstr ""
+
+#: [spaceinfo]edited_room
+msgid "Edited room"
 msgstr ""
 
 #: [spaceinfo]pending_approvals
@@ -4144,28 +4169,3 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
-
-#~ msgctxt "[chatrooms]members"
-#~ msgid "Members"
-#~ msgstr "Члены"
-
-#~ msgctxt "[room]group_chat_members"
-#~ msgid "Members"
-#~ msgstr "Члены"
-
-#~ msgctxt "[room]affiliation_members"
-#~ msgid "Members"
-#~ msgstr "Члены"
-
-#~ msgid "Connected to the chatroom"
-#~ msgstr "Подключились к комнате"
-
-#~ msgid "Disconnected from the chatroom"
-#~ msgstr "Отключились от комнаты"
-
-#~ msgid "Subject changed"
-#~ msgstr "Тема изменена"
-
-#~ msgctxt "[room]channel_users"
-#~ msgid "Users"
-#~ msgstr "Пользователи"

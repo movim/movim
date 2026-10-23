@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-15 18:27+0200\n"
+"POT-Creation-Date: 2026-10-23 11:02+0100\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Marvin42 Marvin <h2g2.marvin.42@gmail.com>, 2017\n"
 "Language-Team: Romanian (http://app.transifex.com/movim/movim/language/ro/)\n"
@@ -240,6 +240,10 @@ msgstr ""
 
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
+msgstr ""
+
+#: [account]xmpp_server_info
+msgid "XMPP Server Information"
 msgstr ""
 
 #: [adhoc]title
@@ -2241,9 +2245,8 @@ msgid "Join this chatroom on login"
 msgstr ""
 
 #: [chatrooms]avatar
-#, fuzzy
 msgid "Change the chatroom avatar"
-msgstr "Conectat la chatroom"
+msgstr ""
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom Address"
@@ -2270,9 +2273,8 @@ msgid "Call your contacts and share your webcam or screen"
 msgstr ""
 
 #: [chatrooms]configure
-#, fuzzy
 msgid "Configure the chatroom"
-msgstr "Conectat la chatroom"
+msgstr ""
 
 #: [chatrooms]conflict
 msgid "Nickname already taken"
@@ -2327,14 +2329,12 @@ msgid "Left the chatroom"
 msgstr ""
 
 #: [chatrooms]discover
-#, fuzzy
 msgid "Discover a chatroom"
-msgstr "Decontactat de la chatroom"
+msgstr ""
 
 #: [chatrooms]edit
-#, fuzzy
 msgid "Edit the chatroom"
-msgstr "Conectat la chatroom"
+msgstr ""
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2453,9 +2453,8 @@ msgid "Type of chatroom"
 msgstr ""
 
 #: [chatrooms]users
-#, fuzzy
 msgid "Users"
-msgstr "Utilizator"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -2723,6 +2722,34 @@ msgstr ""
 
 #: [spaceinfo]add_room_title
 msgid "Add a room"
+msgstr ""
+
+#: [spaceinfo]add_directory_title
+msgid "Add a directory"
+msgstr ""
+
+#: [spaceinfo]edit_directory_title
+msgid "Edit a directory"
+msgstr ""
+
+#: [spaceinfo]remove_directory_title
+msgid "Remove a directory"
+msgstr ""
+
+#: [spaceinfo]remove_directory_confirm
+msgid "Do you really want to remove this directory?"
+msgstr ""
+
+#: [spaceinfo]remove_directory_text
+msgid "The %s rooms will be preserved"
+msgstr ""
+
+#: [spaceinfo]edited_directories
+msgid "Edited directories"
+msgstr ""
+
+#: [spaceinfo]edited_room
+msgid "Edited room"
 msgstr ""
 
 #: [spaceinfo]pending_approvals
@@ -4126,21 +4153,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgctxt "[chatrooms]members"
-#~ msgid "Members"
-#~ msgstr "Membri"
-
-#~ msgctxt "[room]group_chat_members"
-#~ msgid "Members"
-#~ msgstr "Membri"
-
-#~ msgctxt "[room]affiliation_members"
-#~ msgid "Members"
-#~ msgstr "Membri"
-
-#~ msgid "Connected to the chatroom"
-#~ msgstr "Conectat la chatroom"
-
-#~ msgid "Subject changed"
-#~ msgstr "Subiect schimbat"
