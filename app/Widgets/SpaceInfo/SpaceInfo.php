@@ -19,6 +19,7 @@ use Moxl\Xec\Action\Space\Destroy as SpaceDestroy;
 use Moxl\Xec\Action\Space\GetConfig;
 use Moxl\Xec\Action\Space\GetPendingSubscriptions;
 use Moxl\Xec\Action\Space\GetSubscriptions;
+use Moxl\Xec\Action\Space\SetAffiliations as SpaceSetAffiliations;
 use Moxl\Xec\Action\Space\SetConfig;
 use Moxl\Xec\Payload\Packet;
 
@@ -398,7 +399,7 @@ class SpaceInfo extends Base
             }
         }
 
-        $setAffiliation = $this->xmpp(new SetAffiliations);
+        $setAffiliation = $this->xmpp(new SpaceSetAffiliations);
         $setAffiliation->setTo($server)
             ->setNode($node)
             ->setData($affiliations)

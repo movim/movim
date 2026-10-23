@@ -16,6 +16,7 @@ use Moxl\Xec\Action\PubsubSubscription\Add;
 use Moxl\Xec\Action\PubsubSubscription\Remove;
 use Moxl\Xec\Action\Space\Create;
 use Moxl\Xec\Action\Space\GetRooms;
+use Moxl\Xec\Action\Space\SetAffiliations;
 use Moxl\Xec\Action\Space\SetSubscription;
 use Moxl\Xec\Action\Space\Subscribe;
 use Moxl\Xec\Payload\Packet;
