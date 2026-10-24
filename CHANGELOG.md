@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.35.5 (master)
 ---------------------------
+* Fix message correction
 
 v0.35.4
 ---------------------------
