@@ -739,7 +739,7 @@ msgstr "%s ist jetzt verbannt"
 
 #: [chat]muc_member
 msgid "%s is now member"
-msgstr "% ist jetzt Mitglied"
+msgstr "%s ist jetzt Mitglied"
 
 #: [chat]publish_error
 msgid "An error occurred when sending the message"
