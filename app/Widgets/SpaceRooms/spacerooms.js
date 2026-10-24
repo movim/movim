@@ -70,7 +70,7 @@ var SpaceRooms = {
                             let weight = 0;
 
                             // Extract URL parameters once to avoid repeating the function calls inside a loop
-                            while (currentItem && !currentItem.classList.contains('subheader')) {
+                            while (currentItem && !currentItem.classList.contains('subheader') && currentItem.localName == 'li') {
                                 SpaceRooms_ajaxSetHierarchy(
                                     server,
                                     node,
