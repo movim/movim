@@ -235,7 +235,7 @@ var Chat = {
                 if (text == '') {
                     Chat.disableSending();
                 } else {
-                    let correct = Chat_ajaxHttpDaemonCorrect(jid, textarea.dataset.mid, text);
+                    let correct = Chat_ajaxHttpDaemonCorrect(crypto.randomUUID(), jid, textarea.dataset.mid, text);
                     correct.then(e => {
                         Chat.sentMessage();
                     }).catch(e => {

@@ -858,7 +858,7 @@ class Chat extends Base
      *
      * @return void
      */
-    public function ajaxHttpDaemonCorrect(string $id, string $to, int $mid, string $message = '')
+    public function ajaxHttpDaemonCorrect(string $id, string $to, string $mid, string $message = '')
     {
         $replace = $this->me->messages()
             ->where('mid', $mid)
