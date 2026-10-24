@@ -1843,6 +1843,7 @@ MovimEvents.registerWindow('loaded', 'chat', () => {
             if (['chat', 'space'].includes(MovimUtils.urlParts().page)
                 && (typeof (PublishStories) == 'undefined' || PublishStories.main == undefined)) {
                 Chat_ajaxHttpDaemonSendMessage(
+                    crypto.randomUUID(),
                     Chat.getTextarea().dataset.jid,
                     false,
                     Boolean(Chat.getTextarea().dataset.muc),

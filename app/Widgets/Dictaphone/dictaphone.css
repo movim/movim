@@ -1,4 +1,6 @@
 #dictaphone_widget {
+    animation: slideUp .45s;
+    animation-timing-function: var(--decelerate-easing);
     display: none;
     overflow: hidden;
     margin: 0 0.5rem;
@@ -11,6 +13,10 @@
 
 #dictaphone_widget li {
     padding: 0.5rem 0;
+}
+
+#dictaphone_widget li > span.control {
+    margin-inline-end: 0;
 }
 
 #dictaphone_widget li #play_pause:not(.enabled) {
