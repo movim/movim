@@ -1,5 +1,5 @@
 #dictaphone_widget {
-    animation: slideUp .45s;
+    animation: slideUp 0.1s;
     animation-timing-function: var(--decelerate-easing);
     display: none;
     overflow: hidden;
