@@ -10,7 +10,10 @@ class Iq
         $error = $dom->createElement('error');
         $error->setAttribute('type', 'cancel');
 
-        $error->appendChild($dom->createElementNS('urn:ietf:params:xml:ns:xmpp-stanzas', 'service-unavailable'));
+        $serviceUnavailable = $dom->createElement('service-unavailable');
+        $serviceUnavailable->setAttribute('xmlns', 'urn:ietf:params:xml:ns:xmpp-stanzas');
+
+        $error->appendChild($serviceUnavailable);
 
         return $error;
     }
