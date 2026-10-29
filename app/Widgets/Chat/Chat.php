@@ -596,7 +596,7 @@ class Chat extends Base
             if (! $valid) {
                 $messageFile = null;
             }
-        } elseif ($url = Url::resolveFromDB(trim($message))) {
+        } elseif ($message != null && $url = Url::resolveFromDB(trim($message))) {
             $urlId = $url->id;
 
             if ($url->messageFile !== null) {
