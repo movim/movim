@@ -31,7 +31,9 @@ var Draw = {
 
     init: function () {
         MovimTpl.pushAnchorState('draw', function () {
-            Draw.draw.classList.remove('bound', 'open');
+            Draw.draw.classList.remove('open');
+            Draw.abort?.abort();
+            cancelAnimationFrame(Draw.raf);
         });
 
         Draw.drawingData = [];
@@ -43,11 +45,18 @@ var Draw = {
             Draw.backgroundCanvas = null;
         }
 
+        Draw.ratio = 1;
+
         Draw.topNav = document.querySelector('.draw-top-nav');
         Draw.control = document.querySelector('.draw-control');
         Draw.actions = document.querySelector('.draw-actions');
 
         Draw.draw = document.getElementById('draw');
+
+        Draw.abort?.abort();
+        Draw.abort = new AbortController();
+        const { signal } = Draw.abort;
+
         const canvasWrapper = document.querySelector('#draw .canvas');
         const colors = document.querySelectorAll('.draw-colors li');
         const widths = document.querySelectorAll('.draw-widths li');
@@ -70,7 +79,7 @@ var Draw = {
                     width = dwidth;
                     height = dwidth * Draw.bgHeight / Draw.bgWidth;
                     Draw.ratio = Draw.bgWidth / dwidth;
-                } else if (Draw.bgWidth <= dwidth || bgTaller) {
+                } else {
                     height = dheight;
                     width = dheight * Draw.bgWidth / Draw.bgHeight;
                     Draw.ratio = Draw.bgHeight / dheight;
@@ -99,7 +108,7 @@ var Draw = {
         Draw.bg = document.getElementById('draw-background');
         Draw.bg.width = width;
         Draw.bg.height = height;
-        bgctx = Draw.bg.getContext('2d');
+        const bgctx = Draw.bg.getContext('2d');
 
         if (Draw.backgroundCanvas) {
             // copy over background image
@@ -121,32 +130,16 @@ var Draw = {
         widths.forEach(item => item.classList.remove('selected'));
         document.querySelector('[data-width=medium]').classList.add('selected');
 
-        if (Draw.draw.classList.contains('bound')) return;
+        cancelAnimationFrame(Draw.raf);
 
-        // Get a regular interval for drawing to the screen
-        window.requestAnimFrame = (function (callback) {
-            return window.requestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                window.oRequestAnimationFrame ||
-                window.msRequestAnimaitonFrame ||
-                function (callback) {
-                    window.setTimeout(callback, 1000 / 60);
-                };
-        })();
-        // Allow for animation
-        (function drawLoop() {
-            requestAnimFrame(drawLoop);
-            Draw.renderCanvas();
-        })();
-
-        Draw.screen.addEventListener('mousedown', Draw.startDrawing, true);
-        Draw.screen.addEventListener('mouseenter', Draw.startDrawing, false);
-        Draw.screen.addEventListener('mouseup', Draw.stopDrawing, false);
-        Draw.screen.addEventListener('mouseleave', Draw.stopDrawing, false);
+        Draw.screen.addEventListener('mousedown', Draw.startDrawing, { capture: true, signal });
+        Draw.screen.addEventListener('mouseenter', Draw.startDrawing, { signal });
+        Draw.screen.addEventListener('mouseup', Draw.stopDrawing, { signal });
+        Draw.screen.addEventListener('mouseleave', Draw.stopDrawing, { signal });
         Draw.screen.addEventListener('mousemove', function (e) {
-            Draw.mousePos = Draw.getPos(Draw.screen, e);
-        }, false);
+            //if (Draw.drawing) Draw.mousePos = Draw.addPoint(e);
+            if (Draw.drawing) Draw.addPoint(e);
+        }, { signal });
 
         // Set up touch events for mobile, etc
         Draw.screen.addEventListener('touchstart', function (e) {
@@ -158,7 +151,7 @@ var Draw = {
                 buttons: 1
             });
             Draw.screen.dispatchEvent(mouseEvent);
-        }, false);
+        }, { signal });
         Draw.screen.addEventListener('touchend', Draw.stopDrawing, false);
         Draw.screen.addEventListener('touchmove', function (e) {
             var touch = e.touches[0];
@@ -167,7 +160,7 @@ var Draw = {
                 clientY: touch.clientY
             });
             Draw.screen.dispatchEvent(mouseEvent);
-        }, false);
+        }, { signal });
 
         // Clear canvas
         const clear = document.getElementById('draw-clear');
@@ -175,7 +168,7 @@ var Draw = {
             const rect = Draw.screen.getBoundingClientRect();
             Draw.ctx.clearRect(0, 0, rect.width, rect.height);
             Draw.drawingData = [];
-        }, false);
+        }, { signal });
 
         // Save (background +) drawing
         Draw.save = document.querySelector('#draw-save');
@@ -189,6 +182,7 @@ var Draw = {
                 bg = Draw.backgroundCanvas;
             } else {
                 crop = Draw.autoCropDrawing();
+                if (!crop) return;
                 width = crop.width;
                 height = crop.height;
                 bg = Draw.bg;
@@ -234,7 +228,7 @@ var Draw = {
             this.classList.add('selected');
 
             Draw.ctx.globalCompositeOperation = 'destination-out';
-        }, false);
+        }, { signal });
 
         // Change pencil color
         for (let i = 0; i < colors.length; i++) {
@@ -246,7 +240,7 @@ var Draw = {
                 Draw.ctx.globalCompositeOperation = 'source-over';
                 Draw.ctx.strokeStyle = window.getComputedStyle(colors[i].querySelector('span.primary')).backgroundColor;
                 Draw.sctx.strokeStyle = window.getComputedStyle(colors[i].querySelector('span.primary')).backgroundColor;
-            });
+            }, { signal });
         }
 
         // Change pencil thickness
@@ -271,19 +265,18 @@ var Draw = {
                 }
                 Draw.ctx.lineWidth = width;
                 Draw.sctx.lineWidth = width;
-            });
+            }, { signal });
         }
 
         const drawback = document.querySelector('#draw #drawback');
         drawback.addEventListener('click', () => {
             history.back();
-        });
-
-        // Add a flag to not re-bind event listeners
-        Draw.draw.classList.add('bound');
+        }, { signal });
     },
 
     stopDrawing: function (e) {
+        if (!Draw.drawing) return;
+
         // print to actual canvas
         if (Draw.drawingData.length)
             Draw.smoothenLine(Draw.drawingData[Draw.drawingData.length - 1], Draw.ctx, 1)
@@ -322,7 +315,8 @@ var Draw = {
             }
             Draw.drawingData.push(data);
 
-            Draw.lastPos = Draw.getPos(Draw.screen, e);
+            Draw.lastPos = null;
+            Draw.addPoint(e);
         }
     },
 
@@ -341,7 +335,7 @@ var Draw = {
     smoothenLine(line, ctx, ratio) {
         let j = 0;
         // keep only half of the points
-        const sample = line.points.filter((point, index) => index % 2 == 0)
+        const sample = [...line.points];
 
         while (sample.length < 4) {
             sample.push(sample[sample.length - 1]);
@@ -398,6 +392,8 @@ var Draw = {
             }
         }
 
+        if (maxx < minx || maxy < miny) return null;
+
         width = maxx - minx + 1;
         height = maxy - miny + 1;
 
@@ -411,40 +407,27 @@ var Draw = {
 
     // Get the position of the mouse/touch relative to the canvas
     getPos: function (canvasDom, event) {
-        var rect = canvasDom.getBoundingClientRect();
-        let x, y;
-        if (event.touches) {
-            x = event.touches[0].clientX - rect.left;
-            y = event.touches[0].clientY - rect.top;
-        } else {
-            x = event.clientX - rect.left;
-            y = event.clientY - rect.top;
-        }
-
-        if (Draw.drawing) {
-            let points = Draw.drawingData[Draw.drawingData.length - 1].points;
-            points.push({ x, y });
-        }
-
-        return { x, y };
+        const rect = canvasDom.getBoundingClientRect();
+        const point = event.touches ? event.touches[0] : event;
+        return { x: point.clientX - rect.left, y: point.clientY - rect.top };
     },
 
-    // Draw to the canvas
-    renderCanvas: function () {
-        if (Draw.drawing && Draw.lastPos && Draw.mousePos) {
-            Draw.sctx.moveTo(Draw.lastPos.x, Draw.lastPos.y);
-            Draw.sctx.lineTo(Draw.mousePos.x, Draw.mousePos.y);
-            Draw.sctx.stroke();
-            Draw.lastPos = Draw.mousePos;
-        }
-    },
+    // Record a point of the stroke in progress
+    addPoint: function (event) {
+        const pos = Draw.getPos(Draw.screen, event);
+        const from = Draw.lastPos ?? pos;
 
-    disableForCanvas: function (e) {
-        if (e.target.tagName == 'canvas') {
-            e.preventDefault();
-        }
+        Draw.drawingData.at(-1).points.push(pos);
+
+        Draw.sctx.beginPath();
+        Draw.sctx.moveTo(from.x, from.y);
+        Draw.sctx.lineTo(pos.x, pos.y);
+        Draw.sctx.stroke();
+
+        Draw.lastPos = pos;
     }
 };
+
 MovimEvents.registerWindow('loaded', 'draw', () => {
     Upload.attach((file) => {
         if (Draw.draw) Draw.draw.classList = '';
@@ -469,7 +452,3 @@ MovimEvents.registerWindow('loaded', 'draw', () => {
         }
     });
 });
-
-MovimEvents.registerBody('touchstart', 'draw', (e) => Draw.disableForCanvas(e));
-MovimEvents.registerBody('touchend', 'draw', (e) => Draw.disableForCanvas(e));
-MovimEvents.registerBody('touchmove', 'draw', (e) => Draw.disableForCanvas(e));

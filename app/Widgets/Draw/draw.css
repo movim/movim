@@ -33,6 +33,7 @@
     width: 100%;
     margin: auto;
     z-index: 0;
+    touch-action: none;
 }
 
 #draw ul.list.controls li {

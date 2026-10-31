@@ -4,6 +4,8 @@ Movim Changelog
 v0.35.5 (master)
 ---------------------------
 * Fix message correction
+* Fix the Pubsub post headline handling
+* Modernize the Draw widget code
 
 v0.35.4
 ---------------------------
