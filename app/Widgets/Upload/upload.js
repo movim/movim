@@ -1,4 +1,5 @@
 var Upload = {
+    id: null,
     xhr: null,
     initiated: [],
     attached: [],
@@ -16,9 +17,9 @@ var Upload = {
         Upload.launchInitiated();
 
         if (Upload.file) {
-            let splited = Upload.name.split('.');
-            let extension = splited.pop();
-            let name = splited.join('.');
+            const dot = Upload.name.lastIndexOf('.');
+            let name = dot > 0 ? Upload.name.slice(0, dot) : Upload.name;
+            const extension = dot > 0 ? Upload.name.slice(dot + 1) : '';
 
             if (Upload.prependName) {
                 name = Upload.prependName + '_' + name;
@@ -36,7 +37,7 @@ var Upload = {
                 name += '_' + now;
             }
 
-            Upload.name = name + '.' + extension;
+            Upload.name = extension ? `${name}.${extension}` : name;
 
             Upload_ajaxPrepare({
                 name: Upload.name,
@@ -163,7 +164,9 @@ var Upload = {
                     Upload.canvas.height = height;
                 }
 
-                ctx = Upload.canvas.getContext("2d");
+                const ctx = Upload.canvas.getContext('2d');
+                ctx.fillStyle = '#fff';
+                ctx.fillRect(0, 0, Upload.canvas.width, Upload.canvas.height);
 
                 MovimUtils.applyOrientation(ctx, orientation, width, height);
 
@@ -210,6 +213,9 @@ var Upload = {
                 }
             }
         });
+
+        image.addEventListener('error', () => Upload.prepare(file));
+
         image.src = src;
     },
 
@@ -227,31 +233,34 @@ var Upload = {
             var type = file.type ? file.type + ' · ' : '';
             fileInfo.querySelector('p.desc').innerText = type + MovimUtils.humanFileSize(file.size);
 
-            if (Upload.file.type.match(/image.*/)) {
-                preview.src = URL.createObjectURL(Upload.file);
+            if (Upload.file.type.startsWith('image/')) {
+                const url = URL.createObjectURL(Upload.file);
+                preview.src = url;
 
                 // Thumbhash
                 preview.addEventListener('load', e => {
+                    URL.revokeObjectURL(url);
                     const canvas = document.createElement('canvas');
                     const context = canvas.getContext('2d');
-                    const scale = 100 / Math.max(Upload.canvas.width, Upload.canvas.height);
+                    const scale = 100 / Math.max(preview.naturalWidth, preview.naturalHeight);
 
-                    canvas.width = Math.round(Upload.canvas.width * scale);
-                    canvas.height = Math.round(Upload.canvas.height * scale);
+                    canvas.width = Math.round(preview.naturalWidth * scale);
+                    canvas.height = Math.round(preview.naturalHeight * scale);
 
                     context.drawImage(preview, 0, 0, canvas.width, canvas.height);
                     const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
 
                     Upload.thumbhash = MovimUtils.arrayBufferToBase64(rgbaToThumbHash(pixels.width, pixels.height, pixels.data));
-                });
+                }, { once: true });
 
-                toDraw.addEventListener('click', e => {
+                toDraw.onclick = () => {
                     Draw.initCanvas = Upload.canvas ?? preview;
                     Draw_ajaxHttpGet();
 
                     Dialog_ajaxClear();
                     Upload.abort();
-                });
+                };
+
                 fileInfo.classList.add('preview');
             } else {
                 preview.src = '';
@@ -276,35 +285,31 @@ var Upload = {
         }
 
         Upload.xhr.upload.addEventListener('progress', function (evt) {
-            var percent = Math.floor(evt.loaded / evt.total * 100);
+            if (!evt.lengthComputable) return;
+            const percent = Math.floor(evt.loaded / evt.total * 100);
 
             Upload.launchProgressed(percent);
             Upload.setProgress('arrow_upload_progress', percent == 100 ? '' : percent + '%');
         }, false);
 
-        Upload.xhr.onreadystatechange = function () {
-            if (Upload.xhr.readyState == 4
-                && (Upload.xhr.status >= 200 && Upload.xhr.status < 400)) {
+        const fail = () => {
+            Upload.launchFailed();
+            Upload_ajaxFailed();
+            Upload.setProgress('error', '');
+            Upload.uploadButton?.classList.remove('disabled');
+        };
+
+        Upload.xhr.addEventListener('load', () => {
+            if (Upload.xhr.status >= 200 && Upload.xhr.status < 400) {
                 Dialog.clear();
                 Upload.launchAttached();
                 Upload.clear();
-
-                if (Upload.uploadButton) {
-                    Upload.uploadButton.classList.remove('disabled');
-                }
-            } else if (Upload.xhr.readyState == 4
-                && (Upload.xhr.status >= 400 || Upload.xhr.status == 0)
-                && Upload.file != null) {
-                Upload.launchFailed();
-                Upload_ajaxFailed();
-
-                Upload.setProgress('error', '');
-
-                if (Upload.uploadButton) {
-                    Upload.uploadButton.classList.remove('disabled');
-                }
+                Upload.uploadButton?.classList.remove('disabled');
+            } else {
+                fail();
             }
-        }
+        });
+        Upload.xhr.addEventListener('error', fail);
 
         Upload.xhr.open("POST", route, true);
 
@@ -361,14 +366,8 @@ var Upload = {
         document.querySelector('#upload div.drop').addEventListener('drop', ev => {
             ev.preventDefault();
 
-            if (ev.dataTransfer.items) {
-                for (var i = 0; i < ev.dataTransfer.items.length; i++) {
-                    if (ev.dataTransfer.items[i].kind === 'file') {
-                        var file = ev.dataTransfer.items[i].getAsFile();
-                        Upload.preview(file);
-                    }
-                }
-            }
+            const [file] = ev.dataTransfer.files;
+            if (file) Upload.preview(file);
         });
 
         var dropArea = document.querySelector('#upload div.drop');
@@ -400,19 +399,11 @@ var Upload = {
 MovimEvents.registerWindow('paste', 'upload', (e) => {
     if (Upload.file != null) return;
 
-    const clipboardItems = e.clipboardData.items;
-    const items = [].slice
-        .call(clipboardItems)
-        .filter(function (item) {
-            return item.type.indexOf('image') !== -1;
-        });
+    const [file] = e.clipboardData?.files ?? [];
+    if (!file) return;
 
-    if (items.length === 0) {
-        return;
-    }
-
-    const item = items[0];
-    Upload.file = item.getAsFile();
+    Upload.file = file;
+    Upload.name = file.name;
     Upload_ajaxGetPanel();
 });
 
