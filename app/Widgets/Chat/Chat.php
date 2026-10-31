@@ -885,7 +885,6 @@ class Chat extends Base
             ->first();
 
         $emojiHandler = Emoji::getInstance();
-        $emojiHandler->replace($emoji);
 
         if ($parentMessage && $emojiHandler->isSingleEmoji()) {
             // Try to load the MUC presence and resolve the resource

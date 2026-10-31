@@ -136,10 +136,10 @@ function buildHashtagNode(HTMLDocument $dom, string $tag): Node
 
 function emojiToCodePoint(string $emoji): string
 {
-    $emoji = mb_convert_encoding($emoji, 'UTF-32', 'UTF-8');
-    $unicode = strtolower(preg_replace('/^[0]+/', '', bin2hex($emoji)));
-
-    return $unicode;
+    return implode('-', array_map(
+        fn (string $char): string => dechex(mb_ord($char, 'UTF-8')),
+        mb_str_split($emoji)
+    ));
 }
 
 function addEmojis(string $string, bool $noTitle = false): string

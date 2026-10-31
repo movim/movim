@@ -52,7 +52,7 @@ class Emoji
         $this->lastEmoji = null;
 
         $replaced = preg_replace_callback(
-            '/(?:\p{Extended_Pictographic}[\p{Emoji_Modifier}\p{M}]*(?:\p{Join_Control}\p{Extended_Pictographic}[\p{Emoji_Modifier}\p{M}]*)*|\s|.)\p{M}*/u',
+            '/(?:\p{Regional_Indicator}{2}|\p{Extended_Pictographic}[\p{Emoji_Modifier}\p{M}]*[\x{E0020}-\x{E007F}]*(?:\p{Join_Control}\p{Extended_Pictographic}[\p{Emoji_Modifier}\p{M}]*[\x{E0020}-\x{E007F}]*)*|\s|.)\p{M}*/u',
             function (array $matches) use ($noTitle): string {
                 $astext = implode(
                     '-',
