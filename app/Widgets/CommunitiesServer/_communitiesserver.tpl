@@ -13,7 +13,6 @@
                 </span>
             {/if}
             <div>
-                <p class="line">{$server}</p>
                 <p class="line">
                     {if="isset($item->name)"}
                         {$item->name}
@@ -21,6 +20,7 @@
                         {$c->__('page.communities')}
                     {/if}
                 </p>
+                <p class="line">{$server}</p>
             </div>
         </li>
     </ul>
