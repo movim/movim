@@ -4,7 +4,14 @@
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register(SW_URI)
-        .then(e => navigator.serviceWorker.ready)
+        .then((registration) => {
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    registration.update().catch(() => { });
+                }
+            });
+            return navigator.serviceWorker.ready;
+        })
         .then((r) => {
             console.log('Service Worker Registered');
         });
