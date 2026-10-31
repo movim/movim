@@ -14,7 +14,6 @@ var Draw = {
     bg: null,  // non drawable, only used for background
 
     drawing: false,
-    mousePos: null,
     lastPos: null,
 
     drawingData: null,  // data structure for saving drawn points
@@ -33,7 +32,6 @@ var Draw = {
         MovimTpl.pushAnchorState('draw', function () {
             Draw.draw.classList.remove('open');
             Draw.abort?.abort();
-            cancelAnimationFrame(Draw.raf);
         });
 
         Draw.drawingData = [];
@@ -100,6 +98,7 @@ var Draw = {
         Draw.ctx.lineCap = 'round';
 
         Draw.screen = document.getElementById('screen-canvas');
+        Draw.screen.style.touchAction = 'none';
         Draw.screen.width = width;
         Draw.screen.height = height;
         Draw.sctx = Draw.screen.getContext('2d');
@@ -130,37 +129,20 @@ var Draw = {
         widths.forEach(item => item.classList.remove('selected'));
         document.querySelector('[data-width=medium]').classList.add('selected');
 
-        cancelAnimationFrame(Draw.raf);
-
-        Draw.screen.addEventListener('mousedown', Draw.startDrawing, { capture: true, signal });
-        Draw.screen.addEventListener('mouseenter', Draw.startDrawing, { signal });
-        Draw.screen.addEventListener('mouseup', Draw.stopDrawing, { signal });
-        Draw.screen.addEventListener('mouseleave', Draw.stopDrawing, { signal });
-        Draw.screen.addEventListener('mousemove', function (e) {
-            //if (Draw.drawing) Draw.mousePos = Draw.addPoint(e);
-            if (Draw.drawing) Draw.addPoint(e);
+        Draw.screen.addEventListener('pointerdown', (e) => {
+            if (e.pointerType === 'mouse' && e.button !== 0) return;
+            if (Draw.drawing) return; // second finger
+            Draw.screen.setPointerCapture(e.pointerId);
+            Draw.startDrawing(e);
         }, { signal });
 
-        // Set up touch events for mobile, etc
-        Draw.screen.addEventListener('touchstart', function (e) {
-            Draw.mousePos = Draw.getPos(Draw.screen, e);
-            var touch = e.touches[0];
-            var mouseEvent = new MouseEvent('mousedown', {
-                clientX: touch.clientX,
-                clientY: touch.clientY,
-                buttons: 1
-            });
-            Draw.screen.dispatchEvent(mouseEvent);
+        Draw.screen.addEventListener('pointermove', (e) => {
+            if (!Draw.drawing || e.pointerId !== Draw.pointerId) return;
+            for (const ev of e.getCoalescedEvents?.() ?? [e]) Draw.addPoint(ev);
         }, { signal });
-        Draw.screen.addEventListener('touchend', Draw.stopDrawing, false);
-        Draw.screen.addEventListener('touchmove', function (e) {
-            var touch = e.touches[0];
-            var mouseEvent = new MouseEvent('mousemove', {
-                clientX: touch.clientX,
-                clientY: touch.clientY
-            });
-            Draw.screen.dispatchEvent(mouseEvent);
-        }, { signal });
+
+        Draw.screen.addEventListener('pointerup', Draw.stopDrawing, { signal });
+        Draw.screen.addEventListener('pointercancel', Draw.stopDrawing, { signal });
 
         // Clear canvas
         const clear = document.getElementById('draw-clear');
@@ -275,7 +257,7 @@ var Draw = {
     },
 
     stopDrawing: function (e) {
-        if (!Draw.drawing) return;
+        if (!Draw.drawing || e.pointerId !== Draw.pointerId) return;
 
         // print to actual canvas
         if (Draw.drawingData.length)
@@ -286,7 +268,6 @@ var Draw = {
 
         Draw.drawing = false;
         Draw.lastPos = null;
-        Draw.mousePos = null;
 
         // show coontrols
         Draw.topNav.classList.remove('drawing');
@@ -298,8 +279,8 @@ var Draw = {
     },
 
     startDrawing: function (e) {
-        if (e.buttons == 1) {
-            Draw.drawing = true;
+        if (!Draw.drawing) {
+            Draw.pointerId = e.pointerId;
 
             // hide controls
             Draw.topNav.classList.add('drawing');
@@ -308,14 +289,19 @@ var Draw = {
 
             // save drawing data
             const data = {
-                gco: Draw.sctx.globalCompositeOperation,
-                width: Draw.sctx.lineWidth,
-                color: Draw.sctx.strokeStyle,
+                gco: Draw.ctx.globalCompositeOperation,
+                width: Draw.ctx.lineWidth,
+                color: Draw.ctx.strokeStyle,
                 points: []
             }
+
             Draw.drawingData.push(data);
+            Draw.sctx.strokeStyle = data.gco === 'destination-out'
+                ? 'rgba(128, 128, 128, 0.5)'
+                : data.color;
 
             Draw.lastPos = null;
+            Draw.drawing = true;
             Draw.addPoint(e);
         }
     },
@@ -333,8 +319,9 @@ var Draw = {
     },
 
     smoothenLine(line, ctx, ratio) {
+        Draw.ctx.beginPath();
+
         let j = 0;
-        // keep only half of the points
         const sample = [...line.points];
 
         while (sample.length < 4) {
