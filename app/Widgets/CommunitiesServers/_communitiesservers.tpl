@@ -18,14 +18,12 @@
                 <li class="block
                     {if="$value->occupants == 0"}faded{else}color {$value->server|stringToColor}{/if}"
                     onclick="MovimUtils.reload('{$c->route('community', $value->server)}')">
-                    <span class="primary icon bubble color transparent">
-                        <i class="material-symbols">workspaces</i>
-                    </span>
                     <div>
                         <p class="line" title="{$value->server} - {$value->name}">
-                            {$value->server}
+                            <span class="info">{$c->__('communities.counter', $value->occupants)}</span>
+                            {$value->name}
                         </p>
-                        <p class="line">{$c->__('communities.counter', $value->occupants)}<span class="second">• {$value->name}</span></p>
+                        <p class="line">{$value->server}</p>
                     </div>
                 </li>
             {/if}

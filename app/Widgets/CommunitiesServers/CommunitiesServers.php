@@ -80,6 +80,8 @@ class CommunitiesServers extends Base
             ->where('node', '')
             ->restrictUserHost($this->me)
             ->orderBy('occupants', 'desc')
+            ->where('server', 'not like', 'spaces.%')
+            ->where('server', 'not like', 'comments.%')
             ->get();
 
         $view = $this->tpl();
