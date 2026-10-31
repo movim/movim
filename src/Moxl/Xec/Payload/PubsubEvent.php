@@ -130,8 +130,7 @@ class PubsubEvent extends Payload
                     ->spaces()
                     ->where('server', $from)
                     ->where('node', $node)
-                    ->exists()
-                ) {
+                    ->exists()) {
                     return;
                 }
 
@@ -167,10 +166,10 @@ class PubsubEvent extends Payload
                 $id = (string) $stanza->items->item->attributes()->id;
 
                 if (
-                    Post::where('server', $from)
-                    ->where('node', $node)
-                    ->where('nodeid', $id)
-                    ->exists()
+                    !Post::where('server', $from)
+                        ->where('node', $node)
+                        ->where('nodeid', $id)
+                        ->exists()
                     && $id != TestPostPublish::TEST_POST_ID
                 ) {
                     $d = new GetItem($this->me, sessionId: $this->sessionId);

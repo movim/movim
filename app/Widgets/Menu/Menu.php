@@ -20,7 +20,7 @@ class Menu extends Base
     public function load()
     {
         $this->registerEvent('post', 'onPost');
-        $this->registerEvent('post_retract', 'onRetract', 'news');
+        $this->registerEvent('pubsubevent_retract', 'onRetract', 'news');
         $this->registerEvent('pubsubsubscription_add_handle', 'onSubscription', 'news');
         $this->registerEvent('pubsubsubscription_remove_handle', 'onSubscription', 'news');
 
