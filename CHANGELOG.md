@@ -6,6 +6,7 @@ v0.35.5 (master)
 * Fix message correction
 * Fix the Pubsub post headline handling
 * Modernize the Draw widget code
+* Modernize and refactor the avatar/image manipulation Javascript
 
 v0.35.4
 ---------------------------

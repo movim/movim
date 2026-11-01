@@ -1,52 +1,52 @@
 var MovimAvatar = {
-    file : function(files, formname, width = 384, height = 384) {
-        var f = files[0];
-        if (!f.type.match(/image.*/)) {
-            console.log("Not a picture !");
+    form: function (formname) {
+        return document.querySelector(`form[name="${formname}"]`);
+    },
+
+    file: async function (files, formname, width = 384, height = 384) {
+        const file = files?.[0];
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
             MovimAvatar.clear(formname);
-        } else {
-            var reader = new FileReader();
-            reader.readAsDataURL(f);
-
-            reader.onload = function (ev) {
-                MovimUtils.getOrientation(f, function(orientation) {
-                    MovimAvatar.preview(ev.target.result, orientation, formname, width, height);
-                });
-            };
-        };
-    },
-    clear : function(formname) {
-        document.querySelector('form[name=' + formname + '] img').src = '';
-        document.querySelector('form[name=' + formname + '] input[name="photobin"]').value = '';
-    },
-    preview : function(src, orientation, formname, setWidth, setHeight) {
-        var image = new Image();
-        image.src = src;
-
-        image.onload = function() {
-            var canvas = document.createElement('canvas');
-            width = canvas.width = setWidth;
-            height = canvas.height = setHeight;
-            ctx = canvas.getContext("2d");
-
-            MovimUtils.applyOrientation(ctx, orientation, width, height)
-            MovimUtils.drawImageProp(ctx, image);
-
-            var base64 = canvas.toDataURL('image/jpeg', 0.80);
-
-            var preview = document.querySelector('form[name=' + formname + '] img');
-
-            var list = document.querySelector('form[name=' + formname + '] ul');
-            if (list) list.classList.add('hide');
-
-            var input = document.querySelector('form[name=' + formname + '] input[name="photobin"]');
-
-            if (preview.className == 'error') preview.className = '';
-
-            preview.src = base64;
-
-            var bin = base64.split(",");
-            input.value = bin[1];
+            return;
         }
+
+        try {
+            MovimAvatar.preview(await MovimUtils.loadImage(file), formname, width, height);
+        } catch (e) {
+            MovimAvatar.clear(formname);
+        }
+    },
+
+    clear: function (formname) {
+        const form = MovimAvatar.form(formname);
+        form.querySelector('img').src = '';
+        form.querySelector('input[name="photobin"]').value = '';
+    },
+
+    preview: function (image, formname, width, height) {
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext('2d');
+        ctx.imageSmoothingQuality = 'high';
+
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(0, 0, width, height);
+
+        MovimUtils.drawImageProp(ctx, image);
+
+        const base64 = canvas.toDataURL('image/jpeg', 0.80);
+
+        const form = MovimAvatar.form(formname);
+        const preview = form.querySelector('img');
+
+        form.querySelector('ul')?.classList.add('hide');
+        preview.classList.remove('error');
+        preview.src = base64;
+
+        form.querySelector('input[name="photobin"]').value = base64.slice(base64.indexOf(',') + 1);
     }
-}
+};

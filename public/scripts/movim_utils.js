@@ -291,72 +291,14 @@ var MovimUtils = {
         } while (Math.abs(bytes) >= thresh && u < units.length - 1);
         return bytes.toFixed(1) + ' ' + units[u];
     },
-    getOrientation: function (file, callback) {
-        var testImageURL =
-            'data:image/jpeg;base64,/9j/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAYAAAA' +
-            'AAAD/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBA' +
-            'QEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQE' +
-            'BAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/AABEIAAIAAwMBEQACEQEDEQH/x' +
-            'ABRAAEAAAAAAAAAAAAAAAAAAAAKEAEBAQADAQEAAAAAAAAAAAAGBQQDCAkCBwEBAAAAAAA' +
-            'AAAAAAAAAAAAAABEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AG8T9NfSMEVMhQ' +
-            'voP3fFiRZ+MTHDifa/95OFSZU5OzRzxkyejv8ciEfhSceSXGjS8eSdLnZc2HDm4M3BxcXw' +
-            'H/9k='
-
-        var img = document.createElement('img');
-        img.onload = function () {
-            // Check if the browser supports automatic image orientation:
-            let orientation = img.width === 2 && img.height === 3;
-
-            if (orientation) {
-                return callback(-1);
-            } else {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    var view = new DataView(e.target.result);
-                    if (view.getUint16(0, false) != 0xFFD8) return callback(-2);
-                    var length = view.byteLength, offset = 2;
-
-                    while (offset < length) {
-                        var marker = view.getUint16(offset, false);
-                        offset += 2;
-                        if (marker == 0xFFE1) {
-                            if (view.getUint32(offset += 2, false) != 0x45786966) return callback(-1);
-
-                            var little = view.getUint16(offset += 6, false) == 0x4949;
-                            offset += view.getUint32(offset + 4, little);
-
-                            var tags = view.getUint16(offset, little);
-                            offset += 2;
-
-                            for (var i = 0; i < tags; i++)
-                                if (view.getUint16(offset + (i * 12), little) == 0x0112)
-
-                                    return callback(view.getUint16(offset + (i * 12) + 8, little));
-                        }
-                        else if ((marker & 0xFF00) != 0xFF00) break;
-                        else offset += view.getUint16(offset, false);
-                    }
-
-                    return callback(-1);
-                };
-
-                reader.readAsArrayBuffer(file);
-            }
-        }
-        img.src = testImageURL
-    },
-    applyOrientation: function (ctx, orientation, width, height) {
-        switch (orientation) {
-            case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
-            case 3: ctx.transform(-1, 0, 0, -1, width, height); break;
-            case 4: ctx.transform(1, 0, 0, -1, 0, height); break;
-            case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
-            case 6: ctx.transform(0, 1, -1, 0, height, 0); break;
-            case 7: ctx.transform(0, -1, -1, 0, height, width); break;
-            case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
-            default: ctx.transform(1, 0, 0, 1, 0, 0);
-        }
+    loadImage: function (file) {
+        return new Promise((resolve, reject) => {
+            const url = URL.createObjectURL(file);
+            const image = new Image();
+            image.onload = () => { URL.revokeObjectURL(url); resolve(image); };
+            image.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Image decoding failed')); };
+            image.src = url;
+        });
     },
     drawImageProp: function (ctx, img, x, y, w, h, offsetX, offsetY) {
         if (arguments.length === 2) {

@@ -12,6 +12,7 @@ var Upload = {
     canvas: null,
     thumbhash: null,
     uploadButton: null,
+    checking: null,
 
     init: function (appendDate) {
         Upload.launchInitiated();
@@ -114,109 +115,77 @@ var Upload = {
         Upload.canvas = null;
         Upload.uploadButton = document.querySelector('#upload_button');
 
-        var resolvedFile = file ? file : document.getElementById('file').files[0];
-        var resolvedFile = resolvedFile ? resolvedFile : document.getElementById('image').files[0];
+        const resolvedFile = file
+            ?? document.getElementById('file')?.files[0]
+            ?? document.getElementById('image')?.files[0];
+        if (!resolvedFile) return;
 
         Upload.name = resolvedFile.name;
         Upload.check(resolvedFile);
     },
 
-    check: function (file) {
-        if (!file.type.match(/image.*/)) {
-            console.log("Not a picture !");
+    check: async function (file) {
+        if (!file.type.startsWith('image/')) {
             Upload.prepare(file);
-        } else {
-            var reader = new FileReader();
-            reader.readAsDataURL(file);
+            return;
+        }
 
-            reader.addEventListener('load', function (ev) {
-                MovimUtils.getOrientation(file, function (orientation) {
-                    Upload.compress(ev.target.result, file, orientation);
-                });
-            });
-        };
+        const current = Upload.checking = file;
+        let result;
+
+        try {
+            const image = await MovimUtils.loadImage(file);
+            result = await Upload.compress(image, file);
+        } catch (e) {
+            result = { blob: file, canvas: null };
+        }
+
+        if (Upload.checking !== current) return;
+
+        Upload.canvas = result.canvas;
+
+        // Converted to JPEG: don't keep a misleading original extension
+        if (result.blob.type === 'image/jpeg' && file.type !== 'image/jpeg') {
+            Upload.name += '.jpg';
+        }
+
+        Upload.prepare(result.blob);
     },
 
-    compress: function (src, file, orientation) {
+    compress: async function (image, file) {
         Upload.setCompress(null);
+        const resize = file.size > SMALL_PICTURE_LIMIT;
 
-        var image = new Image();
-        image.addEventListener('load', function () {
-            if (file.size > SMALL_PICTURE_LIMIT) {
-                var limit = 1920;
-                var width = image.naturalWidth;
-                var height = image.naturalHeight;
+        let width = image.naturalWidth;
+        let height = image.naturalHeight;
 
-                var ratio = Math.min(limit / width, limit / height);
+        if (resize) {
+            const ratio = Math.min(1, 1920 / Math.max(width, height));
+            width = Math.round(width * ratio);
+            height = Math.round(height * ratio);
+        }
 
-                if (ratio < 1) {
-                    width = Math.round(width * ratio);
-                    height = Math.round(height * ratio);
-                }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
 
-                Upload.canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
 
-                if (orientation > 4 && orientation < 9) {
-                    Upload.canvas.width = height;
-                    Upload.canvas.height = width;
-                } else {
-                    Upload.canvas.width = width;
-                    Upload.canvas.height = height;
-                }
+        if (resize) {
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, width, height);
+        }
 
-                const ctx = Upload.canvas.getContext('2d');
-                ctx.fillStyle = '#fff';
-                ctx.fillRect(0, 0, Upload.canvas.width, Upload.canvas.height);
+        ctx.drawImage(image, 0, 0, width, height);
 
-                MovimUtils.applyOrientation(ctx, orientation, width, height);
+        const [type, quality] = resize ? ['image/jpeg', 0.85] : [file.type, 0.92];
+        const blob = await new Promise((resolve) => canvas.toBlob(resolve, type, quality));
 
-                ctx.drawImage(image, 0, 0, width, height);
+        if (!blob) throw new Error('Canvas encoding failed');
 
-                if (typeof Upload.canvas.toBlob == 'function') {
-                    if (file.type != 'image/jpeg') {
-                        Upload.name += '.jpg';
-                    }
+        if (resize) Upload.setCompress('photo_size_select_small');
 
-                    Upload.setCompress('photo_size_select_small');
-
-                    Upload.canvas.toBlob(
-                        function (blob) {
-                            Upload.prepare(blob);
-                        },
-                        'image/jpeg',
-                        0.85
-                    );
-                } else {
-                    Upload.prepare(file);
-                }
-            } else {
-                // Also create the canvas for other usages like drawing
-                Upload.canvas = document.createElement('canvas');
-                Upload.canvas.width = image.naturalWidth;
-                Upload.canvas.height = image.naturalHeight;
-                ctx = Upload.canvas.getContext("2d");
-                ctx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight);
-
-                // Always create a fresh Blob from the canvas for iOS Safari.
-                // The original File reference becomes invalid after async gaps,
-                // producing Content-Length: 0 uploads on Safari.
-                if (typeof Upload.canvas.toBlob == 'function') {
-                    Upload.canvas.toBlob(
-                        function (blob) {
-                            Upload.prepare(blob);
-                        },
-                        file.type,
-                        1.0
-                    );
-                } else {
-                    Upload.prepare(file);
-                }
-            }
-        });
-
-        image.addEventListener('error', () => Upload.prepare(file));
-
-        image.src = src;
+        return { blob, canvas };
     },
 
     prepare: function (file) {
@@ -349,6 +318,7 @@ var Upload = {
             document.getElementById('image').value = null;
         }
 
+        Upload.checking = null;
         Upload.name = null;
         Upload.prependName = null;
         Upload.file = null;
