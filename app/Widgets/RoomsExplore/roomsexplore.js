@@ -24,6 +24,6 @@ var RoomsExplore = {
     },
 
     searchClear: function () {
-        document.querySelector('#roomsexplore_bar li.search').classList.remove('searching');
+        document.querySelector('#roomsexplore_bar li.search')?.classList.remove('searching');
     }
 }

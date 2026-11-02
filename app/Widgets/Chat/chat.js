@@ -78,6 +78,8 @@ var Chat = {
         Chat.autocompleteList = usersList;
         usersList = Object.values(usersList);
 
+        if (usersList.length === 0) return;
+
         var textarea = Chat.getTextarea();
 
         var words = textarea.value.toLowerCase().trim().split(' ');
@@ -111,7 +113,7 @@ var Chat = {
 
             var start = (typeof Chat.lastAutocomplete === 'string')
                 ? usersList.indexOf(Chat.lastAutocomplete) + 1
-                : start = 0;
+                : 0;
 
             var end = false;
 
@@ -136,7 +138,7 @@ var Chat = {
     quoteMUC: function (nickname, add) {
         var textarea = Chat.getTextarea();
         if (add) {
-            if (textarea.value.search(nickname) === -1) {
+            if (!textarea.value.includes(nickname)) {
                 textarea.value = nickname + ' ' + textarea.value;
             }
         } else {
@@ -146,7 +148,7 @@ var Chat = {
         textarea.focus();
     },
     insertAtCursor: function (textToInsert) {
-        textarea = Chat.getTextarea();
+        const textarea = Chat.getTextarea();
 
         const value = textarea.value;
         const start = textarea.selectionStart;
@@ -203,102 +205,105 @@ var Chat = {
                 tryMam);
         }
     },
-    sendMessage: function () {
-        var textarea = Chat.getTextarea();
-        var text = textarea.value;
+    sendMessage: async function () {
+        const textarea = Chat.getTextarea();
+        if (!textarea) return;
 
-        var isMuc = Boolean(textarea.dataset.muc);
-        var mucReceipts = false;
-        var jid = textarea.dataset.jid;
-
-        if (isMuc) {
-            var counter = document.querySelector('#chat_widget header span.counter');
-            mucReceipts = (counter && counter.dataset.mucreceipts == 'true');
-        }
+        const text = textarea.value;
+        const jid = textarea.dataset.jid;
+        const isMuc = Boolean(textarea.dataset.muc);
+        const mucReceipts = isMuc
+            && document.querySelector('#chat_widget header span.counter')?.dataset.mucreceipts == 'true';
 
         Chat.removeSeparator();
         Chat.scrollTotally();
 
-        document.querySelector('#embed').innerHTML = '';
+        document.querySelector('#embed')?.replaceChildren();
 
         // In case it was in edit mode
         textarea.parentNode.parentNode.parentNode.classList.remove('edit');
-
         textarea.focus();
 
-        if (!Chat.sent) {
-            Chat.enableSending();
+        if (Chat.sent) return;
+        Chat.enableSending();
+
+        const id = crypto.randomUUID();
+        let requested = false;
+
+        try {
+            let request;
 
             if (Chat.edit) {
                 Chat.edit = false;
+                const mid = textarea.dataset.mid;
+                delete textarea.dataset.mid;
 
                 if (text == '') {
                     Chat.disableSending();
-                } else {
-                    let correct = Chat_ajaxHttpDaemonCorrect(crypto.randomUUID(), jid, textarea.dataset.mid, text);
-                    correct.then(e => {
-                        Chat.sentMessage();
-                    }).catch(e => {
-                        Chat.failedMessage(text);
-                    });
+                    return;
                 }
 
-                delete textarea.dataset.mid;
+                Chat.lastSentUUID = id;
+                requested = true;
+                request = Chat_ajaxHttpDaemonCorrect(id, jid, mid, text);
             } else {
-                var reply = document.querySelector('#reply > div');
-                replyMid = false;
+                const reply = document.querySelector('#reply > div');
+                const replyMid = reply ? reply.dataset.mid : false;
+                if (reply) Chat_ajaxClearReply();
 
-                if (reply) {
-                    replyMid = reply.dataset.mid;
-                    Chat_ajaxClearReply();
-                };
+                const omemoState = Chat.getOmemoState();
 
-                if (Chat.getOmemoState() == 'build') {
-                    var store = new ChatOmemoStorage();
-                    store.getLocalRegistrationId().then(deviceId => {
-                        if (deviceId) {
-                            if (isMuc) {
-                                Chat.checkOMEMOState(jid, isMuc);
-                            } else {
-                                ChatOmemo_ajaxGetDevicesList(jid);
-                            }
-                        } else {
-                            Chat.disableSending();
-                            ChatOmemo.refreshBundle(store.getOwnSessionsIds());
-                        }
-                    });
-                } else if (Chat.getOmemoState() == 'yes') {
+                if (omemoState == 'build') {
+                    const store = new ChatOmemoStorage();
+                    const deviceId = await store.getLocalRegistrationId();
+
+                    if (!deviceId) {
+                        Chat.disableSending();
+                        ChatOmemo.refreshBundle(store.getOwnSessionsIds());
+                    } else if (isMuc) {
+                        Chat.checkOMEMOState(jid, isMuc);
+                    } else {
+                        ChatOmemo_ajaxGetDevicesList(jid);
+                    }
+                    return;
+                }
+
+                if (omemoState == 'yes') {
                     if (!text) {
                         Chat.disableSending();
                         return;
                     }
 
                     // Try to encrypt the message
-                    let omemo = ChatOmemo.encrypt(jid, text, isMuc);
-                    if (omemo) {
-                        // TODO, disable the other risky features
-                        omemo.then(omemoheader => {
-                            Chat.lastSentUUID = id = omemoheader.id = crypto.randomUUID();
-                            Chat.tempMessages[id] = text;
-
-                            let request = Chat_ajaxHttpDaemonSendMessage(id, jid, null, isMuc, null, replyMid, mucReceipts, omemoheader);
-                            request.then(e => {
-                                Chat.sentMessage();
-                            }).catch(e => {
-                                Chat.failedMessage();
-                            });
-                        });
+                    const omemoheader = await ChatOmemo.encrypt(jid, text, isMuc);
+                    if (!omemoheader) {
+                        Chat.disableSending();
+                        return;
                     }
+
+                    // TODO, disable the other risky features
+                    omemoheader.id = id;
+                    Chat.tempMessages[id] = text;
+                    Chat.lastSentUUID = id;
+                    requested = true;
+                    request = Chat_ajaxHttpDaemonSendMessage(id, jid, null, isMuc, null, replyMid, mucReceipts, omemoheader);
                 } else {
-                    Chat.lastSentUUID = id = crypto.randomUUID();
-                    let request = Chat_ajaxHttpDaemonSendMessage(id, jid, text, isMuc, null, replyMid, mucReceipts);
-                    request.then(response => {
-                        response.ok ? Chat.sentMessage() : Chat.failedMessage(text);
-                    }).catch(e => {
-                        Chat.failedMessage(text);
-                    });
+                    Chat.lastSentUUID = id;
+                    requested = true;
+                    request = Chat_ajaxHttpDaemonSendMessage(id, jid, text, isMuc, null, replyMid, mucReceipts);
                 }
             }
+
+            const response = await request;
+            if (response?.ok === false) throw new Error('Request failed');
+
+            // The message may already have come back by the websocket
+            if (Chat.lastSentUUID === id) Chat.sentMessage();
+        } catch (e) {
+            if (requested && Chat.lastSentUUID !== id) return;
+
+            Chat.lastSentUUID = id;
+            Chat.failedMessage(text, jid);
         }
     },
     sentId: function (id) {
@@ -310,7 +315,6 @@ var Chat = {
     setGroupChatMembers: function (members) {
         Chat.groupChatMembers = members;
     },
-
     checkOMEMOState: function (jid, muc) {
         var store = new ChatOmemoStorage();
 
@@ -334,14 +338,12 @@ var Chat = {
             Chat.setOmemoState(state);
         });
     },
-
     setOmemoState: function (state) {
         let textarea = Chat.getTextarea();
         if (textarea) {
             textarea.dataset.encryptedstate = state;
         }
     },
-
     getOmemoState: function () {
         let textarea = Chat.getTextarea();
         if (textarea) {
@@ -369,34 +371,38 @@ var Chat = {
         var send = document.querySelector('.chat_box');
         if (send) send.classList.add('finished');
     },
-
     sentMessage: function () {
         Chat.disableSending();
+        Chat.lastSentUUID = null;
 
-        var textarea = Chat.getTextarea();
+        const textarea = Chat.getTextarea();
+        if (!textarea) return;
+
         localStorage.removeItem(textarea.dataset.jid + '_message');
         Chat.clearReplace();
         Chat.toggleAction();
-        Chat.lastSentUUID = null;
     },
-    failedMessage: function (text) {
+    failedMessage: function (text, jid) {
         // Race condition if the Ajax request failed but the message was still handled
         if (Chat.lastSentUUID == null) return;
 
         Toast.send(Chat.delivery_error);
         Chat.disableSending();
+
+        delete Chat.tempMessages[Chat.lastSentUUID];
         Chat.lastSentUUID = null;
 
-        // We try to put back the text in place
-        var textarea = Chat.getTextarea();
-        if (textarea.value == '') {
+        // We try to put back the text in place, if the user is still in the same chat
+        const textarea = Chat.getTextarea();
+        if (text && textarea && textarea.value == ''
+            && (jid === undefined || textarea.dataset.jid === jid)) {
             textarea.value = text;
         }
     },
     clearReplace: function () {
         Chat.edit = false;
         var textarea = Chat.getTextarea();
-        textarea.value = localStorage.getItem(textarea.dataset.jid + '_message');
+        if (textarea) textarea.value = localStorage.getItem(textarea.dataset.jid + '_message') ?? '';
     },
     editPrevious: function () {
         var textarea = Chat.getTextarea();
@@ -502,15 +508,11 @@ var Chat = {
             document.querySelector('#embed').innerHTML = '';
         }
 
-        textarea.addEventListener('paste', function (e) {
+        textarea.onpaste = function (e) {
             clearTimeout(Chat.typingTimer);
-
-            let clipboardData = e.clipboardData || window.clipboardData;
-            let pastedData = clipboardData.getData('Text');
-
-            Chat.checkResolveUrl(pastedData);
+            Chat.checkResolveUrl(e.clipboardData.getData('text/plain'));
             Chat.toggleAction();
-        });
+        };
 
         if (document.documentElement.clientWidth > 1024) {
             textarea.focus();
@@ -541,7 +543,7 @@ var Chat = {
     checkEmojis: function (value, reaction, noColon) {
         value = value.toLowerCase();
 
-        listSelector = reaction
+        const listSelector = reaction
             ? '.emojis_grid.results'
             : '.chat_box .emojis';
 
@@ -584,7 +586,7 @@ var Chat = {
                 .slice(0, 30)
                 .forEach(found => {
                     var img = document.createElement('img');
-                    img.setAttribute('src', BASE_URI + '/theme/img/emojis/svg/' + emojis[found].c + '.svg');
+                    img.setAttribute('src', BASE_URI + 'theme/img/emojis/svg/' + emojis[found].c + '.svg');
                     img.classList.add('emoji');
                     if (reaction) img.classList.add('large');
 
@@ -679,7 +681,7 @@ var Chat = {
 
         discussion.onscroll = function () {
             // Don't get more history the conversation is already empty
-            if (discussion.querySelector('.conversation').innerHTML != '' && this.scrollTop < 10) {
+            if (this.scrollTop < 10 && discussion.querySelector('.conversation')?.hasChildNodes()) {
                 Chat.getHistory(true);
             }
 
@@ -695,13 +697,8 @@ var Chat = {
         Chat.lastHeight = discussion.scrollHeight;
         Chat.lastScroll = discussion.scrollTop + discussion.clientHeight;
 
-        var button = document.querySelector('#chat_widget #scroll_down.button.action');
-
-        if (Chat.isScrolled()) {
-            button.classList.remove('show');
-        } else {
-            button.classList.add('show');
-        }
+        document.querySelector('#chat_widget #scroll_down.button.action')
+            ?.classList.toggle('show', !Chat.isScrolled());
     },
     isScrolled: function () {
         return Chat.lastHeight - 5 <= Chat.lastScroll;
@@ -723,17 +720,19 @@ var Chat = {
         discussion.scrollTop = discussion.scrollHeight;
     },
     setObservers: function () {
+        Chat.discussionObserver?.disconnect();
+
         var options = {
             root: Chat.getDiscussion(),
             rootMargin: '0px',
             threshold: 1.0
         };
         Chat.discussionObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entrie) => {
-                if (entrie.target.classList.contains('gif') && entrie.isIntersecting == true) {
-                    entrie.target.play();
+            entries.forEach(({ target, isIntersecting }) => {
+                if (target.classList.contains('gif') && isIntersecting) {
+                    target.play().catch(() => { }); // autoplay can be refused
                 } else {
-                    entrie.target.pause();
+                    target.pause();
                 }
             });
         }, options);
@@ -749,8 +748,7 @@ var Chat = {
         }
     },
     removeSeparator: function () {
-        var separator = Chat.getDiscussion().querySelector('li.separator');
-        if (separator) separator.remove();
+        Chat.getDiscussion()?.querySelector('li.separator')?.remove();
     },
     setReactionButtonBehaviour: function () {
         let reactions = document.querySelectorAll('#chat_widget span.reaction');
@@ -784,7 +782,7 @@ var Chat = {
         }
     },
     scrollAndBlinkMessage: function (msg) {
-        scrollToLi = msg.parentNode.parentNode;
+        const scrollToLi = msg.parentNode.parentNode;
 
         msg.parentNode.classList.add('scroll_blink');
 
@@ -799,7 +797,8 @@ var Chat = {
     },
     scrollAndBlinkMessageMid: function (mid) {
         setTimeout(() => {
-            Chat.scrollAndBlinkMessage(document.querySelector('div[data-mid="' + mid + '"'));
+            const message = document.querySelector('div[data-mid="' + mid + '"]');
+            if (message) Chat.scrollAndBlinkMessage(message);
         }, 500)
     },
     setVideoObserverBehaviour: function () {
@@ -850,13 +849,13 @@ var Chat = {
                 audio.currentTime = (audio.duration || 0) * pct;
             }
 
-            progressBar.onmousedown = function () {
+            progressBar.onpointerdown = () => {
                 mouseDownOnSlider = true;
-            }
+            };
 
-            progressBar.onmouseup = function () {
+            progressBar.onpointerup = progressBar.onpointercancel = () => {
                 mouseDownOnSlider = false;
-            }
+            };
 
             buttonPlayPause.onclick = function () {
                 if (audio.paused) {
@@ -893,7 +892,8 @@ var Chat = {
         });
 
         document.querySelectorAll('#chat_widget li div.bubble.file > div.message').forEach(message => {
-            if (card = message.querySelector('ul.list.card > li:not(.ticket) > div')) {
+            const card = message.querySelector('ul.list.card > li:not(.ticket) > div');
+            if (card) {
                 card.onclick = function (e) {
                     ChatActions_ajaxShowMessageDialog(message.dataset.mid);
                 };
@@ -984,7 +984,7 @@ var Chat = {
                 await ChatOmemoDB.loadMessagesByIds(ids);
             }
 
-            for (date in page) {
+            for (const date in page) {
                 let messageDateTime = page[date][Object.keys(page[date])[0]].published;
                 let firstMessage = Chat.getDiscussion()?.querySelector('.message')
 
@@ -992,9 +992,9 @@ var Chat = {
                  * We might have old messages reacted pushed by the server
                  */
                 if (firstMessage
-                    && (new Date(messageDateTime) < (new Date(firstMessage.dataset.published)))
-                    && !prepend) {
-                    return;
+                    && !prepend
+                    && (new Date(messageDateTime) < (new Date(firstMessage.dataset.published)))) {
+                    continue;
                 }
 
                 if (prepend === undefined || prepend === false) {
@@ -1031,8 +1031,9 @@ var Chat = {
                 );
             }
         } else if (discussion !== null) {
-            if (discussion.querySelector('ul').innerHTML === '') {
-                discussion.querySelector('ul').classList.remove('spin');
+            const list = discussion.querySelector('ul');
+            if (list && !list.hasChildNodes()) {
+                list.classList.remove('spin');
                 discussion.querySelector('.placeholder.empty').classList.add('show');
             }
         }
@@ -1059,14 +1060,15 @@ var Chat = {
         if (data.body === null) return;
 
         // Sent message where the Ajax request somehow but the message was still handled by the server
-        if (data.id == Chat.lastSentUUID) {
+        if (Chat.lastSentUUID !== null && data.id === Chat.lastSentUUID) {
             Chat.sentMessage();
         }
 
-        var bubble = null,
+        let bubble = null,
             mergeMsg = false,
             msgStack,
-            refBubble;
+            refBubble,
+            id;
 
         var textarea = Chat.getTextarea();
         var isMuc = Boolean(textarea.dataset.muc);
@@ -1093,6 +1095,7 @@ var Chat = {
             bubble = msgStack.parentNode;
             mergeMsg = true;
         } else {
+
             if (data.user_id == data.jidfrom || data.mine) {
                 bubble = Chat.right.cloneNode(true);
                 id = (data.mine)
@@ -1162,7 +1165,7 @@ var Chat = {
              * If we append (during a reload) or prepend, we might have already a
              * replacement message displayed, in that case we just stop here
              */
-            if (this.replacedHash.includes(msg.dataset.messageid)) return;
+            if (Chat.replacedHash.includes(msg.dataset.messageid)) return;
         }
 
         if (data.rtl) {
@@ -1173,7 +1176,7 @@ var Chat = {
 
         // OMEMO handling
         if (data.omemoheader && data.encrypted && !data.retracted && OMEMO_ENABLED) {
-            p.innerHTML = data.omemoheader.payload.substring(0, data.omemoheader.payload.length / 2);
+            p.textContent = data.omemoheader.payload.substring(0, data.omemoheader.payload.length / 2);
             ChatOmemo.decrypt(data).then(plaintext => {
                 let refreshP = document.querySelector('#id' + data.id + ' p.encrypted');
                 if (refreshP) {
@@ -1273,7 +1276,7 @@ var Chat = {
             elem = document.querySelector("[data-messageid=messageid-" + MovimUtils.hash(data.replaceid + data.jidfrom) + "]");
             msg.dataset.messageid = 'messageid-' + MovimUtils.hash(data.replaceid + data.jidfrom);
 
-            this.replacedHash.push(msg.dataset.messageid);
+            Chat.replacedHash.push(msg.dataset.messageid);
         }
 
         if (!elem) {
@@ -1310,7 +1313,7 @@ var Chat = {
                 bubble.querySelector('div.bubble').classList.add('moderator');
             }
 
-            icon = bubble.querySelector('span.primary.icon');
+            const icon = bubble.querySelector('span.primary.icon');
 
             if (icon.querySelector('img') == undefined) {
                 if (data.icon_url) {
@@ -1351,16 +1354,14 @@ var Chat = {
 
         if (!list) return;
 
-        dateNode = Chat.date.cloneNode(true);
+        var dateNode = Chat.date.cloneNode(true);
         dateNode.querySelector('p').innerHTML = date;
         dateNode.id = MovimUtils.cleanupId(date);
 
         if (prepend) {
-            if (list.firstChild.className == 'date') return;
+            if (list.firstElementChild?.classList.contains('date')) return;
 
-            if (existingDate = document.getElementById(MovimUtils.cleanupId(date))) {
-                existingDate.remove();
-            }
+            document.getElementById(MovimUtils.cleanupId(date))?.remove();
 
             list.insertBefore(dateNode, list.firstChild);
         } else {
@@ -1372,7 +1373,7 @@ var Chat = {
         }
     },
     insertSeparator: function (counter) {
-        separatorNode = Chat.separator.cloneNode(true);
+        var separatorNode = Chat.separator.cloneNode(true);
 
         var list = document.querySelector('#chat_widget > div ul.conversation');
 
@@ -1498,14 +1499,14 @@ var Chat = {
                 div.appendChild(a);
                 if (file.host) {
                     var host = document.createElement('span');
-                    host.innerHTML = file.host;
+                    host.textContent = file.host;
                     host.className = 'host';
                     a.prepend(host);
                 }
 
                 if (file.size > 0) {
                     var span = document.createElement('span');
-                    span.innerHTML = file.cleansize;
+                    span.textContent = file.cleansize;
                     span.className = 'size';
 
                     a.prepend(span);
@@ -1604,7 +1605,7 @@ var Chat = {
                     }
 
                     let divP = document.createElement('p');
-                    let trimmed = line.substring('4');
+                    let trimmed = line.substring(4);
                     divP.innerHTML = trimmed == ''
                         ? ' '
                         : trimmed
