@@ -60,7 +60,16 @@ class Rooms extends Base
         $info = $packet->content;
 
         if ($info->isConference()) {
-            $this->ajaxHttpGet();
+            $conference = $this->me->session->conferences()
+                ->fromSpace(false)
+                ->where('conference', $info->server)
+                ->with('info', 'contact', 'presence')
+                ->withCount('unreads', 'quoted', 'presences')
+                ->first();
+
+            if ($conference) {
+                $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference));
+            }
 
             if ($info->hasMAM()) {
                 $message = $this->me->messages()
