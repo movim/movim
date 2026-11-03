@@ -5,8 +5,10 @@ namespace App\Widgets\Avatar;
 use App\Contact;
 use Movim\Image;
 use Movim\Widget\Base;
+use Moxl\Stanza\Avatar as AvatarStanza;
 use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Action\Avatar\Set;
+use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Payload\Packet;
 
 class Avatar extends Base
@@ -22,6 +24,14 @@ class Avatar extends Base
         $this->registerEvent('avatar_set_errorbadrequest', 'onMyAvatarError');
         $this->registerEvent('avatar_set_errornotallowed', 'onMyAvatarError');
         $this->registerEvent('avatar_set_errorpayloadtoobig', 'onPayloadTooBig');
+        $this->registerEvent('pubsub_getconfig_handle', 'onNodeConfig');
+    }
+
+    public function onNodeConfig(Packet $packet)
+    {
+        if ($packet->content['node'] == AvatarStanza::NODE_METADATA) {
+            $this->rpc('Avatar.setPublic', $packet->content['access_model'] == 'open');
+        }
     }
 
     public function onPayloadTooBig(Packet $packet)
@@ -63,6 +73,7 @@ class Avatar extends Base
         $view = $this->tpl();
         $view->assign('me', Contact::firstOrNew(['id' => $this->me->id]));
         $this->dialog($view->draw('_avatar_form'));
+        $this->xmpp(new GetConfig)->setNode(AvatarStanza::NODE_METADATA)->request();
     }
 
     public function ajaxGetBannerForm()
@@ -91,7 +102,9 @@ class Avatar extends Base
         }
 
         $r = $this->xmpp(new Set);
-        $r->setData($avatar->photobin->value)->request();
+        $r->setData($avatar->photobin->value)
+            ->setAccessModel(empty($avatar->public->value) ? 'presence' : 'open')
+            ->request();
     }
 
     public function ajaxBannerSubmit($banner)

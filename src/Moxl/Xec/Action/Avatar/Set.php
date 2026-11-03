@@ -15,13 +15,14 @@ class Set extends Action
     protected $_widthMetadata = 350;
     protected $_heightMetadata = 350;
     protected bool $_withPublishOption = true;
+    protected string $_accessmodel = 'presence';
 
     public function request()
     {
         $this->store();
 
         if ($this->_url === false) {
-            $this->iq(Avatar::set($this->_data, $this->_node, $this->_withPublishOption), to: $this->_to, type: 'set');
+            $this->iq(Avatar::set($this->_data, $this->_node, $this->_withPublishOption, $this->_accessmodel), to: $this->_to, type: 'set');
         } else {
             // For an URL we simply set the Metadata
             $setMetadata = new SetMetadata($this->me, sessionId: $this->sessionId);
@@ -31,6 +32,7 @@ class Set extends Action
                 ->setData($this->_data)
                 ->setWidthMetadata($this->_widthMetadata)
                 ->setHeightMetadata($this->_heightMetadata)
+                ->setAccessModel($this->_accessmodel)
                 ->request();
         }
     }
@@ -107,7 +109,7 @@ class Set extends Action
     {
         $config = new SetConfig($this->me, sessionId: $this->sessionId);
         $config->setNode(Avatar::NODE_DATA)
-            ->setData(Avatar::$nodeConfig)
+            ->setData(Avatar::$nodeConfig($this->_accessmodel))
             ->request();
 
         $this->_withPublishOption = false;

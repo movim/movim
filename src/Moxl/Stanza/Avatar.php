@@ -18,6 +18,11 @@ class Avatar
         'pubsub#max_items' => '1',
     ];
 
+    public static function nodeConfig(string $accessModel = 'presence'): array
+    {
+        return array_merge(self::$nodeConfig, ['pubsub#access_model' => $accessModel]);
+    }
+
     public static function get($node = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -30,7 +35,7 @@ class Avatar
         return $pubsub;
     }
 
-    public static function set($data, $node = false, bool $withPublishOption = true)
+    public static function set($data, $node = false, bool $withPublishOption = true, string $accessModel = 'presence')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -55,7 +60,7 @@ class Avatar
             $x->setAttribute('type', 'submit');
             $publishOption->appendChild($x);
 
-            Utils::injectConfigInX($x, self::$nodeConfig);
+            Utils::injectConfigInX($x, self::nodeConfig($accessModel));
 
             $pubsub->appendChild($publishOption);
         }
@@ -63,7 +68,7 @@ class Avatar
         return $pubsub;
     }
 
-    public static function setMetadata($data, $url = false, $node = false, $width = 512, $height = 512, bool $withPublishOption = true)
+    public static function setMetadata($data, $url = false, $node = false, $width = 512, $height = 512, bool $withPublishOption = true, string $accessModel = 'presence')
     {
         $decoded = base64_decode($data);
 
@@ -103,7 +108,7 @@ class Avatar
             $x->setAttribute('type', 'submit');
             $publishOption->appendChild($x);
 
-            Utils::injectConfigInX($x, self::$nodeConfig);
+            Utils::injectConfigInX($x, self::$nodeConfig($accessModel));
 
             $pubsub->appendChild($publishOption);
         }

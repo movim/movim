@@ -15,6 +15,7 @@ class SetMetadata extends Action
     protected $_widthMetadata = 350;
     protected $_heightMetadata = 350;
     protected bool $_withPublishOption = true;
+    protected string $_accessmodel = 'presence';
 
     public function request()
     {
@@ -25,7 +26,8 @@ class SetMetadata extends Action
             $this->_node,
             $this->_widthMetadata,
             $this->_heightMetadata,
-            $this->_withPublishOption
+            $this->_withPublishOption,
+            $this->_accessmodel
         ), to: $this->_to, type: 'set');
     }
 
@@ -84,7 +86,7 @@ class SetMetadata extends Action
     {
         $config = new SetConfig($this->me, sessionId: $this->sessionId);
         $config->setNode(Avatar::NODE_METADATA)
-            ->setData(Avatar::$nodeConfig)
+            ->setData(Avatar::$nodeConfig($this->_accessmodel))
             ->request();
 
         $this->_withPublishOption = false;

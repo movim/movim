@@ -66,13 +66,19 @@ class Config extends Base
         $this->toast($this->__('config.mam_saved'));
     }
 
-    public function onBlogConfigSaved()
+    public function onBlogConfigSaved(Packet $packet)
     {
-        $this->toast($this->__('config.blog_saved'));
+        if ($packet->content['node'] == Post::MICROBLOG_NODE) {
+            $this->toast($this->__('config.blog_saved'));
+        }
     }
 
     public function onBlogConfig(Packet $packet)
     {
+        if ($packet->content['node'] != Post::MICROBLOG_NODE) {
+            return;
+        }
+
         $view = $this->tpl();
 
         $value = $packet->content['config']->xpath('//field[@var=\'pubsub#access_model\']/value/text()');
