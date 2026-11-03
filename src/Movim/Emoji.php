@@ -38,6 +38,11 @@ class Emoji
     protected function __construct()
     {
         $this->emoji = require 'Emoji/CompiledEmoji.php';
+
+        // Index the emojis without their variation selectors
+        foreach (array_keys($this->emoji) as $key) {
+            $this->index[str_replace('-fe0f', '', (string)$key)] ??= (string)$key;
+        }
     }
 
     public function getEmojis(): array
@@ -62,19 +67,24 @@ class Emoji
                     )
                 );
 
-                if (! isset($this->emoji[$astext])) {
+                // Exact match first, then without the variation selectors
+                $key = isset($this->emoji[$astext])
+                    ? $astext
+                    : ($this->index[str_replace('-fe0f', '', $astext)] ?? null);
+
+                if ($key === null) {
                     return $matches[0];
                 }
 
-                $this->lastEmoji = $matches[0];
-                $this->lastEmojiUrl = BASE_URI . 'theme/img/emojis/svg/' . $astext . '.svg';
+                $this->lastEmoji = preg_replace('/[\x{fe00}\x{fe0f}]/u', '', $matches[0]);
+                $this->lastEmojiUrl = BASE_URI . 'theme/img/emojis/svg/' . $key . '.svg';
 
                 $dom = new \DOMDocument('1.0', 'UTF-8');
                 $dom->appendChild($img = $dom->createElement('img'));
                 $img->setAttribute('class', 'emoji');
-                $img->setAttribute('alt', $this->emoji[$astext]);
+                $img->setAttribute('alt', $this->emoji[$key]);
                 if (! $noTitle) {
-                    $this->lastEmojiTitle = \emojiShortcut($this->emoji[$astext]);
+                    $this->lastEmojiTitle = \emojiShortcut($this->emoji[$key]);
                     $img->setAttribute('title', ':' . $this->lastEmojiTitle . ':');
                 }
                 $img->setAttribute('src', $this->lastEmojiUrl);
