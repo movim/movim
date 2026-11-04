@@ -12,7 +12,7 @@ class Avatar
     public static $nodeConfig = [
         'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
         'pubsub#persist_items' => 'true',
-        'pubsub#access_model' => 'presence',
+        'pubsub#access_model' => 'open',
         'pubsub#send_last_published_item' => 'on_sub_and_presence',
         'pubsub#deliver_payloads' => 'true',
         'pubsub#max_items' => '1',

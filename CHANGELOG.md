@@ -7,6 +7,9 @@ v0.35.5 (master)
 * Fix the Pubsub post headline handling
 * Modernize the Draw widget code
 * Modernize and refactor the avatar/image manipulation Javascript
+* Modernize the INSTALL.md and README.md files
+* Move to https://github.com/delonium/movim-container/ for the advised Movim container
+* XEP-0084 Avatars are now published with pubsub#access_model = open
 
 v0.35.4
 ---------------------------
