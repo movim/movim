@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.35.5 (master)
+v0.35.6 (master)
+---------------------------
+
+v0.35.5
 ---------------------------
 * Fix message correction
 * Fix the Pubsub post headline handling
