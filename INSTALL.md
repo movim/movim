@@ -1,31 +1,9 @@
-Movim Deployment
-===================
+Movim Installation
+==================
 
-This tutorial describes the different steps you need to take to deploy Movim on your webserver.
+This tutorial describes the different steps you need to take to deploy Movim.
 
-Movim also provides a XMPP service that handles the audio and video streams when doing conference-calls. Follow [the dedicated Galener documentation to set-it-up](doc/GALENER.md).
-
-# Get-Started
-
-Movim requires some dependencies to be setup properly.
-  * A fully working webserver like Apache, nginx or Caddy
-  * A PHP process manager like php-fpm
-  * A SQL server with a schema for Movim.
-     * PostgreSQL (**_strongly recommended_** some features are only available on this database)
-     * MariaDB 10.2 or higher with utf8mb4 encoding (necessary for emojis 😃 support) AND `utf8mb4_bin` collation.
-     * MySQL is __NOT__ supported and will throw errors during the migrations, please use PostgreSQL or MariaDB.
-  * **PHP 8.2 minimum** with :
-     * PHP mbstring (package ''**php-mbstring**'')
-     * PHP ImageMagick and GD for the picture processing (package ''**php-imagick**'' and ''**php-gd**'')
-     * Your database PHP driver (package ''**php-pgsql**'' or ''**php-mysql**'' depending on the type of database server you want to use).
-     * And the PHP XML (package ''**php-xml**'')
-     * Also the PHP Zip (package ''**php-zip**'') to import Emojis
-
-### Debian/Ubuntu
-
-    apt install composer php-fpm php-mbstring php-imagick php-gd php-pgsql php-xml php-zip
-
-# General architecture
+# General Architecture
 
 It's mandatory to understand the general architecture of the project to a certain extent before trying to deploy it.
 
@@ -35,25 +13,48 @@ From the browser perspective, all communication with Movim is done using WebSock
 
 So all these streams will be managed by the Movim daemon. This daemon needs to be launched with the same user and rights as the web-server (most of the time using the ``www-data`` user).
 
-# Installation
+## Wide Conference Calls
 
-## Stable version
+Movim also provides an XMPP service that handles the audio and video streams when doing conference calls. Once you have successfully finished this tutorial, follow the [configuration advice](#configuring-wide-conferences) at the end to set this up.
 
-### Releases
+# Getting Started
 
-You can simply follow the GIT tags or download a stable snapshot of this repository on our [Release page](https://github.com/movim/movim/releases). Then follow the steps from [Dependency installation](https://github.com/movim/movim/wiki/Install-Movim#dependency-installation).
+Movim can be deployed on any Linux distribution given the following are installed:
+  * A webserver (configuration advice for Apache, nginx, and Caddy are provided in the tutorial)
+  * A PHP process manager (like `php-fpm`)
+  * An SQL server
+     * PostgreSQL (**_strongly recommended_** some features are only available on this database)
+     * MariaDB 10.2 or higher with utf8mb4 encoding (necessary for emojis 😃 support) AND `utf8mb4_bin` collation
+     * MySQL is __NOT__ supported and will throw errors during the migrations, please use PostgreSQL or MariaDB
+  * **PHP 8.4 minimum** with the following extensions:
+     * PHP mbstring (package `php-mbstring`)
+     * PHP ImageMagick and GD for the picture processing (package `php-imagick` and `php-gd`)
+     * Your database PHP driver (package `php-pgsql` or `php-mysql` depending on the type of database server you want to use).
+     * PHP XML (package `php-xml`)
+     * PHP Zip (package `php-zip`) to import Emojis
+ * Composer, a PHP package manager
 
-## Development version (repository)
+Installing Git is also recommended to download Movim's source code.
 
-The development version of Movim only comes with the core of the project. To install the dependencies you need to install Git to download the source codes from different repositories.
-```bash
-# Install Git so that Composer
-# can clone the dependencies into your project
-apt-get install git
-```
-### Downloading
+### Debian/Ubuntu
 
-Git is required to properly get the source code from the official repository. We recommend to execute the following commands with the `www-data` user (which is the common user for most of the GNU/Linux web servers).
+The required PHP dependencies can be installed with this command:
+
+	apt install composer php-fpm php-mbstring php-imagick php-gd php-pgsql php-xml php-zip
+
+# Installation Steps
+
+## 1. Download the Movim Source
+
+You can download a stable snapshot of this repository on our [Release page](https://github.com/movim/movim/releases) or use git to clone the repository.
+
+The source code needs to be extracted or cloned into a directory owned by your webserver user 
+
+> [!NOTE]
+> The `www-data` user is the most common for GNU/Linux web servers and will be used in the rest of this tutorial, please ensure to use the correct user on your system.
+
+Here is a full example using git:
+
 ```bash
 cd /var/www/ # Server directory
 mkdir movim
@@ -62,87 +63,65 @@ sudo -s -u www-data # We use the web-server user
 # We copy the source code from the repository
 git clone https://github.com/movim/movim.git
 ```
-### Dependency installation
 
-Movim requires several dependencies to work properly. These libraries are managed using [Composer](https://getcomposer.org/).
+## 2. Install Dependencies
 
-#### If you already have composer
+Movim requires several dependencies to work properly. These libraries are managed using [Composer](https://getcomposer.org/):
 
-    cd movim
-    composer install
+	cd movim
+	composer install
 
-#### If you have to install manually composer
+> [!NOTE]
+> You can install Composer in the Movim directory using the following command or by using your package manager:
+> ```bash
+> curl -sS https://getcomposer.org/installer | php
+> ```
+> Now you will be able to install the dependencies.
+> ```bash
+> # Finally install your project's dependencies
+> php composer.phar install
+> ```
 
-You can install Composer in the Movim directory using the following command or by using your package manager:
+## 3. Rights Check
+
+Movim needs read permissions on its root folder and recursively to be deployed properly. It will try to create these folders on startup:
+
+  * `log/` for the Movim logs
+  * `cache/` for the internal cache (templates and other system files)
+  * `public/cache/` for the public caches (pictures, CSS, Javascript…)
+
+You can create the folders in advance and Movim will skip this step, otherwise you must set write permissions on its root folder:
 ```bash
-curl -sS https://getcomposer.org/installer | php
-```
-Now you will be able to install the dependencies.
-```bash
-# Finally install your project's dependencies
-php composer.phar install
-```
-# Update
-
-You can also update your current Movim instance with the following lines (check anyway if the updates do not include any incompatibilities with your current version).
-```bash
-cd /var/www/movim/
-git pull # To update the Movim source-code
-composer install # To update the libraries
-```
-If the update comes with some database changes you can run the new migrations (see below).
-
-# Deployment
-
-This part of the tutorial can be followed for the stable and testing installation. They need to be applied **in the correct order**.
-
-## 1. Rights check
-
-Movim needs reading permissions on its root folder and recursively to be deployed properly. It will also try to create those folders:
-
-  * **log/** for the Movim logs
-  * **cache/** for the internal cache (templates and other system files)
-  * **public/cache/** for the public caches (pictures, CSS, Javascript…)
-
-You can create the folders in advance and it will skip this step, or you can let it by giving it writing permissions on its root folder:
-```bash
-# Use the root user to do the command
-mkdir cache
-chown www-data movim && chown www-data movim/public && chown www-data movim/cache && chmod u+rwx movim
+# Use the root user to do these commands
+mkdir movim/cache movim/log movim/public/cache
+chown -R www-data:www-data movim && chmod u+rwx movim
 ```
 
-You might have to replace the `www-data` user with the `apache` or `caddy` user in the last command regarding your OS or the web-server you have.
-
-## 2. DotEnv configuration
+## 4. DotEnv Configuration
 
 Movim relies on [DotEnv](https://github.com/vlucas/phpdotenv) for its configuration.
 
-To configure Movim copy the `.env.example` file in a new `.env` one and fill the different settings in it.
+To configure Movim, copy the [`.env.example`](./.env.example) file to a new `.env` one and set it accordingly.
 
-```bash
-cp .env.example .env
-nano .env
-```
+	cp .env.example .env
+	nano .env
 
-You can also set those settings using directly [environment variables like with Docker](https://docs.docker.com/compose/environment-variables/).
+> [!TIP]
+> Feel free to leave the `GALENER_*` environment variables blank, this is covered after the tutorial.
 
-## 3. Database setup
+## 5. Database Setup
 
-Once the database is setup in the `.env` file create or update the database structure using [Composer](https://getcomposer.org/).
-```bash
-composer movim:migrate
-```
+Once the database is configured in your `.env` file, create or update the database structure using [Composer](https://getcomposer.org/):
 
-## 4. Start the daemon
+	composer movim:migrate
 
-To let the browser communicate with the Movim server, you need to launch the daemon. It also needs to be launched using the web server user.
-```bash
-sudo -s -u www-data # If you are on Ubuntu
-```
-Then start the daemon using the parameters configured in the `.env` file.
+## 6. Start the Daemon
+
+To let the browser communicate with the Movim server, you need to launch the daemon. It needs to be launched using the web server user:
 
 ```bash
 cd /var/www/movim
+sudo -s -u www-data
 php daemon.php start # Launch the daemon
 ```
 
@@ -152,34 +131,33 @@ If everything runs as expected you should see:
     Base URL : {public url of your pod}
     …
 
-This daemon will be killed once your console is closed. Consider using `systemd` or `init` scripts to keep the daemon running in the foreground even after your disconnection. We providesome example startup files, like a `systemd` service file, in the [`etc/` directory](https://github.com/movim/movim/tree/master/etc).
+This daemon will be killed once your console is closed. Consider using `systemd` or `init` scripts to keep the daemon running in the foreground even after your disconnection. We provide some example startup files, like a `systemd` service file, in the [`etc/`](./etc/) directory.
 
-## 5. Web Server configuration
+## 7. Web Server Configuration
 
-### 5.1. Virtualhost
+### 7.1. Virtualhost
 
-Create a virtualhost on your preferred webserver and point the root to the `public/index.php` file. You can have a look at the [default configuration Apache, Caddy or nginx files that we provide](https://github.com/movim/movim/tree/master/etc) if you need some help about that part.
+Create a virtualhost on your preferred webserver and point the root to the `public/index.php` file. You can have a look at the [default configuration Apache, Caddy or nginx files that we provide](./etc) if you need some help about that part.
 
-Movim is developped to work at the root of a domain or subdomain. __Don't try to deploy it as a subdirectory__ or you might face some unexpected issues.
+Movim is developed to work at the root of a domain or subdomain. __Don't try to deploy it as a subdirectory__ or you might face some unexpected issues.
 
-### 5.2. Daemon Websocket proxy
+### 7.2. Daemon Websocket Proxy
 
-When you launch the daemon, **it will generate the configuration** to apply to the Virtualhost file to "proxify" the WebSockets and display it in the console.
+When you launch the daemon, **it will generate the configuration** required for your webserver to "proxify" the WebSockets and display it in the console.
 
-These configurations are dynamically generated to fit your current setup. Whether you use Apache, Caddy or nginx, both possible configuration will be displayed and will display even after you successfully applied them.
+These configurations are dynamically generated to fit your current setup. Whether you use Apache, Caddy, or nginx, each configuration will be displayed and will continue to be displayed even after you have successfully applied them.
 
-### 5.3. Picture proxy cache
+### 7.3. Picture Proxy Cache
 
-Movim is automatically proxyfying the external pictures to protect its user IPs and prevent large pictures to be loaded without user consent.
-This internal proxy is already asking the browser to cache the pictures for a few hours.
+Movim automatically proxyfies external pictures to protect user IPs and prevent large pictures to be loaded without user consent. This internal proxy also asks the browser to cache the pictures for a few hours.
 
-It is however **strongly recommended** to also setup a server side cache to prevent multiple users to request the same resource through Movim.
+It is however **strongly recommended** to setup a server side cache to prevent multiple users to request the same resource through Movim. Please follow the advice for your webserver below.
 
-#### On Apache
+### On Apache
 
 You will need Apache mods `cache_disk`, `expires`, and `headers`. You can enable them with the a2enmod command. Example: `a2enmod cache_disk`
 
-Then add this section to your Movim VirtualHost
+Then add this section to your Movim VirtualHost:
 
 ```
 CacheQuickHandler on
@@ -203,7 +181,7 @@ CacheIgnoreHeaders Set-Cookie
 
 Afterwards, reload Apache.
 
-#### On nginx
+### On nginx
 
 To do so you can configure ```fastcgi_cache``` on nginx, [check the related documentation](http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_cache).
 
@@ -215,20 +193,39 @@ Add this to your `nginx.conf` in the `http` section:
         fastcgi_cache_key "$scheme$request_method$host$request_uri";
     }
 
-And check the related documentation in our nginx example file [movim.conf](https://github.com/movim/movim/blob/master/etc/nginx/conf.d/movim.conf).
+And check the related documentation in our nginx example file [movim.conf](./etc/nginx/conf.d/movim.conf).
 
-#### On Caddy
+### On Caddy
 
-For caddy you may want to take a look at xcaddy and compiling the server with the following modules: [cache-handler](https://github.com/caddyserver/cache-handler), [cdp-cache](https://github.com/sillygod/cdp-cache)
+You may want to take a look at xcaddy and compiling the server with the following modules: [cache-handler](https://github.com/caddyserver/cache-handler), [cdp-cache](https://github.com/sillygod/cdp-cache).
 
-## 6. Admin panel
+## 8. Success!
 
-The admin panel is available directly from the Movim UI once an admin user is logged in using its XMPP account.
+Load up the URL you configured for the `DAEMON_URL` environment variable in a web browser, and you should see Movim's login page. Once you log in with your XMPP account (to register it in the database), your account can be set as an instance admin with the following command:
 
-To set a user admin login at least once (to register it in the database). You can then set him admin using the following command.
+    sudo -u www-data php daemon.php setAdmin <JID>
 
-    php daemon.php setAdmin {jid}
+The admin panel will then available in your settings.
 
-The administrators will be listed on the login page of the instance.
+Instance administrators will be listed on the login page.
 
-Some of the configuration elements are only applied after the restart of the daemon.
+> [!NOTE]
+> Some of the admin configuration elements are only applied after the restart of the daemon.
+
+# Post-Install Advice
+
+## Updating
+
+You can update your Movim instance with the following lines (always check the [release notes](https://github.com/movim/movim/releases) for any incompatibilities with your current version).
+
+```bash
+cd /var/www/movim/
+git pull # To update the Movim source-code
+composer install # To update the libraries
+```
+
+If the update comes with some database changes, please ensure you run the new migrations [as described above](#5-database-setup).
+
+## Configuring Wide Conferences
+
+You have a working Movim installation, but new in version `0.35` comes scalable conference calls! See the dedicated [Galener documentation](doc/GALENER.md) to set this up.

@@ -12,35 +12,16 @@ Movim is a federated blogging and chat platform that acts as a web frontend for 
 
 Deployment
 ----------
-Please refer to the installation instructions in the [INSTALL.md](INSTALL.md) file, or check out the [Movim Wiki](https://github.com/movim/movim/wiki) for more information.
+Please refer to the installation instructions in the [INSTALL.md](INSTALL.md) file and use the [Movim Wiki](https://github.com/movim/movim/wiki) for information regarding XMPP server configuration.
 
-Quick Test
-----------
+Container
+---------
+Movim can also be deployed as a container, an image is maintained separately by a Movim team member.
 
-You can try out Movim on your local machine in a container using [Podman (main website)](https://podman.io/). Podman is a FOSS alternative to Docker that is available on all the main distributions.
-
-⚠️ __This setup is only for tests purpose, the containers are not optimized and most of the caches are disabled. To deploy your own Movim instance use the [INSTALL.md](INSTALL.md) tutorial.__
-
-Install `podman-compose` and clone the repository before trying the next steps.
-
-Launch the podman-compose script
-
-    podman-compose up
-
-After a few minutes it will launch a local test instance with a blank database.
-
-You can then access in your browser at the following URL:
-
-    https://127.0.0.1:8443/
-
-The container is using a self-signed certificate, accept to get to the login page.
-
-The container is also available at `ghcr.io/movim/movim:latest`, but requires
-postgresql to run (cf our podman-compose script).
+* Repository Link: [github.com/delonium/movim-container](https://github.com/delonium/movim-container)
 
 Security report
 ---------------
-
 See [SECURITY.md](./SECURITY.md).
 
 Support Us
@@ -53,7 +34,7 @@ You can help Movim by:
 
 Links
 -----
-* Movim official website: [movim.eu](https://movim.eu/)
+* Movim Official Website: [movim.eu](https://movim.eu/)
 * You can join one of the Movim instances on [join.movim.eu](https://join.movim.eu/)
 * Mastodon: [@movim@piaille.fr](https://piaille.fr/@movim)
 * XMPP Chatroom: [movim@conference.movim.eu](xmpp:movim@conference.movim.eu)
