@@ -32,7 +32,7 @@ Movim can be deployed on any Linux distribution given the following are installe
      * Your database PHP driver (package `php-pgsql` or `php-mysql` depending on the type of database server you want to use).
      * PHP XML (package `php-xml`)
      * PHP Zip (package `php-zip`) to import Emojis
- * Composer, a PHP package manager
+ * [Composer](https://getcomposer.org/), the PHP package manager
 
 Installing Git is also recommended to download Movim's source code.
 
@@ -40,7 +40,9 @@ Installing Git is also recommended to download Movim's source code.
 
 The required PHP dependencies can be installed with this command:
 
-	apt install composer php-fpm php-mbstring php-imagick php-gd php-pgsql php-xml php-zip
+```bash
+apt install composer php-fpm php-mbstring php-imagick php-gd php-pgsql php-xml php-zip
+```
 
 # Installation Steps
 
@@ -48,7 +50,7 @@ The required PHP dependencies can be installed with this command:
 
 You can download a stable snapshot of this repository on our [Release page](https://github.com/movim/movim/releases) or use git to clone the repository.
 
-The source code needs to be extracted or cloned into a directory owned by your webserver user 
+The source code needs to be extracted or cloned into a directory owned by your webserver user
 
 > [!NOTE]
 > The `www-data` user is the most common for GNU/Linux web servers and will be used in the rest of this tutorial, please ensure to use the correct user on your system.
@@ -68,8 +70,10 @@ git clone https://github.com/movim/movim.git
 
 Movim requires several dependencies to work properly. These libraries are managed using [Composer](https://getcomposer.org/):
 
-	cd movim
-	composer install
+```bash
+cd movim
+composer install
+```
 
 > [!NOTE]
 > You can install Composer in the Movim directory using the following command or by using your package manager:
@@ -86,11 +90,12 @@ Movim requires several dependencies to work properly. These libraries are manage
 
 Movim needs read permissions on its root folder and recursively to be deployed properly. It will try to create these folders on startup:
 
-  * `log/` for the Movim logs
-  * `cache/` for the internal cache (templates and other system files)
-  * `public/cache/` for the public caches (pictures, CSS, Javascript…)
+* `log/` for the Movim logs
+* `cache/` for the internal cache (templates and other system files)
+* `public/cache/` for the public caches (pictures, CSS, Javascript…)
 
 You can create the folders in advance and Movim will skip this step, otherwise you must set write permissions on its root folder:
+
 ```bash
 # Use the root user to do these commands
 mkdir movim/cache movim/log movim/public/cache
@@ -103,17 +108,21 @@ Movim relies on [DotEnv](https://github.com/vlucas/phpdotenv) for its configurat
 
 To configure Movim, copy the [`.env.example`](./.env.example) file to a new `.env` one and set it accordingly.
 
-	cp .env.example .env
-	nano .env
+```bash
+cp .env.example .env
+nano .env
+```
 
-> [!TIP]
+> [!NOTE]
 > Feel free to leave the `GALENER_*` environment variables blank, this is covered after the tutorial.
 
 ## 5. Database Setup
 
 Once the database is configured in your `.env` file, create or update the database structure using [Composer](https://getcomposer.org/):
 
-	composer movim:migrate
+```bash
+composer movim:migrate
+```
 
 ## 6. Start the Daemon
 
@@ -127,9 +136,11 @@ php daemon.php start # Launch the daemon
 
 If everything runs as expected you should see:
 
-    Movim daemon launched
-    Base URL : {public url of your pod}
-    …
+```bash
+Movim daemon launched
+Base URL : {public url of your pod}
+…
+```
 
 This daemon will be killed once your console is closed. Consider using `systemd` or `init` scripts to keep the daemon running in the foreground even after your disconnection. We provide some example startup files, like a `systemd` service file, in the [`etc/`](./etc/) directory.
 
@@ -166,16 +177,16 @@ CacheLockPath /tmp/mod_cache-lock
 CacheLockMaxAge 5
 CacheIgnoreHeaders Set-Cookie
 <Location /picture>
-	CacheEnable disk
-	CacheHeader on
-	CacheDefaultExpire 6000
-	CacheMaxExpire 3600
-	CacheIgnoreNoLastMod On
-	ExpiresActive on
-	ExpiresDefault A3600
-	Header set Cache-Control public
-	Header merge Cache-Control max-age=604800
-	FileETag All
+    CacheEnable disk
+    CacheHeader on
+    CacheDefaultExpire 6000
+    CacheMaxExpire 3600
+    CacheIgnoreNoLastMod On
+    ExpiresActive on
+    ExpiresDefault A3600
+    Header set Cache-Control public
+    Header merge Cache-Control max-age=604800
+    FileETag All
 </Location>
 ```
 
@@ -187,11 +198,13 @@ To do so you can configure ```fastcgi_cache``` on nginx, [check the related docu
 
 Add this to your `nginx.conf` in the `http` section:
 
-    http {
-        …
-        fastcgi_cache_path /tmp/nginx_cache levels=1:2 keys_zone=nginx_cache:100m inactive=60m;
-        fastcgi_cache_key "$scheme$request_method$host$request_uri";
-    }
+```
+http {
+    …
+    fastcgi_cache_path /tmp/nginx_cache levels=1:2 keys_zone=nginx_cache:100m inactive=60m;
+    fastcgi_cache_key "$scheme$request_method$host$request_uri";
+}
+```
 
 And check the related documentation in our nginx example file [movim.conf](./etc/nginx/conf.d/movim.conf).
 
@@ -203,7 +216,9 @@ You may want to take a look at xcaddy and compiling the server with the followin
 
 Load up the URL you configured for the `DAEMON_URL` environment variable in a web browser, and you should see Movim's login page. Once you log in with your XMPP account (to register it in the database), your account can be set as an instance admin with the following command:
 
-    sudo -u www-data php daemon.php setAdmin <JID>
+```bash
+sudo -u www-data php daemon.php setAdmin <JID>
+```
 
 The admin panel will then available in your settings.
 
