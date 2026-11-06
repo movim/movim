@@ -6,7 +6,7 @@
                     <span class="primary icon bubble">
                         <img src="{$conference->getPicture(\Movim\ImageSize::M)}">
                     </span>
-                    <span class="control icon gray divided active" onclick="RoomsUtils_ajaxRemove('{$conference->conference}');">
+                    <span class="control icon gray divided active" onclick="RoomsUtils_ajaxRemove('{$conference->conference|echapJS}');">
                         <i class="material-symbols">delete</i>
                     </span>
                 {/if}

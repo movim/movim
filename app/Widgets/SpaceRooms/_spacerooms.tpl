@@ -47,7 +47,7 @@
                 {if="$edit"}
                     <div class="controls">
                         <span class="control icon gray active edition on_desktop"
-                            onclick="event.stopPropagation(); SpaceRooms_ajaxAskEdit('{$value->conference}')"
+                            onclick="event.stopPropagation(); SpaceRooms_ajaxAskEdit('{$value->conference|echapJS}')"
                             title="{$c->__('button.edit')}">
                             <i class="material-symbols">edit</i>
                         </span>

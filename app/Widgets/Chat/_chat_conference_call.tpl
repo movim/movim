@@ -39,7 +39,7 @@
             </button>
         {else}
             <button class="button color green {if="$c->currentCall()?->isStarted()"}disabled{/if}"
-                    onclick="Visio_ajaxJoinMuji('{$conference->conference}');">
+                    onclick="Visio_ajaxJoinMuji('{$conference->conference|echapJS}');">
                 <i class="material-symbols">call</i>
                 {$c->__('button.join')}
             </button>

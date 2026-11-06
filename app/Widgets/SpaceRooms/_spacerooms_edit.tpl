@@ -5,7 +5,7 @@
                 <span class="primary icon gray">
                     <i class="material-symbols">tag</i>
                 </span>
-                <span class="control icon gray divided active" onclick="SpaceRooms_ajaxAskDestroy('{$conference->space_server}', '{$conference->space_node}', '{$conference->conference}');">
+                <span class="control icon gray divided active" onclick="SpaceRooms_ajaxAskDestroy('{$conference->space_server}', '{$conference->space_node}', '{$conference->conference|echapJS}');">
                     <i class="material-symbols">delete</i>
                 </span>
                 <div>

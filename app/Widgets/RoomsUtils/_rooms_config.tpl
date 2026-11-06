@@ -36,7 +36,7 @@
             <li class="block color blue large">
                 <i class="material-symbols main">video_call</i>
                 <div>
-                    <button class="button oppose color blue active" onclick="ChatActions_ajaxEnableWideConferenceCall('{$conference->conference}')">
+                    <button class="button oppose color blue active" onclick="ChatActions_ajaxEnableWideConferenceCall('{$conference->conference|echapJS}')">
                         <i class="material-symbols">mode_off_on</i>
                     </button>
                     <p>{$c->__('wide_conference_call.enable_title')}</p>
@@ -55,7 +55,7 @@
     <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </a>
-    <a onclick="RoomsUtils_ajaxSetConfig(MovimUtils.formToJson('config'), '{$conference->conference}'); Dialog_ajaxClear();" class="button flat green color">
+    <a onclick="RoomsUtils_ajaxSetConfig(MovimUtils.formToJson('config'), '{$conference->conference|echapJS}'); Dialog_ajaxClear();" class="button flat green color">
         {$c->__('button.save')}
     </a>
 </footer>

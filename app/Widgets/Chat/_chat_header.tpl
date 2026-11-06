@@ -90,7 +90,7 @@
                 {if="$conference && $conference->mujiPresences->isNotEmpty()"}
                     {if="$conference->presence->hasMuji()"}
                         <button class="button oppose color red"
-                                onclick="Visio_ajaxLeaveMuji('{$conference->conference}'); this.classList.add('disabled')">
+                                onclick="Visio_ajaxLeaveMuji('{$conference->conference|echapJS}'); this.classList.add('disabled')">
                             <i class="material-symbols blink">call_end</i>
                         </button>
                     {elseif="!$conference->isConferenceCall()"}
