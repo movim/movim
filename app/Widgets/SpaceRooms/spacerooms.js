@@ -15,7 +15,7 @@ var SpaceRooms = {
                     isMoving = false;
                     touchTimer = setTimeout(() => {
                         if (!isMoving) SpaceRooms_ajaxAskEdit(jid);
-                    }, 500);
+                    }, 1000);
                 };
 
                 li.ontouchmove = () => { isMoving = true; };
