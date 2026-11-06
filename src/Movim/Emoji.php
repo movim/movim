@@ -34,6 +34,7 @@ class Emoji
     private ?string $lastEmoji = null;
     private ?string $lastEmojiUrl = null;
     private ?string $lastEmojiTitle = null;
+    private array $index = [];
 
     protected function __construct()
     {
