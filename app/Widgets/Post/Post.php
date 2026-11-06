@@ -137,25 +137,7 @@ class Post extends Base
             ->setId($nodeid)
             ->request();
 
-        if ($p) {
-            $p->userViews()->syncWithoutDetaching($this->me->id);
-
-            $html = $this->preparePost($p, requestComments: false);
-
-            $this->rpc('MovimTpl.fill', '#post_widget.' . cleanupId($p->nodeid), $html);
-            $this->rpc('MovimUtils.enhanceArticlesContent');
-            $this->rpc('Notif.setTitle', $this->__('page.post') . ' • ' . $p->title);
-
-            // If the post is a reply but we don't have the original
-            if ($p->isReply() && ! $p->getReply()) {
-                $gi = $this->xmpp(new GetItem);
-                $gi->setTo($p->replyserver)
-                    ->setNode($p->replynode)
-                    ->setId($p->replynodeid)
-                    ->setReplypostid($p->id)
-                    ->request();
-            }
-        } else {
+        if (!$p) {
             $this->rpc('MovimTpl.fill', '#post_widget', $this->prepareNotFound());
         }
     }
