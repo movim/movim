@@ -95,6 +95,33 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
         MovimJingles.checkActiveSpeaker();
     })
 
+    // Audio control button
+    this.audioControl = document.createElement('span');
+    this.audioControl.classList.add('audio_control', 'max');
+    this.participant.appendChild(this.audioControl);
+
+    this.audioControl.addEventListener('click', e => {
+        this.audioControlRangeInput.value = (this.audioControlRangeInput.value > 0) ? 0 : 1;
+        this.setAudioLevel();
+    })
+
+    let audioControlRange = document.createElement('div');
+    audioControlRange.classList.add('audio_control_range');
+    this.participant.appendChild(audioControlRange);
+
+    this.audioControlRangeInput = document.createElement('input');
+    this.audioControlRangeInput.type = 'range';
+    this.audioControlRangeInput.min = 0;
+    this.audioControlRangeInput.max = 1;
+    this.audioControlRangeInput.step = 0.1;
+    this.audioControlRangeInput.value = 10;
+
+    this.audioControlRangeInput.addEventListener('input', () => {
+        this.setAudioLevel();
+    });
+
+    audioControlRange.appendChild(this.audioControlRangeInput);
+
     this.screenQualityInterval = setInterval(() => {
         this.callStatus.classList.remove('screen_hd', 'screen_fhd');
         if (!this.participant.classList.contains('screen_off')) {
@@ -194,6 +221,23 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
 
     Notif.userJoinedCall();
     MovimJingles.checkActiveSpeaker();
+}
+
+MovimJingleSession.prototype.setAudioLevel = function () {
+    this.remoteAudio.volume = parseFloat(this.audioControlRangeInput.value);
+    this.remoteScreenAudio.volume = parseFloat(this.audioControlRangeInput.value);
+
+    this.audioControl.classList.remove('max', 'middle', 'low', 'mute');
+
+    if (this.audioControlRangeInput.value == 1) {
+        this.audioControl.classList.add('max');
+    } else if (this.audioControlRangeInput.value >= 0.5) {
+        this.audioControl.classList.add('middle');
+    } else if (this.audioControlRangeInput.value >= 0.1) {
+        this.audioControl.classList.add('low');
+    } else {
+        this.audioControl.classList.add('mute');
+    }
 }
 
 MovimJingleSession.prototype.handleRemoteAudio = async function () {

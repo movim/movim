@@ -423,9 +423,11 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     content: '\f58b';
 }
 
-/* Pin button */
+/* Pin and audio control buttons */
 
-#visio .participant span.pin {
+#visio .participant span.pin,
+#visio .participant span.audio_control,
+#visio .participant div.audio_control_range {
     display: block;
     background-color: rgba(0, 0, 0, 0.3);
     font-size: 2rem;
@@ -449,18 +451,67 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     opacity: 1;
 }
 
-#visio .participant span.pin:hover {
+#visio .participant span.pin:hover,
+#visio .participant span.audio_control:hover {
     cursor: pointer;
 }
 
-#visio .participant span.pin::before {
+#visio .participant span.pin::before,
+#visio .participant span.audio_control:before {
     font-family: 'Material Symbols';
     content: '\e6aa';
 }
 
+#visio .participant span.audio_control:before {
+    content: '\e050';
+}
+
+#visio .participant span.audio_control.middle:before {
+    content: '\e04d';
+}
+
+#visio .participant span.audio_control.low:before {
+    content: '\e04e';
+}
+
+#visio .participant span.audio_control.mute:before {
+    content: '\e04f';
+}
+
 #visio .participant span.pin:hover::before,
-#visio .participant.pinned span.pin::before {
+#visio .participant.pinned span.pin::before,
+#visio .participant span.audio_control:before {
     font-variation-settings: 'FILL' 1;
+}
+
+#visio .participant:hover span.audio_control {
+    opacity: 1;
+}
+
+#visio .participant span.audio_control,
+#visio .participant div.audio_control_range {
+    right: 1rem;
+    left: auto;
+}
+
+#visio .participant div.audio_control_range {
+    bottom: 5.5rem;
+    height: 10rem;
+    padding: 1rem 0;
+    width: 4rem;
+    text-align: center;
+}
+
+#visio .participant div.audio_control_range input[type=range] {
+    writing-mode: vertical-lr;
+    direction: rtl;
+    appearance: slider-vertical;
+    height: 100%;
+}
+
+#visio .participant span.audio_control:hover+div.audio_control_range,
+#visio .participant div.audio_control_range:hover {
+    opacity: 1;
 }
 
 /* Active speaker */
