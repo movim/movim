@@ -790,9 +790,9 @@ class Visio extends Base
         $this->rpc('MovimVisio.setServices', [['urls' => array_slice($servers, 0, 2)]]);
     }
 
-    public function ajaxHttpGetStates()
+    public function ajaxHttpGetVariables()
     {
-        $this->rpc('MovimVisio.setStates', [
+        $this->rpc('MovimVisio.setVariable', [
             'calling' => $this->__('visio.calling'),
             'ringing' => $this->__('visio.ringing'),
             'in_call' => $this->__('visio.in_call'),
@@ -800,7 +800,9 @@ class Visio extends Base
             'connecting' => $this->__('visio.connecting'),
             'ended' => $this->__('visio.ended'),
             'declined' => $this->__('visio.declined'),
+            'me' => $this->__('visio.me'),
             'no_participants_left' => $this->__('visio.no_participants_left'),
+            'avatar_url' => $this->me->contact?->getPicture(),
         ]);
     }
 

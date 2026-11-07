@@ -8,8 +8,12 @@ var MovimVisio = {
     screenshareSid: null,
     screenshareSFUPc: null,
 
-    states: null,
+    variables: null,
     services: [],
+
+    participant: null,
+    callStatus: null,
+    screenQualityInterval: null,
 
     localStream: null,
     localVideo: null,
@@ -31,16 +35,66 @@ var MovimVisio = {
     sfu: null,
 
     load: function () {
-        MovimVisio.localVideo = document.getElementById('local_video');
+        MovimVisio.participant = document.createElement('div');
+        MovimVisio.participant.classList.add('participant', 'me');
+        MovimVisio.participant.classList.add('screen_off');
+        MovimVisio.participant.classList.add('video_off');
 
-        // Disable the video toggle by default
-        MovimVisio.localVideo.classList.add('video_off');
+        MovimVisio.screenSharing = document.createElement('video');
+        MovimVisio.screenSharing.classList.add('screen');
+        MovimVisio.screenSharing.autoplay = true;
+        MovimVisio.screenSharing.disablePictureInPicture = true;
+        MovimVisio.screenSharing.poster = BASE_URI + 'theme/img/empty.png';
+        MovimVisio.participant.appendChild(MovimVisio.screenSharing);
+
+        MovimVisio.localVideo = document.createElement('video');
+        MovimVisio.localVideo.autoplay = true;
+        MovimVisio.localVideo.disablePictureInPicture = true;
+        MovimVisio.localVideo.poster = BASE_URI + 'theme/img/empty.png';
+        MovimVisio.localVideo.muted = true;
+        MovimVisio.participant.appendChild(MovimVisio.localVideo);
+
+        MovimVisio.callStatus = document.createElement('div')
+        MovimVisio.callStatus.classList.add('status');
+        MovimVisio.callStatus.dataset.name = MovimVisio.variables.me;
+        MovimVisio.participant.appendChild(this.callStatus);
+
+        var audioOffStatus = document.createElement('span');
+        audioOffStatus.classList.add('audio_off');
+        MovimVisio.callStatus.appendChild(audioOffStatus);
+
+        var videoOffStatus = document.createElement('span');
+        videoOffStatus.classList.add('video_off');
+        MovimVisio.callStatus.appendChild(videoOffStatus);
+
+        var screenStatus = document.createElement('span');
+        screenStatus.classList.add('screen');
+        MovimVisio.callStatus.appendChild(screenStatus);
+
+        MovimVisio.screenQualityInterval = setInterval(() => {
+            MovimVisio.callStatus.classList.remove('screen_hd', 'screen_fhd');
+            if (!MovimVisio.participant.classList.contains('screen_off')) {
+                if (MovimVisio.screenSharing.videoWidth >= 1920) {
+                    MovimVisio.callStatus.classList.add('screen_fhd');
+                } else if (MovimVisio.screenSharing.videoWidth >= 1280) {
+                    MovimVisio.callStatus.classList.add('screen_hd');
+                }
+            }
+        }, 3000);
+
+        if (MovimVisio.variables.avatar_url) {
+            let background = document.createElement('img');
+            background.classList.add('avatar');
+            background.src = MovimVisio.variables.avatar_url;
+            MovimVisio.participant.prepend(background);
+        }
+
+        document.querySelector('#participants').appendChild(MovimVisio.participant);
 
         MovimVisio.localVideo.addEventListener('loadeddata', () => {
             MovimVisio.localVideo.play()
         });
 
-        MovimVisio.screenSharing = document.getElementById('screen_sharing_video');
         MovimVisio.localAudio = document.getElementById('local_audio');
     },
 
@@ -98,7 +152,7 @@ var MovimVisio = {
 
         visio.classList.add('movements');
 
-        Notif.setCallStatus(MovimVisio.states.in_call);
+        Notif.setCallStatus(MovimVisio.variables.in_call);
 
         visio.addEventListener('mousemove', e => {
             clearTimeout(MovimVisio.mouseMovement);
@@ -225,8 +279,8 @@ var MovimVisio = {
         });
     },
 
-    setStates: function (states) {
-        MovimVisio.states = states;
+    setVariable: function (variables) {
+        MovimVisio.variables = variables;
     },
 
     setServices: function (services) {
@@ -267,7 +321,7 @@ var MovimVisio = {
                     MovimVisio.localVideo.srcObject = stream;
 
                     // Toggle the video on
-                    MovimVisio.localVideo.classList.remove('video_off');
+                    MovimVisio.participant.classList.remove('video_off');
                     document.querySelector('#toggle_video i').innerText = 'videocam';
 
                     if (lobby) {
@@ -413,6 +467,9 @@ var MovimVisio = {
             MovimVisio.localStream = null;
         }
 
+        MovimVisio.participant.remove();
+        clearInterval(MovimVisio.screenQualityInterval);
+
         VisioUtils.disableScreenSharing();
 
         MovimVisio.localAudio = null;
@@ -459,8 +516,8 @@ var MovimVisio = {
     }
 }
 
-if (typeof Visio_ajaxHttpGetStates == 'function') {
-    Visio_ajaxHttpGetStates();
+if (typeof Visio_ajaxHttpGetVariables == 'function') {
+    Visio_ajaxHttpGetVariables();
 }
 
 if (typeof MovimWebsocket != 'undefined') {

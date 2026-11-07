@@ -6,7 +6,7 @@ var VisioUtils = {
     meter: null,
     rafId: null,
 
-    handleAudio: function () {
+    handleAudio: async function () {
         if (VisioUtils.audioContext) {
             VisioUtils.audioContext.close();
             VisioUtils.audioContext = null;
@@ -18,91 +18,32 @@ var VisioUtils = {
             VisioUtils.microphone = VisioUtils.audioContext.createMediaStreamSource(
                 MovimVisio.localAudio.srcObject
             );
+
+            await VisioUtils.audioContext.audioWorklet.addModule(BASE_URI + 'scripts/movim_jingle_session_audio_worklet.js');
+            const audioWorkletNode = new AudioWorkletNode(VisioUtils.audioContext, 'jinglesession-audioworklet');
+            VisioUtils.microphone.connect(audioWorkletNode);
+
+            audioWorkletNode.port.onmessage = (e) => {
+                var step = 0;
+
+                document.querySelectorAll('.level span').forEach(span => {
+                    if (step < Math.floor(e.data.level * 10)) {
+                        span.classList.remove('disabled');
+                    } else {
+                        span.classList.add('disabled');
+                    }
+
+                    step++;
+                });
+
+                if (MovimVisio.participant) {
+                    MovimVisio.participant.style.setProperty('--level', e.data.level);
+                }
+            };
         } catch (error) {
             MovimUtils.logError(error);
             return;
         }
-
-        let javascriptNode = VisioUtils.audioContext.createScriptProcessor(128 * 64, 1, 1);
-        let icon = document.querySelector('#toggle_audio i');
-        let toggleAudio = document.getElementById('toggle_audio');
-        icon.innerText = 'mic';
-        let isMuteStep = 251;
-        let noMicSound = document.querySelector('#no_mic_sound');
-        let defaultMicrophone = document.querySelector('#default_microphone');
-
-        if (defaultMicrophone) {
-            defaultMicrophone.classList.add('muted');
-        }
-
-        VisioUtils.meter = VisioUtils.audioContext.createAnalyser();
-        VisioUtils.meter.fftSize = 256;
-        VisioUtils.microphone.connect(VisioUtils.meter);
-
-        function startAnalyzer() {
-            if (!VisioUtils.meter) return;
-
-            const dataArray = new Uint8Array(VisioUtils.meter.frequencyBinCount);
-
-            function update() {
-                if (!VisioUtils.meter) return;
-
-                VisioUtils.meter.getByteFrequencyData(dataArray);
-
-                let sum = 0;
-                for (let i = 0; i < dataArray.length; i++) {
-                    sum += dataArray[i];
-                }
-
-                const avg = sum / dataArray.length;
-                const level = Math.min(1, (avg / 255) ** .3);
-                VisioUtils.rafId = requestAnimationFrame(update);
-
-                let step = 0;
-
-                if (level == 0) {
-                    isMuteStep++;
-                } else {
-                    isMuteStep = 0;
-                }
-
-                if (isMuteStep > 32) {
-                    if (noMicSound) {
-                        noMicSound.classList.remove('disabled');
-                    }
-
-                    if (defaultMicrophone) {
-                        defaultMicrophone.classList.add('muted');
-                    }
-                } else {
-                    if (noMicSound) {
-                        noMicSound.classList.add('disabled');
-                    }
-
-                    if (defaultMicrophone) {
-                        defaultMicrophone.classList.remove('muted');
-                    }
-
-                    // Lobby level
-                    if (isMuteStep <= 5) {
-                        document.querySelectorAll('.level span').forEach(span => {
-                            if (step < Math.floor(level * 10)) {
-                                span.classList.remove('disabled');
-                            } else {
-                                span.classList.add('disabled');
-                            }
-
-                            step++;
-                        });
-
-                        toggleAudio.style.setProperty('--level', level.toFixed(2));
-                    }
-                }
-            }
-            update();
-        }
-
-        startAnalyzer();
     },
 
     stopAudio: function () {
@@ -158,9 +99,11 @@ var VisioUtils = {
 
         if (button.innerText == 'mic_off') {
             MovimJingles.enableAudio(true);
+            MovimVisio.participant.classList.remove('audio_off');
             button.innerText = 'mic';
         } else {
             MovimJingles.enableAudio(false);
+            MovimVisio.participant.classList.add('audio_off');
             button.innerText = 'mic_off';
         }
     },
@@ -171,17 +114,17 @@ var VisioUtils = {
         if (MovimVisio.localVideo.srcObject == null) {
             MovimVisio.getUserMedia(true).then(e => {
                 MovimJingles.enableVideo(true);
-                MovimVisio.localVideo.classList.remove('video_off');
+                MovimVisio.participant.classList.remove('video_off');
                 button.innerText = 'videocam';
             });
         } else {
             if (button.innerText == 'videocam_off') {
                 MovimJingles.enableVideo(true);
-                MovimVisio.localVideo.classList.remove('video_off');
+                MovimVisio.participant.classList.remove('video_off');
                 button.innerText = 'videocam';
             } else {
                 MovimJingles.enableVideo(false);
-                MovimVisio.localVideo.classList.add('video_off');
+                MovimVisio.participant.classList.add('video_off');
                 button.innerText = 'videocam_off';
             }
         }
@@ -198,6 +141,7 @@ var VisioUtils = {
                     audio: true
                 });
 
+                MovimVisio.participant.classList.remove('screen_off');
                 MovimVisio.screenSharing.classList.add('sharing');
                 VisioUtils.disableSwitchCameraButton();
                 button.innerText = 'stop_screen_share';
@@ -213,6 +157,8 @@ var VisioUtils = {
             }
             return;
         } else {
+            MovimVisio.participant.classList.add('screen_off');
+
             if (MovimVisio.sfu) {
                 MovimVisio.stopScreenshareSFU();
                 VisioUtils.disableScreenSharing();

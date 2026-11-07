@@ -397,7 +397,6 @@ MovimJingleSession.prototype.updateContent = function () {
 
     if (createdMedias.length > 0) {
         changed = true;
-        console.log('CONTENT ADD ?' + this.fullJid + ' ' + this.jid);
         Visio_ajaxContentAdd(this.fullJid, localDescription, this.id, createdMedias);
     }
 
@@ -883,7 +882,7 @@ var MovimJingles = {
             } else {
                 let state = document.querySelector('p.state');
                 if (state) {
-                    state.innerText = MovimVisio.states.no_participants_left;
+                    state.innerText = MovimVisio.variables.no_participants_left;
                 }
             }
         }
