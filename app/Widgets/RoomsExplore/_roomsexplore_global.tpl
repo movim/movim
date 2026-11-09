@@ -33,7 +33,7 @@
                 </p>
                 <p class="line" title="{$value.description}">
                     {if="$value.occupants > 0"}
-                        <span title="{$c->__('communitydata.sub', $value.occupants)}">
+                        <span title="{$c->__('communitydata.members', $value.occupants)}">
                             {$value.occupants} <i class="material-symbols">people</i>
                         </span>
                     {/if}

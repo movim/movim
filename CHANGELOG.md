@@ -4,6 +4,7 @@ Movim Changelog
 v0.35.6 (master)
 ---------------------------
 * In a call a user is now having the same layout as all the others participants
+* Add a Space invitation URL flow
 
 v0.35.5
 ---------------------------

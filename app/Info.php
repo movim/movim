@@ -196,6 +196,11 @@ class Info extends Model
             : [];
     }
 
+    public function getUriAttribute(): string
+    {
+        return 'xmpp:' . $this->server . '?;node=' . $this->node;
+    }
+
     public function isEmptyFeatures(): bool
     {
         return empty($this->getFeaturesAttribute());

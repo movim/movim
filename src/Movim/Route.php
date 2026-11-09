@@ -131,7 +131,6 @@ class Route extends Base
                     $uri .= '/' . rawurlencode($params ?? '');
                 }
             }
-
             $get = ($get !== []) ? '?' . http_build_query($get) : '';
             $tab = ($tab != false) ? '#' . $tab : '';
 

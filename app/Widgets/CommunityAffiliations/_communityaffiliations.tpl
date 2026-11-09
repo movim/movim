@@ -111,7 +111,7 @@
             </span>
             <div>
                 <p>{$c->__('button.more')}</p>
-                <p>{$c->__('communitydata.sub', $allsubscriptionscount)}</p>
+                <p>{$c->__('communitydata.members', $allsubscriptionscount)}</p>
             </div>
         </li>
     </ul>

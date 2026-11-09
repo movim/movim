@@ -29,7 +29,7 @@
                 </span>
             {/if}
             {if="$community->occupants > 0"}
-                <span class="info" title="{$c->__('communitydata.sub', $community->occupants)}">
+                <span class="info" title="{$c->__('communitydata.members', $community->occupants)}">
                     {$community->occupants} <i class="material-symbols">people</i>
                 </span>
             {/if}

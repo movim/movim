@@ -66,46 +66,52 @@ class ChatStates
         global $loop;
 
         $explodedFrom = new Jid($from);
-        $jid = $this->resolveJid(! $mucPM ? $explodedFrom->bareJid() : $from, $to);
 
-        $timer = $loop->addTimer($this->_timeout, function () use ($from, $to) {
-            $this->paused($from, $to);
-        });
+        if ($explodedFrom->isValid()) {
+            $jid = $this->resolveJid(! $mucPM ? $explodedFrom->bareJid() : $from, $to);
 
-        // Resource within a MUC
-        if (! $mucPM && isset($explodedFrom->resource)) {
-            if (! array_key_exists($jid, $this->_composing)) {
-                $this->_composing[$jid] = [];
+            $timer = $loop->addTimer($this->_timeout, function () use ($from, $to) {
+                $this->paused($from, $to);
+            });
+
+            // Resource within a MUC
+            if (! $mucPM && isset($explodedFrom->resource)) {
+                if (! array_key_exists($jid, $this->_composing)) {
+                    $this->_composing[$jid] = [];
+                }
+
+                $this->clearState($jid, $explodedFrom->resource);
+                $this->_composing[$jid][$explodedFrom->resource] = $timer;
+            } else {
+                $this->clearState($jid);
+                $this->_composing[$jid] = $timer;
             }
 
-            $this->clearState($jid, $explodedFrom->resource);
-            $this->_composing[$jid][$explodedFrom->resource] = $timer;
-        } else {
-            $this->clearState($jid);
-            $this->_composing[$jid] = $timer;
+            Wrapper::getInstance()->iterate(
+                'chatstate',
+                $this->getState($jid),
+                user: $this->user,
+                sessionId: $this->user->session->id
+            );
         }
-
-        Wrapper::getInstance()->iterate(
-            'chatstate',
-            $this->getState($jid),
-            user: $this->user,
-            sessionId: $this->user->session->id
-        );
     }
 
     public function paused(string $from, string $to, bool $mucPM = false)
     {
         $explodedFrom = new Jid($from);
-        $jid = $this->resolveJid(! $mucPM ? $explodedFrom->bareJid() : $from, $to);
 
-        $this->clearState($jid, ! $mucPM ? $explodedFrom->resource : null);
+        if ($explodedFrom->isValid()) {
+            $jid = $this->resolveJid(! $mucPM ? $explodedFrom->bareJid() : $from, $to);
 
-        Wrapper::getInstance()->iterate(
-            'chatstate',
-            $this->getState($jid),
-            user: $this->user,
-            sessionId: $this->user->session->id
-        );
+            $this->clearState($jid, ! $mucPM ? $explodedFrom->resource : null);
+
+            Wrapper::getInstance()->iterate(
+                'chatstate',
+                $this->getState($jid),
+                user: $this->user,
+                sessionId: $this->user->session->id
+            );
+        }
     }
 
     private function resolveJid(string $from, string $to)

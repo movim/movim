@@ -37,7 +37,7 @@
                 {$c->__('communitydata.num', $num)}
                 •
                 <i class="material-symbols icon-text" aria-hidden="true">people</i>
-                {$c->__('communitydata.sub', $info->occupants)}
+                {$c->__('communitydata.members', $info->occupants)}
 
                 {if="$info->pubsubpublishmodel == 'publishers'"}
                     <br />

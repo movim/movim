@@ -412,12 +412,15 @@ class SpaceInfo extends Base
             return;
         }
 
-        $this->dialog($this->view('_spaceinfo_invite', [
-            'subscription' => $this->me->subscriptions()
+        $subscription = $this->me->subscriptions()
                 ->spaces()
                 ->where('server', $server)
                 ->where('node', $node)
-                ->first(),
+                ->first();
+
+        $this->dialog($this->view('_spaceinfo_invite', [
+            'subscription' => $subscription,
+            'inviteUrl' => $this->route('space', [$subscription->server, $subscription->node])
         ]));
     }
 }

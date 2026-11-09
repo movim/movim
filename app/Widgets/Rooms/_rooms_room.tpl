@@ -32,7 +32,7 @@
                     {/if}
                     {if="!$conference->isGroupChat() && $conference->connected"}
                         {$count = $conference->presences()->count()}
-                        <span title="{$c->__('communitydata.sub', $count)}"
+                        <span title="{$c->__('communitydata.members', $count)}"
                             class="info
                                 {if="$conference->connected && $conference->presence->mucrole == 'moderator'"}
                                     moderator
@@ -41,7 +41,7 @@
                             {$count} <i class="material-symbols">people</i>
                         </span>
                     {elseif="!$conference->isGroupChat() && isset($info) && $info->occupants > 0"}
-                        <span title="{$c->__('communitydata.sub', $info->occupants)}"
+                        <span title="{$c->__('communitydata.members', $info->occupants)}"
                             class="info
                                 {if="$conference->connected && $conference->presence->mucrole == 'moderator'"}
                                     moderator

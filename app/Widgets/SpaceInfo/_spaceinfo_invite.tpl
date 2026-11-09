@@ -7,12 +7,28 @@
         <div>
             <ul class="list">
                 <li>
+                    <span class="primary icon gray">
+                        <i class="material-symbols">key</i>
+                    </span>
                     <span class="control icon active" onclick="MovimUtils.copyToClipboard('{$subscription->uri}'); ChatActions_ajaxCopiedMessageText();">
                         <i class="material-symbols">content_copy</i>
                     </span>
                     <div>
                         <input name="title" value="{$subscription->uri}" readonly/>
                         <label for="title">{$c->__('spaceinfo.invite_uri_title')}</label>
+                    </div>
+                </li>
+                <h2 style="text-align: center;">{$c->__('global.or')}</h2>
+                <li>
+                    <span class="primary icon gray">
+                        <i class="material-symbols">link</i>
+                    </span>
+                    <span class="control icon active" onclick="Preview.copyToClipboard('{$inviteUrl}')">
+                        <i class="material-symbols">content_copy</i>
+                    </span>
+                    <div>
+                        <input readonly value="{$inviteUrl}">
+                        <label>{$c->__('room.invite_code')}</label>
                     </div>
                 </li>
             </ul>
