@@ -20,6 +20,7 @@ use Moxl\Xec\Action\Space\SetAffiliations;
 use Moxl\Xec\Action\Space\SetSubscription;
 use Moxl\Xec\Action\Space\Subscribe;
 use Moxl\Xec\Payload\Packet;
+use Respect\Validation\Validator;
 
 class SpacesMenu extends Base
 {
@@ -39,8 +40,32 @@ class SpacesMenu extends Base
         $this->registerEvent('message_pubsub_subscribed', 'onMessageSubscribed');
         $this->registerEvent('space_counter', 'onCounter');
 
+        $this->registerEvent('disco_request_handle', 'onDiscoRequest');
+        $this->registerEvent('disco_request_error', 'onDiscoError');
+
         $this->addjs('spacesmenu.js');
         $this->addcss('spacesmenu.css');
+    }
+
+    public function onDiscoRequest(Packet $packet)
+    {
+        if ($packet->content->isSpace()) {
+            $this->rpc('MovimTpl.fill', '#spacesmenu_discover_result', $this->view('_spacesmenu_discover_result', [
+                'icon' => $packet->content->getPicture(placeholder: $packet->content->name),
+                'space' => $packet->content,
+            ]));
+
+            $this->rpc('MovimUtils.removeClass', '#spacesmenu_discover_add', 'disabled');
+            $this->rpc('SpacesMenu.discoverJoin', $packet->content->getUriAttribute());
+            return;
+        }
+
+        $this->onDiscoError($packet);
+    }
+
+    public function onDiscoError(Packet $packet)
+    {
+        $this->rpc('MovimTpl.fill', '#spacesmenu_discover_result', $this->view('_spacesmenu_discover_error'));
     }
 
     public function onCounter(Packet $packet)
@@ -206,15 +231,9 @@ class SpacesMenu extends Base
             ->request();
     }
 
-    public function ajaxJoinFromUri(\stdClass $form)
+    public function ajaxJoinFromUri(string $uri)
     {
-        if (empty($form->uri->value)) {
-            $this->toast($this->__('spacesmenu.key_required'));
-
-            return;
-        }
-
-        $uri = new XMPPUri($form->uri->value);
+        $uri = new XMPPUri($uri);
         if ($uri->getType() == 'community') {
             $this->ajaxAddSubscription($uri->getServer(), $uri->getNode());
             $this->ajaxJoin($uri->getServer(), $uri->getNode());
@@ -359,6 +378,44 @@ class SpacesMenu extends Base
             'server' => $server,
             'node' => $node,
         ]));
+    }
+
+    public function ajaxDiscoSpace(?string $key = null)
+    {
+        $this->rpc('MovimTpl.fill', '#spacemenu_discover_result', '');
+
+        if (
+            Validator::url()->isValid($key)
+            && substr($key, 0, 4) == 'http'
+        ) {
+            $path = parse_url($key, PHP_URL_PATH);
+
+            if ($path) {
+                $parts = explode('/', $path);
+
+                if (count($parts) && $parts[1] == 'space' && Validator::domain()->isValid($parts[2])) {
+                    $request = $this->xmpp(new Request);
+                    $request->setTo($parts[2])
+                        ->setNode($parts[3])
+                        ->request();
+                    return;
+                }
+            }
+        } else {
+            $uri = new XMPPUri($key);
+
+            if ($uri->getServer() && $uri->getNode()) {
+                $request = $this->xmpp(new Request);
+                $request->setTo($uri->getServer())
+                    ->setNode($uri->getNode())
+                    ->request();
+                return;
+            }
+        }
+
+        if (! empty($key)) {
+            $this->toast($this->__('spacesmenu.key_required'));
+        }
     }
 
     public function prepareMenu(?string $server = null, ?string $node = null): string

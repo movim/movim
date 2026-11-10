@@ -3,7 +3,7 @@
         <section>
             <ul class="list thick">
                 <li>
-                    <span class="primary icon bubble">
+                    <span class="primary icon bubble space">
                         <img src="{$icon}">
                     </span>
                     <div>

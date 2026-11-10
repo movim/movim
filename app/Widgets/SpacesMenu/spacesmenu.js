@@ -5,6 +5,13 @@ var SpacesMenu = {
         } else {
             MovimUtils.reload(route);
         }
+    },
+    discoverJoin: function (uri) {
+        if (button = document.querySelector('#spacesmenu_discover_add')) {
+            button.onclick = () => {
+                SpacesMenu_ajaxJoinFromUri(uri); Dialog_ajaxClear();
+            }
+        }
     }
 }
 

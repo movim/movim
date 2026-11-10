@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-23 11:02+0100\n"
+"POT-Creation-Date: 2026-11-10 09:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,6 +49,14 @@ msgstr ""
 
 #: [spaceinfo]invite_uri_title
 msgid "Send an invitation key to your contacts"
+msgstr ""
+
+#: [spaceinfo]invite_key
+msgid "Invitation key"
+msgstr ""
+
+#: [spaceinfo]join_text
+msgid "Once logged in, copy the invitation key in the Add Space dialog."
 msgstr ""
 
 #: [spaceinfo]leave_title
@@ -109,4 +117,8 @@ msgstr ""
 
 #: [spaceinfo]affiliation_none
 msgid "Remove from the space"
+msgstr ""
+
+#: [spaceinfo]login_join
+msgid "Login and Join"
 msgstr ""

@@ -49,24 +49,29 @@
             <ul class="list">
                 <li>
                     <span class="primary icon gray">
-                        <i class="material-symbols">communities</i>
+                        <i class="material-symbols">join</i>
+                    </span>
+                    <span class="control icon divided gray active">
+                        <i class="material-symbols">search</i>
                     </span>
                     <div>
-                        <input name="uri" placeholder="xmpp:server.com?;node=key" {if="isset($uri)"}value="{$uri}"{/if} required/>
+                        <input name="uri" placeholder="https://… or xmpp:server.com?;node=key" {if="isset($uri)"}value="{$uri}"{/if} oninput="MovimUtils.addClass('#spacesmenu_discover_add', 'disabled')" onblur="SpacesMenu_ajaxDiscoSpace(this.value)" required/>
                         <label for="uri">{$c->__('spacesmenu.invitation_key')}</label>
                     </div>
                 </li>
             </ul>
         </div>
     </form>
+
+    <div id="spacesmenu_discover_result"></div>
 </section>
 <footer>
     <button class="button flat" onclick="Dialog_ajaxClear()">
         {$c->__('button.cancel')}
     </button>
     <button
-        class="button flat"
-        onclick="SpacesMenu_ajaxJoinFromUri(MovimUtils.formToJson('spacesmenu_add')); Dialog_ajaxClear();"
+        class="button color green disabled"
+        id="spacesmenu_discover_add"
         >
         {$c->__('button.join')}
     </button>

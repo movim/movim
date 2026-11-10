@@ -19,7 +19,6 @@
         </li>
     </ul>
     <form name="spacerooms_add">
-
         <input type="hidden" name="server" value="{$server|echapJS}">
         <input type="hidden" name="node" value="{$node|echapJS}">
         {if="$directory"}

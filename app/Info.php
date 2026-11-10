@@ -301,6 +301,11 @@ class Info extends Model
         return $this->hasFeature('http://jabber.org/protocol/muc');
     }
 
+    public function isSpace(): bool
+    {
+        return $this->type == Space::NAMESPACE;
+    }
+
     public function isGroupChat(): bool
     {
         return $this->mucmembersonly && ! $this->mucsemianonymous;

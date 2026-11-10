@@ -56,4 +56,9 @@ class Request extends Action
         $this->pack($info);
         $this->deliver();
     }
+
+    public function error(string $errorId, ?string $message = null)
+    {
+        $this->deliver();
+    }
 }

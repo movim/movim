@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-23 11:02+0100\n"
+"POT-Creation-Date: 2026-11-10 09:14+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://app.transifex.com/movim/movim/language/en/)\n"
@@ -857,7 +857,7 @@ msgstr "Start a new conversation"
 msgid "Chat with a contact"
 msgstr "Chat with a contact"
 
-#: [chats]me
+#: [chats]me [visio]me
 msgid "Me"
 msgstr "Me"
 
@@ -1062,9 +1062,9 @@ msgstr "Gallery"
 msgid "Publish and browse pictures"
 msgstr "Publish and browse pictures"
 
-#: [communitydata]sub
-msgid "%s subscribers"
-msgstr "%s subscribers"
+#: [communitydata]members
+msgid "%s members"
+msgstr ""
 
 #: [communitydata]num
 msgid "%s posts"
@@ -2715,6 +2715,14 @@ msgstr "A moderator will have to approve the join request"
 msgid "Send an invitation key to your contacts"
 msgstr "Send an invitation key to your contacts"
 
+#: [spaceinfo]invite_key
+msgid "Invitation key"
+msgstr ""
+
+#: [spaceinfo]join_text
+msgid "Once logged in, copy the invitation key in the Add Space dialog."
+msgstr ""
+
 #: [spaceinfo]leave_title [spacesmenu]leave_title
 msgid "Leave the space"
 msgstr "Leave the space"
@@ -2775,6 +2783,10 @@ msgstr "An owner cannot leave his own Space"
 msgid "Remove from the space"
 msgstr "Remove from the space"
 
+#: [spaceinfo]login_join
+msgid "Login and Join"
+msgstr ""
+
 #: [spacesmenu]create_space_title
 msgid "Create a space"
 msgstr "Create a space"
@@ -2812,8 +2824,8 @@ msgid "Subscribed to the space"
 msgstr "Subscribed to the space"
 
 #: [spacesmenu]invitation_key
-msgid "Use an invitation key"
-msgstr "Use an invitation key"
+msgid "Use an invitation key or a URL"
+msgstr ""
 
 #: [spacesmenu]key_required
 msgid "A valid key is required"
@@ -2858,6 +2870,10 @@ msgstr "Contact added in the space"
 #: [spacesmenu]contact_denied
 msgid "Contact denied in the space"
 msgstr "Contact denied in the space"
+
+#: [spacesmenu]disco_error
+msgid "Movim was not able to find a valid Space."
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -4152,3 +4168,9 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
+
+#~ msgid "%s subscribers"
+#~ msgstr "%s subscribers"
+
+#~ msgid "Use an invitation key"
+#~ msgstr "Use an invitation key"

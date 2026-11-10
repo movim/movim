@@ -139,7 +139,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-23 11:02+0100\n"
+"POT-Creation-Date: 2026-11-10 09:14+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2026\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -874,7 +874,7 @@ msgstr "开始新对话"
 msgid "Chat with a contact"
 msgstr "与联系人聊天"
 
-#: [chats]me
+#: [chats]me [visio]me
 msgid "Me"
 msgstr "我"
 
@@ -1079,9 +1079,9 @@ msgstr "图库"
 msgid "Publish and browse pictures"
 msgstr "发布和浏览图片"
 
-#: [communitydata]sub
-msgid "%s subscribers"
-msgstr "%s 位订阅者"
+#: [communitydata]members
+msgid "%s members"
+msgstr ""
 
 #: [communitydata]num
 msgid "%s posts"
@@ -2732,6 +2732,14 @@ msgstr "加入请求需要经过主持人批准"
 msgid "Send an invitation key to your contacts"
 msgstr "向您的联系人发送邀请密钥"
 
+#: [spaceinfo]invite_key
+msgid "Invitation key"
+msgstr ""
+
+#: [spaceinfo]join_text
+msgid "Once logged in, copy the invitation key in the Add Space dialog."
+msgstr ""
+
 #: [spaceinfo]leave_title [spacesmenu]leave_title
 msgid "Leave the space"
 msgstr "离开空间"
@@ -2792,6 +2800,10 @@ msgstr "所有者无法离开自己的空间"
 msgid "Remove from the space"
 msgstr "从空间移除"
 
+#: [spaceinfo]login_join
+msgid "Login and Join"
+msgstr ""
+
 #: [spacesmenu]create_space_title
 msgid "Create a space"
 msgstr "创建空间"
@@ -2829,8 +2841,8 @@ msgid "Subscribed to the space"
 msgstr "已订阅此空间"
 
 #: [spacesmenu]invitation_key
-msgid "Use an invitation key"
-msgstr "使用邀请密钥"
+msgid "Use an invitation key or a URL"
+msgstr ""
 
 #: [spacesmenu]key_required
 msgid "A valid key is required"
@@ -2875,6 +2887,10 @@ msgstr "联系人已添加到空间中"
 #: [spacesmenu]contact_denied
 msgid "Contact denied in the space"
 msgstr "联系人被拒绝加入空间"
+
+#: [spacesmenu]disco_error
+msgid "Movim was not able to find a valid Space."
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -4169,3 +4185,9 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "%s subscribers"
+#~ msgstr "%s 位订阅者"
+
+#~ msgid "Use an invitation key"
+#~ msgstr "使用邀请密钥"

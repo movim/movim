@@ -146,7 +146,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-23 11:02+0100\n"
+"POT-Creation-Date: 2026-11-10 09:14+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>, 2015\n"
 "Language-Team: German (http://app.transifex.com/movim/movim/language/de/)\n"
@@ -881,7 +881,7 @@ msgstr ""
 msgid "Chat with a contact"
 msgstr "Mit einem Kontakt chatten"
 
-#: [chats]me
+#: [chats]me [visio]me
 msgid "Me"
 msgstr "Ich"
 
@@ -1086,9 +1086,9 @@ msgstr "Galerie"
 msgid "Publish and browse pictures"
 msgstr "Bilder veröffentlichen und lesen"
 
-#: [communitydata]sub
-msgid "%s subscribers"
-msgstr "%s Abonnenten"
+#: [communitydata]members
+msgid "%s members"
+msgstr ""
 
 #: [communitydata]num
 msgid "%s posts"
@@ -2739,6 +2739,14 @@ msgstr "Ein Moderator muss die Beitrittsanfrage bewilligen"
 msgid "Send an invitation key to your contacts"
 msgstr "Schicke einen Einladungsschlüssel an deine Kontakte"
 
+#: [spaceinfo]invite_key
+msgid "Invitation key"
+msgstr ""
+
+#: [spaceinfo]join_text
+msgid "Once logged in, copy the invitation key in the Add Space dialog."
+msgstr ""
+
 #: [spaceinfo]leave_title [spacesmenu]leave_title
 msgid "Leave the space"
 msgstr "Diesen Space verlassen"
@@ -2799,6 +2807,10 @@ msgstr "Ein Eigentümer kann seinen eigenen Space nicht verlassen"
 msgid "Remove from the space"
 msgstr "Vom Space entfernen"
 
+#: [spaceinfo]login_join
+msgid "Login and Join"
+msgstr ""
+
 #: [spacesmenu]create_space_title
 msgid "Create a space"
 msgstr ""
@@ -2836,8 +2848,8 @@ msgid "Subscribed to the space"
 msgstr "Space abonniert"
 
 #: [spacesmenu]invitation_key
-msgid "Use an invitation key"
-msgstr "Nutze einen Einladungsschlüssel"
+msgid "Use an invitation key or a URL"
+msgstr ""
 
 #: [spacesmenu]key_required
 msgid "A valid key is required"
@@ -2882,6 +2894,10 @@ msgstr "Kontakt zum Space hinzugefügt"
 #: [spacesmenu]contact_denied
 msgid "Contact denied in the space"
 msgstr "Zutritt für den Kontakt verweigert"
+
+#: [spacesmenu]disco_error
+msgid "Movim was not able to find a valid Space."
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -4176,3 +4192,9 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgid "%s subscribers"
+#~ msgstr "%s Abonnenten"
+
+#~ msgid "Use an invitation key"
+#~ msgstr "Nutze einen Einladungsschlüssel"

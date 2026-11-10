@@ -125,7 +125,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-23 11:02+0100\n"
+"POT-Creation-Date: 2026-11-10 09:14+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023-2024,2026\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
@@ -860,7 +860,7 @@ msgstr "Hasi elkarrizketa berria"
 msgid "Chat with a contact"
 msgstr "Txateatu kontaktu batekin"
 
-#: [chats]me
+#: [chats]me [visio]me
 msgid "Me"
 msgstr "Ni"
 
@@ -1065,9 +1065,9 @@ msgstr "Galeria"
 msgid "Publish and browse pictures"
 msgstr "Argitaratu eta arakatu irudiak"
 
-#: [communitydata]sub
-msgid "%s subscribers"
-msgstr "%s harpidedun"
+#: [communitydata]members
+msgid "%s members"
+msgstr ""
 
 #: [communitydata]num
 msgid "%s posts"
@@ -2718,6 +2718,14 @@ msgstr "Moderatzaile batek onartu beharko du batzeko eskaera"
 msgid "Send an invitation key to your contacts"
 msgstr "Bidali gonbidapen-gakoa zure kontaktuei"
 
+#: [spaceinfo]invite_key
+msgid "Invitation key"
+msgstr ""
+
+#: [spaceinfo]join_text
+msgid "Once logged in, copy the invitation key in the Add Space dialog."
+msgstr ""
+
 #: [spaceinfo]leave_title [spacesmenu]leave_title
 msgid "Leave the space"
 msgstr "Utzi Gunea"
@@ -2778,6 +2786,10 @@ msgstr "Jabeak ezin du bere Gunea utzi"
 msgid "Remove from the space"
 msgstr "Kendu Gunetik"
 
+#: [spaceinfo]login_join
+msgid "Login and Join"
+msgstr ""
+
 #: [spacesmenu]create_space_title
 msgid "Create a space"
 msgstr "Sortu Gune bat"
@@ -2815,8 +2827,8 @@ msgid "Subscribed to the space"
 msgstr "Gunera harpidetu zara"
 
 #: [spacesmenu]invitation_key
-msgid "Use an invitation key"
-msgstr "Erabili gonbidapen-gako bat"
+msgid "Use an invitation key or a URL"
+msgstr ""
 
 #: [spacesmenu]key_required
 msgid "A valid key is required"
@@ -2861,6 +2873,10 @@ msgstr "Kontaktua gehitu da Gunera"
 #: [spacesmenu]contact_denied
 msgid "Contact denied in the space"
 msgstr "Kontaktua Gunera gehitzea galarazi da"
+
+#: [spacesmenu]disco_error
+msgid "Movim was not able to find a valid Space."
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -4155,3 +4171,9 @@ msgstr "Ezin da APIa eskuratu, saiatu berriro beranduago"
 #: [field]type_here
 msgid "Type here"
 msgstr "Idatzi hemen"
+
+#~ msgid "%s subscribers"
+#~ msgstr "%s harpidedun"
+
+#~ msgid "Use an invitation key"
+#~ msgstr "Erabili gonbidapen-gako bat"

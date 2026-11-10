@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-23 11:02+0100\n"
+"POT-Creation-Date: 2026-11-10 09:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgid "Subscribed to the space"
 msgstr ""
 
 #: [spacesmenu]invitation_key
-msgid "Use an invitation key"
+msgid "Use an invitation key or a URL"
 msgstr ""
 
 #: [spacesmenu]key_required
@@ -99,4 +99,8 @@ msgstr ""
 
 #: [spacesmenu]contact_denied
 msgid "Contact denied in the space"
+msgstr ""
+
+#: [spacesmenu]disco_error
+msgid "Movim was not able to find a valid Space."
 msgstr ""

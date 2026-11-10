@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-23 11:02+0100\n"
+"POT-Creation-Date: 2026-11-10 09:14+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Urdu (Pakistan) (http://app.transifex.com/movim/movim/language/ur_PK/)\n"
@@ -857,7 +857,7 @@ msgstr ""
 msgid "Chat with a contact"
 msgstr ""
 
-#: [chats]me
+#: [chats]me [visio]me
 msgid "Me"
 msgstr ""
 
@@ -1062,8 +1062,8 @@ msgstr ""
 msgid "Publish and browse pictures"
 msgstr ""
 
-#: [communitydata]sub
-msgid "%s subscribers"
+#: [communitydata]members
+msgid "%s members"
 msgstr ""
 
 #: [communitydata]num
@@ -2715,6 +2715,14 @@ msgstr ""
 msgid "Send an invitation key to your contacts"
 msgstr ""
 
+#: [spaceinfo]invite_key
+msgid "Invitation key"
+msgstr ""
+
+#: [spaceinfo]join_text
+msgid "Once logged in, copy the invitation key in the Add Space dialog."
+msgstr ""
+
 #: [spaceinfo]leave_title [spacesmenu]leave_title
 msgid "Leave the space"
 msgstr ""
@@ -2775,6 +2783,10 @@ msgstr ""
 msgid "Remove from the space"
 msgstr ""
 
+#: [spaceinfo]login_join
+msgid "Login and Join"
+msgstr ""
+
 #: [spacesmenu]create_space_title
 msgid "Create a space"
 msgstr ""
@@ -2812,7 +2824,7 @@ msgid "Subscribed to the space"
 msgstr ""
 
 #: [spacesmenu]invitation_key
-msgid "Use an invitation key"
+msgid "Use an invitation key or a URL"
 msgstr ""
 
 #: [spacesmenu]key_required
@@ -2857,6 +2869,10 @@ msgstr ""
 
 #: [spacesmenu]contact_denied
 msgid "Contact denied in the space"
+msgstr ""
+
+#: [spacesmenu]disco_error
+msgid "Movim was not able to find a valid Space."
 msgstr ""
 
 #: [sticker]title
