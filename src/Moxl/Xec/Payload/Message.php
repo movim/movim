@@ -85,7 +85,7 @@ class Message extends Payload
                 $node = $stanza->event->configuration->attributes()->node;
                 $info = Info::where('server', $from)->where('node', $node)->first();
 
-                if ($info) {
+                if ($info && $stanza->configuration->x) {
                     $info->setXForm($stanza->configuration->x);
                     $info->save();
 
