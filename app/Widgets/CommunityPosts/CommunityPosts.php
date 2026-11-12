@@ -75,13 +75,15 @@ class CommunityPosts extends Base
             ->where('node', $post->node)
             ->first();
 
-        $this->rpc(
-            'MovimTpl.replace',
-            '#' . cleanupId($post->nodeid),
-            $info->isGallery()
-                ? $this->prepareTicket($post)
-                : $this->preparePost($post)
-        );
+        if ($post && $info) {
+            $this->rpc(
+                'MovimTpl.replace',
+                '#' . cleanupId($post->nodeid),
+                $info->isGallery()
+                    ? $this->prepareTicket($post)
+                    : $this->preparePost($post)
+            );
+        }
     }
 
     public function onConfigSaved(Packet $packet)
