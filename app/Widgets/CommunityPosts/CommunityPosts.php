@@ -71,18 +71,20 @@ class CommunityPosts extends Base
     {
         $post = AppPost::find($packet->content);
 
-        $info = Info::where('server', $post->server)
-            ->where('node', $post->node)
-            ->first();
+        if ($post) {
+            $info = Info::where('server', $post->server)
+                ->where('node', $post->node)
+                ->first();
 
-        if ($post && $info) {
-            $this->rpc(
-                'MovimTpl.replace',
-                '#' . cleanupId($post->nodeid),
-                $info->isGallery()
-                    ? $this->prepareTicket($post)
-                    : $this->preparePost($post)
-            );
+            if ($info) {
+                $this->rpc(
+                    'MovimTpl.replace',
+                    '#' . cleanupId($post->nodeid),
+                    $info->isGallery()
+                        ? $this->prepareTicket($post)
+                        : $this->preparePost($post)
+                );
+            }
         }
     }
 
@@ -260,12 +262,12 @@ class CommunityPosts extends Base
 
         $view->assign('publicposts', ($ids == false)
             ? AppPost::where('server', $origin)
-                ->where('node', $node)
-                ->where('open', true)
-                ->orderBy('published', 'desc')
-                ->skip($page * $this->_paging)
-                ->take($this->_paging)
-                ->get()
+            ->where('node', $node)
+            ->where('open', true)
+            ->orderBy('published', 'desc')
+            ->skip($page * $this->_paging)
+            ->take($this->_paging)
+            ->get()
             : false);
 
         $view->assign('first', $first);
