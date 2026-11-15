@@ -1,0 +1,31 @@
+name: Build Container
+
+on:
+  push:
+    branches:
+    - master
+  release:
+    types: [published]
+
+jobs:
+  master:
+    name: Build master container tag
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Dispatch workflow in container repo
+      env:
+        GH_TOKEN: ${{ secrets.CONTAINER_REPO_TOKEN }}
+      run: |
+        gh workflow run master.yml --repo delonium/movim-container --ref main
+
+  release:
+    name: Build stable container tag
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Dispatch workflow in container repo
+      env:
+        GH_TOKEN: ${{ secrets.CONTAINER_REPO_TOKEN }}
+      run: |
+        gh workflow run stable.yml --repo delonium/movim-container --ref main
