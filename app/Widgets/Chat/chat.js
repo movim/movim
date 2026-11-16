@@ -541,71 +541,60 @@ var Chat = {
         }
     },
     checkEmojis: function (value, reaction, noColon) {
+        const emojisList = document.querySelector(
+            reaction ? '.emojis_grid.results' : '.chat_box .emojis'
+        );
+        if (!emojisList) return;
+
+        emojisList.replaceChildren();
+
         value = value.toLowerCase();
-
-        const listSelector = reaction
-            ? '.emojis_grid.results'
-            : '.chat_box .emojis';
-
-        var emojisList = document.querySelector(listSelector);
-        emojisList.innerHTML = '';
-
         if (!value) return;
 
-        if (noColon || value.lastIndexOf(':') > -1 && value.length > value.lastIndexOf(':') + 2) {
-            var first = true;
+        const colon = value.lastIndexOf(':');
+        if (!noColon && !(colon > -1 && value.length > colon + 2)) return;
 
-            Object.keys(window.favoriteEmojis)
-                .filter(key => key.includes(value.substring(value.lastIndexOf(':') + 1)) && !key.includes('type'))
-                .slice(0, 20)
-                .forEach(found => {
-                    var img = document.createElement('img');
-                    img.setAttribute('src', favoriteEmojis[found]);
-                    img.classList.add('emoji');
-                    if (reaction) img.classList.add('large');
+        const term = value.substring(colon + 1);
 
-                    if (first) {
-                        img.classList.add('selected');
-                        first = false;
-                    }
+        const search = (source, limit) => Object.keys(source ?? {})
+            .filter(key => key.includes(term) && !key.includes('type'))
+            .slice(0, limit);
 
-                    img.title = ':' + found + ':';
-                    img.dataset.emoji = ':' + found + ':';
+        const results = [
+            ...search(window.favoriteEmojis, 20).map(name => ({
+                name,
+                src: favoriteEmojis[name],
+                emoji: ':' + name + ':'
+            })),
+            ...search(window.emojis, 30).map(name => ({
+                name,
+                src: BASE_URI + 'theme/img/emojis/svg/' + emojis[name].c + '.svg',
+                emoji: emojis[name].e
+            }))
+        ];
 
-                    if (!reaction) {
-                        img.addEventListener('click', e => {
-                            Chat.selectEmoji(e.target);
-                        });
-                    }
+        const fragment = document.createDocumentFragment();
 
-                    emojisList.appendChild(img);
-                });
+        results.forEach(({ name, src, emoji }, index) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.title = ':' + name + ':';
+            img.dataset.emoji = emoji;
+            img.classList.add('emoji');
 
-            Object.keys(window.emojis)
-                .filter(key => key.includes(value.substring(value.lastIndexOf(':') + 1)) && !key.includes('type'))
-                .slice(0, 30)
-                .forEach(found => {
-                    var img = document.createElement('img');
-                    img.setAttribute('src', BASE_URI + 'theme/img/emojis/svg/' + emojis[found].c + '.svg');
-                    img.classList.add('emoji');
-                    if (reaction) img.classList.add('large');
+            if (reaction) img.classList.add('large');
+            if (index === 0) img.classList.add('selected');
 
-                    if (first) {
-                        img.classList.add('selected');
-                        first = false;
-                    }
+            fragment.appendChild(img);
+        });
 
-                    img.title = ':' + found + ':';
-                    img.dataset.emoji = emojis[found].e;
+        emojisList.appendChild(fragment);
 
-                    if (!reaction) {
-                        img.addEventListener('click', e => {
-                            Chat.selectEmoji(e.target);
-                        });
-                    }
-
-                    emojisList.appendChild(img);
-                });
+        if (!reaction) {
+            emojisList.onclick = e => {
+                const img = e.target.closest('img.emoji');
+                if (img) Chat.selectEmoji(img);
+            };
         }
     },
     selectEmoji: function (emoji) {
@@ -881,8 +870,7 @@ var Chat = {
                 setTimeout(() => {
                     if (e.button == 0
                         && (e.target.classList.contains('message')
-                            || e.target.parentElement.classList.contains('message')) && !(window.getSelection().toString() != ''
-                            )
+                            || e.target.parentElement.classList.contains('message')) && window.getSelection().toString() === ''
                         && this.dataset.mid
                         && e.target.tagName.toLowerCase() != 'span') {
                         ChatActions_ajaxShowMessageDialog(this.dataset.mid);
@@ -1059,7 +1047,7 @@ var Chat = {
     appendMessage: function (idjidtime, data, prepend) {
         if (data.body === null) return;
 
-        // Sent message where the Ajax request somehow but the message was still handled by the server
+        // Sent message where the Ajax request somehow failed but the message was still handled by the server
         if (Chat.lastSentUUID !== null && data.id === Chat.lastSentUUID) {
             Chat.sentMessage();
         }
@@ -1458,7 +1446,7 @@ var Chat = {
 
                 if (file.preview.picture) {
                     img.classList.add('active');
-                    img.setAttribute('onclick', 'Preview_ajaxHttpShow("' + file.preview.url + '", ' + data.mid + ')');
+                    img.addEventListener('click', () => Preview_ajaxHttpShow(file.preview.url, data.mid));
                 }
 
                 if (file.preview.thumbnail_type == 'image/thumbhash' && file.preview.thumbnail_url) {
@@ -1524,7 +1512,6 @@ var Chat = {
 
         var audio = document.createElement('audio');
         audio.setAttribute('src', file.url + '#t=0.01');
-        //audio.setAttribute('controls', '');
         div.appendChild(audio);
 
 
@@ -1556,10 +1543,10 @@ var Chat = {
         downloadButton.classList.add('button', 'flat', 'gray');
         downloadButton.href = file.url;
         downloadButton.target = '_blank';
-        var i = document.createElement('i');
-        i.className = 'material-symbols';
-        i.innerText = 'file_download';
-        downloadButton.appendChild(i);
+        var fileDownload = document.createElement('i');
+        fileDownload.className = 'material-symbols';
+        fileDownload.innerText = 'file_download';
+        downloadButton.appendChild(fileDownload);
 
         div.appendChild(downloadButton);
 
@@ -1695,11 +1682,10 @@ var Chat = {
         }
     },
     getTextarea: function () {
-        var textarea = document.querySelector('#chat_textarea');
-        if (textarea) return textarea;
+        return document.querySelector('#chat_textarea');
     },
     isEncrypted: function () {
-        return (Chat.getTextarea() && Chat.getTextarea().dataset.encryptedstate == 'yes');
+        return Chat.getTextarea()?.dataset.encryptedstate === 'yes';
     },
     getDiscussion: function () {
         return document.querySelector('#chat_widget div.contained');
