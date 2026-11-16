@@ -1446,7 +1446,7 @@ var Chat = {
 
                 if (file.preview.picture) {
                     img.classList.add('active');
-                    img.addEventListener('click', () => Preview_ajaxHttpShow(file.preview.url, data.mid));
+                    img.setAttribute('onclick', 'Preview_ajaxHttpShow("' + file.preview.url + '", ' + data.mid + ')');
                 }
 
                 if (file.preview.thumbnail_type == 'image/thumbhash' && file.preview.thumbnail_url) {
