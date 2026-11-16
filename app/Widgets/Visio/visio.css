@@ -89,6 +89,7 @@ body>#visio:not(:fullscreen) #toggle_mode,
 
 #visio[data-muji='false'] #participants:has(.participant:not(.video_off))~.infos,
 #visio[data-muji='true'] #participants:not(:empty)~.infos,
+#visio #participants:not(:empty)~.infos,
 #visio #dtmf:not(.hide)~.infos {
     opacity: 0;
 }
@@ -123,13 +124,6 @@ body>#visio:not(:fullscreen) {
     height: 25rem;
     border-radius: 1rem;
     z-index: 3;
-}
-
-body>#visio:not(:fullscreen) #participants:has(.participant:nth-child(2)) .participant,
-body>#visio:not(:fullscreen) #participants:has(.participant:nth-child(5)) .participant,
-body>#visio:not(:fullscreen) #participants .participant.active {
-    height: 92%;
-    flex-basis: 100%;
 }
 
 body>#visio:not(:fullscreen) .participant span.pin,
@@ -242,13 +236,19 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 }
 
 #visio #participants {
+    --gap: 1.5rem;
+    --cols: 1;
+    --rows: 1;
+
+    container-type: size;
     display: flex;
-    height: 100%;
+    flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    padding: 0 1rem;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    gap: var(--gap);
+    padding: 1rem;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 #visio .participant {
@@ -257,44 +257,84 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     background-color: #222;
     border-radius: 1rem;
     overflow: hidden;
-    flex: 1;
     display: flex;
     align-items: center;
-    max-height: calc(100% - 2rem);
     transition: outline 0.3s;
     outline: 0.25rem solid rgb(255, 255, 255, calc(var(--level) * 0.75));
     justify-content: center;
     order: 2;
+
+    aspect-ratio: 4 / 3;
+    flex: 0 0 auto;
+    --w: min(calc((100cqw - (var(--cols) - 1) * var(--gap)) / var(--cols)),
+            calc((100cqh - (var(--rows) - 1) * var(--gap)) / var(--rows) * 4 / 3));
+    width: round(down, var(--w), 1px);
 }
 
-#visio #participants .participant:only-child {
-    max-height: 96%;
-}
 
-#visio #participants:has(.participant:nth-child(2)) .participant {
-    flex-basis: 48%;
-    flex-grow: 0;
-}
-
-#visio #participants:has(.participant:nth-child(3)):not(.active) .participant {
-    max-height: calc(50% - 2rem);
-}
-
-#visio #participants:has(.participant:nth-child(5)) .participant {
-    flex-basis: 32%;
-}
-
-#visio #participants:has(.participant:nth-child(7)):not(.active) .participant {
-    max-height: calc(33% - 2rem);
-}
-
-@media screen and (max-width: 800px) {
-    #visio #participants:has(.participant:nth-child(5)) .participant {
-        flex-basis: 48%;
+/* Landscape */
+@container (min-aspect-ratio: 1/1) {
+    #participants:has(.participant:nth-child(2)) .participant {
+        --cols: 2;
+        --rows: 1;
     }
 
-    #visio #participants:has(.participant:nth-child(5)):not(.active) .participant {
-        max-height: calc(25% - 2rem);
+    #participants:has(.participant:nth-child(3)) .participant {
+        --cols: 2;
+        --rows: 2;
+    }
+
+    #participants:has(.participant:nth-child(5)) .participant {
+        --cols: 3;
+        --rows: 2;
+    }
+
+    #participants:has(.participant:nth-child(7)) .participant {
+        --cols: 3;
+        --rows: 3;
+    }
+
+    #participants:has(.participant:nth-child(10)) .participant {
+        --cols: 4;
+        --rows: 3;
+    }
+}
+
+/* Portrait (phones) */
+@container (max-aspect-ratio: 1/1) {
+    #participants:has(.participant:nth-child(2)) .participant {
+        --cols: 1;
+        --rows: 2;
+    }
+
+    #participants:has(.participant:nth-child(3)) .participant {
+        --cols: 1;
+        --rows: 3;
+    }
+
+    #participants:has(.participant:nth-child(4)) .participant {
+        --cols: 1;
+        --rows: 4;
+    }
+
+    #participants:has(.participant:nth-child(5)) .participant {
+        --cols: 1;
+        --rows: 5;
+    }
+
+    #participants:has(.participant:nth-child(6)) .participant {
+        --cols: 2;
+        --rows: 3;
+    }
+
+    #participants:has(.participant:nth-child(7)) .participant {
+        --cols: 2;
+        --rows: 4;
+    }
+
+    #participants:has(.participant:nth-child(9)) .participant {
+        --cols: 2;
+        --rows: 5;
     }
 }
 
@@ -517,14 +557,15 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 /* Active speaker */
 
 #visio #participants.active:has(.participant:nth-child(2)) .participant.active {
-    height: 80%;
+    aspect-ratio: auto;
     width: 100%;
+    height: 75cqh;
+    flex: 0 0 100%;
     order: 1;
-    flex: 1 0 auto;
 }
 
 #visio #participants.active:has(.participant:nth-child(2)) .participant:not(.active) {
-    height: 15%;
+    height: calc(22cqh - var(--gap));
+    width: auto;
     max-width: 25rem;
-    flex: 1;
 }

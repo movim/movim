@@ -35,61 +35,63 @@ var MovimVisio = {
     sfu: null,
 
     load: function () {
-        MovimVisio.participant = document.createElement('div');
-        MovimVisio.participant.classList.add('participant', 'me');
-        MovimVisio.participant.classList.add('screen_off');
-        MovimVisio.participant.classList.add('video_off');
+        if (!document.querySelector('.participant.me')) {
+            MovimVisio.participant = document.createElement('div');
+            MovimVisio.participant.classList.add('participant', 'me');
+            MovimVisio.participant.classList.add('screen_off');
+            MovimVisio.participant.classList.add('video_off');
 
-        MovimVisio.screenSharing = document.createElement('video');
-        MovimVisio.screenSharing.classList.add('screen');
-        MovimVisio.screenSharing.autoplay = true;
-        MovimVisio.screenSharing.disablePictureInPicture = true;
-        MovimVisio.screenSharing.poster = BASE_URI + 'theme/img/empty.png';
-        MovimVisio.participant.appendChild(MovimVisio.screenSharing);
+            MovimVisio.screenSharing = document.createElement('video');
+            MovimVisio.screenSharing.classList.add('screen');
+            MovimVisio.screenSharing.autoplay = true;
+            MovimVisio.screenSharing.disablePictureInPicture = true;
+            MovimVisio.screenSharing.poster = BASE_URI + 'theme/img/empty.png';
+            MovimVisio.participant.appendChild(MovimVisio.screenSharing);
 
-        MovimVisio.localVideo = document.createElement('video');
-        MovimVisio.localVideo.autoplay = true;
-        MovimVisio.localVideo.disablePictureInPicture = true;
-        MovimVisio.localVideo.poster = BASE_URI + 'theme/img/empty.png';
-        MovimVisio.localVideo.muted = true;
-        MovimVisio.participant.appendChild(MovimVisio.localVideo);
+            MovimVisio.localVideo = document.createElement('video');
+            MovimVisio.localVideo.autoplay = true;
+            MovimVisio.localVideo.disablePictureInPicture = true;
+            MovimVisio.localVideo.poster = BASE_URI + 'theme/img/empty.png';
+            MovimVisio.localVideo.muted = true;
+            MovimVisio.participant.appendChild(MovimVisio.localVideo);
 
-        MovimVisio.callStatus = document.createElement('div')
-        MovimVisio.callStatus.classList.add('status');
-        MovimVisio.callStatus.dataset.name = MovimVisio.variables.me;
-        MovimVisio.participant.appendChild(this.callStatus);
+            MovimVisio.callStatus = document.createElement('div')
+            MovimVisio.callStatus.classList.add('status');
+            MovimVisio.callStatus.dataset.name = MovimVisio.variables.me;
+            MovimVisio.participant.appendChild(this.callStatus);
 
-        var audioOffStatus = document.createElement('span');
-        audioOffStatus.classList.add('audio_off');
-        MovimVisio.callStatus.appendChild(audioOffStatus);
+            var audioOffStatus = document.createElement('span');
+            audioOffStatus.classList.add('audio_off');
+            MovimVisio.callStatus.appendChild(audioOffStatus);
 
-        var videoOffStatus = document.createElement('span');
-        videoOffStatus.classList.add('video_off');
-        MovimVisio.callStatus.appendChild(videoOffStatus);
+            var videoOffStatus = document.createElement('span');
+            videoOffStatus.classList.add('video_off');
+            MovimVisio.callStatus.appendChild(videoOffStatus);
 
-        var screenStatus = document.createElement('span');
-        screenStatus.classList.add('screen');
-        MovimVisio.callStatus.appendChild(screenStatus);
+            var screenStatus = document.createElement('span');
+            screenStatus.classList.add('screen');
+            MovimVisio.callStatus.appendChild(screenStatus);
 
-        MovimVisio.screenQualityInterval = setInterval(() => {
-            MovimVisio.callStatus.classList.remove('screen_hd', 'screen_fhd');
-            if (!MovimVisio.participant.classList.contains('screen_off')) {
-                if (MovimVisio.screenSharing.videoWidth >= 1920) {
-                    MovimVisio.callStatus.classList.add('screen_fhd');
-                } else if (MovimVisio.screenSharing.videoWidth >= 1280) {
-                    MovimVisio.callStatus.classList.add('screen_hd');
+            MovimVisio.screenQualityInterval = setInterval(() => {
+                MovimVisio.callStatus.classList.remove('screen_hd', 'screen_fhd');
+                if (!MovimVisio.participant.classList.contains('screen_off')) {
+                    if (MovimVisio.screenSharing.videoWidth >= 1920) {
+                        MovimVisio.callStatus.classList.add('screen_fhd');
+                    } else if (MovimVisio.screenSharing.videoWidth >= 1280) {
+                        MovimVisio.callStatus.classList.add('screen_hd');
+                    }
                 }
+            }, 3000);
+
+            if (MovimVisio.variables.avatar_url) {
+                let background = document.createElement('img');
+                background.classList.add('avatar');
+                background.src = MovimVisio.variables.avatar_url;
+                MovimVisio.participant.prepend(background);
             }
-        }, 3000);
 
-        if (MovimVisio.variables.avatar_url) {
-            let background = document.createElement('img');
-            background.classList.add('avatar');
-            background.src = MovimVisio.variables.avatar_url;
-            MovimVisio.participant.prepend(background);
+            document.querySelector('#participants').appendChild(MovimVisio.participant);
         }
-
-        document.querySelector('#participants').appendChild(MovimVisio.participant);
 
         MovimVisio.localVideo.addEventListener('loadeddata', () => {
             MovimVisio.localVideo.play()
