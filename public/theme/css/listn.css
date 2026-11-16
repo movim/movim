@@ -654,19 +654,24 @@ ul li.oppose div.bubble:not(.file):before {
 ul>li.date {
     min-height: 0;
     text-align: center;
+    position: sticky;
+    top: 1rem;
+    z-index: 1;
 }
 
 ul>li.date>div>p:only-child {
-    line-height: 2.5rem;
+    line-height: 3rem;
     font-size: 1.5rem;
     display: inline-block;
     border-radius: 2rem;
     margin-bottom: 1.5rem;
     padding: 0 2rem;
-}
-
-ul>li.date:first-of-type>div>p:only-child {
-    margin-top: 1rem;
+    width: 18rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+    background-color: rgb(var(--movim-background-main));
 }
 
 ul.list li.separator:not(.subheader):not(.date) {

@@ -405,10 +405,6 @@ main:not(.enabled) #chat_widget {
     }
 }
 
-#chat_widget .contained ul {
-    overflow-x: hidden;
-}
-
 /* Emojis */
 
 #chat_widget .chat_box li.emojis:not(:empty) {

@@ -196,7 +196,7 @@ class Base
                 return $carbon->isoFormat('H:mm');
             }
 
-            return $this->__('date.yesterday');
+            return $this->__('date.today');
         }
 
         if ($carbon->diffInSeconds() > 3600 * 24 * 7) {
