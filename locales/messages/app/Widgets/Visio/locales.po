@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-10 09:14+0200\n"
+"POT-Creation-Date: 2026-11-16 22:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,6 +79,14 @@ msgstr ""
 
 #: [visio]me
 msgid "Me"
+msgstr ""
+
+#: [visio]grid_view
+msgid "Switching to Grid View"
+msgstr ""
+
+#: [visio]speaker_view
+msgid "Switching to Speaker View"
 msgstr ""
 
 #: [visiolobby]called

@@ -86,9 +86,11 @@ var VisioUtils = {
         let participants = document.querySelector('#participants');
 
         if (button.innerText == 'tile_small' || active) {
+            Visio_ajaxSpeakerView();
             participants.classList.add('active');
             button.innerHTML = 'tile_large';
         } else {
+            Visio_ajaxGridView();
             participants.classList.remove('active');
             button.innerHTML = 'tile_small';
         }

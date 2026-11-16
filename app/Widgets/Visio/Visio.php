@@ -454,6 +454,16 @@ class Visio extends Base
         $this->toast($this->__('visio.unpinned'));
     }
 
+    public function ajaxGridView()
+    {
+        $this->toast($this->__('visio.grid_view'));
+    }
+
+    public function ajaxSpeakerView()
+    {
+        $this->toast($this->__('visio.speaker_view'));
+    }
+
     public function ajaxProceed(string $to, string $id)
     {
         $this->currentCall()->start($to, $id);

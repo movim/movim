@@ -132,7 +132,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-10 09:14+0200\n"
+"POT-Creation-Date: 2026-11-16 22:14+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2026\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -3148,6 +3148,14 @@ msgstr "%s épinglé"
 #: [visio]unpinned
 msgid "Unpinned"
 msgstr "Dé-épinglé"
+
+#: [visio]grid_view
+msgid "Switching to Grid View"
+msgstr ""
+
+#: [visio]speaker_view
+msgid "Switching to Speaker View"
+msgstr ""
 
 #: [visiolobby]called
 msgid "%s is calling you"
