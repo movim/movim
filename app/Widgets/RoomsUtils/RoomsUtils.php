@@ -516,12 +516,9 @@ class RoomsUtils extends Base
     /**
      * @brief Change the subject of a chatroom
      */
-    public function ajaxSetSubject($room, $form)
+    public function ajaxSetSubject(string $room, \stdClass $form)
     {
-        if (
-            ! validateJid($room)
-            || ! Validator::stringType()->length(0, 200)->isValid($form->subject->value)
-        ) {
+        if (! validateJid($room)) {
             return;
         }
 
