@@ -255,7 +255,7 @@ class SDPtoJingle
 
                             break;
 
-                            // http://xmpp.org/extensions/xep-0167.html#format
+                        // http://xmpp.org/extensions/xep-0167.html#format
                         case 'fmtp':
                             $params = explode(';', trim($matches[2]));
                             if (
@@ -268,7 +268,7 @@ class SDPtoJingle
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0293.html
+                        // http://xmpp.org/extensions/xep-0293.html
                         case 'rtcp_fb':
                             if ($matches[1] == '*') {
                                 $this->addRtcpFbParameters($description, [$matches]);
@@ -296,7 +296,7 @@ class SDPtoJingle
                             $rtcpfp->addAttribute('value', $matches[2]);
                             break;
 
-                            // http://xmpp.org/extensions/xep-0167.html#srtp
+                        // http://xmpp.org/extensions/xep-0167.html#srtp
                         case 'crypto':
                             $encryption = $description->addChild('encryption');
                             $crypto = $encryption->addChild('crypto');
@@ -308,19 +308,19 @@ class SDPtoJingle
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0262.html
+                        // http://xmpp.org/extensions/xep-0262.html
                         case 'zrtp_hash':
                             $zrtphash = $encryption->addChild('zrtp-hash', $matches[2]);
                             $zrtphash->addAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:zrtp:1');
                             $zrtphash->addAttribute('version', $matches[1]);
                             break;
 
-                            // Non standard
+                        // Non standard
                         case 'rtcp_mux':
                             $description->addChild('rtcp-mux');
                             break;
 
-                            // http://xmpp.org/extensions/xep-0294.html
+                        // http://xmpp.org/extensions/xep-0294.html
                         case 'extmap':
                             $rtphdrext = $description->addChild('rtp-hdrext');
                             $rtphdrext->addAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:rtp-hdrext:0');
@@ -331,14 +331,14 @@ class SDPtoJingle
                             }
                             break;
 
-                            // https://xmpp.org/extensions/xep-0166.html#def-content
+                        // https://xmpp.org/extensions/xep-0166.html#def-content
                         case 'senders':
                             if ($this->content != null) {
                                 $this->content->addAttribute('senders', $this->directionToSenders[$matches[1]]);
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0339.html
+                        // http://xmpp.org/extensions/xep-0339.html
                         case 'ssrc':
                             $sources = $description->xpath('source[@ssrc="' . $matches[1] . '"]');
                             $ssrc = is_array($sources) && count($sources) > 0 ? $sources[0] : null;
@@ -379,7 +379,7 @@ class SDPtoJingle
                             $description->addAttribute('maxptime', $matches[1]);
                             break;
 
-                            // https://xmpp.org/extensions/xep-0507.html
+                        // https://xmpp.org/extensions/xep-0507.html
                         case 'content':
                             foreach (explode(',', $matches[1]) as $contentCategory) {
                                 $category = $description->addChild('category');
@@ -388,7 +388,7 @@ class SDPtoJingle
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0338.html
+                        // http://xmpp.org/extensions/xep-0338.html
                         case 'group':
                             $group = $this->jingle->addChild('group');
                             $group->addAttribute('xmlns', 'urn:xmpp:jingle:apps:grouping:0');
@@ -402,7 +402,7 @@ class SDPtoJingle
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0320.html
+                        // http://xmpp.org/extensions/xep-0320.html
                         case 'fingerprint':
                             if ($this->content == null) {
                                 $this->globalFingerprint['fingerprint'] = $matches[2];
@@ -415,7 +415,7 @@ class SDPtoJingle
 
                             break;
 
-                            // https://xmpp.org/extensions/xep-0343.html
+                        // https://xmpp.org/extensions/xep-0343.html
                         case 'sctpmap':
                             $sctpmap = $this->transport->addChild('sctpmap');
                             $sctpmap->addAttribute('xmlns', 'urn:xmpp:jingle:transports:dtls-sctp:1');
@@ -424,7 +424,7 @@ class SDPtoJingle
                             $sctpmap->addAttribute('streams', $matches[3]);
                             break;
 
-                            // http://xmpp.org/extensions/xep-0320.html
+                        // http://xmpp.org/extensions/xep-0320.html
                         case 'setup':
                             if ($this->content != null) {
                                 $fingerprint->addAttribute('setup', $matches[1]);
@@ -480,9 +480,10 @@ class SDPtoJingle
 
                             if (isset($args['ufrag'])) {
                                 $this->ufrag = $args['ufrag'];
-                                if (!isset($this->transport['ufrag'])) {
-                                    $this->transport->addAttribute('ufrag', $this->ufrag);
-                                }
+                            }
+
+                            if (!isset($this->transport['ufrag'])) {
+                                $this->transport->addAttribute('ufrag', $this->ufrag);
                             }
 
                             if (isset($args['id'])) {

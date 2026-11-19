@@ -353,7 +353,7 @@ MovimJingleSession.prototype.onCandidate = function (candidate, mid, mlineindex)
     if (this.screenSharingPc) {
         // In this case we send the candidate to both pcs, and let it sort it out ¯\_(ツ)_/¯
         this.screenSharingPc.addIceCandidate(iceCandidate).catch(error => MovimUtils.logError(error));
-    } else if (this.pc && this.pc.remoteDescription) {
+    } else if (this.pc) {
         this.pc.addIceCandidate(iceCandidate).catch(error => MovimUtils.logError(error));
     }
 }
@@ -732,9 +732,11 @@ var MovimJingles = {
                 maxLevel = MovimJingles.sessions[jid].audioLevel;
                 maxJid = jid;
             }
-
-            MovimJingles.sessions[jid].participant.classList.remove('active', 'pinned');
         }
+
+        document.querySelectorAll('#participants .participant').forEach((participant) => {
+            participant.classList.remove('active', 'pinned');
+        });
 
         // Pinned has priority
         if (MovimJingles.pinned && MovimJingles.sessions[MovimJingles.pinned]) {
@@ -744,9 +746,18 @@ var MovimJingles = {
 
         if (maxJid != null) {
             MovimJingles.sessions[maxJid].participant.classList.add('active');
-        } else if (Object.values(MovimJingles.sessions).length > 0) {
-            Object.values(MovimJingles.sessions)[MovimVisio.sfu != null ? 1 : 0]?.participant.classList.add('active');
+            return;
         }
+
+        const fallback = Object.values(MovimJingles.sessions)[MovimVisio.sfu != null ? 1 : 0];
+
+        if (fallback) {
+            fallback.participant.classList.add('active');
+            return;
+        }
+
+        // If we found nothing we just pick the first one
+        document.querySelector('#participants .participant').classList.add('active');
     },
 
     onManageTrack: function (stream, enable) {
