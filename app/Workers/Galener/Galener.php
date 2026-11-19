@@ -71,6 +71,12 @@ class Galener
                 ' -static ' . substr(config('galener.galene_path'), 0, -6) . 'static/'
         );
 
+        $this->process->on('exit', function ($exitCode, $termSignal) {
+            echo 'Process exited with code ' . $exitCode . PHP_EOL;
+        });
+
+        $this->process->start();
+
         $this->process->stdout?->on('data', function ($chunk) {
             \logError('galener' . $chunk);
         });
@@ -82,12 +88,6 @@ class Galener
         $this->process->stdout?->on('error', function (\Exception $e) {
             \logError('galener' . $e->getMessage());
         });
-
-        $this->process->on('exit', function ($exitCode, $termSignal) {
-            echo 'Process exited with code ' . $exitCode . PHP_EOL;
-        });
-
-        $this->process->start();
 
         $this->xmppHost = config('galener.xmpp_host');
         $this->xmppPassword = config('galener.xmpp_password');
