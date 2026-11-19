@@ -262,7 +262,6 @@ class SpaceRooms extends Base
         $cgc = $this->xmpp(new CreateGroupChat);
         $cgc->setTo($id)
             ->setName($form->name->value)
-            ->setPinned($form->pinned->value)
             ->setNick($this->me->username)
             ->setNotify(false)
             ->setExtraConfig($config)
@@ -274,12 +273,11 @@ class SpaceRooms extends Base
         $conference->space_node = $form->node->value;
         $conference->conference = $id;
         $conference->name = $form->name->value;
-        $conference->pinned = (bool) $form->pinned->value;
         $conference->autojoin = true;
         $conference->call = (bool) $form->call->value;
 
         if (
-            $form->directory_id
+            isset($form->directory_id)
             && $directory = $this->me->session->bookmarksDirectories()
             ->where('server', $form->server->value)
             ->where('node', $form->node->value)
