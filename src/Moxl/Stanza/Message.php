@@ -227,7 +227,12 @@ class Message
             // OOB
             $x = $dom->createElement('x');
             $x->setAttribute('xmlns', 'jabber:x:oob');
-            $x->appendChild($dom->createElement('url', $file->url));
+
+            $url = $dom->createElement('url');
+            $urlContent = $dom->createTextNode($file->url);
+            $url->appendChild($urlContent);
+
+            $x->appendChild($url);
 
             $dom->documentElement->appendChild($x);
         }
