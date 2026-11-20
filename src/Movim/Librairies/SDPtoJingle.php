@@ -9,29 +9,31 @@ class SDPtoJingle
 {
     public const JINGLE_PARTICIPANT_XMLNS = '{https://movim.eu}jingle_participant';
 
-    private $sdp;
-    private $arr;
-    private $jingle;
-    private $content = null;
-    private $transport = null;
+    private string $sdp;
+    private array $arr;
+    private \SimpleXMLElement $jingle;
+    private ?\SimpleXMLElement $content = null;
+    private ?\SimpleXMLElement $transport = null;
     private ?string $action = null;
-    private $ufrag = null;
-    private $mid = null;
-    private $msid = null;
-    private $sid = null;
-    private $mujiRoom = null;
+    private ?string $ufrag = null;
+    private ?string $mid = null;
+    private ?string $msid = null;
+    private ?string $sid = null;
+    private ?string $mujiRoom = null;
 
     // Move the global fingerprint into each medias
-    private $globalFingerprint = [];
-    private $fmtpCache = [];
-    private $rtcpFbCache = [];
-    private $directionToSenders = [
+    private array $globalFingerprint = [];
+    private ?string $globalUfrag = null;
+    private ?string $globalPwd = null;
+    private array $fmtpCache = [];
+    private array $rtcpFbCache = [];
+    private array $directionToSenders = [
         'inactive' => 'none',
         'sendonly' => 'initiator',
         'recvonly' => 'responder',
         'sendrecv' => 'both',
     ];
-    private $regex = [
+    private array $regex = [
         'bandwidth' => "/^b=(\w+):(\d+)/i",
         'candidate' => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay|ufrag)\s?(.+)?/i",
         'content' => "/^a=content:(\S+)/i",
@@ -128,6 +130,15 @@ class SDPtoJingle
             $this->transport->addAttribute('xmlns', 'urn:xmpp:jingle:transports:ice-udp:1');
             $this->msid = null;
 
+            // Session-level a=ice-ufrag/a=ice-pwd (RFC 8839) apply to every media
+            if ($this->globalUfrag !== null) {
+                $this->transport['ufrag'] = $this->globalUfrag;
+            }
+
+            if ($this->globalPwd !== null) {
+                $this->transport['pwd'] = $this->globalPwd;
+            }
+
             // A hack to ensure that Dino is returning complete Muji content proposal
             if ($this->jingle->getName() == 'muji') {
                 $this->content->addAttribute('xmlns', 'urn:xmpp:jingle:1');
@@ -167,7 +178,7 @@ class SDPtoJingle
         }
     }
 
-    public function addName($name = null)
+    private function addName($name = null)
     {
         if ($name !== null) {
             $this->content->addAttribute('name', $name);
@@ -433,14 +444,28 @@ class SDPtoJingle
                             break;
 
                         case 'pwd':
+                            // The ICE pwd is per PeerConnection, so we store it per Jingle session
                             if ($this->user->session?->id) {
-                                linker($this->user->session->id)?->session->set('icePwd', $matches[1]);
+                                linker($this->user->session->id)?->session->set('icePwd_' . $this->sid, $matches[1]);
                             }
-                            $this->transport->addAttribute('pwd', $matches[1]);
+
+                            // a=ice-pwd is authoritative, override anything a=candidate may have set before
+                            if ($this->transport == null) {
+                                $this->globalPwd = $matches[1];
+                            } else {
+                                $this->transport['pwd'] = $matches[1];
+                            }
                             break;
 
                         case 'ufrag':
-                            $this->transport->addAttribute('ufrag', $matches[1]);
+                            $this->ufrag = $matches[1];
+
+                            // a=ice-ufrag is authoritative, override anything a=candidate may have set before
+                            if ($this->transport == null) {
+                                $this->globalUfrag = $matches[1];
+                            } else {
+                                $this->transport['ufrag'] = $matches[1];
+                            }
                             break;
 
                         case 'candidate':
@@ -482,8 +507,8 @@ class SDPtoJingle
                                 $this->ufrag = $args['ufrag'];
                             }
 
-                            if (!isset($this->transport['ufrag'])) {
-                                $this->transport->addAttribute('ufrag', $this->ufrag);
+                            if (!isset($this->transport['ufrag']) && $this->ufrag !== null) {
+                                $this->transport['ufrag'] = $this->ufrag;
                             }
 
                             if (isset($args['id'])) {
@@ -508,9 +533,15 @@ class SDPtoJingle
                                 $candidate->addAttribute('tcptype', $args['tcptype']);
                             }
 
-                            // ufrag to the transport
-                            if ($this->user->session?->id && $this->ufrag && linker($this->user->session->id)?->session->get('icePwd')) {
-                                $this->transport->addAttribute('pwd', linker($this->user->session->id)->session->get('icePwd'));
+                            // When it's the lone trickled candidate complete the transport with the pwd of this session
+                            if (
+                                $this->action == 'transport-info'
+                                && !isset($this->transport['pwd'])
+                                && $this->ufrag
+                                && $this->user->session?->id
+                                && ($icePwd = linker($this->user->session->id)?->session->get('icePwd_' . $this->sid))
+                            ) {
+                                $this->transport['pwd'] = $icePwd;
                             }
 
                             break;
