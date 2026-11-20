@@ -23,6 +23,8 @@ class SDPtoJingle
 
     // Move the global fingerprint into each medias
     private $globalFingerprint = [];
+    private ?string $globalUfrag = null;
+    private ?string $globalPwd = null;
     private $fmtpCache = [];
     private $rtcpFbCache = [];
     private $directionToSenders = [
@@ -128,11 +130,28 @@ class SDPtoJingle
             $this->transport->addAttribute('xmlns', 'urn:xmpp:jingle:transports:ice-udp:1');
             $this->msid = null;
 
+            // Session-level a=ice-ufrag/a=ice-pwd (RFC 8839) apply to every media
+            if ($this->globalUfrag !== null) {
+                $this->transport['ufrag'] = $this->globalUfrag;
+            }
+
+            if ($this->globalPwd !== null) {
+                $this->transport['pwd'] = $this->globalPwd;
+            }
+
             // A hack to ensure that Dino is returning complete Muji content proposal
             if ($this->jingle->getName() == 'muji') {
                 $this->content->addAttribute('xmlns', 'urn:xmpp:jingle:1');
             }
         }
+    }
+
+    /**
+     * The ICE pwd is per PeerConnection,so we store it per Jingle session
+     */
+    private function icePwdKey(): string
+    {
+        return 'icePwd_' . $this->sid;
     }
 
     private function addFmtpParameters($payloadtype, array $params)
@@ -169,6 +188,10 @@ class SDPtoJingle
 
     public function addName($name = null)
     {
+        if (isset($this->content['name'])) {
+            return;
+        }
+
         if ($name !== null) {
             $this->content->addAttribute('name', $name);
         } elseif ($this->mid !== null) {
@@ -434,13 +457,26 @@ class SDPtoJingle
 
                         case 'pwd':
                             if ($this->user->session?->id) {
-                                linker($this->user->session->id)?->session->set('icePwd', $matches[1]);
+                                linker($this->user->session->id)?->session->set($this->icePwdKey(), $matches[1]);
                             }
-                            $this->transport->addAttribute('pwd', $matches[1]);
+
+                            // a=ice-pwd is authoritative, override anything a=candidate may have set before
+                            if ($this->transport == null) {
+                                $this->globalPwd = $matches[1];
+                            } else {
+                                $this->transport['pwd'] = $matches[1];
+                            }
                             break;
 
                         case 'ufrag':
-                            $this->transport->addAttribute('ufrag', $matches[1]);
+                            $this->ufrag = $matches[1];
+
+                            // a=ice-ufrag is authoritative, override anything a=candidate may have set before
+                            if ($this->transport == null) {
+                                $this->globalUfrag = $matches[1];
+                            } else {
+                                $this->transport['ufrag'] = $matches[1];
+                            }
                             break;
 
                         case 'candidate':
@@ -482,8 +518,8 @@ class SDPtoJingle
                                 $this->ufrag = $args['ufrag'];
                             }
 
-                            if (!isset($this->transport['ufrag'])) {
-                                $this->transport->addAttribute('ufrag', $this->ufrag);
+                            if (!isset($this->transport['ufrag']) && $this->ufrag !== null) {
+                                $this->transport['ufrag'] = $this->ufrag;
                             }
 
                             if (isset($args['id'])) {
@@ -508,9 +544,15 @@ class SDPtoJingle
                                 $candidate->addAttribute('tcptype', $args['tcptype']);
                             }
 
-                            // ufrag to the transport
-                            if ($this->user->session?->id && $this->ufrag && linker($this->user->session->id)?->session->get('icePwd')) {
-                                $this->transport->addAttribute('pwd', linker($this->user->session->id)->session->get('icePwd'));
+                            // When it's the lone trickled candidate complete the transport with the pwd of this session
+                            if (
+                                $this->action == 'transport-info'
+                                && !isset($this->transport['pwd'])
+                                && $this->ufrag
+                                && $this->user->session?->id
+                                && ($icePwd = linker($this->user->session->id)?->session->get($this->icePwdKey()))
+                            ) {
+                                $this->transport['pwd'] = $icePwd;
                             }
 
                             break;
