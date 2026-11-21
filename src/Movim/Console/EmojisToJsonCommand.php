@@ -18,7 +18,7 @@ class EmojisToJsonCommand extends Command
     {
         $this
             ->setName('emojisToJson')
-            ->setDescription('Compile the supported emojis to Json');
+            ->setDescription('Compile the supported emojis to JSON');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
