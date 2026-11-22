@@ -490,7 +490,7 @@ function purifyHTML($string, $base = null): string
     $config->set('HTML.Doctype', 'XHTML 1.1');
     $config->set('Cache.SerializerPath', '/tmp');
     $config->set('HTML.DefinitionID', 'html5-definitions');
-    $config->set('HTML.DefinitionRev', 1);
+    $config->set('HTML.DefinitionRev', 2);
 
     if ($base !== null) {
         $config->set('URI.Base', $base);
@@ -498,7 +498,7 @@ function purifyHTML($string, $base = null): string
     }
 
     if ($def = $config->maybeGetRawHTMLDefinition()) {
-        $def->addElement('video', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', [
+        $def->addElement('video', 'Block', 'Optional: Flow | source', 'Common', [
             'src' => 'URI',
             'type' => 'Text',
             'width' => 'Length',
@@ -507,13 +507,13 @@ function purifyHTML($string, $base = null): string
             'preload' => 'Enum#auto,metadata,none',
             'controls' => 'Bool',
         ]);
-        $def->addElement('audio', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', [
+        $def->addElement('audio', 'Block', 'Optional: Flow | source', 'Common', [
             'src' => 'URI',
             'preload' => 'Enum#auto,metadata,none',
             'muted' => 'Bool',
             'controls' => 'Bool',
         ]);
-        $def->addElement('source', 'Block', 'Flow', 'Common', [
+        $def->addElement('source', false, 'Empty', 'Common', [
             'src' => 'URI',
             'type' => 'Text',
         ]);
