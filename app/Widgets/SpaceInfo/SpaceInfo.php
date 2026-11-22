@@ -201,7 +201,7 @@ class SpaceInfo extends Base
         }
     }
 
-    public function ajaxHttpGet(string $server, string $node)
+    public function ajaxHttpGet(string $server, string $node, ?bool $setup = false)
     {
         $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
@@ -212,7 +212,11 @@ class SpaceInfo extends Base
                     ->where('jid', $this->me->id)
                     ->first();
 
-                $this->rpc('MovimTpl.fill', '#spaceinfo_widget', $this->view('_spaceinfo', [
+                if ($setup) {
+                    $this->rpc('MovimUtils.setClass', '#spaceinfo_widget', $this->getSpaceHTMLId($server, $node));
+                }
+
+                $this->rpc('MovimTpl.fill', '#spaceinfo_widget.' . $this->getSpaceHTMLId($server, $node), $this->view('_spaceinfo', [
                     'subscription' => $subscription,
                     'edit' => ($affiliation && $affiliation->affiliation == 'owner'),
                 ]));
@@ -413,14 +417,19 @@ class SpaceInfo extends Base
         }
 
         $subscription = $this->me->subscriptions()
-                ->spaces()
-                ->where('server', $server)
-                ->where('node', $node)
-                ->first();
+            ->spaces()
+            ->where('server', $server)
+            ->where('node', $node)
+            ->first();
 
         $this->dialog($this->view('_spaceinfo_invite', [
             'subscription' => $subscription,
             'inviteUrl' => $this->route('space', [$subscription->server, $subscription->node])
         ]));
+    }
+
+    private function getSpaceHTMLId(string $server, string $node): string
+    {
+        return cleanupId($server . $node);
     }
 }

@@ -5,6 +5,8 @@ namespace App\Widgets\SpacesMenu;
 use App\Contact;
 use App\Info;
 use App\Subscription;
+use App\Widgets\SpaceInfo\SpaceInfo;
+use App\Widgets\SpaceRooms\SpaceRooms;
 use Movim\Widget\Base;
 use Movim\XMPPUri;
 use Moxl\Stanza\Space;
@@ -312,8 +314,8 @@ class SpacesMenu extends Base
                  */
                 $this->rpc('SpacesMenu_ajaxGetOwnAffiliation', $server, $node);
 
-                $this->rpc('SpaceRooms_ajaxHttpGet', $server, $node);
-                $this->rpc('SpaceInfo_ajaxHttpGet', $server, $node);
+                (new SpaceRooms(user: $this->me, sessionId: $this->sessionId))->ajaxHttpGet($server, $node, setup: true);
+                (new SpaceInfo(user: $this->me, sessionId: $this->sessionId))->ajaxHttpGet($server, $node, setup: true);
 
                 if (! $isMobile) {
                     $this->rpc('SpaceRooms_ajaxHttpGetChat', $server, $node, $conference);

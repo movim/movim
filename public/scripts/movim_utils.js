@@ -209,6 +209,10 @@ var MovimUtils = {
     reloadThis: function () {
         window.location.reload();
     },
+    setClass: function (element, classname) {
+        let el = document.querySelector(element);
+        if (el) el.classList = classname;
+    },
     addClass: function (element, classname) {
         let el = document.querySelector(element);
         if (el) el.classList.add(classname);

@@ -167,7 +167,7 @@ class SpaceRooms extends Base
         ]));
     }
 
-    public function ajaxHttpGet(string $server, string $node)
+    public function ajaxHttpGet(string $server, string $node, ?bool $setup = false)
     {
         $subscription = $this->me->subscriptions()->space($server, $node)->first();
 
@@ -187,17 +187,25 @@ class SpaceRooms extends Base
             ->get()
             ->keyBy('id');
 
-        $this->rpc('MovimTpl.fill', '#spacerooms_widget', $this->view('_spacerooms', [
-            'space_rooms' => $subscription->spaceRooms->sortBy(function ($conference) use ($directories) {
-                $directoriesKeys = $directories->keys();
-                $directoriesKeys->prepend('null');
+        if ($setup) {
+            $this->rpc('MovimUtils.setClass', '#spacerooms', $this->getSpaceHTMLId($server, $node));
+        }
 
-                return $directoriesKeys->flip()->get($conference->directory_id ?? 'null', $directories->count());
-            }),
-            'directories' => $directories,
-            'edit' => ($affiliation && $affiliation->affiliation == 'owner'),
-            'addplaceholder' => __('chatrooms.first_room_placeholder', '<i class="material-symbols">rule</i>'),
-        ]));
+        $this->rpc(
+            'MovimTpl.fill',
+            '#spacerooms.' . $this->getSpaceHTMLId($server, $node) . ' #spacerooms_widget',
+            $this->view('_spacerooms', [
+                'space_rooms' => $subscription->spaceRooms->sortBy(function ($conference) use ($directories) {
+                    $directoriesKeys = $directories->keys();
+                    $directoriesKeys->prepend('null');
+
+                    return $directoriesKeys->flip()->get($conference->directory_id ?? 'null', $directories->count());
+                }),
+                'directories' => $directories,
+                'edit' => ($affiliation && $affiliation->affiliation == 'owner'),
+                'addplaceholder' => __('chatrooms.first_room_placeholder', '<i class="material-symbols">rule</i>'),
+            ])
+        );
         $this->rpc('SpaceRooms.init');
 
         if ($affiliation && $affiliation->affiliation == 'owner') {
@@ -573,5 +581,10 @@ class SpaceRooms extends Base
     {
         return (new Rooms(user: $this->me, sessionId: $this->sessionId))
             ->prepareRoomCounter($conference, withAvatar: true);
+    }
+
+    private function getSpaceHTMLId(string $server, string $node): string
+    {
+        return cleanupId($server . $node);
     }
 }
