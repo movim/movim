@@ -9,17 +9,22 @@ class SpaceController extends Base
 {
     public function load()
     {
-        if (!$this->user) {
-            $space = Info::where('server', $this->fetchGet('s'))
-                ->where('node', $this->fetchGet('n'))
-                ->first();
+        if ($this->user) {
+            $this->session_only = true;
 
-            if (!$space) {
-                $this->redirect('login');
-            }
-
-            $this->public = true;
+            return;
         }
+
+        $space = Info::where('server', $this->fetchGet('s'))
+            ->where('node', $this->fetchGet('n'))
+            ->first();
+
+        if (!$space) {
+            $this->redirect('login');
+        }
+
+        $this->public = true;
+
     }
 
     public function dispatch()
