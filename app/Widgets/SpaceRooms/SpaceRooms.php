@@ -24,15 +24,15 @@ class SpaceRooms extends Base
     public function load()
     {
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
-        $this->registerEvent('space_setroom_handle', 'onSetRoom');
-        $this->registerEvent('space_deleteroom_handle', 'onAffiliations');
-        $this->registerEvent('space_getrooms_handle', 'onRooms');
-        $this->registerEvent('space_getrooms_erroritemnotfound', 'onNotFound');
+        $this->registerEvent('presence_muc_errorregistrationrequired', 'onRoomRegistrationRequired');
         $this->registerEvent('space_addedroom', 'onEditedRooms');
         $this->registerEvent('space_deletedroom', 'onEditedRooms');
-        $this->registerEvent('space_setdirectories_handle', 'onDirectories');
+        $this->registerEvent('space_deleteroom_handle', 'onAffiliations');
         $this->registerEvent('space_directories', 'onDirectories');
-        $this->registerEvent('presence_muc_errorregistrationrequired', 'onRoomRegistrationRequired');
+        $this->registerEvent('space_getrooms_erroritemnotfound', 'onNotFound');
+        $this->registerEvent('space_getrooms_handle', 'onRooms');
+        $this->registerEvent('space_setdirectories_handle', 'onDirectories');
+        $this->registerEvent('space_setroom_handle', 'onSetRoom');
 
         // We have a memory filter optimisation in onMujiOrSFUPresence
         $this->registerEvent('presence', 'onMujiOrSFUPresence');

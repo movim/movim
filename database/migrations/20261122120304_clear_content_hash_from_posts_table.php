@@ -1,7 +1,6 @@
 <?php
 
 use App\Post;
-use Illuminate\Database\Schema\Blueprint;
 use Movim\Migration;
 
 class ClearContentHashFromPostsTable extends Migration
