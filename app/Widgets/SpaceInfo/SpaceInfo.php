@@ -10,6 +10,7 @@ use App\Widgets\SpacesMenu\SpacesMenu;
 use Movim\Image;
 use Movim\Librairies\XMPPtoForm;
 use Movim\Widget\Base;
+use Moxl\Stanza\Avatar;
 use Moxl\Xec\Action\Avatar\Set as AvatarSet;
 use Moxl\Xec\Action\Muc\Destroy;
 use Moxl\Xec\Action\Muc\SetAffiliations;
@@ -330,6 +331,7 @@ class SpaceInfo extends Base
         $r = $this->xmpp(new AvatarSet);
         $r->setTo($server)
             ->setNode($node)
+            ->setItemIdMetadata(Avatar::SPACE_NODE_METADATA)
             ->setUrl(Image::getOrCreate($key, format: 'jpeg', noTime: true, directory: IMAGES_DIR))
             ->setData($image->toBase())
             ->request();

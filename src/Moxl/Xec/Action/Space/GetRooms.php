@@ -64,7 +64,7 @@ class GetRooms extends Action
             }
 
             if (
-                $item->attributes()->id == Avatar::NODE_METADATA
+                $item->attributes()->id == Avatar::SPACE_NODE_METADATA
                 && isset($item->metadata)
                 && (string) $item->metadata->attributes()->xmlns == Avatar::NODE_METADATA
                 && isset($item->metadata->info)

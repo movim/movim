@@ -8,12 +8,13 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 
 class Set extends Action
 {
-    protected $_data;
-    protected $_to = false;
-    protected $_node = false;
-    protected $_url = false;
-    protected $_widthMetadata = 350;
-    protected $_heightMetadata = 350;
+    protected ?string $_data;
+    protected ?string $_to = null;
+    protected ?string $_node = null;
+    protected ?string $_url = null;
+    protected ?string $_itemIdMetadata = null;
+    protected ?int $_widthMetadata = 350;
+    protected ?int $_heightMetadata = 350;
     protected bool $_withPublishOption = true;
 
     public function request()
@@ -21,7 +22,11 @@ class Set extends Action
         $this->store();
 
         if ($this->_url === false) {
-            $this->iq(Avatar::set($this->_data, $this->_node, $this->_withPublishOption), to: $this->_to, type: 'set');
+            $this->iq(
+                Avatar::set($this->_data, $this->_node, $this->_withPublishOption),
+                to: $this->_to,
+                type: 'set'
+            );
         } else {
             // For an URL we simply set the Metadata
             $setMetadata = new SetMetadata($this->me, sessionId: $this->sessionId);
@@ -29,6 +34,7 @@ class Set extends Action
                 ->setNode($this->_node)
                 ->setUrl($this->_url)
                 ->setData($this->_data)
+                ->setItemIdMetadata($this->_itemIdMetadata)
                 ->setWidthMetadata($this->_widthMetadata)
                 ->setHeightMetadata($this->_heightMetadata)
                 ->request();
@@ -38,14 +44,19 @@ class Set extends Action
     public function setWidthMetadata($width)
     {
         $this->_widthMetadata = $width;
-
         return $this;
     }
 
     public function setHeightMetadata($height)
     {
         $this->_heightMetadata = $height;
+        return $this;
+    }
 
+
+    public function setItemIdMetadata(string $itemId)
+    {
+        $this->_itemIdMetadata = $itemId;
         return $this;
     }
 

@@ -8,38 +8,44 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 
 class SetMetadata extends Action
 {
-    protected $_data;
-    protected $_to = false;
-    protected $_node = false;
-    protected $_url = false;
-    protected $_widthMetadata = 350;
-    protected $_heightMetadata = 350;
+    protected ?string $_data;
+    protected ?string $_to = null;
+    protected ?string $_node = null;
+    protected ?string $_itemIdMetadata = null;
+    protected ?string $_url = null;
+    protected int $_widthMetadata = 350;
+    protected int $_heightMetadata = 350;
     protected bool $_withPublishOption = true;
 
     public function request()
     {
         $this->store();
         $this->iq(Avatar::setMetadata(
-            $this->_data,
-            $this->_url,
-            $this->_node,
-            $this->_widthMetadata,
-            $this->_heightMetadata,
-            $this->_withPublishOption
+            data: $this->_data,
+            url: $this->_url,
+            node: $this->_node,
+            itemId: $this->_itemIdMetadata,
+            width: $this->_widthMetadata,
+            height: $this->_heightMetadata,
+            withPublishOption: $this->_withPublishOption
         ), to: $this->_to, type: 'set');
     }
 
-    public function setWidthMetadata($width)
+    public function setWidthMetadata(int $width)
     {
         $this->_widthMetadata = $width;
-
         return $this;
     }
 
-    public function setHeightMetadata($height)
+    public function setHeightMetadata(int $height)
     {
         $this->_heightMetadata = $height;
+        return $this;
+    }
 
+    public function setItemIdMetadata(?string $itemId = null)
+    {
+        $this->_itemIdMetadata = $itemId;
         return $this;
     }
 

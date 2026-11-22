@@ -6,6 +6,7 @@ use Moxl\Utils;
 
 class Avatar
 {
+    public const SPACE_NODE_METADATA = 'urn:xmpp:spaces:avatar:metadata:0';
     public const NODE_DATA = 'urn:xmpp:avatar:data';
     public const NODE_METADATA = 'urn:xmpp:avatar:metadata';
 
@@ -30,7 +31,7 @@ class Avatar
         return $pubsub;
     }
 
-    public static function set($data, $node = false, bool $withPublishOption = true)
+    public static function set(string $data, ?string $node = null, ?bool $withPublishOption = true)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -63,8 +64,15 @@ class Avatar
         return $pubsub;
     }
 
-    public static function setMetadata($data, $url = false, $node = false, $width = 512, $height = 512, bool $withPublishOption = true)
-    {
+    public static function setMetadata(
+        string $data,
+        ?string $url = null,
+        ?string $node = null,
+        ?string $itemId = null,
+        ?int $width = 512,
+        ?int $height = 512,
+        bool $withPublishOption = true
+    ) {
         $decoded = base64_decode($data);
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -76,7 +84,12 @@ class Avatar
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
-        $item->setAttribute('id', $node ? self::NODE_METADATA : sha1($decoded));
+        if ($itemId) {
+            $item->setAttribute('id', $itemId);
+        } else {
+            $item->setAttribute('id', $node ? self::NODE_METADATA : sha1($decoded));
+        }
+
         $publish->appendChild($item);
 
         $metadata = $dom->createElement('metadata');
@@ -109,6 +122,5 @@ class Avatar
         }
 
         return $pubsub;
-
     }
 }
