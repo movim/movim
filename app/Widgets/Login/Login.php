@@ -257,6 +257,9 @@ class Login extends Base
         ?string $sessionId = null,
         ?string $deviceId = null
     ) {
+        // Fix the timezone if we didn't got a canonical one
+        $timezone = canonicalTimezone($timezone) ?? 'UTC';
+
         $configuration = Configuration::get();
 
         if (! validateJid($login)) {

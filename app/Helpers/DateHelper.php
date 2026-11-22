@@ -13,3 +13,13 @@ function toSQLDate($date): string
 {
     return date(MOVIM_SQL_DATE, strtotime((string) $date));
 }
+
+function canonicalTimezone(?string $timezone): ?string
+{
+    $iana = \IntlTimeZone::getIanaID($timezone);
+    if ($iana !== false) {
+        return $iana;
+    }
+
+    return null;
+}

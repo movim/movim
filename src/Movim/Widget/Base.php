@@ -177,8 +177,6 @@ class Base
 
     /**
      * Return a human-readable date
-     *
-     * @param  timestamp  $string
      */
     public function prepareDate(string $datetime = '', ?bool $compact = false, ?bool $hours = true): string
     {
