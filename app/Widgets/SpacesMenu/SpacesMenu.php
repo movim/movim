@@ -422,9 +422,24 @@ class SpacesMenu extends Base
 
     public function prepareMenu(?string $server = null, ?string $node = null): string
     {
+        $calls = $this->me->session->conferences()
+            ->fromSpace()
+            ->where('call', true)
+            ->whereExists(fn ($query) => $query->selectRaw('1')
+                ->from('presences')
+                ->whereColumn('presences.jid', 'conferences.conference')
+                ->whereColumn('presences.session_id', 'conferences.session_id')
+                ->where(fn ($query) => $query->whereNotNull('presences.muji_xml')->orWhereNotNull('presences.coin_xml')))
+            ->with(['mujiPresences', 'sfuPresence'])
+            ->get()
+            ->filter(fn ($conference) => $conference->hasActiveCall())
+            ->map(fn ($conference) => $conference->space_server . '/' . $conference->space_node)
+            ->flip();
+
         return $this->view('_spacesmenu', [
             'server' => $server,
             'node' => $node,
+            'calls' => $calls,
             'spaces' => $this->me->subscriptions()->spaces()->orderBy('pinned', 'desc')->with('info')->get(),
         ]);
     }

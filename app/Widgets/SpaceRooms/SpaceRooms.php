@@ -208,6 +208,16 @@ class SpaceRooms extends Base
         );
         $this->rpc('SpaceRooms.init');
 
+        // Reflect the call state on the Space icon, the presences are already loaded with the rooms
+        $this->rpc(
+            'MovimUtils.setDataItem',
+            '#' . $subscription->counterId,
+            'call',
+            $subscription->spaceRooms->contains(fn ($conference) => $conference->hasActiveCall())
+                ? 'active'
+                : null
+        );
+
         if ($affiliation && $affiliation->affiliation == 'owner') {
             $this->rpc('SpaceRooms.editable');
         }
