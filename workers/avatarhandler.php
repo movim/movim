@@ -24,6 +24,7 @@ $handler = function (ServerRequestInterface $request) use ($resolver) {
         $data = json_decode((string) $request->getBody());
 
         if (! $data) {
+            $resolve(new Response(400));
             return;
         }
 
@@ -40,7 +41,8 @@ $handler = function (ServerRequestInterface $request) use ($resolver) {
             case '/base64':
                 $query = $resolver->base64(
                     jid: $data->jid,
-                    type: $data->type
+                    type: $data->type,
+                    token: $data->token
                 );
                 break;
         }
@@ -48,7 +50,12 @@ $handler = function (ServerRequestInterface $request) use ($resolver) {
         if ($query) {
             $query->then(function ($data) use ($resolve) {
                 $resolve(Response::json($data));
+            }, function (\Throwable $th) use ($resolve) {
+                \logError($th);
+                $resolve(new Response(500));
             });
+        } else {
+            $resolve(new Response(404));
         }
     });
 };
