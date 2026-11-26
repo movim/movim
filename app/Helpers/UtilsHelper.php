@@ -828,18 +828,20 @@ function requestAvatarBase64(
     );
 
     $browser = new Browser($connector);
+    $token = bin2hex(random_bytes(16));
     $data = [
         'jid' => $jid,
         'type' => $type,
+        'token' => $token,
     ];
 
-    $path = AvatarHandler::getAvatarCachePath($jid, $type);
+    $path = AvatarHandler::getAvatarCachePath($token);
     file_put_contents($path, base64_decode($base64));
 
     return $browser
         ->withTimeout(10)
         ->post('http://avatarhandler/base64', [], json_encode($data))
-        ->always(fn () => unlink($path));
+        ->always(fn () => @unlink($path));
 }
 
 /**

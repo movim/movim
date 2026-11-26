@@ -21,7 +21,7 @@ class Set extends Action
     {
         $this->store();
 
-        if ($this->_url === false) {
+        if ($this->_url === null) {
             $this->iq(
                 Avatar::set($this->_data, $this->_node, $this->_withPublishOption),
                 to: $this->_to,

@@ -19,9 +19,13 @@ class AvatarHandler
         $this->domainWhitelist = Configuration::firstOrNew()->ssrfwhitelist_array;
     }
 
-    public static function getAvatarCachePath(string $jid, string $type)
+    public static function getAvatarCachePath(string $token): string
     {
-        return CACHE_PATH . hash('sha256', $jid . $type);
+        if (!ctype_xdigit($token)) {
+            throw new \InvalidArgumentException('Invalid avatar cache token');
+        }
+
+        return CACHE_PATH . 'avatar_' . $token;
     }
 
     public function url(
@@ -59,7 +63,9 @@ class AvatarHandler
                     $key = null;
                     $bin = (string) $response->getBody();
 
-                    if (empty($bin)) {
+                    $image = new Image;
+
+                    if (empty($bin) || !$image->fromBin($bin)) {
                         $resolve(['jid' => $jid, 'node' => $node, 'key' => null]);
 
                         return;
@@ -95,8 +101,6 @@ class AvatarHandler
                     }
 
                     if ($key) {
-                        $image = new Image;
-                        $image->fromBin($bin);
                         $image->setKey($key);
                         $image->save();
                     }
@@ -104,20 +108,36 @@ class AvatarHandler
                     $resolve(['jid' => $jid, 'node' => $node, 'key' => $key]);
                 } catch (\Throwable $th) {
                     \logError($th);
+                    $resolve(['jid' => $jid, 'node' => $node, 'key' => null]);
                 }
+            }, function (\Throwable $th) use ($resolve, $jid, $node) {
+                \logError($th);
+                $resolve(['jid' => $jid, 'node' => $node, 'key' => null]);
             });
         });
     }
 
-    public function base64(string $jid, string $type): Promise
+    public function base64(string $jid, string $type, string $token): Promise
     {
-        return new Promise(function ($resolve) use ($jid, $type) {
-            $key = self::getAvatarCachePath($jid, $type);
-            $bin = file_get_contents($key);
+        return new Promise(function ($resolve) use ($jid, $type, $token) {
+            $key = self::getAvatarCachePath($token);
+            $bin = is_readable($key) ? file_get_contents($key) : false;
+
+            if (empty($bin)) {
+                \logError('Avatar cache file missing or empty for ' . $jid);
+                $resolve(['jid' => $jid]);
+                return;
+            }
 
             $p = new Image;
             $p->setKey($jid);
-            $p->fromBin($bin);
+
+            if (!$p->fromBin($bin)) {
+                \logError('Avatar data for ' . $jid . ' is not a valid image');
+                $resolve(['jid' => $jid]);
+                return;
+            }
+
             $p->save();
 
             $contact = Contact::firstOrNew(['id' => $jid]);
