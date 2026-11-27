@@ -65,3 +65,24 @@ ul#spacesmenu_widget li span.primary.locked::before {
     border-radius: 2rem;
     left: 0;
 }
+
+/* Call going on in one of the Space rooms */
+ul#spacesmenu_widget li span.primary[data-call] > a::after {
+    display: block;
+    position: absolute;
+    top: -0.25rem;
+    right: calc(50% - 2.75rem);
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 1rem;
+    font-family: 'Material Symbols';
+    font-variation-settings: 'FILL' 1;
+    font-size: 1.5rem;
+    text-align: center;
+    content: '\e050'; /* volume_up */
+    color: white;
+    background-color: var(--p-green);
+    box-shadow: var(--elevation-1);
+    pointer-events: none;
+}

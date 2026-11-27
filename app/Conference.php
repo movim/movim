@@ -68,6 +68,12 @@ class Conference extends Model
             ->whereNotNull('coin_xml');
     }
 
+    public function hasActiveCall(): bool
+    {
+        return $this->mujiPresences->isNotEmpty()
+            || ($this->sfuPresence && $this->sfuPresence->SFUUsersCount > 0);
+    }
+
     public function scopeFromSpace(Builder $query, ?bool $from = true)
     {
         return $from

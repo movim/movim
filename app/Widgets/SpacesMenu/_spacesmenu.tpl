@@ -7,6 +7,7 @@
             {$unreads = $value->spaceUnreads($c->me)}
             id="{$value->counterId}"
             {if="$unreads > 0"}data-counter="{$unreads}"{/if}
+            {if="$calls->has($value->server . '/' . $value->node)"}data-call="active"{/if}
             >
             {if="$value->info"}
                 <a href="#" onclick="listIconClick(event)">
